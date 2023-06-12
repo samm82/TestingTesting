@@ -1,0 +1,73 @@
+% For one-offs,
+% \DeclareAcronym{acronym}{short=short-version,long=long-version}
+
+\newcommand{\newacr}[2]{\DeclareAcronym{#1}{short=\uppercase{#1},long=#2}}
+\newcommand{\newacrs}[3]{\DeclareAcronym{#1}{short=#2,long=#3}}
+
+% Alphabetically sorted list of acronyms
+\newacr{api}{Application Programming Interface}
+\newacr{cms}{Content Management System}
+\newacr{cpu}{Central Processing Unit}
+\newacr{csv}{Comma-Separated Values}
+\newacr{dsl}{Domain-Specific Language}
+\newacr{ffi}{Foreign Function Interface}
+\newacr{gui}{Graphical User Interface}
+\newacr{html}{HyperText Markup Language}
+\newacr{href}{Hypertext REFerence}
+\newacr{ide}{Integrated Development Environment}
+\newacr{json}{JavaScript Object Notation}
+\newacr{jvm}{Java Virtual Machine}
+\newacr{nasa}{National Aeronautics and Space Administration}
+\newacr{pdf}{Portable Document Format}
+\newacr{wysiwyg}{What You See Is What You Get}
+
+% Case Studies 
+%   (note: I'm grouping these together and forcing "newacrs" usage, even when
+%    seemingly unneeded because, otherwise, they won't group together at the 
+%    bottom of the complete "acronyms" list.)
+\newacrs{glassbr}{GlassBR}{Glass Breaking}
+\newacrs{projectile}{Projectile}{Projectile}
+\newacrs{sglpendulum}{SglPendulum}{Single Pendulum}
+\newacrs{dblpendulum}{DblPendulum}{Double Pendulum}
+\newacrs{gamephysics}{GamePhysics}{Game Physics}
+\newacrs{hghc}{HGHC}{Heat Transfer Coefficients between Fuel and Cladding in Fuel Rods}
+\newacrs{pdcontroller}{PDController}{Proportional Derivative controller}
+\newacrs{swhs}{SWHS}{Solar Water Heating System}
+\newacrs{nopcm}{NoPCM}{Solar Water Heating System Without PCM}
+\newacrs{ssp}{SSP}{Slope Stability analysis Program}
+
+
+%------------------------------------------------------------------------------
+%- Extra commands for more functionality -- in particular, capitalizing the
+%- long form of acronyms.
+%------------------------------------------------------------------------------
+
+% Defining \ACL - to capitalize all words in an acronym
+% Credits to: https://tex.stackexchange.com/a/257896
+\NewDocumentCommand\ACF{sm}{%
+  \begingroup
+    \acsetup{uppercase/cmd=\ecapitalisewords}%
+    \IfBooleanTF{#1}{\Acf*{#2}}{\Acf{#2}}%
+  \endgroup
+}
+
+\NewDocumentCommand\ACFP{sm}{%
+  \begingroup
+    \acsetup{uppercase/cmd=\ecapitalisewords}%
+    \IfBooleanTF{#1}{\Acfp*{#2}}{\Acfp{#2}}%
+  \endgroup
+}
+
+\NewDocumentCommand\ACL{sm}{%
+  \begingroup
+    \acsetup{uppercase/cmd=\ecapitalisewords}%
+    \IfBooleanTF{#1}{\Acl*{#2}}{\Acl{#2}}%
+  \endgroup
+}
+
+\NewDocumentCommand\ACLP{sm}{%
+  \begingroup
+    \acsetup{uppercase/cmd=\ecapitalisewords}%
+    \IfBooleanTF{#1}{\Aclp*{#2}}{\Aclp{#2}}%
+  \endgroup
+}

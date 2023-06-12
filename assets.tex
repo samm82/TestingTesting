@@ -1,0 +1,39 @@
+%------------------------------------------------------------------------------
+% Folders
+%------------------------------------------------------------------------------
+
+\newcommand{\assets}{assets}
+\newcommand{\figureAssets}{\assets/figures}
+\newcommand{\imageAssets}{\assets/images}
+\newcommand{\tableAssets}{\assets/tables}
+\newcommand{\codeAssets}{\assets/code}
+
+%------------------------------------------------------------------------------
+% Code
+%------------------------------------------------------------------------------
+
+\input{\codeAssets/names}
+
+% for assets/code/example.tex...
+\newcommand{\exampleCode}{\input{\codeAssets/example}}
+\newcommand{\refExampleCode}{\Cref{lst:exampleCode}}
+
+% for assets/code/examplePseudocode.tex...
+\newcommand{\examplePseudocode}{\input{\codeAssets/examplePseudocode}}
+\newcommand{\refExamplePseudocode}{\Cref{lst:examplePseudocode}}
+
+%------------------------------------------------------------------------------
+% Images & Figures
+%------------------------------------------------------------------------------
+
+\newcommand{\drasilLogo}{\imageAssets/drasil_logo.png}
+\newcommand{\drasilLogoImg}{\input{\imageAssets/drasil_logo}}
+\newcommand{\refDrasilLogoImg}{\Cref{fig:drasilLogo}}
+
+%------------------------------------------------------------------------------
+% Tables
+%------------------------------------------------------------------------------
+
+% Organization of files
+\newcommand{\organizationTable}{\input{\tableAssets/organization}}
+\newcommand{\refOrganizationTable}{\Cref{tab:organization}}

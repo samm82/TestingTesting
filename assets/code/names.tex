@@ -1,0 +1,5 @@
+% Command based on: https://tex.stackexchange.com/questions/266811/define-a-new-command-with-parameters-inside-newcommand
+\newcommand{\codeName}[1]{\expandafter\newcommand\csname #1\endcsname{\inlineHs{#1}}}
+
+% Used for showing what the blue-highlighted text is, in the reading notes section
+\codeName{ExampleText}

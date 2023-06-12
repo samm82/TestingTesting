@@ -1,0 +1,78 @@
+\begin{longtable}[c]{|>{\raggedright}p{0.3\linewidth}|>{\raggedright\arraybackslash}p{0.54\linewidth}|}
+    \caption{Template Organization}
+    \label{tab:organization}                                              \\
+
+    \hline
+
+    \rowcolor{McMasterMediumGrey}
+    \textbf{File/Folder}     & \textbf{Intended Usage \& Description}
+    \\ \hline
+
+    \texttt{thesis.tex} & Focal \LaTeX{} file that collects everything and is
+    used to build your thesis/report document.
+    \\ \hline
+
+    \texttt{Makefile} & A basic \texttt{Makefile} configuration. See
+    \texttt{make help} for a list of helpful commands. \\ \hline
+
+    \texttt{build/} & When you build your \acs{pdf}, this folder is used as the
+    working directory of LuaLaTeX. Using this allows us to quickly get rid of
+    \LaTeX{} build files that can cause problems when we re-build documents. \\
+    \hline
+
+    \texttt{manifest.tex} & Basic options that you should certainly configure
+    according to your needs.
+    \\ \hline
+
+    \texttt{chapters.tex} & All chapters of your thesis should be included here.
+    \\ \hline
+
+    \texttt{chapters/} & Enumeration of the chapters of your thesis. I prefer
+    using a two-digit indexing pattern for the prefix of file names so that I
+    can quickly open up by chapter number using VS Codium. \\ \hline
+
+    \texttt{assets.tex} & Enumeration of the various kinds of ``assets'' in the
+    \texttt{assets/} folder. See the file for examples on how you can write your
+    extra utility macros. \\ \hline
+
+    \texttt{assets/} & Enumeration of various kinds of ``assets,'' with
+    subdirectories for images and figures, tables, and code snippets. \\ \hline
+
+    \texttt{front.tex} & All front matter of your thesis should be included
+    here. \\ \hline
+
+    \texttt{front/} & Enumeration of the front chapters of your thesis. These
+    chapters should all be numbered using Roman numerals. \\ \hline
+
+    \texttt{back.tex} & All back matter of your thesis should be included here.
+    \\ \hline
+
+    \texttt{back/} & Enumeration of the back matter content.
+    \\ \hline
+
+    \texttt{acronyms.tex} & List of acronyms you intend to use in your thesis.
+    This uses the ``acro'' \LaTeX{} package.
+    \\ \hline
+
+    \texttt{macros.tex} & Helpful macros!
+    \\ \hline
+
+    \texttt{unicode\_chars.tex} & At times, you might find issues with unicode
+    characters, especially in verbatim environments, where you might need to
+    manually define them using other font glyphs.
+    \\ \hline
+
+    \texttt{mcmaster\_colours.tex} & Macros for the McMaster colour palette.
+    \\ \hline
+
+    \texttt{README.md} & Read it!
+    \\ \hline
+
+    \texttt{.gitignore} & List of files in the working directory that should be
+    ignored by git.
+    \\ \hline
+
+    \texttt{latexmkrc} & Used for setting the timezone for latexmk, but can be
+    used for other options.
+    \\ \hline
+\end{longtable}
