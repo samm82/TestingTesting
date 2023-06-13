@@ -4,7 +4,7 @@
 \begin{writingdirectives}
 
     \item What macros do I want the reader to know about?
-    
+
 \end{writingdirectives}
 
 \section{Writing Directives}
@@ -14,9 +14,9 @@ I enjoy writing directives (mostly questions) to navigate what I should be
 writing about in each chapter. You can do this using:
 
 \begin{pseudocode}{latex}{exWD}{Example Writing Directives}
-\begin{writingdirectives}
-    \item What macros do I want the reader to know about?
-\end{writingdirectives}
+    \begin{writingdirectives}
+        \item What macros do I want the reader to know about?
+    \end{writingdirectives}
 \end{pseudocode}
 
 Personally, I put them at the top of chapter files, just after chapter
@@ -52,7 +52,7 @@ option as mentioned, then you will see the link in a footnote (try it out!).
 
 
 \begin{pseudocode}{latex}{exPHref}{Example Portable HREF}
-\porthref{McMaster}{https://www.mcmaster.ca/}
+    \porthref{McMaster}{https://www.mcmaster.ca/}
 \end{pseudocode}
 
 \section{Code Snippets}
@@ -62,9 +62,9 @@ Since I did my Master's in computer science, I needed code snippet listings. For
 them, I chose to use the \texttt{minted} package (which lets you write
 colourized code snippets, supporting syntax highlighting for many languages).
 However, I also wanted source code listings to be linked to the main Drasil
-\cite{Drasil2021} repository. For example, to write
+\cite{carette_drasil_2021} repository. For example, to write
 \refExampleCode{}\footnote{Note: the header links use the portable \acsp{href}
-(as per \Cref{chap:extras:sec:hrefs})!}, I had to write
+    (as per \Cref{chap:extras:sec:hrefs})!}, I had to write
 \texttt{assets/code/example.tex} and create appropriate links in
 \texttt{assets.tex}. Additionally, for pseudocode, you can also use the
 pseudocode environment, such as that used in \refExamplePseudocode{} (similarly
