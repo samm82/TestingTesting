@@ -59,3 +59,30 @@ determine its features, and these features are then tested
 positive thing \cite[p.~65]{patton_software_2006}, since despite not knowing
 what the software \emph{should} do, you were able to determine that something
 is wrong.
+
+\subsubsection{Equivalence Partitioning/Classing \cite[p.~67]{patton_software_2006}}
+
+The process of dividing the infinite set of test cases into a finite set that is
+just as effective (i.e., by revealing the same bugs) \cite[p.~67]{patton_software_2006}.
+
+\subsubsection{Data Testing \cite[p.~70]{patton_software_2006}}
+
+The process of "checking that information the user inputs [and] results",
+both final and intermediate, "are handled correctly" \cite[p.~70]{patton_software_2006}.
+
+\subsubsubsection{Boundary Conditions \cite[p.~70]{patton_software_2006}}
+
+"[S]ituations at the edge of the planned operational limits of the software"
+\cite[p.~72]{patton_software_2006}. Often affects types of data (e.g., numeric,
+speed, character, location, position, size, quantity
+\cite[p.~72]{patton_software_2006}) each with its own set of (e.g., first/last,
+min/max, start/finish, over/under, empty/full, shortest/longest,
+slowest/fastest, soonest/latest, largest/smallest, highest/lowest,
+next-to/farthest-from \cite[p.~72]{patton_software_2006}). Data at these
+boundaries should be included in an equivalence partition, but so should
+data in between them \cite[p.~73]{patton_software_2006}. Boundary conditions
+should be tested using "the valid data just inside the boundary,
+... the last possible valid data, and ... the invalid data just outside the
+boundary" \cite[p.~73]{patton_software_2006}. \emph{Buffer overruns} are
+"the number one cause of software security issues"
+\cite[p.~75]{patton_software_2006}.
