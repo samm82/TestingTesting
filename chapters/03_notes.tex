@@ -34,12 +34,13 @@
 \begin{itemize}
       \item Simple, normal test cases (test-to-pass) should always be developed
             and run before more complicated, unusual test cases (test-to-fail)
+            \cite[p.~66]{patton_software_2006}
 \end{itemize}
 
 \subsection{Types of Testing}
 
 \subsubsection{Dynamic Black-Box (Behavioural) Testing
-      \cite[p.~64]{patton_software_2006}}
+      \cite[p.~64-65]{patton_software_2006}}
 
 "Entering inputs, receiving outputs, and checking the results"
 \cite[p.~64]{patton_software_2006}
@@ -60,17 +61,17 @@ positive thing \cite[p.~65]{patton_software_2006}, since despite not knowing
 what the software \emph{should} do, you were able to determine that something
 is wrong.
 
-\subsubsection{Equivalence Partitioning/Classing \cite[p.~67]{patton_software_2006}}
+\subsubsection{Equivalence Partitioning/Classing \cite[p.~67-69]{patton_software_2006}}
 
 The process of dividing the infinite set of test cases into a finite set that is
 just as effective (i.e., by revealing the same bugs) \cite[p.~67]{patton_software_2006}.
 
-\subsubsection{Data Testing \cite[p.~70]{patton_software_2006}}
+\subsubsection{Data Testing \cite[p.~70-79]{patton_software_2006}}
 
 The process of "checking that information the user inputs [and] results",
 both final and intermediate, "are handled correctly" \cite[p.~70]{patton_software_2006}.
 
-\subsubsubsection{Boundary Conditions \cite[p.~70]{patton_software_2006}}
+\subsubsubsection{Boundary Conditions \cite[p.~70-74]{patton_software_2006}}
 
 "[S]ituations at the edge of the planned operational limits of the software"
 \cite[p.~72]{patton_software_2006}. Often affects types of data (e.g., numeric,
@@ -86,3 +87,10 @@ should be tested using "the valid data just inside the boundary,
 boundary" \cite[p.~73]{patton_software_2006}. \emph{Buffer overruns} are
 "the number one cause of software security issues"
 \cite[p.~75]{patton_software_2006}.
+
+\subsubsubsection{Sub-Boundary Conditions \cite[p.~75-77]{patton_software_2006}}
+
+Boundary conditions "that are internal to the software [but] aren't necessarily
+apparent to an end user" \cite[p.~75]{patton_software_2006}. These include
+powers of two \cite[p.~75-76]{patton_software_2006} and ASCII and Unicode tables
+\cite[p.~76-77]{patton_software_2006}.
