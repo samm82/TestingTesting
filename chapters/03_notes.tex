@@ -5,23 +5,48 @@
 \label{chap:notes:sec:software-metrics}
 
 \begin{itemize}
-    \item The following branches of testing started as parts of quality
-          testing:
-          \begin{itemize}
-              \item Reliability testing \cite[p.~18, ch.~10]{fenton_software_1997}
-              \item Performance testing \cite[p.~18, ch.~7]{fenton_software_1997}
-          \end{itemize}
-    \item Reliability and maintainability can start to be tested even without
-          code by ``measur[ing] structural attributes of representations of the
-          software'' \cite[p.~18]{fenton_software_1997}
-    \item The US Software Engineering Institute has a checklist for determining
-          which types of lines of code are included when counting
-          \cite[pp.~30-31]{fenton_software_1997}
-    \item Measurements should include an entity to be measured, a specific
-          attribute to measure, and the actual measure (i.e., units, starting
-          state, ending state, what to include) \cite[p.~36]{fenton_software_1997}
-          \begin{itemize}
-              \item These attributes must be defined before they can be
-                    measured \cite[p.~38]{fenton_software_1997}
-          \end{itemize}
+      \item The following branches of testing started as parts of quality
+            testing:
+            \begin{itemize}
+                  \item Reliability testing \cite[p.~18, ch.~10]{fenton_software_1997}
+                  \item Performance testing \cite[p.~18, ch.~7]{fenton_software_1997}
+            \end{itemize}
+      \item Reliability and maintainability can start to be tested even without
+            code by ``measur[ing] structural attributes of representations of the
+            software'' \cite[p.~18]{fenton_software_1997}
+      \item The US Software Engineering Institute has a checklist for determining
+            which types of lines of code are included when counting
+            \cite[pp.~30-31]{fenton_software_1997}
+      \item Measurements should include an entity to be measured, a specific
+            attribute to measure, and the actual measure (i.e., units, starting
+            state, ending state, what to include) \cite[p.~36]{fenton_software_1997}
+            \begin{itemize}
+                  \item These attributes must be defined before they can be
+                        measured \cite[p.~38]{fenton_software_1997}
+            \end{itemize}
 \end{itemize}
+
+\section{Software Testing}
+\label{chap:notes:sec:software-testing}
+
+\subsection{Dynamic Black-Box (Behavioural) Testing
+      \cite[p.~64]{patton_software_2006}}
+
+"Entering inputs, receiving outputs, and checking the results"
+\cite[p.~64]{patton_software_2006}
+
+\subsubsection{Requirements}
+\begin{itemize}
+      \item Requirements documentation (definition of what the software does)
+            \cite[p.~64]{patton_software_2006}
+\end{itemize}
+
+\subsection{Exploratory Testing \cite[p.~65]{patton_software_2006}}
+
+An alternative to dynamic black-box testing when a specification is not
+available \cite[p.~65]{patton_software_2006}. The software is explored to
+determine its features, and these features are then tested
+\cite[p.~65]{patton_software_2006}. Finding any bugs using this method is a
+positive thing \cite[p.~65]{patton_software_2006}, since despite not knowing
+what the software \emph{should} do, you were able to determine that something
+is wrong.
