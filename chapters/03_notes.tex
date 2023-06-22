@@ -105,7 +105,7 @@ boundary" \cite[p.~73]{patton_software_2006}. \emph{Buffer overruns} are
 
 % TODO: investigate "buffer overruns"
 
-\paragraph{Requirements}
+\subparagraph{Requirements}
 \begin{itemize}
       \item Ranges of possible values \cite[p.~67, 73]{patton_software_2006};
             could be obtained through:
@@ -125,7 +125,7 @@ apparent to an end user" \cite[p.~75]{patton_software_2006}. These include
 powers of two \cite[p.~75-76]{patton_software_2006} and ASCII and Unicode tables
 \cite[p.~76-77]{patton_software_2006}.
 
-\paragraph{Requirements}
+\subparagraph{Requirements}
 \begin{itemize}
       \item Knowledge of powers of two \cite[p.~75-76]{patton_software_2006}
             (stored alongside \texttt{Integer, Rational, Real, Natural, Matrix
@@ -141,7 +141,7 @@ These should be their own equivalence class, since "the software usually
 handles them differently" than "the valid cases or ... invalid cases"
 \cite[p.~78]{patton_software_2006}.
 
-\paragraph{Requirements}
+\subparagraph{Requirements}
 \begin{itemize}
       \item Knowledge of an "empty" value for each \texttt{Space} (stored
             alongside each type in \texttt{Space}?)
@@ -156,7 +156,7 @@ handles them differently" than "the valid cases or ... invalid cases"
 
 This is testing-to-fail \cite[p.~77]{patton_software_2006}.
 
-\paragraph{Requirements}
+\subparagraph{Requirements}
 This seems to be the most open-ended category of testing.
 \begin{itemize}
       \item Specification of correct inputs that can be ignored;
@@ -169,4 +169,79 @@ This seems to be the most open-ended category of testing.
                   \item Type information for each input (e.g., passing a string
                         instead of a number)
             \end{itemize}
+\end{itemize}
+
+\subsubsection{State Testing \cite[p.~79-87]{patton_software_2006}}
+
+The process of testing "a program's states and the transitions between them"
+\cite[p.~79]{patton_software_2006}.
+
+\paragraph{Logic Flow Testing \cite[p.~80-84]{patton_software_2006}}
+
+This is done by creating a state transition diagram that includes:
+
+\begin{itemize}
+      \item Every possible unique state
+      \item The condition(s) that take(s) the program between states
+      \item The condition(s) and output(s) when a state is entered or exited
+\end{itemize}
+
+to map out the logic flow from the user's perspective
+\cite[p.~81-82]{patton_software_2006}. Next, these states should be
+partitioned using one (or more) of the following methods:
+
+\begin{enumerate}
+      \item Test each state once
+      \item Test the most common state transitions
+      \item Test the least common state transitions
+      \item Test all error states and error return transitions
+      \item Test random state transitions
+            \cite[p.~82-83]{patton_software_2006}
+\end{enumerate}
+
+For all of these tests, the values of the state variables should be verified
+\cite[p.~83]{patton_software_2006}.
+
+\subparagraph{Requirements}
+\begin{itemize}
+      \item Knowledge of the different states of the program
+            \cite[p.~82]{patton_software_2006}; could be obtained through:
+            \begin{itemize}
+                  \item The program's modules and/or functions
+                  \item The program's exceptions
+            \end{itemize}
+      \item Knowledge about the different state transitions
+            \cite[p.~82]{patton_software_2006}; could be obtained through:
+            \begin{itemize}
+                  \item Testing the state transitions near the beginning of a
+                        workflow more?
+            \end{itemize}
+\end{itemize}
+
+\paragraph{Testing States to Fail \cite[p.~84-87]{patton_software_2006}}
+
+The goal here is to try and put the program in a fail state by doing things
+that are out of the ordinary. These include:
+
+\begin{itemize}
+      \item Race Conditions and Bad Timing \cite[p.~85-86]{patton_software_2006}
+            (Is this relevant to SCS?)
+      \item Repetition Testing: "doing the same operation over and over",
+            potentially up to "thousands of attempts"
+            \cite[p.~86]{patton_software_2006}
+      \item Stress Testing: "running the software under less-than-ideal conditions"
+            \cite[p.~86]{patton_software_2006}
+      \item Load testing: running the software with as large of a load as
+            possible (e.g., large inputs, many peripherals)
+            \cite[p.~86]{patton_software_2006}
+\end{itemize}
+
+\subparagraph{Requirements}
+\begin{itemize}
+      \item Repetition Testing: The types of operations that are likely to lead
+            to errors when repeated (e.g., overwriting files?)
+      \item Stress testing: can these be automated with pytest or are they
+            outside our scope? % TODO: investigate
+      \item Load testing: Knowledge about the types of inputs that could
+            overload the system (e.g., upper bounds on values of certain types)
 \end{itemize}
