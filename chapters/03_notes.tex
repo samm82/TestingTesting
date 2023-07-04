@@ -48,7 +48,11 @@
 \paragraph{Requirements}
 \begin{itemize}
       \item Requirements documentation (definition of what the software does)
-            \cite[p.~64]{patton_software_2006}
+            \cite[p.~64]{patton_software_2006}; relevant information could be:
+            \begin{itemize}
+                  \item Requirements: Input-Values and Output-Values
+                  \item Input/output data constraints
+            \end{itemize}
 \end{itemize}
 
 \subsubsection{Exploratory Testing \cite[p.~65]{patton_software_2006}}
@@ -64,7 +68,9 @@ is wrong.
 \paragraph{Requirements}
 \begin{itemize}
       \item Source code \cite[p.~65]{patton_software_2006} (how can Drasil
-            deduce functionality from this? Doxygen documentation?)
+            deduce functionality from this? Doxygen documentation? Is this
+            necessary if we have the specification for dynamic black-box
+            testing? Is this useful?)
 \end{itemize}
 
 \subsubsection{Equivalence Partitioning/Classing \cite[p.~67-69]{patton_software_2006}}
@@ -77,6 +83,7 @@ just as effective (i.e., by revealing the same bugs) \cite[p.~67]{patton_softwar
       \item Ranges of possible values \cite[p.~67]{patton_software_2006};
             could be obtained through:
             \begin{itemize}
+                  \item Input/output data constraints
                   \item Case statements
             \end{itemize}
 \end{itemize}
@@ -111,10 +118,8 @@ boundary" \cite[p.~73]{patton_software_2006}. \emph{Buffer overruns} are
             could be obtained through:
             \begin{itemize}
                   \item Case statements
-                  \item Data constraints
-                  \item Input constraints
-                  \item Output constraints (i.e., inputs that would lead to a
-                        boundary output)
+                  \item Input/output data constraints (e.g., inputs that
+                        would lead to a boundary output)
             \end{itemize}
 \end{itemize}
 
@@ -146,7 +151,11 @@ handles them differently" than "the valid cases or ... invalid cases"
       \item Knowledge of an "empty" value for each \texttt{Space} (stored
             alongside each type in \texttt{Space}?)
       \item Knowledge of how input data could be omitted from an input
-            (e.g., a missing command line argument, an empty line in a file)
+            (e.g., a missing command line argument, an empty line in a file);
+            could be obtained from:
+            \begin{itemize}
+                  \item User responsibilities
+            \end{itemize}
       \item Knowledge of how a programming language deals with \texttt{Null}
             values and how these can be passed as arguments
 \end{itemize}
@@ -162,10 +171,8 @@ This seems to be the most open-ended category of testing.
       \item Specification of correct inputs that can be ignored;
             could be obtained through:
             \begin{itemize}
-                  \item Data constraints
-                  \item Input constraints
-                  \item Output constraints (i.e., inputs that would lead to a
-                        violated output constraint)
+                  \item Input/output data constraints (e.g., inputs that would
+                        lead to a violated output constraint)
                   \item Type information for each input (e.g., passing a string
                         instead of a number)
             \end{itemize}
@@ -225,7 +232,7 @@ that are out of the ordinary. These include:
 
 \begin{itemize}
       \item Race Conditions and Bad Timing \cite[p.~85-86]{patton_software_2006}
-            (Is this relevant to SCS?)
+            (Is this relevant to our examples?)
       \item Repetition Testing: "doing the same operation over and over",
             potentially up to "thousands of attempts"
             \cite[p.~86]{patton_software_2006}
