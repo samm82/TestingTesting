@@ -131,11 +131,7 @@ boundaries should be included in an equivalence partition, but so should
 data in between them \cite[p.~73]{patton_software_2006}. Boundary conditions
 should be tested using "the valid data just inside the boundary,
 ... the last possible valid data, and ... the invalid data just outside the
-boundary" \cite[p.~73]{patton_software_2006}. \emph{Buffer overruns} are
-"the number one cause of software security issues"
-\cite[p.~75]{patton_software_2006}.
-
-% TODO: investigate "buffer overruns"
+boundary" \cite[p.~73]{patton_software_2006}.
 
 \subparagraph{Requirements}
 \begin{itemize}
@@ -147,6 +143,18 @@ boundary" \cite[p.~73]{patton_software_2006}. \emph{Buffer overruns} are
                         would lead to a boundary output)
             \end{itemize}
 \end{itemize}
+
+\subparagraph{Buffer Overruns \cite[p.~201-205]{patton_software_2006}}
+
+\emph{Buffer overruns} are "the number one cause of software security issues"
+\cite[p.~75]{patton_software_2006}. They occur when the size of the destination
+for some data is smaller than the data itself, causing existing data (including
+code) to be overwritten and malicious code to potentially be injected
+\cite[p.~202, 204-205]{patton_software_2006}. They often arise from bad
+programming practices in "languages [sic] such as C and C++, that lack safe
+string handling functions" \cite[p.~201]{patton_software_2006}. Any unsafe
+versions of these functions that are used should be replaced with the
+corresponding safe versions \cite[p.~203-204]{patton_software_2006}.
 
 \paragraph{Sub-Boundary Conditions \cite[p.~75-77]{patton_software_2006}}
 
