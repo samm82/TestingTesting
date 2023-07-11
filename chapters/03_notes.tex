@@ -90,13 +90,10 @@ positive thing \cite[p.~65]{patton_software_2006}, since despite not knowing
 what the software \emph{should} do, you were able to determine that something
 is wrong.
 
-\paragraph{Requirements}
-\begin{itemize}
-      \item Source code \cite[p.~65]{patton_software_2006} (how can Drasil
-            deduce functionality from this? Doxygen documentation? Is this
-            necessary if we have the specification for dynamic black-box
-            testing? Is this useful?)
-\end{itemize}
+This is not applicable to Drasil, because not only does it already generate a
+specification, making this type of testing unnecessary, there is also a lot of
+human-based trial and error required for this kind of testing
+\cite{june_11_meeting}.
 
 \subsubsection{Equivalence Partitioning/Classing \cite[p.~67-69]{patton_software_2006}}
 
@@ -163,13 +160,18 @@ apparent to an end user" \cite[p.~75]{patton_software_2006}. These include
 powers of two \cite[p.~75-76]{patton_software_2006} and ASCII and Unicode tables
 \cite[p.~76-77]{patton_software_2006}.
 
+While this is of interest to the domain of scientific computing, this is too
+involved for Drasil right now, and the existing software constraints limit much
+of the potential errors from over/underflow \cite{june_11_meeting}. Additionally,
+strings are not really used as inputs to Drasil and only occur in output with
+predefined values, so testing these values are unlikely to be fruitful.
+
 \subparagraph{Requirements}
 \begin{itemize}
-      \item Knowledge of powers of two \cite[p.~75-76]{patton_software_2006}
-            (stored alongside \texttt{Integer, Rational, Real, Natural, Matrix
-                  ::~Space})
-      \item Knowledge of ASCII and Unicode tables \cite[p.~76-77]{patton_software_2006}
-            (stored alongside \texttt{Char, String, DiscreteS ::~Space})
+      \item Increased knowledge of data type structures (e.g., monoids, rings,
+            etc. \cite{june_11_meeting}); this would capture these sub-boundaries,
+            as well as other information like relevant tests cases, along with
+            our notion of these data types (\texttt{Space})
 \end{itemize}
 
 \paragraph{Default, Empty, Blank, Null, Zero, and None
@@ -178,6 +180,12 @@ powers of two \cite[p.~75-76]{patton_software_2006} and ASCII and Unicode tables
 These should be their own equivalence class, since "the software usually
 handles them differently" than "the valid cases or ... invalid cases"
 \cite[p.~78]{patton_software_2006}.
+
+Since these values may not always be applicable to a given scenario (e.g., a
+test case for zero doesn't make sense if there is a constraint that the value
+in question cannot be zero), the user should likely be able to select
+categories of tests to generate instead of Drasil just generating all possible
+test cases based on the inputs \cite{june_11_meeting}.
 
 \subparagraph{Requirements}
 \begin{itemize}
