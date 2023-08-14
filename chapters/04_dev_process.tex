@@ -99,7 +99,7 @@ since the actual implementation of the code did \emph{not} stop upon an input
 constraint violation. This was because the code choice for what to do on a
 constraint violation was "disconnected" from the manually written requirement
 (\issueref{3523}) \todo{add relevant code}. This problem has been encountered
-before (\issueref{3259}) \todo{double check issue} and presented a good
+before \issueref{3259} \todo{double check issue} and presented a good
 opportunity for generation to encourage reusability and consistency. However,
 since it makes sense to first verify outputs before actually outputting them
 and inserting generated requirements among manually created ones seemed
@@ -129,6 +129,7 @@ satisfy this constraint; this meant that generating the output requirement of
 each example was nearly trivial once the outputs were specified correctly.
 After modifying \texttt{DataDefinition}s in GlassBR that were outputs to be
 \texttt{InstanceModel}s \todo{issue ref}, reorganizing the requirements of
-SWHS \todo{issue ref}, and clarifying the outputs of SWHS, SglPend, DblPend,
-GamePhysics, and SSP \todo{issue refs}, the output requirement was ready to
-be generated.
+SWHS \todo{issue ref}, and clarifying the outputs of SWHS \todo{issue ref},
+SglPend (\issueref{3533}), DblPend (\issueref{3533}), GamePhysics
+(\issueref{3609}), and SSP (\issueref{3630}), the output requirement was ready
+to be generated.
