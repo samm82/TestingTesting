@@ -4,6 +4,25 @@
 \section{A Survey of Metaprogramming Languages}
 \label{chap:notes:sec:metalang-survey}
 
+\begin{itemize}
+      \item Often done with Abstract Syntax Trees (ADTs)
+            \todo{investigate more: Steele 1990?}
+      \item Allows for improvements in:
+            \begin{itemize}
+                  \item "performance by generating efficient specialized
+                        programs based on specifications instead of using
+                        generic but inefficient programs"
+                        \cite[p.~113:2]{lilis_survey_2019}
+                  \item reasoning about object programs through "analyzing
+                        and discovering object-program characteristics that
+                        enable applying further optimizations as well as
+                        inspecting and validating the behavior of the object
+                        program" \cite[p.~113:2]{lilis_survey_2019}
+                  \item code reuse through capturing "code patterns that cannot
+                        be abstracted" \cite[p.~113:2]{lilis_survey_2019}
+            \end{itemize}
+\end{itemize}
+
 \subsection{Definitions}
 
 "\emph{Metaprogramming} is the process of writing computer programs, called
@@ -19,6 +38,38 @@ ones" \cite[p.~113:1]{lilis_survey_2019}.
             metalanguage are the same" \cite[p.~113:1]{lilis_survey_2019}
       \item Heterogeneous metaprogramming: when "the object language and the
             metalanguage are \dots different" \cite[p.~113:1]{lilis_survey_2019}
+\end{itemize}
+
+\subsection{Metaprogramming Models}
+\subsubsection{Macro Models \cite[p.~113:3-7]{lilis_survey_2019}}
+\begin{itemize}
+      \item Map specified input sequences in a source file to corresponding
+            output sequences ("macro expansion") until no input sequences
+            remain \cite[p.~113:3]{lilis_survey_2019}; this process can be:
+            \begin{enumerate}
+                  \item procedural (involving algorithms), or
+                  \item pattern-based (only using pattern matching)
+                        \cite[p.~113:4]{lilis_survey_2019}
+            \end{enumerate}
+      \item Must avoid variable capture (unintended name conflicts) by being
+            "hygienic" \cite[p.~113:4]{lilis_survey_2019}; this may be
+            overridden to allow for "intentional variable capture", such as
+            Scheme's \emph{syntax-case} macro \cite[p.~113:5]{lilis_survey_2019}
+\end{itemize}
+
+\subsubsubsection{Lexical Macros}
+\begin{itemize}
+      \item Language agnostic \cite[p.~113:3]{lilis_survey_2019}
+      \item Usually only sufficient for basic metaprogramming since changes to
+            the code without considering its meaning "may cause unintended side
+            effects or name clashes and may introduce difficult-to-solve bugs"
+            \cite[p.~113:5]{lilis_survey_2019}
+\end{itemize}
+
+\subsubsubsection{Syntactic Macros}
+\begin{itemize}
+      \item "Aware of the language syntax and semantics"
+            \cite[p.~113:3]{lilis_survey_2019}
 \end{itemize}
 
 \section{Software Metrics}

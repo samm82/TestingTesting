@@ -18,7 +18,7 @@ system_requirements:
 	@echo "  - InkScape (for SVG-based figures)"
 
 build: # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
-	latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode thesis.tex --shell-escape
+	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode thesis.tex --shell-escape
 	cp build/thesis.pdf thesis.pdf
 
 debug: # for finding hard issues, this is an interactive version of 'build'
