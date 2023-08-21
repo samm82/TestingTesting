@@ -46,7 +46,7 @@ ones" \cite[p.~113:1]{lilis_survey_2019}.
 \end{itemize}
 
 \subsection{Metaprogramming Models}
-\subsubsection{Macro Models \cite[p.~113:3-7]{lilis_survey_2019}}
+\subsubsection{Macro Systems \cite[p.~113:3-7]{lilis_survey_2019}}
 \begin{itemize}
       \item Map specified input sequences in a source file to corresponding
             output sequences ("macro expansion") until no input sequences
@@ -83,6 +83,30 @@ ones" \cite[p.~113:1]{lilis_survey_2019}.
             system for syntactically rich languages", including by using "a
             type system to ensure that all generated code fragments are
             syntactically correct" \cite[p.~113:5]{lilis_survey_2019}
+\end{itemize}
+
+\subsubsection{Reflection Systems \cite[p.~113:7-9]{lilis_survey_2019}}
+\begin{itemize}
+      \item "Perform computations on [themselves] in the same way as for the
+            target application, enabling one to adjust the system behavior
+            based on the needs of its execution"
+            \cite[p.~113:7]{lilis_survey_2019}
+      \item Requires that the system can examine ("introspection") and modify
+            ("intercession") how it is represented
+            \cite[p.~113:7]{lilis_survey_2019}
+            \begin{itemize}
+                  \item The representation of a system can either be structural
+                        or behavioural (e.g., variable assignment)
+                        \cite[p.~113:7]{lilis_survey_2019}
+            \end{itemize}
+      \item "Runtime code generation based on source text can be impractical,
+            inefficient, and unsafe, so alternatives have been explored based
+            on ASTs and quasi-quote operators, offering a structured approach
+            that is subject to typing for expressing and combining code at
+            runtime" \cite[p.~113:8]{lilis_survey_2019}
+      \item "Not limited to runtime systems", as some "compile-time systems
+            \dots rely on some form of structural introspection to perform code
+            generation" \cite[p.~113:9]{lilis_survey_2019}
 \end{itemize}
 
 \section{Software Metrics}
