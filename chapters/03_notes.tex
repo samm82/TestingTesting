@@ -5,8 +5,13 @@
 \label{chap:notes:sec:metalang-survey}
 
 \begin{itemize}
-      \item Often done with Abstract Syntax Trees (ADTs)
-            \todo{investigate more: Steele 1990?}
+      \item Often done with Abstract Syntax Trees (ADTs),
+            \todo{investigate more: Steele 1990?} although other bases are
+            used:
+            \begin{itemize}
+                  \item Skeleton Syntax Tree (SST), used by Dylan
+                        \cite[p.~113:6]{lilis_survey_2019}
+            \end{itemize}
       \item Allows for improvements in:
             \begin{itemize}
                   \item "performance by generating efficient specialized
@@ -57,19 +62,27 @@ ones" \cite[p.~113:1]{lilis_survey_2019}.
             Scheme's \emph{syntax-case} macro \cite[p.~113:5]{lilis_survey_2019}
 \end{itemize}
 
-\subsubsubsection{Lexical Macros}
+\paragraph{Lexical Macros}
 \begin{itemize}
       \item Language agnostic \cite[p.~113:3]{lilis_survey_2019}
       \item Usually only sufficient for basic metaprogramming since changes to
             the code without considering its meaning "may cause unintended side
             effects or name clashes and may introduce difficult-to-solve bugs"
             \cite[p.~113:5]{lilis_survey_2019}
+      \item Marco was the first safe, language-independent macro system that
+            "enforce[s] specific rules that can be checked by special oracles"
+            for given languages (as long as the languages "produce descriptive
+            error messages") \cite[p.~113:6]{lilis_survey_2019}
 \end{itemize}
 
-\subsubsubsection{Syntactic Macros}
+\paragraph{Syntactic Macros}
 \begin{itemize}
       \item "Aware of the language syntax and semantics"
             \cite[p.~113:3]{lilis_survey_2019}
+      \item MS\textsuperscript{2} "was the first programmable syntactic macro
+            system for syntactically rich languages", including by using "a
+            type system to ensure that all generated code fragments are
+            syntactically correct" \cite[p.~113:5]{lilis_survey_2019}
 \end{itemize}
 
 \section{Software Metrics}
