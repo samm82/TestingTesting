@@ -6,6 +6,7 @@
 
 % Alphabetically sorted list of acronyms
 \newacr{api}{Application Programming Interface}
+\newacr{ast}{Abstract Syntax Tree}
 \newacr{cms}{Content Management System}
 \newacr{cpu}{Central Processing Unit}
 \newacr{csv}{Comma-Separated Values}
@@ -19,6 +20,7 @@
 \newacr{jvm}{Java Virtual Machine}
 \newacr{nasa}{National Aeronautics and Space Administration}
 \newacr{pdf}{Portable Document Format}
+\newacr{sst}{Skeleton Syntax Tree}
 \newacr{wysiwyg}{What You See Is What You Get}
 
 % Case Studies 
@@ -46,28 +48,28 @@
 % Credits to: https://tex.stackexchange.com/a/257896
 \NewDocumentCommand\ACF{sm}{%
   \begingroup
-    \acsetup{uppercase/cmd=\ecapitalisewords}%
-    \IfBooleanTF{#1}{\Acf*{#2}}{\Acf{#2}}%
+  \acsetup{uppercase/cmd=\ecapitalisewords}%
+  \IfBooleanTF{#1}{\Acf*{#2}}{\Acf{#2}}%
   \endgroup
 }
 
 \NewDocumentCommand\ACFP{sm}{%
   \begingroup
-    \acsetup{uppercase/cmd=\ecapitalisewords}%
-    \IfBooleanTF{#1}{\Acfp*{#2}}{\Acfp{#2}}%
+  \acsetup{uppercase/cmd=\ecapitalisewords}%
+  \IfBooleanTF{#1}{\Acfp*{#2}}{\Acfp{#2}}%
   \endgroup
 }
 
 \NewDocumentCommand\ACL{sm}{%
   \begingroup
-    \acsetup{uppercase/cmd=\ecapitalisewords}%
-    \IfBooleanTF{#1}{\Acl*{#2}}{\Acl{#2}}%
+  \acsetup{uppercase/cmd=\ecapitalisewords}%
+  \IfBooleanTF{#1}{\Acl*{#2}}{\Acl{#2}}%
   \endgroup
 }
 
 \NewDocumentCommand\ACLP{sm}{%
   \begingroup
-    \acsetup{uppercase/cmd=\ecapitalisewords}%
-    \IfBooleanTF{#1}{\Aclp*{#2}}{\Aclp{#2}}%
+  \acsetup{uppercase/cmd=\ecapitalisewords}%
+  \IfBooleanTF{#1}{\Aclp*{#2}}{\Aclp{#2}}%
   \endgroup
 }

@@ -5,11 +5,10 @@
 \label{chap:notes:sec:metalang-survey}
 
 \begin{itemize}
-      \item Often done with Abstract Syntax Trees (ADTs),
-            \todo{investigate more: Steele 1990?} although other bases are
-            used:
+      \item Often done with an \acf{ast}, \todo{investigate more: Steele 1990?}
+            although other bases are used:
             \begin{itemize}
-                  \item Skeleton Syntax Tree (SST), used by Dylan
+                  \item \acf{sst}, used by Dylan
                         \cite[p.~113:6]{lilis_survey_2019}
             \end{itemize}
       \item Allows for improvements in:
@@ -101,7 +100,7 @@ ones" \cite[p.~113:1]{lilis_survey_2019}.
             \end{itemize}
       \item "Runtime code generation based on source text can be impractical,
             inefficient, and unsafe, so alternatives have been explored based
-            on ASTs and quasi-quote operators, offering a structured approach
+            on \acs{ast}s and quasi-quote operators, offering a structured approach
             that is subject to typing for expressing and combining code at
             runtime" \cite[p.~113:8]{lilis_survey_2019}
       \item "Not limited to runtime systems", as some "compile-time systems
