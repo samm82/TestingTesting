@@ -5,7 +5,7 @@
 \label{chap:notes:sec:metalang-survey}
 
 \begin{itemize}
-      \item Often done with an \acf{ast}, \todo{investigate more: Steele 1990?}
+      \item Often done with \acfp{ast}, \todo{investigate more: Steele 1990?}
             although other bases are used:
             \begin{itemize}
                   \item \acf{sst}, used by Dylan
@@ -100,13 +100,45 @@ ones" \cite[p.~113:1]{lilis_survey_2019}.
             \end{itemize}
       \item "Runtime code generation based on source text can be impractical,
             inefficient, and unsafe, so alternatives have been explored based
-            on \acs{ast}s and quasi-quote operators, offering a structured approach
+            on \acsp{ast} and quasi-quote operators, offering a structured approach
             that is subject to typing for expressing and combining code at
             runtime" \cite[p.~113:8]{lilis_survey_2019}
       \item "Not limited to runtime systems", as some "compile-time systems
             \dots rely on some form of structural introspection to perform code
             generation" \cite[p.~113:9]{lilis_survey_2019}
 \end{itemize}
+
+\subsubsection{\acfp{mop} \cite[p.~113:9-11]{lilis_survey_2019}}
+\begin{itemize}
+      \item "Interfaces to the language enabling one to incrementally transform
+            the original language behavior and implementation"
+            \cite[p.~113:9]{lilis_survey_2019}
+      \item Three different approaches:
+            \begin{itemize}
+                  \item Metaclass-based Approach: "Classes are considered to be
+                        objects of metaclasses, called metaobjects, that are
+                        responsible for the overall behavior of the object
+                        system" \cite[p.~113:9]{lilis_survey_2019}
+                  \item Metaobject-based Approach: "Classes and metaobjects are
+                        distinct" \cite[p.~113:9]{lilis_survey_2019}
+                  \item Message Reification Approach: used with message passing
+                        \cite[p.~113:9]{lilis_survey_2019}
+            \end{itemize}
+      \item Can either be runtime (more common) or compile-time (e.g., OpenC++);
+            the latter protocols "operate as advanced macro systems that perform
+            code transformation based on metaobjects rather than on text or
+            \acsp{ast}" \cite[p.~113:11]{lilis_survey_2019}
+\end{itemize}
+
+\paragraph{Dynamic Shells}
+"Pseudo-objects with methods and instance variables that may be attached to
+other objects" that "offer efficient and type-safe \acs{mop} functionality for
+statically typed languages" \cite[p.~113:10]{lilis_survey_2019}.
+
+\paragraph{Dynamic Extensions}
+"Offer similar functionality [to dynamic shells] but for classes, allowing a
+program to replace the methods of a class and its subclasses by the methods of
+another class at runtime" \cite[p.~113:10]{lilis_survey_2019}.
 
 \section{Software Metrics}
 \label{chap:notes:sec:software-metrics}
