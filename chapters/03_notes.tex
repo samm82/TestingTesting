@@ -140,6 +140,37 @@ statically typed languages" \cite[p.~113:10]{lilis_survey_2019}.
 program to replace the methods of a class and its subclasses by the methods of
 another class at runtime" \cite[p.~113:10]{lilis_survey_2019}.
 
+\subsubsection{\acf{aop} \cite[p.~113:11-13]{lilis_survey_2019}}
+\begin{itemize}
+      \item The use of \emph{aspects}: modular units \dots [that] contain
+            information about the additional behavior, called \emph{advice},
+            that will be added to the base program by the aspect as well as
+            the program locations, called \emph{join points}, where this extra
+            behavior is to be inserted based on some matching criteria, called
+            \emph{pointcuts}" \cite[p.~113:12]{lilis_survey_2019}
+      \item Weaving: the process of "combining the base program with aspect
+            code \dots [to form] the final code" \cite[p.~113:12]{lilis_survey_2019}
+      \item Two variants:
+            \begin{enumerate}
+                  \item Static \acs{aop}: when weaving takes place at compile
+                        time, usually with "a separate language and a custom
+                        compiler, called [an] \emph{aspect weaver}"; results in
+                        better performance \cite[p.~113:12]{lilis_survey_2019}
+                  \item Dynamic \acs{aop}: when weaving takes place at runtime
+                        by instrumenting "the bytecode \dots to be able to
+                        weave the aspect code"; provides more flexibility
+                        \cite[p.~113:12]{lilis_survey_2019}
+            \end{enumerate}
+      \item This model originates from reflecting and \acsp{mop} (AspectS and
+            AspectL "support AOP by building respectively on the runtime
+            \acsp{mop} of Smalltalk and Lisp") \cite[p.~113:12]{lilis_survey_2019}
+      \item While "\acs{aop} can support metaprogramming by inserting code
+            before, after, or around matched join points, as well as introducing
+            data members and methods through intertype declarations," it is
+            usually done the other way around, as most \acs{aop} frameworks
+            "rely on metaprogramming techniques" \cite[p.~113:12]{lilis_survey_2019}
+\end{itemize}
+
 \section{Software Metrics}
 \label{chap:notes:sec:software-metrics}
 
