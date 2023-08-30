@@ -171,7 +171,7 @@ another class at runtime" \cite[p.~113:10]{lilis_survey_2019}.
             "rely on metaprogramming techniques" \cite[p.~113:12]{lilis_survey_2019}
 \end{itemize}
 
-\subsubsection{Generative Programming \cite[p.~113:13-]{lilis_survey_2019}}
+\subsubsection{Generative Programming \cite[p.~113:13-17]{lilis_survey_2019}}
 \begin{itemize}
       \item "A software development paradigm based on modeling software system
             families such that, given a particular requirements specification,
@@ -226,6 +226,43 @@ another class at runtime" \cite[p.~113:10]{lilis_survey_2019}.
             \end{itemize}
       \item Includes \emph{feature-oriented programming} approaches
             \todo{Investigate?}
+\end{itemize}
+
+\subsubsection{\acf{msp} \cite[p.~113:17-20]{lilis_survey_2019}}
+\begin{itemize}
+      \item "Makes \dots [levels of evaluation] accessible to the programmer
+            through \dots \emph{staging annotations}" to "specify the
+            evaluation order of the program computations" and work with these
+            computation stages \cite[p.~113:17]{lilis_survey_2019}
+      \item Related to program generation and procedural macro systems
+            \cite[p.~113:17]{lilis_survey_2019}; macros are often implemented
+            as multistage computations \cite[p.~113:18]{lilis_survey_2019}
+      \item Languages that use \acs{msp} are called \emph{\acfp{msl}} or
+            \emph{two-stage languages}, depending on how many stages of
+            evaluation are offered \cite[p.~113:17]{lilis_survey_2019}
+            \begin{itemize}
+                  \item C++ first instantiates templates, then translates
+                        nontemplate code \cite[p.~113:19]{lilis_survey_2019}
+                  \item Template Haskell evaluates "the top-level splices
+                        to generate object-level code" at compile time, then
+                        executes the object-level code at runtime
+                        \cite[p.~113:19]{lilis_survey_2019}
+            \end{itemize}
+      \item Often involves \emph{\acf{csp}}, which allows "values \dots
+            available in the current stage" to be used in future stages
+            \cite[p.~113:17]{lilis_survey_2019}
+            \begin{itemize}
+                  \item If this is used, \emph{cross-stage safety} is often
+                        also used to prevent "variables bound at some stage
+                        \dots [from being] used at an earlier stage"
+                        \cite[p.~113:17]{lilis_survey_2019}
+            \end{itemize}
+      \item Usually homogeneous, but there are exceptions; MetaHaskell, a
+            modular framework \cite[p.~113:19]{lilis_survey_2019} with a type
+            system, allows for "heterogeneous metaprogramming with multiple
+            object languages" \cite[p.~113:18]{lilis_survey_2019}
+      \item "Type safety \dots comes at the cost of expressiveness"
+            \cite[p.~113:19]{lilis_survey_2019}
 \end{itemize}
 
 \section{Software Metrics}
