@@ -265,6 +265,40 @@ another class at runtime" \cite[p.~113:10]{lilis_survey_2019}.
             \cite[p.~113:19]{lilis_survey_2019}
 \end{itemize}
 
+\subsection{Phase of Evaluation}
+\begin{itemize}
+      \item "In theory, any combination of them [the phases of evaluation] is
+            viable; however, in practice most metalanguages offer only one or
+            two of the options" \cite[p.~113:20]{lilis_survey_2019}
+      \item "The phase of evaluation does not necessarily dictate the adoption
+            of a particular metaprogramming model; however, there is a
+            correlation between the two" \cite[p.~113:20]{lilis_survey_2019}
+\end{itemize}
+
+\subsubsection{Preprocessing-Time Evaluation \cite[p.~113:20-21]{lilis_survey_2019}}
+\begin{itemize}
+      \item In \acf{pptmp}, "metaprograms present in the original source are
+            evaluated during the preprocessing phase and the resulting source
+            file contains only normal program code and no metacode"
+            \cite[p.~113:20]{lilis_survey_2019}
+      \item These systems are called \emph{source-to-source preprocessors}
+            \cite[p.~113:20]{lilis_survey_2019} and are usually examples of
+            generative programming \cite[p.~113:21]{lilis_survey_2019}
+            \begin{itemize}
+                  \item "All such cases involve syntactic transformations"
+                        \cite[p.~113:21]{lilis_survey_2019}, usually using
+                        \acsp{ast}
+            \end{itemize}
+      \item "Translation can reuse the language compiler or interpreter
+            without the need for any extensions" \cite[p.~113:20]{lilis_survey_2019}
+      \item Varying levels of complexity (e.g., these systems "may be fully
+            aware of the language syntax and semantics"
+            \cite[p.~113:20]{lilis_survey_2019})
+      \item Includes all lexical macro systems \cite[p.~113:20]{lilis_survey_2019}
+      \item Typically doesn't use reflection, \acsp{mop}, or \acs{aop}
+            (Reflective Java is an exception) \cite[p.~113:21]{lilis_survey_2019}
+\end{itemize}
+
 \section{Software Metrics}
 \label{chap:notes:sec:software-metrics}
 
