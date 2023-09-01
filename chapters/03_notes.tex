@@ -8,7 +8,7 @@
       \item Often done with \acfp{ast}, \todo{investigate more: Steele 1990?}
             although other bases are used:
             \begin{itemize}
-                  \item \acf{sst}, used by Dylan
+                  \item \acfp{sst}, used by Dylan
                         \cite[p.~113:6]{lilis_survey_2019}
             \end{itemize}
       \item Allows for improvements in:
@@ -31,7 +31,9 @@
 
 ``\emph{Metaprogramming} is the process of writing computer programs, called
 \emph{metaprograms}, that [can] \dots generate new programs or modify existing
-ones'' \cite[p.~113:1]{lilis_survey_2019}.
+ones'' \cite[p.~113:1]{lilis_survey_2019}. ``It constitutes a flexible and
+powerful reuse solution for the ever-growing size and complexity of software
+systems'' \cite[p.~113:31]{lilis_survey_2019}.
 
 \begin{itemize}
       \item Metalanguage: ``the language in which the metaprogram is written''
@@ -51,7 +53,8 @@ ones'' \cite[p.~113:1]{lilis_survey_2019}.
             output sequences (``macro expansion'') until no input sequences
             remain \cite[p.~113:3]{lilis_survey_2019}; this process can be:
             \begin{enumerate}
-                  \item procedural (involving algorithms), or
+                  \item procedural (involving algorithms; this is more common
+                        \cite[p.~113:31]{lilis_survey_2019}), or
                   \item pattern-based (only using pattern matching)
                         \cite[p.~113:4]{lilis_survey_2019}
             \end{enumerate}
@@ -179,7 +182,9 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
             be automatically manufactured on demand from elementary, reusable
             implementation components by means of configuration knowledge''
             \todo{get original source from Czarnecki and Eisenecker 2000}
-      \item Often done with an \acs{ast}
+      \item Often done with using \acsp{ast} \cite[p.~113:31]{lilis_survey_2019}
+      \item Most ``support code templates and quasi-quotes''
+            \cite[p.~113:31]{lilis_survey_2019}
       \item Related to macro systems, but normal code and metacode are distinct
 \end{itemize}
 
@@ -239,7 +244,8 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
             as multistage computations \cite[p.~113:18]{lilis_survey_2019}
       \item Languages that use \acs{msp} are called \emph{\acfp{msl}} or
             \emph{two-stage languages}, depending on how many stages of
-            evaluation are offered \cite[p.~113:17]{lilis_survey_2019}
+            evaluation are offered \cite[p.~113:17]{lilis_survey_2019};
+            \acsp{msl} are more common \cite[p.~113:31]{lilis_survey_2019}
             \begin{itemize}
                   \item C++ first instantiates templates, then translates
                         nontemplate code \cite[p.~113:19]{lilis_survey_2019}
@@ -343,9 +349,10 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
 \begin{itemize}
       \item Occurs when metaprograms only need to know their input parameters
             to generate \acsp{ast} \cite[p.~113:25]{lilis_survey_2019}
-      \item Very common; ``for most macro systems\dots, generative programming
-            systems \dots and \acsp{msl} \dots it is the only available option''
-            \cite[p.~113:25]{lilis_survey_2019}
+      \item Very common: supported by ``most \acs{ctmp} systems''
+            \cite[p.~113:31]{lilis_survey_2019} and ``for most macro
+            systems\dots, generative programming systems \dots and \acsp{msl}
+            \dots it is the only available option'' \cite[p.~113:25]{lilis_survey_2019}
 \end{itemize}
 
 \paragraph{Context Aware \cite[p.~113:25-26]{lilis_survey_2019}}
@@ -355,7 +362,7 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
             parameter to the metaprogram'' \cite[p.~113:25]{lilis_survey_2019}
       \item Allows for code transformation ``at multiple different locations
             reachable from the initial context'' \cite[p.~113:25]{lilis_survey_2019}
-      \item Very uncommon \cite[p.~113:25]{lilis_survey_2019}
+      \item Very uncommon \cite[p.~113:25,~31]{lilis_survey_2019}
 \end{itemize}
 
 \paragraph{Global \cite[p.~113:26]{lilis_survey_2019}}
@@ -364,7 +371,8 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
             remove functionality for the entire program''
             \cite[p.~113:26]{lilis_survey_2019}
       \item Usually occurs with reflection, \acsp{mop}, and \acs{aop}
-            \cite[p.~113:26]{lilis_survey_2019}
+            \cite[p.~113:26]{lilis_survey_2019}; offered by ``most \acs{rtmp}
+            systems'' \cite[p.~113:31]{lilis_survey_2019}
       \item Can be used with ``any \acs{pptmp} or \acs{ctmp} system that
             provides access to the full program \acs{ast}''
             \cite[p.~113:26]{lilis_survey_2019}
@@ -424,6 +432,9 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
             \cite[p.~113:29]{lilis_survey_2019}
       \item Often used in quasi-quote constructs, two-stage and multistage
             languages, and \acsp{mop} \cite[p.~113:29]{lilis_survey_2019}
+      \item Used with \acsp{msl} ``as the base languages are extended with
+            staging annotations to deliver \acs{msp} functionality''
+            \cite[p.~113:31]{lilis_survey_2019}
 \end{itemize}
 
 \subsubsection{Metalanguage Different from the Object Language
