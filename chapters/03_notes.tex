@@ -333,6 +333,46 @@ another class at runtime" \cite[p.~113:10]{lilis_survey_2019}.
             \cite[p.~113:23]{lilis_survey_2019}
 \end{itemize}
 
+\subsection{Metaprogram Source Location}
+\subsubsection{Embedded in the Subject Program \cite[p.~113:25-26]{lilis_survey_2019}}
+\begin{itemize}
+      \item Usually occurs with macros, templates, \acsp{msl}, reflection,
+            \acsp{mop}, and \acs{aop} \cite[p.~113:25]{lilis_survey_2019}
+\end{itemize}
+
+\paragraph{Context Unaware \cite[p.~113:25]{lilis_survey_2019}}
+\begin{itemize}
+      \item Occurs when metaprograms only need to know their input parameters
+            to generate \acsp{ast} \cite[p.~113:25]{lilis_survey_2019}
+      \item Very common; "for most macro systems\dots, generative programming
+            systems \dots and \acsp{msl} \dots it is the only available option"
+            \cite[p.~113:25]{lilis_survey_2019}
+\end{itemize}
+
+\paragraph{Context Aware \cite[p.~113:25-26]{lilis_survey_2019}}
+\begin{itemize}
+      \item "Typically involves providing access to the respective program
+            \acs{ast} node and allowing it to be traversed" as "an extra \dots
+            parameter to the metaprogram" \cite[p.~113:25]{lilis_survey_2019}
+      \item Allows for code transformation "at multiple different locations
+            reachable from the initial context" \cite[p.~113:25]{lilis_survey_2019}
+      \item Very uncommon \cite[p.~113:25]{lilis_survey_2019}
+\end{itemize}
+
+\paragraph{Global \cite[p.~113:26]{lilis_survey_2019}}
+\begin{itemize}
+      \item Involves "scenarios that collectively introduce, transform, or
+            remove functionality for the entire program"
+            \cite[p.~113:26]{lilis_survey_2019}
+      \item Usually occurs with reflection, \acsp{mop}, and \acs{aop}
+            \cite[p.~113:26]{lilis_survey_2019}
+      \item Can be used with "any \acs{pptmp} or \acs{ctmp} system that
+            provides access to the full program \acs{ast}"
+            \cite[p.~113:26]{lilis_survey_2019}
+      \item "Can also be seen as a context-aware case where the context is the
+            entire program" \cite[p.~113:26]{lilis_survey_2019}
+\end{itemize}
+
 \section{Software Metrics}
 \label{chap:notes:sec:software-metrics}
 
