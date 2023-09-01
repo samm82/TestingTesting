@@ -292,11 +292,13 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
       \item ``Translation can reuse the language compiler or interpreter
             without the need for any extensions'' \cite[p.~113:20]{lilis_survey_2019}
       \item Varying levels of complexity (e.g., these systems ``may be fully
-            aware of the language syntax and semantics''
-            \cite[p.~113:20]{lilis_survey_2019})
+            aware of the language syntax and semantics'')
+            \cite[p.~113:20]{lilis_survey_2019}
       \item Includes all lexical macro systems \cite[p.~113:20]{lilis_survey_2019}
-      \item Typically doesn't use reflection, \acsp{mop}, or \acs{aop}
-            (Reflective Java is an exception) \cite[p.~113:21]{lilis_survey_2019}
+            and some ``static \acs{aop} and generative programming systems"
+            \cite[p.~113:31]{lilis_survey_2019}
+      \item Typically doesn't use reflection (Reflective Java is an exception),
+            \acsp{mop}, or dynamic \acs{aop} \cite[p.~113:21]{lilis_survey_2019}
 \end{itemize}
 
 \subsubsection{Compilation-Time Evaluation \cite[p.~113:21-23]{lilis_survey_2019}}
@@ -313,9 +315,8 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
                         to binary and then executing it''
                         \cite[p.~113:22]{lilis_survey_2019}
             \end{itemize}
-      \item These systems are usually examples of generative programming
-            \cite[p.~113:22]{lilis_survey_2019}
-      \item Can use macro systems, \acsp{mop}, \acs{aop}
+      \item These systems are usually examples of generative programming but
+            can also use macros, \acsp{mop}, \acs{aop}
             \cite[p.~113:22]{lilis_survey_2019}, and/or reflection
             \cite[p.~113:23]{lilis_survey_2019}
 \end{itemize}
@@ -327,10 +328,8 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
             execution'' and is ``the only case where it is possible to extend the
             system based on runtime state and execution''
             \cite[p.~113:23]{lilis_survey_2019}
-      \item Includes ``most metaprogramming systems featuring \acsp{mop}''
-            \cite[p.~113:24]{lilis_survey_2019}
-      \item Can use reflection, \acsp{mop}, \acs{aop}, and/or \acs{msp}
-            \cite[p.~113:23]{lilis_survey_2019}
+      \item Includes ``most reflection systems, \acsp{mop}, \acs{msp} systems,
+            and dynamic \acs{aop} systems" \cite[p.~113:31]{lilis_survey_2019}
 \end{itemize}
 
 \subsection{Metaprogram Source Location}
