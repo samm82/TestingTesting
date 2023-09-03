@@ -1,0 +1,29 @@
+\begin{codeSnippet}{python}{Tests for main with an invalid input file}{mainInvalidInputTest}{https://github.com/samm82/Drasil/blob/sysTests/code/stable/projectile/projectile_c_p_nol_b_u_v_d/src/python/test/Control_test.py\#L29-L53}
+  # from https://stackoverflow.com/questions/54071312/how-to-pass-command-line-argument-from-pytest-to-code
+  ## \brief Tests main with invalid input file
+  # \par Types of Testing:
+  # Dynamic Black-Box (Behavioural) Testing
+  # Boundary Conditions
+  # Default, Empty, Blank, Null, Zero, and None
+  # Invalid, Wrong, Incorrect, and Garbage Data
+  # Logic Flow Testing
+  @mark.parametrize("filename", invalid_value_input_files)
+  @mark.xfail
+  def test_main_invalid(monkeypatch, filename):
+      # from https://stackoverflow.com/questions/10840533/most-pythonic-way-to-delete-a-file-which-may-not-exist
+      try:
+          remove(output_filename)
+      except OSError as e: # this would be "except OSError, e:" before Python 2.6
+          if e.errno != ENOENT: # no such file or directory
+              raise # re-raise exception if a different error occurred
+
+
+      assert not path.exists(output_filename)
+
+
+      with monkeypatch.context() as m:
+          m.setattr(sys, 'argv', ['Control.py', str(Path("test/test_input") / f"{filename}.txt")])
+          Control.main()
+      
+      assert not path.exists(output_filename)
+\end{codeSnippet}

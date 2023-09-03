@@ -92,9 +92,16 @@ confidence in the code.
 
 I structured my manually created test cases around \acs{projectile}'s functional
 requirements, as these are the most objective aspects of the generated code to
-test automatically. As such, I created a test case to ensure that if an input
-constraint was violated, the calculations would stop.
-\todo{add reference requirement and test case} However, this test case failed,
+test automatically. One of these requirements was ``Verify-Input-Values'',
+which said ``Check the entered input values to ensure that they do not exceed
+the data constraints. If any of the input values are out of bounds, an error
+message is displayed and the calculations stop.'' This led me to develop the
+following test case to ensure that if an input constraint was violated, the
+calculations would stop:
+
+\mainInvalidInputTest{}
+
+However, this test case failed,
 since the actual implementation of the code did \emph{not} stop upon an input
 constraint violation. This was because the code choice for what to do on a
 constraint violation was "disconnected" from the manually written requirement
