@@ -95,19 +95,16 @@ requirements, as these are the most objective aspects of the generated code to
 test automatically. One of these requirements was ``Verify-Input-Values'',
 which said ``Check the entered input values to ensure that they do not exceed
 the data constraints. If any of the input values are out of bounds, an error
-message is displayed and the calculations stop.'' This led me to develop the
-following test case to ensure that if an input constraint was violated, the
-calculations would stop:
-\mainInvalidInputTest{}
+message is displayed and the calculations stop.'' This led me to develop a test
+case to ensure that if an input constraint was violated, the
+calculations would stop (\refMainInvalidInputTest{}).
 
 However, this test case failed,
 since the actual implementation of the code did \emph{not} stop upon an input
 constraint violation. This was because the code choice for what to do on a
-constraint violation was ``disconnected'' from the manually written requirement
-(\issueref{3523}), as shown below.
-\projViolationChoice{}
-\projManualViolationReq{}
-\todo{Should I include the definition of \texttt{Constraints}?}
+constraint violation (\refProjViolationChoice{}) was ``disconnected'' from the
+manually written requirement (\refProjManualViolationReq{}), as described in
+\issueref{3523}. \todo{Should I include the definition of \texttt{Constraints}?}
 
 This problem has been encountered before (\issueref{3259}) and presented a good
 opportunity for generation to encourage reusability and consistency. However,
