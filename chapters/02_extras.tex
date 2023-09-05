@@ -22,17 +22,6 @@ writing about in each chapter. You can do this using:
 Personally, I put them at the top of chapter files, just after chapter
 declarations.
 
-\section{Acronyms}
-\label{chap:extras:sec:acronyms}
-
-I used a lot of acronyms in my thesis, and I wanted to add a glossary to the
-front matter. This is compulsory for McMaster theses, but you may remove it if
-you don't need it. I used the \texttt{acro} package, feel free to read their
-\porthref{documentation}{https://ctan.org/pkg/acro?lang=en}. For example, I
-might want to write \acf{html} (written using \inlineCode{latex}{\acf{html}}) or
-just \acs{html} (written using \inlineCode{latex}{\acs{html}}). To define them,
-you can find examples in the \texttt{acronyms.tex} file.
-
 \section{\acsp{href}}
 \label{chap:extras:sec:hrefs}
 
@@ -55,20 +44,11 @@ option as mentioned, then you will see the link in a footnote (try it out!).
     \porthref{McMaster}{https://www.mcmaster.ca/}
 \end{pseudocode}
 
-\section{Code Snippets}
-\label{chap:extras:sec:code-snippets}
+\section{Pseudocode Code Snippets}
+\label{chap:extras:sec:pseudocode-code-snippets}
 
-Since I did my Master's in computer science, I needed code snippet listings. For
-them, I chose to use the \texttt{minted} package (which lets you write
-colourized code snippets, supporting syntax highlighting for many languages).
-However, I also wanted source code listings to be linked to the main Drasil
-\cite{carette_drasil_2021} repository. For example, to write
-\refExampleCode{}\footnote{Note: the header links use the portable \acsp{href}
-    (as per \Cref{chap:extras:sec:hrefs})!}, I had to write
-\texttt{assets/code/example.tex} and create appropriate links in
-\texttt{assets.tex}. Additionally, for pseudocode, you can also use the
-pseudocode environment, such as that used in \refExamplePseudocode{} (similarly
-built).
+For pseudocode, you can also use the
+pseudocode environment, such as that used in \refExamplePseudocode{}.
 
 \section{TODOs}
 \label{chap:extras:sec:todos}
