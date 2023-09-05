@@ -458,7 +458,83 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
 ``System family engineering seeks to exploit the commonalities
 among systems from a given problem domain while managing the
 variabilities among them in a systematic way''
-\cite[p.~326]{czarnecki_overview_2004}.
+\cite[p.~326]{czarnecki_overview_2004}. ``Generative software development is a
+system-family approach \dots that focuses on automating the creation of
+system-family members \dots from a specification written in [a \acf{dsl}]''
+\cite[p.~327]{czarnecki_overview_2004}. ``\acsp{dsl} come in a wide variety of
+forms, \dots [including] textual \dots [and] diagrammatic''
+\cite[p.~328]{czarnecki_overview_2004}.
+
+``System family engineering distinguishes between at least two kinds of
+development processes: \emph{domain engineering} and \emph{application
+      engineering}'' \cite[p.~328]{czarnecki_overview_2004}. ``Domain
+engineering \dots is concerned with the development of reusable assets such as
+components, generators, DSLs, analysis and design models, user documentation,
+etc.'' \cite[p.~328-329]{czarnecki_overview_2004}. It includes ``determining
+the scope of the family to be built, identifying the common and variable
+features among the family members'', and ``the development of a common
+architecture for all the members of the system family''
+\cite[p.~329]{czarnecki_overview_2004}. Application engineering includes
+``requirements elicitation, analysis, and specification'' and ``the manual or
+automated construction of the system from the reusable assets''
+\cite[p.~329]{czarnecki_overview_2004}. The assets from domain engineering are
+used to build the system development by application engineering, which provides
+domain engineering which the requirements to analyze for commonalities and
+create reusable assets for \cite[p.~329]{czarnecki_overview_2004}.
+
+\acf{aop} ``provides more powerful localization and encapsulation mechanisms
+than traditional component technologies'' but there is still the need to
+``configure aspects and other components to implement abstract features''
+\cite[p.~338]{czarnecki_overview_2004}. \acs{aop} ``cover[s] the solution space
+and only a part of the configuration knowledge'', although ``aspects can also
+be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
+
+\subsection{Definitions}
+\begin{itemize}
+      \item Generative domain model: ``a mapping between \emph{problem space}
+            and \emph{solution space}'' which ``takes a specification and
+            returns the corresponding implementation''
+            \cite[p.~330]{czarnecki_overview_2004}
+            \begin{itemize}
+                  \item Configuration view: ``the problem space consists of
+                        domain-specific concepts and their features'' such as
+                        ``illegal feature combinations, default settings, and
+                        default dependencies'' \cite[p.~331]{czarnecki_overview_2004}.
+                        ``An application programmer creates a configuration of
+                        features by selecting the desired ones, [sic] which
+                        then is mapped to a configuration of components''
+                        \cite[p.~331]{czarnecki_overview_2004}
+                  \item Transformational view: ``a problem space is represented
+                        by a \dots [\acs{dsl}], whereas the solution space is
+                        represented by an implementation language''
+                        \cite[p.~331]{czarnecki_overview_2004}. ``A program in
+                        a \dots [\acs{dsl}]'' is transformed into ``its
+                        implementation in the implementation language''
+                        \cite[p.~331]{czarnecki_overview_2004}
+            \end{itemize}
+      \item Problem space: ``a set of domain-specific abstractions that can be
+            used to specify the desired system-family member''
+            \cite[p.~330]{czarnecki_overview_2004}
+      \item Solution space: ``consists of implementation-oriented abstractions,
+            which can be instantiated to create implementations of the [desired]
+            specifications'' \cite[p.~330]{czarnecki_overview_2004}
+      \item Network of domains: the graph built from ``spaces and mappings \dots
+            where each implementation of a domain exposes a \acs{dsl}, which may
+            be implemented by transformations to \acsp{dsl} exposed by other
+            domain implementations'' \cite[p.~332-333]{czarnecki_overview_2004}
+      \item Feature modeling: ``a method and notation to elicit and represent
+            common and variable features of the systems in a system family''
+            \cite[p.~333]{czarnecki_overview_2004}. Can be used during domain
+            analysis as ``the starting point in the development of both
+            system-family architecture and \acsp{dsl}''
+            \cite[p.~334]{czarnecki_overview_2004}
+      \item \acf{mdd}: uses ``abstract representation[s] of a system and the
+            portion[s] of the world that interact[] with it'' to ``captur[e]
+            every important aspect of a software system''
+            \cite[p.~336]{czarnecki_overview_2004}. Often uses \acsp{dsl} and
+            sometimes deals with system families, making it related to
+            generative software development \cite[p.~336-337]{czarnecki_overview_2004}
+\end{itemize}
 
 \section{Software Metrics}
 \label{chap:notes:sec:software-metrics}
