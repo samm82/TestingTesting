@@ -5,45 +5,46 @@ The following is a rough outline of the steps I have gone through this far for
 this project:
 
 \begin{itemize}
-      \item start development of system tests (this was pushed for later to
+      \item Start developing system tests (this was pushed for later to
             focus on unit tests)
-      \item test inputting default values as \texttt{float}s and \texttt{int}s
-      \item check constraints for valid input
-      \item check constraints for invalid input
-      \item test calculation of:
+      \item Test inputting default values as \texttt{float}s and \texttt{int}s
+      \item Check constraints for valid input
+      \item Check constraints for invalid input
+      \item Test the calculations of:
             \begin{itemize}
                   \item \texttt{t\_flight}
                   \item \texttt{p\_land}
                   \item \texttt{d\_offset}
                   \item \texttt{s}
             \end{itemize}
-      \item test valid output of writing output
-      \item test for projectile going long
-      \item integrate system tests into existing unit tests
-      \item test for assumption violation of g
+      \item Test the writing of valid output
+      \item Test for projectile going long
+      \item Integrate system tests into existing unit tests
+      \item Test for assumption violation of \texttt{g}
             \begin{itemize}
-                  \item code generation could be flawed, so we can't assume
+                  \item Code generation could be flawed, so we can't assume
                         assumptions are respected
-                  \item test cases shouldn't necessarily match what is done by the
+                  \item Test cases shouldn't necessarily match what is done by the
                         code; for example, g = 0 shouldn't really give a
                         \texttt{ZeroDivisionError}; it should be a \texttt{ValueError}
-                  \item this inspired the potential for
+                  \item This inspired the potential for
                         \nameref{chap:dev-proc:code-assertions}
             \end{itemize}
-      \item test that calculations stop on a constraint violation; this is a
+      \item Test that calculations stop on a constraint violation; this is a
             requirement should be met by the software
-      \item test for empty input file
-      \item start creation of test summary (for \texttt{InputParameters} module)
+            (see \nameref{chap:dev-proc:gen-reqs})
+      \item Test behaviour with empty input file
+      \item Start creation of test summary (for \texttt{InputParameters} module)
             \begin{itemize}
-                  \item it was difficult to judge test case coverage/quality from
+                  \item It was difficult to judge test case coverage/quality from
                         the code itself
-                  \item this is not really a test plan, as it doesn't capture the
+                  \item This is not really a test plan, as it doesn't capture the
                         testing philosophy
-                  \item rationale for each test explains why it supports coverage
+                  \item Rationale for each test explains why it supports coverage
                         and how Drasil derived (would derive) it
             \end{itemize}
-      \item start researching testing
-      \item start the \nameref{chap:dev-proc:gen-reqs} subproject
+      \item Start researching testing
+      \item Start the \nameref{chap:dev-proc:gen-reqs} subproject
 \end{itemize}
 
 \section{Improvements to Manual Test Code}
