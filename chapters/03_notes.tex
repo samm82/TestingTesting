@@ -536,6 +536,48 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
             generative software development \cite[p.~336-337]{czarnecki_overview_2004}
 \end{itemize}
 
+\section{Structured Program Generation Techniques}
+\label{chap:notes:sec:prog-gen-techs}
+\begin{itemize}
+      \item Program transformer: something that ``modifies an existing program,
+            instead of generating a new one'' (for example, by making a
+            program's code adhere to style guides); the term ``program
+            generator'' often includes program transformers
+            \cite[p.~1]{smaragdakis_structured_2017}
+      \item ``Generators are often the technique of last resort \dots to
+            automate, elevate, modularize or otherwise facilitate program
+            development'' \cite[p.~2]{smaragdakis_structured_2017}
+            \todo{Can I rearrange quotes like this?}
+      \item Instead of evaluating the generated code, it is more beneficial
+            ``to statically check the generator and be sure that no type error
+            arises during its \emph{run time}''; however, ``an error in the
+            generated program can be very hard to debug and may require full
+            understanding of the generator itself''
+            \cite[p.~2]{smaragdakis_structured_2017}
+\end{itemize}
+
+\subsection{Techniques for Program Generation
+      \cite[p.~3-5]{smaragdakis_structured_2017}}
+\begin{enumerate}
+      \item Generation as text: ``producing character strings containing the
+            text of a program, which is subsequently interpreted or compiled''
+            \cite[p.~3]{smaragdakis_structured_2017}
+      \item Syntax tree manipulation: building up code using constructors in a
+            syntactically meaningful way that preserves its structure
+      \item Code templates/quoting: involves ``language constructs for
+            generating program fragments in the target language \dots as well
+            as for supplying values to fill in holes in the generated syntax
+            tree'' \cite[p.~4]{smaragdakis_structured_2017}
+      \item Macros: ``reusable code templates with pre-set rules for
+            parameterizing them'' \cite[p.~4]{smaragdakis_structured_2017}
+      \item Generics: Mechanisms with ``the ability to parameterize a code
+            template with different static types''
+            \cite[p.~5]{smaragdakis_structured_2017}
+      \item Specialized languages: Languages with specific features for
+            program generators, such as \acs{aop} and
+            \emph{inter-type declarations} \cite[p.~5]{smaragdakis_structured_2017}
+\end{enumerate}
+
 \section{Software Metrics}
 \label{chap:notes:sec:software-metrics}
 
