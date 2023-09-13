@@ -548,12 +548,22 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
             automate, elevate, modularize or otherwise facilitate program
             development'' \cite[p.~2]{smaragdakis_structured_2017}
             \todo{Can I rearrange quotes like this?}
-      \item Instead of evaluating the generated code, it is more beneficial
-            ``to statically check the generator and be sure that no type error
-            arises during its \emph{run time}''; however, ``an error in the
-            generated program can be very hard to debug and may require full
-            understanding of the generator itself''
-            \cite[p.~2]{smaragdakis_structured_2017}
+      \item Why is it beneficial ``to statically check the generator and be
+            sure that no type error arises during its \emph{run time}''
+            \cite[p.~2]{smaragdakis_structured_2017} instead of just checking
+            the generated program(s)?
+            \begin{itemize}
+                  \item ``An error in the generated program can be very hard to
+                        debug and may require full understanding of the
+                        generator itself'' \cite[p.~2]{smaragdakis_structured_2017}
+                  \item Errors can occur in the generator from ``mismatched
+                        assumptions''; for example, ``the generator fails to
+                        take into account some input case, so that, even though
+                        the generator writer has tested the generator under
+                        several inputs, other inputs result in badly-formed
+                        programs'' \cite[p.~6]{smaragdakis_structured_2017}
+            \end{itemize}
+
 \end{itemize}
 
 \subsection{Techniques for Program Generation
@@ -576,6 +586,40 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
       \item Specialized languages: Languages with specific features for
             program generators, such as \acs{aop} and
             \emph{inter-type declarations} \cite[p.~5]{smaragdakis_structured_2017}
+\end{enumerate}
+
+\subsection{Kinds of Generator Safety \cite[p.~5-8]{smaragdakis_structured_2017}}
+\begin{itemize}
+      \item Lexical and syntactic well-formedness: ``any generated/transformed
+            program is guaranteed to pass the lexical analysis and parsing
+            phases of a traditional compiler''; usually done ``by encoding the
+            syntax of the object language using the type system of the host
+            language'' \cite[p.~6]{smaragdakis_structured_2017}
+      \item Scoping and hygiene: avoiding issues with scope and unintentional
+            variable capture
+      \item Full well-formedness: ensuring that any generated/transformed
+            program is guaranteed to be fully well-formed (e.g.,
+            ``guaranteed to pass any static check in the target language''
+            \cite[p.~8]{smaragdakis_structured_2017})
+\end{itemize}
+
+\subsection{Methods for Guaranteeing Fully Structured Generation
+      \cite[p.~8-20]{smaragdakis_structured_2017}}
+\begin{enumerate}
+      \item \acf{msp}: ``the generator and the generated program \dots are
+            type-checked by the same type system[] and some parts of the
+            program are merely evaluated later (i.e., generated)''; similar
+            to \emph{partial evaluation} \cite[p.~9]{smaragdakis_structured_2017}
+      \item Class Morphing: similar to \acfp{mop}?
+      \item Reflection: (e.g., SafeGen \cite[p.~15]{smaragdakis_structured_2017})
+      \item The use of ``a powerful type system that can simultaneously express
+            conventional type-level properties of a program and the logical
+            structure of a generator under unknown inputs. This typically
+            entails the use of dependent types'' (e.g., Ur)
+            \cite[p.~16]{smaragdakis_structured_2017}
+      \item Macro systems, although ``safety guarantees carry the cost of some
+            manual verification effort by the programmer''
+            \cite[p.~19]{smaragdakis_structured_2017}
 \end{enumerate}
 
 \section{Software Metrics}
