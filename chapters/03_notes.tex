@@ -93,9 +93,10 @@ systems'' \cite[p.~113:31]{lilis_survey_2019}.
             target application, enabling one to adjust the system behavior
             based on the needs of its execution''
             \cite[p.~113:7]{lilis_survey_2019}
-      \item Requires that the system can examine (``introspection'') and modify
-            (``intercession'') how it is represented
-            \cite[p.~113:7]{lilis_survey_2019}
+      \item Means that the system can ``observe and possibly modify its
+            structure and behaviour'' \cite[p.~22]{stuikys_taxonomy_2013};
+            these processes are called ``introspection'' and ``intercession'',
+            respectively \cite[p.~113:7]{lilis_survey_2019}
             \begin{itemize}
                   \item The representation of a system can either be structural
                         or behavioural (e.g., variable assignment)
@@ -621,8 +622,10 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
             manual verification effort by the programmer''
             \cite[p.~19]{smaragdakis_structured_2017}
 \end{enumerate}
+
 \section{Taxonomy of Fundamental Concepts of Meta-Programming}
 \label{chap:notes:sec:meta-programming-taxonomy}
+\subsection{Definitions}
 \begin{itemize}
       \item Program transformation: ``the process of changing one form of a
             program (source code, specification or model) into another, as well
@@ -641,6 +644,60 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
                         refinement, and (3) simultaneously preserves the
                         semantics'' \cite[p.~18]{stuikys_taxonomy_2013}
             \end{itemize}
+      \item Code generation: ``the process by which a code generator converts a
+            syntactically correct high-level program into a series of
+            lower-level instructions''; the input can take many forms
+            ``typically consists of a parse tree, abstract syntax tree or
+            intermediate language code'' and ``the output \dots could be in any
+            language'' \cite[p.~19]{stuikys_taxonomy_2013}
+      \item Generic component: ``a software module \dots [that] abstractly and
+            concisely represents a set of closely related ('look-alike')
+            software components with slightly different properties''
+            \cite[p.~19]{stuikys_taxonomy_2013}
+      \item Generative component: a generic component that has ``explicitly
+            added generative technology'' \cite[p.~24]{stuikys_taxonomy_2013}
+      \item Separation of concerns: ``the process of breaking a design problem
+            into distinct tasks that are orthogonal and can be implemented
+            separately'' \cite[p.~21]{stuikys_taxonomy_2013}
+\end{itemize}
+
+\subsection{Roadblocks to Meta-Programming}
+\begin{itemize}
+      \item ``A major stumbling block to achieving the promised benefits
+                  [of meta-programming] is the understanding and learning the
+            meta-programming approach. One reason may be that we do not yet
+            thoroughly understand the fundamental concepts that define
+            meta-programming'' \cite[p.~26]{stuikys_taxonomy_2013}
+      \item Meta-programming does not provide instant results; instead, the
+            effort and design put in at the beginning of the process later pay
+            off potentially large dividends that are not seen right away;
+            ``most \dots programmers and designers \dots like to reuse the
+            existing software artefacts, but not much is done and [sic]
+            invested into designing for reuse'' \cite[p.~26]{stuikys_taxonomy_2013}
+            (example, meta-programming was proposed by McIlroy in 1968 but
+            ``software factories have not become a reality \dots partly due to
+            \dots [this] significant initial investment'')
+            \cite[p.~27]{stuikys_taxonomy_2013}
+      \item Software development involves ``work[ing] with multiple levels of
+            abstraction'', including ``the syntax, semantics, abilities and
+            limitations'' of given languages, their implementation details,
+            their communication details, and ``impeding mismatches'' between
+            them \cite[p.~27]{stuikys_taxonomy_2013}
+      \item ``Modification of the generated code usually removes the program
+            from the scope of the meta-programming system''
+            \cite[p.~27]{stuikys_taxonomy_2013}
+\end{itemize}
+
+\subsection{Other Notes}
+\begin{itemize}
+      \item Structural meta-programming concepts ``are defined by the
+            designer'', ``used during construction of the meta-programming
+            systems and artefacts \todo{should I change this if it's British
+                  English?}'', and ``depend upon [the] specific \dots
+            meta-language'' used \cite[p.~24]{stuikys_taxonomy_2013}
+      \item Most processes ``are used in compile time or run time'' except for
+            generalization, which ``is used during the creation of the
+            meta-programming artefacts'' \cite[p.~24-25]{stuikys_taxonomy_2013}
 \end{itemize}
 
 \section{Software Metrics}
