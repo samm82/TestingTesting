@@ -1018,7 +1018,7 @@ that are out of the ordinary. These include:
 \end{itemize}
 
 \subsection{Static White-Box Testing (Structural Analysis)
-      \cite[p.~91-]{patton_software_2006}}
+      \cite[p.~91-104]{patton_software_2006}}
 
 \begin{itemize}
       \item ``The process of carefully and methodically reviewing the software
@@ -1039,7 +1039,7 @@ that are out of the ordinary. These include:
             \cite[p.~92]{patton_software_2006}
 \end{itemize}
 
-\subsubsection{Formal Reviews \cite[p.~92-94]{patton_software_2006}}
+\subsubsection{Formal Reviews \cite[p.~92-95]{patton_software_2006}}
 
 \begin{itemize}
       \item ``The process under which static white-box testing is performed''
@@ -1088,6 +1088,73 @@ that are out of the ordinary. These include:
       \item Could be used to evaluate code written for generation, as well as
             for the code that is generated
 \end{itemize}
+
+\subsubsection{Coding Standards and Guidelines \cite[p.~96-99]{patton_software_2006}}
+
+\begin{itemize}
+      \item Code may work but still be incorrect if it doesn't meet certain
+            criteria, since these affect its reliability, readability,
+            maintainability, and/or portability; e.g., the \texttt{goto},
+            \texttt{while}, and \texttt{if-else} commands in C can cause bugs
+            if used incorrectly \cite[p.~96]{patton_software_2006}
+      \item These guidelines can range in strictness and formality, as long as
+            they are agreed upon and followed \cite[p.~96]{patton_software_2006}
+      \item This could be checked using linters
+\end{itemize}
+
+\subsubsection{Generic Code Review Checklist \cite[p.~99-103]{patton_software_2006}}
+
+\begin{itemize}
+      \item Data reference errors: ``bugs caused by using a variable, constant,
+            \dots [etc.] that hasn't been properly declared or initialized''
+            for its context \cite[p.~99]{patton_software_2006}
+      \item Data declaration errors: bugs ``caused by improperly declaring
+            or using variables or constants'' \cite[p.~100]{patton_software_2006}
+      \item Computation errors: ``essentially bad math''; e.g., type mismatches,
+            over/underflow, zero division, out of meaningful range
+            \cite[p.~101]{patton_software_2006}
+      \item Comparison errors: ``very susceptible to boundary condition
+            problems''; e.g., correct inclusion, floating point comparisons
+            \cite[p.~101]{patton_software_2006}
+      \item Control flow errors: bugs caused by ``loops and other control
+            constructs in the language not behaving as expected''
+            \cite[p.~102]{patton_software_2006}
+      \item Subroutine parameter errors: bugs ``due to incorrect passing of data
+            to and from software subroutines'' \cite[p.~102]{patton_software_2006}
+      \item Input/output errors: e.g., how are errors handled?
+            \cite[p.~102-103]{patton_software_2006}
+      \item ASCII character handling, portability, compilation warnings
+            \cite[p.~103]{patton_software_2006}
+\end{itemize}
+
+\paragraph{Requirements}
+\begin{itemize}
+      \item Data reference errors: know what operations are allowed for each
+            type and check that values are only used for those operations
+      \item Data declaration errors: I think this will mainly be covered by
+            checking for data reference errors and by our generator (e.g., no
+            typos in type names)
+      \item Computation errors: partially tested dynamically by system tests,
+            but could also more formally check for things like type mismatches
+            (does \acs{gool} do this already?) or if divisors can ever be zero
+      \item Comparison errors: I think this would mainly have to be done
+            manually (maybe except for checking for (in)equality between values
+            where it can never occur), but we may be able to generate a summary
+            of all comparisons for manual verification
+      \item Control flow errors: mostly irrelevant since we don't implement
+            loops yet; would this include system tests?
+      \item Subroutine parameter errors: we could check the types of values
+            returned by a subroutine with the expected type (at least for
+            languages like Python)
+      \item Input/output errors: knowledge of (and more formal specification of)
+            requirements would be needed here
+      \item ASCII character handling, portability, compilation warnings:
+            we could automatically check that the compiler (for languages that
+            meaningfully have a compile stage) doesn't output any warnings
+            (e.g., by saving output to a file and checking it is what is
+            expected from a normal compilation); do we have any string inputs?
+\end{itemize}
+
 
 \subsection{Dynamic White-Box Testing
       \cite[p.~-]{patton_software_2006}}
