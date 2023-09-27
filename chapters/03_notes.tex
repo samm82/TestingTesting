@@ -772,6 +772,27 @@ and error-based (``based on knowledge of the typical errors that people make'').
             \cite[p.~400]{van_vliet_software_2000}
 \end{itemize}
 
+\subsubsection{Documentation}
+
+\begin{itemize}
+      \item \acf{vnv} Plan: a document for the ``planning of test activities''
+            described by IEEE Standard 1012 \cite[p.~411]{van_vliet_software_2000}
+      \item Test Plan: ``a document describing the scope, approach, resources,
+            and schedule of intended test activities'' in more detail that the
+            \acs{vnv} Plan \cite[p.~412-413]{van_vliet_software_2000}
+      \item Test Design documentation: ``specifies \dots the details of the
+            test approach and identifies the associated tests''
+            \cite[p.~413]{van_vliet_software_2000}
+      \item Test Case documentation: ``specifies inputs, predicted outputs and
+            execution conditions for each test item''
+            \cite[p.~413]{van_vliet_software_2000}
+      \item Test Procedure documentation: ``specifies the sequence of actions
+            for the execution of each test'' \cite[p.~413]{van_vliet_software_2000}
+      \item Test Report documentation: ``provides information on the results of
+            testing tasks'', addressing software verification and validation
+            reporting \cite[p.~413]{van_vliet_software_2000}
+\end{itemize}
+
 \subsection{General Testing Notes}
 
 \begin{itemize}
@@ -799,6 +820,9 @@ and error-based (``based on knowledge of the typical errors that people make'').
                   [For example, i]f a 100\% statement coverage has not been achieved
             yet, an additional test case is selected that covers one or more
             statements yet untested'' \cite[p.~402]{van_vliet_software_2000}
+      \item \emph{``Test data generators'' are mentioned on
+                  \cite[p.~410]{van_vliet_software_2000} but not described}
+            \todo{Investigate}
 \end{itemize}
 
 \subsection{Static Black-Box (Specification) Testing
@@ -821,7 +845,8 @@ project):
             quickly, cheap, inexpensive, efficient, small, stable
       \item \textbf{Potentially incomplete:} etc., and so forth, and so on,
             such as, handled, processed, rejected, skipped, eliminated,
-            if \dots then \dots (without ``else'' or ``otherwise'')
+            if \dots then \dots (without ``else'' or ``otherwise''),
+            to be determined \cite[p.~408]{van_vliet_software_2000}
 \end{itemize}
 
 \subsection{Dynamic Black-Box (Behavioural) Testing
@@ -1220,14 +1245,17 @@ that are out of the ordinary. These include:
                   testing}
       \item Two approaches for testing incrementally:
             \begin{itemize}
-                  \item Bottom-up testing: ``you write your own modules, called
-                        \emph{test drivers}, that exercise the modules you're
-                        testing \dots [by] sending test-case data to the modules
-                        under test, read[ing] back the results, and verify[ing]
-                        that they're correct'' \cite[p.~109]{patton_software_2006}
-                  \item Top-down testing: uses \emph{stubs} (pieces of code that
-                        provide ``fake'' values to a given module)
-                        \cite[p.~110]{patton_software_2006}
+                  \item Bottom-up testing: uses \emph{test drivers}: ``tool[s]
+                        that generate[] the test environment for a component to
+                        be tested'' \cite[p.~410]{van_vliet_software_2000} by
+                        ``sending test-case data to the modules under test,
+                        read[ing] back the results, and verify[ing] that
+                        they're correct'' \cite[p.~109]{patton_software_2006}
+                  \item Top-down testing: uses \emph{test stubs}: tools that
+                        ``simulate[] the function of a component not yet
+                        available'' \cite[p.~410]{van_vliet_software_2000} by
+                        providing ``fake'' values to a given module to be
+                        tested \cite[p.~110]{patton_software_2006}
             \end{itemize}
 \end{itemize}
 
@@ -1268,4 +1296,23 @@ coverage).
       \item Condition coverage: ``takes the extra conditions on the branch
             statements into account'' (e.g., all possible inputs to a Boolean
             expression) \cite[p.~120]{patton_software_2006}
+\end{itemize}
+
+\subsection{Regression Testing}
+
+\begin{itemize}
+      \item Rerunning old tests to test new changes to the system
+      \item Various levels:
+            \begin{itemize}
+                  \item Retest-all: ``all tests are rerun''; ``this may consume
+                        a lot of time and effort''
+                        \cite[p.~411]{van_vliet_software_2000} (although
+                        hopefully not, since we'll be automating testing)
+                  \item Selective retest: ``only some of the tests are rerun''
+                        after being selected by a \emph{regression test
+                              selection technique}; ``[v]arious strategies have
+                        been proposed for doing so; few of them have been
+                        implemented yet'' \cite[p.~411]{van_vliet_software_2000}
+            \end{itemize}
+      \item \emph{Does not go into much detail} \todo{Investigate}
 \end{itemize}
