@@ -745,16 +745,60 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
 \section{Software Testing}
 \label{chap:notes:sec:software-testing}
 
+While \cite{patton_software_2006} groups testing into static/dynamic and
+white-/black-box, \cite[p.~398-399]{van_vliet_software_2000} gives a
+classification ``according to the criterion used to measure the adequacy of a
+set of test cases'': coverage-based, fault-based (includes mutation testing),
+and error-based (``based on knowledge of the typical errors that people make'').
+
+\subsection{Definitions}
+
+\begin{itemize}
+      \item Error: ``a human action that produces an incorrect result''
+            \cite[p.~399]{van_vliet_software_2000}
+      \item Fault: ``the manifestation of an error'' in the software itself
+            \cite[p.~400]{van_vliet_software_2000}
+      \item Failure: incorrect output or behaviour resulting from encountering
+            a fault; can be defined as not meeting specifications or
+            expectations and ``is a relative notion''
+            \cite[p.~400]{van_vliet_software_2000}
+      \item Verification: ``the process of evaluating a system or component
+            to determine whether the products of a given development phase
+            satisfy the conditions imposed at the start of that phase''
+            \cite[p.~400]{van_vliet_software_2000}
+      \item Validation: ``the process of evaluating a system or component
+            during or at the end of the development process to determine
+            whether it satisfies specified requirements''
+            \cite[p.~400]{van_vliet_software_2000}
+\end{itemize}
+
 \subsection{General Testing Notes}
 
 \begin{itemize}
-      \item Simple, normal test cases (test-to-pass) should always be developed
-            and run before more complicated, unusual test cases (test-to-fail)
-            \cite[p.~66]{patton_software_2006}
+      \item ``Proving the correctness of software \dots applies only in
+            circumstances where software requirements are stated formally'' and
+            assumes ``these formal requirements are themselves correct''
+            \cite[p.~398]{van_vliet_software_2000}
+      \item If faults exist in programs, they ``must be considered faulty, even
+            if we cannot devise test cases that reveal the faults''
+            \cite[p.~401]{van_vliet_software_2000}
       \item Black-box test cases should be created based on the specification
             \emph{before} creating white-box test cases to avoid being ``biased
             into creating test cases based on how the module works''
             \cite[p.~113]{patton_software_2006}
+      \item Simple, normal test cases (test-to-pass) should always be developed
+            and run before more complicated, unusual test cases (test-to-fail)
+            \cite[p.~66]{patton_software_2006}
+\end{itemize}
+
+\subsubsection{Generating Test Cases}
+
+\begin{itemize}
+      \item ``A \textbf{test adequacy criterion} \dots specifies requirements
+            for testing \dots and can be used \dots as a test case generator....
+                  [For example, i]f a 100\% statement coverage has not been achieved
+            yet, an additional test case is selected that covers one or more
+            statements yet untested'' \cite[p.~402]{van_vliet_software_2000}
 \end{itemize}
 
 \subsection{Static Black-Box (Specification) Testing
@@ -786,7 +830,8 @@ project):
 This is the process of ``entering inputs, receiving outputs, and checking the
 results'' \cite[p.~64]{patton_software_2006}. Note that while black-box testing
 is usually done at a higher (e.g., system) level, unit testing can also be
-black-box \cite[p.~1]{jacob_comparative_2016}.
+black-box \cite[p.~1]{jacob_comparative_2016}. \cite{van_vliet_software_2000}
+also calls this ``functional testing''.
 
 \paragraph{Requirements}
 \begin{itemize}
@@ -1218,7 +1263,7 @@ coverage).
             (e.g., all paths might not be taken) \cite[p.~119]{patton_software_2006}
       \item Path coverage: ``[a]ttempting to cover all the paths in the
             software''; \emph{branch coverage} is the simplest form (\emph{the
-            difference is never explained}) \cite[p.~119]{patton_software_2006}
+                  difference is never explained}) \cite[p.~119]{patton_software_2006}
             \todo{Find a formal difference between path and branch coverage}
       \item Condition coverage: ``takes the extra conditions on the branch
             statements into account'' (e.g., all possible inputs to a Boolean
