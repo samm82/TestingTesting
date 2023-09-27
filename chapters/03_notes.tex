@@ -868,6 +868,7 @@ versions of these functions that are used should be replaced with the
 corresponding safe versions \cite[p.~203-204]{patton_software_2006}.
 
 \paragraph{Sub-Boundary Conditions \cite[p.~75-77]{patton_software_2006}}
+\label{sub-bound-conds}
 
 Boundary conditions ``that are internal to the software [but] aren't necessarily
 apparent to an end user'' \cite[p.~75]{patton_software_2006}. These include
@@ -1113,6 +1114,7 @@ that are out of the ordinary. These include:
       \item Computation errors: ``essentially bad math''; e.g., type mismatches,
             over/underflow, zero division, out of meaningful range
             \cite[p.~101]{patton_software_2006}
+            \label{comp-errors}
       \item Comparison errors: ``very susceptible to boundary condition
             problems''; e.g., correct inclusion, floating point comparisons
             \cite[p.~101]{patton_software_2006}
@@ -1156,5 +1158,43 @@ that are out of the ordinary. These include:
 \end{itemize}
 
 
-\subsection{Dynamic White-Box Testing
-      \cite[p.~-]{patton_software_2006}}
+\subsection{Dynamic White-Box (Structural) Testing
+      \cite[p.~105-]{patton_software_2006}}
+
+\begin{itemize}
+      \item ``Using information you gain from seeing what the code does and how
+            it works to determine what to test, what not to test, and how to
+            approach the testing'' \cite[p.~105]{patton_software_2006}
+      \item \emph{Mentions unit, integration, and system testing without
+                  formally describing them} \cite[p.~109]{patton_software_2006}
+      \item Two approaches for testing incrementally:
+            \begin{itemize}
+                  \item Bottom-up testing: ``you write your own modules, called
+                        \emph{test drivers}, that exercise the modules you're
+                        testing \dots [by] sending test-case data to the modules
+                        under test, read[ing] back the results, and verify[ing]
+                        that they're correct'' \cite[p.~109]{patton_software_2006}
+                  \item Top-down testing: uses \emph{stubs} (pieces of code that
+                        provide ``fake'' values to a given module)
+                        \cite[p.~110]{patton_software_2006}
+            \end{itemize}
+      \item Black-box test cases should be created based on the specification
+            \emph{before} creating white-box test cases to avoid being ``biased into
+            creating test cases based on how the module works''
+            \cite[p.~113]{patton_software_2006}
+\end{itemize}
+
+\subsubsection{Data Coverage \cite[p.~114-116]{patton_software_2006}}
+
+\begin{itemize}
+      \item Data flow coverage: ``tracking a piece of data completely through
+            the software'' (or a part of it), usually using debugger tools to
+            check the values of variables \cite[p.~114]{patton_software_2006}
+      \item Sub-boundaries: mentioned previously in \ref{sub-bound-conds}
+      \item Formulas and equations: related to
+            \hyperref[comp-errors]{computation errors}
+      \item Error forcing: setting variables to specific values to see how
+            errors are handled; any error forced must have a chance of
+            occurring in the real world, even if it is unlikely
+            \cite[p.~116]{patton_software_2006}
+\end{itemize}
