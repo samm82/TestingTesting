@@ -751,13 +751,17 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
       \item Simple, normal test cases (test-to-pass) should always be developed
             and run before more complicated, unusual test cases (test-to-fail)
             \cite[p.~66]{patton_software_2006}
+      \item Black-box test cases should be created based on the specification
+            \emph{before} creating white-box test cases to avoid being ``biased
+            into creating test cases based on how the module works''
+            \cite[p.~113]{patton_software_2006}
 \end{itemize}
 
 \subsection{Static Black-Box (Specification) Testing
       \cite[p.~56-62]{patton_software_2006}}
 
 Most of this section is irrelevant to generating test cases, as they require
-human involvement (e.g., Pretend to Be the Customer
+human involvement \todo{Describe anyway} (e.g., Pretend to Be the Customer
 \cite[p.~57-58]{patton_software_2006}, Research Existing Standards and
 Guidelines \cite[p.~58-59]{patton_software_2006}). However, it provides a
 ``Specification Terminology Checklist'' \cite[p.~61]{patton_software_2006} that
@@ -812,7 +816,7 @@ human-based trial and error required for this kind of testing
 \subsubsection{Equivalence Partitioning/Classing \cite[p.~67-69]{patton_software_2006}}
 
 The process of dividing the infinite set of test cases into a finite set that is
-just as effective (i.e., by revealing the same bugs) \cite[p.~67]{patton_software_2006}.
+just as effective (i.e., that reveals the same bugs) \cite[p.~67]{patton_software_2006}.
 
 \paragraph{Requirements}
 \begin{itemize}
@@ -992,8 +996,8 @@ that are out of the ordinary. These include:
       \item Repetition Testing: ``doing the same operation over and over'',
             potentially up to ``thousands of attempts''
             \cite[p.~86]{patton_software_2006}
-      \item Stress Testing: ``running the software under less-than-ideal conditions''
-            \cite[p.~86]{patton_software_2006}
+      \item Stress Testing: ``running the software under less-than-ideal
+            conditions'' \cite[p.~86]{patton_software_2006}
       \item Load testing: running the software with as large of a load as
             possible (e.g., large inputs, many peripherals)
             \cite[p.~86]{patton_software_2006}
@@ -1004,7 +1008,7 @@ that are out of the ordinary. These include:
       \item Repetition Testing: The types of operations that are likely to lead
             to errors when repeated (e.g., overwriting files?)
       \item Stress testing: can these be automated with pytest or are they
-            outside our scope? % TODO: investigate
+            outside our scope? \todo{Investigate}
       \item Load testing: Knowledge about the types of inputs that could
             overload the system (e.g., upper bounds on values of certain types)
 \end{itemize}
@@ -1167,6 +1171,8 @@ that are out of the ordinary. These include:
             approach the testing'' \cite[p.~105]{patton_software_2006}
       \item \emph{Mentions unit, integration, and system testing without
                   formally describing them} \cite[p.~109]{patton_software_2006}
+            \todo{Find formal description of unit, integration, and system
+                  testing}
       \item Two approaches for testing incrementally:
             \begin{itemize}
                   \item Bottom-up testing: ``you write your own modules, called
@@ -1178,10 +1184,6 @@ that are out of the ordinary. These include:
                         provide ``fake'' values to a given module)
                         \cite[p.~110]{patton_software_2006}
             \end{itemize}
-      \item Black-box test cases should be created based on the specification
-            \emph{before} creating white-box test cases to avoid being ``biased into
-            creating test cases based on how the module works''
-            \cite[p.~113]{patton_software_2006}
 \end{itemize}
 
 \subsubsection{Data Coverage \cite[p.~114-116]{patton_software_2006}}
@@ -1215,8 +1217,9 @@ coverage).
             program at least once''; doesn't guarantee full coverage
             (e.g., all paths might not be taken) \cite[p.~119]{patton_software_2006}
       \item Path coverage: ``[a]ttempting to cover all the paths in the
-            software''; \emph{branch coverage} is the simplest form (but the
-            difference is never explained) \cite[p.~119]{patton_software_2006}
+            software''; \emph{branch coverage} is the simplest form (\emph{the
+            difference is never explained}) \cite[p.~119]{patton_software_2006}
+            \todo{Find a formal difference between path and branch coverage}
       \item Condition coverage: ``takes the extra conditions on the branch
             statements into account'' (e.g., all possible inputs to a Boolean
             expression) \cite[p.~120]{patton_software_2006}
