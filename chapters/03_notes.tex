@@ -1159,7 +1159,7 @@ that are out of the ordinary. These include:
 
 
 \subsection{Dynamic White-Box (Structural) Testing
-      \cite[p.~105-]{patton_software_2006}}
+      \cite[p.~105-121]{patton_software_2006}}
 
 \begin{itemize}
       \item ``Using information you gain from seeing what the code does and how
@@ -1197,4 +1197,27 @@ that are out of the ordinary. These include:
             errors are handled; any error forced must have a chance of
             occurring in the real world, even if it is unlikely
             \cite[p.~116]{patton_software_2006}
+\end{itemize}
+
+\subsubsection{Code Coverage \cite[p.~117-121]{patton_software_2006}}
+
+``[T]est[ing] the program's states and the program's flow among them''
+\cite[p.~117]{patton_software_2006}; allows for redundant and/or missing test
+cases to be identified \cite[p.~118]{patton_software_2006}. We discussed that
+generating infrastructure for reporting coverage may be a worthwhile goal, and
+that it can be known how to increase certain types of coverage (since we know
+the structure of the generated code, to some extent, beforehand), but I'm
+not sure if all of these are feasible/worthwhile to get to 100\% (e.g., line
+coverage).
+
+\begin{itemize}
+      \item Statement/line coverage: ``execut[ing] every statement in the
+            program at least once''; doesn't guarantee full coverage
+            (e.g., all paths might not be taken) \cite[p.~119]{patton_software_2006}
+      \item Path coverage: ``[a]ttempting to cover all the paths in the
+            software''; \emph{branch coverage} is the simplest form (but the
+            difference is never explained) \cite[p.~119]{patton_software_2006}
+      \item Condition coverage: ``takes the extra conditions on the branch
+            statements into account'' (e.g., all possible inputs to a Boolean
+            expression) \cite[p.~120]{patton_software_2006}
 \end{itemize}
