@@ -715,7 +715,22 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
       \item ``Inherent uncertainties'': since scientific software models
             scenarios that occur in a chaotic and imperfect world, not every
             factor can be accounted for \cite[p.~67]{kanewala_metamorphic_2019}
+      \item ``Choosing suitable tolerances'': difficult to decide what
+            tolerance(s) to use when dealing with floating-point numbers
+            \cite[p.~67]{kanewala_metamorphic_2019}
+      \item ``Incompatible testing tools'': while scientific software is often
+            written in languages like FORTRAN, testing tools are often written
+            int languages like Java or C++ \cite[p.~67]{kanewala_metamorphic_2019}
 \end{itemize}
+
+Out of this list, only the first two apply. The scenarios modelled by Drasil
+are idealized and ignore uncertainties like air resistance, wind direction,
+and gravitational fluctuations. There are not any instances where special
+consideration for floating-point arithmetic must be taken; the default
+tolerance used for relevant testing frameworks has been used
+\todo{Add example} and is likely sufficient for future testing. On a related
+note, the scientific software we are trying to test is already generated in
+languages with widely-used testing frameworks. \todo{Add source(s)?}
 
 \section{Software Metrics}
 \label{chap:notes:sec:software-metrics}
