@@ -1443,6 +1443,20 @@ introduced faults that were discovered (which will ideally be small)
 careful consideration as to which faults are introduced and how
 \cite[p.~427]{van_vliet_software_2000}.
 
+\subsubsection{Mutation Testing \cite[pp.~428-429]{van_vliet_software_2000}}
+
+``A (large) number of variants of a program is generated'', each differing from
+the original ``slightly'' (e.g., by deleting a statement or replacing an
+operator with another) \cite[p.~428]{van_vliet_software_2000}. These
+\emph{mutants} are then tested; if set of tests fails to expose a difference in
+behaviour between the original and many mutants, ``then that test set is of low
+quality'' \cite[pp.~428-429]{van_vliet_software_2000}. The goal is to maximize
+the number of mutants identified by a given test set
+\cite[p.~429]{van_vliet_software_2000}. \textbf{Strong mutation testing} works
+at the program level while \textbf{weak mutation testing} works at the
+component level (and ``is often easier to establish'')
+\cite[p.~429]{van_vliet_software_2000}.
+
 \subsection{Regression Testing}
 
 \begin{itemize}
