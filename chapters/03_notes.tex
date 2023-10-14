@@ -1291,21 +1291,6 @@ Evaluation \cite[pp.~417-418]{van_vliet_software_2000}, Correctness Proofs
             \end{itemize}
 \end{itemize}
 
-\subsubsection{Data Coverage \cite[p.~114-116]{patton_software_2006}}
-
-\begin{itemize}
-      \item Data flow coverage: ``tracking a piece of data completely through
-            the software'' (or a part of it), usually using debugger tools to
-            check the values of variables \cite[p.~114]{patton_software_2006}
-      \item Sub-boundaries: mentioned previously in \ref{sub-bound-conds}
-      \item Formulas and equations: related to
-            \hyperref[comp-errors]{computation errors}
-      \item Error forcing: setting variables to specific values to see how
-            errors are handled; any error forced must have a chance of
-            occurring in the real world, even if it is unlikely
-            \cite[p.~116]{patton_software_2006}
-\end{itemize}
-
 \subsubsection{Code Coverage \cite[pp.~117-121]{patton_software_2006} or
       Control-Flow Coverage \cite[pp.~421-424]{van_vliet_software_2000}}
 
@@ -1316,7 +1301,10 @@ testing is often based ``on the notion of a control graph \dots [where]
 nodes denote actions, \dots (directed) edges connect actions with
 subsequent actions (in time) \dots [and a] path is a sequence of nodes
 connected by edges. The graph may contain cycles \dots [which] correspond
-to loops \dots'' \cite[pp.~420-421]{van_vliet_software_2000}. If there are
+to loops \dots'' \cite[pp.~420-421]{van_vliet_software_2000}. ``A cycle is
+called \emph{simple} if its inner nodes are distinct and do not include
+      [the node at the beginning/end of the cycle]''
+\cite[p.~421, emphasis added]{van_vliet_software_2000}. If there are
 multiple actions represented as nodes that occur one after another, they may
 be collapsed into a single node \cite[p.~421]{van_vliet_software_2000}.
 
@@ -1358,6 +1346,82 @@ coverage).
             known as \textbf{extended branch coverage}''
             \cite[p.~422]{van_vliet_software_2000}
 \end{itemize}
+
+\subsubsection{Data Coverage \cite[p.~114-116]{patton_software_2006}}
+
+In addition to \nameref{data-flow-coverage}, there are also some minor forms of
+data coverage:
+
+\begin{itemize}
+      \item Sub-boundaries: mentioned previously in \ref{sub-bound-conds}
+      \item Formulas and equations: related to
+            \hyperref[comp-errors]{computation errors}
+      \item Error forcing: setting variables to specific values to see how
+            errors are handled; any error forced must have a chance of
+            occurring in the real world, even if it is unlikely
+            \cite[p.~116]{patton_software_2006}
+\end{itemize}
+
+\paragraph{Data Flow Coverage \cite[p.~114]{patton_software_2006},
+      \cite[pp.~424-425]{van_vliet_software_2000}}
+\label{data-flow-coverage}
+
+``[T]racking a piece of data completely through the software'' (or a part of
+it), usually using debugger tools to check the values of variables
+\cite[p.~114]{patton_software_2006}.
+
+\begin{itemize}
+      \item ``A variable is \emph{defined} in a certain statement if it is
+            assigned a (new) value because of the execution of that
+            statement'' \cite[p.~424]{van_vliet_software_2000}
+      \item ``A definition in statement X is \emph{alive} in statement Y if
+            there exists a path from X to Y in which that variable does not
+            get assigned a new value at some intermediate node''
+            \cite[p.~424]{van_vliet_software_2000}
+      \item A path from a variable's definition to a statement where it is
+            still alive is called \textbf{definition-clear} (with respect to
+            this variable) \cite[p.~424]{van_vliet_software_2000}
+      \item \acf{p-use}: e.g., the use of a variable in a conditional
+            \cite[p.~424]{van_vliet_software_2000}
+      \item \acf{c-use}: e.g., the use of a variable in a computation or I/O
+            statement \cite[p.~424]{van_vliet_software_2000}
+\end{itemize}
+
+Table \ref{table:data-flow-coverage-types} contains different types of data
+flow coverage criteria, approximately from weakest to strongest, as well as
+their requirements; all information is adapted from
+\cite[pp.~424-425]{van_vliet_software_2000} \todo{Is this sufficient?}.
+
+\begin{table}[hbtp!]
+      \centering
+      \caption{Types of Data Flow Coverage}
+      \label{table:data-flow-coverage-types}
+      \begin{tabularx}{\textwidth}{|>{\hsize=0.65\hsize}X|>{\hsize=1.35\hsize}X|}
+            \hline
+            \rowcolor{McMasterMediumGrey}
+            \textbf{Criteria}         & \textbf{Requirements}                \\
+            \hline
+            All-defs coverage         & Each definition to be used at least
+            once                                                             \\
+            All-\acsp{p-use} coverage & A definition-clear path from each
+            definition to each \acs{p-use}                                   \\
+            All-\acsp{p-use}/Some-\acsp{c-use}
+            coverage                  & Same as All-\acsp{p-use} coverage,
+            but if a definition is only used in computations, at least one
+            definition-clear path to a \acs{c-use} must be included          \\
+            All-\acsp{c-use}/Some-\acsp{p-use}
+            coverage                  & A definition-clear path from each
+            definition to each \acs{c-use}; if a definition is only used
+            in predicates, at least one definition-clear path to a
+            \acs{p-use} must be included                                     \\
+            All-Uses coverage         & A definition-clear path between each
+            variable definition to each of its uses and each of these uses'
+            successors                                                       \\
+            All-DU-Paths coverage     & Same as All-Uses coverage, but each
+            path must be cycle-free or a simple cycle                        \\
+            \hline
+      \end{tabularx}
+\end{table}
 
 \subsection{Regression Testing}
 
