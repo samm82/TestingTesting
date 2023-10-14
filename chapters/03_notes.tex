@@ -1306,11 +1306,21 @@ Evaluation \cite[pp.~417-418]{van_vliet_software_2000}, Correctness Proofs
             \cite[p.~116]{patton_software_2006}
 \end{itemize}
 
-\subsubsection{Code Coverage \cite[p.~117-121]{patton_software_2006}}
+\subsubsection{Code Coverage \cite[pp.~117-121]{patton_software_2006} or
+      Control-Flow Coverage \cite[pp.~421-424]{van_vliet_software_2000}}
 
 ``[T]est[ing] the program's states and the program's flow among them''
 \cite[p.~117]{patton_software_2006}; allows for redundant and/or missing test
-cases to be identified \cite[p.~118]{patton_software_2006}. We discussed that
+cases to be identified \cite[p.~118]{patton_software_2006}. Coverage-based
+testing is often based ``on the notion of a control graph \dots [where]
+nodes denote actions, \dots (directed) edges connect actions with
+subsequent actions (in time) \dots [and a] path is a sequence of nodes
+connected by edges. The graph may contain cycles \dots [which] correspond
+to loops \dots'' \cite[pp.~420-421]{van_vliet_software_2000}. If there are
+multiple actions represented as nodes that occur one after another, they may
+be collapsed into a single node \cite[p.~421]{van_vliet_software_2000}.
+
+We discussed that
 generating infrastructure for reporting coverage may be a worthwhile goal, and
 that it can be known how to increase certain types of coverage (since we know
 the structure of the generated code, to some extent, beforehand), but I'm
@@ -1321,13 +1331,32 @@ coverage).
       \item Statement/line coverage: ``execut[ing] every statement in the
             program at least once''; doesn't guarantee full coverage
             (e.g., all paths might not be taken) \cite[p.~119]{patton_software_2006}
+            or correctness \cite[p.~421]{van_vliet_software_2000}
       \item Path coverage: ``[a]ttempting to cover all the paths in the
-            software''; \emph{branch coverage} is the simplest form (\emph{the
-                  difference is never explained}) \cite[p.~119]{patton_software_2006}
-            \todo{Find a formal difference between path and branch coverage}
-      \item Condition coverage: ``takes the extra conditions on the branch
-            statements into account'' (e.g., all possible inputs to a Boolean
-            expression) \cite[p.~120]{patton_software_2006}
+            software'' \cite[p.~119]{patton_software_2006}; if done completely,
+            it ``is equivalent to exhaustively testing the program'' but is
+            generally ``not possible'' due to the complexity of loops,
+            branches, and potentially unreachable code
+            \cite[p.~421]{van_vliet_software_2000}
+      \item Branch coverage: attempting to, ``at each branching node in the
+            control graph, \dots [choose] all possible branches \dots at least
+            once'' \cite[p.~421]{van_vliet_software_2000}
+            \begin{itemize}
+                  \item the simplest form of path coverage
+                        \cite[p.~119]{patton_software_2006}
+                  \item complete branch coverage does not imply complete path
+                        coverage \todo{add source?} or correctness
+                        \cite[p.~421]{van_vliet_software_2000}
+                  \item Cyclomatic-number criterion: an adequacy criterion that
+                        requires that ``all linearly-independent paths are
+                        covered'' \cite[p.~423]{van_vliet_software_2000};
+                        results in complete branch coverage
+            \end{itemize}
+      \item (Multiple) condition coverage: ``takes the extra conditions on the
+            branch statements into account'' (e.g., all possible inputs to a
+            Boolean expression) \cite[p.~120]{patton_software_2006}; ``also
+            known as \textbf{extended branch coverage}''
+            \cite[p.~422]{van_vliet_software_2000}
 \end{itemize}
 
 \subsection{Regression Testing}
