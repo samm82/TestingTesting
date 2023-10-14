@@ -876,9 +876,7 @@ equivalent, since the specific data available in each node is not apparent
       \cite[pp.~64-65]{patton_software_2006}}
 
 This is the process of ``entering inputs, receiving outputs, and checking the
-results'' \cite[p.~64]{patton_software_2006}. Note that while black-box testing
-is usually done at a higher (e.g., system) level, unit testing can also be
-black-box \cite[p.~1]{jacob_comparative_2016}. \cite{van_vliet_software_2000}
+results'' \cite[p.~64]{patton_software_2006}. \cite{van_vliet_software_2000}
 also calls this ``functional testing''.
 
 \paragraph{Requirements}
@@ -1472,6 +1470,13 @@ the number of mutants identified by a given test set
 at the program level while \textbf{weak mutation testing} works at the
 component level (and ``is often easier to establish'')
 \cite[p.~429]{van_vliet_software_2000}.
+
+There is an unexpected byproduct of this form of testing. In some cases of one
+experiment \todo{add original source: KA85}, ``the original program failed,
+while the modified program [mutant] yielded the right result''
+\cite[p.~432]{van_vliet_software_2000}! In addition to revealing shortcomings
+of a test set, mutation testing can also point the developer(s) in the
+direction of a better solution!
 
 \subsection{Regression Testing}
 
