@@ -1338,22 +1338,46 @@ output of the program is expected to change when a specified change is made to
 the input'' \cite[p.~67]{kanewala_metamorphic_2019}; this is commonly done by
 creating an initial test case, then transforming it into a new one by applying
 the \acs{mr} (both the initial and the resultant test cases are executed and
-should both pass) \cite[p.~68]{kanewala_metamorphic_2019}.
+should both pass) \cite[p.~68]{kanewala_metamorphic_2019}. ``\acs{mt} is one of
+the most appropriate and cost-effective testing techniques for scientists and
+engineers'' \cite[p.~72]{kanewala_metamorphic_2019}.
 
 \subsubsection{Benefits of \acs{mt}}
 \begin{itemize}
       \item Easier for domain experts; not only do they understand the domain
-            (and its relevant \acp{mr}) \cite[p.~69]{kanewala_metamorphic_2019},
+            (and its relevant \acp{mr}) \cite[p.~70]{kanewala_metamorphic_2019},
             they also may not have an understanding of testing principles
-            \cite[p.~68]{kanewala_metamorphic_2019}. \emph{This majorly
+            \cite[p.~69]{kanewala_metamorphic_2019}. \emph{This majorly
                   overlaps with Drasil!}
-      \item Easy to implement via scripts \cite[p.~68]{kanewala_metamorphic_2019}.
+      \item Easy to implement via scripts \cite[p.~69]{kanewala_metamorphic_2019}.
             \emph{Again, Drasil}
-      \item Helps negate the test oracle \cite[p.~68]{kanewala_metamorphic_2019}
-            and output validation \cite[p.~69]{kanewala_metamorphic_2019} problems
+      \item Helps negate the test oracle \cite[p.~69]{kanewala_metamorphic_2019}
+            and output validation \cite[p.~70]{kanewala_metamorphic_2019} problems
             from \nameref{chap:notes:sec:sci-testing-roadblocks} (\emph{i.e.,
                   the two that are relevant for Drasil})
       \item Can extend a limited number of test cases (e.g., from an
             experiment that was only able to be conducted a few times)
-            \cite[p.~69]{kanewala_metamorphic_2019}
+            \cite[pp.~70-72]{kanewala_metamorphic_2019}
+      \item Domain experts are sometimes unable to identify faults in a program
+            based on its output \cite[p.~71]{kanewala_metamorphic_2019}
+\end{itemize}
+
+\subsubsection{Examples of \acs{mt}}
+\begin{itemize}
+      \item The average of a list of numbers should be equal (within
+            floating-point errors) regardless of the list's order
+            \cite[p.~67]{kanewala_metamorphic_2019}
+      \item For matrices, if $B = B_1 + B_2$, then $A \times B = A \times B_1
+                  + A \times B_2$ \cite[pp.~68-69]{kanewala_metamorphic_2019}
+      \item Symmetry of trigonometric functions; for example, $\sin(x) = \sin(-x)$
+            and $\sin(x) = \sin(x + 360^{\circ})$ \cite[p.~70]{kanewala_metamorphic_2019}
+      \item Modifying input parameters to observe expected changes to a model's
+            output (e.g., testing epidemiological models calibrated with
+            ``data from the 1918 Influenza outbreak''); by ``making changes to
+            various model parameters \dots authors identified an error in the
+            output method of the agent based epidemiological model''
+            \cite[p.~70]{kanewala_metamorphic_2019}
+      \item Using machine learning to predict likely \acsp{mr} to identify
+            faults in mutated versions of a program (about 90\% in this case)
+            \cite[p.~71]{kanewala_metamorphic_2019}
 \end{itemize}
