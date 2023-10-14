@@ -924,7 +924,11 @@ just as effective (i.e., that reveals the same bugs) \cite[p.~67]{patton_softwar
 \subsubsection{Data Testing \cite[p.~70-79]{patton_software_2006}}
 
 The process of ``checking that information the user inputs [and] results'',
-both final and intermediate, ``are handled correctly'' \cite[p.~70]{patton_software_2006}.
+both final and intermediate, ``are handled correctly''
+\cite[p.~70]{patton_software_2006}. This type of testing can also occur at the
+white-box level, such as the implementation of boundaries
+\cite[p.~431]{van_vliet_software_2000} or intermediate values within
+components.
 
 \paragraph{Boundary Conditions \cite[p.~70-74]{patton_software_2006}}
 
@@ -977,6 +981,18 @@ involved for Drasil right now, and the existing software constraints limit much
 of the potential errors from over/underflow \cite{june_11_meeting}. Additionally,
 strings are not really used as inputs to Drasil and only occur in output with
 predefined values, so testing these values are unlikely to be fruitful.
+
+There also exist sub-boundary conditions that arise from ``complex''
+requirements, where behaviour depends on multiple conditions
+\cite[p.~430]{van_vliet_software_2000}. These ``error prone'' points around
+these boundaries should be tested \cite[p.~430]{van_vliet_software_2000} as
+before: ``the valid data just inside the boundary, \dots the last possible
+valid data, and \dots the invalid data just outside the boundary''
+\cite[p.~73]{patton_software_2006}. In this type of testing, the second type of
+data is called an ``ON point'', the first type is an ``OFF point'' for the
+domain on the \emph{other} side of the boundary, and the third type is an ``OFF
+point'' for the domain on the \emph{same} side of the boundary
+\cite[p.~430]{van_vliet_software_2000}.
 
 \subparagraph{Requirements}
 \begin{itemize}
