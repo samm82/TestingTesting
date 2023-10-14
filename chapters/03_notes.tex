@@ -1106,7 +1106,13 @@ that are out of the ordinary. These include:
 \end{itemize}
 
 \subsection{Static White-Box Testing (Structural Analysis)
-      \cite[p.~91-104]{patton_software_2006}}
+      \cite[pp.~91-104]{patton_software_2006}}
+
+There are also some more specific categories of this, such as Scenario-Based
+Evaluation \cite[pp.~417-418]{van_vliet_software_2000}, Correctness Proofs
+\cite[pp.~418-419]{van_vliet_software_2000}, and Stepwise Abstraction
+\cite[pp.~419-420]{van_vliet_software_2000} that could be investigated further.
+\todo{Do this!}
 
 \begin{itemize}
       \item ``The process of carefully and methodically reviewing the software
@@ -1125,6 +1131,8 @@ that are out of the ordinary. These include:
             dynamic black-box testing'' and ``gives the team's black-box
             testers ideas for test cases to apply''
             \cite[p.~92]{patton_software_2006}
+      \item Largely ``done by the language compiler'' or by separate tools
+            \cite[pp.~413-414]{van_vliet_software_2000}
 \end{itemize}
 
 \subsubsection{Formal Reviews \cite[p.~92-95]{patton_software_2006}}
@@ -1162,10 +1170,18 @@ that are out of the ordinary. These include:
             \begin{itemize}
                   \item Peer Review: Includes the four main parts of a formal
                         review, but informally and at a smaller scale
-                        \cite[p.~94]{patton_software_2006}
+                        \cite[p.~94]{patton_software_2006}. One variation is to
+                        have each person submit ``a `best' program and one of
+                        lesser quality'', randomly distribute all programs to
+                        be assessed by two people in the group, and return all
+                        feedback anonymously to its author
+                        \cite[p.~414]{van_vliet_software_2000}
                   \item Walkthrough: The author of the code presents it line
                         by line to a small group that ``question anything that
-                        looks suspicious'' \cite[p.~95]{patton_software_2006}
+                        looks suspicious'' \cite[p.~95]{patton_software_2006};
+                        this is done by using test data to ``walk through''
+                        the execution of the program
+                        \cite[p.~416]{van_vliet_software_2000}
                   \item Inspection: Someone who is \emph{not} the author of the
                         code presents it to a small group of people each with a
                         different perspective (e.g., user); changes are made
@@ -1210,6 +1226,8 @@ that are out of the ordinary. These include:
             \cite[p.~102]{patton_software_2006}
       \item Subroutine parameter errors: bugs ``due to incorrect passing of data
             to and from software subroutines'' \cite[p.~102]{patton_software_2006}
+            (could also be called ``interface errors''
+            \cite[p.~416]{van_vliet_software_2000})
       \item Input/output errors: e.g., how are errors handled?
             \cite[p.~102-103]{patton_software_2006}
       \item ASCII character handling, portability, compilation warnings
