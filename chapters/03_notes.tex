@@ -702,6 +702,7 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
 
 \section{Roadblocks to Testing Scientific Software
   \cite[p.~67]{kanewala_metamorphic_2019}}
+\label{chap:notes:sec:sci-testing-roadblocks}
 \begin{itemize}
       \item ``Correct answers are often unknown'': if the results were already
             known, there would be no need to develop software to model them
@@ -1329,7 +1330,26 @@ coverage).
       \item \emph{Does not go into much detail} \todo{Investigate}
 \end{itemize}
 
-\section{\acf{mt}}
+\subsection{\acf{mt}}
 \label{chap:notes:sec:metamorphic-testing}
 The use of \acfp{mr} ``to determine whether a test case has passed or failed''
-\cite[p.~67]{kanewala_metamorphic_2019}.
+\cite[p.~67]{kanewala_metamorphic_2019}. ``A[n] \acs{mr} specifies how the
+output of the program is expected to change when a specified change is made to
+the input'' \cite[p.~67]{kanewala_metamorphic_2019}; this is commonly done by
+creating an initial test case, then transforming it into a new one by applying
+the \acs{mr} (both the initial and the resultant test cases are executed and
+should both pass) \cite[p.~68]{kanewala_metamorphic_2019}.
+
+\subsubsection{Benefits of \acs{mt}}
+\begin{itemize}
+      \item Easier for domain experts; not only do they understand the domain
+            (and its relevant \acp{mr}), they also may not have an
+            understanding of testing principles. \emph{This majorly overlaps
+                  with Drasil!}
+      \item Easy to implement via scripts. \emph{Again, Drasil}
+      \item Helps negate the test oracle and output validation problems from
+            \nameref{chap:notes:sec:sci-testing-roadblocks} (\emph{i.e., the
+                  two that are relevant for Drasil})
+      \item Can extend a limited number of test cases (e.g., from an
+            experiment that was only able to be conducted a few times)
+\end{itemize}
