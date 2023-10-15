@@ -1415,6 +1415,14 @@ coverage).
             \begin{itemize}
                   \item Stronger than branch coverage
                         \cite[p.~433]{van_vliet_software_2000}
+                  \item I always thought the ``path'' in ``path coverage'' was
+                        a path from program start to program end, where van
+                        Vliet seems to use the more general definition (which
+                        is, albeit, sometimes valid, like in ``du-path'') of
+                        being any subset of a program's execution (see
+                        \cite[p.~420]{van_vliet_software_2000}); this leads me
+                        to some confusion in the following sections
+                        \todo{Ask about this}
                   \item The number of paths to test can be bounded based on its
                         structure and can be approached by dividing the system
                         into subgraphs and computing the bounds of each
@@ -1426,7 +1434,8 @@ coverage).
                   \item If done completely, it ``is equivalent to exhaustively
                         testing the program'' \cite[p.~421]{van_vliet_software_2000};
                         however, this seems to overlook the effect of inputs on
-                        behaviour as pointed out in \cite[p.~466-467]
+                        behaviour as pointed out in
+                        \cite[pp.~466-467]{peters_software_2000}
                         \todo{Ask about this}
                   \item Generally ``not possible'' to achieve completely due to
                         the complexity of
@@ -1486,10 +1495,21 @@ it), usually using debugger tools to check the values of variables
       \item A path from a variable's definition to a statement where it is
             still alive is called \textbf{definition-clear} (with respect to
             this variable) \cite[p.~424]{van_vliet_software_2000}
+      \item Basic block: ``[a] consecutive part[] of code that execute[s]
+            together without any branching'' \cite[p.~477]{peters_software_2000}
       \item \acf{p-use}: e.g., the use of a variable in a conditional
             \cite[p.~424]{van_vliet_software_2000}
       \item \acf{c-use}: e.g., the use of a variable in a computation or I/O
             statement \cite[p.~424]{van_vliet_software_2000}
+      \item All-use: either a \acs{p-use} or a \acs{c-use}~
+            \cite[p.~478]{peters_software_2000}
+      \item DU-path: ``a path from a variable definition to [one of] its use[s]
+            that contains no redefinition of the variable''
+            \cite[pp.~478-479]{peters_software_2000}
+      \item The three possible actions on data are defining, killing, and using;
+            ``there are a number of anomalies associated with these actions''
+            \cite[pp.~478,480]{peters_software_2000} \todo{get original source:
+                  Beizer, 1990}
 \end{itemize}
 
 Table \ref{table:data-flow-coverage-types} contains different types of data
@@ -1527,6 +1547,9 @@ their requirements; all information is adapted from
             \hline
       \end{tabularx}
 \end{table}
+
+\todo{How is All-DU-Paths coverage stronger than All-Uses coverage according to
+      \cite[p.~433]{van_vliet_software_2000}?}
 
 \subsubsection{Fault Seeding \cite[pp.~427-428]{van_vliet_software_2000}}
 
