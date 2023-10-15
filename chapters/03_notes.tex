@@ -823,6 +823,51 @@ and error-based (``based on knowledge of the typical errors that people make'').
       \item Simple, normal test cases (test-to-pass) should always be developed
             and run before more complicated, unusual test cases (test-to-fail)
             \cite[p.~66]{patton_software_2006}
+      \item Since ``there is no uniform best test technique'', it is advised to
+            use many techniques when testing \cite[p.~440]{van_vliet_software_2000}
+      \item When comparing adequacy criteria, ``criterion X is stronger than
+            criterion Y if, for all programs P and all test sets T, X-adequacy
+            implies Y-adequacy'' (the ``stronger than'' relation is also called
+            the ``subsumes'' relation) \cite[p.~432]{van_vliet_software_2000};
+            this relation only ``compares the thoroughness of test techniques,
+            not their ability to detect faults'' \cite[p.~434]{van_vliet_software_2000}
+            \todo{This should probably be explained after ``test adequacy
+                  criterion'' is defined}
+\end{itemize}
+
+\subsubsection{Testing Stages}
+\begin{itemize}
+      \item Unit/module testing: ``testing the individual modules [of a
+                        program]'' \cite[p.~438]{van_vliet_software_2000}
+      \item Integration testing: ``testing the composition of modules'';
+            done incrementally using \emph{bottom-up} and/or
+            \emph{top-down} testing \cite[pp.~438-439]{van_vliet_software_2000}
+            \begin{itemize}
+                  \item Bottom-up testing: uses \emph{test drivers}: ``tool[s]
+                        that generate[] the test environment for a component to
+                        be tested'' \cite[p.~410]{van_vliet_software_2000} by
+                        ``sending test-case data to the modules under test,
+                        read[ing] back the results, and verify[ing] that
+                        they're correct'' \cite[p.~109]{patton_software_2006}
+                  \item Top-down testing: uses \emph{test stubs}: tools that
+                        ``simulate[] the function of a component not yet
+                        available'' \cite[p.~410]{van_vliet_software_2000} by
+                        providing ``fake'' values to a given module to be
+                        tested \cite[p.~110]{patton_software_2006}
+            \end{itemize}
+      \item System testing: ``test[ing] the whole system against the user
+            documentation and requirements specification after integration
+            testing has finished'' \cite[p.~439]{van_vliet_software_2000}
+            (\cite[p.~109]{patton_software_2006} says this can also be done on
+            ``at least a major portion'' of the product); often uses random,
+            but representative, input to test reliability
+            \cite[p.~439]{van_vliet_software_2000}
+      \item Acceptance testing: Like system testing ``often performed under
+            supervision of the user organization'' that focuses on usability
+            \cite[p.~439]{van_vliet_software_2000}
+      \item Installation testing: Focuses on the portability of the product,
+            especially ``in an environment different from the one in which is
+            has been developed'' \cite[p.~439]{van_vliet_software_2000}
 \end{itemize}
 
 \subsubsection{Generating Test Cases}
@@ -1291,29 +1336,9 @@ Evaluation \cite[pp.~417-418]{van_vliet_software_2000}, Correctness Proofs
 \subsection{Dynamic White-Box (Structural) Testing
       \cite[p.~105-121]{patton_software_2006}}
 
-\begin{itemize}
-      \item ``Using information you gain from seeing what the code does and how
-            it works to determine what to test, what not to test, and how to
-            approach the testing'' \cite[p.~105]{patton_software_2006}
-      \item \emph{Mentions unit, integration, and system testing without
-                  formally describing them} \cite[p.~109]{patton_software_2006}
-            \todo{Find formal description of unit, integration, and system
-                  testing}
-      \item Two approaches for testing incrementally:
-            \begin{itemize}
-                  \item Bottom-up testing: uses \emph{test drivers}: ``tool[s]
-                        that generate[] the test environment for a component to
-                        be tested'' \cite[p.~410]{van_vliet_software_2000} by
-                        ``sending test-case data to the modules under test,
-                        read[ing] back the results, and verify[ing] that
-                        they're correct'' \cite[p.~109]{patton_software_2006}
-                  \item Top-down testing: uses \emph{test stubs}: tools that
-                        ``simulate[] the function of a component not yet
-                        available'' \cite[p.~410]{van_vliet_software_2000} by
-                        providing ``fake'' values to a given module to be
-                        tested \cite[p.~110]{patton_software_2006}
-            \end{itemize}
-\end{itemize}
+``Using information you gain from seeing what the code does and how it works to
+determine what to test, what not to test, and how to approach the testing''
+\cite[p.~105]{patton_software_2006}.
 
 \subsubsection{Code Coverage \cite[pp.~117-121]{patton_software_2006} or
       Control-Flow Coverage \cite[pp.~421-424]{van_vliet_software_2000}}
@@ -1341,34 +1366,32 @@ coverage).
 
 \begin{itemize}
       \item Statement/line coverage: ``execut[ing] every statement in the
-            program at least once''; doesn't guarantee full coverage
-            (e.g., all paths might not be taken) \cite[p.~119]{patton_software_2006}
-            or correctness \cite[p.~421]{van_vliet_software_2000}
-      \item Path coverage: ``[a]ttempting to cover all the paths in the
-            software'' \cite[p.~119]{patton_software_2006}; if done completely,
-            it ``is equivalent to exhaustively testing the program'' but is
-            generally ``not possible'' due to the complexity of loops,
-            branches, and potentially unreachable code
+            program at least once''; doesn't guarantee correctness
             \cite[p.~421]{van_vliet_software_2000}
       \item Branch coverage: attempting to, ``at each branching node in the
             control graph, \dots [choose] all possible branches \dots at least
-            once'' \cite[p.~421]{van_vliet_software_2000}
+            once''; stronger than statement coverage, but doesn't guarantee
+            correctness \cite[p.~421]{van_vliet_software_2000}
             \begin{itemize}
-                  \item the simplest form of path coverage
-                        \cite[p.~119]{patton_software_2006}
-                  \item complete branch coverage does not imply complete path
-                        coverage \todo{add source?} or correctness
-                        \cite[p.~421]{van_vliet_software_2000}
                   \item Cyclomatic-number criterion: an adequacy criterion that
                         requires that ``all linearly-independent paths are
                         covered'' \cite[p.~423]{van_vliet_software_2000};
                         results in complete branch coverage
             \end{itemize}
+      \item Path coverage: ``[a]ttempting to cover all the paths in the
+            software'' \cite[p.~119]{patton_software_2006}; stronger than
+            branch coverage \cite[p.~433]{van_vliet_software_2000} and, if done
+            completely, ``is equivalent to exhaustively testing the program''
+            (this is generally ``not possible'' due to the complexity of loops,
+            branches, and potentially unreachable code)
+            \cite[p.~421]{van_vliet_software_2000}
       \item (Multiple) condition coverage: ``takes the extra conditions on the
             branch statements into account'' (e.g., all possible inputs to a
-            Boolean expression) \cite[p.~120]{patton_software_2006}; ``also
+            Boolean expression) \cite[p.~120]{patton_software_2006}; does not
+            subsume and is not subsumed by path coverage
+            \cite[p.~433]{van_vliet_software_2000} (``also
             known as \textbf{extended branch coverage}''
-            \cite[p.~422]{van_vliet_software_2000}
+            \cite[p.~422]{van_vliet_software_2000})
 \end{itemize}
 
 \subsubsection{Data Coverage \cite[p.~114-116]{patton_software_2006}}
