@@ -770,7 +770,10 @@ can be specification, implementation, or error oriented
             described by IEEE Standard 1012 \cite[p.~411]{van_vliet_software_2000}
       \item Test Plan: ``a document describing the scope, approach, resources,
             and schedule of intended test activities'' in more detail that the
-            \acs{vnv} Plan \cite[p.~412-413]{van_vliet_software_2000}
+            \acs{vnv} Plan \cite[p.~412-413]{van_vliet_software_2000};
+            should also outline entry and exit conditions for the testing
+            activities as well as any risk sources and levels
+            \cite[p.~445]{peters_software_2000}
       \item Test Design documentation: ``specifies \dots the details of the
             test approach and identifies the associated tests''
             \cite[p.~413]{van_vliet_software_2000}
@@ -944,6 +947,9 @@ human-based trial and error required for this kind of testing
 
 The process of dividing the infinite set of test cases into a finite set that is
 just as effective (i.e., that reveals the same bugs) \cite[p.~67]{patton_software_2006}.
+The opposite of this, testing every combination of inputs, is called
+``exhaustive testing'' and is ``probably not feasible''
+\cite[p.~461]{peters_software_2000}.
 
 \paragraph{Requirements}
 \begin{itemize}
@@ -977,7 +983,10 @@ boundaries should be included in an equivalence partition, but so should
 data in between them \cite[p.~73]{patton_software_2006}. Boundary conditions
 should be tested using ``the valid data just inside the boundary,
 \dots the last possible valid data, and \dots the invalid data just outside the
-boundary'' \cite[p.~73]{patton_software_2006}.
+boundary'' \cite[p.~73]{patton_software_2006}, and values at the boundaries
+themselves should still be tested even if they occur ``with zero probability'',
+in case there actually \emph{is} a case where it can occur; this process of
+testing may reveal it \cite[p.~460]{peters_software_2000}.
 
 \subparagraph{Requirements}
 \begin{itemize}
@@ -1128,6 +1137,11 @@ For all of these tests, the values of the state variables should be verified
             \end{itemize}
 \end{itemize}
 
+\paragraph{Performance Testing}
+
+``The intent of this type of testing is to identify weak points of a software
+system and quantify its shortcomings'' \cite[p.~447]{peters_software_2000}.
+
 \paragraph{Testing States to Fail \cite[p.~84-87]{patton_software_2006}}
 
 The goal here is to try and put the program in a fail state by doing things
@@ -1170,7 +1184,16 @@ that are out of the ordinary. These include:
       \cite[pp.~91-104]{patton_software_2006}}
 
 White-box testing is also called ``glass box testing''
-\cite[p.~439]{peters_software_2000}. There are also some more specific
+\cite[p.~439]{peters_software_2000}. \cite[p.~447]{peters_software_2000} claims
+that ``structural testing subsumes white box testing'', but I am unsure if this
+is a meaningful statement; they seem to describe the same thing to me,
+especially since it says ``structure tests are aimed at exercising the internal
+logic of a software system'' and ``in white box testing \dots, using detailed
+knowledge of code, one creates a battery of tests in such a way that they
+exercise all components of the code (say, statements, branches, paths)'' on the
+same page! \todo{Ask about this}
+
+There are also some more specific
 categories of this, such as Scenario-Based
 Evaluation \cite[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
 \cite[pp.~419-420]{van_vliet_software_2000}, that could be investigated further.
@@ -1392,9 +1415,21 @@ coverage).
             \begin{itemize}
                   \item Stronger than branch coverage
                         \cite[p.~433]{van_vliet_software_2000}
+                  \item The number of paths to test can be bounded based on its
+                        structure and can be approached by dividing the system
+                        into subgraphs and computing the bounds of each
+                        individually \cite[p.~471-473]{peters_software_2000};
+                        this is less feasible if a loop is present
+                        \cite[p.~473-476]{peters_software_2000} since ``a loop
+                        often results in an infinite number of possible paths''
+                        \cite[p.~421]{van_vliet_software_2000}
                   \item If done completely, it ``is equivalent to exhaustively
-                        testing the program'' \cite[p.~421]{van_vliet_software_2000}
-                  \item Generally ``not possible'' due to the complexity of
+                        testing the program'' \cite[p.~421]{van_vliet_software_2000};
+                        however, this seems to overlook the effect of inputs on
+                        behaviour as pointed out in \cite[p.~466-467]
+                        \todo{Ask about this}
+                  \item Generally ``not possible'' to achieve completely due to
+                        the complexity of
                         loops, branches, and potentially unreachable code
                         \cite[p.~421]{van_vliet_software_2000}; even infeasible
                         paths must be checked for full path coverage
@@ -1408,6 +1443,11 @@ coverage).
                         \cite[p.~422]{van_vliet_software_2000}
                   \item does not subsume and is not subsumed by path coverage
                         \cite[p.~433]{van_vliet_software_2000}
+                  \item ``may be quite challenging'' since ``if each
+                        subcondition is viewed as a single input, then this
+                        \dots is analogous to exhaustive testing''; however,
+                        there is usually a manageable number of subconditions
+                        \cite[p.~464]{peters_software_2000}
             \end{itemize}
 \end{itemize}
 
@@ -1422,7 +1462,8 @@ data coverage:
             \hyperref[comp-errors]{computation errors}
       \item Error forcing: setting variables to specific values to see how
             errors are handled; any error forced must have a chance of
-            occurring in the real world, even if it is unlikely
+            occurring in the real world, even if it is unlikely, and as such,
+            must be double-checked for validity
             \cite[p.~116]{patton_software_2006}
 \end{itemize}
 
@@ -1521,7 +1562,8 @@ direction of a better solution!
 \subsection{Regression Testing}
 
 \begin{itemize}
-      \item Rerunning old tests to test new changes to the system
+      \item Repeating ``tests previously executed \dots at a later point in
+            development and maintenance'' \cite[p.~446]{peters_software_2000}
       \item Various levels:
             \begin{itemize}
                   \item Retest-all: ``all tests are rerun''; ``this may consume
@@ -1594,7 +1636,7 @@ engineers'' \cite[p.~72]{kanewala_metamorphic_2019}.
 \begin{itemize}
       \item Intractability: it is generally impossible to test a program
             exhaustively \cite[p.~421]{van_vliet_software_2000},
-            \cite[p.~439]{peters_software_2000}
+            \cite[p.~439,461]{peters_software_2000}
       \item Undecidability: \todo{The textbook doesn't elaborate on this?}
             \cite[p.~439]{peters_software_2000}
 \end{itemize}
