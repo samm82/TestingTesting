@@ -1390,13 +1390,23 @@ We discussed that
 generating infrastructure for reporting coverage may be a worthwhile goal, and
 that it can be known how to increase certain types of coverage (since we know
 the structure of the generated code, to some extent, beforehand), but I'm
-not sure if all of these are feasible/worthwhile to get to 100\% (e.g., line
-coverage).
+not sure if all of these are feasible/worthwhile to get to 100\% (e.g., path
+coverage \cite[p.~421]{van_vliet_software_2000}).
 
 \begin{itemize}
-      \item Statement/line coverage: ``execut[ing] every statement in the
-            program at least once''
+      \item Statement/line coverage: attempting to ``execute every statement in
+            the program at least once'' \cite[p.~119]{patton_software_2006}
             \begin{itemize}
+                  \item Weaker than \cite[p.~421]{van_vliet_software_2000} and
+                        ``only about 50\% as effective as branch coverage''
+                        \cite[p.~481]{peters_software_2000}
+                        \todo{Find original source: Miller et al., 1994}
+                  \item Requires 100\% coverage to be effective
+                        \cite[p.~481]{peters_software_2000}
+                        \todo{Find original source: Miller et al., 1994}
+                  \item ``[C]an be used at the module level with less than 5000
+                        lines of code'' \cite[p.~481]{peters_software_2000}
+                        \todo{Find original source: Miller et al., 1994}
                   \item Doesn't guarantee correctness
                         \cite[p.~421]{van_vliet_software_2000}
             \end{itemize}
@@ -1404,18 +1414,22 @@ coverage).
             control graph, \dots [choose] all possible branches \dots at least
             once'' \cite[p.~421]{van_vliet_software_2000}
             \begin{itemize}
-                  \item Stronger than statement coverage, but doesn't guarantee
-                        correctness \cite[p.~421]{van_vliet_software_2000}
+                  \item Weaker than path coverage
+                        \cite[p.~433]{van_vliet_software_2000}
+                  \item Requires at least 85\% coverage to be effective and is
+                        ``most effective \dots at the module level''
+                        \cite[p.~481]{peters_software_2000}
+                        \todo{Find original source: Miller et al., 1994}
                   \item Cyclomatic-number criterion: an adequacy criterion that
                         requires that ``all linearly-independent paths are
                         covered'' \cite[p.~423]{van_vliet_software_2000};
                         results in complete branch coverage
+                  \item Doesn't guarantee correctness
+                        \cite[p.~421]{van_vliet_software_2000}
             \end{itemize}
       \item Path coverage: ``[a]ttempting to cover all the paths in the
             software'' \cite[p.~119]{patton_software_2006}
             \begin{itemize}
-                  \item Stronger than branch coverage
-                        \cite[p.~433]{van_vliet_software_2000}
                   \item I always thought the ``path'' in ``path coverage'' was
                         a path from program start to program end, where van
                         Vliet seems to use the more general definition (which
@@ -1444,16 +1458,20 @@ coverage).
                         \cite[p.~421]{van_vliet_software_2000}; even infeasible
                         paths must be checked for full path coverage
                         \cite[p.~439]{peters_software_2000}!
+                  \item Usually ``limited to a few functions with life
+                        criticality features (medical systems, real-time
+                        controllers)'' \cite[p.~481]{peters_software_2000}
+                        \todo{Find original source: Miller et al., 1994}
             \end{itemize}
       \item (Multiple) condition coverage: ``takes the extra conditions on the
             branch statements into account'' (e.g., all possible inputs to a
             Boolean expression) \cite[p.~120]{patton_software_2006}
             \begin{itemize}
-                  \item ``also known as \textbf{extended branch coverage}''
+                  \item ``Also known as \textbf{extended branch coverage}''
                         \cite[p.~422]{van_vliet_software_2000}
-                  \item does not subsume and is not subsumed by path coverage
+                  \item Does not subsume and is not subsumed by path coverage
                         \cite[p.~433]{van_vliet_software_2000}
-                  \item ``may be quite challenging'' since ``if each
+                  \item ``May be quite challenging'' since ``if each
                         subcondition is viewed as a single input, then this
                         \dots is analogous to exhaustive testing''; however,
                         there is usually a manageable number of subconditions
