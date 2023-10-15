@@ -1183,9 +1183,11 @@ that are out of the ordinary. These include:
 \subsection{Static White-Box Testing (Structural Analysis)
       \cite[pp.~91-104]{patton_software_2006}}
 
-There are also some more specific categories of this, such as Scenario-Based
+White-box testing is also called ``glass box testing''
+\cite[p.~439]{peters_software_2000}. There are also some more specific
+categories of this, such as Scenario-Based
 Evaluation \cite[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
-\cite[pp.~419-420]{van_vliet_software_2000} that could be investigated further.
+\cite[pp.~419-420]{van_vliet_software_2000}, that could be investigated further.
 \todo{Do this!}
 
 \begin{itemize}
@@ -1383,32 +1385,44 @@ coverage).
 
 \begin{itemize}
       \item Statement/line coverage: ``execut[ing] every statement in the
-            program at least once''; doesn't guarantee correctness
-            \cite[p.~421]{van_vliet_software_2000}
+            program at least once''
+            \begin{itemize}
+                  \item Doesn't guarantee correctness
+                        \cite[p.~421]{van_vliet_software_2000}
+            \end{itemize}
       \item Branch coverage: attempting to, ``at each branching node in the
             control graph, \dots [choose] all possible branches \dots at least
-            once''; stronger than statement coverage, but doesn't guarantee
-            correctness \cite[p.~421]{van_vliet_software_2000}
+            once'' \cite[p.~421]{van_vliet_software_2000}
             \begin{itemize}
+                  \item Stronger than statement coverage, but doesn't guarantee
+                        correctness \cite[p.~421]{van_vliet_software_2000}
                   \item Cyclomatic-number criterion: an adequacy criterion that
                         requires that ``all linearly-independent paths are
                         covered'' \cite[p.~423]{van_vliet_software_2000};
                         results in complete branch coverage
             \end{itemize}
       \item Path coverage: ``[a]ttempting to cover all the paths in the
-            software'' \cite[p.~119]{patton_software_2006}; stronger than
-            branch coverage \cite[p.~433]{van_vliet_software_2000} and, if done
-            completely, ``is equivalent to exhaustively testing the program''
-            (this is generally ``not possible'' due to the complexity of loops,
-            branches, and potentially unreachable code)
-            \cite[p.~421]{van_vliet_software_2000}
+            software'' \cite[p.~119]{patton_software_2006}
+            \begin{itemize}
+                  \item Stronger than branch coverage
+                        \cite[p.~433]{van_vliet_software_2000}
+                  \item If done completely, it ``is equivalent to exhaustively
+                        testing the program'' \cite[p.~421]{van_vliet_software_2000}
+                  \item Generally ``not possible'' due to the complexity of
+                        loops, branches, and potentially unreachable code
+                        \cite[p.~421]{van_vliet_software_2000}; even infeasible
+                        paths must be checked for full path coverage
+                        \cite[p.~439]{peters_software_2000}!
+            \end{itemize}
       \item (Multiple) condition coverage: ``takes the extra conditions on the
             branch statements into account'' (e.g., all possible inputs to a
-            Boolean expression) \cite[p.~120]{patton_software_2006}; does not
-            subsume and is not subsumed by path coverage
-            \cite[p.~433]{van_vliet_software_2000} (``also
-            known as \textbf{extended branch coverage}''
-            \cite[p.~422]{van_vliet_software_2000})
+            Boolean expression) \cite[p.~120]{patton_software_2006}
+            \begin{itemize}
+                  \item ``also known as \textbf{extended branch coverage}''
+                        \cite[p.~422]{van_vliet_software_2000}
+                  \item does not subsume and is not subsumed by path coverage
+                        \cite[p.~433]{van_vliet_software_2000}
+            \end{itemize}
 \end{itemize}
 
 \subsubsection{Data Coverage \cite[p.~114-116]{patton_software_2006}}
