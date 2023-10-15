@@ -1604,22 +1604,35 @@ direction of a better solution!
 
 \subsection{Regression Testing}
 
+Repeating ``tests previously executed \dots at a later point in development and
+maintenance'' \cite[p.~446]{peters_software_2000} ``to make sure there are no
+unwanted changes [to the software's behaviour]'' (although allowing ``some
+unwanted differences to pass through'' is sometimes desired, if tedious
+\cite[p.~482]{peters_software_2000}) \cite[p.~481]{peters_software_2000}.
+
 \begin{itemize}
-      \item Repeating ``tests previously executed \dots at a later point in
-            development and maintenance'' \cite[p.~446]{peters_software_2000}
+      \item Should be done automatically \cite[p.~481]{peters_software_2000}
+      \item Its ``effectiveness \dots is expressed in terms of'':
+            \begin{enumerate}
+                  \item difficulty of test suite construction and maintenance
+                  \item reliability of the testing system
+                        \cite[pp.~481-482]{peters_software_2000}
+            \end{enumerate}
       \item Various levels:
             \begin{itemize}
                   \item Retest-all: ``all tests are rerun''; ``this may consume
                         a lot of time and effort''
-                        \cite[p.~411]{van_vliet_software_2000} (although
-                        hopefully not, since we'll be automating testing)
+                        \cite[p.~411]{van_vliet_software_2000} (\emph{shouldn't
+                              take too much effort, since it will be automated,
+                              but may lead to longer CI runtimes depending on
+                              the scope of generated tests})
                   \item Selective retest: ``only some of the tests are rerun''
                         after being selected by a \emph{regression test
                               selection technique}; ``[v]arious strategies have
                         been proposed for doing so; few of them have been
                         implemented yet'' \cite[p.~411]{van_vliet_software_2000}
+                        \todo{Investigate these}
             \end{itemize}
-      \item \emph{Does not go into much detail} \todo{Investigate}
 \end{itemize}
 
 \subsection{\acf{mt}}
