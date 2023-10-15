@@ -700,36 +700,6 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
             \cite[p.~27]{stuikys_taxonomy_2013}
 \end{itemize}
 
-\section{Roadblocks to Testing Scientific Software
-  \cite[p.~67]{kanewala_metamorphic_2019}}
-\label{chap:notes:sec:sci-testing-roadblocks}
-\begin{itemize}
-      \item ``Correct answers are often unknown'': if the results were already
-            known, there would be no need to develop software to model them
-            \cite[p.~67]{kanewala_metamorphic_2019}
-      \item ``Practically difficult to validate the computed output'': complex
-            calculations and outputs are difficult to verify
-            \cite[p.~67]{kanewala_metamorphic_2019}
-      \item ``Inherent uncertainties'': since scientific software models
-            scenarios that occur in a chaotic and imperfect world, not every
-            factor can be accounted for \cite[p.~67]{kanewala_metamorphic_2019}
-      \item ``Choosing suitable tolerances'': difficult to decide what
-            tolerance(s) to use when dealing with floating-point numbers
-            \cite[p.~67]{kanewala_metamorphic_2019}
-      \item ``Incompatible testing tools'': while scientific software is often
-            written in languages like FORTRAN, testing tools are often written
-            int languages like Java or C++ \cite[p.~67]{kanewala_metamorphic_2019}
-\end{itemize}
-
-Out of this list, only the first two apply. The scenarios modelled by Drasil
-are idealized and ignore uncertainties like air resistance, wind direction,
-and gravitational fluctuations. There are not any instances where special
-consideration for floating-point arithmetic must be taken; the default
-tolerance used for relevant testing frameworks has been used
-\todo{Add example} and is likely sufficient for future testing. On a related
-note, the scientific software we are trying to test is already generated in
-languages with widely-used testing frameworks. \todo{Add source(s)?}
-
 \section{Software Metrics}
 \label{chap:notes:sec:software-metrics}
 
@@ -763,6 +733,9 @@ white-/black-box, \cite[p.~398-399]{van_vliet_software_2000} gives a
 classification ``according to the criterion used to measure the adequacy of a
 set of test cases'': coverage-based, fault-based (includes mutation testing),
 and error-based (``based on knowledge of the typical errors that people make'').
+Testing approaches can also be grouped based on where test data comes from and
+can be specification, implementation, or error oriented
+\cite[p.~440]{peters_software_2000}.
 
 \subsection{Definitions}
 
@@ -840,10 +813,21 @@ and error-based (``based on knowledge of the typical errors that people make'').
                   criterion'' is defined}
 \end{itemize}
 
+\subsubsection{Steps to Testing \cite[p.~443]{peters_software_2000}}
+\begin{enumerate}
+      \item Identify the goal(s) of the test
+      \item Decide on an approach
+      \item Develop the tests
+      \item Determine the expected results
+      \item Run the tests
+      \item Compare the expected results to the actual results
+\end{enumerate}
+
 \subsubsection{Testing Stages}
 \begin{itemize}
       \item Unit/module testing: ``testing the individual modules [of a
-                        program]'' \cite[p.~438]{van_vliet_software_2000}
+                        program]'' \cite[p.~438]{van_vliet_software_2000};
+            also called ``component testing'' \cite[p.~444]{peters_software_2000}
       \item Integration testing: ``testing the composition of modules'';
             done incrementally using \emph{bottom-up} and/or
             \emph{top-down} testing \cite[pp.~438-439]{van_vliet_software_2000}
@@ -872,7 +856,9 @@ and error-based (``based on knowledge of the typical errors that people make'').
             \cite[p.~439]{van_vliet_software_2000}
       \item Installation testing: Focuses on the portability of the product,
             especially ``in an environment different from the one in which is
-            has been developed'' \cite[p.~439]{van_vliet_software_2000}
+            has been developed'' \cite[p.~439]{van_vliet_software_2000}; not
+            one of the four levels of testing identified by the IEEE standard
+            \cite[p.~445]{peters_software_2000}
 \end{itemize}
 
 \subsubsection{Generating Test Cases}
@@ -1602,3 +1588,43 @@ engineers'' \cite[p.~72]{kanewala_metamorphic_2019}.
             faults in mutated versions of a program (about 90\% in this case)
             \cite[p.~71]{kanewala_metamorphic_2019}
 \end{itemize}
+
+\section{Roadblocks to Testing}
+
+\begin{itemize}
+      \item Intractability: it is generally impossible to test a program
+            exhaustively \cite[p.~421]{van_vliet_software_2000},
+            \cite[p.~439]{peters_software_2000}
+      \item Undecidability: \todo{The textbook doesn't elaborate on this?}
+            \cite[p.~439]{peters_software_2000}
+\end{itemize}
+
+\subsection{Roadblocks to Testing Scientific Software
+      \cite[p.~67]{kanewala_metamorphic_2019}}
+\label{chap:notes:sec:sci-testing-roadblocks}
+\begin{itemize}
+      \item ``Correct answers are often unknown'': if the results were already
+            known, there would be no need to develop software to model them
+            \cite[p.~67]{kanewala_metamorphic_2019}
+      \item ``Practically difficult to validate the computed output'': complex
+            calculations and outputs are difficult to verify
+            \cite[p.~67]{kanewala_metamorphic_2019}
+      \item ``Inherent uncertainties'': since scientific software models
+            scenarios that occur in a chaotic and imperfect world, not every
+            factor can be accounted for \cite[p.~67]{kanewala_metamorphic_2019}
+      \item ``Choosing suitable tolerances'': difficult to decide what
+            tolerance(s) to use when dealing with floating-point numbers
+            \cite[p.~67]{kanewala_metamorphic_2019}
+      \item ``Incompatible testing tools'': while scientific software is often
+            written in languages like FORTRAN, testing tools are often written
+            int languages like Java or C++ \cite[p.~67]{kanewala_metamorphic_2019}
+\end{itemize}
+
+Out of this list, only the first two apply. The scenarios modelled by Drasil
+are idealized and ignore uncertainties like air resistance, wind direction,
+and gravitational fluctuations. There are not any instances where special
+consideration for floating-point arithmetic must be taken; the default
+tolerance used for relevant testing frameworks has been used
+\todo{Add example} and is likely sufficient for future testing. On a related
+note, the scientific software we are trying to test is already generated in
+languages with widely-used testing frameworks. \todo{Add source(s)?}
