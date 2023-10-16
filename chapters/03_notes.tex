@@ -861,7 +861,7 @@ can be specification, implementation, or error oriented
                               note is its relative ease ``to test paths'' and
                               ``to plan and control''
                               \cite[p.~490]{peters_software_2000}
-                              \todo{Ask about this}}
+                              \qtodo{Bring up!}}
                   \item Sandwich testing: ``combines the ideas of bottom-up and
                         top-down testing by defining a certain target layer in
                         the hierarchy of the modules'' and working towards it
@@ -1208,12 +1208,12 @@ that are out of the ordinary. These include:
 White-box testing is also called ``glass box testing''
 \cite[p.~439]{peters_software_2000}. \cite[p.~447]{peters_software_2000} claims
 that ``structural testing subsumes white box testing'', but I am unsure if this
-is a meaningful statement; they seem to describe the same thing to me,
+is a meaningful statement; they seem to describe the same thing to me, \qtodo{Is this true?}
 especially since it says ``structure tests are aimed at exercising the internal
 logic of a software system'' and ``in white box testing \dots, using detailed
 knowledge of code, one creates a battery of tests in such a way that they
 exercise all components of the code (say, statements, branches, paths)'' on the
-same page! \todo{Ask about this}
+same page!
 
 There are also some more specific
 categories of this, such as Scenario-Based
@@ -1452,16 +1452,15 @@ coverage \cite[p.~421]{van_vliet_software_2000}).
                         \cite[p.~421]{van_vliet_software_2000}
             \end{itemize}
       \item Path coverage: ``[a]ttempting to cover all the paths in the
-            software'' \cite[p.~119]{patton_software_2006}
+            software'' \cite[p.~119]{patton_software_2006};
+            I always thought the ``path'' in ``path coverage'' was
+            a path from program start to program end, but van
+            Vliet seems to use the more general definition (which
+            is, albeit, sometimes valid, like in ``du-path'') of
+            being any subset of a program's execution (see
+            \cite[p.~420]{van_vliet_software_2000})
+            \qtodo{How do we decide on our definition?}
             \begin{itemize}
-                  \item I always thought the ``path'' in ``path coverage'' was
-                        a path from program start to program end, where van
-                        Vliet seems to use the more general definition (which
-                        is, albeit, sometimes valid, like in ``du-path'') of
-                        being any subset of a program's execution (see
-                        \cite[p.~420]{van_vliet_software_2000}); this leads me
-                        to some confusion in the following sections
-                        \todo{Ask about this}
                   \item The number of paths to test can be bounded based on its
                         structure and can be approached by dividing the system
                         into subgraphs and computing the bounds of each
@@ -1475,7 +1474,7 @@ coverage \cite[p.~421]{van_vliet_software_2000}).
                         however, this seems to overlook the effect of inputs on
                         behaviour as pointed out in
                         \cite[pp.~466-467]{peters_software_2000}
-                        \todo{Ask about this}
+                        \qtodo{Bring up!}
                   \item Generally ``not possible'' to achieve completely due to
                         the complexity of
                         loops, branches, and potentially unreachable code
@@ -1592,7 +1591,7 @@ their requirements; all information is adapted from
       \end{tabularx}
 \end{table}
 
-\todo{How is All-DU-Paths coverage stronger than All-Uses coverage according to
+\qtodo{How is All-DU-Paths coverage stronger than All-Uses coverage according to
       \cite[p.~433]{van_vliet_software_2000}?}
 
 \subsubsection{Fault Seeding \cite[pp.~427-428]{van_vliet_software_2000}}
@@ -1717,8 +1716,8 @@ engineers'' \cite[p.~72]{kanewala_metamorphic_2019}.
       \item Intractability: it is generally impossible to test a program
             exhaustively \cite[p.~421]{van_vliet_software_2000},
             \cite[p.~439,461]{peters_software_2000}
-      \item Undecidability: \todo{The textbook doesn't elaborate on this?}
-            \cite[p.~439]{peters_software_2000}
+      \item Undecidability: \cite[p.~439]{peters_software_2000}
+            \qtodo{The textbook doesn't elaborate on this?}
 \end{itemize}
 
 \subsection{Roadblocks to Testing Scientific Software
