@@ -18,6 +18,10 @@ system_requirements:
 	@echo "  - InkScape (for SVG-based figures)"
 
 build: # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+# Attempted to convert the following find and replace working in VS Code:
+# ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
+# To a Makefile rule unsuccessfully (grep not finding tildes):
+# grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
 	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode thesis.tex --shell-escape
 	cp build/thesis.pdf thesis.pdf
 
