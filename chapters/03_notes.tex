@@ -1242,7 +1242,9 @@ Evaluation \cite[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
             \cite[pp.~413-414]{van_vliet_software_2000}
 \end{itemize}
 
-\subsubsection{Formal Reviews \cite[p.~92-95]{patton_software_2006}}
+\subsubsection{Reviews \cite[pp.~92-95]{patton_software_2006},
+      \cite[pp.~415-417]{van_vliet_software_2000},
+      \cite[pp.~482-485]{peters_software_2000}}
 
 \begin{itemize}
       \item ``The process under which static white-box testing is performed''
@@ -1275,35 +1277,45 @@ Evaluation \cite[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
 
       \item Many forms:
             \begin{itemize}
-                  \item Peer Review: Includes the four main parts of a formal
-                        review, but informally and at a smaller scale
+                  \item Peer Review: The most informal and at the smallest scale
                         \cite[p.~94]{patton_software_2006}. One variation is to
                         have each person submit ``a `best' program and one of
                         lesser quality'', randomly distribute all programs to
                         be assessed by two people in the group, and return all
-                        feedback anonymously to its author
+                        feedback anonymously to the appropriate developer
                         \cite[p.~414]{van_vliet_software_2000}
                   \item Walkthrough: The author of the code presents it line
                         by line to a small group that ``question anything that
                         looks suspicious'' \cite[p.~95]{patton_software_2006};
                         this is done by using test data to ``walk through''
                         the execution of the program
-                        \cite[p.~416]{van_vliet_software_2000}
+                        \cite[p.~416]{van_vliet_software_2000}. A more
+                        structured walkthrough may have specific roles
+                        (presenter, coordinator, secretary, maintenance oracle,
+                        standards bearer, and user representative)
+                        \cite[p.~484]{peters_software_2000}
                   \item Inspection: Someone who is \emph{not} the author of the
                         code presents it to a small group of people
                         \cite[p.~95]{patton_software_2006}; the author
-                        should be ``a largely silent observer''
+                        should be ``a largely silent observer'' who
+                        ``may be consulted by the inspectors''
                         \cite[p.~415]{van_vliet_software_2000}. Each member has
                         a role, which may be tied to a different perspective
-                        (e.g., user) \cite[p.~95]{patton_software_2006}.
+                        (e.g., designer, implementer, tester,
+                        \cite[p.~439]{peters_software_2000} user, or product
+                        support person) \cite[p.~95]{patton_software_2006}.
                         Changes are made based on issues identified \emph{after}
                         the inspection \cite[p.~415]{van_vliet_software_2000},
                         and a reinspection may take place
-                        \cite[p.~95]{patton_software_2006}.
+                        \cite[p.~95]{patton_software_2006}; one guideline is to
+                        reinspect \emph{100\%} of the code ``[i]f more than 5\%
+                        of the material inspected has been reworked''
+                        \cite[p.~483]{peters_software_2000}.
             \end{itemize}
 
-      \item Could be used to evaluate code written for generation, as well as
-            for the code that is generated
+      \item \emph{Could be used to evaluate Drasil and/or generated code, but
+                  couldn't be automated due to the human element}
+
 \end{itemize}
 
 \subsubsection{Coding Standards and Guidelines \cite[p.~96-99]{patton_software_2006}}
