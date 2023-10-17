@@ -684,7 +684,7 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
             effort and design put in at the beginning of the process later pay
             off potentially large dividends that are not seen right away;
             ``most \dots programmers and designers \dots like to reuse the
-            existing software artefacts, but not much is done and [sic]
+            existing software artefacts \todo{British}, but not much is done and [sic]
             invested into designing for reuse'' \cite[p.~26]{stuikys_taxonomy_2013}
             (example, meta-programming was proposed by McIlroy in 1968 but
             ``software factories have not become a reality \dots partly due to
@@ -731,7 +731,8 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
 While \cite{patton_software_2006} groups testing into static/dynamic and
 white-/black-box, \cite[pp.~398-399]{van_vliet_software_2000} gives a
 classification ``according to the criterion used to measure the adequacy of a
-set of test cases'': coverage-based, fault-based (includes mutation testing),
+set of test cases'': coverage-based, fault-based (includes
+\nameref{chap:notes:sec:mutation-testing}),
 and error-based (``based on knowledge of the typical errors that people make'').
 Testing approaches can also be grouped based on where test data comes from and
 can be specification, implementation, or error oriented
@@ -759,6 +760,13 @@ can be specification, implementation, or error oriented
             during or at the end of the development process to determine
             whether it satisfies specified requirements''
             \cite[p.~400]{van_vliet_software_2000}
+      \item Test Suite Reduction: the process of reducing the size of a test
+            suite while maintaining the same coverage
+            \cite[p.~519]{barr_oracle_2015}; can be accomplished through
+            \nameref{chap:notes:sec:mutation-testing}
+      \item Test Case Reduction: the process of ``removing side-effect free
+            functions'' from an individual test case to ``reduc[e] test oracle
+            costs'' \cite[p.~519]{barr_oracle_2015}
       \item Probe: ``a statement inserted into a program'' for the purpose of
             dynamic testing \cite[p.~438]{peters_software_2000}
 \end{itemize}
@@ -884,6 +892,45 @@ can be specification, implementation, or error oriented
             has been developed'' \cite[p.~439]{van_vliet_software_2000}; not
             one of the four levels of testing identified by the IEEE standard
             \cite[p.~445]{peters_software_2000}
+\end{itemize}
+
+\subsubsection{Test Oracles}
+``A \emph{test oracle} is a predicate that determines whether a given test
+activity sequence is an acceptable behaviour of the SUT [System Under Test] or
+not'' \cite[p.~509]{barr_oracle_2015}. They can either be ``deterministic''
+(returning a Boolean value) or ``probabilistic'' (returning ``a real number in
+the closed interval [0, 1]'') \cite[p.~509]{barr_oracle_2015}. Probabilistic
+test oracles can be used to reduce the computation cost (since test oracles
+are ``typically computationally expensive'') \cite[p.~509]{barr_oracle_2015}
+or in ``situations where some degree of imprecision can be tolerated'' since
+they ``offer a probability that [a given] test case is acceptable''
+\cite[p.~510]{barr_oracle_2015}. They can be grouped into four categories:
+
+\begin{itemize}
+      \item Specified test oracle: ``judge[s] all behavioural aspects of a
+            system with respect to a given formal specification''
+            \cite[p.~510]{barr_oracle_2015}
+      \item Derived test oracle: any ``artefact[] \todo{British} from which a
+            test oracle may be derived\em for instance, a previous version of
+            the system'' or ``program documentation''; this includes
+            \nameref{chap:notes:sec:regression-testing},
+            \nameref{chap:notes:sec:metamorphic-testing}
+            \cite[p.~510]{barr_oracle_2015}, and invariant detection (either
+            known in advance or ``learned from the program'')
+            \cite[p.~516]{barr_oracle_2015}; \emph{This is like the assertions
+                  we discussed earlier; documentation enforced by code!}
+      \item Pseudo-oracle: a type of derived test oracle that is ``an
+            alternative version of the program produced independently'' (by a
+            different team, in a different language, etc.)
+            \cite[p.~515]{barr_oracle_2015}. \emph{We could potentially use the
+                  programs generated in other languages as pseudo-oracles!}
+      \item Implicit test oracles: detect ``'obvious' faults such as a program
+            crash'' (potentially due to a null pointer, deadlock, memory leak,
+            etc.) \cite[p.~510]{barr_oracle_2015}
+      \item ``Lack of an automated test oracle'': for example; a human oracle
+            generating sample data that is ``realistic'' and ``valid'',
+            \cite[pp.~510-511]{barr_oracle_2015}, or crowdsourcing
+            \cite[p.~520]{barr_oracle_2015}
 \end{itemize}
 
 \subsubsection{Generating Test Cases}
@@ -1617,6 +1664,7 @@ careful consideration as to which faults are introduced and how
 \cite[p.~427]{van_vliet_software_2000}.
 
 \subsubsection{Mutation Testing \cite[pp.~428-429]{van_vliet_software_2000}}
+\label{chap:notes:sec:mutation-testing}
 
 ``A (large) number of variants of a program is generated'', each differing from
 the original ``slightly'' (e.g., by deleting a statement or replacing an
@@ -1638,6 +1686,7 @@ of a test set, mutation testing can also point the developer(s) in the
 direction of a better solution!
 
 \subsection{Regression Testing}
+\label{chap:notes:sec:regression-testing}
 
 Repeating ``tests previously executed \dots at a later point in development and
 maintenance'' \cite[p.~446]{peters_software_2000} ``to make sure there are no
@@ -1646,7 +1695,12 @@ unwanted differences to pass through'' is sometimes desired, if tedious
 \cite[p.~482]{peters_software_2000}) \cite[p.~481]{peters_software_2000}.
 
 \begin{itemize}
-      \item Should be done automatically \cite[p.~481]{peters_software_2000}
+      \item Should be done automatically \cite[p.~481]{peters_software_2000};
+            ``[t]est suite augmentation techniques specialise \todo{British} in
+            identifying and generating'' new tests based on changes ``that add
+            new features'' \todo{Investigate!}, but they could be extended to
+            also augment ``the expected output'' and ``the existing
+            \emph{oracles}'' \cite[p.~516]{barr_oracle_2015}
       \item Its ``effectiveness \dots is expressed in terms of'':
             \begin{enumerate}
                   \item difficulty of test suite construction and maintenance
@@ -1738,7 +1792,9 @@ engineers'' \cite[p.~72]{kanewala_metamorphic_2019}.
 \begin{itemize}
       \item ``Correct answers are often unknown'': if the results were already
             known, there would be no need to develop software to model them
-            \cite[p.~67]{kanewala_metamorphic_2019}
+            \cite[p.~67]{kanewala_metamorphic_2019}; in other words, complete
+            test oracles don't exist ``in all but the most trivial cases''
+            \cite[p.~510]{barr_oracle_2015}
       \item ``Practically difficult to validate the computed output'': complex
             calculations and outputs are difficult to verify
             \cite[p.~67]{kanewala_metamorphic_2019}
