@@ -1,6 +1,13 @@
 % To prevent VSCode from aligning things weirdly
 \def\typeHead{Testing\\Approach}
 
+\def\yes{\textcolor{ForestGreen}{Yes}}
+\def\tbd{\textcolor{YellowOrange}{TBD}}
+\def\part{\textcolor{YellowOrange}{Partially}}
+\def\hard{\textcolor{YellowOrange}{With\\Difficulty}}
+\def\idk{\textcolor{YellowOrange}{???}}
+\def\no{\textcolor{Red}{No}}
+
 \begin{table}[hbtp!]
     \centering
     \caption{Testing Requirements}
@@ -10,14 +17,14 @@
         \rowcolor{McMasterMediumGrey}
         \thead{\typeHead}       & \thead{Requirements}                         & \thead{In Drasil?} & \thead{Addable?} \\
         \hline
-        Unit testing            & Code modules and their specifications        & ??                 & ??               \\
-        Integration testing     & Code modules and their interfaces            & ??                 & ??               \\
+        Unit testing            & Code modules and their specifications        & \yes               & \yes             \\
+        Integration testing     & Code modules and their interfaces            & \yes               & \idk             \\
         System testing          & Requirements specification; most of the code
-                                & ??                                           & ??                                    \\
-        Acceptance testing      & Customer requirements and feedback           & ??                 & ??               \\
+                                & \yes                                         & \yes                                  \\
+        Acceptance testing      & Customer requirements and feedback           & \no                & \part            \\
         Installation testing    & Algorithm for installation; environments to
         test in; method to check
-        successful installation & ??                                           & ??                                    \\
+        successful installation & \part                                        & \yes ?                                \\
         \hline
     \end{tabularx}
 \end{table}
