@@ -17,7 +17,7 @@ system_requirements:
 	@echo "  - Pygments (for code snippet syntax highlighting, installed with Python/pip)"
 	@echo "  - InkScape (for SVG-based figures)"
 
-build: # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+build: notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
