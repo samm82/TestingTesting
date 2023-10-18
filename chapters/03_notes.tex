@@ -1640,7 +1640,7 @@ their requirements; all information is adapted from
       \begin{tabularx}{\textwidth}{|>{\hsize=0.65\hsize}X|>{\hsize=1.35\hsize}X|}
             \hline
             \rowcolor{McMasterMediumGrey}
-            \thead{Criteria}         & \thead{Requirements}                \\
+            \thead{Criteria}          & \thead{Requirements}                 \\
             \hline
             All-defs coverage         & Each definition to be used at least
             once                                                             \\
@@ -1796,8 +1796,12 @@ engineers'' \cite[p.~72]{kanewala_metamorphic_2019}.
       \item Intractability: it is generally impossible to test a program
             exhaustively \cite[p.~421]{van_vliet_software_2000},
             \cite[pp.~439,461]{peters_software_2000}
-      \item Undecidability: \cite[p.~439]{peters_software_2000}
-            \qtodo{The textbook doesn't elaborate on this?}
+      \item Undecidability \cite[p.~439]{peters_software_2000}: it is
+            impossible to know certain properties about a program, such as if
+            it will halt (i.e., the Halting Problem
+            \cite[p.~4]{gurfinkel_testing_2017}), so ``automatic testing
+            can't be guaranteed to always work'' for all properties
+            \cite{nelson_formal_1999} \todo{Add paragraph/section number?}
 \end{itemize}
 
 \subsection{Roadblocks to Testing Scientific Software
