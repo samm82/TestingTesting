@@ -25,6 +25,14 @@ build: # standard build -- '-output-directory=build' is a special name and is re
 	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode thesis.tex --shell-escape
 	cp build/thesis.pdf thesis.pdf
 
+notes: # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+# Attempted to convert the following find and replace working in VS Code:
+# ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
+# To a Makefile rule unsuccessfully (grep not finding tildes):
+# grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
+	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode notes.tex --shell-escape
+	cp build/notes.pdf notes.pdf
+
 debug: # for finding hard issues, this is an interactive version of 'build'
 	latexmk -output-directory=build -pdflatex=lualatex -pdf thesis.tex --shell-escape
 
