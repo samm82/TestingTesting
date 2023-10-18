@@ -1,14 +1,23 @@
+% To prevent VSCode from aligning things weirdly
+\def\typeHead{Testing\\Approach}
+
 \begin{table}[hbtp!]
     \centering
     \caption{Testing Requirements}
     \label{tab:testReqs}
-    % \begin{tabularx}{\textwidth}{|>{\hsize=0.65\hsize}X|>{\hsize=1.35\hsize}X|}
-    \begin{tabularx}{\textwidth}{|l|X|l|l|}
+    \begin{tabularx}{\textwidth}{|p{0.14\textwidth}|X|c|c|}
         \hline
         \rowcolor{McMasterMediumGrey}
-        \textbf{Testing Approach} & \textbf{Requirements} & \textbf{In Drasil?} & \textbf{Addable?} \\
+        \thead{\typeHead}       & \thead{Requirements}                         & \thead{In Drasil?} & \thead{Addable?} \\
         \hline
-        test                      & req                   & in                  & addable           \\
+        Unit testing            & Code modules and their specifications        & ??                 & ??               \\
+        Integration testing     & Code modules and their interfaces            & ??                 & ??               \\
+        System testing          & Requirements specification; most of the code
+                                & ??                                           & ??                                    \\
+        Acceptance testing      & Customer requirements and feedback           & ??                 & ??               \\
+        Installation testing    & Algorithm for installation; environments to
+        test in; method to check
+        successful installation & ??                                           & ??                                    \\
         \hline
     \end{tabularx}
 \end{table}
