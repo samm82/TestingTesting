@@ -33,7 +33,10 @@
 \usepackage{braket}
 
 \usepackage{makecell, tabularx}
+\renewcommand\theadalign{cc}
 \renewcommand\theadfont{\bfseries}
+\renewcommand\tabularxcolumn[1]{m{#1}}
+\renewcommand{\arraystretch}{1.2}
 
 % Since LaTeX doesn't, and many fonts rarely, fully support unicode, we need to
 % manually create characters to replace missing glyphs.
