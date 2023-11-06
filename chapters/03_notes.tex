@@ -1541,12 +1541,14 @@ coverage \cite[p.~421]{van_vliet_software_2000}).
                         \cite[pp.~473-476]{peters_software_2000} since ``a loop
                         often results in an infinite number of possible paths''
                         \cite[p.~421]{van_vliet_software_2000}
-                  \item If done completely, it ``is equivalent to exhaustively
-                        testing the program'' \cite[p.~421]{van_vliet_software_2000};
-                        however, this seems to overlook the effect of inputs on
+                  \item van Vliet claims that if this is done completely, it
+                        ``is equivalent to exhaustively testing the program''
+                        \cite[p.~421]{van_vliet_software_2000};
+                        however, this overlooks the effect of inputs on
                         behaviour as pointed out in
-                        \cite[pp.~466-467]{peters_software_2000}
-                        \qtodo{Bring up!}
+                        \cite[pp.~466-467]{peters_software_2000}. Exhaustive
+                        testing requires both full path coverage \emph{and}
+                        every input to be checked
                   \item Generally ``not possible'' to achieve completely due to
                         the complexity of
                         loops, branches, and potentially unreachable code
