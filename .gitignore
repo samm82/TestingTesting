@@ -4,3 +4,5 @@ build/
 *.aux
 *.fls
 *.fdb\_latexmk
+
+~$*
