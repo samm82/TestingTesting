@@ -727,15 +727,22 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
 \section{Software Testing}
 \label{chap:notes:sec:software-testing}
 
-While \cite{patton_software_2006} groups testing into static/dynamic and
-white-/black-box, \cite[pp.~398-399]{van_vliet_software_2000} gives a
-classification ``according to the criterion used to measure the adequacy of a
-set of test cases'': coverage-based, fault-based (includes
-\nameref{chap:notes:sec:mutation-testing}),
-and error-based (``based on knowledge of the typical errors that people make'').
-Testing approaches can also be grouped based on where test data comes from and
-can be specification, implementation, or error oriented
-\cite[p.~440]{peters_software_2000}.
+\subsection{Software Testing Taxonomies, Ontologies, and State of Practice}
+
+Types of software testing can be divided into the following groups of
+categories (note that these are not mutually exclusive):
+
+\begin{itemize}
+      \item Execution of code: static or dynamic
+            \cite[p.~53]{patton_software_2006}
+      \item Visibility of code: white- or black-box
+            \cite[p.~53]{patton_software_2006}
+      \item Adequacy criterion: coverage-, fault-, or error-based
+            (``based on knowledge of the typical errors that people make'')
+            \cite[pp.~398-399]{van_vliet_software_2000}
+      \item Source of test data: specification-, implementation-, or
+            error-oriented \cite[p.~440]{peters_software_2000}
+\end{itemize}
 
 \subsection{Information Required for Different Types of Testing}
 
