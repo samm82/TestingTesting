@@ -735,8 +735,9 @@ categories (note that these are not mutually exclusive):
 \begin{itemize}
       \item Execution of code: static or dynamic
             \cite[p.~53]{patton_software_2006}
-      \item Visibility of code: black- or white-box (functional or structural)
-            \cite[p.~53]{patton_software_2006}, \cite[p.~69]{perry_effective_2006}
+      \item Visibility of code: black-, white-, or gray-box (functional,
+            structural, or a mix of the two)
+            \cite[pp.~53, 218]{patton_software_2006}, \cite[p.~69]{perry_effective_2006}
       \item Stage of testing: unit, integration, system, or acceptance
             \cite{patton_software_2006}, \cite{perry_effective_2006},
             \cite{peters_software_2000} (sometimes includes installation
@@ -1749,6 +1750,14 @@ while the modified program [mutant] yielded the right result''
 \cite[p.~432]{van_vliet_software_2000}! In addition to revealing shortcomings
 of a test set, mutation testing can also point the developer(s) in the
 direction of a better solution!
+
+\subsection{Gray-Box Testing \cite[pp.~218-220]{patton_software_2006}}
+A type of testing where ``you still test the software as a black-box, but you
+supplement the work by taking a peek (not a full look, as in white-box testing)
+at what makes the software work'' \cite[p.~218]{patton_software_2006}. An
+example of this is looking at HTML code and checking the tags used since
+``HTML doesn't execute or run, it just determines how text and graphics appear
+onscreen'' \cite[p.~220]{patton_software_2006}.
 
 \subsection{Regression Testing}
 \label{chap:notes:sec:regression-testing}
