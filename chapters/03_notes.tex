@@ -729,6 +729,26 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
 
 \subsection{Software Testing Taxonomies, Ontologies, and State of Practice}
 
+There are many different concepts involved with software testing;
+\cite{barbosa_towards_2006} gives the following: testing process, phase,
+artifact, step, procedure, and resource \cite[p.~2]{barbosa_towards_2006},
+as well as the relations between them \cite[Fig.~2]{barbosa_towards_2006}
+(see also \cite[Fig.~1]{borges_using_2009}, which I could only find as an
+example of an ontology in an otherwise unrelated paper).
+Particular things of note:
+
+\begin{itemize}
+      \item The only testing phases described are unit, integration, and
+            regression testing \cite[p.~3]{barbosa_towards_2006}
+      \item The role of a testing artifact is not specified; requirements,
+            drivers, and source code are all treated the same with no
+            distinction \cite[p.~3]{barbosa_towards_2006}
+      \item ``Testing procedures can be categorized in testing methods,
+            testing guidances and testing techniques'', and ``functional,
+            structural, error-based and state-based'' are eaxmples of
+            testing techniques  \cite[p.~3]{barbosa_towards_2006}
+\end{itemize}
+
 Types of software testing can be divided into the following groups of
 categories (note that these are not mutually exclusive):
 
@@ -741,7 +761,8 @@ categories (note that these are not mutually exclusive):
       \item Stage of testing: unit, integration, system, or acceptance
             \cite{patton_software_2006}, \cite{perry_effective_2006},
             \cite{peters_software_2000} (sometimes includes installation
-            \cite[p.~439]{van_vliet_software_2000})
+            \cite[p.~439]{van_vliet_software_2000} or regression
+            \cite[p.~3]{barbosa_towards_2006})
       \item Goal of testing: verification or validation
             \cite[pp.~69-70]{perry_effective_2006}
       \item Source of test data: specification-, implementation-, or
