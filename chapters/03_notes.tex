@@ -729,6 +729,13 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
 
 \subsection{Software Testing Taxonomies, Ontologies, and State of Practice}
 
+One thing we may want to consider when building a taxonomy/ontology is the
+semantic difference between related terms. For example, one ontology found
+that the term ``\,`IntegrationTest' is a kind of Context (with
+semantic of stage, but not a kind of Activity)'' while ``\,`IntegrationTesting'
+has semantic of Level-based Testing that is a kind of Testing Activity [or]
+\dots of Test strategy'' \cite[p.~157]{tebes_systematic_2019}.
+
 There are many different concepts involved with software testing;
 \cite{barbosa_towards_2006} gives the following: testing process, phase,
 artifact, step, procedure, and resource \cite[p.~2]{barbosa_towards_2006},
@@ -745,11 +752,47 @@ Particular things of note:
             distinction \cite[p.~3]{barbosa_towards_2006}
       \item ``Testing procedures can be categorized in testing methods,
             testing guidances and testing techniques'', and ``functional,
-            structural, error-based and state-based'' are eaxmples of
+            structural, error-based and state-based'' are examples of
             testing techniques  \cite[p.~3]{barbosa_towards_2006}
 \end{itemize}
 
-Types of software testing can be divided into the following groups of
+Most ontologies I can find seem to focus on the high-level testing process
+rather than the testing techniques themselves. For example, the terms and
+definitions \cite{tebes_testtdo_terms_definitions_vfinalpdf_2020}
+from TestTDO \cite{tebes_testtdo_2020} provides \emph{some} definitions of
+testing techniques, but mainly focuses on parts of the testing process
+(e.g., test goal, test plan, testing role, testable entity) and how they relate
+to one another.
+
+One software testing model developed by the \acf{qai} includes the test
+environment (``conditions \dots
+that both enable and constrain how testing is performed'', including mission,
+goals, strategy, ``management support, resources, work processes, tools,
+motivation''), test process (testing ``standards and procedures''), and tester
+competency (``skill sets needed to test software in a test environment'')
+\cite[pp.~5-6]{perry_effective_2006}.
+
+\cite{unterkalmsteiner_taxonomy_2014} provides a foundation to allow one ``to
+classify and characterize alignment research and solutions that focus on the
+boundary between [requirements engineering and software testing]'' but ``does
+not aim at providing a systematic and exhaustive state-of-the-art survey of
+[either domain]'' \cite[p.~A:2]{unterkalmsteiner_taxonomy_2014}.
+
+Another source
+introduced the notion of an ``intervention'': ``an act performed (e.g. use of a
+technique or a process change) to adapt testing to a specific context, to solve
+a test issue, to diagnose testing or to improve testing''
+\cite[p.~1]{engström_mapping_2015} and noted that ``academia tend to focus on
+characteristics of the intervention [while] industrial standards categorize the
+area from a process perspective'' \cite[p.~2]{engström_mapping_2015}. 
+It provides a structure to ``capture both a problem perspective and a solution
+perspective with respect to software testing'' \cite[pp.~3-4]{engström_mapping_2015},
+but this seems to focus more on test interventions and challenges rather than
+techniques \cite[Fig.~5]{engström_mapping_2015}.
+
+\subsubsection{Categorizations}
+
+Software testing techniques can be divided into the following
 categories (note that these are not mutually exclusive):
 
 \begin{itemize}
@@ -784,33 +827,9 @@ training) \cite[pp.~40-41]{perry_effective_2006}. \emph{These may overlap with
 the ``Results of Testing (Area of Confidence)'' column in the summary
 spreadsheet.}
 
-One software testing model developed by the \acf{qai} includes the test
-environment (``conditions \dots
-that both enable and constrain how testing is performed'', including mission,
-goals, strategy, ``management support, resources, work processes, tools,
-motivation''), test process (testing ``standards and procedures''), and tester
-competency (``skill sets needed to test software in a test environment'')
-\cite[pp.~5-6]{perry_effective_2006}.
-
-\cite{unterkalmsteiner_taxonomy_2014} provides a foundation to allow one ``to
-classify and characterize alignment research and solutions that focus on the
-boundary between [requirements engineering and software testing]'' but ``does
-not aim at providing a systematic and exhaustive state-of-the-art survey of
-[either domain]'' \cite[p.~A:2]{unterkalmsteiner_taxonomy_2014}.
-
-Another source
-introduced the notion of an ``intervention'': ``an act performed (e.g. use of a
-technique or a process change) to adapt testing to a specific context, to solve
-a test issue, to diagnose testing or to improve testing''
-\cite[p.~1]{engström_mapping_2015} and noted that ``academia tend to focus on
-characteristics of the intervention [while] industrial standards categorize the
-area from a process perspective'' \cite[p.~2]{engström_mapping_2015}. It
-classified types of testing based on the parameters listed below.
+Engström ``investigated classifications of research''
+\cite[p.~1]{engström_mapping_2015} on the following four testing techniques.
 \emph{These four categories seem like comparing apples to oranges to me.}
-It provides a structure to ``capture both a problem perspective and a solution
-perspective with respect to software testing'' \cite[pp.~3-4]{engström_mapping_2015},
-but this seems to focus more on test interventions and challenges rather than
-techniques \cite[Fig.~5]{engström_mapping_2015}.
 
 \begin{itemize}
       \item \textbf{Combinatorial testing:} how the system under test is
