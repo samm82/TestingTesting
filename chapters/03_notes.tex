@@ -737,24 +737,46 @@ has semantic of Level-based Testing that is a kind of Testing Activity [or]
 \dots of Test strategy'' \cite[p.~157]{tebes_systematic_2019}.
 
 There are many different concepts involved with software testing;
-\cite{barbosa_towards_2006} gives the following: testing process, phase,
-artifact, step, procedure, and resource \cite[p.~2]{barbosa_towards_2006},
+\cite{barbosa_towards_2006} gives the following: testing process, testing phase,
+testing artifact, testing step, testing procedure, and testing resource
+\cite[p.~2]{barbosa_towards_2006},
 as well as the relations between them \cite[Fig.~2]{barbosa_towards_2006}
 (see also \cite[Fig.~1]{borges_using_2009}, which I could only find as an
 example of an ontology in an otherwise unrelated paper).
-Particular things of note:
+In addition to the concept of ``test artifact'', \cite{souza_roost_2017} also
+provides the following concepts: testing technique, test level (which seems to
+be comparable to ``testing phase'' from \cite[p.~3]{barbosa_towards_2006}), and
+test environment \cite[pp.~3-4]{souza_roost_2017}. 
+Particular things of note from these ontologies:
 
 \begin{itemize}
-      \item The only testing phases described are unit, integration, and
-            regression testing \cite[p.~3]{barbosa_towards_2006}
-      \item The role of a testing artifact is not specified; requirements,
-            drivers, and source code are all treated the same with no
-            distinction \cite[p.~3]{barbosa_towards_2006}
+      \item The testing phases described by both are unit, integration,
+            system, \cite[p.~3]{souza_roost_2017}, \cite[p.~3]{barbosa_towards_2006},
+            and regression testing \cite[p.~3]{barbosa_towards_2006}
+      \item Testing artifacts are ``produced and used throughout the testing
+            process'' and include test plans, test procedures, test cases, and
+            test results \cite[p.~3]{souza_roost_2017}. The role of testing
+            artifacts is not specified in \cite{barbosa_towards_2006};
+            requirements, drivers, and source code are all treated the same
+            with no distinction \cite[p.~3]{barbosa_towards_2006}
       \item ``Testing procedures can be categorized in testing methods,
             testing guidances and testing techniques'', and ``functional,
-            structural, error-based and state-based'' are examples of
+            structural, error-based and state-based'' (called ``black-box''
+            ``white-box'', ``defect-based'', and ``model-based'' in
+            \cite[p.~3]{souza_roost_2017}) are examples of
             testing techniques  \cite[p.~3]{barbosa_towards_2006}
 \end{itemize}
+
+In \cite{souza_roost_2017}, the ontology (ROoST) \todo{add acronym?} is made to
+answer a series of questions, including ``What is the test level of a testing
+activity?'' and ``What are the artifacts used by a testing activity?''
+\cite[p.~8-9]{souza_roost_2017}. \todo{is this punctuation right?}
+The question ``How do testing artifacts relate to each other?''
+\cite[p.~8]{souza_roost_2017} is later broken down into multiple questions,
+such as ``What are the test case inputs of a given test case?'' and ``What are
+the expected results of a given test case?'' \cite[p.~21]{souza_roost_2017}.
+\emph{These questions seem to overlap with the questions we were trying to ask
+about different testing techniques.} 
 
 Most ontologies I can find seem to focus on the high-level testing process
 rather than the testing techniques themselves. For example, the terms and
