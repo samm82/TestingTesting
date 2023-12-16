@@ -1,16 +1,16 @@
-﻿Name,Subject,Definition,Parent,Notes
-Unit Testing,Code (modules/functions),,N/A,
-Integration Testing,Code (module interfaces),,N/A,
-System Testing,Code (most or all),,N/A,
-Acceptance Testing,"Code, documentation (requirements)",,N/A,
-Installation Testing,"Code, documentation (installation)",,N/A,
-Bottom-up Testing,Code (most or all),,Integration Testing,
-Top-down Testing,Code (most or all),,Integration Testing,
-Big Bang Testing,Code (most or all),,Integration Testing,
-Sandwich Testing,Code (most or all),,Integration Testing,
-Terminology Checklist,Documentation,,N/A,
-Coverage-Based Testing,Tests (coverage),,N/A,
-Exploratory Testing,Code,,N/A,
-Equivalence Partitioning/Classing,Tests (effficiency),,N/A,
-Boundary Condition Testing,Code,,N/A,
-Buffer Overrun Testing,Code,,Boundary Condition Testing,
+﻿Name,Subject,Definition,Parent,Synonym(s),Notes
+Unit Testing,Code (modules/functions),"""Testing the individual modules [of a program]"" [17, p. 438].",N/A,"Module Testing, Component Testing [16, p. 444]",
+Integration Testing,Code (module interfaces),"""Testing the composition of modules"" done incrementally [17, pp. 438-439].",N/A,N/A,
+System Testing,Code (most or all),"""Test[ing] the whole system against the user documentation and requirements specification"" [17, p. 439].",N/A,N/A,
+Acceptance Testing,"Code, documentation (requirements)","Similar to system testing that is ""often performed under supervision of the user organization"" that focuses on usability [17, p. 439] and the needs of the customer(s) [16, p. 492].",N/A,N/A,
+Installation Testing,"Code, documentation (installation)","Testing that focuses on the portability of the product, especially ""in an environment different from the one in which is has been developed"" [17, p. 439].",N/A,N/A,"Not one of the four levels of testing identified by the IEEE standard [16, p. 445]."
+Bottom-up Testing,Code (most or all),"Integration testing that uses test drivers: “tool[s] that generate[] the test environment for a component to be tested” [17, p. 410].",Integration Testing,N/A,"""Test driver"" should be added to general terminology page."
+Top-down Testing,Code (most or all),"Integration testing that uses test stubs: tools that ""simulate[] the function of a component not yet available"" [17, p. 410] by providing ""fake"" values to a given module to be tested [15, p. 110].",Integration Testing,N/A,"""Test stub"" should be added to general terminology page."
+Big Bang Testing,Code (most or all),"The process of “integrat[ing] all modules in a single step and test[ing] the resulting system[]” [16, p. 489].",Integration Testing,N/A,
+Sandwich Testing,Code (most or all),"The process of performing bottom-up and top-down testing by ""by defining a certain target layer in the hierarchy of the modules"" and working towards it from either end [16, p. 491].",Integration Testing,N/A,
+Terminology Checklist,Documentation,"Identifying specifications that are potentially unrealistic, vague, or incomplete [15, p. 61].",N/A,N/A,
+Coverage-Based Testing,Tests (coverage),"Testing derived from requirements ""depicted as a graph, where the nodes denote elementary requirements and the edges denote relations between [them]"" [17, p. 425].",N/A,N/A,
+Exploratory Testing,Code,"Exploring software to determine its features which are then tested [15, p. 65].",N/A,N/A,"An alternative to dynamic black-box testing when a specification is not available [15, p. 65]."
+Equivalence Partitioning,Tests (effficiency),"The process of dividing the infinite set of test cases into a finite set that is just as effective [15, p. 67].",N/A,Equivalence Classing,"The opposite of this, ""exhaustive testing"", is ""probably not feasible"" [16, p. 461]."
+Boundary Condition Testing,Code,,Data Testing,N/A,
+Buffer Overrun Testing,Code,,Boundary Condition Testing,N/A,
