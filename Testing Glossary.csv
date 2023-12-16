@@ -20,3 +20,10 @@ Sub-Boundary Condition Testing,Code,"Testing for boundary conditions ""that are 
 "Invalid, Wrong, Incorrect, and Garbage Data Testing",Code,,Data Testing,N/A,
 Syntax-Driven Testing,Code,"Testing based on ""the syntax or constraint of input domains defined in requirement specification"" [20, p. 260].",Data Testing,N/A,
 Decision Table-Based Testing,Code,"Testing based on conditions of requirements [16, pp. 448, 450].",Data Testing,N/A,Could this be more specific?
+State Testing,Code,"The process of testing ""a program’s states and the transitions between them"" [15, p. 79].",N/A,N/A,
+Logic Flow Testing,Code,Testing for correct state variables following different transitions.,State Testing,N/A,Uses a state transition diagram (add to gen. term. page).
+Performance Testing,Code,"""Identify[ing] weak points of a software system and quantify[ing] its shortcomings” [16, p. 447].",State Testing,N/A,Could this be more specific?
+Race Conditions and Bad Timing Testing,Code,,State Testing,N/A,Does this have a better name?
+Repetition Testing,Code,"Testing ""the same operation over and over"", potentially up to ""thousands of attempts"" [15, p. 86].",State Testing,N/A,
+Stress Testing,Code,"Testing ""the software under less-than-ideal conditions"" [15, p. 86].",State Testing,N/A,
+Load Testing,Code,"Testing the software with as large of a load as possible (e.g., large inputs, many peripherals) [15, p. 86].",State Testing,N/A,
