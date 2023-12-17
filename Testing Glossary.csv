@@ -32,5 +32,9 @@ Load Testing,Code,"Testing the software with as large of a load as possible (e.g
 Structural Analysis,Code,"""The process of carefully and methodically reviewing the software design, architecture, or code for bugs without executing it"" [15, p. 92].",N/A,"Static White-Box Testing, Glass Box Testing",Is this the most common name?
 ,,,,,
 Structural Testing,Code,"Testing that uses ""information …from seeing what the code does and how it works"" [15, p. 105].",N/A,Dynamic White-Box Testing,Is this the most common name?
-,,,,,
+Code Coverage,"Code, Tests (coverage)","""[T]est[ing] the program’s states and the program’s flow among them"" [15, p. 117].",Structural Testing,"Control-Flow Coverage [17, pp. 421]",
+Statement/Line Coverage,"Code, Tests (coverage)",,Structural Testing,N/A,Line vs. statement coverage?
+Branch Coverage,"Code, Tests (coverage)","Attempting to, ""at each branching node in the control graph, …[choose] all possible branches …at least once"" [17, p. 421].",Structural Testing,N/A,
+Path Coverage,"Code, Tests (coverage)","""Attempting to cover all the paths in the software"" [15, p. 119].",Structural Testing,N/A,"""Path"" should be added to gen. term. page."
+Condition Coverage,"Code, Tests (coverage)","Branch coverage that ""takes the extra conditions on the branch statements into account"" (e.g., all possible inputs to a Boolean expression) [15, p. 120].",Structural Testing,"Multiple Condition Coverage, Extended Branch Coverage",
 Gray-Box Testing,Code,"Testing ""the software as a black-box"" alongside limited information about ""what makes the software work"" [15, p. 218].",N/A,N/A,
