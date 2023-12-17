@@ -33,8 +33,12 @@ Structural Analysis,Code,"""The process of carefully and methodically reviewing 
 ,,,,,
 Structural Testing,Code,"Testing that uses ""information …from seeing what the code does and how it works"" [15, p. 105].",N/A,Dynamic White-Box Testing,Is this the most common name?
 Code Coverage,"Code, Tests (coverage)","""[T]est[ing] the program’s states and the program’s flow among them"" [15, p. 117].",Structural Testing,"Control-Flow Coverage [17, pp. 421]",
-Statement/Line Coverage,"Code, Tests (coverage)",,Structural Testing,N/A,Line vs. statement coverage?
-Branch Coverage,"Code, Tests (coverage)","Attempting to, ""at each branching node in the control graph, …[choose] all possible branches …at least once"" [17, p. 421].",Structural Testing,N/A,
-Path Coverage,"Code, Tests (coverage)","""Attempting to cover all the paths in the software"" [15, p. 119].",Structural Testing,N/A,"""Path"" should be added to gen. term. page."
-Condition Coverage,"Code, Tests (coverage)","Branch coverage that ""takes the extra conditions on the branch statements into account"" (e.g., all possible inputs to a Boolean expression) [15, p. 120].",Structural Testing,"Multiple Condition Coverage, Extended Branch Coverage",
+Statement/Line Coverage,"Code, Tests (coverage)",,Code Coverage,N/A,Line vs. statement coverage?
+Branch Coverage,"Code, Tests (coverage)","Attempting to, ""at each branching node in the control graph, …[choose] all possible branches …at least once"" [17, p. 421].",Code Coverage,N/A,
+Path Coverage,"Code, Tests (coverage)","""Attempting to cover all the paths in the software"" [15, p. 119].",Code Coverage,N/A,"""Path"" should be added to gen. term. page."
+Condition Coverage,"Code, Tests (coverage)","Branch coverage that ""takes the extra conditions on the branch statements into account"" (e.g., all possible inputs to a Boolean expression) [15, p. 120].",Code Coverage,"Multiple Condition Coverage, Extended Branch Coverage",
+Fault Seeding,"Code, Tests (coverage)","The introduction of faults to estimate the number of undiscovered faults in the system [17, p. 427].",Structural Testing,N/A,
+Mutation Testing,"Code, Tests (coverage)","Running sets of tests on mutants of a system to maximize the number of mutants identified by a given test set [17, p. 429].",Structural Testing,N/A,"Could this be more specific? ""Mutant"" should be defined."
+Strong Mutation Testing,"Code, Tests (coverage)","Mutation testing at the program level [17, p. 429].",Mutation Testing,N/A,
+Weak Mutation Testing,"Code, Tests (coverage)","Mutation testing at the component level [17, p. 429].",Mutation Testing,N/A,
 Gray-Box Testing,Code,"Testing ""the software as a black-box"" alongside limited information about ""what makes the software work"" [15, p. 218].",N/A,N/A,
