@@ -1,5 +1,5 @@
 ﻿Name,Subject(s),Definition,Parent(s),Synonym(s),Notes
-Unit Testing,Code (modules/functions),"""Testing the individual modules [of a program]"" [17, p. 438].",N/A,"Module Testing, Component Testing [16, p. 444]",
+Unit Testing,Code (modules/functions),"""Testing the individual modules [of a program]"" [17, p. 438].",N/A,"Module Testing, Component Testing [16, p. 444]","Because of the definition of ""component"" (""a part of a system that can be tested in isolation"" [19], add to terms), this seems to apply to the testing of both modules and specific functions."
 Integration Testing,Code (module interfaces),"""Testing the composition of modules"" done incrementally [17, pp. 438-439].",N/A,N/A,
 System Testing,Code (most or all),"""Test[ing] the whole system against the user documentation and requirements specification"" [17, p. 439].",N/A,N/A,
 Acceptance Testing,"Code, documentation (requirements)","Similar to system testing that is ""often performed under supervision of the user organization"" that focuses on usability [17, p. 439] and the needs of the customer(s) [16, p. 492].",N/A,N/A,
@@ -20,7 +20,7 @@ Buffer Overrun Testing,Code,,Boundary Condition Testing,N/A,Is this a meaningful
 Sub-Boundary Condition Testing,Code,"Testing for boundary conditions ""that are internal to the software [but] aren’t necessarily apparent to an end user"" [15, p. 75].",Data Testing,N/A,
 "Default, Empty, Blank, Null, Zero, and None Testing",Code,,Data Testing,N/A,Does this (and other types of data testing) have a better name? Does it make sense for these to be separate from data testing?
 "Invalid, Wrong, Incorrect, and Garbage Data Testing",Code,,Data Testing,N/A,
-Syntax-Driven Testing,Code,"Testing based on ""the syntax or constraint of input domains defined in requirement specification"" [20, p. 260].",Data Testing,N/A,
+Syntax-Driven Testing,Code,"Testing based on ""the syntax or constraint of input domains defined in requirement specification"" [21, p. 260].",Data Testing,N/A,
 Decision Table-Based Testing,Code,"Testing based on conditions of requirements [16, pp. 448, 450].",Data Testing,N/A,Could this be more specific?
 State Testing,Code,"The process of testing ""a program’s states and the transitions between them"" [15, p. 79].",Functional Testing,N/A,
 Logic Flow Testing,Code,"Testing for correct state variables following different transitions [15, p. 83].",State Testing,N/A,Uses a state transition diagram (add to gen. term. page).
@@ -43,4 +43,4 @@ Strong Mutation Testing,"Code, Tests (coverage)","Mutation testing at the progra
 Weak Mutation Testing,"Code, Tests (coverage)","Mutation testing at the component level [17, p. 429].",Mutation Testing,N/A,
 Gray-Box Testing,Code,"Testing ""the software as a black-box"" alongside limited information about ""what makes the software work"" [15, p. 218].",N/A,N/A,
 Regression Testing,Code,"Retesting code using existing tests ""to make sure there are no unwanted changes [to the software’s behaviour]"" [16, p. 481].",,N/A,
-Metamorphic Testing,Code,"Testing based on relations between changes to the input(s) and changes to the output(s) [21, pp. 67-68].",,N/A,
+Metamorphic Testing,Code,"Testing based on relations between changes to the input(s) and changes to the output(s) [22, pp. 67-68].",,N/A,
