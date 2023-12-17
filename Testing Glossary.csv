@@ -42,3 +42,5 @@ Mutation Testing,"Code, Tests (coverage)","Running sets of tests on mutants of a
 Strong Mutation Testing,"Code, Tests (coverage)","Mutation testing at the program level [17, p. 429].",Mutation Testing,N/A,
 Weak Mutation Testing,"Code, Tests (coverage)","Mutation testing at the component level [17, p. 429].",Mutation Testing,N/A,
 Gray-Box Testing,Code,"Testing ""the software as a black-box"" alongside limited information about ""what makes the software work"" [15, p. 218].",N/A,N/A,
+Regression Testing,Code,"Retesting code using existing tests ""to make sure there are no unwanted changes [to the software’s behaviour]"" [16, p. 481].",,N/A,
+Metamorphic Testing,Code,"Testing based on relations between changes to the input(s) and changes to the output(s) [21, pp. 67-68].",,N/A,
