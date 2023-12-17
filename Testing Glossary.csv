@@ -8,11 +8,13 @@ Bottom-up Testing,Code (most or all),"Integration testing that uses test drivers
 Top-down Testing,Code (most or all),"Integration testing that uses test stubs: tools that ""simulate[] the function of a component not yet available"" [17, p. 410] by providing ""fake"" values to a given module to be tested [15, p. 110].",Integration Testing,N/A,"""Test stub"" should be added to general terminology page."
 Big Bang Testing,Code (most or all),"The process of “integrat[ing] all modules in a single step and test[ing] the resulting system[]” [16, p. 489].",Integration Testing,N/A,
 Sandwich Testing,Code (most or all),"The process of performing bottom-up and top-down testing by ""by defining a certain target layer in the hierarchy of the modules"" and working towards it from either end [16, p. 491].",Integration Testing,N/A,
-Terminology Checklist,Documentation,"Identifying specifications that are potentially unrealistic, vague, or incomplete [15, p. 61].",N/A,N/A,
-Coverage-Based Testing,Tests (coverage),"Testing derived from requirements ""depicted as a graph, where the nodes denote elementary requirements and the edges denote relations between [them]"" [17, p. 425].",N/A,N/A,
-Exploratory Testing,Code,"Exploring software to determine its features which are then tested [15, p. 65].",N/A,N/A,"An alternative to dynamic black-box testing when a specification is not available [15, p. 65]."
-Equivalence Partitioning,Tests (effficiency),"The process of dividing the infinite set of test cases into a finite set that is just as effective [15, p. 67].",N/A,Equivalence Classing,"The opposite of this, ""exhaustive testing"", is ""probably not feasible"" [16, p. 461]."
-Data Testing,Code,"The process of ""checking that information the user inputs [and] results"", both final and intermediate, ""are handled correctly"" [15, p. 70].",N/A,N/A,Could this be more specific?
+Specification Testing,"Code, documentation (requirements)",,N/A,Static Black-Box Testing,Is this the most common name?
+Terminology Checklist,Documentation,"Identifying specifications that are potentially unrealistic, vague, or incomplete [15, p. 61].",Specification Testing,N/A,
+Coverage-Based Testing,Tests (coverage),"Testing derived from requirements ""depicted as a graph, where the nodes denote elementary requirements and the edges denote relations between [them]"" [17, p. 425].",Specification Testing,N/A,
+Functional Testing,Code,"The process of ""entering inputs, receiving outputs, and checking the results"" [15, p. 64].",N/A,"Dynamic Black-Box Testing, Behavioural Testing",Is this the most common name?
+Exploratory Testing,Code,"Exploring software to determine its features which are then tested [15, p. 65].",Functional Testing,N/A,"An alternative to dynamic black-box testing when a specification is not available [15, p. 65]."
+Equivalence Partitioning,Tests (effficiency),"The process of dividing the infinite set of test cases into a finite set that is just as effective [15, p. 67].",Functional Testing,Equivalence Classing,"The opposite of this, ""exhaustive testing"", is ""probably not feasible"" [16, p. 461]."
+Data Testing,Code,"The process of ""checking that information the user inputs [and] results"", both final and intermediate, ""are handled correctly"" [15, p. 70].","Functional Testing, Structural Testing",N/A,Could this be more specific?
 Boundary Condition Testing,Code,"Testing using data ""at the edge[s] of the planned operational limits of the software"" [15, p. 72].",Data Testing,N/A,"Boundary conditions should be tested using ""the valid data just inside the boundary, …the last possible valid data, and …the invalid data just outside the boundary"" [15, p. 73] as well as the data on the boundary itself [16, p. 460]."
 Buffer Overrun Testing,Code,,Boundary Condition Testing,N/A,Is this a meaningful distinction?
 Sub-Boundary Condition Testing,Code,"Testing for boundary conditions ""that are internal to the software [but] aren’t necessarily apparent to an end user"" [15, p. 75].",Data Testing,N/A,
@@ -20,10 +22,15 @@ Sub-Boundary Condition Testing,Code,"Testing for boundary conditions ""that are 
 "Invalid, Wrong, Incorrect, and Garbage Data Testing",Code,,Data Testing,N/A,
 Syntax-Driven Testing,Code,"Testing based on ""the syntax or constraint of input domains defined in requirement specification"" [20, p. 260].",Data Testing,N/A,
 Decision Table-Based Testing,Code,"Testing based on conditions of requirements [16, pp. 448, 450].",Data Testing,N/A,Could this be more specific?
-State Testing,Code,"The process of testing ""a program’s states and the transitions between them"" [15, p. 79].",N/A,N/A,
+State Testing,Code,"The process of testing ""a program’s states and the transitions between them"" [15, p. 79].",Functional Testing,N/A,
 Logic Flow Testing,Code,Testing for correct state variables following different transitions.,State Testing,N/A,Uses a state transition diagram (add to gen. term. page).
 Performance Testing,Code,"""Identify[ing] weak points of a software system and quantify[ing] its shortcomings” [16, p. 447].",State Testing,N/A,Could this be more specific?
 Race Conditions and Bad Timing Testing,Code,,State Testing,N/A,Does this have a better name?
 Repetition Testing,Code,"Testing ""the same operation over and over"", potentially up to ""thousands of attempts"" [15, p. 86].",State Testing,N/A,
 Stress Testing,Code,"Testing ""the software under less-than-ideal conditions"" [15, p. 86].",State Testing,N/A,
 Load Testing,Code,"Testing the software with as large of a load as possible (e.g., large inputs, many peripherals) [15, p. 86].",State Testing,N/A,
+Structural Analysis,Code,"""The process of carefully and methodically reviewing the software design, architecture, or code for bugs without executing it"" [15, p. 92].",N/A,"Static White-Box Testing, Glass Box Testing",Is this the most common name?
+,,,,,
+Structural Testing,Code,"Testing that uses ""information …from seeing what the code does and how it works"" [15, p. 105].",N/A,Dynamic White-Box Testing,Is this the most common name?
+,,,,,
+Gray-Box Testing,Code,"Testing ""the software as a black-box"" alongside limited information about ""what makes the software work"" [15, p. 218].",N/A,N/A,
