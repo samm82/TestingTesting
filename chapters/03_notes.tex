@@ -979,17 +979,19 @@ whether that information exists in Drasil already and if it can be added
 
 \subsubsection{Testing Stages}
 \begin{itemize}
-      \item Unit/module testing: ``testing the individual modules [of a
-                        program]'' \citep[p.~438]{van_vliet_software_2000};
-            also called ``component testing'' \citep[p.~444]{peters_software_2000}.
-            Note that since a \emph{component} is ``a part of a system that can
-            be tested in isolation'' \citep{istqb_glossary}, this seems to apply
+      \item Unit testing: ``testing the individual modules [of a program]''
+            \citep[p.~438]{van_vliet_software_2000}; also called ``module testing''
+            \citep[p.~109]{patton_software_2006} or ``component testing''
+            \citep[p.~444]{peters_software_2000}. Note that since a
+            \emph{component} is ``a part of a system that can be tested in
+            isolation'' \citep{istqb_glossary}, this seems like it could apply
             to the testing of both modules \emph{and} specific functions
       \item Integration testing: ``testing the composition of modules'';
             done incrementally using \emph{bottom-up} and/or
             \emph{top-down} testing \citep[pp.~438-439]{van_vliet_software_2000},
             although other paradigms for design, such as \emph{big bang} and
-            \emph{sandwich} exist \citep[p.~489]{peters_software_2000}
+            \emph{sandwich} exist \citep[p.~489]{peters_software_2000}.
+            See also \citep[p.~109]{patton_software_2006}.
             \begin{itemize}
                   \item Bottom-up testing: uses \emph{test drivers}: ``tool[s]
                         that generate[] the test environment for a component to
@@ -1325,12 +1327,10 @@ conditions in a rule'' (from the specification) \citep[p.~450]{peters_software_2
 
 \subsubsection{State Testing \citep[pp.~79-87]{patton_software_2006}}
 
-The process of testing ``a program's states and the transitions between them''
-\citep[p.~79]{patton_software_2006}.
-
-\paragraph{Logic Flow Testing \citep[pp.~80-84]{patton_software_2006}}
-
-This is done by creating a state transition diagram that includes:
+The process of testing ``the program's logic flow through its various states''
+\citep[p.~79]{patton_software_2006} by checking that state variables are
+correct after different transitions \citetext{p.~83}. This is usually done by
+creating a state transition diagram that includes:
 
 \begin{itemize}
       \item Every possible unique state
@@ -1666,7 +1666,10 @@ coverage \citep[p.~421]{van_vliet_software_2000}).
             once'' \citep[p.~421]{van_vliet_software_2000}
             \begin{itemize}
                   \item Weaker than path coverage
-                        \citep[p.~433]{van_vliet_software_2000}
+                        \citep[p.~433]{van_vliet_software_2000}, although
+                        \citep[p.~119]{patton_software_2006} says it is
+                        ``the simplest form of path testing''
+                        (\emph{I don't think this is true})
                   \item Requires at least 85\% coverage to be effective and is
                         ``most effective \dots at the module level''
                         \citep[p.~481]{peters_software_2000}
@@ -1868,9 +1871,9 @@ onscreen'' \citep[p.~220]{patton_software_2006}.
 
 Repeating ``tests previously executed \dots at a later point in development and
 maintenance'' \citep[p.~446]{peters_software_2000} ``to make sure there are no
-unwanted changes [to the software's behaviour]'' (although allowing ``some
-unwanted differences to pass through'' is sometimes desired, if tedious
-\citep[p.~482]{peters_software_2000}) \citep[p.~481]{peters_software_2000}.
+unwanted changes [to the software's behaviour]'' \citetext{p.~481} (although
+allowing ``some unwanted differences to pass through'' is sometimes desired, if
+tedious \citetext{p.~482}). See also \citep[p.~232]{patton_software_2006}.
 
 \begin{itemize}
       \item Should be done automatically \citep[p.~481]{peters_software_2000};
