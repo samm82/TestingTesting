@@ -109,18 +109,21 @@
 % Required for biblatex, but also adds functionality for quotation
 \usepackage{csquotes}
 
-% Credit to Gabriel Devenyi for this bibliography cfg:
-% github.com/gdevenyi/mcmaster.latex
-\usepackage[
-  style=numeric-comp,
-  backend=biber,
-  sorting=none,
-  backref=true,
-  maxnames=99,
-  alldates=iso,
-  seconds=true
-]{biblatex} % bibliography
-\addbibresource{references.bib}
+% Jason's bibliography format
+% % Credit to Gabriel Devenyi for this bibliography cfg:
+% % github.com/gdevenyi/mcmaster.latex
+% \usepackage[
+%   style=numeric-comp,
+%   backend=biber,
+%   sorting=none,
+%   backref=true,
+%   maxnames=99,
+%   alldates=iso,
+%   seconds=true
+% ]{biblatex} % bibliography
+% \addbibresource{references.bib}
+\usepackage[round]{natbib}
+\bibliographystyle{plainnat}
 
 % Fancy Headers
 \usepackage{fancyhdr}

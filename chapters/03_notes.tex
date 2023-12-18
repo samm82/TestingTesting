@@ -9,21 +9,21 @@
             although other bases are used:
             \begin{itemize}
                   \item \acfp{sst}, used by Dylan
-                        \cite[p.~113:6]{lilis_survey_2019}
+                        \citep[p.~113:6]{lilis_survey_2019}
             \end{itemize}
       \item Allows for improvements in:
             \begin{itemize}
                   \item ``performance by generating efficient specialized
                         programs based on specifications instead of using
                         generic but inefficient programs''
-                        \cite[p.~113:2]{lilis_survey_2019}
+                        \citep[p.~113:2]{lilis_survey_2019}
                   \item reasoning about object programs through ``analyzing
                         and discovering object-program characteristics that
                         enable applying further optimizations as well as
                         inspecting and validating the behavior of the object
-                        program'' \cite[p.~113:2]{lilis_survey_2019}
+                        program'' \citep[p.~113:2]{lilis_survey_2019}
                   \item code reuse through capturing ``code patterns that cannot
-                        be abstracted'' \cite[p.~113:2]{lilis_survey_2019}
+                        be abstracted'' \citep[p.~113:2]{lilis_survey_2019}
             \end{itemize}
 \end{itemize}
 
@@ -31,151 +31,151 @@
 
 ``\emph{Metaprogramming} is the process of writing computer programs, called
 \emph{metaprograms}, that [can] \dots generate new programs or modify existing
-ones'' \cite[p.~113:1]{lilis_survey_2019}. ``It constitutes a flexible and
+ones'' \citep[p.~113:1]{lilis_survey_2019}. ``It constitutes a flexible and
 powerful reuse solution for the ever-growing size and complexity of software
-systems'' \cite[p.~113:31]{lilis_survey_2019}.
+systems'' \citep[p.~113:31]{lilis_survey_2019}.
 
 \begin{itemize}
       \item Metalanguage: ``the language in which the metaprogram is written''
-            \cite[p.~113:1]{lilis_survey_2019}
+            \citep[p.~113:1]{lilis_survey_2019}
       \item Object language: ``the language in which the generated or
-            transformed program is written'' \cite[p.~113:1]{lilis_survey_2019}
+            transformed program is written'' \citep[p.~113:1]{lilis_survey_2019}
       \item Homogeneous metaprogramming: when ``the object language and the
-            metalanguage are the same'' \cite[p.~113:1]{lilis_survey_2019}
+            metalanguage are the same'' \citep[p.~113:1]{lilis_survey_2019}
       \item Heterogeneous metaprogramming: when ``the object language and the
-            metalanguage are \dots different'' \cite[p.~113:1]{lilis_survey_2019}
+            metalanguage are \dots different'' \citep[p.~113:1]{lilis_survey_2019}
 \end{itemize}
 
 \subsection{Metaprogramming Models}
-\subsubsection{Macro Systems \cite[p.~113:3-7]{lilis_survey_2019}}
+\subsubsection{Macro Systems \citep[p.~113:3-7]{lilis_survey_2019}}
 \begin{itemize}
       \item Map specified input sequences in a source file to corresponding
             output sequences (``macro expansion'') until no input sequences
-            remain \cite[p.~113:3]{lilis_survey_2019}; this process can be:
+            remain \citep[p.~113:3]{lilis_survey_2019}; this process can be:
             \begin{enumerate}
                   \item procedural (involving algorithms; this is more common
-                        \cite[p.~113:31]{lilis_survey_2019}), or
+                        \citep[p.~113:31]{lilis_survey_2019}), or
                   \item pattern-based (only using pattern matching)
-                        \cite[p.~113:4]{lilis_survey_2019}
+                        \citep[p.~113:4]{lilis_survey_2019}
             \end{enumerate}
       \item Must avoid variable capture (unintended name conflicts) by being
-            ``hygienic'' \cite[p.~113:4]{lilis_survey_2019}; this may be
+            ``hygienic'' \citep[p.~113:4]{lilis_survey_2019}; this may be
             overridden to allow for ``intentional variable capture'', such as
-            Scheme's \emph{syntax-case} macro \cite[p.~113:5]{lilis_survey_2019}
+            Scheme's \emph{syntax-case} macro \citep[p.~113:5]{lilis_survey_2019}
 \end{itemize}
 
 \paragraph{Lexical Macros}
 \begin{itemize}
-      \item Language agnostic \cite[p.~113:3]{lilis_survey_2019}
+      \item Language agnostic \citep[p.~113:3]{lilis_survey_2019}
       \item Usually only sufficient for basic metaprogramming since changes to
             the code without considering its meaning ``may cause unintended side
             effects or name clashes and may introduce difficult-to-solve bugs''
-            \cite[p.~113:5]{lilis_survey_2019}
+            \citep[p.~113:5]{lilis_survey_2019}
       \item Marco was the first safe, language-independent macro system that
             ``enforce[s] specific rules that can be checked by special oracles''
             for given languages (as long as the languages ``produce descriptive
-            error messages'') \cite[p.~113:6]{lilis_survey_2019}
+            error messages'') \citep[p.~113:6]{lilis_survey_2019}
 \end{itemize}
 
 \paragraph{Syntactic Macros}
 \begin{itemize}
       \item ``Aware of the language syntax and semantics''
-            \cite[p.~113:3]{lilis_survey_2019}
+            \citep[p.~113:3]{lilis_survey_2019}
       \item MS\textsuperscript{2} ``was the first programmable syntactic macro
             system for syntactically rich languages'', including by using ``a
             type system to ensure that all generated code fragments are
-            syntactically correct'' \cite[p.~113:5]{lilis_survey_2019}
+            syntactically correct'' \citep[p.~113:5]{lilis_survey_2019}
 \end{itemize}
 
-\subsubsection{Reflection Systems \cite[p.~113:7-9]{lilis_survey_2019}}
+\subsubsection{Reflection Systems \citep[p.~113:7-9]{lilis_survey_2019}}
 \begin{itemize}
       \item ``Perform computations on [themselves] in the same way as for the
             target application, enabling one to adjust the system behavior
             based on the needs of its execution''
-            \cite[p.~113:7]{lilis_survey_2019}
+            \citep[p.~113:7]{lilis_survey_2019}
       \item Means that the system can ``observe and possibly modify its
-            structure and behaviour'' \cite[p.~22]{stuikys_taxonomy_2013};
+            structure and behaviour'' \citep[p.~22]{stuikys_taxonomy_2013};
             these processes are called ``introspection'' and ``intercession'',
-            respectively \cite[p.~113:7]{lilis_survey_2019}
+            respectively \citep[p.~113:7]{lilis_survey_2019}
             \begin{itemize}
                   \item The representation of a system can either be structural
                         or behavioural (e.g., variable assignment)
-                        \cite[p.~113:7]{lilis_survey_2019}
+                        \citep[p.~113:7]{lilis_survey_2019}
             \end{itemize}
       \item ``Runtime code generation based on source text can be impractical,
             inefficient, and unsafe, so alternatives have been explored based
             on \acsp{ast} and quasi-quote operators, offering a structured approach
             that is subject to typing for expressing and combining code at
-            runtime'' \cite[p.~113:8]{lilis_survey_2019}
+            runtime'' \citep[p.~113:8]{lilis_survey_2019}
       \item ``Not limited to runtime systems'', as some ``compile-time systems
             \dots rely on some form of structural introspection to perform code
-            generation'' \cite[p.~113:9]{lilis_survey_2019}
+            generation'' \citep[p.~113:9]{lilis_survey_2019}
 \end{itemize}
 
-\subsubsection{\acfp{mop} \cite[p.~113:9-11]{lilis_survey_2019}}
+\subsubsection{\acfp{mop} \citep[p.~113:9-11]{lilis_survey_2019}}
 \begin{itemize}
       \item ``Interfaces to the language enabling one to incrementally transform
             the original language behavior and implementation''
-            \cite[p.~113:9]{lilis_survey_2019}
+            \citep[p.~113:9]{lilis_survey_2019}
       \item Three different approaches:
             \begin{itemize}
                   \item Metaclass-based Approach: ``Classes are considered to be
                         objects of metaclasses, called metaobjects, that are
                         responsible for the overall behavior of the object
-                        system'' \cite[p.~113:9]{lilis_survey_2019}
+                        system'' \citep[p.~113:9]{lilis_survey_2019}
                   \item Metaobject-based Approach: ``Classes and metaobjects are
-                        distinct'' \cite[p.~113:9]{lilis_survey_2019}
+                        distinct'' \citep[p.~113:9]{lilis_survey_2019}
                   \item Message Reification Approach: used with message passing
-                        \cite[p.~113:9]{lilis_survey_2019}
+                        \citep[p.~113:9]{lilis_survey_2019}
             \end{itemize}
       \item Can either be runtime (more common) or compile-time (e.g., OpenC++);
             the latter protocols ``operate as advanced macro systems that perform
             code transformation based on metaobjects rather than on text or
-            \acsp{ast}'' \cite[p.~113:11]{lilis_survey_2019}
+            \acsp{ast}'' \citep[p.~113:11]{lilis_survey_2019}
 \end{itemize}
 
 \paragraph{Dynamic Shells}
 ``Pseudo-objects with methods and instance variables that may be attached to
 other objects'' that ``offer efficient and type-safe \acs{mop} functionality for
-statically typed languages'' \cite[p.~113:10]{lilis_survey_2019}.
+statically typed languages'' \citep[p.~113:10]{lilis_survey_2019}.
 
 \paragraph{Dynamic Extensions}
 ``Offer similar functionality [to dynamic shells] but for classes, allowing a
 program to replace the methods of a class and its subclasses by the methods of
-another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
+another class at runtime'' \citep[p.~113:10]{lilis_survey_2019}.
 
-\subsubsection{\acf{aop} \cite[p.~113:11-13]{lilis_survey_2019}}
+\subsubsection{\acf{aop} \citep[p.~113:11-13]{lilis_survey_2019}}
 \begin{itemize}
       \item The use of \emph{aspects}: ``modular units \dots [that] contain
             information about the additional behavior, called \emph{advice},
             that will be added to the base program by the aspect as well as
             the program locations, called \emph{join points}, where this extra
             behavior is to be inserted based on some matching criteria, called
-            \emph{pointcuts}'' \cite[p.~113:12]{lilis_survey_2019}
+            \emph{pointcuts}'' \citep[p.~113:12]{lilis_survey_2019}
       \item Weaving: the process of ``combining the base program with aspect
-            code \dots [to form] the final code'' \cite[p.~113:12]{lilis_survey_2019}
+            code \dots [to form] the final code'' \citep[p.~113:12]{lilis_survey_2019}
       \item Two variants:
             \begin{enumerate}
                   \item Static \acs{aop}: when weaving takes place at compile
                         time, usually with ``a separate language and a custom
                         compiler, called [an] \emph{aspect weaver}''; results in
-                        better performance \cite[p.~113:12]{lilis_survey_2019}
+                        better performance \citep[p.~113:12]{lilis_survey_2019}
                   \item Dynamic \acs{aop}: when weaving takes place at runtime
                         by instrumenting ``the bytecode \dots to be able to
                         weave the aspect code''; provides more flexibility
-                        \cite[p.~113:12]{lilis_survey_2019}
+                        \citep[p.~113:12]{lilis_survey_2019}
             \end{enumerate}
       \item This model originates from reflecting and \acsp{mop} (AspectS and
             AspectL ``support AOP by building respectively on the runtime
-            \acsp{mop} of Smalltalk and Lisp'') \cite[p.~113:12]{lilis_survey_2019}
+            \acsp{mop} of Smalltalk and Lisp'') \citep[p.~113:12]{lilis_survey_2019}
       \item While ``\acs{aop} can support metaprogramming by inserting code
             before, after, or around matched join points, as well as introducing
             data members and methods through intertype declarations'', it is
             usually done the other way around, as most \acs{aop} frameworks
-            ``rely on metaprogramming techniques'' \cite[p.~113:12]{lilis_survey_2019}
+            ``rely on metaprogramming techniques'' \citep[p.~113:12]{lilis_survey_2019}
 \end{itemize}
 
-\subsubsection{Generative Programming \cite[p.~113:13-17]{lilis_survey_2019}}
+\subsubsection{Generative Programming \citep[p.~113:13-17]{lilis_survey_2019}}
 \begin{itemize}
       \item ``A software development paradigm based on modeling software system
             families such that, given a particular requirements specification,
@@ -183,211 +183,211 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
             be automatically manufactured on demand from elementary, reusable
             implementation components by means of configuration knowledge''
             \todo{get original source from Czarnecki and Eisenecker 2000}
-      \item Often done with using \acsp{ast} \cite[p.~113:31]{lilis_survey_2019}
+      \item Often done with using \acsp{ast} \citep[p.~113:31]{lilis_survey_2019}
       \item Most ``support code templates and quasi-quotes''
-            \cite[p.~113:31]{lilis_survey_2019}
+            \citep[p.~113:31]{lilis_survey_2019}
       \item Related to macro systems, but normal code and metacode are distinct
 \end{itemize}
 
-\paragraph{Template Systems \cite[p.~113:13-14]{lilis_survey_2019}}
+\paragraph{Template Systems \citep[p.~113:13-14]{lilis_survey_2019}}
 \begin{itemize}
       \item Template code is instantiated with specific parameters to generate
             ALL code in a target language; ``no free-form source code generation
-            is allowed'' \cite[p.~113:13]{lilis_survey_2019}
+            is allowed'' \citep[p.~113:13]{lilis_survey_2019}
             \todo{clarify what ``free-form source code generation'' means}
       \item It is possible, though complex, to express any ``to express any
             generative metaprogram'', as long as ``the appropriate
             metaprogramming logic for type manipulation'' is present
-            \cite[p.~113:14]{lilis_survey_2019}
+            \citep[p.~113:14]{lilis_survey_2019}
 \end{itemize}
 
-\paragraph{\acs{ast} Transformations \cite[p.~113:14-15]{lilis_survey_2019}}
+\paragraph{\acs{ast} Transformations \citep[p.~113:14-15]{lilis_survey_2019}}
 \begin{itemize}
       \item ``Offer code templates through quasi-quotation to support \acs{ast}
             creation and composition and complement them with \acs{ast}
-            traversal or transformation features'' \cite[p.~113:14]{lilis_survey_2019}
+            traversal or transformation features'' \citep[p.~113:14]{lilis_survey_2019}
 \end{itemize}
 
-\paragraph{Compile-Time Reflections \cite[p.~113:15-16]{lilis_survey_2019}}
+\paragraph{Compile-Time Reflections \citep[p.~113:15-16]{lilis_survey_2019}}
 \begin{itemize}
       \item ``Offer compile-time reflection features to enable generating code
             based on existing code structures'' while trying to ensure that ``the
             generator will always produce well-formed code'' (this is not always
             fully possible; for example, Genoupe ``cannot guarantee that the
             generated code is always well typed'')
-            \cite[p.~113:15]{lilis_survey_2019}
+            \citep[p.~113:15]{lilis_survey_2019}
 \end{itemize}
 
-\paragraph{Class Compositions \cite[p.~113:16-17]{lilis_survey_2019}}
+\paragraph{Class Compositions \citep[p.~113:16-17]{lilis_survey_2019}}
 \begin{itemize}
       \item Offer ``flexibility and expressiveness'' through composition
-            approaches \cite[p.~113:16]{lilis_survey_2019}
+            approaches \citep[p.~113:16]{lilis_survey_2019}
             \begin{itemize}
                   \item \emph{Mixins}: \todo{Investigate}
                   \item \emph{Traits}: ``support a uniform, expressive, and
                         type-safe way for metaprogramming without resorting to
                         \acsp{ast}'' and offer ``compile-time pattern-based
                         reflection'' through parameterization
-                        \cite[p.~113:16]{lilis_survey_2019}
+                        \citep[p.~113:16]{lilis_survey_2019}
             \end{itemize}
       \item Includes \emph{feature-oriented programming} approaches
             \todo{Investigate?}
 \end{itemize}
 
-\subsubsection{\acf{msp} \cite[p.~113:17-20]{lilis_survey_2019}}
+\subsubsection{\acf{msp} \citep[p.~113:17-20]{lilis_survey_2019}}
 \begin{itemize}
       \item ``Makes \dots [levels of evaluation] accessible to the programmer
             through \dots \emph{staging annotations}'' to ``specify the
             evaluation order of the program computations'' and work with these
-            computation stages \cite[p.~113:17]{lilis_survey_2019}
+            computation stages \citep[p.~113:17]{lilis_survey_2019}
       \item Related to program generation and procedural macro systems
-            \cite[p.~113:17]{lilis_survey_2019}; macros are often implemented
-            as multistage computations \cite[p.~113:18]{lilis_survey_2019}
+            \citep[p.~113:17]{lilis_survey_2019}; macros are often implemented
+            as multistage computations \citep[p.~113:18]{lilis_survey_2019}
       \item Languages that use \acs{msp} are called \emph{\acfp{msl}} or
             \emph{two-stage languages}, depending on how many stages of
-            evaluation are offered \cite[p.~113:17]{lilis_survey_2019};
-            \acsp{msl} are more common \cite[p.~113:31]{lilis_survey_2019}
+            evaluation are offered \citep[p.~113:17]{lilis_survey_2019};
+            \acsp{msl} are more common \citep[p.~113:31]{lilis_survey_2019}
             \begin{itemize}
                   \item C++ first instantiates templates, then translates
-                        nontemplate code \cite[p.~113:19]{lilis_survey_2019}
+                        nontemplate code \citep[p.~113:19]{lilis_survey_2019}
                   \item Template Haskell evaluates ``the top-level splices
                         to generate object-level code'' at compile time, then
                         executes the object-level code at runtime
-                        \cite[p.~113:19]{lilis_survey_2019}
+                        \citep[p.~113:19]{lilis_survey_2019}
             \end{itemize}
       \item Often involves \emph{\acf{csp}}, which allows ``values \dots
             available in the current stage'' to be used in future stages
-            \cite[p.~113:17]{lilis_survey_2019}
+            \citep[p.~113:17]{lilis_survey_2019}
             \begin{itemize}
                   \item If this is used, \emph{cross-stage safety} is often
                         also used to prevent ``variables bound at some stage
                         \dots [from being] used at an earlier stage''
-                        \cite[p.~113:17]{lilis_survey_2019}
+                        \citep[p.~113:17]{lilis_survey_2019}
             \end{itemize}
       \item Usually homogeneous, but there are exceptions; MetaHaskell, a
-            modular framework \cite[p.~113:19]{lilis_survey_2019} with a type
+            modular framework \citep[p.~113:19]{lilis_survey_2019} with a type
             system, allows for ``heterogeneous metaprogramming with multiple
-            object languages'' \cite[p.~113:18]{lilis_survey_2019}
+            object languages'' \citep[p.~113:18]{lilis_survey_2019}
       \item ``Type safety \dots comes at the cost of expressiveness''
-            \cite[p.~113:19]{lilis_survey_2019}
+            \citep[p.~113:19]{lilis_survey_2019}
 \end{itemize}
 
 \subsection{Phase of Evaluation}
 \begin{itemize}
       \item ``In theory, any combination of them [the phases of evaluation] is
             viable; however, in practice most metalanguages offer only one or
-            two of the options'' \cite[p.~113:20]{lilis_survey_2019}
+            two of the options'' \citep[p.~113:20]{lilis_survey_2019}
       \item ``The phase of evaluation does not necessarily dictate the adoption
             of a particular metaprogramming model; however, there is a
-            correlation between the two'' \cite[p.~113:20]{lilis_survey_2019}
+            correlation between the two'' \citep[p.~113:20]{lilis_survey_2019}
 \end{itemize}
 
-\subsubsection{Preprocessing-Time Evaluation \cite[p.~113:20-21]{lilis_survey_2019}}
+\subsubsection{Preprocessing-Time Evaluation \citep[p.~113:20-21]{lilis_survey_2019}}
 \begin{itemize}
       \item In \acf{pptmp}, ``metaprograms present in the original source are
             evaluated during the preprocessing phase and the resulting source
             file contains only normal program code and no metacode''
-            \cite[p.~113:20]{lilis_survey_2019}
+            \citep[p.~113:20]{lilis_survey_2019}
       \item These systems are called \emph{source-to-source preprocessors}
-            \cite[p.~113:20]{lilis_survey_2019} and are usually examples of
-            generative programming \cite[p.~113:21]{lilis_survey_2019}
+            \citep[p.~113:20]{lilis_survey_2019} and are usually examples of
+            generative programming \citep[p.~113:21]{lilis_survey_2019}
             \begin{itemize}
                   \item ``All such cases involve syntactic transformations''
-                        \cite[p.~113:21]{lilis_survey_2019}, usually using
+                        \citep[p.~113:21]{lilis_survey_2019}, usually using
                         \acsp{ast}
             \end{itemize}
       \item ``Translation can reuse the language compiler or interpreter
-            without the need for any extensions'' \cite[p.~113:20]{lilis_survey_2019}
+            without the need for any extensions'' \citep[p.~113:20]{lilis_survey_2019}
       \item Varying levels of complexity (e.g., these systems ``may be fully
             aware of the language syntax and semantics'')
-            \cite[p.~113:20]{lilis_survey_2019}
-      \item Includes all lexical macro systems \cite[p.~113:20]{lilis_survey_2019}
+            \citep[p.~113:20]{lilis_survey_2019}
+      \item Includes all lexical macro systems \citep[p.~113:20]{lilis_survey_2019}
             and some ``static \acs{aop} and generative programming systems"
-            \cite[p.~113:31]{lilis_survey_2019}
+            \citep[p.~113:31]{lilis_survey_2019}
       \item Typically doesn't use reflection (Reflective Java is an exception),
-            \acsp{mop}, or dynamic \acs{aop} \cite[p.~113:21]{lilis_survey_2019}
+            \acsp{mop}, or dynamic \acs{aop} \citep[p.~113:21]{lilis_survey_2019}
 \end{itemize}
 
-\subsubsection{Compilation-Time Evaluation \cite[p.~113:21-23]{lilis_survey_2019}}
+\subsubsection{Compilation-Time Evaluation \citep[p.~113:21-23]{lilis_survey_2019}}
 \begin{itemize}
       \item In \acf{ctmp}, ``the language compiler is extended to handle
-            metacode translation and execution'' \cite[p.~113:22]{lilis_survey_2019}
+            metacode translation and execution'' \citep[p.~113:22]{lilis_survey_2019}
             \begin{itemize}
                   \item There are many ways of extending the compiler,
                         including ``plugins, syntactic additions, procedural or
                         rewrite-based \acs{ast} transformations, or multistage
-                        translation'' \cite[p.~113:22]{lilis_survey_2019}
+                        translation'' \citep[p.~113:22]{lilis_survey_2019}
                   \item Metacode execution can be done by ``interpreting the
                         source metacode \dots or compiling the source metacode
                         to binary and then executing it''
-                        \cite[p.~113:22]{lilis_survey_2019}
+                        \citep[p.~113:22]{lilis_survey_2019}
             \end{itemize}
       \item These systems are usually examples of generative programming but
             can also use macros, \acsp{mop}, \acs{aop}
-            \cite[p.~113:22]{lilis_survey_2019}, and/or reflection
-            \cite[p.~113:23]{lilis_survey_2019}
+            \citep[p.~113:22]{lilis_survey_2019}, and/or reflection
+            \citep[p.~113:23]{lilis_survey_2019}
 \end{itemize}
 
-\subsubsection{Execution-Time Evaluation \cite[p.~113:23-25]{lilis_survey_2019}}
+\subsubsection{Execution-Time Evaluation \citep[p.~113:23-25]{lilis_survey_2019}}
 \begin{itemize}
       \item \acf{rtmp} ``involves extending the language execution system and
             offering runtime libraries to enable dynamic code generation and
             execution'' and is ``the only case where it is possible to extend the
             system based on runtime state and execution''
-            \cite[p.~113:23]{lilis_survey_2019}
+            \citep[p.~113:23]{lilis_survey_2019}
       \item Includes ``most reflection systems, \acsp{mop}, \acs{msp} systems,
-            and dynamic \acs{aop} systems" \cite[p.~113:31]{lilis_survey_2019}
+            and dynamic \acs{aop} systems" \citep[p.~113:31]{lilis_survey_2019}
 \end{itemize}
 
 \subsection{Metaprogram Source Location}
-\subsubsection{Embedded in the Subject Program \cite[p.~113:25-26]{lilis_survey_2019}}
+\subsubsection{Embedded in the Subject Program \citep[p.~113:25-26]{lilis_survey_2019}}
 \begin{itemize}
       \item Usually occurs with macros, templates, \acsp{msl}, reflection,
-            \acsp{mop}, and \acs{aop} \cite[p.~113:25]{lilis_survey_2019}
+            \acsp{mop}, and \acs{aop} \citep[p.~113:25]{lilis_survey_2019}
 \end{itemize}
 
-\paragraph{Context Unaware \cite[p.~113:25]{lilis_survey_2019}}
+\paragraph{Context Unaware \citep[p.~113:25]{lilis_survey_2019}}
 \begin{itemize}
       \item Occurs when metaprograms only need to know their input parameters
-            to generate \acsp{ast} \cite[p.~113:25]{lilis_survey_2019}
+            to generate \acsp{ast} \citep[p.~113:25]{lilis_survey_2019}
       \item Very common: supported by ``most \acs{ctmp} systems''
-            \cite[p.~113:31]{lilis_survey_2019} and ``for most macro
+            \citep[p.~113:31]{lilis_survey_2019} and ``for most macro
             systems\dots, generative programming systems \dots and \acsp{msl}
-            \dots it is the only available option'' \cite[p.~113:25]{lilis_survey_2019}
+            \dots it is the only available option'' \citep[p.~113:25]{lilis_survey_2019}
 \end{itemize}
 
-\paragraph{Context Aware \cite[p.~113:25-26]{lilis_survey_2019}}
+\paragraph{Context Aware \citep[p.~113:25-26]{lilis_survey_2019}}
 \begin{itemize}
       \item ``Typically involves providing access to the respective program
             \acs{ast} node and allowing it to be traversed'' as ``an extra \dots
-            parameter to the metaprogram'' \cite[p.~113:25]{lilis_survey_2019}
+            parameter to the metaprogram'' \citep[p.~113:25]{lilis_survey_2019}
       \item Allows for code transformation ``at multiple different locations
-            reachable from the initial context'' \cite[p.~113:25]{lilis_survey_2019}
-      \item Very uncommon \cite[p.~113:25,~31]{lilis_survey_2019}
+            reachable from the initial context'' \citep[p.~113:25]{lilis_survey_2019}
+      \item Very uncommon \citep[p.~113:25,~31]{lilis_survey_2019}
 \end{itemize}
 
-\paragraph{Global \cite[p.~113:26]{lilis_survey_2019}}
+\paragraph{Global \citep[p.~113:26]{lilis_survey_2019}}
 \begin{itemize}
       \item Involves ``scenarios that collectively introduce, transform, or
             remove functionality for the entire program''
-            \cite[p.~113:26]{lilis_survey_2019}
+            \citep[p.~113:26]{lilis_survey_2019}
       \item Usually occurs with reflection, \acsp{mop}, and \acs{aop}
-            \cite[p.~113:26]{lilis_survey_2019}; offered by ``most \acs{rtmp}
-            systems'' \cite[p.~113:31]{lilis_survey_2019}
+            \citep[p.~113:26]{lilis_survey_2019}; offered by ``most \acs{rtmp}
+            systems'' \citep[p.~113:31]{lilis_survey_2019}
       \item Can be used with ``any \acs{pptmp} or \acs{ctmp} system that
             provides access to the full program \acs{ast}''
-            \cite[p.~113:26]{lilis_survey_2019}
+            \citep[p.~113:26]{lilis_survey_2019}
       \item ``Can also be seen as a context-aware case where the context is the
-            entire program'' \cite[p.~113:26]{lilis_survey_2019}
+            entire program'' \citep[p.~113:26]{lilis_survey_2019}
 \end{itemize}
 
-\subsubsection{External to the Subject Program \cite[p.~113:27]{lilis_survey_2019}}
+\subsubsection{External to the Subject Program \citep[p.~113:27]{lilis_survey_2019}}
 \begin{itemize}
       \item Occurs when metaprograms ``are specified as separate transformation
             programs applied through \acs{pptmp} systems or supplied to the
             compiler together with the target program to be translated as extra
-            parameters'' \cite[p.~113:27]{lilis_survey_2019}
-      \item Includes many instances of \acs{aop} \cite[p.~113:27]{lilis_survey_2019}
+            parameters'' \citep[p.~113:27]{lilis_survey_2019}
+      \item Includes many instances of \acs{aop} \citep[p.~113:27]{lilis_survey_2019}
 \end{itemize}
 
 \subsection{Relation to the Object Language}
@@ -397,14 +397,14 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
                   \item ``The basic object language''
                   \item ``The metaprogramming elements for implementing the
                         metaprograms'' (the \emph{metalayer})
-                        \cite[p.~113:27]{lilis_survey_2019}
+                        \citep[p.~113:27]{lilis_survey_2019}
             \end{enumerate}
       \item Sometimes the metalayer of a language is added to a language later,
-            independently of the object language \cite[p.~113:27]{lilis_survey_2019}
+            independently of the object language \citep[p.~113:27]{lilis_survey_2019}
 \end{itemize}
 
 \subsubsection{Metalanguage Indistinguishable from the Object Language
-      \cite[p.~113:28-29]{lilis_survey_2019}}
+      \citep[p.~113:28-29]{lilis_survey_2019}}
 \begin{itemize}
       \item Two categories:
             \begin{enumerate}
@@ -413,43 +413,43 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
                   \item ``Metalanguage constructs \dots [are] modeled using
                         object language syntax and applied through special
                         language or execution system features''
-                        \cite[p.~113:28]{lilis_survey_2019}
+                        \citep[p.~113:28]{lilis_survey_2019}
                         \begin{itemize}
                               \item Includes many examples of \acsp{mop} and
-                                    \acs{aop} \cite[p.~113:28]{lilis_survey_2019}
+                                    \acs{aop} \citep[p.~113:28]{lilis_survey_2019}
                         \end{itemize}
             \end{enumerate}
 \end{itemize}
 
 \subsubsection{Metalanguage Extends the Object Language
-      \cite[p.~113:29]{lilis_survey_2019}}
+      \citep[p.~113:29]{lilis_survey_2019}}
 \begin{itemize}
       \item Allows for reuse of ``the original language['s] \dots well-known
             features instead of adopting custom programming constructs''
-            \cite[p.~113:29]{lilis_survey_2019}
+            \citep[p.~113:29]{lilis_survey_2019}
       \item ``Typically involve new syntax and functionality used to
             differentiate normal code from metacode''
-            \cite[p.~113:29]{lilis_survey_2019}
+            \citep[p.~113:29]{lilis_survey_2019}
       \item Often used in quasi-quote constructs, two-stage and multistage
-            languages, and \acsp{mop} \cite[p.~113:29]{lilis_survey_2019}
+            languages, and \acsp{mop} \citep[p.~113:29]{lilis_survey_2019}
       \item Used with \acsp{msl} ``as the base languages are extended with
             staging annotations to deliver \acs{msp} functionality''
-            \cite[p.~113:31]{lilis_survey_2019}
+            \citep[p.~113:31]{lilis_survey_2019}
 \end{itemize}
 
 \subsubsection{Metalanguage Different from the Object Language
-      \cite[p.~113:29-31]{lilis_survey_2019}}
+      \citep[p.~113:29-31]{lilis_survey_2019}}
 \begin{itemize}
       \item Allows for ``the metalanguage syntax and constructs \dots [to be]
             selected to better reflect the metalanguage concepts to ease their
             use in developing metaprograms and enable them to become more
-            concise and understandable'' \cite[p.~113:29]{lilis_survey_2019}
+            concise and understandable'' \citep[p.~113:29]{lilis_survey_2019}
       \item However, it can lead to ``different development practices and
             disable[s] the potential for design or code reuse between them [the
                         languages]'', as well as requiring users to know how to
-            use both languages \cite[p.~113:30]{lilis_survey_2019}
+            use both languages \citep[p.~113:30]{lilis_survey_2019}
       \item Used by some \acs{aop} and generative metaprogramming systems
-            \cite[p.~113:30]{lilis_survey_2019}
+            \citep[p.~113:30]{lilis_survey_2019}
 \end{itemize}
 
 \section{Overview of Generative Software Development}
@@ -458,82 +458,82 @@ another class at runtime'' \cite[p.~113:10]{lilis_survey_2019}.
 ``System family engineering seeks to exploit the commonalities
 among systems from a given problem domain while managing the
 variabilities among them in a systematic way''
-\cite[p.~326]{czarnecki_overview_2004}. ``Generative software development is a
+\citep[p.~326]{czarnecki_overview_2004}. ``Generative software development is a
 system-family approach \dots that focuses on automating the creation of
 system-family members \dots from a specification written in [a \acf{dsl}]''
-\cite[p.~327]{czarnecki_overview_2004}. ``\acsp{dsl} come in a wide variety of
+\citep[p.~327]{czarnecki_overview_2004}. ``\acsp{dsl} come in a wide variety of
 forms, \dots [including] textual \dots [and] diagrammatic''
-\cite[p.~328]{czarnecki_overview_2004}.
+\citep[p.~328]{czarnecki_overview_2004}.
 
 ``System family engineering distinguishes between at least two kinds of
 development processes: \emph{domain engineering} and \emph{application
-      engineering}'' \cite[p.~328]{czarnecki_overview_2004}. ``Domain
+      engineering}'' \citep[p.~328]{czarnecki_overview_2004}. ``Domain
 engineering \dots is concerned with the development of reusable assets such as
 components, generators, \acsp{dsl}, analysis and design models, user documentation,
-etc.'' \cite[pp.~328-329]{czarnecki_overview_2004}. It includes ``determining
+etc.'' \citep[pp.~328-329]{czarnecki_overview_2004}. It includes ``determining
 the scope of the family to be built, identifying the common and variable
 features among the family members'', and ``the development of a common
 architecture for all the members of the system family''
-\cite[p.~329]{czarnecki_overview_2004}. Application engineering includes
+\citep[p.~329]{czarnecki_overview_2004}. Application engineering includes
 ``requirements elicitation, analysis, and specification'' and ``the manual or
 automated construction of the system from the reusable assets''
-\cite[p.~329]{czarnecki_overview_2004}. The assets from domain engineering are
+\citep[p.~329]{czarnecki_overview_2004}. The assets from domain engineering are
 used to build the system development by application engineering, which provides
 domain engineering which the requirements to analyze for commonalities and
-create reusable assets for \cite[p.~329]{czarnecki_overview_2004}.
+create reusable assets for \citep[p.~329]{czarnecki_overview_2004}.
 
 \acf{aop} ``provides more powerful localization and encapsulation mechanisms
 than traditional component technologies'' but there is still the need to
 ``configure aspects and other components to implement abstract features''
-\cite[p.~338]{czarnecki_overview_2004}. \acs{aop} ``cover[s] the solution space
+\citep[p.~338]{czarnecki_overview_2004}. \acs{aop} ``cover[s] the solution space
 and only a part of the configuration knowledge'', although ``aspects can also
-be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
+be found in the problem space'' \citep[p.~338]{czarnecki_overview_2004}.
 
 \subsection{Definitions}
 \begin{itemize}
       \item Generative domain model: ``a mapping between \emph{problem space}
             and \emph{solution space}'' which ``takes a specification and
             returns the corresponding implementation''
-            \cite[p.~330]{czarnecki_overview_2004}
+            \citep[p.~330]{czarnecki_overview_2004}
             \begin{itemize}
                   \item Configuration view: ``the problem space consists of
                         domain-specific concepts and their features'' such as
                         ``illegal feature combinations, default settings, and
-                        default dependencies'' \cite[p.~331]{czarnecki_overview_2004}.
+                        default dependencies'' \citep[p.~331]{czarnecki_overview_2004}.
                         ``An application programmer creates a configuration of
                         features by selecting the desired ones, [sic] which
                         then is mapped to a configuration of components''
-                        \cite[p.~331]{czarnecki_overview_2004}
+                        \citep[p.~331]{czarnecki_overview_2004}
                   \item Transformational view: ``a problem space is represented
                         by a \dots [\acs{dsl}], whereas the solution space is
                         represented by an implementation language''
-                        \cite[p.~331]{czarnecki_overview_2004}. ``A program in
+                        \citep[p.~331]{czarnecki_overview_2004}. ``A program in
                         a \dots [\acs{dsl}]'' is transformed into ``its
                         implementation in the implementation language''
-                        \cite[p.~331]{czarnecki_overview_2004}
+                        \citep[p.~331]{czarnecki_overview_2004}
             \end{itemize}
       \item Problem space: ``a set of domain-specific abstractions that can be
             used to specify the desired system-family member''
-            \cite[p.~330]{czarnecki_overview_2004}
+            \citep[p.~330]{czarnecki_overview_2004}
       \item Solution space: ``consists of implementation-oriented abstractions,
             which can be instantiated to create implementations of the [desired]
-            specifications'' \cite[p.~330]{czarnecki_overview_2004}
+            specifications'' \citep[p.~330]{czarnecki_overview_2004}
       \item Network of domains: the graph built from ``spaces and mappings \dots
             where each implementation of a domain exposes a \acs{dsl}, which may
             be implemented by transformations to \acsp{dsl} exposed by other
-            domain implementations'' \cite[pp.~332-333]{czarnecki_overview_2004}
+            domain implementations'' \citep[pp.~332-333]{czarnecki_overview_2004}
       \item Feature modeling: ``a method and notation to elicit and represent
             common and variable features of the systems in a system family''
-            \cite[p.~333]{czarnecki_overview_2004}. Can be used during domain
+            \citep[p.~333]{czarnecki_overview_2004}. Can be used during domain
             analysis as ``the starting point in the development of both
             system-family architecture and \acsp{dsl}''
-            \cite[p.~334]{czarnecki_overview_2004}
+            \citep[p.~334]{czarnecki_overview_2004}
       \item \acf{mdd}: uses ``abstract representation[s] of a system and the
             portion[s] of the world that interact[] with it'' to ``captur[e]
             every important aspect of a software system''
-            \cite[p.~336]{czarnecki_overview_2004}. Often uses \acsp{dsl} and
+            \citep[p.~336]{czarnecki_overview_2004}. Often uses \acsp{dsl} and
             sometimes deals with system families, making it related to
-            generative software development \cite[pp.~336-337]{czarnecki_overview_2004}
+            generative software development \citep[pp.~336-337]{czarnecki_overview_2004}
 \end{itemize}
 
 \section{Structured Program Generation Techniques}
@@ -543,81 +543,81 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
             instead of generating a new one'' (for example, by making a
             program's code adhere to style guides); the term ``program
             generator'' often includes program transformers
-            \cite[p.~1]{smaragdakis_structured_2017}
+            \citep[p.~1]{smaragdakis_structured_2017}
       \item Generators are used ``to automate, elevate, modularize or otherwise
-            facilitate program development'' \cite[p.~2]{smaragdakis_structured_2017}
+            facilitate program development'' \citep[p.~2]{smaragdakis_structured_2017}
       \item Why is it beneficial ``to statically check the generator and be
             sure that no type error arises during its \emph{run time}''
-            \cite[p.~2]{smaragdakis_structured_2017} instead of just checking
+            \citep[p.~2]{smaragdakis_structured_2017} instead of just checking
             the generated program(s)?
             \begin{itemize}
                   \item ``An error in the generated program can be very hard to
                         debug and may require full understanding of the
-                        generator itself'' \cite[p.~2]{smaragdakis_structured_2017}
+                        generator itself'' \citep[p.~2]{smaragdakis_structured_2017}
                   \item Errors can occur in the generator from ``mismatched
                         assumptions''; for example, ``the generator fails to
                         take into account some input case, so that, even though
                         the generator writer has tested the generator under
                         several inputs, other inputs result in badly-formed
-                        programs'' \cite[p.~6]{smaragdakis_structured_2017}
+                        programs'' \citep[p.~6]{smaragdakis_structured_2017}
             \end{itemize}
 
 \end{itemize}
 
 \subsection{Techniques for Program Generation
-      \cite[pp.~3-5]{smaragdakis_structured_2017}}
+      \citep[pp.~3-5]{smaragdakis_structured_2017}}
 \begin{enumerate}
       \item Generation as text: ``producing character strings containing the
             text of a program, which is subsequently interpreted or compiled''
-            \cite[p.~3]{smaragdakis_structured_2017}
+            \citep[p.~3]{smaragdakis_structured_2017}
       \item Syntax tree manipulation: building up code using constructors in a
             syntactically meaningful way that preserves its structure
       \item Code templates/quoting: involves ``language constructs for
             generating program fragments in the target language \dots as well
             as for supplying values to fill in holes in the generated syntax
-            tree'' \cite[p.~4]{smaragdakis_structured_2017}
+            tree'' \citep[p.~4]{smaragdakis_structured_2017}
       \item Macros: ``reusable code templates with pre-set rules for
-            parameterizing them'' \cite[p.~4]{smaragdakis_structured_2017}
+            parameterizing them'' \citep[p.~4]{smaragdakis_structured_2017}
       \item Generics: Mechanisms with ``the ability to parameterize a code
             template with different static types''
-            \cite[p.~5]{smaragdakis_structured_2017}
+            \citep[p.~5]{smaragdakis_structured_2017}
       \item Specialized languages: Languages with specific features for
             program generators, such as \acs{aop} and
-            \emph{inter-type declarations} \cite[p.~5]{smaragdakis_structured_2017}
+            \emph{inter-type declarations} \citep[p.~5]{smaragdakis_structured_2017}
 \end{enumerate}
 
-\subsection{Kinds of Generator Safety \cite[pp.~5-8]{smaragdakis_structured_2017}}
+\subsection{Kinds of Generator Safety \citep[pp.~5-8]{smaragdakis_structured_2017}}
 \begin{itemize}
       \item Lexical and syntactic well-formedness: ``any generated/transformed
             program is guaranteed to pass the lexical analysis and parsing
             phases of a traditional compiler''; usually done ``by encoding the
             syntax of the object language using the type system of the host
-            language'' \cite[p.~6]{smaragdakis_structured_2017}
+            language'' \citep[p.~6]{smaragdakis_structured_2017}
       \item Scoping and hygiene: avoiding issues with scope and unintentional
             variable capture
       \item Full well-formedness: ensuring that any generated/transformed
             program is guaranteed to be fully well-formed (e.g.,
             ``guaranteed to pass any static check in the target language''
-            \cite[p.~8]{smaragdakis_structured_2017})
+            \citep[p.~8]{smaragdakis_structured_2017})
 \end{itemize}
 
 \subsection{Methods for Guaranteeing Fully Structured Generation
-      \cite[pp.~8-20]{smaragdakis_structured_2017}}
+      \citep[pp.~8-20]{smaragdakis_structured_2017}}
 \begin{enumerate}
       \item \acf{msp}: ``the generator and the generated program \dots are
             type-checked by the same type system[] and some parts of the
             program are merely evaluated later (i.e., generated)''; similar
-            to \emph{partial evaluation} \cite[p.~9]{smaragdakis_structured_2017}
+            to \emph{partial evaluation} \citep[p.~9]{smaragdakis_structured_2017}
       \item Class Morphing: similar to \acfp{mop}?
-      \item Reflection: (e.g., SafeGen \cite[p.~15]{smaragdakis_structured_2017})
+      \item Reflection: (e.g., SafeGen \citep[p.~15]{smaragdakis_structured_2017})
       \item The use of ``a powerful type system that can simultaneously express
             conventional type-level properties of a program and the logical
             structure of a generator under unknown inputs. This typically
             entails the use of dependent types'' (e.g., Ur)
-            \cite[p.~16]{smaragdakis_structured_2017}
+            \citep[p.~16]{smaragdakis_structured_2017}
       \item Macro systems, although ``safety guarantees carry the cost of some
             manual verification effort by the programmer''
-            \cite[p.~19]{smaragdakis_structured_2017}
+            \citep[p.~19]{smaragdakis_structured_2017}
 \end{enumerate}
 
 \section{Taxonomy of Fundamental Concepts of Meta-Programming}
@@ -627,35 +627,35 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
       \item Program transformation: ``the process of changing one form of a
             program (source code, specification or model) into another, as well
             as a formal or abstract description of an algorithm that implements
-            this transformation'' \cite[p.~18]{stuikys_taxonomy_2013}
+            this transformation'' \citep[p.~18]{stuikys_taxonomy_2013}
             \begin{itemize}
                   \item It may or may not preserve the program's semantics
-                        \cite[p.~18]{stuikys_taxonomy_2013}
+                        \citep[p.~18]{stuikys_taxonomy_2013}
                   \item In metaprogramming, ``the transformation algorithm
                         describes generation of a particular instance depending
                         upon values of the generic parameters''
-                        \cite[p.~18]{stuikys_taxonomy_2013}
+                        \citep[p.~18]{stuikys_taxonomy_2013}
                   \item Formal program transformation: ``A stepwise
                         manipulation, which (1) is defined on a programming
                         language domain, (2) uses a formal model to support the
                         refinement, and (3) simultaneously preserves the
-                        semantics'' \cite[p.~18]{stuikys_taxonomy_2013}
+                        semantics'' \citep[p.~18]{stuikys_taxonomy_2013}
             \end{itemize}
       \item Code generation: ``the process by which a code generator converts a
             syntactically correct high-level program into a series of
             lower-level instructions''; the input can take many forms
             ``typically consists of a parse tree, abstract syntax tree or
             intermediate language code'' and ``the output \dots could be in any
-            language'' \cite[p.~19]{stuikys_taxonomy_2013}
+            language'' \citep[p.~19]{stuikys_taxonomy_2013}
       \item Generic component: ``a software module \dots [that] abstractly and
             concisely represents a set of closely related ('look-alike')
             software components with slightly different properties''
-            \cite[p.~19]{stuikys_taxonomy_2013}
+            \citep[p.~19]{stuikys_taxonomy_2013}
       \item Generative component: a generic component that has ``explicitly
-            added generative technology'' \cite[p.~24]{stuikys_taxonomy_2013}
+            added generative technology'' \citep[p.~24]{stuikys_taxonomy_2013}
       \item Separation of concerns: ``the process of breaking a design problem
             into distinct tasks that are orthogonal and can be implemented
-            separately'' \cite[p.~21]{stuikys_taxonomy_2013}
+            separately'' \citep[p.~21]{stuikys_taxonomy_2013}
 \end{itemize}
 
 \subsection{Other Notes}
@@ -663,40 +663,40 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
       \item Structural meta-programming concepts ``are defined by the
             designer'', ``used during construction of the meta-programming
             systems and artefacts'', and ``depend upon [the] specific \dots
-            meta-language'' used \cite[p.~24]{stuikys_taxonomy_2013}
+            meta-language'' used \citep[p.~24]{stuikys_taxonomy_2013}
       \item Most processes ``are used in compile time or run time'' except for
             generalization, which ``is used during the creation of the
-            meta-programming artefacts'' \cite[pp.~24-25]{stuikys_taxonomy_2013}
+            meta-programming artefacts'' \citep[pp.~24-25]{stuikys_taxonomy_2013}
 \end{itemize}
 
 \section{Roadblocks to Meta-Programming}
 \label{chap:notes:sec:metaprogramming-roadblocks}
 \begin{itemize}
       \item ``Generators are often the technique of last resort''
-            \cite[p.~2]{smaragdakis_structured_2017}
+            \citep[p.~2]{smaragdakis_structured_2017}
       \item ``A major stumbling block to achieving the promised benefits
                   [of meta-programming] is the understanding and learning the
             meta-programming approach. One reason may be that we do not yet
             thoroughly understand the fundamental concepts that define
-            meta-programming'' \cite[p.~26]{stuikys_taxonomy_2013}
+            meta-programming'' \citep[p.~26]{stuikys_taxonomy_2013}
       \item Meta-programming does not provide instant results; instead, the
             effort and design put in at the beginning of the process later pay
             off potentially large dividends that are not seen right away;
             ``most \dots programmers and designers \dots like to reuse the
             existing software artefacts, but not much is done and [sic]
-            invested into designing for reuse'' \cite[p.~26]{stuikys_taxonomy_2013}
+            invested into designing for reuse'' \citep[p.~26]{stuikys_taxonomy_2013}
             (example, meta-programming was proposed by McIlroy in 1968 but
             ``software factories have not become a reality \dots partly due to
             \dots [this] significant initial investment'')
-            \cite[p.~27]{stuikys_taxonomy_2013}
+            \citep[p.~27]{stuikys_taxonomy_2013}
       \item Software development involves ``work[ing] with multiple levels of
             abstraction'', including ``the syntax, semantics, abilities and
             limitations'' of given languages, their implementation details,
             their communication details, and ``impeding mismatches'' between
-            them \cite[p.~27]{stuikys_taxonomy_2013}
+            them \citep[p.~27]{stuikys_taxonomy_2013}
       \item ``Modification of the generated code usually removes the program
             from the scope of the meta-programming system''
-            \cite[p.~27]{stuikys_taxonomy_2013}
+            \citep[p.~27]{stuikys_taxonomy_2013}
 \end{itemize}
 
 \section{Software Metrics}
@@ -706,21 +706,21 @@ be found in the problem space'' \cite[p.~338]{czarnecki_overview_2004}.
       \item The following branches of testing started as parts of quality
             testing:
             \begin{itemize}
-                  \item Reliability testing \cite[p.~18, ch.~10]{fenton_software_1997}
-                  \item Performance testing \cite[p.~18, ch.~7]{fenton_software_1997}
+                  \item Reliability testing \citep[p.~18, ch.~10]{fenton_software_1997}
+                  \item Performance testing \citep[p.~18, ch.~7]{fenton_software_1997}
             \end{itemize}
       \item Reliability and maintainability can start to be tested even without
             code by ``measur[ing] structural attributes of representations of the
-            software'' \cite[p.~18]{fenton_software_1997}
+            software'' \citep[p.~18]{fenton_software_1997}
       \item The US Software Engineering Institute has a checklist for determining
             which types of lines of code are included when counting
-            \cite[pp.~30-31]{fenton_software_1997}
+            \citep[pp.~30-31]{fenton_software_1997}
       \item Measurements should include an entity to be measured, a specific
             attribute to measure, and the actual measure (i.e., units, starting
-            state, ending state, what to include) \cite[p.~36]{fenton_software_1997}
+            state, ending state, what to include) \citep[p.~36]{fenton_software_1997}
             \begin{itemize}
                   \item These attributes must be defined before they can be
-                        measured \cite[p.~38]{fenton_software_1997}
+                        measured \citep[p.~38]{fenton_software_1997}
             \end{itemize}
 \end{itemize}
 
@@ -734,57 +734,57 @@ semantic difference between related terms. For example, one ontology found
 that the term ``\,`IntegrationTest' is a kind of Context (with
 semantic of stage, but not a kind of Activity)'' while ``\,`IntegrationTesting'
 has semantic of Level-based Testing that is a kind of Testing Activity [or]
-\dots of Test strategy'' \cite[p.~157]{tebes_systematic_2019}.
+\dots of Test strategy'' \citep[p.~157]{tebes_systematic_2019}.
 
 There are many different concepts involved with software testing;
-\cite{barbosa_towards_2006} gives the following: testing process, testing phase,
+\citep{barbosa_towards_2006} gives the following: testing process, testing phase,
 testing artifact, testing step, testing procedure, and testing resource
-\cite[p.~2]{barbosa_towards_2006},
-as well as the relations between them \cite[Fig.~2]{barbosa_towards_2006}
-(see also \cite[Fig.~1]{borges_using_2009}, which I could only find as an
+\citep[p.~2]{barbosa_towards_2006},
+as well as the relations between them \citep[Fig.~2]{barbosa_towards_2006}
+(see also \citep[Fig.~1]{borges_using_2009}, which I could only find as an
 example of an ontology in an otherwise unrelated paper).
-In addition to the concept of ``test artifact'', \cite{souza_roost_2017} also
+In addition to the concept of ``test artifact'', \citep{souza_roost_2017} also
 provides the following concepts: testing technique, test level (which seems to
-be comparable to ``testing phase'' from \cite[p.~3]{barbosa_towards_2006}), and
-test environment \cite[pp.~3-4]{souza_roost_2017}. 
+be comparable to ``testing phase'' from \citep[p.~3]{barbosa_towards_2006}), and
+test environment \citep[pp.~3-4]{souza_roost_2017}. 
 Particular things of note from these ontologies:
 
 \begin{itemize}
       \item The testing phases described by both are unit, integration,
-            system, \cite[p.~3]{souza_roost_2017}, \cite[p.~3]{barbosa_towards_2006},
-            and regression testing \cite[p.~3]{barbosa_towards_2006}
+            system, \citep[p.~3]{souza_roost_2017}, \citep[p.~3]{barbosa_towards_2006},
+            and regression testing \citep[p.~3]{barbosa_towards_2006}
       \item Testing artifacts are ``produced and used throughout the testing
             process'' and include test plans, test procedures, test cases, and
-            test results \cite[p.~3]{souza_roost_2017}. The role of testing
-            artifacts is not specified in \cite{barbosa_towards_2006};
+            test results \citep[p.~3]{souza_roost_2017}. The role of testing
+            artifacts is not specified in \citep{barbosa_towards_2006};
             requirements, drivers, and source code are all treated the same
-            with no distinction \cite[p.~3]{barbosa_towards_2006}
+            with no distinction \citep[p.~3]{barbosa_towards_2006}
       \item ``Testing procedures can be categorized in testing methods,
             testing guidances and testing techniques'', and ``functional,
             structural, error-based and state-based'' (called ``black-box''
             ``white-box'', ``defect-based'', and ``model-based'' in
-            \cite[p.~3]{souza_roost_2017}) are examples of
-            testing techniques  \cite[p.~3]{barbosa_towards_2006}
+            \citep[p.~3]{souza_roost_2017}) are examples of
+            testing techniques  \citep[p.~3]{barbosa_towards_2006}
 \end{itemize}
 
-In \cite{souza_roost_2017}, the ontology (ROoST) \todo{add acronym?} is made to
+In \citep{souza_roost_2017}, the ontology (ROoST) \todo{add acronym?} is made to
 answer a series of questions, including ``What is the test level of a testing
 activity?'' and ``What are the artifacts used by a testing activity?''
-\cite[pp.~8-9]{souza_roost_2017}. \todo{is this punctuation right?}
+\citep[pp.~8-9]{souza_roost_2017}. \todo{is this punctuation right?}
 The question ``How do testing artifacts relate to each other?''
-\cite[p.~8]{souza_roost_2017} is later broken down into multiple questions,
+\citep[p.~8]{souza_roost_2017} is later broken down into multiple questions,
 such as ``What are the test case inputs of a given test case?'' and ``What are
-the expected results of a given test case?'' \cite[p.~21]{souza_roost_2017}.
+the expected results of a given test case?'' \citep[p.~21]{souza_roost_2017}.
 \emph{These questions seem to overlap with the questions we were trying to ask
 about different testing techniques.} 
 
 Most ontologies I can find seem to focus on the high-level testing process
 rather than the testing techniques themselves. For example, the terms and
-definitions \cite{tebes_testtdo_terms_definitions_vfinalpdf_2020}
-from TestTDO \cite{tebes_testtdo_2020} provides \emph{some} definitions of
+definitions \citep{tebes_testtdo_terms_definitions_vfinalpdf_2020}
+from TestTDO \citep{tebes_testtdo_2020} provides \emph{some} definitions of
 testing techniques, but mainly focuses on parts of the testing process
 (e.g., test goal, test plan, testing role, testable entity) and how they relate
-to one another. \cite[pp.~152-153]{tebes_systematic_2019} may provide some
+to one another. \citep[pp.~152-153]{tebes_systematic_2019} may provide some
 sources for software testing terminology and definitions (this seems to include
 \href{https://github.com/samm82/TestGen-Thesis/issues/14#issuecomment-1839922715}
 {the ones suggested by Dr.~Carette}) and also includes a list of ontologies
@@ -796,25 +796,25 @@ that both enable and constrain how testing is performed'', including mission,
 goals, strategy, ``management support, resources, work processes, tools,
 motivation''), test process (testing ``standards and procedures''), and tester
 competency (``skill sets needed to test software in a test environment'')
-\cite[pp.~5-6]{perry_effective_2006}.
+\citep[pp.~5-6]{perry_effective_2006}.
 
-\cite{unterkalmsteiner_taxonomy_2014} provides a foundation to allow one ``to
+\citep{unterkalmsteiner_taxonomy_2014} provides a foundation to allow one ``to
 classify and characterize alignment research and solutions that focus on the
 boundary between [requirements engineering and software testing]'' but ``does
 not aim at providing a systematic and exhaustive state-of-the-art survey of
-[either domain]'' \cite[p.~A:2]{unterkalmsteiner_taxonomy_2014}.
+[either domain]'' \citep[p.~A:2]{unterkalmsteiner_taxonomy_2014}.
 
 Another source
 introduced the notion of an ``intervention'': ``an act performed (e.g. use of a
 technique or a process change) to adapt testing to a specific context, to solve
 a test issue, to diagnose testing or to improve testing''
-\cite[p.~1]{engström_mapping_2015} and noted that ``academia tend to focus on
+\citep[p.~1]{engström_mapping_2015} and noted that ``academia tend to focus on
 characteristics of the intervention [while] industrial standards categorize the
-area from a process perspective'' \cite[p.~2]{engström_mapping_2015}. 
+area from a process perspective'' \citep[p.~2]{engström_mapping_2015}. 
 It provides a structure to ``capture both a problem perspective and a solution
-perspective with respect to software testing'' \cite[pp.~3-4]{engström_mapping_2015},
+perspective with respect to software testing'' \citep[pp.~3-4]{engström_mapping_2015},
 but this seems to focus more on test interventions and challenges rather than
-techniques \cite[Fig.~5]{engström_mapping_2015}.
+techniques \citep[Fig.~5]{engström_mapping_2015}.
 
 \subsubsection{Categorizations}
 
@@ -823,53 +823,53 @@ categories (note that these are not mutually exclusive):
 
 \begin{itemize}
       \item Execution of code: static or dynamic
-            \cite[p.~53]{patton_software_2006}
+            \citep[p.~53]{patton_software_2006}
       \item Visibility of code: black-, white-, or gray-box (functional,
             structural, or a mix of the two)
-            \cite[pp.~53, 218]{patton_software_2006}, \cite[p.~69]{perry_effective_2006}
+            \citep[pp.~53, 218]{patton_software_2006}, \citep[p.~69]{perry_effective_2006}
       \item Stage of testing: unit, integration, system, or acceptance
-            \cite{patton_software_2006}, \cite{perry_effective_2006},
-            \cite{peters_software_2000} (sometimes includes installation
-            \cite[p.~439]{van_vliet_software_2000} or regression
-            \cite[p.~3]{barbosa_towards_2006})
+            \citep{patton_software_2006}, \citep{perry_effective_2006},
+            \citep{peters_software_2000} (sometimes includes installation
+            \citep[p.~439]{van_vliet_software_2000} or regression
+            \citep[p.~3]{barbosa_towards_2006})
       \item Goal of testing: verification or validation
-            \cite[pp.~69-70]{perry_effective_2006}
+            \citep[pp.~69-70]{perry_effective_2006}
       \item Source of test data: specification-, implementation-, or
-            error-oriented \cite[p.~440]{peters_software_2000}
+            error-oriented \citep[p.~440]{peters_software_2000}
       \item Adequacy criterion: coverage-, fault-, or error-based
             (``based on knowledge of the typical errors that people make'')
-            \cite[pp.~398-399]{van_vliet_software_2000}
+            \citep[pp.~398-399]{van_vliet_software_2000}
 \end{itemize}
 
 Tests can also be tailored to ``test factors'' (also called ``quality factors''
 or ``quality attributes''): ``attributes of the software that, if they are
 wanted, pose a risk to the success of the software''
-\cite[p.~40]{perry_effective_2006}. These include correctness, file integrity,
+\citep[p.~40]{perry_effective_2006}. These include correctness, file integrity,
 authorization, audit trail, continuity of processing, service levels
 (e.g., response time), access control, compliance, reliability, ease of use,
 maintainability, portability, coupling (e.g., with other applications in a
 given environment), performance, and ease of operation (e.g., documentation,
-training) \cite[pp.~40-41]{perry_effective_2006}. \emph{These may overlap with
+training) \citep[pp.~40-41]{perry_effective_2006}. \emph{These may overlap with
 the ``Results of Testing (Area of Confidence)'' column in the summary
 spreadsheet.}
 
 Engström ``investigated classifications of research''
-\cite[p.~1]{engström_mapping_2015} on the following four testing techniques.
+\citep[p.~1]{engström_mapping_2015} on the following four testing techniques.
 \emph{These four categories seem like comparing apples to oranges to me.}
 
 \begin{itemize}
       \item \textbf{Combinatorial testing:} how the system under test is
             modelled, ``which combination strategies are used to generate test
             suites and how test cases are prioritized''
-            \cite[pp.~1-2]{engström_mapping_2015}
+            \citep[pp.~1-2]{engström_mapping_2015}
       \item \textbf{Model-based testing:} the information represented and
-            described by the test model \cite[p.~2]{engström_mapping_2015}
+            described by the test model \citep[p.~2]{engström_mapping_2015}
       \item \textbf{Search-based testing:} ``how techniques had been
             empirically evaluated (i.e. objective and context)''
-            \cite[p.~2]{engström_mapping_2015}
+            \citep[p.~2]{engström_mapping_2015}
       \item \textbf{Unit testing:} ``source of information (e.g. code,
             specifications or testers intuition)''
-            \cite[p.~2]{engström_mapping_2015}
+            \citep[p.~2]{engström_mapping_2015}
 \end{itemize}
 
 \subsection{Information Required for Different Types of Testing}
@@ -885,57 +885,57 @@ whether that information exists in Drasil already and if it can be added
 
 \begin{itemize}
       \item Software testing: ``the process of executing a program with the
-            intent of finding errors'' \cite[p.~438]{peters_software_2000}
+            intent of finding errors'' \citep[p.~438]{peters_software_2000}
             \todo{Find original source: Myers 1976}
       \item Error: ``a human action that produces an incorrect result''
-            \cite[p.~399]{van_vliet_software_2000}
+            \citep[p.~399]{van_vliet_software_2000}
       \item Fault: ``the manifestation of an error'' in the software itself
-            \cite[p.~400]{van_vliet_software_2000}
+            \citep[p.~400]{van_vliet_software_2000}
       \item Failure: incorrect output or behaviour resulting from encountering
             a fault; can be defined as not meeting specifications or
             expectations and ``is a relative notion''
-            \cite[p.~400]{van_vliet_software_2000}
+            \citep[p.~400]{van_vliet_software_2000}
       \item Verification: ``the process of evaluating a system or component
             to determine whether the products of a given development phase
             satisfy the conditions imposed at the start of that phase''
-            \cite[p.~400]{van_vliet_software_2000}
+            \citep[p.~400]{van_vliet_software_2000}
       \item Validation: ``the process of evaluating a system or component
             during or at the end of the development process to determine
             whether it satisfies specified requirements''
-            \cite[p.~400]{van_vliet_software_2000}
+            \citep[p.~400]{van_vliet_software_2000}
       \item Test Suite Reduction: the process of reducing the size of a test
             suite while maintaining the same coverage
-            \cite[p.~519]{barr_oracle_2015}; can be accomplished through
+            \citep[p.~519]{barr_oracle_2015}; can be accomplished through
             \nameref{chap:notes:sec:mutation-testing}
       \item Test Case Reduction: the process of ``removing side-effect free
             functions'' from an individual test case to ``reduc[e] test oracle
-            costs'' \cite[p.~519]{barr_oracle_2015}
+            costs'' \citep[p.~519]{barr_oracle_2015}
       \item Probe: ``a statement inserted into a program'' for the purpose of
-            dynamic testing \cite[p.~438]{peters_software_2000}
+            dynamic testing \citep[p.~438]{peters_software_2000}
 \end{itemize}
 
 \subsubsection{Documentation}
 
 \begin{itemize}
       \item \acf{vnv} Plan: a document for the ``planning of test activities''
-            described by IEEE Standard 1012 \cite[p.~411]{van_vliet_software_2000}
+            described by IEEE Standard 1012 \citep[p.~411]{van_vliet_software_2000}
       \item Test Plan: ``a document describing the scope, approach, resources,
             and schedule of intended test activities'' in more detail that the
-            \acs{vnv} Plan \cite[pp.~412-413]{van_vliet_software_2000};
+            \acs{vnv} Plan \citep[pp.~412-413]{van_vliet_software_2000};
             should also outline entry and exit conditions for the testing
             activities as well as any risk sources and levels
-            \cite[p.~445]{peters_software_2000}
+            \citep[p.~445]{peters_software_2000}
       \item Test Design documentation: ``specifies \dots the details of the
             test approach and identifies the associated tests''
-            \cite[p.~413]{van_vliet_software_2000}
+            \citep[p.~413]{van_vliet_software_2000}
       \item Test Case documentation: ``specifies inputs, predicted outputs and
             execution conditions for each test item''
-            \cite[p.~413]{van_vliet_software_2000}
+            \citep[p.~413]{van_vliet_software_2000}
       \item Test Procedure documentation: ``specifies the sequence of actions
-            for the execution of each test'' \cite[p.~413]{van_vliet_software_2000}
+            for the execution of each test'' \citep[p.~413]{van_vliet_software_2000}
       \item Test Report documentation: ``provides information on the results of
             testing tasks'', addressing software verification and validation
-            reporting \cite[p.~413]{van_vliet_software_2000}
+            reporting \citep[p.~413]{van_vliet_software_2000}
 \end{itemize}
 
 \subsection{General Testing Notes}
@@ -944,30 +944,30 @@ whether that information exists in Drasil already and if it can be added
       \item ``Proving the correctness of software \dots applies only in
             circumstances where software requirements are stated formally'' and
             assumes ``these formal requirements are themselves correct''
-            \cite[p.~398]{van_vliet_software_2000}
+            \citep[p.~398]{van_vliet_software_2000}
       \item If faults exist in programs, they ``must be considered faulty, even
             if we cannot devise test cases that reveal the faults''
-            \cite[p.~401]{van_vliet_software_2000}
+            \citep[p.~401]{van_vliet_software_2000}
       \item Black-box test cases should be created based on the specification
             \emph{before} creating white-box test cases to avoid being ``biased
             into creating test cases based on how the module works''
-            \cite[p.~113]{patton_software_2006}
+            \citep[p.~113]{patton_software_2006}
       \item Simple, normal test cases (test-to-pass) should always be developed
             and run before more complicated, unusual test cases (test-to-fail)
-            \cite[p.~66]{patton_software_2006}
+            \citep[p.~66]{patton_software_2006}
       \item Since ``there is no uniform best test technique'', it is advised to
-            use many techniques when testing \cite[p.~440]{van_vliet_software_2000}
+            use many techniques when testing \citep[p.~440]{van_vliet_software_2000}
       \item When comparing adequacy criteria, ``criterion X is stronger than
             criterion Y if, for all programs P and all test sets T, X-adequacy
             implies Y-adequacy'' (the ``stronger than'' relation is also called
-            the ``subsumes'' relation) \cite[p.~432]{van_vliet_software_2000};
+            the ``subsumes'' relation) \citep[p.~432]{van_vliet_software_2000};
             this relation only ``compares the thoroughness of test techniques,
-            not their ability to detect faults'' \cite[p.~434]{van_vliet_software_2000}
+            not their ability to detect faults'' \citep[p.~434]{van_vliet_software_2000}
             \todo{This should probably be explained after ``test adequacy
                   criterion'' is defined}
 \end{itemize}
 
-\subsubsection{Steps to Testing \cite[p.~443]{peters_software_2000}}
+\subsubsection{Steps to Testing \citep[p.~443]{peters_software_2000}}
 \begin{enumerate}
       \item Identify the goal(s) of the test
       \item Decide on an approach
@@ -980,33 +980,33 @@ whether that information exists in Drasil already and if it can be added
 \subsubsection{Testing Stages}
 \begin{itemize}
       \item Unit/module testing: ``testing the individual modules [of a
-                        program]'' \cite[p.~438]{van_vliet_software_2000};
-            also called ``component testing'' \cite[p.~444]{peters_software_2000}.
+                        program]'' \citep[p.~438]{van_vliet_software_2000};
+            also called ``component testing'' \citep[p.~444]{peters_software_2000}.
             Note that since a \emph{component} is ``a part of a system that can
-            be tested in isolation'' \cite{istqb_glossary}, this seems to apply
+            be tested in isolation'' \citep{istqb_glossary}, this seems to apply
             to the testing of both modules \emph{and} specific functions
       \item Integration testing: ``testing the composition of modules'';
             done incrementally using \emph{bottom-up} and/or
-            \emph{top-down} testing \cite[pp.~438-439]{van_vliet_software_2000},
+            \emph{top-down} testing \citep[pp.~438-439]{van_vliet_software_2000},
             although other paradigms for design, such as \emph{big bang} and
-            \emph{sandwich} exist \cite[p.~489]{peters_software_2000}
+            \emph{sandwich} exist \citep[p.~489]{peters_software_2000}
             \begin{itemize}
                   \item Bottom-up testing: uses \emph{test drivers}: ``tool[s]
                         that generate[] the test environment for a component to
-                        be tested'' \cite[p.~410]{van_vliet_software_2000} by
+                        be tested'' \citep[p.~410]{van_vliet_software_2000} by
                         ``sending test-case data to the modules under test,
                         read[ing] back the results, and verify[ing] that
-                        they're correct'' \cite[p.~109]{patton_software_2006}
+                        they're correct'' \citep[p.~109]{patton_software_2006}
                   \item Top-down testing: uses \emph{test stubs}: tools that
                         ``simulate[] the function of a component not yet
-                        available'' \cite[p.~410]{van_vliet_software_2000} by
+                        available'' \citep[p.~410]{van_vliet_software_2000} by
                         providing ``fake'' values to a given module to be
-                        tested \cite[p.~110]{patton_software_2006}
+                        tested \citep[p.~110]{patton_software_2006}
                   \item Big bang testing: the process of ``integrat[ing] all
                         modules in a single step and test[ing] the resulting
-                        system[]'' \cite[p.~489]{peters_software_2000}.
+                        system[]'' \citep[p.~489]{peters_software_2000}.
                         \emph{Although this is ``quite challenging and risky''
-                              \cite[p.~489]{peters_software_2000}, it may be
+                              \citep[p.~489]{peters_software_2000}, it may be
                               made less so through the ease of generation,
                               and may be more practical as a testing process
                               for Drasil, although the introduction of the
@@ -1014,70 +1014,70 @@ whether that information exists in Drasil already and if it can be added
                               initially, in a more structured manner; also of
                               note is its relative ease ``to test paths'' and
                               ``to plan and control''
-                              \cite[p.~490]{peters_software_2000}
+                              \citep[p.~490]{peters_software_2000}
                               \qtodo{Bring up!}}
                   \item Sandwich testing: ``combines the ideas of bottom-up and
                         top-down testing by defining a certain target layer in
                         the hierarchy of the modules'' and working towards it
                         from either end using the relevant testing approach
-                        \cite[p.~491]{peters_software_2000}
+                        \citep[p.~491]{peters_software_2000}
             \end{itemize}
       \item System testing: ``test[ing] the whole system against the user
             documentation and requirements specification after integration
-            testing has finished'' \cite[p.~439]{van_vliet_software_2000}
-            (\cite[p.~109]{patton_software_2006} says this can also be done on
+            testing has finished'' \citep[p.~439]{van_vliet_software_2000}
+            (\citep[p.~109]{patton_software_2006} says this can also be done on
             ``at least a major portion'' of the product); often uses random,
             but representative, input to test reliability
             \todo{Expand on reliability testing (make own section?)}
-            \cite[p.~439]{van_vliet_software_2000}
+            \citep[p.~439]{van_vliet_software_2000}
       \item Acceptance testing: Similar to system testing that is ``often
             performed under supervision of the user organization'',
-            focusing on usability \cite[p.~439]{van_vliet_software_2000} and
-            the needs of the customer(s) \cite[p.~492]{peters_software_2000}
+            focusing on usability \citep[p.~439]{van_vliet_software_2000} and
+            the needs of the customer(s) \citep[p.~492]{peters_software_2000}
       \item Installation testing: Focuses on the portability of the product,
             especially ``in an environment different from the one in which is
-            has been developed'' \cite[p.~439]{van_vliet_software_2000}; not
+            has been developed'' \citep[p.~439]{van_vliet_software_2000}; not
             one of the four levels of testing identified by the IEEE standard
-            \cite[p.~445]{peters_software_2000}
+            \citep[p.~445]{peters_software_2000}
 \end{itemize}
 
 \subsubsection{Test Oracles}
 ``A \emph{test oracle} is a predicate that determines whether a given test
 activity sequence is an acceptable behaviour of the SUT [System Under Test] or
-not'' \cite[p.~509]{barr_oracle_2015}. They can either be ``deterministic''
+not'' \citep[p.~509]{barr_oracle_2015}. They can either be ``deterministic''
 (returning a Boolean value) or ``probabilistic'' (returning ``a real number in
-the closed interval [0, 1]'') \cite[p.~509]{barr_oracle_2015}. Probabilistic
+the closed interval [0, 1]'') \citep[p.~509]{barr_oracle_2015}. Probabilistic
 test oracles can be used to reduce the computation cost (since test oracles
-are ``typically computationally expensive'') \cite[p.~509]{barr_oracle_2015}
+are ``typically computationally expensive'') \citep[p.~509]{barr_oracle_2015}
 or in ``situations where some degree of imprecision can be tolerated'' since
 they ``offer a probability that [a given] test case is acceptable''
-\cite[p.~510]{barr_oracle_2015}. They can be grouped into four categories:
+\citep[p.~510]{barr_oracle_2015}. They can be grouped into four categories:
 
 \begin{itemize}
       \item Specified test oracle: ``judge[s] all behavioural aspects of a
             system with respect to a given formal specification''
-            \cite[p.~510]{barr_oracle_2015}
+            \citep[p.~510]{barr_oracle_2015}
       \item Derived test oracle: any ``artefact[] from which a
             test oracle may be derived---for instance, a previous version of
             the system'' or ``program documentation''; this includes
             \nameref{chap:notes:sec:regression-testing},
             \nameref{chap:notes:sec:metamorphic-testing}
-            \cite[p.~510]{barr_oracle_2015}, and invariant detection (either
+            \citep[p.~510]{barr_oracle_2015}, and invariant detection (either
             known in advance or ``learned from the program'')
-            \cite[p.~516]{barr_oracle_2015}; \emph{This is like the assertions
+            \citep[p.~516]{barr_oracle_2015}; \emph{This is like the assertions
                   we discussed earlier; documentation enforced by code!}
       \item Pseudo-oracle: a type of derived test oracle that is ``an
             alternative version of the program produced independently'' (by a
             different team, in a different language, etc.)
-            \cite[p.~515]{barr_oracle_2015}. \emph{We could potentially use the
+            \citep[p.~515]{barr_oracle_2015}. \emph{We could potentially use the
                   programs generated in other languages as pseudo-oracles!}
       \item Implicit test oracles: detect ```obvious' faults such as a program
             crash'' (potentially due to a null pointer, deadlock, memory leak,
-            etc.) \cite[p.~510]{barr_oracle_2015}
+            etc.) \citep[p.~510]{barr_oracle_2015}
       \item ``Lack of an automated test oracle'': for example; a human oracle
             generating sample data that is ``realistic'' and ``valid'',
-            \cite[pp.~510-511]{barr_oracle_2015}, or crowdsourcing
-            \cite[p.~520]{barr_oracle_2015}
+            \citep[pp.~510-511]{barr_oracle_2015}, or crowdsourcing
+            \citep[p.~520]{barr_oracle_2015}
 \end{itemize}
 
 \subsubsection{Generating Test Cases}
@@ -1087,20 +1087,20 @@ they ``offer a probability that [a given] test case is acceptable''
             for testing \dots and can be used \dots as a test case generator....
                   [For example, i]f a 100\% statement coverage has not been achieved
             yet, an additional test case is selected that covers one or more
-            statements yet untested'' \cite[p.~402]{van_vliet_software_2000}
+            statements yet untested'' \citep[p.~402]{van_vliet_software_2000}
       \item ``Test data generators'' are mentioned on
-            \cite[p.~410]{van_vliet_software_2000} but not described
+            \citep[p.~410]{van_vliet_software_2000} but not described
             \todo{Investigate}
 \end{itemize}
 
 \subsection{Static Black-Box (Specification) Testing
-      \cite[pp.~56-62]{patton_software_2006}}
+      \citep[pp.~56-62]{patton_software_2006}}
 
 Most of this section is irrelevant to generating test cases, as they require
 human involvement \todo{Describe anyway} (e.g., Pretend to Be the Customer
-\cite[pp.~57-58]{patton_software_2006}, Research Existing Standards and
-Guidelines \cite[pp.~58-59]{patton_software_2006}). However, it provides a
-``Specification Terminology Checklist'' \cite[p.~61]{patton_software_2006} that
+\citep[pp.~57-58]{patton_software_2006}, Research Existing Standards and
+Guidelines \citep[pp.~58-59]{patton_software_2006}). However, it provides a
+``Specification Terminology Checklist'' \citep[p.~61]{patton_software_2006} that
 includes some keywords that, if found, could trigger an applicable warning to
 the user (similar to the idea behind the correctness/consistency checks
 project):
@@ -1114,62 +1114,62 @@ project):
       \item \textbf{Potentially incomplete:} etc., and so forth, and so on,
             such as, handled, processed, rejected, skipped, eliminated,
             if \dots then \dots (without ``else'' or ``otherwise''),
-            to be determined \cite[p.~408]{van_vliet_software_2000}
+            to be determined \citep[p.~408]{van_vliet_software_2000}
 \end{itemize}
 
 \subsubsection{Coverage-Based Testing of Specification
-      \cite[pp.~425-426]{van_vliet_software_2000}}
+      \citep[pp.~425-426]{van_vliet_software_2000}}
 
 Requirements can be ``depicted as a graph, where the nodes denote elementary
 requirements and the edges denote relations between [them]'' from which test
-cases can be derived \cite[p.~425]{van_vliet_software_2000}. However, it can
+cases can be derived \citep[p.~425]{van_vliet_software_2000}. However, it can
 be difficult to assess whether a set of equivalence classes are truly
 equivalent, since the specific data available in each node is not apparent
-\cite[p.~426]{van_vliet_software_2000}.
+\citep[p.~426]{van_vliet_software_2000}.
 
 \subsection{Dynamic Black-Box (Behavioural) Testing
-      \cite[pp.~64-65]{patton_software_2006}}
+      \citep[pp.~64-65]{patton_software_2006}}
 
 This is the process of ``entering inputs, receiving outputs, and checking the
-results'' \cite[p.~64]{patton_software_2006}. \cite{van_vliet_software_2000}
+results'' \citep[p.~64]{patton_software_2006}. \citep{van_vliet_software_2000}
 also calls this ``functional testing''.
 
 \paragraph{Requirements}
 \begin{itemize}
       \item Requirements documentation (definition of what the software does)
-            \cite[p.~64]{patton_software_2006}; relevant information could be:
+            \citep[p.~64]{patton_software_2006}; relevant information could be:
             \begin{itemize}
                   \item Requirements: Input-Values and Output-Values
                   \item Input/output data constraints
             \end{itemize}
 \end{itemize}
 
-\subsubsection{Exploratory Testing \cite[p.~65]{patton_software_2006}}
+\subsubsection{Exploratory Testing \citep[p.~65]{patton_software_2006}}
 
 An alternative to dynamic black-box testing when a specification is not
-available \cite[p.~65]{patton_software_2006}. The software is explored to
+available \citep[p.~65]{patton_software_2006}. The software is explored to
 determine its features, and these features are then tested
-\cite[p.~65]{patton_software_2006}. Finding any bugs using this method is a
-positive thing \cite[p.~65]{patton_software_2006}, since despite not knowing
+\citep[p.~65]{patton_software_2006}. Finding any bugs using this method is a
+positive thing \citep[p.~65]{patton_software_2006}, since despite not knowing
 what the software \emph{should} do, you were able to determine that something
 is wrong.
 
 This is not applicable to Drasil, because not only does it already generate a
 specification, making this type of testing unnecessary, there is also a lot of
 human-based trial and error required for this kind of testing
-\cite{june_11_meeting}.
+\citep{june_11_meeting}.
 
-\subsubsection{Equivalence Partitioning/Classing \cite[pp.~67-69]{patton_software_2006}}
+\subsubsection{Equivalence Partitioning/Classing \citep[pp.~67-69]{patton_software_2006}}
 
 The process of dividing the infinite set of test cases into a finite set that is
-just as effective (i.e., that reveals the same bugs) \cite[p.~67]{patton_software_2006}.
+just as effective (i.e., that reveals the same bugs) \citep[p.~67]{patton_software_2006}.
 The opposite of this, testing every combination of inputs, is called
 ``exhaustive testing'' and is ``probably not feasible''
-\cite[p.~461]{peters_software_2000}.
+\citep[p.~461]{peters_software_2000}.
 
 \paragraph{Requirements}
 \begin{itemize}
-      \item Ranges of possible values \cite[p.~67]{patton_software_2006};
+      \item Ranges of possible values \citep[p.~67]{patton_software_2006};
             could be obtained through:
             \begin{itemize}
                   \item Input/output data constraints
@@ -1177,36 +1177,36 @@ The opposite of this, testing every combination of inputs, is called
             \end{itemize}
 \end{itemize}
 
-\subsubsection{Data Testing \cite[pp.~70-79]{patton_software_2006}}
+\subsubsection{Data Testing \citep[pp.~70-79]{patton_software_2006}}
 
 The process of ``checking that information the user inputs [and] results'',
 both final and intermediate, ``are handled correctly''
-\cite[p.~70]{patton_software_2006}. This type of testing can also occur at the
+\citep[p.~70]{patton_software_2006}. This type of testing can also occur at the
 white-box level, such as the implementation of boundaries
-\cite[p.~431]{van_vliet_software_2000} or intermediate values within
+\citep[p.~431]{van_vliet_software_2000} or intermediate values within
 components.
 
-\paragraph{Boundary Conditions \cite[pp.~70-74]{patton_software_2006}}
+\paragraph{Boundary Conditions \citep[pp.~70-74]{patton_software_2006}}
 
 ``[S]ituations at the edge of the planned operational limits of the software''
-\cite[p.~72]{patton_software_2006}. Often affects types of data (e.g., numeric,
+\citep[p.~72]{patton_software_2006}. Often affects types of data (e.g., numeric,
 speed, character, location, position, size, quantity
-\cite[p.~72]{patton_software_2006}) each with its own set of (e.g., first/last,
+\citep[p.~72]{patton_software_2006}) each with its own set of (e.g., first/last,
 min/max, start/finish, over/under, empty/full, shortest/longest,
 slowest/fastest, soonest/latest, largest/smallest, highest/lowest,
-next-to/farthest-from \cite[pp.~72-73]{patton_software_2006}). Data at these
+next-to/farthest-from \citep[pp.~72-73]{patton_software_2006}). Data at these
 boundaries should be included in an equivalence partition, but so should
-data in between them \cite[p.~73]{patton_software_2006}. Boundary conditions
+data in between them \citep[p.~73]{patton_software_2006}. Boundary conditions
 should be tested using ``the valid data just inside the boundary,
 \dots the last possible valid data, and \dots the invalid data just outside the
-boundary'' \cite[p.~73]{patton_software_2006}, and values at the boundaries
+boundary'' \citep[p.~73]{patton_software_2006}, and values at the boundaries
 themselves should still be tested even if they occur ``with zero probability'',
 in case there actually \emph{is} a case where it can occur; this process of
-testing may reveal it \cite[p.~460]{peters_software_2000}.
+testing may reveal it \citep[p.~460]{peters_software_2000}.
 
 \subparagraph{Requirements}
 \begin{itemize}
-      \item Ranges of possible values \cite[p.~67, 73]{patton_software_2006};
+      \item Ranges of possible values \citep[p.~67, 73]{patton_software_2006};
             could be obtained through:
             \begin{itemize}
                   \item Case statements
@@ -1215,64 +1215,64 @@ testing may reveal it \cite[p.~460]{peters_software_2000}.
             \end{itemize}
 \end{itemize}
 
-\subparagraph{Buffer Overruns \cite[pp.~201-205]{patton_software_2006}}
+\subparagraph{Buffer Overruns \citep[pp.~201-205]{patton_software_2006}}
 
 \emph{Buffer overruns} are ``the number one cause of software security issues''
-\cite[p.~75]{patton_software_2006}. They occur when the size of the destination
+\citep[p.~75]{patton_software_2006}. They occur when the size of the destination
 for some data is smaller than the data itself, causing existing data (including
 code) to be overwritten and malicious code to potentially be injected
-\cite[p.~202, 204-205]{patton_software_2006}. They often arise from bad
+\citep[p.~202, 204-205]{patton_software_2006}. They often arise from bad
 programming practices in ``languages [sic] such as C and C++, that lack safe
-string handling functions'' \cite[p.~201]{patton_software_2006}. Any unsafe
+string handling functions'' \citep[p.~201]{patton_software_2006}. Any unsafe
 versions of these functions that are used should be replaced with the
-corresponding safe versions \cite[pp.~203-204]{patton_software_2006}.
+corresponding safe versions \citep[pp.~203-204]{patton_software_2006}.
 
-\paragraph{Sub-Boundary Conditions \cite[pp.~75-77]{patton_software_2006}}
+\paragraph{Sub-Boundary Conditions \citep[pp.~75-77]{patton_software_2006}}
 \label{sub-bound-conds}
 
 Boundary conditions ``that are internal to the software [but] aren't necessarily
-apparent to an end user'' \cite[p.~75]{patton_software_2006}. These include
-powers of two \cite[pp.~75-76]{patton_software_2006} and ASCII and Unicode tables
-\cite[pp.~76-77]{patton_software_2006}.
+apparent to an end user'' \citep[p.~75]{patton_software_2006}. These include
+powers of two \citep[pp.~75-76]{patton_software_2006} and ASCII and Unicode tables
+\citep[pp.~76-77]{patton_software_2006}.
 
 While this is of interest to the domain of scientific computing, this is too
 involved for Drasil right now, and the existing software constraints limit much
-of the potential errors from over/underflow \cite{june_11_meeting}. Additionally,
+of the potential errors from over/underflow \citep{june_11_meeting}. Additionally,
 strings are not really used as inputs to Drasil and only occur in output with
 predefined values, so testing these values are unlikely to be fruitful.
 
 There also exist sub-boundary conditions that arise from ``complex''
 requirements, where behaviour depends on multiple conditions
-\cite[p.~430]{van_vliet_software_2000}. These ``error prone'' points around
-these boundaries should be tested \cite[p.~430]{van_vliet_software_2000} as
+\citep[p.~430]{van_vliet_software_2000}. These ``error prone'' points around
+these boundaries should be tested \citep[p.~430]{van_vliet_software_2000} as
 before: ``the valid data just inside the boundary, \dots the last possible
 valid data, and \dots the invalid data just outside the boundary''
-\cite[p.~73]{patton_software_2006}. In this type of testing, the second type of
+\citep[p.~73]{patton_software_2006}. In this type of testing, the second type of
 data is called an ``ON point'', the first type is an ``OFF point'' for the
 domain on the \emph{other} side of the boundary, and the third type is an ``OFF
 point'' for the domain on the \emph{same} side of the boundary
-\cite[p.~430]{van_vliet_software_2000}.
+\citep[p.~430]{van_vliet_software_2000}.
 
 \subparagraph{Requirements}
 \begin{itemize}
       \item Increased knowledge of data type structures (e.g., monoids, rings,
-            etc. \cite{june_11_meeting}); this would capture these sub-boundaries,
+            etc. \citep{june_11_meeting}); this would capture these sub-boundaries,
             as well as other information like relevant tests cases, along with
             our notion of these data types (\texttt{Space})
 \end{itemize}
 
 \paragraph{Default, Empty, Blank, Null, Zero, and None
-      \cite[pp.~77-78]{patton_software_2006}}
+      \citep[pp.~77-78]{patton_software_2006}}
 
 These should be their own equivalence class, since ``the software usually
 handles them differently'' than ``the valid cases or \dots invalid cases''
-\cite[p.~78]{patton_software_2006}.
+\citep[p.~78]{patton_software_2006}.
 
 Since these values may not always be applicable to a given scenario (e.g., a
 test case for zero doesn't make sense if there is a constraint that the value
 in question cannot be zero), the user should likely be able to select
 categories of tests to generate instead of Drasil just generating all possible
-test cases based on the inputs \cite{june_11_meeting}.
+test cases based on the inputs \citep{june_11_meeting}.
 
 \subparagraph{Requirements}
 \begin{itemize}
@@ -1289,9 +1289,9 @@ test cases based on the inputs \cite{june_11_meeting}.
 \end{itemize}
 
 \paragraph{Invalid, Wrong, Incorrect, and Garbage Data
-      \cite[pp.~78-79]{patton_software_2006}}
+      \citep[pp.~78-79]{patton_software_2006}}
 
-This is testing-to-fail \cite[p.~77]{patton_software_2006}.
+This is testing-to-fail \citep[p.~77]{patton_software_2006}.
 
 \subparagraph{Requirements}
 This seems to be the most open-ended category of testing.
@@ -1306,29 +1306,29 @@ This seems to be the most open-ended category of testing.
             \end{itemize}
 \end{itemize}
 
-\paragraph{Syntax-Driven Testing \cite[pp.~448-449]{peters_software_2000}}
+\paragraph{Syntax-Driven Testing \citep[pp.~448-449]{peters_software_2000}}
 
 If the inputs to the system ``are described by a certain grammar''
-\cite[p.~448]{peters_software_2000}, ``test cases \dots [can] be designed
+\citep[p.~448]{peters_software_2000}, ``test cases \dots [can] be designed
 according to the syntax or constraint of input domains defined in requirement
-specification'' \cite[p.~260]{intana_syntest_2020} 
+specification'' \citep[p.~260]{intana_syntest_2020} 
 \todo{Investigate this source more!}.
 
-\paragraph{Decision Table-Based Testing \cite[pp.~448,450-453]{peters_software_2000}}
+\paragraph{Decision Table-Based Testing \citep[pp.~448,450-453]{peters_software_2000}}
 
 ``When the original software requirements have been formulated in the format of
 `if-then' statements,'' a decision table can be created with a column for each
-test situation \cite[p.~448]{peters_software_2000}. ``The upper part of the
+test situation \citep[p.~448]{peters_software_2000}. ``The upper part of the
 column contains conditions that must be satisfied. The lower portion of a
 decision table specifies the action that results from the satisfaction of
-conditions in a rule'' (from the specification) \cite[p.~450]{peters_software_2000}.
+conditions in a rule'' (from the specification) \citep[p.~450]{peters_software_2000}.
 
-\subsubsection{State Testing \cite[pp.~79-87]{patton_software_2006}}
+\subsubsection{State Testing \citep[pp.~79-87]{patton_software_2006}}
 
 The process of testing ``a program's states and the transitions between them''
-\cite[p.~79]{patton_software_2006}.
+\citep[p.~79]{patton_software_2006}.
 
-\paragraph{Logic Flow Testing \cite[pp.~80-84]{patton_software_2006}}
+\paragraph{Logic Flow Testing \citep[pp.~80-84]{patton_software_2006}}
 
 This is done by creating a state transition diagram that includes:
 
@@ -1339,7 +1339,7 @@ This is done by creating a state transition diagram that includes:
 \end{itemize}
 
 to map out the logic flow from the user's perspective
-\cite[pp.~81-82]{patton_software_2006}. Next, these states should be
+\citep[pp.~81-82]{patton_software_2006}. Next, these states should be
 partitioned using one (or more) of the following methods:
 
 \begin{enumerate}
@@ -1348,22 +1348,22 @@ partitioned using one (or more) of the following methods:
       \item Test the least common state transitions
       \item Test all error states and error return transitions
       \item Test random state transitions
-            \cite[pp.~82-83]{patton_software_2006}
+            \citep[pp.~82-83]{patton_software_2006}
 \end{enumerate}
 
 For all of these tests, the values of the state variables should be verified
-\cite[p.~83]{patton_software_2006}.
+\citep[p.~83]{patton_software_2006}.
 
 \subparagraph{Requirements}
 \begin{itemize}
       \item Knowledge of the different states of the program
-            \cite[p.~82]{patton_software_2006}; could be obtained through:
+            \citep[p.~82]{patton_software_2006}; could be obtained through:
             \begin{itemize}
                   \item The program's modules and/or functions
                   \item The program's exceptions
             \end{itemize}
       \item Knowledge about the different state transitions
-            \cite[p.~82]{patton_software_2006}; could be obtained through:
+            \citep[p.~82]{patton_software_2006}; could be obtained through:
             \begin{itemize}
                   \item Testing the state transitions near the beginning of a
                         workflow more?
@@ -1373,24 +1373,24 @@ For all of these tests, the values of the state variables should be verified
 \paragraph{Performance Testing}
 
 ``The intent of this type of testing is to identify weak points of a software
-system and quantify its shortcomings'' \cite[p.~447]{peters_software_2000}.
+system and quantify its shortcomings'' \citep[p.~447]{peters_software_2000}.
 
-\paragraph{Testing States to Fail \cite[pp.~84-87]{patton_software_2006}}
+\paragraph{Testing States to Fail \citep[pp.~84-87]{patton_software_2006}}
 
 The goal here is to try and put the program in a fail state by doing things
 that are out of the ordinary. These include:
 
 \begin{itemize}
-      \item Race Conditions and Bad Timing \cite[pp.~85-86]{patton_software_2006}
+      \item Race Conditions and Bad Timing \citep[pp.~85-86]{patton_software_2006}
             (Is this relevant to our examples?)
       \item Repetition Testing: ``doing the same operation over and over'',
             potentially up to ``thousands of attempts''
-            \cite[p.~86]{patton_software_2006}
+            \citep[p.~86]{patton_software_2006}
       \item Stress Testing: ``running the software under less-than-ideal
-            conditions'' \cite[p.~86]{patton_software_2006}
+            conditions'' \citep[p.~86]{patton_software_2006}
       \item Load testing: running the software with as large of a load as
             possible (e.g., large inputs, many peripherals)
-            \cite[p.~86]{patton_software_2006}
+            \citep[p.~86]{patton_software_2006}
 \end{itemize}
 
 \subparagraph{Requirements}
@@ -1403,7 +1403,7 @@ that are out of the ordinary. These include:
             overload the system (e.g., upper bounds on values of certain types)
 \end{itemize}
 
-\subsubsection{Other Black-Box Testing \cite[pp.~87-89]{patton_software_2006}}
+\subsubsection{Other Black-Box Testing \citep[pp.~87-89]{patton_software_2006}}
 \begin{itemize}
       \item Act like an inexperienced user (\emph{likely out of scope})
       \item Look for bugs where they've already been found (\emph{keep track of
@@ -1414,10 +1414,10 @@ that are out of the ordinary. These include:
 \end{itemize}
 
 \subsection{Static White-Box Testing (Structural Analysis)
-      \cite[pp.~91-104]{patton_software_2006}}
+      \citep[pp.~91-104]{patton_software_2006}}
 
 White-box testing is also called ``glass box testing''
-\cite[p.~439]{peters_software_2000}. \cite[p.~447]{peters_software_2000} claims
+\citep[p.~439]{peters_software_2000}. \citep[p.~447]{peters_software_2000} claims
 that ``structural testing subsumes white box testing'', but I am unsure if this
 is a meaningful statement; they seem to describe the same thing to me, \qtodo{Is this true?}
 especially since it says ``structure tests are aimed at exercising the internal
@@ -1428,38 +1428,38 @@ same page!
 
 There are also some more specific
 categories of this, such as Scenario-Based
-Evaluation \cite[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
-\cite[pp.~419-420]{van_vliet_software_2000}, that could be investigated further.
+Evaluation \citep[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
+\citep[pp.~419-420]{van_vliet_software_2000}, that could be investigated further.
 \todo{Do this!}
 
 \begin{itemize}
       \item ``The process of carefully and methodically reviewing the software
             design, architecture, or code for bugs without executing it''
-            \cite[p.~92]{patton_software_2006}
+            \citep[p.~92]{patton_software_2006}
       \item Less common than black-box testing, but often used for ``military,
             financial, factory automation, or medical software, \dots in a
             highly disciplined development model'' or when ``testing software
-            for security issues'' \cite[p.~91]{patton_software_2006}; often
+            for security issues'' \citep[p.~91]{patton_software_2006}; often
             avoided because of ``the misconception that it's too
             time-consuming, too costly, or not productive''
-            \cite[p.~92]{patton_software_2006}
+            \citep[p.~92]{patton_software_2006}
       \item Especially effective early on in the development process
-            \cite[p.~92]{patton_software_2006}
+            \citep[p.~92]{patton_software_2006}
       \item Can ``find bugs that would be difficult to uncover or isolate with
             dynamic black-box testing'' and ``gives the team's black-box
             testers ideas for test cases to apply''
-            \cite[p.~92]{patton_software_2006}
+            \citep[p.~92]{patton_software_2006}
       \item Largely ``done by the language compiler'' or by separate tools
-            \cite[pp.~413-414]{van_vliet_software_2000}
+            \citep[pp.~413-414]{van_vliet_software_2000}
 \end{itemize}
 
-\subsubsection{Reviews \cite[pp.~92-95]{patton_software_2006},
-      \cite[pp.~415-417]{van_vliet_software_2000},
-      \cite[pp.~482-485]{peters_software_2000}}
+\subsubsection{Reviews \citep[pp.~92-95]{patton_software_2006},
+      \citep[pp.~415-417]{van_vliet_software_2000},
+      \citep[pp.~482-485]{peters_software_2000}}
 
 \begin{itemize}
       \item ``The process under which static white-box testing is performed''
-            \cite[p.~92]{patton_software_2006}; consists of four main parts:
+            \citep[p.~92]{patton_software_2006}; consists of four main parts:
 
             \begin{enumerate}
                   \item Identify Problems: Find what is wrong or missing
@@ -1477,51 +1477,51 @@ Evaluation \cite[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
                   \item Write a Report: A summary should be created and provided
                         to the rest of the development team so that they know
                         what problems exist, where they are, etc.
-                        \cite[p.~93]{patton_software_2006}
+                        \citep[p.~93]{patton_software_2006}
             \end{enumerate}
 
       \item Reviews improve communication, learning, and camaraderie, as well as
             the quality of code \emph{even before the review}: if a developer
             ``knows that his work is being carefully reviewed by his peers, he
             might make an extra effort to \dots make sure that it's right''
-            \cite[pp.~93-94]{patton_software_2006}
+            \citep[pp.~93-94]{patton_software_2006}
 
       \item Many forms:
             \begin{itemize}
                   \item Peer Review: The most informal and at the smallest scale
-                        \cite[p.~94]{patton_software_2006}. One variation is to
+                        \citep[p.~94]{patton_software_2006}. One variation is to
                         have each person submit ``a `best' program and one of
                         lesser quality'', randomly distribute all programs to
                         be assessed by two people in the group, and return all
                         feedback anonymously to the appropriate developer
-                        \cite[p.~414]{van_vliet_software_2000}
+                        \citep[p.~414]{van_vliet_software_2000}
                   \item Walkthrough: The author of the code presents it line
                         by line to a small group that ``question anything that
-                        looks suspicious'' \cite[p.~95]{patton_software_2006};
+                        looks suspicious'' \citep[p.~95]{patton_software_2006};
                         this is done by using test data to ``walk through''
                         the execution of the program
-                        \cite[p.~416]{van_vliet_software_2000}. A more
+                        \citep[p.~416]{van_vliet_software_2000}. A more
                         structured walkthrough may have specific roles
                         (presenter, coordinator, secretary, maintenance oracle,
                         standards bearer, and user representative)
-                        \cite[p.~484]{peters_software_2000}
+                        \citep[p.~484]{peters_software_2000}
                   \item Inspection: Someone who is \emph{not} the author of the
                         code presents it to a small group of people
-                        \cite[p.~95]{patton_software_2006}; the author
+                        \citep[p.~95]{patton_software_2006}; the author
                         should be ``a largely silent observer'' who
                         ``may be consulted by the inspectors''
-                        \cite[p.~415]{van_vliet_software_2000}. Each member has
+                        \citep[p.~415]{van_vliet_software_2000}. Each member has
                         a role, which may be tied to a different perspective
                         (e.g., designer, implementer, tester,
-                        \cite[p.~439]{peters_software_2000} user, or product
-                        support person) \cite[p.~95]{patton_software_2006}.
+                        \citep[p.~439]{peters_software_2000} user, or product
+                        support person) \citep[p.~95]{patton_software_2006}.
                         Changes are made based on issues identified \emph{after}
-                        the inspection \cite[p.~415]{van_vliet_software_2000},
+                        the inspection \citep[p.~415]{van_vliet_software_2000},
                         and a reinspection may take place
-                        \cite[p.~95]{patton_software_2006}; one guideline is to
+                        \citep[p.~95]{patton_software_2006}; one guideline is to
                         reinspect \emph{100\%} of the code ``[i]f more than 5\%
                         of the material inspected has been reworked''
-                        \cite[p.~483]{peters_software_2000}.
+                        \citep[p.~483]{peters_software_2000}.
             \end{itemize}
 
       \item \emph{Could be used to evaluate Drasil and/or generated code, but
@@ -1529,20 +1529,20 @@ Evaluation \cite[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
 
 \end{itemize}
 
-\subsubsection{Coding Standards and Guidelines \cite[pp.~96-99]{patton_software_2006}}
+\subsubsection{Coding Standards and Guidelines \citep[pp.~96-99]{patton_software_2006}}
 
 \begin{itemize}
       \item Code may work but still be incorrect if it doesn't meet certain
             criteria, since these affect its reliability, readability,
             maintainability, and/or portability; e.g., the \texttt{goto},
             \texttt{while}, and \texttt{if-else} commands in C can cause bugs
-            if used incorrectly \cite[p.~96]{patton_software_2006}
+            if used incorrectly \citep[p.~96]{patton_software_2006}
       \item These guidelines can range in strictness and formality, as long as
-            they are agreed upon and followed \cite[p.~96]{patton_software_2006}
+            they are agreed upon and followed \citep[p.~96]{patton_software_2006}
       \item This could be checked using linters
 \end{itemize}
 
-\subsubsection{Generic Code Review Checklist \cite[pp.~99-103]{patton_software_2006}}
+\subsubsection{Generic Code Review Checklist \citep[pp.~99-103]{patton_software_2006}}
 \label{gen-code-review-checklist}
 
 \begin{itemize}
@@ -1550,27 +1550,27 @@ Evaluation \cite[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
             \label{data-ref-errors}
             Data reference errors: ``bugs caused by using a variable, constant,
             \dots [etc.] that hasn't been properly declared or initialized''
-            for its context \cite[p.~99]{patton_software_2006}
+            for its context \citep[p.~99]{patton_software_2006}
       \item Data declaration errors: bugs ``caused by improperly declaring
-            or using variables or constants'' \cite[p.~100]{patton_software_2006}
+            or using variables or constants'' \citep[p.~100]{patton_software_2006}
       \item Computation errors: ``essentially bad math''; e.g., type mismatches,
             over/underflow, zero division, out of meaningful range
-            \cite[p.~101]{patton_software_2006}
+            \citep[p.~101]{patton_software_2006}
             \label{comp-errors}
       \item Comparison errors: ``very susceptible to boundary condition
             problems''; e.g., correct inclusion, floating point comparisons
-            \cite[p.~101]{patton_software_2006}
+            \citep[p.~101]{patton_software_2006}
       \item Control flow errors: bugs caused by ``loops and other control
             constructs in the language not behaving as expected''
-            \cite[p.~102]{patton_software_2006}
+            \citep[p.~102]{patton_software_2006}
       \item Subroutine parameter errors: bugs ``due to incorrect passing of data
-            to and from software subroutines'' \cite[p.~102]{patton_software_2006}
+            to and from software subroutines'' \citep[p.~102]{patton_software_2006}
             (could also be called ``interface errors''
-            \cite[p.~416]{van_vliet_software_2000})
+            \citep[p.~416]{van_vliet_software_2000})
       \item Input/output errors: e.g., how are errors handled?
-            \cite[pp.~102-103]{patton_software_2006}
+            \citep[pp.~102-103]{patton_software_2006}
       \item ASCII character handling, portability, compilation warnings
-            \cite[p.~103]{patton_software_2006}
+            \citep[p.~103]{patton_software_2006}
 \end{itemize}
 
 \paragraph{Requirements}
@@ -1601,136 +1601,136 @@ Evaluation \cite[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
             expected from a normal compilation); do we have any string inputs?
 \end{itemize}
 
-\subsubsection{Correctness Proofs \cite[pp.~418-419]{van_vliet_software_2000}}
-Requires a formal specification \cite[p.~418]{van_vliet_software_2000} and uses
-``highly formal methods of logic'' \cite[p.~438]{peters_software_2000} to prove
+\subsubsection{Correctness Proofs \citep[pp.~418-419]{van_vliet_software_2000}}
+Requires a formal specification \citep[p.~418]{van_vliet_software_2000} and uses
+``highly formal methods of logic'' \citep[p.~438]{peters_software_2000} to prove
 the existence of ``an equivalence between the program and its specification''
-\cite[p.~485]{peters_software_2000}. It is not often used and its value is
-``sometimes disputed'' \cite[p.~418]{van_vliet_software_2000}.
+\citep[p.~485]{peters_software_2000}. It is not often used and its value is
+``sometimes disputed'' \citep[p.~418]{van_vliet_software_2000}.
 \emph{Could be useful for Drasil down
       the road if we can specify requirements formally, and may overlap with
       others' interests in the areas of logic and proof-checking.}
 \todo{Does symbolic execution belong here? Investigate from textbooks}
 
 \subsection{Dynamic White-Box (Structural) Testing
-      \cite[pp.~105-121]{patton_software_2006}}
+      \citep[pp.~105-121]{patton_software_2006}}
 
 ``Using information you gain from seeing what the code does and how it works to
 determine what to test, what not to test, and how to approach the testing''
-\cite[p.~105]{patton_software_2006}.
+\citep[p.~105]{patton_software_2006}.
 
-\subsubsection{Code Coverage \cite[pp.~117-121]{patton_software_2006} or
-      Control-Flow Coverage \cite[pp.~421-424]{van_vliet_software_2000}}
+\subsubsection{Code Coverage \citep[pp.~117-121]{patton_software_2006} or
+      Control-Flow Coverage \citep[pp.~421-424]{van_vliet_software_2000}}
 
 ``[T]est[ing] the program's states and the program's flow among them''
-\cite[p.~117]{patton_software_2006}; allows for redundant and/or missing test
-cases to be identified \cite[p.~118]{patton_software_2006}. Coverage-based
+\citep[p.~117]{patton_software_2006}; allows for redundant and/or missing test
+cases to be identified \citep[p.~118]{patton_software_2006}. Coverage-based
 testing is often based ``on the notion of a control graph \dots [where]
 nodes denote actions, \dots (directed) edges connect actions with
 subsequent actions (in time) \dots [and a] path is a sequence of nodes
 connected by edges. The graph may contain cycles \dots [which] correspond
-to loops \dots'' \cite[pp.~420-421]{van_vliet_software_2000}. ``A cycle is
+to loops \dots'' \citep[pp.~420-421]{van_vliet_software_2000}. ``A cycle is
 called \emph{simple} if its inner nodes are distinct and do not include
       [the node at the beginning/end of the cycle]''
-\cite[p.~421, emphasis added]{van_vliet_software_2000}. If there are
+\citep[p.~421, emphasis added]{van_vliet_software_2000}. If there are
 multiple actions represented as nodes that occur one after another, they may
-be collapsed into a single node \cite[p.~421]{van_vliet_software_2000}.
+be collapsed into a single node \citep[p.~421]{van_vliet_software_2000}.
 
 We discussed that
 generating infrastructure for reporting coverage may be a worthwhile goal, and
 that it can be known how to increase certain types of coverage (since we know
 the structure of the generated code, to some extent, beforehand), but I'm
 not sure if all of these are feasible/worthwhile to get to 100\% (e.g., path
-coverage \cite[p.~421]{van_vliet_software_2000}).
+coverage \citep[p.~421]{van_vliet_software_2000}).
 
 \begin{itemize}
       \item Statement/line coverage: attempting to ``execute every statement in
-            the program at least once'' \cite[p.~119]{patton_software_2006}
+            the program at least once'' \citep[p.~119]{patton_software_2006}
             \begin{itemize}
-                  \item Weaker than \cite[p.~421]{van_vliet_software_2000} and
+                  \item Weaker than \citep[p.~421]{van_vliet_software_2000} and
                         ``only about 50\% as effective as branch coverage''
-                        \cite[p.~481]{peters_software_2000}
+                        \citep[p.~481]{peters_software_2000}
                         \todo{Find original source: Miller et al., 1994}
                   \item Requires 100\% coverage to be effective
-                        \cite[p.~481]{peters_software_2000}
+                        \citep[p.~481]{peters_software_2000}
                         \todo{Find original source: Miller et al., 1994}
                   \item ``[C]an be used at the module level with less than 5000
-                        lines of code'' \cite[p.~481]{peters_software_2000}
+                        lines of code'' \citep[p.~481]{peters_software_2000}
                         \todo{Find original source: Miller et al., 1994}
                   \item Doesn't guarantee correctness
-                        \cite[p.~421]{van_vliet_software_2000}
+                        \citep[p.~421]{van_vliet_software_2000}
             \end{itemize}
       \item Branch coverage: attempting to, ``at each branching node in the
             control graph, \dots [choose] all possible branches \dots at least
-            once'' \cite[p.~421]{van_vliet_software_2000}
+            once'' \citep[p.~421]{van_vliet_software_2000}
             \begin{itemize}
                   \item Weaker than path coverage
-                        \cite[p.~433]{van_vliet_software_2000}
+                        \citep[p.~433]{van_vliet_software_2000}
                   \item Requires at least 85\% coverage to be effective and is
                         ``most effective \dots at the module level''
-                        \cite[p.~481]{peters_software_2000}
+                        \citep[p.~481]{peters_software_2000}
                         \todo{Find original source: Miller et al., 1994}
                   \item Cyclomatic-number criterion: an adequacy criterion that
                         requires that ``all linearly-independent paths are
-                        covered'' \cite[p.~423]{van_vliet_software_2000};
+                        covered'' \citep[p.~423]{van_vliet_software_2000};
                         results in complete branch coverage
                   \item Doesn't guarantee correctness
-                        \cite[p.~421]{van_vliet_software_2000}
+                        \citep[p.~421]{van_vliet_software_2000}
             \end{itemize}
       \item Path coverage: ``[a]ttempting to cover all the paths in the
-            software'' \cite[p.~119]{patton_software_2006};
+            software'' \citep[p.~119]{patton_software_2006};
             I always thought the ``path'' in ``path coverage'' was
             a path from program start to program end, but van
             Vliet seems to use the more general definition (which
             is, albeit, sometimes valid, like in ``du-path'') of
             being any subset of a program's execution (see
-            \cite[p.~420]{van_vliet_software_2000})
+            \citep[p.~420]{van_vliet_software_2000})
             \qtodo{How do we decide on our definition?}
             \begin{itemize}
                   \item The number of paths to test can be bounded based on its
                         structure and can be approached by dividing the system
                         into subgraphs and computing the bounds of each
-                        individually \cite[pp.~471-473]{peters_software_2000};
+                        individually \citep[pp.~471-473]{peters_software_2000};
                         this is less feasible if a loop is present
-                        \cite[pp.~473-476]{peters_software_2000} since ``a loop
+                        \citep[pp.~473-476]{peters_software_2000} since ``a loop
                         often results in an infinite number of possible paths''
-                        \cite[p.~421]{van_vliet_software_2000}
+                        \citep[p.~421]{van_vliet_software_2000}
                   \item van Vliet claims that if this is done completely, it
                         ``is equivalent to exhaustively testing the program''
-                        \cite[p.~421]{van_vliet_software_2000};
+                        \citep[p.~421]{van_vliet_software_2000};
                         however, this overlooks the effect of inputs on
                         behaviour as pointed out in
-                        \cite[pp.~466-467]{peters_software_2000}. Exhaustive
+                        \citep[pp.~466-467]{peters_software_2000}. Exhaustive
                         testing requires both full path coverage \emph{and}
                         every input to be checked
                   \item Generally ``not possible'' to achieve completely due to
                         the complexity of
                         loops, branches, and potentially unreachable code
-                        \cite[p.~421]{van_vliet_software_2000}; even infeasible
+                        \citep[p.~421]{van_vliet_software_2000}; even infeasible
                         paths must be checked for full path coverage
-                        \cite[p.~439]{peters_software_2000}!
+                        \citep[p.~439]{peters_software_2000}!
                   \item Usually ``limited to a few functions with life
                         criticality features (medical systems, real-time
-                        controllers)'' \cite[p.~481]{peters_software_2000}
+                        controllers)'' \citep[p.~481]{peters_software_2000}
                         \todo{Find original source: Miller et al., 1994}
             \end{itemize}
       \item (Multiple) condition coverage: ``takes the extra conditions on the
             branch statements into account'' (e.g., all possible inputs to a
-            Boolean expression) \cite[p.~120]{patton_software_2006}
+            Boolean expression) \citep[p.~120]{patton_software_2006}
             \begin{itemize}
                   \item ``Also known as \textbf{extended branch coverage}''
-                        \cite[p.~422]{van_vliet_software_2000}
+                        \citep[p.~422]{van_vliet_software_2000}
                   \item Does not subsume and is not subsumed by path coverage
-                        \cite[p.~433]{van_vliet_software_2000}
+                        \citep[p.~433]{van_vliet_software_2000}
                   \item ``May be quite challenging'' since ``if each
                         subcondition is viewed as a single input, then this
                         \dots is analogous to exhaustive testing''; however,
                         there is usually a manageable number of subconditions
-                        \cite[p.~464]{peters_software_2000}
+                        \citep[p.~464]{peters_software_2000}
             \end{itemize}
 \end{itemize}
 
-\subsubsection{Data Coverage \cite[pp.~114-116]{patton_software_2006}}
+\subsubsection{Data Coverage \citep[pp.~114-116]{patton_software_2006}}
 
 In addition to \nameref{data-flow-coverage}, there are also some minor forms of
 data coverage:
@@ -1743,42 +1743,42 @@ data coverage:
             errors are handled; any error forced must have a chance of
             occurring in the real world, even if it is unlikely, and as such,
             must be double-checked for validity
-            \cite[p.~116]{patton_software_2006}
+            \citep[p.~116]{patton_software_2006}
 \end{itemize}
 
-\paragraph{Data Flow Coverage \cite[p.~114]{patton_software_2006},
-      \cite[pp.~424-425]{van_vliet_software_2000}}
+\paragraph{Data Flow Coverage \citep[p.~114]{patton_software_2006},
+      \citep[pp.~424-425]{van_vliet_software_2000}}
 \label{data-flow-coverage}
 
 ``[T]racking a piece of data completely through the software'' (or a part of
 it), usually using debugger tools to check the values of variables
-\cite[p.~114]{patton_software_2006}.
+\citep[p.~114]{patton_software_2006}.
 
 \begin{itemize}
       \item ``A variable is \emph{defined} in a certain statement if it is
             assigned a (new) value because of the execution of that
-            statement'' \cite[p.~424]{van_vliet_software_2000}
+            statement'' \citep[p.~424]{van_vliet_software_2000}
       \item ``A definition in statement X is \emph{alive} in statement Y if
             there exists a path from X to Y in which that variable does not
             get assigned a new value at some intermediate node''
-            \cite[p.~424]{van_vliet_software_2000}
+            \citep[p.~424]{van_vliet_software_2000}
       \item A path from a variable's definition to a statement where it is
             still alive is called \textbf{definition-clear} (with respect to
-            this variable) \cite[p.~424]{van_vliet_software_2000}
+            this variable) \citep[p.~424]{van_vliet_software_2000}
       \item Basic block: ``[a] consecutive part[] of code that execute[s]
-            together without any branching'' \cite[p.~477]{peters_software_2000}
+            together without any branching'' \citep[p.~477]{peters_software_2000}
       \item \acf{p-use}: e.g., the use of a variable in a conditional
-            \cite[p.~424]{van_vliet_software_2000}
+            \citep[p.~424]{van_vliet_software_2000}
       \item \acf{c-use}: e.g., the use of a variable in a computation or I/O
-            statement \cite[p.~424]{van_vliet_software_2000}
+            statement \citep[p.~424]{van_vliet_software_2000}
       \item All-use: either a \acs{p-use} or a \acs{c-use}~
-            \cite[p.~478]{peters_software_2000}
+            \citep[p.~478]{peters_software_2000}
       \item DU-path: ``a path from a variable definition to [one of] its use[s]
             that contains no redefinition of the variable''
-            \cite[pp.~478-479]{peters_software_2000}
+            \citep[pp.~478-479]{peters_software_2000}
       \item The three possible actions on data are defining, killing, and using;
             ``there are a number of anomalies associated with these actions''
-            \cite[pp.~478,480]{peters_software_2000}
+            \citep[pp.~478,480]{peters_software_2000}
             \todo{get original source: Beizer, 1990}
             (see \hyperref[data-ref-errors]{Data reference errors})
 \end{itemize}
@@ -1786,7 +1786,7 @@ it), usually using debugger tools to check the values of variables
 Table \ref{table:data-flow-coverage-types} contains different types of data
 flow coverage criteria, approximately from weakest to strongest, as well as
 their requirements; all information is adapted from
-\cite[pp.~424-425]{van_vliet_software_2000} \todo{Is this sufficient?}.
+\citep[pp.~424-425]{van_vliet_software_2000} \todo{Is this sufficient?}.
 
 \begin{table}[hbtp!]
       \centering
@@ -1820,75 +1820,75 @@ their requirements; all information is adapted from
 \end{table}
 
 \qtodo{How is All-DU-Paths coverage stronger than All-Uses coverage according to
-      \cite[p.~433]{van_vliet_software_2000}?}
+      \citep[p.~433]{van_vliet_software_2000}?}
 
-\subsubsection{Fault Seeding \cite[pp.~427-428]{van_vliet_software_2000}}
+\subsubsection{Fault Seeding \citep[pp.~427-428]{van_vliet_software_2000}}
 
 The introduction of faults to estimate the number of undiscovered faults in the
 system based on the ratio between the number of new faults and the number of
 introduced faults that were discovered (which will ideally be small)
-\cite[p.~427]{van_vliet_software_2000}. Makes many assumptions, including
+\citep[p.~427]{van_vliet_software_2000}. Makes many assumptions, including
 ``that both real and seeded faults have the same distribution'' and requires
 careful consideration as to which faults are introduced and how
-\cite[p.~427]{van_vliet_software_2000}.
+\citep[p.~427]{van_vliet_software_2000}.
 
-\subsubsection{Mutation Testing \cite[pp.~428-429]{van_vliet_software_2000}}
+\subsubsection{Mutation Testing \citep[pp.~428-429]{van_vliet_software_2000}}
 \label{chap:notes:sec:mutation-testing}
 
 ``A (large) number of variants of a program is generated'', each differing from
 the original ``slightly'' (e.g., by deleting a statement or replacing an
-operator with another) \cite[p.~428]{van_vliet_software_2000}. These
+operator with another) \citep[p.~428]{van_vliet_software_2000}. These
 \emph{mutants} are then tested; if set of tests fails to expose a difference in
 behaviour between the original and many mutants, ``then that test set is of low
-quality'' \cite[pp.~428-429]{van_vliet_software_2000}. The goal is to maximize
+quality'' \citep[pp.~428-429]{van_vliet_software_2000}. The goal is to maximize
 the number of mutants identified by a given test set
-\cite[p.~429]{van_vliet_software_2000}. \textbf{Strong mutation testing} works
+\citep[p.~429]{van_vliet_software_2000}. \textbf{Strong mutation testing} works
 at the program level while \textbf{weak mutation testing} works at the
 component level (and ``is often easier to establish'')
-\cite[p.~429]{van_vliet_software_2000}.
+\citep[p.~429]{van_vliet_software_2000}.
 
 There is an unexpected byproduct of this form of testing. In some cases of one
 experiment \todo{add original source: KA85}, ``the original program failed,
 while the modified program [mutant] yielded the right result''
-\cite[p.~432]{van_vliet_software_2000}! In addition to revealing shortcomings
+\citep[p.~432]{van_vliet_software_2000}! In addition to revealing shortcomings
 of a test set, mutation testing can also point the developer(s) in the
 direction of a better solution!
 
-\subsection{Gray-Box Testing \cite[pp.~218-220]{patton_software_2006}}
+\subsection{Gray-Box Testing \citep[pp.~218-220]{patton_software_2006}}
 A type of testing where ``you still test the software as a black-box, but you
 supplement the work by taking a peek (not a full look, as in white-box testing)
-at what makes the software work'' \cite[p.~218]{patton_software_2006}. An
+at what makes the software work'' \citep[p.~218]{patton_software_2006}. An
 example of this is looking at HTML code and checking the tags used since
 ``HTML doesn't execute or run, it just determines how text and graphics appear
-onscreen'' \cite[p.~220]{patton_software_2006}.
+onscreen'' \citep[p.~220]{patton_software_2006}.
 
 \subsection{Regression Testing}
 \label{chap:notes:sec:regression-testing}
 
 Repeating ``tests previously executed \dots at a later point in development and
-maintenance'' \cite[p.~446]{peters_software_2000} ``to make sure there are no
+maintenance'' \citep[p.~446]{peters_software_2000} ``to make sure there are no
 unwanted changes [to the software's behaviour]'' (although allowing ``some
 unwanted differences to pass through'' is sometimes desired, if tedious
-\cite[p.~482]{peters_software_2000}) \cite[p.~481]{peters_software_2000}.
+\citep[p.~482]{peters_software_2000}) \citep[p.~481]{peters_software_2000}.
 
 \begin{itemize}
-      \item Should be done automatically \cite[p.~481]{peters_software_2000};
+      \item Should be done automatically \citep[p.~481]{peters_software_2000};
             ``[t]est suite augmentation techniques specialise in
             identifying and generating'' new tests based on changes ``that add
             new features'' \todo{Investigate!}, but they could be extended to
             also augment ``the expected output'' and ``the existing
-            \emph{oracles}'' \cite[p.~516]{barr_oracle_2015}
+            \emph{oracles}'' \citep[p.~516]{barr_oracle_2015}
       \item Its ``effectiveness \dots is expressed in terms of'':
             \begin{enumerate}
                   \item difficulty of test suite construction and maintenance
                   \item reliability of the testing system
-                        \cite[pp.~481-482]{peters_software_2000}
+                        \citep[pp.~481-482]{peters_software_2000}
             \end{enumerate}
       \item Various levels:
             \begin{itemize}
                   \item Retest-all: ``all tests are rerun''; ``this may consume
                         a lot of time and effort''
-                        \cite[p.~411]{van_vliet_software_2000} (\emph{shouldn't
+                        \citep[p.~411]{van_vliet_software_2000} (\emph{shouldn't
                               take too much effort, since it will be automated,
                               but may lead to longer CI runtimes depending on
                               the scope of generated tests})
@@ -1896,7 +1896,7 @@ unwanted differences to pass through'' is sometimes desired, if tedious
                         after being selected by a \emph{regression test
                               selection technique}; ``[v]arious strategies have
                         been proposed for doing so; few of them have been
-                        implemented yet'' \cite[p.~411]{van_vliet_software_2000}
+                        implemented yet'' \citep[p.~411]{van_vliet_software_2000}
                         \todo{Investigate these}
             \end{itemize}
 \end{itemize}
@@ -1904,90 +1904,90 @@ unwanted differences to pass through'' is sometimes desired, if tedious
 \subsection{\acf{mt}}
 \label{chap:notes:sec:metamorphic-testing}
 The use of \acfp{mr} ``to determine whether a test case has passed or failed''
-\cite[p.~67]{kanewala_metamorphic_2019}. ``A[n] \acs{mr} specifies how the
+\citep[p.~67]{kanewala_metamorphic_2019}. ``A[n] \acs{mr} specifies how the
 output of the program is expected to change when a specified change is made to
-the input'' \cite[p.~67]{kanewala_metamorphic_2019}; this is commonly done by
+the input'' \citep[p.~67]{kanewala_metamorphic_2019}; this is commonly done by
 creating an initial test case, then transforming it into a new one by applying
 the \acs{mr} (both the initial and the resultant test cases are executed and
-should both pass) \cite[p.~68]{kanewala_metamorphic_2019}. ``\acs{mt} is one of
+should both pass) \citep[p.~68]{kanewala_metamorphic_2019}. ``\acs{mt} is one of
 the most appropriate and cost-effective testing techniques for scientists and
-engineers'' \cite[p.~72]{kanewala_metamorphic_2019}.
+engineers'' \citep[p.~72]{kanewala_metamorphic_2019}.
 
 \subsubsection{Benefits of \acs{mt}}
 \begin{itemize}
       \item Easier for domain experts; not only do they understand the domain
-            (and its relevant \acp{mr}) \cite[p.~70]{kanewala_metamorphic_2019},
+            (and its relevant \acp{mr}) \citep[p.~70]{kanewala_metamorphic_2019},
             they also may not have an understanding of testing principles
-            \cite[p.~69]{kanewala_metamorphic_2019}. \emph{This majorly
+            \citep[p.~69]{kanewala_metamorphic_2019}. \emph{This majorly
                   overlaps with Drasil!}
-      \item Easy to implement via scripts \cite[p.~69]{kanewala_metamorphic_2019}.
+      \item Easy to implement via scripts \citep[p.~69]{kanewala_metamorphic_2019}.
             \emph{Again, Drasil}
-      \item Helps negate the test oracle \cite[p.~69]{kanewala_metamorphic_2019}
-            and output validation \cite[p.~70]{kanewala_metamorphic_2019} problems
+      \item Helps negate the test oracle \citep[p.~69]{kanewala_metamorphic_2019}
+            and output validation \citep[p.~70]{kanewala_metamorphic_2019} problems
             from \nameref{chap:notes:sec:sci-testing-roadblocks} (\emph{i.e.,
                   the two that are relevant for Drasil})
       \item Can extend a limited number of test cases (e.g., from an
             experiment that was only able to be conducted a few times)
-            \cite[pp.~70-72]{kanewala_metamorphic_2019}
+            \citep[pp.~70-72]{kanewala_metamorphic_2019}
       \item Domain experts are sometimes unable to identify faults in a program
-            based on its output \cite[p.~71]{kanewala_metamorphic_2019}
+            based on its output \citep[p.~71]{kanewala_metamorphic_2019}
 \end{itemize}
 
 \subsubsection{Examples of \acs{mt}}
 \begin{itemize}
       \item The average of a list of numbers should be equal (within
             floating-point errors) regardless of the list's order
-            \cite[p.~67]{kanewala_metamorphic_2019}
+            \citep[p.~67]{kanewala_metamorphic_2019}
       \item For matrices, if $B = B_1 + B_2$, then $A \times B = A \times B_1
-                  + A \times B_2$ \cite[pp.~68-69]{kanewala_metamorphic_2019}
+                  + A \times B_2$ \citep[pp.~68-69]{kanewala_metamorphic_2019}
       \item Symmetry of trigonometric functions; for example, $\sin(x) = \sin(-x)$
-            and $\sin(x) = \sin(x + 360^{\circ})$ \cite[p.~70]{kanewala_metamorphic_2019}
+            and $\sin(x) = \sin(x + 360^{\circ})$ \citep[p.~70]{kanewala_metamorphic_2019}
       \item Modifying input parameters to observe expected changes to a model's
             output (e.g., testing epidemiological models calibrated with
             ``data from the 1918 Influenza outbreak''); by ``making changes to
             various model parameters \dots authors identified an error in the
             output method of the agent based epidemiological model''
-            \cite[p.~70]{kanewala_metamorphic_2019}
+            \citep[p.~70]{kanewala_metamorphic_2019}
       \item Using machine learning to predict likely \acsp{mr} to identify
             faults in mutated versions of a program (about 90\% in this case)
-            \cite[p.~71]{kanewala_metamorphic_2019}
+            \citep[p.~71]{kanewala_metamorphic_2019}
 \end{itemize}
 
 \section{Roadblocks to Testing}
 
 \begin{itemize}
       \item Intractability: it is generally impossible to test a program
-            exhaustively \cite[p.~421]{van_vliet_software_2000},
-            \cite[pp.~439,461]{peters_software_2000}
-      \item Undecidability \cite[p.~439]{peters_software_2000}: it is
+            exhaustively \citep[p.~421]{van_vliet_software_2000},
+            \citep[pp.~439,461]{peters_software_2000}
+      \item Undecidability \citep[p.~439]{peters_software_2000}: it is
             impossible to know certain properties about a program, such as if
             it will halt (i.e., the Halting Problem
-            \cite[p.~4]{gurfinkel_testing_2017}), so ``automatic testing
+            \citep[p.~4]{gurfinkel_testing_2017}), so ``automatic testing
             can't be guaranteed to always work'' for all properties
-            \cite{nelson_formal_1999} \todo{Add paragraph/section number?}
+            \citep{nelson_formal_1999} \todo{Add paragraph/section number?}
 \end{itemize}
 
 \subsection{Roadblocks to Testing Scientific Software
-      \cite[p.~67]{kanewala_metamorphic_2019}}
+      \citep[p.~67]{kanewala_metamorphic_2019}}
 \label{chap:notes:sec:sci-testing-roadblocks}
 \begin{itemize}
       \item ``Correct answers are often unknown'': if the results were already
             known, there would be no need to develop software to model them
-            \cite[p.~67]{kanewala_metamorphic_2019}; in other words, complete
+            \citep[p.~67]{kanewala_metamorphic_2019}; in other words, complete
             test oracles don't exist ``in all but the most trivial cases''
-            \cite[p.~510]{barr_oracle_2015}
+            \citep[p.~510]{barr_oracle_2015}
       \item ``Practically difficult to validate the computed output'': complex
             calculations and outputs are difficult to verify
-            \cite[p.~67]{kanewala_metamorphic_2019}
+            \citep[p.~67]{kanewala_metamorphic_2019}
       \item ``Inherent uncertainties'': since scientific software models
             scenarios that occur in a chaotic and imperfect world, not every
-            factor can be accounted for \cite[p.~67]{kanewala_metamorphic_2019}
+            factor can be accounted for \citep[p.~67]{kanewala_metamorphic_2019}
       \item ``Choosing suitable tolerances'': difficult to decide what
             tolerance(s) to use when dealing with floating-point numbers
-            \cite[p.~67]{kanewala_metamorphic_2019}
+            \citep[p.~67]{kanewala_metamorphic_2019}
       \item ``Incompatible testing tools'': while scientific software is often
             written in languages like FORTRAN, testing tools are often written
-            int languages like Java or C++ \cite[p.~67]{kanewala_metamorphic_2019}
+            int languages like Java or C++ \citep[p.~67]{kanewala_metamorphic_2019}
 \end{itemize}
 
 Out of this list, only the first two apply. The scenarios modelled by Drasil
