@@ -732,8 +732,8 @@ be found in the problem space'' \citep[p.~338]{czarnecki_overview_2004}.
 It was realized early on in the process that it would be beneficial to
 understand the different types of testing (including what they test, what
 artifacts are needed to perform them, etc.). This process initially involved
-looking through textbooks that were trusted at McMaster \citep{patton_software_2006,
-peters_software_2000, van_vliet_software_2000}. However, this process was
+looking through textbooks that were trusted at McMaster \citep{Patton2006,
+PetersAndPedrycz2000, vanVliet2000}. However, this process was
 somewhat ad hoc and arbitrary, meaning it wouldn't be as systematic as required.
 These sources, as well as others, categorized these techniques in different ways;
 while it is useful to record and think about these categorizations (see
@@ -746,7 +746,8 @@ given to which are ``best'', and this should happen during the analysis stage.
 
 Going forward, this process will be more rigorous, starting from more
 established sources of software testing terminology \citep{IEEE2022, IEEE2017,
-SWEBOK2014, istqb_glossary}. \todo{should ``author names'' be acronyms or full?}
+BourqueAndFairley2014, istqb_glossary}.\
+\todo{should ``author names'' be acronyms or full?}
 
 \subsection{Software Testing Taxonomies, Ontologies, and State of Practice}
 
@@ -755,57 +756,57 @@ semantic difference between related terms. For example, one ontology found
 that the term ``\,`IntegrationTest' is a kind of Context (with
 semantic of stage, but not a kind of Activity)'' while ``\,`IntegrationTesting'
 has semantic of Level-based Testing that is a kind of Testing Activity [or]
-\dots of Test strategy'' \citep[p.~157]{tebes_systematic_2019}.
+\dots of Test strategy'' \citep[p.~157]{TebesEtAl2019}.
 
 There are many different concepts involved with software testing;
-\citep{barbosa_towards_2006} gives the following: testing process, testing phase,
+\citep{BarbosaEtAl2006} gives the following: testing process, testing phase,
 testing artifact, testing step, testing procedure, and testing resource
-\citep[p.~2]{barbosa_towards_2006},
-as well as the relations between them \citep[Fig.~2]{barbosa_towards_2006}
-(see also \citep[Fig.~1]{borges_using_2009}, which I could only find as an
+\citep[p.~2]{BarbosaEtAl2006},
+as well as the relations between them \citep[Fig.~2]{BarbosaEtAl2006}
+(see also \citep[Fig.~1]{BorgesAndBarbosa2009}, which I could only find as an
 example of an ontology in an otherwise unrelated paper).
-In addition to the concept of ``test artifact'', \citep{souza_roost_2017} also
+In addition to the concept of ``test artifact'', \citep{SouzaEtAl2017} also
 provides the following concepts: testing technique, test level (which seems to
-be comparable to ``testing phase'' from \citep[p.~3]{barbosa_towards_2006}), and
-test environment \citep[pp.~3-4]{souza_roost_2017}. 
+be comparable to ``testing phase'' from \citep[p.~3]{BarbosaEtAl2006}), and
+test environment \citep[pp.~3-4]{SouzaEtAl2017}. 
 Particular things of note from these ontologies:
 
 \begin{itemize}
       \item The testing phases described by both are unit, integration,
-            system, \citep[p.~3]{souza_roost_2017}, \citep[p.~3]{barbosa_towards_2006},
-            and regression testing \citep[p.~3]{barbosa_towards_2006}
+            system, \citep[p.~3]{SouzaEtAl2017}, \citep[p.~3]{BarbosaEtAl2006},
+            and regression testing \citep[p.~3]{BarbosaEtAl2006}
       \item Testing artifacts are ``produced and used throughout the testing
             process'' and include test plans, test procedures, test cases, and
-            test results \citep[p.~3]{souza_roost_2017}. The role of testing
-            artifacts is not specified in \citep{barbosa_towards_2006};
+            test results \citep[p.~3]{SouzaEtAl2017}. The role of testing
+            artifacts is not specified in \citep{BarbosaEtAl2006};
             requirements, drivers, and source code are all treated the same
-            with no distinction \citep[p.~3]{barbosa_towards_2006}
+            with no distinction \citep[p.~3]{BarbosaEtAl2006}
       \item ``Testing procedures can be categorized in testing methods,
             testing guidances and testing techniques'', and ``functional,
             structural, error-based and state-based'' (called ``black-box''
             ``white-box'', ``defect-based'', and ``model-based'' in
-            \citep[p.~3]{souza_roost_2017}) are examples of
-            testing techniques  \citep[p.~3]{barbosa_towards_2006}
+            \citep[p.~3]{SouzaEtAl2017}) are examples of
+            testing techniques  \citep[p.~3]{BarbosaEtAl2006}
 \end{itemize}
 
-In \citep{souza_roost_2017}, the ontology (ROoST) \todo{add acronym?} is made to
+In \citep{SouzaEtAl2017}, the ontology (ROoST) \todo{add acronym?} is made to
 answer a series of questions, including ``What is the test level of a testing
 activity?'' and ``What are the artifacts used by a testing activity?''
-\citep[pp.~8-9]{souza_roost_2017}. \todo{is this punctuation right?}
+\citep[pp.~8-9]{SouzaEtAl2017}. \todo{is this punctuation right?}
 The question ``How do testing artifacts relate to each other?''
-\citep[p.~8]{souza_roost_2017} is later broken down into multiple questions,
+\citep[p.~8]{SouzaEtAl2017} is later broken down into multiple questions,
 such as ``What are the test case inputs of a given test case?'' and ``What are
-the expected results of a given test case?'' \citep[p.~21]{souza_roost_2017}.
+the expected results of a given test case?'' \citep[p.~21]{SouzaEtAl2017}.
 \emph{These questions seem to overlap with the questions we were trying to ask
 about different testing techniques.} 
 
 Most ontologies I can find seem to focus on the high-level testing process
 rather than the testing techniques themselves. For example, the terms and
-definitions \citep{tebes_testtdo_terms_definitions_vfinalpdf_2020}
-from TestTDO \citep{tebes_testtdo_2020} provides \emph{some} definitions of
+definitions \citep{TebesEtAl2020b}
+from TestTDO \citep{TebesEtAl2020a} provides \emph{some} definitions of
 testing techniques, but mainly focuses on parts of the testing process
 (e.g., test goal, test plan, testing role, testable entity) and how they relate
-to one another. \citep[pp.~152-153]{tebes_systematic_2019} may provide some
+to one another. \citep[pp.~152-153]{TebesEtAl2019} may provide some
 sources for software testing terminology and definitions (this seems to include
 \href{https://github.com/samm82/TestGen-Thesis/issues/14#issuecomment-1839922715}
 {the ones suggested by Dr.~Carette}) and also includes a list of ontologies
@@ -817,13 +818,13 @@ that both enable and constrain how testing is performed'', including mission,
 goals, strategy, ``management support, resources, work processes, tools,
 motivation''), test process (testing ``standards and procedures''), and tester
 competency (``skill sets needed to test software in a test environment'')
-\citep[pp.~5-6]{perry_effective_2006}.
+\citep[pp.~5-6]{Perry2006}.
 
-\citep{unterkalmsteiner_taxonomy_2014} provides a foundation to allow one ``to
+\citep{UnterkalmsteinerEtAl2014} provides a foundation to allow one ``to
 classify and characterize alignment research and solutions that focus on the
 boundary between [requirements engineering and software testing]'' but ``does
 not aim at providing a systematic and exhaustive state-of-the-art survey of
-[either domain]'' \citep[p.~A:2]{unterkalmsteiner_taxonomy_2014}.
+[either domain]'' \citep[p.~A:2]{UnterkalmsteinerEtAl2014}.
 
 Another source
 introduced the notion of an ``intervention'': ``an act performed (e.g. use of a
@@ -845,33 +846,33 @@ categories (note that these are not mutually exclusive):
 
 \begin{itemize}
       \item Execution of code: static or dynamic
-            \citep[p.~53]{patton_software_2006}
+            \citep[p.~53]{Patton2006}
       \item Visibility of code: black-, white-, or gray-box (functional,
             structural, or a mix of the two)
-            \citep[pp.~53, 218]{patton_software_2006}, \citep[p.~69]{perry_effective_2006}
+            \citep[pp.~53, 218]{Patton2006}, \citep[p.~69]{Perry2006}
       \item Stage of testing: unit, integration, system, or acceptance
-            \citep{patton_software_2006}, \citep{perry_effective_2006},
-            \citep{peters_software_2000} (sometimes includes installation
-            \citep[p.~439]{van_vliet_software_2000} or regression
-            \citep[p.~3]{barbosa_towards_2006})
+            \citep{Patton2006}, \citep{Perry2006},
+            \citep{PetersAndPedrycz2000} (sometimes includes installation
+            \citep[p.~439]{vanVliet2000} or regression
+            \citep[p.~3]{BarbosaEtAl2006})
       \item Goal of testing: verification or validation
-            \citep[pp.~69-70]{perry_effective_2006}
+            \citep[pp.~69-70]{Perry2006}
       \item Source of test data: specification-, implementation-, or
-            error-oriented \citep[p.~440]{peters_software_2000}
+            error-oriented \citep[p.~440]{PetersAndPedrycz2000}
       \item Adequacy criterion: coverage-, fault-, or error-based
             (``based on knowledge of the typical errors that people make'')
-            \citep[pp.~398-399]{van_vliet_software_2000}
+            \citep[pp.~398-399]{vanVliet2000}
 \end{itemize}
 
 Tests can also be tailored to ``test factors'' (also called ``quality factors''
 or ``quality attributes''): ``attributes of the software that, if they are
 wanted, pose a risk to the success of the software''
-\citep[p.~40]{perry_effective_2006}. These include correctness, file integrity,
+\citep[p.~40]{Perry2006}. These include correctness, file integrity,
 authorization, audit trail, continuity of processing, service levels
 (e.g., response time), access control, compliance, reliability, ease of use,
 maintainability, portability, coupling (e.g., with other applications in a
 given environment), performance, and ease of operation (e.g., documentation,
-training) \citep[pp.~40-41]{perry_effective_2006}. \emph{These may overlap with
+training) \citep[pp.~40-41]{Perry2006}. \emph{These may overlap with
 the ``Results of Testing (Area of Confidence)'' column in the summary
 spreadsheet.}
 
@@ -907,57 +908,57 @@ whether that information exists in Drasil already and if it can be added
 
 \begin{itemize}
       \item Software testing: ``the process of executing a program with the
-            intent of finding errors'' \citep[p.~438]{peters_software_2000}
+            intent of finding errors'' \citep[p.~438]{PetersAndPedrycz2000}
             \todo{Find original source: Myers 1976}
       \item Error: ``a human action that produces an incorrect result''
-            \citep[p.~399]{van_vliet_software_2000}
+            \citep[p.~399]{vanVliet2000}
       \item Fault: ``the manifestation of an error'' in the software itself
-            \citep[p.~400]{van_vliet_software_2000}
+            \citep[p.~400]{vanVliet2000}
       \item Failure: incorrect output or behaviour resulting from encountering
             a fault; can be defined as not meeting specifications or
             expectations and ``is a relative notion''
-            \citep[p.~400]{van_vliet_software_2000}
+            \citep[p.~400]{vanVliet2000}
       \item Verification: ``the process of evaluating a system or component
             to determine whether the products of a given development phase
             satisfy the conditions imposed at the start of that phase''
-            \citep[p.~400]{van_vliet_software_2000}
+            \citep[p.~400]{vanVliet2000}
       \item Validation: ``the process of evaluating a system or component
             during or at the end of the development process to determine
             whether it satisfies specified requirements''
-            \citep[p.~400]{van_vliet_software_2000}
+            \citep[p.~400]{vanVliet2000}
       \item Test Suite Reduction: the process of reducing the size of a test
             suite while maintaining the same coverage
-            \citep[p.~519]{barr_oracle_2015}; can be accomplished through
+            \citep[p.~519]{BarrEtAl2015}; can be accomplished through
             \nameref{chap:notes:sec:mutation-testing}
       \item Test Case Reduction: the process of ``removing side-effect free
             functions'' from an individual test case to ``reduc[e] test oracle
-            costs'' \citep[p.~519]{barr_oracle_2015}
+            costs'' \citep[p.~519]{BarrEtAl2015}
       \item Probe: ``a statement inserted into a program'' for the purpose of
-            dynamic testing \citep[p.~438]{peters_software_2000}
+            dynamic testing \citep[p.~438]{PetersAndPedrycz2000}
 \end{itemize}
 
 \subsubsection{Documentation}
 
 \begin{itemize}
       \item \acf{vnv} Plan: a document for the ``planning of test activities''
-            described by IEEE Standard 1012 \citep[p.~411]{van_vliet_software_2000}
+            described by IEEE Standard 1012 \citep[p.~411]{vanVliet2000}
       \item Test Plan: ``a document describing the scope, approach, resources,
             and schedule of intended test activities'' in more detail that the
-            \acs{vnv} Plan \citep[pp.~412-413]{van_vliet_software_2000};
+            \acs{vnv} Plan \citep[pp.~412-413]{vanVliet2000};
             should also outline entry and exit conditions for the testing
             activities as well as any risk sources and levels
-            \citep[p.~445]{peters_software_2000}
+            \citep[p.~445]{PetersAndPedrycz2000}
       \item Test Design documentation: ``specifies \dots the details of the
             test approach and identifies the associated tests''
-            \citep[p.~413]{van_vliet_software_2000}
+            \citep[p.~413]{vanVliet2000}
       \item Test Case documentation: ``specifies inputs, predicted outputs and
             execution conditions for each test item''
-            \citep[p.~413]{van_vliet_software_2000}
+            \citep[p.~413]{vanVliet2000}
       \item Test Procedure documentation: ``specifies the sequence of actions
-            for the execution of each test'' \citep[p.~413]{van_vliet_software_2000}
+            for the execution of each test'' \citep[p.~413]{vanVliet2000}
       \item Test Report documentation: ``provides information on the results of
             testing tasks'', addressing software verification and validation
-            reporting \citep[p.~413]{van_vliet_software_2000}
+            reporting \citep[p.~413]{vanVliet2000}
 \end{itemize}
 
 \subsection{General Testing Notes}
@@ -966,30 +967,30 @@ whether that information exists in Drasil already and if it can be added
       \item ``Proving the correctness of software \dots applies only in
             circumstances where software requirements are stated formally'' and
             assumes ``these formal requirements are themselves correct''
-            \citep[p.~398]{van_vliet_software_2000}
+            \citep[p.~398]{vanVliet2000}
       \item If faults exist in programs, they ``must be considered faulty, even
             if we cannot devise test cases that reveal the faults''
-            \citep[p.~401]{van_vliet_software_2000}
+            \citep[p.~401]{vanVliet2000}
       \item Black-box test cases should be created based on the specification
             \emph{before} creating white-box test cases to avoid being ``biased
             into creating test cases based on how the module works''
-            \citep[p.~113]{patton_software_2006}
+            \citep[p.~113]{Patton2006}
       \item Simple, normal test cases (test-to-pass) should always be developed
             and run before more complicated, unusual test cases (test-to-fail)
-            \citep[p.~66]{patton_software_2006}
+            \citep[p.~66]{Patton2006}
       \item Since ``there is no uniform best test technique'', it is advised to
-            use many techniques when testing \citep[p.~440]{van_vliet_software_2000}
+            use many techniques when testing \citep[p.~440]{vanVliet2000}
       \item When comparing adequacy criteria, ``criterion X is stronger than
             criterion Y if, for all programs P and all test sets T, X-adequacy
             implies Y-adequacy'' (the ``stronger than'' relation is also called
-            the ``subsumes'' relation) \citep[p.~432]{van_vliet_software_2000};
+            the ``subsumes'' relation) \citep[p.~432]{vanVliet2000};
             this relation only ``compares the thoroughness of test techniques,
-            not their ability to detect faults'' \citep[p.~434]{van_vliet_software_2000}
+            not their ability to detect faults'' \citep[p.~434]{vanVliet2000}
             \todo{This should probably be explained after ``test adequacy
                   criterion'' is defined}
 \end{itemize}
 
-\subsubsection{Steps to Testing \citep[p.~443]{peters_software_2000}}
+\subsubsection{Steps to Testing \citep[p.~443]{PetersAndPedrycz2000}}
 \begin{enumerate}
       \item Identify the goal(s) of the test
       \item Decide on an approach
@@ -1002,35 +1003,35 @@ whether that information exists in Drasil already and if it can be added
 \subsubsection{Testing Stages}
 \begin{itemize}
       \item Unit testing: ``testing the individual modules [of a program]''
-            \citep[p.~438]{van_vliet_software_2000}; also called ``module testing''
-            \citep[p.~109]{patton_software_2006} or ``component testing''
-            \citep[p.~444]{peters_software_2000}. Note that since a
+            \citep[p.~438]{vanVliet2000}; also called ``module testing''
+            \citep[p.~109]{Patton2006} or ``component testing''
+            \citep[p.~444]{PetersAndPedrycz2000}. Note that since a
             \emph{component} is ``a part of a system that can be tested in
             isolation'' \citep{istqb_glossary}, this seems like it could apply
             to the testing of both modules \emph{and} specific functions
       \item Integration testing: ``testing the composition of modules'';
             done incrementally using \emph{bottom-up} and/or
-            \emph{top-down} testing \citep[pp.~438-439]{van_vliet_software_2000},
+            \emph{top-down} testing \citep[pp.~438-439]{vanVliet2000},
             although other paradigms for design, such as \emph{big bang} and
-            \emph{sandwich} exist \citep[p.~489]{peters_software_2000}.
-            See also \citep[p.~109]{patton_software_2006}.
+            \emph{sandwich} exist \citep[p.~489]{PetersAndPedrycz2000}.
+            See also \citep[p.~109]{Patton2006}.
             \begin{itemize}
                   \item Bottom-up testing: uses \emph{test drivers}: ``tool[s]
                         that generate[] the test environment for a component to
-                        be tested'' \citep[p.~410]{van_vliet_software_2000} by
+                        be tested'' \citep[p.~410]{vanVliet2000} by
                         ``sending test-case data to the modules under test,
                         read[ing] back the results, and verify[ing] that
-                        they're correct'' \citep[p.~109]{patton_software_2006}
+                        they're correct'' \citep[p.~109]{Patton2006}
                   \item Top-down testing: uses \emph{test stubs}: tools that
                         ``simulate[] the function of a component not yet
-                        available'' \citep[p.~410]{van_vliet_software_2000} by
+                        available'' \citep[p.~410]{vanVliet2000} by
                         providing ``fake'' values to a given module to be
-                        tested \citep[p.~110]{patton_software_2006}
+                        tested \citep[p.~110]{Patton2006}
                   \item Big bang testing: the process of ``integrat[ing] all
                         modules in a single step and test[ing] the resulting
-                        system[]'' \citep[p.~489]{peters_software_2000}.
+                        system[]'' \citep[p.~489]{PetersAndPedrycz2000}.
                         \emph{Although this is ``quite challenging and risky''
-                              \citep[p.~489]{peters_software_2000}, it may be
+                              \citep[p.~489]{PetersAndPedrycz2000}, it may be
                               made less so through the ease of generation,
                               and may be more practical as a testing process
                               for Drasil, although the introduction of the
@@ -1038,70 +1039,70 @@ whether that information exists in Drasil already and if it can be added
                               initially, in a more structured manner; also of
                               note is its relative ease ``to test paths'' and
                               ``to plan and control''
-                              \citep[p.~490]{peters_software_2000}
+                              \citep[p.~490]{PetersAndPedrycz2000}
                               \qtodo{Bring up!}}
                   \item Sandwich testing: ``combines the ideas of bottom-up and
                         top-down testing by defining a certain target layer in
                         the hierarchy of the modules'' and working towards it
                         from either end using the relevant testing approach
-                        \citep[p.~491]{peters_software_2000}
+                        \citep[p.~491]{PetersAndPedrycz2000}
             \end{itemize}
       \item System testing: ``test[ing] the whole system against the user
             documentation and requirements specification after integration
-            testing has finished'' \citep[p.~439]{van_vliet_software_2000}
-            (\citep[p.~109]{patton_software_2006} says this can also be done on
+            testing has finished'' \citep[p.~439]{vanVliet2000}
+            (\citep[p.~109]{Patton2006} says this can also be done on
             ``at least a major portion'' of the product); often uses random,
             but representative, input to test reliability
             \todo{Expand on reliability testing (make own section?)}
-            \citep[p.~439]{van_vliet_software_2000}
+            \citep[p.~439]{vanVliet2000}
       \item Acceptance testing: Similar to system testing that is ``often
             performed under supervision of the user organization'',
-            focusing on usability \citep[p.~439]{van_vliet_software_2000} and
-            the needs of the customer(s) \citep[p.~492]{peters_software_2000}
+            focusing on usability \citep[p.~439]{vanVliet2000} and
+            the needs of the customer(s) \citep[p.~492]{PetersAndPedrycz2000}
       \item Installation testing: Focuses on the portability of the product,
             especially ``in an environment different from the one in which is
-            has been developed'' \citep[p.~439]{van_vliet_software_2000}; not
+            has been developed'' \citep[p.~439]{vanVliet2000}; not
             one of the four levels of testing identified by the IEEE standard
-            \citep[p.~445]{peters_software_2000}
+            \citep[p.~445]{PetersAndPedrycz2000}
 \end{itemize}
 
 \subsubsection{Test Oracles}
 ``A \emph{test oracle} is a predicate that determines whether a given test
 activity sequence is an acceptable behaviour of the SUT [System Under Test] or
-not'' \citep[p.~509]{barr_oracle_2015}. They can either be ``deterministic''
+not'' \citep[p.~509]{BarrEtAl2015}. They can either be ``deterministic''
 (returning a Boolean value) or ``probabilistic'' (returning ``a real number in
-the closed interval [0, 1]'') \citep[p.~509]{barr_oracle_2015}. Probabilistic
+the closed interval [0, 1]'') \citep[p.~509]{BarrEtAl2015}. Probabilistic
 test oracles can be used to reduce the computation cost (since test oracles
-are ``typically computationally expensive'') \citep[p.~509]{barr_oracle_2015}
+are ``typically computationally expensive'') \citep[p.~509]{BarrEtAl2015}
 or in ``situations where some degree of imprecision can be tolerated'' since
 they ``offer a probability that [a given] test case is acceptable''
-\citep[p.~510]{barr_oracle_2015}. They can be grouped into four categories:
+\citep[p.~510]{BarrEtAl2015}. They can be grouped into four categories:
 
 \begin{itemize}
       \item Specified test oracle: ``judge[s] all behavioural aspects of a
             system with respect to a given formal specification''
-            \citep[p.~510]{barr_oracle_2015}
+            \citep[p.~510]{BarrEtAl2015}
       \item Derived test oracle: any ``artefact[] from which a
             test oracle may be derived---for instance, a previous version of
             the system'' or ``program documentation''; this includes
             \nameref{chap:notes:sec:regression-testing},
             \nameref{chap:notes:sec:metamorphic-testing}
-            \citep[p.~510]{barr_oracle_2015}, and invariant detection (either
+            \citep[p.~510]{BarrEtAl2015}, and invariant detection (either
             known in advance or ``learned from the program'')
-            \citep[p.~516]{barr_oracle_2015}; \emph{This is like the assertions
+            \citep[p.~516]{BarrEtAl2015}; \emph{This is like the assertions
                   we discussed earlier; documentation enforced by code!}
       \item Pseudo-oracle: a type of derived test oracle that is ``an
             alternative version of the program produced independently'' (by a
             different team, in a different language, etc.)
-            \citep[p.~515]{barr_oracle_2015}. \emph{We could potentially use the
+            \citep[p.~515]{BarrEtAl2015}. \emph{We could potentially use the
                   programs generated in other languages as pseudo-oracles!}
       \item Implicit test oracles: detect ```obvious' faults such as a program
             crash'' (potentially due to a null pointer, deadlock, memory leak,
-            etc.) \citep[p.~510]{barr_oracle_2015}
+            etc.) \citep[p.~510]{BarrEtAl2015}
       \item ``Lack of an automated test oracle'': for example; a human oracle
             generating sample data that is ``realistic'' and ``valid'',
-            \citep[pp.~510-511]{barr_oracle_2015}, or crowdsourcing
-            \citep[p.~520]{barr_oracle_2015}
+            \citep[pp.~510-511]{BarrEtAl2015}, or crowdsourcing
+            \citep[p.~520]{BarrEtAl2015}
 \end{itemize}
 
 \subsubsection{Generating Test Cases}
@@ -1111,20 +1112,20 @@ they ``offer a probability that [a given] test case is acceptable''
             for testing \dots and can be used \dots as a test case generator....
                   [For example, i]f a 100\% statement coverage has not been achieved
             yet, an additional test case is selected that covers one or more
-            statements yet untested'' \citep[p.~402]{van_vliet_software_2000}
+            statements yet untested'' \citep[p.~402]{vanVliet2000}
       \item ``Test data generators'' are mentioned on
-            \citep[p.~410]{van_vliet_software_2000} but not described
+            \citep[p.~410]{vanVliet2000} but not described
             \todo{Investigate}
 \end{itemize}
 
 \subsection{Static Black-Box (Specification) Testing
-      \citep[pp.~56-62]{patton_software_2006}}
+      \citep[pp.~56-62]{Patton2006}}
 
 Most of this section is irrelevant to generating test cases, as they require
 human involvement \todo{Describe anyway} (e.g., Pretend to Be the Customer
-\citep[pp.~57-58]{patton_software_2006}, Research Existing Standards and
-Guidelines \citep[pp.~58-59]{patton_software_2006}). However, it provides a
-``Specification Terminology Checklist'' \citep[p.~61]{patton_software_2006} that
+\citep[pp.~57-58]{Patton2006}, Research Existing Standards and
+Guidelines \citep[pp.~58-59]{Patton2006}). However, it provides a
+``Specification Terminology Checklist'' \citep[p.~61]{Patton2006} that
 includes some keywords that, if found, could trigger an applicable warning to
 the user (similar to the idea behind the correctness/consistency checks
 project):
@@ -1138,43 +1139,43 @@ project):
       \item \textbf{Potentially incomplete:} etc., and so forth, and so on,
             such as, handled, processed, rejected, skipped, eliminated,
             if \dots then \dots (without ``else'' or ``otherwise''),
-            to be determined \citep[p.~408]{van_vliet_software_2000}
+            to be determined \citep[p.~408]{vanVliet2000}
 \end{itemize}
 
 \subsubsection{Coverage-Based Testing of Specification
-      \citep[pp.~425-426]{van_vliet_software_2000}}
+      \citep[pp.~425-426]{vanVliet2000}}
 
 Requirements can be ``depicted as a graph, where the nodes denote elementary
 requirements and the edges denote relations between [them]'' from which test
-cases can be derived \citep[p.~425]{van_vliet_software_2000}. However, it can
+cases can be derived \citep[p.~425]{vanVliet2000}. However, it can
 be difficult to assess whether a set of equivalence classes are truly
 equivalent, since the specific data available in each node is not apparent
-\citep[p.~426]{van_vliet_software_2000}.
+\citep[p.~426]{vanVliet2000}.
 
 \subsection{Dynamic Black-Box (Behavioural) Testing
-      \citep[pp.~64-65]{patton_software_2006}}
+      \citep[pp.~64-65]{Patton2006}}
 
 This is the process of ``entering inputs, receiving outputs, and checking the
-results'' \citep[p.~64]{patton_software_2006}. \citep{van_vliet_software_2000}
+results'' \citep[p.~64]{Patton2006}. \citep{vanVliet2000}
 also calls this ``functional testing''.
 
 \paragraph{Requirements}
 \begin{itemize}
       \item Requirements documentation (definition of what the software does)
-            \citep[p.~64]{patton_software_2006}; relevant information could be:
+            \citep[p.~64]{Patton2006}; relevant information could be:
             \begin{itemize}
                   \item Requirements: Input-Values and Output-Values
                   \item Input/output data constraints
             \end{itemize}
 \end{itemize}
 
-\subsubsection{Exploratory Testing \citep[p.~65]{patton_software_2006}}
+\subsubsection{Exploratory Testing \citep[p.~65]{Patton2006}}
 
 An alternative to dynamic black-box testing when a specification is not
-available \citep[p.~65]{patton_software_2006}. The software is explored to
+available \citep[p.~65]{Patton2006}. The software is explored to
 determine its features, and these features are then tested
-\citep[p.~65]{patton_software_2006}. Finding any bugs using this method is a
-positive thing \citep[p.~65]{patton_software_2006}, since despite not knowing
+\citep[p.~65]{Patton2006}. Finding any bugs using this method is a
+positive thing \citep[p.~65]{Patton2006}, since despite not knowing
 what the software \emph{should} do, you were able to determine that something
 is wrong.
 
@@ -1183,17 +1184,17 @@ specification, making this type of testing unnecessary, there is also a lot of
 human-based trial and error required for this kind of testing
 \citep{june_11_meeting}.
 
-\subsubsection{Equivalence Partitioning/Classing \citep[pp.~67-69]{patton_software_2006}}
+\subsubsection{Equivalence Partitioning/Classing \citep[pp.~67-69]{Patton2006}}
 
 The process of dividing the infinite set of test cases into a finite set that is
-just as effective (i.e., that reveals the same bugs) \citep[p.~67]{patton_software_2006}.
+just as effective (i.e., that reveals the same bugs) \citep[p.~67]{Patton2006}.
 The opposite of this, testing every combination of inputs, is called
 ``exhaustive testing'' and is ``probably not feasible''
-\citep[p.~461]{peters_software_2000}.
+\citep[p.~461]{PetersAndPedrycz2000}.
 
 \paragraph{Requirements}
 \begin{itemize}
-      \item Ranges of possible values \citep[p.~67]{patton_software_2006};
+      \item Ranges of possible values \citep[p.~67]{Patton2006};
             could be obtained through:
             \begin{itemize}
                   \item Input/output data constraints
@@ -1201,36 +1202,36 @@ The opposite of this, testing every combination of inputs, is called
             \end{itemize}
 \end{itemize}
 
-\subsubsection{Data Testing \citep[pp.~70-79]{patton_software_2006}}
+\subsubsection{Data Testing \citep[pp.~70-79]{Patton2006}}
 
 The process of ``checking that information the user inputs [and] results'',
 both final and intermediate, ``are handled correctly''
-\citep[p.~70]{patton_software_2006}. This type of testing can also occur at the
+\citep[p.~70]{Patton2006}. This type of testing can also occur at the
 white-box level, such as the implementation of boundaries
-\citep[p.~431]{van_vliet_software_2000} or intermediate values within
+\citep[p.~431]{vanVliet2000} or intermediate values within
 components.
 
-\paragraph{Boundary Conditions \citep[pp.~70-74]{patton_software_2006}}
+\paragraph{Boundary Conditions \citep[pp.~70-74]{Patton2006}}
 
 ``[S]ituations at the edge of the planned operational limits of the software''
-\citep[p.~72]{patton_software_2006}. Often affects types of data (e.g., numeric,
+\citep[p.~72]{Patton2006}. Often affects types of data (e.g., numeric,
 speed, character, location, position, size, quantity
-\citep[p.~72]{patton_software_2006}) each with its own set of (e.g., first/last,
+\citep[p.~72]{Patton2006}) each with its own set of (e.g., first/last,
 min/max, start/finish, over/under, empty/full, shortest/longest,
 slowest/fastest, soonest/latest, largest/smallest, highest/lowest,
-next-to/farthest-from \citep[pp.~72-73]{patton_software_2006}). Data at these
+next-to/farthest-from \citep[pp.~72-73]{Patton2006}). Data at these
 boundaries should be included in an equivalence partition, but so should
-data in between them \citep[p.~73]{patton_software_2006}. Boundary conditions
+data in between them \citep[p.~73]{Patton2006}. Boundary conditions
 should be tested using ``the valid data just inside the boundary,
 \dots the last possible valid data, and \dots the invalid data just outside the
-boundary'' \citep[p.~73]{patton_software_2006}, and values at the boundaries
+boundary'' \citep[p.~73]{Patton2006}, and values at the boundaries
 themselves should still be tested even if they occur ``with zero probability'',
 in case there actually \emph{is} a case where it can occur; this process of
-testing may reveal it \citep[p.~460]{peters_software_2000}.
+testing may reveal it \citep[p.~460]{PetersAndPedrycz2000}.
 
 \subparagraph{Requirements}
 \begin{itemize}
-      \item Ranges of possible values \citep[p.~67, 73]{patton_software_2006};
+      \item Ranges of possible values \citep[p.~67, 73]{Patton2006};
             could be obtained through:
             \begin{itemize}
                   \item Case statements
@@ -1239,25 +1240,25 @@ testing may reveal it \citep[p.~460]{peters_software_2000}.
             \end{itemize}
 \end{itemize}
 
-\subparagraph{Buffer Overruns \citep[pp.~201-205]{patton_software_2006}}
+\subparagraph{Buffer Overruns \citep[pp.~201-205]{Patton2006}}
 
 \emph{Buffer overruns} are ``the number one cause of software security issues''
-\citep[p.~75]{patton_software_2006}. They occur when the size of the destination
+\citep[p.~75]{Patton2006}. They occur when the size of the destination
 for some data is smaller than the data itself, causing existing data (including
 code) to be overwritten and malicious code to potentially be injected
-\citep[p.~202, 204-205]{patton_software_2006}. They often arise from bad
+\citep[p.~202, 204-205]{Patton2006}. They often arise from bad
 programming practices in ``languages [sic] such as C and C++, that lack safe
-string handling functions'' \citep[p.~201]{patton_software_2006}. Any unsafe
+string handling functions'' \citep[p.~201]{Patton2006}. Any unsafe
 versions of these functions that are used should be replaced with the
-corresponding safe versions \citep[pp.~203-204]{patton_software_2006}.
+corresponding safe versions \citep[pp.~203-204]{Patton2006}.
 
-\paragraph{Sub-Boundary Conditions \citep[pp.~75-77]{patton_software_2006}}
+\paragraph{Sub-Boundary Conditions \citep[pp.~75-77]{Patton2006}}
 \label{sub-bound-conds}
 
 Boundary conditions ``that are internal to the software [but] aren't necessarily
-apparent to an end user'' \citep[p.~75]{patton_software_2006}. These include
-powers of two \citep[pp.~75-76]{patton_software_2006} and ASCII and Unicode tables
-\citep[pp.~76-77]{patton_software_2006}.
+apparent to an end user'' \citep[p.~75]{Patton2006}. These include
+powers of two \citep[pp.~75-76]{Patton2006} and ASCII and Unicode tables
+\citep[pp.~76-77]{Patton2006}.
 
 While this is of interest to the domain of scientific computing, this is too
 involved for Drasil right now, and the existing software constraints limit much
@@ -1267,15 +1268,15 @@ predefined values, so testing these values are unlikely to be fruitful.
 
 There also exist sub-boundary conditions that arise from ``complex''
 requirements, where behaviour depends on multiple conditions
-\citep[p.~430]{van_vliet_software_2000}. These ``error prone'' points around
-these boundaries should be tested \citep[p.~430]{van_vliet_software_2000} as
+\citep[p.~430]{vanVliet2000}. These ``error prone'' points around
+these boundaries should be tested \citep[p.~430]{vanVliet2000} as
 before: ``the valid data just inside the boundary, \dots the last possible
 valid data, and \dots the invalid data just outside the boundary''
-\citep[p.~73]{patton_software_2006}. In this type of testing, the second type of
+\citep[p.~73]{Patton2006}. In this type of testing, the second type of
 data is called an ``ON point'', the first type is an ``OFF point'' for the
 domain on the \emph{other} side of the boundary, and the third type is an ``OFF
 point'' for the domain on the \emph{same} side of the boundary
-\citep[p.~430]{van_vliet_software_2000}.
+\citep[p.~430]{vanVliet2000}.
 
 \subparagraph{Requirements}
 \begin{itemize}
@@ -1286,11 +1287,11 @@ point'' for the domain on the \emph{same} side of the boundary
 \end{itemize}
 
 \paragraph{Default, Empty, Blank, Null, Zero, and None
-      \citep[pp.~77-78]{patton_software_2006}}
+      \citep[pp.~77-78]{Patton2006}}
 
 These should be their own equivalence class, since ``the software usually
 handles them differently'' than ``the valid cases or \dots invalid cases''
-\citep[p.~78]{patton_software_2006}.
+\citep[p.~78]{Patton2006}.
 
 Since these values may not always be applicable to a given scenario (e.g., a
 test case for zero doesn't make sense if there is a constraint that the value
@@ -1313,9 +1314,9 @@ test cases based on the inputs \citep{june_11_meeting}.
 \end{itemize}
 
 \paragraph{Invalid, Wrong, Incorrect, and Garbage Data
-      \citep[pp.~78-79]{patton_software_2006}}
+      \citep[pp.~78-79]{Patton2006}}
 
-This is testing-to-fail \citep[p.~77]{patton_software_2006}.
+This is testing-to-fail \citep[p.~77]{Patton2006}.
 
 \subparagraph{Requirements}
 This seems to be the most open-ended category of testing.
@@ -1330,27 +1331,27 @@ This seems to be the most open-ended category of testing.
             \end{itemize}
 \end{itemize}
 
-\paragraph{Syntax-Driven Testing \citep[pp.~448-449]{peters_software_2000}}
+\paragraph{Syntax-Driven Testing \citep[pp.~448-449]{PetersAndPedrycz2000}}
 
 If the inputs to the system ``are described by a certain grammar''
-\citep[p.~448]{peters_software_2000}, ``test cases \dots [can] be designed
+\citep[p.~448]{PetersAndPedrycz2000}, ``test cases \dots [can] be designed
 according to the syntax or constraint of input domains defined in requirement
-specification'' \citep[p.~260]{intana_syntest_2020} 
+specification'' \citep[p.~260]{IntanaEtAl2020} 
 \todo{Investigate this source more!}.
 
-\paragraph{Decision Table-Based Testing \citep[pp.~448,450-453]{peters_software_2000}}
+\paragraph{Decision Table-Based Testing \citep[pp.~448,450-453]{PetersAndPedrycz2000}}
 
 ``When the original software requirements have been formulated in the format of
 `if-then' statements,'' a decision table can be created with a column for each
-test situation \citep[p.~448]{peters_software_2000}. ``The upper part of the
+test situation \citep[p.~448]{PetersAndPedrycz2000}. ``The upper part of the
 column contains conditions that must be satisfied. The lower portion of a
 decision table specifies the action that results from the satisfaction of
-conditions in a rule'' (from the specification) \citep[p.~450]{peters_software_2000}.
+conditions in a rule'' (from the specification) \citep[p.~450]{PetersAndPedrycz2000}.
 
-\subsubsection{State Testing \citep[pp.~79-87]{patton_software_2006}}
+\subsubsection{State Testing \citep[pp.~79-87]{Patton2006}}
 
 The process of testing ``the program's logic flow through its various states''
-\citep[p.~79]{patton_software_2006} by checking that state variables are
+\citep[p.~79]{Patton2006} by checking that state variables are
 correct after different transitions \citetext{p.~83}. This is usually done by
 creating a state transition diagram that includes:
 
@@ -1361,7 +1362,7 @@ creating a state transition diagram that includes:
 \end{itemize}
 
 to map out the logic flow from the user's perspective
-\citep[pp.~81-82]{patton_software_2006}. Next, these states should be
+\citep[pp.~81-82]{Patton2006}. Next, these states should be
 partitioned using one (or more) of the following methods:
 
 \begin{enumerate}
@@ -1370,22 +1371,22 @@ partitioned using one (or more) of the following methods:
       \item Test the least common state transitions
       \item Test all error states and error return transitions
       \item Test random state transitions
-            \citep[pp.~82-83]{patton_software_2006}
+            \citep[pp.~82-83]{Patton2006}
 \end{enumerate}
 
 For all of these tests, the values of the state variables should be verified
-\citep[p.~83]{patton_software_2006}.
+\citep[p.~83]{Patton2006}.
 
 \subparagraph{Requirements}
 \begin{itemize}
       \item Knowledge of the different states of the program
-            \citep[p.~82]{patton_software_2006}; could be obtained through:
+            \citep[p.~82]{Patton2006}; could be obtained through:
             \begin{itemize}
                   \item The program's modules and/or functions
                   \item The program's exceptions
             \end{itemize}
       \item Knowledge about the different state transitions
-            \citep[p.~82]{patton_software_2006}; could be obtained through:
+            \citep[p.~82]{Patton2006}; could be obtained through:
             \begin{itemize}
                   \item Testing the state transitions near the beginning of a
                         workflow more?
@@ -1399,27 +1400,27 @@ and capacity) ``when accomplishing its designated functions''
 \citep{istqb_glossary}. \todo{Original source: ISO 25010?} 
 
 % ``The intent of this type of testing is to identify weak points of a software
-% system and quantify its shortcomings'' \citep[p.~447]{peters_software_2000}.
+% system and quantify its shortcomings'' \citep[p.~447]{PetersAndPedrycz2000}.
 
 \todo{Originally used a \emph{very} vague definition from
-\citep[p.~447]{peters_software_2000}; re-investigate!}
+\citep[p.~447]{PetersAndPedrycz2000}; re-investigate!}
 
-\paragraph{Testing States to Fail \citep[pp.~84-87]{patton_software_2006}}
+\paragraph{Testing States to Fail \citep[pp.~84-87]{Patton2006}}
 
 The goal here is to try and put the program in a fail state by doing things
 that are out of the ordinary. These include:
 
 \begin{itemize}
-      \item Race Conditions and Bad Timing \citep[pp.~85-86]{patton_software_2006}
+      \item Race Conditions and Bad Timing \citep[pp.~85-86]{Patton2006}
             (Is this relevant to our examples?)
       \item Repetition Testing: ``doing the same operation over and over'',
             potentially up to ``thousands of attempts''
-            \citep[p.~86]{patton_software_2006}
+            \citep[p.~86]{Patton2006}
       \item Stress Testing: ``running the software under less-than-ideal
-            conditions'' to see how it functions \citep[p.~86]{patton_software_2006}
+            conditions'' to see how it functions \citep[p.~86]{Patton2006}
       \item Load testing: running the software with as large of a load as
             possible (e.g., large inputs, many peripherals)
-            \citep[p.~86]{patton_software_2006}
+            \citep[p.~86]{Patton2006}
 \end{itemize}
 
 \subparagraph{Requirements}
@@ -1432,7 +1433,7 @@ that are out of the ordinary. These include:
             overload the system (e.g., upper bounds on values of certain types)
 \end{itemize}
 
-\subsubsection{Other Black-Box Testing \citep[pp.~87-89]{patton_software_2006}}
+\subsubsection{Other Black-Box Testing \citep[pp.~87-89]{Patton2006}}
 \begin{itemize}
       \item Act like an inexperienced user (\emph{likely out of scope})
       \item Look for bugs where they've already been found (\emph{keep track of
@@ -1443,10 +1444,10 @@ that are out of the ordinary. These include:
 \end{itemize}
 
 \subsection{Static White-Box Testing (Structural Analysis)
-      \citep[pp.~91-104]{patton_software_2006}}
+      \citep[pp.~91-104]{Patton2006}}
 
 White-box testing is also called ``glass box testing''
-\citep[p.~439]{peters_software_2000}. \citep[p.~447]{peters_software_2000} claims
+\citep[p.~439]{PetersAndPedrycz2000}. \citep[p.~447]{PetersAndPedrycz2000} claims
 that ``structural testing subsumes white box testing'', but I am unsure if this
 is a meaningful statement; they seem to describe the same thing to me, \qtodo{Is this true?}
 especially since it says ``structure tests are aimed at exercising the internal
@@ -1457,39 +1458,39 @@ same page!
 
 There are also some more specific
 categories of this, such as Scenario-Based
-Evaluation \citep[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
-\citep[pp.~419-420]{van_vliet_software_2000}, that could be investigated further.
+Evaluation \citep[pp.~417-418]{vanVliet2000} and Stepwise Abstraction
+\citep[pp.~419-420]{vanVliet2000}, that could be investigated further.
 \todo{Do this!}
 
 \begin{itemize}
       \item ``The process of carefully and methodically reviewing the software
             design, architecture, or code for bugs without executing it''
-            \citep[p.~92]{patton_software_2006}
+            \citep[p.~92]{Patton2006}
       \item Less common than black-box testing, but often used for ``military,
             financial, factory automation, or medical software, \dots in a
             highly disciplined development model'' or when ``testing software
-            for security issues'' \citep[p.~91]{patton_software_2006}; often
+            for security issues'' \citep[p.~91]{Patton2006}; often
             avoided because of ``the misconception that it's too
             time-consuming, too costly, or not productive''
-            \citep[p.~92]{patton_software_2006}
+            \citep[p.~92]{Patton2006}
       \item Especially effective early on in the development process
-            \citep[p.~92]{patton_software_2006}
+            \citep[p.~92]{Patton2006}
       \item Can ``find bugs that would be difficult to uncover or isolate with
             dynamic black-box testing'' and ``gives the team's black-box
             testers ideas for test cases to apply''
-            \citep[p.~92]{patton_software_2006}
+            \citep[p.~92]{Patton2006}
       \item Largely ``done by the language compiler'' or by separate tools
-            \citep[pp.~413-414]{van_vliet_software_2000}
+            \citep[pp.~413-414]{vanVliet2000}
 \end{itemize}
 
-\subsubsection{Reviews \citep[pp.~92-95]{patton_software_2006},
-      \citep[pp.~415-417]{van_vliet_software_2000},
-      \citep[pp.~482-485]{peters_software_2000}}
+\subsubsection{Reviews \citep[pp.~92-95]{Patton2006},
+      \citep[pp.~415-417]{vanVliet2000},
+      \citep[pp.~482-485]{PetersAndPedrycz2000}}
 \label{reviews}
 
 \begin{itemize}
       \item ``The process under which static white-box testing is performed''
-            \citep[p.~92]{patton_software_2006}; consists of four main parts:
+            \citep[p.~92]{Patton2006}; consists of four main parts:
 
             \begin{enumerate}
                   \item Identify Problems: Find what is wrong or missing
@@ -1507,55 +1508,55 @@ Evaluation \citep[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
                   \item Write a Report: A summary should be created and provided
                         to the rest of the development team so that they know
                         what problems exist, where they are, etc.
-                        \citep[p.~93]{patton_software_2006}
+                        \citep[p.~93]{Patton2006}
             \end{enumerate}
 
       \item Reviews improve communication, learning, and camaraderie, as well as
             the quality of code \emph{even before the review}: if a developer
             ``knows that his work is being carefully reviewed by his peers, he
             might make an extra effort to \dots make sure that it's right''
-            \citep[pp.~93-94]{patton_software_2006}
+            \citep[pp.~93-94]{Patton2006}
 
       \item Many forms:
             \begin{itemize}
                   \item Peer Review: Also called ``buddy review''
-                        \citep[p.~94]{patton_software_2006}. The most informal
-                        review at the smallest scale \citep[p.~94]{patton_software_2006}.
+                        \citep[p.~94]{Patton2006}. The most informal
+                        review at the smallest scale \citep[p.~94]{Patton2006}.
                         One variation is where a group of two or three people
                         go through code that one of them wrote
-                        \citep[p.~94]{patton_software_2006}. Another is to
+                        \citep[p.~94]{Patton2006}. Another is to
                         have each person in a larger group submit ``a `best'
                         program and one of lesser quality'', randomly distribute
                         all programs to be assessed by two people in the group,
                         and return all feedback anonymously to the appropriate
-                        developer \citep[p.~414]{van_vliet_software_2000}
+                        developer \citep[p.~414]{vanVliet2000}
                   \item Walkthrough: The author of the code presents it line
                         by line to a small group that ``question anything that
-                        looks suspicious'' \citep[p.~95]{patton_software_2006};
+                        looks suspicious'' \citep[p.~95]{Patton2006};
                         this is done by using test data to ``walk through''
                         the execution of the program
-                        \citep[p.~416]{van_vliet_software_2000}. A more
+                        \citep[p.~416]{vanVliet2000}. A more
                         structured walkthrough may have specific roles
                         (presenter, coordinator, secretary, maintenance oracle,
                         standards bearer, and user representative)
-                        \citep[p.~484]{peters_software_2000}
+                        \citep[p.~484]{PetersAndPedrycz2000}
                   \item Inspection: Someone who is \emph{not} the author of the
                         code presents it to a small group of people
-                        \citep[p.~95]{patton_software_2006}; the author
+                        \citep[p.~95]{Patton2006}; the author
                         should be ``a largely silent observer'' who
                         ``may be consulted by the inspectors''
-                        \citep[p.~415]{van_vliet_software_2000}. Each member has
+                        \citep[p.~415]{vanVliet2000}. Each member has
                         a role, which may be tied to a different perspective
                         (e.g., designer, implementer, tester,
-                        \citep[p.~439]{peters_software_2000} user, or product
-                        support person) \citep[p.~95]{patton_software_2006}.
+                        \citep[p.~439]{PetersAndPedrycz2000} user, or product
+                        support person) \citep[p.~95]{Patton2006}.
                         Changes are made based on issues identified \emph{after}
-                        the inspection \citep[p.~415]{van_vliet_software_2000},
+                        the inspection \citep[p.~415]{vanVliet2000},
                         and a reinspection may take place
-                        \citep[p.~95]{patton_software_2006}; one guideline is to
+                        \citep[p.~95]{Patton2006}; one guideline is to
                         reinspect \emph{100\%} of the code ``[i]f more than 5\%
                         of the material inspected has been reworked''
-                        \citep[p.~483]{peters_software_2000}.
+                        \citep[p.~483]{PetersAndPedrycz2000}.
             \end{itemize}
 
       \item Can use various tools (see \nameref{code-stds-and-guidelines} and
@@ -1566,7 +1567,7 @@ Evaluation \citep[pp.~417-418]{van_vliet_software_2000} and Stepwise Abstraction
 
 \end{itemize}
 
-\subsubsection{Coding Standards and Guidelines \citep[pp.~96-99]{patton_software_2006}}
+\subsubsection{Coding Standards and Guidelines \citep[pp.~96-99]{Patton2006}}
 \label{code-stds-and-guidelines}
 \todo{This shouldn't really be at the same level as \nameref{reviews}, but I
 didn't want to fight with more subsections yet}
@@ -1576,13 +1577,13 @@ didn't want to fight with more subsections yet}
             criteria, since these affect its reliability, readability,
             maintainability, and/or portability; e.g., the \texttt{goto},
             \texttt{while}, and \texttt{if-else} commands in C can cause bugs
-            if used incorrectly \citep[p.~96]{patton_software_2006}
+            if used incorrectly \citep[p.~96]{Patton2006}
       \item These guidelines can range in strictness and formality, as long as
-            they are agreed upon and followed \citep[p.~96]{patton_software_2006}
+            they are agreed upon and followed \citep[p.~96]{Patton2006}
       \item This could be checked using linters
 \end{itemize}
 
-\subsubsection{Generic Code Review Checklist \citep[pp.~99-103]{patton_software_2006}}
+\subsubsection{Generic Code Review Checklist \citep[pp.~99-103]{Patton2006}}
 \label{gen-code-review-checklist}
 \todo{This shouldn't really be at the same level as \nameref{reviews}, but I
 didn't want to fight with more subsections yet}
@@ -1592,27 +1593,27 @@ didn't want to fight with more subsections yet}
             \label{data-ref-errors}
             Data reference errors: ``bugs caused by using a variable, constant,
             \dots [etc.] that hasn't been properly declared or initialized''
-            for its context \citep[p.~99]{patton_software_2006}
+            for its context \citep[p.~99]{Patton2006}
       \item Data declaration errors: bugs ``caused by improperly declaring
-            or using variables or constants'' \citep[p.~100]{patton_software_2006}
+            or using variables or constants'' \citep[p.~100]{Patton2006}
       \item Computation errors: ``essentially bad math''; e.g., type mismatches,
             over/underflow, zero division, out of meaningful range
-            \citep[p.~101]{patton_software_2006}
+            \citep[p.~101]{Patton2006}
             \label{comp-errors}
       \item Comparison errors: ``very susceptible to boundary condition
             problems''; e.g., correct inclusion, floating point comparisons
-            \citep[p.~101]{patton_software_2006}
+            \citep[p.~101]{Patton2006}
       \item Control flow errors: bugs caused by ``loops and other control
             constructs in the language not behaving as expected''
-            \citep[p.~102]{patton_software_2006}
+            \citep[p.~102]{Patton2006}
       \item Subroutine parameter errors: bugs ``due to incorrect passing of data
-            to and from software subroutines'' \citep[p.~102]{patton_software_2006}
+            to and from software subroutines'' \citep[p.~102]{Patton2006}
             (could also be called ``interface errors''
-            \citep[p.~416]{van_vliet_software_2000})
+            \citep[p.~416]{vanVliet2000})
       \item Input/output errors: e.g., how are errors handled?
-            \citep[pp.~102-103]{patton_software_2006}
+            \citep[pp.~102-103]{Patton2006}
       \item ASCII character handling, portability, compilation warnings
-            \citep[p.~103]{patton_software_2006}
+            \citep[p.~103]{Patton2006}
 \end{itemize}
 
 \paragraph{Requirements}
@@ -1643,139 +1644,139 @@ didn't want to fight with more subsections yet}
             expected from a normal compilation); do we have any string inputs?
 \end{itemize}
 
-\subsubsection{Correctness Proofs \citep[pp.~418-419]{van_vliet_software_2000}}
-Requires a formal specification \citep[p.~418]{van_vliet_software_2000} and uses
-``highly formal methods of logic'' \citep[p.~438]{peters_software_2000} to prove
+\subsubsection{Correctness Proofs \citep[pp.~418-419]{vanVliet2000}}
+Requires a formal specification \citep[p.~418]{vanVliet2000} and uses
+``highly formal methods of logic'' \citep[p.~438]{PetersAndPedrycz2000} to prove
 the existence of ``an equivalence between the program and its specification''
 \citetext{p.~485}. It is not often used and its value is
-``sometimes disputed'' \citep[p.~418]{van_vliet_software_2000}.
+``sometimes disputed'' \citep[p.~418]{vanVliet2000}.
 \emph{Could be useful for Drasil down
       the road if we can specify requirements formally, and may overlap with
       others' interests in the areas of logic and proof-checking.}
 \todo{Does symbolic execution belong here? Investigate from textbooks}
 
 \subsection{Dynamic White-Box (Structural) Testing
-      \citep[pp.~105-121]{patton_software_2006}}
+      \citep[pp.~105-121]{Patton2006}}
 
 ``Using information you gain from seeing what the code does and how it works to
 determine what to test, what not to test, and how to approach the testing''
-\citep[p.~106]{patton_software_2006}.
+\citep[p.~106]{Patton2006}.
 
-\subsubsection{Code Coverage \citep[pp.~117-121]{patton_software_2006} or
-      Control-Flow Coverage \citep[pp.~421-424]{van_vliet_software_2000}}
+\subsubsection{Code Coverage \citep[pp.~117-121]{Patton2006} or
+      Control-Flow Coverage \citep[pp.~421-424]{vanVliet2000}}
 
 ``[T]est[ing] the program's states and the program's flow among them''
-\citep[p.~117]{patton_software_2006}; allows for redundant and/or missing test
-cases to be identified \citep[p.~118]{patton_software_2006}. Coverage-based
+\citep[p.~117]{Patton2006}; allows for redundant and/or missing test
+cases to be identified \citep[p.~118]{Patton2006}. Coverage-based
 testing is often based ``on the notion of a control graph \dots [where]
 nodes denote actions, \dots (directed) edges connect actions with
 subsequent actions (in time) \dots [and a] path is a sequence of nodes
 connected by edges. The graph may contain cycles \dots [which] correspond
-to loops \dots'' \citep[pp.~420-421]{van_vliet_software_2000}. ``A cycle is
+to loops \dots'' \citep[pp.~420-421]{vanVliet2000}. ``A cycle is
 called \emph{simple} if its inner nodes are distinct and do not include
       [the node at the beginning/end of the cycle]''
-\citep[p.~421, emphasis added]{van_vliet_software_2000}. If there are
+\citep[p.~421, emphasis added]{vanVliet2000}. If there are
 multiple actions represented as nodes that occur one after another, they may
-be collapsed into a single node \citep[p.~421]{van_vliet_software_2000}.
+be collapsed into a single node \citep[p.~421]{vanVliet2000}.
 
 We discussed that
 generating infrastructure for reporting coverage may be a worthwhile goal, and
 that it can be known how to increase certain types of coverage (since we know
 the structure of the generated code, to some extent, beforehand), but I'm
 not sure if all of these are feasible/worthwhile to get to 100\% (e.g., path
-coverage \citep[p.~421]{van_vliet_software_2000}).
+coverage \citep[p.~421]{vanVliet2000}).
 
 \begin{itemize}
       \item Statement/line coverage: attempting to ``execute every statement in
-            the program at least once'' \citep[p.~119]{patton_software_2006}
+            the program at least once'' \citep[p.~119]{Patton2006}
             \begin{itemize}
-                  \item Weaker than \citep[p.~421]{van_vliet_software_2000} and
+                  \item Weaker than \citep[p.~421]{vanVliet2000} and
                         ``only about 50\% as effective as branch coverage''
-                        \citep[p.~481]{peters_software_2000}
+                        \citep[p.~481]{PetersAndPedrycz2000}
                         \todo{Find original source: Miller et al., 1994}
                   \item Requires 100\% coverage to be effective
-                        \citep[p.~481]{peters_software_2000}
+                        \citep[p.~481]{PetersAndPedrycz2000}
                         \todo{Find original source: Miller et al., 1994}
                   \item ``[C]an be used at the module level with less than 5000
-                        lines of code'' \citep[p.~481]{peters_software_2000}
+                        lines of code'' \citep[p.~481]{PetersAndPedrycz2000}
                         \todo{Find original source: Miller et al., 1994}
                   \item Doesn't guarantee correctness
-                        \citep[p.~421]{van_vliet_software_2000}
+                        \citep[p.~421]{vanVliet2000}
             \end{itemize}
       \item Branch coverage: attempting to, ``at each branching node in the
             control graph, \dots [choose] all possible branches \dots at least
-            once'' \citep[p.~421]{van_vliet_software_2000}
+            once'' \citep[p.~421]{vanVliet2000}
             \begin{itemize}
                   \item Weaker than path coverage
-                        \citep[p.~433]{van_vliet_software_2000}, although
-                        \citep[p.~119]{patton_software_2006} says it is
+                        \citep[p.~433]{vanVliet2000}, although
+                        \citep[p.~119]{Patton2006} says it is
                         ``the simplest form of path testing''
                         (\emph{I don't think this is true})
                   \item Requires at least 85\% coverage to be effective and is
                         ``most effective \dots at the module level''
-                        \citep[p.~481]{peters_software_2000}
+                        \citep[p.~481]{PetersAndPedrycz2000}
                         \todo{Find original source: Miller et al., 1994}
                   \item Cyclomatic-number criterion: an adequacy criterion that
                         requires that ``all linearly-independent paths are
-                        covered'' \citep[p.~423]{van_vliet_software_2000};
+                        covered'' \citep[p.~423]{vanVliet2000};
                         results in complete branch coverage
                   \item Doesn't guarantee correctness
-                        \citep[p.~421]{van_vliet_software_2000}
+                        \citep[p.~421]{vanVliet2000}
             \end{itemize}
       \item Path coverage: ``[a]ttempting to cover all the paths in the
-            software'' \citep[p.~119]{patton_software_2006};
+            software'' \citep[p.~119]{Patton2006};
             I always thought the ``path'' in ``path coverage'' was
             a path from program start to program end, but van
             Vliet seems to use the more general definition (which
             is, albeit, sometimes valid, like in ``du-path'') of
             being any subset of a program's execution (see
-            \citep[p.~420]{van_vliet_software_2000})
+            \citep[p.~420]{vanVliet2000})
             \qtodo{How do we decide on our definition?}
             \begin{itemize}
                   \item The number of paths to test can be bounded based on its
                         structure and can be approached by dividing the system
                         into subgraphs and computing the bounds of each
-                        individually \citep[pp.~471-473]{peters_software_2000};
+                        individually \citep[pp.~471-473]{PetersAndPedrycz2000};
                         this is less feasible if a loop is present
-                        \citep[pp.~473-476]{peters_software_2000} since ``a loop
+                        \citep[pp.~473-476]{PetersAndPedrycz2000} since ``a loop
                         often results in an infinite number of possible paths''
-                        \citep[p.~421]{van_vliet_software_2000}
+                        \citep[p.~421]{vanVliet2000}
                   \item van Vliet claims that if this is done completely, it
                         ``is equivalent to exhaustively testing the program''
-                        \citep[p.~421]{van_vliet_software_2000};
+                        \citep[p.~421]{vanVliet2000};
                         however, this overlooks the effect of inputs on
                         behaviour as pointed out in
-                        \citep[pp.~466-467]{peters_software_2000}. Exhaustive
+                        \citep[pp.~466-467]{PetersAndPedrycz2000}. Exhaustive
                         testing requires both full path coverage \emph{and}
                         every input to be checked
                   \item Generally ``not possible'' to achieve completely due to
                         the complexity of
                         loops, branches, and potentially unreachable code
-                        \citep[p.~421]{van_vliet_software_2000}; even infeasible
+                        \citep[p.~421]{vanVliet2000}; even infeasible
                         paths must be checked for full path coverage
-                        \citep[p.~439]{peters_software_2000}!
+                        \citep[p.~439]{PetersAndPedrycz2000}!
                   \item Usually ``limited to a few functions with life
                         criticality features (medical systems, real-time
-                        controllers)'' \citep[p.~481]{peters_software_2000}
+                        controllers)'' \citep[p.~481]{PetersAndPedrycz2000}
                         \todo{Find original source: Miller et al., 1994}
             \end{itemize}
       \item (Multiple) condition coverage: ``takes the extra conditions on the
             branch statements into account'' (e.g., all possible inputs to a
-            Boolean expression) \citep[p.~120]{patton_software_2006}
+            Boolean expression) \citep[p.~120]{Patton2006}
             \begin{itemize}
                   \item ``Also known as \textbf{extended branch coverage}''
-                        \citep[p.~422]{van_vliet_software_2000}
+                        \citep[p.~422]{vanVliet2000}
                   \item Does not subsume and is not subsumed by path coverage
-                        \citep[p.~433]{van_vliet_software_2000}
+                        \citep[p.~433]{vanVliet2000}
                   \item ``May be quite challenging'' since ``if each
                         subcondition is viewed as a single input, then this
                         \dots is analogous to exhaustive testing''; however,
                         there is usually a manageable number of subconditions
-                        \citep[p.~464]{peters_software_2000}
+                        \citep[p.~464]{PetersAndPedrycz2000}
             \end{itemize}
 \end{itemize}
 
-\subsubsection{Data Coverage \citep[pp.~114-116]{patton_software_2006}}
+\subsubsection{Data Coverage \citep[pp.~114-116]{Patton2006}}
 
 In addition to \nameref{data-flow-coverage}, there are also some minor forms of
 data coverage:
@@ -1788,42 +1789,42 @@ data coverage:
             errors are handled; any error forced must have a chance of
             occurring in the real world, even if it is unlikely, and as such,
             must be double-checked for validity
-            \citep[p.~116]{patton_software_2006}
+            \citep[p.~116]{Patton2006}
 \end{itemize}
 
-\paragraph{Data Flow Coverage \citep[p.~114]{patton_software_2006},
-      \citep[pp.~424-425]{van_vliet_software_2000}}
+\paragraph{Data Flow Coverage \citep[p.~114]{Patton2006},
+      \citep[pp.~424-425]{vanVliet2000}}
 \label{data-flow-coverage}
 
 ``[T]racking a piece of data completely through the software'' (or a part of
 it), usually using debugger tools to check the values of variables
-\citep[p.~114]{patton_software_2006}.
+\citep[p.~114]{Patton2006}.
 
 \begin{itemize}
       \item ``A variable is \emph{defined} in a certain statement if it is
             assigned a (new) value because of the execution of that
-            statement'' \citep[p.~424]{van_vliet_software_2000}
+            statement'' \citep[p.~424]{vanVliet2000}
       \item ``A definition in statement X is \emph{alive} in statement Y if
             there exists a path from X to Y in which that variable does not
             get assigned a new value at some intermediate node''
-            \citep[p.~424]{van_vliet_software_2000}
+            \citep[p.~424]{vanVliet2000}
       \item A path from a variable's definition to a statement where it is
             still alive is called \textbf{definition-clear} (with respect to
-            this variable) \citep[p.~424]{van_vliet_software_2000}
+            this variable) \citep[p.~424]{vanVliet2000}
       \item Basic block: ``[a] consecutive part[] of code that execute[s]
-            together without any branching'' \citep[p.~477]{peters_software_2000}
+            together without any branching'' \citep[p.~477]{PetersAndPedrycz2000}
       \item \acf{p-use}: e.g., the use of a variable in a conditional
-            \citep[p.~424]{van_vliet_software_2000}
+            \citep[p.~424]{vanVliet2000}
       \item \acf{c-use}: e.g., the use of a variable in a computation or I/O
-            statement \citep[p.~424]{van_vliet_software_2000}
+            statement \citep[p.~424]{vanVliet2000}
       \item All-use: either a \acs{p-use} or a \acs{c-use}~
-            \citep[p.~478]{peters_software_2000}
+            \citep[p.~478]{PetersAndPedrycz2000}
       \item DU-path: ``a path from a variable definition to [one of] its use[s]
             that contains no redefinition of the variable''
-            \citep[pp.~478-479]{peters_software_2000}
+            \citep[pp.~478-479]{PetersAndPedrycz2000}
       \item The three possible actions on data are defining, killing, and using;
             ``there are a number of anomalies associated with these actions''
-            \citep[pp.~478,480]{peters_software_2000}
+            \citep[pp.~478,480]{PetersAndPedrycz2000}
             \todo{get original source: Beizer, 1990}
             (see \hyperref[data-ref-errors]{Data reference errors})
 \end{itemize}
@@ -1831,7 +1832,7 @@ it), usually using debugger tools to check the values of variables
 Table \ref{table:data-flow-coverage-types} contains different types of data
 flow coverage criteria, approximately from weakest to strongest, as well as
 their requirements; all information is adapted from
-\citep[pp.~424-425]{van_vliet_software_2000} \todo{Is this sufficient?}.
+\citep[pp.~424-425]{vanVliet2000} \todo{Is this sufficient?}.
 
 \begin{table}[hbtp!]
       \centering
@@ -1865,75 +1866,75 @@ their requirements; all information is adapted from
 \end{table}
 
 \qtodo{How is All-DU-Paths coverage stronger than All-Uses coverage according to
-      \citep[p.~433]{van_vliet_software_2000}?}
+      \citep[p.~433]{vanVliet2000}?}
 
-\subsubsection{Fault Seeding \citep[pp.~427-428]{van_vliet_software_2000}}
+\subsubsection{Fault Seeding \citep[pp.~427-428]{vanVliet2000}}
 
 The introduction of faults to estimate the number of undiscovered faults in the
 system based on the ratio between the number of new faults and the number of
 introduced faults that were discovered (which will ideally be small)
-\citep[p.~427]{van_vliet_software_2000}. Makes many assumptions, including
+\citep[p.~427]{vanVliet2000}. Makes many assumptions, including
 ``that both real and seeded faults have the same distribution'' and requires
 careful consideration as to which faults are introduced and how
-\citep[p.~427]{van_vliet_software_2000}.
+\citep[p.~427]{vanVliet2000}.
 
-\subsubsection{Mutation Testing \citep[pp.~428-429]{van_vliet_software_2000}}
+\subsubsection{Mutation Testing \citep[pp.~428-429]{vanVliet2000}}
 \label{chap:notes:sec:mutation-testing}
 
 ``A (large) number of variants of a program is generated'', each differing from
 the original ``slightly'' (e.g., by deleting a statement or replacing an
-operator with another) \citep[p.~428]{van_vliet_software_2000}. These
+operator with another) \citep[p.~428]{vanVliet2000}. These
 \emph{mutants} are then tested; if set of tests fails to expose a difference in
 behaviour between the original and many mutants, ``then that test set is of low
-quality'' \citep[pp.~428-429]{van_vliet_software_2000}. The goal is to maximize
+quality'' \citep[pp.~428-429]{vanVliet2000}. The goal is to maximize
 the number of mutants identified by a given test set
-\citep[p.~429]{van_vliet_software_2000}. \textbf{Strong mutation testing} works
+\citep[p.~429]{vanVliet2000}. \textbf{Strong mutation testing} works
 at the program level while \textbf{weak mutation testing} works at the
 component level (and ``is often easier to establish'')
-\citep[p.~429]{van_vliet_software_2000}.
+\citep[p.~429]{vanVliet2000}.
 
 There is an unexpected byproduct of this form of testing. In some cases of one
 experiment \todo{add original source: KA85}, ``the original program failed,
 while the modified program [mutant] yielded the right result''
-\citep[p.~432]{van_vliet_software_2000}! In addition to revealing shortcomings
+\citep[p.~432]{vanVliet2000}! In addition to revealing shortcomings
 of a test set, mutation testing can also point the developer(s) in the
 direction of a better solution!
 
-\subsection{Gray-Box Testing \citep[pp.~218-220]{patton_software_2006}}
+\subsection{Gray-Box Testing \citep[pp.~218-220]{Patton2006}}
 A type of testing where ``you still test the software as a black-box, but you
 supplement the work by taking a peek (not a full look, as in white-box testing)
-at what makes the software work'' \citep[p.~218]{patton_software_2006}. An
+at what makes the software work'' \citep[p.~218]{Patton2006}. An
 example of this is looking at HTML code and checking the tags used since
 ``HTML doesn't execute or run, it just determines how text and graphics appear
-onscreen'' \citep[p.~220]{patton_software_2006}.
+onscreen'' \citep[p.~220]{Patton2006}.
 
 \subsection{Regression Testing}
 \label{chap:notes:sec:regression-testing}
 
 Repeating ``tests previously executed \dots at a later point in development and
-maintenance'' \citep[p.~446]{peters_software_2000} ``to make sure there are no
+maintenance'' \citep[p.~446]{PetersAndPedrycz2000} ``to make sure there are no
 unwanted changes [to the software's behaviour]'' \citetext{p.~481} (although
 allowing ``some unwanted differences to pass through'' is sometimes desired, if
-tedious \citetext{p.~482}). See also \citep[p.~232]{patton_software_2006}.
+tedious \citetext{p.~482}). See also \citep[p.~232]{Patton2006}.
 
 \begin{itemize}
-      \item Should be done automatically \citep[p.~481]{peters_software_2000};
+      \item Should be done automatically \citep[p.~481]{PetersAndPedrycz2000};
             ``[t]est suite augmentation techniques specialise in
             identifying and generating'' new tests based on changes ``that add
             new features'' \todo{Investigate!}, but they could be extended to
             also augment ``the expected output'' and ``the existing
-            \emph{oracles}'' \citep[p.~516]{barr_oracle_2015}
+            \emph{oracles}'' \citep[p.~516]{BarrEtAl2015}
       \item Its ``effectiveness \dots is expressed in terms of'':
             \begin{enumerate}
                   \item difficulty of test suite construction and maintenance
                   \item reliability of the testing system
-                        \citep[pp.~481-482]{peters_software_2000}
+                        \citep[pp.~481-482]{PetersAndPedrycz2000}
             \end{enumerate}
       \item Various levels:
             \begin{itemize}
                   \item Retest-all: ``all tests are rerun''; ``this may consume
                         a lot of time and effort''
-                        \citep[p.~411]{van_vliet_software_2000} (\emph{shouldn't
+                        \citep[p.~411]{vanVliet2000} (\emph{shouldn't
                               take too much effort, since it will be automated,
                               but may lead to longer CI runtimes depending on
                               the scope of generated tests})
@@ -1941,7 +1942,7 @@ tedious \citetext{p.~482}). See also \citep[p.~232]{patton_software_2006}.
                         after being selected by a \emph{regression test
                               selection technique}; ``[v]arious strategies have
                         been proposed for doing so; few of them have been
-                        implemented yet'' \citep[p.~411]{van_vliet_software_2000}
+                        implemented yet'' \citep[p.~411]{vanVliet2000}
                         \todo{Investigate these}
             \end{itemize}
 \end{itemize}
@@ -1949,62 +1950,62 @@ tedious \citetext{p.~482}). See also \citep[p.~232]{patton_software_2006}.
 \subsection{\acf{mt}}
 \label{chap:notes:sec:metamorphic-testing}
 The use of \acfp{mr} ``to determine whether a test case has passed or failed''
-\citep[p.~67]{kanewala_metamorphic_2019}. ``A[n] \acs{mr} specifies how the
+\citep[p.~67]{KanewalaAndYuehChen2019}. ``A[n] \acs{mr} specifies how the
 output of the program is expected to change when a specified change is made to
-the input'' \citep[p.~67]{kanewala_metamorphic_2019}; this is commonly done by
+the input'' \citep[p.~67]{KanewalaAndYuehChen2019}; this is commonly done by
 creating an initial test case, then transforming it into a new one by applying
 the \acs{mr} (both the initial and the resultant test cases are executed and
-should both pass) \citep[p.~68]{kanewala_metamorphic_2019}. ``\acs{mt} is one of
+should both pass) \citep[p.~68]{KanewalaAndYuehChen2019}. ``\acs{mt} is one of
 the most appropriate and cost-effective testing techniques for scientists and
-engineers'' \citep[p.~72]{kanewala_metamorphic_2019}.
+engineers'' \citep[p.~72]{KanewalaAndYuehChen2019}.
 
 \subsubsection{Benefits of \acs{mt}}
 \begin{itemize}
       \item Easier for domain experts; not only do they understand the domain
-            (and its relevant \acp{mr}) \citep[p.~70]{kanewala_metamorphic_2019},
+            (and its relevant \acp{mr}) \citep[p.~70]{KanewalaAndYuehChen2019},
             they also may not have an understanding of testing principles
-            \citep[p.~69]{kanewala_metamorphic_2019}. \emph{This majorly
+            \citep[p.~69]{KanewalaAndYuehChen2019}. \emph{This majorly
                   overlaps with Drasil!}
-      \item Easy to implement via scripts \citep[p.~69]{kanewala_metamorphic_2019}.
+      \item Easy to implement via scripts \citep[p.~69]{KanewalaAndYuehChen2019}.
             \emph{Again, Drasil}
-      \item Helps negate the test oracle \citep[p.~69]{kanewala_metamorphic_2019}
-            and output validation \citep[p.~70]{kanewala_metamorphic_2019} problems
+      \item Helps negate the test oracle \citep[p.~69]{KanewalaAndYuehChen2019}
+            and output validation \citep[p.~70]{KanewalaAndYuehChen2019} problems
             from \nameref{chap:notes:sec:sci-testing-roadblocks} (\emph{i.e.,
                   the two that are relevant for Drasil})
       \item Can extend a limited number of test cases (e.g., from an
             experiment that was only able to be conducted a few times)
-            \citep[pp.~70-72]{kanewala_metamorphic_2019}
+            \citep[pp.~70-72]{KanewalaAndYuehChen2019}
       \item Domain experts are sometimes unable to identify faults in a program
-            based on its output \citep[p.~71]{kanewala_metamorphic_2019}
+            based on its output \citep[p.~71]{KanewalaAndYuehChen2019}
 \end{itemize}
 
 \subsubsection{Examples of \acs{mt}}
 \begin{itemize}
       \item The average of a list of numbers should be equal (within
             floating-point errors) regardless of the list's order
-            \citep[p.~67]{kanewala_metamorphic_2019}
+            \citep[p.~67]{KanewalaAndYuehChen2019}
       \item For matrices, if $B = B_1 + B_2$, then $A \times B = A \times B_1
-                  + A \times B_2$ \citep[pp.~68-69]{kanewala_metamorphic_2019}
+                  + A \times B_2$ \citep[pp.~68-69]{KanewalaAndYuehChen2019}
       \item Symmetry of trigonometric functions; for example, $\sin(x) = \sin(-x)$
-            and $\sin(x) = \sin(x + 360^{\circ})$ \citep[p.~70]{kanewala_metamorphic_2019}
+            and $\sin(x) = \sin(x + 360^{\circ})$ \citep[p.~70]{KanewalaAndYuehChen2019}
       \item Modifying input parameters to observe expected changes to a model's
             output (e.g., testing epidemiological models calibrated with
             ``data from the 1918 Influenza outbreak''); by ``making changes to
             various model parameters \dots authors identified an error in the
             output method of the agent based epidemiological model''
-            \citep[p.~70]{kanewala_metamorphic_2019}
+            \citep[p.~70]{KanewalaAndYuehChen2019}
       \item Using machine learning to predict likely \acsp{mr} to identify
             faults in mutated versions of a program (about 90\% in this case)
-            \citep[p.~71]{kanewala_metamorphic_2019}
+            \citep[p.~71]{KanewalaAndYuehChen2019}
 \end{itemize}
 
 \section{Roadblocks to Testing}
 
 \begin{itemize}
       \item Intractability: it is generally impossible to test a program
-            exhaustively \citep[p.~421]{van_vliet_software_2000},
-            \citep[pp.~439,461]{peters_software_2000}
-      \item Undecidability \citep[p.~439]{peters_software_2000}: it is
+            exhaustively \citep[p.~421]{vanVliet2000},
+            \citep[pp.~439,461]{PetersAndPedrycz2000}
+      \item Undecidability \citep[p.~439]{PetersAndPedrycz2000}: it is
             impossible to know certain properties about a program, such as if
             it will halt (i.e., the Halting Problem
             \citep[p.~4]{gurfinkel_testing_2017}), so ``automatic testing
@@ -2013,26 +2014,26 @@ engineers'' \citep[p.~72]{kanewala_metamorphic_2019}.
 \end{itemize}
 
 \subsection{Roadblocks to Testing Scientific Software
-      \citep[p.~67]{kanewala_metamorphic_2019}}
+      \citep[p.~67]{KanewalaAndYuehChen2019}}
 \label{chap:notes:sec:sci-testing-roadblocks}
 \begin{itemize}
       \item ``Correct answers are often unknown'': if the results were already
             known, there would be no need to develop software to model them
-            \citep[p.~67]{kanewala_metamorphic_2019}; in other words, complete
+            \citep[p.~67]{KanewalaAndYuehChen2019}; in other words, complete
             test oracles don't exist ``in all but the most trivial cases''
-            \citep[p.~510]{barr_oracle_2015}
+            \citep[p.~510]{BarrEtAl2015}
       \item ``Practically difficult to validate the computed output'': complex
             calculations and outputs are difficult to verify
-            \citep[p.~67]{kanewala_metamorphic_2019}
+            \citep[p.~67]{KanewalaAndYuehChen2019}
       \item ``Inherent uncertainties'': since scientific software models
             scenarios that occur in a chaotic and imperfect world, not every
-            factor can be accounted for \citep[p.~67]{kanewala_metamorphic_2019}
+            factor can be accounted for \citep[p.~67]{KanewalaAndYuehChen2019}
       \item ``Choosing suitable tolerances'': difficult to decide what
             tolerance(s) to use when dealing with floating-point numbers
-            \citep[p.~67]{kanewala_metamorphic_2019}
+            \citep[p.~67]{KanewalaAndYuehChen2019}
       \item ``Incompatible testing tools'': while scientific software is often
             written in languages like FORTRAN, testing tools are often written
-            int languages like Java or C++ \citep[p.~67]{kanewala_metamorphic_2019}
+            int languages like Java or C++ \citep[p.~67]{KanewalaAndYuehChen2019}
 \end{itemize}
 
 Out of this list, only the first two apply. The scenarios modelled by Drasil
