@@ -746,8 +746,75 @@ given to which are ``best'', and this should happen during the analysis stage.
 
 Going forward, this process will be more rigorous, starting from more
 established sources of software testing terminology \citep{IEEE2022, IEEE2017,
-BourqueAndFairley2014, istqb_glossary}.\
+BourqueAndFairley2014, istqb_glossary}.
 \todo{should ``author names'' be acronyms or full?}
+
+From \cite{IEEE2022}, many types of testing were mentioned but not defined.
+Additionally, there were some discrepancies or ambiguities (seven within just
+this source and four between other sources); these may be areas for further
+investigation:
+
+\begin{enumerate}
+      \item ``Compatibility testing'' is defined as ``testing that measures the
+            degree to which a test item can function satisfactorily alongside
+            other independent products in a shared environment (co-existence),
+            and where necessary, exchanges information with other systems or
+            components (interoperability)'' \cite[p.~3]{IEEE2022}. This
+            definition is nonatomic as it combines the ideas of ``co-existence''
+            and ``interoperability''. The term ``interoperability testing'' is
+            not defined, but is used three times \cite[pp.~22, 43]{IEEE2022}
+            (although the third usage seems like it should be ``portability
+            testing''). This implies that ``co-existence testing'' and 
+            ``interoperability testing'' should be defined as their own terms,
+            which is supported by separate definitions of ``co-existence''and
+            ``interoperability'' being given in \cite{istqb_glossary}.
+      \item ``Fuzz testing'' is ``tagged'' (?) as ``artificial intelligence''
+            \cite[p.~5]{IEEE2022}, although I don't think this is a
+            set-in-stone requirement.
+      \item ``Load testing'' is defined as using loads ``usually between
+            anticipated conditions of low, typical, and peak usage''
+            \cite[p.~5]{IEEE2022}, while \citet[p.~86]{Patton2006} says the
+            loads should as large as possible.
+      \item ``Performance testing'' is defined as testing ``conducted to
+            evaluate the degree to which a test item accomplishes its
+            designated functions within given constraints of time and other
+            resources'' \cite[p.~7]{IEEE2022}; however, on p.~22, it is listed
+            as a subset of ``performance-related testing'', along with other
+            approaches like load and capacity testing. It seems
+            like the definition given should apply to ``performance-related
+            testing'', and ``performance testing'' should be given a more
+            specific definition, perhaps related to time?
+      \item ``Procedure testing'' is called a ``type of functional suitability
+            testing'' \cite[p.~7]{IEEE2022}, but no definition of ``functional
+            suitability testing'' is given; how does it relate to functional
+            testing?
+      \item Integration, system, and system integration testing are all listed
+            as ``common test levels'' \cite[p.~12]{IEEE2022}, but no
+            definitions are given for the latter two, making it unclear what
+            ``system integration testing'' is; it is a combination of the two?
+            somewhere on the spectrum between them?
+      \item ``Functional testing'' is given a loose definition of testing
+            ``often used to check the implementation of functional
+            requirements" \cite[p.~21]{IEEE2022}. While this source and
+            \cite{istqb_glossary} define this and ``specification-based''
+            testing as separate terms, \citet[p.~399]{vanVliet2000} lists them
+            as synonyms.
+      \item ``Disaster/recovery testing'' and ``recovery testing'' (as a subset
+            of performance-related testing) are both listed as types of testing
+            \cite[p.~22]{IEEE2022} but not defined, making it unclear what
+            distinguishes them.
+      \item Similarly, ``branch condition testing'' and ``branch condition combination
+            testing'' are both listed as subsets of structure-based testing
+            \cite[p.~22]{IEEE2022} but are not defined, making it unclear what
+            distinguishes them.
+      \item ``Installability testing'' is given as a type of testing
+            \cite[p.~22]{IEEE2022} but is sometimes called a test level as
+            ``installation testing'' \cite[p.~445]{PetersAndPedrycz2000}.
+      \item Retesting and regression testing seem to be separated from the rest
+            of the testing approaches, but it is not clearly detailed why; 
+            \citet[p.~3]{BarbosaEtAl2006} considers regression testing to be
+            a testing level.
+\end{enumerate}
 
 \subsection{Software Testing Taxonomies, Ontologies, and State of Practice}
 
@@ -1339,7 +1406,7 @@ according to the syntax or constraint of input domains defined in requirement
 specification'' \citep[p.~260]{IntanaEtAl2020} 
 \todo{Investigate this source more!}.
 
-\paragraph{Decision Table-Based Testing \citep[pp.~448,450-453]{PetersAndPedrycz2000}}
+\paragraph{Decision Table-Based Testing \citep[pp.~448, 450-453]{PetersAndPedrycz2000}}
 
 ``When the original software requirements have been formulated in the format of
 `if-then' statements,'' a decision table can be created with a column for each
@@ -1824,7 +1891,7 @@ it), usually using debugger tools to check the values of variables
             \citep[pp.~478-479]{PetersAndPedrycz2000}
       \item The three possible actions on data are defining, killing, and using;
             ``there are a number of anomalies associated with these actions''
-            \citep[pp.~478,480]{PetersAndPedrycz2000}
+            \citep[pp.~478, 480]{PetersAndPedrycz2000}
             \todo{get original source: Beizer, 1990}
             (see \hyperref[data-ref-errors]{Data reference errors})
 \end{itemize}
@@ -2004,7 +2071,7 @@ engineers'' \citep[p.~72]{KanewalaAndYuehChen2019}.
 \begin{itemize}
       \item Intractability: it is generally impossible to test a program
             exhaustively \citep[p.~421]{vanVliet2000},
-            \citep[pp.~439,461]{PetersAndPedrycz2000}
+            \citep[pp.~439, 461]{PetersAndPedrycz2000}
       \item Undecidability \citep[p.~439]{PetersAndPedrycz2000}: it is
             impossible to know certain properties about a program, such as if
             it will halt (i.e., the Halting Problem
