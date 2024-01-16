@@ -745,8 +745,8 @@ are not mutually exclusive, it also means that more than one could be useful
 given to which are ``best'', and this should happen during the analysis stage.
 
 Going forward, this process will be more rigorous, starting from more
-established sources of software testing terminology \citep{IEEE2022, IEEE2017,
-SWEBOK2014, ISTQB}.
+established sources of software testing terminology in the following order:
+\citep{IEEE2022, IEEE2017, IEEE2013, ISO_IEC2023, IEEE2012, SWEBOK2014, ISTQB}.
 \todo{should ``author names'' be acronyms or full?}
 
 Each test is made of at least one ``approach'', defined as a ``high-level
@@ -811,6 +811,18 @@ investigation:
             like the definition given should apply to ``performance-related
             testing'', and ``performance testing'' should be given a more
             specific definition, perhaps related to time?
+      \item Similarly, ``performance'' and ``performance efficiency'' are
+            both listed as software qualities in as ``degree to which a system
+            or component accomplishes its designated functions within given
+            constraints, such as speed, accuracy, or memory usage''
+            \citep[p.~318]{IEEE2017} and ``performance relative to the amount
+            of resources used under stated conditions'' \citep[p.~319]{IEEE2017},
+            respectively. While the definition of ``performance efficiency''
+            doesn't seem to make any meaningful distinction between it and
+            ``performance'', the term ``performance testing'' is defined
+            \citep[p.~320]{IEEE2017} and used throughout \citet{IEEE2017} while
+            the term ``performance efficiency testing'' is used throughout
+            \citet{IEEE2017} (but not defined explicitly).             
       \item ``Procedure testing'' is called a ``type of functional suitability
             testing'' \cite[p.~7]{IEEE2022}, but no definition of ``functional
             suitability testing'' is given; how does it relate to functional
@@ -820,6 +832,11 @@ investigation:
             definitions are given for the latter two, making it unclear what
             ``system integration testing'' is; it is a combination of the two?
             somewhere on the spectrum between them?
+      \item Similarly, component, integration, and component integration
+            testing are all listed in \citet{IEEE2017}, but ``component
+            integration testing'' is only defined as ``testing of groups of
+            related components'' \cite[p.~82]{IEEE2017}; it is a combination of
+            the two? somewhere on the spectrum between them?
       \item ``Functional testing'' is given a loose definition of testing
             ``often used to check the implementation of functional
             requirements" \cite[p.~21]{IEEE2022}. While this source and
@@ -829,7 +846,9 @@ investigation:
       \item ``Disaster/recovery testing'' and ``recovery testing'' (as a subset
             of performance-related testing) are both listed as types of testing
             \cite[p.~22]{IEEE2022} but not defined, making it unclear what
-            distinguishes them.
+            distinguishes them. \citet[p.~2]{IEEE2013} defines ``backup and
+            recovery testing'', which may be what is meant by ``recovery
+            testing'' in the context of performance-related testing. 
       \item Similarly, ``branch condition testing'' and ``branch condition combination
             testing'' are both listed as subsets of structure-based testing
             \cite[p.~22]{IEEE2022} but are not defined, making it unclear what
@@ -841,6 +860,19 @@ investigation:
             of the testing approaches \cite[p.~23]{IEEE2022}, but it is not
             clearly detailed why; \citet[p.~3]{BarbosaEtAl2006} considers
             regression testing to be a testing level.
+      \item A component is an ``entity with discrete structure \dots within a
+            system considered at a particular level of analysis''
+            \citep{ISO_IEC2023} and ``the terms module, component, and unit
+            [sic] are often used interchangeably or defined to be subelements
+            of one another in different ways depending upon the context'' with
+            no standardized relationship \citep[p.~82]{IEEE2017}. This means
+            unit/component/module testing can refer to the testing of both a
+            module and a specific function in a module (see \thesisissueref{14}).
+            However, ``component" is sometimes defined differently than
+            ``module'': ``components differ from classical modules for being
+            re-used in different contexts independently of their development''
+            \citep[p.~107]{BaresiAndPezzè2006}, so this distinguishing the two
+            may be necessary.
 \end{enumerate}
 
 \subsection{Software Testing Taxonomies, Ontologies, and State of Practice}
