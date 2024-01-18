@@ -733,7 +733,7 @@ It was realized early on in the process that it would be beneficial to
 understand the different types of testing (including what they test, what
 artifacts are needed to perform them, etc.). This process initially involved
 looking through textbooks that were trusted at McMaster \citep{Patton2006,
-PetersAndPedrycz2000, vanVliet2000}. However, this process was
+      PetersAndPedrycz2000, vanVliet2000}. However, this process was
 somewhat ad hoc and arbitrary, meaning it wouldn't be as systematic as required.
 These sources, as well as others, categorized these techniques in different ways;
 while it is useful to record and think about these categorizations (see
@@ -791,7 +791,7 @@ investigation:
             and ``interoperability''. The term ``interoperability testing'' is
             not defined, but is used three times \cite[pp.~22, 43]{IEEE2022}
             (although the third usage seems like it should be ``portability
-            testing''). This implies that ``co-existence testing'' and 
+            testing''). This implies that ``co-existence testing'' and
             ``interoperability testing'' should be defined as their own terms,
             which is supported by separate definitions of ``co-existence''and
             ``interoperability'' being given in \cite{ISTQB}.
@@ -822,7 +822,7 @@ investigation:
             ``performance'', the term ``performance testing'' is defined
             \citep[p.~320]{IEEE2017} and used throughout \citet{IEEE2017} while
             the term ``performance efficiency testing'' is used throughout
-            \citet{IEEE2017} (but not defined explicitly).             
+            \citet{IEEE2017} (but not defined explicitly).
       \item ``Procedure testing'' is called a ``type of functional suitability
             testing'' \cite[p.~7]{IEEE2022}, but no definition of ``functional
             suitability testing'' is given; how does it relate to functional
@@ -848,7 +848,7 @@ investigation:
             \cite[p.~22]{IEEE2022} but not defined, making it unclear what
             distinguishes them. \citet[p.~2]{IEEE2013} defines ``backup and
             recovery testing'', which may be what is meant by ``recovery
-            testing'' in the context of performance-related testing. 
+            testing'' in the context of performance-related testing.
       \item Similarly, ``branch condition testing'' and ``branch condition combination
             testing'' are both listed as subsets of structure-based testing
             \cite[p.~22]{IEEE2022} but are not defined, making it unclear what
@@ -863,7 +863,7 @@ investigation:
       \item A component is an ``entity with discrete structure \dots within a
             system considered at a particular level of analysis''
             \citep{ISO_IEC2023} and ``the terms module, component, and unit
-            [sic] are often used interchangeably or defined to be subelements
+                  [sic] are often used interchangeably or defined to be subelements
             of one another in different ways depending upon the context'' with
             no standardized relationship \citep[p.~82]{IEEE2017}. This means
             unit/component/module testing can refer to the testing of both a
@@ -894,7 +894,7 @@ example of an ontology in an otherwise unrelated paper).
 In addition to the concept of ``test artifact'', \citep{SouzaEtAl2017} also
 provides the following concepts: testing technique, test level (which seems to
 be comparable to ``testing phase'' from \citep[p.~3]{BarbosaEtAl2006}), and
-test environment \citep[pp.~3-4]{SouzaEtAl2017}. 
+test environment \citep[pp.~3-4]{SouzaEtAl2017}.
 Particular things of note from these ontologies:
 
 \begin{itemize}
@@ -924,7 +924,7 @@ The question ``How do testing artifacts relate to each other?''
 such as ``What are the test case inputs of a given test case?'' and ``What are
 the expected results of a given test case?'' \citep[p.~21]{SouzaEtAl2017}.
 \emph{These questions seem to overlap with the questions we were trying to ask
-about different testing techniques.} 
+      about different testing techniques.}
 
 Most ontologies I can find seem to focus on the high-level testing process
 rather than the testing techniques themselves. For example, the terms and
@@ -950,7 +950,7 @@ competency (``skill sets needed to test software in a test environment'')
 classify and characterize alignment research and solutions that focus on the
 boundary between [requirements engineering and software testing]'' but ``does
 not aim at providing a systematic and exhaustive state-of-the-art survey of
-[either domain]'' \citep[p.~A:2]{UnterkalmsteinerEtAl2014}.
+      [either domain]'' \citep[p.~A:2]{UnterkalmsteinerEtAl2014}.
 
 Another source
 introduced the notion of an ``intervention'': ``an act performed (e.g. use of a
@@ -958,11 +958,20 @@ technique or a process change) to adapt testing to a specific context, to solve
 a test issue, to diagnose testing or to improve testing''
 \citep[p.~1]{engström_mapping_2015} and noted that ``academia tend to focus on
 characteristics of the intervention [while] industrial standards categorize the
-area from a process perspective'' \citep[p.~2]{engström_mapping_2015}. 
+area from a process perspective'' \citep[p.~2]{engström_mapping_2015}.
 It provides a structure to ``capture both a problem perspective and a solution
 perspective with respect to software testing'' \citep[pp.~3-4]{engström_mapping_2015},
 but this seems to focus more on test interventions and challenges rather than
 techniques \citep[Fig.~5]{engström_mapping_2015}.
+
+\subsubsection{Types of Testing Approaches}
+
+For classifying different types of tests, \citet{IEEE2022} provides some
+terminology (see \refIEEETestTerms).
+
+\begin{landscape}
+      \ieeeTestTermsTable{}
+\end{landscape}
 
 \subsubsection{Categorizations}
 \label{testing-categories}
@@ -1001,8 +1010,8 @@ authorization, audit trail, continuity of processing, service levels
 maintainability, portability, coupling (e.g., with other applications in a
 given environment), performance, and ease of operation (e.g., documentation,
 training) \citep[pp.~40-41]{Perry2006}. \emph{These may overlap with
-the ``Results of Testing (Area of Confidence)'' column in the summary
-spreadsheet.}
+      the ``Results of Testing (Area of Confidence)'' column in the summary
+      spreadsheet.}
 
 Engström ``investigated classifications of research''
 \citep[p.~1]{engström_mapping_2015} on the following four testing techniques.
@@ -1467,7 +1476,7 @@ This seems to be the most open-ended category of testing.
 If the inputs to the system ``are described by a certain grammar''
 \citep[p.~448]{PetersAndPedrycz2000}, ``test cases \dots [can] be designed
 according to the syntax or constraint of input domains defined in requirement
-specification'' \citep[p.~260]{IntanaEtAl2020} 
+specification'' \citep[p.~260]{IntanaEtAl2020}
 \todo{Investigate this source more!}.
 
 \paragraph{Decision Table-Based Testing \citep[pp.~448, 450-453]{PetersAndPedrycz2000}}
@@ -1528,13 +1537,13 @@ For all of these tests, the values of the state variables should be verified
 
 Testing to determine how efficiently software uses resources (including time
 and capacity) ``when accomplishing its designated functions''
-\citep{ISTQB}. \todo{Original source: ISO 25010?} 
+\citep{ISTQB}. \todo{Original source: ISO 25010?}
 
 % ``The intent of this type of testing is to identify weak points of a software
 % system and quantify its shortcomings'' \citep[p.~447]{PetersAndPedrycz2000}.
 
 \todo{Originally used a \emph{very} vague definition from
-\citep[p.~447]{PetersAndPedrycz2000}; re-investigate!}
+      \citep[p.~447]{PetersAndPedrycz2000}; re-investigate!}
 
 \paragraph{Testing States to Fail \citep[pp.~84-87]{Patton2006}}
 
@@ -1701,7 +1710,7 @@ Evaluation \citep[pp.~417-418]{vanVliet2000} and Stepwise Abstraction
 \subsubsection{Coding Standards and Guidelines \citep[pp.~96-99]{Patton2006}}
 \label{code-stds-and-guidelines}
 \todo{This shouldn't really be at the same level as \nameref{reviews}, but I
-didn't want to fight with more subsections yet}
+      didn't want to fight with more subsections yet}
 
 \begin{itemize}
       \item Code may work but still be incorrect if it doesn't meet certain
@@ -1717,7 +1726,7 @@ didn't want to fight with more subsections yet}
 \subsubsection{Generic Code Review Checklist \citep[pp.~99-103]{Patton2006}}
 \label{gen-code-review-checklist}
 \todo{This shouldn't really be at the same level as \nameref{reviews}, but I
-didn't want to fight with more subsections yet}
+      didn't want to fight with more subsections yet}
 
 \begin{itemize}
       \item \phantomsection
