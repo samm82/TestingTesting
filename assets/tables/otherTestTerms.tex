@@ -2,16 +2,21 @@
     \centering
     \caption{Other Testing Terminology}
     \label{tab:otherTestTerms}
-    \begin{tabularx}{\linewidth}{|c|X|m{0.25\linewidth}|m{0.1\linewidth}|}
+    \begin{tabularx}{\linewidth}{|c|X|m{0.33\linewidth}|m{0.1\linewidth}|}
         \hline
         \rowcolor{McMasterMediumGrey}
         \thead{Term}                 & \thead{Definition} & \thead{Examples}   & \thead{IEEE Equiv.} \\
         \hline
         Guidance                     & none given
         \cite[p.~3]{BarbosaEtAl2006} & none given         & Metric? Technique?                       \\
-        Level                        & none given         & unit,
-        integration, system testing
-        \cite[p.~3]{SouzaEtAl2017}   & Level                                                         \\
+        Level                        & ``distinguished
+        based on the object of testing, which is called the \emph{target},
+        or on the purpose, which is called the \emph{objective}''
+        \cite[p.~86]{SWEBOK2014}     & Target: unit,
+        integration, system testing (\citealp[p.~3]{SouzaEtAl2017}; \citealp[p.~86]{SWEBOK2014}) \newline
+        Objective: acceptance, installation, reliability, regression, performance, security
+        \cite[pp.~86-88]{SWEBOK2014} & Target: Level
+        \newline Obj.: Various                                                                       \\
         Method                       & none given
         \cite[p.~3]{BarbosaEtAl2006} & none given         & Practice?                                \\
         Phase                        & none given
@@ -29,12 +34,13 @@
         is ``based on a development technology and \dots
         paradigm, as well as on a testing procedure''
         \cite[p.~3]{BarbosaEtAl2006} & none given         & Practice                                 \\
-        Technique                    & The basis for how
-        ``to perform the tests in a systematic way and on a sound theoretical basis''
+        Technique                    & ``How tests are
+        generated'' \cite[p.~ 88]{SWEBOK2014} ``in a systematic way and on a sound theoretical basis''
         \cite[p.~3]{BarbosaEtAl2006} & functional,
         structural, error-based, state-based testing \cite[p.~3]{BarbosaEtAl2006};
-        black-box, white-box, defect-based, model-based
-        \cite[p.~3]{SouzaEtAl2017}   & Technique                                                     \\
+        black-box, white-box, defect/fault-based, model-based
+        (\citealp[p.~3]{SouzaEtAl2017}; \citealp[pp.~88, 90-91]{SWEBOK2014})
+                                     & Technique                                                     \\
         \hline
     \end{tabularx}
 \end{table}
