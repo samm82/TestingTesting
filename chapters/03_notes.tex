@@ -797,10 +797,6 @@ within individual ones; these may be areas for further investigation:
             \citep[p.~320]{IEEE2017} and used throughout \citet{IEEE2017} while
             the term ``performance efficiency testing'' is used throughout
             \citet{IEEE2017} (but not defined explicitly).
-      \item ``Procedure testing'' is called a ``type of functional suitability
-            testing'' \cite[p.~7]{IEEE2022}, but no definition of ``functional
-            suitability testing'' is given; how does it relate to functional
-            testing?
       \item Integration, system, and system integration testing are all listed
             as ``common test levels'' \cite[p.~12]{IEEE2022}, but no
             definitions are given for the latter two, making it unclear what
@@ -811,12 +807,6 @@ within individual ones; these may be areas for further investigation:
             integration testing'' is only defined as ``testing of groups of
             related components'' \cite[p.~82]{IEEE2017}; it is a combination of
             the two? somewhere on the spectrum between them?
-      \item ``Functional testing'' is given a loose definition of testing
-            ``often used to check the implementation of functional
-            requirements" \cite[p.~21]{IEEE2022}. While this source and
-            \cite{ISTQB} define this and ``specification-based''
-            testing as separate terms, \citet[p.~399]{vanVliet2000} lists them
-            as synonyms.
       \item ``Disaster/recovery testing'' and ``recovery testing'' (as a subset
             of performance-related testing) are both listed as types of testing
             \cite[p.~22]{IEEE2022} but not defined, making it unclear what
@@ -848,6 +838,60 @@ within individual ones; these may be areas for further investigation:
             \citep[p.~107]{BaresiAndPezzè2006}, so this distinguishing the two
             may be necessary.
 \end{enumerate}
+
+\paragraph{Functional Testing}
+
+Throughout the literature, ``functional testing'' seems to be described in many
+ways, alongside other, potentially related, terms:
+
+\begin{itemize}
+      \item \textbf{Functional Suitability Testing:} ``Procedure testing'' is
+            called a ``type of functional suitability testing''
+            \citep[p.~7]{IEEE2022}, but no definition of ``functional
+            suitability testing'' is given; how does it relate to functional
+            testing?
+
+      \item \textbf{Specification-based Testing:} This is defined as ``testing
+            in which the principal test basis is the external inputs and
+            outputs of the test item'' \citep[p.~9]{IEEE2022}, which agrees
+            with a definition of ``functional testing'': ``testing that
+            \dots focuses solely on the outputs generated in response to
+            selected inputs and execution conditions'' \citep[p.~196]{IEEE2017}.
+            \todo{\citet[p.~399]{vanVliet2000} may list these as synonyms;
+                  investigate}
+            Notably, \citet{IEEE2017} lists both as synonyms of
+            ``black-box testing'' (pp. 431, 196, respectively). However,
+            \cite{ISTQB} defines them as separate terms: ``specification-based
+            testing'' as ``testing based on an analysis of the specification
+            of the component or system'' (including ``black-box testing'' as a
+            synonym) and ``functional testing'' as ``testing performed to
+            evaluate if a component or system satisfies functional
+            requirements'' (specifying no synonyms). This definition of
+            ``functional testing'' references \citet[p.~196]{IEEE2017}
+            (``testing conducted to evaluate the compliance of a system or
+            component with specified functional requirements'') which
+            \emph{has} ``black-box testing'' as a synonym, and mirrors
+            \citet[p.~21]{IEEE2022} (testing ``used to check the implementation
+            of functional requirements''). Overall, specification-based testing
+            \citep[pp.~2-4, 6-9, 22]{IEEE2022} and black-box testing
+            (\citealp[p.~88]{SWEBOK2014}; \citealp[p.~3]{SouzaEtAl2017})
+            are test design techniques used to ``derive corresponding test cases''
+            \citep[p.~11]{IEEE2022} (from given ``selected inputs and execution
+            conditions'' \citep[p.~196]{IEEE2017}).
+
+      \item \textbf{Correctness Testing:} \citet[p.~86]{SWEBOK2014} say
+            ``test cases can be designed to check that the functional
+            specifications are correctly implemented, which is variously
+            referred to in the literature as conformance testing, correctness
+            testing, or functional testing''; this mirrors previous definitions
+            of ``functional testing'' (\citealp[p.~21]{IEEE2022};
+            \citeyear[p.~196]{IEEE2017}) but groups it with ``correctness
+            testing''. Since ``correctness'' is a software quality
+            (\citealp[p.~104]{IEEE2017}; \citealp[p.~57]{SWEBOK2014}) which is
+            what defines a ``test type'' \cite[p.~15]{IEEE2022}, it seems
+            consistent to label ``functional testing'' as a ``test type''
+            \cite[pp.~15, 20, 22]{IEEE2022}.
+\end{itemize}
 
 \subsection{Software Testing Taxonomies, Ontologies, and State of Practice}
 
