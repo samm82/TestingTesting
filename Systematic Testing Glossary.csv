@@ -2,7 +2,6 @@
 A/B Testing,Approach,"Testing ""that allows testers to determine which of two systems or components performs better"" (IEEE, 2022, p.1)","Statistical Testing (IEEE, 2022, pp.1, 35)","Split-Run Testing (IEEE, 2022, pp.1, 35)","""Not a test case generation technique as test inputs are not generated""; ""us[es] the existing system as a partial oracle"" (IEEE, 2022, p. 36)"
 Acceptance Testing,"Level (IEEE, 2022, pp. 12, 21-22, 26-27)","""Testing conducted to enable a user, customer, or other authorized entity to determine whether to accept a system or component"" and whether it ""satisfies its acceptance criteria"" (IEEE, 2017, p. 5)","System Testing (van Vliet, 2000, p. 439)",,"Related to usability testing (van Vliet, 2000, p. 439) and validation testing (IEEE, 2017, p. 5)"
 Accessibility Testing,"Type (IEEE, 2022, pp. 1, 22)","Testing ""used to measure the degree to which a test item can be operated by users with the widest possible range of characteristics and abilities"" (IEEE, 2022, p.1)","Usability Testing (IEEE, 2022, p.1) (although listed separately on p. 22)",,
-Adaptability Testing?,Type?,,,,"Since ""adaptability"" is a software quality (IEEE, 2017, p. 12), it can likely be tested for"
 All Combinations Testing,Design,,"Combinatorial Testing (IEEE, 2022, p. 22)",,
 All-C-Uses Testing,Design,,"Data Flow Testing (IEEE, 2022, p. 22)",,"See also IEEE (2017, p. 115) and van Vliet (2000, pp. 424-425)"
 All-Definitions Testing,Design,,"Data Flow Testing (IEEE, 2022, p. 22)",,"See also van Vliet (2000, pp. 424-425)"
