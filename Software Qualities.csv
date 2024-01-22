@@ -1,0 +1,20 @@
+﻿Name,Definition,Precedence for Test Approach,Notes
+Adaptability,,,
+Availability,,,
+Cohesion,,,
+Comfort,,,"e.g., screen brightness"
+Complexity,,,A quality that software shouldn't have
+Compliance,,,
+Conciseness,,,
+Concurrency,,,
+Conformance,,"Bourque and Fairley, 2014, p. 86","Synonym for ""correctness""? May refer to the process level, not the software level"
+Connectivity,,,
+Consistency,,,
+Correctability,,,Related to maintainability?
+Correctness,,"Bourque and Fairley, 2014, p. 86; Pan, 1999","Synonym for ""conformance""?"
+Coupling,,,
+Criticality,,,
+Efficiency,,"""Performance efficiency testing"" mentioned in IEEE (2022, p. 9; 2017, pp. 58, 159, 253, 442, 508)",
+Error Tolerance,,,
+Expandability,,,
+Extendability,,,
