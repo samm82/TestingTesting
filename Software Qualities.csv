@@ -4,7 +4,7 @@ Availability,,,
 Cohesion,,,
 Comfort,,,"e.g., screen brightness"
 Complexity,,,A quality that software shouldn't have
-Compliance,,,
+Compliance,,"""Audits are often used to verify compliance with standards"" (IEEE, 2022, p. 44)",
 Conciseness,,,
 Concurrency,,,
 Conformance,,"Bourque and Fairley, 2014, p. 86","Synonym for ""correctness""? May refer to the process level, not the software level"

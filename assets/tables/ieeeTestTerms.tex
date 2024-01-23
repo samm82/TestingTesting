@@ -1,5 +1,7 @@
 % so VS Code doesn't freak out
-\def\techniqueCell{\makecell{(Design)\\Technique}}
+\newcommand{\techniqueCell}{\makecell{(Design)\\Technique}}
+\newcommand{\procLevel}{``Level'' can also refer to the ``level''
+    of a test process \cite[p.~24]{IEEE2022}.}
 
 \begin{table}[hbtp!]
     \centering
@@ -9,33 +11,37 @@
     \begin{tabularx}{\linewidth}{|c|X|X|}
         \hline
         \rowcolor{McMasterMediumGrey}
-        \thead{Term}           & \thead{Definition}               & \thead{Examples} \\
+        \thead{Term}                    & \thead{Definition}               & \thead{Examples} \\
         \hline
-        Approach               & A ``high-level test
+        Approach                        & A ``high-level test
         implementation choice, typically made as part of the test strategy
         design activity'' that includes ``test level, test type, test technique,
         test practice and the form of static testing to be used''
-        \cite[p.~10]{IEEE2022} & any of the examples given below:
+        \cite[p.~10]{IEEE2022}          & any of the examples given below:
         equivalence partitioning, unit testing, scripted testing,
-        security testing                                                             \\
-        \techniqueCell{}       & A ``procedure used to
+        security testing                                                                      \\
+        \techniqueCell                  & A ``procedure used to
         create or select a test model, identify test
         coverage items, and derive corresponding test cases''
-        \cite[p.~11]{IEEE2022} & equivalence partitioning,
-        boundary value analysis, branch testing \cite[p.~11]{IEEE2022}               \\
-        Level                  & A stage of testing ``typically
-        associated with the achievement of particular objectives
+        \cite[p.~11]{IEEE2022}; ``a variety \dots is typically
+        required to suitably cover any system'' \cite[p.~33]{IEEE2022} and is
+        ``often selected based on team skills and familiarity,
+        on the format of the test basis'', and on expectations
+        \cite[p.~23]{IEEE2022}          & equivalence partitioning,
+        boundary value analysis, branch testing \cite[p.~11]{IEEE2022}                        \\
+        Level\tablefootnote{\procLevel} & A stage of testing
+        ``typically associated with the achievement of particular objectives
         and used to treat particular risks''
-        \cite[p.~12]{IEEE2022} & unit/component testing,
-        integration testing, system testing \cite[p.~12]{IEEE2022}                   \\
-        Practice               & A ``conceptual framework
+        \cite[p.~12]{IEEE2022}          & unit/component testing,
+        integration testing, system testing \cite[p.~12]{IEEE2022}                            \\
+        Practice                        & A ``conceptual framework
         that can be applied to \dots [a] test process to facilitate testing''
-        \cite[p.~14]{IEEE2022} & scripted testing,
-        exploratory testing, automated testing \cite[p.~20]{IEEE2022}                \\
-        Type                   & ``Testing that is focused
+        \cite[p.~14]{IEEE2022}          & scripted testing,
+        exploratory testing, automated testing \cite[p.~20]{IEEE2022}                         \\
+        Type                            & ``Testing that is focused
         on specific quality characteristics''
-        \cite[p.~15]{IEEE2022} & security testing,
-        usability testing, performance testing \cite[p.~15]{IEEE2022}                \\
+        \cite[p.~15]{IEEE2022}          & security testing,
+        usability testing, performance testing \cite[p.~15]{IEEE2022}                         \\
         \hline
     \end{tabularx}
 \end{table}

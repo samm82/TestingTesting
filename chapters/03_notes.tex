@@ -746,7 +746,8 @@ given to which are ``best'', and this should happen during the analysis stage.
 
 Going forward, this process will be more rigorous, starting from more
 established sources of software testing terminology in the following order:
-\citep{IEEE2022, IEEE2017, IEEE2013, ISO_IEC2023b, IEEE2012, SWEBOK2014, ISTQB}.
+\citep{IEEE2022, IEEE2017, IEEE2013, ISO_IEC2023b, IEEE2012, ISO_IEC2023a,
+      SWEBOK2014, ISTQB}.
 \todo{should ``author names'' be acronyms or full?}
 
 \subsubsection{Discrepancies and Ambiguities}
@@ -767,8 +768,20 @@ within individual ones; these may be areas for further investigation:
             (although the third usage seems like it should be ``portability
             testing''). This implies that ``co-existence testing'' and
             ``interoperability testing'' should be defined as their own terms,
-            which is supported by separate definitions of ``co-existence''and
+            which is supported by separate definitions of ``co-existence'' and
             ``interoperability'' being given in \cite{ISTQB}.
+      \item Experience-based testing is categorized as both a test design
+            technique and a test practice on the same page
+            \citep[p.~22]{IEEE2022}! This also causes confusion about
+            its children, such as error guessing and exploratory testing;
+            \citet[p.~34]{IEEE2022} say error guessing is an ``experience-based
+            test design technique'' and ``experience-based test practices
+            include \dots exploratory testing, tours, attacks, and
+            checklist-based testing''. There are several instances of
+            inconsistencies between parent and child test approach
+            categorizations (which may indicate they aren't necessarily the
+            same, or that more thought must be given to
+            classification/organization).
       \item ``Fuzz testing'' is ``tagged'' (?) as ``artificial intelligence''
             \cite[p.~5]{IEEE2022}, although I don't think this is a
             set-in-stone requirement.
