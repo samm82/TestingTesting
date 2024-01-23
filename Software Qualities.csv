@@ -1,6 +1,10 @@
 ﻿Name,Definition,Precedence for Test Approach,Notes
-Adaptability,,,
-Availability,,,
+Accountability?,"The ""capability of a product to enable actions of an entity to be traced uniquely to the entity"" (ISO/IEC, 2023a)",,
+Accuracy,"A ""qualitative assessment of correctness"" or ""quantitative measure of the magnitude of error"" (IEEE, 2013, p. 7)",,
+Adaptability,"The ""capability of a product to be effectively and efficiently adapted for or transferred to different hardware, software or other operational or usage environments"" (ISO/IEC, 2023a)",,"Related to flexibility (IEEE, 2017, p. 12; implied by ISO/IEC, 2023a). Accessability can improve this (and flexibility) (ISO/IEC, 2023a)"
+"Analyzability (IEEE, 2017, p. 18) or Analysability (ISO/IEC 2023a)","The ""capability of a product to be effectively and efficiently assessed regarding the impact of an intended change to … its parts, to diagnose it for deficiencies or causes of failures, or to identify parts to be modified"" (ISO/IEC 2023a)",,"Related to modifiability (IEEE, 2017, p. 18)"
+Authenticity,"The ""capability of a product to prove that the identity of a subject or resource is the one claimed"" (ISO/IEC 2023a)",,
+Availability,"The ""ability of a service or service component to perform its required function at an agreed instant or over an agreed period of time"" (IEEE, 2017, p. 38)",,"""Normally expressed as a ratio or percentage"" (IEEE, 2017, p. 38). Related to error tolerance, fault tolerance, reliability, and robustness (IEEE, 2017, p. 38)"
 Cohesion,,,
 Comfort,,,"e.g., screen brightness"
 Complexity,,,A quality that software shouldn't have
