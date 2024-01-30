@@ -752,7 +752,72 @@ established sources of software testing terminology in the following order:
 
 \subsubsection{Discrepancies and Ambiguities}
 
-Many types of testing are mentioned, but not defined, in \citep{IEEE2022}.
+\citet{IEEE2022} mentions the following 43 test approaches without defining them.
+However, the previous version of this standard, \citep{IEEE2013}, generally
+explained two, provided references for three, and explicitly defined three of
+these terms, for a total of eight definitions that could (should) have been
+included in \citep{IEEE2022}! These are marked with \underline{underline},
+\emph{italics}, and \textbf{bold}, respectively. Additionally, entries marked
+with an asterisk* were defined (at least partially) in \citep{IEEE2017}, which
+would have been available when creating \citep{IEEE2022}. These terms bring the
+total count of terms that could (should) have been defined in \citep{IEEE2022}
+to eighteen; more than 40\% of undefined test approaches could have been defined!
+
+\begin{itemize}
+      \item \underline{Acceptance Testing*}
+      \item All Combinations Testing
+      \item All-C-Uses Testing (Data Definition C-Use Pair*)
+      \item All-Definitions Testing
+      \item All-DU-Paths Testing (Data Definition-Use Path*)
+      \item All-P-Uses Testing (Data Definition P-Use Pair*)
+      \item All-Uses Testing (Data Definition-Use Pair*)
+      \item Alpha Testing*
+      \item Base Choice Testing (also mentioned but not defined in
+            \citep{IEEE2017})
+      \item Beta Testing*
+      \item Branch Condition Combination Testing
+      \item Branch Condition Testing
+      \item \textbf{Capacity Testing*}
+      \item Capture-Replay Driven Testing
+      \item Cause-Effect Testing
+      \item Classification Tree Method (also mentioned but not defined in
+            \citep{IEEE2013})
+      \item Conversion Testing
+      \item \emph{Data Flow Testing*} (ISO/IEC/IEEE 29119-4)
+      \item Data-driven Testing
+      \item Disaster/Recovery Testing (Disaster Recovery*)
+      \item Each Choice Testing
+      \item Factory Acceptance Testing
+      \item Fault Injection Testing
+      \item Functional Suitability Testing (also mentioned but not defined in
+            \citep{IEEE2017})
+      \item \textbf{Installability Testing}
+      \item \underline{Integration Testing}
+      \item Localization Testing
+      \item Model Verification
+      \item Negative Testing
+      \item Operational Acceptance Testing
+      \item Performance-related Testing (although Performance Testing is
+            defined in \citep{IEEE2022}; see \hyperref[perf-test-ambiguity]
+            {the ``performance testing'' ambiguity} below)
+      \item Production Verification Testing
+      \item Recovery Testing (\textbf{Backup and Recovery Testing*}, Recovery*)
+      \item Response-Time Testing
+      \item \emph{Reviews} (ISO/IEC 20246) (Code Reviews*)
+      \item Statistical Testing
+      \item Syntax Testing
+      \item System Integration Testing (System Integration*)
+      \item System Testing* (also mentioned but not defined in \citep{IEEE2013})
+      \item \emph{Unit Testing*} (IEEE Std 1008-1987, IEEE Standard for
+            Software Unit Testing implicitly listed in the bibliography!)
+      \item Usability Testing* (also mentioned but not defined in \citep{IEEE2013};
+            in \citep{IEEE2017}, ``usability test'' is defined with a note to
+            compare it to ``usability testing'' (p.~493), but no corresponding
+            entry is present)
+      \item Use Case Testing (also mentioned but not defined in \citep{IEEE2013})
+      \item User Acceptance Testing
+\end{itemize}
+
 Additionally, discrepancies and ambiguities exist both among sources and
 within individual ones; these may be areas for further investigation:
 
@@ -798,6 +863,7 @@ within individual ones; these may be areas for further investigation:
             like the definition given should apply to ``performance-related
             testing'', and ``performance testing'' should be given a more
             specific definition, perhaps related to time?
+            \label{perf-test-ambiguity}
       \item Similarly, ``performance'' and ``performance efficiency'' are
             both listed as software qualities in as ``degree to which a system
             or component accomplishes its designated functions within given
