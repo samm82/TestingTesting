@@ -865,12 +865,23 @@ within individual ones; these may be areas for further investigation:
       \item ``Performance testing'' is defined as testing ``conducted to
             evaluate the degree to which a test item accomplishes its
             designated functions within given constraints of time and other
-            resources'' \cite[p.~7]{IEEE2022}; however, on p.~22, it is listed
+            resources'' \cite[p.~7]{IEEE2022}. On p.~22, it is listed
             as a subset of ``performance-related testing'', along with other
-            approaches like load and capacity testing. It seems
-            like the definition given should apply to ``performance-related
-            testing'', and ``performance testing'' should be given a more
-            specific definition, perhaps related to time?
+            approaches like load and capacity testing; \citet[p.~5-9]{SWEBOK2024}
+            gives ``capacity and response time'' as examples of ``performance
+            characteristics'' that performance testing would seek to ``assess''.
+            I see two possible resolutions to this:
+            \begin{enumerate}
+                  \item Assign the definition of ``performance testing'' to
+                        ``performance-related testing'' and give ``performance
+                        testing'' a more specific definition.
+                  \item Replace the term ``performance-related testing'' with
+                        ``performance testing''; this seems more logical, since
+                        I haven't found a definition of ``performance-related
+                        testing'' (at least yet) and most (if not all)
+                        definitions of ``performance testing'' seem to treat it
+                        as a category of tests.
+            \end{enumerate}
             \label{perf-test-ambiguity}
       \item Similarly, ``performance'' and ``performance efficiency'' are
             both listed as software qualities in as ``degree to which a system
