@@ -1139,19 +1139,25 @@ are determined to be within scope (see \thesisissueref{21}, \thesisissueref{22})
 \label{testing-categories}
 
 Software testing techniques can be divided into the following
-categories (note that these are not mutually exclusive):
+categories (note that ``classification overlapping is possible, and one
+category might deal with combining two or more techniques''
+\citep[p.~5-10]{SWEBOK2024}):
 
 \begin{itemize}
-      \item Execution of code: static or dynamic
-            \citep[p.~53]{Patton2006}
       \item Visibility of code: black-, white-, or gray-box (functional,
             structural, or a mix of the two)
-            \citep[pp.~53, 218]{Patton2006}, \citep[p.~69]{Perry2006}
+            (\citealp[p.~5-10]{SWEBOK2024}; \citealp[pp.~53, 218]{Patton2006};
+            \citealp[p.~69]{Perry2006})
       \item Stage of testing: unit, integration, system, or acceptance
-            \citep{Patton2006}, \citep{Perry2006},
-            \citep{PetersAndPedrycz2000} (sometimes includes installation
-            \citep[p.~439]{vanVliet2000} or regression
+            (\citealp[pp.~5-6--5-7]{SWEBOK2024}; \citealp{Patton2006};
+            \citealp{Perry2006}; \citealp{PetersAndPedrycz2000}) (sometimes
+            includes installation \citep[p.~439]{vanVliet2000} or regression
             \citep[p.~3]{BarbosaEtAl2006})
+      \item Key aspect: specification, structure, or experience
+            \citep[p.~5-10]{SWEBOK2024}
+            \todo{Originally in ISO/IEC/IEEE 29119-4:2021}
+      \item Execution of code: static or dynamic
+            \citep[p.~53]{Patton2006}
       \item Goal of testing: verification or validation
             \citep[pp.~69-70]{Perry2006}
       \item Source of test data: specification-, implementation-, or
