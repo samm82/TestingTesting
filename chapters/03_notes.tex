@@ -1221,17 +1221,30 @@ whether that information exists in Drasil already and if it can be added
 \begin{itemize}
       \item Software testing: ``the process of executing a program with the
             intent of finding errors'' \citep[p.~438]{PetersAndPedrycz2000}
-            \todo{Find original source: Myers 1976}
+            \todo{Find original source: Myers 1976}. ``Testing can reveal
+            failures, but the faults causing them are what can and must be
+            removed'' \citep[p.~5-3]{SWEBOK2024}; it can also include
+            certification, quality assurance, and quality improvement
+            \citep[p.~5-4]{SWEBOK2024}
+      \item Test case: ``a test case is the specification of all the entities
+            that are essential for the execution, such as input values,
+            execution and timing conditions, testing procedure, and the
+            expected outcomes'' \citep[pp.~5-1--5-2]{SWEBOK2024}
       \item Defect: ``an observable difference between what the software is
-            intended to do and what it does'' \cite[p.~1-1]{SWEBOK2024}
+            intended to do and what it does'' \cite[p.~1-1]{SWEBOK2024}; ``can
+            be used to refer to either a fault or a failure, [sic] when the
+            distinction is not important'' \cite[p.~4-3]{SWEBOK2014}
+            \todo{Find original source}
       \item Error: ``a human action that produces an incorrect result''
             \citep[p.~399]{vanVliet2000}
       \item Fault: ``the manifestation of an error'' in the software itself
-            \citep[p.~400]{vanVliet2000}
+            \citep[p.~400]{vanVliet2000}; ``the \emph{cause} of a malfunction''
+            \citep[p.~5-3]{SWEBOK2024}
       \item Failure: incorrect output or behaviour resulting from encountering
             a fault; can be defined as not meeting specifications or
             expectations and ``is a relative notion''
-            \citep[p.~400]{vanVliet2000}
+            \citep[p.~400]{vanVliet2000}; ``an undesired effect observed in the
+            system's delivered service'' \citep[p.~5-3]{SWEBOK2024}
       \item Verification: ``the process of evaluating a system or component
             to determine whether the products of a given development phase
             satisfy the conditions imposed at the start of that phase''
@@ -1386,14 +1399,21 @@ whether that information exists in Drasil already and if it can be added
 \subsubsection{Test Oracles}
 ``A \emph{test oracle} is a predicate that determines whether a given test
 activity sequence is an acceptable behaviour of the SUT [System Under Test] or
-not'' \citep[p.~509]{BarrEtAl2015}. They can either be ``deterministic''
+not'' \citep[p.~509]{BarrEtAl2015} and ``can be any human or mechanical agent
+that decides whether the SUT behaved correctly in each test and according to
+the expected outcomes'' \cite[p.~5-5]{SWEBOK2024}. Oracles provide either ``a
+`pass' or `fail' verdict''; otherwise, ``the test output is classified as
+inconclusive'' \cite[p.~5-5]{SWEBOK2024}. This process can be ``deterministic''
 (returning a Boolean value) or ``probabilistic'' (returning ``a real number in
-the closed interval [0, 1]'') \citep[p.~509]{BarrEtAl2015}. Probabilistic
+the closed interval $[0, 1]$'') \citep[p.~509]{BarrEtAl2015}. Probabilistic
 test oracles can be used to reduce the computation cost (since test oracles
 are ``typically computationally expensive'') \citep[p.~509]{BarrEtAl2015}
 or in ``situations where some degree of imprecision can be tolerated'' since
 they ``offer a probability that [a given] test case is acceptable''
-\citep[p.~510]{BarrEtAl2015}. They can be grouped into four categories:
+\citep[p.~510]{BarrEtAl2015}. SWEBOK V4 lists ``unambiguous requirements
+specifications, behavioral models, and code annotations'' as examples
+\cite[p.~5-5]{SWEBOK2024}, and \citeauthor{BarrEtAl2015} provides four
+categories \citeyearpar[p.~510]{BarrEtAl2015}:
 
 \begin{itemize}
       \item Specified test oracle: ``judge[s] all behavioural aspects of a
@@ -1508,8 +1528,7 @@ human-based trial and error required for this kind of testing
 The process of dividing the infinite set of test cases into a finite set that is
 just as effective (i.e., that reveals the same bugs) \citep[p.~67]{Patton2006}.
 The opposite of this, testing every combination of inputs, is called
-``exhaustive testing'' and is ``probably not feasible''
-\citep[p.~461]{PetersAndPedrycz2000}.
+``exhaustive testing'' and is ``probably not feasible'' \exhInfCite{}.
 
 \paragraph{Requirements}
 \begin{itemize}
@@ -2322,8 +2341,13 @@ engineers'' \citep[p.~72]{KanewalaAndYuehChen2019}.
 
 \begin{itemize}
       \item Intractability: it is generally impossible to test a program
-            exhaustively \citep[p.~421]{vanVliet2000},
-            \citep[pp.~439, 461]{PetersAndPedrycz2000}
+            exhaustively \exhInfCite{}
+      \item Adequacy: to counter the issue of intractability, it is desirable
+            ``to reduce the cardinality of the test suites while keeping the
+            same effectiveness in terms of coverage or fault detection rate''
+            \citep[p.~5-4]{SWEBOK2024} which is difficult to do objectively;
+            see also ``minimization'', the process of ``removing redundant test
+            cases'' \citep[p.~5-4]{SWEBOK2024}
       \item Undecidability \citep[p.~439]{PetersAndPedrycz2000}: it is
             impossible to know certain properties about a program, such as if
             it will halt (i.e., the Halting Problem
@@ -2340,7 +2364,9 @@ engineers'' \citep[p.~72]{KanewalaAndYuehChen2019}.
             known, there would be no need to develop software to model them
             \citep[p.~67]{KanewalaAndYuehChen2019}; in other words, complete
             test oracles don't exist ``in all but the most trivial cases''
-            \citep[p.~510]{BarrEtAl2015}
+            \citep[p.~510]{BarrEtAl2015}, and even if they are, the
+            ``automation of mechanized oracles can be difficult and expensive''
+            \citep[p.~5.5]{SWEBOK2024}
       \item ``Practically difficult to validate the computed output'': complex
             calculations and outputs are difficult to verify
             \citep[p.~67]{KanewalaAndYuehChen2019}
