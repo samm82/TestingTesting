@@ -1222,6 +1222,8 @@ whether that information exists in Drasil already and if it can be added
       \item Software testing: ``the process of executing a program with the
             intent of finding errors'' \citep[p.~438]{PetersAndPedrycz2000}
             \todo{Find original source: Myers 1976}
+      \item Defect: ``an observable difference between what the software is
+            intended to do and what it does'' \cite[p.~1-1]{SWEBOK2024}
       \item Error: ``a human action that produces an incorrect result''
             \citep[p.~399]{vanVliet2000}
       \item Fault: ``the manifestation of an error'' in the software itself
@@ -1443,7 +1445,9 @@ Guidelines \citep[pp.~58-59]{Patton2006}). However, it provides a
 ``Specification Terminology Checklist'' \citep[p.~61]{Patton2006} that
 includes some keywords that, if found, could trigger an applicable warning to
 the user (similar to the idea behind the correctness/consistency checks
-project):
+project). In general, each requirement should be unambiguous, testable,
+binding, and ``acceptable to all stakeholders'', and the ``overall collection''
+should be complete, consistent, and feasible \cite[p.~1-8]{SWEBOK2024}:
 
 \begin{itemize}
       \item \textbf{Potentially unrealistic:} always, every, all, none, every,
