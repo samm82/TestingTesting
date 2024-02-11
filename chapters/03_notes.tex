@@ -821,12 +821,6 @@ to eighteen; almost 20\% of undefined test approaches could have been defined!
       \item User Acceptance Testing
 \end{itemize}
 
-Similarly, the yet-unpublished SWEBOK V4 mentions ``operational testing''
-\citep[p.~6-9]{SWEBOK2024} (albeit in the context of software engineering
-operations as opposed to software testing) but doesn't define it; SWEBOK v3.0,
-however, does \citep[p.~4-6]{SWEBOK2014}, but it is unclear if this is
-omission is intentional or not.
-
 Additionally, discrepancies and ambiguities exist both among sources and
 within individual ones; these may be areas for further investigation:
 
@@ -1050,6 +1044,26 @@ ways, alongside other, potentially related, terms:
             \citep{ISO_IEC2023a, ISTQB}, seems to align with the quality/ies
             that would be tested by ``correctness'' testing.
 \end{itemize}
+
+\paragraph{Operational (Acceptance) Testing}
+Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE2022};
+\citealp{ISTQB}) while some refer to ``operational testing''
+(\citealp[p.~6-9, in the context of software engineering operations]{SWEBOK2024};
+\citealp{ISO_IEC2018}; \citealp[p.~303]{IEEE2017};
+\citealp[pp.~4-6, 4-9]{SWEBOK2014}). Since this terminology is not standardized, I
+propose that the two terms are treated as synonyms (as done by other sources
+(\citealp{LambdaTest2024}; \citealp{BocchinoAndHamilton1996})) as a type of
+acceptance testing (\citealp[p.~22]{IEEE2022}; \citealp{ISTQB}) that focuses on
+``non-functional'' attributes of the system \citep{LambdaTest2024}
+\todo{find more academic source}.
+
+A summary of given definitions of ``operational (acceptance) testing'' is that
+it is ``test[ing] to determine the correct
+installation, configuration and operation of a module and that it operates
+securely in the operational environment'' \citep{ISO_IEC2018} or ``evaluate a
+system or component in its operational environment'' \citep[p.~303]{IEEE2017},
+particularly ``to determine if operations and/or systems administration staff
+can accept [it]'' \citep{ISTQB}.
 
 \subsection{Software Testing Taxonomies, Ontologies, and State of Practice}
 
