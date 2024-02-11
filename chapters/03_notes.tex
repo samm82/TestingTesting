@@ -2091,8 +2091,12 @@ coverage \citep[p.~421]{vanVliet2000}).
                         the complexity of
                         loops, branches, and potentially unreachable code
                         \citep[p.~421]{vanVliet2000}; even infeasible
-                        paths must be checked for full path coverage
-                        \citep[p.~439]{PetersAndPedrycz2000}!
+                        paths (``control flow paths that cannot be exercised by
+                        any input data'' \citep[p.~5-5]{SWEBOK2024}) must be
+                        checked for full path coverage to be achieved
+                        \citep[p.~439]{PetersAndPedrycz2000}, presenting ``a
+                        ``significant problem in path-based testing''
+                        \citep[p.~5-5]{SWEBOK2024}!
                   \item Usually ``limited to a few functions with life
                         criticality features (medical systems, real-time
                         controllers)'' \citep[p.~481]{PetersAndPedrycz2000}
