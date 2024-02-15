@@ -13,6 +13,7 @@ Concurrency,,,
 Conformance,,"Washizaki, 2024, p. 5-7","Synonym for ""correctness""? Related to functional testing (Washizaki, 2024, p. 5-7). May refer to the process level, not the software level"
 Connectivity,,,
 Consistency,,,
+"Continuity (Washizaki, 2024, p. 6-7)",,,
 Correctability,,,Related to maintainability?
 Correctness,,"Washizaki, 2024, p. 5-7","Synonym for ""conformance""? Related to functional testing (Washizaki, 2024, p. 5-7)"
 Coupling,,,
@@ -21,3 +22,4 @@ Efficiency,,"""Performance efficiency testing"" mentioned in IEEE (2022, p. 9; 2
 Error Tolerance,,,
 Expandability,,,
 Extendability,,,
+"Service Availability (Washizaki, 2024, p. 6-7)",,,Related to availability? A subset?
