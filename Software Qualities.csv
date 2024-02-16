@@ -2,9 +2,9 @@
 Accountability?,"The ""capability of a product to enable actions of an entity to be traced uniquely to the entity"" (ISO/IEC, 2023a)",,
 Accuracy,"A ""qualitative assessment of correctness"" or ""quantitative measure of the magnitude of error"" (IEEE, 2013, p. 7)",,
 Adaptability,"The ""capability of a product to be effectively and efficiently adapted for or transferred to different hardware, software or other operational or usage environments"" (ISO/IEC, 2023a)",,"Related to flexibility (IEEE, 2017, p. 12; implied by ISO/IEC, 2023a). Accessibility can improve this (and flexibility) (ISO/IEC, 2023a)"
-"Analyzability (IEEE, 2017, p. 18) or Analysability (ISO/IEC 2023a)","The ""capability of a product to be effectively and efficiently assessed regarding the impact of an intended change to … its parts, to diagnose it for deficiencies or causes of failures, or to identify parts to be modified"" (ISO/IEC 2023a)",,"Related to modifiability (IEEE, 2017, p. 18)"
+"Analyzability (IEEE, 2017, p. 18) or Analysability (ISO/IEC 2023a)","""The effort or resources … [required] to diagnose deficiencies or causes of failure or to identify components to be modified"" (Washizaki, 2024, p. 7-10)",,"Related to modifiability (IEEE, 2017, p. 18) and sub-quality of maintainability (Washizaki, 2024, p. 7-10)"
 Authenticity,"The ""capability of a product to prove that the identity of a subject or resource is the one claimed"" (ISO/IEC 2023a)",,
-Availability,"The ""ability of a service or service component to perform its required function at an agreed instant or over an agreed period of time"" (IEEE, 2017, p. 38)",,"""Normally expressed as a ratio or percentage"" (IEEE, 2017, p. 38). Related to error tolerance, fault tolerance, reliability, and robustness (IEEE, 2017, p. 38)"
+Availability,"The ""ability of a service or service component to perform its required function at an agreed instant or over an agreed period of time"" (IEEE, 2017, p. 38), or be ""operational and accessible"" (Washizaki, 2024, p. 7-10)",,"""Normally expressed as a ratio or percentage"" (IEEE, 2017, p. 38). A sub-quality of reliability (Washizaki, 2024, p. 7-10) and related to error tolerance, fault tolerance, reliability, and robustness (IEEE, 2017, p. 38)"
 Cohesion,,,
 Comfort,,,"e.g., screen brightness"
 Complexity,,,A quality that software shouldn't have
@@ -22,4 +22,12 @@ Efficiency,,"""Performance efficiency testing"" mentioned in IEEE (2022, p. 9; 2
 Error Tolerance,,,
 Expandability,,,
 Extendability,,,
+Fault Tolerance,"""How well a system or software operates despite hardware or software faults"" (Washizaki, 2024, p. 7-10)",,"A sub-quality of reliability (Washizaki, 2024, p. 7-10)"
+Maintainability,"""The capability of the software product to be modified"", including through ""corrections, improvements or adaptation of the software to changes in environment, as well as changes in requirements and functional specifications"" (Washizaki, 2024, p. 7-6; originally in ISO/IEC/IEEE 14764)",,"Six categories: corrective, preventive, adaptive, additive, perfective, and emergency (Washizaki, 2024, p. 7-4; ""emergency"" added in ISO/IEC/IEEE 14764)"
+Maturity,"""How well a system or software can meet the need for reliability"" (Washizaki, 2024, p. 7-10)",,"A sub-quality of reliability (Washizaki, 2024, p. 7-10)"
+Modifiability,"""The maintainer's effort associated with implementing a specified modification without introducing defects or degrading existing product quality"" (Washizaki, 2024, p. 7-10)",,"A sub-quality of maintainability (Washizaki, 2024, p. 7-10)"
+Modularity,"""The degree to which a system or software is composed of components that are independent"" (Washizaki, 2024, p. 7-10)",,"A sub-quality of maintainability (Washizaki, 2024, p. 7-10). Related to the idea of low coupling"
+Recoverability,"""How well a system or software can recover data during an interruption or failure"" (Washizaki, 2024, p. 7-10)",,"A sub-quality of reliability (Washizaki, 2024, p. 7-10)"
+Reusability,"""How well a component can be reused"" (Washizaki, 2024, p. 7-10)",,"A sub-quality of maintainability (Washizaki, 2024, p. 7-10)"
 "Service Availability (Washizaki, 2024, p. 6-7)",,,Related to availability? A subset?
+Testability,"""The effort … [required] to test the modified software"" (Washizaki, 2024, p. 7-10)",,"A sub-quality of maintainability (Washizaki, 2024, p. 7-10)"
