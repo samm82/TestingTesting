@@ -5,6 +5,7 @@ Adaptability,"The ""capability of a product to be effectively and efficiently ad
 "Analyzability (IEEE, 2017, p. 18) or Analysability (ISO/IEC 2023a)","""The effort or resources … [required] to diagnose deficiencies or causes of failure or to identify components to be modified"" (Washizaki, 2024, p. 7-10)",,"Related to modifiability (IEEE, 2017, p. 18) and sub-quality of maintainability (Washizaki, 2024, p. 7-10)"
 Authenticity,"The ""capability of a product to prove that the identity of a subject or resource is the one claimed"" (ISO/IEC 2023a)",,
 Availability,"The ""ability of a service or service component to perform its required function at an agreed instant or over an agreed period of time"" (IEEE, 2017, p. 38), or be ""operational and accessible"" (Washizaki, 2024, p. 7-10)",,"""Normally expressed as a ratio or percentage"" (IEEE, 2017, p. 38). A sub-quality of reliability (Washizaki, 2024, p. 7-10) and related to error tolerance, fault tolerance, reliability, and robustness (IEEE, 2017, p. 38)"
+Behavioral Compatibility,"""Identical behavior of two objects"" (IEEE, 2017, p. 43; OG IEEE, 2009)",,Subset of compatibility?
 Cohesion,,,
 Comfort,,,"e.g., screen brightness"
 Complexity,,,A quality that software shouldn't have
@@ -23,7 +24,7 @@ Error Tolerance,,,
 Expandability,,,
 Extendability,,,
 Fault Tolerance,"""How well a system or software operates despite hardware or software faults"" (Washizaki, 2024, p. 7-10)",,"A sub-quality of reliability (Washizaki, 2024, p. 7-10)"
-Maintainability,"""The capability of the software product to be modified"", including through ""corrections, improvements or adaptation of the software to changes in environment, as well as changes in requirements and functional specifications"" (Washizaki, 2024, p. 7-6; originally in ISO/IEC/IEEE 14764)",,"Six categories: corrective, preventive, adaptive, additive, perfective, and emergency (Washizaki, 2024, p. 7-4; ""emergency"" added in ISO/IEC/IEEE 14764)"
+Maintainability,"""The capability of the software product to be modified"", including through ""corrections, improvements or adaptation of the software to changes in environment, as well as changes in requirements and functional specifications"" (Washizaki, 2024, p. 7-6; OG ISO/IEC/IEEE 14764)",,"Six categories: corrective, preventive, adaptive, additive, perfective, and emergency (Washizaki, 2024, p. 7-4; ""emergency"" added in ISO/IEC/IEEE 14764)"
 Maturity,"""How well a system or software can meet the need for reliability"" (Washizaki, 2024, p. 7-10)",,"A sub-quality of reliability (Washizaki, 2024, p. 7-10)"
 Modifiability,"""The maintainer's effort associated with implementing a specified modification without introducing defects or degrading existing product quality"" (Washizaki, 2024, p. 7-10)",,"A sub-quality of maintainability (Washizaki, 2024, p. 7-10)"
 Modularity,"""The degree to which a system or software is composed of components that are independent"" (Washizaki, 2024, p. 7-10)",,"A sub-quality of maintainability (Washizaki, 2024, p. 7-10). Related to the idea of low coupling"
