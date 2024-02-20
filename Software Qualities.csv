@@ -6,19 +6,19 @@ Adaptability,"The ""capability of a product to be effectively and efficiently ad
 Authenticity,"The ""capability of a product to prove that the identity of a subject or resource is the one claimed"" (ISO/IEC 2023a)",,
 Availability,"The ""ability of a service or service component to perform its required function at an agreed instant or over an agreed period of time"" (IEEE, 2017, p. 38), or be ""operational and accessible"" (Washizaki, 2024, p. 7-10)",,"""Normally expressed as a ratio or percentage"" (IEEE, 2017, p. 38). A sub-quality of reliability (Washizaki, 2024, p. 7-10) and related to error tolerance, fault tolerance, reliability, and robustness (IEEE, 2017, p. 38)"
 Behavioral Compatibility,"""Identical behavior of two objects"" (IEEE, 2017, p. 43; OG IEEE, 2009)",,Subset of compatibility?
-Cohesion,,,
-Comfort,,,"e.g., screen brightness"
-Complexity,,,A quality that software shouldn't have
-Conciseness,,,
-Concurrency,,,
-Conformance,,"Washizaki, 2024, p. 5-7","Synonym for ""correctness""? Related to functional testing (Washizaki, 2024, p. 5-7). May refer to the process level, not the software level"
-Connectivity,,,
-Consistency,,,
+Cohesion,"The ""manner and degree to which the tasks performed by a single software module are related to one another"" (IEEE, 2017, p. 74)",,"Has the following subcategories: ""coincidental, communicational, functional, logical, procedural, sequential, and temporal"" (IEEE, 2017, p. 74); also called ""module strength"" and related to coupling (IEEE, 2017, p. 74)"
+Comfort,"The ""degree to which the user is satisfied with physical comfort"" (IEEE, 2017, p. 75; OG ISO/IEC, 2011)",,"e.g., screen brightness"
+Complexity,"The ""degree to which a system or component has a design or implementation that is difficult to understand and verify"" (IEEE, 2017, p. 81)",,A quality that software shouldn't have; constrasted with simplicity
+Conciseness,"The degree to which functions are implemented ""with a minimum amount of code"" (IEEE, 2017, p. 88)",,
+Concurrency,"The ""property of a system in which events can occur independently of each other, and hence are not ordered"" (IEEE, 2017, p. 88; OG ISO/IEC, 2004)",,
+Confidentiality,"The ""degree to which a product or system ensures that data are accessible only to those authorized to have access"" (IEEE, 2017, p. 90; OG ISO/IEC 2011)",May be a subcategory of security testing,"""Data are"" vs. ""data is"""
+Conformance,"The degree to which ""results … fall within the limits that define acceptable variation for a quality requirement"" (IEEE, 2017, p. 92; OG PMBOK 5th ed.)","""Conformance testing"" mentioned by Washizaki (2024, p. 5-7). Conformance can be assessed (IEEE, 2017, p. 93)","Synonym for ""correctness""? Related to functional testing (Washizaki, 2024, p. 5-7). May refer to the process level, not the software level"
+Connectivity,"The ""capability of a system or device to be attached to other systems or devices without modification"" (IEEE, 2017, p. 93; OG ISO/IEC, 2015)",,
+Consistency,"The ""degree of uniformity, standardization, and freedom from contradiction"" (IEEE, 2017, p. 94)",,"""Content consistency"" is a subcategory (IEEE, 2017, p. 96). Related to traceability (IEEE, 2017, p. 94)"
 "Continuity (Washizaki, 2024, p. 6-7)",,,
-Correctability,,,Related to maintainability?
-Correctness,,"Washizaki, 2024, p. 5-7","Synonym for ""conformance""? Related to functional testing (Washizaki, 2024, p. 5-7)"
-Coupling,,,
-Criticality,,,
+Correctability,"The ""degree of effort required to correct software defects and to cope with user complaints"" (IEEE, 2017, p. 104)",,Related to maintainability/modifiability?
+Correctness,"The ""degree to which a system or component is free from faults in its specification, design, and implementation[,] … meet[s] specified requirements[, or] … meet[s] user needs and expectations"" (IEEE, 2017, p. 104)","Washizaki, 2024, p. 5-7","Synonym for ""conformance""? Related to functional testing (Washizaki, 2024, p. 5-7)"
+Coupling,"The ""manner and degree of interdependence between software modules"" or ""how closely connected … [they] are"" (IEEE, 2017, p. 107)",,"Has the following subcategories: ""common‐environment"", ""content"", ""control"", ""data"", ""hybrid"", and ""pathological"" (IEEE, 2017, p. 107)"
 Efficiency,,"""Performance efficiency testing"" mentioned in IEEE (2022, p. 9; 2017, pp. 58, 159, 253, 442, 508)",
 Error Tolerance,,,
 Expandability,,,
