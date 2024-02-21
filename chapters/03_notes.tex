@@ -727,11 +727,51 @@ be found in the problem space'' \citep[p.~338]{czarnecki_overview_2004}.
 \section{Software Testing}
 \label{chap:notes:sec:software-testing}
 
-\subsection{Methodology}
-
 It was realized early on in the process that it would be beneficial to
 understand the different types of testing (including what they test, what
-artifacts are needed to perform them, etc.). This process initially involved
+artifacts are needed to perform them, etc.). This section provides some results
+of this research, as well as some information on why and how it was performed.
+\todo{A justification for why we decided to do this should be added}
+
+\subsection{Scope}
+\label{chap:notes:sec:scope}
+
+This project is focused on the generation of test cases for code, so only
+the ``testing'' component of \acf{vnv} is considered (see \thesisissueref{22}).
+For example, ``design reviews'' (see \citealp[p.~132]{IEEE2017}) and
+``documentation reviews'' (see \citealp[p.~144]{IEEE2017}) are out of scope,
+since they focus on the \acs{vnv} of the design and documentation of the code,
+respectively, and not on the code itself.
+
+This also means that only some aspects of some testing approaches are relevant.
+For example, ``error seeding'' is the ``process of intentionally adding known
+faults to those already in a computer program \dots [to] monitor[] the rate of
+detection and removal[] and estimat[e] the number of faults remaining''
+\citep[p.~165]{IEEE2017}. While ``monitoring the rate of [fault] detection and
+removal'' is a part of \acs{vnv} of the \acs{vnv} itself, ``estimating the
+number of faults remaining'' \citep[p.~165]{IEEE2017} helps verify the actual
+code.
+
+Sometimes, the term ``testing'' excludes static testing, as done by
+\citet[p.~5-1]{SWEBOK2024}. Since ``terminology is not uniform among
+different communities, and some use the term \emph{testing} to refer to static
+techniques as well'' \cite[p.~5-2]{SWEBOK2024}, the broad term ``testing''
+will include both ``static testing'' and ``dynamic testing'' throughout this
+project, as done by \citet[p.~17]{IEEE2022}. The end goal of this project is to
+be able to generate test cases automatically, which will not be possible for
+certain testing approaches (like those that require human interaction; e.g.,
+as A/B testing, audits, and beta testing) and will not be feasible within a
+reasonable time frame for others. However, understanding the breadth of testing
+approaches provides a more complete picture of how software can be tested,
+how the various approaches are related to one another, and potentially
+how even parts of these ``out-of-scope'' approaches may be generated in the
+future! These ``out-of-scope'' approaches will be identified more
+systematically, but gathering information about them is an important precursor,
+making them within the scope of this research.
+
+\subsection{Methodology}
+
+This process initially involved
 looking through textbooks that were trusted at McMaster \citep{Patton2006,
       PetersAndPedrycz2000, vanVliet2000}. However, this process was
 somewhat ad hoc and arbitrary, meaning it wouldn't be as systematic as required.
@@ -960,7 +1000,6 @@ within individual ones; these may be areas for further investigation:
             Testing). They also say ``terminology is not uniform among different
             communities, and some use the term \emph{testing} to refer to static
             techniques as well'' \citep[p.~5-2]{SWEBOK2024}.
-            \todo{Capture this information when describing my scope}
       \item SWEBOK V4 says ``scalability testing evaluates the capability to
             use and learn the system and the user documentation. It also focuses
             on the system's effectiveness in supporting user tasks and the
@@ -1174,9 +1213,9 @@ For classifying different types of tests, \citet{IEEE2022} provides some
 terminology (see \refIEEETestTerms). However, other sources \citep{BarbosaEtAl2006,
       SouzaEtAl2017} provide alternate
 categories (see \refOtherTestTerms) which may be beneficial to investigate to
-determine if this categorization is sufficient. It also may be helpful to
-introduce a ``metric'' categorization for things like error seeding, if they
-are determined to be within scope (see \thesisissueref{21}, \thesisissueref{22}).
+determine if this categorization is sufficient. A ``metric'' categorization was
+considered at one point, but was decided to be out of the scope of this project
+(see \nameref{chap:notes:sec:scope}, \thesisissueref{21}, and \thesisissueref{22}).
 
 \begin{landscape}
       \ieeeTestTermsTable{}
