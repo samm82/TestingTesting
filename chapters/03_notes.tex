@@ -844,13 +844,13 @@ to eighteen; almost 20\% of undefined test approaches could have been defined!
       \item Beta Testing*
       \item Branch Condition Combination Testing
       \item Branch Condition Testing
-      \item \textbf{Capacity Testing*}
+      \item \textbf{Capacity Testing}*
       \item Capture-Replay Driven Testing
       \item Cause-Effect Testing
       \item Classification Tree Method (also mentioned but not defined in
             \citep{IEEE2013})
       \item Conversion Testing
-      \item \emph{Data Flow Testing*} (ISO/IEC/IEEE 29119-4)
+      \item \emph{Data Flow Testing}* (ISO/IEC/IEEE 29119-4)
       \item Data-driven Testing
       \item Disaster/Recovery Testing (Disaster Recovery*)
       \item Each Choice Testing
@@ -858,8 +858,8 @@ to eighteen; almost 20\% of undefined test approaches could have been defined!
       \item Fault Injection Testing
       \item Functional Suitability Testing (also mentioned but not defined in
             \citep{IEEE2017})
-      \item \textbf{Installability Testing}
-      \item \underline{Integration Testing}
+      \item \textbf{Installability Testing}*
+      \item \underline{Integration Testing}*
       \item Localization Testing
       \item Model Verification
       \item Negative Testing
@@ -868,7 +868,7 @@ to eighteen; almost 20\% of undefined test approaches could have been defined!
             defined in \citep{IEEE2022}; see \hyperref[perf-test-ambiguity]
             {the ``performance testing'' ambiguity} below)
       \item Production Verification Testing
-      \item Recovery Testing (\textbf{Backup and Recovery Testing*}, Recovery*)
+      \item Recovery Testing (\textbf{Backup and Recovery Testing}*, Recovery*)
       \item Response-Time Testing
       \item \emph{Reviews} (ISO/IEC 20246) (Code Reviews*)
       \item Scalability Testing
@@ -876,7 +876,7 @@ to eighteen; almost 20\% of undefined test approaches could have been defined!
       \item Syntax Testing
       \item System Integration Testing (System Integration*)
       \item System Testing* (also mentioned but not defined in \citep{IEEE2013})
-      \item \emph{Unit Testing*} (IEEE Std 1008-1987, IEEE Standard for
+      \item \emph{Unit Testing}* (IEEE Std 1008-1987, IEEE Standard for
             Software Unit Testing implicitly listed in the bibliography!)
       \item Usability Testing* (also mentioned but not defined in \citep{IEEE2013};
             in \citep{IEEE2017}, ``usability test'' is defined with a note to
@@ -902,7 +902,9 @@ within individual ones; these may be areas for further investigation:
             testing''). This implies that ``co-existence testing'' and
             ``interoperability testing'' should be defined as their own terms,
             which is supported by separate definitions of ``co-existence'' and
-            ``interoperability'' being given in \cite{ISTQB}.
+            ``interoperability'' being given by \citet{ISTQB} and
+            \citet[pp.~73, 237]{IEEE2017}, as well as the definition of
+            ``interoperability testing'' from \citet[p.~238]{IEEE2017}!
       \item Experience-based testing is categorized as both a test design
             technique and a test practice on the same page
             \citep[p.~22]{IEEE2022}! This also causes confusion about
@@ -1046,6 +1048,12 @@ within individual ones; these may be areas for further investigation:
             associated data and information, are protected so that'' only
             ``authorized persons or systems'' can use them as intended
             \citeyearpar{IEEE2022}, both in scope and name.
+      \item \citeauthor*{IEEE2017} provide a definition for ``inspections and
+            audits'' \citeyearpar[p.~228]{IEEE2017}, despite also giving
+            definitions for ``inspection'' \citeyearpar[p.~227]{IEEE2017} and
+            ``audit'' \citeyearpar[p.~36]{IEEE2017}; while the first term
+            \emph{could} be considered a superset of the latter two, this
+            distinction doesn't seem useful.
 \end{enumerate}
 
 \paragraph{Functional Testing}
