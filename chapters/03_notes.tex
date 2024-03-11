@@ -924,39 +924,6 @@ within individual ones; these may be areas for further investigation:
             anticipated conditions of low, typical, and peak usage''
             \cite[p.~5]{IEEE2022}, while \citet[p.~86]{Patton2006} says the
             loads should as large as possible.
-      \item ``Performance testing'' is defined as testing ``conducted to
-            evaluate the degree to which a test item accomplishes its
-            designated functions within given constraints of time and other
-            resources'' \cite[p.~7]{IEEE2022}. On p.~22, it is listed
-            as a subset of ``performance-related testing'', along with other
-            approaches like load and capacity testing; \citet[p.~5-9]{SWEBOK2024}
-            gives ``capacity and response time'' as examples of ``performance
-            characteristics'' that performance testing would seek to ``assess''.
-            I see two possible resolutions to this:
-            \begin{enumerate}
-                  \item Assign the definition of ``performance testing'' to
-                        ``performance-related testing'' and give ``performance
-                        testing'' a more specific definition.
-                  \item Replace the term ``performance-related testing'' with
-                        ``performance testing''; this seems more logical, since
-                        I haven't found a definition of ``performance-related
-                        testing'' (at least yet) and most (if not all)
-                        definitions of ``performance testing'' seem to treat it
-                        as a category of tests.
-            \end{enumerate}
-            \label{perf-test-ambiguity}
-      \item Similarly, ``performance'' and ``performance efficiency'' are
-            both listed as software qualities in as ``degree to which a system
-            or component accomplishes its designated functions within given
-            constraints, such as speed, accuracy, or memory usage''
-            \citep[p.~318]{IEEE2017} and ``performance relative to the amount
-            of resources used under stated conditions'' \citep[p.~319]{IEEE2017},
-            respectively. While the definition of ``performance efficiency''
-            doesn't seem to make any meaningful distinction between it and
-            ``performance'', the term ``performance testing'' is defined
-            \citep[p.~320]{IEEE2017} and used throughout \citet{IEEE2017} while
-            the term ``performance efficiency testing'' is used throughout
-            \citet{IEEE2017} (but not defined explicitly).
       \item Integration, system, and system integration testing are all listed
             as ``common test levels'' \cite[p.~12]{IEEE2022}, but no
             definitions are given for the latter two, making it unclear what
@@ -1158,6 +1125,44 @@ securely in the operational environment'' \citep{ISO_IEC2018} or ``evaluate a
 system or component in its operational environment'' \citep[p.~303]{IEEE2017},
 particularly ``to determine if operations and/or systems administration staff
 can accept [it]'' \citep{ISTQB}.
+
+\paragraph{Performance Testing}
+
+``Performance testing'' is defined as testing ``conducted to
+evaluate the degree to which a test item accomplishes its
+designated functions within given constraints of time and other
+resources'' \cite[p.~7]{IEEE2022}. On p.~22, it is listed
+as a subset of ``performance-related testing'', along with other
+approaches like load and capacity testing; \citet[p.~5-9]{SWEBOK2024}
+gives ``capacity and response time'' as examples of ``performance
+characteristics'' that performance testing would seek to ``assess''.
+I see two possible resolutions to this:
+\begin{enumerate}
+      \item Assign the definition of ``performance testing'' to
+            ``performance-related testing'' and give ``performance
+            testing'' a more specific definition.
+      \item Replace the term ``performance-related testing'' with
+            ``performance testing''; this seems more logical, since
+            I haven't found a definition of ``performance-related
+            testing'' (at least yet) and most (if not all)
+            definitions of ``performance testing'' seem to treat it
+            as a category of tests.
+\end{enumerate}
+\label{perf-test-ambiguity}
+
+Similarly, ``performance'' and ``performance efficiency'' are
+both given as software qualities by \citeauthor{IEEE2017}, with the latter
+defined as the ``performance relative to the amount
+of resources used under stated conditions'' \citeyearpar[p.~319]{IEEE2017}.
+Initially, there didn't seem to be any meaningful distinction
+between the two, although the term ``performance testing'' is defined
+\citeyearpar[p.~320]{IEEE2017} and used by \citeauthor{IEEE2017} and
+the term ``performance efficiency testing'' is \emph{also} used by
+\citeauthor{IEEE2017} (but not defined explicitly). Further discussion (see
+\thesisissueref{43}) brought us to the conclusion that ``performance
+efficiency testing'' is a subset of ``performance testing'', and the
+difference of ``relative to the amount of resources used'' between the two
+is meaningful.
 
 \subsection{Software Testing Taxonomies, Ontologies, and State of Practice}
 
