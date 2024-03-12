@@ -752,27 +752,31 @@ removal'' is a part of \acs{vnv} of the \acs{vnv} itself, ``estimating the
 number of faults remaining'' \citep[p.~165]{IEEE2017} helps verify the actual
 code.
 
-Sometimes, the term ``testing'' excludes static testing, as done by
-\citet[p.~5-1]{SWEBOK2024}. Since ``terminology is not uniform among
-different communities, and some use the term \emph{testing} to refer to static
-techniques as well'' \cite[p.~5-2]{SWEBOK2024}, the broad term ``testing''
-will include both ``static testing'' and ``dynamic testing'' throughout this
-project, as done by \citet[p.~17]{IEEE2022}. The end goal of this project is to
-be able to generate test cases automatically, which will not be possible for
-certain testing approaches (like those that require human interaction; e.g.,
-as A/B testing, audits, and beta testing) and will not be feasible within a
-reasonable time frame for others. However, understanding the breadth of testing
-approaches provides a more complete picture of how software can be tested,
-how the various approaches are related to one another, and potentially
-how even parts of these ``out-of-scope'' approaches may be generated in the
-future! These ``out-of-scope'' approaches will be identified more
-systematically, but gathering information about them is an important precursor,
-making them within the scope of this research.
+Sometimes, the term \emph{testing} excludes static testing, as done by some
+sources \citep[p.~5-1]{SWEBOK2024}; \citeauthor{IEEE2017} define ``software
+testing'' as ``dynamic verification'' ``in which a system or component is
+executed'' \citeyearpar[p.~427]{IEEE2017}. Since ``terminology is not uniform
+among different communities, and some use the term \emph{testing} to refer to
+static techniques as well'' \cite[p.~5-2]{SWEBOK2024} (including
+\citet[p.~440]{IEEE2017}!), the scope of ``testing'' for the purpose of this
+project originally included both ``static testing'' and ``dynamic testing'', as
+done by \citet[p.~17]{IEEE2022}. However, static testing tends to be less
+systematic/consistent and often requires human intervention, which makes it
+less relevant to this project's end goal: to generate test cases automatically.
+However, understanding the breadth of testing approaches provides a more
+complete picture of how software can be tested, how the various approaches are
+related to one another, and potentially how even parts of these ``out-of-scope''
+approaches may be generated in the future! These ``out-of-scope'' approaches
+will be identified more systematically, but gathering information about them is
+an important precursor, making them within the scope of this research, although
+they will be excluded at a later phase.
 
 \phantomsection{}
-\label{chap:notes:sec:derived-scope}
+\label{chap:notes:sec:derived-from-qualities}
 Since it seemed that testing types can be derived from software qualities
-(see \thesisissueref{21} and \thesisissueref{23}), it was decided that tracking
+(see \thesisissueref{21} and \thesisissueref{23}), ``capabilit[ies] of software
+product[s] to satisfy stated and implied needs when used under specified
+conditions'' \citep[p.~424]{IEEE2017} \todo{OG ISO/IEC 2014}, it was decided that tracking
 software qualities, in addition to testing approaches, would be worthwhile
 (see \thesisissueref{27}). This was done by capturing their definitions and any
 rationale for why it might be useful to consider an explicitly separate
@@ -804,7 +808,7 @@ arose, they were investigated to a reasonable extent and documented. If a
 testing approach was mentioned but not defined, it was still added to the
 glossary to indicate it should be investigated further. A similar methodology
 was used for tracking software qualities, albeit in a separate document
-(see \hyperref[chap:notes:sec:derived-scope]{Scope (of derived test types)}).
+(see \hyperref[chap:notes:sec:derived-from-qualities]{Scope (of derived test types)}).
 
 These sources, as well as others, categorized these techniques in different ways;
 while it is useful to record and think about these categorizations (see
