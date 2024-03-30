@@ -68,3 +68,5 @@ Unambiguity,"The degree to which something is ""described in terms that only all
 Understandability,"The ""ease with which a system can be comprehended at both the system‐organizational and detailed‐statement levels"" (IEEE, 2017, p. 489)",,"More general than readability and applicable to the system as a whole (IEEE, 2017, p. 489)"
 Usefulness,"The ""degree to which a user is satisfied with their perceived achievement of pragmatic goals, including the results of use and the consequences of use"" (ISO/IEC, 2011)",,
 User-Friendliness?,"The degree to which a system is easy and convenient to use (IEEE, 2017, p. 498)",,Difference between this and usability?
+Variability?,"The degree of ""differ[ence] among members of the product line"" (IEEE, 2017, p. 500; OG ISO/IEC, 2015)",,
+Verifiability,"The degree to which something ""can be checked for correctness by a person or tool"" (IEEE, 2017, p. 503; OG 2013)",,
