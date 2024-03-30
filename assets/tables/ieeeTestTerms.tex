@@ -1,7 +1,12 @@
 % so VS Code doesn't freak out
 \newcommand{\techniqueCell}{\makecell{(Design)\\Technique}}
+\newcommand{\levelCell}{\makecell{Level\tablefootnote{\procLevel}\\
+        (sometimes ``Phase''\tablefootnote{\phaseDef})}}
 \newcommand{\procLevel}{``Level'' can also refer to the ``level''
     of a test process \citep[p.~24]{IEEE2022}.}
+\newcommand{\phaseDef}{While \citet{IEEE2017} list the two terms as synonyms
+    (p.~469), a separate definition of ``test phase'', referring to a
+    ``period of time'', is also given (p.~470).}
 
 \begin{table}[hbtp!]
     \centering
@@ -11,40 +16,47 @@
     \begin{tabularx}{\linewidth}{|c|X|m{0.275\linewidth}|}
         \hline
         \rowcolor{McMasterMediumGrey}
-        \thead{Term}                    & \thead{Definition}               & \thead{Examples} \\
+        \thead{Term}                      & \thead{Definition}                      & \thead{Examples} \\
         \hline
-        Approach                        & A ``high-level test
+        Approach                          & A ``high-level test
         implementation choice, typically made as part of the test strategy
         design activity'' that includes ``test level, test type, test technique,
         test practice and the form of static testing to be used''
-        \citep[p.~10]{IEEE2022}         & any of the examples given below:
-        equivalence partitioning, unit testing, scripted testing,
-        security testing                                                                      \\
-        \techniqueCell                  & A ``procedure used to
+        \citep[p.~10]{IEEE2022}; described by a \emph{test strategy}
+        \citep[p.~472]{IEEE2017} and is also used to ``pick the particular test case
+        values'' \citep[p.~465]{IEEE2017} & black or white box, minimum and maximum
+        boundary value testing \citep[p.~465]{IEEE2017}                                                \\
+        \techniqueCell                    & A ``defined'' and ``systematic''
+        \citep[p.~464]{IEEE2017} ``procedure used to
         create or select a test model, identify test
         coverage items, and derive corresponding test cases''
-        \citep[p.~11]{IEEE2022}; ``a variety \dots is typically
+        (\citealp[p.~11]{IEEE2022}; similar in \citealp[p.~467]{IEEE2017});
+        ``a variety \dots is typically
         required to suitably cover any system'' \citep[p.~33]{IEEE2022} and is
         ``often selected based on team skills and familiarity,
         on the format of the test basis'', and on expectations
-        \citep[p.~23]{IEEE2022}         & equivalence partitioning,
-        boundary value analysis, branch testing \citep[p.~11]{IEEE2022}                       \\
-        Level\tablefootnote{\procLevel} & A stage of testing
+        \citep[p.~23]{IEEE2022}           & equivalence partitioning,
+        boundary value analysis, branch testing \citep[p.~11]{IEEE2022}                                \\
+        \levelCell                        & A stage of testing
         ``typically associated with the achievement of particular objectives
         and used to treat particular risks'' \citep[p.~12]{IEEE2022}; more
         generally, ``designat[es] \dots the coverage and detail''
-        \citep[p.~249]{IEEE2017}        & unit/component testing,
-        integration testing, system testing \citep[p.~12]{IEEE2022}                           \\
-        Practice                        & A ``conceptual framework
+        \citep[p.~249]{IEEE2017}          & unit/component testing,
+        integration testing, system testing (\citealp[p.~12]{IEEE2022};
+        \citealp[p.~467]{IEEE2017})                                                                    \\
+        Practice                          & A ``conceptual framework
         that can be applied to \dots [a] test process to facilitate testing''
-        \citep[p.~14]{IEEE2022}; more generally, a ``specific type of activity
+        (\citealp[p.~14]{IEEE2022}; \citealp[p.~471]{IEEE2017}; OG IEEE 2013);
+        more generally, a ``specific type of activity
         that contributes to the execution of a process''
-        \citep[p.~331]{IEEE2017}        & scripted testing,
-        exploratory testing, automated testing \citep[p.~20]{IEEE2022}                        \\
-        Type                            & ``Testing that is focused
+        \citep[p.~331]{IEEE2017}          & scripted testing,
+        exploratory testing, automated testing \citep[p.~20]{IEEE2022}                                 \\
+        Type                              & ``Testing that is focused
         on specific quality characteristics''
-        \citep[p.~15]{IEEE2022}         & security testing,
-        usability testing, performance testing \citep[p.~15]{IEEE2022}                        \\
+        (\citealp[p.~15]{IEEE2022}; \citealp[p.~473]{IEEE2017};
+        OG IEEE 2013)                     & security testing, usability testing,
+        performance testing (\citealp[p.~15]{IEEE2022};
+        \citealp[p.~473]{IEEE2017})                                                                    \\
         \hline
     \end{tabularx}
 \end{table}
