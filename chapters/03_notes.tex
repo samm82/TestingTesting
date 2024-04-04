@@ -744,13 +744,25 @@ since they focus on the \acs{vnv} of the design and documentation of the code,
 respectively, and not on the code itself.
 
 This also means that only some aspects of some testing approaches are relevant.
-For example, ``error seeding'' is the ``process of intentionally adding known
-faults to those already in a computer program \dots [to] monitor[] the rate of
-detection and removal[] and estimat[e] the number of faults remaining''
-\citep[p.~165]{IEEE2017}. While ``monitoring the rate of [fault] detection and
-removal'' is a part of \acs{vnv} of the \acs{vnv} itself, ``estimating the
-number of faults remaining'' \citep[p.~165]{IEEE2017} helps verify the actual
-code.
+For example:
+
+\begin{enumerate}
+      \item \emph{Error seeding} is the ``process of intentionally adding
+            known faults to those already in a computer program \dots [to]
+            monitor[] the rate of detection and removal[] and estimat[e] the
+            number of faults remaining'' \citep[p.~165]{IEEE2017}. While
+            ``monitoring the rate of [fault] detection and removal'' is a part
+            of \acs{vnv} of the \acs{vnv} itself, ``estimating the number of
+            faults remaining'' \citep[p.~165]{IEEE2017} helps verify the actual
+            code.
+      \item ``\emph{Mutation [t]esting} was originally conceived as a
+            technique to evaluate test suites in which a mutant is a slightly
+            modified version of the \acs{sut}'' \citep[p.~5-15]{SWEBOK2024},
+            which, like error seeding, is in the realm of \acs{vnv} of the
+            \acs{vnv} itself. However, it ``can also be categorized as a
+            structure-based technique'' and can be used to assist fuzz and
+            metamorphic testing \citep[p.~5-15]{SWEBOK2024}.
+\end{enumerate}
 
 Sometimes, the term \emph{testing} excludes static testing, as done by some
 sources \citep[p.~5-1]{SWEBOK2024}; \citeauthor{IEEE2017} define ``software
