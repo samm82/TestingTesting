@@ -818,8 +818,8 @@ process was somewhat ad hoc and arbitrary, meaning it wouldn't be as systematic
 as required. Going forward, this process will be more rigorous, starting from
 more established sources of software testing terminology in approximately the
 following order:
-\citep{IEEE2022, SWEBOK2024, SWEBOK2014, IEEE2017, IEEE2013, ISO_IEC2023b,
-      IEEE2012, ISO_IEC2023a, ISTQB}.
+(\citealp{IEEE2022, SWEBOK2024, SWEBOK2014, IEEE2017, IEEE2013, ISO_IEC2023b,
+      IEEE2012, ISO_IEC2023a}; \citetalias{ISTQB}).
 \todo{should ``author names'' be acronyms or full?}
 Other sources that focused on cataloging and categorizing testing terminology,
 such as \citet{KuļešovsEtAl2013}, were also examined to see how well they
@@ -957,9 +957,9 @@ within individual ones; these may be areas for further investigation:
             (although the third usage seems like it should be ``portability
             testing''). This implies that ``co-existence testing'' and
             ``interoperability testing'' should be defined as their own terms,
-            which is supported by separate definitions of ``co-existence'' and
-            ``interoperability'' being given by \citet{ISTQB} and
-            \citet[pp.~73, 237]{IEEE2017}, as well as the definition of
+            which is supported by definitions of ``co-existence'' and
+            ``interoperability'' often being separate (\citetalias{ISTQB};
+            \citealp[pp.~73, 237]{IEEE2017}), as well as the definition of
             ``interoperability testing'' from \citet[p.~238]{IEEE2017}!
       \item Experience-based testing is categorized as both a test design
             technique and a test practice on the same page
@@ -1053,13 +1053,13 @@ within individual ones; these may be areas for further investigation:
             \end{enumerate}
             Other definitions of ``scalability'' support these definitions, so
             the definition of ``scalability testing'' follows trivially from there
-            (\citeauthor{ISTQB} does this explicitly):
+            (sometimes explicitly \citepalias{ISTQB}):
             \begin{itemize}
                   \item The ``capability of a product to handle growing or
                         shrinking workloads or to adapt its capacity to handle
                         variability'' \citep{ISO_IEC2023a}
                   \item ``The degree to which a component or system can be
-                        adjusted for changing'' \citep{ISTQB}
+                        adjusted for changing'' \citepalias{ISTQB}
             \end{itemize}
       \item SWEBOK V4 says that one objective of elasticity testing is ``to
             evaluate scalability'' \citep[p.~5-9]{SWEBOK2024}, which seems like
@@ -1096,12 +1096,13 @@ ways, alongside other, potentially related, terms:
                   investigate}
             Notably, \citet{IEEE2017} lists both as synonyms of
             ``black-box testing'' (pp. 431, 196, respectively). However,
-            \cite{ISTQB} defines them as separate terms: ``specification-based
+            they are sometimes defined as separate terms: ``specification-based
             testing'' as ``testing based on an analysis of the specification
             of the component or system'' (including ``black-box testing'' as a
             synonym) and ``functional testing'' as ``testing performed to
             evaluate if a component or system satisfies functional
-            requirements'' (specifying no synonyms). This definition of
+            requirements'' (specifying no synonyms) \citepalias{ISTQB}. This
+            definition of
             ``functional testing'' references \citet[p.~196]{IEEE2017}
             (``testing conducted to evaluate the compliance of a system or
             component with specified functional requirements'') which
@@ -1159,19 +1160,19 @@ ways, alongside other, potentially related, terms:
             functions that facilitate the accomplishment of specified tasks and
             objectives'') \citep{ISO_IEC2023a}. Notably, ``functional
             correctness'', which includes precision and accuracy
-            \citep{ISO_IEC2023a, ISTQB}, seems to align with the quality/ies
-            that would be tested by ``correctness'' testing.
+            (\citealp{ISO_IEC2023a}; \citetalias{ISTQB}), seems to align with
+            the quality/ies that would be tested by ``correctness'' testing.
 \end{itemize}
 
 \paragraph{Operational (Acceptance) Testing}
 Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE2022};
-\citealp{ISTQB}) while some refer to ``operational testing''
+\citetalias{ISTQB}) while some refer to ``operational testing''
 (\citealp[p.~6-9, in the context of software engineering operations]{SWEBOK2024};
 \citealp{ISO_IEC2018}; \citealp[p.~303]{IEEE2017};
 \citealp[pp.~4-6, 4-9]{SWEBOK2014}). Since this terminology is not standardized, I
 propose that the two terms are treated as synonyms (as done by other sources
 (\citealp{LambdaTest2024}; \citealp{BocchinoAndHamilton1996})) as a type of
-acceptance testing (\citealp[p.~22]{IEEE2022}; \citealp{ISTQB}) that focuses on
+acceptance testing (\citealp[p.~22]{IEEE2022}; \citetalias{ISTQB}) that focuses on
 ``non-functional'' attributes of the system \citep{LambdaTest2024}
 \todo{find more academic source}.
 
@@ -1181,7 +1182,7 @@ installation, configuration and operation of a module and that it operates
 securely in the operational environment'' \citep{ISO_IEC2018} or ``evaluate a
 system or component in its operational environment'' \citep[p.~303]{IEEE2017},
 particularly ``to determine if operations and/or systems administration staff
-can accept [it]'' \citep{ISTQB}.
+can accept [it]'' \citepalias{ISTQB}.
 
 \paragraph{Performance Testing}
 
@@ -1514,7 +1515,7 @@ whether that information exists in Drasil already and if it can be added
             classical modules for being re-used in different contexts
             independently of their development.'' Note that since a
             \emph{component} is ``a part of a system that can be tested in
-            isolation'' \citep{ISTQB}, this seems like it could apply
+            isolation'' \citepalias{ISTQB}, this seems like it could apply
             to the testing of both modules \emph{and} specific functions
       \item Integration testing: ``testing the composition of modules'';
             done incrementally using \emph{bottom-up} and/or
@@ -1912,7 +1913,7 @@ For all of these tests, the values of the state variables should be verified
 
 Testing to determine how efficiently software uses resources (including time
 and capacity) ``when accomplishing its designated functions''
-\citep{ISTQB}. \todo{Original source: ISO 25010?}
+\citepalias{ISTQB}. \todo{Original source: ISO 25010?}
 
 % ``The intent of this type of testing is to identify weak points of a software
 % system and quantify its shortcomings'' \citep[p.~447]{PetersAndPedrycz2000}.
