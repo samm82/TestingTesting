@@ -1,14 +1,9 @@
-% so VS Code doesn't freak out
+% makecell with new lines so VS Code doesn't freak out
 \newcommand{\techniqueCell}{\makecell{(Design)\\Technique}}
-\newcommand{\levelCell}{\makecell{Level\tablefootnote{\procLevel{}}\\
-        (sometimes\\``Phase''\tablefootnote{\phaseDef{}})}}
-\newcommand{\procLevel}{``Test level'' can also refer to the scope
-    of a test process; for example, a process may ``apply across the whole
-    organization'' or only ``to specific projects'' \citep[p.~24]{IEEE2022}.}
-\newcommand{\phaseDef}{``Test phase'' can be a synonym for ``test level''
-    (\citealp[p.~469]{IEEE2017}; \citealp[p.~9]{IEEE2013}) but can also refer to the
-    ``period of time in the software life cycle'' when testing occurs
-    \citep[p.~470]{IEEE2017}, usually after the implementation phase (pp.~420, 509).}
+\newcommand{\levelCell}{\makecell{Level\tablefootnote{\procLevel{\citep}.}\\
+        (sometimes\\``Phase''\tablefootnote{``Test phase'' can be a synonym for
+            ``test level'' (\citealp[p.~469]{IEEE2017};
+            \citeyear[p.~9]{IEEE2013}) but \phaseDef{\citep}})}}
 
 \begin{table}[hbtp!]
     \centering

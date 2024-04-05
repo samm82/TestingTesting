@@ -951,6 +951,15 @@ to eighteen; almost 20\% of undefined test approaches could have been defined!
 Additionally, discrepancies and ambiguities exist both among sources and
 within individual ones; these may be areas for further investigation:
 
+% Defined here to reduce duplication of distinction between ``level'' and
+%    ``phase'' and avoid ``already defined'' error
+\newcommand{\procLevel}[1]{``Test level'' can also refer to the scope
+of a test process; for example, a process may ``apply across the whole
+organization'' or only ``to specific projects'' #1[p.~24]{IEEE2022}}
+\newcommand{\phaseDef}[1]{can also refer to the ``period of time in the software
+      life cycle'' when testing occurs #1[p.~470]{IEEE2017}, usually after
+      the implementation phase (pp.~420, 509).}
+
 \begin{enumerate}
       \item ``Compatibility testing'' is defined as ``testing that measures the
             degree to which a test item can function satisfactorily alongside
@@ -1084,6 +1093,12 @@ within individual ones; these may be areas for further investigation:
             ``audit'' \citeyearpar[p.~36]{IEEE2017}; while the first term
             \emph{could} be considered a superset of the latter two, this
             distinction doesn't seem useful.
+      \item \citeauthor*{IEEE2017} say that ``test level'' and ``test phase''
+            are synonyms, both meaning a ``specific instantiation of [a] test
+            sub-process'' (\citeyear[pp.~469, 470]{IEEE2017},
+            \citeyear[p.~9]{IEEE2013}), but there are also alternative
+            definitions for them. \procLevel{\citeyearpar}, while ``test phase''
+            \phaseDef{\citeyearpar}
 \end{enumerate}
 
 \paragraph{Functional Testing}
