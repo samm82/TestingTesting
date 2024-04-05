@@ -1,12 +1,14 @@
 % so VS Code doesn't freak out
 \newcommand{\techniqueCell}{\makecell{(Design)\\Technique}}
-\newcommand{\levelCell}{\makecell{Level\tablefootnote{\procLevel}\\
-        (sometimes ``Phase''\tablefootnote{\phaseDef})}}
-\newcommand{\procLevel}{``Level'' can also refer to the ``level''
-    of a test process \citep[p.~24]{IEEE2022}.}
-\newcommand{\phaseDef}{While \citet{IEEE2017} list the two terms as synonyms
-    (p.~469), a separate definition of ``test phase'', referring to a
-    ``period of time'', is also given (p.~470).}
+\newcommand{\levelCell}{\makecell{Level\tablefootnote{\procLevel{}}\\
+        (sometimes\\``Phase''\tablefootnote{\phaseDef{}})}}
+\newcommand{\procLevel}{``Test level'' can also refer to the scope
+    of a test process; for example, a process may ``apply across the whole
+    organization'' or only ``to specific projects'' \citep[p.~24]{IEEE2022}.}
+\newcommand{\phaseDef}{``Test phase'' can be a synonym for ``test level''
+    (\citealp[p.~469]{IEEE2017}; \citealp[p.~9]{IEEE2013}) but can also refer to the
+    ``period of time in the software life cycle'' when testing occurs
+    \citep[p.~470]{IEEE2017}, usually after the implementation phase (pp.~420, 509).}
 
 \begin{table}[hbtp!]
     \centering
@@ -26,7 +28,7 @@
         \citep[p.~472]{IEEE2017} and is also used to ``pick the particular test case
         values'' \citep[p.~465]{IEEE2017} & black or white box, minimum and maximum
         boundary value testing \citep[p.~465]{IEEE2017}                                                \\
-        \techniqueCell                    & A ``defined'' and ``systematic''
+        \techniqueCell{}                  & A ``defined'' and ``systematic''
         \citep[p.~464]{IEEE2017} ``procedure used to
         create or select a test model, identify test
         coverage items, and derive corresponding test cases''
@@ -37,9 +39,10 @@
         on the format of the test basis'', and on expectations
         \citep[p.~23]{IEEE2022}           & equivalence partitioning,
         boundary value analysis, branch testing \citep[p.~11]{IEEE2022}                                \\
-        \levelCell                        & A stage of testing
+        \levelCell{}                      & A stage of testing
         ``typically associated with the achievement of particular objectives
-        and used to treat particular risks'' \citep[p.~12]{IEEE2022}; more
+        and used to treat particular risks'' \citep[p.~12]{IEEE2022} with
+        ``its own documentation and resources'' \citep[p.~469]{IEEE2017}; more
         generally, ``designat[es] \dots the coverage and detail''
         \citep[p.~249]{IEEE2017}          & unit/component testing,
         integration testing, system testing (\citealp[p.~12]{IEEE2022};
