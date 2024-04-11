@@ -775,7 +775,7 @@ sources \citep[p.~5-1]{SWEBOK2024}; \citeauthor{IEEE2017} define ``software
 testing'' as ``dynamic verification'' ``in which a system or component is
 executed'' \citeyearpar[p.~427]{IEEE2017}. Since ``terminology is not uniform
 among different communities, and some use the term \emph{testing} to refer to
-static techniques as well'' \cite[p.~5-2]{SWEBOK2024} (including
+static techniques as well'' \citep[p.~5-2]{SWEBOK2024} (including
 \citet[p.~440]{IEEE2017}!), the scope of ``testing'' for the purpose of this
 project originally included both ``static testing'' and ``dynamic testing'', as
 done by \citet[p.~17]{IEEE2022}. However, static testing tends to be less
@@ -810,10 +810,10 @@ requirements do not apply to the code itself, and as such are out of scope:
 \begin{enumerate}
       \item \textbf{Nontechnical Requirement:} a ``requirement affecting product
             and service acquisition or development that is not a property of
-            the product or service'' \cite[p.~293]{IEEE2017}
+            the product or service'' \citep[p.~293]{IEEE2017}
       \item \textbf{Physical Requirement:} a ``requirement that specifies a
             physical characteristic that a system or system component must
-            possess'' \cite[p.~322]{IEEE2017}
+            possess'' \citep[p.~322]{IEEE2017}
 \end{enumerate}
 
 \subsection{Methodology}
@@ -854,18 +854,18 @@ decided to be not worth tracking (see \thesisissueref{39}, \thesisissueref{44},
 \begin{itemize}
       \item \textbf{Evaluation:} the ``systematic determination of the extent
             to which an entity meets its specified criteria''
-            \cite[p.~167]{IEEE2017}
+            \citep[p.~167]{IEEE2017}
       \item \textbf{Product Analysis:} the ``process of evaluating a product by
             manual or automated means to determine if the product has certain
-            characteristics'' \cite[p.~343]{IEEE2017}
+            characteristics'' \citep[p.~343]{IEEE2017}
       \item \textbf{Quality Audit:} ``a structured, independent process to
             determine if project activities comply with organizational and
-            project policies, processes, and procedures'' \cite[p.~361]{IEEE2017}
+            project policies, processes, and procedures'' \citep[p.~361]{IEEE2017}
             \todo{OG: PMBOK}
       \item \textbf{Software Product Evaluation:} a ``technical operation that
             consists of producing an assessment of one or more characteristics
             of a software product according to a specified procedure''
-            \cite[p.~424]{IEEE2017}
+            \citep[p.~424]{IEEE2017}
 \end{itemize}
 
 Different sources categorized software testing approaches in different ways;
@@ -965,10 +965,10 @@ organization'' or only ``to specific projects'' #1[p.~24]{IEEE2022}}
             degree to which a test item can function satisfactorily alongside
             other independent products in a shared environment (co-existence),
             and where necessary, exchanges information with other systems or
-            components (interoperability)'' \cite[p.~3]{IEEE2022}. This
+            components (interoperability)'' \citep[p.~3]{IEEE2022}. This
             definition is nonatomic as it combines the ideas of ``co-existence''
             and ``interoperability''. The term ``interoperability testing'' is
-            not defined, but is used three times \cite[pp.~22, 43]{IEEE2022}
+            not defined, but is used three times \citep[pp.~22, 43]{IEEE2022}
             (although the third usage seems like it should be ``portability
             testing''). This implies that ``co-existence testing'' and
             ``interoperability testing'' should be defined as their own terms,
@@ -991,25 +991,25 @@ organization'' or only ``to specific projects'' #1[p.~24]{IEEE2022}}
             same, or that more thought must be given to
             classification/organization).
       \item ``Fuzz testing'' is ``tagged'' (?) as ``artificial intelligence''
-            \cite[p.~5]{IEEE2022}, although I don't think this is a
+            \citep[p.~5]{IEEE2022}, although I don't think this is a
             set-in-stone requirement.
       \item ``Load testing'' is defined as using loads ``usually between
             anticipated conditions of low, typical, and peak usage''
-            \cite[p.~5]{IEEE2022}, while \citet[p.~86]{Patton2006} says the
+            \citep[p.~5]{IEEE2022}, while \citet[p.~86]{Patton2006} says the
             loads should as large as possible.
       \item Integration, system, and system integration testing are all listed
-            as ``common test levels'' \cite[p.~12]{IEEE2022}, but no
+            as ``common test levels'' \citep[p.~12]{IEEE2022}, but no
             definitions are given for the latter two, making it unclear what
             ``system integration testing'' is; it is a combination of the two?
             somewhere on the spectrum between them?
       \item Similarly, component, integration, and component integration
             testing are all listed in \citet{IEEE2017}, but ``component
             integration testing'' is only defined as ``testing of groups of
-            related components'' \cite[p.~82]{IEEE2017}; it is a combination of
+            related components'' \citep[p.~82]{IEEE2017}; it is a combination of
             the two? somewhere on the spectrum between them?
       \item ``Disaster/recovery testing'' and ``recovery testing'' (as a subset
             of performance-related testing) are both listed as types of testing
-            \cite[p.~22]{IEEE2022} but not defined, making it unclear what
+            \citep[p.~22]{IEEE2022} but not defined, making it unclear what
             distinguishes them. \citet[p.~2]{IEEE2013} define ``backup and
             recovery testing'' as  testing ``that measures the degree to which
             system state can be restored from backup within specified parameters
@@ -1022,13 +1022,13 @@ organization'' or only ``to specific projects'' #1[p.~24]{IEEE2022}}
             meant \emph{outside} of the context of performance.
       \item Similarly, ``branch condition testing'' and ``branch condition combination
             testing'' are both listed as subsets of structure-based testing
-            \cite[p.~22]{IEEE2022} but are not defined, making it unclear what
+            \citep[p.~22]{IEEE2022} but are not defined, making it unclear what
             distinguishes them.
       \item ``Installability testing'' is given as a type of testing
-            \cite[p.~22]{IEEE2022} but is sometimes called a test level as
-            ``installation testing'' \cite[p.~445]{PetersAndPedrycz2000}.
+            \citep[p.~22]{IEEE2022} but is sometimes called a test level as
+            ``installation testing'' \citep[p.~445]{PetersAndPedrycz2000}.
       \item Retesting and regression testing seem to be separated from the rest
-            of the testing approaches \cite[p.~23]{IEEE2022}, but it is not
+            of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
             clearly detailed why; \citet[p.~3]{BarbosaEtAl2006} considers
             regression testing to be a testing level.
       \item A component is an ``entity with discrete structure \dots within a
@@ -1083,7 +1083,7 @@ organization'' or only ``to specific projects'' #1[p.~24]{IEEE2022}}
             an objective of scalability testing instead.
       \item SWEBOK V4 defines ``privacy testing'' as testing that ``assess[es]
             the security and privacy of users' personal data to prevent local
-            attacks'' \cite[p.~5-10]{SWEBOK2024}; this seems to overlap with
+            attacks'' \citep[p.~5-10]{SWEBOK2024}; this seems to overlap with
             \citeauthor{IEEE2022}'s definition of ``security testing'', which is
             ``conducted to evaluate the degree to which a test item, and
             associated data and information, are protected so that'' only
@@ -1103,8 +1103,8 @@ organization'' or only ``to specific projects'' #1[p.~24]{IEEE2022}}
             \phaseDef{\citeyearpar}
       \item Various sources say that alpha testing is performed by different
             people, including ``only by users within the organization
-            developing the software'' \cite[p.~17]{IEEE2017}, by ``a small,
-            selected group of potential users'' \cite[p.~5-8]{SWEBOK2024}, or
+            developing the software'' \citep[p.~17]{IEEE2017}, by ``a small,
+            selected group of potential users'' \citep[p.~5-8]{SWEBOK2024}, or
             ``in the developer's test environment by roles outside the
             development organization'' \citepalias{ISTQB}
 \end{enumerate}
@@ -1153,9 +1153,9 @@ ways, alongside other, potentially related, terms:
             \citeyear[p.~196]{IEEE2017}) but groups it with ``correctness
             testing''. Since ``correctness'' is a software quality
             (\citealp[p.~104]{IEEE2017}; \citealp[p.~3-13]{SWEBOK2024}) which is
-            what defines a ``test type'' \cite[p.~15]{IEEE2022}, it seems
+            what defines a ``test type'' \citep[p.~15]{IEEE2022}, it seems
             consistent to label ``functional testing'' as a ``test type''
-            \cite[pp.~15, 20, 22]{IEEE2022}.
+            \citep[pp.~15, 20, 22]{IEEE2022}.
 
       \item \textbf{Conformance Testing:} As mentioned above,
             \citet[p.~5-7]{SWEBOK2024} says testing ``that the functional
@@ -1218,7 +1218,7 @@ can accept [it]'' \citepalias{ISTQB}.
 ``Performance testing'' is defined as testing ``conducted to
 evaluate the degree to which a test item accomplishes its
 designated functions within given constraints of time and other
-resources'' \cite[p.~7]{IEEE2022}. On p.~22, it is listed
+resources'' \citep[p.~7]{IEEE2022}. On p.~22, it is listed
 as a subset of ``performance-related testing'', along with other
 approaches like load and capacity testing; \citet[p.~5-9]{SWEBOK2024}
 gives ``capacity and response time'' as examples of ``performance
@@ -1444,9 +1444,9 @@ whether that information exists in Drasil already and if it can be added
             execution and timing conditions, testing procedure, and the
             expected outcomes'' \citep[pp.~5-1 to 5-2]{SWEBOK2024}
       \item Defect: ``an observable difference between what the software is
-            intended to do and what it does'' \cite[p.~1-1]{SWEBOK2024}; ``can
+            intended to do and what it does'' \citep[p.~1-1]{SWEBOK2024}; ``can
             be used to refer to either a fault or a failure, [sic] when the
-            distinction is not important'' \cite[p.~4-3]{SWEBOK2014}
+            distinction is not important'' \citep[p.~4-3]{SWEBOK2014}
             \todo{Find original source}
       \item Error: ``a human action that produces an incorrect result''
             \citep[p.~399]{vanVliet2000}
@@ -1614,9 +1614,9 @@ whether that information exists in Drasil already and if it can be added
 activity sequence is an acceptable behaviour of the \acs{sut} or
 not'' \citep[p.~509]{BarrEtAl2015} and ``can be any human or mechanical agent
 that decides whether the \acs{sut} behaved correctly in each test and according to
-the expected outcomes'' \cite[p.~5-5]{SWEBOK2024}. Oracles provide either ``a
+the expected outcomes'' \citep[p.~5-5]{SWEBOK2024}. Oracles provide either ``a
 `pass' or `fail' verdict''; otherwise, ``the test output is classified as
-inconclusive'' \cite[p.~5-5]{SWEBOK2024}. This process can be ``deterministic''
+inconclusive'' \citep[p.~5-5]{SWEBOK2024}. This process can be ``deterministic''
 (returning a Boolean value) or ``probabilistic'' (returning ``a real number in
 the closed interval $[0, 1]$'') \citep[p.~509]{BarrEtAl2015}. Probabilistic
 test oracles can be used to reduce the computation cost (since test oracles
@@ -1625,7 +1625,7 @@ or in ``situations where some degree of imprecision can be tolerated'' since
 they ``offer a probability that [a given] test case is acceptable''
 \citep[p.~510]{BarrEtAl2015}. SWEBOK V4 lists ``unambiguous requirements
 specifications, behavioral models, and code annotations'' as examples
-\cite[p.~5-5]{SWEBOK2024}, and \citeauthor{BarrEtAl2015} provides four
+\citep[p.~5-5]{SWEBOK2024}, and \citeauthor{BarrEtAl2015} provides four
 categories \citeyearpar[p.~510]{BarrEtAl2015}:
 
 \begin{itemize}
@@ -1680,7 +1680,7 @@ includes some keywords that, if found, could trigger an applicable warning to
 the user (similar to the idea behind the correctness/consistency checks
 project). In general, each requirement should be unambiguous, testable,
 binding, and ``acceptable to all stakeholders'', and the ``overall collection''
-should be complete, consistent, and feasible \cite[p.~1-8]{SWEBOK2024}:
+should be complete, consistent, and feasible \citep[p.~1-8]{SWEBOK2024}:
 
 \begin{itemize}
       \item \textbf{Potentially unrealistic:} always, every, all, none, every,
