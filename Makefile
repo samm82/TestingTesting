@@ -2,11 +2,12 @@
 
 help:
 	@echo "Build:"
-	@echo "  - build: Build a fresh copy of the thesis."
-	@echo "  - notes: Build a fresh copy of just the notes section."
-	@echo "  - debug: Same as 'build', but pauses build on errors for easier debugging."
-	@echo "  - clean: Clean working TeX build artifacts."
-	@echo "  - open : Open up the current thesis PDF."
+	@echo "  - build : Build a fresh copy of the thesis."
+	@echo "  - notes : Build a fresh copy of just the notes section."
+	@echo "  - debug : Same as 'build', but pauses build on errors for easier debugging."
+	@echo "  - poster: Build a fresh copy of the testing terminology poster."
+	@echo "  - clean : Clean working TeX build artifacts."
+	@echo "  - open  : Open up the current thesis PDF."
 	@echo ""
 	@echo "Supplementary Information:"
 	@echo "  - help               : View this help guide."
@@ -41,6 +42,10 @@ notes: # standard build of just notes -- '-output-directory=build' is a special 
 
 debug: # for finding hard issues, this is an interactive version of 'build'
 	latexmk -output-directory=build -pdflatex=lualatex -pdf thesis.tex --shell-escape
+
+poster:
+	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode poster.tex --shell-escape
+	cp build/poster.pdf poster.pdf
 
 clean:
 	rm -rf build/
