@@ -20,7 +20,8 @@
 %plot options
 \pgfplotsset{width=7cm,compat=1.8}
 \PassOptionsToPackage{gray}{xcolor}
-\usepackage{cite}
+% \usepackage{cite}
+\usepackage[round]{natbib}
 \usepackage{fancyvrb}
 
 \usetikzlibrary{shapes,shapes.geometric,arrows,fit,calc,positioning,automata,}
@@ -69,14 +70,28 @@
 
         %this needs help
         \begin{block}{\fontsize{37}{20}\selectfont Background}
-            \textit{McMaster Start Coding} and \textit{STaBL Foundation}'s mission is to uplift underprivileged
-            youth by equipping them with 21st-century skills like coding. We have taught lessons to over
-            30,000 students in the past seven years. We have found creating video games to be particularly
-            engaging. We have developed and tested tools such as the state diagram tool
-            \cite{pasupathi2022teaching}, which has been applied successfully by Grade 4-12 and 1st-year
-            students to create single player games. The previous attempt, PAL \cite{schankula2020newyouthhack}, at creating a
-            multiplayer game / app framework proved too complicated to be reasonably used by students. TEASync
-            is a simplified framework allowing students to create multi-user applications.
+            The first step to any formal process is understanding the underlying
+            domain well. Therefore, a systematic and rigorous understanding of
+            software testing approaches is needed to develop formal tools to test
+            software. In my specific case, my motivation was seeing which kinds
+            of testing could be generated automatically by Drasil, ``a framework
+            for generating all of the software artifacts for (well understood)
+            research software'' \citep{carette_drasil_2021}.
+
+            \quad % needed for line break
+
+            Most software testing ontologies seem to focus on the high-level
+            testing process rather than the testing techniques themselves. For
+            example, the terms and definitions \citep{TebesEtAl2020b} from
+            TestTDO \citep{TebesEtAl2020a} mainly focus on parts of the testing
+            process (e.g., test goal, test plan, testing role, testable entity)
+            and how they relate to one another.
+            \citet{UnterkalmsteinerEtAl2014} provide a foundation to allow one
+            ``to classify and characterize alignment research and solutions
+            that focus on the boundary between [requirements engineering and
+                    software testing]'' but do not ``do[] not aim at providing a
+            systematic and exhaustive state-of-the-art survey of [either domain]''
+            (p.~A:2).
             \vspace{5mm}
         \end{block}
 
@@ -172,9 +187,10 @@
 
         \begin{block}{\fontsize{37}{20}\selectfont References}
             \setbeamertemplate{bibliography item}{\insertbiblabel}
-            \bibliographystyle{ieeetr}
+            \bibliographystyle{plainnat}
+            % \bibliographystyle{ieeetr}
             {\scriptsize
-                \bibliography{bib}}
+                \bibliography{references}}
         \end{block}
 
         \begin{block}{\fontsize{37}{20}\selectfont Acknowledgments}
