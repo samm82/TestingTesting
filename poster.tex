@@ -3,7 +3,7 @@
 \usepackage[absolute,overlay]{textpos}
 \usepackage{bookmark} %pdflatex says to use this to avoid errors...
 \usepackage{graphicx} %for including images
-\graphicspath{{figs/}} %location of images
+\graphicspath{{assets/images/}} %location of images
 \usepackage{wrapfig} %wrap text around the images
 \usepackage{listingsutf8}    %package for code environment; use this instead of verbatim to get automatic line break; use this instead of listings to get (•)
 \usepackage{amsmath}
@@ -54,11 +54,11 @@
 \begin{frame}[fragile]
 
     \begin{textblock}{2}(0.7,1)
-        \includegraphics[height=8.5cm]{figs/eng_logo.png} % We can use CAS logo as well?
+        \includegraphics[height=8.5cm]{eng_logo.png}
     \end{textblock}
 
-    \begin{textblock}{2}(12.7,0.80)
-        \includegraphics[height=10.5cm]{figs/outreachlogo.png}
+    \begin{textblock}{2}(13,0.55)
+        \includegraphics[height=12.5cm]{cas_logo.png}
     \end{textblock}
 
     \begin{textblock}{8}(4,1)
@@ -85,13 +85,13 @@
                 \item Elm is a pure, strictly-typed functional programming language
                 \item Every Elm program follows a rigid structure known as \textit{The Elm Architecture} (TEA)
             \end{itemize}
-            \begin{figure}
-                \includegraphics[height = 13cm]{TheElmArchitecture.png}
-                \caption{The Elm Architecture consists of a \textit{model}, representing application data, a pure \textit{update} function to change the model in reaction to user events, called
-                    messages,
-                    and a pure \textit{view} function to render the application to the screen.}
-                \label{Fig:TEA}
-            \end{figure}
+            % \begin{figure}
+            %     \includegraphics[height = 13cm]{TheElmArchitecture.png}
+            %     \caption{The Elm Architecture consists of a \textit{model}, representing application data, a pure \textit{update} function to change the model in reaction to user events, called
+            %         messages,
+            %         and a pure \textit{view} function to render the application to the screen.}
+            %     \label{Fig:TEA}
+            % \end{figure}
             \vspace{-6mm}
         \end{block}
 
@@ -111,13 +111,13 @@
         \end{block}
 
         \begin{block}{\fontsize{37}{20}\selectfont TEASync Framework Architectural Overview}
-            \begin{figure}
-                \includegraphics[height = 20cm]{figs/TEASyncDiagram.pdf}
-                \caption{An example multi-user application with four concurrent clients. TEASync uses a generalized server written using the Integrated Haskell Platform (IHP)
-                    to synchronize all clients. The programmer writes no app-specific server-side code; rather they write only Elm code,
-                    greatly simplifying the process of creating a multi-user application. The TEASync framework handles
-                    communication and ensures that the ordering of messages is consistent for every client.}
-            \end{figure}
+            % \begin{figure}
+            %     \includegraphics[height = 20cm]{figs/TEASyncDiagram.pdf}
+            %     \caption{An example multi-user application with four concurrent clients. TEASync uses a generalized server written using the Integrated Haskell Platform (IHP)
+            %         to synchronize all clients. The programmer writes no app-specific server-side code; rather they write only Elm code,
+            %         greatly simplifying the process of creating a multi-user application. The TEASync framework handles
+            %         communication and ensures that the ordering of messages is consistent for every client.}
+            % \end{figure}
             \vspace{-6mm}
         \end{block}
     \end{textblock}
@@ -139,21 +139,21 @@
                 Decrement -> { globalModel | count = globalModel.count - 1 }
             \end{Verbatim}
 
-            \begin{figure}
-                \begin{subfigure}{0.49\textwidth}
-                    \centering
-                    \includegraphics[height = 13.5cm,trim={0 5mm 0 5mm},clip]{IncDec.png}
-                    \caption{Example TEASync counting application}
-                    \label{Fig:Counter}
-                \end{subfigure}
-                \begin{subfigure}{0.49\textwidth}
-                    \centering
-                    \includegraphics[height = 13.5cm]{Pong.png}
-                    \caption{Example TEASync multiplayer Pong game}
-                    \label{Fig:Pong}
-                \end{subfigure}
-                \caption{Example TEASync application user interfaces}
-            \end{figure}
+            % \begin{figure}
+            %     \begin{subfigure}{0.49\textwidth}
+            %         \centering
+            %         \includegraphics[height = 13.5cm,trim={0 5mm 0 5mm},clip]{IncDec.png}
+            %         \caption{Example TEASync counting application}
+            %         \label{Fig:Counter}
+            %     \end{subfigure}
+            %     \begin{subfigure}{0.49\textwidth}
+            %         \centering
+            %         \includegraphics[height = 13.5cm]{Pong.png}
+            %         \caption{Example TEASync multiplayer Pong game}
+            %         \label{Fig:Pong}
+            %     \end{subfigure}
+            %     \caption{Example TEASync application user interfaces}
+            % \end{figure}
             \vspace{-5mm}
         \end{block}
 
@@ -197,19 +197,19 @@
             We thank NSERC for CGS-M funding and the Government of Ontario for OGS funding.
         \end{block}
 
-        \begin{figure}[htbp]
-            \centering
-            \includegraphics[height=5cm,trim={0 0 28.5cm 0},clip]{nserc-logo.jpg}
-            \hspace{0.5cm}
-            \includegraphics[height=5cm,trim={16.5cm 0 0 0},clip]{ontario@2x-print.png}
-            \hspace{0.5cm}
-            \includegraphics[height=5cm]{STaBLLogoWS.png}
-            \hspace{0.5cm}
-            \includegraphics[height=5cm]{elm-logo.png}
-            \hspace{0.5cm}
-            \includegraphics[height=5cm]{IHPLogo.png}
+        % \begin{figure}[htbp]
+        %     \centering
+        %     \includegraphics[height=5cm,trim={0 0 28.5cm 0},clip]{nserc-logo.jpg}
+        %     \hspace{0.5cm}
+        %     \includegraphics[height=5cm,trim={16.5cm 0 0 0},clip]{ontario@2x-print.png}
+        %     \hspace{0.5cm}
+        %     \includegraphics[height=5cm]{STaBLLogoWS.png}
+        %     \hspace{0.5cm}
+        %     \includegraphics[height=5cm]{elm-logo.png}
+        %     \hspace{0.5cm}
+        %     \includegraphics[height=5cm]{IHPLogo.png}
 
-        \end{figure}
+        % \end{figure}
     \end{textblock}
 
     % \begin{textblock}{5}(10.7,3.8)
