@@ -2,7 +2,10 @@
 \renewcommand{\thempfootnote}{\arabic{mpfootnote}}
 
 % makecell with new lines so VS Code doesn't freak out
-\newcommand{\techniqueCell}{\makecell{(Design)\\Technique}}
+\newcommand{\techniqueCell}{\makecell{(Design\footnote{While ``design technique''
+            seems to be the most common term, this is sometimes abbreviated to
+            just ``technique'' (\citealp[p.~11]{IEEE2022};
+            \citetalias{ISTQB}).})\\Technique}}
 \newcommand{\levelCell}{\makecell{Level\footnote{\procLevel{\citep}.}\\
         (sometimes\\``Phase''\footnote{``Test phase'' can be a synonym for
             ``test level'' (\citealp[p.~469]{IEEE2017};
