@@ -26,6 +26,7 @@
 \usepackage{fancyvrb}
 
 \usetikzlibrary{shapes,shapes.geometric,arrows,fit,calc,positioning,automata,}
+\usepackage{pgf-pie}
 
 \usepackage{wrapfig}
 
@@ -136,21 +137,24 @@
     \end{textblock}
 
     \begin{textblock}{7.25}(8.25,3.6)
-        \begin{block}{\fontsize{37}{20}\selectfont Example Applications}
-            The following is a simple application which allows multiple users to increment and decrement an
-            integer. Figure \ref{Fig:Counter} shows an example UI for this application. Figure \ref{Fig:Pong} shows an example Pong game made using this framework.
+        \begin{block}{\fontsize{37}{20}\selectfont Examples}
+            \citep{IEEE2022} is a standard for general concepts related to
+            software testing. However, it is not comprehensive. For example, as
+            shown in Figure \ref{Fig:defs}, most (55 out of 99) testing
+            approaches mentioned in this standard do not have an accompanying
+            definition!
 
-            \begin{Verbatim}
-                type GlobalMsg = Increment | Decrement
+            \begin{figure}
+                \begin{tikzpicture}[thick, scale=1.5, every node/.style={scale=0.8}]
+                    \pie{44.4/Defined,
+                        38.4/Undefined,
+                        9.1/Present in another standard,
+                        8.1/Present in previous version}
+                \end{tikzpicture}
+                \label{Fig:defs}
+                \caption{Breakdown of testing approach definitions from \cite{IEEE2022}.}
+            \end{figure}
 
-                type alias GlobalModel = { count : Int }
-
-                globalUpdate : GlobalMsg -> GlobalModel -> GlobalModel
-                globalUpdate msg globalModel =
-                case msg of
-                Increment -> { globalModel | count = globalModel.count + 1 }
-                Decrement -> { globalModel | count = globalModel.count - 1 }
-            \end{Verbatim}
 
             % \begin{figure}
             %     \begin{subfigure}{0.49\textwidth}
