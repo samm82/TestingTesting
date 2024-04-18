@@ -22,6 +22,7 @@
 \PassOptionsToPackage{gray}{xcolor}
 % \usepackage{cite}
 \usepackage[round]{natbib}
+\defcitealias{ISTQB}{Hamburg and Mogyorodi, 2024}
 \usepackage{fancyvrb}
 
 \usetikzlibrary{shapes,shapes.geometric,arrows,fit,calc,positioning,automata,}
@@ -40,6 +41,9 @@
 \usecolortheme[named=MacMaroon2]{structure}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{navigation symbols}{}
+
+% From https://tex.stackexchange.com/questions/201216/beamer-nested-lists-do-not-decrease-the-font-size
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize} %to set sub-itemize size
 
 \title{A New Taxonomy of Software Testing Approaches}
 \subtitle{Seeking More Standardized Standards}
@@ -66,7 +70,7 @@
         \titlepage
     \end{textblock}
 
-    \begin{textblock}{7.25}(0.5,3.9)
+    \begin{textblock}{7.25}(0.5,3.6)
 
         %this needs help
         \begin{block}{\fontsize{37}{20}\selectfont Background}
@@ -95,10 +99,24 @@
             \vspace{5mm}
         \end{block}
 
-        \begin{block}{\fontsize{37}{20}\selectfont Background: The Elm Architecture}
+        \begin{block}{\fontsize{37}{20}\selectfont Methodology}
             \begin{itemize}
-                \item Elm is a pure, strictly-typed functional programming language
-                \item Every Elm program follows a rigid structure known as \textit{The Elm Architecture} (TEA)
+                \item If a taxonomy doesn't already exist, I should create one!
+                      \begin{itemize}
+                          \item I started with an ad hoc approach, focusing on
+                                textbooks trusted at McMaster \\\citep{Patton2006,
+                                    PetersAndPedrycz2000, vanVliet2000}
+                          \item We then realized that this was too arbitrary, so
+                                I then started from more established sources \\
+                                (\citealp{IEEE2022, SWEBOK2024, SWEBOK2014,
+                                    IEEE2017, ISO_IEC2023a}; \citetalias{ISTQB})
+                          \item The goal of this approach is to iterate,
+                                eventually revisiting the original textbooks,
+                                until I build up enough knowledge to encounter
+                                diminishing returns (ideally no returns!)
+                      \end{itemize}
+                \item Since there are many standardized documents about software
+                      testing (or software in general), this should be trivial, no?
             \end{itemize}
             % \begin{figure}
             %     \includegraphics[height = 13cm]{TheElmArchitecture.png}
@@ -107,37 +125,17 @@
             %         and a pure \textit{view} function to render the application to the screen.}
             %     \label{Fig:TEA}
             % \end{figure}
-            \vspace{-6mm}
+            \vspace{5mm}
         \end{block}
 
-        \begin{block}{\fontsize{37}{20}\selectfont Theory: Extending The Elm Architecture to Multiple Clients}
-            \begin{itemize}
-                \item Theorem 1: Two clients running Elm programs having an identical initial model,
-                      identical update functions, and processing an identical sequence of messages will end up
-                      with an identical model.
-                \item Proof: This can be shown easily by using Elm's pureness property.
-                \item Corollary: Any number of Elm clients having an identical initial model,
-                      identical update functions, and processing an identical sequence of messages will end up
-                      with an identical model.
-                \item Observation: By ensuring every client receives the same messages in the same order,
-                      we effectively have a multi-user application, without writing any application-specific server
-                      code.
-            \end{itemize}
-        \end{block}
-
-        \begin{block}{\fontsize{37}{20}\selectfont TEASync Framework Architectural Overview}
-            % \begin{figure}
-            %     \includegraphics[height = 20cm]{figs/TEASyncDiagram.pdf}
-            %     \caption{An example multi-user application with four concurrent clients. TEASync uses a generalized server written using the Integrated Haskell Platform (IHP)
-            %         to synchronize all clients. The programmer writes no app-specific server-side code; rather they write only Elm code,
-            %         greatly simplifying the process of creating a multi-user application. The TEASync framework handles
-            %         communication and ensures that the ordering of messages is consistent for every client.}
-            % \end{figure}
-            \vspace{-6mm}
+        \begin{block}{\fontsize{37}{20}\selectfont My Findings}
+            \vspace{5mm}
+            {\fontsize{185}{20}\selectfont NO}
+            \vspace{5mm}
         \end{block}
     \end{textblock}
 
-    \begin{textblock}{7.25}(8.25,3.9)
+    \begin{textblock}{7.25}(8.25,3.6)
         \begin{block}{\fontsize{37}{20}\selectfont Example Applications}
             The following is a simple application which allows multiple users to increment and decrement an
             integer. Figure \ref{Fig:Counter} shows an example UI for this application. Figure \ref{Fig:Pong} shows an example Pong game made using this framework.
@@ -189,7 +187,7 @@
             \setbeamertemplate{bibliography item}{\insertbiblabel}
             \bibliographystyle{plainnat}
             % \bibliographystyle{ieeetr}
-            {\scriptsize
+            {\fontsize{14}{15.75}\selectfont
                 \bibliography{references}}
         \end{block}
 
