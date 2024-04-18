@@ -1,5 +1,5 @@
 \documentclass[22pt]{beamer}
-\usepackage[orientation=portrait, size=custom, width=91.44, height=60.96,scale=1.2]{beamerposter} % 36in*2.5 = 90cm
+\usepackage[orientation=portrait, size=custom, width=91.44, height=91.44,scale=1.2]{beamerposter} % 36in*2.5 = 90cm
 \usepackage[absolute,overlay]{textpos}
 \usepackage{bookmark} %pdflatex says to use this to avoid errors...
 \usepackage{graphicx} %for including images
@@ -172,14 +172,18 @@
                     \end{center}
                 \end{column}
             \end{columns}
-            \vspace{-5mm}
         \end{block}
 
         \begin{block}{\fontsize{37}{20}\selectfont Conclusions \& Future Work}
-            Leveraging the strictly-typed nature of Elm and its model-view-update architecture, we were able
-            to create a simplified multi-user framework, requiring the programmer to write no server-side code. In addition to the upcoming pedagogical study, future work includes a data modelling extension allowing persistent, structured data, an
-            authentication/authorization scheme, a binary data format to reduce network communication, and
-            curriculum development for a TEASync-based summer camp.
+            \begin{itemize}
+                \item Current software testing taxonomies are incomplete,
+                      inconsistent, and/or incorrect
+                \item For one to be useful, it needs to be built systematically
+                      from a large body of established sources
+                \item I plan to continue investigating how the literature defines
+                      and categorizes software testing approaches to analyze any
+                      discrepancies and structure these ideas coherently
+            \end{itemize}
         \end{block}
 
         \begin{block}{\fontsize{37}{20}\selectfont References}
