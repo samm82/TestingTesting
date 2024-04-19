@@ -41,6 +41,7 @@
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{navigation symbols}{}
 
+\setbeamerfont{title}{size=\fontsize{60}{30}}
 % From https://tex.stackexchange.com/questions/201216/beamer-nested-lists-do-not-decrease-the-font-size
 \setbeamerfont{itemize/enumerate subbody}{size=\normalsize} %to set sub-itemize size
 
@@ -69,15 +70,13 @@
         \titlepage
     \end{textblock}
 
-    \begin{textblock}{7.25}(0.5,2.85)
-
-        %this needs help
+    \begin{textblock}{7.25}(0.5,2.9)
         \begin{block}{\fontsize{37}{20}\selectfont Goal}
             We want a systematic, rigorous, and ``complete'' taxonomy of
             software testing approaches.
             \begin{itemize}
                 \item This will help us \textbf{automatically generate test cases}
-                      in our research framework Drasil \cite{carette_drasil_2021}
+                      in Drasil \cite{carette_drasil_2021}, our research framework
                 \item We need to \textbf{understand the underlying domain} to
                       determine which kinds of testing can be generated
                       and how to do so (e.g., what knowledge is required?)
@@ -171,7 +170,7 @@
         \end{block}
     \end{textblock}
 
-    \begin{textblock}{7.25}(8.25,2.85)
+    \begin{textblock}{7.25}(8.25,2.9)
         \begin{block}{\fontsize{37}{20}\selectfont More Examples}
             Despite \cite{IEEE2022} being a software testing standard, it
             leaves much unstandardized (see Figure~\ref{Fig:IEEEdefs}).
