@@ -15,7 +15,7 @@
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 \usepackage{array}
 \usepackage{booktabs,adjustbox}
-\usepackage{subcaption}
+\usepackage[center]{caption}
 \usepackage{pgfplots}
 %plot options
 \pgfplotsset{width=7cm,compat=1.8}
@@ -178,34 +178,34 @@
             upon publication of this one. However, the presence of a
             definition does not guarantee that it is useful! See
             Figure~\ref{Fig:unhelpful-defs} for some good (bad?) examples.
-            \vspace{-8mm}
+            % \vspace{-8mm}
             \begin{columns}
-                \begin{column}{0.4\textwidth}
+                \begin{column}{0.45\textwidth}
                     \begin{center}
                         \begin{figure}
-                            \begin{tikzpicture}[thick, scale=1.5, every node/.style={align=left, scale=0.8}]
+                            \begin{tikzpicture}[thick, scale=1.7, every node/.style={align=left, scale=0.8}]
                                 \pie{44.4/Defined,
                                 38.4/Undefined,
                                 9.1/{Present in\\another standard},
                                 8.1/{Present in\\previous version}}
                             \end{tikzpicture}
-                            \caption{Breakdown of testing approach definitions
-                                from \cite{IEEE2022}.}
+                            \caption{Breakdown of testing\\approach definitions
+                                \cite{IEEE2022}.}
                             \label{Fig:IEEEdefs}
                         \end{figure}
                     \end{center}
                 \end{column}
-                \begin{column}{0.475\textwidth}
+                \begin{column}{0.425\textwidth}
                     \begin{center}
                         \begin{figure}
-                            \vspace{9mm}
+                            \vspace{12mm}
                             \includegraphics[width=\textwidth]{software element.png}
 
                             \vspace{2mm}
 
                             \includegraphics[height=3.9cm]{per.png}
                             \includegraphics[height=3.8cm]{state of.png}
-                            \caption{Some less-than-helpful definitions from
+                            \caption{Some less-than-helpful definitions\\
                                 \cite[pp.~421, 170, 301, counterclockwise from top]{IEEE2017}.}
                             \label{Fig:unhelpful-defs}
                         \end{figure}
@@ -235,7 +235,7 @@
                 \item ``a small, selected group of potential users''
                       \cite[p.~5-8]{SWEBOK2024}, or
                 \item ``roles outside the development organization''
-                      \cite{ISTQB}
+                      \cite{ISTQB}.
             \end{enumerate}
             \vspace{5mm}
         \end{block}
@@ -266,7 +266,7 @@
 
         \begin{block}{\fontsize{37}{20}\selectfont Acknowledgments}
             We thank the Government of Ontario for OGS funding.
-            \vspace{7mm}
+            \vspace{2.5mm}
         \end{block}
     \end{textblock}
 
