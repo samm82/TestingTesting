@@ -32,12 +32,14 @@
 %this doesn't seem to make any difference; leave for now for trying out
 \usetheme{Berlin}
 \definecolor{MacBlue}{rgb}{0.10196,0.22353,0.53725}
-\definecolor{MacMaroon} {rgb}{0.47843, 0, 0.23137}
-\definecolor{MacMaroon2} {rgb}{0.47451, 0, 0}
-\definecolor{MacGray}{rgb}{0.50196,0.49804,0.51765}
+\definecolor{MacMaroon}{rgb}{0.47843, 0, 0.23137}
+\definecolor{MacMaroon2}{rgb}{0.47451, 0, 0}
+\definecolor{MacGray}{rgb}{0.54118,0.59216,0.62353}
 \definecolor{MacMaroon3}{rgb}{00.47,0.2,0.31}
 \definecolor{MacGold}{rgb}{1, 0.75,0.35}
 \usecolortheme[named=MacMaroon2]{structure}
+
+\definecolor{IEEEGray}{rgb}{0.92549,0.92549,0.92941}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}{}
@@ -45,6 +47,9 @@
 \setbeamerfont{title}{size=\fontsize{60}{30}}
 % From https://tex.stackexchange.com/questions/201216/beamer-nested-lists-do-not-decrease-the-font-size
 \setbeamerfont{itemize/enumerate subbody}{size=\normalsize} %to set sub-itemize size
+
+\setbeamercolor{block title example}{bg=MacGray, fg=black}
+\setbeamercolor{block body example}{bg=IEEEGray, fg=black}
 
 \title{A New Taxonomy of Software Testing Approaches}
 \subtitle{Seeking More Standardized Standards}
@@ -230,17 +235,31 @@
 
             \quad\\ % needed for line break
 
-            This problem extends to definitions of testing
-            approaches. For example, SWEBOK V4 says ``scalability testing
-            evaluates the capability to use and learn the system and the user
-            documentation. It also focuses on the system's effectiveness in
-            supporting user tasks and the ability to recover from user errors''
-            \cite[p.~5-9]{SWEBOK2024}. This definition seems to be an
-            amalgamation of the definitions of usability, recovery, and
-            potentially functional testing. What's more, SWEBOK's definition
-            of elasticity testing cites a single source \cite[p.~5-9]{SWEBOK2024}
-            \textbf{that doesn't contain the words ``elasticity'' or ``elastic''}!
-            \vspace{7mm}\\
+            \begin{center}
+                \begin{minipage}{.9\textwidth}
+                    \begin{exampleblock}{SWEBOK's Definition of ``Scalability Testing''}
+                        {\fontsize{28}{13}\selectfont
+                            ``Scalability testing evaluates the capability to
+                            use and learn the system and the user documentation.
+                            It also focuses on the system's effectiveness in
+                            supporting user tasks and the ability to recover
+                            from user errors'' \cite[p.~5-9]{SWEBOK2024}}
+                        % \vskip3mm
+                        % \hspace*\fill{\small--- SWEBOK V4 \cite[p.~5-9]{SWEBOK2024}}
+                    \end{exampleblock}
+                \end{minipage}
+            \end{center}
+
+            \begin{itemize}
+                \item The above definition is an amalgamation of usability,
+                      recovery, and functional testing
+                \item SWEBOK's definition
+                      of elasticity testing cites a single source \cite[p.~5-9]{SWEBOK2024}
+                      \textbf{that doesn't contain the words ``elasticity'' or ``elastic''}!
+            \end{itemize}
+
+            \vspace{5mm}
+
             Even when the general idea behind an approach is understood,
             discrepancies can still arise. While alpha testing is quite common
             and understood, there is disagreement on who performs it:
