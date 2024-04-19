@@ -69,7 +69,7 @@
         \titlepage
     \end{textblock}
 
-    \begin{textblock}{7.25}(0.5,2.8)
+    \begin{textblock}{7.25}(0.5,2.75)
 
         %this needs help
         \begin{block}{\fontsize{37}{20}\selectfont Goal}
@@ -80,7 +80,7 @@
             \textbf{which kinds of testing can be generated automatically by Drasil},
             ``a framework for generating all of the software artifacts for
             (well understood) research software'' \cite{carette_drasil_2021}.
-            \vspace{5mm}
+            \vspace{7mm}
         \end{block}
 
         \begin{block}{\fontsize{37}{20}\selectfont Problem}
@@ -88,12 +88,13 @@
             testing process rather than the testing approaches themselves. For
             example:
             \begin{itemize}
-                \item \cite{TebesEtAl2020a} mainly focuses on parts of the
+                \item Tebes et al.~(2020) mainly focus on parts of the
                       testing process (e.g., test goal, testable entity)
-                \item \cite{UnterkalmsteinerEtAl2014} provides a foundation for
-                      classification but ``does not aim at providing a systematic
-                      and exhaustive state-of-the-art survey of [either domain]''
-                      (p.~A:2)
+                \item Unterkalmsteiner et al.~(2014) provide a foundation for
+                      classification but not its results
+                      %   ``do[] not aim at providing a systematic
+                      %   and exhaustive state-of-the-art survey of [either domain]''
+                      %   (p.~A:2)
             \end{itemize}
             \vspace{5mm}
         \end{block}
@@ -102,11 +103,11 @@
             Since a taxonomy doesn't already exist, we should create one!
             \begin{itemize}
                 \item We started with an ad hoc approach, focusing on
-                      textbooks trusted at McMaster
+                      textbooks \textbf{trusted at McMaster University}
                       %   \\\cite{Patton2006,
                       %       PetersAndPedrycz2000, vanVliet2000}
                 \item We then realized that this was too arbitrary, so
-                      we started from more established sources, such as
+                      we started from \textbf{more established sources}, such as
                       IEEE and SWEBOK
                       %   \\\cite{IEEE2022, SWEBOK2024, SWEBOK2014,
                       %       IEEE2017, ISO_IEC2023a, ISTQB}
@@ -115,7 +116,8 @@
                       until enough knowledge is built up to encounter
                       diminishing returns (ideally no returns!)
                 \item Since there are many standardized documents about software
-                      testing (or software in general), this should be trivial, no?
+                      testing (or software in general), \textbf{this should be
+                          trivial, no?}
             \end{itemize}
             \vspace{5mm}
         \end{block}
@@ -139,10 +141,10 @@
                     \end{center}
                 \end{column}
                 \begin{column}{0.25\textwidth}
-                    Information often appears logical, but this often breaks
-                    down. For example, the classification of test approaches in
-                    Figure \ref{Fig:approach-choices} reveals the following
-                    ambiguities:
+                    Information often \textbf{appears} logical, but this often
+                    breaks down. For example, the classification of test
+                    approaches in Figure~\ref{Fig:approach-choices} reveals the
+                    following ambiguities:
                     \begin{itemize}
                         \item Experience-based testing is both a test design
                               technique \textbf{and} a test practice
@@ -158,24 +160,25 @@
                     \end{itemize}
                 \end{column}
             \end{columns}
+            \vspace{3mm}
         \end{block}
     \end{textblock}
 
-    \begin{textblock}{7.25}(8.25,2.8)
+    \begin{textblock}{7.25}(8.25,2.75)
         \begin{block}{\fontsize{37}{20}\selectfont More Examples}
-            A big contributor to the ambiguities in Figure
-            \ref{Fig:approach-choices} is the number of definitions that are
-            not given. Despite its source \cite{IEEE2022} being a standard for
-            general concepts related to software testing, it leaves much
-            unstandardized. For example, as shown in Figure \ref{Fig:IEEEdefs},
-            most (55 out of 99) testing approaches mentioned do not have a
-            definition! Eight of these were at the very least described in the
-            previous version of this standard \cite{IEEE2013}, and nine were
-            present in the same way in another
+            A big contributor to the ambiguities in
+            Figure~\ref{Fig:approach-choices} is the number of definitions that
+            are not given. Despite its source \cite{IEEE2022} being a standard
+            for general concepts related to software testing, it leaves much
+            unstandardized. For example, as shown in Figure~\ref{Fig:IEEEdefs},
+            most (55 out of 99) testing approaches mentioned \textbf{do not
+                have a definition}! Eight of these were at the very least
+            described in the previous version of this standard \cite{IEEE2013},
+            and nine were present in the same way in another
             IEEE standard \cite{IEEE2017} that would have been available
             upon publication of this one. However, the presence of a
-            definition does not guarantee that it is useful! See Figure
-            \ref{Fig:unhelpful-defs} for some good (bad?) examples.
+            definition does not guarantee that it is useful! See
+            Figure~\ref{Fig:unhelpful-defs} for some good (bad?) examples.
             \vspace{-1cm}
             \begin{columns}
                 \begin{column}{0.4\textwidth}
@@ -221,7 +224,7 @@
             amalgamation of the definitions of usability, recovery, and
             potentially functional testing. What's more, SWEBOK's definition
             of elasticity testing cites only one source \cite[p.~5-9]{SWEBOK2024};
-            one that doesn't contain the words ``elasticity'' or ``elastic''!
+            \textbf{one that doesn't contain the words ``elasticity'' or ``elastic''}!
             \vspace{5mm}\\
             Even when the general idea behind an approach is understood,
             discrepancies can still arise. While alpha testing is quite common
@@ -239,21 +242,26 @@
 
         \begin{block}{\fontsize{37}{20}\selectfont Conclusions \& Future Work}
             \begin{itemize}
-                \item Current software testing taxonomies are incomplete,
-                      inconsistent, and/or incorrect
+                \item Current software testing taxonomies are \textbf{incomplete,
+                          inconsistent, and/or incorrect}
                 \item For one to be useful, it needs to be built systematically
                       from a large body of established sources
                 \item We will continue investigating how the literature defines
                       and categorizes software testing approaches to analyze any
                       discrepancies and structure these ideas coherently
+                \item Hopefully, this leads to a \textbf{centralized, consistent
+                          taxonomy} that can grow alongside the literature as the
+                      field of testing advances
             \end{itemize}
+            \vspace{5mm}
         \end{block}
 
         \begin{block}{\fontsize{37}{20}\selectfont References}
             \setbeamertemplate{bibliography item}{\insertbiblabel}
             \bibliographystyle{ieeetr}
-            {\fontsize{14}{15.75}\selectfont
+            {\fontsize{21}{11}\selectfont
                 \bibliography{references}}
+            \vspace{5mm}
         \end{block}
 
         \begin{block}{\fontsize{37}{20}\selectfont Acknowledgments}
