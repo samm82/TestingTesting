@@ -174,35 +174,45 @@
             upon publication of this one. However, the presence of a
             definition does not guarantee that it is useful! See
             Figure~\ref{Fig:unhelpful-defs} for some good (bad?) examples.
-            % \vspace{-8mm}
+            \vspace{-8mm}
             \begin{columns}
-                \begin{column}{0.45\textwidth}
+                \begin{column}{0.375\textwidth}
                     \begin{center}
                         \begin{figure}
                             \begin{tikzpicture}[thick, scale=1.7, every node/.style={align=left, scale=0.8}]
                                 \pie{44.4/Defined,
-                                38.4/Undefined,
+                                38.4/{Not\\defined},
                                 9.1/{Present in\\another standard},
                                 8.1/{Present in\\previous version}}
                             \end{tikzpicture}
-                            \caption{Breakdown of testing\\approach definitions
+                            \caption{Breakdown of testing\\approach definitions in
                                 \cite{IEEE2022}.}
                             \label{Fig:IEEEdefs}
                         \end{figure}
                     \end{center}
                 \end{column}
-                \begin{column}{0.425\textwidth}
+                \begin{column}{0.525\textwidth}
                     \begin{center}
                         \begin{figure}
                             \vspace{12mm}
-                            \includegraphics[width=\textwidth]{software element.png}
+                            \includegraphics[width=0.9\textwidth]{software element.png}
 
                             \vspace{2mm}
 
-                            \includegraphics[height=3.9cm]{per.png}
-                            \includegraphics[height=3.8cm]{state of.png}
+                            \includegraphics[height=2.7cm]{per.png}
+                            \includegraphics[height=2.7cm]{state of.png}
+
+                            \vspace{2mm}
+
+                            \includegraphics[width=\textwidth]{device.png}
+
+                            \vspace{2mm}
+
                             \caption{Some less-than-helpful definitions\\
-                                \cite[pp.~421, 170, 301, counterclockwise from top]{IEEE2017}.}
+                            \cite[pp.~421, 170, 136, 301 (counterclockwise from top)]{IEEE2017}.
+                            Note: ``equipment'' is not defined, and
+                            ``mechanism'' is only defined as how ``a function
+                            \dots transform[s] input into output'' [p.~270].}
                             \label{Fig:unhelpful-defs}
                         \end{figure}
                     \end{center}
