@@ -21,8 +21,9 @@ system_requirements:
 	@echo "  - InkScape (for SVG-based figures)"
 
 gloss:
-	EXCEL.EXE "Software Qualities.csv" &
-	EXCEL.EXE "Systematic Testing Glossary.csv" &
+	EXCEL.EXE "Supplementary Glossary of Testing Terminology.csv" &
+	EXCEL.EXE "Glossary of Software Qualities.csv" &
+	EXCEL.EXE "Glossary of Testing Approaches.csv" &
 
 build: notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
