@@ -1530,6 +1530,14 @@ whether that information exists in Drasil already and if it can be added
 \subsection{General Testing Notes}
 
 \begin{itemize}
+      \item The scope of testing is very dependent on what type of software
+            is being tested, as this informs what information/artifacts are
+            available, which approaches are relevant, and which tacit knowledge
+            is present (see \thesisissueref{54}). For example, a method table
+            is a tool for tracking the ``test approaches, testing techniques
+            and test types that are required depending \dots on the context of
+            the test object'' \citepalias{ISTQB} \todo{OG ISO 26262}, although
+            this is more specific to the automotive domain
       \item ``Proving the correctness of software \dots applies only in
             circumstances where software requirements are stated formally'' and
             assumes ``these formal requirements are themselves correct''
@@ -1545,7 +1553,10 @@ whether that information exists in Drasil already and if it can be added
             and run before more complicated, unusual test cases (test-to-fail)
             \citep[p.~66]{Patton2006}
       \item Since ``there is no uniform best test technique'', it is advised to
-            use many techniques when testing \citep[p.~440]{vanVliet2000}
+            use many techniques when testing \citep[p.~440]{vanVliet2000}.
+            This supports the principle of \emph{independence of testing}: the
+            ``separation of responsibilities, which encourages the
+            accomplishment of objective testing'' \citepalias{ISTQB}
       \item When comparing adequacy criteria, ``criterion X is stronger than
             criterion Y if, for all programs P and all test sets T, X-adequacy
             implies Y-adequacy'' (the ``stronger than'' relation is also called
