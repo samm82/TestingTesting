@@ -738,10 +738,12 @@ of this research, as well as some information on why and how it was performed.
 
 This project is focused on the generation of test cases for code, so only
 the ``testing'' component of \acf{vnv} is considered (see \thesisissueref{22}).
-For example, ``design reviews'' (see \citealp[p.~132]{IEEE2017}) and
-``documentation reviews'' (see \citealp[p.~144]{IEEE2017}) are out of scope,
+For example, design reviews (see \citealp[p.~132]{IEEE2017}) and
+documentation reviews (see \citealp[p.~144]{IEEE2017}) are out of scope,
 since they focus on the \acs{vnv} of the design and documentation of the code,
-respectively, and not on the code itself.
+respectively, and not on the code itself. Likewise, ergonomics testing
+and proximity-based testing (see \citetalias{ISTQB}) are out of scope, since
+they are for testing hardware systems.
 
 This also means that only some aspects of some testing approaches are relevant.
 This mainly manifests as a testing approach that can verify both the \acs{vnv}
@@ -956,9 +958,10 @@ within individual ones; these may be areas for further investigation:
 \newcommand{\procLevel}[1]{``Test level'' can also refer to the scope
 of a test process; for example, a process may ``apply across the whole
 organization'' or only ``to specific projects'' #1[p.~24]{IEEE2022}}
-\newcommand{\phaseDef}[1]{can also refer to the ``period of time in the software
-      life cycle'' when testing occurs #1[p.~470]{IEEE2017}, usually after
-      the implementation phase #1[pp.~420, 509]{IEEE2017}.}
+\newcommand{\phaseDef}{can also refer to the ``period of time in the software
+      life cycle'' when testing occurs (\citeyear[p.~470]{IEEE2017}; implied by
+      \citetalias{ISTQB}), usually after the implementation phase
+      \citep[pp.~420, 509]{IEEE2017}.}
 
 \begin{enumerate}
       \item ``Compatibility testing'' is defined as ``testing that measures the
@@ -1099,8 +1102,8 @@ organization'' or only ``to specific projects'' #1[p.~24]{IEEE2022}}
             are synonyms, both meaning a ``specific instantiation of [a] test
             sub-process'' (\citeyear[pp.~469, 470]{IEEE2017},
             \citeyear[p.~9]{IEEE2013}), but there are also alternative
-            definitions for them. \procLevel{\citeyearpar}, while ``test phase''
-            \phaseDef{\citeyearpar}
+            definitions for them. \procLevel{\citeyearpar}, while
+            ``test phase'' \phaseDef{}
       \item Various sources say that alpha testing is performed by different
             people, including ``only by users within the organization
             developing the software'' \citep[p.~17]{IEEE2017}, by ``a small,
@@ -1681,7 +1684,8 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
       \item Pseudo-oracle: a type of derived test oracle that is ``an
             alternative version of the program produced independently'' (by a
             different team, in a different language, etc.)
-            \citep[p.~515]{BarrEtAl2015}. \emph{We could potentially use the
+            \citep[p.~515]{BarrEtAl2015} \todo{see ISO 29119-11}.
+            \emph{We could potentially use the
                   programs generated in other languages as pseudo-oracles!}
       \item Implicit test oracles: detect ```obvious' faults such as a program
             crash'' (potentially due to a null pointer, deadlock, memory leak,
