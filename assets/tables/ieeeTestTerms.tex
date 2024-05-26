@@ -2,14 +2,14 @@
 \renewcommand{\thempfootnote}{\arabic{mpfootnote}}
 
 % makecell with new lines so VS Code doesn't freak out
-\newcommand{\techniqueCell}{\makecell{(Design\footnote{While ``design technique''
-            seems to be the most common term, this is sometimes abbreviated to
-            just ``technique'' (\citealp[p.~11]{IEEE2022};
+\newcommand{\techniqueCell}{\makecell{(Design\footnote{``Design technique''
+            is sometimes abbreviated to ``technique'' (\citealp[p.~11]{IEEE2022};
             \citetalias{ISTQB}).})\\Technique}}
 \newcommand{\levelCell}{\makecell{Level\footnote{\procLevel{\citep}.}\\
         (sometimes\\``Phase''\footnote{``Test phase'' can be a synonym for
             ``test level'' (\citealp[p.~469]{IEEE2017};
-            \citeyear[p.~9]{IEEE2013}) but \phaseDef{}})}}
+            \citeyear[p.~9]{IEEE2013}) but \phaseDef{}}\\
+        or ``Stage''\footnote{\citetalias{ISTQB}})}}
 
 \begin{table}[hbtp!]
     \centering
@@ -32,9 +32,8 @@
             boundary value testing \citep[p.~465]{IEEE2017}                                                      \\
             \hline
             \techniqueCell{}                        & A ``defined'' and ``systematic''
-            \citep[p.~464]{IEEE2017} ``procedure used to
-            create or select a test model, identify test
-            coverage items, and derive corresponding test cases''
+            \citep[p.~464]{IEEE2017} ``procedure used to create or select a test model,
+            identify test coverage items, and derive corresponding test cases''
             (\citeyear[p.~11]{IEEE2022}; similar in \citeyear[p.~467]{IEEE2017});
             ``a variety \dots is typically
             required to suitably cover any system'' \citeyearpar[p.~33]{IEEE2022} and is
@@ -61,9 +60,9 @@
             exploratory testing, automated testing \citep[p.~20]{IEEE2022}                                       \\
             \hline
             Type                                    & ``Testing that is focused
-            on specific quality characteristics''
-            (\citealp[p.~15]{IEEE2022}; \citeyear[p.~473]{IEEE2017};
-            OG IEEE 2013)                           & security testing, usability testing,
+            on specific quality characteristics'' (\citealp[p.~15]{IEEE2022};
+            \citeyear[p.~473]{IEEE2017}; OG IEEE 2013; similar in
+            \citetalias{ISTQB})                     & security testing, usability testing,
             performance testing (\citealp[p.~15]{IEEE2022};
             \citeyear[p.~473]{IEEE2017})                                                                         \\
             \hline
