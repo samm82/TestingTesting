@@ -15,6 +15,7 @@ Metamorphic Relation,"A ""description of how changes to the test inputs for a te
 Mixed Entry Table,"A ""decision table whose stub consists of rows in which limited and extended entries are written"" (IEEE, 2017, p. 278; OG ISO, 1984)",,
 Multiple-hit Decision Table,"A ""decision table where at least one set of conditions will be satisfied by more than one rule"" (IEEE, 2017, p. 285; OG ISO, 1984)",,
 Operational Profile,"""An actual or predicted pattern of use of the component or system"" (Hamburg and Mogyorodi, 2024)",,
+(Test) Oracle,"A ""source of information for determining whether a test has passed or failed"" (IEEE, 2022, p. 13)",,
 Path,"""A sequence of [consecutive (Hamburg and Mogyorodi, 2024)] instructions that are performed in the execution of a computer program"" (IEEE, 2017, p. 316) or test item (IEEE, 2017, p. 316; OG IEEE 2015)","Control Flow Path (Hamburg and Mogyorodi, 2024; implied by Washizaki, 2024, p. 5-13)",
 Path Analysis,"The ""analysis of a computer program to identify all possible paths through the program, to detect incomplete paths, or to discover portions of the program that are not on any path"" (IEEE, 2017, p. 316)",,
 Regression Analysis,"""An analytic technique where a series of input variables are examined in relation to their corresponding output results in order to develop a mathematical or statistical relationship"" (IEEE, 2017, p. 372)",,

@@ -1157,7 +1157,7 @@ of a test process; for example, ``across the whole organization'' or only
             that supports testing?
       \item The source cited for the definition of ``test type'' from
             \citetalias{ISTQB} does not seem to provide a definition itself
-      \item The same is true for ``virtual testing''
+      \item The same is true for ``visual testing''
       \item There is disagreement on the structure of tours; they can either be
             quite general \citep[p.~34]{IEEE2022} or ``organized around a
             special focus'' \citepalias{ISTQB}
@@ -1678,11 +1678,10 @@ whether that information exists in Drasil already and if it can be added
 \end{itemize}
 
 \subsubsection{Test Oracles}
-``A \emph{test oracle} is a predicate that determines whether a given test
-activity sequence is an acceptable behaviour of the \acs{sut} or
-not'' \citep[p.~509]{BarrEtAl2015} and ``can be any human or mechanical agent
-that decides whether the \acs{sut} behaved correctly in each test and according to
-the expected outcomes'' \citep[p.~5-5]{SWEBOK2024}. Oracles provide either ``a
+A test oracle is a ``source of information for determining whether a test has
+passed or failed'' \citep[p.~13]{IEEE2022} or that ``the \acs{sut} behaved
+correctly \dots and according to the expected outcomes'' and can be ``human or
+mechanical'' \citep[p.~5-5]{SWEBOK2024}. Oracles provide either ``a
 `pass' or `fail' verdict''; otherwise, ``the test output is classified as
 inconclusive'' \citep[p.~5-5]{SWEBOK2024}. This process can be ``deterministic''
 (returning a Boolean value) or ``probabilistic'' (returning ``a real number in
@@ -1720,8 +1719,10 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
             etc.) \citep[p.~510]{BarrEtAl2015}
       \item ``Lack of an automated test oracle'': for example; a human oracle
             generating sample data that is ``realistic'' and ``valid'',
-            \citep[pp.~510-511]{BarrEtAl2015}, or crowdsourcing
-            \citep[p.~520]{BarrEtAl2015}
+            \citep[pp.~510-511]{BarrEtAl2015}, crowdsourcing
+            \citep[p.~520]{BarrEtAl2015}, or a ``Wideband Delphi'': ``an
+            expert-based test estimation technique that … uses the collective
+            wisdom of the team members'' \citepalias{ISTQB}
 \end{itemize}
 
 \subsubsection{Generating Test Cases}
