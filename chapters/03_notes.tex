@@ -742,8 +742,10 @@ For example, design reviews (see \citealp[p.~132]{IEEE2017}) and
 documentation reviews (see \citealp[p.~144]{IEEE2017}) are out of scope,
 since they focus on the \acs{vnv} of the design and documentation of the code,
 respectively, and not on the code itself. Likewise, ergonomics testing
-and proximity-based testing (see \citetalias{ISTQB}) are out of scope, since
-they are for testing hardware systems.
+and proximity-based testing (see \citetalias{ISTQB}) are out of scope since
+they are for testing hardware systems, and security audits are out of scope
+(see \citetalias{ISTQB}) since they focus on ``an organization's … processes
+and infrastructure''.
 
 This also means that only some aspects of some testing approaches are relevant.
 This mainly manifests as a testing approach that can verify both the \acs{vnv}
@@ -1136,6 +1138,24 @@ organization'' or only ``to specific projects'' #1[p.~24]{IEEE2022}}
             the return to player computations''
       \item A similar issue exists with multiplayer testing, where its
             definition specifies ``the casino game world'' \citepalias{ISTQB}
+      \item Thirdly, ``par sheet testing'' from \citetalias{ISTQB} seems to
+            refer to this specific example and does not seem more widely
+            applicable, since a ``PAR sheet'' is ``a list of all the symbols
+            on each reel of a slot machine'' \citep{Bluejay2024}
+      \item The definition of ``scalability'' given by \citetalias{ISTQB} is
+            ``the degree to which a component or system can be adjusted for
+            changing \emph{capacity}'' (emphasis added), but the source that it
+            references says that scalability is ``the measure of a system's
+            ability to be upgraded to accommodate increased \emph{loads}''
+            \citep[p.~381, emphasis added]{GerrardAndThompson2002}; this is
+            accomplished \emph{through} increasing capacity, not in reaction to
+            it (p.~192)
+      \item \citetalias{ISTQB} describe the term ``software in the loop'' as a
+            kind of testing, while the source it references seems to describe
+            ``Software-in-the-Loop-Simulation'' as a ``simulation environment''
+            that may support software integration testing
+            \citep[p.~153]{SPICE2022}; is this a testing approach or a tool
+            that supports testing?
 \end{enumerate}
 
 \paragraph{Functional Testing}
