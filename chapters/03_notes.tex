@@ -1192,6 +1192,28 @@ of a test process; for example, ``across the whole organization'' or only
       \item ``Scenario testing'' and ``use case testing'' are given as synonyms
             by \citetalias{ISTQB}, but listed separately by
             \citet[p.~22]{IEEE2022} (although the latter is not defined)
+      \item Availability testing isn't assigned to a test priority
+            \citep[Tab.~2]{Gerrard2000}, despite the claim that ``the test types
+            have been allocated a slot against the four test priorities'' (p.~13);
+            I think usability and/or performance would have made sense
+      \item ``Visual browser validation'' is described as both static \emph{and}
+            dynamic in the same table \citep[Tab.~2]{Gerrard2000}, even though
+            they are implied to be orthogonal classifications: ``test
+            types can be static \emph{or} dynamic'' (p.~12, emphasis added)
+      \item \citeauthor{Gerrard2000} makes a distinction between ``transaction
+            verification'' and ``transaction testing''
+            \citeyearpar[Tab.~2]{Gerrard2000} and also uses the phrase
+            ``transaction flows'' (Fig.~5) but doesn't explain them
+      \item The phrase ``continuous automated testing''  \citep[p.~11]{Gerrard2000}
+            is redundant since continuous testing is a sub-category of automated
+            testing (\citealp[p.~35]{IEEE2022}, \citetalias{ISTQB})
+      \item \citeauthor{Gerrard2000} very helpfully indicates that performance
+            testing is performance testing and that usability testing is
+            usability testing; interestingly, performance testing is \emph{not}
+            given as a sub-category of usability testing
+            \citeyearpar[Tab.~2]{Gerrard2000}
+      \item End-to-end functionality testing is \emph{not} indicated to be
+            functionality testing \citep[Tab.~2]{Gerrard2000}
 \end{enumerate}
 
 \paragraph{Functional Testing}
@@ -1255,7 +1277,7 @@ ways, alongside other, potentially related, terms:
             ``rules'', ``requirements'', ``design'', ``processes'', and
             ``practices''!
 
-      \item \textbf{Functional Suitability Testing:} ``Procedure testing'' is
+      \item \textbf{Functional Suitability Testing:} Procedure testing is
             called a ``type of functional suitability testing''
             \citep[p.~7]{IEEE2022}, but no definition of ``functional
             suitability testing'' is given. ``Functional suitability'' is the
@@ -1276,6 +1298,16 @@ ways, alongside other, potentially related, terms:
             correctness'', which includes precision and accuracy
             (\citealp{ISO_IEC2023a}; \citetalias{ISTQB}), seems to align with
             the quality/ies that would be tested by ``correctness'' testing.
+
+      \item \textbf{Functionality Testing:} ``Functionality'' is defined as the
+            ``capabilities of the various \dots features provided by a product''
+            \citep[p.~196]{IEEE2017} and is said to be a synonym of
+            ``functional suitability'' \citepalias{ISTQB}, although it seems
+            like it should really be its ``parent''. Its associated test type
+            is implied to be a sub-approach of build verification testing
+            \citepalias{ISTQB} and made distinct from ``functional testing'';
+            interestingly, security is described as a sub-approach of both
+            non-functional and functionality testing \citep[Tab.~2]{Gerrard2000}.
 \end{itemize}
 
 \paragraph{Operational (Acceptance) Testing}
