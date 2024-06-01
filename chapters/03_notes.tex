@@ -784,8 +784,8 @@ itself and the code. For example:
 \end{enumerate}
 
 Sometimes, the term \emph{testing} excludes static testing, as done by some
-sources (\citealp[p.~5-1]{SWEBOK2024}; \citealp[p.~222]{AmmannAndOffutt2017});
-\citeauthor{IEEE2017} define ``software
+sources (\citealp[p.~5-1]{SWEBOK2024}; \citealp[p.~222]{AmmannAndOffutt2017};
+\citealp[p.~13]{Firesmith2015}); \citeauthor{IEEE2017} define ``software
 testing'' as ``dynamic verification'' ``in which a system or component is
 executed'' \citeyearpar[p.~427]{IEEE2017}. Since ``terminology is not uniform
 among different communities, and some use the term \emph{testing} to refer to
@@ -801,7 +801,10 @@ related to one another, and potentially how even parts of these ``out-of-scope''
 approaches may be generated in the future! These ``out-of-scope'' approaches
 will be identified more systematically, but gathering information about them is
 an important precursor, making them within the scope of this research, although
-they will be excluded at a later phase.
+they will be excluded at a later phase. Even some dynamic methods, such as
+demonstrations and dynamic analysis, which fall under the realm of ``evaluation''
+as opposed to ``testing'' \citep[p.~13]{Firesmith2015} may be out of scope, due
+to their reliance on human intervention.
 
 \phantomsection{}
 \label{chap:notes:sec:derived-from-qualities}
@@ -1460,7 +1463,8 @@ considered at one point, but was decided to be out of the scope of this project
 \label{testing-categories}
 
 Software testing techniques can be divided into the following
-categories. Note that ``classification overlapping is possible, and one
+categories. Note that ``there is a lot of overlap between different classes of
+testing types'' \citep[p.~8]{Firesmith2015} so ``one
 category might deal with combining two or more techniques''
 \citep[p.~5-10]{SWEBOK2024}. Implementing tests from multiple subsets within
 the same category, such as functional and structural, is usually a good idea
@@ -1566,7 +1570,11 @@ whether that information exists in Drasil already and if it can be added
             failures, but the faults causing them are what can and must be
             removed'' \citep[p.~5-3]{SWEBOK2024}; it can also include
             certification, quality assurance, and quality improvement
-            \citep[p.~5-4]{SWEBOK2024}
+            \citep[p.~5-4]{SWEBOK2024}. Involves ``specific preconditions
+                  [and] \dots stimuli so that its actual behavior can be
+            compared with its expected or required behavior'', including
+            control flows, data flows, and postconditions
+            \citep[p.~11]{Firesmith2015}
       \item Test case: ``the specification of all the entities
             that are essential for the execution, such as input values,
             execution and timing conditions, testing procedure, and the
