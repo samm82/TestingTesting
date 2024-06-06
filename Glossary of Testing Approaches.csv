@@ -86,7 +86,9 @@ Development Testing,Level? Stage?,"""Testing conducted during the development of
 Development Tool Testing,Technique?,,Development Testing?,,
 Device-based Testing,Practice?,"""Testing in which test suites are executed on physical or virtual devices"" (Hamburg and Mogyorodi, 2024)",,,
 "Disaster/Recovery Testing (or Disaster Recovery Testing (implied by Washizaki, 2024, p. 6-8; IEEE, 2013, p. 20))","Type (IEEE, 2022, p. 22)","Testing to determine the degree to which a system can ""return to normal operation after a hardware or software failure "" (IEEE, 2017, p. 140)",,,"""Requires stopping the service, identifying the checkpoint state and triggering the failover process""; ""should be constantly rehearsed as changes to the production environment are made"" (Washizaki, 2024, p. 6-8). Difference between this and recovery testing (in the context of performance)?"
-"Domain-Specific Testing (Firesmith, 2015, p. 26)",Technique?,,,,
+"Domain-Based Testing (Firesmith, 2015, p. 26)",Technique?,,,,
+"Domain-Independent Testing (Firesmith, 2015, p. 26)",Technique?,,"Domain-Based Testing (Firesmith, 2015, p. 26)",,"There are ""[m]any [t]ypes"" (Firesmith, 2015, p. 26), but no examples are given"
+"Domain-Specific Testing (Firesmith, 2015, p. 26)",Technique?,,"Domain-Based Testing (Firesmith, 2015, p. 26)",,"All examples given by Firesmith (2015, p. 26) are focused on hardware, but this might not be representative"
 Dynamic Analysis,Approach,"The ""process of evaluating a system or component based on its behavior during execution"" (IEEE, 2017, p. 149)","Dynamic Testing? (implied by their static counterparts in IEEE, 2022, pp. 9, 17, 25, 28 and Hamburg and Mogyorodi, 2024)",,"This definition seems vague, but may have a similar relation to ""dynamic testing"" as between the static counterparts"
 Dynamic Testing,Approach,"""Testing in which a test item is evaluated by executing it"" (IEEE, 2022, p. 4)",,"Dynamic Analysis? (IEEE, 2017, p. 149)","Can ""only occur in the parts of the life cycle when executable code is available"" (IEEE, 2022, p. 18)"
 Each Choice Testing,"Technique (IEEE, 2022, p. 22)",,"Combinatorial Testing (IEEE, 2022, p. 22)",,
