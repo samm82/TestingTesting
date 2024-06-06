@@ -745,7 +745,10 @@ respectively, and not on the code itself. Likewise, ergonomics testing
 and proximity-based testing (see \citetalias{ISTQB}) are out of scope since
 they are for testing hardware systems, and security audits are out of scope
 (see \citetalias{ISTQB}) since they focus on ``an organization's … processes
-and infrastructure''.
+and infrastructure''. \textbf{NOTE:} While all the examples of domain-specific
+testing given by \citet[p.~26]{Firesmith2015} are focused on hardware, this
+might not be representative of all types (e.g., ML model testing seems
+domain-specific).
 
 It is also interesting to note that different test approaches seem to be more
 specific to certain domains. For example, the terms ``software qualification
@@ -1195,16 +1198,25 @@ of a test process; for example, ``across the whole organization'' or only
       \item ``Scenario testing'' and ``use case testing'' are given as synonyms
             by \citetalias{ISTQB}, but listed separately by
             \citet[p.~22]{IEEE2022} (although the latter is not defined)
+      \item While model testing is said to test the object under test,
+            it seems to describe testing the models themselves
+            \citet[p.~20]{Firesmith2015}; using the models to test the object
+            under test seems to be called ``driver-based testing'' (p.~33)
       \item ``System testing'' is listed as a subtype of ``system testing'' by
             \citet[p.~23]{Firesmith2015}
-      \item ``Hardware-'' and ``Human-in-the-loop testing'' have the same
+      \item ``Hardware-'' and ``human-in-the-loop testing'' have the same
             acronym: ``HIL'' \citep[p.~23]{Firesmith2015}
       \item The same is true for ``customer'' and ``contract(ual) acceptance
             testing'' (``CAT'') \citep[p.~30]{Firesmith2015}
       \item The acronym ``SoS'' is used but not defined by
             \citet[p.~23]{Firesmith2015}
+      \item It is ambiguous whether ``tool/environment testing'' refers to
+            testing the tools/environment \emph{themselves} or \emph{using}
+            them to test the object under test; the latter is implied by the
+            structure presented on page 25 of \citep{Firesmith2015}, but the
+            wording of its subtypes seems to imply the former
       \item ``Operational'' and ``production acceptance testing'' are treated
-            as synonyms by \citetalias{ISTQB}, but listed separate by
+            as synonyms by \citetalias{ISTQB}, but listed separately by
             \citet[p.~30]{Firesmith2015}
       \item ``Production acceptance testing'' \citep[p.~30]{Firesmith2015}
             seems to be the same as ``production verification testing''
