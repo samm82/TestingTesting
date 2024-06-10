@@ -1,33 +1,14 @@
+% Defined here to reduce duplication of distinction between ``level'' and
+%    ``phase'' and avoid ``already defined'' error
+\newcommand{\procLevel}[1]{``Test level'' can also refer to the scope
+of a test process; for example, ``across the whole organization'' or only
+``to specific projects'' #1[p.~24]{IEEE2022}}
+\newcommand{\phaseDef}{can also refer to the ``period of time in the software
+      life cycle'' when testing occurs \citeyearpar[p.~470]{IEEE2017}, usually
+      after the implementation phase \citeyearpar[pp.~420, 509]{IEEE2017}.}
+
 \chapter{Software Testing Research}
 \label{chap:testing}
-
-\section{Software Metrics}
-\label{chap:testing:sec:software-metrics}
-
-\begin{itemize}
-      \item The following branches of testing started as parts of quality
-            testing:
-            \begin{itemize}
-                  \item Reliability testing \citep[p.~18, ch.~10]{fenton_software_1997}
-                  \item Performance testing \citep[p.~18, ch.~7]{fenton_software_1997}
-            \end{itemize}
-      \item Reliability and maintainability can start to be tested even without
-            code by ``measur[ing] structural attributes of representations of the
-            software'' \citep[p.~18]{fenton_software_1997}
-      \item The US Software Engineering Institute has a checklist for determining
-            which types of lines of code are included when counting
-            \citep[pp.~30-31]{fenton_software_1997}
-      \item Measurements should include an entity to be measured, a specific
-            attribute to measure, and the actual measure (i.e., units, starting
-            state, ending state, what to include) \citep[p.~36]{fenton_software_1997}
-            \begin{itemize}
-                  \item These attributes must be defined before they can be
-                        measured \citep[p.~38]{fenton_software_1997}
-            \end{itemize}
-\end{itemize}
-
-\section{Software Testing}
-\label{chap:testing:sec:software-testing}
 
 It was realized early on in the process that it would be beneficial to
 understand the different types of testing (including what they test, what
@@ -35,7 +16,7 @@ artifacts are needed to perform them, etc.). This section provides some results
 of this research, as well as some information on why and how it was performed.
 \todo{A justification for why we decided to do this should be added}
 
-\subsection{Scope}
+\section{Scope}
 \label{chap:testing:sec:scope}
 
 This project is focused on the generation of test cases for code, so only
@@ -86,6 +67,11 @@ itself and the code. For example:
             However, it ``can also be categorized as a structure-based
             technique'' and can be used to assist fuzz and metamorphic testing
             \citep[p.~5-15]{SWEBOK2024}.
+      \item Even though \emph{reliability testing} and \emph{maintainability
+                  testing} can start \emph{without} code by ``measur[ing]
+            structural attributes of representations of the software''
+            \citep[p.~18]{FentonAndPfleeger1997}, only reliability and
+            maintainability testing done \emph{on} code is in scope.
 \end{enumerate}
 
 Sometimes, the term \emph{testing} excludes static testing, as done by some
@@ -112,12 +98,23 @@ demonstrations and dynamic analysis, which fall under the realm of ``evaluation'
 as opposed to ``testing'' \citep[p.~13]{Firesmith2015} may be out of scope, due
 to their reliance on human intervention.
 
-\phantomsection{}
-\label{chap:testing:sec:derived-from-qualities}
-Since it seemed that testing types can be derived from software qualities
-(see \thesisissueref{21} and \thesisissueref{23}), ``capabilit[ies] of software
-product[s] to satisfy stated and implied needs when used under specified
-conditions'' \citep[p.~424]{IEEE2017} \todo{OG ISO/IEC 2014}, it was decided that tracking
+\subsection{Derived Test Approaches}
+\label{chap:testing:sec:derived-tests}
+One group of test approaches given in \nameref{tab:ieeeTestTerms} is ``test
+types'', which can be derived from software qualities: ``capabilit[ies] of
+software product[s] to satisfy stated and implied needs when used under
+specified conditions'' \citep[p.~424]{IEEE2017} \todo{OG ISO/IEC 2014}. This
+is supported by \citeauthor{FentonAndPfleeger1997} who say that reliability
+and performance testing are based on their underlying qualities
+\citeyearpar[p.~18]{FentonAndPfleeger1997} and that measurements should include
+an entity to be measured, a specific attribute to measure, and the actual
+measure (i.e., units, starting state, ending state, what to include) (p.~36)
+% \citeauthoryear[p.~36]{FentonAndPfleeger1997}
+where attributes must be defined before they can be measured (p.~38).
+% \citeauthoryear[p.~38]{FentonAndPfleeger1997}
+
+After discussing this further (see \thesisissueref{21} and \thesisissueref{23}),
+it was decided that tracking
 software qualities, in addition to testing approaches, would be worthwhile
 (see \thesisissueref{27}). This was done by capturing their definitions and any
 rationale for why it might be useful to consider an explicitly separate
@@ -126,9 +123,9 @@ without introducing clutter.
 
 Similarly, since some types of requirements have associated types of
 testing (e.g., functional, non-functional, security), it was discussed whether
-each requirement type implies a related testing approach
-(see \thesisissueref{43}). Even assuming this is the case, some types of
-requirements do not apply to the code itself, and as such are out of scope:
+each requirement type implies a related testing approach (such as ``technical
+testing''). Even assuming this is the case, some types of requirements do not
+apply to the code itself, and as such are out of scope (see \thesisissueref{43}):
 
 \begin{itemize}
       \item \textbf{Nontechnical Requirement:} a ``requirement affecting product
@@ -158,7 +155,7 @@ orthogonal) approaches, such as the following (all from
       \item Usability test script(ing)
 \end{itemize}
 
-\subsection{Methodology}
+\section{Methodology}
 
 This process initially involved looking through textbooks that were trusted at
 McMaster \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}. However, this
@@ -186,7 +183,7 @@ arose, they were investigated to a reasonable extent and documented. If a
 testing approach was mentioned but not defined, it was still added to the
 glossary to indicate it should be investigated further. A similar methodology
 was used for tracking software qualities, albeit in a separate document
-(see \hyperref[chap:testing:sec:derived-from-qualities]{Scope (of derived test types)}).
+(see \nameref{chap:testing:sec:derived-tests}).
 
 During this investigation, some terms came up that seemed to be relevant to
 testing but were so vague, they didn't provide any new information. These were
@@ -226,7 +223,192 @@ are not mutually exclusive, it also means that more than one could be useful
 (both in general and to this specific project); more careful thought should be
 given to which are ``best'', and this should happen during the analysis stage.
 
-\subsubsection{Discrepancies and Ambiguities}
+\section{Observations}
+
+\subsection{Types of Testing Approaches}
+
+For classifying different types of tests, \citet{IEEE2022} provide some
+terminology (see \refIEEETestTerms). However, other sources \citep{BarbosaEtAl2006,
+      SouzaEtAl2017} provide alternate
+categories (see \refOtherTestTerms) which may be beneficial to investigate to
+determine if this categorization is sufficient. A ``metric'' categorization was
+considered at one point, but was decided to be out of the scope of this project
+(see \nameref{chap:testing:sec:scope}, \thesisissueref{21}, and \thesisissueref{22}).
+
+\begin{landscape}
+      \ieeeTestTermsTable{}
+\end{landscape}
+
+\newgeometry{margin=1cm}
+\begin{landscape}
+      \otherTestTermsTable{}
+\end{landscape}
+\restoregeometry
+
+\subsection{Categorizations}
+\label{testing-categories}
+
+Software testing techniques can be divided into the following
+categories. Note that ``there is a lot of overlap between different classes of
+testing types'' \citep[p.~8]{Firesmith2015} so ``one
+category might deal with combining two or more techniques''
+\citep[p.~5-10]{SWEBOK2024}. Implementing tests from multiple subsets within
+the same category, such as functional and structural, is usually a good idea
+since they ``they use different sources of information and have been shown to
+highlight different problems''; however, some subsets, such as deterministic
+and random, may have ``conditions that make one approach more effective than
+the other'' \citep[p.~5-16]{SWEBOK2024}.
+
+\begin{itemize}
+      \item Visibility of code: black-, white-, or gray-box (functional,
+            structural, or a mix of the two)
+            (\citealp[pp.~5-10, 5-16]{SWEBOK2024};
+            \citealp[pp.~57-58]{AmmannAndOffutt2017};
+            \citealp[p.~213]{KuļešovsEtAl2013};
+            \citealp[pp.~53, 218]{Patton2006}; \citealp[p.~69]{Perry2006})
+      \item Stage of testing: unit, integration, system, or acceptance
+            (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citealp[p.~218]{KuļešovsEtAl2013};
+            \citealp{Patton2006}; \citealp{Perry2006}; \citealp{PetersAndPedrycz2000})
+            (sometimes includes installation \citep[p.~439]{vanVliet2000} or
+            regression \citep[p.~3]{BarbosaEtAl2006})
+      \item Key aspect: specification, structure, or experience
+            \citep[p.~5-10]{SWEBOK2024}
+            \todo{Originally in ISO/IEC/IEEE 29119-4:2021}
+      \item Test case selection process: deterministic or random
+            \citep[p.~5-16]{SWEBOK2024}
+      \item Coverage criteria: input space partitioning, graph coverage, logic
+            coverage, or syntax-based testing \citep[pp.~18-19]{AmmannAndOffutt2017}
+      \item Question: what-, when-, where-, who-, why-, how-, and how-well-based
+            testing; these are then divided into a total of ``16 categories of
+            testing types''\footnote{Not formally defined, but distinct from
+                  the notion of ``test type'' described in
+                  \nameref{tab:ieeeTestTerms}.} \citep[p.~17]{Firesmith2015}
+      \item Execution of code: static or dynamic
+            (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000};
+            \citealp[p.~53]{Patton2006})
+      \item Goal of testing: verification or validation
+            (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[pp.~69-70]{Perry2006})
+      \item Property of code: functional or non-functional
+            \citep[p.~213]{KuļešovsEtAl2013}
+      \item Human involvement: manual or automated
+            \citep[p.~214]{KuļešovsEtAl2013}
+      \item Structuredness: scripted or exploratory
+            \citep[p.~214]{KuļešovsEtAl2013}
+      \item Source of test data: specification-, implementation-, or
+            error-oriented \citep[p.~440]{PetersAndPedrycz2000}
+      \item Adequacy criterion: coverage-, fault-, or error-based
+            (``based on knowledge of the typical errors that people make'')
+            \citep[pp.~398-399]{vanVliet2000}
+      \item Priority\footnote{In the context of testing e-business projects.}:
+            smoke, usability, performance, or functionality testing
+            \citep[p.~12]{Gerrard2000}
+      \item Category of test ``type''\footnote{``Each type of test addresses a
+                  different risk area'' \citep[p.~12]{Gerrard2000}, which is
+                  distinct from the notion of ``test type'' described in
+                  \nameref{tab:ieeeTestTerms}.}: static testing, test
+            browsing, functional testing, non-functional testing, or large
+            scale integration \citep[p.~12]{Gerrard2000}
+      \item Purpose: correctness, performance, reliability, or security
+            \citep{Pan1999}
+\end{itemize}
+
+Tests can also be tailored to ``test factors'' (also called ``quality factors''
+or ``quality attributes''): ``attributes of the software that, if they are
+wanted, pose a risk to the success of the software''
+\citep[p.~40]{Perry2006}. These include correctness, file integrity,
+authorization, audit trail, continuity of processing, service levels
+(e.g., response time), access control, compliance, reliability, ease of use,
+maintainability, portability, coupling (e.g., with other applications in a
+given environment), performance, and ease of operation (e.g., documentation,
+training) \citep[pp.~40-41]{Perry2006}. \emph{These may overlap with
+      the ``Results of Testing (Area of Confidence)'' column in the summary
+      spreadsheet.}
+
+Engström ``investigated classifications of research''
+\citep[p.~1]{engström_mapping_2015} on the following four testing techniques.
+\emph{These four categories seem like comparing apples to oranges to me.}
+
+\begin{itemize}
+      \item \textbf{Combinatorial testing:} how the system under test is
+            modelled, ``which combination strategies are used to generate test
+            suites and how test cases are prioritized''
+            \citep[pp.~1-2]{engström_mapping_2015}
+      \item \textbf{Model-based testing:} the information represented and
+            described by the test model \citep[p.~2]{engström_mapping_2015}
+      \item \textbf{Search-based testing:} ``how techniques had been
+            empirically evaluated (i.e. objective and context)''
+            \citep[p.~2]{engström_mapping_2015}
+      \item \textbf{Unit testing:} ``source of information (e.g. code,
+            specifications or testers intuition)''
+            \citep[p.~2]{engström_mapping_2015}
+\end{itemize}
+
+\subsection{Existing Taxonomies, Ontologies, and the State of Practice}
+
+One thing we may want to consider when building a taxonomy/ontology is the
+semantic difference between related terms. For example, one ontology found
+that the term ``\,`IntegrationTest' is a kind of Context (with
+semantic of stage, but not a kind of Activity)'' while ``\,`IntegrationTesting'
+has semantic of Level-based Testing that is a kind of Testing Activity [or]
+\dots of Test strategy'' \citep[p.~157]{TebesEtAl2019}.
+
+A note on testing artifacts is that they are ``produced and used throughout
+the testing process'' and include test plans, test procedures, test cases, and
+test results \citep[p.~3]{SouzaEtAl2017}. The role of testing
+artifacts is not specified in \citep{BarbosaEtAl2006};
+requirements, drivers, and source code are all treated the same
+with no distinction \citep[p.~3]{BarbosaEtAl2006}.
+
+In \citep{SouzaEtAl2017}, the ontology (ROoST) \todo{add acronym?} is made to
+answer a series of questions, including ``What is the test level of a testing
+activity?'' and ``What are the artifacts used by a testing activity?''
+\citep[pp.~8-9]{SouzaEtAl2017}. \todo{is this punctuation right?}
+The question ``How do testing artifacts relate to each other?''
+\citep[p.~8]{SouzaEtAl2017} is later broken down into multiple questions,
+such as ``What are the test case inputs of a given test case?'' and ``What are
+the expected results of a given test case?'' \citep[p.~21]{SouzaEtAl2017}.
+\emph{These questions seem to overlap with the questions we were trying to ask
+      about different testing techniques.}
+
+Most ontologies I can find seem to focus on the high-level testing process
+rather than the testing techniques themselves. For example, the terms and
+definitions \citep{TebesEtAl2020b}
+from TestTDO \citep{TebesEtAl2020a} provide \emph{some} definitions of
+testing techniques, but mainly focus on parts of the testing process
+(e.g., test goal, test plan, testing role, testable entity) and how they relate
+to one another. \citet[pp.~152-153]{TebesEtAl2019} may provide some
+sources for software testing terminology and definitions (this seems to include
+\href{https://github.com/samm82/TestGen-Thesis/issues/14#issuecomment-1839922715}
+{the ones suggested by Dr.~Carette}) in addition to a list of ontologies
+(some of which have been investigated).
+
+One software testing model developed by the \acf{qai} includes the test
+environment (``conditions \dots
+that both enable and constrain how testing is performed'', including mission,
+goals, strategy, ``management support, resources, work processes, tools,
+motivation''), test process (testing ``standards and procedures''), and tester
+competency (``skill sets needed to test software in a test environment'')
+\citep[pp.~5-6]{Perry2006}.
+
+\citet{UnterkalmsteinerEtAl2014} provide a foundation to allow one ``to
+classify and characterize alignment research and solutions that focus on the
+boundary between [requirements engineering and software testing]'' but ``do[]
+not aim at providing a systematic and exhaustive state-of-the-art survey of
+      [either domain]'' (p.~A:2).
+
+Another source
+introduced the notion of an ``intervention'': ``an act performed (e.g. use of a
+technique or a process change) to adapt testing to a specific context, to solve
+a test issue, to diagnose testing or to improve testing''
+\citep[p.~1]{engström_mapping_2015} and noted that ``academia tend to focus on
+characteristics of the intervention [while] industrial standards categorize the
+area from a process perspective'' \citep[p.~2]{engström_mapping_2015}.
+It provides a structure to ``capture both a problem perspective and a solution
+perspective with respect to software testing'' \citep[pp.~3-4]{engström_mapping_2015},
+but this seems to focus more on test interventions and challenges rather than
+techniques \citep[Fig.~5]{engström_mapping_2015}.
+
+\subsection{Discrepancies and Ambiguities}
 
 \citet{IEEE2022} mentions the following 44 test approaches without defining them.
 This means that out of the 99 identified test approaches, almost 45\% had no
@@ -299,15 +481,6 @@ to eighteen; almost 20\% of undefined test approaches could have been defined!
 
 Additionally, discrepancies and ambiguities exist both among sources and
 within individual ones; these may be areas for further investigation:
-
-% Defined here to reduce duplication of distinction between ``level'' and
-%    ``phase'' and avoid ``already defined'' error
-\newcommand{\procLevel}[1]{``Test level'' can also refer to the scope
-of a test process; for example, ``across the whole organization'' or only
-``to specific projects'' #1[p.~24]{IEEE2022}}
-\newcommand{\phaseDef}{can also refer to the ``period of time in the software
-      life cycle'' when testing occurs \citeyearpar[p.~470]{IEEE2017}, usually
-      after the implementation phase \citeyearpar[pp.~420, 509]{IEEE2017}.}
 
 \begin{enumerate}
       \item ``Compatibility testing'' is defined as ``testing that measures the
@@ -566,7 +739,7 @@ of a test process; for example, ``across the whole organization'' or only
             functionality testing \citep[Tab.~2]{Gerrard2000}
 \end{enumerate}
 
-\paragraph{Functional Testing}
+\subsubsection{Functional Testing}
 
 Throughout the literature, ``functional testing'' seems to be described in many
 ways, alongside other, potentially related, terms:
@@ -663,7 +836,7 @@ ways, alongside other, potentially related, terms:
             \citet[p.~53]{Firesmith2015}.
 \end{itemize}
 
-\paragraph{Operational (Acceptance) Testing}
+\subsubsection{Operational (Acceptance) Testing}
 Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE2022};
 \citetalias{ISTQB}) while some refer to ``operational testing''
 (\citealp[p.~6-9, in the context of software engineering operations]{SWEBOK2024};
@@ -685,7 +858,7 @@ system or component in its operational environment'' \citep[p.~303]{IEEE2017},
 particularly ``to determine if operations and/or systems administration staff
 can accept [it]'' \citepalias{ISTQB}.
 
-\paragraph{Performance Testing}
+\subsubsection{Performance Testing}
 
 ``Performance testing'' is defined as testing ``conducted to
 evaluate the degree to which a test item accomplishes its
@@ -726,204 +899,14 @@ efficiency testing'' is a subset of ``performance testing'', and the
 difference of ``relative to the amount of resources used'' or ``be efficient in
 the use of resources'' between the two is meaningful.
 
-\subsection{Software Testing Taxonomies, Ontologies, and State of Practice}
 
-One thing we may want to consider when building a taxonomy/ontology is the
-semantic difference between related terms. For example, one ontology found
-that the term ``\,`IntegrationTest' is a kind of Context (with
-semantic of stage, but not a kind of Activity)'' while ``\,`IntegrationTesting'
-has semantic of Level-based Testing that is a kind of Testing Activity [or]
-\dots of Test strategy'' \citep[p.~157]{TebesEtAl2019}.
 
-A note on testing artifacts is that they are ``produced and used throughout
-the testing process'' and include test plans, test procedures, test cases, and
-test results \citep[p.~3]{SouzaEtAl2017}. The role of testing
-artifacts is not specified in \citep{BarbosaEtAl2006};
-requirements, drivers, and source code are all treated the same
-with no distinction \citep[p.~3]{BarbosaEtAl2006}.
-
-In \citep{SouzaEtAl2017}, the ontology (ROoST) \todo{add acronym?} is made to
-answer a series of questions, including ``What is the test level of a testing
-activity?'' and ``What are the artifacts used by a testing activity?''
-\citep[pp.~8-9]{SouzaEtAl2017}. \todo{is this punctuation right?}
-The question ``How do testing artifacts relate to each other?''
-\citep[p.~8]{SouzaEtAl2017} is later broken down into multiple questions,
-such as ``What are the test case inputs of a given test case?'' and ``What are
-the expected results of a given test case?'' \citep[p.~21]{SouzaEtAl2017}.
-\emph{These questions seem to overlap with the questions we were trying to ask
-      about different testing techniques.}
-
-Most ontologies I can find seem to focus on the high-level testing process
-rather than the testing techniques themselves. For example, the terms and
-definitions \citep{TebesEtAl2020b}
-from TestTDO \citep{TebesEtAl2020a} provide \emph{some} definitions of
-testing techniques, but mainly focus on parts of the testing process
-(e.g., test goal, test plan, testing role, testable entity) and how they relate
-to one another. \citet[pp.~152-153]{TebesEtAl2019} may provide some
-sources for software testing terminology and definitions (this seems to include
-\href{https://github.com/samm82/TestGen-Thesis/issues/14#issuecomment-1839922715}
-{the ones suggested by Dr.~Carette}) in addition to a list of ontologies
-(some of which have been investigated).
-
-One software testing model developed by the \acf{qai} includes the test
-environment (``conditions \dots
-that both enable and constrain how testing is performed'', including mission,
-goals, strategy, ``management support, resources, work processes, tools,
-motivation''), test process (testing ``standards and procedures''), and tester
-competency (``skill sets needed to test software in a test environment'')
-\citep[pp.~5-6]{Perry2006}.
-
-\citet{UnterkalmsteinerEtAl2014} provide a foundation to allow one ``to
-classify and characterize alignment research and solutions that focus on the
-boundary between [requirements engineering and software testing]'' but ``do[]
-not aim at providing a systematic and exhaustive state-of-the-art survey of
-      [either domain]'' (p.~A:2).
-
-Another source
-introduced the notion of an ``intervention'': ``an act performed (e.g. use of a
-technique or a process change) to adapt testing to a specific context, to solve
-a test issue, to diagnose testing or to improve testing''
-\citep[p.~1]{engström_mapping_2015} and noted that ``academia tend to focus on
-characteristics of the intervention [while] industrial standards categorize the
-area from a process perspective'' \citep[p.~2]{engström_mapping_2015}.
-It provides a structure to ``capture both a problem perspective and a solution
-perspective with respect to software testing'' \citep[pp.~3-4]{engström_mapping_2015},
-but this seems to focus more on test interventions and challenges rather than
-techniques \citep[Fig.~5]{engström_mapping_2015}.
-
-\subsubsection{Types of Testing Approaches}
-
-For classifying different types of tests, \citet{IEEE2022} provides some
-terminology (see \refIEEETestTerms). However, other sources \citep{BarbosaEtAl2006,
-      SouzaEtAl2017} provide alternate
-categories (see \refOtherTestTerms) which may be beneficial to investigate to
-determine if this categorization is sufficient. A ``metric'' categorization was
-considered at one point, but was decided to be out of the scope of this project
-(see \nameref{chap:testing:sec:scope}, \thesisissueref{21}, and \thesisissueref{22}).
-
-\begin{landscape}
-      \ieeeTestTermsTable{}
-\end{landscape}
-
-\newgeometry{margin=1cm}
-\begin{landscape}
-      \otherTestTermsTable{}
-\end{landscape}
-\restoregeometry
-
-\subsubsection{Categorizations}
-\label{testing-categories}
-
-Software testing techniques can be divided into the following
-categories. Note that ``there is a lot of overlap between different classes of
-testing types'' \citep[p.~8]{Firesmith2015} so ``one
-category might deal with combining two or more techniques''
-\citep[p.~5-10]{SWEBOK2024}. Implementing tests from multiple subsets within
-the same category, such as functional and structural, is usually a good idea
-since they ``they use different sources of information and have been shown to
-highlight different problems''; however, some subsets, such as deterministic
-and random, may have ``conditions that make one approach more effective than
-the other'' \citep[p.~5-16]{SWEBOK2024}.
-
-\begin{itemize}
-      \item Visibility of code: black-, white-, or gray-box (functional,
-            structural, or a mix of the two)
-            (\citealp[pp.~5-10, 5-16]{SWEBOK2024};
-            \citealp[pp.~57-58]{AmmannAndOffutt2017};
-            \citealp[p.~213]{KuļešovsEtAl2013};
-            \citealp[pp.~53, 218]{Patton2006}; \citealp[p.~69]{Perry2006})
-      \item Stage of testing: unit, integration, system, or acceptance
-            (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citealp[p.~218]{KuļešovsEtAl2013};
-            \citealp{Patton2006}; \citealp{Perry2006}; \citealp{PetersAndPedrycz2000})
-            (sometimes includes installation \citep[p.~439]{vanVliet2000} or
-            regression \citep[p.~3]{BarbosaEtAl2006})
-      \item Key aspect: specification, structure, or experience
-            \citep[p.~5-10]{SWEBOK2024}
-            \todo{Originally in ISO/IEC/IEEE 29119-4:2021}
-      \item Test case selection process: deterministic or random
-            \citep[p.~5-16]{SWEBOK2024}
-      \item Coverage criteria: input space partitioning, graph coverage, logic
-            coverage, or syntax-based testing \citep[pp.~18-19]{AmmannAndOffutt2017}
-      \item Question: what-, when-, where-, who-, why-, how-, and how-well-based
-            testing; these are then divided into a total of ``16 categories of
-            testing types''\footnote{Not formally defined, but distinct from
-                  the notion of ``test type'' described in
-                  \nameref{tab:ieeeTestTerms}.} \citep[p.~17]{Firesmith2015}
-      \item Execution of code: static or dynamic
-            (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000};
-            \citealp[p.~53]{Patton2006})
-      \item Goal of testing: verification or validation
-            (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[pp.~69-70]{Perry2006})
-      \item Property of code: functional or non-functional
-            \citep[p.~213]{KuļešovsEtAl2013}
-      \item Human involvement: manual or automated
-            \citep[p.~214]{KuļešovsEtAl2013}
-      \item Structuredness: scripted or exploratory
-            \citep[p.~214]{KuļešovsEtAl2013}
-      \item Source of test data: specification-, implementation-, or
-            error-oriented \citep[p.~440]{PetersAndPedrycz2000}
-      \item Adequacy criterion: coverage-, fault-, or error-based
-            (``based on knowledge of the typical errors that people make'')
-            \citep[pp.~398-399]{vanVliet2000}
-      \item Priority\footnote{In the context of testing e-business projects.}:
-            smoke, usability, performance, or functionality testing
-            \citep[p.~12]{Gerrard2000}
-      \item Category of test ``type''\footnote{``Each type of test addresses a
-                  different risk area'' \citep[p.~12]{Gerrard2000}, which is
-                  distinct from the notion of ``test type'' described in
-                  \nameref{tab:ieeeTestTerms}.}: static testing, test
-            browsing, functional testing, non-functional testing, or large
-            scale integration \citep[p.~12]{Gerrard2000}
-      \item Purpose: correctness, performance, reliability, or security
-            \citep{Pan1999}
-\end{itemize}
-
-Tests can also be tailored to ``test factors'' (also called ``quality factors''
-or ``quality attributes''): ``attributes of the software that, if they are
-wanted, pose a risk to the success of the software''
-\citep[p.~40]{Perry2006}. These include correctness, file integrity,
-authorization, audit trail, continuity of processing, service levels
-(e.g., response time), access control, compliance, reliability, ease of use,
-maintainability, portability, coupling (e.g., with other applications in a
-given environment), performance, and ease of operation (e.g., documentation,
-training) \citep[pp.~40-41]{Perry2006}. \emph{These may overlap with
-      the ``Results of Testing (Area of Confidence)'' column in the summary
-      spreadsheet.}
-
-Engström ``investigated classifications of research''
-\citep[p.~1]{engström_mapping_2015} on the following four testing techniques.
-\emph{These four categories seem like comparing apples to oranges to me.}
-
-\begin{itemize}
-      \item \textbf{Combinatorial testing:} how the system under test is
-            modelled, ``which combination strategies are used to generate test
-            suites and how test cases are prioritized''
-            \citep[pp.~1-2]{engström_mapping_2015}
-      \item \textbf{Model-based testing:} the information represented and
-            described by the test model \citep[p.~2]{engström_mapping_2015}
-      \item \textbf{Search-based testing:} ``how techniques had been
-            empirically evaluated (i.e. objective and context)''
-            \citep[p.~2]{engström_mapping_2015}
-      \item \textbf{Unit testing:} ``source of information (e.g. code,
-            specifications or testers intuition)''
-            \citep[p.~2]{engström_mapping_2015}
-\end{itemize}
-
-\subsection{Information Required for Different Types of Testing}
-
-The information contained in \reftestReqsTable{} outlines the required
-information for the types of testing listed in this document, as well as
-whether that information exists in Drasil already and if it can be added
-(or added \emph{to}, in the case that it already exists).
-
-\testReqsTable{}
-
-\subsection{Definitions}
+\section{Definitions}
 
 \begin{itemize}
       \item Software testing: ``the process of executing a program with the
             intent of finding errors'' \citep[p.~438]{PetersAndPedrycz2000}
-            \todo{Find original source: Myers 1976}. ``Testing can reveal
+            \todo{OG Myers 1976}. ``Testing can reveal
             failures, but the faults causing them are what can and must be
             removed'' \citep[p.~5-3]{SWEBOK2024}; it can also include
             certification, quality assurance, and quality improvement
@@ -970,7 +953,7 @@ whether that information exists in Drasil already and if it can be added
             dynamic testing \citep[p.~438]{PetersAndPedrycz2000}
 \end{itemize}
 
-\subsubsection{Documentation}
+\subsection{Documentation}
 
 \begin{itemize}
       \item \acf{vnv} Plan: a document for the ``planning of test activities''
@@ -994,7 +977,7 @@ whether that information exists in Drasil already and if it can be added
             reporting \citep[p.~413]{vanVliet2000}
 \end{itemize}
 
-\subsection{General Testing Notes}
+\section{General Testing Notes}
 
 \begin{itemize}
       \item The scope of testing is very dependent on what type of software
@@ -1034,7 +1017,8 @@ whether that information exists in Drasil already and if it can be added
                   criterion'' is defined}
 \end{itemize}
 
-\subsubsection{Steps to Testing \citep[p.~443]{PetersAndPedrycz2000}}
+\subsection[Steps to Testing]{Steps to Testing
+      \citep[p.~443]{PetersAndPedrycz2000}}
 \begin{enumerate}
       \item Identify the goal(s) of the test
       \item Decide on an approach
@@ -1044,7 +1028,7 @@ whether that information exists in Drasil already and if it can be added
       \item Compare the expected results to the actual results
 \end{enumerate}
 
-\subsubsection{Testing Stages}
+\subsection{Testing Stages}
 \begin{itemize}
       \item Unit testing: ``testing the individual modules [of a program]''
             \citep[p.~438]{vanVliet2000}; also called ``module testing''
@@ -1113,7 +1097,7 @@ whether that information exists in Drasil already and if it can be added
             \citep[p.~445]{PetersAndPedrycz2000}
 \end{itemize}
 
-\subsubsection{Test Oracles}
+\subsection{Test Oracles}
 A test oracle is a ``source of information for determining whether a test has
 passed or failed'' \citep[p.~13]{IEEE2022} or that ``the \acs{sut} behaved
 correctly \dots and according to the expected outcomes'' and can be ``human or
@@ -1161,7 +1145,7 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
             wisdom of the team members'' \citepalias{ISTQB}
 \end{itemize}
 
-\subsubsection{Generating Test Cases}
+\subsection{Generating Test Cases}
 
 \begin{itemize}
       \item ``A \textbf{test adequacy criterion} \dots specifies requirements
@@ -1174,8 +1158,8 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
             \todo{Investigate}
 \end{itemize}
 
-\subsection{Static Black-Box (Specification) Testing
-      \citep[pp.~56-62]{Patton2006}}
+\section[Static Black-Box (Specification) Testing]{Static Black-Box
+  (Specification) Testing \citep[pp.~56-62]{Patton2006}}
 
 Most of this section is irrelevant to generating test cases, as they require
 human involvement \todo{Describe anyway} (e.g., Pretend to Be the Customer
@@ -1200,8 +1184,8 @@ should be complete, consistent, and feasible \citep[p.~1-8]{SWEBOK2024}:
             to be determined \citep[p.~408]{vanVliet2000}
 \end{itemize}
 
-\subsubsection{Coverage-Based Testing of Specification
-      \citep[pp.~425-426]{vanVliet2000}}
+\subsection[Coverage-Based Testing of Specification]{Coverage-Based Testing of
+      Specification \citep[pp.~425-426]{vanVliet2000}}
 
 Requirements can be ``depicted as a graph, where the nodes denote elementary
 requirements and the edges denote relations between [them]'' from which test
@@ -1210,14 +1194,14 @@ be difficult to assess whether a set of equivalence classes are truly
 equivalent, since the specific data available in each node is not apparent
 \citep[p.~426]{vanVliet2000}.
 
-\subsection{Dynamic Black-Box (Behavioural) Testing
-      \citep[pp.~64-65]{Patton2006}}
+\section[Dynamic Black-Box (Behavioural) Testing]{Dynamic Black-Box
+  (Behavioural) Testing \citep[pp.~64-65]{Patton2006}}
 
 This is the process of ``entering inputs, receiving outputs, and checking the
 results'' \citep[p.~64]{Patton2006}. \citep[p.~399]{vanVliet2000}
 also calls this ``functional testing''.
 
-\paragraph{Requirements}
+\subsubsection{Requirements}
 \begin{itemize}
       \item Requirements documentation (definition of what the software does)
             \citep[p.~64]{Patton2006}; relevant information could be:
@@ -1227,7 +1211,7 @@ also calls this ``functional testing''.
             \end{itemize}
 \end{itemize}
 
-\subsubsection{Exploratory Testing \citep[p.~65]{Patton2006}}
+\subsection[Exploratory Testing]{Exploratory Testing \citep[p.~65]{Patton2006}}
 
 An alternative to dynamic black-box testing when a specification is not
 available \citep[p.~65]{Patton2006}. The software is explored to
@@ -1242,14 +1226,15 @@ specification, making this type of testing unnecessary, there is also a lot of
 human-based trial and error required for this kind of testing
 \citep{june_11_meeting}.
 
-\subsubsection{Equivalence Partitioning/Classing \citep[pp.~67-69]{Patton2006}}
+\subsection[Equivalence Partitioning/Classing]{Equivalence Partitioning/Classing
+      \citep[pp.~67-69]{Patton2006}}
 
 The process of dividing the infinite set of test cases into a finite set that is
 just as effective (i.e., that reveals the same bugs) \citep[p.~67]{Patton2006}.
 The opposite of this, testing every combination of inputs, is called
 ``exhaustive testing'' and is ``probably not feasible'' \exhInfCite{}.
 
-\paragraph{Requirements}
+\subsubsection{Requirements}
 \begin{itemize}
       \item Ranges of possible values \citep[p.~67]{Patton2006};
             could be obtained through:
@@ -1259,7 +1244,7 @@ The opposite of this, testing every combination of inputs, is called
             \end{itemize}
 \end{itemize}
 
-\subsubsection{Data Testing \citep[pp.~70-79]{Patton2006}}
+\subsection[Data Testing]{Data Testing \citep[pp.~70-79]{Patton2006}}
 
 The process of ``checking that information the user inputs [and] results'',
 both final and intermediate, ``are handled correctly''
@@ -1268,7 +1253,8 @@ white-box level, such as the implementation of boundaries
 \citep[p.~431]{vanVliet2000} or intermediate values within
 components.
 
-\paragraph{Boundary Conditions \citep[pp.~70-74]{Patton2006}}
+\subsubsection[Boundary Conditions]{Boundary Conditions
+      \citep[pp.~70-74]{Patton2006}}
 
 ``[S]ituations at the edge of the planned operational limits of the software''
 \citep[p.~72]{Patton2006}. Often affects types of data (e.g., numeric,
@@ -1286,7 +1272,7 @@ themselves should still be tested even if they occur ``with zero probability'',
 in case there actually \emph{is} a case where it can occur; this process of
 testing may reveal it \citep[p.~460]{PetersAndPedrycz2000}.
 
-\subparagraph{Requirements}
+\paragraph{Requirements}
 \begin{itemize}
       \item Ranges of possible values \citep[p.~67, 73]{Patton2006};
             could be obtained through:
@@ -1297,7 +1283,7 @@ testing may reveal it \citep[p.~460]{PetersAndPedrycz2000}.
             \end{itemize}
 \end{itemize}
 
-\subparagraph{Buffer Overruns \citep[pp.~201-205]{Patton2006}}
+\paragraph{Buffer Overruns \citep[pp.~201-205]{Patton2006}}
 
 \emph{Buffer overruns} are ``the number one cause of software security issues''
 \citep[p.~75]{Patton2006}. They occur when the size of the destination
@@ -1309,7 +1295,8 @@ string handling functions'' \citep[p.~201]{Patton2006}. Any unsafe
 versions of these functions that are used should be replaced with the
 corresponding safe versions \citep[pp.~203-204]{Patton2006}.
 
-\paragraph{Sub-Boundary Conditions \citep[pp.~75-77]{Patton2006}}
+\subsubsection[Sub-Boundary Conditions]{Sub-Boundary Conditions
+      \citep[pp.~75-77]{Patton2006}}
 \label{sub-bound-conds}
 
 Boundary conditions ``that are internal to the software [but] aren't necessarily
@@ -1335,7 +1322,7 @@ domain on the \emph{other} side of the boundary, and the third type is an ``OFF
 point'' for the domain on the \emph{same} side of the boundary
 \citep[p.~430]{vanVliet2000}.
 
-\subparagraph{Requirements}
+\paragraph{Requirements}
 \begin{itemize}
       \item Increased knowledge of data type structures (e.g., monoids, rings,
             etc. \citep{june_11_meeting}); this would capture these sub-boundaries,
@@ -1343,8 +1330,8 @@ point'' for the domain on the \emph{same} side of the boundary
             our notion of these data types (\texttt{Space})
 \end{itemize}
 
-\paragraph{Default, Empty, Blank, Null, Zero, and None
-      \citep[pp.~77-78]{Patton2006}}
+\subsubsection[Default, Empty, Blank, Null, Zero, and None]{Default, Empty,
+      Blank, Null, Zero, and None \citep[pp.~77-78]{Patton2006}}
 
 These should be their own equivalence class, since ``the software usually
 handles them differently'' than ``the valid cases or \dots invalid cases''
@@ -1356,7 +1343,7 @@ in question cannot be zero), the user should likely be able to select
 categories of tests to generate instead of Drasil just generating all possible
 test cases based on the inputs \citep{june_11_meeting}.
 
-\subparagraph{Requirements}
+\paragraph{Requirements}
 \begin{itemize}
       \item Knowledge of an ``empty'' value for each \texttt{Space} (stored
             alongside each type in \texttt{Space}?)
@@ -1370,12 +1357,12 @@ test cases based on the inputs \citep{june_11_meeting}.
             values and how these can be passed as arguments
 \end{itemize}
 
-\paragraph{Invalid, Wrong, Incorrect, and Garbage Data
-      \citep[pp.~78-79]{Patton2006}}
+\subsubsection[Invalid, Wrong, Incorrect, and Garbage Data]{Invalid, Wrong,
+      Incorrect, and Garbage Data \citep[pp.~78-79]{Patton2006}}
 
 This is testing-to-fail \citep[p.~77]{Patton2006}.
 
-\subparagraph{Requirements}
+\paragraph{Requirements}
 This seems to be the most open-ended category of testing.
 \begin{itemize}
       \item Specification of correct inputs that can be ignored;
@@ -1388,7 +1375,8 @@ This seems to be the most open-ended category of testing.
             \end{itemize}
 \end{itemize}
 
-\paragraph{Syntax-Driven Testing \citep[pp.~448-449]{PetersAndPedrycz2000}}
+\subsubsection[Syntax-Driven Testing]{Syntax-Driven Testing
+      \citep[pp.~448-449]{PetersAndPedrycz2000}}
 
 If the inputs to the system ``are described by a certain grammar''
 \citep[p.~448]{PetersAndPedrycz2000}, ``test cases \dots [can] be designed
@@ -1396,7 +1384,8 @@ according to the syntax or constraint of input domains defined in requirement
 specification'' \citep[p.~260]{IntanaEtAl2020}
 \todo{Investigate this source more!}.
 
-\paragraph{Decision Table-Based Testing \citep[pp.~448, 450-453]{PetersAndPedrycz2000}}
+\subsubsection[Decision Table-Based Testing]{Decision Table-Based Testing
+      \citep[pp.~448, 450-453]{PetersAndPedrycz2000}}
 
 ``When the original software requirements have been formulated in the format of
 `if-then' statements,'' a decision table can be created with a column for each
@@ -1405,7 +1394,7 @@ column contains conditions that must be satisfied. The lower portion of a
 decision table specifies the action that results from the satisfaction of
 conditions in a rule'' (from the specification) \citep[p.~450]{PetersAndPedrycz2000}.
 
-\subsubsection{State Testing \citep[pp.~79-87]{Patton2006}}
+\subsection[State Testing]{State Testing \citep[pp.~79-87]{Patton2006}}
 
 The process of testing ``the program's logic flow through its various states''
 \citep[p.~79]{Patton2006} by checking that state variables are
@@ -1434,7 +1423,7 @@ partitioned using one (or more) of the following methods:
 For all of these tests, the values of the state variables should be verified
 \citep[p.~83]{Patton2006}.
 
-\subparagraph{Requirements}
+\paragraph{Requirements}
 \begin{itemize}
       \item Knowledge of the different states of the program
             \citep[p.~82]{Patton2006}; could be obtained through:
@@ -1450,7 +1439,7 @@ For all of these tests, the values of the state variables should be verified
             \end{itemize}
 \end{itemize}
 
-\paragraph{Performance Testing}
+\subsubsection{Performance Testing}
 
 Testing to determine how efficiently software uses resources (including time
 and capacity) ``when accomplishing its designated functions''
@@ -1462,7 +1451,8 @@ and capacity) ``when accomplishing its designated functions''
 \todo{Originally used a \emph{very} vague definition from
       \citep[p.~447]{PetersAndPedrycz2000}; re-investigate!}
 
-\paragraph{Testing States to Fail \citep[pp.~84-87]{Patton2006}}
+\subsubsection[Testing States to Fail]{Testing States to Fail
+      \citep[pp.~84-87]{Patton2006}}
 
 The goal here is to try and put the program in a fail state by doing things
 that are out of the ordinary. These include:
@@ -1480,7 +1470,7 @@ that are out of the ordinary. These include:
             \citep[p.~86]{Patton2006}
 \end{itemize}
 
-\subparagraph{Requirements}
+\paragraph{Requirements}
 \begin{itemize}
       \item Repetition Testing: The types of operations that are likely to lead
             to errors when repeated (e.g., overwriting files?)
@@ -1490,7 +1480,8 @@ that are out of the ordinary. These include:
             overload the system (e.g., upper bounds on values of certain types)
 \end{itemize}
 
-\subsubsection{Other Black-Box Testing \citep[pp.~87-89]{Patton2006}}
+\subsection[Other Black-Box Testing]{Other Black-Box Testing
+      \citep[pp.~87-89]{Patton2006}}
 \begin{itemize}
       \item Act like an inexperienced user (\emph{likely out of scope})
       \item Look for bugs where they've already been found (\emph{keep track of
@@ -1500,8 +1491,8 @@ that are out of the ordinary. These include:
       \item Follow experience (\emph{implicitly done by using Drasil})
 \end{itemize}
 
-\subsection{Static White-Box Testing (Structural Analysis)
-      \citep[pp.~91-104]{Patton2006}}
+\section[Static White-Box Testing (Structural Analysis)]{Static White-Box
+  Testing (Structural Analysis) \citep[pp.~91-104]{Patton2006}}
 
 White-box testing is also called ``glass box testing''
 \citep[p.~439]{PetersAndPedrycz2000}. \citep[p.~447]{PetersAndPedrycz2000} claims
@@ -1540,7 +1531,7 @@ Evaluation \citep[pp.~417-418]{vanVliet2000} and Stepwise Abstraction
             \citep[pp.~413-414]{vanVliet2000}
 \end{itemize}
 
-\subsubsection{Reviews \citep[pp.~92-95]{Patton2006},
+\subsection[Reviews]{Reviews \citep[pp.~92-95]{Patton2006},
       \citep[pp.~415-417]{vanVliet2000},
       \citep[pp.~482-485]{PetersAndPedrycz2000}}
 \label{reviews}
@@ -1624,7 +1615,8 @@ Evaluation \citep[pp.~417-418]{vanVliet2000} and Stepwise Abstraction
 
 \end{itemize}
 
-\subsubsection{Coding Standards and Guidelines \citep[pp.~96-99]{Patton2006}}
+\subsection[Coding Standards and Guidelines]{Coding Standards and Guidelines
+      \citep[pp.~96-99]{Patton2006}}
 \label{code-stds-and-guidelines}
 \todo{This shouldn't really be at the same level as \nameref{reviews}, but I
       didn't want to fight with more subsections yet}
@@ -1640,7 +1632,8 @@ Evaluation \citep[pp.~417-418]{vanVliet2000} and Stepwise Abstraction
       \item This could be checked using linters
 \end{itemize}
 
-\subsubsection{Generic Code Review Checklist \citep[pp.~99-103]{Patton2006}}
+\subsection[Generic Code Review Checklist]{Generic Code Review Checklist
+      \citep[pp.~99-103]{Patton2006}}
 \label{gen-code-review-checklist}
 \todo{This shouldn't really be at the same level as \nameref{reviews}, but I
       didn't want to fight with more subsections yet}
@@ -1673,7 +1666,7 @@ Evaluation \citep[pp.~417-418]{vanVliet2000} and Stepwise Abstraction
             \citep[p.~103]{Patton2006}
 \end{itemize}
 
-\paragraph{Requirements}
+\subsubsection{Requirements}
 \begin{itemize}
       \item Data reference errors: know what operations are allowed for each
             type and check that values are only used for those operations
@@ -1701,7 +1694,8 @@ Evaluation \citep[pp.~417-418]{vanVliet2000} and Stepwise Abstraction
             expected from a normal compilation); do we have any string inputs?
 \end{itemize}
 
-\subsubsection{Correctness Proofs \citep[pp.~418-419]{vanVliet2000}}
+\subsection[Correctness Proofs]{Correctness Proofs
+      \citep[pp.~418-419]{vanVliet2000}}
 Requires a formal specification \citep[p.~418]{vanVliet2000} and uses
 ``highly formal methods of logic'' \citep[p.~438]{PetersAndPedrycz2000} to prove
 the existence of ``an equivalence between the program and its specification''
@@ -1712,15 +1706,16 @@ the existence of ``an equivalence between the program and its specification''
       others' interests in the areas of logic and proof-checking.}
 \todo{Does symbolic execution belong here? Investigate from textbooks}
 
-\subsection{Dynamic White-Box (Structural) Testing
-      \citep[pp.~105-121]{Patton2006}}
+\section[Dynamic White-Box (Structural) Testing]{Dynamic White-Box (Structural)
+  Testing \citep[pp.~105-121]{Patton2006}}
 
 ``Using information you gain from seeing what the code does and how it works to
 determine what to test, what not to test, and how to approach the testing''
 \citep[p.~106]{Patton2006}.
 
-\subsubsection{Code Coverage \citep[pp.~117-121]{Patton2006} or
-      Control-Flow Coverage \citep[pp.~421-424]{vanVliet2000}}
+\subsection[Code Coverage or Control-Flow Coverage]{Code Coverage
+      \citep[pp.~117-121]{Patton2006} or Control-Flow Coverage
+      \citep[pp.~421-424]{vanVliet2000}}
 
 ``[T]est[ing] the program's states and the program's flow among them''
 \citep[p.~117]{Patton2006}; allows for redundant and/or missing test
@@ -1750,13 +1745,17 @@ coverage \citep[p.~421]{vanVliet2000}).
                   \item Weaker than \citep[p.~421]{vanVliet2000} and
                         ``only about 50\% as effective as branch coverage''
                         \citep[p.~481]{PetersAndPedrycz2000}
-                        \todo{Find original source: Miller et al., 1994}
+                        \todo{OG Miller et al., 1994}
                   \item Requires 100\% coverage to be effective
                         \citep[p.~481]{PetersAndPedrycz2000}
-                        \todo{Find original source: Miller et al., 1994}
+                        \todo{OG Miller et al., 1994}
                   \item ``[C]an be used at the module level with less than 5000
-                        lines of code'' \citep[p.~481]{PetersAndPedrycz2000}
-                        \todo{Find original source: Miller et al., 1994}
+                        lines of code''\footnote{The US Software Engineering
+                              Institute has a checklist for determining which
+                              types of lines of code are included when counting
+                              \citep[pp.~30-31]{FentonAndPfleeger1997}.
+                        } \citep[p.~481]{PetersAndPedrycz2000}
+                        \todo{OG Miller et al., 1994}
                   \item Doesn't guarantee correctness
                         \citep[p.~421]{vanVliet2000}
             \end{itemize}
@@ -1772,7 +1771,7 @@ coverage \citep[p.~421]{vanVliet2000}).
                   \item Requires at least 85\% coverage to be effective and is
                         ``most effective \dots at the module level''
                         \citep[p.~481]{PetersAndPedrycz2000}
-                        \todo{Find original source: Miller et al., 1994}
+                        \todo{OG Miller et al., 1994}
                   \item Cyclomatic-number criterion: an adequacy criterion that
                         requires that ``all linearly-independent paths are
                         covered'' \citep[p.~423]{vanVliet2000};
@@ -1819,7 +1818,7 @@ coverage \citep[p.~421]{vanVliet2000}).
                   \item Usually ``limited to a few functions with life
                         criticality features (medical systems, real-time
                         controllers)'' \citep[p.~481]{PetersAndPedrycz2000}
-                        \todo{Find original source: Miller et al., 1994}
+                        \todo{OG Miller et al., 1994}
             \end{itemize}
       \item (Multiple) condition coverage: ``takes the extra conditions on the
             branch statements into account'' (e.g., all possible inputs to a
@@ -1837,7 +1836,7 @@ coverage \citep[p.~421]{vanVliet2000}).
             \end{itemize}
 \end{itemize}
 
-\subsubsection{Data Coverage \citep[pp.~114-116]{Patton2006}}
+\subsection[Data Coverage]{Data Coverage \citep[pp.~114-116]{Patton2006}}
 
 In addition to \nameref{data-flow-coverage}, there are also some minor forms of
 data coverage:
@@ -1853,7 +1852,7 @@ data coverage:
             \citep[p.~116]{Patton2006}
 \end{itemize}
 
-\paragraph{Data Flow Coverage \citep[p.~114]{Patton2006},
+\subsubsection[Data Flow Coverage]{Data Flow Coverage \citep[p.~114]{Patton2006},
       \citep[pp.~424-425]{vanVliet2000}}
 \label{data-flow-coverage}
 
@@ -1929,7 +1928,7 @@ their requirements; all information is adapted from
 \qtodo{How is All-DU-Paths coverage stronger than All-Uses coverage according to
       \citep[p.~433]{vanVliet2000}?}
 
-\subsubsection{Fault Seeding \citep[pp.~427-428]{vanVliet2000}}
+\subsection[Fault Seeding]{Fault Seeding \citep[pp.~427-428]{vanVliet2000}}
 
 The introduction of faults to estimate the number of undiscovered faults in the
 system based on the ratio between the number of new faults and the number of
@@ -1939,7 +1938,7 @@ introduced faults that were discovered (which will ideally be small)
 careful consideration as to which faults are introduced and how
 \citep[p.~427]{vanVliet2000}.
 
-\subsubsection{Mutation Testing \citep[pp.~428-429]{vanVliet2000}}
+\subsection[Mutation Testing]{Mutation Testing \citep[pp.~428-429]{vanVliet2000}}
 \label{chap:testing:sec:mutation-testing}
 
 ``A (large) number of variants of a program is generated'', each differing from
@@ -1961,7 +1960,7 @@ while the modified program [mutant] yielded the right result''
 of a test set, mutation testing can also point the developer(s) in the
 direction of a better solution!
 
-\subsection{Gray-Box Testing \citep[pp.~218-220]{Patton2006}}
+\section[Gray-Box Testing]{Gray-Box Testing \citep[pp.~218-220]{Patton2006}}
 A type of testing where ``you still test the software as a black-box, but you
 supplement the work by taking a peek (not a full look, as in white-box testing)
 at what makes the software work'' \citep[p.~218]{Patton2006}. An
@@ -1969,7 +1968,7 @@ example of this is looking at HTML code and checking the tags used since
 ``HTML doesn't execute or run, it just determines how text and graphics appear
 onscreen'' \citep[p.~220]{Patton2006}.
 
-\subsection{Regression Testing}
+\section{Regression Testing}
 \label{chap:testing:sec:regression-testing}
 
 Repeating ``tests previously executed \dots at a later point in development and
@@ -2008,7 +2007,8 @@ tedious \citetext{p.~482}). See also \citep[p.~232]{Patton2006}.
             \end{itemize}
 \end{itemize}
 
-\subsection{\acf{mt}}
+% Hard-coded acronym to show up in navigation sidebar
+\section[Metamorphic Testing (MT)]{\acf{mt}}
 \label{chap:testing:sec:metamorphic-testing}
 The use of \acfp{mr} ``to determine whether a test case has passed or failed''
 \citep[p.~67]{KanewalaAndYuehChen2019}. ``A[n] \acs{mr} specifies how the
@@ -2020,7 +2020,8 @@ should both pass) \citep[p.~68]{KanewalaAndYuehChen2019}. ``\acs{mt} is one of
 the most appropriate and cost-effective testing techniques for scientists and
 engineers'' \citep[p.~72]{KanewalaAndYuehChen2019}.
 
-\subsubsection{Benefits of \acs{mt}}
+% Hard-coded acronym to show up in navigation sidebar
+\subsection[Benefits of MT]{Benefits of \acs{mt}}
 \begin{itemize}
       \item Easier for domain experts; not only do they understand the domain
             (and its relevant \acp{mr}) \citep[p.~70]{KanewalaAndYuehChen2019},
@@ -2040,7 +2041,8 @@ engineers'' \citep[p.~72]{KanewalaAndYuehChen2019}.
             based on its output \citep[p.~71]{KanewalaAndYuehChen2019}
 \end{itemize}
 
-\subsubsection{Examples of \acs{mt}}
+% Hard-coded acronym to show up in navigation sidebar
+\subsection[Examples of MT]{Examples of \acs{mt}}
 \begin{itemize}
       \item The average of a list of numbers should be equal (within
             floating-point errors) regardless of the list's order
@@ -2079,7 +2081,8 @@ engineers'' \citep[p.~72]{KanewalaAndYuehChen2019}.
             \citep{nelson_formal_1999} \todo{Add paragraph/section number?}
 \end{itemize}
 
-\subsection{Roadblocks to Testing Scientific Software
+\subsection[Roadblocks to Testing Scientific Software]
+{Roadblocks to Testing Scientific Software
       \citep[p.~67]{KanewalaAndYuehChen2019}}
 \label{chap:testing:sec:sci-testing-roadblocks}
 \begin{itemize}
