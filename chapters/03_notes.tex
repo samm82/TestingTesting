@@ -1,706 +1,8 @@
-\chapter{Notes}
-\label{chap:notes}
-
-\section{A Survey of Metaprogramming Languages}
-\label{chap:notes:sec:metalang-survey}
-
-\begin{itemize}
-      \item Often done with \acfp{ast}, \todo{investigate more: Steele 1990?}
-            although other bases are used:
-            \begin{itemize}
-                  \item \acfp{sst}, used by Dylan
-                        \citep[p.~113:6]{lilis_survey_2019}
-            \end{itemize}
-      \item Allows for improvements in:
-            \begin{itemize}
-                  \item ``performance by generating efficient specialized
-                        programs based on specifications instead of using
-                        generic but inefficient programs''
-                        \citep[p.~113:2]{lilis_survey_2019}
-                  \item reasoning about object programs through ``analyzing
-                        and discovering object-program characteristics that
-                        enable applying further optimizations as well as
-                        inspecting and validating the behavior of the object
-                        program'' \citep[p.~113:2]{lilis_survey_2019}
-                  \item code reuse through capturing ``code patterns that cannot
-                        be abstracted'' \citep[p.~113:2]{lilis_survey_2019}
-            \end{itemize}
-\end{itemize}
-
-\subsection{Definitions}
-
-``\emph{Metaprogramming} is the process of writing computer programs, called
-\emph{metaprograms}, that [can] \dots generate new programs or modify existing
-ones'' \citep[p.~113:1]{lilis_survey_2019}. ``It constitutes a flexible and
-powerful reuse solution for the ever-growing size and complexity of software
-systems'' \citep[p.~113:31]{lilis_survey_2019}.
-
-\begin{itemize}
-      \item Metalanguage: ``the language in which the metaprogram is written''
-            \citep[p.~113:1]{lilis_survey_2019}
-      \item Object language: ``the language in which the generated or
-            transformed program is written'' \citep[p.~113:1]{lilis_survey_2019}
-      \item Homogeneous metaprogramming: when ``the object language and the
-            metalanguage are the same'' \citep[p.~113:1]{lilis_survey_2019}
-      \item Heterogeneous metaprogramming: when ``the object language and the
-            metalanguage are \dots different'' \citep[p.~113:1]{lilis_survey_2019}
-\end{itemize}
-
-\subsection{Metaprogramming Models}
-\subsubsection{Macro Systems \citep[p.~113:3-7]{lilis_survey_2019}}
-\begin{itemize}
-      \item Map specified input sequences in a source file to corresponding
-            output sequences (``macro expansion'') until no input sequences
-            remain \citep[p.~113:3]{lilis_survey_2019}; this process can be:
-            \begin{enumerate}
-                  \item procedural (involving algorithms; this is more common
-                        \citep[p.~113:31]{lilis_survey_2019}), or
-                  \item pattern-based (only using pattern matching)
-                        \citep[p.~113:4]{lilis_survey_2019}
-            \end{enumerate}
-      \item Must avoid variable capture (unintended name conflicts) by being
-            ``hygienic'' \citep[p.~113:4]{lilis_survey_2019}; this may be
-            overridden to allow for ``intentional variable capture'', such as
-            Scheme's \emph{syntax-case} macro \citep[p.~113:5]{lilis_survey_2019}
-\end{itemize}
-
-\paragraph{Lexical Macros}
-\begin{itemize}
-      \item Language agnostic \citep[p.~113:3]{lilis_survey_2019}
-      \item Usually only sufficient for basic metaprogramming since changes to
-            the code without considering its meaning ``may cause unintended side
-            effects or name clashes and may introduce difficult-to-solve bugs''
-            \citep[p.~113:5]{lilis_survey_2019}
-      \item Marco was the first safe, language-independent macro system that
-            ``enforce[s] specific rules that can be checked by special oracles''
-            for given languages (as long as the languages ``produce descriptive
-            error messages'') \citep[p.~113:6]{lilis_survey_2019}
-\end{itemize}
-
-\paragraph{Syntactic Macros}
-\begin{itemize}
-      \item ``Aware of the language syntax and semantics''
-            \citep[p.~113:3]{lilis_survey_2019}
-      \item MS\textsuperscript{2} ``was the first programmable syntactic macro
-            system for syntactically rich languages'', including by using ``a
-            type system to ensure that all generated code fragments are
-            syntactically correct'' \citep[p.~113:5]{lilis_survey_2019}
-\end{itemize}
-
-\subsubsection{Reflection Systems \citep[p.~113:7-9]{lilis_survey_2019}}
-\begin{itemize}
-      \item ``Perform computations on [themselves] in the same way as for the
-            target application, enabling one to adjust the system behavior
-            based on the needs of its execution''
-            \citep[p.~113:7]{lilis_survey_2019}
-      \item Means that the system can ``observe and possibly modify its
-            structure and behaviour'' \citep[p.~22]{stuikys_taxonomy_2013};
-            these processes are called ``introspection'' and ``intercession'',
-            respectively \citep[p.~113:7]{lilis_survey_2019}
-            \begin{itemize}
-                  \item The representation of a system can either be structural
-                        or behavioural (e.g., variable assignment)
-                        \citep[p.~113:7]{lilis_survey_2019}
-            \end{itemize}
-      \item ``Runtime code generation based on source text can be impractical,
-            inefficient, and unsafe, so alternatives have been explored based
-            on \acsp{ast} and quasi-quote operators, offering a structured approach
-            that is subject to typing for expressing and combining code at
-            runtime'' \citep[p.~113:8]{lilis_survey_2019}
-      \item ``Not limited to runtime systems'', as some ``compile-time systems
-            \dots rely on some form of structural introspection to perform code
-            generation'' \citep[p.~113:9]{lilis_survey_2019}
-\end{itemize}
-
-\subsubsection{\acfp{mop} \citep[p.~113:9-11]{lilis_survey_2019}}
-\begin{itemize}
-      \item ``Interfaces to the language enabling one to incrementally transform
-            the original language behavior and implementation''
-            \citep[p.~113:9]{lilis_survey_2019}
-      \item Three different approaches:
-            \begin{itemize}
-                  \item Metaclass-based Approach: ``Classes are considered to be
-                        objects of metaclasses, called metaobjects, that are
-                        responsible for the overall behavior of the object
-                        system'' \citep[p.~113:9]{lilis_survey_2019}
-                  \item Metaobject-based Approach: ``Classes and metaobjects are
-                        distinct'' \citep[p.~113:9]{lilis_survey_2019}
-                  \item Message Reification Approach: used with message passing
-                        \citep[p.~113:9]{lilis_survey_2019}
-            \end{itemize}
-      \item Can either be runtime (more common) or compile-time (e.g., OpenC++);
-            the latter protocols ``operate as advanced macro systems that perform
-            code transformation based on metaobjects rather than on text or
-            \acsp{ast}'' \citep[p.~113:11]{lilis_survey_2019}
-\end{itemize}
-
-\paragraph{Dynamic Shells}
-``Pseudo-objects with methods and instance variables that may be attached to
-other objects'' that ``offer efficient and type-safe \acs{mop} functionality for
-statically typed languages'' \citep[p.~113:10]{lilis_survey_2019}.
-
-\paragraph{Dynamic Extensions}
-``Offer similar functionality [to dynamic shells] but for classes, allowing a
-program to replace the methods of a class and its subclasses by the methods of
-another class at runtime'' \citep[p.~113:10]{lilis_survey_2019}.
-
-\subsubsection{\acf{aop} \citep[p.~113:11-13]{lilis_survey_2019}}
-\begin{itemize}
-      \item The use of \emph{aspects}: ``modular units \dots [that] contain
-            information about the additional behavior, called \emph{advice},
-            that will be added to the base program by the aspect as well as
-            the program locations, called \emph{join points}, where this extra
-            behavior is to be inserted based on some matching criteria, called
-            \emph{pointcuts}'' \citep[p.~113:12]{lilis_survey_2019}
-      \item Weaving: the process of ``combining the base program with aspect
-            code \dots [to form] the final code'' \citep[p.~113:12]{lilis_survey_2019}
-      \item Two variants:
-            \begin{enumerate}
-                  \item Static \acs{aop}: when weaving takes place at compile
-                        time, usually with ``a separate language and a custom
-                        compiler, called [an] \emph{aspect weaver}''; results in
-                        better performance \citep[p.~113:12]{lilis_survey_2019}
-                  \item Dynamic \acs{aop}: when weaving takes place at runtime
-                        by instrumenting ``the bytecode \dots to be able to
-                        weave the aspect code''; provides more flexibility
-                        \citep[p.~113:12]{lilis_survey_2019}
-            \end{enumerate}
-      \item This model originates from reflecting and \acsp{mop} (AspectS and
-            AspectL ``support AOP by building respectively on the runtime
-            \acsp{mop} of Smalltalk and Lisp'') \citep[p.~113:12]{lilis_survey_2019}
-      \item While ``\acs{aop} can support metaprogramming by inserting code
-            before, after, or around matched join points, as well as introducing
-            data members and methods through intertype declarations'', it is
-            usually done the other way around, as most \acs{aop} frameworks
-            ``rely on metaprogramming techniques'' \citep[p.~113:12]{lilis_survey_2019}
-\end{itemize}
-
-\subsubsection{Generative Programming \citep[p.~113:13-17]{lilis_survey_2019}}
-\begin{itemize}
-      \item ``A software development paradigm based on modeling software system
-            families such that, given a particular requirements specification,
-            a highly customized and optimized intermediate or end-product can
-            be automatically manufactured on demand from elementary, reusable
-            implementation components by means of configuration knowledge''
-            \todo{get original source from Czarnecki and Eisenecker 2000}
-      \item Often done with using \acsp{ast} \citep[p.~113:31]{lilis_survey_2019}
-      \item Most ``support code templates and quasi-quotes''
-            \citep[p.~113:31]{lilis_survey_2019}
-      \item Related to macro systems, but normal code and metacode are distinct
-\end{itemize}
-
-\paragraph{Template Systems \citep[p.~113:13-14]{lilis_survey_2019}}
-\begin{itemize}
-      \item Template code is instantiated with specific parameters to generate
-            ALL code in a target language; ``no free-form source code generation
-            is allowed'' \citep[p.~113:13]{lilis_survey_2019}
-            \todo{clarify what ``free-form source code generation'' means}
-      \item It is possible, though complex, to express any ``to express any
-            generative metaprogram'', as long as ``the appropriate
-            metaprogramming logic for type manipulation'' is present
-            \citep[p.~113:14]{lilis_survey_2019}
-\end{itemize}
-
-\paragraph{\acs{ast} Transformations \citep[p.~113:14-15]{lilis_survey_2019}}
-\begin{itemize}
-      \item ``Offer code templates through quasi-quotation to support \acs{ast}
-            creation and composition and complement them with \acs{ast}
-            traversal or transformation features'' \citep[p.~113:14]{lilis_survey_2019}
-\end{itemize}
-
-\paragraph{Compile-Time Reflections \citep[p.~113:15-16]{lilis_survey_2019}}
-\begin{itemize}
-      \item ``Offer compile-time reflection features to enable generating code
-            based on existing code structures'' while trying to ensure that ``the
-            generator will always produce well-formed code'' (this is not always
-            fully possible; for example, Genoupe ``cannot guarantee that the
-            generated code is always well typed'')
-            \citep[p.~113:15]{lilis_survey_2019}
-\end{itemize}
-
-\paragraph{Class Compositions \citep[p.~113:16-17]{lilis_survey_2019}}
-\begin{itemize}
-      \item Offer ``flexibility and expressiveness'' through composition
-            approaches \citep[p.~113:16]{lilis_survey_2019}
-            \begin{itemize}
-                  \item \emph{Mixins}: \todo{Investigate}
-                  \item \emph{Traits}: ``support a uniform, expressive, and
-                        type-safe way for metaprogramming without resorting to
-                        \acsp{ast}'' and offer ``compile-time pattern-based
-                        reflection'' through parameterization
-                        \citep[p.~113:16]{lilis_survey_2019}
-            \end{itemize}
-      \item Includes \emph{feature-oriented programming} approaches
-            \todo{Investigate?}
-\end{itemize}
-
-\subsubsection{\acf{msp} \citep[p.~113:17-20]{lilis_survey_2019}}
-\begin{itemize}
-      \item ``Makes \dots [levels of evaluation] accessible to the programmer
-            through \dots \emph{staging annotations}'' to ``specify the
-            evaluation order of the program computations'' and work with these
-            computation stages \citep[p.~113:17]{lilis_survey_2019}
-      \item Related to program generation and procedural macro systems
-            \citep[p.~113:17]{lilis_survey_2019}; macros are often implemented
-            as multistage computations \citep[p.~113:18]{lilis_survey_2019}
-      \item Languages that use \acs{msp} are called \emph{\acfp{msl}} or
-            \emph{two-stage languages}, depending on how many stages of
-            evaluation are offered \citep[p.~113:17]{lilis_survey_2019};
-            \acsp{msl} are more common \citep[p.~113:31]{lilis_survey_2019}
-            \begin{itemize}
-                  \item C++ first instantiates templates, then translates
-                        nontemplate code \citep[p.~113:19]{lilis_survey_2019}
-                  \item Template Haskell evaluates ``the top-level splices
-                        to generate object-level code'' at compile time, then
-                        executes the object-level code at runtime
-                        \citep[p.~113:19]{lilis_survey_2019}
-            \end{itemize}
-      \item Often involves \emph{\acf{csp}}, which allows ``values \dots
-            available in the current stage'' to be used in future stages
-            \citep[p.~113:17]{lilis_survey_2019}
-            \begin{itemize}
-                  \item If this is used, \emph{cross-stage safety} is often
-                        also used to prevent ``variables bound at some stage
-                        \dots [from being] used at an earlier stage''
-                        \citep[p.~113:17]{lilis_survey_2019}
-            \end{itemize}
-      \item Usually homogeneous, but there are exceptions; MetaHaskell, a
-            modular framework \citep[p.~113:19]{lilis_survey_2019} with a type
-            system, allows for ``heterogeneous metaprogramming with multiple
-            object languages'' \citep[p.~113:18]{lilis_survey_2019}
-      \item ``Type safety \dots comes at the cost of expressiveness''
-            \citep[p.~113:19]{lilis_survey_2019}
-\end{itemize}
-
-\subsection{Phase of Evaluation}
-\begin{itemize}
-      \item ``In theory, any combination of them [the phases of evaluation] is
-            viable; however, in practice most metalanguages offer only one or
-            two of the options'' \citep[p.~113:20]{lilis_survey_2019}
-      \item ``The phase of evaluation does not necessarily dictate the adoption
-            of a particular metaprogramming model; however, there is a
-            correlation between the two'' \citep[p.~113:20]{lilis_survey_2019}
-\end{itemize}
-
-\subsubsection{Preprocessing-Time Evaluation \citep[p.~113:20-21]{lilis_survey_2019}}
-\begin{itemize}
-      \item In \acf{pptmp}, ``metaprograms present in the original source are
-            evaluated during the preprocessing phase and the resulting source
-            file contains only normal program code and no metacode''
-            \citep[p.~113:20]{lilis_survey_2019}
-      \item These systems are called \emph{source-to-source preprocessors}
-            \citep[p.~113:20]{lilis_survey_2019} and are usually examples of
-            generative programming \citep[p.~113:21]{lilis_survey_2019}
-            \begin{itemize}
-                  \item ``All such cases involve syntactic transformations''
-                        \citep[p.~113:21]{lilis_survey_2019}, usually using
-                        \acsp{ast}
-            \end{itemize}
-      \item ``Translation can reuse the language compiler or interpreter
-            without the need for any extensions'' \citep[p.~113:20]{lilis_survey_2019}
-      \item Varying levels of complexity (e.g., these systems ``may be fully
-            aware of the language syntax and semantics'')
-            \citep[p.~113:20]{lilis_survey_2019}
-      \item Includes all lexical macro systems \citep[p.~113:20]{lilis_survey_2019}
-            and some ``static \acs{aop} and generative programming systems"
-            \citep[p.~113:31]{lilis_survey_2019}
-      \item Typically doesn't use reflection (Reflective Java is an exception),
-            \acsp{mop}, or dynamic \acs{aop} \citep[p.~113:21]{lilis_survey_2019}
-\end{itemize}
-
-\subsubsection{Compilation-Time Evaluation \citep[p.~113:21-23]{lilis_survey_2019}}
-\begin{itemize}
-      \item In \acf{ctmp}, ``the language compiler is extended to handle
-            metacode translation and execution'' \citep[p.~113:22]{lilis_survey_2019}
-            \begin{itemize}
-                  \item There are many ways of extending the compiler,
-                        including ``plugins, syntactic additions, procedural or
-                        rewrite-based \acs{ast} transformations, or multistage
-                        translation'' \citep[p.~113:22]{lilis_survey_2019}
-                  \item Metacode execution can be done by ``interpreting the
-                        source metacode \dots or compiling the source metacode
-                        to binary and then executing it''
-                        \citep[p.~113:22]{lilis_survey_2019}
-            \end{itemize}
-      \item These systems are usually examples of generative programming but
-            can also use macros, \acsp{mop}, \acs{aop}
-            \citep[p.~113:22]{lilis_survey_2019}, and/or reflection
-            \citep[p.~113:23]{lilis_survey_2019}
-\end{itemize}
-
-\subsubsection{Execution-Time Evaluation \citep[p.~113:23-25]{lilis_survey_2019}}
-\begin{itemize}
-      \item \acf{rtmp} ``involves extending the language execution system and
-            offering runtime libraries to enable dynamic code generation and
-            execution'' and is ``the only case where it is possible to extend the
-            system based on runtime state and execution''
-            \citep[p.~113:23]{lilis_survey_2019}
-      \item Includes ``most reflection systems, \acsp{mop}, \acs{msp} systems,
-            and dynamic \acs{aop} systems" \citep[p.~113:31]{lilis_survey_2019}
-\end{itemize}
-
-\subsection{Metaprogram Source Location}
-\subsubsection{Embedded in the Subject Program \citep[p.~113:25-26]{lilis_survey_2019}}
-\begin{itemize}
-      \item Usually occurs with macros, templates, \acsp{msl}, reflection,
-            \acsp{mop}, and \acs{aop} \citep[p.~113:25]{lilis_survey_2019}
-\end{itemize}
-
-\paragraph{Context Unaware \citep[p.~113:25]{lilis_survey_2019}}
-\begin{itemize}
-      \item Occurs when metaprograms only need to know their input parameters
-            to generate \acsp{ast} \citep[p.~113:25]{lilis_survey_2019}
-      \item Very common: supported by ``most \acs{ctmp} systems''
-            \citep[p.~113:31]{lilis_survey_2019} and ``for most macro
-            systems\dots, generative programming systems \dots and \acsp{msl}
-            \dots it is the only available option'' \citep[p.~113:25]{lilis_survey_2019}
-\end{itemize}
-
-\paragraph{Context Aware \citep[p.~113:25-26]{lilis_survey_2019}}
-\begin{itemize}
-      \item ``Typically involves providing access to the respective program
-            \acs{ast} node and allowing it to be traversed'' as ``an extra \dots
-            parameter to the metaprogram'' \citep[p.~113:25]{lilis_survey_2019}
-      \item Allows for code transformation ``at multiple different locations
-            reachable from the initial context'' \citep[p.~113:25]{lilis_survey_2019}
-      \item Very uncommon \citep[p.~113:25,~31]{lilis_survey_2019}
-\end{itemize}
-
-\paragraph{Global \citep[p.~113:26]{lilis_survey_2019}}
-\begin{itemize}
-      \item Involves ``scenarios that collectively introduce, transform, or
-            remove functionality for the entire program''
-            \citep[p.~113:26]{lilis_survey_2019}
-      \item Usually occurs with reflection, \acsp{mop}, and \acs{aop}
-            \citep[p.~113:26]{lilis_survey_2019}; offered by ``most \acs{rtmp}
-            systems'' \citep[p.~113:31]{lilis_survey_2019}
-      \item Can be used with ``any \acs{pptmp} or \acs{ctmp} system that
-            provides access to the full program \acs{ast}''
-            \citep[p.~113:26]{lilis_survey_2019}
-      \item ``Can also be seen as a context-aware case where the context is the
-            entire program'' \citep[p.~113:26]{lilis_survey_2019}
-\end{itemize}
-
-\subsubsection{External to the Subject Program \citep[p.~113:27]{lilis_survey_2019}}
-\begin{itemize}
-      \item Occurs when metaprograms ``are specified as separate transformation
-            programs applied through \acs{pptmp} systems or supplied to the
-            compiler together with the target program to be translated as extra
-            parameters'' \citep[p.~113:27]{lilis_survey_2019}
-      \item Includes many instances of \acs{aop} \citep[p.~113:27]{lilis_survey_2019}
-\end{itemize}
-
-\subsection{Relation to the Object Language}
-\begin{itemize}
-      \item Each metaprogramming language has two layers:
-            \begin{enumerate}
-                  \item ``The basic object language''
-                  \item ``The metaprogramming elements for implementing the
-                        metaprograms'' (the \emph{metalayer})
-                        \citep[p.~113:27]{lilis_survey_2019}
-            \end{enumerate}
-      \item Sometimes the metalayer of a language is added to a language later,
-            independently of the object language \citep[p.~113:27]{lilis_survey_2019}
-\end{itemize}
-
-\subsubsection{Metalanguage Indistinguishable from the Object Language
-      \citep[p.~113:28-29]{lilis_survey_2019}}
-\begin{itemize}
-      \item Two categories:
-            \begin{enumerate}
-                  \item ``Object language and metalanguage \dots use the same
-                        constructs through the same syntax''
-                  \item ``Metalanguage constructs \dots [are] modeled using
-                        object language syntax and applied through special
-                        language or execution system features''
-                        \citep[p.~113:28]{lilis_survey_2019}
-                        \begin{itemize}
-                              \item Includes many examples of \acsp{mop} and
-                                    \acs{aop} \citep[p.~113:28]{lilis_survey_2019}
-                        \end{itemize}
-            \end{enumerate}
-\end{itemize}
-
-\subsubsection{Metalanguage Extends the Object Language
-      \citep[p.~113:29]{lilis_survey_2019}}
-\begin{itemize}
-      \item Allows for reuse of ``the original language['s] \dots well-known
-            features instead of adopting custom programming constructs''
-            \citep[p.~113:29]{lilis_survey_2019}
-      \item ``Typically involve new syntax and functionality used to
-            differentiate normal code from metacode''
-            \citep[p.~113:29]{lilis_survey_2019}
-      \item Often used in quasi-quote constructs, two-stage and multistage
-            languages, and \acsp{mop} \citep[p.~113:29]{lilis_survey_2019}
-      \item Used with \acsp{msl} ``as the base languages are extended with
-            staging annotations to deliver \acs{msp} functionality''
-            \citep[p.~113:31]{lilis_survey_2019}
-\end{itemize}
-
-\subsubsection{Metalanguage Different from the Object Language
-      \citep[p.~113:29-31]{lilis_survey_2019}}
-\begin{itemize}
-      \item Allows for ``the metalanguage syntax and constructs \dots [to be]
-            selected to better reflect the metalanguage concepts to ease their
-            use in developing metaprograms and enable them to become more
-            concise and understandable'' \citep[p.~113:29]{lilis_survey_2019}
-      \item However, it can lead to ``different development practices and
-            disable[s] the potential for design or code reuse between them [the
-                        languages]'', as well as requiring users to know how to
-            use both languages \citep[p.~113:30]{lilis_survey_2019}
-      \item Used by some \acs{aop} and generative metaprogramming systems
-            \citep[p.~113:30]{lilis_survey_2019}
-\end{itemize}
-
-\section{Overview of Generative Software Development}
-\label{chap:notes:sec:overview-of-gen-soft-dev}
-
-``System family engineering seeks to exploit the commonalities
-among systems from a given problem domain while managing the
-variabilities among them in a systematic way''
-\citep[p.~326]{czarnecki_overview_2004}. ``Generative software development is a
-system-family approach \dots that focuses on automating the creation of
-system-family members \dots from a specification written in [a \acf{dsl}]''
-\citep[p.~327]{czarnecki_overview_2004}. ``\acsp{dsl} come in a wide variety of
-forms, \dots [including] textual \dots [and] diagrammatic''
-\citep[p.~328]{czarnecki_overview_2004}.
-
-``System family engineering distinguishes between at least two kinds of
-development processes: \emph{domain engineering} and \emph{application
-      engineering}'' \citep[p.~328]{czarnecki_overview_2004}. ``Domain
-engineering \dots is concerned with the development of reusable assets such as
-components, generators, \acsp{dsl}, analysis and design models, user documentation,
-etc.'' \citep[pp.~328-329]{czarnecki_overview_2004}. It includes ``determining
-the scope of the family to be built, identifying the common and variable
-features among the family members'', and ``the development of a common
-architecture for all the members of the system family''
-\citep[p.~329]{czarnecki_overview_2004}. Application engineering includes
-``requirements elicitation, analysis, and specification'' and ``the manual or
-automated construction of the system from the reusable assets''
-\citep[p.~329]{czarnecki_overview_2004}. The assets from domain engineering are
-used to build the system development by application engineering, which provides
-domain engineering which the requirements to analyze for commonalities and
-create reusable assets for \citep[p.~329]{czarnecki_overview_2004}.
-
-\acf{aop} ``provides more powerful localization and encapsulation mechanisms
-than traditional component technologies'' but there is still the need to
-``configure aspects and other components to implement abstract features''
-\citep[p.~338]{czarnecki_overview_2004}. \acs{aop} ``cover[s] the solution space
-and only a part of the configuration knowledge'', although ``aspects can also
-be found in the problem space'' \citep[p.~338]{czarnecki_overview_2004}.
-
-\subsection{Definitions}
-\begin{itemize}
-      \item Generative domain model: ``a mapping between \emph{problem space}
-            and \emph{solution space}'' which ``takes a specification and
-            returns the corresponding implementation''
-            \citep[p.~330]{czarnecki_overview_2004}
-            \begin{itemize}
-                  \item Configuration view: ``the problem space consists of
-                        domain-specific concepts and their features'' such as
-                        ``illegal feature combinations, default settings, and
-                        default dependencies'' \citep[p.~331]{czarnecki_overview_2004}.
-                        ``An application programmer creates a configuration of
-                        features by selecting the desired ones, [sic] which
-                        then is mapped to a configuration of components''
-                        \citep[p.~331]{czarnecki_overview_2004}
-                  \item Transformational view: ``a problem space is represented
-                        by a \dots [\acs{dsl}], whereas the solution space is
-                        represented by an implementation language''
-                        \citep[p.~331]{czarnecki_overview_2004}. ``A program in
-                        a \dots [\acs{dsl}]'' is transformed into ``its
-                        implementation in the implementation language''
-                        \citep[p.~331]{czarnecki_overview_2004}
-            \end{itemize}
-      \item Problem space: ``a set of domain-specific abstractions that can be
-            used to specify the desired system-family member''
-            \citep[p.~330]{czarnecki_overview_2004}
-      \item Solution space: ``consists of implementation-oriented abstractions,
-            which can be instantiated to create implementations of the [desired]
-            specifications'' \citep[p.~330]{czarnecki_overview_2004}
-      \item Network of domains: the graph built from ``spaces and mappings \dots
-            where each implementation of a domain exposes a \acs{dsl}, which may
-            be implemented by transformations to \acsp{dsl} exposed by other
-            domain implementations'' \citep[pp.~332-333]{czarnecki_overview_2004}
-      \item Feature modeling: ``a method and notation to elicit and represent
-            common and variable features of the systems in a system family''
-            \citep[p.~333]{czarnecki_overview_2004}. Can be used during domain
-            analysis as ``the starting point in the development of both
-            system-family architecture and \acsp{dsl}''
-            \citep[p.~334]{czarnecki_overview_2004}
-      \item \acf{mdd}: uses ``abstract representation[s] of a system and the
-            portion[s] of the world that interact[] with it'' to ``captur[e]
-            every important aspect of a software system''
-            \citep[p.~336]{czarnecki_overview_2004}. Often uses \acsp{dsl} and
-            sometimes deals with system families, making it related to
-            generative software development \citep[pp.~336-337]{czarnecki_overview_2004}
-\end{itemize}
-
-\section{Structured Program Generation Techniques}
-\label{chap:notes:sec:prog-gen-techs}
-\begin{itemize}
-      \item Program transformer: something that ``modifies an existing program,
-            instead of generating a new one'' (for example, by making a
-            program's code adhere to style guides); the term ``program
-            generator'' often includes program transformers
-            \citep[p.~1]{smaragdakis_structured_2017}
-      \item Generators are used ``to automate, elevate, modularize or otherwise
-            facilitate program development'' \citep[p.~2]{smaragdakis_structured_2017}
-      \item Why is it beneficial ``to statically check the generator and be
-            sure that no type error arises during its \emph{run time}''
-            \citep[p.~2]{smaragdakis_structured_2017} instead of just checking
-            the generated program(s)?
-            \begin{itemize}
-                  \item ``An error in the generated program can be very hard to
-                        debug and may require full understanding of the
-                        generator itself'' \citep[p.~2]{smaragdakis_structured_2017}
-                  \item Errors can occur in the generator from ``mismatched
-                        assumptions''; for example, ``the generator fails to
-                        take into account some input case, so that, even though
-                        the generator writer has tested the generator under
-                        several inputs, other inputs result in badly-formed
-                        programs'' \citep[p.~6]{smaragdakis_structured_2017}
-            \end{itemize}
-
-\end{itemize}
-
-\subsection{Techniques for Program Generation
-      \citep[pp.~3-5]{smaragdakis_structured_2017}}
-\begin{enumerate}
-      \item Generation as text: ``producing character strings containing the
-            text of a program, which is subsequently interpreted or compiled''
-            \citep[p.~3]{smaragdakis_structured_2017}
-      \item Syntax tree manipulation: building up code using constructors in a
-            syntactically meaningful way that preserves its structure
-      \item Code templates/quoting: involves ``language constructs for
-            generating program fragments in the target language \dots as well
-            as for supplying values to fill in holes in the generated syntax
-            tree'' \citep[p.~4]{smaragdakis_structured_2017}
-      \item Macros: ``reusable code templates with pre-set rules for
-            parameterizing them'' \citep[p.~4]{smaragdakis_structured_2017}
-      \item Generics: Mechanisms with ``the ability to parameterize a code
-            template with different static types''
-            \citep[p.~5]{smaragdakis_structured_2017}
-      \item Specialized languages: Languages with specific features for
-            program generators, such as \acs{aop} and
-            \emph{inter-type declarations} \citep[p.~5]{smaragdakis_structured_2017}
-\end{enumerate}
-
-\subsection{Kinds of Generator Safety \citep[pp.~5-8]{smaragdakis_structured_2017}}
-\begin{itemize}
-      \item Lexical and syntactic well-formedness: ``any generated/transformed
-            program is guaranteed to pass the lexical analysis and parsing
-            phases of a traditional compiler''; usually done ``by encoding the
-            syntax of the object language using the type system of the host
-            language'' \citep[p.~6]{smaragdakis_structured_2017}
-      \item Scoping and hygiene: avoiding issues with scope and unintentional
-            variable capture
-      \item Full well-formedness: ensuring that any generated/transformed
-            program is guaranteed to be fully well-formed (e.g.,
-            ``guaranteed to pass any static check in the target language''
-            \citep[p.~8]{smaragdakis_structured_2017})
-\end{itemize}
-
-\subsection{Methods for Guaranteeing Fully Structured Generation
-      \citep[pp.~8-20]{smaragdakis_structured_2017}}
-\begin{enumerate}
-      \item \acf{msp}: ``the generator and the generated program \dots are
-            type-checked by the same type system[] and some parts of the
-            program are merely evaluated later (i.e., generated)''; similar
-            to \emph{partial evaluation} \citep[p.~9]{smaragdakis_structured_2017}
-      \item Class Morphing: similar to \acfp{mop}?
-      \item Reflection: (e.g., SafeGen \citep[p.~15]{smaragdakis_structured_2017})
-      \item The use of ``a powerful type system that can simultaneously express
-            conventional type-level properties of a program and the logical
-            structure of a generator under unknown inputs. This typically
-            entails the use of dependent types'' (e.g., Ur)
-            \citep[p.~16]{smaragdakis_structured_2017}
-      \item Macro systems, although ``safety guarantees carry the cost of some
-            manual verification effort by the programmer''
-            \citep[p.~19]{smaragdakis_structured_2017}
-\end{enumerate}
-
-\section{Taxonomy of Fundamental Concepts of Meta-Programming}
-\label{chap:notes:sec:meta-programming-taxonomy}
-\subsection{Definitions}
-\begin{itemize}
-      \item Program transformation: ``the process of changing one form of a
-            program (source code, specification or model) into another, as well
-            as a formal or abstract description of an algorithm that implements
-            this transformation'' \citep[p.~18]{stuikys_taxonomy_2013}
-            \begin{itemize}
-                  \item It may or may not preserve the program's semantics
-                        \citep[p.~18]{stuikys_taxonomy_2013}
-                  \item In metaprogramming, ``the transformation algorithm
-                        describes generation of a particular instance depending
-                        upon values of the generic parameters''
-                        \citep[p.~18]{stuikys_taxonomy_2013}
-                  \item Formal program transformation: ``A stepwise
-                        manipulation, which (1) is defined on a programming
-                        language domain, (2) uses a formal model to support the
-                        refinement, and (3) simultaneously preserves the
-                        semantics'' \citep[p.~18]{stuikys_taxonomy_2013}
-            \end{itemize}
-      \item Code generation: ``the process by which a code generator converts a
-            syntactically correct high-level program into a series of
-            lower-level instructions''; the input can take many forms
-            ``typically consists of a parse tree, abstract syntax tree or
-            intermediate language code'' and ``the output \dots could be in any
-            language'' \citep[p.~19]{stuikys_taxonomy_2013}
-      \item Generic component: ``a software module \dots [that] abstractly and
-            concisely represents a set of closely related ('look-alike')
-            software components with slightly different properties''
-            \citep[p.~19]{stuikys_taxonomy_2013}
-      \item Generative component: a generic component that has ``explicitly
-            added generative technology'' \citep[p.~24]{stuikys_taxonomy_2013}
-      \item Separation of concerns: ``the process of breaking a design problem
-            into distinct tasks that are orthogonal and can be implemented
-            separately'' \citep[p.~21]{stuikys_taxonomy_2013}
-\end{itemize}
-
-\subsection{Other Notes}
-\begin{itemize}
-      \item Structural meta-programming concepts ``are defined by the
-            designer'', ``used during construction of the meta-programming
-            systems and artefacts'', and ``depend upon [the] specific \dots
-            meta-language'' used \citep[p.~24]{stuikys_taxonomy_2013}
-      \item Most processes ``are used in compile time or run time'' except for
-            generalization, which ``is used during the creation of the
-            meta-programming artefacts'' \citep[pp.~24-25]{stuikys_taxonomy_2013}
-\end{itemize}
-
-\section{Roadblocks to Meta-Programming}
-\label{chap:notes:sec:metaprogramming-roadblocks}
-\begin{itemize}
-      \item ``Generators are often the technique of last resort''
-            \citep[p.~2]{smaragdakis_structured_2017}
-      \item ``A major stumbling block to achieving the promised benefits
-                  [of meta-programming] is the understanding and learning the
-            meta-programming approach. One reason may be that we do not yet
-            thoroughly understand the fundamental concepts that define
-            meta-programming'' \citep[p.~26]{stuikys_taxonomy_2013}
-      \item Meta-programming does not provide instant results; instead, the
-            effort and design put in at the beginning of the process later pay
-            off potentially large dividends that are not seen right away;
-            ``most \dots programmers and designers \dots like to reuse the
-            existing software artefacts, but not much is done and [sic]
-            invested into designing for reuse'' \citep[p.~26]{stuikys_taxonomy_2013}
-            (example, meta-programming was proposed by McIlroy in 1968 but
-            ``software factories have not become a reality \dots partly due to
-            \dots [this] significant initial investment'')
-            \citep[p.~27]{stuikys_taxonomy_2013}
-      \item Software development involves ``work[ing] with multiple levels of
-            abstraction'', including ``the syntax, semantics, abilities and
-            limitations'' of given languages, their implementation details,
-            their communication details, and ``impeding mismatches'' between
-            them \citep[p.~27]{stuikys_taxonomy_2013}
-      \item ``Modification of the generated code usually removes the program
-            from the scope of the meta-programming system''
-            \citep[p.~27]{stuikys_taxonomy_2013}
-\end{itemize}
+\chapter{Software Testing Research}
+\label{chap:testing}
 
 \section{Software Metrics}
-\label{chap:notes:sec:software-metrics}
+\label{chap:testing:sec:software-metrics}
 
 \begin{itemize}
       \item The following branches of testing started as parts of quality
@@ -725,7 +27,7 @@ be found in the problem space'' \citep[p.~338]{czarnecki_overview_2004}.
 \end{itemize}
 
 \section{Software Testing}
-\label{chap:notes:sec:software-testing}
+\label{chap:testing:sec:software-testing}
 
 It was realized early on in the process that it would be beneficial to
 understand the different types of testing (including what they test, what
@@ -734,7 +36,7 @@ of this research, as well as some information on why and how it was performed.
 \todo{A justification for why we decided to do this should be added}
 
 \subsection{Scope}
-\label{chap:notes:sec:scope}
+\label{chap:testing:sec:scope}
 
 This project is focused on the generation of test cases for code, so only
 the ``testing'' component of \acf{vnv} is considered (see \thesisissueref{22}).
@@ -811,7 +113,7 @@ as opposed to ``testing'' \citep[p.~13]{Firesmith2015} may be out of scope, due
 to their reliance on human intervention.
 
 \phantomsection{}
-\label{chap:notes:sec:derived-from-qualities}
+\label{chap:testing:sec:derived-from-qualities}
 Since it seemed that testing types can be derived from software qualities
 (see \thesisissueref{21} and \thesisissueref{23}), ``capabilit[ies] of software
 product[s] to satisfy stated and implied needs when used under specified
@@ -884,7 +186,7 @@ arose, they were investigated to a reasonable extent and documented. If a
 testing approach was mentioned but not defined, it was still added to the
 glossary to indicate it should be investigated further. A similar methodology
 was used for tracking software qualities, albeit in a separate document
-(see \hyperref[chap:notes:sec:derived-from-qualities]{Scope (of derived test types)}).
+(see \hyperref[chap:testing:sec:derived-from-qualities]{Scope (of derived test types)}).
 
 During this investigation, some terms came up that seemed to be relevant to
 testing but were so vague, they didn't provide any new information. These were
@@ -1497,7 +799,7 @@ terminology (see \refIEEETestTerms). However, other sources \citep{BarbosaEtAl20
 categories (see \refOtherTestTerms) which may be beneficial to investigate to
 determine if this categorization is sufficient. A ``metric'' categorization was
 considered at one point, but was decided to be out of the scope of this project
-(see \nameref{chap:notes:sec:scope}, \thesisissueref{21}, and \thesisissueref{22}).
+(see \nameref{chap:testing:sec:scope}, \thesisissueref{21}, and \thesisissueref{22}).
 
 \begin{landscape}
       \ieeeTestTermsTable{}
@@ -1660,7 +962,7 @@ whether that information exists in Drasil already and if it can be added
       \item Test Suite Reduction: the process of reducing the size of a test
             suite while maintaining the same coverage
             \citep[p.~519]{BarrEtAl2015}; can be accomplished through
-            \nameref{chap:notes:sec:mutation-testing}
+            \nameref{chap:testing:sec:mutation-testing}
       \item Test Case Reduction: the process of ``removing side-effect free
             functions'' from an individual test case to ``reduc[e] test oracle
             costs'' \citep[p.~519]{BarrEtAl2015}
@@ -1836,8 +1138,8 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
       \item Derived test oracle: any ``artefact[] from which a
             test oracle may be derived---for instance, a previous version of
             the system'' or ``program documentation''; this includes
-            \nameref{chap:notes:sec:regression-testing},
-            \nameref{chap:notes:sec:metamorphic-testing}
+            \nameref{chap:testing:sec:regression-testing},
+            \nameref{chap:testing:sec:metamorphic-testing}
             \citep[p.~510]{BarrEtAl2015}, and invariant detection (either
             known in advance or ``learned from the program'')
             \citep[p.~516]{BarrEtAl2015}; \emph{This is like the assertions
@@ -2193,7 +1495,7 @@ that are out of the ordinary. These include:
       \item Act like an inexperienced user (\emph{likely out of scope})
       \item Look for bugs where they've already been found (\emph{keep track of
                   previous failed test cases? This could pair well with
-                  \nameref{chap:notes:sec:metamorphic-testing}!})
+                  \nameref{chap:testing:sec:metamorphic-testing}!})
       \item Think like a hacker (\emph{likely out of scope})
       \item Follow experience (\emph{implicitly done by using Drasil})
 \end{itemize}
@@ -2638,7 +1940,7 @@ careful consideration as to which faults are introduced and how
 \citep[p.~427]{vanVliet2000}.
 
 \subsubsection{Mutation Testing \citep[pp.~428-429]{vanVliet2000}}
-\label{chap:notes:sec:mutation-testing}
+\label{chap:testing:sec:mutation-testing}
 
 ``A (large) number of variants of a program is generated'', each differing from
 the original ``slightly'' (e.g., by deleting a statement or replacing an
@@ -2668,7 +1970,7 @@ example of this is looking at HTML code and checking the tags used since
 onscreen'' \citep[p.~220]{Patton2006}.
 
 \subsection{Regression Testing}
-\label{chap:notes:sec:regression-testing}
+\label{chap:testing:sec:regression-testing}
 
 Repeating ``tests previously executed \dots at a later point in development and
 maintenance'' \citep[p.~446]{PetersAndPedrycz2000} ``to make sure there are no
@@ -2707,7 +2009,7 @@ tedious \citetext{p.~482}). See also \citep[p.~232]{Patton2006}.
 \end{itemize}
 
 \subsection{\acf{mt}}
-\label{chap:notes:sec:metamorphic-testing}
+\label{chap:testing:sec:metamorphic-testing}
 The use of \acfp{mr} ``to determine whether a test case has passed or failed''
 \citep[p.~67]{KanewalaAndYuehChen2019}. ``A[n] \acs{mr} specifies how the
 output of the program is expected to change when a specified change is made to
@@ -2729,7 +2031,7 @@ engineers'' \citep[p.~72]{KanewalaAndYuehChen2019}.
             \emph{Again, Drasil}
       \item Helps negate the test oracle \citep[p.~69]{KanewalaAndYuehChen2019}
             and output validation \citep[p.~70]{KanewalaAndYuehChen2019} problems
-            from \nameref{chap:notes:sec:sci-testing-roadblocks} (\emph{i.e.,
+            from \nameref{chap:testing:sec:sci-testing-roadblocks} (\emph{i.e.,
                   the two that are relevant for Drasil})
       \item Can extend a limited number of test cases (e.g., from an
             experiment that was only able to be conducted a few times)
@@ -2779,7 +2081,7 @@ engineers'' \citep[p.~72]{KanewalaAndYuehChen2019}.
 
 \subsection{Roadblocks to Testing Scientific Software
       \citep[p.~67]{KanewalaAndYuehChen2019}}
-\label{chap:notes:sec:sci-testing-roadblocks}
+\label{chap:testing:sec:sci-testing-roadblocks}
 \begin{itemize}
       \item ``Correct answers are often unknown'': if the results were already
             known, there would be no need to develop software to model them
