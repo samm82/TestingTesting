@@ -82,12 +82,14 @@ itself and the code. For example:
             structural attributes of representations of the software''
             \citep[p.~18]{FentonAndPfleeger1997}, only reliability and
             maintainability testing done \emph{on} code is in scope.
-      \item Humorously, ``loop testing'' is in scope when referring to loops
-            in software \citep{Patton2006, vanVliet2000, PetersAndPedrycz2000,
-                  DhokAndRamanathan2016, GodefroidAndLuchaup2011}, not loops
-            in chemical systems \citep{Dominguez-PumarEtAl2020}, wide-area
-            damping controllers \citep{PierreEtAl2017, TrudnowskiEtAl2017} or
-            copper loops \citep{Goralski1999}!
+      \item Since feedback loops often have a software \emph{and} hardware
+            component (see \citep{PreußeEtAl2012}), only the software component
+            is in scope. In some cases, it is unclear whether the ``loops''
+            being tested are implemented by software or hardware, such as those
+            in wide-area damping controllers \citep{PierreEtAl2017,
+                  TrudnowskiEtAl2017}. Humorously, the testing of loops in
+            chemical systems \citep{Dominguez-PumarEtAl2020} or made of copper
+            \citep{Goralski1999} are out of scope.
 \end{enumerate}
 
 Sometimes, the term ``testing'' excludes static testing
@@ -157,6 +159,7 @@ orthogonal) approaches, such as the following (all from
 \citepalias{ISTQB} unless otherwise indicated):
 \begin{itemize}
       \item Checklist-based reviews
+      \item Closed-loop HiL verification \citep[p.~6]{PreußeEtAl2012}
       \item Endurance stability testing \citep[p.~55]{Firesmith2015}
       \item End-to-end functionality testing \citep[Tab.~2]{Gerrard2000}
       \item Formal reviews
@@ -712,7 +715,8 @@ within individual ones; these may be areas for further investigation:
       \item ``System testing'' is listed as a subtype of ``system testing'' by
             \citet[p.~23]{Firesmith2015}.
       \item ``Hardware-'' and ``human-in-the-loop testing'' have the same
-            acronym: ``HIL'' \citep[p.~23]{Firesmith2015}.
+            acronym: ``HIL''\footnote{``HiL'' is used for the former by
+                  \citet[p.~2]{PreußeEtAl2012}.} \citep[p.~23]{Firesmith2015}.
       \item The same is true for ``customer'' and ``contract(ual) acceptance
             testing'' (``CAT'') \citep[p.~30]{Firesmith2015}.
       \item The acronym ``SoS'' is used but not defined by
@@ -1220,6 +1224,9 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
                   \item \acf{dac} can be supported by ``automatic invariant
                         generation'' \citep[p.~345]{LahiriEtAl2013}
             \end{itemize}
+      \item COBRA is a tool that ``generates test cases automatically and
+            applies them to the simulated industrial control system in a SiL
+            Test'' \citep[p.~2]{PreußeEtAl2012}
 \end{itemize}
 
 \section[Static Black-Box (Specification) Testing]{Static Black-Box
