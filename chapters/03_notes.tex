@@ -262,12 +262,19 @@ Software testing approaches can be divided into the following
 categories. Note that ``there is a lot of overlap between different classes of
 testing'' \citep[p.~8]{Firesmith2015} so, for example, ``one category [of test
             techniques] might deal with combining two or more techniques''
-\citep[p.~5-10]{SWEBOK2024}. Implementing tests from multiple subsets within
-the same category, such as functional and structural, is usually a good idea
-since they ``they use different sources of information and have been shown to
-highlight different problems''; however, some subsets, such as deterministic
-and random, may have ``conditions that make one approach more effective than
-the other'' \citep[p.~5-16]{SWEBOK2024}.
+\citep[p.~5-10]{SWEBOK2024}. A side effect of this is that it is difficult to
+``untangle'' these classes; for example, take the following sentence: ``whitebox
+fuzzing extends dynamic test generation based on symbolic execution and
+constraint solving from unit testing to whole-application security testing''
+\citep[p.~23]{GodefroidAndLuchaup2011}!
+
+Despite its challenges, it is useful to understand the differences between
+testing classes because tests from multiple subsets within the same category,
+such as functional and structural, ``use different sources of information and
+have been shown to highlight different problems'' \citep[p.~5-16]{SWEBOK2024}.
+However, some subsets, such as deterministic and random, may have ``conditions
+that make one approach more effective than the other''
+\citep[p.~5-16]{SWEBOK2024}.
 
 \begin{itemize}
       \item Visibility of code: black-, white-, or gray-box (functional,
@@ -1189,6 +1196,14 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
       \item ``Test data generators'' are mentioned on
             \citep[p.~410]{vanVliet2000} but not described
             \todo{Investigate}
+      \item ``Dynamic test generation consists of running a program while
+            simultaneously executing the program symbolically in order to
+            gather constrains on inputs from conditional statements encountered
+            along the execution \citep[p.~23]{GodefroidAndLuchaup2011}
+            \todo{OG [11, 6]}
+      \item ``Generating tests to detect [loop inefficiencies]'' is difficult
+            due to ``virtual call resolution'', reachability conditions, and
+            order-sensitivity \citep[p.~896]{DhokAndRamanathan2016}
       \item Assertion checking requires ``auxiliary invariants'', and while
             ``many \dots can be synthesized automatically by invariant
             generation methods, the undecidable nature (or the high practical
