@@ -171,6 +171,7 @@ orthogonal) approaches, such as the following (all from
       \item Informal reviews
       \item Infrastructure compatibility testing \citep[p.~53]{Firesmith2015}
       \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000}
+      \item Machine learning-assisted performance testing? \citep{Moghadam2019}
       \item Offline MBT
       \item Online MBT
       \item Role-based reviews
@@ -278,9 +279,11 @@ considered at one point, but was decided to be out of the scope of this project
 
 Software testing approaches can be divided into the following
 categories. Note that ``there is a lot of overlap between different classes of
-testing'' \citep[p.~8]{Firesmith2015} so, for example, ``one category [of test
+testing'' \citep[p.~8]{Firesmith2015}, meaning that ``one category [of test
             techniques] might deal with combining two or more techniques''
-\citep[p.~5-10]{SWEBOK2024}. A side effect of this is that it is difficult to
+\citep[p.~5-10]{SWEBOK2024}. For example, ``performance, load and stress
+testing might considerably overlap in many areas'' \citep[p.~1187]{Moghadam2019}.
+A side effect of this is that it is difficult to
 ``untangle'' these classes; for example, take the following sentence: ``whitebox
 fuzzing extends dynamic test generation based on symbolic execution and
 constraint solving from unit testing to whole-application security testing''
@@ -909,6 +912,7 @@ particularly ``to determine if operations and/or systems administration staff
 can accept [it]'' \citepalias{ISTQB}.
 
 \subsubsection{Performance Testing}
+\label{perf-test-ambiguity}
 
 ``Performance testing'' is defined as testing ``conducted to
 evaluate the degree to which a test item accomplishes its
@@ -928,9 +932,13 @@ I see two possible resolutions to this:
             I haven't found a definition of ``performance-related
             testing'' (at least yet) and most (if not all)
             definitions of ``performance testing'' seem to treat it
-            as a category of tests.
+            as a category of tests. This seems supported by
+            \citeauthor{Moghadam2019}, who says ``performance testing
+            is considered as a family of performance-related testing
+            techniques intended for addressing the objectives of performance
+            analysis'' \citeyearpar[p.~1187]{Moghadam2019}, which implies the
+            two terms are synonyms.
 \end{enumerate}
-\label{perf-test-ambiguity}
 
 Similarly, ``performance'' and ``performance efficiency'' are
 both given as software qualities by \citeauthor{IEEE2017}, with the latter
@@ -1207,6 +1215,11 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
 \subsection{Generating Test Cases}
 
 \begin{itemize}
+      \item ``Impl[ies] a reduction in human effort and cost, with the
+            potential to impact the test coverage positively'', and a given
+            ``policy could be reused in analogous situations which leads to
+            even more efficiency in terms of required efforts''
+            \citep[p.~1187]{Moghadam2019}
       \item ``A \textbf{test adequacy criterion} \dots specifies requirements
             for testing \dots and can be used \dots as a test case generator....
                   [For example, i]f a 100\% statement coverage has not been achieved
