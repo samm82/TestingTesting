@@ -93,6 +93,14 @@ itself and the code. For example:
                   copper loops \citep{Goralski1999} are out of scope.} being
             tested are implemented by software or hardware, such as those in
             wide-area damping controllers \citep{PierreEtAl2017, TrudnowskiEtAl2017}.
+            \begin{itemize}
+                  \item A related note: ``path coverage'' or ``path testing''
+                        seems to be able to refer to either paths through code
+                        (as a subset of control-flow testing)
+                        \citep[p.~5-13]{SWEBOK2024} or through a model, such as
+                        a finite-state machine (as a subset of model-based
+                        testing) \citep[p.~184]{DoğanEtAl2014}.
+            \end{itemize}
 \end{enumerate}
 
 Sometimes, the term ``testing'' excludes static testing
@@ -170,6 +178,9 @@ orthogonal) approaches, such as the following (all from
       \item Formal reviews
       \item Informal reviews
       \item Infrastructure compatibility testing \citep[p.~53]{Firesmith2015}
+      \item Invariant-based automatic testing
+            \citep[pp.~184-185,~Tab.~21]{DoğanEtAl2014}, including for
+            ``AJAX user interfaces'' (p.~191)
       \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000}
       \item Machine learning-assisted performance testing? \citep{Moghadam2019}
       \item Offline MBT
@@ -178,7 +189,9 @@ orthogonal) approaches, such as the following (all from
       \item Scenario walkthroughs \citep[Fig.~4]{Gerrard2000}
       \item Scenario-based reviews
       \item Security attacks
+      \item Statistical web testing \citep[p.~185]{DoğanEtAl2014}
       \item Usability test script(ing)
+      \item Web application regression testing \cite[Tab.~21]{DoğanEtAl2014}
 \end{itemize}
 
 However, some classes seem to be closely associated, such as remote testing
@@ -205,6 +218,10 @@ particular note were terms that included ``test(ing)'', ``validation'',
 ``verification'', ``review'', ``audit'', or terms that had come up before
 as part of already-discovered testing approaches, such as ``performance'',
 ``recovery'', ``component'', ``bottom-up'', ``boundary'', and ``configuration''.
+A type of ``coverage'' was assumed to imply a type of testing that aimed to
+maximize this coverage (e.g., ``path testing'' is testing that ``aims to
+execute all entry-to-exit control flow paths in a SUT's control flow graph''
+\citep[p.~5013]{SWEBOK2024}), thus maximizing the path coverage.
 If a term's definition had already been recorded, either the ``new'' one
 replaced it if the ``old'' one wasn't as clear/concise or parts of both were
 merged to paint a more complete picture. If any discrepancies or ambiguities
@@ -1246,6 +1263,12 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
                   \item \acf{dac} can be supported by ``automatic invariant
                         generation'' \citep[p.~345]{LahiriEtAl2013}
             \end{itemize}
+      \item \emph{Automated interface discovery} can be used ``for test-case
+            generation for web applications'' \citep[p.~184]{DoğanEtAl2014}
+            \todo{OG Halfond and Orso, 2007}
+      \item ``Concrete and symbolic execution'' can be used in ``a dynamic test
+            generation technique \dots for PHP applications''
+            \citep[p.~192]{DoğanEtAl2014} \todo{OG Artzi et al., 2008}
       \item COBRA is a tool that ``generates test cases automatically and
             applies them to the simulated industrial control system in a SiL
             Test'' \citep[p.~2]{PreußeEtAl2012}
