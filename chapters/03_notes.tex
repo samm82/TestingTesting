@@ -558,6 +558,13 @@ within individual ones; these may be areas for further investigation:
             ``interoperability testing'' from \citet[p.~238]{IEEE2017},
             and the decomposition of ``compatibility'' into ``co-existence''
             and ``interoperability'' by \citet{ISO_IEC2023a}!
+            \begin{itemize}
+                  \item The definition of ``compatibility testing'' in
+                        \citep[p.~43]{Kam2008} unhelpfully says ``See
+                        \emph{interoperability testing}'', adding another
+                        layer of confusion to the direction of their
+                        relationship.
+            \end{itemize}
       \item Experience-based testing is categorized as both a test design
             technique and a test practice on the same page
             \citep[p.~22]{IEEE2022}! This also causes confusion about
@@ -781,6 +788,17 @@ within individual ones; these may be areas for further investigation:
             developmental testing \citep[p.~30]{Firesmith2015}, and developer
             testing (\citealp[p.~39]{Firesmith2015}; \citealp[p.~11]{Gerrard2000})
             are unclear and seem miniscule.
+      \item Although ad hoc testing is sometimes classified as a ``technique''
+            \citep[p.~5-14]{SWEBOK2024}, it is one in which ``no recognized test
+            design technique is used'' \citep[p.~42]{Kam2008}.
+      \item \citeauthor{Kam2008}'s definition of ``boundary value testing''
+            says ``See \emph{boundary value analysis},'' but this definition is
+            not present \citeyearpar{Kam2008}.
+      \item ``Conformance testing'' is implied to be a synonym of ``compliance
+            testing'' by \citeauthor{Kam2008}, which only makes sense because
+            of the vague definition of ``compliance testing'': ``testing to
+            determine the compliance of the component or system''
+            \citeyearpar[p.~43]{Kam2008}.
       \item \citeauthor{ChalinEtAl2006}~list \acf{rac} and \acf{sv} as ``two
             complementary forms of assertion checking''
             \citeyearpar[p.~343]{ChalinEtAl2006}; based on how the term ``static
@@ -872,6 +890,18 @@ ways, alongside other, potentially related, terms:
             ``specifications'' while the latter also includes ``standards'',
             ``rules'', ``requirements'', ``design'', ``processes'', and
             ``practices''!
+
+            Another complicating factor is that ``compliance testing'' is also
+            given as a synonym of ``conformance testing''
+            \citep[p.~43]{Kam2008}, which seems plausible. However, ``conformance
+            testing'' can also be defined as testing that evaluates the degree
+            to which ``results \dots fall within the limits that define
+            acceptable variation for a quality requirement''
+            \citep[p.~93]{IEEE2017} \todo{OG PMBOK 5th ed.}, which seems to
+            describe something different. Perhaps this second definition of
+            ``conformance testing'' should be used, and the previous definition
+            of ``compliance testing'' be used for describing compliance with
+            external standards, rules, etc.~to keep them distinct.
 
       \item \textbf{Functional Suitability Testing:} Procedure testing is
             called a ``type of functional suitability testing''
