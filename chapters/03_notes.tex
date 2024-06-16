@@ -802,6 +802,16 @@ within individual ones; these may be areas for further investigation:
       \item \citeauthor{Kam2008} seems to imply that ``mutation testing'' is a
             synonym of ``back-to-back testing'' \citeyearpar[p.~46]{Kam2008},
             but these are two quite distinct techniques.
+      \item \citeauthor{Kam2008} also says that the goal of negative testing is
+            ``showing that a component or system does not work''
+            \citeyearpar[p.~46]{Kam2008} \todo{OG Beizer}, which is not true;
+            if robustness is an important quality for the system, then testing
+            the system ``in a way for which it was not intended to be used''
+            \citepalias{ISTQB} (i.e., negative testing) is one way to help
+            test this!
+      \item ``Program testing'' is given as a synonym of ``component testing''
+            \citep[p.~46]{Kam2008}, although it probably should be a synonym of
+            ``system testing'' instead.
       \item \citeauthor{ChalinEtAl2006}~list \acf{rac} and \acf{sv} as ``two
             complementary forms of assertion checking''
             \citeyearpar[p.~343]{ChalinEtAl2006}; based on how the term ``static
