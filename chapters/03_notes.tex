@@ -103,6 +103,26 @@ itself and the code. For example:
             \end{itemize}
 \end{enumerate}
 
+Specific programming languages are sometimes used to define ``kinds'' of
+testing. These will not be included (see \thesisissueref{63}); if the reliance
+on a specific programming language is intentional, then this really implies an
+underlying test approach that may be generalized to other languages. Some
+examples:
+
+\begin{itemize}
+      \item ``They implemented an approach \dots for JavaScript testing
+            (referred to as Randomized)'' \citep[p.~192]{DoğanEtAl2014} -
+            this really refers to random testing used within JavaScript
+      \item ``SQL statement coverage'' is really just statement coverage
+            used specifically for SQL statements \citep[Tab.~13]{DoğanEtAl2014}
+            \todo{OG Alalfi et al., 2010}
+      \item ``Faults specific to PHP'' is just a subcategory of fault-based
+            testing, since ``execution failures \dots  caused by missing an
+            included file, wrong MySQL quer[ies] and uncaught exceptions''
+            are not exclusive to PHP \citep[Tab.~27]{DoğanEtAl2014}
+            \todo{OG Artzi et al., 2008}
+\end{itemize}
+
 Sometimes, the term ``testing'' excludes static testing
 (\citealp[p.~222]{AmmannAndOffutt2017}; \citealp[p.~13]{Firesmith2015});
 restricting it to ``dynamic validation'' \citep[p.~5-1]{SWEBOK2024} or
