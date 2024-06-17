@@ -14,6 +14,7 @@ Functional Unit,"An ""entity … capable of accomplishing a specified purpose"" 
 (Test) Harness,"""Scaffolding code written for the purpose of exercising lower level code when the higher‐level code that will ultimately exercise it is not yet available"" (IEEE, 2017, p. 469); ""a collection of stubs and drivers needed to execute a test suite"" (Hamburg and Mogyorodi, 2024)",,
 Invariant,"An ""assertion that is always true for a specified segment or at a specified point of a computer program"" (IEEE, 2017, p. 240)","Assertion, sometimes (IEEE, 2017, p. 257)",
 Keyword,"""One or more words [including ""at least one verb""] used as a reference to a specific set of actions intended to be performed during"" testing (IEEE, 2022, p. 5)","Action Word (implied by Hamburg and Mogyorodi, 2024)",
+Markov Chain,"""A discrete-time stochastic process model with a memoryless property"" meaning that a given state transition ""is not related to the history of transitions"" (Kam, 2008, p. 21)",,
 Metamorphic Relation,"A ""description of how changes to the test inputs for a test case affect the expected outputs"" (IEEE, 2022, p. 6; similar in Hamburg and Mogyorodi, 2024)",,See ISO 29119-11
 Mixed Entry Table,"A ""decision table whose stub consists of rows in which limited and extended entries are written"" (IEEE, 2017, p. 278; OG ISO, 1984)",,
 Multiple-hit Decision Table,"A ""decision table where at least one set of conditions will be satisfied by more than one rule"" (IEEE, 2017, p. 285; OG ISO, 1984)",,
