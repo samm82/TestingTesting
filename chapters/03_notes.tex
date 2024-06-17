@@ -14,7 +14,7 @@ of a test process; for example, ``across the whole organization'' or only
 \newcommand{\notDefDistinctIEEE}[1]{\footnote{Not formally defined, but
             \distinctIEEE{#1}}}
 \newcommand{\gerrardDistinctIEEE}[1]{\footnote{``Each type of test addresses a
-            different risk area'' \citep[p.~12]{Gerrard2000}, which is
+            different risk area'' \citep[p.~12]{Gerrard2000a}, which is
             \distinctIEEE{#1}}}
 
 \chapter{Software Testing Research}
@@ -121,6 +121,13 @@ examples:
             included file, wrong MySQL quer[ies] and uncaught exceptions''
             are not exclusive to PHP \citep[Tab.~27]{DoğanEtAl2014}
             \todo{OG Artzi et al., 2008}
+      \item While ``HTML testing'' is listed or implied by
+            \citeauthor{Gerrard2000a} (\citeyear[Tab.~2]{Gerrard2000a};
+            \citeyear[Tab.~1, p.~3]{Gerrard2000b}) and
+            \citet[p.~220]{Patton2006}, it seems to be a combination of syntax
+            testing, functionality testing, hyperlink testing/link checking,
+            cross-browser compatibility testing, performance testing, and
+            content checking \citep[p.~3]{Gerrard2000b}
 \end{itemize}
 
 Sometimes, the term ``testing'' excludes static testing
@@ -130,7 +137,7 @@ restricting it to ``dynamic validation'' \citep[p.~5-1]{SWEBOK2024} or
 executed'' \citep[p.~427]{IEEE2017}. Since ``terminology is not uniform
 among different communities, and some use the term \emph{testing} to refer to
 static techniques\notDefDistinctIEEE{technique} as well''
-\citep[p.~5-2]{SWEBOK2024} (such as \citep[pp.~8-9]{Gerrard2000} and even
+\citep[p.~5-2]{SWEBOK2024} (such as \citep[pp.~8-9]{Gerrard2000a} and even
 \citep[p.~440]{IEEE2017}!), the scope of ``testing'' for the purpose of this
 project originally included both ``static testing'' and ``dynamic testing'', as
 done by \citet[p.~17]{IEEE2022}. However, static testing tends to be less
@@ -194,21 +201,21 @@ orthogonal) approaches, such as the following (all from
       \item Closed-loop HiL verification \citep[p.~6]{PreußeEtAl2012}
       \item Closed-loop protection system testing \citep[p.~331]{ForsythEtAl2004}
       \item Endurance stability testing \citep[p.~55]{Firesmith2015}
-      \item End-to-end functionality testing \citep[Tab.~2]{Gerrard2000}
+      \item End-to-end functionality testing \citep[Tab.~2]{Gerrard2000a}
       \item Formal reviews
       \item Informal reviews
       \item Infrastructure compatibility testing \citep[p.~53]{Firesmith2015}
       \item Invariant-based automatic testing
             \citep[pp.~184-185,~Tab.~21]{DoğanEtAl2014}, including for
             ``AJAX user interfaces'' (p.~191)
-      \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000}
+      \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000a}
       \item Machine learning-assisted performance testing? \citep{Moghadam2019}
       \item Model-based GUI testing \citep[Tab.~1]{DoğanEtAl2014}
       \item Non-functional search-based testing \citep[Tab.~1]{DoğanEtAl2014}
       \item Offline MBT
       \item Online MBT
       \item Role-based reviews
-      \item Scenario walkthroughs \citep[Fig.~4]{Gerrard2000}
+      \item Scenario walkthroughs \citep[Fig.~4]{Gerrard2000a}
       \item Scenario-based reviews
       \item Security attacks
       \item Statistical web testing \citep[p.~185]{DoğanEtAl2014}
@@ -313,6 +320,12 @@ definition):
       \item \textbf{Asynchronous Testing:} \citet{JardEtAl1999}
       \item \textbf{Performance(-related) Testing:} \citet{Moghadam2019}
       \item \textbf{Web Application Testing:} \citet{DoğanEtAl2014, Kam2008}
+            \begin{itemize}
+                  \item \textbf{HTML Testing\footnote{Since removed; see
+                                    \nameref{chap:testing:sec:scope}.}:}
+                        \citet{ChoudharyEtAl2010, SneedAndGöschl2000,
+                              Gerrard2000b}
+            \end{itemize}
 \end{itemize}
 
 Different sources categorized software testing approaches in different ways;
@@ -382,7 +395,7 @@ that make one approach more effective than the other''
             (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citetalias{ISTQB};
             \citealp[p.~218]{KuļešovsEtAl2013} \todo{OG Black, 2009};
             \citealp{Patton2006}; \citealp{Perry2006};
-            \citealp{PetersAndPedrycz2000}; \citealp[pp.~9,~13]{Gerrard2000})
+            \citealp{PetersAndPedrycz2000}; \citealp[pp.~9,~13]{Gerrard2000a})
             (sometimes includes installation \citep[p.~439]{vanVliet2000} or
             regression \citep[p.~3]{BarbosaEtAl2006})
       \item Key aspect: specification, structure, or experience
@@ -397,7 +410,7 @@ that make one approach more effective than the other''
             testing types''\notDefDistinctIEEE{type}
             \citep[p.~17]{Firesmith2015}
       \item Execution of code: static or dynamic
-            (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000};
+            (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
             \citealp[p.~53]{Patton2006})
       \item Goal of testing: verification or validation
             (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[pp.~69-70]{Perry2006})
@@ -415,10 +428,10 @@ that make one approach more effective than the other''
             \citep[pp.~398-399]{vanVliet2000}
       \item Priority\footnote{In the context of testing e-business projects.}:
             smoke, usability, performance, or functionality testing
-            \citep[p.~12]{Gerrard2000}
+            \citep[p.~12]{Gerrard2000a}
       \item Category of test ``type''\gerrardDistinctIEEE{type}: static testing,
             test browsing, functional testing, non-functional testing, or large
-            scale integration (testing) \citep[p.~12]{Gerrard2000}
+            scale integration (testing) \citep[p.~12]{Gerrard2000a}
       \item Purpose: correctness, performance, reliability, or security
             \citep{Pan1999}
 \end{itemize}
@@ -841,7 +854,7 @@ within individual ones; these may be areas for further investigation:
             testing'' \citepalias{ISTQB}.
       \item The distinctions between development testing \citep[p.~136]{IEEE2017},
             developmental testing \citep[p.~30]{Firesmith2015}, and developer
-            testing (\citealp[p.~39]{Firesmith2015}; \citealp[p.~11]{Gerrard2000})
+            testing (\citealp[p.~39]{Firesmith2015}; \citealp[p.~11]{Gerrard2000a})
             are unclear and seem miniscule.
       \item ``State-based'' is misspelled by \citeauthor{Kam2008} as
             ``state-base'' \citeyearpar[pp.~13,~15]{Kam2008} and
@@ -875,29 +888,37 @@ within individual ones; these may be areas for further investigation:
             \citeyearpar[p.~343]{ChalinEtAl2006}; based on how the term ``static
             assertion checking'' is used by \citet[p.~345]{LahiriEtAl2013}, it
             seems like this should be the complement to \acs{rac} instead.
+      \item \citeauthor{SneedAndGöschl2000} give ``white-'', ``grey-'', and
+            ``black-box testing'' as synonyms for ``module'', ``integration'',
+            and ``system testing'', respectively
+            \citeyearpar[p.~18]{SneedAndGöschl2000} \todo{OG Hetzel88}, but
+            this mapping is incorrect; black-box testing can be performed on a
+            module, for example \todo{find source}. This makes the claim that
+            ``red-box testing'' is a synonym for ``acceptance testing'' (p.~18)
+            lose credibility.
       \item Availability testing isn't assigned to a test priority
-            \citep[Tab.~2]{Gerrard2000}, despite the claim that ``the test
+            \citep[Tab.~2]{Gerrard2000a}, despite the claim that ``the test
             types\gerrardDistinctIEEE{type} have been allocated a slot against
             the four test priorities'' (p.~13); I think usability and/or
             performance would have made sense.
       \item ``Visual browser validation'' is described as both static \emph{and}
-            dynamic in the same table \citep[Tab.~2]{Gerrard2000}, even though
+            dynamic in the same table \citep[Tab.~2]{Gerrard2000a}, even though
             they are implied to be orthogonal classifications: ``test
             types can be static \emph{or} dynamic'' (p.~12,~emphasis added).
-      \item \citeauthor{Gerrard2000} makes a distinction between ``transaction
+      \item \citeauthor{Gerrard2000a} makes a distinction between ``transaction
             verification'' and ``transaction testing''
-            \citeyearpar[Tab.~2]{Gerrard2000} and also uses the phrase
+            \citeyearpar[Tab.~2]{Gerrard2000a} and also uses the phrase
             ``transaction flows'' (Fig.~5) but doesn't explain them.
-      \item The phrase ``continuous automated testing''  \citep[p.~11]{Gerrard2000}
+      \item The phrase ``continuous automated testing''  \citep[p.~11]{Gerrard2000a}
             is redundant since continuous testing is a sub-category of automated
             testing (\citealp[p.~35]{IEEE2022}, \citetalias{ISTQB}).
-      \item \citeauthor{Gerrard2000} very helpfully indicates that performance
+      \item \citeauthor{Gerrard2000a} very helpfully indicates that performance
             testing is performance testing and that usability testing is
             usability testing; interestingly, performance testing is \emph{not}
             given as a sub-category of usability testing
-            \citeyearpar[Tab.~2]{Gerrard2000}.
+            \citeyearpar[Tab.~2]{Gerrard2000a}.
       \item End-to-end functionality testing is \emph{not} indicated to be
-            functionality testing \citep[Tab.~2]{Gerrard2000}.
+            functionality testing \citep[Tab.~2]{Gerrard2000a}.
 \end{enumerate}
 
 \subsubsection{Functional Testing}
@@ -1004,7 +1025,7 @@ ways, alongside other, potentially related, terms:
             is implied to be a sub-approach of build verification testing
             \citepalias{ISTQB} and made distinct from ``functional testing'';
             interestingly, security is described as a sub-approach of both
-            non-functional and functionality testing \citep[Tab.~2]{Gerrard2000}.
+            non-functional and functionality testing \citep[Tab.~2]{Gerrard2000a}.
             This is listed separately from ``correctness testing'' by
             \citet[p.~53]{Firesmith2015}.
 \end{itemize}
