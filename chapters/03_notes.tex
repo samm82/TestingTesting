@@ -39,9 +39,12 @@ and proximity-based testing (see \citetalias{ISTQB}) are out of scope since
 they are for testing hardware systems, as is \acf{emsec} testing
 (\citealp{ISO2021}; \citealp[p.~95]{ZhouEtAl2012}), which deals with the
 ``security risk'' of ``information leakage via electromagnetic emanation''
-\citep[p.~95]{ZhouEtAl2012}. Processes that focus on ``an organization's \dots
-processes and infrastructure'', like security audits, are also out of scope
-\citepalias{ISTQB}. \textbf{NOTE:} While all the examples of domain-specific
+\citep[p.~95]{ZhouEtAl2012}. Security audits that focus on ``an organization's
+\dots processes and infrastructure'' \citepalias{ISTQB}, are also out of scope,
+but security audits that ``aim to ensure that all of the products installed on
+a site are secure when checked against the known vulnerabilities for those
+products'' \citep[p.~28]{Gerrard2000b} are not.
+\textbf{NOTE:} While all the examples of domain-specific
 testing given by \citet[p.~26]{Firesmith2015} are focused on hardware, this
 might not be representative of all types (e.g., ML model testing seems
 domain-specific).
@@ -210,6 +213,7 @@ orthogonal) approaches, such as the following (all from
             ``AJAX user interfaces'' (p.~191)
       \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000a}
       \item Machine learning-assisted performance testing? \citep{Moghadam2019}
+      \item Manual security audits \citep[p.~28]{Gerrard2000b}
       \item Model-based GUI testing \citep[Tab.~1]{DoğanEtAl2014}
       \item Non-functional search-based testing \citep[Tab.~1]{DoğanEtAl2014}
       \item Offline MBT
@@ -298,8 +302,9 @@ uncovering more terms to explore, potentially in different domains (see
 \thesisissueref{57}). The following terms (and their respective related terms)
 were explored in the following sources, bringing the number of testing
 approaches from 403 to 479 and the number of \emph{undefined} terms from 146 to
-174 (the generalization can be made that 63\% of added terms also included a
+162 (the assumption can be made that about 79\% of added terms also included a
 definition):
+% 1 - [(undef after - undef before)] / (total after) - (total before)
 
 \begin{itemize}
       \item \textbf{Assertion Checking:} \citet{LahiriEtAl2013, ChalinEtAl2006,
