@@ -294,6 +294,19 @@ were missed during the first pass(es) of these resources. While reiterating
 over these resources would be ideal, this may not be possible due to time
 constraints.
 
+% Define values to be easily reused and used in calculation!
+
+\newcount\TotalBefore
+\newcount\TotalAfter
+\newcount\UndefBefore
+\newcount\UndefAfter
+
+\TotalBefore=403
+\UndefBefore=146
+
+\TotalAfter=480
+\UndefAfter=162
+
 This process also led to some testing approaches without definitions;
 \citep{IEEE2022} and \citep{Firesmith2015} in particular introduced many.
 Once more ``standard'' sources had been exhausted, a strategy was proposed to
@@ -301,10 +314,10 @@ look for sources that explicitly defined these terms, with the added benefit of
 uncovering more terms to explore, potentially in different domains (see
 \thesisissueref{57}). The following terms (and their respective related terms)
 were explored in the following sources, bringing the number of testing
-approaches from 403 to 480 and the number of \emph{undefined} terms from 146 to
-162 (the assumption can be made that about 79\% of added terms also included a
-definition):
-% 1 - [(undef after - undef before)] / (total after) - (total before)
+approaches from \the\TotalBefore~to \the\TotalAfter~and the number of
+\emph{undefined} terms from \the\UndefBefore~to \the\UndefAfter~(the assumption
+can be made that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
+(\TotalAfter - \TotalBefore)\relax\% of added terms also included a definition):
 
 \begin{itemize}
       \item \textbf{Assertion Checking:} \citet{LahiriEtAl2013, ChalinEtAl2006,
