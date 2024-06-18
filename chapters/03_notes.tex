@@ -206,6 +206,8 @@ orthogonal) approaches, such as the following (all from
       \item Endurance stability testing \citep[p.~55]{Firesmith2015}
       \item End-to-end functionality testing \citep[Tab.~2]{Gerrard2000a}
       \item Formal reviews
+      \item Incremental integration testing \citep[p.~601]{SharmaEtAl2021}
+            \todo{OG [19]}
       \item Informal reviews
       \item Infrastructure compatibility testing \citep[p.~53]{Firesmith2015}
       \item Invariant-based automatic testing
@@ -255,7 +257,7 @@ A type of ``coverage'' was assumed to imply a type of testing that aimed to
 maximize this coverage (e.g., ``path testing'' is testing that ``aims to
 execute all entry-to-exit control flow paths in a SUT's control flow graph''
 \citep[p.~5013]{SWEBOK2024}, thus maximizing the path coverage; see also
-\thesisissueref{63}).
+\thesisissueref{63}, \citet[Fig.~1]{SharmaEtAl2021}).
 If a term's definition had already been recorded, either the ``new'' one
 replaced it if the ``old'' one wasn't as clear/concise or parts of both were
 merged to paint a more complete picture. If any discrepancies or ambiguities
@@ -304,8 +306,8 @@ constraints.
 \TotalBefore=403
 \UndefBefore=146
 
-\TotalAfter=481
-\UndefAfter=162
+\TotalAfter=483
+\UndefAfter=164
 
 This process also led to some testing approaches without definitions;
 \citep{IEEE2022} and \citep{Firesmith2015} in particular introduced many.
@@ -345,6 +347,7 @@ can be made that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
                               Gerrard2000b}
                   \item \textbf{DOM Testing:} \citet{BajammalAndMesbah2018}
             \end{itemize}
+      \item \textbf{Sandwich Testing:} \citet{SharmaEtAl2021}
 \end{itemize}
 
 Different sources categorized software testing approaches in different ways;
@@ -405,6 +408,9 @@ that make one approach more effective than the other''
       \item Visibility of code: black-, white-, or gray-box (functional,
             structural, or a mix of the two)
             (\citealp[pp.~5-10,~5-16]{SWEBOK2024};
+            \citealp[p.~601, called ``testing approaches'' and (stepwise) code
+                  reading replaced ``gray-box testing'']{SharmaEtAl2021};
+            \todo{OG [3, 4, 5, 8]}
             \citealp[pp.~57-58]{AmmannAndOffutt2017};
             \citealp[p.~213]{KuļešovsEtAl2013};
             \citealp[pp.~53,~218]{Patton2006}; \citealp[p.~69]{Perry2006};
