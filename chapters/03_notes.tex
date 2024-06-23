@@ -29,6 +29,10 @@ of this research, as well as some information on why and how it was performed.
 \section{Scope}
 \label{chap:testing:sec:scope}
 
+\newcommand{\accelTolTest}{astronauts \citep[p.~11]{MorgunEtAl1999}, aviators
+      \citep[pp.~27,~42]{HoweAndJohnson1995}, or catalysts
+      \citep[p.~1463]{LiuEtAl2023}}
+
 This project is focused on the generation of test cases for code, so only
 the ``testing'' component of \acf{vnv} is considered (see \thesisissueref{22}).
 For example, design reviews (see \citealp[p.~132]{IEEE2017}) and
@@ -44,10 +48,20 @@ they are for testing hardware systems, as is \acf{emsec} testing
 but security audits that ``aim to ensure that all of the products installed on
 a site are secure when checked against the known vulnerabilities for those
 products'' \citep[p.~28]{Gerrard2000b} are not.
-\textbf{NOTE:} While all the examples of domain-specific
+
+This sometimes leads to making wider decisions on whether a whole category of
+testing is in scope. For example, while all the examples of domain-specific
 testing given by \citet[p.~26]{Firesmith2015} are focused on hardware, this
 might not be representative of all types (e.g., ML model testing seems
-domain-specific).
+domain-specific). Conversely, the examples of environmental tolerance testing
+(p.~56) do not seem to apply to software. For example, radiation tolerance
+testing seems to focus on hardware, such as motors \citep{MukhinEtAl2022},
+robots \citep{ZhangEtAl2020}, or ``nanolayered carbide and nitride materials''
+\citep[p.~1]{TunesEtAl2022}. Acceleration tolerance testing seems to focus on
+\accelTolTest{} and acoustic tolerance testing on rats \citep{HolleyEtAl1996},
+which are even less related! Since these all seem to focus on
+environment-specific factors that would not impact the code, this category of
+testing is also out of scope.
 
 It is also interesting to note that different test approaches seem to be more
 specific to certain domains. For example, the terms ``software qualification
@@ -875,9 +889,7 @@ within individual ones; these may be areas for further investigation:
             to only refer to software testing in \citep[p.~56]{Firesmith2015};
             elsewhere, they seem to refer to testing the acoustic tolerance of
             rats \citep{HolleyEtAl1996} or the acceleration tolerance of
-            astronauts \citep[p.~11]{MorgunEtAl1999}, aviators
-            \citep[pp.~27,~42]{HoweAndJohnson1995}, or catalysts
-            \citep[p.~1463]{LiuEtAl2023}, which don't exactly seem relevant\dots
+            \accelTolTest{}, which don't exactly seem relevant\dots
       \item While \citeauthor{Firesmith2015} says that fault tolerance testing
             is a subtype\notDefDistinctIEEE{type} of robustness testing
             \citeyearpar[p.~56]{Firesmith2015}
