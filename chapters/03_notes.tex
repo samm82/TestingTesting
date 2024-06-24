@@ -209,6 +209,8 @@ apply to the code itself, and as such are out of scope (see \thesisissueref{43})
             possess'' \citep[p.~322]{IEEE2017}
 \end{itemize}
 
+\subsection{Orthogonally Derived Test Approaches}
+\label{chap:testing:sec:orthogonal-tests}
 Some test approaches seem to just be combinations of other (seemingly
 orthogonal) approaches, such as the following (all from
 \citepalias{ISTQB} unless otherwise indicated):
@@ -386,11 +388,34 @@ determine if this categorization is sufficient. A ``metric'' categorization was
 considered at one point, but was decided to be out of the scope of this project
 (see \nameref{chap:testing:sec:scope}, \thesisissueref{21}, and \thesisissueref{22}).
 
+It also seems that these categories are orthogonal. For example, it originally
+seemed like experience-based testing was categorized as both a test design
+technique and a test practice on the same page \citep[p.~22]{IEEE2022}. This
+also caused confusion about its children\footnote{I had originally noted that
+      this may suggest that parent and child test approach categorizations
+      aren't necessarily the same, or that more thought must be given to
+      classification/organization; this may still be true, since there are
+      several other instances of this inconsistency.}, such as error guessing
+and exploratory testing; \citeyearpar[p.~34]{IEEE2022} say error guessing is an
+``experience-based test design technique'' and ``experience-based test
+practices include \dots\ exploratory testing, tours, attacks, and
+checklist-based testing''. However, these authors previously say
+``experience-based testing practices like exploratory testing \dots\ are not
+\dots\ techniques for designing test cases'', although they ``can use the test
+techniques'' \citeyearpar[p.~viii]{IEEE2021}. This implies that the phrase
+``experience-based test design technique'' refers to a technique that is used
+\emph{by} the practice of experience-based testing, not that experience-based
+testing is \emph{itself} a test technique, although this is not always clearly
+articulated (\citealp[pp.~4,~22]{IEEE2022}; \citealp[p.~5-13]{SWEBOK2024};
+\citetalias{ISTQB}) and is sometimes contradicted \citep[p.~46]{Firesmith2015}.
+See \nameref{chap:testing:sec:orthogonal-tests}
+for more potential examples of the orthogonality of testing categories.
+
+\newgeometry{margin=1.5cm, top=2.5cm}
 \begin{landscape}
       \ieeeTestTermsTable{}
 \end{landscape}
 
-\newgeometry{margin=1cm}
 \begin{landscape}
       \otherTestTermsTable{}
 \end{landscape}
@@ -673,18 +698,6 @@ within individual ones; these may be areas for further investigation:
                         layer of confusion to the direction of their
                         relationship.
             \end{itemize}
-      \item Experience-based testing is categorized as both a test design
-            technique and a test practice on the same page
-            \citep[p.~22]{IEEE2022}! This also causes confusion about
-            its children, such as error guessing and exploratory testing;
-            \citet[p.~34]{IEEE2022} say error guessing is an ``experience-based
-            test design technique'' and ``experience-based test practices
-            include \dots\ exploratory testing, tours, attacks, and
-            checklist-based testing''. There are several instances of
-            inconsistencies between parent and child test approach
-            categorizations (which may indicate they aren't necessarily the
-            same, or that more thought must be given to
-            classification/organization).
       \item ``Fuzz testing'' is ``tagged'' (?) as ``artificial intelligence''
             \citep[p.~5]{IEEE2022}, although I don't think this is a
             set-in-stone requirement.
