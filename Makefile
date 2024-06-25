@@ -35,7 +35,7 @@ csv_diff:
 		py scripts/diffCSV.py $$gloss; \
 	done
 	for gloss in $(DIFF_GLOSSARIES) ; do \
-		git diff --word-diff=color --no-index --word-diff-regex=. scripts/$$gloss $$gloss; \
+		git diff --word-diff=plain --color --no-index --word-diff-regex='[[:alnum:]]+|[^[:space:],\);\.]+|[,\);\.]+' scripts/$$gloss $$gloss; \
 		if [ $$? -ne 1 ]; then echo "No diff in $$gloss"; rm $$gloss; fi; \
 	done
 
