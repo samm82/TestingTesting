@@ -2,6 +2,9 @@
 
 STUBS = Supp Quality Approach
 GLOSSARIES = $(addsuffix Glossary, $(STUBS))
+CSV_GLOSSARIES = $(addsuffix .csv, $(GLOSSARIES))
+TXT_GLOSSARIES = $(addsuffix .txt, $(GLOSSARIES))
+DIFF_GLOSSARIES = $(addprefix Diff, $(TXT_GLOSSARIES))
 
 help:
 	@echo "Build:"
@@ -16,6 +19,7 @@ help:
 	@echo "  - help               : View this help guide."
 	@echo "  - system_requirements: List system requirements."
 	@echo "  - gloss              : Open all relevant glossaries in Excel."
+	@echo "  - csv_diff           : View changes to glossaries in an intuitive format."
 
 system_requirements:
 	@echo "System Requirements: LaTeX (latexmk + LuaLaTeX), Pygments, InkScape"
@@ -24,13 +28,15 @@ system_requirements:
 	@echo "  - InkScape (for SVG-based figures)"
 
 gloss:
-	$(foreach gloss, $(GLOSSARIES),EXCEL.EXE $(gloss).csv &)
+	$(foreach gloss, $(CSV_GLOSSARIES),EXCEL.EXE $(gloss) &)
 
 csv_diff:
 	for gloss in $(GLOSSARIES) ; do \
 		py scripts/diffCSV.py $$gloss; \
-		git diff --word-diff=color --no-index --word-diff-regex=. scripts/Diff$$gloss.txt Diff$$gloss.txt; \
-		if [ $$? -ne 1 ]; then echo "No diff in $$gloss"; rm Diff$$gloss.txt; fi; \
+	done
+	for gloss in $(DIFF_GLOSSARIES) ; do \
+		git diff --word-diff=color --no-index --word-diff-regex=. scripts/$$gloss $$gloss; \
+		if [ $$? -ne 1 ]; then echo "No diff in $$gloss"; rm $$gloss; fi; \
 	done
 
 build: notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
@@ -40,9 +46,9 @@ build: notes # standard build -- '-output-directory=build' is a special name and
 # grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
 	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode thesis.tex --shell-escape
 	cp build/thesis.pdf thesis.pdf
-# Update diff files for better diffs
-	for gloss in $(GLOSSARIES) ; do \
-		-mv -- "Diff$$gloss.txt" "scripts/Diff$$gloss.txt"; \
+# Update diff files for better diffs, ignore errors if no difference
+	for gloss in $(DIFF_GLOSSARIES) ; do \
+		if [ -f $$gloss ]; then mv $$gloss scripts/Diff$$gloss; fi; \
 	done
 
 notes: # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
