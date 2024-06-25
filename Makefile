@@ -48,7 +48,7 @@ build: notes # standard build -- '-output-directory=build' is a special name and
 	cp build/thesis.pdf thesis.pdf
 # Update diff files for better diffs, ignore errors if no difference
 	for gloss in $(DIFF_GLOSSARIES) ; do \
-		if [ -f $$gloss ]; then mv $$gloss scripts/Diff$$gloss; fi; \
+		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
 	done
 
 notes: # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
