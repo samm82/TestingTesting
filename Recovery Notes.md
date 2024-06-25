@@ -19,7 +19,7 @@ In #40, I proposed two new divisions to capture the differences in the literatur
 - **Given as a synonym of "recovery testing" (Kam, 2008, p. 47)**
 - **Connected to failover testing (Washizaki, 2024, p. 5-9) and survivability testing (IEEE, 2017, p. 450)**
 - **A sub-approach of reliability testing (IEEE, 2017, p. 375) and *usability testing (Washizaki, 2024, p. 5-10)***
-- *Tests "how well a system or software can recover data during an interruption or failure" (Washizaki, 2024, p. 7-10; similar in IEEE, 2017, p. 369; OG ISO/IEC, 2011)* and **"re‐establish the desired state of the system" (IEEE, 2017, p. 369; OG ISO/IEC, 2011)**
+- *Tests "how well a system or software can recover data during an interruption or failure" (Washizaki, 2024, p. 7-10; similar in IEEE, 2017, p. 369; OG ISO/IEC, 2011)* and **"re-establish the desired state of the system" (IEEE, 2017, p. 369; OG ISO/IEC, 2011)**
 - **Can be tested using *injection slots* (IEEE, 2017, p. 225) and improved through redundancy (IEEE, 2017, p. 370)**
 
 ## Fault Tolerance Testing
