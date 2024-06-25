@@ -1,6 +1,7 @@
 .PHONY: help system_requirements build debug clean open
 
-GLOSSARIES = Supp Quality Approach
+STUBS = Supp Quality Approach
+GLOSSARIES = $(addsuffix Glossary, $(STUBS))
 
 help:
 	@echo "Build:"
@@ -23,11 +24,14 @@ system_requirements:
 	@echo "  - InkScape (for SVG-based figures)"
 
 gloss:
-	$(foreach gloss, $(GLOSSARIES),EXCEL.EXE $(gloss)Glossary.csv &)
+	$(foreach gloss, $(GLOSSARIES),EXCEL.EXE $(gloss).csv &)
 
 csv_diff:
-	$(foreach gloss, $(GLOSSARIES),py scripts/diffCSV.py $(gloss)Glossary;)
-	git diff Diff*
+	for gloss in $(GLOSSARIES) ; do \
+		py scripts/diffCSV.py $$gloss; \
+		git diff --word-diff=color --no-index --word-diff-regex=. scripts/Diff$$gloss.txt Diff$$gloss.txt; \
+		if [ $$? -ne 1 ]; then echo "No diff in $$gloss"; rm Diff$$gloss.txt; fi; \
+	done
 
 build: notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
@@ -37,7 +41,9 @@ build: notes # standard build -- '-output-directory=build' is a special name and
 	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode thesis.tex --shell-escape
 	cp build/thesis.pdf thesis.pdf
 # Update diff files for better diffs
-	$(foreach gloss, $(GLOSSARIES),mv -- "Diff$(gloss)Glossary.txt" "scripts/Diff$(gloss)Glossary.txt";)
+	for gloss in $(GLOSSARIES) ; do \
+		-mv -- "Diff$$gloss.txt" "scripts/Diff$$gloss.txt"; \
+	done
 
 notes: # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
