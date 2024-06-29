@@ -388,9 +388,15 @@ determine if this categorization is sufficient. A ``metric'' categorization was
 considered at one point, but was decided to be out of the scope of this project
 (see \nameref{chap:testing:sec:scope}, \thesisissueref{21}, and \thesisissueref{22}).
 
-It also seems that these categories are orthogonal. For example, it originally
+It also seems that these categories are orthogonal. For example, ``a test type
+can be performed at a single test level or across several test levels''
+(\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021}). However, some testing
+approaches are categorized differently by different sources; these differences
+are noted so that they can be analyzed more systematically.
+
+As an extreme example of this, it originally
 seemed like experience-based testing was categorized as both a test design
-technique and a test practice on the same page \citep[p.~22]{IEEE2022}. This
+technique and a test practice on the same page \citep[p.~22]{IEEE2022}! This
 also caused confusion about its children\footnote{I had originally noted that
       this may suggest that parent and child test approach categorizations
       aren't necessarily the same, or that more thought must be given to
@@ -408,7 +414,12 @@ test techniques'' \citeyearpar[p.~viii]{IEEE2021}. This implies that
 is \emph{itself} a test technique. If this is the case, it is not always clearly
 articulated (\citealp[pp.~4,~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021};
 \citealp[p.~5-13]{SWEBOK2024}; \citetalias{ISTQB}) and is sometimes contradicted
-\citep[p.~46]{Firesmith2015}. Furthermore, if a ``class of \dots\ techniques''
+\citep[p.~46]{Firesmith2015}. A similar issue exists with ``model-based
+testing'', which is sometimes called a practice (\citealp[p.~22]{IEEE2022};
+\citeyear[p.~viii]{IEEE2021}) and sometimes a technique (\citealp[p.~4]{Kam2008};
+implied by \citealp[p.~7]{IEEE2021}).
+
+Furthermore, if a ``class of \dots\ techniques''
 is a practice, then other ``techniques'', such as combinatorial testing
 (\citealp[pp.~3,~22]{IEEE2022}; \citeyear[p.~2]{IEEE2021};
 \citealp[p.~5-11]{SWEBOK2024}; \citetalias{ISTQB}) and data flow testing
@@ -1179,7 +1190,11 @@ the use of resources'' between the two is meaningful.
                   [and] \dots\ stimuli so that its actual behavior can be
             compared with its expected or required behavior'', including
             control flows, data flows, and postconditions
-            \citep[p.~11]{Firesmith2015}
+            \citep[p.~11]{Firesmith2015}, and ``an evaluation \dots\ of some
+            aspect of the system or component'' based on ``results [that]
+            are observed or recorded'' (\citealp[p.~10]{IEEE2022};
+            \citeyear[p.~6]{IEEE2021}; \citeyear[p.~465]{IEEE2017}
+            \todo{OG ISO/IEC 2014})
       \item Test case: ``the specification of all the entities
             that are essential for the execution, such as input values,
             execution and timing conditions, testing procedure, and the
