@@ -30,16 +30,18 @@ system_requirements:
 gloss:
 	$(foreach gloss, $(CSV_GLOSSARIES),EXCEL.EXE $(gloss) &)
 
-csv_diff:
+gen_csv_diffs:
 	for gloss in $(GLOSSARIES) ; do \
 		py scripts/diffCSV.py $$gloss; \
 	done
+
+csv_diff: gen_csv_diffs
 	for gloss in $(DIFF_GLOSSARIES) ; do \
 		git diff --word-diff=plain --color --no-index --word-diff-regex='[[:alnum:]]+|[^[:space:],\);\.]+|[,\);\.]+' scripts/$$gloss $$gloss; \
 		if [ $$? -ne 1 ]; then echo "No diff in $$gloss"; rm $$gloss; fi; \
 	done
 
-build: notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+build: notes gen_csv_diffs # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
