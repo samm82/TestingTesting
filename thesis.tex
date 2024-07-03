@@ -125,7 +125,10 @@
 % \addbibresource{references.bib}
 \usepackage[round]{natbib}
 \bibliographystyle{plainnat}
-\defcitealias{ISTQB}{Hamburg and Mogyorodi, 2024}
+\defcitealias{ISTQB}{Hamburg and Mogyorodi}
+\newcommand{\citetISTQB}{\citetalias{ISTQB} (\citeyear{ISTQB})}
+\newcommand{\citepISTQB}{\citepalias[\citeyear{ISTQB}]{ISTQB}}
+\newcommand{\citealpISTQB}{\citetalias{ISTQB}, \citeyear{ISTQB}}
 
 % Fancy Headers
 \usepackage{fancyhdr}

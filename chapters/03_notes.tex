@@ -39,12 +39,12 @@ For example, design reviews (see \citealp[p.~132]{IEEE2017}) and
 documentation reviews (see \citealp[p.~144]{IEEE2017}) are out of scope,
 since they focus on the \acs{vnv} of the design and documentation of the code,
 respectively, and not on the code itself. Likewise, ergonomics testing
-and proximity-based testing (see \citetalias{ISTQB}) are out of scope since
+and proximity-based testing (see \citealpISTQB{}) are out of scope since
 they are for testing hardware systems, as is \acf{emsec} testing
 (\citealp{ISO2021}; \citealp[p.~95]{ZhouEtAl2012}), which deals with the
 ``security risk'' of ``information leakage via electromagnetic emanation''
 \citep[p.~95]{ZhouEtAl2012}. Security audits that focus on ``an organization's
-\dots\ processes and infrastructure'' \citepalias{ISTQB}, are also out of scope,
+\dots\ processes and infrastructure'' \citepISTQB{}, are also out of scope,
 but security audits that ``aim to ensure that all of the products installed on
 a site are secure when checked against the known vulnerabilities for those
 products'' \citep[p.~28]{Gerrard2000b} are not.
@@ -213,7 +213,7 @@ apply to the code itself, and as such are out of scope (see \thesisissueref{43})
 \label{chap:testing:sec:orthogonal-tests}
 Some test approaches seem to just be combinations of other (seemingly
 orthogonal) approaches, such as the following (all from
-\citepalias{ISTQB} unless otherwise indicated):
+\citepISTQB{} unless otherwise indicated):
 \begin{itemize}
       \item Black box conformance testing \citep[p.~25]{JardEtAl1999}
       \item Checklist-based reviews
@@ -259,7 +259,7 @@ as required. Going forward, this process will be more rigorous, starting from
 more established sources of software testing terminology in approximately the
 following order:
 (\citealp{IEEE2022, SWEBOK2024, SWEBOK2014, IEEE2017, IEEE2013, ISO_IEC2023b,
-      IEEE2012, ISO_IEC2023a}; \citetalias{ISTQB}; \citealp{Firesmith2015}).
+      IEEE2012, ISO_IEC2023a}; \citealpISTQB{}; \citealp{Firesmith2015, IEEE2021}).
 Other sources that focused on cataloging and categorizing testing terminology,
 such as \citet{KuļešovsEtAl2013}, were also examined to see how well they
 agreed with the ``standard'' terminology.
@@ -423,7 +423,7 @@ test techniques'' \citeyearpar[p.~viii]{IEEE2021}. This implies that
 \emph{practice} of experience-based testing, not that experience-based testing
 is \emph{itself} a test technique. If this is the case, it is not always clearly
 articulated (\citealp[pp.~4,~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021};
-\citealp[p.~5-13]{SWEBOK2024}; \citetalias{ISTQB}) and is sometimes contradicted
+\citealp[p.~5-13]{SWEBOK2024}; \citealpISTQB{}) and is sometimes contradicted
 \citep[p.~46]{Firesmith2015}. A similar issue exists with ``model-based
 testing'', which is sometimes called a practice (\citealp[p.~22]{IEEE2022};
 \citeyear[p.~viii]{IEEE2021}) and sometimes a technique (\citealp[p.~4]{Kam2008};
@@ -432,7 +432,7 @@ implied by \citealp[p.~7]{IEEE2021} and \citeyear[p.~469]{IEEE2017}).
 Furthermore, if a ``class of \dots\ techniques''
 is a practice, then other ``techniques'', such as combinatorial testing
 (\citealp[pp.~3,~22]{IEEE2022}; \citeyear[p.~2]{IEEE2021};
-\citealp[p.~5-11]{SWEBOK2024}; \citetalias{ISTQB}) and data flow testing
+\citealp[p.~5-11]{SWEBOK2024}; \citealpISTQB{}) and data flow testing
 (\citealp[p.~22]{IEEE2022}; \citeyear[p.~3]{IEEE2021};
 \citealp[p.~5-13]{SWEBOK2024}; \citealp[p.~43]{Kam2008}) may \emph{also}
 actually be practices, since they are also described as ``class[es] of \dots\
@@ -488,7 +488,7 @@ that make one approach more effective than the other''
             \citealp[pp.~4-5, called ``testing methods'']{Kam2008})
       \item Level/stage\footnote{See \nameref{tab:ieeeTestTerms}.} of testing:
             unit, integration, system, or acceptance
-            (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citetalias{ISTQB};
+            (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citealpISTQB{};
             \citealp[p.~218]{KuļešovsEtAl2013} \todo{OG Black, 2009};
             \citealp{Patton2006}; \citealp{Perry2006};
             \citealp{PetersAndPedrycz2000}; \citealp[pp.~9,~13]{Gerrard2000a})
@@ -718,7 +718,7 @@ within individual ones; these may be areas for further investigation:
             testing''). This implies that ``co-existence testing'' and
             ``interoperability testing'' should be defined as their own terms,
             which is supported by definitions of ``co-existence'' and
-            ``interoperability'' often being separate (\citetalias{ISTQB};
+            ``interoperability'' often being separate (\citealpISTQB{};
             \citealp[pp.~73,~237]{IEEE2017}), the definition of
             ``interoperability testing'' from \citet[p.~238]{IEEE2017},
             and the decomposition of ``compatibility'' into ``co-existence''
@@ -742,14 +742,14 @@ within individual ones; these may be areas for further investigation:
             definitions are given for the latter two, making it unclear what
             ``system integration testing'' is; it is a combination of the two?
             somewhere on the spectrum between them? It is listed as a child
-            of integration testing by \citetalias{ISTQB} and of system testing
+            of integration testing by \citetISTQB{} and of system testing
             by \citet[p.~23]{Firesmith2015}.
       \item Similarly, component, integration, and component integration
             testing are all listed in \citep{IEEE2017}, but ``component
             integration testing'' is only defined as ``testing of groups of
             related components'' \citep[p.~82]{IEEE2017}; it is a combination of
             the two? somewhere on the spectrum between them? Likewise, it is
-            listed as a child of integration testing by \citetalias{ISTQB}.
+            listed as a child of integration testing by \citetISTQB{}.
       \item ``Disaster/recovery testing'' and ``recovery testing'' (as a subset
             of performance-related testing) are both listed as test types
             \citep[p.~22]{IEEE2022} but not defined, making it unclear what
@@ -813,13 +813,13 @@ within individual ones; these may be areas for further investigation:
             \end{enumerate}
             Other definitions of ``scalability'' support these definitions, so
             the definition of ``scalability testing'' follows trivially from there
-            (sometimes explicitly \citepalias{ISTQB}):
+            (sometimes explicitly \citepISTQB{}):
             \begin{itemize}
                   \item The ``capability of a product to handle growing or
                         shrinking workloads or to adapt its capacity to handle
                         variability'' \citep{ISO_IEC2023a}
                   \item ``The degree to which a component or system can be
-                        adjusted for changing'' \citepalias{ISTQB}
+                        adjusted for changing'' \citepISTQB{}
             \end{itemize}
       \item SWEBOK V4 says that one objective of elasticity testing is ``to
             evaluate scalability'' \citep[p.~5-9]{SWEBOK2024}, which seems like
@@ -851,39 +851,39 @@ within individual ones; these may be areas for further investigation:
             developing the software'' \citep[p.~17]{IEEE2017}, by ``a small,
             selected group of potential users'' \citep[p.~5-8]{SWEBOK2024}, or
             ``in the developer's test environment by roles outside the
-            development organization'' \citepalias{ISTQB}.
+            development organization'' \citepISTQB{}.
       \item While correct, ISTQB's definition of ``specification-based testing''
             is not helpful: ``testing based on an analysis of the specification
-            of the component or system'' \citepalias{ISTQB}.
+            of the component or system'' \citepISTQB{}.
       \item Sometimes ``condition testing'' and ``decision testing'' are treated
             as synonyms \citep[p.~5-13]{SWEBOK2024}, but sometimes they are kept
             separate, with the former only involving atomic conditions
-            \citepalias{ISTQB}, implying that it may be a sub-approach of the
+            \citepISTQB{}, implying that it may be a sub-approach of the
             latter?
       \item ``ML model testing'' and ``ML functional performance'' are defined
             in terms of ``ML functional performance criteria'', which is defined
             in terms of ``ML functional performance metrics'', which is defined
             as ``a set of measures that relate to the functional correctness of
-            an ML system'' \citepalias{ISTQB}. The use of ``performance'' (or
+            an ML system'' \citepISTQB{}. The use of ``performance'' (or
             ``correctness'') in these definitions are at best ambiguous and at
             worst incorrect.
       \item While ergonomics testing is out of scope (as it tests hardware, not
             software), its definition of ``testing to determine whether a
             component or system and its input devices are being used properly
-            with correct posture'' \citepalias{ISTQB} seems to focus on how the
+            with correct posture'' \citepISTQB{} seems to focus on how the
             system is \emph{used} as opposed to the system \emph{itself}.
-      \item The definition of ``math testing'' given by \citetalias{ISTQB} is
+      \item The definition of ``math testing'' given by \citetISTQB{} is
             too specific to be useful, likely taken from an example instead of
             a general definition: ``testing to determine the correctness of the
             pay table implementation, the random number generator results, and
             the return to player computations''.
       \item A similar issue exists with multiplayer testing, where its
-            definition specifies ``the casino game world'' \citepalias{ISTQB}.
-      \item Thirdly, ``par sheet testing'' from \citetalias{ISTQB} seems to
+            definition specifies ``the casino game world'' \citepISTQB{}.
+      \item Thirdly, ``par sheet testing'' from \citepISTQB{} seems to
             refer to this specific example and does not seem more widely
             applicable, since a ``PAR sheet'' is ``a list of all the symbols
             on each reel of a slot machine'' \citep{Bluejay2024}.
-      \item The definition of ``scalability'' given by \citetalias{ISTQB} is
+      \item The definition of ``scalability'' given by \citetISTQB{} is
             ``the degree to which a component or system can be adjusted for
             changing \emph{capacity}'' (emphasis added), but the source that it
             references says that scalability is ``the measure of a system's
@@ -891,21 +891,21 @@ within individual ones; these may be areas for further investigation:
             \citep[p.~381,~emphasis added]{GerrardAndThompson2002}; this is
             accomplished \emph{through} increasing capacity, not in reaction to
             it (p.~192).
-      \item \citetalias{ISTQB} describe the term ``software in the loop'' as a
+      \item \citetISTQB{} describe the term ``software in the loop'' as a
             kind of testing, while the source it references seems to describe
             ``Software-in-the-Loop-Simulation'' as a ``simulation environment''
             that may support software integration testing
             \citep[p.~153]{SPICE2022}; is this a testing approach or a tool
             that supports testing?
       \item The source cited for the definition of ``test type'' from
-            \citetalias{ISTQB} does not seem to provide a definition itself.
+            \citepISTQB{} does not seem to provide a definition itself.
       \item The same is true for ``visual testing''.
       \item The same is true for ``security attack''.
       \item There is disagreement on the structure of tours; they can either be
             quite general \citep[p.~34]{IEEE2022} or ``organized around a
-            special focus'' \citepalias{ISTQB}.
+            special focus'' \citepISTQB{}.
       \item ``Scenario testing'' and ``use case testing'' are given as synonyms
-            by \citetalias{ISTQB} and \citet[p.~47]{Kam2008}, but listed
+            by \citetISTQB{} and \citet[p.~47]{Kam2008}, but listed
             separately by \citet[p.~22]{IEEE2022}, who also give ``use case
             testing'' as a ``common form of scenario testing''
             \citeyearpar[p.~20]{IEEE2021}.
@@ -928,7 +928,7 @@ within individual ones; these may be areas for further investigation:
             wording of its subtypes \citep[p.~25]{Firesmith2015} seems to imply
             the former.
       \item ``Operational'' and ``production acceptance testing'' are treated
-            as synonyms by \citetalias{ISTQB}, but listed separately by
+            as synonyms by \citetISTQB{}, but listed separately by
             \citet[p.~30]{Firesmith2015}.
       \item ``Production acceptance testing'' \citep[p.~30]{Firesmith2015}
             seems to be the same as ``production verification testing''
@@ -951,7 +951,7 @@ within individual ones; these may be areas for further investigation:
             (which is distinct from reliability testing (p.~53)), other sources
             say it is a subtype of reliability testing (\citealp[p.~375]{IEEE2017};
             \citealp[p.~7-10]{SWEBOK2024}) or a synonym of ``robustness
-            testing'' \citepalias{ISTQB}.
+            testing'' \citepISTQB{}.
       \item The distinctions between development testing \citep[p.~136]{IEEE2017},
             developmental testing \citep[p.~30]{Firesmith2015}, and developer
             testing (\citealp[p.~39]{Firesmith2015}; \citealp[p.~11]{Gerrard2000a})
@@ -978,7 +978,7 @@ within individual ones; these may be areas for further investigation:
             \citeyearpar[p.~46]{Kam2008} \todo{OG Beizer}, which is not true;
             if robustness is an important quality for the system, then testing
             the system ``in a way for which it was not intended to be used''
-            \citepalias{ISTQB} (i.e., negative testing) is one way to help
+            \citepISTQB{} (i.e., negative testing) is one way to help
             test this!
       \item ``Program testing'' is given as a synonym of ``component testing''
             \citep[p.~46]{Kam2008}, although it probably should be a synonym of
@@ -1011,7 +1011,7 @@ within individual ones; these may be areas for further investigation:
             ``transaction flows'' (Fig.~5) but doesn't explain them.
       \item The phrase ``continuous automated testing''  \citep[p.~11]{Gerrard2000a}
             is redundant since continuous testing is a sub-category of automated
-            testing (\citealp[p.~35]{IEEE2022}, \citetalias{ISTQB}).
+            testing (\citealp[p.~35]{IEEE2022}, \citealpISTQB{}).
       \item \citeauthor{Gerrard2000a} very helpfully indicates that performance
             testing is performance testing and that usability testing is
             usability testing; interestingly, performance testing is \emph{not}
@@ -1044,7 +1044,7 @@ ways, alongside other, potentially related, terms:
             of the component or system'' (including ``black-box testing'' as a
             synonym) and ``functional testing'' as ``testing performed to
             evaluate if a component or system satisfies functional
-            requirements'' (specifying no synonyms) \citepalias{ISTQB}. This
+            requirements'' (specifying no synonyms) \citepISTQB{}. This
             definition of
             ``functional testing'' references \citet[p.~196]{IEEE2017}
             (``testing conducted to evaluate the compliance of a system or
@@ -1116,16 +1116,16 @@ ways, alongside other, potentially related, terms:
             functions that facilitate the accomplishment of specified tasks and
             objectives'') \citep{ISO_IEC2023a}. Notably, ``functional
             correctness'', which includes precision and accuracy
-            (\citealp{ISO_IEC2023a}; \citetalias{ISTQB}), seems to align with
+            (\citealp{ISO_IEC2023a}; \citealpISTQB{}), seems to align with
             the quality/ies that would be tested by ``correctness'' testing.
 
       \item \textbf{Functionality Testing:} ``Functionality'' is defined as the
             ``capabilities of the various \dots\ features provided by a product''
             \citep[p.~196]{IEEE2017} and is said to be a synonym of
-            ``functional suitability'' \citepalias{ISTQB}, although it seems
+            ``functional suitability'' \citepISTQB{}, although it seems
             like it should really be its ``parent''. Its associated test type
             is implied to be a sub-approach of build verification testing
-            \citepalias{ISTQB} and made distinct from ``functional testing'';
+            \citepISTQB{} and made distinct from ``functional testing'';
             interestingly, security is described as a sub-approach of both
             non-functional and functionality testing \citep[Tab.~2]{Gerrard2000a}.
             This is listed separately from ``correctness testing'' by
@@ -1134,7 +1134,7 @@ ways, alongside other, potentially related, terms:
 
 \subsubsection{Operational (Acceptance) Testing}
 Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE2022};
-\citetalias{ISTQB}) while some refer to ``operational testing''
+\citealpISTQB{}) while some refer to ``operational testing''
 (\citealp[p.~6-9,~in the context of software engineering operations]{SWEBOK2024};
 \citealp{ISO_IEC2018}; \citealp[p.~303]{IEEE2017};
 \citealp[pp.~4-6,~4-9]{SWEBOK2014}). A distinction is sometimes made
@@ -1142,7 +1142,7 @@ Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE20
 to evaluate its merit. Since this terminology is not standardized, I
 propose that the two terms are treated as synonyms (as done by other sources
 \citep{LambdaTest2024, BocchinoAndHamilton1996}) as a type of
-acceptance testing (\citealp[p.~22]{IEEE2022}; \citetalias{ISTQB}) that focuses on
+acceptance testing (\citealp[p.~22]{IEEE2022}; \citealpISTQB{}) that focuses on
 ``non-functional'' attributes of the system \citep{LambdaTest2024}
 \todo{find more academic sources}.
 
@@ -1152,7 +1152,7 @@ installation, configuration and operation of a module and that it operates
 securely in the operational environment'' \citep{ISO_IEC2018} or ``evaluate a
 system or component in its operational environment'' \citep[p.~303]{IEEE2017},
 particularly ``to determine if operations and/or systems administration staff
-can accept [it]'' \citepalias{ISTQB}.
+can accept [it]'' \citepISTQB{}.
 
 \subsubsection{Performance Testing}
 \label{perf-test-ambiguity}
@@ -1289,7 +1289,7 @@ the use of resources'' between the two is meaningful.
             is present (see \thesisissueref{54}). For example, a method table
             is a tool for tracking the ``test approaches, testing techniques
             and test types that are required depending \dots\ on the context of
-            the test object'' \citepalias{ISTQB} \todo{OG ISO 26262}, although
+            the test object'' \citepISTQB{} \todo{OG ISO 26262}, although
             this is more specific to the automotive domain
       \item ``Proving the correctness of software \dots\ applies only in
             circumstances where software requirements are stated formally'' and
@@ -1309,7 +1309,7 @@ the use of resources'' between the two is meaningful.
             use many techniques when testing \citep[p.~440]{vanVliet2000}.
             This supports the principle of \emph{independence of testing}: the
             ``separation of responsibilities, which encourages the
-            accomplishment of objective testing'' \citepalias{ISTQB}
+            accomplishment of objective testing'' \citepISTQB{}
       \item When comparing adequacy criteria, ``criterion X is stronger than
             criterion Y if, for all programs P and all test sets T, X-adequacy
             implies Y-adequacy'' (the ``stronger than'' relation is also called
@@ -1341,7 +1341,7 @@ the use of resources'' between the two is meaningful.
             classical modules for being re-used in different contexts
             independently of their development.'' Note that since a
             \emph{component} is ``a part of a system that can be tested in
-            isolation'' \citepalias{ISTQB}, this seems like it could apply
+            isolation'' \citepISTQB{}, this seems like it could apply
             to the testing of both modules \emph{and} specific functions
       \item Integration testing: ``testing the composition of modules'';
             done incrementally using \emph{bottom-up} and/or
@@ -1455,8 +1455,8 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
             generating sample data that is ``realistic'' and ``valid'',
             \citep[pp.~510-511]{BarrEtAl2015}, crowdsourcing
             \citep[p.~520]{BarrEtAl2015}, or a ``Wideband Delphi'': ``an
-            expert-based test estimation technique that … uses the collective
-            wisdom of the team members'' \citepalias{ISTQB}
+            expert-based test estimation technique that \dots\ uses the
+            collective wisdom of the team members'' \citepISTQB{}
 \end{itemize}
 
 \subsection{Generating Test Cases}
@@ -1793,7 +1793,7 @@ For all of these tests, the values of the state variables should be verified
 
 Testing to determine how efficiently software uses resources (including time
 and capacity) ``when accomplishing its designated functions''
-\citepalias{ISTQB}. \todo{OG ISO 25010?}
+\citepISTQB{}. \todo{OG ISO 25010?}
 
 % ``The intent of this type of testing is to identify weak points of a software
 % system and quantify its shortcomings'' \citep[p.~447]{PetersAndPedrycz2000}.
