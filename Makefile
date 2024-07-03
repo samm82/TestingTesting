@@ -41,17 +41,19 @@ csv_diff: gen_csv_diffs
 		if [ $$? -ne 1 ]; then echo "No diff in $$gloss"; rm $$gloss; fi; \
 	done
 
-build: notes gen_csv_diffs # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+# Update diff files for better diffs, ignore errors if no difference
+update_diffs: gen_csv_diffs
+	for gloss in $(DIFF_GLOSSARIES) ; do \
+		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
+	done
+
+build: update_diffs notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
 # grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
 	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode thesis.tex --shell-escape
-	cp build/thesis.pdf thesis.pdf
-# Update diff files for better diffs, ignore errors if no difference
-	for gloss in $(DIFF_GLOSSARIES) ; do \
-		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
-	done
+	cp build/thesis.pdf thesis.pdf	
 
 notes: # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
