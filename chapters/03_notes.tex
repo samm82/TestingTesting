@@ -751,8 +751,8 @@ within individual ones; these may be areas for further investigation:
             set-in-stone requirement.
       \item ``Load testing'' is defined as using loads ``usually between
             anticipated conditions of low, typical, and peak usage''
-            \citep[p.~5]{IEEE2022}, while \citet[p.~86]{Patton2006} says the
-            loads should as large as possible.
+            \citep[p.~5]{IEEE2022}, while \citeauthor{Patton2006} says the
+            loads should as large as possible \citeyearpar[p.~86]{Patton2006}.
       \item Integration, system, and system integration testing are all listed
             as ``common test levels'' \citep[p.~12]{IEEE2022}, but no
             definitions are given for the latter two, making it unclear what
@@ -766,29 +766,12 @@ within individual ones; these may be areas for further investigation:
             related components'' \citep[p.~82]{IEEE2017}; it is a combination of
             the two? somewhere on the spectrum between them? Likewise, it is
             listed as a child of integration testing by \citetISTQB{}.
-      \item ``Disaster/recovery testing'' and ``recovery testing'' (as a subset
-            of performance-related testing) are both listed as test types
-            \citep[p.~22]{IEEE2022} but not defined, making it unclear what
-            distinguishes them. \citet[p.~2]{IEEE2013} define ``backup and
-            recovery testing'' as  testing ``that measures the degree to which
-            system state can be restored from backup within specified parameters
-            of time, cost, completeness, and accuracy in the event of failure'',
-            which may be what is meant by ``recovery
-            testing'' in the context of performance-related testing.
-            Meanwhile, SWEBOK V4 defines ``recovery testing'' as the testing of
-            ``software restart capabilities after a system crash or other
-            disasters [sic]'' \citep[p.~5-9]{SWEBOK2024}, which may be what is
-            meant \emph{outside} of the context of performance.
-      \item Similarly, ``branch condition testing'' and ``branch condition combination
-            testing'' are both listed as subsets of structure-based testing
-            \citep[p.~22]{IEEE2022} but are not defined, making it unclear what
-            distinguishes them.
       \item ``Installability testing'' is given as a test type
             \citep[p.~22]{IEEE2022} but is sometimes called a test level as
             ``installation testing'' \citep[p.~445]{PetersAndPedrycz2000}.
       \item Retesting and regression testing seem to be separated from the rest
             of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
-            clearly detailed why; \citet[p.~3]{BarbosaEtAl2006} considers
+            clearly detailed why; \citet[p.~3]{BarbosaEtAl2006} consider
             regression testing to be a test level.
       \item A component is an ``entity with discrete structure \dots\ within a
             system considered at a particular level of analysis''
@@ -847,21 +830,20 @@ within individual ones; these may be areas for further investigation:
             ``conducted to evaluate the degree to which a test item, and
             associated data and information, are protected so that'' only
             ``authorized persons or systems'' can use them as intended
-            \citeyearpar{IEEE2022}, both in scope and name.
+            \citeyearpar[p.~9]{IEEE2022}, both in scope and name.
       \item \citeauthor*{IEEE2017} provide a definition for ``inspections and
             audits'' \citeyearpar[p.~228]{IEEE2017}, despite also giving
-            definitions for ``inspection'' \citeyearpar[p.~227]{IEEE2017} and
-            ``audit'' \citeyearpar[p.~36]{IEEE2017}; while the first term
-            \emph{could} be considered a superset of the latter two, this
-            distinction doesn't seem useful.
+            definitions for ``inspection'' (p.~227) and ``audit'' (p.~36);
+            while the first term \emph{could} be considered a superset of the
+            latter two, this distinction doesn't seem useful.
       \item \citeauthor*{IEEE2017} say that ``test level'' and ``test phase''
             are synonyms, both meaning a ``specific instantiation of [a] test
             sub-process'' (\citeyear[pp.~469,~470]{IEEE2017};
             \citeyear[p.~9]{IEEE2013}), but there are also alternative
             definitions for them. \procLevel{\citeyearpar}, while
             ``test phase'' \phaseDef{}
-      \item \citet{IEEE2017} use the same definition for ``partial correctness''
-            (p.~314) and ``total correctness'' (p.~480).
+      \item \citeauthor{IEEE2017} use the same definition for ``partial correctness''
+            \citeyearpar[p.~314]{IEEE2017} and ``total correctness'' (p.~480).
       \item Various sources say that alpha testing is performed by different
             people, including ``only by users within the organization
             developing the software'' \citep[p.~17]{IEEE2017}, by ``a small,
@@ -1215,6 +1197,57 @@ the term ``performance efficiency testing'' is \emph{also} used by
 efficiency testing'' is a subset of ``performance testing'', and the
 difference of ``relative to the amount of resources used'' or ``be efficient in
 the use of resources'' between the two is meaningful.
+
+\subsubsection{Recovery Testing}
+There are many terms related to ``recovery testing'', which is the testing of
+``software restart capabilities after a system crash or other disaster''
+\citep[p.~5-9]{SWEBOK2024} including ``recover[ing] the data directly affected
+and re-establish[ing] the desired state of the system'' \citep{ISO_IEC2023a} so
+that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
+``Recovery testing'' is also given as a subset of performance-related testing
+\citeyearpar[p.~22]{IEEE2022}, but this is not implied by the definition given
+previously. It is also called ``recoverability testing'' \cite[p.~47]{Kam2008}
+(which would make sense in the absence of performance considerations) and
+potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}. The
+following terms, along with ``recovery testing'' itself \citep[p.~22]{IEEE2022}
+are classified as test types (either explicitly or implicitly, like in the case
+of ``backup and recovery testing''; this is inferred from its parent, reliability
+testing \citeyearpar[p.~2]{IEEE2013}).
+
+\begin{itemize}
+      \item \textbf{Disaster/Recovery Testing:} Testing to determine the degree
+            to which a system can ``return to normal operation after a hardware
+            or software failure'' \citep[p.~140]{IEEE2017} or if ``operation of
+            the test item can be transferred to a different operating site and
+            \dots\ be transferred back again once the failure has been
+            resolved'' \citeyear[p.~37]{IEEE2021}. These two definitions seem to
+            describe different aspects of the system, where the first is
+            intrinsic to the hardware/software and the second might not be.
+      \item \textbf{Backup and Recovery Testing:} Testing ``that measures the
+            degree to which system state can be restored from backup within
+            specified parameters of time, cost, completeness, and accuracy in
+            the event of failure'' \citep[p.~2]{IEEE2013}. This may be what is
+            meant by ``recovery testing'' in the context of performance-related
+            testing and seems to correspond to the definition of
+            ``disaster/recovery testing'' in \citeyearpar[p.~140]{IEEE2017}.
+      \item \textbf{Backup/Recovery Testing:} Testing that determines the
+            ability ``to restor[e] from back-up memory in the event of failure,
+            without transfer[ing] to a different operating site or back-up
+            system'' \citep[p.~37]{IEEE2021}. This seems to correspond to the
+            definition of ``disaster/recovery testing'' in
+            \citeyearpar[p.~37]{IEEE2021}. It is also given as a sub-type of
+            ``disaster/recovery testing'', even though that tests if ``operation
+            of the test item can be transferred to a different operating site''
+            (p.~37).
+      \item \textbf{Failure/Recovery Testing:} Testing that determines the
+            ability ``to mov[e] to a back-up system in the event of failure,
+            without transfer[ing] to a different operating site''
+            \citep[p.~37]{IEEE2021}. This is given as a sub-type of
+            ``disaster/recovery testing'', even though that tests if ``operation
+            of the test item can be transferred to a different operating site''
+            (p.~37). Since this tests the actual backup process, it would make
+            more sense for \emph{this} to include ``backup'' in its name.
+\end{itemize}
 
 \section{Definitions}
 
