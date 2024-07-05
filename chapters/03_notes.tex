@@ -432,12 +432,13 @@ implied by \citealp[p.~7]{IEEE2021} and \citeyear[p.~469]{IEEE2017}).
 Furthermore, if a ``class of \dots\ techniques''
 is a practice, then other ``techniques'', such as combinatorial testing
 (\citealp[pp.~3,~22]{IEEE2022}; \citeyear[p.~2]{IEEE2021};
-\citealp[p.~5-11]{SWEBOK2024}; \citealpISTQB{}) and data flow testing
+\citealp[p.~5-11]{SWEBOK2024}; \citealpISTQB{}), data flow testing
 (\citealp[p.~22]{IEEE2022}; \citeyear[p.~3]{IEEE2021};
-\citealp[p.~5-13]{SWEBOK2024}; \citealp[p.~43]{Kam2008}) may \emph{also}
-actually be practices, since they are also described as ``class[es] of \dots\
-techniques'' (\citealp[p.~3]{IEEE2022}; \citeyear[p.~2]{IEEE2021} and
-\citeyear[p.~3]{IEEE2021}, respectively). The same could be said of the more
+\citealp[p.~5-13]{SWEBOK2024}; \citealp[p.~43]{Kam2008}), and
+performance(-related) testing (\citealp[p.~38]{IEEE2021};
+\citealp[p.~1187]{Moghadam2019}) may \emph{also}
+actually be practices, since they are also described as classes or families of
+techniques. The same could be said of the more
 general specification- and structure-based testing, especially since these,
 plus experience-based testing, are described as ``complementary''
 \citeyearpar[p.~8, Fig.~2]{IEEE2021}.
@@ -794,6 +795,10 @@ within individual ones; these may be areas for further investigation:
             values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021}
             and one where ``the conditions and actions are generally described
             but are incomplete'' \citeyearpar[p.~175]{IEEE2017} \todo{OG ISO1984}.
+      \item The subcategories of ``performance-related testing'' that are
+            categorized as test types by other sources \citep{IEEE2022, IEEE2017,
+                  IEEE2013} are categorized as techniques in
+            \citeyearpar[p.~39]{IEEE2021}.
       \item SWEBOK V4 says ``scalability testing evaluates the capability to
             use and learn the system and the user documentation. It also focuses
             on the system's effectiveness in supporting user tasks and the
@@ -1155,31 +1160,44 @@ can accept [it]'' \citepISTQB{}.
 \subsubsection{Performance Testing}
 \label{perf-test-ambiguity}
 
-``Performance testing'' is defined as testing ``conducted to
-evaluate the degree to which a test item accomplishes its
-designated functions within given constraints of time and other
-resources'' \citep[p.~7]{IEEE2022}. It is listed as a subset of
-``performance-related testing'', along with other approaches like
-load and capacity testing (p.~22); \citet[p.~5-9]{SWEBOK2024}
-gives ``capacity and response time'' as examples of ``performance
-characteristics'' that performance testing would seek to ``assess''.
-I see two possible resolutions to this:
+``Performance testing'' is defined as testing ``conducted to evaluate the
+degree to which a test item accomplishes its designated functions''
+(\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017}; similar in
+\citeyear[pp.~38-39]{IEEE2021}; \citealp[p.~1187]{Moghadam2019}). It does this
+by ``measuring the performance metrics'' (\citealp[p.~1187]{Moghadam2019};
+similar in \citealpISTQB{}) (such as the ``system's capacity for growth''
+\citep[p.~23]{Gerrard2000b}), ``detecting the functional problems appearing
+under certain execution conditions'' \citep[p.~1187]{Moghadam2019}, and
+``detecting violations of non-functional requirements under expected and
+stress conditions'' (\citealp[p.~1187]{Moghadam2019}; similar in
+\citep[p.~5-9]{SWEBOK2024}). It is performed either \dots\
 \begin{enumerate}
-      \item Assign the definition of ``performance testing'' to
-            ``performance-related testing'' and give ``performance
-            testing'' a more specific definition.
-      \item Replace the term ``performance-related testing'' with
-            ``performance testing''; this seems more logical, since
-            I haven't found a definition of ``performance-related
-            testing'' (at least yet) and most (if not all)
-            definitions of ``performance testing'' seem to treat it
-            as a category of tests. This seems supported by
-            \citeauthor{Moghadam2019}, who says ``performance testing
-            is considered as a family of performance-related testing
-            techniques intended for addressing the objectives of performance
-            analysis'' \citeyearpar[p.~1187]{Moghadam2019}, which implies the
-            two terms are synonyms.
+      \item \dots\ ``within given constraints of time and other resources''
+            (\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017}; similar in
+            \citealp[p.~1187]{Moghadam2019}), or
+      \item \dots\ ``under a `typical' load'' \citep[p.~39]{IEEE2021}.
 \end{enumerate}
+
+It is listed as a subset of performance-related testing, which is defined as
+testing ``to determine whether a test item performs as required when it is
+placed under various types and sizes of `load''' \citeyearpar[p.~38]{IEEE2021},
+along with other approaches like load and capacity testing
+\citep[p.~22]{IEEE2022}. However, \citet[p.~5-9]{SWEBOK2024}
+gives ``capacity and response time'' as examples of ``performance
+characteristics'' that performance testing would seek to ``assess'', which
+seems to imply that these are subapproaches to performance testing instead.
+
+It seems that ``performance testing'' and ``performance-related testing''
+are treated as synonyms by some sources (\citealp[p.~5-9]{SWEBOK2024};
+\citealp[p.~1187]{Moghadam2019}). This makes sense because of how general the
+concept of ``performance'' is; most definitions of ``performance testing'' seem
+to treat it as a category of tests. However, it seems more consistent to infer
+that the definition of ``performance-related testing'' is the more general one
+often assigned to ``performance testing'' performed ``within given constraints
+of time and other resources'' (\citealp[p.~7]{IEEE2022};
+\citeyear[p.~320]{IEEE2017}; similar in \citealp[p.~1187]{Moghadam2019}), and
+``performance testing'' is a subapproach of this performed ``under a `typical'
+load'' \citep[p.~39]{IEEE2021}.
 
 Similarly, ``performance'' and ``performance efficiency'' are
 both given as software qualities by \citeauthor{IEEE2017}, with the latter
