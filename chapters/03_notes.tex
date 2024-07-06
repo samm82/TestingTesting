@@ -232,6 +232,7 @@ orthogonal) approaches, such as the following (all from
             ``AJAX user interfaces'' (p.~191)
       \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000a}
       \item Machine learning-assisted performance testing? \citep{Moghadam2019}
+      \item Manual procedure testing \citep[p.~47]{Firesmith2015}
       \item Manual security audits \citep[p.~28]{Gerrard2000b}
       \item Model-based GUI testing \citep[Tab.~1]{DoğanEtAl2014}
       \item Non-functional search-based testing \citep[Tab.~1]{DoğanEtAl2014}
@@ -434,9 +435,9 @@ is a practice, then other ``techniques'', such as combinatorial testing
 (\citealp[pp.~3,~22]{IEEE2022}; \citeyear[p.~2]{IEEE2021};
 \citealp[p.~5-11]{SWEBOK2024}; \citealpISTQB{}), data flow testing
 (\citealp[p.~22]{IEEE2022}; \citeyear[p.~3]{IEEE2021};
-\citealp[p.~5-13]{SWEBOK2024}; \citealp[p.~43]{Kam2008}), and
-performance(-related) testing (\citealp[p.~38]{IEEE2021};
-\citealp[p.~1187]{Moghadam2019}) may \emph{also}
+\citealp[p.~5-13]{SWEBOK2024}; \citealp[p.~43]{Kam2008}), performance(-related)
+testing (\citealp[p.~38]{IEEE2021}; \citealp[p.~1187]{Moghadam2019}), and
+security testing \citep[p.~40]{IEEE2021} may \emph{also}
 actually be practices, since they are also described as classes or families of
 techniques. The same could be said of the more
 general specification- and structure-based testing, especially since these,
@@ -790,6 +791,11 @@ within individual ones; these may be areas for further investigation:
       \item A typo in \citep[Fig.~2]{IEEE2021} means that ``specification-based
             techniques'' is listed twice, when the latter should be
             ``structure-based techniques''.
+      \item ``Soak testing'' is given as a synonym for both ``endurance testing''
+            \citep[p.~39]{IEEE2021} and ``reliability testing''
+            (\citealp[Tab.~2]{Gerrard2000a}; \citeyear[Tab.~1, p.~26]{Gerrard2000b}).
+            The terms are not synonyms, although endurance testing is given
+            as a kind of reliability testing by \citet[p.~55]{Firesmith2015}.
       \item \citeauthor{IEEE2021} define an ``extended entry (decision) table''
             both as a decision table where the ``conditions consist of multiple
             values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021}
@@ -799,6 +805,7 @@ within individual ones; these may be areas for further investigation:
             categorized as test types by other sources \citep{IEEE2022, IEEE2017,
                   IEEE2013} are categorized as techniques in
             \citeyearpar[p.~39]{IEEE2021}.
+            % swebok discrepancies
       \item SWEBOK V4 says ``scalability testing evaluates the capability to
             use and learn the system and the user documentation. It also focuses
             on the system's effectiveness in supporting user tasks and the
@@ -1022,6 +1029,10 @@ within individual ones; these may be areas for further investigation:
             \citeyearpar[Tab.~2]{Gerrard2000a}.
       \item End-to-end functionality testing is \emph{not} indicated to be
             functionality testing \citep[Tab.~2]{Gerrard2000a}.
+      \item \citeauthor{Gerrard2000b}'s definition for ``security audits''
+            seems too specific, only applying to ``the products installed on a
+            site'' and ``the known vulnerabilities for those products''
+            \citeyearpar[p.~28]{Gerrard2000b}.
 \end{enumerate}
 
 % end discrepancies
