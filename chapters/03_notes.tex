@@ -1229,24 +1229,27 @@ difference of ``relative to the amount of resources used'' or ``be efficient in
 the use of resources'' between the two is meaningful.
 
 \subsubsection{Recovery Testing}
-There are many terms related to ``recovery testing'', which is the testing of
-``software restart capabilities after a system crash or other disaster''
+There are many terms related to ``recovery testing'', which is ``testing
+\dots\ aimed at verifying
+software restart capabilities after a system crash or other disaster''
 \citep[p.~5-9]{SWEBOK2024} including ``recover[ing] the data directly affected
 and re-establish[ing] the desired state of the system'' \citep{ISO_IEC2023a} so
 that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
-``Recovery testing'' is also given as a subset of performance-related testing
-\citeyearpar[p.~22]{IEEE2022}, but this is not implied by the definition given
-previously. It is also called ``recoverability testing'' \cite[p.~47]{Kam2008}
-(which would make sense in the absence of performance considerations) and
+It is also called ``recoverability testing'' \cite[p.~47]{Kam2008} and
 potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}. The
 following terms, along with ``recovery testing'' itself \citep[p.~22]{IEEE2022}
-are classified as test types (either explicitly or implicitly, like in the case
-of ``backup and recovery testing''; this is inferred from its parent, reliability
-testing \citeyearpar[p.~2]{IEEE2013}).
+are classified as test types.
 
 \begin{itemize}
-      \item \textbf{Disaster/Recovery Testing:} Testing to determine the degree
-            to which a system can ``return to normal operation after a hardware
+      \item \textbf{Recoverability Testing:} Testing ``how well a system or
+            software can recover data during an interruption or failure''
+            (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp[p.~369]{IEEE2017}
+            \todo{OG ISO/IEC, 2011}) and ``re-establish the desired state of the
+            system'' (p.~369) \todo{OG ISO/IEC, 2011}.
+            %\citep[p.~369]{IEEE2017}
+            Given as a synonym for ``recovery testing'' by \citet[p.~47]{Kam2008}.
+      \item \textbf{Disaster/Recovery Testing:} Testing to evaluate if a system
+            can ``return to normal operation after a hardware
             or software failure'' \citep[p.~140]{IEEE2017} or if ``operation of
             the test item can be transferred to a different operating site and
             \dots\ be transferred back again once the failure has been
@@ -1269,14 +1272,31 @@ testing \citeyearpar[p.~2]{IEEE2013}).
             ``disaster/recovery testing'', even though that tests if ``operation
             of the test item can be transferred to a different operating site''
             (p.~37).
-      \item \textbf{Failure/Recovery Testing:} Testing that determines the
+      \item \textbf{Failover/Recovery Testing:} Testing that determines the
             ability ``to mov[e] to a back-up system in the event of failure,
             without transfer[ing] to a different operating site''
             \citep[p.~37]{IEEE2021}. This is given as a sub-type of
             ``disaster/recovery testing'', even though that tests if ``operation
             of the test item can be transferred to a different operating site''
-            (p.~37). Since this tests the actual backup process, it would make
-            more sense for \emph{this} to include ``backup'' in its name.
+            (p.~37).
+\end{itemize}
+
+Additionally, there seemed to be a distinction between generic ``recovery
+testing'' and its performance aspects, as discussed in \thesisissueref{40}.
+I proposed two new divisions to capture these differences in the literature:
+the term ``recoverability testing'' should be used to denote a system's ability
+to recovery (the use of this term is supported by \citet[p.~47]{Kam2008}), and
+``recovery performance testing'', which focuses on the performance-related
+aspects (see \nameref{perf-test-ambiguity}) of a system. The following details
+the elements of ``recovery testing'' that are specific to performance:
+
+\begin{itemize}
+      \item ``Recovery testing'' is given as a type of performance-related
+            testing \citep[p.~22]{IEEE2022}, which is not implied by its
+            given definitions.
+      \item ``Backup and recovery testing'' occurs ``within specified
+            parameters of time, cost, completeness, and accuracy''
+            \citep[p.~2]{IEEE2013}.
 \end{itemize}
 
 \section{Definitions}
