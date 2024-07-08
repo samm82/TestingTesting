@@ -1320,8 +1320,9 @@ Figure~\ref{fig:recovery-graph-proposed}.
             \citealp[p.~7-10]{SWEBOK2024}) so that the system ``can perform
             required functions'' \citep[p.~370]{IEEE2017}. ``Recovery testing''
             will be a synonym, as in \citep[p.~47]{Kam2008} and since it is the
-            more prevalent terms, although ``recoverability testing'' is
-            preferred, since this explicitly focuses on the \emph{ability} to
+            more prevalent term throughout various sources, although
+            ``recoverability testing'' is preferred to indicate that this
+            explicitly focuses on the \emph{ability} to
             recover, not the \emph{performance} of recovering.
       \item \textbf{Failover Testing:} Testing that ``validates the SUT's
             ability to manage heavy loads or unexpected failure to continue
@@ -1341,6 +1342,13 @@ Figure~\ref{fig:recovery-graph-proposed}.
             considered as a kind of failover testing. This may not be
             intrinsic to the hardware/software (e.g., may be the responsibility
             of humans/processes).
+      \item \textbf{Backup Recovery Testing:} Testing that determines the
+            ability ``to restor[e] from back-up memory in the event of failure''
+            \citep[p.~37]{IEEE2021}. The qualification that this occurs
+            ``without transfer[ing] to a different operating site or back-up
+            system'' (p.~37) \emph{could} be made explicit, but this is implied
+            since it is separate from transfer recovery testing and failover
+            testing, respectively.
 \end{itemize}
 
 \begin{figure}[hbtp!]

@@ -8,12 +8,14 @@
 \digraph[scale=0.8]{recoveryGraphProposed}{
 rankdir=BT;
 
+br      [label=<Backup<br/>Recovery<br/>Testing>];
 fail    [label=<Failover<br/>Testing>];
 failt   [label=<Failure<br/>Tolerance<br/>Testing>];
 recab   [label=<Recoverability<br/>Testing>];
 recvr   [label=<Recovery<br/>Testing>];
 trans   [label=<Transfer<br/>Recovery<br/>Testing>];
 
+br    -> { recab };
 fail  -> { recab };
 fail  -> { failt }[style="dashed"];
 recvr -> { recab }[dir=none];
@@ -25,8 +27,6 @@ trans -> { fail }[style="dashed"];
 \end{document}
 
 % avail   [label=<Availability<br/>Testing>];
-% bar     [label=<Backup and<br/>Recovery<br/>Testing>];
-% br      [label=<Backup/Recovery<br/>Testing>];
 % ft      [label=<Fault<br/>Tolerance<br/>Testing>];
 % perf    [label=<Performance<br/>Testing>];
 % perfRel [label=<Performance-related<br/>Testing>];
@@ -34,8 +34,6 @@ trans -> { fail }[style="dashed"];
 % use     [label=<Usability<br/>Testing>];
 
 % avail -> { rel };
-% bar   -> { rel };
-% br    -> { dr };
 % ft    -> { avail rel };
 % dr    -> { ft recab };
 % perf  -> { perfRel };
