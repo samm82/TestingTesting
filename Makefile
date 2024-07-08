@@ -49,6 +49,7 @@ update_diffs: gen_csv_diffs
 
 graphs: assets/graphs/*.tex
 	-mkdir build
+	py scripts/csvToGraph.py
 	for filename in $(basename $(notdir $^)) ; do \
 			latex -interaction=nonstopmode -shell-escape assets/graphs/$${filename}.tex || true ; \
 			latex -interaction=nonstopmode -shell-escape assets/graphs/$${filename}.tex || true ; \

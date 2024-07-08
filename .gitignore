@@ -6,3 +6,6 @@ build/
 *.fdb\_latexmk
 
 ~$*
+
+# This file gets generated
+assets/graphs/approachGraph.tex
