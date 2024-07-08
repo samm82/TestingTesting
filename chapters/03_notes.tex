@@ -1323,6 +1323,14 @@ Figure~\ref{fig:recovery-graph-proposed}.
             more prevalent terms, although ``recoverability testing'' is
             preferred, since this explicitly focuses on the \emph{ability} to
             recover, not the \emph{performance} of recovering.
+      \item \textbf{Failover Testing:} Testing that ``validates the SUT's
+            ability to manage heavy loads or unexpected failure to continue
+            typical operations'' \cite[p.~5-9]{SWEBOK2024} by entering a
+            ``backup operational mode in which [these responsibilities] \dots\
+            are assumed by a secondary system'' \citepISTQB{}. This will
+            replace ``failover/recovery testing'', since it is more clear, and
+            since this is one way that a system can recover from failure, it
+            will be a subset of ``recovery testing''.
 \end{itemize}
 
 \begin{figure}[hbtp!]
