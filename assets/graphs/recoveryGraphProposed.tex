@@ -12,10 +12,13 @@ fail    [label=<Failover<br/>Testing>];
 failt   [label=<Failure<br/>Tolerance<br/>Testing>];
 recab   [label=<Recoverability<br/>Testing>];
 recvr   [label=<Recovery<br/>Testing>];
+trans   [label=<Transfer<br/>Recovery<br/>Testing>];
 
 fail  -> { recab };
 fail  -> { failt }[style="dashed"];
 recvr -> { recab }[dir=none];
+trans -> { recab };
+trans -> { fail }[style="dashed"];
 
 { rank=same; recab recvr };
 }
@@ -24,7 +27,6 @@ recvr -> { recab }[dir=none];
 % avail   [label=<Availability<br/>Testing>];
 % bar     [label=<Backup and<br/>Recovery<br/>Testing>];
 % br      [label=<Backup/Recovery<br/>Testing>];
-% dr      [label=<Disaster/Recovery<br/>Testing>];
 % ft      [label=<Fault<br/>Tolerance<br/>Testing>];
 % perf    [label=<Performance<br/>Testing>];
 % perfRel [label=<Performance-related<br/>Testing>];
