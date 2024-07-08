@@ -11,14 +11,17 @@ rankdir=BT;
 br      [label=<Backup<br/>Recovery<br/>Testing>];
 fail    [label=<Failover<br/>Testing>];
 failt   [label=<Failure<br/>Tolerance<br/>Testing>];
+perfRel [label=<Performance-related<br/>Testing>];
 recab   [label=<Recoverability<br/>Testing>];
 recvr   [label=<Recovery<br/>Testing>];
+rperf   [label=<Recovery<br/>Performance<br/>Testing>];
 trans   [label=<Transfer<br/>Recovery<br/>Testing>];
 
 br    -> { recab };
 fail  -> { recab };
 fail  -> { failt }[style="dashed"];
 recvr -> { recab }[dir=none];
+rperf -> { perfRel recab }
 trans -> { recab };
 trans -> { fail }[style="dashed"];
 
@@ -28,8 +31,6 @@ trans -> { fail }[style="dashed"];
 
 % avail   [label=<Availability<br/>Testing>];
 % ft      [label=<Fault<br/>Tolerance<br/>Testing>];
-% perf    [label=<Performance<br/>Testing>];
-% perfRel [label=<Performance-related<br/>Testing>];
 % rel     [label=<Reliability<br/>Testing>];
 % use     [label=<Usability<br/>Testing>];
 

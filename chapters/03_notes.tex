@@ -1291,24 +1291,6 @@ in Figure~\ref{fig:recovery-graph-current}.
             both of these terms.
 \end{itemize}
 
-Additionally, there seemed to be a distinction between generic ``recovery
-testing'' and its performance aspects, as discussed in \thesisissueref{40}.
-I proposed two new divisions to capture these differences in the literature:
-the term ``recoverability testing'' should be used to denote a system's ability
-to recovery (the use of this term is supported by \citet[p.~47]{Kam2008}), and
-``recovery performance testing'', which focuses on the performance-related
-aspects (see \nameref{perf-test-ambiguity}) of a system. The following details
-the elements of ``recovery testing'' that are specific to performance:
-
-\begin{itemize}
-      \item ``Recovery testing'' is given as a type of performance-related
-            testing \citep[p.~22]{IEEE2022}, which is not implied by its
-            given definitions.
-      \item ``Backup and recovery testing'' occurs ``within specified
-            parameters of time, cost, completeness, and accuracy''
-            \citep[p.~2]{IEEE2013}.
-\end{itemize}
-
 \begin{figure}[hbtp!]
       \centering
       \caption{The current state of the relations between
@@ -1359,6 +1341,21 @@ Figure~\ref{fig:recovery-graph-proposed}.
             system'' (p.~37) \emph{could} be made explicit, but this is implied
             since it is separate from transfer recovery testing and failover
             testing, respectively.
+      \item \textbf{Recovery Performance Testing:} Testing ``how well a system or
+            software can recover \dots\ [from] an interruption or failure''
+            (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
+            ``within specified parameters of time, cost, completeness, and
+            accuracy'' \citep[p.~2]{IEEE2013}. The distinction between the
+            performance-related elements of recovery testing seemed to be
+            meaningful (see \thesisissueref{40}), but was not captured
+            consistently by the literature. This will be a subset of
+            ``performance-related testing'' (see \nameref{perf-test-ambiguity})
+            as ``recovery testing'' is in \citep[p.~22]{IEEE2022}. This could
+            also be extended into testing the performance of specific elements
+            of recovery (e.g., failover performance testing), but this be too
+            fine-grained and may better be captured as an
+            \hyperref[chap:testing:sec:orthogonal-tests]
+            {orthogonally derived test approach}.
 \end{itemize}
 
 \begin{figure}[hbtp!]
