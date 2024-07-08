@@ -6,9 +6,9 @@ names = approaches["Name"].to_list()
 parents = approaches["Parent(s)"].to_list()
 
 def removeInParens(s):
+    # s = re.sub(r" \(.*?\) \(.*?\)", "", s)
     # Remove nested parentheses first, if they exist
-    s = re.sub(r" \(.*\(.*\).*\)", "", s)
-    s = re.sub(r" \(.*\(.*\)\)", "", s)
+    s = re.sub(r" \([^\)]*\([^\)]*\)[^\)]*\)", "", s)
     return re.sub(r" \(.*?\)", "", s)
 
 def lineBreak(s):
@@ -17,14 +17,14 @@ def lineBreak(s):
 def formatApproach(s):
     for c in "?-/() ":
         s = s.replace(c, "")
-    s = s = s.replace("0", "Zero")
-    s = s = s.replace("1", "One")
-    s = s = s.replace(" (Testing)", " Testing")
-    return removeInParens(s)
+    s = s.replace("0", "Zero")
+    s = s.replace("1", "One")
+    s = s.replace(" (Testing)", " Testing")
+    return removeInParens(s).strip(",")
 
 names = [removeInParens(n) for n in names if type(n) is str]
 
-parents = [removeInParens(p).split(", ")
+parents = [removeInParens(p).strip(",").split(", ")
            if type(p) is str else [] for p in parents]
 
 dot = [
@@ -45,12 +45,14 @@ for name in names:
     if "?" in name:
         name = name.replace("?", "")
         dashed = True
-    dot.append(f"{formatApproach(name)} [label={lineBreak(name)}{",style=dashed" if dashed else ""}];")
+    dot.append(f"{formatApproach(name)} [label={lineBreak(name.strip(")"))}{",style=dashed" if dashed else ""}];")
 
 dot.append("")
 
 for name, parent in zip(names, parents):
     for p in parent:
+        if not p:
+            continue
         dashed = False
         if "?" in p:
             dashed = True
