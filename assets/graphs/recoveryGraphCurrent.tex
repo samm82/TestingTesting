@@ -5,7 +5,7 @@
 \usetikzlibrary{arrows,shapes}
 
 \begin{document}
-\digraph[scale=0.8]{recoveryGraphCurrent}{
+\digraph{recoveryGraphCurrent}{
 rankdir=BT;
 avail   [label=<Availability<br/>Testing>];
 bar     [label=<Backup and<br/>Recovery<br/>Testing>];
@@ -25,9 +25,10 @@ use     [label=<Usability<br/>Testing>];
 avail -> { rel };
 bar   -> { rel };
 br    -> { dr };
-fail  -> { failt };
+fail  -> { failt }[style="dashed"];
 fail  -> { failr }[dir=none, style="dashed"];
 failr -> { dr };
+failr -> { failt }[style="dashed"]
 ft    -> { avail rel };
 dr    -> { ft recab };
 perf  -> { perfRel };

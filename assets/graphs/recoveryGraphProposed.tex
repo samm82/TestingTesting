@@ -5,41 +5,34 @@
 \usetikzlibrary{arrows,shapes}
 
 \begin{document}
-\digraph[scale=0.8]{recoveryGraphProposed}{
+\digraph[scale=0.9]{recoveryGraphProposed}{
 rankdir=BT;
 
+avail   [label=<Availability<br/>Testing>];
 br      [label=<Backup<br/>Recovery<br/>Testing>];
 fail    [label=<Failover<br/>Testing>];
 failt   [label=<Failure<br/>Tolerance<br/>Testing>];
+ft      [label=<Fault<br/>Tolerance<br/>Testing>];
+perf    [label=<Performance<br/>Testing>];
 perfRel [label=<Performance-related<br/>Testing>];
 recab   [label=<Recoverability<br/>Testing>];
-recvr   [label=<Recovery<br/>Testing>];
+rel     [label=<Reliability<br/>Testing>];
 rperf   [label=<Recovery<br/>Performance<br/>Testing>];
 trans   [label=<Transfer<br/>Recovery<br/>Testing>];
+use     [label=<Usability<br/>Testing>];
 
+avail -> { rel };
 br    -> { recab };
 fail  -> { recab };
 fail  -> { failt }[style="dashed"];
-recvr -> { recab }[dir=none];
+ft    -> { avail rel };
+perf  -> { perfRel };
+recab -> { avail failt ft rel };
+recab -> { use }[style="dashed"];
+rel   -> { perf };
 rperf -> { perfRel recab }
 trans -> { recab };
 trans -> { fail }[style="dashed"];
 
-{ rank=same; recab recvr };
 }
 \end{document}
-
-% avail   [label=<Availability<br/>Testing>];
-% ft      [label=<Fault<br/>Tolerance<br/>Testing>];
-% rel     [label=<Reliability<br/>Testing>];
-% use     [label=<Usability<br/>Testing>];
-
-% avail -> { rel };
-% ft    -> { avail rel };
-% dr    -> { ft recab };
-% perf  -> { perfRel };
-% recab -> { rel };
-% recab -> { use }[style="dashed"];
-% recvr -> { avail ft perfRel rel };
-% recab -> { rel };
-% rel   -> { perf };

@@ -1291,14 +1291,6 @@ in Figure~\ref{fig:recovery-graph-current}.
             both of these terms.
 \end{itemize}
 
-\begin{figure}[hbtp!]
-      \centering
-      \caption{The current state of the relations between
-            ``recovery testing'' terms.}
-      \label{fig:recovery-graph-current}
-      \recoveryGraphCurrent{}
-\end{figure}
-
 I propose the following terms and structure to make them clearer and more
 consistent. The relations between them can be found in
 Figure~\ref{fig:recovery-graph-proposed}.
@@ -1360,9 +1352,19 @@ Figure~\ref{fig:recovery-graph-proposed}.
 
 \begin{figure}[hbtp!]
       \centering
-      \caption{The proposed relations between ``recovery testing'' terms.}
-      \label{fig:recovery-graph-proposed}
-      \recoveryGraphProposed{}
+      \begin{minipage}{.5\textwidth}
+            \centering
+            \recoveryGraphCurrent{}
+            \caption{The current state of the relations between ``recovery
+                  testing'' terms.}
+            \label{fig:recovery-graph-current}
+      \end{minipage}%
+      \begin{minipage}{.5\textwidth}
+            \centering
+            \recoveryGraphProposed{}
+            \caption{The proposed relations between ``recovery testing'' terms.}
+            \label{fig:recovery-graph-proposed}
+      \end{minipage}
 \end{figure}
 
 \section{Definitions}
