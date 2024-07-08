@@ -1238,7 +1238,8 @@ that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
 It is also called ``recoverability testing'' \cite[p.~47]{Kam2008} and
 potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}. The
 following terms, along with ``recovery testing'' itself \citep[p.~22]{IEEE2022}
-are classified as test types.
+are all classified as test types, and the relations between them can be found
+in Figure~\ref{fig:recovery-graph-current}.
 
 \begin{itemize}
       \item \textbf{Recoverability Testing:} Testing ``how well a system or
@@ -1298,6 +1299,14 @@ the elements of ``recovery testing'' that are specific to performance:
             parameters of time, cost, completeness, and accuracy''
             \citep[p.~2]{IEEE2013}.
 \end{itemize}
+
+\begin{figure}[hbtp!]
+      \centering
+      \caption{The current state of the relations between
+            ``recovery testing'' terms.}
+      \label{fig:recovery-graph-current}
+      \recoveryGraphCurrent{}
+\end{figure}
 
 \section{Definitions}
 
@@ -2338,7 +2347,7 @@ it), usually using debugger tools to check the values of variables
             (see \hyperref[data-ref-errors]{Data reference errors})
 \end{itemize}
 
-Table \ref{table:data-flow-coverage-types} contains different types of data
+Table~\ref{table:data-flow-coverage-types} contains different types of data
 flow coverage criteria, approximately from weakest to strongest, as well as
 their requirements; all information is adapted from
 \citep[pp.~424-425]{vanVliet2000} \todo{Is this sufficient?}.

@@ -47,27 +47,34 @@ update_diffs: gen_csv_diffs
 		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
 	done
 
+graphs: assets/graphs/recoveryGraphCurrent.tex
+	-latex -interaction=nonstopmode -shell-escape assets/graphs/recoveryGraphCurrent.tex
+	-latex -interaction=nonstopmode -shell-escape assets/graphs/recoveryGraphCurrent.tex
+	-mkdir build
+	cp recoveryGraphCurrent.pdf build/recoveryGraphCurrent.pdf
+	rm -r recoveryGraphCurrent*
+
 build: update_diffs notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
 # grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
-	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode thesis.tex --shell-escape
+	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape thesis.tex
 	cp build/thesis.pdf thesis.pdf	
 
-notes: # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+notes: graphs # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
 # grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
-	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode notes.tex --shell-escape
+	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape notes.tex
 	cp build/notes.pdf notes.pdf
 
 debug: # for finding hard issues, this is an interactive version of 'build'
-	latexmk -output-directory=build -pdflatex=lualatex -pdf thesis.tex --shell-escape
+	latexmk -output-directory=build -pdflatex=lualatex -pdf -shell-escape thesis.tex
 
 poster:
-	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode poster.tex --shell-escape
+	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape poster.tex
 	cp build/poster.pdf poster.pdf
 
 clean:

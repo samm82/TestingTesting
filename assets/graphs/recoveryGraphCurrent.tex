@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph[scale=0.8]{recoveryGraphCurrent}{
+rankdir=BT;
+avail   [label=<Availability<br/>Testing>];
+bar     [label=<Backup and<br/>Recovery<br/>Testing>];
+br      [label=<Backup/Recovery<br/>Testing>];
+dr      [label=<Disaster/Recovery<br/>Testing>];
+fr      [label=<Failover/Recovery<br/>Testing>];
+ft      [label=<Fault<br/>Tolerance<br/>Testing>];
+perf    [label=<Performance<br/>Testing>];
+perfRel [label=<Performance-related<br/>Testing>];
+recab   [label=<Recoverability<br/>Testing>];
+recvr   [label=<Recovery<br/>Testing>];
+rel     [label=<Reliability<br/>Testing>];
+use     [label=<Usability<br/>Testing>];
+
+avail -> { rel };
+bar   -> { rel };
+br    -> { dr };
+fr    -> { dr };
+ft    -> { avail rel };
+dr    -> { ft recab };
+perf  -> { perfRel };
+recab -> { rel };
+recab -> { use }[style="dashed"];
+recvr -> { avail ft perfRel rel };
+recvr -> { recab }[dir=none];
+rel   -> { perf };
+
+{ rank=same; recab recvr };
+}
+\end{document}
