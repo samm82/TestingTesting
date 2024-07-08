@@ -9,6 +9,7 @@ def removeInParens(s):
     # s = re.sub(r" \(.*?\) \(.*?\)", "", s)
     # Remove nested parentheses first, if they exist
     s = re.sub(r" \([^\)]*\([^\)]*\)[^\)]*\)", "", s)
+    s = re.sub(r"\([^\)]*\([^\)]*\)[^\)]*\)", "", s)
     return re.sub(r" \(.*?\)", "", s)
 
 def lineBreak(s):
@@ -54,6 +55,8 @@ for name, parent in zip(names, parents):
         if not p:
             continue
         dashed = False
+        if "Perspective Testing" in name:
+            print(name, parent)
         if "?" in p:
             dashed = True
         dot.append(f"{formatApproach(name).replace(" ", "")} -> {formatApproach(p)}{"[style=dashed]" if dashed else ""};")
