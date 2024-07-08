@@ -1233,7 +1233,8 @@ There are many terms related to ``recovery testing'', which is ``testing
 \dots\ aimed at verifying
 software restart capabilities after a system crash or other disaster''
 \citep[p.~5-9]{SWEBOK2024} including ``recover[ing] the data directly affected
-and re-establish[ing] the desired state of the system'' \citep{ISO_IEC2023a} so
+and re-establish[ing] the desired state of the system'' (\citealp{ISO_IEC2023a};
+similar in \citealp[p.~7-10]{SWEBOK2024}) so
 that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
 It is also called ``recoverability testing'' \cite[p.~47]{Kam2008} and
 potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}. The
@@ -1244,10 +1245,8 @@ in Figure~\ref{fig:recovery-graph-current}.
 \begin{itemize}
       \item \textbf{Recoverability Testing:} Testing ``how well a system or
             software can recover data during an interruption or failure''
-            (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp[p.~369]{IEEE2017}
-            \todo{OG ISO/IEC, 2011}) and ``re-establish the desired state of the
-            system'' (p.~369) \todo{OG ISO/IEC, 2011}.
-            %\citep[p.~369]{IEEE2017}
+            (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
+            and ``re-establish the desired state of the system'' \citep{ISO_IEC2023a}.
             Given as a synonym for ``recovery testing'' by \citet[p.~47]{Kam2008}.
       \item \textbf{Disaster/Recovery Testing:} Testing to evaluate if a system
             can ``return to normal operation after a hardware
@@ -1306,6 +1305,31 @@ the elements of ``recovery testing'' that are specific to performance:
             ``recovery testing'' terms.}
       \label{fig:recovery-graph-current}
       \recoveryGraphCurrent{}
+\end{figure}
+
+I propose the following terms and structure to make them clearer and more
+consistent. The relations between them can be found in
+Figure~\ref{fig:recovery-graph-proposed}.
+
+\begin{itemize}
+      \item \textbf{Recoverability Testing:} ``Testing \dots\ aimed at
+            verifying software restart capabilities after a system crash or
+            other disaster'' \citep[p.~5-9]{SWEBOK2024} including ``recover[ing]
+            the data directly affected and re-establish[ing] the desired state
+            of the system'' (\citealp{ISO_IEC2023a}; similar in
+            \citealp[p.~7-10]{SWEBOK2024}) so that the system ``can perform
+            required functions'' \citep[p.~370]{IEEE2017}. ``Recovery testing''
+            will be a synonym, as in \citep[p.~47]{Kam2008} and since it is the
+            more prevalent terms, although ``recoverability testing'' is
+            preferred, since this explicitly focuses on the \emph{ability} to
+            recover, not the \emph{performance} of recovering.
+\end{itemize}
+
+\begin{figure}[hbtp!]
+      \centering
+      \caption{The proposed relations between ``recovery testing'' terms.}
+      \label{fig:recovery-graph-proposed}
+      \recoveryGraphProposed{}
 \end{figure}
 
 \section{Definitions}
