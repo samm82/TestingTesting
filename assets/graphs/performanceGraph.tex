@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{performanceGraph}{
+rankdir=BT;
+
+avail   [label=<Availability<br/>Testing>];
+cap     [label=<Capacity<br/>Testing>];
+clsLoop [label=<Closed Loop<br/>Testing>];
+conc    [label=<Concurrency<br/>Testing>];
+corr    [label=<Correctness<br/>Testing>];
+eff     [label=<Efficiency<br/>Testing>];
+end     [label=<Endurance<br/>Testing>];
+load    [label=<Load<br/>Testing>];
+loop    [label=<Loop<br/>Testing>];
+mrkChn  [label=<Markov Chain<br/>Testing>];
+memMan  [label=<Memory<br/>Management<br/>Testing>];
+perf    [label=<Performance<br/>Testing>];
+perfEff [label=<Performance<br/>Efficiency<br/>Testing>];
+perfRel [label=<Performance-related<br/>Testing>];
+postDep [label=<Post-Deployment<br/>Monitoring>];
+power   [label=<Power<br/>Testing>, style=dashed];
+rec     [label=<Recoverability<br/>Testing>];
+recPerf [label=<Recovery<br/>Performance<br/>Testing>];
+rel     [label=<Reliability<br/>Testing>];
+resUtil [label=<Resource<br/>Utilization<br/>Testing>];
+resTime [label=<Response<br/>Time Testing>];
+scal    [label=<Scalability<br/>Testing>];
+stress  [label=<Stress<br/>Testing>];
+vol     [label=<Volume<br/>Testing>];
+web     [label=<Web Application<br/>Testing>];
+
+avail -> { postDep rel };
+cap -> { perfEff perfRel perf vol };
+cap -> { scal }[dir=none];
+clsLoop -> { corr loop perf };
+conc -> perf;
+end -> { perfEff perfRel rel };
+load -> { cap perf perfEff perfRel rel };
+loop -> perf[style=dashed];
+mrkChn -> { corr perf rel web };
+memMan -> perfRel;
+perfEff -> rel;
+perfEff -> perfRel;
+perfEff -> perf;
+perfEff -> eff[style=dashed];
+perf -> perfRel;
+perf -> postDep;
+perf -> web;
+postDep -> perf;
+power -> perfRel;
+rec -> { avail perfRel rel };
+recPerf -> { rec perfRel };
+rel -> { perf web };
+resUtil -> { eff perfEff };
+resTime -> { perf perfRel };
+stress -> { cap perf perfEff perfRel };
+vol -> { cap perfEff perfRel };
+
+{ rank=same; cap scal };
+}
+\end{document}

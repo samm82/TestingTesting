@@ -51,12 +51,11 @@ for name in names:
 dot.append("")
 
 for name, parent in zip(names, parents):
+    # if [x for x in parent + [name] if "keyword" in x.lower()]:
     for p in parent:
         if not p:
             continue
         dashed = False
-        if "Perspective Testing" in name:
-            print(name, parent)
         if "?" in p:
             dashed = True
         dot.append(f"{formatApproach(name).replace(" ", "")} -> {formatApproach(p)}{"[style=dashed]" if dashed else ""};")

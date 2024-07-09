@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{performanceTypesGraph}{
+rankdir=BT;
+
+avail   [label=<Availability<br/>Testing>];
+cap     [label=<Capacity<br/>Testing>];
+conc    [label=<Concurrency<br/>Testing>];
+eff     [label=<Efficiency<br/>Testing>];
+end     [label=<Endurance<br/>Testing>];
+load    [label=<Load<br/>Testing>];
+memMan  [label=<Memory<br/>Management<br/>Testing>];
+perf    [label=<Performance<br/>Testing>];
+perfEff [label=<Performance<br/>Efficiency<br/>Testing>];
+perfRel [label=<Performance-related<br/>Testing>];
+power   [label=<Power<br/>Testing>, style=dashed];
+rec     [label=<Recoverability<br/>Testing>];
+recPerf [label=<Recovery<br/>Performance<br/>Testing>];
+rel     [label=<Reliability<br/>Testing>];
+resUtil [label=<Resource<br/>Utilization<br/>Testing>];
+resTime [label=<Response<br/>Time Testing>];
+scal    [label=<Scalability<br/>Testing>];
+stress  [label=<Stress<br/>Testing>];
+vol     [label=<Volume<br/>Testing>];
+
+avail -> { rel };
+cap -> { perfEff perfRel perf vol };
+cap -> { scal }[dir=none];
+conc -> perf;
+end -> { perfEff perfRel rel };
+load -> { cap perf perfEff perfRel rel };
+memMan -> perfRel;
+perfEff -> rel;
+perfEff -> perfRel;
+perfEff -> perf;
+perfEff -> eff[style=dashed];
+perf -> perfRel;
+power -> perfRel;
+rec -> { avail perfRel rel };
+recPerf -> { rec perfRel };
+rel -> { perf };
+resUtil -> { eff perfEff };
+resTime -> { perf perfRel };
+stress -> { cap perf perfEff perfRel };
+vol -> { cap perfEff perfRel };
+
+{ rank=same; cap scal };
+}
+\end{document}
