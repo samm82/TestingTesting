@@ -392,12 +392,26 @@ given to which are ``best'', and this should happen during the analysis stage.
 \subsection{Categories of Testing Approaches}
 
 For classifying different kinds of tests, \citet{IEEE2022} provide some
-terminology (see \refIEEETestTerms). However, other sources
+terminology (see \refIEEETestTerms{}). However, other sources
 \citep{BarbosaEtAl2006, SouzaEtAl2017} provide alternate
-categories (see \refOtherTestTerms) which may be beneficial to investigate to
+categories (see \refOtherTestTerms{}) which may be beneficial to investigate to
 determine if this categorization is sufficient. A ``metric'' categorization was
 considered at one point, but was decided to be out of the scope of this project
 (see \nameref{chap:testing:sec:scope}, \thesisissueref{21}, and \thesisissueref{22}).
+Related testing approaches may be grouped into a ``class'' or ``family'' to
+group those with ``commonalities and well-identified variabilities that can be
+instantiated'', where ``the commonalities are large and the variabilities
+smaller'' (see \thesisissueref{64}). Examples of these are the classes of
+combinatorial \citep[p.~15]{IEEE2021} and data flow testing (p.~3) and the
+family of performance-related testing \cite[p.~1187]{Moghadam2019}\footnote{The
+      original source describes ``performance testing \dots\ as a family of
+      performance-related testing techniques'', but it makes more sense to
+      consider ``performance-related testing'' as the ``family'' with
+      ``performance testing'' being one of the variabilities
+      (see \nameref{perf-test-ambiguity}).}, and may also be implied for
+security testing, a test type that consists of ``a number of
+techniques\footnote{This may or may not be \distinctIEEE{technique}}''
+\cite[p.~40]{IEEE2021}.
 
 It also seems that these categories are orthogonal. For example, ``a test type
 can be performed at a single test level or across several test levels''
@@ -413,46 +427,61 @@ of test cases derived for scenario testing'' (p.~8). Even the categories
 themselves are not consistently defined, as some approaches are categorized
 differently by different sources; these differences will be tracked noted so
 that they can be analyzed more systematically (see \thesisissueref{21}).
+There are also several instances of inconsistencies between parent and child
+test approach categorizations (which may indicate they aren't necessarily the
+same, or that more thought must be given to classification/organization).
+Examples of discrepancies in test-approach categorization:
 
-As an extreme example of this, it originally
-seemed like experience-based testing was categorized as both a test design
-technique and a test practice on the same page \citep[p.~22]{IEEE2022}! This
-also caused confusion about its children\footnote{I had originally noted that
-      this may suggest that parent and child test approach categorizations
-      aren't necessarily the same, or that more thought must be given to
-      classification/organization; this may still be true, since there are
-      several other instances of this inconsistency.}, such as error guessing
-and exploratory testing; error guessing is an ``experience-based test design
-technique'' and ``experience-based test practices include \dots\ exploratory
-testing, tours, attacks, and checklist-based testing'' (p.~34).
-%\citeyearpar[p.~34]{IEEE2022}
-However, these authors previously say
-``experience-based testing practices like exploratory testing \dots\ are not
-\dots\ techniques for designing test cases'', although they ``can use \dots\
-test techniques'' \citeyearpar[p.~viii]{IEEE2021}. This implies that
-``experience-based test design techniques'' are techniques used by the
-\emph{practice} of experience-based testing, not that experience-based testing
-is \emph{itself} a test technique. If this is the case, it is not always clearly
-articulated (\citealp[pp.~4,~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021};
-\citealp[p.~5-13]{SWEBOK2024}; \citealpISTQB{}) and is sometimes contradicted
-\citep[p.~46]{Firesmith2015}. A similar issue exists with ``model-based
-testing'', which is sometimes called a practice (\citealp[p.~22]{IEEE2022};
-\citeyear[p.~viii]{IEEE2021}) and sometimes a technique (\citealp[p.~4]{Kam2008};
-implied by \citealp[p.~7]{IEEE2021} and \citeyear[p.~469]{IEEE2017}).
+\begin{enumerate}
+      \item Experience-based testing is categorized as both a test design
+            technique and a test practice on the same page
+            \citep[pp.~22, 34]{IEEE2022}!
+            \begin{itemize}
+                  \item These authors previously say ``experience-based testing
+                        practices like exploratory testing \dots\ are not
+                        \dots\ techniques for designing test cases'', although
+                        they ``can use \dots\ test techniques''
+                        \citeyearpar[p.~viii]{IEEE2021}. This implies that
+                        ``experience-based test design techniques'' are
+                        techniques used by the \emph{practice} of experience-based
+                        testing, not that experience-based testing is
+                        \emph{itself} a test technique. If this is the case, it
+                        is not always clearly articulated
+                        (\citealp[pp.~4,~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021};
+                        \citealp[p.~5-13]{SWEBOK2024}; \citealpISTQB{}) and is
+                        sometimes contradicted \citep[p.~46]{Firesmith2015}.
+                        However, this conflates the distinction between
+                        ``practice'' and ``technique'', making these terms less
+                        useful, so this may just be a mistake
+                        (see \thesisissueref{64}).
 
-Furthermore, if a ``class of \dots\ techniques''
-is a practice, then other ``techniques'', such as combinatorial testing
-(\citealp[pp.~3,~22]{IEEE2022}; \citeyear[p.~2]{IEEE2021};
-\citealp[p.~5-11]{SWEBOK2024}; \citealpISTQB{}), data flow testing
-(\citealp[p.~22]{IEEE2022}; \citeyear[p.~3]{IEEE2021};
-\citealp[p.~5-13]{SWEBOK2024}; \citealp[p.~43]{Kam2008}), performance(-related)
-testing (\citealp[p.~38]{IEEE2021}; \citealp[p.~1187]{Moghadam2019}), and
-security testing \citep[p.~40]{IEEE2021} may \emph{also}
-actually be practices, since they are also described as classes or families of
-techniques. The same could be said of the more
-general specification- and structure-based testing, especially since these,
-plus experience-based testing, are described as ``complementary'' (p.~8, Fig.~2).
-% \citeyearpar[p.~8, Fig.~2]{IEEE2021}
+                        % Furthermore, if a ``class of \dots\ techniques''
+                        % is a practice, then other ``techniques'', such as combinatorial testing
+                        % (\citealp[pp.~3,~22]{IEEE2022}; \citeyear[p.~2]{IEEE2021};
+                        % \citealp[p.~5-11]{SWEBOK2024}; \citealpISTQB{}), data flow testing
+                        % (\citealp[p.~22]{IEEE2022}; \citeyear[p.~3]{IEEE2021};
+                        % \citealp[p.~5-13]{SWEBOK2024}; \citealp[p.~43]{Kam2008}), performance(-related)
+                        % testing (\citealp[p.~38]{IEEE2021}; \citealp[p.~1187]{Moghadam2019}), and
+                        % security testing \citep[p.~40]{IEEE2021} may \emph{also}
+                        % actually be practices, since they are also described as classes or families of
+                        % techniques. The same could be said of the more
+                        % general specification- and structure-based testing, especially since these,
+                        % plus experience-based testing, are described as ``complementary'' (p.~8, Fig.~2).
+                        % % \citeyearpar[p.~8, Fig.~2]{IEEE2021}
+
+                  \item This also causes confusion about its children, such as
+                        error guessing and exploratory testing;
+                        \citet[p.~34]{IEEE2022} say error guessing is an
+                        ``experience-based test design technique'' and
+                        ``experience-based test practices include \dots\
+                        exploratory testing, tours, attacks, and
+                        checklist-based testing''.
+            \end{itemize}
+      \item Model-based testing is sometimes called a practice
+            (\citealp[p.~22]{IEEE2022}; \citeyear[p.~viii]{IEEE2021}) and
+            sometimes a technique (\citealp[p.~4]{Kam2008}; implied by
+            \citealp[p.~7]{IEEE2021}; \citeyear[p.~469]{IEEE2017}).
+\end{enumerate}
 
 \newgeometry{margin=1.5cm, top=2.5cm}
 \begin{landscape}
