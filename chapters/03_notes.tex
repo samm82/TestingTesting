@@ -47,7 +47,12 @@ they are for testing hardware systems, as is \acf{emsec} testing
 \dots\ processes and infrastructure'' \citepISTQB{}, are also out of scope,
 but security audits that ``aim to ensure that all of the products installed on
 a site are secure when checked against the known vulnerabilities for those
-products'' \citep[p.~28]{Gerrard2000b} are not.
+products'' \citep[p.~28]{Gerrard2000b} are not. While orthogonal array testing
+can be used when testing software \citep{Mandl1985}, a subset of it called
+``Taguchi's orthogonal array testing (TOAT)'' for ``experimental design
+problems in manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product and
+manufacturing process design'' \cite[p.~44]{Tsui2007} and is thus out of
+scope.
 
 This sometimes leads to making wider decisions on whether a whole category of
 testing is in scope. For example, while all the examples of domain-specific
@@ -332,7 +337,12 @@ This process also led to some testing approaches without definitions;
 Once more ``standard'' sources had been exhausted, a strategy was proposed to
 look for sources that explicitly defined these terms, with the added benefit of
 uncovering more terms to explore, potentially in different domains (see
-\thesisissueref{57}). The following terms (and their respective related terms)
+\thesisissueref{57}). This also uncovered some out-of-scope testing approaches,
+including EMSEC testing, HTML testing, and aspects of loop testing and
+orthogonal array testing (see \nameref{chap:testing:sec:scope}); since these
+are out of scope, relevant sources were not investigated fully.
+
+The following terms (and their respective related terms)
 were explored in the following sources, bringing the number of testing
 approaches from \the\TotalBefore~to \the\TotalAfter~and the number of
 \emph{undefined} terms from \the\UndefBefore~to \the\UndefAfter~(the assumption
@@ -342,32 +352,29 @@ can be made that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
 \begin{itemize}
       \item \textbf{Assertion Checking:} \citet{LahiriEtAl2013, ChalinEtAl2006,
                   BerdineEtAl2006}
-      \item \textbf{Loop Testing:} \citet{DhokAndRamanathan2016,
+      \item \textbf{Loop Testing\footnote{\citep{ISO2015} and \citep{ISO2022}
+                        were used as reference for terms but not fully
+                        investigated, \citep{TrudnowskiEtAl2017} and
+                        \citep{PierreEtAl2017} were added as potentially in
+                        scope, and \citep{Goralski1999} and
+                        \citep{Dominguez-PumarEtAl2020} were added as
+                        out-of-scope examples.}:} \citet{DhokAndRamanathan2016,
                   GodefroidAndLuchaup2011, PreußeEtAl2012,
-                  ForsythEtAl2004}\footnote{\citep{ISO2015} and \citep{ISO2022}
-                  were used as reference for terms but not fully
-                  investigated, \citep{TrudnowskiEtAl2017} and
-                  \citep{PierreEtAl2017} were added as potentially in
-                  scope, and \citep{Goralski1999} and
-                  \citep{Dominguez-PumarEtAl2020} were added as
-                  out-of-scope examples.}
-      \item \textbf{EMSEC Testing:} \citet{ZhouEtAl2012, ISO2021}\footnote{
-                  Since EMSEC testing is out of scope (see
-                  \nameref{chap:testing:sec:scope}), these sources were not
-                  fully investigated.}
+                  ForsythEtAl2004}
+      \item \textbf{EMSEC Testing:} \citet{ZhouEtAl2012, ISO2021}
       \item \textbf{Asynchronous Testing:} \citet{JardEtAl1999}
       \item \textbf{Performance(-related) Testing:} \citet{Moghadam2019}
       \item \textbf{Web Application Testing:} \citet{DoğanEtAl2014, Kam2008}
             \begin{itemize}
-                  \item \textbf{HTML Testing\footnote{Since removed; see
-                                    \nameref{chap:testing:sec:scope}.}:}
-                        \citet{ChoudharyEtAl2010, SneedAndGöschl2000,
-                              Gerrard2000b}
+                  \item \textbf{HTML Testing:} \citet{ChoudharyEtAl2010,
+                              SneedAndGöschl2000, Gerrard2000b}
                   \item \textbf{DOM Testing:} \citet{BajammalAndMesbah2018}
             \end{itemize}
       \item \textbf{Sandwich Testing:} \citet{SharmaEtAl2021,
                   SangwanAndLaPlante2006}
-      \item \textbf{Orthogonal Array Testing:} \citet{Mandl1985}
+      \item \textbf{Orthogonal Array Testing\footnote{
+                        \citep{YuEtAl2011} and \citep{Tsui2007} were added as
+                        out-of-scope examples.}:} \citet{Mandl1985}
 \end{itemize}
 
 Different sources categorized software testing approaches in different ways;
