@@ -47,12 +47,13 @@ they are for testing hardware systems, as is \acf{emsec} testing
 \dots\ processes and infrastructure'' \citepISTQB{}, are also out of scope,
 but security audits that ``aim to ensure that all of the products installed on
 a site are secure when checked against the known vulnerabilities for those
-products'' \citep[p.~28]{Gerrard2000b} are not. While orthogonal array testing
-can be used when testing software \citep{Mandl1985}, a subset of it called
-``Taguchi's orthogonal array testing (TOAT)'' for ``experimental design
-problems in manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product and
-manufacturing process design'' \cite[p.~44]{Tsui2007} and is thus out of
-scope.
+products'' \citep[p.~28]{Gerrard2000b} are not. While \acf{oat}
+can be used when testing software \citep{Mandl1985}, it can also be used for
+hardware \citep[pp.~471-472]{Valcheva2013}, such as ``processors \dots\ made
+from pre-built and pre-tested hardware components'' (p.~471). A subset of
+\acs{oat} called ``\acf{toat}'' for ``experimental design problems in
+manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product and manufacturing
+process design'' \cite[p.~44]{Tsui2007} and is thus out of scope.
 
 This sometimes leads to making wider decisions on whether a whole category of
 testing is in scope. For example, while all the examples of domain-specific
@@ -329,8 +330,8 @@ constraints.
 \TotalBefore=435
 \UndefBefore=156
 
-\TotalAfter=517
-\UndefAfter=173
+\TotalAfter=518
+\UndefAfter=174
 
 This process also led to some testing approaches without definitions;
 \citep{IEEE2022} and \citep{Firesmith2015} in particular introduced many.
@@ -374,7 +375,7 @@ can be made that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
                   SangwanAndLaPlante2006}
       \item \textbf{Orthogonal Array Testing\footnote{
                         \citep{YuEtAl2011} and \citep{Tsui2007} were added as
-                        out-of-scope examples.}:} \citet{Mandl1985}
+                        out-of-scope examples.}:} \citet{Mandl1985, Valcheva2013}
 \end{itemize}
 
 Different sources categorized software testing approaches in different ways;
