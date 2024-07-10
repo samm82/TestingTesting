@@ -7,5 +7,6 @@ build/
 
 ~$*
 
-# This file gets generated
+# These files get generated
 assets/graphs/approachGraph.tex
+assets/graphs/staticGraph.tex
