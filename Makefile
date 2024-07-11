@@ -53,8 +53,8 @@ graphs: assets/graphs/*.tex
 	for filename in $(basename $(notdir $^)) ; do \
 			latex -interaction=nonstopmode -shell-escape assets/graphs/$${filename}.tex || true ; \
 			latex -interaction=nonstopmode -shell-escape assets/graphs/$${filename}.tex || true ; \
-			cp $${filename}.pdf build/$${filename}.pdf ; \
-			rm -r $${filename}* ; \
+			cp $${filename}.pdf assets/graphs/$${filename}.pdf ; \
+			rm *Graph* ; \
 	done
 
 build: update_diffs notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'

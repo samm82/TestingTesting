@@ -8,5 +8,5 @@ build/
 ~$*
 
 # These files get generated
-assets/graphs/approachGraph.tex
-assets/graphs/staticGraph.tex
+assets/graphs/*.tex
+!assets/graphs/manual_*.tex

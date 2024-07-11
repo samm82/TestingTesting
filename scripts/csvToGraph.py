@@ -28,14 +28,22 @@ names   = [removeInParens(n) for n in names if type(n) is str]
 parents = [removeInParens(par).strip(",").split(", ")
             if type(par) is str else [] for par in parents]
 
-dot, staticDot = [], []
 staticApproaches = {
     'ConcreteExecution', 'SymbolicExecution', 'InductiveAssertionMethods',
     'ContentChecking', 'ModelVerification'}
 staticKeywords = {'Audit', 'Inspection' 'Proof', 'Review', 'Static', 'Walkthrough'}
 dynamicExceptions = {}
 
-def addNode(name, staticOnly = False):
+categoryDict = {
+    "Approach": ([], []),
+    "Level": ([], []),
+    "Practice": ([], []),
+    "Static": ([], []), # Not a category in the same way, but makes for easier code
+    "Technique": ([], []),
+    "Type": ([], []),
+}
+
+def addNode(name, staticOnly = False, key = "Approach"):
     dashed = False
     if "?" in name:
         name = name.replace("?", "")
@@ -55,33 +63,37 @@ def addNode(name, staticOnly = False):
             break
     
     if staticOnly:
-        staticDot.append(nameLine)
+        categoryDict["Static"][1].append(nameLine)
         return
 
     if formatApproach(name) in staticApproaches:
-        staticDot.append(nameLine)
-    else:
-        dot.append(nameLine)
-
-for name in names:
-    addNode(name)
-
-dot.append("")
-staticDot.append("")
-
-workingStaticSet = staticApproaches.copy()
+        categoryDict["Static"][1].append(nameLine)
+    if key != "Approach":
+        categoryDict[key][1].append(nameLine)
 
 for name, category in zip(names, categories):
+    addNode(name)
     if type(category) is str:
-        split_cat = [c for c in removeInParens(category).split(", ")
-                     if c.startswith(('Level', 'Practice', 'Technique', 'Type'))
-                        and f"{c} (implied" not in category and f"{c} (inferred" not in category
-                        and not c.endswith('?')]
-        if len(split_cat) > 1:
-            print(name)
-            # print(f"{name.capitalize()} is categorized as both a test {\
-            #     split_cat[0].lower()} and a test {split_cat[1].lower()}")
-            # print("\t", category)
+        for key in categoryDict.keys():
+            if key in category:
+                categoryDict[key][0].append(name)
+                addNode(name, key=key)
+
+        # # For finding categorization discrepancies
+        # split_cat = [c for c in removeInParens(category).split(", ")
+        #              if c.startswith(('Level', 'Practice', 'Technique', 'Type'))
+        #                 and f"{c} (implied" not in category and f"{c} (inferred" not in category
+        #                 and not c.endswith('?')]
+        # if len(split_cat) > 1:
+        #     print(name)
+        #     print(f"{name.capitalize()} is categorized as both a test {\
+        #         split_cat[0].lower()} and a test {split_cat[1].lower()}")
+        #     print("\t", category)
+
+for key in categoryDict.keys():
+    categoryDict[key][1].append("")
+
+workingStaticSet = staticApproaches.copy()
 
 for name, parent in zip(names, parents):
     # if [x for x in parent + [name] if "keyword" in x.lower()]:
@@ -100,9 +112,13 @@ for name, parent in zip(names, parents):
             elif fp not in workingStaticSet:
                 addNode(p, staticOnly=True)
                 workingStaticSet.add(fp)
-            staticDot.append(parentLine)
+            categoryDict["Static"][1].append(parentLine)
         else:
-            dot.append(parentLine)
+            categoryDict["Approach"][1].append(parentLine)
+        
+        for key in categoryDict.keys():
+            if name in categoryDict[key][0] and p in categoryDict[key][0]:
+                categoryDict[key][1].append(parentLine)
 
 def make_dot_file(lines, filename):
     lines = [
@@ -124,7 +140,7 @@ def make_dot_file(lines, filename):
     with open(f"assets/graphs/{filename}.tex", "w") as outFile:
         outFile.writelines(line + '\n' for line in lines)
 
-make_dot_file(dot, "approachGraph")
-make_dot_file(staticDot, "staticGraph")
+for key in categoryDict.keys():
+    make_dot_file(categoryDict[key][1], f"{key.lower()}Graph")
 
-print(staticApproaches)
+# print(staticApproaches)
