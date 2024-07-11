@@ -24,7 +24,7 @@ def formatApproach(s):
     s = s.replace("1", "One")
     return removeInParens(s).strip(",")
 
-names   = [removeInParens(n) for n in names if type(n) is str]
+names   = [n for n in names if type(n) is str]
 parents = [removeInParens(par).strip(",").split(", ")
             if type(par) is str else [] for par in parents]
 
@@ -43,17 +43,18 @@ categoryDict = {
     "Type": ([], []),
 }
 
-def addNode(name, staticOnly = False, key = "Approach"):
+def addNode(name, filled = False, key = "Approach"):
     dashed = False
-    if "?" in name:
+    if any(unsure in name for unsure in {"?", "(implied", "(inferred"}):
         name = name.replace("?", "")
-        dashed = not staticOnly
+        dashed = True
+    name = removeInParens(name).strip(")")
     extra = [
-        f"label={lineBreak(name.strip(")"))}",
+        f"label={lineBreak(name)}",
         f'style="{",".join([
             s for s in ["dashed" if dashed else "",
-                        "filled" if staticOnly else ""] if s
-            ])}"' if dashed or staticOnly else ""
+                        "filled" if filled else ""] if s
+            ])}"' if dashed or filled else ""
     ]
     nameLine = f"{formatApproach(name)} [{",".join([e for e in extra if e])}];"
 
@@ -62,21 +63,20 @@ def addNode(name, staticOnly = False, key = "Approach"):
             staticApproaches.add(formatApproach(name))
             break
     
-    if staticOnly:
+    if filled and key == "Static":
         categoryDict["Static"][1].append(nameLine)
         return
 
     if formatApproach(name) in staticApproaches:
         categoryDict["Static"][1].append(nameLine)
-    if key != "Approach":
-        categoryDict[key][1].append(nameLine)
+    categoryDict[key][1].append(nameLine)
 
 for name, category in zip(names, categories):
     addNode(name)
     if type(category) is str:
         for key in categoryDict.keys():
             if key in category:
-                categoryDict[key][0].append(name)
+                categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key)
 
         # # For finding categorization discrepancies
@@ -92,6 +92,7 @@ for name, category in zip(names, categories):
 
 for key in categoryDict.keys():
     categoryDict[key][1].append("")
+    print(categoryDict[key][1])
 
 workingStaticSet = staticApproaches.copy()
 
@@ -103,14 +104,14 @@ for name, parent in zip(names, parents):
         dashed = False
         if "?" in p:
             dashed = True
-        fname, fp = formatApproach(name), formatApproach(p)
+        fname, fp = formatApproach(removeInParens(name)), formatApproach(p)
         parentLine = f"{fname} -> {fp}{"[style=dashed]" if dashed else ""};"
         if fname in staticApproaches or fp in staticApproaches:
             if fname not in workingStaticSet:
-                addNode(name, staticOnly=True)
+                addNode(name, filled=True, key="Static")
                 workingStaticSet.add(fname)
             elif fp not in workingStaticSet:
-                addNode(p, staticOnly=True)
+                addNode(p, filled=True, key="Static")
                 workingStaticSet.add(fp)
             categoryDict["Static"][1].append(parentLine)
         else:
@@ -140,7 +141,8 @@ def make_dot_file(lines, filename):
     with open(f"assets/graphs/{filename}.tex", "w") as outFile:
         outFile.writelines(line + '\n' for line in lines)
 
-for key, lines in categoryDict.items():
+for key, value in categoryDict.items():
+    lines = value[1]
     make_dot_file(lines, f"{key.lower()}Graph")
     unsure = ["dashed"] + [c.split()[0] for c in lines if '>,style="dashed"' in c]
     make_dot_file([c for c in lines if all(x not in c for x in unsure)],
