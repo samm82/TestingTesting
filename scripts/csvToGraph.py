@@ -140,7 +140,10 @@ def make_dot_file(lines, filename):
     with open(f"assets/graphs/{filename}.tex", "w") as outFile:
         outFile.writelines(line + '\n' for line in lines)
 
-for key in categoryDict.keys():
-    make_dot_file(categoryDict[key][1], f"{key.lower()}Graph")
+for key, lines in categoryDict.items():
+    make_dot_file(lines, f"{key.lower()}Graph")
+    unsure = ["dashed"] + [c.split()[0] for c in lines if '>,style="dashed"' in c]
+    make_dot_file([c for c in lines if all(x not in c for x in unsure)],
+                  f"rigid{key}Graph")
 
 # print(staticApproaches)
