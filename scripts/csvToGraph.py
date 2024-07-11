@@ -3,6 +3,7 @@ import re
 
 approaches = read_csv('ApproachGlossary.csv')
 names = approaches["Name"].to_list()
+categories = approaches["Approach Category"].to_list()
 parents = approaches["Parent(s)"].to_list()
 
 def removeInParens(s):
@@ -16,17 +17,16 @@ def lineBreak(s):
     return f"<{s.replace(" ", "<br/>")}>"
 
 def formatApproach(s):
+    s = s.replace(" (Testing)", " Testing")
     for c in "?-/() ":
         s = s.replace(c, "")
     s = s.replace("0", "Zero")
     s = s.replace("1", "One")
-    s = s.replace(" (Testing)", " Testing")
     return removeInParens(s).strip(",")
 
-names = [removeInParens(n) for n in names if type(n) is str]
-
-parents = [removeInParens(p).strip(",").split(", ")
-           if type(p) is str else [] for p in parents]
+names   = [removeInParens(n) for n in names if type(n) is str]
+parents = [removeInParens(par).strip(",").split(", ")
+            if type(par) is str else [] for par in parents]
 
 dot, staticDot = [], []
 staticApproaches = {
@@ -71,6 +71,18 @@ staticDot.append("")
 
 workingStaticSet = staticApproaches.copy()
 
+for name, category in zip(names, categories):
+    if type(category) is str:
+        split_cat = [c for c in removeInParens(category).split(", ")
+                     if c.startswith(('Level', 'Practice', 'Technique', 'Type'))
+                        and f"{c} (implied" not in category and f"{c} (inferred" not in category
+                        and not c.endswith('?')]
+        if len(split_cat) > 1:
+            print(name)
+            # print(f"{name.capitalize()} is categorized as both a test {\
+            #     split_cat[0].lower()} and a test {split_cat[1].lower()}")
+            # print("\t", category)
+
 for name, parent in zip(names, parents):
     # if [x for x in parent + [name] if "keyword" in x.lower()]:
     for p in parent:
@@ -83,11 +95,9 @@ for name, parent in zip(names, parents):
         parentLine = f"{fname} -> {fp}{"[style=dashed]" if dashed else ""};"
         if fname in staticApproaches or fp in staticApproaches:
             if fname not in workingStaticSet:
-                print("name", name)
                 addNode(name, staticOnly=True)
                 workingStaticSet.add(fname)
             elif fp not in workingStaticSet:
-                print("p", p)
                 addNode(p, staticOnly=True)
                 workingStaticSet.add(fp)
             staticDot.append(parentLine)

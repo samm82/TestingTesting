@@ -470,17 +470,44 @@ Examples of discrepancies in test-approach categorization:
                         % % \citeyearpar[p.~8, Fig.~2]{IEEE2021}
 
                   \item This also causes confusion about its children, such as
-                        error guessing and exploratory testing;
-                        \citet[p.~34]{IEEE2022} say error guessing is an
-                        ``experience-based test design technique'' and
+                        error guessing and exploratory testing; again, on the
+                        same page, \citeauthor{IEEE2022} say error guessing is
+                        an ``experience-based test design technique'' and
                         ``experience-based test practices include \dots\
                         exploratory testing, tours, attacks, and
-                        checklist-based testing''.
+                        checklist-based testing'' \citeyearpar[p.~34]{IEEE2022}.
+                        Other sources also do not agree whether error guessing
+                        is a technique (pp.~20,~22; \citeyear[p.~viii]{IEEE2021})
+                        % \citeyear[pp.~20,~22]{IEEE2022}
+                        or a practice \citep[p.~5-14]{SWEBOK2024}.
             \end{itemize}
-      \item Model-based testing is sometimes called a practice
+      \item The following are test approaches that are categorized as test
+            techniques in \citep[p.~38]{IEEE2021}, followed by sources that
+            categorize them as test types:
+            \begin{enumerate}
+                  \item Capacity testing (\citealp[p.~22]{IEEE2022};
+                        \citeyear[p.~2]{IEEE2013}; implied by its quality
+                        (\citealp{ISO_IEC2023a}; \citealp[Tab.~A.1]{IEEE2021})
+                        and by \citep[p.~53]{Firesmith2015})
+                  \item Endurance testing (\citealp[p.~2]{IEEE2013};
+                        implied by \citep[p.~55]{Firesmith2015})
+                  \item Load testing (\citealp[pp.~5,~20,~22]{IEEE2022};
+                        \citeyear[p.~253]{IEEE2017} \todo{OG IEEE 2013};
+                        \citealpISTQB{}; implied by \citep[p.~54]{Firesmith2015})
+                  \item Performance testing (\citealp[pp.~7,~22,~26-27]{IEEE2022};
+                        \citeyear[p.~7]{IEEE2021}; implied by
+                        \citep[p.~53]{Firesmith2015})
+                  \item Stress testing (\citealp[pp.~9,~22]{IEEE2022};
+                        \citeyear[p.~442]{IEEE2017}; implied by
+                        \citep[p.~54]{Firesmith2015})
+            \end{enumerate}
+      \item Model-based testing is categorized as both a test practice
             (\citealp[p.~22]{IEEE2022}; \citeyear[p.~viii]{IEEE2021}) and
-            sometimes a technique (\citealp[p.~4]{Kam2008}; implied by
+            a test technique (\citealp[p.~4]{Kam2008}; implied by
             \citealp[p.~7]{IEEE2021}; \citeyear[p.~469]{IEEE2017}).
+      \item Data-driven testing is categorized as both a test practice
+            \citep[p.~22]{IEEE2022} and a test technique
+            \citep[p.~43]{Kam2008} \todo{OG Fewster and Graham}.
 \end{enumerate}
 
 \newgeometry{margin=1.5cm, top=2.5cm}
