@@ -29,7 +29,7 @@ stress  [label=<Stress<br/>Testing>];
 vol     [label=<Volume<br/>Testing>];
 
 avail -> { rel };
-cap -> { perfEff perfRel perf vol };
+cap -> { perfEff perfRel perf };
 cap -> { scal }[dir=none];
 conc -> perf;
 end -> { perfEff perfRel rel };
