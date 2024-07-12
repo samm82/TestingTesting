@@ -47,15 +47,15 @@ update_diffs: gen_csv_diffs
 		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
 	done
 
-graphs: assets/graphs/*.tex
-	-mkdir build
+graphs: assets/graphs/*.tex assets/graphs/manual/*.tex
 	py scripts/csvToGraph.py
-	for filename in $(basename $(notdir $^)) ; do \
-			latex -interaction=nonstopmode -shell-escape assets/graphs/$${filename}.tex || true ; \
-			latex -interaction=nonstopmode -shell-escape assets/graphs/$${filename}.tex || true ; \
-			cp $${filename}.pdf assets/graphs/$${filename}.pdf ; \
-			rm *Graph* ; \
+	for filename in $^ ; do \
+			latex -interaction=nonstopmode -shell-escape $${filename} || true ; \
+			latex -interaction=nonstopmode -shell-escape $${filename} || true ; \
+			basefilename=$$(basename $$filename) ; \
+			cp $${basefilename%.tex}.pdf $${filename%tex}pdf ; \
 	done
+	rm *Graph*
 
 build: update_diffs notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
