@@ -25,30 +25,32 @@ rel     [label=<Reliability<br/>Testing>];
 resUtil [label=<Resource<br/>Utilization<br/>Testing>];
 resTime [label=<Response<br/>Time Testing>];
 scal    [label=<Scalability<br/>Testing>];
+soak    [label=<Soak<br/>Testing>];
 stress  [label=<Stress<br/>Testing>];
 vol     [label=<Volume<br/>Testing>];
 
 avail -> { rel };
-cap -> { perfEff perfRel perf };
+cap -> { load perfEff perfRel perf };
 cap -> { scal }[dir=none];
-conc -> perf;
+conc -> perfRel;
 end -> { perfEff perfRel rel };
-load -> { cap perf perfEff perfRel rel };
+end -> { soak }[dir=none];
+load -> { end perfEff perfRel rel };
 memMan -> perfRel;
-perfEff -> rel;
-perfEff -> perfRel;
-perfEff -> perf;
+perfEff -> { perfRel rel };
 perfEff -> eff[style=dashed];
-perf -> perfRel;
+perf -> { load perfRel };
 power -> perfRel;
 rec -> { avail rel };
 recPerf -> { rec perfRel };
-rel -> { perf };
+rel -> { perfRel };
+rel -> { soak }[dir=none];
 resUtil -> { eff perfEff };
 resTime -> { perf perfRel };
-stress -> { cap perf perfEff perfRel };
+stress -> { cap perfEff perfRel };
 vol -> { cap perfEff perfRel };
 
 { rank=same; cap scal };
+{ rank=same; end soak };
 }
 \end{document}
