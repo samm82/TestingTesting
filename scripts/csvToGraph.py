@@ -18,6 +18,7 @@ def processCol(col):
 
 names = [n for n in names if type(n) is str]
 parents = processCol(parents)
+synonyms = processCol(synonyms)
 
 staticApproaches = {
     'ConcreteExecution', 'SymbolicExecution', 'InductiveAssertionMethods',
@@ -52,13 +53,16 @@ def removeInParens(s):
 def lineBreak(s):
     return f"<{s.replace(" ", "<br/>")}>"
 
-def formatApproach(s):
+def formatApproach(s, removeSpace = True):
+    s = removeInParens(s)
     s = s.replace(" (Testing)", " Testing")
-    for c in "?-/() ":
+    for c in "?-/()":
         s = s.replace(c, "")
+    if removeSpace:
+        s = s.replace(" ", "")
     s = s.replace("0", "Zero")
     s = s.replace("1", "One")
-    return removeInParens(s).strip(",")
+    return s.strip(",")
 
 def addNode(name, filled = False, key = "Approach"):
     dashed = False
@@ -109,29 +113,61 @@ for name, category in zip(names, categories):
 for key in categoryDict.keys():
     categoryDict[key][1].append("")
 
-workingStaticSet = staticApproaches.copy()
+def addToIterable(s, iterable, key=key, removeSpace=True):
+    if formatApproach(s, removeSpace=removeSpace) not in iterable:
+        addNode(s, filled=True, key=key)
+        if type(iterable) is list:
+            iterable.append(formatApproach(s))
+        elif type(iterable) is set:
+            iterable.add(formatApproach(s))
+        else:
+            raise ValueError(f"addToIterable unimplemented for {type(
+                iterable)}")
 
-def addToStaticSet(s):
-    if formatApproach(removeInParens(s)) not in workingStaticSet:
-        addNode(s, filled=True, key="Static")
-        workingStaticSet.add(formatApproach(removeInParens(s)))
+# Add synonym relations
+synDict = {}
+for name, synonym in zip(names, synonyms):
+    for syn in synonym:
+        if not "spelled" in syn.lower() and not "called" in syn.lower():
+            try:
+                synDict[syn].append(name)
+            except KeyError:
+                synDict[syn] = [name]
+for key in categoryDict.keys():
+    for syn, terms in synDict.items():
+        terms = [x for x in terms
+                 if formatApproach(x, removeSpace=False) in categoryDict[key][0]]
+        if (not formatApproach(syn).isupper() and (
+                formatApproach(syn, removeSpace=False) in categoryDict[key][0] or 
+                    (len(terms) > 1))):
+            addToIterable(syn, categoryDict[key][0], key, removeSpace=False)
+            for term in terms:
+                addToIterable(term, categoryDict[key][0], key, removeSpace=False)
+                addLineToCategory(
+                    key, f"{formatApproach(
+                        term)} -> {formatApproach(
+                            syn)}[dir=none{",style=dashed" if isUnsure(
+                                syn) else ""}];")
+    categoryDict[key][1].append("")
+
+workingStaticSet = staticApproaches.copy()
 
 for name, parent in zip(names, parents):
     # if [x for x in parent + [name] if "keyword" in x.lower()]:
     for par in parent:
-        fpar = formatApproach(removeInParens(par))
+        fpar = formatApproach(par)
         if not fpar:
             continue
 
-        fname = formatApproach(removeInParens(name))
+        fname = formatApproach(name)
         parentLine = f"{fname} -> {fpar}{"[style=dashed]"
                                          if isUnsure(name) else ""};"
 
         for key in categoryDict.keys():
             if key == "Static" and (fname in staticApproaches or
                                     fpar in staticApproaches):
-                addToStaticSet(name)
-                addToStaticSet(par)
+                addToIterable(name, workingStaticSet, "Static")
+                addToIterable(par, workingStaticSet, "Static")
                 addLineToCategory("Static", parentLine)
             elif (removeInParens(name) in categoryDict[key][0] and
                 removeInParens(par) in categoryDict[key][0]):

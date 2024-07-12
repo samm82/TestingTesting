@@ -48,8 +48,8 @@ update_diffs: gen_csv_diffs
 	done
 
 graphs: assets/graphs/*.tex assets/graphs/manual/*.tex
-	rm assets/graphs/manual/*.pdf
-	rm assets/graphs/*.pdf
+	-rm assets/graphs/manual/*.pdf
+	-rm assets/graphs/*.pdf
 	py scripts/csvToGraph.py
 	for filename in $^ ; do \
 			latex -interaction=nonstopmode -shell-escape $${filename} || true ; \
