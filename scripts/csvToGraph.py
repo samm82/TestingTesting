@@ -4,33 +4,20 @@ import re
 approaches = read_csv('ApproachGlossary.csv')
 names = approaches["Name"].to_list()
 categories = approaches["Approach Category"].to_list()
+synonyms = approaches["Synonym(s)"].to_list()
 parents = approaches["Parent(s)"].to_list()
 
-def removeInParens(s):
-    # s = re.sub(r" \(.*?\) \(.*?\)", "", s)
-    # Remove nested parentheses first, if they exist
-    s = re.sub(r" \([^\)]*\([^\)]*\)[^\)]*\)", "", s)
-    s = re.sub(r"\([^\)]*\([^\)]*\)[^\)]*\)", "", s)
-    return re.sub(r" \(.*?\)", "", s)
+def processCol(col):
+    col = [re.split(r',(?!(?:[^()]*\([^()]*\))*[^()]*\)) ', x)
+            if type(x) is str else [] for x in col]
+    for x in col:
+        for i in range(len(x)-1, 1, -1):
+            if "(" in x[i] and "(" not in x[i-1] and not x[i].startswith("("):
+                x[i-1] = f"{x[i-1]} ({x[i].split(" (", 1)[1]}"
+    return col
 
-def lineBreak(s):
-    return f"<{s.replace(" ", "<br/>")}>"
-
-def formatApproach(s):
-    s = s.replace(" (Testing)", " Testing")
-    for c in "?-/() ":
-        s = s.replace(c, "")
-    s = s.replace("0", "Zero")
-    s = s.replace("1", "One")
-    return removeInParens(s).strip(",")
-
-names   = [n for n in names if type(n) is str]
-parents = [re.split(r',(?!(?:[^()]*\([^()]*\))*[^()]*\)) ', par)
-            if type(par) is str else [] for par in parents]
-for par in parents:
-    for i in range(len(par)-1, 1, -1):
-        if "(" in par[i] and "(" not in par[i-1] and not par[i].startswith("("):
-            par[i-1] = f"{par[i-1]} ({par[i].split(" (", 1)[1]}"
+names = [n for n in names if type(n) is str]
+parents = processCol(parents)
 
 staticApproaches = {
     'ConcreteExecution', 'SymbolicExecution', 'InductiveAssertionMethods',
@@ -54,6 +41,24 @@ def isUnsure(name):
 def addLineToCategory(key, line):
     if line not in categoryDict[key][1] and "-> ;" not in line:
         categoryDict[key][1].append(line)
+
+def removeInParens(s):
+    # s = re.sub(r" \(.*?\) \(.*?\)", "", s)
+    # Remove nested parentheses first, if they exist
+    s = re.sub(r" \([^\)]*\([^\)]*\)[^\)]*\)", "", s)
+    s = re.sub(r"\([^\)]*\([^\)]*\)[^\)]*\)", "", s)
+    return re.sub(r" \(.*?\)", "", s)
+
+def lineBreak(s):
+    return f"<{s.replace(" ", "<br/>")}>"
+
+def formatApproach(s):
+    s = s.replace(" (Testing)", " Testing")
+    for c in "?-/() ":
+        s = s.replace(c, "")
+    s = s.replace("0", "Zero")
+    s = s.replace("1", "One")
+    return removeInParens(s).strip(",")
 
 def addNode(name, filled = False, key = "Approach"):
     dashed = False
