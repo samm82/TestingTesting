@@ -106,6 +106,11 @@ for key in categoryDict.keys():
 
 workingStaticSet = staticApproaches.copy()
 
+def addToStaticSet(s):
+    if formatApproach(removeInParens(s)) not in workingStaticSet:
+        addNode(s, filled=True, key="Static")
+        workingStaticSet.add(formatApproach(removeInParens(s)))
+
 for name, parent in zip(names, parents):
     # if [x for x in parent + [name] if "keyword" in x.lower()]:
     for par in parent:
@@ -120,12 +125,8 @@ for name, parent in zip(names, parents):
         for key in categoryDict.keys():
             if key == "Static" and (fname in staticApproaches or
                                     fpar in staticApproaches):
-                if fname not in workingStaticSet:
-                    addNode(name, filled=True, key="Static")
-                    workingStaticSet.add(fname)
-                elif fpar not in workingStaticSet:
-                    addNode(par, filled=True, key="Static")
-                    workingStaticSet.add(fpar)
+                addToStaticSet(name)
+                addToStaticSet(par)
                 addLineToCategory("Static", parentLine)
             elif (removeInParens(name) in categoryDict[key][0] and
                 removeInParens(par) in categoryDict[key][0]):
