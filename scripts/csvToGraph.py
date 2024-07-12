@@ -126,32 +126,37 @@ def addToIterable(s, iterable, key=key, removeSpace=True):
 
 # Add synonym relations
 synDict = {}
+synDash = {}
 for name, synonym in zip(names, synonyms):
     for syn in synonym:
         if not "spelled" in syn.lower() and not "called" in syn.lower():
             try:
-                synDict[syn].append(name)
+                synDict[removeInParens(syn)].append(name)
+                if synDict[removeInParens(syn)][0] != isUnsure(syn):
+                    raise ValueError(f"Mismatch between 'rigidity' of {removeInParens(
+                        syn)} from different synonyms")
             except KeyError:
-                synDict[syn] = [name]
+                synDict[removeInParens(syn)] = [isUnsure(syn), name]
 for key in categoryDict.keys():
     for syn, terms in synDict.items():
-        terms = [x for x in terms
-                 if formatApproach(x, removeSpace=False) in categoryDict[key][0]]
+        terms = [x for x in terms if type(x) is bool or
+                 formatApproach(x, removeSpace=False) in categoryDict[key][0]]
         if (not formatApproach(syn).isupper() and (
                 formatApproach(syn, removeSpace=False) in categoryDict[key][0] or 
-                    (len(terms) > 1))):
+                    (len(terms) > 2))):
             addToIterable(syn, categoryDict[key][0], key, removeSpace=False)
-            for term in terms:
+            unsure = terms[0]
+            for term in terms[1:]:
                 addToIterable(term, categoryDict[key][0], key, removeSpace=False)
                 addLineToCategory(
                     key, f"{formatApproach(
                         term)} -> {formatApproach(
-                            syn)}[dir=none{",style=dashed" if isUnsure(
-                                syn) else ""}];")
+                            syn)}[dir=none{",style=dashed" if unsure else ""}];")
     categoryDict[key][1].append("")
 
 workingStaticSet = staticApproaches.copy()
 
+# Add parent relations
 for name, parent in zip(names, parents):
     # if [x for x in parent + [name] if "keyword" in x.lower()]:
     for par in parent:
