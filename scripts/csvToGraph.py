@@ -48,7 +48,12 @@ categoryDict = {
 }
 
 def isUnsure(name):
-    return any(unsure in name for unsure in {"?", "(implied", "(inferred", "(can be", "(usually"})
+    return any(unsure in name for unsure in
+               {"?", "(implied", "(inferred", "(can be", "(usually", "(if"})
+
+def addLineToCategory(key, line):
+    if line not in categoryDict[key][1] and "-> ;" not in line:
+        categoryDict[key][1].append(line)
 
 def addNode(name, filled = False, key = "Approach"):
     dashed = False
@@ -71,18 +76,17 @@ def addNode(name, filled = False, key = "Approach"):
             break
     
     if filled and key == "Static":
-        categoryDict["Static"][1].append(nameLine)
+        addLineToCategory("Static", nameLine)
         return
 
     if formatApproach(name) in staticApproaches:
-        categoryDict["Static"][1].append(nameLine)
-    categoryDict[key][1].append(nameLine)
+        addLineToCategory("Static", nameLine)
+    addLineToCategory(key, nameLine)
 
 for name, category in zip(names, categories):
-    addNode(name)
     if type(category) is str:
         for key in categoryDict.keys():
-            if key in category:
+            if key in category or key == "Approach":
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key)
 
@@ -105,29 +109,27 @@ workingStaticSet = staticApproaches.copy()
 for name, parent in zip(names, parents):
     # if [x for x in parent + [name] if "keyword" in x.lower()]:
     for par in parent:
-        if not par:
+        fpar = formatApproach(removeInParens(par))
+        if not fpar:
             continue
-        dashed = False
-        if isUnsure(name):
-            dashed = True
+
         fname = formatApproach(removeInParens(name))
-        fpar  = formatApproach(removeInParens(par))
-        parentLine = f"{fname} -> {fpar}{"[style=dashed]" if dashed else ""};"
-        if fname in staticApproaches or fpar in staticApproaches:
-            if fname not in workingStaticSet:
-                addNode(name, filled=True, key="Static")
-                workingStaticSet.add(fname)
-            elif fpar not in workingStaticSet:
-                addNode(par, filled=True, key="Static")
-                workingStaticSet.add(fpar)
-            categoryDict["Static"][1].append(parentLine)
-        else:
-            categoryDict["Approach"][1].append(parentLine)
-        
+        parentLine = f"{fname} -> {fpar}{"[style=dashed]"
+                                         if isUnsure(name) else ""};"
+
         for key in categoryDict.keys():
-            if (removeInParens(name) in categoryDict[key][0] and
+            if key == "Static" and (fname in staticApproaches or
+                                    fpar in staticApproaches):
+                if fname not in workingStaticSet:
+                    addNode(name, filled=True, key="Static")
+                    workingStaticSet.add(fname)
+                elif fpar not in workingStaticSet:
+                    addNode(par, filled=True, key="Static")
+                    workingStaticSet.add(fpar)
+                addLineToCategory("Static", parentLine)
+            elif (removeInParens(name) in categoryDict[key][0] and
                 removeInParens(par) in categoryDict[key][0]):
-                categoryDict[key][1].append(parentLine)
+                addLineToCategory(key, parentLine)
 
 def make_dot_file(lines, filename):
     lines = [
