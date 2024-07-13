@@ -126,32 +126,40 @@ def addToIterable(s, iterable, key=key, removeSpace=True):
 
 # Add synonym relations
 synDict = {}
-synDash = {}
+synSets = {}
 for name, synonym in zip(names, synonyms):
     for syn in synonym:
         if not "spelled" in syn.lower() and not "called" in syn.lower():
             try:
                 synDict[removeInParens(syn)].append(name)
-                if synDict[removeInParens(syn)][0] != isUnsure(syn):
-                    raise ValueError(f"Mismatch between 'rigidity' of {removeInParens(
-                        syn)} from different synonyms")
             except KeyError:
-                synDict[removeInParens(syn)] = [isUnsure(syn), name]
+                synDict[removeInParens(syn)] = [name]
+            # To only track relation one way and check inconsistencies
+            try:
+                if synSets[f"{formatApproach(name)}->{formatApproach(syn)}"] != isUnsure(syn):
+                    print(f"Mismatch between rigidity of synonyms {formatApproach(
+                        syn)} and {formatApproach(name)}")
+                    synSets[f"{formatApproach(syn)}->{formatApproach(name)}"] = isUnsure(syn)
+            except KeyError:
+                synSets[f"{formatApproach(syn)}->{formatApproach(name)}"] = isUnsure(syn)
 for key in categoryDict.keys():
     for syn, terms in synDict.items():
-        terms = [x for x in terms if type(x) is bool or
-                 formatApproach(x, removeSpace=False) in categoryDict[key][0]]
+        terms = [x for x in terms
+                 if formatApproach(x, removeSpace=False) in categoryDict[key][0]]
         if (not formatApproach(syn).isupper() and (
                 formatApproach(syn, removeSpace=False) in categoryDict[key][0] or 
-                    (len(terms) > 2))):
+                    (len(terms) > 1))):
             addToIterable(syn, categoryDict[key][0], key, removeSpace=False)
-            unsure = terms[0]
-            for term in terms[1:]:
+            for term in terms:
                 addToIterable(term, categoryDict[key][0], key, removeSpace=False)
-                addLineToCategory(
-                    key, f"{formatApproach(
-                        term)} -> {formatApproach(
-                            syn)}[dir=none{",style=dashed" if unsure else ""}];")
+                try:
+                    addLineToCategory(
+                        key, f"{formatApproach(
+                            term)} -> {formatApproach(
+                                syn)}[dir=none{",style=dashed" if synSets[f"{formatApproach(
+                                    syn)}->{formatApproach(term)}"] else ""}];")
+                except KeyError:
+                    pass
     categoryDict[key][1].append("")
 
 workingStaticSet = staticApproaches.copy()
