@@ -137,9 +137,8 @@ for name, synonym in zip(names, synonyms):
             # To only track relation one way and check inconsistencies
             try:
                 if synSets[f"{formatApproach(name)}->{formatApproach(syn)}"] != isUnsure(syn):
-                    print(f"Mismatch between rigidity of synonyms {formatApproach(
+                    raise ValueError(f"Mismatch between rigidity of synonyms {formatApproach(
                         syn)} and {formatApproach(name)}")
-                    synSets[f"{formatApproach(syn)}->{formatApproach(name)}"] = isUnsure(syn)
             except KeyError:
                 synSets[f"{formatApproach(syn)}->{formatApproach(name)}"] = isUnsure(syn)
 for key in categoryDict.keys():
