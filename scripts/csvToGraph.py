@@ -262,4 +262,31 @@ for key, value in categoryDict.items():
     make_dot_file([c for c in lines if all(x not in c for x in unsure)],
                   f"rigid{key}Graph")
 
+recoveryTerms = ["AvailabilityTesting", "BackupandRecoveryTesting", "BackupRecoveryTesting",
+                 "DisasterRecoveryTesting", "FailoverTesting", "FailoverRecoveryTesting",
+                 "FailureToleranceTesting", "FaultToleranceTesting", "PerformanceTesting",
+                 "Performance-relatedTesting", "RecoverabilityTesting", "RecoveryTesting", 
+                 "ReliabilityTesting", "UsabilityTesting"]
+# Optimized with ChatGPT to remove redundant checks and extra new lines
+recoveryLines = [line for line in categoryDict["Approach"][1]
+                 if any(term in line for term in recoveryTerms) or line == ""]
+
+import numpy as np
+
+recArr = np.array(categoryDict["Approach"][1])
+subarrays = np.split(recArr, np.where(recArr == "")[0]+1)
+result = [subarray.tolist() for subarray in subarrays if len(subarray) > 0]
+if len(result) != 3:
+    raise ValueError("Unexpected grouping of lines for automatic recovery graph")
+nodes = result[0] + result[1]
+rels = result[1] + result[2]
+
+rels = [line for line in rels if line == "" or
+        (line.split(" -> ")[0] in recoveryTerms and
+         line.split(" -> ")[1].split("[")[0].strip(";") in recoveryTerms)]
+nodes = [node for node in nodes if "->" not in node and
+         any(node.split(" ")[0] in line for line in rels)]
+
+make_dot_file(nodes+rels, "recoveryGraph")
+
 # print(staticApproaches)
