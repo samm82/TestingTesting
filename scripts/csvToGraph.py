@@ -186,6 +186,53 @@ for name, parent in zip(names, parents):
                 addLineToCategory(key, parentLine)
 
 def make_dot_file(lines, filename):
+    LONG_EDGE_LABEL = 'label="                "'
+    # From https://stackoverflow.com/a/65443720/10002168
+    legend = [
+        '',
+        'subgraph cluster_legend {',
+        '    label="Legend";',
+        '    labelloc="t";',
+        '    fontsize="48pt"',
+        '    rankdir=BT',
+        # '    rank="min";'
+        '    {',
+        '        rank=same',
+        '        chd [label="Child"];',
+        '        par [label="Parent"];',
+        f'        chd -> par [{LONG_EDGE_LABEL}];',
+        '        syn1 [label="Synonym"];',
+        '        syn2 [label="Synonym"];',
+        f'        syn1 -> syn2 [dir=none {LONG_EDGE_LABEL}];',
+        '    }',
+        '    {',
+        '        rank=same',
+        '        imp1 [label="Child"];',
+        '        imp2 [label=<Implied<br/>Parent>];',
+        f'        imp1 -> imp2 [style=dashed {LONG_EDGE_LABEL}]',
+        '        imp3 [label=<Implied<br/>Synonym>];',
+        '        imp4 [label=<Implied<br/>Synonym>];',
+        f'        imp3 -> imp4 [style=dashed dir=none {LONG_EDGE_LABEL}]',
+        '    }',
+        '    {',
+        '        rank=same',
+        '        imp5 [label=<Implied<br/>Term> style=dashed]',
+        '        syn3 [label=<Term>]',
+        '        syn4 [label=<Synonym<br/>to Both> style=filled]',
+        '        syn5 [label=<Term>]',
+        '        syn3 -> syn4 -> syn5 [dir=none]'
+        '    }',
+        # For alignment
+        '    edge [style=invis]',
+        '    imp5 -> imp1 -> chd',
+        '    syn3 -> imp2 -> par',
+        '    syn4 -> imp3 -> syn1',
+        '    syn5 -> imp4 -> syn2',
+        '}',
+        '',
+        '// Connect the dummy node to the first node of the legend',
+        'start -> chd [style=invis];',
+    ]
     lines = [
         "\\documentclass{article}",
         "\\usepackage{graphicx}",
@@ -196,8 +243,11 @@ def make_dot_file(lines, filename):
         "\\begin{document}",
         f"\\digraph{{{filename}}}{{",
         "rankdir=BT;",
+        '',
+        '// Dummy node to push the legend to the top left',
+        'start [style=invis];',
         "",
-    ] + lines + [
+    ] + lines + legend + [
         "}",
         "\\end{document}",
     ]
