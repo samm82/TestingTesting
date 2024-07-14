@@ -266,7 +266,7 @@ for key, value in categoryDict.items():
 recoveryTerms = ["AvailabilityTesting", "BackupandRecoveryTesting", "BackupRecoveryTesting",
                  "DisasterRecoveryTesting", "FailoverTesting", "FailoverRecoveryTesting",
                  "FailureToleranceTesting", "FaultToleranceTesting", "PerformanceTesting",
-                 "Performance-relatedTesting", "RecoverabilityTesting", "RecoveryTesting", 
+                 "PerformancerelatedTesting", "RecoverabilityTesting", "RecoveryTesting",
                  "ReliabilityTesting", "UsabilityTesting"]
 # Optimized with ChatGPT to remove redundant checks and extra new lines
 recoveryLines = [line for line in categoryDict["Approach"][1]
