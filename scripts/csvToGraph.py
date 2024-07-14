@@ -37,29 +37,29 @@ categoryDict = {
 
 def isUnsure(name):
     return any(unsure in name for unsure in
-               {"?", "(implied", "(inferred", "(can be", "(usually", "(if"})
+               {"?", "(implied", "(inferred", "(can be",
+                "(usually", "(if" , " (Testing)"})
 
 def addLineToCategory(key, line):
     if line not in categoryDict[key][1] and "-> ;" not in line:
         categoryDict[key][1].append(line)
 
 def removeInParens(s):
+    s = s.replace(" (Testing)", " Testing")
     # s = re.sub(r" \(.*?\) \(.*?\)", "", s)
     # Remove nested parentheses first, if they exist
     s = re.sub(r" \([^\)]*\([^\)]*\)[^\)]*\)", "", s)
     s = re.sub(r"\([^\)]*\([^\)]*\)[^\)]*\)", "", s)
-    return re.sub(r" \(.*?\)", "", s)
+    s = re.sub(r" \(.*?\)", "", s)
+    return s.strip(")").strip("?")
 
 def lineBreak(s):
     return f"<{s.replace(" ", "<br/>")}>"
 
-def formatApproach(s, removeSpace = True):
+def formatApproach(s):
     s = removeInParens(s)
-    s = s.replace(" (Testing)", " Testing")
-    for c in "?-/()":
+    for c in "?-/() ":
         s = s.replace(c, "")
-    if removeSpace:
-        s = s.replace(" ", "")
     s = s.replace("0", "Zero")
     s = s.replace("1", "One")
     return s.strip(",")
@@ -69,7 +69,7 @@ def addNode(name, filled = False, key = "Approach"):
     if isUnsure(name):
         name = name.replace("?", "")
         dashed = True
-    name = removeInParens(name).strip(")")
+    name = removeInParens(name)
     extra = [
         f"label={lineBreak(name)}",
         f'style="{",".join([
@@ -113,11 +113,11 @@ for name, category in zip(names, categories):
 for key in categoryDict.keys():
     categoryDict[key][1].append("")
 
-def addToIterable(s, iterable, key=key, removeSpace=True):
-    if formatApproach(s, removeSpace=removeSpace) not in iterable:
+def addToIterable(s, iterable, key=key):
+    if removeInParens(s) not in iterable:
         addNode(s, filled=True, key=key)
         if type(iterable) is list:
-            iterable.append(formatApproach(s))
+            iterable.append(removeInParens(s))
         elif type(iterable) is set:
             iterable.add(formatApproach(s))
         else:
@@ -141,16 +141,17 @@ for name, synonym in zip(names, synonyms):
                         syn)} and {formatApproach(name)}")
             except KeyError:
                 synSets[f"{formatApproach(syn)}->{formatApproach(name)}"] = isUnsure(syn)
+
 for key in categoryDict.keys():
     for syn, terms in synDict.items():
         terms = [x for x in terms
-                 if formatApproach(x, removeSpace=False) in categoryDict[key][0]]
+                 if removeInParens(x) in categoryDict[key][0]]
         if (not formatApproach(syn).isupper() and (
-                formatApproach(syn, removeSpace=False) in categoryDict[key][0] or 
+                removeInParens(syn) in categoryDict[key][0] or
                     (len(terms) > 1))):
-            addToIterable(syn, categoryDict[key][0], key, removeSpace=False)
+            addToIterable(syn, categoryDict[key][0], key)
             for term in terms:
-                addToIterable(term, categoryDict[key][0], key, removeSpace=False)
+                addToIterable(term, categoryDict[key][0], key)
                 try:
                     addLineToCategory(
                         key, f"{formatApproach(
