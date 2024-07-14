@@ -1,3 +1,4 @@
+import numpy as np
 from pandas import read_csv
 import re
 
@@ -204,17 +205,28 @@ for name, parent in zip(names, parents):
                 removeInParens(par) in categoryDict[key][0]):
                 addLineToCategory(key, parentLine)
 
+def splitListAtEmpty(listToSplit):
+    recArr = np.array(listToSplit)
+    return [subarray.tolist() for subarray in
+            np.split(recArr, np.where(recArr == "")[0]+1)
+            if len(subarray) > 0]
+
 def make_dot_file(lines, filename):
     LONG_EDGE_LABEL = 'label="                "'
+    chdPar, syn, impChd, impSyn, impTerm, twoSyn = False, False, False, False, False, False
+    chunks = splitListAtEmpty(lines)
+
+    impTerm = any('style="dashed"' in line for line in chunks[0])
+
     # From https://stackoverflow.com/a/65443720/10002168
     legend = [
         '',
         'subgraph cluster_legend {',
         '    label="Legend";',
-        '    labelloc="t";',
+        # This puts the label at the top, not the bottom, because of the rankdir
+        '    labelloc="b";',
         '    fontsize="48pt"',
         '    rankdir=BT',
-        # '    rank="min";'
         '    {',
         '        rank=same',
         '        chd [label="Child"];',
@@ -235,15 +247,15 @@ def make_dot_file(lines, filename):
         '    }',
         '    {',
         '        rank=same',
-        '        imp5 [label=<Implied<br/>Term> style=dashed]',
+        f'        {"imp5 [label=<Implied<br/>Term> style=dashed]" if impTerm else ""}',
         '        syn3 [label=<Term>]',
         '        syn4 [label=<Synonym<br/>to Both> style=filled]',
         '        syn5 [label=<Term>]',
-        '        syn3 -> syn4 -> syn5 [dir=none]'
+        '        syn3 -> syn4 -> syn5 [dir=none]',
         '    }',
         # For alignment
         '    edge [style=invis]',
-        '    imp5 -> imp1 -> chd',
+        f'    {"imp5 -> " if impTerm else ""}imp1 -> chd',
         '    syn3 -> imp2 -> par',
         '    syn4 -> imp3 -> syn1',
         '    syn5 -> imp4 -> syn2',
@@ -290,17 +302,13 @@ recoveryTerms = ["AvailabilityTesting", "BackupandRecoveryTesting", "BackupRecov
 recoveryLines = [line for line in categoryDict["Approach"][1]
                  if any(term in line for term in recoveryTerms) or line == ""]
 
-import numpy as np
-
-recArr = np.array(categoryDict["Approach"][1])
-subarrays = np.split(recArr, np.where(recArr == "")[0]+1)
-result = [subarray.tolist() for subarray in subarrays if len(subarray) > 0]
-if len(result) == 3:
-    nodes = result[0] + result[1]
-    rels = result[1] + result[2]
-elif len(result) == 4:
-    nodes = result[0] + result[1]
-    rels = result[1] + result[2] + result[3]
+chunks = splitListAtEmpty(categoryDict["Approach"][1])
+if len(chunks) == 3:
+    nodes = chunks[0] + chunks[1]
+    rels = chunks[1] + chunks[2]
+elif len(chunks) == 4:
+    nodes = chunks[0] + chunks[1]
+    rels = chunks[1] + chunks[2] + chunks[3]
 else:
     raise ValueError("Unexpected grouping of lines for automatic recovery graph")
 
