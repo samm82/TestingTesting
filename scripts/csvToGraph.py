@@ -51,7 +51,7 @@ def removeInParens(s):
     s = re.sub(r" \([^\)]*\([^\)]*\)[^\)]*\)", "", s)
     s = re.sub(r"\([^\)]*\([^\)]*\)[^\)]*\)", "", s)
     s = re.sub(r" \(.*?\)", "", s)
-    return s.strip(")").strip("?")
+    return s.strip("?")
 
 def lineBreak(s):
     return f"<{s.replace(" ", "<br/>")}>"
@@ -174,7 +174,7 @@ for name, parent in zip(names, parents):
 
         fname = formatApproach(name)
         parentLine = f"{fname} -> {fpar}{"[style=dashed]"
-                                         if isUnsure(name) else ""};"
+                                         if isUnsure(par) else ""};"
 
         for key in categoryDict.keys():
             if key == "Static" and (fname in staticApproaches or
