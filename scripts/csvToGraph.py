@@ -125,15 +125,20 @@ def addToIterable(s, iterable, key=key):
                 iterable)}")
 
 # Add synonym relations
-synDict = {}
+synDict, nameDict = {}, {}
 synSets = {}
 for name, synonym in zip(names, synonyms):
     for syn in synonym:
-        if not "spelled" in syn.lower() and not "called" in syn.lower():
+        if not ("spelled" in syn.lower() or "called" in syn.lower() or
+                formatApproach(syn).isupper()):
             try:
-                synDict[removeInParens(syn)].append(name)
+                synDict[removeInParens(syn)].append(removeInParens(name))
             except KeyError:
-                synDict[removeInParens(syn)] = [name]
+                synDict[removeInParens(syn)] = [removeInParens(name)]
+            try:
+                nameDict[removeInParens(name)].append(removeInParens(syn))
+            except KeyError:
+                nameDict[removeInParens(name)] = [removeInParens(syn)]
             # To only track relation one way and check inconsistencies
             try:
                 if synSets[f"{formatApproach(name)}->{formatApproach(syn)}"] != isUnsure(syn):
@@ -146,9 +151,8 @@ for key in categoryDict.keys():
     for syn, terms in synDict.items():
         terms = [x for x in terms
                  if removeInParens(x) in categoryDict[key][0]]
-        if (not formatApproach(syn).isupper() and (
-                removeInParens(syn) in categoryDict[key][0] or
-                    (len(terms) > 1))):
+        if (removeInParens(syn) in categoryDict[key][0] or
+                (len(terms) > 1)):
             addToIterable(syn, categoryDict[key][0], key)
             for term in terms:
                 addToIterable(term, categoryDict[key][0], key)
@@ -161,6 +165,20 @@ for key in categoryDict.keys():
                 except KeyError:
                     pass
     categoryDict[key][1].append("")
+
+    # ONLY USE SAME RANK FOR THESE CATEGORIES
+    if key in {}:
+        nameDict.update(synDict)
+        blacklistSyns = set()
+        for name, syns in nameDict.items():
+            if (len(syns) == 1 and name in categoryDict[key][0] and
+                    name not in blacklistSyns and syns[0] in categoryDict[key][0]):
+                addLineToCategory(key, f'{{rank=same {formatApproach(
+                    name)} {formatApproach(syns[0])}}}')
+                print(key, name, syns[0])
+                blacklistSyns.update({name, syns[0]})
+        if blacklistSyns:
+            categoryDict[key][1].append("")
 
 workingStaticSet = staticApproaches.copy()
 
@@ -277,14 +295,20 @@ import numpy as np
 recArr = np.array(categoryDict["Approach"][1])
 subarrays = np.split(recArr, np.where(recArr == "")[0]+1)
 result = [subarray.tolist() for subarray in subarrays if len(subarray) > 0]
-if len(result) != 3:
+if len(result) == 3:
+    nodes = result[0] + result[1]
+    rels = result[1] + result[2]
+elif len(result) == 4:
+    nodes = result[0] + result[1]
+    rels = result[1] + result[2] + result[3]
+else:
     raise ValueError("Unexpected grouping of lines for automatic recovery graph")
-nodes = result[0] + result[1]
-rels = result[1] + result[2]
 
 rels = [line for line in rels if line == "" or
         (line.split(" -> ")[0] in recoveryTerms and
-         line.split(" -> ")[1].split("[")[0].strip(";") in recoveryTerms)]
+         line.split(" -> ")[1].split("[")[0].strip(";") in recoveryTerms) or
+        (line.split(" ")[1] in recoveryTerms and
+         line.split(" ")[2].strip("}") in recoveryTerms)]
 nodes = [node for node in nodes if "->" not in node and
          any(node.split(" ")[0] in line for line in rels)]
 
