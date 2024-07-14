@@ -52,7 +52,9 @@ def removeInParens(s):
     s = re.sub(r" \([^\)]*\([^\)]*\)[^\)]*\)", "", s)
     s = re.sub(r"\([^\)]*\([^\)]*\)[^\)]*\)", "", s)
     s = re.sub(r" \(.*?\)", "", s)
-    return s.strip("?")
+    if "(" not in s:
+        s = s.strip(")")
+    return s.replace("?", "")
 
 def lineBreak(s):
     return f"<{s.replace(" ", "<br/>")}>"
