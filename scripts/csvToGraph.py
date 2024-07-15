@@ -162,11 +162,6 @@ for key in categoryDict.keys():
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
-                    if key == "Static":
-                        print(f"{formatApproach(
-                                term)} -> {formatApproach(
-                                    syn)}[dir=none{',style="dashed"' if synSets[f"{formatApproach(
-                                        syn)}->{formatApproach(term)}"] else ""}];")
                     addLineToCategory(
                         key, f"{formatApproach(
                             term)} -> {formatApproach(
@@ -229,6 +224,10 @@ def make_dot_file(lines, filename):
 
     impTerm = any(styleInLine("dashed", line) for line in lines)
     dynTerm = any(styleInLine("filled", line) for line in lines)
+
+    syns = [line.split(" ")[0] for line in lines if styleInLine("dotted", line)]
+    synsToRemove = [syn for syn in syns if sum(1 for line in lines if syn in line) < 3]
+    lines = [line for line in lines if not any(syn in line for syn in synsToRemove)]
 
     # From https://stackoverflow.com/a/65443720/10002168
     legend = [
