@@ -13,7 +13,11 @@ def processCol(col):
     col = [re.split(r',(?!(?:[^()]*\([^()]*\))*[^()]*\)) ', x)
             if type(x) is str else [] for x in col]
     
-    year = r"\d{4}[a-z]?,\s"
+    AUTHOR_CHARS = "a-zA-Zßğ./"
+    AUTHOR_REGEX = fr"[{AUTHOR_CHARS}][{AUTHOR_CHARS} ]+,\s"
+    YEAR_REGEX = r"\d{4}[a-z]?,\s"
+    BEGIN_INFO_REGEX = r"[a-zA-Z]+\."
+
     for x in col:
         for i in range(len(x)-1, 1, -1):
             if "(" in x[i][1:] and not x[i].startswith("(") and "(" not in x[i-1]:
@@ -23,16 +27,16 @@ def processCol(col):
             # print(x)
             for i in range(1, len(x)):
                 # print(x[i])
-                if re.search(r"\([a-zA-Z]+\.", x[i]):
-                    search = list(re.finditer(fr"([a-zA-Zß.][a-zA-Zß. ]+,\s)?{year}", x[i-1]))
+                if re.search(fr"\({BEGIN_INFO_REGEX}", x[i]):
+                    search = list(re.finditer(fr"({AUTHOR_REGEX})?{YEAR_REGEX}", x[i-1]))
                     if search:
                         search = search[-1].group()
-                        x[i] = re.sub(r"\(([a-zA-Z]+\.)", fr"({search}\1", x[i])
-                if re.search(fr"\({year}", x[i]):
-                    search = list(re.finditer(fr"([a-zA-Zß.][a-zA-Zß. ]+,\s){year}", x[i-1]))
+                        x[i] = re.sub(fr"\(({BEGIN_INFO_REGEX})", fr"({search}\1", x[i])
+                if re.search(fr"\({YEAR_REGEX}", x[i]):
+                    search = list(re.finditer(fr"({AUTHOR_REGEX}){YEAR_REGEX}", x[i-1]))
                     if search:
                         search = search[-1].group().split(", ")[0] + ", "
-                        x[i] = re.sub(fr"\(({year})", fr"({search}\1", x[i])
+                        x[i] = re.sub(fr"\(({YEAR_REGEX})", fr"({search}\1", x[i])
                     # print()
             # print(x)
             if origX == x:
