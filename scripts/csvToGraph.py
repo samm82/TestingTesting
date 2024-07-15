@@ -81,6 +81,7 @@ def addNode(name, style = "", key = "Approach"):
 
     for k in staticKeywords:
         if k in name and name not in dynamicExceptions:
+            categoryDict["Static"][0].append(removeInParens(name))
             staticApproaches.add(formatApproach(name))
             break
     
@@ -154,18 +155,24 @@ for key in categoryDict.keys():
                  if removeInParens(x) in categoryDict[key][0]]
         if (removeInParens(syn) in categoryDict[key][0] or
                 (len(terms) > 1)):
-            addToIterable(syn, categoryDict[key][0], key)
-            for term in terms:
-                addToIterable(term, categoryDict[key][0], key)
-                try:
+            validTerms = [term for term in terms if f"{formatApproach(
+                syn)}->{formatApproach(term)}" in synSets.keys()]
+            if validTerms:
+                addToIterable(syn, categoryDict[key][0], key)
+                for term in validTerms:
+                    addToIterable(term, categoryDict[key][0], key)
+                    if key == "Static":
+                        print(f"{formatApproach(
+                                term)} -> {formatApproach(
+                                    syn)}[dir=none{',style="dashed"' if synSets[f"{formatApproach(
+                                        syn)}->{formatApproach(term)}"] else ""}];")
                     addLineToCategory(
                         key, f"{formatApproach(
                             term)} -> {formatApproach(
                                 syn)}[dir=none{',style="dashed"' if synSets[f"{formatApproach(
                                     syn)}->{formatApproach(term)}"] else ""}];")
-                except KeyError:
-                    pass
-    categoryDict[key][1].append("")
+    if categoryDict[key][1][-1] != "":
+        categoryDict[key][1].append("")
 
     # ONLY USE SAME RANK FOR THESE CATEGORIES
     if key in {}:
