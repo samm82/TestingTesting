@@ -115,16 +115,17 @@ for key in categoryDict.keys():
     categoryDict[key][1].append("")
 
 def addToIterable(s, iterable, key=key):
-    if removeInParens(s) not in iterable:
-        if type(iterable) is list:
+    if type(iterable) is list:
+        if removeInParens(s) not in iterable:
             addNode(s, style="dotted", key=key)
             iterable.append(removeInParens(s))
-        elif type(iterable) is set:
+    elif type(iterable) is set:
+        if formatApproach(s) not in iterable:
             addNode(s, style="filled", key=key)
             iterable.add(formatApproach(s))
-        else:
-            raise ValueError(f"addToIterable unimplemented for {type(
-                iterable)}")
+    else:
+        raise ValueError(f"addToIterable unimplemented for {type(
+            iterable)}")
 
 # Add synonym relations
 synDict, nameDict = {}, {}
