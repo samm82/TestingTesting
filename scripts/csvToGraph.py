@@ -219,54 +219,62 @@ def styleInLine(style, line):
 
 def make_dot_file(lines, filename):
     LONG_EDGE_LABEL = 'label="                "'
-    chdPar, syn, impChd, impSyn  = False, False, False, False
-    # chunks = splitListAtEmpty(lines)
 
     syns = [line.split(" ")[0] for line in lines if styleInLine("dotted", line)]
     synsToRemove = [syn for syn in syns if sum(1 for line in lines if syn in line) < 3]
     lines = [line for line in lines if not any(syn in line for syn in synsToRemove)]
 
+    impTerm, dynTerm = '', ''
     if any(styleInLine("dashed", line) for line in lines):
         impTerm = 'imp5 [label=<Implied<br/>Term> style="dashed"]'
-    else:
-        impTerm = ''
 
     if any(styleInLine("filled", line) for line in lines):
         dynTerm = 'dyn [label=<Dynamic<br/>Approach> style="filled"]'
-    else:
-        dynTerm = ''
 
-    if len(syns) > len(synsToRemove):
-        twoSyn = [
-            'syn3 [label=<Term>]',
-            'syn4 [label=<Synonym<br/>to Both> style="dotted"]',
-            'syn5 [label=<Term>]',
-            'syn3 -> syn4 -> syn5 [dir=none]',
-        ]
-    else:
-        twoSyn = []
+    twoSyn = [
+        'syn3 [label=<Term>]',
+        'syn4 [label=<Synonym<br/>to Both> style="dotted"]',
+        'syn5 [label=<Term>]',
+        'syn3 -> syn4 -> syn5 [dir=none]',
+    ] if len(syns) > len(synsToRemove) else []
     
-    INDENT = "    "
+    def sameRank(lines):
+        return ['{', 'rank=same'] + lines + ['}']
+
+    def impOrDynWithSyn(nodes, forceDyn=False):
+        if len(nodes) == 1:
+            nodes = nodes[0]
+        else:
+            nodes = f'{{ {" ".join(nodes)} }}'
+        return f'{'imp5' if impTerm and not forceDyn else 'dyn'} -> {nodes}'
+
+    def twoSynAlign(nodes):
+        synNodes = [f'syn{i}' for i in range(3, 6, 2 if len(nodes) == 2 else 1)]
+        for i in range(len(synNodes)):
+            synNodes[i] = f'{synNodes[i]} -> {nodes[i]}'
+        return synNodes
+
     extras, align = [], []
     if impTerm and dynTerm:
-        extras = ['{', 'rank=same', impTerm, dynTerm, '}']
-        align = ['imp5 -> { imp1 imp2 }', 'dyn -> { imp3 imp4 }']
+        extras = sameRank([impTerm, dynTerm])
+        align = [impOrDynWithSyn(["imp1", "imp2"]),
+                 impOrDynWithSyn(["imp3", "imp4"], forceDyn=True)]
         if twoSyn:
-            extras += ['{', 'rank=same', ] + twoSyn + ['}']
-            align[0] = f'syn3 -> {align[0]}'
-            align[1] = f'syn5 -> {align[1]}'
+            extras += sameRank(twoSyn)
+            align = twoSynAlign(align)
     elif twoSyn:
-        align = ['syn3 -> imp2', 'syn4 -> imp3', 'syn5 -> imp4']
+        align = twoSynAlign([f'imp{i}' for i in range(2, 5)])
         if not (impTerm or dynTerm):
-            extras = ['{', 'rank=same'] + twoSyn + ['}']
-            align += ['syn3 -> imp1', 'syn4 -> imp2', 'syn5 -> imp3']
-        elif impTerm or dynTerm:
-            extras = ['{', 'rank=same', impTerm if impTerm else dynTerm] + twoSyn + ['}']
-            align = [f'{'imp5' if impTerm else 'dyn'} -> imp1'] + align
+            extras = sameRank(twoSyn)
+            align += twoSynAlign([f'imp{i}' for i in range(1, 4)])
+        else:
+            extras = sameRank([impTerm if impTerm else dynTerm] + twoSyn)
+            align = [impOrDynWithSyn(["imp1"])] + align
     elif impTerm or dynTerm:
         extras = [impTerm if impTerm else dynTerm]
-        align = [f'{'imp5' if impTerm else 'dyn'} -> {{ imp2 imp3 }}']
+        align = [impOrDynWithSyn(["imp2", "imp3"])]
 
+    INDENT = "    "
     extras = [f'{INDENT if line in "}{" else 2*INDENT}{line}' for line in extras]
 
     # From https://stackoverflow.com/a/65443720/10002168
