@@ -220,15 +220,14 @@ def splitListAtEmpty(listToSplit):
             if len(subarray) > 0]
 
 def styleInLine(style, line):
-        return (f'style="{style}' in line or f',{style}"' in line
-                or f',{style},' in line)
+        return re.search(r"label=.+,style=.+" + style, line)
 
 def make_dot_file(lines, filename):
     LONG_EDGE_LABEL = 'label="                "'
     chdPar, syn, impChd, impSyn, impTerm, twoSyn = False, False, False, False, False, False
-    chunks = splitListAtEmpty(lines)
+    # chunks = splitListAtEmpty(lines)
 
-    impTerm = any(styleInLine("dashed", line) for line in chunks[0])
+    impTerm = any(styleInLine("dashed", line) for line in lines)
 
     # From https://stackoverflow.com/a/65443720/10002168
     legend = [
