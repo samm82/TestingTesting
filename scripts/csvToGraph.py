@@ -67,27 +67,24 @@ def formatApproach(s):
     s = s.replace("1", "One")
     return s.strip(",")
 
-def addNode(name, filled = False, key = "Approach"):
-    dashed = False
-    if isUnsure(name):
+def addNode(name, style = "", key = "Approach"):
+    dashed = isUnsure(name)
+    if dashed:
         name = name.replace("?", "")
-        dashed = True
     name = removeInParens(name)
-    extra = [
-        f"label={lineBreak(name)}",
-        f'style="{",".join([
-            s for s in ["dashed" if dashed else "",
-                        "filled" if filled else ""] if s
-            ])}"' if dashed or filled else ""
-    ]
-    nameLine = f"{formatApproach(name)} [{",".join([e for e in extra if e])}];"
+
+    extras = [f"label={lineBreak(name)}"]
+    styles = [s for s in ["dashed" if dashed else "", style] if s]
+    if styles:
+        extras.append(f'style="{",".join(styles)}"')
+    nameLine = f"{formatApproach(name)} [{",".join(extras)}];"
 
     for k in staticKeywords:
         if k in name and name not in dynamicExceptions:
             staticApproaches.add(formatApproach(name))
             break
     
-    if filled and key == "Static":
+    if style == "filled" and key == "Static":
         addLineToCategory("Static", nameLine)
         return
 
@@ -118,10 +115,11 @@ for key in categoryDict.keys():
 
 def addToIterable(s, iterable, key=key):
     if removeInParens(s) not in iterable:
-        addNode(s, filled=True, key=key)
         if type(iterable) is list:
+            addNode(s, style="dotted", key=key)
             iterable.append(removeInParens(s))
         elif type(iterable) is set:
+            addNode(s, style="filled", key=key)
             iterable.add(formatApproach(s))
         else:
             raise ValueError(f"addToIterable unimplemented for {type(
@@ -163,7 +161,7 @@ for key in categoryDict.keys():
                     addLineToCategory(
                         key, f"{formatApproach(
                             term)} -> {formatApproach(
-                                syn)}[dir=none{",style=dashed" if synSets[f"{formatApproach(
+                                syn)}[dir=none{',style="dashed"' if synSets[f"{formatApproach(
                                     syn)}->{formatApproach(term)}"] else ""}];")
                 except KeyError:
                     pass
@@ -194,7 +192,7 @@ for name, parent in zip(names, parents):
             continue
 
         fname = formatApproach(name)
-        parentLine = f"{fname} -> {fpar}{"[style=dashed]"
+        parentLine = f"{fname} -> {fpar}{'[style="dashed"]'
                                          if isUnsure(par) else ""};"
 
         for key in categoryDict.keys():
@@ -213,12 +211,16 @@ def splitListAtEmpty(listToSplit):
             np.split(recArr, np.where(recArr == "")[0]+1)
             if len(subarray) > 0]
 
+def styleInLine(style, line):
+        return (f'style="{style}' in line or f',{style}"' in line
+                or f',{style},' in line)
+
 def make_dot_file(lines, filename):
     LONG_EDGE_LABEL = 'label="                "'
     chdPar, syn, impChd, impSyn, impTerm, twoSyn = False, False, False, False, False, False
     chunks = splitListAtEmpty(lines)
 
-    impTerm = any('style="dashed"' in line for line in chunks[0])
+    impTerm = any(styleInLine("dashed", line) for line in chunks[0])
 
     # From https://stackoverflow.com/a/65443720/10002168
     legend = [
@@ -242,21 +244,21 @@ def make_dot_file(lines, filename):
         '        rank=same',
         '        imp1 [label="Child"];',
         '        imp2 [label=<Implied<br/>Parent>];',
-        f'        imp1 -> imp2 [style=dashed {LONG_EDGE_LABEL}]',
+        f'        imp1 -> imp2 [style="dashed" {LONG_EDGE_LABEL}]',
         '        imp3 [label=<Implied<br/>Synonym>];',
         '        imp4 [label=<Implied<br/>Synonym>];',
-        f'        imp3 -> imp4 [style=dashed dir=none {LONG_EDGE_LABEL}]',
+        f'        imp3 -> imp4 [style="dashed" dir=none {LONG_EDGE_LABEL}]',
         '    }',
         '    {',
         '        rank=same',
-        f'        {"imp5 [label=<Implied<br/>Term> style=dashed]" if impTerm else ""}',
+        f'        {'imp5 [label=<Implied<br/>Term> style="dashed"]' if impTerm else ''}',
         '        syn3 [label=<Term>]',
-        '        syn4 [label=<Synonym<br/>to Both> style=filled]',
+        '        syn4 [label=<Synonym<br/>to Both> style="dotted"]',
         '        syn5 [label=<Term>]',
         '        syn3 -> syn4 -> syn5 [dir=none]',
         '    }',
         # For alignment
-        '    edge [style=invis]',
+        '    edge [style="invis"]',
         f'    {"imp5 -> " if impTerm else ""}imp1 -> chd',
         '    syn3 -> imp2 -> par',
         '    syn4 -> imp3 -> syn1',
@@ -264,7 +266,7 @@ def make_dot_file(lines, filename):
         '}',
         '',
         '// Connect the dummy node to the first node of the legend',
-        'start -> chd [style=invis];',
+        'start -> chd [style="invis"];',
     ]
     lines = [
         "\\documentclass{article}",
@@ -278,7 +280,7 @@ def make_dot_file(lines, filename):
         "rankdir=BT;",
         '',
         '// Dummy node to push the legend to the top left',
-        'start [style=invis];',
+        'start [style="invis"];',
         "",
     ] + lines + legend + [
         "}",
@@ -291,7 +293,7 @@ def make_dot_file(lines, filename):
 for key, value in categoryDict.items():
     lines = value[1]
     make_dot_file(lines, f"{key.lower()}Graph")
-    unsure = ["dashed"] + [c.split()[0] for c in lines if '>,style="dashed"' in c]
+    unsure = ["dashed"] + [c.split()[0] for c in lines if styleInLine("dashed", c)]
     make_dot_file([c for c in lines if all(x not in c for x in unsure)],
                   f"rigid{key}Graph")
 
