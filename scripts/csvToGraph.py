@@ -224,10 +224,11 @@ def styleInLine(style, line):
 
 def make_dot_file(lines, filename):
     LONG_EDGE_LABEL = 'label="                "'
-    chdPar, syn, impChd, impSyn, impTerm, twoSyn = False, False, False, False, False, False
+    chdPar, syn, impChd, impSyn, impTerm, dynTerm, twoSyn = False, False, False, False, False, False, False
     # chunks = splitListAtEmpty(lines)
 
     impTerm = any(styleInLine("dashed", line) for line in lines)
+    dynTerm = any(styleInLine("filled", line) for line in lines)
 
     # From https://stackoverflow.com/a/65443720/10002168
     legend = [
@@ -270,6 +271,10 @@ def make_dot_file(lines, filename):
         '    syn3 -> imp2 -> par',
         '    syn4 -> imp3 -> syn1',
         '    syn5 -> imp4 -> syn2',
+    ] + ([
+        '        dyn [label=<Dynamic<br/>Approach> style="filled"]',
+        '        dyn -> { syn3 syn4 }',
+        ] if dynTerm else []) + [
         '}',
         '',
         '// Connect the dummy node to the first node of the legend',
