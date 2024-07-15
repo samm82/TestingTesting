@@ -14,21 +14,27 @@ def processCol(col):
             if type(x) is str else [] for x in col]
     for x in col:
         for i in range(len(x)-1, 1, -1):
-            if "(" in x[i] and "(" not in x[i-1] and not x[i].startswith("("):
-                x[i-1] = f"{x[i-1]} ({x[i].split(" (", 1)[1]}"
-        for i in range(1, len(x)-1):
-            if re.search(r"\([a-zA-Z]+\.", x[i]):
-                print(x[i])
-                print(x[i-1])
-                search = list(re.finditer(r"([a-zA-Zß.][a-zA-Zß. ]+,\s)?\d{4},\s", x[i-1]))
-                if search:
-                    print(search[-1].group())
-                    print(re.sub(r"\(([a-zA-Z]+\.)", fr"({search[-1].group()}\1", x[i]))
-                    x[i] = re.sub(r"\(([a-zA-Z]+\.)", fr"({search[-1].group()}\1", x[i])
-                # for i in search:
-                #     print(i)
-                # print(search.string if search else "")
-                print()
+            if "(" in x[i][1:] and not x[i].startswith("(") and "(" not in x[i-1]:
+                x[i-1] = f"{x[i-1]} ({x[i].split(" (")[-1]}"
+        while True:
+            origX = x.copy()
+            for i in range(1, len(x)):
+                if re.search(r"\([a-zA-Z]+\.", x[i]):
+                    search = list(re.finditer(r"([a-zA-Zß.][a-zA-Zß. ]+,\s)?\d{4},\s", x[i-1]))
+                    if search:
+                        search = search[-1].group()
+                        x[i] = re.sub(r"\(([a-zA-Z]+\.)", fr"({search}\1", x[i])
+                        if search[0].isnumeric():
+                            search = list(re.finditer(r"([a-zA-Zß.][a-zA-Zß. ]+,\s)(\d{4},\s.*;\s)*(\d{4},\s.*;\s)", x[i-1]))
+                            if search:
+                                search = search[-1].group().split(", ")[0] + ", "
+                                x[i] = re.sub(r"\((\d{4},)", fr"({search}\1", x[i])
+            if origX == x:
+                break
+        # if x:
+        #     for y in x:
+        #         print(y)
+        #     input()
     return col
 
 names = [n for n in names if type(n) is str]
