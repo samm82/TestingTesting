@@ -6,7 +6,3 @@ build/
 *.fdb\_latexmk
 
 ~$*
-
-# These files get generated
-assets/graphs/*.tex
-!assets/graphs/manual_*.tex

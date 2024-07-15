@@ -1,0 +1,179 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{rigidStaticGraph}{
+rankdir=BT;
+
+// Dummy node to push the legend to the top left
+start [style="invis"];
+
+AdHocReviews [label=<Ad<br/>Hoc<br/>Reviews>];
+Audits [label=<Audits>];
+ChecklistbasedReviews [label=<Checklist-based<br/>Reviews>];
+CodeReviews [label=<Code<br/>Reviews>];
+ConcreteExecution [label=<Concrete<br/>Execution>];
+ContentChecking [label=<Content<br/>Checking>];
+ExpertUsabilityReviews [label=<Expert<br/>Usability<br/>Reviews>];
+FormalReviews [label=<Formal<br/>Reviews>];
+InductiveAssertionMethods [label=<Inductive<br/>Assertion<br/>Methods>];
+InformalReviews [label=<Informal<br/>Reviews>];
+LicenseComplianceAudits [label=<License<br/>Compliance<br/>Audits>];
+ModelVerification [label=<Model<br/>Verification>];
+PeerReviews [label=<Peer<br/>Reviews>];
+PhysicalConfigurationAudits [label=<Physical<br/>Configuration<br/>Audits>];
+Reviews [label=<Reviews>];
+RolebasedReviews [label=<Role-based<br/>Reviews>];
+ScenarioWalkthroughs [label=<Scenario<br/>Walkthroughs>];
+ScenariobasedReviews [label=<Scenario-based<br/>Reviews>];
+SecurityAudits [label=<Security<br/>Audits>];
+SoftwareDesignAudits [label=<Software<br/>Design<br/>Audits>];
+StaticAnalysis [label=<Static<br/>Analysis>];
+StaticAssertionChecking [label=<Static<br/>Assertion<br/>Checking>];
+StaticTesting [label=<Static<br/>Testing>];
+StructuredWalkthroughs [label=<Structured<br/>Walkthroughs>];
+SymbolicExecution [label=<Symbolic<br/>Execution>];
+TechnicalReviews [label=<Technical<br/>Reviews>];
+UsabilityReviews [label=<Usability<br/>Reviews>];
+UsabilityWalkthroughs [label=<Usability<br/>Walkthroughs>];
+Walkthroughs [label=<Walkthroughs>];
+
+Walkthroughs -> StructuredWalkthroughs[dir=none];
+
+AdHocReviews -> Reviews;
+ChecklistbasedTesting [label=<Checklist-based<br/>Testing>,style="filled"];
+ChecklistbasedReviews -> ChecklistbasedTesting;
+ChecklistbasedReviews -> Reviews;
+CodeReviews -> Reviews;
+CodeReviews -> PeerReviews;
+UsabilityTesting [label=<Usability<br/>Testing>,style="filled"];
+ContentChecking -> UsabilityTesting;
+ContentChecking -> StaticTesting;
+DesktopDevelopmentTesting [label=<Desktop<br/>Development<br/>Testing>,style="filled"];
+ContentChecking -> DesktopDevelopmentTesting;
+WebApplicationTesting [label=<Web<br/>Application<br/>Testing>,style="filled"];
+ContentChecking -> WebApplicationTesting;
+ControlFlowAnalysis [label=<Control<br/>Flow<br/>Analysis>,style="filled"];
+ControlFlowAnalysis -> StaticAnalysis;
+DataFlowAnalysis [label=<Data<br/>Flow<br/>Analysis>,style="filled"];
+DataFlowAnalysis -> StaticAnalysis;
+InformalTesting [label=<Informal<br/>Testing>,style="filled"];
+ExpertUsabilityReviews -> InformalTesting;
+ExpertUsabilityReviews -> UsabilityTesting;
+ExpertUsabilityReviews -> Reviews;
+FaultTreeAnalysis [label=<Fault<br/>Tree<br/>Analysis>,style="filled"];
+FaultTreeAnalysis -> StaticAnalysis;
+FormalReviews -> Reviews;
+FormalTesting [label=<Formal<br/>Testing>,style="filled"];
+FormalReviews -> FormalTesting;
+HeuristicEvaluations [label=<Heuristic<br/>Evaluations>,style="filled"];
+HeuristicEvaluations -> UsabilityReviews;
+ProofsofCorrectness [label=<Proofs<br/>of<br/>Correctness>,style="filled"];
+InductiveAssertionMethods -> ProofsofCorrectness;
+MathematicalbasedTesting [label=<Mathematical-based<br/>Testing>,style="filled"];
+InductiveAssertionMethods -> MathematicalbasedTesting;
+AssertionChecking [label=<Assertion<br/>Checking>,style="filled"];
+InductiveAssertionMethods -> AssertionChecking;
+InformalReviews -> Reviews;
+InformalReviews -> InformalTesting;
+CodeInspections [label=<(Code)<br/>Inspections>,style="filled"];
+CodeInspections -> StaticAnalysis;
+CodeInspections -> StaticTesting;
+CodeInspections -> FormalReviews;
+LicenseComplianceAudits -> Audits;
+MalwareScanning [label=<Malware<br/>Scanning>,style="filled"];
+MalwareScanning -> StaticAnalysis;
+ModelVerification -> StaticTesting;
+PeerReviews -> Reviews;
+PerformanceTesting [label=<Performance<br/>Testing>,style="filled"];
+PerformanceTesting -> StaticAnalysis;
+PhysicalConfigurationAudits -> Audits;
+RequirementsAnimation [label=<Requirements<br/>Animation>,style="filled"];
+RequirementsAnimation -> StaticTesting;
+Reviews -> StaticTesting;
+WModelTesting [label=<W-Model<br/>Testing>,style="filled"];
+Reviews -> WModelTesting;
+RolebasedReviews -> Reviews;
+RolebasedTesting [label=<Role-based<br/>Testing>,style="filled"];
+RolebasedReviews -> RolebasedTesting;
+ScenarioWalkthroughs -> StaticTesting;
+ScenarioWalkthroughs -> WModelTesting;
+ScenarioWalkthroughs -> Walkthroughs;
+ScenarioTesting [label=<Scenario<br/>Testing>,style="filled"];
+ScenarioWalkthroughs -> ScenarioTesting;
+ScenariobasedReviews -> Reviews;
+SecurityTesting [label=<Security<br/>Testing>,style="filled"];
+SecurityAudits -> SecurityTesting;
+SecurityAudits -> Audits;
+SecurityAudits -> StaticTesting;
+Inspections [label=<Inspections>,style="filled"];
+SecurityAudits -> Inspections;
+SecurityAudits -> Reviews;
+SecurityAudits -> Walkthroughs;
+SoftwareDesignAudits -> Audits;
+SoftwareDesignAudits -> Reviews;
+StaticAnalysis -> StaticTesting;
+StaticAnalysis -> WModelTesting;
+StaticAssertionChecking -> AssertionChecking;
+StaticAssertionChecking -> StaticAnalysis;
+StaticTesting -> WModelTesting;
+StructurebasedTesting [label=<Structure-based<br/>Testing>,style="filled"];
+StructurebasedTesting -> StaticTesting;
+StructuredWalkthroughs -> Walkthroughs;
+StructuredTesting [label=<Structured<br/>Testing>,style="filled"];
+StructuredWalkthroughs -> StructuredTesting;
+StructuredWalkthroughs -> StaticTesting;
+SymbolicExecution -> StaticTesting;
+SyntaxTesting [label=<Syntax<br/>Testing>,style="filled"];
+SyntaxTesting -> StaticTesting;
+TechnicalReviews -> FormalReviews;
+TransactionVerification [label=<Transaction<br/>Verification>,style="filled"];
+TransactionVerification -> StaticTesting;
+UsabilityReviews -> UsabilityTesting;
+UsabilityReviews -> Reviews;
+UsabilityWalkthroughs -> UsabilityTesting;
+UsabilityWalkthroughs -> Walkthroughs;
+VisualBrowserValidation [label=<Visual<br/>Browser<br/>Validation>,style="filled"];
+Walkthroughs -> StaticAnalysis;
+Walkthroughs -> FormalReviews;
+Walkthroughs -> Reviews;
+
+subgraph cluster_legend {
+    label="Legend";
+    labelloc="b";
+    fontsize="48pt"
+    rankdir=BT
+    {
+        rank=same
+        chd [label="Child"];
+        par [label="Parent"];
+        chd -> par [label="                "];
+        syn1 [label="Synonym"];
+        syn2 [label="Synonym"];
+        syn1 -> syn2 [dir=none label="                "];
+    }
+    {
+        rank=same
+        imp1 [label="Child"];
+        imp2 [label=<Implied<br/>Parent>];
+        imp1 -> imp2 [style="dashed" label="                "]
+        imp3 [label=<Implied<br/>Synonym>];
+        imp4 [label=<Implied<br/>Synonym>];
+        imp3 -> imp4 [style="dashed" dir=none label="                "]
+    }
+        dyn [label=<Dynamic<br/>Approach> style="filled"]
+    edge [style="invis"]
+    imp1 -> chd
+    imp2 -> par
+    imp3 -> syn1
+    imp4 -> syn2
+dyn -> { imp2 imp3 }
+}
+
+// Connect the dummy node to the first node of the legend
+start -> chd [style="invis"];
+}
+\end{document}

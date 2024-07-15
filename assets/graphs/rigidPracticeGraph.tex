@@ -1,0 +1,222 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{rigidPracticeGraph}{
+rankdir=BT;
+
+// Dummy node to push the legend to the top left
+start [style="invis"];
+
+ABTesting [label=<A/B<br/>Testing>];
+AcquisitionOrganizationTesting [label=<Acquisition<br/>Organization<br/>Testing>];
+AgileTesting [label=<Agile<br/>Testing>];
+AJAXTesting [label=<AJAX<br/>Testing>];
+ArchitectTesting [label=<Architect<br/>Testing>];
+AssertionChecking [label=<Assertion<br/>Checking>];
+AsynchronousTesting [label=<Asynchronous<br/>Testing>];
+Attacks [label=<Attacks>];
+AttheEndTesting [label=<At-the-End<br/>Testing>];
+Audits [label=<Audits>];
+AutomatedTesting [label=<Automated<br/>Testing>];
+BacktoBackTesting [label=<Back-to-Back<br/>Testing>];
+BuildVerificationTesting [label=<Build<br/>Verification<br/>Testing>];
+BuiltInTesting [label=<Built-In<br/>Testing>];
+CaptureReplayDrivenTesting [label=<Capture-Replay<br/>Driven<br/>Testing>];
+ChecklistbasedTesting [label=<Checklist-based<br/>Testing>];
+ContinuousTesting [label=<Continuous<br/>Testing>];
+COTSVendorTesting [label=<COTS<br/>Vendor<br/>Testing>];
+DatabaseAdminTesting [label=<Database<br/>Admin<br/>Testing>];
+DatadrivenTesting [label=<Data-driven<br/>Testing>];
+DeveloperTesting [label=<Developer<br/>Testing>];
+DevelopmentOrganizationTesting [label=<Development<br/>Organization<br/>Testing>];
+DevicebasedTesting [label=<Device-based<br/>Testing>];
+DevOpsTesting [label=<DevOps<br/>Testing>];
+DifferentialAssertionChecking [label=<Differential<br/>Assertion<br/>Checking>];
+DTOrganizationTesting [label=<DT<br/>Organization<br/>Testing>];
+EmbeddedTesterTesting [label=<Embedded<br/>Tester<br/>Testing>];
+ErrorSeeding [label=<Error<br/>Seeding>];
+ExperiencebasedTesting [label=<Experience-based<br/>Testing>];
+ExploratoryTesting [label=<Exploratory<br/>Testing>];
+FuzzTesting [label=<Fuzz<br/>Testing>];
+Heartbeat [label=<Heartbeat>];
+HumanFactorsEngineerTesting [label=<Human<br/>Factors<br/>Engineer<br/>Testing>];
+IncrementalTesting [label=<Incremental<br/>Testing>];
+IndependentTestOrganizationTesting [label=<Independent<br/>Test<br/>Organization<br/>Testing>];
+IndependentTesterTesting [label=<Independent<br/>Tester<br/>Testing>];
+InsourcedTesting [label=<Insourced<br/>Testing>];
+InterruptdrivenBuiltInTesting [label=<Interrupt-driven<br/>Built-In<br/>Testing>];
+IsolationTesting [label=<Isolation<br/>Testing>];
+LicenseComplianceAudits [label=<License<br/>Compliance<br/>Audits>];
+LifecyclebasedTesting [label=<Lifecycle-based<br/>Testing>];
+LinearScripting [label=<Linear<br/>Scripting>];
+LocalTesting [label=<Local<br/>Testing>];
+LoopbackTesting [label=<Loopback<br/>Testing>];
+ManualTesting [label=<Manual<br/>Testing>];
+MathematicalbasedTesting [label=<Mathematical-based<br/>Testing>];
+ModelbasedTesting [label=<Model-based<br/>Testing>];
+NetworkAdminTesting [label=<Network<br/>Admin<br/>Testing>];
+ObjectOrientedTesting [label=<Object-Oriented<br/>Testing>];
+OfflineTesting [label=<Offline<br/>Testing>];
+OngoingBuiltInTesting [label=<Ongoing<br/>Built-In<br/>Testing>];
+OnlineTesting [label=<Online<br/>Testing>];
+OpenSourceTesting [label=<Open<br/>Source<br/>Testing>];
+OperationsOrganizationTesting [label=<Operations<br/>Organization<br/>Testing>];
+OperatorTesting [label=<Operator<br/>Testing>];
+OrganizationbasedTesting [label=<Organization-based<br/>Testing>];
+OTOrganizationTesting [label=<OT<br/>Organization<br/>Testing>];
+OutsourcedTesting [label=<Outsourced<br/>Testing>];
+PeriodicBuiltInTesting [label=<Periodic<br/>Built-In<br/>Testing>];
+PhysicalConfigurationAudits [label=<Physical<br/>Configuration<br/>Audits>];
+PowerUpBuiltInTesting [label=<Power-Up<br/>Built-In<br/>Testing>];
+PrimeContractorTesting [label=<Prime<br/>Contractor<br/>Testing>];
+PrioritizationTesting [label=<Prioritization<br/>Testing>];
+PrognosticsandHealthManagement [label=<Prognostics<br/>and<br/>Health<br/>Management>];
+ProgrammerTesting [label=<Programmer<br/>Testing>];
+RapidPrototypingTesting [label=<Rapid<br/>Prototyping<br/>Testing>];
+ReactiveTesting [label=<Reactive<br/>Testing>];
+RemoteTesting [label=<Remote<br/>Testing>];
+RequirementsEngineerTesting [label=<Requirements<br/>Engineer<br/>Testing>];
+RolebasedTesting [label=<Role-based<br/>Testing>];
+RuntimeAssertionChecking [label=<Runtime<br/>Assertion<br/>Checking>];
+SafetyEngineerTesting [label=<Safety<br/>Engineer<br/>Testing>];
+ScriptedTesting [label=<Scripted<br/>Testing>];
+SecurityAudits [label=<Security<br/>Audits>];
+SecurityEngineerTesting [label=<Security<br/>Engineer<br/>Testing>];
+ShiftLeftTesting [label=<Shift-Left<br/>Testing>];
+ShutdownBuiltInTesting [label=<Shutdown<br/>Built-In<br/>Testing>];
+SimilaritybasedPrioritizationTesting [label=<Similarity-based<br/>Prioritization<br/>Testing>];
+SoftwareDesignAudits [label=<Software<br/>Design<br/>Audits>];
+SpiralTesting [label=<Spiral<br/>Testing>];
+StaticAssertionChecking [label=<Static<br/>Assertion<br/>Checking>];
+StructuredTesting [label=<Structured<br/>Testing>];
+StructuredWalkthroughs [label=<Structured<br/>Walkthroughs>];
+SubcontractorTesting [label=<Subcontractor<br/>Testing>];
+SynchronousTesting [label=<Synchronous<br/>Testing>];
+SysAdminTesting [label=<Sys<br/>Admin<br/>Testing>];
+TesterTesting [label=<Tester<br/>Testing>];
+Tours [label=<Tours>];
+UserasTesterTesting [label=<User<br/>as<br/>Tester<br/>Testing>];
+UserOrganizationTesting [label=<User<br/>Organization<br/>Testing>];
+UserTesting [label=<User<br/>Testing>];
+UserinitiatedBuiltInTesting [label=<User-initiated<br/>Built-In<br/>Testing>];
+VModelTesting [label=<V-Model<br/>Testing>];
+VulnerabilityScanning [label=<Vulnerability<br/>Scanning>];
+WaterfallTesting [label=<Waterfall<br/>Testing>];
+WModelTesting [label=<W-Model<br/>Testing>];
+
+
+AcquisitionOrganizationTesting -> OrganizationbasedTesting;
+AgileTesting -> ContinuousTesting;
+AgileTesting -> LifecyclebasedTesting;
+AgileTesting -> IncrementalTesting;
+ArchitectTesting -> DeveloperTesting;
+AssertionChecking -> OngoingBuiltInTesting;
+Attacks -> ExperiencebasedTesting;
+AttheEndTesting -> WaterfallTesting;
+AutomatedTesting -> ScriptedTesting;
+BuildVerificationTesting -> AutomatedTesting;
+CaptureReplayDrivenTesting -> AutomatedTesting;
+ChecklistbasedTesting -> ExperiencebasedTesting;
+ContinuousTesting -> AutomatedTesting;
+ContinuousTesting -> LifecyclebasedTesting;
+COTSVendorTesting -> DevelopmentOrganizationTesting;
+DatabaseAdminTesting -> OperatorTesting;
+DatadrivenTesting -> AutomatedTesting;
+DatadrivenTesting -> ScriptedTesting;
+DeveloperTesting -> RolebasedTesting;
+DevelopmentOrganizationTesting -> OrganizationbasedTesting;
+DevOpsTesting -> ContinuousTesting;
+DifferentialAssertionChecking -> AssertionChecking;
+DTOrganizationTesting -> IndependentTestOrganizationTesting;
+EmbeddedTesterTesting -> TesterTesting;
+ExploratoryTesting -> ExperiencebasedTesting;
+FuzzTesting -> MathematicalbasedTesting;
+Heartbeat -> PeriodicBuiltInTesting;
+HumanFactorsEngineerTesting -> DeveloperTesting;
+IncrementalTesting -> LifecyclebasedTesting;
+IndependentTestOrganizationTesting -> OrganizationbasedTesting;
+IndependentTestOrganizationTesting -> IndependentTesterTesting;
+IndependentTesterTesting -> TesterTesting;
+InterruptdrivenBuiltInTesting -> BuiltInTesting;
+LicenseComplianceAudits -> Audits;
+LinearScripting -> ScriptedTesting;
+ManualTesting -> ScriptedTesting;
+ModelbasedTesting -> MathematicalbasedTesting;
+ModelbasedTesting -> AutomatedTesting;
+NetworkAdminTesting -> OperatorTesting;
+OngoingBuiltInTesting -> BuiltInTesting;
+OperationsOrganizationTesting -> OrganizationbasedTesting;
+OperatorTesting -> RolebasedTesting;
+OTOrganizationTesting -> IndependentTestOrganizationTesting;
+PeriodicBuiltInTesting -> BuiltInTesting;
+PhysicalConfigurationAudits -> Audits;
+PowerUpBuiltInTesting -> BuiltInTesting;
+PrimeContractorTesting -> DevelopmentOrganizationTesting;
+PrognosticsandHealthManagement -> OngoingBuiltInTesting;
+ProgrammerTesting -> DeveloperTesting;
+RapidPrototypingTesting -> LifecyclebasedTesting;
+RequirementsEngineerTesting -> DeveloperTesting;
+RuntimeAssertionChecking -> AssertionChecking;
+SafetyEngineerTesting -> DeveloperTesting;
+SecurityAudits -> Audits;
+SecurityEngineerTesting -> DeveloperTesting;
+ShutdownBuiltInTesting -> BuiltInTesting;
+SimilaritybasedPrioritizationTesting -> PrioritizationTesting;
+SoftwareDesignAudits -> Audits;
+SpiralTesting -> LifecyclebasedTesting;
+SpiralTesting -> ContinuousTesting;
+StaticAssertionChecking -> AssertionChecking;
+StructuredWalkthroughs -> StructuredTesting;
+SubcontractorTesting -> DevelopmentOrganizationTesting;
+SysAdminTesting -> OperatorTesting;
+TesterTesting -> RolebasedTesting;
+Tours -> ExploratoryTesting;
+Tours -> ExperiencebasedTesting;
+UserasTesterTesting -> UserTesting;
+UserOrganizationTesting -> OrganizationbasedTesting;
+UserOrganizationTesting -> UserTesting;
+UserTesting -> RolebasedTesting;
+UserinitiatedBuiltInTesting -> BuiltInTesting;
+VModelTesting -> WaterfallTesting;
+VModelTesting -> LifecyclebasedTesting;
+VulnerabilityScanning -> AutomatedTesting;
+WaterfallTesting -> LifecyclebasedTesting;
+
+subgraph cluster_legend {
+    label="Legend";
+    labelloc="b";
+    fontsize="48pt"
+    rankdir=BT
+    {
+        rank=same
+        chd [label="Child"];
+        par [label="Parent"];
+        chd -> par [label="                "];
+        syn1 [label="Synonym"];
+        syn2 [label="Synonym"];
+        syn1 -> syn2 [dir=none label="                "];
+    }
+    {
+        rank=same
+        imp1 [label="Child"];
+        imp2 [label=<Implied<br/>Parent>];
+        imp1 -> imp2 [style="dashed" label="                "]
+        imp3 [label=<Implied<br/>Synonym>];
+        imp4 [label=<Implied<br/>Synonym>];
+        imp3 -> imp4 [style="dashed" dir=none label="                "]
+    }
+    edge [style="invis"]
+    imp1 -> chd
+    imp2 -> par
+    imp3 -> syn1
+    imp4 -> syn2
+}
+
+// Connect the dummy node to the first node of the legend
+start -> chd [style="invis"];
+}
+\end{document}

@@ -1,0 +1,487 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{techniqueGraph}{
+rankdir=BT;
+
+// Dummy node to push the legend to the top left
+start [style="invis"];
+
+ZeroSwitchTesting [label=<0-Switch<br/>Testing>];
+OneSwitchTesting [label=<1-Switch<br/>Testing>];
+AdHocTesting [label=<Ad<br/>Hoc<br/>Testing>];
+AdaptiveRandomTesting [label=<Adaptive<br/>Random<br/>Testing>];
+AdversarialTesting [label=<Adversarial<br/>Testing>];
+AllCombinationsTesting [label=<All<br/>Combinations<br/>Testing>];
+AllRulesTesting [label=<All<br/>Rules<br/>Testing>];
+AllTransitionsTesting [label=<All<br/>Transitions<br/>Testing>];
+AllCUsesTesting [label=<All-C-Uses<br/>Testing>];
+AllDefinitionsTesting [label=<All-Definitions<br/>Testing>];
+AllDUPathsTesting [label=<All-DU-Paths<br/>Testing>];
+AllInputGUITesting [label=<All-Input-GUI<br/>Testing>];
+AllPUsesTesting [label=<All-P-Uses<br/>Testing>];
+AllURLTesting [label=<All-URL<br/>Testing>];
+AllUsesTesting [label=<All-Uses<br/>Testing>];
+Attacks [label=<Attacks>];
+BaseChoiceTesting [label=<Base<br/>Choice<br/>Testing>];
+BlockTesting [label=<Block<br/>Testing>,style="dashed"];
+BoundaryValueAnalysis [label=<Boundary<br/>Value<br/>Analysis>];
+BranchConditionCombinationTesting [label=<Branch<br/>Condition<br/>Combination<br/>Testing>];
+BranchConditionTesting [label=<Branch<br/>Condition<br/>Testing>];
+BranchTesting [label=<Branch<br/>Testing>];
+BuddyTesting [label=<Buddy<br/>Testing>];
+BugHuntTesting [label=<Bug<br/>Hunt<br/>Testing>];
+BusinessProcessbasedTesting [label=<Business<br/>Process-based<br/>Testing>];
+CanaryTesting [label=<Canary<br/>Testing>];
+CapacityTesting [label=<Capacity<br/>Testing>];
+CauseEffectGraphing [label=<Cause-Effect<br/>Graphing>];
+CheckedStatementTesting [label=<Checked<br/>Statement<br/>Testing>];
+ChecklistbasedReviews [label=<Checklist-based<br/>Reviews>];
+ChecklistbasedTesting [label=<Checklist-based<br/>Testing>];
+ClassificationTreeMethod [label=<Classification<br/>Tree<br/>Method>];
+ClosedLoopTesting [label=<Closed<br/>Loop<br/>Testing>];
+CombinatorialTesting [label=<Combinatorial<br/>Testing>];
+CommandFormTesting [label=<Command-Form<br/>Testing>];
+ConcreteExecution [label=<Concrete<br/>Execution>];
+ConditionTesting [label=<Condition<br/>Testing>];
+ControlFlowTesting [label=<Control<br/>Flow<br/>Testing>];
+DarkLaunches [label=<Dark<br/>Launches>];
+DataFlowTesting [label=<Data<br/>Flow<br/>Testing>];
+DatabaseCoverageTesting [label=<Database<br/>Coverage<br/>Testing>,style="dashed"];
+DatadrivenTesting [label=<Data-driven<br/>Testing>];
+DecisionConditionTesting [label=<Decision<br/>Condition<br/>Testing>];
+DecisionTableTesting [label=<Decision<br/>Table<br/>Testing>];
+DecisionTesting [label=<Decision<br/>Testing>];
+DefectbasedTesting [label=<Defect-based<br/>Testing>];
+DesignbasedTesting [label=<Design-based<br/>Testing>];
+DeskChecking [label=<Desk<br/>Checking>];
+DeterministicTesting [label=<Deterministic<br/>Testing>,style="dashed"];
+DevelopmentEnvironmentTesting [label=<Development<br/>Environment<br/>Testing>];
+DevelopmentToolTesting [label=<Development<br/>Tool<br/>Testing>];
+DOMTesting [label=<DOM<br/>Testing>];
+DomainBasedTesting [label=<Domain-Based<br/>Testing>];
+DomainIndependentTesting [label=<Domain-Independent<br/>Testing>];
+DomainSpecificTesting [label=<Domain-Specific<br/>Testing>];
+EachChoiceTesting [label=<Each<br/>Choice<br/>Testing>];
+ElementaryComparisonTesting [label=<Elementary<br/>Comparison<br/>Testing>];
+EndtoendTesting [label=<End-to-end<br/>Testing>];
+EnduranceTesting [label=<Endurance<br/>Testing>];
+EquivalenceChecking [label=<Equivalence<br/>Checking>];
+EquivalencePartitioning [label=<Equivalence<br/>Partitioning>];
+ErrorGuessing [label=<Error<br/>Guessing>];
+ErrorbasedTesting [label=<Error-based<br/>Testing>];
+EventSpaceTesting [label=<Event<br/>Space<br/>Testing>];
+EvidencebasedTesting [label=<Evidence-based<br/>Testing>];
+ExperiencebasedTesting [label=<Experience-based<br/>Testing>];
+ExploratoryTesting [label=<Exploratory<br/>Testing>];
+ExtendedEntryTableTesting [label=<Extended<br/>Entry<br/>Table<br/>Testing>];
+ExtremeValueAnalysis [label=<Extreme<br/>Value<br/>Analysis>,style="dashed"];
+FaultTreeAnalysis [label=<Fault<br/>Tree<br/>Analysis>];
+FaultbasedTesting [label=<Fault-based<br/>Testing>];
+ForcingExceptionTesting [label=<Forcing<br/>Exception<br/>Testing>];
+FunctionalTesting [label=<Functional<br/>Testing>];
+FunctionsTesting [label=<Functions<br/>Testing>,style="dashed"];
+FuzzTesting [label=<Fuzz<br/>Testing>];
+Galumphing [label=<Galumphing>];
+GrayBoxTesting [label=<Gray-Box<br/>Testing>];
+HeuristicEvaluations [label=<Heuristic<br/>Evaluations>];
+HyperlinkTesting [label=<Hyperlink<br/>Testing>];
+InductiveAssertionMethods [label=<Inductive<br/>Assertion<br/>Methods>];
+InformalTesting [label=<Informal<br/>Testing>];
+InputValidationTesting [label=<Input<br/>Validation<br/>Testing>];
+InputParameterTesting [label=<Input-Parameter<br/>Testing>];
+CodeInspections [label=<(Code)<br/>Inspections>];
+KeyworddrivenTesting [label=<Keyword-driven<br/>Testing>];
+LoadTesting [label=<Load<br/>Testing>];
+LoopTesting [label=<Loop<br/>Testing>];
+MCDCTesting [label=<MC/DC<br/>Testing>];
+MemoryManagementTesting [label=<Memory<br/>Management<br/>Testing>];
+MetamorphicTesting [label=<Metamorphic<br/>Testing>];
+MethodTesting [label=<Method<br/>Testing>,style="dashed"];
+MinimizedTesting [label=<Minimized<br/>Testing>,style="dashed"];
+MixedEntryTableTesting [label=<Mixed<br/>Entry<br/>Table<br/>Testing>];
+ModelbasedTesting [label=<Model-based<br/>Testing>];
+MonkeyTesting [label=<Monkey<br/>Testing>];
+MultipleConditionTesting [label=<Multiple<br/>Condition<br/>Testing>];
+MultipleHitDecisionTableTesting [label=<Multiple-Hit<br/>Decision<br/>Table<br/>Testing>];
+MutationTesting [label=<Mutation<br/>Testing>];
+NegativeTesting [label=<Negative<br/>Testing>];
+NSwitchTesting [label=<N-Switch<br/>Testing>];
+OnetoOneTesting [label=<One-to-One<br/>Testing>,style="dashed"];
+OpenLoopTesting [label=<Open<br/>Loop<br/>Testing>];
+OrthogonalArrayTesting [label=<Orthogonal<br/>Array<br/>Testing>];
+PageTesting [label=<Page<br/>Testing>];
+PairTesting [label=<Pair<br/>Testing>];
+PairwiseTesting [label=<Pairwise<br/>Testing>];
+PathTesting [label=<Path<br/>Testing>];
+PatternsbasedTesting [label=<Patterns-based<br/>Testing>];
+PenetrationTesting [label=<Penetration<br/>Testing>];
+PerformanceTesting [label=<Performance<br/>Testing>];
+PositiveTesting [label=<Positive<br/>Testing>];
+PrimePathTesting [label=<Prime<br/>Path<br/>Testing>,style="dashed"];
+PrivacyTesting [label=<Privacy<br/>Testing>];
+ProcessDrivenScripting [label=<Process-Driven<br/>Scripting>];
+ProofsofCorrectness [label=<Proofs<br/>of<br/>Correctness>];
+ProofsofPartialCorrectness [label=<Proofs<br/>of<br/>Partial<br/>Correctness>,style="dashed"];
+ProofsofTotalCorrectness [label=<Proofs<br/>of<br/>Total<br/>Correctness>,style="dashed"];
+QuickTesting [label=<Quick<br/>Testing>];
+RandomTesting [label=<Random<br/>Testing>];
+RandomWalkTesting [label=<Random<br/>Walk<br/>Testing>];
+RequirementsbasedTesting [label=<Requirement(s)-based<br/>Testing>];
+RiskbasedTesting [label=<Risk-based<br/>Testing>];
+ScenarioTesting [label=<Scenario<br/>Testing>];
+SecurityAudits [label=<Security<br/>Audits>];
+ShoeTesting [label=<Shoe<br/>Testing>];
+SingleHitDecisionTable [label=<Single-Hit<br/>Decision<br/>Table>];
+SmokeTesting [label=<Smoke<br/>Testing>];
+SpecificationbasedTesting [label=<Specification-based<br/>Testing>];
+StateTesting [label=<State<br/>Testing>,style="dashed"];
+StateTransitionTesting [label=<State<br/>Transition<br/>Testing>];
+StatebasedWebBrowserTesting [label=<State-based<br/>Web<br/>Browser<br/>Testing>];
+StatementTesting [label=<Statement<br/>Testing>];
+StatisticalTesting [label=<Statistical<br/>Testing>];
+StressTesting [label=<Stress<br/>Testing>];
+StructurebasedTesting [label=<Structure-based<br/>Testing>];
+StructuredScripting [label=<Structured<br/>Scripting>];
+StuckKeyTesting [label=<Stuck<br/>Key<br/>Testing>];
+SymbolicExecution [label=<Symbolic<br/>Execution>];
+SyntaxTesting [label=<Syntax<br/>Testing>];
+TestEnvironmentTesting [label=<Test<br/>Environment<br/>Testing>];
+TestToolTesting [label=<Test<br/>Tool<br/>Testing>];
+ThinkAloudUsabilityTesting [label=<Think<br/>Aloud<br/>Usability<br/>Testing>];
+ThreeValueBoundaryTesting [label=<Three-Value<br/>Boundary<br/>Testing>];
+TransactionFlowTesting [label=<Transaction<br/>Flow<br/>Testing>];
+TranslationValidation [label=<Translation<br/>Validation>];
+twiseTesting [label=<t-wise<br/>Testing>];
+TwoValueBoundaryTesting [label=<Two-Value<br/>Boundary<br/>Testing>];
+UMLModelbasedTesting [label=<UML<br/>Model-based<br/>Testing>];
+UsagebasedTesting [label=<Usage-based<br/>Testing>];
+UseCaseTesting [label=<Use<br/>Case<br/>Testing>];
+VolumeTesting [label=<Volume<br/>Testing>];
+VulnerabilityScanning [label=<Vulnerability<br/>Scanning>];
+Walkthroughs [label=<Walkthroughs>];
+
+MultipleConditionTesting [label=<(Multiple)<br/>Condition<br/>Testing>,style="dotted"];
+BranchConditionCombinationTesting -> MultipleConditionTesting[dir=none];
+BranchConditionTesting -> MultipleConditionTesting[dir=none,style="dashed"];
+ExtendedBranchCoverage [label=<Extended<br/>Branch<br/>Coverage>,style="dotted"];
+BranchConditionCombinationTesting -> ExtendedBranchCoverage[dir=none,style="dashed"];
+BranchConditionTesting -> ExtendedBranchCoverage[dir=none,style="dashed"];
+ConditionTesting -> DecisionTesting[dir=none];
+ErrorbasedTesting -> FaultbasedTesting[dir=none,style="dashed"];
+FunctionalTesting -> SpecificationbasedTesting[dir=none];
+OrthogonalArrayTesting -> PairwiseTesting[dir=none];
+UserScenarioTesting [label=<User<br/>Scenario<br/>Testing>,style="dotted"];
+ScenarioTesting -> UserScenarioTesting[dir=none];
+UseCaseTesting -> UserScenarioTesting[dir=none];
+ScenarioTesting -> UseCaseTesting[dir=none];
+StatebasedTesting [label=<State-based<br/>Testing>,style="dotted"];
+StateTransitionTesting -> StatebasedTesting[dir=none,style="dashed"];
+StatebasedWebBrowserTesting -> StatebasedTesting[dir=none];
+StateTransitionTesting -> AllTransitionsTesting[dir=none,style="dashed"];
+
+ZeroSwitchTesting -> StateTransitionTesting;
+OneSwitchTesting -> NSwitchTesting;
+AdHocTesting -> ExperiencebasedTesting;
+AdHocTesting -> InformalTesting;
+AdaptiveRandomTesting -> RandomTesting;
+AllCombinationsTesting -> CombinatorialTesting;
+AllRulesTesting -> ControlFlowTesting[style="dashed"];
+AllTransitionsTesting -> StateTransitionTesting;
+AllTransitionsTesting -> ModelbasedTesting;
+AllCUsesTesting -> DataFlowTesting;
+AllCUsesTesting -> AllUsesTesting;
+AllCUsesTesting -> ControlFlowTesting;
+AllCUsesTesting -> AllDUPathsTesting;
+AllDefinitionsTesting -> DataFlowTesting;
+AllDefinitionsTesting -> ControlFlowTesting;
+AllDUPathsTesting -> DataFlowTesting;
+AllDUPathsTesting -> ControlFlowTesting;
+AllDUPathsTesting -> StructurebasedTesting;
+AllInputGUITesting -> InputParameterTesting[style="dashed"];
+AllPUsesTesting -> DataFlowTesting;
+AllPUsesTesting -> AllUsesTesting;
+AllPUsesTesting -> ControlFlowTesting;
+AllPUsesTesting -> AllDUPathsTesting;
+AllPUsesTesting -> StructurebasedTesting;
+AllURLTesting -> ControlFlowTesting[style="dashed"];
+AllUsesTesting -> DataFlowTesting;
+AllUsesTesting -> ControlFlowTesting;
+AllUsesTesting -> AllDUPathsTesting;
+Attacks -> ExperiencebasedTesting;
+BaseChoiceTesting -> CombinatorialTesting;
+BaseChoiceTesting -> ScenarioTesting[style="dashed"];
+BaseChoiceTesting -> SmokeTesting[style="dashed"];
+BlockTesting -> StructurebasedTesting[style="dashed"];
+BlockTesting -> ControlFlowTesting[style="dashed"];
+BoundaryValueAnalysis -> SpecificationbasedTesting;
+BoundaryValueAnalysis -> EquivalencePartitioning;
+BoundaryValueAnalysis -> ModelbasedTesting;
+BoundaryValueAnalysis -> NegativeTesting[style="dashed"];
+BoundaryValueAnalysis -> OnetoOneTesting[style="dashed"];
+BoundaryValueAnalysis -> MinimizedTesting[style="dashed"];
+BoundaryValueAnalysis -> GrayBoxTesting;
+BoundaryValueAnalysis -> FunctionalTesting[style="dashed"];
+BranchConditionCombinationTesting -> StructurebasedTesting;
+BranchConditionCombinationTesting -> ControlFlowTesting;
+BranchConditionCombinationTesting -> ModelbasedTesting;
+BranchConditionTesting -> StructurebasedTesting;
+BranchConditionTesting -> ControlFlowTesting;
+BranchConditionTesting -> ModelbasedTesting;
+BranchConditionTesting -> BranchConditionCombinationTesting;
+BranchTesting -> StructurebasedTesting;
+BranchTesting -> ControlFlowTesting;
+BranchTesting -> ModelbasedTesting;
+BranchTesting -> SpecificationbasedTesting;
+BranchTesting -> GrayBoxTesting;
+BuddyTesting -> AdHocTesting;
+BugHuntTesting -> ExperiencebasedTesting;
+CapacityTesting -> ModelbasedTesting;
+CapacityTesting -> PerformanceTesting;
+CauseEffectGraphing -> SpecificationbasedTesting;
+CauseEffectGraphing -> ModelbasedTesting;
+CheckedStatementTesting -> StatementTesting;
+CheckedStatementTesting -> StructurebasedTesting;
+ChecklistbasedReviews -> ChecklistbasedTesting;
+ChecklistbasedTesting -> ExperiencebasedTesting;
+ClassificationTreeMethod -> SpecificationbasedTesting;
+ClassificationTreeMethod -> ModelbasedTesting;
+ClosedLoopTesting -> LoopTesting;
+ClosedLoopTesting -> SpecificationbasedTesting;
+ClosedLoopTesting -> PerformanceTesting[style="dashed"];
+ClosedLoopTesting -> FunctionalTesting[style="dashed"];
+ClosedLoopTesting -> ModelbasedTesting[style="dashed"];
+ClosedLoopTesting -> DomainSpecificTesting[style="dashed"];
+CombinatorialTesting -> SpecificationbasedTesting;
+CombinatorialTesting -> ModelbasedTesting;
+CommandFormTesting -> DatabaseCoverageTesting[style="dashed"];
+ConditionTesting -> StructurebasedTesting;
+ConditionTesting -> ControlFlowTesting;
+ConditionTesting -> DecisionTesting[style="dashed"];
+ControlFlowTesting -> StructurebasedTesting;
+ControlFlowTesting -> ModelbasedTesting;
+DataFlowTesting -> StructurebasedTesting;
+DataFlowTesting -> ControlFlowTesting[style="dashed"];
+DataFlowTesting -> ModelbasedTesting;
+DatabaseCoverageTesting -> ControlFlowTesting[style="dashed"];
+DecisionConditionTesting -> SpecificationbasedTesting;
+DecisionTableTesting -> SpecificationbasedTesting;
+DecisionTableTesting -> ModelbasedTesting;
+DecisionTesting -> StructurebasedTesting;
+DecisionTesting -> ControlFlowTesting;
+DecisionTesting -> ModelbasedTesting;
+DecisionTesting -> DecisionConditionTesting[style="dashed"];
+DefectbasedTesting -> FaultbasedTesting[style="dashed"];
+DOMTesting -> ModelbasedTesting[style="dashed"];
+DomainIndependentTesting -> DomainBasedTesting;
+DomainSpecificTesting -> DomainBasedTesting;
+EachChoiceTesting -> CombinatorialTesting;
+EachChoiceTesting -> twiseTesting;
+ElementaryComparisonTesting -> SpecificationbasedTesting;
+EndtoendTesting -> SpecificationbasedTesting;
+EnduranceTesting -> ModelbasedTesting;
+EquivalencePartitioning -> SpecificationbasedTesting;
+EquivalencePartitioning -> ModelbasedTesting;
+EquivalencePartitioning -> NegativeTesting;
+EquivalencePartitioning -> PositiveTesting;
+EquivalencePartitioning -> OnetoOneTesting[style="dashed"];
+EquivalencePartitioning -> MinimizedTesting[style="dashed"];
+EquivalencePartitioning -> ClassificationTreeMethod[style="dashed"];
+EquivalencePartitioning -> GrayBoxTesting;
+EquivalencePartitioning -> FunctionalTesting[style="dashed"];
+ErrorGuessing -> ExperiencebasedTesting;
+ErrorGuessing -> ModelbasedTesting;
+ErrorGuessing -> ChecklistbasedTesting;
+ErrorGuessing -> FaultbasedTesting;
+ErrorGuessing -> ErrorbasedTesting[style="dashed"];
+EventSpaceTesting -> ControlFlowTesting[style="dashed"];
+EvidencebasedTesting -> SpecificationbasedTesting;
+ExploratoryTesting -> ExperiencebasedTesting;
+ExploratoryTesting -> InformalTesting;
+ExtendedEntryTableTesting -> DecisionTableTesting;
+ExtendedEntryTableTesting -> EquivalencePartitioning;
+ExtremeValueAnalysis -> SpecificationbasedTesting;
+ExtremeValueAnalysis -> EquivalencePartitioning[style="dashed"];
+FunctionalTesting -> SpecificationbasedTesting;
+FunctionalTesting -> StructurebasedTesting;
+FunctionsTesting -> StructurebasedTesting[style="dashed"];
+FunctionsTesting -> ControlFlowTesting[style="dashed"];
+FuzzTesting -> RandomTesting;
+Galumphing -> ExploratoryTesting;
+GrayBoxTesting -> StructurebasedTesting;
+GrayBoxTesting -> SpecificationbasedTesting;
+HyperlinkTesting -> SmokeTesting;
+HyperlinkTesting -> GrayBoxTesting[style="dashed"];
+HyperlinkTesting -> PageTesting;
+HyperlinkTesting -> ControlFlowTesting[style="dashed"];
+InductiveAssertionMethods -> ProofsofCorrectness;
+InputValidationTesting -> PathTesting;
+InputValidationTesting -> DatadrivenTesting[style="dashed"];
+InputParameterTesting -> SpecificationbasedTesting;
+InputParameterTesting -> ModelbasedTesting;
+InputParameterTesting -> CombinatorialTesting;
+KeyworddrivenTesting -> DatadrivenTesting;
+LoadTesting -> PerformanceTesting;
+LoadTesting -> ModelbasedTesting;
+LoadTesting -> CapacityTesting;
+LoopTesting -> StructurebasedTesting;
+LoopTesting -> ControlFlowTesting[style="dashed"];
+LoopTesting -> PerformanceTesting[style="dashed"];
+MCDCTesting -> StructurebasedTesting;
+MCDCTesting -> ControlFlowTesting;
+MCDCTesting -> ModelbasedTesting;
+MCDCTesting -> ConditionTesting[style="dashed"];
+MCDCTesting -> MultipleConditionTesting[style="dashed"];
+MCDCTesting -> BranchConditionCombinationTesting;
+MemoryManagementTesting -> ModelbasedTesting;
+MetamorphicTesting -> SpecificationbasedTesting;
+MetamorphicTesting -> ModelbasedTesting;
+MetamorphicTesting -> MutationTesting;
+MethodTesting -> StructurebasedTesting[style="dashed"];
+MethodTesting -> ControlFlowTesting[style="dashed"];
+MixedEntryTableTesting -> DecisionTableTesting;
+MonkeyTesting -> AdHocTesting;
+MonkeyTesting -> RandomTesting;
+MonkeyTesting -> FuzzTesting[style="dashed"];
+MultipleConditionTesting -> StructurebasedTesting;
+MultipleHitDecisionTableTesting -> DecisionTableTesting;
+MutationTesting -> StructurebasedTesting;
+MutationTesting -> FaultbasedTesting;
+NegativeTesting -> ExperiencebasedTesting[style="dashed"];
+NegativeTesting -> ForcingExceptionTesting[style="dashed"];
+NegativeTesting -> BoundaryValueAnalysis[style="dashed"];
+NSwitchTesting -> StateTransitionTesting;
+OpenLoopTesting -> LoopTesting;
+OpenLoopTesting -> ModelbasedTesting[style="dashed"];
+OpenLoopTesting -> DomainSpecificTesting[style="dashed"];
+OrthogonalArrayTesting -> CombinatorialTesting;
+OrthogonalArrayTesting -> StatisticalTesting;
+OrthogonalArrayTesting -> EquivalencePartitioning;
+OrthogonalArrayTesting -> PairwiseTesting;
+PageTesting -> ControlFlowTesting[style="dashed"];
+PairTesting -> AdHocTesting;
+PairwiseTesting -> CombinatorialTesting;
+PairwiseTesting -> SpecificationbasedTesting;
+PairwiseTesting -> ModelbasedTesting;
+PairwiseTesting -> AllCombinationsTesting;
+PairwiseTesting -> twiseTesting;
+PathTesting -> ControlFlowTesting;
+PathTesting -> StructurebasedTesting;
+PenetrationTesting -> PrivacyTesting;
+PenetrationTesting -> Attacks;
+PerformanceTesting -> ModelbasedTesting;
+PrimePathTesting -> ModelbasedTesting;
+ProcessDrivenScripting -> ScenarioTesting;
+QuickTesting -> AdHocTesting;
+RandomTesting -> SpecificationbasedTesting;
+RandomTesting -> ModelbasedTesting;
+RandomTesting -> UsagebasedTesting;
+RandomWalkTesting -> PathTesting;
+RequirementsbasedTesting -> SpecificationbasedTesting[style="dashed"];
+RequirementsbasedTesting -> ModelbasedTesting;
+RequirementsbasedTesting -> RiskbasedTesting;
+RequirementsbasedTesting -> PositiveTesting;
+RiskbasedTesting -> SpecificationbasedTesting;
+ScenarioTesting -> SpecificationbasedTesting;
+ScenarioTesting -> ModelbasedTesting;
+ScenarioTesting -> StressTesting[style="dashed"];
+ScenarioTesting -> ErrorbasedTesting[style="dashed"];
+ScenarioTesting -> EndtoendTesting[style="dashed"];
+ScenarioTesting -> FunctionalTesting[style="dashed"];
+SecurityAudits -> Walkthroughs;
+ShoeTesting -> RandomTesting;
+SingleHitDecisionTable -> DecisionTableTesting;
+SmokeTesting -> AdHocTesting;
+SmokeTesting -> QuickTesting;
+SpecificationbasedTesting -> ModelbasedTesting[style="dashed"];
+StateTesting -> ModelbasedTesting;
+StateTesting -> StateTransitionTesting;
+StateTransitionTesting -> SpecificationbasedTesting[style="dashed"];
+StateTransitionTesting -> ModelbasedTesting;
+StatebasedWebBrowserTesting -> SpecificationbasedTesting;
+StatebasedWebBrowserTesting -> ControlFlowTesting;
+StatebasedWebBrowserTesting -> FunctionalTesting;
+StatebasedWebBrowserTesting -> StateTransitionTesting;
+StatementTesting -> StructurebasedTesting;
+StatementTesting -> ModelbasedTesting;
+StatementTesting -> ControlFlowTesting;
+StatisticalTesting -> UsagebasedTesting;
+StatisticalTesting -> ModelbasedTesting;
+StressTesting -> ModelbasedTesting;
+StressTesting -> PerformanceTesting;
+StressTesting -> CapacityTesting;
+StructurebasedTesting -> ModelbasedTesting;
+StructurebasedTesting -> ControlFlowTesting;
+StuckKeyTesting -> RandomTesting;
+SyntaxTesting -> SpecificationbasedTesting;
+SyntaxTesting -> ModelbasedTesting;
+SyntaxTesting -> PositiveTesting;
+SyntaxTesting -> NegativeTesting;
+SyntaxTesting -> ExperiencebasedTesting;
+SyntaxTesting -> OnetoOneTesting[style="dashed"];
+SyntaxTesting -> MinimizedTesting[style="dashed"];
+SyntaxTesting -> SmokeTesting;
+SyntaxTesting -> FunctionalTesting[style="dashed"];
+SyntaxTesting -> GrayBoxTesting[style="dashed"];
+ThreeValueBoundaryTesting -> BoundaryValueAnalysis;
+TransactionFlowTesting -> ScenarioTesting;
+TranslationValidation -> EquivalenceChecking[style="dashed"];
+twiseTesting -> AllCombinationsTesting;
+TwoValueBoundaryTesting -> BoundaryValueAnalysis;
+UMLModelbasedTesting -> ModelbasedTesting;
+UseCaseTesting -> ModelbasedTesting;
+UseCaseTesting -> ScenarioTesting;
+UseCaseTesting -> SpecificationbasedTesting;
+VolumeTesting -> ModelbasedTesting;
+VolumeTesting -> CapacityTesting;
+
+subgraph cluster_legend {
+    label="Legend";
+    labelloc="b";
+    fontsize="48pt"
+    rankdir=BT
+    {
+        rank=same
+        chd [label="Child"];
+        par [label="Parent"];
+        chd -> par [label="                "];
+        syn1 [label="Synonym"];
+        syn2 [label="Synonym"];
+        syn1 -> syn2 [dir=none label="                "];
+    }
+    {
+        rank=same
+        imp1 [label="Child"];
+        imp2 [label=<Implied<br/>Parent>];
+        imp1 -> imp2 [style="dashed" label="                "]
+        imp3 [label=<Implied<br/>Synonym>];
+        imp4 [label=<Implied<br/>Synonym>];
+        imp3 -> imp4 [style="dashed" dir=none label="                "]
+    }
+    {
+        rank=same
+        imp5 [label=<Implied<br/>Term> style="dashed"]
+        syn3 [label=<Term>]
+        syn4 [label=<Synonym<br/>to Both> style="dotted"]
+        syn5 [label=<Term>]
+        syn3 -> syn4 -> syn5 [dir=none]
+    }
+    edge [style="invis"]
+    imp1 -> chd
+    imp2 -> par
+    imp3 -> syn1
+    imp4 -> syn2
+imp5 -> imp1
+syn3 -> imp2
+syn4 -> imp3
+syn5 -> imp4
+}
+
+// Connect the dummy node to the first node of the legend
+start -> chd [style="invis"];
+}
+\end{document}

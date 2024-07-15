@@ -1,0 +1,153 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{rigidLevelGraph}{
+rankdir=BT;
+
+// Dummy node to push the legend to the top left
+start [style="invis"];
+
+AcceptanceTesting [label=<Acceptance<br/>Testing>];
+AlphaTesting [label=<Alpha<br/>Testing>];
+BetaTesting [label=<Beta<br/>Testing>];
+BigBangTesting [label=<Big-Bang<br/>Testing>];
+BottomUpTesting [label=<Bottom-Up<br/>Testing>];
+BusinessAcceptanceTesting [label=<Business<br/>Acceptance<br/>Testing>];
+ClosedBetaTesting [label=<Closed<br/>Beta<br/>Testing>];
+ComponentIntegrationTesting [label=<Component<br/>Integration<br/>Testing>];
+ContractualAcceptanceTesting [label=<Contractual<br/>Acceptance<br/>Testing>];
+CustomerAcceptanceTesting [label=<Customer<br/>Acceptance<br/>Testing>];
+DataCenterTesting [label=<Data<br/>Center<br/>Testing>];
+DesktopDevelopmentTesting [label=<Desktop<br/>Development<br/>Testing>];
+DevelopmentTesting [label=<Development<br/>Testing>];
+EndtoendTesting [label=<End-to-end<br/>Testing>];
+FactoryAcceptanceTesting [label=<Factory<br/>Acceptance<br/>Testing>];
+FollowonOperationalTesting [label=<Follow-on<br/>Operational<br/>Testing>];
+HumanintheLoopTesting [label=<Human-in-the-Loop<br/>Testing>];
+InfrastructureTesting [label=<Infrastructure<br/>Testing>];
+InitialOperationalTesting [label=<Initial<br/>Operational<br/>Testing>];
+InputDataTesting [label=<Input<br/>Data<br/>Testing>];
+InstallationTesting [label=<Installation<br/>Testing>];
+IntegratedSystemTesting [label=<Integrated<br/>System<br/>Testing>];
+IntegrationTesting [label=<Integration<br/>Testing>];
+InterfaceTesting [label=<Interface<br/>Testing>];
+MLModelTesting [label=<ML<br/>Model<br/>Testing>];
+NeighborhoodIntegrationTesting [label=<Neighborhood<br/>Integration<br/>Testing>];
+OpenBetaTesting [label=<Open<br/>Beta<br/>Testing>];
+OperationalTesting [label=<Operational<br/>Testing>];
+OperationalEffectivenessTesting [label=<Operational<br/>Effectiveness<br/>Testing>];
+OperationalSuitabilityTesting [label=<Operational<br/>Suitability<br/>Testing>];
+OutsideInTesting [label=<Outside-In<br/>Testing>];
+PairwiseIntegrationTesting [label=<Pairwise<br/>Integration<br/>Testing>];
+PlayerPerspectiveTesting [label=<Player<br/>Perspective<br/>Testing>];
+Playtesting [label=<Playtesting>];
+PostDeploymentMonitoring [label=<Post-Deployment<br/>Monitoring>];
+ProcessorintheLoopTesting [label=<Processor-in-the-Loop<br/>Testing>];
+ProductionAcceptanceTesting [label=<Production<br/>Acceptance<br/>Testing>];
+ProductionVerificationTesting [label=<Production<br/>Verification<br/>Testing>];
+QualificationOperationalTesting [label=<Qualification<br/>Operational<br/>Testing>];
+QualificationTesting [label=<Qualification<br/>Testing>];
+RegressionTesting [label=<Regression<br/>Testing>];
+RegulatoryAcceptanceTesting [label=<Regulatory<br/>Acceptance<br/>Testing>];
+SandwichTesting [label=<Sandwich<br/>Testing>];
+SiteAcceptanceTesting [label=<Site<br/>Acceptance<br/>Testing>];
+SoftwareQualificationTesting [label=<Software<br/>Qualification<br/>Testing>];
+SoftwareintheLoopTesting [label=<Software-in-the-Loop<br/>Testing>];
+SoSIntegrationTesting [label=<SoS<br/>Integration<br/>Testing>];
+SoSTesting [label=<SoS<br/>Testing>];
+SubsystemTesting [label=<Subsystem<br/>Testing>];
+SystemIntegrationTesting [label=<System<br/>Integration<br/>Testing>];
+SystemQualificationTesting [label=<System<br/>Qualification<br/>Testing>];
+SystemTesting [label=<System<br/>Testing>];
+SystemsIntegrationTesting [label=<Systems<br/>Integration<br/>Testing>];
+TopDownTesting [label=<Top-Down<br/>Testing>];
+UnitTesting [label=<Unit<br/>Testing>];
+UserAcceptanceTesting [label=<User<br/>Acceptance<br/>Testing>];
+
+AcceptanceTesting -> QualificationTesting[dir=none];
+OperationalTesting -> ProductionAcceptanceTesting[dir=none];
+
+AcceptanceTesting -> SystemTesting;
+AlphaTesting -> AcceptanceTesting;
+AlphaTesting -> OperationalTesting;
+BetaTesting -> AcceptanceTesting;
+BetaTesting -> OperationalTesting;
+BigBangTesting -> IntegrationTesting;
+BottomUpTesting -> IntegrationTesting;
+BusinessAcceptanceTesting -> AcceptanceTesting;
+ClosedBetaTesting -> BetaTesting;
+ComponentIntegrationTesting -> IntegrationTesting;
+ContractualAcceptanceTesting -> AcceptanceTesting;
+CustomerAcceptanceTesting -> AcceptanceTesting;
+DataCenterTesting -> OperationalTesting;
+EndtoendTesting -> IntegrationTesting;
+FactoryAcceptanceTesting -> AcceptanceTesting;
+FollowonOperationalTesting -> OperationalTesting;
+HumanintheLoopTesting -> SystemTesting;
+InitialOperationalTesting -> OperationalTesting;
+InputDataTesting -> MLModelTesting;
+IntegratedSystemTesting -> DataCenterTesting;
+InterfaceTesting -> IntegrationTesting;
+NeighborhoodIntegrationTesting -> IntegrationTesting;
+OpenBetaTesting -> BetaTesting;
+OperationalTesting -> AcceptanceTesting;
+OperationalEffectivenessTesting -> OperationalTesting;
+OperationalSuitabilityTesting -> OperationalTesting;
+PairwiseIntegrationTesting -> IntegrationTesting;
+PostDeploymentMonitoring -> RegressionTesting;
+ProcessorintheLoopTesting -> SystemTesting;
+ProductionAcceptanceTesting -> AcceptanceTesting;
+ProductionVerificationTesting -> AcceptanceTesting;
+QualificationOperationalTesting -> OperationalTesting;
+RegulatoryAcceptanceTesting -> AcceptanceTesting;
+SandwichTesting -> IntegrationTesting;
+SiteAcceptanceTesting -> AcceptanceTesting;
+SoftwareintheLoopTesting -> SystemTesting;
+SoSIntegrationTesting -> SystemTesting;
+SoSIntegrationTesting -> IntegrationTesting;
+SoSTesting -> SystemTesting;
+SubsystemTesting -> SystemTesting;
+SystemIntegrationTesting -> IntegrationTesting;
+SystemIntegrationTesting -> SystemTesting;
+SystemsIntegrationTesting -> IntegrationTesting;
+TopDownTesting -> IntegrationTesting;
+UserAcceptanceTesting -> AcceptanceTesting;
+
+subgraph cluster_legend {
+    label="Legend";
+    labelloc="b";
+    fontsize="48pt"
+    rankdir=BT
+    {
+        rank=same
+        chd [label="Child"];
+        par [label="Parent"];
+        chd -> par [label="                "];
+        syn1 [label="Synonym"];
+        syn2 [label="Synonym"];
+        syn1 -> syn2 [dir=none label="                "];
+    }
+    {
+        rank=same
+        imp1 [label="Child"];
+        imp2 [label=<Implied<br/>Parent>];
+        imp1 -> imp2 [style="dashed" label="                "]
+        imp3 [label=<Implied<br/>Synonym>];
+        imp4 [label=<Implied<br/>Synonym>];
+        imp3 -> imp4 [style="dashed" dir=none label="                "]
+    }
+    edge [style="invis"]
+    imp1 -> chd
+    imp2 -> par
+    imp3 -> syn1
+    imp4 -> syn2
+}
+
+// Connect the dummy node to the first node of the legend
+start -> chd [style="invis"];
+}
+\end{document}
