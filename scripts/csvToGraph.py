@@ -219,15 +219,55 @@ def styleInLine(style, line):
 
 def make_dot_file(lines, filename):
     LONG_EDGE_LABEL = 'label="                "'
-    chdPar, syn, impChd, impSyn, impTerm, dynTerm, twoSyn = False, False, False, False, False, False, False
+    chdPar, syn, impChd, impSyn  = False, False, False, False
     # chunks = splitListAtEmpty(lines)
-
-    impTerm = any(styleInLine("dashed", line) for line in lines)
-    dynTerm = any(styleInLine("filled", line) for line in lines)
 
     syns = [line.split(" ")[0] for line in lines if styleInLine("dotted", line)]
     synsToRemove = [syn for syn in syns if sum(1 for line in lines if syn in line) < 3]
     lines = [line for line in lines if not any(syn in line for syn in synsToRemove)]
+
+    if any(styleInLine("dashed", line) for line in lines):
+        impTerm = 'imp5 [label=<Implied<br/>Term> style="dashed"]'
+    else:
+        impTerm = ''
+
+    if any(styleInLine("filled", line) for line in lines):
+        dynTerm = 'dyn [label=<Dynamic<br/>Approach> style="filled"]'
+    else:
+        dynTerm = ''
+
+    if len(syns) > len(synsToRemove):
+        twoSyn = [
+            'syn3 [label=<Term>]',
+            'syn4 [label=<Synonym<br/>to Both> style="dotted"]',
+            'syn5 [label=<Term>]',
+            'syn3 -> syn4 -> syn5 [dir=none]',
+        ]
+    else:
+        twoSyn = []
+    
+    INDENT = "    "
+    extras, align = [], []
+    if impTerm and dynTerm:
+        extras = ['{', 'rank=same', impTerm, dynTerm, '}']
+        align = ['imp5 -> { imp1 imp2 }', 'dyn -> { imp3 imp4 }']
+        if twoSyn:
+            extras += ['{', 'rank=same', ] + twoSyn + ['}']
+            align[0] = f'syn3 -> {align[0]}'
+            align[1] = f'syn5 -> {align[1]}'
+    elif twoSyn:
+        align = ['syn3 -> imp2', 'syn4 -> imp3', 'syn5 -> imp4']
+        if not (impTerm or dynTerm):
+            extras = ['{', 'rank=same'] + twoSyn + ['}']
+            align += ['syn3 -> imp1', 'syn4 -> imp2', 'syn5 -> imp3']
+        elif impTerm or dynTerm:
+            extras = ['{', 'rank=same', impTerm if impTerm else dynTerm] + twoSyn + ['}']
+            align = [f'{'imp5' if impTerm else 'dyn'} -> imp1'] + align
+    elif impTerm or dynTerm:
+        extras = [impTerm if impTerm else dynTerm]
+        align = [f'{'imp5' if impTerm else 'dyn'} -> {{ imp2 imp3 }}']
+
+    extras = [f'{INDENT if line in "}{" else 2*INDENT}{line}' for line in extras]
 
     # From https://stackoverflow.com/a/65443720/10002168
     legend = [
@@ -256,24 +296,14 @@ def make_dot_file(lines, filename):
         '        imp4 [label=<Implied<br/>Synonym>];',
         f'        imp3 -> imp4 [style="dashed" dir=none {LONG_EDGE_LABEL}]',
         '    }',
-        '    {',
-        '        rank=same',
-        f'        {'imp5 [label=<Implied<br/>Term> style="dashed"]' if impTerm else ''}',
-        '        syn3 [label=<Term>]',
-        '        syn4 [label=<Synonym<br/>to Both> style="dotted"]',
-        '        syn5 [label=<Term>]',
-        '        syn3 -> syn4 -> syn5 [dir=none]',
-        '    }',
+    ] + extras + [
         # For alignment
         '    edge [style="invis"]',
-        f'    {"imp5 -> " if impTerm else ""}imp1 -> chd',
-        '    syn3 -> imp2 -> par',
-        '    syn4 -> imp3 -> syn1',
-        '    syn5 -> imp4 -> syn2',
-    ] + ([
-        '        dyn [label=<Dynamic<br/>Approach> style="filled"]',
-        '        dyn -> { syn3 syn4 }',
-        ] if dynTerm else []) + [
+        '    imp1 -> chd',
+        '    imp2 -> par',
+        '    imp3 -> syn1',
+        '    imp4 -> syn2',
+    ] + align + [
         '}',
         '',
         '// Connect the dummy node to the first node of the legend',
