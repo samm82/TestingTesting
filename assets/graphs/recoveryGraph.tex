@@ -32,22 +32,22 @@ FailoverTesting -> FailoverRecoveryTesting[dir=none,style="dashed"];
 PerformanceTesting -> PerformancerelatedTesting[dir=none];
 RecoverabilityTesting -> RecoveryTesting[dir=none];
 
-AvailabilityTesting -> ReliabilityTesting;
-BackupandRecoveryTesting -> ReliabilityTesting;
-BackupRecoveryTesting -> DisasterRecoveryTesting;
+AvailabilityTesting -> ReliabilityTesting[color="green"];
+BackupandRecoveryTesting -> ReliabilityTesting[color="green"];
+BackupRecoveryTesting -> DisasterRecoveryTesting[color="green"];
 DisasterRecoveryTesting -> FaultToleranceTesting;
 DisasterRecoveryTesting -> RecoverabilityTesting;
-FailoverTesting -> FailureToleranceTesting[style="dashed"];
-FailoverRecoveryTesting -> DisasterRecoveryTesting;
-FaultToleranceTesting -> ReliabilityTesting;
-FaultToleranceTesting -> AvailabilityTesting;
-PerformanceTesting -> PerformancerelatedTesting;
-RecoverabilityTesting -> ReliabilityTesting;
+FailoverTesting -> FailureToleranceTesting[style="dashed",color="blue"];
+FailoverRecoveryTesting -> DisasterRecoveryTesting[color="green"];
+FaultToleranceTesting -> ReliabilityTesting[color="green"];
+FaultToleranceTesting -> AvailabilityTesting[color="green"];
+PerformanceTesting -> PerformancerelatedTesting[color="green"];
+RecoverabilityTesting -> ReliabilityTesting[color="green"];
 RecoverabilityTesting -> UsabilityTesting[style="dashed"];
-RecoveryTesting -> PerformancerelatedTesting;
-RecoveryTesting -> ReliabilityTesting;
-RecoveryTesting -> AvailabilityTesting;
-RecoveryTesting -> FaultToleranceTesting;
+RecoveryTesting -> PerformancerelatedTesting[color="green"];
+RecoveryTesting -> ReliabilityTesting[color="green"];
+RecoveryTesting -> AvailabilityTesting[color="green"];
+RecoveryTesting -> FaultToleranceTesting[color="blue"];
 ReliabilityTesting -> PerformanceTesting;
 
 subgraph cluster_legend {

@@ -204,12 +204,12 @@ for key in categoryDict.keys():
                     addToIterable(term, categoryDict[key][0], key)
 
                     fterm = formatApproach(term)
-                    styles = 'style="dashed"' if synSets[f"{fsyn}->{fterm}"][0] else ""
+                    style = 'style="dashed"' if synSets[f"{fsyn}->{fterm}"][0] else ""
                     color = synSets[f"{fsyn}->{fterm}"][1]
                     if color:
                         color = f'color="{color}"'
                     addLineToCategory(key, f"{fterm} -> {fsyn}[{",".join([
-                        s for s in ["dir=none", styles, color] if s])}];")
+                        s for s in ["dir=none", style, color] if s])}];")
     if categoryDict[key][1][-1] != "":
         categoryDict[key][1].append("")
 
@@ -238,9 +238,12 @@ for name, parent in zip(names, parents):
             continue
 
         fname = formatApproach(name)
-        parentLine = f"{fname} -> {fpar}{'[style="dashed"]'
-                                         if isUnsure(par) else ""};"
-
+        style = 'style="dashed"' if isUnsure(par) else ""
+        color = f'color="{getColor(par)}"' if getColor(par) else ""
+        [{",".join([s for s in [style, color] if s])}]
+        parentLine = f"{fname} -> {fpar}[{",".join(
+            [s for s in [style, color] if s])}];"
+        parentLine = parentLine.replace("[]", "")
         for key in categoryDict.keys():
             if key == "Static" and (fname in staticApproaches or
                                     fpar in staticApproaches):
