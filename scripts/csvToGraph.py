@@ -31,9 +31,8 @@ def processCol(col):
             for i in range(1, len(x)):
                 for r in [BEGIN_INFO_REGEX, YEAR_REGEX]:
                     if re.search(fr"{PREFIX_REGEX}{r}", x[i]):
-                        searchRegex = AUTHOR_REGEX
-                        if r == BEGIN_INFO_REGEX:
-                            searchRegex += "?" + YEAR_REGEX 
+                        searchRegex = (AUTHOR_REGEX + ("?" + YEAR_REGEX
+                                       if r == BEGIN_INFO_REGEX else ""))
                         search = re.search(fr"({searchRegex}, )", x[i-1])
                         if search and not re.search(AUTHOR_REGEX, x[i]):
                             x[i] = re.sub(fr"({PREFIX_REGEX})({BEGIN_INFO_REGEX})",
