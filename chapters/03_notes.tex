@@ -862,11 +862,6 @@ within individual ones; these may be areas for further investigation:
       \item A typo in \citep[Fig.~2]{IEEE2021} means that ``specification-based
             techniques'' is listed twice, when the latter should be
             ``structure-based techniques''.
-      \item ``Soak testing'' is given as a synonym for both ``endurance testing''
-            \citep[p.~39]{IEEE2021} and ``reliability testing''
-            (\citealp[Tab.~2]{Gerrard2000a}; \citeyear[Tab.~1, p.~26]{Gerrard2000b}).
-            The terms are not synonyms, although endurance testing is given
-            as a kind of reliability testing by \citet[p.~55]{Firesmith2015}.
       \item \citeauthor{IEEE2021} define an ``extended entry (decision) table''
             both as a decision table where the ``conditions consist of multiple
             values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021}
@@ -985,11 +980,6 @@ within individual ones; these may be areas for further investigation:
       \item There is disagreement on the structure of tours; they can either be
             quite general \citep[p.~34]{IEEE2022} or ``organized around a
             special focus'' \citepISTQB{}.
-      \item ``Scenario testing'' and ``use case testing'' are given as synonyms
-            by \citetISTQB{} and \citet[pp.~47-49]{Kam2008}, but listed
-            separately by \citet[p.~22]{IEEE2022}, who also give ``use case
-            testing'' as a ``common form of scenario testing''
-            \citeyearpar[p.~20]{IEEE2021}.
       \item While model testing is said to test the object under test,
             it seems to describe testing the models themselves
             \citet[p.~20]{Firesmith2015}; using the models to test the object
@@ -1008,12 +998,6 @@ within individual ones; these may be areas for further investigation:
             them to test the object under test; the latter is implied, but the
             wording of its subtypes \citep[p.~25]{Firesmith2015} seems to imply
             the former.
-      \item ``Operational'' and ``production acceptance testing'' are treated
-            as synonyms by \citetISTQB{}, but listed separately by
-            \citet[p.~30]{Firesmith2015}.
-      \item ``Production acceptance testing'' \citep[p.~30]{Firesmith2015}
-            seems to be the same as ``production verification testing''
-            \citep[p.~22]{IEEE2022}, but neither are defined.
       \item \citeauthor{Firesmith2015} makes a distinction between organization-
             and role-based testing \citeyearpar[pp.~17,~37,~39]{Firesmith2015},
             which seems arbitrary, but further investigation may prove it to be
@@ -1111,6 +1095,55 @@ within individual ones; these may be areas for further investigation:
 \end{enumerate}
 
 % end discrepancies
+
+\subsubsection{Synonyms}
+There exist many test approaches with multiple synonyms. For example, synonyms
+for specification-based testing include \todo{more in Umar2000}:
+\begin{enumerate}
+      \item Black-Box Testing (\citealp[p.~9]{IEEE2022}; \citeyear[p.~8]{IEEE2021};
+            \citeyear[p.~431]{IEEE2017}; \citealp[p.~5-10]{SWEBOK2024};
+            \citealpISTQB{}; \citealp[p.~46]{Firesmith2015} (without hyphen);
+            \citealp[p.~344]{SakamotoEtAl2013}; \citealp[p.~399]{vanVliet2000})
+      \item Closed-Box Testing (\citealp[p.~9]{IEEE2022}; \citeyear[p.~431]{IEEE2017})
+      \item Functional Testing (\citeyear[p.~196]{IEEE2017}; \citealp[p.~44]{Kam2008};
+            \citealp[p.~399]{vanVliet2000}; implied by \citeyear[p.~129]{IEEE2021};
+            \citeyear[p.~431]{IEEE2017})
+      \item Domain Testing (\citealp[p.~5-10]{SWEBOK2024})
+      \item Input Domain-Based Testing (implied by \citealp[p.~4-8]{SWEBOK2014})
+\end{enumerate}
+
+While some of these synonyms may be incorrect, the legitimate ones carry
+different connotations. I use the terms ``specification-based'' and
+``structure-based testing'' since they articulate the source of the information
+for designing test cases, but a team or project also using gray-box testing may
+prefer the terms ``black-box'' and ``white-box testing'' for consistency.
+Because of this, the existence of synonyms is not inherently a discrepancy.
+
+However, there are instances in which a term is given a synonym to two (or more)
+disjoint, unrelated terms, which would be a source of ambiguity to teams using
+these terms. The following are examples that have arisen (synonyms in
+\emph{italics} have at least one of their synonyms implied):
+
+\begin{enumerate}
+      \input{build/multSyns}
+\end{enumerate}
+
+Some interesting notes about these synonyms:
+\begin{itemize}
+      \item The terms are not synonyms, although endurance testing is given
+            as a kind of reliability testing by \citet[p.~55]{Firesmith2015}.
+      \item ``Scenario testing'' and ``use case testing'' are given as synonyms
+            by \citetISTQB{} and \citet[pp.~47-49]{Kam2008}, but listed
+            separately by \citet[p.~22]{IEEE2022}, who also give ``use case
+            testing'' as a ``common form of scenario testing''
+            \citeyearpar[p.~20]{IEEE2021}.
+      \item ``Operational'' and ``production acceptance testing'' are treated
+            as synonyms by \citetISTQB{}, but listed separately by
+            \citet[p.~30]{Firesmith2015}.
+      \item ``Production acceptance testing'' \citep[p.~30]{Firesmith2015}
+            seems to be the same as ``production verification testing''
+            \citep[p.~22]{IEEE2022}, but neither are defined.
+\end{itemize}
 
 \subsubsection{Functional Testing}
 

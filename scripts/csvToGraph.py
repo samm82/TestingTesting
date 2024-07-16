@@ -1,3 +1,4 @@
+from itertools import chain
 import numpy as np
 from pandas import read_csv
 import re
@@ -10,7 +11,7 @@ parents = approaches["Parent(s)"].to_list()
 
 def processCol(col):
     # RegEx patterns
-    AUTHOR_CHARS = "a-zA-Zßğ./"
+    AUTHOR_CHARS = "a-zA-Zßğö./"
     AUTHOR_REGEX = fr"(van )|[A-Z][{AUTHOR_CHARS} ]+,\s"
     YEAR_REGEX = r"\d{4}[a-z]?,\s"
     BEGIN_INFO_REGEX = r"[a-zA-Z]+\.\s"
@@ -211,6 +212,10 @@ for name, synonym in zip(names, synonyms):
             except KeyError:
                 synSets[f"{fsyn}->{fname}"] = getColor(syn)
 
+def makeSynLine(syn, terms):
+    return f"\\item \\textbf{{{syn}:}} {', '.join(terms)}"
+
+expSyns, impSyns = [], []
 for key in categoryDict.keys():
     for syn, terms in synDict.items():
         fsyn = formatApproach(syn)
@@ -221,6 +226,12 @@ for key in categoryDict.keys():
             validTerms = [term for term in terms
                           if f"{fsyn}->{formatApproach(term)}" in synSets.keys()]
             if validTerms:
+                if key == "Approach" and (len(validTerms) > 1):
+                    synsList, synStr = (
+                        (impSyns, f"\\emph{{{syn}}}") if not all(bool(
+                            synSets[f"{fsyn}->{formatApproach(term)}"][0]
+                            ) for term in validTerms) else (expSyns, syn))
+                    synsList.append(makeSynLine(synStr, terms))
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
@@ -246,6 +257,14 @@ for key in categoryDict.keys():
                 blacklistSyns.update({name, syns[0]})
         if blacklistSyns:
             categoryDict[key][1].append("")
+
+def sortMultiLists(*lists):
+    # From https://stackoverflow.com/a/14807719/10002168
+    return [i for i in chain.from_iterable(
+        sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", x)) for ls in lists)]
+
+with open(f"build/multSyns.tex", "w") as outFile:
+    outFile.writelines(line + '\n' for line in sortMultiLists(expSyns, impSyns))
 
 workingStaticSet = staticApproaches.copy()
 

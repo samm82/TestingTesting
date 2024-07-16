@@ -47,10 +47,12 @@ update_diffs: gen_csv_diffs
 		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
 	done
 
-graphs: assets/graphs/*.tex assets/graphs/manual/*.tex
+csv_process:
+	py scripts/csvToGraph.py
+
+graphs: csv_process assets/graphs/*.tex assets/graphs/manual/*.tex
 	-rm assets/graphs/manual/*.pdf
 	-rm assets/graphs/*.pdf
-	py scripts/csvToGraph.py
 	for filename in $^ ; do \
 			latex -interaction=nonstopmode -shell-escape $${filename} || true ; \
 			latex -interaction=nonstopmode -shell-escape $${filename} || true ; \
@@ -67,7 +69,7 @@ build: update_diffs notes # standard build -- '-output-directory=build' is a spe
 	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape thesis.tex
 	cp build/thesis.pdf thesis.pdf	
 
-notes: # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+notes: csv_process # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
