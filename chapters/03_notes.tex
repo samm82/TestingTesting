@@ -1308,82 +1308,6 @@ in Figure~\ref{fig:recovery-graph-current}.
             both of these terms.
 \end{itemize}
 
-I propose the following terms and structure to make them clearer and more
-consistent. The relations between them can be found in
-Figure~\ref{fig:recovery-graph-proposed}.
-
-\begin{itemize}
-      \item \textbf{Recoverability Testing:} ``Testing \dots\ aimed at
-            verifying software restart capabilities after a system crash or
-            other disaster'' \citep[p.~5-9]{SWEBOK2024} including ``recover[ing]
-            the data directly affected and re-establish[ing] the desired state
-            of the system'' (\citealp{ISO_IEC2023a}; similar in
-            \citealp[p.~7-10]{SWEBOK2024}) so that the system ``can perform
-            required functions'' \citep[p.~370]{IEEE2017}. ``Recovery testing''
-            will be a synonym, as in \citep[p.~47]{Kam2008} and since it is the
-            more prevalent term throughout various sources, although
-            ``recoverability testing'' is preferred to indicate that this
-            explicitly focuses on the \emph{ability} to
-            recover, not the \emph{performance} of recovering.
-      \item \textbf{Failover Testing:} Testing that ``validates the SUT's
-            ability to manage heavy loads or unexpected failure to continue
-            typical operations'' \cite[p.~5-9]{SWEBOK2024} by entering a
-            ``backup operational mode in which [these responsibilities] \dots\
-            are assumed by a secondary system'' \citepISTQB{}. This will
-            replace ``failover/recovery testing'', since it is more clear, and
-            since this is one way that a system can recover from failure, it
-            will be a subset of ``recovery testing''.
-      \item \textbf{Transfer Recovery Testing:} Testing to evaluate if,
-            in the case of a failure, ``operation of the test item can be
-            transferred to a different operating site and \dots\ be transferred
-            back again once the failure has been resolved''
-            \citeyearpar[p.~37]{IEEE2021}. This replaces the second definition
-            of ``disaster/recovery testing'', since the first is just a
-            description of ``recovery testing'', and could potentially be
-            considered as a kind of failover testing. This may not be
-            intrinsic to the hardware/software (e.g., may be the responsibility
-            of humans/processes).
-      \item \textbf{Backup Recovery Testing:} Testing that determines the
-            ability ``to restor[e] from back-up memory in the event of failure''
-            \citep[p.~37]{IEEE2021}. The qualification that this occurs
-            ``without transfer[ing] to a different operating site or back-up
-            system'' (p.~37) \emph{could} be made explicit, but this is implied
-            since it is separate from transfer recovery testing and failover
-            testing, respectively.
-      \item \textbf{Recovery Performance Testing:} Testing ``how well a system or
-            software can recover \dots\ [from] an interruption or failure''
-            (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
-            ``within specified parameters of time, cost, completeness, and
-            accuracy'' \citep[p.~2]{IEEE2013}. The distinction between the
-            performance-related elements of recovery testing seemed to be
-            meaningful (see \thesisissueref{40}), but was not captured
-            consistently by the literature. This will be a subset of
-            ``performance-related testing'' (see \nameref{perf-test-ambiguity})
-            as ``recovery testing'' is in \citep[p.~22]{IEEE2022}. This could
-            also be extended into testing the performance of specific elements
-            of recovery (e.g., failover performance testing), but this be too
-            fine-grained and may better be captured as an
-            \hyperref[chap:testing:sec:orthogonal-tests]
-            {orthogonally derived test approach}.
-\end{itemize}
-
-\begin{figure}[hbtp!]
-      \centering
-      \begin{minipage}{.5\textwidth}
-            \centering
-            \recoveryGraphCurrent{}
-            \caption{The current state of the relations between ``recovery
-                  testing'' terms.}
-            \label{fig:recovery-graph-current}
-      \end{minipage}%
-      \begin{minipage}{.5\textwidth}
-            \centering
-            \recoveryGraphProposed{}
-            \caption{The proposed relations between ``recovery testing'' terms.}
-            \label{fig:recovery-graph-proposed}
-      \end{minipage}
-\end{figure}
-
 \subsubsection{Performance Testing}
 \label{perf-test-ambiguity}
 
@@ -2729,7 +2653,7 @@ engineers'' \citep[p.~72]{KanewalaAndYuehChen2019}.
             \citep[p.~67]{KanewalaAndYuehChen2019}
       \item ``Incompatible testing tools'': while scientific software is often
             written in languages like FORTRAN, testing tools are often written
-            int languages like Java or C++ \citep[p.~67]{KanewalaAndYuehChen2019}
+            in languages like Java or C++ \citep[p.~67]{KanewalaAndYuehChen2019}
 \end{itemize}
 
 Out of this list, only the first two apply. The scenarios modelled by Drasil
@@ -2740,3 +2664,83 @@ tolerance used for relevant testing frameworks has been used
 \todo{Add example} and is likely sufficient for future testing. On a related
 note, the scientific software we are trying to test is already generated in
 languages with widely-used testing frameworks. \todo{Add source(s)?}
+
+\section{Recommendations}
+
+In Section~\ref{rec-test-ambiguity}, I describe the ambiguity between various
+terms related to recovery testing. To resolve at least some of these, I propose
+the following terms and structure to make them clearer and more
+consistent. The relations between them can be found in
+Figure~\ref{fig:recovery-graph-proposed}.
+
+\begin{itemize}
+      \item \textbf{Recoverability Testing:} ``Testing \dots\ aimed at
+            verifying software restart capabilities after a system crash or
+            other disaster'' \citep[p.~5-9]{SWEBOK2024} including ``recover[ing]
+            the data directly affected and re-establish[ing] the desired state
+            of the system'' (\citealp{ISO_IEC2023a}; similar in
+            \citealp[p.~7-10]{SWEBOK2024}) so that the system ``can perform
+            required functions'' \citep[p.~370]{IEEE2017}. ``Recovery testing''
+            will be a synonym, as in \citep[p.~47]{Kam2008} and since it is the
+            more prevalent term throughout various sources, although
+            ``recoverability testing'' is preferred to indicate that this
+            explicitly focuses on the \emph{ability} to
+            recover, not the \emph{performance} of recovering.
+      \item \textbf{Failover Testing:} Testing that ``validates the SUT's
+            ability to manage heavy loads or unexpected failure to continue
+            typical operations'' \cite[p.~5-9]{SWEBOK2024} by entering a
+            ``backup operational mode in which [these responsibilities] \dots\
+            are assumed by a secondary system'' \citepISTQB{}. This will
+            replace ``failover/recovery testing'', since it is more clear, and
+            since this is one way that a system can recover from failure, it
+            will be a subset of ``recovery testing''.
+      \item \textbf{Transfer Recovery Testing:} Testing to evaluate if,
+            in the case of a failure, ``operation of the test item can be
+            transferred to a different operating site and \dots\ be transferred
+            back again once the failure has been resolved''
+            \citeyearpar[p.~37]{IEEE2021}. This replaces the second definition
+            of ``disaster/recovery testing'', since the first is just a
+            description of ``recovery testing'', and could potentially be
+            considered as a kind of failover testing. This may not be
+            intrinsic to the hardware/software (e.g., may be the responsibility
+            of humans/processes).
+      \item \textbf{Backup Recovery Testing:} Testing that determines the
+            ability ``to restor[e] from back-up memory in the event of failure''
+            \citep[p.~37]{IEEE2021}. The qualification that this occurs
+            ``without transfer[ing] to a different operating site or back-up
+            system'' (p.~37) \emph{could} be made explicit, but this is implied
+            since it is separate from transfer recovery testing and failover
+            testing, respectively.
+      \item \textbf{Recovery Performance Testing:} Testing ``how well a system or
+            software can recover \dots\ [from] an interruption or failure''
+            (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
+            ``within specified parameters of time, cost, completeness, and
+            accuracy'' \citep[p.~2]{IEEE2013}. The distinction between the
+            performance-related elements of recovery testing seemed to be
+            meaningful (see \thesisissueref{40}), but was not captured
+            consistently by the literature. This will be a subset of
+            ``performance-related testing'' (see \nameref{perf-test-ambiguity})
+            as ``recovery testing'' is in \citep[p.~22]{IEEE2022}. This could
+            also be extended into testing the performance of specific elements
+            of recovery (e.g., failover performance testing), but this be too
+            fine-grained and may better be captured as an
+            \hyperref[chap:testing:sec:orthogonal-tests]
+            {orthogonally derived test approach}.
+\end{itemize}
+
+\begin{figure}[hbtp!]
+      \centering
+      \begin{minipage}{.5\textwidth}
+            \centering
+            \recoveryGraphCurrent{}
+            \caption{The current state of the relations between ``recovery
+                  testing'' terms.}
+            \label{fig:recovery-graph-current}
+      \end{minipage}%
+      \begin{minipage}{.5\textwidth}
+            \centering
+            \recoveryGraphProposed{}
+            \caption{The proposed relations between ``recovery testing'' terms.}
+            \label{fig:recovery-graph-proposed}
+      \end{minipage}
+\end{figure}
