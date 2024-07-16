@@ -161,7 +161,7 @@ OrthogonalArrayTesting -> PairwiseTesting[dir=none,color="blue"];
 ScenarioTesting -> UseCaseTesting[dir=none,color="blue"];
 UserScenarioTesting [label=<User<br/>Scenario<br/>Testing>,style="dotted"];
 ScenarioTesting -> UserScenarioTesting[dir=none,color="blue"];
-UseCaseTesting -> UserScenarioTesting[dir=none,color="green"];
+UseCaseTesting -> UserScenarioTesting[dir=none];
 
 ZeroSwitchTesting -> StateTransitionTesting[color="green"];
 OneSwitchTesting -> NSwitchTesting[color="green"];
@@ -257,7 +257,7 @@ ExtendedEntryTableTesting -> DecisionTableTesting[color="green"];
 ExtendedEntryTableTesting -> EquivalencePartitioning[color="green"];
 FunctionalTesting -> SpecificationbasedTesting[color="green"];
 FunctionalTesting -> StructurebasedTesting[color="green"];
-FuzzTesting -> RandomTesting[color="green"];
+FuzzTesting -> RandomTesting[color="blue"];
 Galumphing -> ExploratoryTesting[color="blue"];
 GrayBoxTesting -> StructurebasedTesting[color="green"];
 GrayBoxTesting -> SpecificationbasedTesting[color="green"];
@@ -353,7 +353,7 @@ UseCaseTesting -> ModelbasedTesting[color="green"];
 UseCaseTesting -> ScenarioTesting;
 UseCaseTesting -> SpecificationbasedTesting;
 VolumeTesting -> ModelbasedTesting[color="green"];
-VolumeTesting -> CapacityTesting[color="green"];
+VolumeTesting -> CapacityTesting[color="blue"];
 
 subgraph cluster_legend {
     label="Legend";

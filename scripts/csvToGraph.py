@@ -62,10 +62,11 @@ categoryDict = {
     "Type": ([], []),
 }
 
+UNSURE_KEYWORDS = ["implied", "inferred", "can be", "usually", "most", "often",
+                   "if", "although"]
 def isUnsure(name):
     return any(unsure in name for unsure in
-               {"?", "(implied", "(inferred", "(can be", "(usually",
-                "(most", "(often", "(if" , " (Testing)"})
+               {"?", " (Testing)"}.union(f"({term}" for term in UNSURE_KEYWORDS))
 
 def addLineToCategory(key, line):
     if line not in categoryDict[key][1] and "-> ;" not in line:
@@ -152,17 +153,40 @@ def addToIterable(s, iterable, key=key):
     else:
         raise ValueError(f"addToIterable unimplemented for {type(iterable)}")
 
+GREEN = "green"
+BLUE = "blue"
+MAROON = "maroon"
+BLACK = "black"
+COLOR_ORDERING = [GREEN, BLUE, MAROON, BLACK]
+
+# Returns a tuple with the color for the rigid relations (if any),
+# then for the unsure ones (if any)
 def getColor(name):
-    if any(std in name for std in {"IEEE", "ISO", "IEC"}):
-        return "green"
-    if any(metastd in name for metastd in 
-           {"Washizaki", "Bourque and Fairley",
-            "Hamburg and Mogyorodi", "Firesmith"}):
-        return "blue"
-    if any(textbook in name for textbook in
-           {"van Vliet", "Patton", "Peters and Pedrycz"}):
-        return "maroon"
-    return ""
+    def determineColor(s):
+        if any(std in s for std in {"IEEE", "ISO", "IEC"}):
+            return "green"
+        if any(metastd in s for metastd in 
+            {"Washizaki", "Bourque and Fairley",
+                "Hamburg and Mogyorodi", "Firesmith"}):
+            return "blue"
+        if any(textbook in s for textbook in
+            {"van Vliet", "Patton", "Peters and Pedrycz"}):
+            return "maroon"
+        return "black"
+
+    if isUnsure(name):
+        return (None, determineColor(name))
+    else:
+        for term in UNSURE_KEYWORDS:
+            if term + " " in name:
+                name = name.split(term)
+                break
+        if type(name) is list:
+            colors = (determineColor(name[0]), determineColor(name[1]))
+            if COLOR_ORDERING.index(colors[1]) >= COLOR_ORDERING.index(colors[0]):
+                return (determineColor(name[0]), None)
+            return colors
+        return (determineColor(name), None)
 
 # Add synonym relations
 synDict, nameDict = {}, {}
@@ -183,11 +207,11 @@ for name, synonym in zip(names, synonyms):
                 nameDict[rname] = [rsyn]
             # To only track relation one way and check inconsistencies
             try:
-                if synSets[f"{fname}->{fsyn}"] != (isUnsure(syn), getColor(syn)):
+                if synSets[f"{fname}->{fsyn}"] != getColor(syn):
                     raise ValueError(
                         f"Mismatch between rigidity of synonyms {fsyn} and {fname}")
             except KeyError:
-                synSets[f"{fsyn}->{fname}"] = (isUnsure(syn), getColor(syn))
+                synSets[f"{fsyn}->{fname}"] = getColor(syn)
 
 for key in categoryDict.keys():
     for syn, terms in synDict.items():
@@ -204,12 +228,14 @@ for key in categoryDict.keys():
                     addToIterable(term, categoryDict[key][0], key)
 
                     fterm = formatApproach(term)
-                    style = 'style="dashed"' if synSets[f"{fsyn}->{fterm}"][0] else ""
-                    color = synSets[f"{fsyn}->{fterm}"][1]
-                    if color:
-                        color = f'color="{color}"'
-                    addLineToCategory(key, f"{fterm} -> {fsyn}[{",".join([
-                        s for s in ["dir=none", style, color] if s])}];")
+                    colors = synSets[f"{fsyn}->{fterm}"]
+                    if colors[0]:
+                        color = f',color="{colors[0]}"' if colors[0] != BLACK else ""
+                        addLineToCategory(key, f"{fterm} -> {fsyn}[dir=none{color}];")
+                    if colors[1]:
+                        style = 'style="dashed"'
+                        color = f',color="{colors[1]}"' if colors[1] != BLACK else ""
+                        addLineToCategory(key, f'{fterm} -> {fsyn}[dir=none,style="dashed"{color}];')
     if categoryDict[key][1][-1] != "":
         categoryDict[key][1].append("")
 
@@ -238,21 +264,26 @@ for name, parent in zip(names, parents):
             continue
 
         fname = formatApproach(name)
-        style = 'style="dashed"' if isUnsure(par) else ""
-        color = f'color="{getColor(par)}"' if getColor(par) else ""
-        [{",".join([s for s in [style, color] if s])}]
-        parentLine = f"{fname} -> {fpar}[{",".join(
-            [s for s in [style, color] if s])}];"
-        parentLine = parentLine.replace("[]", "")
+        parentLines = []
+        colors = getColor(par)
+        if colors[0]:
+            color = f'[color="{colors[0]}"]' if colors[0] != BLACK else ""
+            parentLines.append(f"{fname} -> {fpar}{color};")
+        if colors[1]:
+            style = 'style="dashed"'
+            color = f',color="{colors[1]}"' if colors[1] != BLACK else ""
+            parentLines.append(f'{fname} -> {fpar}[style="dashed"{color}];')
+
         for key in categoryDict.keys():
-            if key == "Static" and (fname in staticApproaches or
-                                    fpar in staticApproaches):
-                addToIterable(name, workingStaticSet, "Static")
-                addToIterable(par, workingStaticSet, "Static")
-                addLineToCategory("Static", parentLine)
-            elif (removeInParens(name) in categoryDict[key][0] and
-                removeInParens(par) in categoryDict[key][0]):
-                addLineToCategory(key, parentLine)
+            for parentLine in parentLines:
+                if key == "Static" and (fname in staticApproaches or
+                                        fpar in staticApproaches):
+                    addToIterable(name, workingStaticSet, "Static")
+                    addToIterable(par, workingStaticSet, "Static")
+                    addLineToCategory("Static", parentLine)
+                elif (removeInParens(name) in categoryDict[key][0] and
+                    removeInParens(par) in categoryDict[key][0]):
+                    addLineToCategory(key, parentLine)
 
 def splitListAtEmpty(listToSplit):
     recArr = np.array(listToSplit)
