@@ -188,6 +188,15 @@ def getColor(name):
             return colors
         return (determineColor(name), None)
 
+def colorRelations(colors, edge, extra=""):
+    out = []
+    # Second iteration is for unsure relations
+    for i, style in enumerate(['', 'style="dashed"']):
+        if colors[i]:
+            color = f'color="{colors[i]}"' if colors[i] != BLACK else ""
+            out.append(f"{edge}[{",".join(list(filter(None, [extra, style, color])))}];".replace("[]", ""))
+    return out
+
 # Add synonym relations
 synDict, nameDict = {}, {}
 synSets = {}
@@ -228,14 +237,10 @@ for key in categoryDict.keys():
                     addToIterable(term, categoryDict[key][0], key)
 
                     fterm = formatApproach(term)
-                    colors = synSets[f"{fsyn}->{fterm}"]
-                    if colors[0]:
-                        color = f',color="{colors[0]}"' if colors[0] != BLACK else ""
-                        addLineToCategory(key, f"{fterm} -> {fsyn}[dir=none{color}];")
-                    if colors[1]:
-                        style = 'style="dashed"'
-                        color = f',color="{colors[1]}"' if colors[1] != BLACK else ""
-                        addLineToCategory(key, f'{fterm} -> {fsyn}[dir=none,style="dashed"{color}];')
+                    for line in colorRelations(synSets[f"{fsyn}->{fterm}"],
+                                               f"{fterm} -> {fsyn}", "dir=none"):
+                        addLineToCategory(key, line)
+
     if categoryDict[key][1][-1] != "":
         categoryDict[key][1].append("")
 
@@ -258,24 +263,15 @@ workingStaticSet = staticApproaches.copy()
 # Add parent relations
 for name, parent in zip(names, parents):
     # if [x for x in parent + [name] if "keyword" in x.lower()]:
+    fname = formatApproach(name)
     for par in parent:
         fpar = formatApproach(par)
         if not fpar:
             continue
 
-        fname = formatApproach(name)
-        parentLines = []
-        colors = getColor(par)
-        if colors[0]:
-            color = f'[color="{colors[0]}"]' if colors[0] != BLACK else ""
-            parentLines.append(f"{fname} -> {fpar}{color};")
-        if colors[1]:
-            style = 'style="dashed"'
-            color = f',color="{colors[1]}"' if colors[1] != BLACK else ""
-            parentLines.append(f'{fname} -> {fpar}[style="dashed"{color}];')
-
         for key in categoryDict.keys():
-            for parentLine in parentLines:
+            for parentLine in colorRelations(
+                    getColor(par), f"{fname} -> {fpar}"):
                 if key == "Static" and (fname in staticApproaches or
                                         fpar in staticApproaches):
                     addToIterable(name, workingStaticSet, "Static")
