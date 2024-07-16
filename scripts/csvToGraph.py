@@ -65,8 +65,8 @@ categoryDict = {
 
 def isUnsure(name):
     return any(unsure in name for unsure in
-               {"?", "(implied", "(inferred", "(can be",
-                "(usually", "(if" , " (Testing)"})
+               {"?", "(implied", "(inferred", "(can be", "(usually",
+                "(most", "(often", "(if" , " (Testing)"})
 
 def addLineToCategory(key, line):
     if line not in categoryDict[key][1] and "-> ;" not in line:
