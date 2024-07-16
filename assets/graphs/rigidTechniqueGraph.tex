@@ -154,14 +154,14 @@ VulnerabilityScanning [label=<Vulnerability<br/>Scanning>];
 Walkthroughs [label=<Walkthroughs>];
 
 MultipleConditionTesting [label=<(Multiple)<br/>Condition<br/>Testing>,style="dotted"];
-BranchConditionCombinationTesting -> MultipleConditionTesting[dir=none];
-ConditionTesting -> DecisionTesting[dir=none];
-FunctionalTesting -> SpecificationbasedTesting[dir=none];
-OrthogonalArrayTesting -> PairwiseTesting[dir=none];
+BranchConditionCombinationTesting -> MultipleConditionTesting[dir=none,color="blue"];
+ConditionTesting -> DecisionTesting[dir=none,color="blue"];
+FunctionalTesting -> SpecificationbasedTesting[dir=none,color="green"];
+OrthogonalArrayTesting -> PairwiseTesting[dir=none,color="blue"];
+ScenarioTesting -> UseCaseTesting[dir=none,color="blue"];
 UserScenarioTesting [label=<User<br/>Scenario<br/>Testing>,style="dotted"];
-ScenarioTesting -> UserScenarioTesting[dir=none];
-UseCaseTesting -> UserScenarioTesting[dir=none];
-ScenarioTesting -> UseCaseTesting[dir=none];
+ScenarioTesting -> UserScenarioTesting[dir=none,color="blue"];
+UseCaseTesting -> UserScenarioTesting[dir=none,color="green"];
 
 ZeroSwitchTesting -> StateTransitionTesting;
 OneSwitchTesting -> NSwitchTesting;

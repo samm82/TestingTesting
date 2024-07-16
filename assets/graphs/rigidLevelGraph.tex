@@ -68,8 +68,8 @@ TopDownTesting [label=<Top-Down<br/>Testing>];
 UnitTesting [label=<Unit<br/>Testing>];
 UserAcceptanceTesting [label=<User<br/>Acceptance<br/>Testing>];
 
-AcceptanceTesting -> QualificationTesting[dir=none];
-OperationalTesting -> ProductionAcceptanceTesting[dir=none];
+AcceptanceTesting -> QualificationTesting[dir=none,color="blue"];
+OperationalTesting -> ProductionAcceptanceTesting[dir=none,color="blue"];
 
 AcceptanceTesting -> SystemTesting;
 AlphaTesting -> AcceptanceTesting;

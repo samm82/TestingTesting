@@ -70,13 +70,13 @@ TopDownTesting [label=<Top-Down<br/>Testing>];
 UnitTesting [label=<Unit<br/>Testing>];
 UserAcceptanceTesting [label=<User<br/>Acceptance<br/>Testing>];
 
-AcceptanceTesting -> QualificationTesting[dir=none];
+AcceptanceTesting -> QualificationTesting[dir=none,color="blue"];
 LinkTesting [label=<Link<br/>Testing>,style="dotted"];
 ComponentIntegrationTesting -> LinkTesting[dir=none,style="dashed"];
 IntegrationTesting -> LinkTesting[dir=none,style="dashed"];
 QualificationTesting -> OperationalTesting[dir=none,style="dashed"];
 IntegratedSystemTesting -> SystemsIntegrationTesting[dir=none,style="dashed"];
-OperationalTesting -> ProductionAcceptanceTesting[dir=none];
+OperationalTesting -> ProductionAcceptanceTesting[dir=none,color="blue"];
 ProductionVerificationTesting -> ProductionAcceptanceTesting[dir=none,style="dashed"];
 SystemQualificationTesting -> SystemTesting[dir=none,style="dashed"];
 
