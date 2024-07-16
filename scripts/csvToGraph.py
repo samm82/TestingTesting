@@ -21,8 +21,8 @@ def processCol(col):
     def copySources(x):
         # "Pull" sources back (i.e., when a source applies to multiple items)
         for i in range(len(x)-1, 0, -1):
-            if (x[i].find("(") > 0 and not re.search(
-                    fr"{AUTHOR_REGEX}|{BEGIN_INFO_REGEX}", x[i-1])):
+            if (x[i].find("(") > 0 and not re.search(r"\(Acceptance\)", x[i])
+                    and not re.search(fr"{AUTHOR_REGEX}|{BEGIN_INFO_REGEX}", x[i-1])):
                 x[i-1] += f" ({x[i].split(" (")[-1]}"
             x[i] = x[i].replace("if they exist", "if it exists")
         # "Push" sources forward (i.e., when parts of a source are implied)
