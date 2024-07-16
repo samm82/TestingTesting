@@ -150,49 +150,50 @@ def addToIterable(s, iterable, key=key):
             addNode(s, style="filled", key=key)
             iterable.add(formatApproach(s))
     else:
-        raise ValueError(f"addToIterable unimplemented for {type(
-            iterable)}")
+        raise ValueError(f"addToIterable unimplemented for {type(iterable)}")
 
 # Add synonym relations
 synDict, nameDict = {}, {}
 synSets = {}
 for name, synonym in zip(names, synonyms):
+    rname, fname = removeInParens(name), formatApproach(name)
     for syn in synonym:
-        if not ("spelled" in syn.lower() or "called" in syn.lower() or
-                formatApproach(syn).isupper()):
+        rsyn, fsyn = removeInParens(syn), formatApproach(syn)
+        if not (any(minor in syn.lower() for minor in {"spelled", "called"}) or
+                fsyn.isupper()):
             try:
-                synDict[removeInParens(syn)].append(removeInParens(name))
+                synDict[rsyn].append(rname)
             except KeyError:
-                synDict[removeInParens(syn)] = [removeInParens(name)]
+                synDict[rsyn] = [rname]
             try:
-                nameDict[removeInParens(name)].append(removeInParens(syn))
+                nameDict[rname].append(rsyn)
             except KeyError:
-                nameDict[removeInParens(name)] = [removeInParens(syn)]
+                nameDict[rname] = [rsyn]
             # To only track relation one way and check inconsistencies
             try:
-                if synSets[f"{formatApproach(name)}->{formatApproach(syn)}"] != isUnsure(syn):
-                    raise ValueError(f"Mismatch between rigidity of synonyms {formatApproach(
-                        syn)} and {formatApproach(name)}")
+                if synSets[f"{fname}->{fsyn}"] != isUnsure(syn):
+                    raise ValueError(
+                        f"Mismatch between rigidity of synonyms {fsyn} and {fname}")
             except KeyError:
-                synSets[f"{formatApproach(syn)}->{formatApproach(name)}"] = isUnsure(syn)
+                synSets[f"{fsyn}->{fname}"] = isUnsure(syn)
 
 for key in categoryDict.keys():
     for syn, terms in synDict.items():
+        fsyn = formatApproach(syn)
         terms = [x for x in terms
                  if removeInParens(x) in categoryDict[key][0]]
         if (removeInParens(syn) in categoryDict[key][0] or
                 (len(terms) > 1)):
-            validTerms = [term for term in terms if f"{formatApproach(
-                syn)}->{formatApproach(term)}" in synSets.keys()]
+            validTerms = [term for term in terms
+                          if f"{fsyn}->{formatApproach(term)}" in synSets.keys()]
             if validTerms:
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
-                    addLineToCategory(
-                        key, f"{formatApproach(
-                            term)} -> {formatApproach(
-                                syn)}[dir=none{',style="dashed"' if synSets[f"{formatApproach(
-                                    syn)}->{formatApproach(term)}"] else ""}];")
+
+                    fterm = formatApproach(term)
+                    styles = ',style="dashed"' if synSets[f"{fsyn}->{fterm}"] else ""
+                    addLineToCategory(key, f"{fterm} -> {fsyn}[dir=none{styles}];")
     if categoryDict[key][1][-1] != "":
         categoryDict[key][1].append("")
 
