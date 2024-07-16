@@ -127,17 +127,6 @@ for name, category in zip(names, categories):
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key)
 
-        # # For finding categorization discrepancies
-        # split_cat = [c for c in removeInParens(category).split(", ")
-        #              if c.startswith(('Level', 'Practice', 'Technique', 'Type'))
-        #                 and f"{c} (implied" not in category and f"{c} (inferred" not in category
-        #                 and not c.endswith('?')]
-        # if len(split_cat) > 1:
-        #     print(name)
-        #     print(f"{name.capitalize()} is categorized as both a test {\
-        #         split_cat[0].lower()} and a test {split_cat[1].lower()}")
-        #     print("\t", category)
-
 for key in categoryDict.keys():
     categoryDict[key][1].append("")
 
