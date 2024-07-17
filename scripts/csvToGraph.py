@@ -234,8 +234,8 @@ for name, synonym in zip(names, synonyms):
                 synSets[f"{fsyn}->{fname}"] = getColor(syn)
 
 def makeSynLine(syn, terms):
-    return f"\\item \\textbf{{{syn}:}} {', '.join(
-        term for term in terms)}"
+    return f"\\item \\textbf{{{syn}:}}\n\t\\begin{{itemize}}\n{'\n'.join(
+        f"\t\t\\item {term}" for term in terms)}\n\t\\end{{itemize}}"
 
 expSyns, impSyns = [], []
 for key in categoryDict.keys():
