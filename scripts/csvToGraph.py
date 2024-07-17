@@ -234,8 +234,24 @@ for name, synonym in zip(names, synonyms):
                 synSets[f"{fsyn}->{fname}"] = getColor(syn)
 
 def makeSynLine(syn, terms):
-    return f"\\item \\textbf{{{syn}:}}\n\t\\begin{{itemize}}\n{'\n'.join(
+    line = f"\\item \\textbf{{{syn}:}}\n\t\\begin{{itemize}}\n{'\n'.join(
         f"\t\t\\item {term}" for term in terms)}\n\t\\end{{itemize}}"
+
+    line = line.replace("(Hamburg and Mogyorodi, 2024)", "\\citepISTQB{}")
+    line = line.replace("Hamburg and Mogyorodi, 2024", "\\citealpISTQB{}")
+    line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX}); ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
+                  r"\\citealp[\3~\4]{\1\2}; \\citeyear[\6~\7]{\1\5}", line)
+    line = re.sub(fr"\(({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})\)",
+                  r"\\citep[\3~\4]{\1\2}", line)
+    line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
+                  r"\\citealp[\3~\4]{\1\2}", line)
+    line = re.sub(fr"\[([\w\d~.]+)\]{{(\w+)}}, ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
+                  r"[\1,~\3~\4]{\2}", line)
+    line = line.replace(" et al.", "EtAl")
+    line = re.sub(r"\"([\w\s]*)\"", r"``\1''", line)
+    line = line.replace("van V", "vanV")
+
+    return line
 
 expSyns, impSyns = [], []
 for key in categoryDict.keys():
@@ -249,9 +265,9 @@ for key in categoryDict.keys():
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
                     synsList, synStr = (
-                        (impSyns, f"\\emph{{{syn}}}") if not all(bool(
-                            synSets[f"{fsyn}->{formatApproach(term)}"][0]
-                            ) for term in validTerms) else (expSyns, syn))
+                        (impSyns, f"\\emph{{{syn}}}")
+                        if not all(synSets[f"{fsyn}->{formatApproach(term)}"][0]
+                                   for term in validTerms) else (expSyns, syn))
                     synsList.append(makeSynLine(synStr, filter(knownTerm, terms)))
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
@@ -279,31 +295,28 @@ for key in categoryDict.keys():
         if blacklistSyns:
             categoryDict[key][1].append("")
 
-def sortMultiLists(*lists):
-    # From https://stackoverflow.com/a/14807719/10002168
-    return [i for i in chain.from_iterable(
-        sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", x)) for ls in lists)]
+# Sort explicit and implicit synonyms based on number of them with sources
+synLines = []
+for synList in [expSyns, impSyns]:
+    synList.sort(key=lambda x: re.sub(r"\(.+\) ", "", x))
+    allSources, someSources, noSources = [], [], []
+    for line in synList:
+        # The itemized list is itself an item
+        if line.count("\\item") - 1 <= line.count("\\cite"):
+            allSources.append(line)
+        elif line.count("\\cite"):
+            someSources.append(line)
+        else:
+            noSources.append(line)
+    synLines += allSources + someSources + noSources
 
 def writeHelperFile(lines, filename):
     lines = "\n".join(lines)
-    lines = lines.replace("(Hamburg and Mogyorodi, 2024)", "\\citepISTQB{}")
-    lines = lines.replace("Hamburg and Mogyorodi, 2024", "\\citealpISTQB{}")
-    lines = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX}); ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
-                    r"\\citealp[\3~\4]{\1\2}; \\citeyear[\6~\7]{\1\5}", lines)
-    lines = re.sub(fr"\(({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})\)",
-                    r"\\citep[\3~\4]{\1\2}", lines)
-    lines = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
-                    r"\\citealp[\3~\4]{\1\2}", lines)
-    lines = re.sub(fr"\[([\w\d~.]+)\]{{(\w+)}}, ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
-                    r"[\1,~\3~\4]{\2}", lines)
-    lines = lines.replace(" et al.", "EtAl")
-    lines = re.sub(r"\"([\w\s]*)\"", r"``\1''", lines)
-    lines = lines.replace("van V", "vanV")
 
     with open(f"build/{filename}.tex", "w", encoding="utf-8") as outFile:
         outFile.writelines(lines)
 
-writeHelperFile(sortMultiLists(expSyns, impSyns), "multiSyns")
+writeHelperFile(synLines, "multiSyns")
 
 workingStaticSet = staticApproaches.copy()
 
