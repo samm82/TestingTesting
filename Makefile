@@ -50,7 +50,7 @@ update_diffs: gen_csv_diffs
 csv_process:
 	py scripts/csvToGraph.py
 
-graphs: csv_process assets/graphs/*.tex assets/graphs/manual/*.tex
+graphs: assets/graphs/*.tex assets/graphs/manual/*.tex | csv_process
 	-rm assets/graphs/manual/*.pdf
 	-rm assets/graphs/*.pdf
 	for filename in $^ ; do \

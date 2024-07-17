@@ -20,6 +20,8 @@ synonyms = approaches["Synonym(s)"].to_list()
 parents = approaches["Parent(s)"].to_list()
 
 def processCol(col):
+    SOURCE_CHUNKS = [AUTHOR_REGEX, YEAR_REGEX, BEGIN_INFO_REGEX]
+
     # Adds a comma and a space to a RegEx within a non-capturing group
     def cs(regex):
         return fr"(?:{regex}, )"
@@ -31,39 +33,33 @@ def processCol(col):
                     and not re.search(fr"{cs(AUTHOR_REGEX)}|({BEGIN_INFO_REGEX} )",x[i-1])):
                 x[i-1] += f" ({x[i].split(" (")[-1]}"
             x[i] = x[i].replace("if they exist", "if it exists")
+
+        # Pre-compile RegEx patterns
+        IMPLIED_PATTERNS = [re.compile(fr"({PREFIX_REGEX})({r})")
+                            for r in [BEGIN_INFO_REGEX, YEAR_REGEX]]
+        HAS_AUTHOR_REGEX = re.compile(cs(AUTHOR_REGEX))
+
         # "Push" sources forward (i.e., when parts of a source are implied)
-        # out = "Link Testing" in ", ".join(x)
-        out = "OG 2013" in ", ".join(x)
-        # out = "Scenario Testing (can be)" in ", ".join(x)
-        # out = "2014, p. 179), Web Application Testing (with its sub-techniques" in ", ".join(x)
-        if out:
-            print(x)
         while True:
             origX = x.copy()
             for i in range(1, len(x)):
-                for j, r in enumerate([BEGIN_INFO_REGEX, YEAR_REGEX]):
-                    search = re.search(fr"({PREFIX_REGEX})({r})", x[i])
-                    if search:
-                        chunks = [AUTHOR_REGEX, YEAR_REGEX]
-                        toPull = re.findall(f"({"?".join(
-                            cs(x) for x in chunks[:len(chunks)-j])})", x[i-1])
-                        if out:
-                            print("?".join(cs(x) for x in chunks))
-                            print("begin" if r == BEGIN_INFO_REGEX else "year")
-                        if toPull and len(search.groups()) == 2 and not re.search(cs(AUTHOR_REGEX), x[i]):
-                            if out:
-                                print(toPull[-1])
-                                print(search)
-                                print(search.group())
+                for j, pattern in enumerate(IMPLIED_PATTERNS):
+                    search = pattern.search(x[i])
+                    if (search and len(search.groups()) == 2 and
+                            not HAS_AUTHOR_REGEX.search(x[i])):
+                        toPush = re.findall(f"({"?".join(
+                            cs(c) for c in SOURCE_CHUNKS[:2-j]
+                        )})", x[i-1])
+                        if toPush:
                             x[i] = x[i].replace(search.group(),
-                                                toPull[-1].join(search.groups()))
+                                                toPush[-1].join(search.groups()))
             if origX == x:
                 return x
 
-    col = [re.split(SPLIT_REGEX, x) if type(x) is str else [] for x in col]
+    col = [re.split(SPLIT_REGEX, x) if isinstance(x, str) else [] for x in col]
     return [copySources(x) for x in col]
 
-names = [n for n in names if type(n) is str]
+names = [n for n in names if isinstance(n, str)]
 parents = processCol(parents)
 synonyms = processCol(synonyms)
 
@@ -141,7 +137,7 @@ def addNode(name, style = "", key = "Approach"):
     addLineToCategory(key, nameLine)
 
 for name, category in zip(names, categories):
-    if type(category) is str:
+    if isinstance(category, str):
         for key in categoryDict.keys():
             if key in category or key == "Approach":
                 categoryDict[key][0].append(removeInParens(name))
@@ -151,11 +147,11 @@ for key in categoryDict.keys():
     categoryDict[key][1].append("")
 
 def addToIterable(s, iterable, key=key):
-    if type(iterable) is list:
+    if isinstance(iterable, list):
         if removeInParens(s) not in iterable:
             addNode(s, style="dotted", key=key)
             iterable.append(removeInParens(s))
-    elif type(iterable) is set:
+    elif isinstance(iterable, set):
         if formatApproach(s) not in iterable:
             addNode(s, style="filled", key=key)
             iterable.add(formatApproach(s))
@@ -190,7 +186,7 @@ def getColor(name):
             if term + " " in name:
                 name = name.split(term)
                 break
-        if type(name) is list:
+        if isinstance(name, list):
             colors = (determineColor(name[0]), determineColor(name[1]))
             if COLOR_ORDERING.index(colors[1]) >= COLOR_ORDERING.index(colors[0]):
                 return (determineColor(name[0]), None)
