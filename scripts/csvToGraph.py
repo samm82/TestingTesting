@@ -33,34 +33,30 @@ def processCol(col):
             x[i] = x[i].replace("if they exist", "if it exists")
         # "Push" sources forward (i.e., when parts of a source are implied)
         # out = "Link Testing" in ", ".join(x)
-        # out = "OG 2013" in ", ".join(x)
+        out = "OG 2013" in ", ".join(x)
         # out = "Scenario Testing (can be)" in ", ".join(x)
-        out = "2014, p. 179), Web Application Testing (with its sub-techniques" in ", ".join(x)
+        # out = "2014, p. 179), Web Application Testing (with its sub-techniques" in ", ".join(x)
         if out:
             print(x)
         while True:
             origX = x.copy()
             for i in range(1, len(x)):
-                for r in [BEGIN_INFO_REGEX, YEAR_REGEX]:
-                    if re.search(fr"(?:{PREFIX_REGEX}){r}", x[i]):
-                        chunks = [AUTHOR_REGEX]
-                        if r == BEGIN_INFO_REGEX:
-                            chunks.append(YEAR_REGEX)
-                        toPull = re.findall(f"({"?".join(cs(x) for x in chunks)})", x[i-1])
+                for j, r in enumerate([BEGIN_INFO_REGEX, YEAR_REGEX]):
+                    search = re.search(fr"({PREFIX_REGEX})({r})", x[i])
+                    if search:
+                        chunks = [AUTHOR_REGEX, YEAR_REGEX]
+                        toPull = re.findall(f"({"?".join(
+                            cs(x) for x in chunks[:len(chunks)-j])})", x[i-1])
                         if out:
                             print("?".join(cs(x) for x in chunks))
                             print("begin" if r == BEGIN_INFO_REGEX else "year")
-                        if toPull:
-                            search = re.search(fr"({PREFIX_REGEX})({r})", x[i])
+                        if toPull and len(search.groups()) == 2 and not re.search(cs(AUTHOR_REGEX), x[i]):
                             if out:
                                 print(toPull[-1])
                                 print(search)
-                            if search and len(search.groups()) == 2 and not re.search(cs(AUTHOR_REGEX), x[i]):
-                                x[i] = re.sub(fr"({PREFIX_REGEX})({r})",
-                                              # Using capture groups wasn't working
-                                              (lambda m: m.group(1) + toPull[-1] + m.group(2)), x[i])
-            if out:
-                print(x)
+                                print(search.group())
+                            x[i] = x[i].replace(search.group(),
+                                                toPull[-1].join(search.groups()))
             if origX == x:
                 return x
 
