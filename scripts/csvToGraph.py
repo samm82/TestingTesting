@@ -32,6 +32,12 @@ def processCol(col):
                 x[i-1] += f" ({x[i].split(" (")[-1]}"
             x[i] = x[i].replace("if they exist", "if it exists")
         # "Push" sources forward (i.e., when parts of a source are implied)
+        # out = "Link Testing" in ", ".join(x)
+        # out = "OG 2013" in ", ".join(x)
+        # out = "Scenario Testing (can be)" in ", ".join(x)
+        out = "2014, p. 179), Web Application Testing (with its sub-techniques" in ", ".join(x)
+        if out:
+            print(x)
         while True:
             origX = x.copy()
             for i in range(1, len(x)):
@@ -40,10 +46,21 @@ def processCol(col):
                         chunks = [AUTHOR_REGEX]
                         if r == BEGIN_INFO_REGEX:
                             chunks.append(YEAR_REGEX)
-                        search = re.findall(f"({"?".join(cs(x) for x in chunks)})", x[i-1])
-                        if search and not re.search(cs(AUTHOR_REGEX), x[i]):
-                            x[i] = re.sub(fr"({PREFIX_REGEX})({BEGIN_INFO_REGEX})",
-                                          fr"\1{search[-1]}\2", x[i])
+                        toPull = re.findall(f"({"?".join(cs(x) for x in chunks)})", x[i-1])
+                        if out:
+                            print("?".join(cs(x) for x in chunks))
+                            print("begin" if r == BEGIN_INFO_REGEX else "year")
+                        if toPull:
+                            search = re.search(fr"({PREFIX_REGEX})({r})", x[i])
+                            if out:
+                                print(toPull[-1])
+                                print(search)
+                            if search and len(search.groups()) == 2 and not re.search(cs(AUTHOR_REGEX), x[i]):
+                                x[i] = re.sub(fr"({PREFIX_REGEX})({r})",
+                                              # Using capture groups wasn't working
+                                              (lambda m: m.group(1) + toPull[-1] + m.group(2)), x[i])
+            if out:
+                print(x)
             if origX == x:
                 return x
 
