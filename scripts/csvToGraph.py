@@ -4,7 +4,7 @@ from pandas import read_csv
 import re
 
 # RegEx patterns
-AUTHOR_CHARS = "a-zA-Zßğö./"
+AUTHOR_CHARS = r"a-zA-Zßğö.\/"
 AUTHOR_REGEX = fr"(?:(?:van )|[A-Z])[{AUTHOR_CHARS} ]+"
 YEAR_REGEX = r"\d{4}[a-z]?"
 BEGIN_INFO_REGEX = r"[a-zA-Z]+\."
@@ -20,9 +20,9 @@ synonyms = approaches["Synonym(s)"].to_list()
 parents = approaches["Parent(s)"].to_list()
 
 def processCol(col):
-    # Adds a comma and a space to a RegEx and wraps it in parentheses
+    # Adds a comma and a space to a RegEx within a non-capturing group
     def cs(regex):
-        return fr"({regex}, )"
+        return fr"(?:{regex}, )"
 
     def copySources(x):
         # "Pull" sources back (i.e., when a source applies to multiple items)
@@ -36,13 +36,14 @@ def processCol(col):
             origX = x.copy()
             for i in range(1, len(x)):
                 for r in [BEGIN_INFO_REGEX, YEAR_REGEX]:
-                    if re.search(fr"{PREFIX_REGEX}{r}", x[i]):
-                        searchRegex = (AUTHOR_REGEX + (fr"?{YEAR_REGEX}"
-                                       if r == BEGIN_INFO_REGEX else ""))
-                        search = re.search(cs(searchRegex), x[i-1])
+                    if re.search(fr"(?:{PREFIX_REGEX}){r}", x[i]):
+                        chunks = [AUTHOR_REGEX]
+                        if r == BEGIN_INFO_REGEX:
+                            chunks.append(YEAR_REGEX)
+                        search = re.findall(f"({"?".join(cs(x) for x in chunks)})", x[i-1])
                         if search and not re.search(cs(AUTHOR_REGEX), x[i]):
                             x[i] = re.sub(fr"({PREFIX_REGEX})({BEGIN_INFO_REGEX})",
-                                          fr"\1{search.group()}\2", x[i])
+                                          fr"\1{search[-1]}\2", x[i])
             if origX == x:
                 return x
 

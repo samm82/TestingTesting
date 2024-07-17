@@ -533,7 +533,7 @@ ExtendedBranchCoverage [label=<Extended<br/>Branch<br/>Coverage>,style="dotted"]
 BranchConditionCombinationTesting -> ExtendedBranchCoverage[dir=none,style="dashed",color="maroon"];
 BranchConditionTesting -> ExtendedBranchCoverage[dir=none,style="dashed",color="maroon"];
 LinkTesting [label=<Link<br/>Testing>,style="dotted"];
-BranchTesting -> LinkTesting[dir=none,style="dashed"];
+BranchTesting -> LinkTesting[dir=none,style="dashed",color="green"];
 ComponentIntegrationTesting -> LinkTesting[dir=none,style="dashed"];
 IntegrationTesting -> LinkTesting[dir=none,style="dashed"];
 BuiltInTesting -> SelfTesting[dir=none,style="dashed",color="blue"];
@@ -1347,7 +1347,7 @@ RapidPrototypingTesting -> LifecyclebasedTesting;
 RapidPrototypingTesting -> AttheBeginningTesting[style="dashed"];
 ReactiveTesting -> DynamicTesting[style="dashed",color="blue"];
 RecoverabilityTesting -> ReliabilityTesting[color="green"];
-RecoverabilityTesting -> UsabilityTesting[style="dashed",color="green"];
+RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
 RecoveryTesting -> PerformancerelatedTesting[color="green"];
 RecoveryTesting -> ReliabilityTesting[color="green"];
 RecoveryTesting -> AvailabilityTesting[color="green"];
