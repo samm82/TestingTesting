@@ -196,14 +196,20 @@ for name, synonym in zip(names, synonyms):
         rsyn, fsyn = removeInParens(syn), formatApproach(syn)
         if not (any(minor in syn.lower() for minor in {"spelled", "called"}) or
                 fsyn.isupper()):
+            nameWithSource = rname + ("?" if name.endswith("?") else "")
+            if "(" in syn and syn.count(" (") != rsyn.count(" ("):
+                source = syn.split(' (')
+                for i in range(source[-1].count(")") -
+                               source[-1].count("Acceptance)"), 0, -1):
+                    nameWithSource += " (" + source[-i]
             try:
-                synDict[rsyn].append(rname)
+                synDict[rsyn].append(nameWithSource)
             except KeyError:
-                synDict[rsyn] = [rname]
+                synDict[rsyn] = [nameWithSource]
             try:
-                nameDict[rname].append(rsyn)
+                nameDict[nameWithSource].append(rsyn)
             except KeyError:
-                nameDict[rname] = [rsyn]
+                nameDict[nameWithSource] = [rsyn]
             # To only track relation one way and check inconsistencies
             try:
                 if synSets[f"{fname}->{fsyn}"] != getColor(syn):
@@ -213,25 +219,25 @@ for name, synonym in zip(names, synonyms):
                 synSets[f"{fsyn}->{fname}"] = getColor(syn)
 
 def makeSynLine(syn, terms):
-    return f"\\item \\textbf{{{syn}:}} {', '.join(terms)}"
+    return f"\\item \\textbf{{{syn}:}} {', '.join(
+        removeInParens(term) for term in terms)}"
 
 expSyns, impSyns = [], []
 for key in categoryDict.keys():
     for syn, terms in synDict.items():
         fsyn = formatApproach(syn)
-        terms = [x for x in terms
-                 if removeInParens(x) in categoryDict[key][0]]
-        if (removeInParens(syn) in categoryDict[key][0] or
-                (len(terms) > 1)):
+        knownTerm = lambda x: removeInParens(x) in categoryDict[key][0]
+        if (knownTerm(syn) or (sum(1 for x in terms if knownTerm(x)) > 1)):
             validTerms = [term for term in terms
-                          if f"{fsyn}->{formatApproach(term)}" in synSets.keys()]
+                          if (f"{fsyn}->{formatApproach(term)}" in synSets.keys())
+                          and knownTerm(term)]
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
                     synsList, synStr = (
                         (impSyns, f"\\emph{{{syn}}}") if not all(bool(
                             synSets[f"{fsyn}->{formatApproach(term)}"][0]
                             ) for term in validTerms) else (expSyns, syn))
-                    synsList.append(makeSynLine(synStr, terms))
+                    synsList.append(makeSynLine(synStr, filter(knownTerm, terms)))
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
