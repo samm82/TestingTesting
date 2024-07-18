@@ -227,11 +227,11 @@ for name, synonym in zip(names, synonyms):
                 nameDict[nameWithSource] = [rsyn]
             # To only track relation one way and check inconsistencies
             try:
-                if synSets[f"{fname}->{fsyn}"] != getColor(syn):
+                if synSets[f"{fname} -> {fsyn}"] != getColor(syn):
                     raise ValueError(
                         f"Mismatch between rigidity of synonyms {fsyn} and {fname}")
             except KeyError:
-                synSets[f"{fsyn}->{fname}"] = getColor(syn)
+                synSets[f"{fsyn} -> {fname}"] = getColor(syn)
 
 def makeSynLine(syn, terms):
     line = f"\\item \\textbf{{{syn}:}}\n\t\\begin{{itemize}}\n{'\n'.join(
@@ -260,13 +260,13 @@ for key in categoryDict.keys():
         knownTerm = lambda x: removeInParens(x) in categoryDict[key][0]
         if (knownTerm(syn) or (sum(1 for x in terms if knownTerm(x)) > 1)):
             validTerms = [term for term in terms
-                          if (f"{fsyn}->{formatApproach(term)}" in synSets.keys())
+                          if (f"{fsyn} -> {formatApproach(term)}" in synSets.keys())
                           and knownTerm(term)]
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
                     synsList, synStr = (
                         (impSyns, f"\\emph{{{syn}}}")
-                        if not all(synSets[f"{fsyn}->{formatApproach(term)}"][0]
+                        if not all(synSets[f"{fsyn} -> {formatApproach(term)}"][0]
                                    for term in validTerms) else (expSyns, syn))
                     synsList.append(makeSynLine(synStr, filter(knownTerm, terms)))
                 addToIterable(syn, categoryDict[key][0], key)
@@ -274,7 +274,7 @@ for key in categoryDict.keys():
                     addToIterable(term, categoryDict[key][0], key)
 
                     fterm = formatApproach(term)
-                    for line in colorRelations(synSets[f"{fsyn}->{fterm}"],
+                    for line in colorRelations(synSets[f"{fsyn} -> {fterm}"],
                                                f"{fterm} -> {fsyn}", "dir=none"):
                         addLineToCategory(key, line)
 
