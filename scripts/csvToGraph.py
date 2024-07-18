@@ -233,6 +233,8 @@ for name, synonym in zip(names, synonyms):
             except KeyError:
                 synSets[f"{fsyn} -> {fname}"] = getColor(syn)
 
+nameDict.update(synDict)
+
 def makeSynLine(syn, terms):
     line = f"\\item \\textbf{{{syn}:}}\n\t\\begin{{itemize}}\n{'\n'.join(
         f"\t\t\\item {term}" for term in terms)}\n\t\\end{{itemize}}"
@@ -253,7 +255,7 @@ def makeSynLine(syn, terms):
 
     return line
 
-expSyns, impSyns = [], []
+expMultiSyns, impMultiSyns = [], []
 for key in categoryDict.keys():
     for syn, terms in synDict.items():
         fsyn = formatApproach(syn)
@@ -264,11 +266,11 @@ for key in categoryDict.keys():
                           and knownTerm(term)]
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
-                    synsList, synStr = (
-                        (impSyns, f"\\emph{{{syn}}}")
+                    multiSynsList, synStr = (
+                        (impMultiSyns, f"\\emph{{{syn}}}")
                         if not all(synSets[f"{fsyn} -> {formatApproach(term)}"][0]
-                                   for term in validTerms) else (expSyns, syn))
-                    synsList.append(makeSynLine(synStr, filter(knownTerm, terms)))
+                                   for term in validTerms) else (expMultiSyns, syn))
+                    multiSynsList.append(makeSynLine(synStr, filter(knownTerm, terms)))
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
@@ -283,7 +285,6 @@ for key in categoryDict.keys():
 
     # ONLY USE SAME RANK FOR THESE CATEGORIES
     if key in {}:
-        nameDict.update(synDict)
         blacklistSyns = set()
         for name, syns in nameDict.items():
             if (len(syns) == 1 and name in categoryDict[key][0] and
@@ -297,7 +298,7 @@ for key in categoryDict.keys():
 
 # Sort explicit and implicit synonyms based on number of them with sources
 synLines = []
-for synList in [expSyns, impSyns]:
+for synList in [expMultiSyns, impMultiSyns]:
     synList.sort(key=lambda x: re.sub(r"\(.+\) ", "", x))
     allSources, someSources, noSources = [], [], []
     for line in synList:
@@ -346,6 +347,24 @@ def splitListAtEmpty(listToSplit):
     return [subarray.tolist() for subarray in
             np.split(recArr, np.where(recArr == "")[0]+1)
             if len(subarray) > 0]
+
+parentLines = splitListAtEmpty(categoryDict["Approach"][1])[-1]
+for chd, syns in nameDict.items():
+    par: str
+    for par in syns:
+        synLines = [p for p in parentLines if p.startswith(
+            f"{formatApproach(chd)} -> {formatApproach(par)}")]
+        if synLines:
+            if chd in synDict.keys():
+                synSource = par.split("(", 1)
+                par = removeInParens(par)
+            else:
+                synSource = chd.split("(", 1)
+                chd = removeInParens(chd)
+            print("Child:", chd, "\nParent:", par)
+            if len(synSource) > 1:
+                print(f"Syn. Source: ({synSource[-1]}")
+            print()
 
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
