@@ -53,10 +53,11 @@
 
 \title{A New Taxonomy of Software Testing Approaches}
 \subtitle{Seeking More Standardized Standards}
-  \author[Crawford, Carette, \& Smith]{Samuel Joseph Crawford, Jacques Carette, \& Spencer Smith\newline \small \{crawfs1, carette, smiths\}@mcmaster.ca}
+  \author[Crawford, Carette, \& Smith]{Samuel Joseph Crawford, Jacques Carette,
+    \& Spencer Smith\newline \small \{crawfs1, carette, smiths\}@mcmaster.ca}
   % institute not necessary, since this info is captured in the images
-  % hack, since I'm running low on time 
-    \institute{\fontsize{26}{12}\selectfont April 22, 2023} % $^\dagger$
+  % Date placed within \institute: HACK
+    \institute{\fontsize{26}{12}\selectfont \today} % $^\dagger$
     \date{}
     % \institute[McMaster University]{Department of Computing and Software, McMaster University} % $^\dagger$
 %   \date{\vspace{-5mm}April 22, 2023}
@@ -86,7 +87,7 @@
             \begin{itemize}
                 \item Should be \textbf{systematic, rigorous, and ``complete''}
                 \item Application: \textbf{automatically generating test cases}
-                      in Drasil \cite{Drasil}
+                      in Drasil % \cite{Drasil}
                 \item The \textbf{underlying domain} should drive the scope and
                       prerequisites for generated test cases
             \end{itemize}
@@ -120,17 +121,17 @@
         \begin{block}{\fontsize{37}{20}\selectfont Methodology}
             Since a taxonomy doesn't already exist, we should create one!
             \begin{itemize}
-                \item Started from \textbf{established standards and resources}
-                      (e.g., IEEE \cite{IEEE2022}, \cite{IEEE2017}, \cite{IEEE2013};
-                      SWEBOK \cite{SWEBOK2024})
-                \item Relevant information (currently 190 testing approaches,
-                      85 software qualities, and their definitions) is then
-                      \textbf{collected and organized} into spreadsheets
+                \item Start from \textbf{``standard'' resources}
+                      (e.g., IEEE \cite{IEEE2022}, \cite{IEEE2021},
+                      \cite{IEEE2017}, \cite{IEEE2013}; SWEBOK \cite{SWEBOK2024})
+                \item \textbf{Collect} relevant information (over 500 testing
+                      approaches and 70 software qualities, along with their
+                      definitions) and \textbf{organize} it into spreadsheets
                 \item \emph{Note: static testing approaches are included, since
                           they are sometimes included in ``software testing''
                           \cite[p.~17]{IEEE2022}, \cite[p.~440]{IEEE2017},
                           \cite[p.~5-2]{SWEBOK2024}}
-                \item We will iterate this process until we encounter
+                \item Iterate this process until there are
                       diminishing returns, implying that something approaching
                       a \textbf{complete taxonomy} has emerged!
                 \item Since there are many standardized documents about
@@ -145,6 +146,7 @@
             \begin{center}
                 {\fontsize{185}{20}\selectfont \textbf{NO.}}
             \end{center}
+            \vspace{4mm}
             \begin{columns}
                 \begin{column}{0.7\textwidth}
                     \begin{center}
@@ -177,20 +179,20 @@
                     \end{itemize}
                 \end{column}
             \end{columns}
-            \vspace{3mm}
+            \vspace{5mm}
         \end{block}
     \end{textblock}
 
     \begin{textblock}{7.25}(8.25,2.75)
         \begin{block}{\fontsize{37}{20}\selectfont More Examples}
-            \cite{IEEE2022} is a software testing standard that
-            leaves much unstandardized (see Figure~\ref{Fig:IEEEdefs})
+            \cite{IEEE2022} and \cite{IEEE2021} are software testing
+            standards that leave much unstandardized (see Figure~\ref{Fig:IEEEdefs})
             \begin{itemize}
-                \item Most (55 out of 99) testing approaches from \cite{IEEE2022}
-                      \textbf{do not have a definition}!
-                \item Eight of these were (at the very least) described in the
+                \item About 20\% (23 out of 114) of testing approaches from
+                      these standards \textbf{do not have a definition}!
+                \item Five of these were (at the very least) described in the
                       previous version of this standard \cite{IEEE2013}
-                \item Nine were present in the same way in another IEEE
+                \item Four were present in the same way in another IEEE
                       standard \cite{IEEE2017} before this one was published
             \end{itemize}
             \vspace{5mm}
@@ -202,13 +204,13 @@
                     \begin{center}
                         \begin{figure}
                             \begin{tikzpicture}[thick, scale=1.7, every node/.style={align=left, scale=0.8}]
-                                \pie{44.4/Defined,
-                                38.4/{Not\\defined},
-                                9.1/{Present in\\another standard},
-                                8.1/{Present in\\previous version}}
+                                \pie{79.8/Defined,
+                                12.3/{Not defined},
+                                4.4/{Present in \cite{IEEE2013}},
+                                3.5/{Present in \cite{IEEE2017}}}
                             \end{tikzpicture}
                             \caption{Breakdown of testing\\approach definitions in
-                                \cite{IEEE2022}.}
+                                \cite{IEEE2022} and \cite{IEEE2021}.}
                             \label{Fig:IEEEdefs}
                         \end{figure}
                     \end{center}
@@ -234,7 +236,7 @@
                             \cite[pp.~421, 170, 136, 301 (counterclockwise from top)]{IEEE2017}.
                             Note: ``equipment'' is not defined, and
                             ``mechanism'' is only defined as how ``a function
-                            \dots transform[s] input into output'' [p.~270].}
+                            \dots\ transform[s] input into output'' [p.~270].}
                             \label{Fig:unhelpful-defs}
                         \end{figure}
                     \end{center}
@@ -276,7 +278,7 @@
                 \item ``a small, selected group of potential users''
                       \cite[p.~5-8]{SWEBOK2024}, or
                 \item ``roles outside the development organization''
-                      \cite{ISTQB}
+                      \cite{ISTQB_poster}
             \end{enumerate}
             \vspace{5mm}
         \end{block}

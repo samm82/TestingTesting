@@ -717,72 +717,48 @@ approaches \citep[Fig.~5]{engström_mapping_2015}.
 
 \subsection{Discrepancies and Ambiguities}
 
-\citet{IEEE2022} mentions the following 44 test approaches without defining them.
-This means that out of the 99 identified test approaches, almost 45\% had no
-associated definition!
-However, the previous version of this standard, \citep{IEEE2013}, generally
-explained two, provided references for three, and explicitly defined three of
-these terms, for a total of eight definitions that could (should) have been
-included in \citep{IEEE2022}! These are marked with \underline{underline},
-\emph{italics}, and \textbf{bold}, respectively. Additionally, entries marked
-with an asterisk* were defined (at least partially) in \citep{IEEE2017}, which
-would have been available when creating \citep{IEEE2022}. These terms bring the
-total count of terms that could (should) have been defined in \citep{IEEE2022}
-to eighteen; almost 20\% of undefined test approaches could have been defined!
+The ISO/IEC/IEEE 29119 family of standards includes \citep{IEEE2022} and
+\citeyearpar{IEEE2021}, which mention the following 23 test approaches without
+defining them. This means that out of the 114 identified test approaches,
+about 20\% had no associated definition!
+
+However, the previous version of this standard, \citeyearpar{IEEE2013},
+generally explained two, provided references for two, and explicitly defined
+one of these terms, for a total of five definitions that could (should) have
+been included in \citeyearpar{IEEE2022}! These are marked with
+\underline{underline}, \emph{italics}, and \textbf{bold}, respectively.
+Additionally, entries marked with an asterisk* were defined (at least
+partially) in \citeyearpar{IEEE2017}, which would have been available when
+creating this family of standards. These terms bring the total count of terms
+that could (should) have been defined to nine; almost 40\% of undefined test
+approaches could have been defined!
 
 \begin{itemize}
       \item \underline{Acceptance Testing*}
-      \item All Combinations Testing
-      \item All-C-Uses Testing (Data Definition C-Use Pair*)
-      \item All-Definitions Testing
-      \item All-DU-Paths Testing (Data Definition-Use Path*)
-      \item All-P-Uses Testing (Data Definition P-Use Pair*)
-      \item All-Uses Testing (Data Definition-Use Pair*)
       \item Alpha Testing*
-      \item Base Choice Testing (also mentioned but not defined in
-            \citep{IEEE2017})
       \item Beta Testing*
-      \item Branch Condition Combination Testing
-      \item Branch Condition Testing
-      \item \textbf{Capacity Testing}*
       \item Capture-Replay Driven Testing
-      \item Cause-Effect Testing
-      \item Classification Tree Method (also mentioned but not defined in
-            \citep{IEEE2013})
-      \item Conversion Testing
-      \item \emph{Data Flow Testing}* (ISO/IEC/IEEE 29119-4)
       \item Data-driven Testing
-      \item Disaster/Recovery Testing (Disaster Recovery*)
-      \item Each Choice Testing
+      \item Error-based Testing
       \item Factory Acceptance Testing
       \item Fault Injection Testing
       \item Functional Suitability Testing (also mentioned but not defined in
             \citep{IEEE2017})
-      \item \textbf{Installability Testing}*
       \item \underline{Integration Testing}*
-      \item Localization Testing
       \item Model Verification
-      \item Negative Testing
       \item Operational Acceptance Testing
-      \item Performance-related Testing (although Performance Testing is
-            defined in \citep{IEEE2022}; see \hyperref[perf-test-ambiguity]
-            {the ``performance testing'' ambiguity} below)
+      \item Orthogonal Array Testing
       \item Production Verification Testing
-      \item Recovery Testing (\textbf{Backup and Recovery Testing}*, Recovery*)
+      \item Recovery Testing* (Failover/Recovery Testing, Back-up/Recovery
+            Testing, \textbf{Backup and Recovery Testing}*, Recovery*)
       \item Response-Time Testing
       \item \emph{Reviews} (ISO/IEC 20246) (Code Reviews*)
-      \item Scalability Testing
+      \item Scalability Testing (defined as a synonym of ``capacity testing'')
       \item Statistical Testing
-      \item Syntax Testing
       \item System Integration Testing (System Integration*)
       \item System Testing* (also mentioned but not defined in \citep{IEEE2013})
       \item \emph{Unit Testing}* (IEEE Std 1008-1987, IEEE Standard for
             Software Unit Testing implicitly listed in the bibliography!)
-      \item Usability Testing* (also mentioned but not defined in \citep{IEEE2013};
-            in \citep{IEEE2017}, ``usability test'' is defined with a note to
-            compare it to ``usability testing'' (p.~493), but no corresponding
-            entry is present)
-      \item Use Case Testing (also mentioned but not defined in \citep{IEEE2013})
       \item User Acceptance Testing
 \end{itemize}
 
@@ -827,7 +803,8 @@ within individual ones; these may be areas for further investigation:
             \citep[p.~5]{IEEE2022}, while \citeauthor{Patton2006} says the
             loads should as large as possible \citeyearpar[p.~86]{Patton2006}.
       \item Integration, system, and system integration testing are all listed
-            as ``common test levels'' \citep[p.~12]{IEEE2022}, but no
+            as ``common test levels'' (\citealp[p.~12]{IEEE2022};
+            \citeyear[p.~6]{IEEE2021}), but no
             definitions are given for the latter two, making it unclear what
             ``system integration testing'' is; it is a combination of the two?
             somewhere on the spectrum between them? It is listed as a child
@@ -840,7 +817,8 @@ within individual ones; these may be areas for further investigation:
             the two? somewhere on the spectrum between them? Likewise, it is
             listed as a child of integration testing by \citetISTQB{}.
       \item ``Installability testing'' is given as a test type
-            \citep[p.~22]{IEEE2022} but is sometimes called a test level as
+            (\citealp[p.~22]{IEEE2022}; \citeyear[p.~38]{IEEE2021})
+            but is sometimes called a test level as
             ``installation testing'' \citep[p.~445]{PetersAndPedrycz2000}.
       \item Retesting and regression testing seem to be separated from the rest
             of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
