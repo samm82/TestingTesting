@@ -29,8 +29,8 @@ def processCol(col):
     def copySources(x):
         # "Pull" sources back (i.e., when a source applies to multiple items)
         for i in range(len(x)-1, 0, -1):
-            if (x[i].find("(") > 0 and not re.search(r"\(Acceptance\)", x[i])
-                    and not re.search(fr"{cs(AUTHOR_REGEX)}|({BEGIN_INFO_REGEX} )",x[i-1])):
+            if (x[i].find("(") > 0 and
+                    not re.search(fr"{cs(AUTHOR_REGEX)}|({BEGIN_INFO_REGEX} )", x[i-1])):
                 x[i-1] += f" ({x[i].split(" (")[-1]}"
             x[i] = x[i].replace("if they exist", "if it exists")
 
@@ -56,7 +56,10 @@ def processCol(col):
             if origX == x:
                 return x
 
-    col = [re.split(SPLIT_REGEX, x) if isinstance(x, str) else [] for x in col]
+    # Handle "Operational (Acceptance) Testing"
+    # This ensures "(Acceptance)" appears in the node but doesn't affect processing
+    col = [re.split(SPLIT_REGEX, x.replace("(Acceptance) ", ""))
+           if isinstance(x, str) else [] for x in col]
     return [copySources(x) for x in col]
 
 names = [n for n in names if isinstance(n, str)]
@@ -124,7 +127,7 @@ def addNode(name, style = "", key = "Approach"):
 
     for k in staticKeywords:
         if k in name and name not in dynamicExceptions:
-            categoryDict["Static"][0].append(removeInParens(name))
+            categoryDict["Static"][0].append(name)
             staticApproaches.add(formatApproach(name))
             break
     
@@ -214,8 +217,7 @@ for name, synonym in zip(names, synonyms):
             nameWithSource = rname + ("?" if name.endswith("?") else "")
             if "(" in syn and syn.count(" (") != rsyn.count(" ("):
                 source = syn.split(' (')
-                for i in range(source[-1].count(")") -
-                               source[-1].count("Acceptance)"), 0, -1):
+                for i in range(source[-1].count(")"), 0, -1):
                     nameWithSource += " (" + source[-i]
             try:
                 synDict[rsyn].append(nameWithSource)
@@ -361,10 +363,26 @@ for chd, syns in nameDict.items():
             else:
                 synSource = chd.split("(", 1)
                 chd = removeInParens(chd)
-            print("Child:", chd, "\nParent:", par)
-            if len(synSource) > 1:
-                print(f"Syn. Source: ({synSource[-1]}")
-            print()
+
+            nameLookup = [name for name in names if name.startswith(chd)]
+            if len(set(nameLookup)) != 1:
+                raise ValueError(
+                    f"Problem with finding child term '{removeInParens(chd)}' in `names`")
+            parSource = [parItem for parItem in parents[names.index(nameLookup[0])]
+                         if parItem.startswith(par)]
+            if len(parSource) != 1:
+                raise ValueError(
+                    "Problem with finding source for parent relation between"
+                     f"'{removeInParens(chd)}' and '{removeInParens(par)}'")
+            parSource = parSource[0].split("(", 1)
+
+            if len(synSource) > 1 or len(parSource) > 1:
+                print("Child:", chd, "\nParent:", par)
+                if len(synSource) > 1:
+                    print(f"Syn. Source: ({synSource[-1]}")
+                if len(parSource) > 1:
+                    print(f"Par. Source: ({parSource[-1]}")
+                print()
 
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
