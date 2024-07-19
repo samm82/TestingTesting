@@ -399,10 +399,21 @@ def splitListAtEmpty(listToSplit):
             if len(subarray) > 0]
 
 def makeParSynLine(chd, par, parSource, synSource):
+    def parseSource(s):
+        if not isUnsure(s):
+            return ("called", s)
+        callImply = s.split(re.search(AUTHOR_REGEX, s).group())[0]
+        for x in {"by", "in"}:
+            callImply = callImply.strip(f" {x}")
+        return (callImply[1:] + " to be", "(" + s.lstrip(f"{callImply} by"))
+
+    parCallImply, parSource = parseSource(parSource)
+    synCallImply, synSource = parseSource(synSource)
+
     return formatLineWithSources(
-        f"\\item \\textbf{{``{chd.capitalize()}''}} is called a child of "
-        f"\\textbf{{``{par.lower()}''}} in {parSource}, but the two are called "
-        f"synonyms in {synSource}.")
+        f"\\item \\textbf{{``{chd.capitalize()}''}} is {parCallImply} "
+        f"a child of \\textbf{{``{par.lower()}''}} in {parSource}, but the "
+        f"two are {synCallImply} synonyms in {synSource}.")
 
 parSynLines = set()
 parentLines = splitListAtEmpty(categoryDict["Approach"][1])[-1]
