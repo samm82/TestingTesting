@@ -61,14 +61,6 @@ graphs: assets/graphs/*.tex assets/graphs/manual/*.tex | csv_process
 	done
 	rm *Graph*
 
-build: update_diffs graphs notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
-# Attempted to convert the following find and replace working in VS Code:
-# ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
-# To a Makefile rule unsuccessfully (grep not finding tildes):
-# grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
-	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape thesis.tex
-	cp build/thesis.pdf thesis.pdf	
-
 notes: csv_process # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
@@ -76,6 +68,16 @@ notes: csv_process # standard build of just notes -- '-output-directory=build' i
 # grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
 	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape notes.tex
 	cp build/notes.pdf notes.pdf
+
+thesis: notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+# Attempted to convert the following find and replace working in VS Code:
+# ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
+# To a Makefile rule unsuccessfully (grep not finding tildes):
+# grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
+	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape thesis.tex
+	cp build/thesis.pdf thesis.pdf
+
+build: thesis graphs update_diffs 
 
 debug: # for finding hard issues, this is an interactive version of 'build'
 	latexmk -output-directory=build -pdflatex=lualatex -pdf -shell-escape thesis.tex
