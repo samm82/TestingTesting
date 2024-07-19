@@ -40,9 +40,14 @@ def processCol(col):
         return fr"(?:{regex}, )"
 
     def copySources(x):
+        out = debugSource(x)
+
         # "Pull" sources back (i.e., when a source applies to multiple items)
         for i in range(len(x)-1, 0, -1):
-            if (x[i].find("(") > 0 and
+            debugSource(out, x[i])
+            if x[i].find("(", 1) > 0:
+                debugSource(out, x[i].split(" (")[-1])
+            if (x[i].find("(", 1) > 0 and
                     not re.search(fr"{cs(AUTHOR_REGEX)}|({BEGIN_INFO_REGEX} )", x[i-1])):
                 x[i-1] += f" ({x[i].split(" (")[-1]}"
             x[i] = x[i].replace("if they exist", "if it exists")
@@ -52,7 +57,6 @@ def processCol(col):
                             for r in [BEGIN_INFO_REGEX, YEAR_REGEX]]
         HAS_AUTHOR_REGEX = re.compile(cs(AUTHOR_REGEX))
 
-        out = debugSource(x)
         # "Push" sources forward (i.e., when parts of a source are implied)
         while True:
             origX = x.copy()
