@@ -909,11 +909,6 @@ within individual ones; these may be areas for further investigation:
       \item While correct, ISTQB's definition of ``specification-based testing''
             is not helpful: ``testing based on an analysis of the specification
             of the component or system'' \citepISTQB{}.
-      \item Sometimes ``condition testing'' and ``decision testing'' are treated
-            as synonyms \citep[p.~5-13]{SWEBOK2024}, but sometimes they are kept
-            separate, with the former only involving atomic conditions
-            \citepISTQB{}, implying that it may be a sub-approach of the
-            latter?
       \item ``ML model testing'' and ``ML functional performance'' are defined
             in terms of ``ML functional performance criteria'', which is defined
             in terms of ``ML functional performance metrics'', which is defined
@@ -976,10 +971,6 @@ within individual ones; these may be areas for further investigation:
             them to test the object under test; the latter is implied, but the
             wording of its subtypes \citep[p.~25]{Firesmith2015} seems to imply
             the former.
-      \item \citeauthor{Firesmith2015} makes a distinction between organization-
-            and role-based testing \citeyearpar[pp.~17,~37,~39]{Firesmith2015},
-            which seems arbitrary, but further investigation may prove it to be
-            meaningful (see \thesisissueref{59}).
       \item \citeauthor{ISO_IEC2023a} say that performance and security testing
             are subtypes of reliability testing \citeyearpar{ISO_IEC2023a}, but
             these are all listed separately by \citet[p.~53]{Firesmith2015}.
@@ -988,13 +979,6 @@ within individual ones; these may be areas for further investigation:
             elsewhere, they seem to refer to testing the acoustic tolerance of
             rats \citep{HolleyEtAl1996} or the acceleration tolerance of
             \accelTolTest{}, which don't exactly seem relevant\dots
-      \item While \citeauthor{Firesmith2015} says that fault tolerance testing
-            is a subtype\notDefDistinctIEEE{type} of robustness testing
-            \citeyearpar[p.~56]{Firesmith2015}
-            (which is distinct from reliability testing (p.~53)), other sources
-            say it is a subtype of reliability testing (\citealp[p.~375]{IEEE2017};
-            \citealp[p.~7-10]{SWEBOK2024}) or a synonym of ``robustness
-            testing'' \citepISTQB{}.
       \item The distinctions between development testing \citep[p.~136]{IEEE2017},
             developmental testing \citep[p.~30]{Firesmith2015}, and developer
             testing (\citealp[p.~39]{Firesmith2015}; \citealp[p.~11]{Gerrard2000a})
@@ -1030,11 +1014,6 @@ within individual ones; these may be areas for further investigation:
       \item ``Program testing'' is given as a synonym of ``component testing''
             \citep[p.~46]{Kam2008}, although it probably should be a synonym of
             ``system testing'' instead.
-      \item \citeauthor{ChalinEtAl2006}~list \acf{rac} and \acf{sv} as ``two
-            complementary forms of assertion checking''
-            \citeyearpar[p.~343]{ChalinEtAl2006}; based on how the term ``static
-            assertion checking'' is used by \citet[p.~345]{LahiriEtAl2013}, it
-            seems like this should be the complement to \acs{rac} instead.
       \item \citeauthor{SneedAndGöschl2000} give ``white-'', ``grey-'', and
             ``black-box testing'' as synonyms for ``module'', ``integration'',
             and ``system testing'', respectively
@@ -1115,6 +1094,11 @@ Some interesting notes about these synonyms:
             separately by \citet[p.~22]{IEEE2022}, who also give ``use case
             testing'' as a ``common form of scenario testing''
             \citeyearpar[p.~20]{IEEE2021}.
+      \item \citeauthor{ChalinEtAl2006}~list \acf{rac} and \acf{sv} as ``two
+            complementary forms of assertion checking''
+            \citeyearpar[p.~343]{ChalinEtAl2006}; based on how the term ``static
+            assertion checking'' is used by \citet[p.~345]{LahiriEtAl2013}, it
+            seems like this should be the complement to \acs{rac} instead.
       \item ``Operational'' and ``production acceptance testing'' are treated
             as synonyms by \citetISTQB{}, but listed separately by
             \citet[p.~30]{Firesmith2015}.
@@ -1130,6 +1114,19 @@ above, some examples are given below, with as many sources given as possible
 definitions):
 
 \input{build/parSyns}
+
+Some interesting notes about these two lists of discrepancies:
+
+\begin{itemize}
+      \item Fault tolerance testing may also be a
+            subtype\notDefDistinctIEEE{type} of reliability testing
+            (\citealp[p.~375]{IEEE2017}; \citealp[p.~7-10]{SWEBOK2024}), which
+            is distinct from reliability testing \citep[p.~53]{Firesmith2015}.
+      \item \citeauthor{Firesmith2015}'s distinction between organization-
+            and role-based testing \citeyearpar[pp.~17,~37,~39]{Firesmith2015}
+            seems arbitrary, but further investigation may prove it to be
+            meaningful (see \thesisissueref{59}).
+\end{itemize}
 
 \subsubsection{Functional Testing}
 
