@@ -398,24 +398,35 @@ def splitListAtEmpty(listToSplit):
             np.split(recArr, np.where(recArr == "")[0]+1)
             if len(subarray) > 0]
 
+twoSourcesParSyns, oneSourceParSyns, noSourcesParSyns = set(), set(), set()
 def makeParSynLine(chd, par, parSource, synSource):
     def parseSource(s):
+        if not s:
+            return ("may be", "")
+        verb = "is" if s == parSource else "are"
         if not isUnsure(s):
-            return ("called", s)
+            return (f"{verb} called", f" in {s}")
         callImply = s.split(re.search(AUTHOR_REGEX, s).group())[0]
         for x in {"by", "in"}:
             callImply = callImply.strip(f" {x}")
-        return (callImply[1:] + " to be", "(" + s.lstrip(f"{callImply} by"))
+        return (f"{verb} {callImply[1:]} to be", " in (" + s.lstrip(callImply + " by"))
+
+    numSources = f"{parSource}{synSource}".count("(")
+    if numSources == 2:
+        addTo = twoSourcesParSyns
+    elif numSources == 1:
+        addTo = oneSourceParSyns
+    else:
+        addTo = noSourcesParSyns
 
     parCallImply, parSource = parseSource(parSource)
     synCallImply, synSource = parseSource(synSource)
 
-    return formatLineWithSources(
-        f"\\item \\textbf{{``{chd.capitalize()}''}} is {parCallImply} "
-        f"a child of \\textbf{{``{par.lower()}''}} in {parSource}, but the "
-        f"two are {synCallImply} synonyms in {synSource}.")
+    addTo.add(formatLineWithSources(
+        f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "
+        f"a child of \\textbf{{``{par.lower()}''}}{parSource}, but the "
+        f"two {synCallImply} synonyms{synSource}."))
 
-parSynLines = set()
 parentLines = splitListAtEmpty(categoryDict["Approach"][1])[-1]
 for chd, syns in nameDict.items():
     par: str
@@ -445,18 +456,22 @@ for chd, syns in nameDict.items():
             if len(synSource) > 1 and len(parSource) > 1:
                 parSource = "(" + parSource[-1]
                 synSource = "(" + synSource[-1]
-                parSynLines.add(makeParSynLine(chd, par, parSource, synSource))
+                makeParSynLine(chd, par, parSource, synSource)
+            
+            elif len(parSource) > 1:
+                parSource = "(" + parSource[-1]
+                makeParSynLine(chd, par, parSource, "")
+            elif len(synSource) > 1:
+                synSource = "(" + synSource[-1]
+                makeParSynLine(chd, par, "", synSource)
+            else:
+                print("Child:", chd, "\nParent:", par, "\n")
 
-            if isinstance(synSource, str) or isinstance(parSource, str):
-                print("Child:", chd, "\nParent:", par)
-                if isinstance(synSource, str):
-                    print(f"Syn. Source:", synSource)
-                else:
-                    print(f"Par. Source:", parSource)
-                print()
-
-parSynLines = sorted(parSynLines, key=lambda x: re.sub(r"\(.+\) ", "", x))
-parSynLines.sort(key=lambda x: removeInParens(x).count("implied"))
+parSynLines = []
+for parSyns in [twoSourcesParSyns, oneSourceParSyns, noSourcesParSyns]:
+    parSyns = sorted(parSyns, key=lambda x: re.sub(r"\(.+\) ", "", x))
+    parSyns.sort(key=lambda x: removeInParens(x).count("implied"))
+    parSynLines += parSyns
 writeHelperFile(parSynLines, "parSyns")
 
 def styleInLine(style, line):
