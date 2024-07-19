@@ -455,8 +455,9 @@ for chd, syns in nameDict.items():
                     print(f"Par. Source:", parSource)
                 print()
 
-writeHelperFile(sorted(parSynLines, key=lambda x: re.sub(r"\(.+\) ", "", x)),
-                "parSyns")
+parSynLines = sorted(parSynLines, key=lambda x: re.sub(r"\(.+\) ", "", x))
+parSynLines.sort(key=lambda x: removeInParens(x).count("implied"))
+writeHelperFile(parSynLines, "parSyns")
 
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
