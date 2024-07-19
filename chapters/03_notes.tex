@@ -280,7 +280,7 @@ of terminology, often based on these standards along with other sources. This
 is reflected in how their information is displayed in any graphs: green lines
 correspond with standards and blue lines with less-standard collections.
 Other sources that focus on cataloging and categorizing testing terminology
-\citep[e.g.,~][]{KuļešovsEtAl2013}, were also examined to see how well they
+\citep[e.g.,][]{KuļešovsEtAl2013}, were also examined to see how well they
 agreed with the ``standard'' terminology, and these, along with sources
 investigated to ``fill in'' missing definitions (see \nameref{undef-terms})
 and any ``surface-level'' analysis that followed trivially, are represented by
@@ -1010,6 +1010,58 @@ in Figure~\ref{fig:recovery-graph-current}.
             both of these terms.
 \end{itemize}
 
+\subsubsection{Scalability Testing}
+\label{scal-discrep}
+
+There are a number of confusions regarding the term ``scalability testing''.
+\citeauthor{IEEE2021} give it as a synonym of ``capacity testing'', defined
+as the testing of a system's ability to ``perform under conditions that may
+need to be supported in the future'' which ``may include assessing what level
+of additional resources (e.g. memory, disk capacity, network bandwidth) will
+be required to support anticipated future loads'' \citeyearpar[p.~39]{IEEE2021}.
+This focus on ``the future'' is supported by \citeauthor{ISTQB_author},
+who define ``scalability'' as ``the degree to which a component or system can be
+adjusted for changing capacity'' \citeyearpar{ISTQB}; the original source
+they reference agrees, defining it as ``the measure of a system's ability to be
+upgraded to accommodate increased loads'' \citep[p.~381]{GerrardAndThompson2002}.
+In contrast, capacity testing focuses on the system's present state, evaluating
+the ``capability of a product to meet requirements for the maximum limits of a
+product parameter'', such as the number of concurrent users, transaction
+throughput, or database size \citep{ISO_IEC2023a}.
+
+Unfortunately, only focusing on future capacity requirements still leaves room
+for ambiguity. While the above definition of ``scalability testing'' refers to
+external modification of the system, \citeauthor{ISO_IEC2023a} describes it as
+testing the ``capability of a product to handle growing or shrinking
+workloads or to adapt its capacity to handle variability''
+\citeyearpar{ISO_IEC2023a}, implying that this is done by the system itself.
+The potential reason for this is implied by SWEBOK V4's claim that one
+objective of elasticity testing is ``to evaluate scalability''
+\citep[p.~5-9]{SWEBOK2024}: \citeauthor{ISO_IEC2023a}'s notion of ``scalability''
+likely refers more accurately to ``elasticity''! This also makes sense in the
+context of other definitions provided by SWEBOK V4 \citep{SWEBOK2024}:
+\begin{itemize}
+      \item \textbf{Scalability:} ``the software's ability to increase and
+            scale up on its nonfunctional requirements, such as load, number of
+            transactions, and volume of data'' (p.~5-5)
+      \item \textbf{Elasticity Testing:} testing that ``assesses the ability of
+            the \acs{sut} \dots\ to rapidly expand or shrink compute, memory,
+            and storage resources without compromising the capacity to meet
+            peak utilization'' (p.~5-9)
+\end{itemize}
+This distinction is also consistent with how the terms are used in industry:
+\citeauthor{Pandey2023} says that scalability is the ability to ``increase
+\dots\ performance or efficiency as demand increases over time'', while
+elasticity allows a system to ``tackle changes in the workload [that] occur for
+a short period'' (\citeyear{Pandey2023}; see \thesisissueref{35}).
+
+To make things even more confusing, SWEBOK V4 says ``scalability
+testing evaluates the capability to use and learn the system and the user
+documentation'' and ``focuses on the system's effectiveness in supporting user
+tasks and the ability to recover from user errors'' \citep[p.~5-9]{SWEBOK2024}.
+\swebokScalDef{}, which is completely separate from the definitions of
+``scalability'', ``capacity'', and ``elasticity testing''!
+
 \subsubsection{Performance Testing}
 \label{perf-test-ambiguity}
 
@@ -1229,7 +1281,8 @@ approaches could have been defined!
             Testing, \textbf{Backup and Recovery Testing}*, Recovery*)
       \item Response-Time Testing
       \item \emph{Reviews} (ISO/IEC 20246) (Code Reviews*)
-      \item Scalability Testing (defined as a synonym of ``capacity testing'')
+      \item Scalability Testing (defined as a synonym of ``capacity testing'';
+            see \nameref{scal-discrep})
       \item Statistical Testing
       \item System Integration Testing (System Integration*)
       \item System Testing* (also mentioned but not defined in \citep{IEEE2013})
@@ -1247,35 +1300,6 @@ terminology \citep[so far only][]{Firesmith2015} (as described in
 a previous ``category'':
 
 \begin{enumerate}[resume]
-      \item SWEBOK V4 says ``scalability testing evaluates the capability to
-            use and learn the system and the user documentation. It also focuses
-            on the system's effectiveness in supporting user tasks and the
-            ability to recover from user errors'' \citep[p.~5-9]{SWEBOK2024}.
-            This description seems to describe ``usability testing'' instead,
-            despite earlier defining/describing ``scalability'' as \ldots
-            \begin{enumerate}
-                  \item ``the software's ability to increase and scale up on its
-                        nonfunctional requirements, such as load, number of
-                        transactions, and volume of data'' \citep[p.~5-5]{SWEBOK2024}
-                  \item ``connected to the complexity of the platform and
-                        environment in which the program runs, such as
-                        distributed, wireless networks and virtualized
-                        environments, large-scale clusters, and mobile clouds''
-                        \citep[p.~5-5]{SWEBOK2024}
-            \end{enumerate}
-            Other definitions of ``scalability'' support these definitions, so
-            the definition of ``scalability testing'' follows trivially from there
-            (sometimes explicitly \citepISTQB{}):
-            \begin{itemize}
-                  \item The ``capability of a product to handle growing or
-                        shrinking workloads or to adapt its capacity to handle
-                        variability'' \citep{ISO_IEC2023a}
-                  \item ``The degree to which a component or system can be
-                        adjusted for changing'' \citepISTQB{}
-            \end{itemize}
-      \item SWEBOK V4 says that one objective of elasticity testing is ``to
-            evaluate scalability'' \citep[p.~5-9]{SWEBOK2024}, which seems like
-            an objective of scalability testing instead.
       \item SWEBOK V4 defines ``privacy testing'' as testing that ``assess[es]
             the security and privacy of users' personal data to prevent local
             attacks'' \citep[p.~5-10]{SWEBOK2024}; this seems to overlap with
@@ -1316,14 +1340,6 @@ a previous ``category'':
             refer to this specific example and does not seem more widely
             applicable, since a ``PAR sheet'' is ``a list of all the symbols
             on each reel of a slot machine'' \citep{Bluejay2024}.
-      \item The definition of ``scalability'' given by \citetISTQB{} is
-            ``the degree to which a component or system can be adjusted for
-            changing \emph{capacity}'' (emphasis added), but the source that it
-            references says that scalability is ``the measure of a system's
-            ability to be upgraded to accommodate increased \emph{loads}''
-            \citep[p.~381,~emphasis added]{GerrardAndThompson2002}; this is
-            accomplished \emph{through} increasing capacity, not in reaction to
-            it (p.~192).
       \item \citetISTQB{} describe the term ``software in the loop'' as a
             kind of testing, while the source it references seems to describe
             ``Software-in-the-Loop-Simulation'' as a ``simulation environment''
