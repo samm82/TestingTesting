@@ -22,6 +22,7 @@ MemoryManagementTesting [label=<Memory<br/>Management<br/>Testing>];
 PerformanceEfficiencyTesting [label=<Performance<br/>Efficiency<br/>Testing>];
 PerformanceTesting [label=<Performance<br/>Testing>];
 PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
+PowerTesting [label=<Power<br/>Testing>];
 RecoverabilityTesting [label=<Recoverability<br/>Testing>];
 ReliabilityTesting [label=<Reliability<br/>Testing>];
 ResourceUtilizationTesting [label=<Resource<br/>Utilization<br/>Testing>];
@@ -76,7 +77,6 @@ ScalabilityTesting -> PerformanceEfficiencyTesting[style="dashed"];
 ScalabilityTesting -> MemoryManagementTesting[style="dashed",color="green"];
 StressTesting -> PerformancerelatedTesting[color="green"];
 StressTesting -> PerformanceEfficiencyTesting[color="green"];
-StressTesting -> PerformanceTesting[color="blue"];
 StressTesting -> CapacityTesting[color="blue"];
 VolumeTesting -> PerformancerelatedTesting[color="green"];
 VolumeTesting -> PerformanceEfficiencyTesting[color="green"];
@@ -84,6 +84,7 @@ VolumeTesting -> CapacityTesting[color="blue"];
 VolumeTesting -> CapacityTesting[style="dashed",color="green"];
 
 ConcurrencyTesting -> PerformancerelatedTesting;
+PowerTesting -> PerformancerelatedTesting;
 RecoverabilityTesting -> AvailabilityTesting;
 
 subgraph cluster_legend {

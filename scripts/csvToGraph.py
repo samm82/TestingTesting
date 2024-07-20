@@ -673,10 +673,25 @@ class CustomGraph:
 
         if self.add:
             rels.append("")
-            rels += [f"{formatApproach(child)} -> {formatApproach(parent)};"
-                    for child, parents in self.add.items()
-                    for parent in parents
-                    if child in self.terms and parent in self.terms]
+            alreadyAdded = dict()
+            for child, parents in self.add.items():
+                for parent in parents:
+                    relLine = f"{formatApproach(child)} -> {formatApproach(parent)};"
+                    # Ignore ending in case a more-specified version is present
+                    linesAlready = [rel for rel in rels if rel.startswith(relLine[:-1])]
+                    if linesAlready:
+                        alreadyAdded[f"{child} -> {parent}"] = linesAlready
+                        continue
+                    if child in self.terms and parent in self.terms:
+                        rels.append(relLine)
+            if alreadyAdded:
+                print("WARNING: the following lines already exist in the custom "
+                      f"{self.name} graph but were attempted to be added:")
+                for rel, lines in alreadyAdded.items():
+                    print("\t", rel)
+                    for line in lines:
+                        print("\t\t", line)
+                    input
 
         for child, parents in self.remove.items():
             if isinstance(parents, list):
@@ -698,8 +713,7 @@ class CustomGraph:
             for term in self.terms:
                 termLine = f"{formatApproach(term)} [label={lineBreak(term)}];"
                 # Ignore ending in case a more-specified version is present
-                if not any(map(lambda node: node.startswith(termLine[:-2]),
-                               nodes)):
+                if not {node for node in nodes if node.startswith(termLine[:-2])}:
                     nodes.add(termLine)
             nodes.discard("")
 
@@ -725,12 +739,17 @@ recoveryGraph = CustomGraph(
      "Reliability Testing", "Usability Testing"},
     add = {
         "Backup and Recovery Testing" : ["Recoverability Testing"],
-        "Recoverability Testing" : ["Availability Testing"],
+        "Power Testing" : ["Performance-related Testing"],
+        "Recoverability Testing" : ["Availability Testing",
+                                    "Failure Tolerance Testing",
+                                    "Fault Tolerance Testing"],
         "Transfer Recovery Testing" : ["Recoverability Testing"],
     },
     remove = {
         "Backup and Recovery Testing" : ["Reliability Testing"],
         "Failover/Recovery Testing" : True,
+        "Recovery Testing" : True,
+        "Stress Testing" : ["Performance Testing"],
     }
 )
 
