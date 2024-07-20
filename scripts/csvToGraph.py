@@ -465,10 +465,13 @@ for chd, syns in nameDict.items():
             synSource = "(" + synSource[-1] if len(synSource) > 1 else ""
             makeParSynLine(chd, par, parSource, synSource)
 
+def sortIgnoringParens(ls):
+    return sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", x))
+
 parSynLines = []
 for i, parSyns in enumerate([twoSourcesParSyns, oneSourceParSyns,
                              noSourcesParSyns]):
-    parSyns = sorted(parSyns, key=lambda x: re.sub(r"\(.+\) ", "", x))
+    parSyns = sortIgnoringParens(parSyns)
     parSyns.sort(key=lambda x: removeInParens(x).count("implied"))
     if i != 2:
         parSynLines += parSyns
@@ -620,23 +623,31 @@ for key, value in categoryDict.items():
                   f"rigid{key}Graph")
 
 class CustomGraph:
-    def __init__(self, name, terms, add:dict=dict(),
+    def __init__(self, name, terms:set, add:dict=dict(),
                  remove:dict=dict()):
         self.name = name
         self.terms = terms
         self.add = add
         self.remove = remove
 
+        # Update set of terms in case any get added
+        self.terms.update(child for child in self.add.keys())
+        self.terms.update(parent for parents in self.add.values()
+                          for parent in parents)
+        self.terms = sortIgnoringParens(list(self.terms))
+
     def inherit(self, child: 'CustomGraph'):
         self.add.update(child.add)
         self.remove.update(child.remove)
 
     def buildGraph(self):
+        formattedTerms = [formatApproach(term) for term in self.terms]
+
         # Currently unused; finds ALL edges that contain ANY specified terms
         # Led to a lot of clutter
         # # Optimized with ChatGPT to remove redundant checks and extra new lines
         # lines = [line for line in categoryDict["Approach"][1]
-        #          if any(term in line for term in self.terms) or line == ""]
+        #          if any(term in line for term in formattedTerms) or line == ""]
 
         chunks = splitListAtEmpty(categoryDict["Approach"][1])
         if len(chunks) == 3:
@@ -650,10 +661,10 @@ class CustomGraph:
                             f"{self.name} graph")
 
         rels = [line for line in rels if line == "" or
-                (line.split(" -> ")[0] in self.terms and
-                line.split(" -> ")[1].split("[")[0].strip(";") in self.terms) or
-                (line.split(" ")[1] in self.terms and
-                line.split(" ")[2].strip("}") in self.terms)]
+                (line.split(" -> ")[0] in formattedTerms and
+                line.split(" -> ")[1].split("[")[0].strip(";") in formattedTerms) or
+                (line.split(" ")[1] in formattedTerms and
+                line.split(" ")[2].strip("}") in formattedTerms)]
         nodes = [node for node in nodes if "->" not in node and
                 any(node.split(" ")[0] in line for line in rels)]
 
@@ -664,45 +675,61 @@ class CustomGraph:
             rels += [f"{child} -> {parent};"
                     for child, parents in self.add.items()
                     for parent in parents
-                    if child in self.terms and parent in self.terms]
+                    if child in formattedTerms and parent in formattedTerms]
         
         if self.remove:
             rels = [rel for rel in rels if not rel.startswith(tuple(
                 f"{child} -> {parent}"
                 for child, parents in self.remove.items() for parent in parents
-                if child in self.terms and parent in self.terms
+                if child in formattedTerms and parent in formattedTerms
                 ))]
 
         if self.add or self.remove:
-            writeDotFile(nodes+rels, f"{self.name}ProposedGraph")
+            nodes = set(nodes)
+            for term in self.terms:
+                termLine = f"{formatApproach(term)} [label={lineBreak(term)}];"
+                # Ignore ending in case a more-specified version is present
+                if not any(lambda node: node.startswith(termLine[:-2])
+                           for node in nodes):
+                    nodes.add(termLine)
+            nodes.discard("")
+
+            # Group nodes as in original 
+            nodesList = sortIgnoringParens(list(
+                node for node in nodes if node.count("=") == 1)) + [""]
+            nodesList += sortIgnoringParens(list(
+                node for node in nodes if node not in nodesList)) + [""]
+
+            writeDotFile(nodesList+rels, f"{self.name}ProposedGraph")
 
 recoveryGraph = CustomGraph(
     "recovery",
-    ["AvailabilityTesting", "BackupandRecoveryTesting", "BackupRecoveryTesting",
-        "DisasterRecoveryTesting", "FailoverTesting", "FailoverRecoveryTesting",
-        "FailureToleranceTesting", "FaultToleranceTesting", "PerformanceTesting",
-        "PerformancerelatedTesting", "RecoverabilityTesting", "RecoveryTesting",
-        "ReliabilityTesting", "UsabilityTesting"],
+    {"Availability Testing", "Backup and Recovery Testing", "Backup/Recovery Testing",
+     "Disaster Recovery Testing", "Failover Testing", "Failover Recovery Testing",
+     "Failure Tolerance Testing", "Fault Tolerance Testing", "Performance Testing",
+     "Performance-related Testing", "Recoverability Testing", "Recovery Testing",
+     "Reliability Testing", "Usability Testing"},
     add = {
-        "RecoverabilityTesting" : ["AvailabilityTesting"]
+        "Recoverability Testing" : ["Availability Testing"],
+        "Transfer Recovery Testing" : ["Recoverability Testing"],
     }
 )
 
 performanceGraph = CustomGraph(
     "performance",
-    ["AvailabilityTesting", "CapacityTesting", "ConcurrencyTesting",
-        "EfficiencyTesting", "ElasticityTesting", "EnduranceTesting",
-        "LoadTesting", "MemoryManagementTesting", "PerformanceTesting",
-        "PerformanceEfficiencyTesting", "PerformancerelatedTesting",
-        "PowerTesting", "RecoverabilityTesting", "RecoveryPerformanceTesting",
-        "ReliabilityTesting", "ResourceUtilizationTesting",
-        "ResponseTimeTesting", "ScalabilityTesting", "SoakTesting",
-        "StressTesting", "TransactionFlowTesting", "VolumeTesting"],
+    {"Availability Testing", "Capacity Testing", "Concurrency Testing",
+     "Efficiency Testing", "Elasticity Testing", "Endurance Testing",
+     "Load Testing", "Memory Management Testing", "Performance Testing",
+     "Performance Efficiency Testing", "Performance-related Testing",
+     "Power Testing", "Recoverability Testing", "Recovery Performance Testing",
+     "Reliability Testing", "Resource Utilization Testing",
+     "Response-Time Testing", "Scalability Testing", "Soak Testing",
+     "Stress Testing", "Transaction Flow Testing", "Volume Testing"},
     add = {
-        "ConcurrencyTesting" : ["PerformancerelatedTesting"]
+        "Concurrency Testing" : ["Performance-related Testing"]
     },
     remove = {
-        "ConcurrencyTesting" : ["PerformanceTesting"]
+        "Concurrency Testing" : ["Performance Testing"]
     }
 )
 
