@@ -641,7 +641,13 @@ subgraphs = {
                  "PowerTesting", "RecoverabilityTesting", "RecoveryPerformanceTesting",
                  "ReliabilityTesting", "ResourceUtilizationTesting",
                  "ResponseTimeTesting", "ScalabilityTesting", "SoakTesting",
-                 "StressTesting", "TransactionFlowTesting", "VolumeTesting"])
+                 "StressTesting", "TransactionFlowTesting", "VolumeTesting"],
+                 add={
+                     "ConcurrencyTesting" : ["PerformancerelatedTesting"]
+                 },
+                 remove={
+                     "ConcurrencyTesting" : ["PerformanceTesting"]
+                 })
 }
 
 for subgraph in subgraphs:
@@ -672,5 +678,20 @@ for subgraph in subgraphs:
             any(node.split(" ")[0] in line for line in rels)]
 
     writeDotFile(nodes+rels, f"{subgraph.name}Graph")
+
+    if subgraph.add:
+        rels.append("")
+        rels += [f"{child} -> {parent};"
+                 for child, parents in subgraph.add.items()
+                 for parent in parents]
+    
+    if subgraph.remove:
+        rels = [rel for rel in rels if not rel.startswith(tuple(
+            f"{child} -> {parent}"
+            for child, parents in subgraph.remove.items() for parent in parents
+            ))]
+
+    if subgraph.add or subgraph.remove:
+        writeDotFile(nodes+rels, f"{subgraph.name}ProposedGraph")
 
 # print(staticApproaches)
