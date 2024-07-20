@@ -1045,12 +1045,17 @@ context of other definitions provided by SWEBOK V4 \citep{SWEBOK2024}:
 \begin{itemize}
       \item \textbf{Scalability:} ``the software's ability to increase and
             scale up on its nonfunctional requirements, such as load, number of
-            transactions, and volume of data'' (p.~5-5)
+            transactions, and volume of data'' (p.~5-5). Based on this
+            definition, scalability testing is then a subtype of load testing
+            and volume testing, as well as potentially transaction flow testing.
       \item \textbf{Elasticity Testing\footnote{While this definition seems
                         correct, it \swebokElasRef{}}:} testing that ``assesses
             the ability of the \acs{sut} \dots\ to rapidly expand or shrink
             compute, memory, and storage resources without compromising the
-            capacity to meet peak utilization'' (p.~5-9)
+            capacity to meet peak utilization'' (p.~5-9). Based on this
+            definition, elasticity testing is then a subtype of memory
+            management testing (with both being a subtype of resource
+            utilization testing) and stress testing.
 \end{itemize}
 This distinction is also consistent with how the terms are used in industry:
 \citeauthor{Pandey2023} says that scalability is the ability to ``increase
@@ -1130,8 +1135,8 @@ difference of ``relative to the amount of resources used'' or ``be efficient in
 the use of resources'' between the two is meaningful.
 
 This results in the relations between performance-related testing
-approaches (with the changes from \nameref{rec-test-ambiguity} made implicitly)
-shown in Figure~\ref{fig:perf-graph}.
+approaches (with the changes from \nameref{rec-test-ambiguity} and
+\nameref{scal-discrep} made implicitly) shown in Figure~\ref{fig:perf-graph}.
 
 \begin{figure}[hbtp!]
       \centering

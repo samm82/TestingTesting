@@ -626,13 +626,13 @@ subgraphs = {
                  "PerformancerelatedTesting", "RecoverabilityTesting", "RecoveryTesting",
                  "ReliabilityTesting", "UsabilityTesting"],
     "performance": ["AvailabilityTesting", "CapacityTesting", "ConcurrencyTesting",
-                    "EfficiencyTesting", "EnduranceTesting", "LoadTesting",
-                    "MemoryManagementTesting", "PerformanceTesting",
+                    "EfficiencyTesting", "ElasticityTesting", "EnduranceTesting",
+                    "LoadTesting", "MemoryManagementTesting", "PerformanceTesting",
                     "PerformanceEfficiencyTesting", "PerformancerelatedTesting",
                     "PowerTesting", "RecoverabilityTesting", "RecoveryPerformanceTesting",
                     "ReliabilityTesting", "ResourceUtilizationTesting",
                     "ResponseTimeTesting", "ScalabilityTesting", "SoakTesting",
-                    "StressTesting", "VolumeTesting"]
+                    "StressTesting", "TransactionFlowTesting", "VolumeTesting"]
 }
 
 for name, terms in subgraphs.items():

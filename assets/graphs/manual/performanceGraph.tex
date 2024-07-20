@@ -12,6 +12,7 @@ avail   [label=<Availability<br/>Testing>];
 cap     [label=<Capacity<br/>Testing>];
 conc    [label=<Concurrency<br/>Testing>];
 eff     [label=<Efficiency<br/>Testing>];
+elas    [label=<Elasticity<br/>Testing>];
 end     [label=<Endurance<br/>Testing>];
 load    [label=<Load<br/>Testing>];
 memMan  [label=<Memory<br/>Management<br/>Testing>];
@@ -27,12 +28,13 @@ resTime [label=<Response<br/>Time Testing>];
 scal    [label=<Scalability<br/>Testing>];
 soak    [label=<Soak<br/>Testing>];
 stress  [label=<Stress<br/>Testing>];
+trans   [label=<Transaction<br/>Flow<br/>Testing>];
 vol     [label=<Volume<br/>Testing>];
 
 avail -> { rel };
 cap -> { load perfEff perfRel perf };
-cap -> { scal }[dir=none];
 conc -> perfRel;
+elas -> { memMan resUtil stress }
 end -> { perfEff perfRel rel };
 end -> { soak }[dir=none];
 load -> { end perfEff perfRel rel };
@@ -47,10 +49,11 @@ rel -> { perfRel };
 rel -> { soak }[dir=none];
 resUtil -> { eff perfEff };
 resTime -> { perf perfRel };
+scal -> { load vol };
+scal -> { trans }[style=dashed];
 stress -> { cap perfEff perfRel };
 vol -> { cap perfEff perfRel };
 
-{ rank=same; cap scal };
 { rank=same; end soak };
 }
 \end{document}
