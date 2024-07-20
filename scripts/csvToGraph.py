@@ -697,8 +697,6 @@ class CustomGraph:
             nodes = set(nodes)
             for term in self.terms:
                 termLine = f"{formatApproach(term)} [label={lineBreak(term)}];"
-                if self.name == "recovery":
-                    print(term, termLine)
                 # Ignore ending in case a more-specified version is present
                 if not any(map(lambda node: node.startswith(termLine[:-2]),
                                nodes)):

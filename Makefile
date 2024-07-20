@@ -6,6 +6,11 @@ CSV_GLOSSARIES = $(addsuffix .csv, $(GLOSSARIES))
 TXT_GLOSSARIES = $(addsuffix .txt, $(GLOSSARIES))
 DIFF_GLOSSARIES = $(addprefix Diff, $(TXT_GLOSSARIES))
 
+GRAPHS = assets/graphs/*.tex assets/graphs/manual/*.tex
+CUSTOM_STUBS = recovery performance
+ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
+CUSTOM_GRAPHS = $(addprefix assets/graphs/, $(addsuffix Graph, $(ALL_CUSTOM_STUBS)))
+
 help:
 	@echo "Build:"
 	@echo "  - build : Build a fresh copy of the thesis."
@@ -50,16 +55,22 @@ update_diffs: gen_csv_diffs
 csv_process:
 	py scripts/csvToGraph.py
 
-graphs: assets/graphs/*.tex assets/graphs/manual/*.tex | csv_process
-	-rm assets/graphs/manual/*.pdf
-	-rm assets/graphs/*.pdf
-	for filename in $^ ; do \
-			latex -interaction=nonstopmode -shell-escape $${filename} || true ; \
-			latex -interaction=nonstopmode -shell-escape $${filename} || true ; \
+compile_graphs: csv_process
+	for filename in $(GRAPHS) ; do \
+			filename=$${filename%.tex} ; \
+			-rm filename.pdf ; \
+			latex -interaction=nonstopmode -shell-escape $${filename}.tex || true ; \
+			latex -interaction=nonstopmode -shell-escape $${filename}.tex || true ; \
 			basefilename=$$(basename $$filename) ; \
-			cp $${basefilename%.tex}.pdf $${filename%tex}pdf ; \
+			cp $${basefilename}.pdf $${filename}.pdf ; \
 	done
 	rm *Graph*
+
+custom_graphs:
+	make compile_graphs GRAPHS="$(CUSTOM_GRAPHS)"
+
+graphs:
+	make compile_graphs
 
 notes: csv_process # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
