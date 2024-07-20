@@ -17,8 +17,8 @@ FailureToleranceTesting [label=<Failure<br/>Tolerance<br/>Testing>];
 FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
 PerformanceTesting [label=<Performance<br/>Testing>];
 PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
-PowerTesting [label=<Power<br/>Testing>];
 RecoverabilityTesting [label=<Recoverability<br/>Testing>];
+RecoveryPerformanceTesting [label=<Recovery<br/>Performance<br/>Testing>];
 ReliabilityTesting [label=<Reliability<br/>Testing>];
 UsabilityTesting [label=<Usability<br/>Testing>];
 
@@ -34,10 +34,11 @@ RecoverabilityTesting -> ReliabilityTesting[color="green"];
 RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
 ReliabilityTesting -> PerformanceTesting;
 
-PowerTesting -> PerformancerelatedTesting;
 RecoverabilityTesting -> AvailabilityTesting;
 RecoverabilityTesting -> FailureToleranceTesting;
 RecoverabilityTesting -> FaultToleranceTesting;
+RecoveryPerformanceTesting -> PerformancerelatedTesting;
+RecoveryPerformanceTesting -> RecoverabilityTesting;
 
 subgraph cluster_legend {
     label="Legend";

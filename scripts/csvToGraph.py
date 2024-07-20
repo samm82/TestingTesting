@@ -739,17 +739,17 @@ recoveryGraph = CustomGraph(
      "Reliability Testing", "Usability Testing"},
     add = {
         "Backup and Recovery Testing" : ["Recoverability Testing"],
-        "Power Testing" : ["Performance-related Testing"],
         "Recoverability Testing" : ["Availability Testing",
                                     "Failure Tolerance Testing",
                                     "Fault Tolerance Testing"],
+        "Recovery Performance Testing" : ["Performance-related Testing",
+                                          "Recoverability Testing"],
         "Transfer Recovery Testing" : ["Recoverability Testing"],
     },
     remove = {
         "Backup and Recovery Testing" : ["Reliability Testing"],
         "Failover/Recovery Testing" : True,
         "Recovery Testing" : True,
-        "Stress Testing" : ["Performance Testing"],
     }
 )
 
@@ -764,10 +764,21 @@ performanceGraph = CustomGraph(
      "Response-Time Testing", "Scalability Testing", "Soak Testing",
      "Stress Testing", "Transaction Flow Testing", "Volume Testing"},
     add = {
-        "Concurrency Testing" : ["Performance-related Testing"]
+        "Capacity Testing" : ["Load Testing"],
+        "Concurrency Testing" : ["Performance-related Testing"],
+        "Performance Testing" : ["Load Testing"],
+        "Power Testing" : ["Performance-related Testing"],
+        "Reliability Testing" : ["Performance-related Testing"],
     },
     remove = {
-        "Concurrency Testing" : ["Performance Testing"]
+        "Capacity Testing" : ["Performance Testing"],
+        "Concurrency Testing" : ["Performance Testing"],
+        "Load Testing" : ["Capacity Testing", "Performance Testing"],
+        "Performance Efficiency Testing" : ["Performance Testing"],
+        "Reliability Testing" : ["Performance Testing"],
+        "Response-Time Testing" : ["Performance Testing"],
+        "Scalability Testing" : ["Elasticity Testing"],
+        "Stress Testing" : ["Performance Testing"],
     }
 )
 
