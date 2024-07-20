@@ -634,7 +634,6 @@ class CustomGraph:
         self.terms.update(child for child in self.add.keys())
         self.terms.update(parent for parents in self.add.values()
                           for parent in parents)
-        self.terms = sortIgnoringParens(list(self.terms))
 
     def inherit(self, child: 'CustomGraph'):
         self.add.update({chd: [par for par in pars if par in self.terms]
@@ -689,6 +688,7 @@ class CustomGraph:
             elif isinstance(parents, bool) and parents:
                 nodes = [node for node in nodes if not formatApproach(child) in node]
                 rels  = [rel  for rel  in rels  if not formatApproach(child) in rel ]
+                self.terms.discard(child)
             else:
                 raise ValueError("Unexpected set of items to remove from "
                                  f"{self.name} graph")
@@ -697,9 +697,11 @@ class CustomGraph:
             nodes = set(nodes)
             for term in self.terms:
                 termLine = f"{formatApproach(term)} [label={lineBreak(term)}];"
+                if self.name == "recovery":
+                    print(term, termLine)
                 # Ignore ending in case a more-specified version is present
-                if not any(lambda node: node.startswith(termLine[:-2])
-                           for node in nodes):
+                if not any(map(lambda node: node.startswith(termLine[:-2]),
+                               nodes)):
                     nodes.add(termLine)
             nodes.discard("")
 
@@ -714,7 +716,7 @@ class CustomGraph:
 recoveryGraph = CustomGraph(
     "recovery",
     {"Availability Testing", "Backup and Recovery Testing", "Backup/Recovery Testing",
-     "Disaster Recovery Testing", "Failover Testing", "Failover/Recovery Testing",
+     "Disaster/Recovery Testing", "Failover Testing", "Failover/Recovery Testing",
      "Failure Tolerance Testing", "Fault Tolerance Testing", "Performance Testing",
      "Performance-related Testing", "Recoverability Testing", "Recovery Testing",
      "Reliability Testing", "Usability Testing"},
