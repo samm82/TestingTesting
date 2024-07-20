@@ -637,7 +637,12 @@ class CustomGraph:
         self.terms = sortIgnoringParens(list(self.terms))
 
     def inherit(self, child: 'CustomGraph'):
-        self.add.update(child.add)
+        print({chd: [par for par in pars if par in self.terms]
+                         for chd, pars in child.add.items()
+                         if chd in self.terms})
+        self.add.update({chd: [par for par in pars if par in self.terms]
+                         for chd, pars in child.add.items()
+                         if chd in self.terms})
         self.remove.update(child.remove)
 
     def buildGraph(self):
@@ -672,16 +677,16 @@ class CustomGraph:
 
         if self.add:
             rels.append("")
-            rels += [f"{child} -> {parent};"
+            rels += [f"{formatApproach(child)} -> {formatApproach(parent)};"
                     for child, parents in self.add.items()
                     for parent in parents
-                    if child in formattedTerms and parent in formattedTerms]
+                    if child in self.terms and parent in self.terms]
         
         if self.remove:
             rels = [rel for rel in rels if not rel.startswith(tuple(
-                f"{child} -> {parent}"
+                f"{formatApproach(child)} -> {formatApproach(parent)}"
                 for child, parents in self.remove.items() for parent in parents
-                if child in formattedTerms and parent in formattedTerms
+                if child in self.terms and parent in self.terms
                 ))]
 
         if self.add or self.remove:
