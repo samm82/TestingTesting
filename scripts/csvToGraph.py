@@ -678,13 +678,20 @@ class CustomGraph:
                     for child, parents in self.add.items()
                     for parent in parents
                     if child in self.terms and parent in self.terms]
-        
-        if self.remove:
-            rels = [rel for rel in rels if not rel.startswith(tuple(
-                f"{formatApproach(child)} -> {formatApproach(parent)}"
-                for child, parents in self.remove.items() for parent in parents
-                if child in self.terms and parent in self.terms
+
+        for child, parents in self.remove.items():
+            if isinstance(parents, list):
+                rels = [rel for rel in rels if not rel.startswith(tuple(
+                    f"{formatApproach(child)} -> {formatApproach(parent)}"
+                    for parent in parents
+                    if child in self.terms and parent in self.terms
                 ))]
+            elif isinstance(parents, bool) and parents:
+                nodes = [node for node in nodes if not formatApproach(child) in node]
+                rels  = [rel  for rel  in rels  if not formatApproach(child) in rel ]
+            else:
+                raise ValueError("Unexpected set of items to remove from "
+                                 f"{self.name} graph")
 
         if self.add or self.remove:
             nodes = set(nodes)
@@ -707,7 +714,7 @@ class CustomGraph:
 recoveryGraph = CustomGraph(
     "recovery",
     {"Availability Testing", "Backup and Recovery Testing", "Backup/Recovery Testing",
-     "Disaster Recovery Testing", "Failover Testing", "Failover Recovery Testing",
+     "Disaster Recovery Testing", "Failover Testing", "Failover/Recovery Testing",
      "Failure Tolerance Testing", "Fault Tolerance Testing", "Performance Testing",
      "Performance-related Testing", "Recoverability Testing", "Recovery Testing",
      "Reliability Testing", "Usability Testing"},
@@ -718,6 +725,7 @@ recoveryGraph = CustomGraph(
     },
     remove = {
         "Backup and Recovery Testing" : ["Reliability Testing"],
+        "Failover/Recovery Testing" : True,
     }
 )
 

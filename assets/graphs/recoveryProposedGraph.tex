@@ -15,7 +15,6 @@ AvailabilityTesting [label=<Availability<br/>Testing>];
 BackupRecoveryTesting [label=<Backup/Recovery<br/>Testing>];
 BackupandRecoveryTesting [label=<Backup<br/>and<br/>Recovery<br/>Testing>];
 DisasterRecoveryTesting [label=<Disaster/Recovery<br/>Testing>];
-FailoverRecoveryTesting [label=<Failover/Recovery<br/>Testing>];
 FailoverTesting [label=<Failover<br/>Testing>];
 FailureToleranceTesting [label=<Failure<br/>Tolerance<br/>Testing>];
 FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
@@ -28,7 +27,6 @@ UsabilityTesting [label=<Usability<br/>Testing>];
 
 
 BackupandRecoveryTesting -> BackupRecoveryTesting[dir=none,style="dashed",color="green"];
-FailoverTesting -> FailoverRecoveryTesting[dir=none,style="dashed",color="blue"];
 PerformanceTesting -> PerformancerelatedTesting[dir=none];
 RecoverabilityTesting -> RecoveryTesting[dir=none];
 
@@ -37,7 +35,6 @@ BackupRecoveryTesting -> DisasterRecoveryTesting[color="green"];
 DisasterRecoveryTesting -> FaultToleranceTesting[color="green"];
 DisasterRecoveryTesting -> RecoverabilityTesting[color="green"];
 FailoverTesting -> FailureToleranceTesting[style="dashed",color="blue"];
-FailoverRecoveryTesting -> DisasterRecoveryTesting[color="green"];
 FaultToleranceTesting -> ReliabilityTesting[color="green"];
 FaultToleranceTesting -> AvailabilityTesting[color="green"];
 PerformanceTesting -> PerformancerelatedTesting[color="green"];
