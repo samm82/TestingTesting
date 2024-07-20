@@ -637,9 +637,6 @@ class CustomGraph:
         self.terms = sortIgnoringParens(list(self.terms))
 
     def inherit(self, child: 'CustomGraph'):
-        print({chd: [par for par in pars if par in self.terms]
-                         for chd, pars in child.add.items()
-                         if chd in self.terms})
         self.add.update({chd: [par for par in pars if par in self.terms]
                          for chd, pars in child.add.items()
                          if chd in self.terms})
@@ -715,8 +712,12 @@ recoveryGraph = CustomGraph(
      "Performance-related Testing", "Recoverability Testing", "Recovery Testing",
      "Reliability Testing", "Usability Testing"},
     add = {
+        "Backup and Recovery Testing" : ["Recoverability Testing"],
         "Recoverability Testing" : ["Availability Testing"],
         "Transfer Recovery Testing" : ["Recoverability Testing"],
+    },
+    remove = {
+        "Backup and Recovery Testing" : ["Reliability Testing"],
     }
 )
 
