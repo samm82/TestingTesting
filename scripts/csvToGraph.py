@@ -620,16 +620,61 @@ for key, value in categoryDict.items():
                   f"rigid{key}Graph")
 
 class CustomGraph:
-    def __init__(self, name, nodes, add:dict=dict(),
+    def __init__(self, name, terms, add:dict=dict(),
                  remove:dict=dict()):
         self.name = name
-        self.nodes = nodes
+        self.terms = terms
         self.add = add
         self.remove = remove
 
     def inherit(self, child: 'CustomGraph'):
         self.add.update(child.add)
         self.remove.update(child.remove)
+
+    def buildGraph(self):
+        # Currently unused; finds ALL edges that contain ANY specified terms
+        # Led to a lot of clutter
+        # # Optimized with ChatGPT to remove redundant checks and extra new lines
+        # lines = [line for line in categoryDict["Approach"][1]
+        #          if any(term in line for term in self.terms) or line == ""]
+
+        chunks = splitListAtEmpty(categoryDict["Approach"][1])
+        if len(chunks) == 3:
+            nodes = chunks[0] + chunks[1]
+            rels = chunks[1] + chunks[2]
+        elif len(chunks) == 4:
+            nodes = chunks[0] + chunks[1]
+            rels = chunks[1] + chunks[2] + chunks[3]
+        else:
+            raise ValueError("Unexpected grouping of lines for automatic "
+                            f"{self.name} graph")
+
+        rels = [line for line in rels if line == "" or
+                (line.split(" -> ")[0] in self.terms and
+                line.split(" -> ")[1].split("[")[0].strip(";") in self.terms) or
+                (line.split(" ")[1] in self.terms and
+                line.split(" ")[2].strip("}") in self.terms)]
+        nodes = [node for node in nodes if "->" not in node and
+                any(node.split(" ")[0] in line for line in rels)]
+
+        writeDotFile(nodes+rels, f"{self.name}Graph")
+
+        if self.add:
+            rels.append("")
+            rels += [f"{child} -> {parent};"
+                    for child, parents in self.add.items()
+                    for parent in parents
+                    if child in self.terms and parent in self.terms]
+        
+        if self.remove:
+            rels = [rel for rel in rels if not rel.startswith(tuple(
+                f"{child} -> {parent}"
+                for child, parents in self.remove.items() for parent in parents
+                if child in self.terms and parent in self.terms
+                ))]
+
+        if self.add or self.remove:
+            writeDotFile(nodes+rels, f"{self.name}ProposedGraph")
 
 recoveryGraph = CustomGraph(
     "recovery",
@@ -664,49 +709,6 @@ performanceGraph = CustomGraph(
 performanceGraph.inherit(recoveryGraph)
 
 for subgraph in {recoveryGraph, performanceGraph}:
-    terms = subgraph.nodes
-    # # Optimized with ChatGPT to remove redundant checks and extra new lines
-    # Currently unused; finds ALL edges that contain ANY specified terms
-    # Led to a lot of clutter
-    # lines = [line for line in categoryDict["Approach"][1]
-    #          if any(term in line for term in terms) or line == ""]
-
-    chunks = splitListAtEmpty(categoryDict["Approach"][1])
-    if len(chunks) == 3:
-        nodes = chunks[0] + chunks[1]
-        rels = chunks[1] + chunks[2]
-    elif len(chunks) == 4:
-        nodes = chunks[0] + chunks[1]
-        rels = chunks[1] + chunks[2] + chunks[3]
-    else:
-        raise ValueError("Unexpected grouping of lines for automatic "
-                         f"{subgraph.name} graph")
-
-    rels = [line for line in rels if line == "" or
-            (line.split(" -> ")[0] in terms and
-            line.split(" -> ")[1].split("[")[0].strip(";") in terms) or
-            (line.split(" ")[1] in terms and
-            line.split(" ")[2].strip("}") in terms)]
-    nodes = [node for node in nodes if "->" not in node and
-            any(node.split(" ")[0] in line for line in rels)]
-
-    writeDotFile(nodes+rels, f"{subgraph.name}Graph")
-
-    if subgraph.add:
-        rels.append("")
-        rels += [f"{child} -> {parent};"
-                 for child, parents in subgraph.add.items()
-                 for parent in parents
-                 if child in subgraph.nodes and parent in subgraph.nodes]
-    
-    if subgraph.remove:
-        rels = [rel for rel in rels if not rel.startswith(tuple(
-            f"{child} -> {parent}"
-            for child, parents in subgraph.remove.items() for parent in parents
-            if child in subgraph.nodes and parent in subgraph.nodes
-            ))]
-
-    if subgraph.add or subgraph.remove:
-        writeDotFile(nodes+rels, f"{subgraph.name}ProposedGraph")
+    subgraph.buildGraph()
 
 # print(staticApproaches)
