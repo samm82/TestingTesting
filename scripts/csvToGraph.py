@@ -703,9 +703,14 @@ class CustomGraph:
                     nodes.add(termLine)
             nodes.discard("")
 
+            # Filter out nodes with no relations
+            nodes = {node for node in nodes if sum(map(
+                lambda rel: node.split(" ")[0] in rel, rels
+            ))}
+
             # Group nodes as in original 
             nodesList = sortIgnoringParens(list(
-                node for node in nodes if node.count("=") == 1)) + [""]
+                node for node in nodes if not "dotted" in node)) + [""]
             nodesList += sortIgnoringParens(list(
                 node for node in nodes if node not in nodesList)) + [""]
 
