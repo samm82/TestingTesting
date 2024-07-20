@@ -620,37 +620,50 @@ for key, value in categoryDict.items():
                   f"rigid{key}Graph")
 
 class CustomGraph:
-    def __init__(self, name, nodes, add=None, remove=None):
+    def __init__(self, name, nodes, add:dict=dict(),
+                 remove:dict=dict()):
         self.name = name
         self.nodes = nodes
         self.add = add
         self.remove = remove
 
-subgraphs = {
-    CustomGraph("recovery",
-                ["AvailabilityTesting", "BackupandRecoveryTesting", "BackupRecoveryTesting",
-                 "DisasterRecoveryTesting", "FailoverTesting", "FailoverRecoveryTesting",
-                 "FailureToleranceTesting", "FaultToleranceTesting", "PerformanceTesting",
-                 "PerformancerelatedTesting", "RecoverabilityTesting", "RecoveryTesting",
-                 "ReliabilityTesting", "UsabilityTesting"]),
-    CustomGraph("performance",
-                ["AvailabilityTesting", "CapacityTesting", "ConcurrencyTesting",
-                 "EfficiencyTesting", "ElasticityTesting", "EnduranceTesting",
-                 "LoadTesting", "MemoryManagementTesting", "PerformanceTesting",
-                 "PerformanceEfficiencyTesting", "PerformancerelatedTesting",
-                 "PowerTesting", "RecoverabilityTesting", "RecoveryPerformanceTesting",
-                 "ReliabilityTesting", "ResourceUtilizationTesting",
-                 "ResponseTimeTesting", "ScalabilityTesting", "SoakTesting",
-                 "StressTesting", "TransactionFlowTesting", "VolumeTesting"],
-                 add={
-                     "ConcurrencyTesting" : ["PerformancerelatedTesting"]
-                 },
-                 remove={
-                     "ConcurrencyTesting" : ["PerformanceTesting"]
-                 })
-}
+    def inherit(self, child: 'CustomGraph'):
+        self.add.update(child.add)
+        self.remove.update(child.remove)
 
-for subgraph in subgraphs:
+recoveryGraph = CustomGraph(
+    "recovery",
+    ["AvailabilityTesting", "BackupandRecoveryTesting", "BackupRecoveryTesting",
+        "DisasterRecoveryTesting", "FailoverTesting", "FailoverRecoveryTesting",
+        "FailureToleranceTesting", "FaultToleranceTesting", "PerformanceTesting",
+        "PerformancerelatedTesting", "RecoverabilityTesting", "RecoveryTesting",
+        "ReliabilityTesting", "UsabilityTesting"],
+    add = {
+        "RecoverabilityTesting" : ["AvailabilityTesting"]
+    }
+)
+
+performanceGraph = CustomGraph(
+    "performance",
+    ["AvailabilityTesting", "CapacityTesting", "ConcurrencyTesting",
+        "EfficiencyTesting", "ElasticityTesting", "EnduranceTesting",
+        "LoadTesting", "MemoryManagementTesting", "PerformanceTesting",
+        "PerformanceEfficiencyTesting", "PerformancerelatedTesting",
+        "PowerTesting", "RecoverabilityTesting", "RecoveryPerformanceTesting",
+        "ReliabilityTesting", "ResourceUtilizationTesting",
+        "ResponseTimeTesting", "ScalabilityTesting", "SoakTesting",
+        "StressTesting", "TransactionFlowTesting", "VolumeTesting"],
+    add = {
+        "ConcurrencyTesting" : ["PerformancerelatedTesting"]
+    },
+    remove = {
+        "ConcurrencyTesting" : ["PerformanceTesting"]
+    }
+)
+
+performanceGraph.inherit(recoveryGraph)
+
+for subgraph in {recoveryGraph, performanceGraph}:
     terms = subgraph.nodes
     # # Optimized with ChatGPT to remove redundant checks and extra new lines
     # Currently unused; finds ALL edges that contain ANY specified terms
@@ -683,12 +696,14 @@ for subgraph in subgraphs:
         rels.append("")
         rels += [f"{child} -> {parent};"
                  for child, parents in subgraph.add.items()
-                 for parent in parents]
+                 for parent in parents
+                 if child in subgraph.nodes and parent in subgraph.nodes]
     
     if subgraph.remove:
         rels = [rel for rel in rels if not rel.startswith(tuple(
             f"{child} -> {parent}"
             for child, parents in subgraph.remove.items() for parent in parents
+            if child in subgraph.nodes and parent in subgraph.nodes
             ))]
 
     if subgraph.add or subgraph.remove:

@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{recoveryProposedGraph}{
+rankdir=BT;
+
+// Dummy node to push the legend to the top left
+start [style="invis"];
+
+AvailabilityTesting [label=<Availability<br/>Testing>];
+BackupandRecoveryTesting [label=<Backup<br/>and<br/>Recovery<br/>Testing>];
+BackupRecoveryTesting [label=<Backup/Recovery<br/>Testing>];
+DisasterRecoveryTesting [label=<Disaster/Recovery<br/>Testing>];
+FailoverTesting [label=<Failover<br/>Testing>];
+FailoverRecoveryTesting [label=<Failover/Recovery<br/>Testing>];
+FailureToleranceTesting [label=<Failure<br/>Tolerance<br/>Testing>];
+FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
+PerformanceTesting [label=<Performance<br/>Testing>];
+PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
+RecoverabilityTesting [label=<Recoverability<br/>Testing>];
+RecoveryTesting [label=<Recovery<br/>Testing>];
+ReliabilityTesting [label=<Reliability<br/>Testing>];
+UsabilityTesting [label=<Usability<br/>Testing>];
+
+
+BackupandRecoveryTesting -> BackupRecoveryTesting[dir=none,style="dashed",color="green"];
+FailoverTesting -> FailoverRecoveryTesting[dir=none,style="dashed",color="blue"];
+PerformanceTesting -> PerformancerelatedTesting[dir=none];
+RecoverabilityTesting -> RecoveryTesting[dir=none];
+
+AvailabilityTesting -> ReliabilityTesting[color="green"];
+BackupandRecoveryTesting -> ReliabilityTesting[color="green"];
+BackupRecoveryTesting -> DisasterRecoveryTesting[color="green"];
+DisasterRecoveryTesting -> FaultToleranceTesting[color="green"];
+DisasterRecoveryTesting -> RecoverabilityTesting[color="green"];
+FailoverTesting -> FailureToleranceTesting[style="dashed",color="blue"];
+FailoverRecoveryTesting -> DisasterRecoveryTesting[color="green"];
+FaultToleranceTesting -> ReliabilityTesting[color="green"];
+FaultToleranceTesting -> AvailabilityTesting[color="green"];
+PerformanceTesting -> PerformancerelatedTesting[color="green"];
+RecoverabilityTesting -> ReliabilityTesting[color="green"];
+RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
+RecoveryTesting -> PerformancerelatedTesting[color="green"];
+RecoveryTesting -> ReliabilityTesting[color="green"];
+RecoveryTesting -> AvailabilityTesting[color="green"];
+RecoveryTesting -> FaultToleranceTesting[color="blue"];
+ReliabilityTesting -> PerformanceTesting;
+
+RecoverabilityTesting -> AvailabilityTesting;
+
+subgraph cluster_legend {
+    label="Legend";
+    labelloc="b";
+    fontsize="48pt"
+    rankdir=BT
+    {
+        rank=same
+        chd [label="Child"];
+        par [label="Parent"];
+        chd -> par [label="                "];
+        syn1 [label="Synonym"];
+        syn2 [label="Synonym"];
+        syn1 -> syn2 [dir=none label="                "];
+    }
+    {
+        rank=same
+        imp1 [label="Child"];
+        imp2 [label=<Implied<br/>Parent>];
+        imp1 -> imp2 [style="dashed" label="                "]
+        imp3 [label=<Implied<br/>Synonym>];
+        imp4 [label=<Implied<br/>Synonym>];
+        imp3 -> imp4 [style="dashed" dir=none label="                "]
+    }
+    edge [style="invis"]
+    imp1 -> chd
+    imp2 -> par
+    imp3 -> syn1
+    imp4 -> syn2
+}
+
+// Connect the dummy node to the first node of the legend
+start -> chd [style="invis"];
+}
+\end{document}
