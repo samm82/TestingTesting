@@ -619,33 +619,47 @@ for key, value in categoryDict.items():
     writeDotFile([c for c in lines if all(x not in c for x in unsure)],
                   f"rigid{key}Graph")
 
-recoveryTerms = ["AvailabilityTesting", "BackupandRecoveryTesting", "BackupRecoveryTesting",
+subgraphs = {
+    "recovery": ["AvailabilityTesting", "BackupandRecoveryTesting", "BackupRecoveryTesting",
                  "DisasterRecoveryTesting", "FailoverTesting", "FailoverRecoveryTesting",
                  "FailureToleranceTesting", "FaultToleranceTesting", "PerformanceTesting",
                  "PerformancerelatedTesting", "RecoverabilityTesting", "RecoveryTesting",
-                 "ReliabilityTesting", "UsabilityTesting"]
-# Optimized with ChatGPT to remove redundant checks and extra new lines
-recoveryLines = [line for line in categoryDict["Approach"][1]
-                 if any(term in line for term in recoveryTerms) or line == ""]
+                 "ReliabilityTesting", "UsabilityTesting"],
+    "performance": ["AvailabilityTesting", "CapacityTesting", "ConcurrencyTesting",
+                    "EfficiencyTesting", "EnduranceTesting", "LoadTesting",
+                    "MemoryManagementTesting", "PerformanceTesting",
+                    "PerformanceEfficiencyTesting", "PerformancerelatedTesting",
+                    "PowerTesting", "RecoverabilityTesting", "RecoveryPerformanceTesting",
+                    "ReliabilityTesting", "ResourceUtilizationTesting",
+                    "ResponseTimeTesting", "ScalabilityTesting", "SoakTesting",
+                    "StressTesting", "VolumeTesting"]
+}
 
-chunks = splitListAtEmpty(categoryDict["Approach"][1])
-if len(chunks) == 3:
-    nodes = chunks[0] + chunks[1]
-    rels = chunks[1] + chunks[2]
-elif len(chunks) == 4:
-    nodes = chunks[0] + chunks[1]
-    rels = chunks[1] + chunks[2] + chunks[3]
-else:
-    raise ValueError("Unexpected grouping of lines for automatic recovery graph")
+for name, terms in subgraphs.items():
+    # # Optimized with ChatGPT to remove redundant checks and extra new lines
+    # Currently unused; finds ALL edges that contain ANY specified terms
+    # Led to a lot of clutter
+    # lines = [line for line in categoryDict["Approach"][1]
+    #          if any(term in line for term in terms) or line == ""]
 
-rels = [line for line in rels if line == "" or
-        (line.split(" -> ")[0] in recoveryTerms and
-         line.split(" -> ")[1].split("[")[0].strip(";") in recoveryTerms) or
-        (line.split(" ")[1] in recoveryTerms and
-         line.split(" ")[2].strip("}") in recoveryTerms)]
-nodes = [node for node in nodes if "->" not in node and
-         any(node.split(" ")[0] in line for line in rels)]
+    chunks = splitListAtEmpty(categoryDict["Approach"][1])
+    if len(chunks) == 3:
+        nodes = chunks[0] + chunks[1]
+        rels = chunks[1] + chunks[2]
+    elif len(chunks) == 4:
+        nodes = chunks[0] + chunks[1]
+        rels = chunks[1] + chunks[2] + chunks[3]
+    else:
+        raise ValueError(f"Unexpected grouping of lines for automatic {name} graph")
 
-writeDotFile(nodes+rels, "recoveryGraph")
+    rels = [line for line in rels if line == "" or
+            (line.split(" -> ")[0] in terms and
+            line.split(" -> ")[1].split("[")[0].strip(";") in terms) or
+            (line.split(" ")[1] in terms and
+            line.split(" ")[2].strip("}") in terms)]
+    nodes = [node for node in nodes if "->" not in node and
+            any(node.split(" ")[0] in line for line in rels)]
+
+    writeDotFile(nodes+rels, f"{name}Graph")
 
 # print(staticApproaches)

@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{performanceGraph}{
+rankdir=BT;
+
+// Dummy node to push the legend to the top left
+start [style="invis"];
+
+AvailabilityTesting [label=<Availability<br/>Testing>];
+CapacityTesting [label=<Capacity<br/>Testing>];
+ConcurrencyTesting [label=<Concurrency<br/>Testing>];
+EfficiencyTesting [label=<Efficiency<br/>Testing>];
+EnduranceTesting [label=<Endurance<br/>Testing>];
+LoadTesting [label=<Load<br/>Testing>];
+MemoryManagementTesting [label=<Memory<br/>Management<br/>Testing>];
+PerformanceEfficiencyTesting [label=<Performance<br/>Efficiency<br/>Testing>];
+PerformanceTesting [label=<Performance<br/>Testing>];
+PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
+RecoverabilityTesting [label=<Recoverability<br/>Testing>];
+ReliabilityTesting [label=<Reliability<br/>Testing>];
+ResourceUtilizationTesting [label=<Resource<br/>Utilization<br/>Testing>];
+ResponseTimeTesting [label=<Response-Time<br/>Testing>];
+ScalabilityTesting [label=<Scalability<br/>Testing>];
+StressTesting [label=<Stress<br/>Testing>];
+VolumeTesting [label=<Volume<br/>Testing>];
+
+SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
+
+CapacityTesting -> ScalabilityTesting[dir=none,color="green"];
+EnduranceTesting -> SoakTesting[dir=none,color="green"];
+ReliabilityTesting -> SoakTesting[dir=none];
+PerformanceTesting -> PerformancerelatedTesting[dir=none];
+
+AvailabilityTesting -> ReliabilityTesting[color="green"];
+CapacityTesting -> PerformanceEfficiencyTesting[color="green"];
+CapacityTesting -> PerformancerelatedTesting[color="green"];
+CapacityTesting -> PerformanceTesting[color="blue"];
+ConcurrencyTesting -> PerformanceTesting;
+EnduranceTesting -> PerformancerelatedTesting[color="green"];
+EnduranceTesting -> PerformanceEfficiencyTesting[color="green"];
+EnduranceTesting -> ReliabilityTesting[color="blue"];
+LoadTesting -> PerformancerelatedTesting[color="green"];
+LoadTesting -> PerformanceTesting[color="green"];
+LoadTesting -> ReliabilityTesting[color="green"];
+LoadTesting -> PerformanceEfficiencyTesting[color="green"];
+LoadTesting -> CapacityTesting[color="blue"];
+MemoryManagementTesting -> PerformancerelatedTesting[color="green"];
+PerformanceEfficiencyTesting -> ReliabilityTesting[color="green"];
+PerformanceEfficiencyTesting -> PerformancerelatedTesting[color="green"];
+PerformanceEfficiencyTesting -> PerformanceTesting[style="dashed",color="green"];
+PerformanceEfficiencyTesting -> EfficiencyTesting[style="dashed",color="green"];
+PerformanceTesting -> PerformancerelatedTesting[color="green"];
+RecoverabilityTesting -> ReliabilityTesting[color="green"];
+ReliabilityTesting -> PerformanceTesting;
+ResourceUtilizationTesting -> PerformanceEfficiencyTesting[color="green"];
+ResourceUtilizationTesting -> EfficiencyTesting[style="dashed"];
+ResponseTimeTesting -> PerformancerelatedTesting[color="green"];
+ResponseTimeTesting -> PerformanceTesting[color="blue"];
+StressTesting -> PerformancerelatedTesting[color="green"];
+StressTesting -> PerformanceEfficiencyTesting[color="green"];
+StressTesting -> PerformanceTesting[color="blue"];
+StressTesting -> CapacityTesting[color="blue"];
+VolumeTesting -> PerformancerelatedTesting[color="green"];
+VolumeTesting -> PerformanceEfficiencyTesting[color="green"];
+VolumeTesting -> CapacityTesting[color="blue"];
+VolumeTesting -> CapacityTesting[style="dashed",color="green"];
+
+subgraph cluster_legend {
+    label="Legend";
+    labelloc="b";
+    fontsize="48pt"
+    rankdir=BT
+    {
+        rank=same
+        chd [label="Child"];
+        par [label="Parent"];
+        chd -> par [label="                "];
+        syn1 [label="Synonym"];
+        syn2 [label="Synonym"];
+        syn1 -> syn2 [dir=none label="                "];
+    }
+    {
+        rank=same
+        imp1 [label="Child"];
+        imp2 [label=<Implied<br/>Parent>];
+        imp1 -> imp2 [style="dashed" label="                "]
+        imp3 [label=<Implied<br/>Synonym>];
+        imp4 [label=<Implied<br/>Synonym>];
+        imp3 -> imp4 [style="dashed" dir=none label="                "]
+    }
+    {
+        rank=same
+        syn3 [label=<Term>]
+        syn4 [label=<Synonym<br/>to Both> style="dotted"]
+        syn5 [label=<Term>]
+        syn3 -> syn4 -> syn5 [dir=none]
+    }
+    edge [style="invis"]
+    imp1 -> chd
+    imp2 -> par
+    imp3 -> syn1
+    imp4 -> syn2
+syn3 -> imp2
+syn4 -> imp3
+syn5 -> imp4
+syn3 -> imp1
+syn4 -> imp2
+syn5 -> imp3
+}
+
+// Connect the dummy node to the first node of the legend
+start -> chd [style="invis"];
+}
+\end{document}
