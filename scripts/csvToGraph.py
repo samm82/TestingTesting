@@ -619,23 +619,33 @@ for key, value in categoryDict.items():
     writeDotFile([c for c in lines if all(x not in c for x in unsure)],
                   f"rigid{key}Graph")
 
+class CustomGraph:
+    def __init__(self, name, nodes, add=None, remove=None):
+        self.name = name
+        self.nodes = nodes
+        self.add = add
+        self.remove = remove
+
 subgraphs = {
-    "recovery": ["AvailabilityTesting", "BackupandRecoveryTesting", "BackupRecoveryTesting",
+    CustomGraph("recovery",
+                ["AvailabilityTesting", "BackupandRecoveryTesting", "BackupRecoveryTesting",
                  "DisasterRecoveryTesting", "FailoverTesting", "FailoverRecoveryTesting",
                  "FailureToleranceTesting", "FaultToleranceTesting", "PerformanceTesting",
                  "PerformancerelatedTesting", "RecoverabilityTesting", "RecoveryTesting",
-                 "ReliabilityTesting", "UsabilityTesting"],
-    "performance": ["AvailabilityTesting", "CapacityTesting", "ConcurrencyTesting",
-                    "EfficiencyTesting", "ElasticityTesting", "EnduranceTesting",
-                    "LoadTesting", "MemoryManagementTesting", "PerformanceTesting",
-                    "PerformanceEfficiencyTesting", "PerformancerelatedTesting",
-                    "PowerTesting", "RecoverabilityTesting", "RecoveryPerformanceTesting",
-                    "ReliabilityTesting", "ResourceUtilizationTesting",
-                    "ResponseTimeTesting", "ScalabilityTesting", "SoakTesting",
-                    "StressTesting", "TransactionFlowTesting", "VolumeTesting"]
+                 "ReliabilityTesting", "UsabilityTesting"]),
+    CustomGraph("performance",
+                ["AvailabilityTesting", "CapacityTesting", "ConcurrencyTesting",
+                 "EfficiencyTesting", "ElasticityTesting", "EnduranceTesting",
+                 "LoadTesting", "MemoryManagementTesting", "PerformanceTesting",
+                 "PerformanceEfficiencyTesting", "PerformancerelatedTesting",
+                 "PowerTesting", "RecoverabilityTesting", "RecoveryPerformanceTesting",
+                 "ReliabilityTesting", "ResourceUtilizationTesting",
+                 "ResponseTimeTesting", "ScalabilityTesting", "SoakTesting",
+                 "StressTesting", "TransactionFlowTesting", "VolumeTesting"])
 }
 
-for name, terms in subgraphs.items():
+for subgraph in subgraphs:
+    terms = subgraph.nodes
     # # Optimized with ChatGPT to remove redundant checks and extra new lines
     # Currently unused; finds ALL edges that contain ANY specified terms
     # Led to a lot of clutter
@@ -650,7 +660,8 @@ for name, terms in subgraphs.items():
         nodes = chunks[0] + chunks[1]
         rels = chunks[1] + chunks[2] + chunks[3]
     else:
-        raise ValueError(f"Unexpected grouping of lines for automatic {name} graph")
+        raise ValueError("Unexpected grouping of lines for automatic "
+                         f"{subgraph.name} graph")
 
     rels = [line for line in rels if line == "" or
             (line.split(" -> ")[0] in terms and
@@ -660,6 +671,6 @@ for name, terms in subgraphs.items():
     nodes = [node for node in nodes if "->" not in node and
             any(node.split(" ")[0] in line for line in rels)]
 
-    writeDotFile(nodes+rels, f"{name}Graph")
+    writeDotFile(nodes+rels, f"{subgraph.name}Graph")
 
 # print(staticApproaches)
