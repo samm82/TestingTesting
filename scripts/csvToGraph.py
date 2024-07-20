@@ -622,6 +622,9 @@ for key, value in categoryDict.items():
     writeDotFile([c for c in lines if all(x not in c for x in unsure)],
                   f"rigid{key}Graph")
 
+from copy import deepcopy
+
+SYN = "syn"
 class CustomGraph:
     def __init__(self, name, terms:set, add:dict=dict(),
                  remove:dict=dict()):
@@ -629,17 +632,30 @@ class CustomGraph:
         self.terms = terms
         self.add = add
         self.remove = remove
+        self._addRevSynsToRemove(deepcopy(remove))
 
         # Update set of terms in case any get added
         self.terms.update(child for child in self.add.keys())
         self.terms.update(parent for parents in self.add.values()
                           for parent in parents)
 
+    # This *might* not be necessary, but I'm keeping it just in case
+    def _addRevSynsToRemove(self, toRemove=dict()):
+        for chd, pars in toRemove.items():
+            if isinstance(pars, list):
+                for par in pars:
+                    if isinstance(par, tuple) and par[0] == SYN:
+                        try:
+                            self.remove[par[1]].append((SYN, chd))
+                        except KeyError:
+                            self.remove[par[1]] = [(SYN, chd)]
+
     def inherit(self, child: 'CustomGraph'):
         self.add.update({chd: [par for par in pars if par in self.terms]
                          for chd, pars in child.add.items()
                          if chd in self.terms})
         self.remove.update(child.remove)
+        self._addRevSynsToRemove(child.remove)
 
     def buildGraph(self):
         formattedTerms = [formatApproach(term) for term in self.terms]
@@ -695,10 +711,15 @@ class CustomGraph:
 
         for child, parents in self.remove.items():
             if isinstance(parents, list):
+                def getParentFromTuple(t):
+                    return t[1] if isinstance(t, tuple) else t
+
                 rels = [rel for rel in rels if not rel.startswith(tuple(
-                    f"{formatApproach(child)} -> {formatApproach(parent)}"
-                    for parent in parents
-                    if child in self.terms and parent in self.terms
+                    f"{formatApproach(child)} -> {formatApproach(
+                        getParentFromTuple(parent))}{"[dir=none" if isinstance(
+                            parent, tuple) and parent[0] == SYN else ""}"
+                    for parent in parents if child in self.terms and
+                        getParentFromTuple(parent) in self.terms
                 ))]
             elif isinstance(parents, bool) and parents:
                 nodes = [node for node in nodes if not formatApproach(child) in node]
@@ -771,9 +792,11 @@ performanceGraph = CustomGraph(
         "Reliability Testing" : ["Performance-related Testing"],
     },
     remove = {
-        "Capacity Testing" : ["Performance Testing"],
+        "Capacity Testing" : [(SYN, "Scalability Testing"),
+                              "Performance Testing"],
         "Concurrency Testing" : ["Performance Testing"],
         "Load Testing" : ["Capacity Testing", "Performance Testing"],
+        "Performance Testing" : [(SYN, "Performance-related Testing")],
         "Performance Efficiency Testing" : ["Performance Testing"],
         "Reliability Testing" : ["Performance Testing"],
         "Response-Time Testing" : ["Performance Testing"],

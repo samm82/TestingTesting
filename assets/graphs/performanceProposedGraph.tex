@@ -35,10 +35,8 @@ VolumeTesting [label=<Volume<br/>Testing>];
 
 SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
 
-CapacityTesting -> ScalabilityTesting[dir=none,color="green"];
 EnduranceTesting -> SoakTesting[dir=none,color="green"];
 ReliabilityTesting -> SoakTesting[dir=none];
-PerformanceTesting -> PerformancerelatedTesting[dir=none];
 
 AvailabilityTesting -> ReliabilityTesting[color="green"];
 CapacityTesting -> PerformanceEfficiencyTesting[color="green"];
@@ -59,7 +57,6 @@ PerformanceEfficiencyTesting -> PerformancerelatedTesting[color="green"];
 PerformanceEfficiencyTesting -> EfficiencyTesting[style="dashed",color="green"];
 PerformanceTesting -> PerformancerelatedTesting[color="green"];
 RecoverabilityTesting -> ReliabilityTesting[color="green"];
-ReliabilityTesting -> PerformanceTesting;
 ResourceUtilizationTesting -> PerformanceEfficiencyTesting[color="green"];
 ResourceUtilizationTesting -> EfficiencyTesting[style="dashed"];
 ResponseTimeTesting -> PerformancerelatedTesting[color="green"];
@@ -82,6 +79,7 @@ CapacityTesting -> LoadTesting;
 ConcurrencyTesting -> PerformancerelatedTesting;
 PerformanceTesting -> LoadTesting;
 PowerTesting -> PerformancerelatedTesting;
+ReliabilityTesting -> PerformancerelatedTesting;
 RecoverabilityTesting -> AvailabilityTesting;
 RecoveryPerformanceTesting -> PerformancerelatedTesting;
 RecoveryPerformanceTesting -> RecoverabilityTesting;
