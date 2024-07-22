@@ -814,6 +814,18 @@ Some interesting notes about these two lists of discrepancies:
             meaningful (see \thesisissueref{59}).
 \end{itemize}
 
+\subsection{Parent Relations}
+
+There are also some issues with how parent relations are defined in the
+literature, the most trivial being self-cycles, where a source describes a
+test approach as a subset of itself:
+
+\input{build/selfCycles}
+
+Interestingly, \citeauthor{Gerrard2000a} does \emph{not} describe performance
+testing as a sub-category of usability testing (\citeyear[Tab.~2]{Gerrard2000a};
+\citeyear[Tab.~1]{Gerrard2000b}), which would have been more meaningful.
+
 \subsection{Functional Testing}
 
 Throughout the literature, ``functional testing'' seems to be described in many
@@ -1470,11 +1482,6 @@ a source from a previous ``category'':
       \item The phrase ``continuous automated testing''  \citep[p.~11]{Gerrard2000a}
             is redundant since continuous testing is a sub-category of automated
             testing (\citealp[p.~35]{IEEE2022}, \citealpISTQB{}).
-      \item \citeauthor{Gerrard2000a} very helpfully indicates that performance
-            testing is performance testing and that usability testing is
-            usability testing; interestingly, performance testing is \emph{not}
-            given as a sub-category of usability testing
-            \citeyearpar[Tab.~2]{Gerrard2000a}.
       \item End-to-end functionality testing is \emph{not} indicated to be
             functionality testing \citep[Tab.~2]{Gerrard2000a}.
       \item \citeauthor{Gerrard2000b}'s definition for ``security audits''

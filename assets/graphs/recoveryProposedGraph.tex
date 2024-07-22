@@ -30,9 +30,11 @@ FailoverTesting -> FailureToleranceTesting[style="dashed",color="blue"];
 FaultToleranceTesting -> ReliabilityTesting[color="green"];
 FaultToleranceTesting -> AvailabilityTesting[color="green"];
 PerformanceTesting -> PerformancerelatedTesting[color="green"];
+PerformanceTesting -> PerformanceTesting;
 RecoverabilityTesting -> ReliabilityTesting[color="green"];
 RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
 ReliabilityTesting -> PerformanceTesting;
+UsabilityTesting -> UsabilityTesting;
 
 RecoverabilityTesting -> AvailabilityTesting;
 RecoverabilityTesting -> FailureToleranceTesting;

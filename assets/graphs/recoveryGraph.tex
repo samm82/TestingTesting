@@ -42,6 +42,7 @@ FailoverRecoveryTesting -> DisasterRecoveryTesting[color="green"];
 FaultToleranceTesting -> ReliabilityTesting[color="green"];
 FaultToleranceTesting -> AvailabilityTesting[color="green"];
 PerformanceTesting -> PerformancerelatedTesting[color="green"];
+PerformanceTesting -> PerformanceTesting;
 RecoverabilityTesting -> ReliabilityTesting[color="green"];
 RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
 RecoveryTesting -> PerformancerelatedTesting[color="green"];
@@ -49,6 +50,7 @@ RecoveryTesting -> ReliabilityTesting[color="green"];
 RecoveryTesting -> AvailabilityTesting[color="green"];
 RecoveryTesting -> FaultToleranceTesting[color="blue"];
 ReliabilityTesting -> PerformanceTesting;
+UsabilityTesting -> UsabilityTesting;
 
 subgraph cluster_legend {
     label="Legend";

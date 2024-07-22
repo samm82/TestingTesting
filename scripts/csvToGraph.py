@@ -375,6 +375,7 @@ writeHelperFile(synLines, "multiSyns")
 
 workingStaticSet = staticApproaches.copy()
 
+selfCycles = []
 # Add parent relations
 for name, parent in zip(names, parents):
     # if [x for x in parent + [name] if "keyword" in x.lower()]:
@@ -383,6 +384,8 @@ for name, parent in zip(names, parents):
         fpar = formatApproach(par)
         if not fpar:
             continue
+        if fname == fpar:
+            selfCycles.append(par)
 
         for key in categoryDict.keys():
             for parentLine in colorRelations(
@@ -395,6 +398,13 @@ for name, parent in zip(names, parents):
                 elif (removeInParens(name) in categoryDict[key][0] and
                     removeInParens(par) in categoryDict[key][0]):
                     addLineToCategory(key, parentLine)
+
+selfCycles = (["\\begin{enumerate}"] +
+              [formatLineWithSources(f"\\item {cycle}")
+               for cycle in selfCycles] +
+               ["\\end{enumerate}"])
+
+writeHelperFile(selfCycles, "selfCycles")
 
 def splitListAtEmpty(listToSplit):
     recArr = np.array(listToSplit)
