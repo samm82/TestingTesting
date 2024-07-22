@@ -22,19 +22,19 @@
 % Optional namerefs in context of (see <section name>)
 %------------------------------------------------------------------------------
 
-\newif\ifusenamerefs
+\newif\ifnotpaper
 \newcommand{\seeSection}[1]{%
-  \ifusenamerefs
+  \ifnotpaper
     { see \nameref{#1}}%
   \fi
 }
 \newcommand{\seeSectionPar}[2]{%
-  \ifusenamerefs
+  \ifnotpaper
     { (see \nameref{#1}#2)}%
   \fi
 }
 \newcommand{\seeSectionFoot}[1]{%
-  \ifusenamerefs
+  \ifnotpaper
     {\footnote{See \nameref{#1}.}}%
   \fi
 }
