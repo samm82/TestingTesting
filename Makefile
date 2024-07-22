@@ -55,10 +55,13 @@ update_diffs: gen_csv_diffs
 csv_process:
 	py scripts/csvToGraph.py
 
+gen_latex: csv_process
+	py scripts/undefinedTermSources.py
+
 compile_graphs: csv_process
 	for filename in $(GRAPHS) ; do \
 			filename=$${filename%.tex} ; \
-			-rm filename.pdf ; \
+			# -rm filename.pdf ; \
 			latex -interaction=nonstopmode -shell-escape $${filename}.tex || true ; \
 			latex -interaction=nonstopmode -shell-escape $${filename}.tex || true ; \
 			basefilename=$$(basename $$filename) ; \
@@ -72,7 +75,7 @@ custom_graphs:
 graphs:
 	make compile_graphs
 
-paper: csv_process # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+paper: gen_latex # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
@@ -80,7 +83,7 @@ paper: csv_process # standard build of just notes -- '-output-directory=build' i
 	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape paper.tex
 	cp build/paper.pdf paper.pdf
 
-notes: csv_process # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+notes: gen_latex # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):

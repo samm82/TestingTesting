@@ -100,41 +100,16 @@ orthogonal array testing\seeSectionPar{chap:testing:sec:scope}{}; since these
 are out of scope, relevant sources were not investigated fully.
 
 The following terms (and their respective related terms)
-were explored in the following sources, bringing the number of testing
+were explored%
+\ifnotpaper
+      { in the following sources}%
+\fi, bringing the number of testing
 approaches from \the\TotalBefore~to \the\TotalAfter~and the number of
 \emph{undefined} terms from \the\UndefBefore~to \the\UndefAfter~(the assumption
 can be made that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
 (\TotalAfter - \TotalBefore)\relax\% of added terms also included a definition):
 
-\begin{itemize}
-      \item \textbf{Assertion Checking:} \citet{LahiriEtAl2013, ChalinEtAl2006,
-                  BerdineEtAl2006}
-      \item \textbf{Loop Testing\footnote{\citep{ISO2015} and \citep{ISO2022}
-                        were used as reference for terms but not fully
-                        investigated, \citep{TrudnowskiEtAl2017} and
-                        \citep{PierreEtAl2017} were added as potentially in
-                        scope, and \citep{Goralski1999} and
-                        \citep{Dominguez-PumarEtAl2020} were added as
-                        out-of-scope examples.}:} \citet{DhokAndRamanathan2016,
-                  GodefroidAndLuchaup2011, PreußeEtAl2012,
-                  ForsythEtAl2004}
-      \item \textbf{EMSEC Testing:} \citet{ZhouEtAl2012, ISO2021}
-      \item \textbf{Asynchronous Testing:} \citet{JardEtAl1999}
-      \item \textbf{Performance(-related) Testing:} \citet{Moghadam2019}
-      \item \textbf{Web Application Testing:} \citet{DoğanEtAl2014, Kam2008}
-            \begin{itemize}
-                  \item \textbf{HTML Testing:} \citet{ChoudharyEtAl2010,
-                              SneedAndGöschl2000, Gerrard2000b}
-                  \item \textbf{DOM Testing:} \citet{BajammalAndMesbah2018}
-            \end{itemize}
-      \item \textbf{Sandwich Testing:} \citet{SharmaEtAl2021,
-                  SangwanAndLaPlante2006}
-      \item \textbf{Orthogonal Array Testing\footnote{
-                        \citep{YuEtAl2011} and \citep{Tsui2007} were added as
-                        out-of-scope examples.}:} \citet{Mandl1985, Valcheva2013}
-      \item \textbf{Backup Testing\seeSectionFoot{rec-test-ambiguity}:}
-            \citet{Bas2024}
-\end{itemize}
+\input{build/undefTerms}
 
 Different sources categorized software testing approaches in different ways;
 while it is useful to record and think about these
