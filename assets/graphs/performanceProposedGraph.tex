@@ -83,6 +83,17 @@ ReliabilityTesting -> PerformancerelatedTesting;
 RecoverabilityTesting -> AvailabilityTesting;
 RecoveryPerformanceTesting -> PerformancerelatedTesting;
 RecoveryPerformanceTesting -> RecoverabilityTesting;
+{
+rank=same
+EnduranceTesting
+SoakTesting
+}
+{
+rank=same
+ReliabilityTesting
+SoakTesting
+}
+
 
 subgraph cluster_legend {
     label="Legend";

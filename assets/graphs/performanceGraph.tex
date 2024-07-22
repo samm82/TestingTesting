@@ -83,6 +83,22 @@ VolumeTesting -> PerformancerelatedTesting[color="green"];
 VolumeTesting -> PerformanceEfficiencyTesting[color="green"];
 VolumeTesting -> CapacityTesting[color="blue"];
 VolumeTesting -> CapacityTesting[style="dashed",color="green"];
+{
+rank=same
+CapacityTesting
+ScalabilityTesting
+}
+{
+rank=same
+EnduranceTesting
+SoakTesting
+}
+{
+rank=same
+ReliabilityTesting
+SoakTesting
+}
+
 
 subgraph cluster_legend {
     label="Legend";

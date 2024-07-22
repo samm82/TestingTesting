@@ -501,15 +501,46 @@ def getTermsFromRelLine(line):
     return (line[0], line[1].split("[")[0].strip(";"))
 
 def writeDotFile(lines, filename):
+    def sameRank(lines):
+        return ['{', 'rank=same'] + lines + ['}']
+
     # Format how synonym relations affect ranking
-    def formatSynRelRankings(syns, pars):
-        return syns
+    def formatSynRelRankings(lines):
+        sameRankNodes = []
+        for i, line in enumerate(lines):
+            if "dir=none" not in line:  # Only want synonyms
+                continue
+            try:
+                chd, par = getTermsFromRelLine(line)
+            except ValueError:  # Not a relation
+                continue
+
+            oppLine = f"{formatApproach(par)} -> {formatApproach(chd)}"
+            stdLines = [line for line in lines if line.startswith(
+                f"{formatApproach(chd)} -> {formatApproach(par)}") and
+                "dir=none" not in line]
+            oppLines = [line for line in lines if line.startswith(oppLine) and
+                        "dir=none" not in line]
+
+            if stdLines and oppLines:
+                pass
+            elif stdLines:
+                pass
+            elif oppLines:
+                pass
+                # if "[" in syn:
+                #     syns[i] = "oppLine[" + syn.split("[")[1]
+                # else:
+                #     syns[i] = oppLine + ";"
+            else:
+                print(chd, par, "\n")
+                sameRankNodes.append((chd, par))
+
+        return lines + ((["\n".join(sameRank(list(x))) for x in sameRankNodes] + [""])
+                       if sameRankNodes else [])
 
     if "performance" in filename:
-        splitLines = splitListAtEmpty(lines)
-        lines = ([line for ls in splitLines[:-2] for line in ls] +
-                formatSynRelRankings(splitLines[-2], splitLines[-1]) +
-                splitLines[-1])
+        lines = formatSynRelRankings(lines)
 
     LONG_EDGE_LABEL = 'label="                "'
 
@@ -530,9 +561,6 @@ def writeDotFile(lines, filename):
         'syn5 [label=<Term>]',
         'syn3 -> syn4 -> syn5 [dir=none]',
     ] if len(syns) > len(synsToRemove) else []
-    
-    def sameRank(lines):
-        return ['{', 'rank=same'] + lines + ['}']
 
     def impOrDynWithSyn(nodes, forceDyn=False):
         if len(nodes) == 1:
