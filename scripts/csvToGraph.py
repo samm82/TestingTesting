@@ -493,7 +493,24 @@ writeHelperFile(parSynLines, "parSyns")
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
 
+def getTermsFromRelLine(line):
+    if " -> " not in line:
+        return tuple()
+
+    line = line.split(" -> ")
+    return (line[0], line[1].split("[")[0].strip(";"))
+
 def writeDotFile(lines, filename):
+    # Format how synonym relations affect ranking
+    def formatSynRelRankings(syns, pars):
+        return syns
+
+    if "performance" in filename:
+        splitLines = splitListAtEmpty(lines)
+        lines = ([line for ls in splitLines[:-2] for line in ls] +
+                formatSynRelRankings(splitLines[-2], splitLines[-1]) +
+                splitLines[-1])
+
     LONG_EDGE_LABEL = 'label="                "'
 
     syns = [line.split(" ")[0] for line in lines if styleInLine("dotted", line)]
@@ -678,9 +695,9 @@ class CustomGraph:
                             f"{self.name} graph")
 
         rels = [line for line in rels if line == "" or
-                (line.split(" -> ")[0] in formattedTerms and
-                line.split(" -> ")[1].split("[")[0].strip(";") in formattedTerms) or
-                (line.split(" ")[1] in formattedTerms and
+                (getTermsFromRelLine(line) and all(
+                    term in formattedTerms for term in getTermsFromRelLine(line))
+                ) or (line.split(" ")[1] in formattedTerms and
                 line.split(" ")[2].strip("}") in formattedTerms)]
         nodes = [node for node in nodes if "->" not in node and
                 any(node.split(" ")[0] in line for line in rels)]
