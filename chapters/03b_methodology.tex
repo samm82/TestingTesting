@@ -8,7 +8,7 @@ as required. Going forward, this process will be more rigorous, starting from
 more established sources of software testing terminology in approximately the
 following order:
 (\citealp{IEEE2022, SWEBOK2024, SWEBOK2014, IEEE2017, IEEE2013, ISO_IEC2023b,
-    IEEE2012, ISO_IEC2023a}; \citealpISTQB{}; \citealp{Firesmith2015, IEEE2021}).
+      IEEE2012, ISO_IEC2023a}; \citealpISTQB{}; \citealp{Firesmith2015, IEEE2021}).
 
 Sources from standards organizations (i.e., \citeauthor{IEEE2022}) were decided
 to be the most valuable, followed by ``meta-level'' commentaries or collections
@@ -18,7 +18,7 @@ correspond with standards and blue lines with less-standard collections.
 Other sources that focus on cataloging and categorizing testing terminology
 \citep[e.g.,][]{KuļešovsEtAl2013}, were also examined to see how well they
 agreed with the ``standard'' terminology, and these, along with sources
-investigated to ``fill in'' missing definitions (see \nameref{undef-terms})
+investigated to ``fill in'' missing definitions\seeSectionPar{undef-terms}{}
 and any ``surface-level'' analysis that followed trivially, are represented by
 black lines. Since this research began from McMaster-trusted sources, comparing
 them to the rest of the literature may prove interesting; these relations are
@@ -41,8 +41,8 @@ merged to paint a more complete picture. If any discrepancies or ambiguities
 arose, they were investigated to a reasonable extent and documented. If a
 testing approach was mentioned but not defined, it was still added to the
 glossary to indicate it should be investigated further. A similar methodology
-was used for tracking software qualities, albeit in a separate document
-(see \nameref{chap:testing:sec:derived-tests}).
+was used for tracking software qualities, albeit in a separate
+document\seeSectionPar{chap:testing:sec:derived-tests}{}.
 
 During this investigation, some terms came up that seemed to be relevant to
 testing but were so vague, they didn't provide any new information. These were
@@ -50,20 +50,20 @@ decided to be not worth tracking (see \thesisissueref{39}, \thesisissueref{44},
 \thesisissueref{28}) and are listed below:
 
 \begin{itemize}
-    \item \textbf{Evaluation:} the ``systematic determination of the extent
-          to which an entity meets its specified criteria''
-          \citep[p.~167]{IEEE2017}
-    \item \textbf{Product Analysis:} the ``process of evaluating a product by
-          manual or automated means to determine if the product has certain
-          characteristics'' \citep[p.~343]{IEEE2017}
-    \item \textbf{Quality Audit:} ``a structured, independent process to
-          determine if project activities comply with organizational and
-          project policies, processes, and procedures'' \citep[p.~361]{IEEE2017}
-          \todo{OG PMBOK}
-    \item \textbf{Software Product Evaluation:} a ``technical operation that
-          consists of producing an assessment of one or more characteristics
-          of a software product according to a specified procedure''
-          \citep[p.~424]{IEEE2017}
+      \item \textbf{Evaluation:} the ``systematic determination of the extent
+            to which an entity meets its specified criteria''
+            \citep[p.~167]{IEEE2017}
+      \item \textbf{Product Analysis:} the ``process of evaluating a product by
+            manual or automated means to determine if the product has certain
+            characteristics'' \citep[p.~343]{IEEE2017}
+      \item \textbf{Quality Audit:} ``a structured, independent process to
+            determine if project activities comply with organizational and
+            project policies, processes, and procedures'' \citep[p.~361]{IEEE2017}
+            \todo{OG PMBOK}
+      \item \textbf{Software Product Evaluation:} a ``technical operation that
+            consists of producing an assessment of one or more characteristics
+            of a software product according to a specified procedure''
+            \citep[p.~424]{IEEE2017}
 \end{itemize}
 
 However, over the course of this research, our scope was adjusted to include
@@ -96,7 +96,7 @@ look for sources that explicitly defined these terms, with the added benefit of
 uncovering more terms to explore, potentially in different domains (see
 \thesisissueref{57}). This also uncovered some out-of-scope testing approaches,
 including EMSEC testing, HTML testing, and aspects of loop testing and
-orthogonal array testing (see \nameref{chap:testing:sec:scope}); since these
+orthogonal array testing\seeSectionPar{chap:testing:sec:scope}{}; since these
 are out of scope, relevant sources were not investigated fully.
 
 The following terms (and their respective related terms)
@@ -107,38 +107,39 @@ can be made that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
 (\TotalAfter - \TotalBefore)\relax\% of added terms also included a definition):
 
 \begin{itemize}
-    \item \textbf{Assertion Checking:} \citet{LahiriEtAl2013, ChalinEtAl2006,
-              BerdineEtAl2006}
-    \item \textbf{Loop Testing\footnote{\citep{ISO2015} and \citep{ISO2022}
-                  were used as reference for terms but not fully
-                  investigated, \citep{TrudnowskiEtAl2017} and
-                  \citep{PierreEtAl2017} were added as potentially in
-                  scope, and \citep{Goralski1999} and
-                  \citep{Dominguez-PumarEtAl2020} were added as
-                  out-of-scope examples.}:} \citet{DhokAndRamanathan2016,
-              GodefroidAndLuchaup2011, PreußeEtAl2012,
-              ForsythEtAl2004}
-    \item \textbf{EMSEC Testing:} \citet{ZhouEtAl2012, ISO2021}
-    \item \textbf{Asynchronous Testing:} \citet{JardEtAl1999}
-    \item \textbf{Performance(-related) Testing:} \citet{Moghadam2019}
-    \item \textbf{Web Application Testing:} \citet{DoğanEtAl2014, Kam2008}
-          \begin{itemize}
-              \item \textbf{HTML Testing:} \citet{ChoudharyEtAl2010,
-                        SneedAndGöschl2000, Gerrard2000b}
-              \item \textbf{DOM Testing:} \citet{BajammalAndMesbah2018}
-          \end{itemize}
-    \item \textbf{Sandwich Testing:} \citet{SharmaEtAl2021,
-              SangwanAndLaPlante2006}
-    \item \textbf{Orthogonal Array Testing\footnote{
-                  \citep{YuEtAl2011} and \citep{Tsui2007} were added as
-                  out-of-scope examples.}:} \citet{Mandl1985, Valcheva2013}
-    \item \textbf{Backup Testing\footnote{See \nameref{rec-test-ambiguity}.}:}
-          \citet{Bas2024}
+      \item \textbf{Assertion Checking:} \citet{LahiriEtAl2013, ChalinEtAl2006,
+                  BerdineEtAl2006}
+      \item \textbf{Loop Testing\footnote{\citep{ISO2015} and \citep{ISO2022}
+                        were used as reference for terms but not fully
+                        investigated, \citep{TrudnowskiEtAl2017} and
+                        \citep{PierreEtAl2017} were added as potentially in
+                        scope, and \citep{Goralski1999} and
+                        \citep{Dominguez-PumarEtAl2020} were added as
+                        out-of-scope examples.}:} \citet{DhokAndRamanathan2016,
+                  GodefroidAndLuchaup2011, PreußeEtAl2012,
+                  ForsythEtAl2004}
+      \item \textbf{EMSEC Testing:} \citet{ZhouEtAl2012, ISO2021}
+      \item \textbf{Asynchronous Testing:} \citet{JardEtAl1999}
+      \item \textbf{Performance(-related) Testing:} \citet{Moghadam2019}
+      \item \textbf{Web Application Testing:} \citet{DoğanEtAl2014, Kam2008}
+            \begin{itemize}
+                  \item \textbf{HTML Testing:} \citet{ChoudharyEtAl2010,
+                              SneedAndGöschl2000, Gerrard2000b}
+                  \item \textbf{DOM Testing:} \citet{BajammalAndMesbah2018}
+            \end{itemize}
+      \item \textbf{Sandwich Testing:} \citet{SharmaEtAl2021,
+                  SangwanAndLaPlante2006}
+      \item \textbf{Orthogonal Array Testing\footnote{
+                        \citep{YuEtAl2011} and \citep{Tsui2007} were added as
+                        out-of-scope examples.}:} \citet{Mandl1985, Valcheva2013}
+      \item \textbf{Backup Testing\seeSectionFoot{rec-test-ambiguity}:}
+            \citet{Bas2024}
 \end{itemize}
 
 Different sources categorized software testing approaches in different ways;
-while it is useful to record and think about these categorizations (see
-\nameref{testing-categories}), following one (or more) during the research
+while it is useful to record and think about these
+categorizations\seeSectionPar{testing-categories}{}, following one (or more)
+during the research
 stage could lead to bias and a prescriptive categorization, instead of letting
 one emerge descriptively during the analysis stage. Since these categorizations
 are not mutually exclusive, it also means that more than one could be useful

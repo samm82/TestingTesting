@@ -274,7 +274,7 @@ terminology (see \refIEEETestTerms{}). However, other sources
 categories (see \refOtherTestTerms{}) which may be beneficial to investigate to
 determine if this categorization is sufficient. A ``metric'' categorization was
 considered at one point, but was decided to be out of the scope of this project
-(see \nameref{chap:testing:sec:scope}, \thesisissueref{21}, and \thesisissueref{22}).
+\seeSectionPar{chap:testing:sec:scope}{, \thesisissueref{21}, and \thesisissueref{22}}.
 Related testing approaches may be grouped into a ``class'' or ``family'' to
 group those with ``commonalities and well-identified variabilities that can be
 instantiated'', where ``the commonalities are large and the variabilities
@@ -284,9 +284,9 @@ family of performance-related testing \cite[p.~1187]{Moghadam2019}\footnote{The
       original source describes ``performance testing \dots\ as a family of
       performance-related testing techniques'', but it makes more sense to
       consider ``performance-related testing'' as the ``family'' with
-      ``performance testing'' being one of the variabilities
-      (see \nameref{perf-test-ambiguity}).}, and may also be implied for
-security testing, a test type that consists of ``a number of
+      ``performance testing'' being one of the
+      variabilities\seeSectionPar{perf-test-ambiguity}{}.}, and may also be
+implied for security testing, a test type that consists of ``a number of
 techniques\footnote{This may or may not be \distinctIEEE{technique}}''
 \cite[p.~40]{IEEE2021}.
 
@@ -294,7 +294,7 @@ It also seems that these categories are orthogonal. For example, ``a test type
 can be performed at a single test level or across several test levels''
 (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021}). Due to this, a specific
 test approach can be derived by combining test approaches from different
-categories; see \nameref{chap:testing:sec:orthogonal-tests} for some examples
+categories;\seeSection{chap:testing:sec:orthogonal-tests} for some examples
 of this. However, the boundaries between items within a category may be unclear:
 ``although each technique is defined independently of all others, in practice
       [sic] some can be used in combination with other techniques''
@@ -442,7 +442,7 @@ that make one approach more effective than the other''
             \citealp[p.~213]{KuļešovsEtAl2013};
             \citealp[pp.~53,~218]{Patton2006}; \citealp[p.~69]{Perry2006};
             \citealp[pp.~4-5, called ``testing methods'']{Kam2008})
-      \item Level/stage\footnote{See \nameref{tab:ieeeTestTerms}.} of testing:
+      \item Level/stage\seeSectionFoot{tab:ieeeTestTerms} of testing:
             unit, integration, system, or acceptance
             (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citealpISTQB{};
             \citealp[p.~218]{KuļešovsEtAl2013} \todo{OG Black, 2009};
@@ -1156,8 +1156,8 @@ approaches could have been defined!
             Testing, \textbf{Backup and Recovery Testing}*, Recovery*)
       \item Response-Time Testing
       \item \emph{Reviews} (ISO/IEC 20246) (Code Reviews*)
-      \item Scalability Testing (defined as a synonym of ``capacity testing'';
-            see \nameref{scal-discrep})
+      \item Scalability Testing (defined as a synonym of ``capacity
+            testing'';\seeSection{scal-discrep})
       \item Statistical Testing
       \item System Integration Testing (System Integration*)
       \item System Testing* (also mentioned but not defined in \citep{IEEE2013})
@@ -2110,8 +2110,8 @@ Evaluation \citep[pp.~417-418]{vanVliet2000} and Stepwise Abstraction
                         \citep[p.~483]{PetersAndPedrycz2000}.
             \end{itemize}
 
-      \item Can use various tools (see \nameref{code-stds-and-guidelines} and
-            \nameref{gen-code-review-checklist})
+      \item Can use various tools \seeSectionPar{code-stds-and-guidelines}{ and
+                  \nameref{gen-code-review-checklist}}
 
       \item \emph{Could be used to evaluate Drasil and/or generated code, but
                   couldn't be automated due to the human element}
@@ -2692,7 +2692,7 @@ organizing them more logically and making them:
             performance-related elements of recovery testing seemed to be
             meaningful (see \thesisissueref{40}), but was not captured
             consistently by the literature. This will be a subset of
-            ``performance-related testing'' (see \nameref{perf-test-ambiguity})
+            ``performance-related testing''\seeSectionPar{perf-test-ambiguity}{}
             as ``recovery testing'' is in \citep[p.~22]{IEEE2022}. This could
             also be extended into testing the performance of specific elements
             of recovery (e.g., failover performance testing), but this be too

@@ -19,6 +19,27 @@
 \newcommand{\porthreftm}[2]{\href{#2}{#1\printOnlyFootnoteMark}}
 
 %------------------------------------------------------------------------------
+% Optional namerefs in context of (see <section name>)
+%------------------------------------------------------------------------------
+
+\newif\ifusenamerefs
+\newcommand{\seeSection}[1]{%
+  \ifusenamerefs
+    { see \nameref{#1}}%
+  \fi
+}
+\newcommand{\seeSectionPar}[2]{%
+  \ifusenamerefs
+    { (see \nameref{#1}#2)}%
+  \fi
+}
+\newcommand{\seeSectionFoot}[1]{%
+  \ifusenamerefs
+    {\footnote{See \nameref{#1}.}}%
+  \fi
+}
+
+%------------------------------------------------------------------------------
 % TODOs
 %------------------------------------------------------------------------------
 
