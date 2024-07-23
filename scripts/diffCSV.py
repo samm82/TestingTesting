@@ -19,5 +19,5 @@ if __name__ == "__main__":
                 print(content[i][j])
                 print()
     
-    with open(f"Diff{filename}.txt", "w", encoding='utf-8') as file:
+    with open(f"Diff{filename}.txt", "w+", encoding='utf-8') as file:
         file.writelines("\n".join([" | ".join(row) for row in content]))

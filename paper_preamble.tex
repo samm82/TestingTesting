@@ -1,0 +1,24 @@
+% Enable links within the document
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    urlcolor=red,
+    breaklinks=true
+}
+\urlstyle{rm} % Make URL styled fonts match hyperref's hrefs
+\usepackage[nameinlink]{cleveref} % Fixes capitalization of internal references
+
+% General Utility Functions
+\input{paper_macros}
+
+% \usepackage{cite}
+\usepackage[square,sort,comma,numbers]{natbib}
+\newcommand{\citetISTQB}{\cite{ISTQB}}
+\newcommand{\citepISTQB}{\cite{ISTQB}}
+\newcommand{\citealpISTQB}{\cite{ISTQB}}
+
+\usepackage{algorithmic}
+\usepackage{textcomp}
+
+\usepackage[disable]{todonotes}

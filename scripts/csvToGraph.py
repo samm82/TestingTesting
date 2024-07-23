@@ -382,7 +382,7 @@ for synList in [expMultiSyns, impMultiSyns]:
 def writeHelperFile(lines, filename):
     lines = "\n".join(lines)
 
-    with open(f"build/{filename}.tex", "w", encoding="utf-8") as outFile:
+    with open(f"build/{filename}.tex", "w+", encoding="utf-8") as outFile:
         outFile.writelines(lines)
 
 writeHelperFile(synLines, "multiSyns")
@@ -637,7 +637,7 @@ def writeDotFile(lines, filename):
         "\\end{document}",
     ]
 
-    with open(f"assets/graphs/{filename}.tex", "w") as outFile:
+    with open(f"assets/graphs/{filename}.tex", "w+") as outFile:
         outFile.writelines(line + '\n' for line in lines)
 
 for key, value in categoryDict.items():

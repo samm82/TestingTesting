@@ -1,6 +1,7 @@
-% Extra functionality for command parsing, colouring elements, and commentary
+\input{common_preamble}
+
+% Extra functionality for command parsing and commentary
 \usepackage{xparse}
-\usepackage[table,usenames,dvipsnames]{xcolor}
 \usepackage{comment}
 
 % Make \today only show month and year
@@ -18,12 +19,8 @@
 
 % Math-related, but also generally helpful
 \usepackage{proof}
-\usepackage{amsmath}
-\usepackage{amsfonts}
 \usepackage{amsthm}
-\usepackage{amssymb}
 \usepackage{mathrsfs}
-\usepackage{graphicx}
 \usepackage[pdf]{graphviz}
 \usepackage{longtable}
 \usepackage{svg}
@@ -148,8 +145,6 @@
 \urlstyle{rm} % Make URL styled fonts match hyperref's hrefs
 \usepackage[nameinlink]{cleveref} % Fixes capitalization of internal references
 
-\usepackage{nameref}
-
 % For abbreviations, we use "acro" package, and mfirstuc to help capitalize long
 % versions normally
 \usepackage{array}
@@ -163,9 +158,6 @@
 % General Utility Functions
 \input{macros}
 \notpapertrue
-
-% General Assets
-\input{assets}
 
 % McMaster Colours
 \input{mcmaster_colours}

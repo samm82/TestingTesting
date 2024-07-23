@@ -3,44 +3,8 @@
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 %Template version as of 6/27/2024
 
-% Start   : Sam's customizations
-
-% \usepackage{xcolor}
-\usepackage[table,dvipsnames]{xcolor}
-
-\usepackage{nameref}
-\usepackage[disable]{todonotes}
-\usepackage{amsmath}
-
-% Enable links within the document
-\usepackage{hyperref}
-\hypersetup{
-  colorlinks=true,
-  linkcolor=red,
-  urlcolor=red,
-  breaklinks=true
-}
-\urlstyle{rm} % Make URL styled fonts match hyperref's hrefs
-\usepackage[nameinlink]{cleveref} % Fixes capitalization of internal references
-
-% General Utility Functions
-\input{paper_macros}
-
-% General Assets
-\input{assets}
-
-% \usepackage{cite}
-\usepackage[square,sort,comma,numbers]{natbib}
-\newcommand{\citetISTQB}{\cite{ISTQB}}
-\newcommand{\citepISTQB}{\cite{ISTQB}}
-\newcommand{\citealpISTQB}{\cite{ISTQB}}
-
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{algorithmic}
-\usepackage{graphicx}
-\usepackage{textcomp}
-
-% END   : Sam's customizations
+\input{common_preamble}
+\input{paper_preamble}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
