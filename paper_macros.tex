@@ -25,19 +25,22 @@
 \newif\ifnotpaper
 \newcommand{\seeSection}[1]{%
   \ifnotpaper
-    { see \nameref{#1}}%
+    \seeSectionAlways{#1}%
   \fi
 }
-\newcommand{\seeSectionPar}[2]{%
+\newcommand{\seeSectionPar}[2][]{%
   \ifnotpaper
-    { (see \nameref{#1}#2)}%
+    \seeSectionParAlways{#2}{#1}%
   \fi
 }
 \newcommand{\seeSectionFoot}[1]{%
   \ifnotpaper
-    {\footnote{See \nameref{#1}.}}%
+    \seeSectionFootAlways{#1}%
   \fi
 }
+\newcommand{\seeSectionAlways}[1]{{ see \nameref{#1}}}
+\newcommand{\seeSectionParAlways}[2][]{{ (see \nameref{#2}#1)}}
+\newcommand{\seeSectionFootAlways}[1]{{\footnote{See \nameref{#1}.}}}
 
 %------------------------------------------------------------------------------
 % TODOs
