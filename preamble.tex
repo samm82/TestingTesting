@@ -27,14 +27,6 @@
 \usepackage{mathpartir}
 \usepackage{braket}
 
-\usepackage{makecell, tabularx}
-\renewcommand\theadalign{cc}
-\renewcommand\theadfont{\bfseries}
-\renewcommand\tabularxcolumn[1]{m{#1}}
-\renewcommand{\arraystretch}{1.2}
-\usepackage{pdflscape}
-\usepackage{tablefootnote}
-
 % Since LaTeX doesn't, and many fonts rarely, fully support unicode, we need to
 % manually create characters to replace missing glyphs.
 \usepackage{newunicodechar}
@@ -145,15 +137,7 @@
 \urlstyle{rm} % Make URL styled fonts match hyperref's hrefs
 \usepackage[nameinlink]{cleveref} % Fixes capitalization of internal references
 
-% For abbreviations, we use "acro" package, and mfirstuc to help capitalize long
-% versions normally
 \usepackage{array}
-\usepackage{mfirstuc}
-\MFUhyphentrue % tell mfirstuc to capitalize hyphenated words
-
-% Acronyms
-\usepackage{acro}
-\input{acronyms}
 
 % General Utility Functions
 \input{macros}

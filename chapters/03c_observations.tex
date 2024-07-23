@@ -1,0 +1,324 @@
+\section{Observations}
+
+\subsection{Categories of Testing Approaches}
+
+For classifying different kinds of tests, \citet{IEEE2022} provide some
+terminology (see \refIEEETestTerms{}). However, other sources
+\citep{BarbosaEtAl2006, SouzaEtAl2017} provide alternate
+categories (see \refOtherTestTerms{}) which may be beneficial to investigate to
+determine if this categorization is sufficient. A ``metric'' categorization was
+considered at one point, but was decided to be out of the scope of this project
+\seeSectionPar{chap:testing:sec:scope}{, \thesisissueref{21}, and \thesisissueref{22}}.
+Related testing approaches may be grouped into a ``class'' or ``family'' to
+group those with ``commonalities and well-identified variabilities that can be
+instantiated'', where ``the commonalities are large and the variabilities
+smaller'' (see \thesisissueref{64}). Examples of these are the classes of
+combinatorial \citep[p.~15]{IEEE2021} and data flow testing (p.~3) and the
+family of performance-related testing \cite[p.~1187]{Moghadam2019}\footnote{The
+    original source describes ``performance testing \dots\ as a family of
+    performance-related testing techniques'', but it makes more sense to
+    consider ``performance-related testing'' as the ``family'' with
+    ``performance testing'' being one of the
+    variabilities\seeSectionPar{perf-test-ambiguity}.}, and may also be
+implied for security testing, a test type that consists of ``a number of
+techniques\footnote{This may or may not be \distinctIEEE{technique}}''
+\cite[p.~40]{IEEE2021}.
+
+It also seems that these categories are orthogonal. For example, ``a test type
+can be performed at a single test level or across several test levels''
+(\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021}). Due to this, a specific
+test approach can be derived by combining test approaches from different
+categories;\seeSection{chap:testing:sec:orthogonal-tests} for some examples
+of this. However, the boundaries between items within a category may be unclear:
+``although each technique is defined independently of all others, in practice
+    [sic] some can be used in combination with other techniques''
+\citep[p.~8]{IEEE2021}. For example, ``the test coverage items derived by
+applying equivalence partitioning can be used to identify the input parameters
+of test cases derived for scenario testing'' (p.~8). Even the categories
+themselves are not consistently defined, as some approaches are categorized
+differently by different sources; these differences will be tracked noted so
+that they can be analyzed more systematically (see \thesisissueref{21}).
+There are also several instances of inconsistencies between parent and child
+test approach categorizations (which may indicate they aren't necessarily the
+same, or that more thought must be given to classification/organization).
+Examples of discrepancies in test-approach categorization:
+
+\begin{enumerate}
+    \item Experience-based testing is categorized as both a test design
+          technique and a test practice on the same page
+          \citep[pp.~22, 34]{IEEE2022}!
+          \begin{itemize}
+              \item These authors previously say ``experience-based testing
+                    practices like exploratory testing \dots\ are not
+                    \dots\ techniques for designing test cases'', although
+                    they ``can use \dots\ test techniques''
+                    \citeyearpar[p.~viii]{IEEE2021}. This implies that
+                    ``experience-based test design techniques'' are
+                    techniques used by the \emph{practice} of experience-based
+                    testing, not that experience-based testing is
+                    \emph{itself} a test technique. If this is the case, it
+                    is not always clearly articulated
+                    (\citealp[pp.~4,~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021};
+                    \citealp[p.~5-13]{SWEBOK2024}; \citealpISTQB{}) and is
+                    sometimes contradicted \citep[p.~46]{Firesmith2015}.
+                    However, this conflates the distinction between
+                    ``practice'' and ``technique'', making these terms less
+                    useful, so this may just be a mistake
+                    (see \thesisissueref{64}).
+
+                    % Furthermore, if a ``class of \dots\ techniques''
+                    % is a practice, then other ``techniques'', such as combinatorial testing
+                    % (\citealp[pp.~3,~22]{IEEE2022}; \citeyear[p.~2]{IEEE2021};
+                    % \citealp[p.~5-11]{SWEBOK2024}; \citealpISTQB{}), data flow testing
+                    % (\citealp[p.~22]{IEEE2022}; \citeyear[p.~3]{IEEE2021};
+                    % \citealp[p.~5-13]{SWEBOK2024}; \citealp[p.~43]{Kam2008}), performance(-related)
+                    % testing (\citealp[p.~38]{IEEE2021}; \citealp[p.~1187]{Moghadam2019}), and
+                    % security testing \citep[p.~40]{IEEE2021} may \emph{also}
+                    % actually be practices, since they are also described as classes or families of
+                    % techniques. The same could be said of the more
+                    % general specification- and structure-based testing, especially since these,
+                    % plus experience-based testing, are described as ``complementary'' (p.~8, Fig.~2).
+                    % % \citeyearpar[p.~8, Fig.~2]{IEEE2021}
+
+              \item This also causes confusion about its children, such as
+                    error guessing and exploratory testing; again, on the
+                    same page, \citeauthor{IEEE2022} say error guessing is
+                    an ``experience-based test design technique'' and
+                    ``experience-based test practices include \dots\
+                    exploratory testing, tours, attacks, and
+                    checklist-based testing'' \citeyearpar[p.~34]{IEEE2022}.
+                    Other sources also do not agree whether error guessing
+                    is a technique (pp.~20,~22; \citeyear[p.~viii]{IEEE2021})
+                    % \citeyear[pp.~20,~22]{IEEE2022}
+                    or a practice \citep[p.~5-14]{SWEBOK2024}.
+          \end{itemize}
+    \item The following are test approaches that are categorized as test
+          techniques in \citep[p.~38]{IEEE2021}, followed by sources that
+          categorize them as test types:
+          \begin{enumerate}
+              \item Capacity testing (\citealp[p.~22]{IEEE2022};
+                    \citeyear[p.~2]{IEEE2013}; implied by its quality
+                    (\citealp{ISO_IEC2023a}; \citealp[Tab.~A.1]{IEEE2021})
+                    and by \citep[p.~53]{Firesmith2015})
+              \item Endurance testing (\citealp[p.~2]{IEEE2013};
+                    implied by \citep[p.~55]{Firesmith2015})
+              \item Load testing (\citealp[pp.~5,~20,~22]{IEEE2022};
+                    \citeyear[p.~253]{IEEE2017} \todo{OG IEEE 2013};
+                    \citealpISTQB{}; implied by \citep[p.~54]{Firesmith2015})
+              \item Performance testing (\citealp[pp.~7,~22,~26-27]{IEEE2022};
+                    \citeyear[p.~7]{IEEE2021}; implied by
+                    \citep[p.~53]{Firesmith2015})
+              \item Stress testing (\citealp[pp.~9,~22]{IEEE2022};
+                    \citeyear[p.~442]{IEEE2017}; implied by
+                    \citep[p.~54]{Firesmith2015})
+          \end{enumerate}
+    \item Model-based testing is categorized as both a test practice
+          (\citealp[p.~22]{IEEE2022}; \citeyear[p.~viii]{IEEE2021}) and
+          a test technique (\citealp[p.~4]{Kam2008}; implied by
+          \citealp[p.~7]{IEEE2021}; \citeyear[p.~469]{IEEE2017}).
+    \item Data-driven testing is categorized as both a test practice
+          \citep[p.~22]{IEEE2022} and a test technique
+          \citep[p.~43]{Kam2008} \todo{OG Fewster and Graham}.
+\end{enumerate}
+
+\ifnotpaper
+    \newgeometry{margin=1.5cm, top=2.5cm}
+    \begin{landscape}
+        \ieeeTestTermsTable{}
+    \end{landscape}
+
+    \begin{landscape}
+        \otherTestTermsTable{}
+    \end{landscape}
+    \restoregeometry
+\fi
+
+Since test techniques are able to ``identify test coverage items\dots\ and
+derive corresponding test cases'' (\citealp[p.~11]{IEEE2022}; similar in
+\citeyear[p.~467]{IEEE2017}) in a ``systematic'' way
+\citeyearpar[p.~464]{IEEE2017}, ``the coverage achieved by a specific test
+design technique'' can be calculated as ``the number of test coverage items
+covered by executed test cases'' divided by ``the total number of test coverage
+items identified'' \citeyearpar[p.~30]{IEEE2021}. ``Coverage levels can range
+from 0\% to 100\%'' and may or may not include ``infeasible'' test coverage
+items, which are ``not \dots\ executable or [are] impossible to be covered by a
+test case'' (p.~30).
+
+\subsection{Categorizations}
+\label{testing-categories}
+
+Software testing approaches can be divided into the following
+categories. Note that ``there is a lot of overlap between different classes of
+testing'' \citep[p.~8]{Firesmith2015}, meaning that ``one category [of test
+        techniques] might deal with combining two or more techniques''
+\citep[p.~5-10]{SWEBOK2024}. For example, ``performance, load and stress
+testing might considerably overlap in many areas'' \citep[p.~1187]{Moghadam2019}.
+A side effect of this is that it is difficult to
+``untangle'' these classes; for example, take the following sentence: ``whitebox
+fuzzing extends dynamic test generation based on symbolic execution and
+constraint solving from unit testing to whole-application security testing''
+\citep[p.~23]{GodefroidAndLuchaup2011}!
+
+Despite its challenges, it is useful to understand the differences between
+testing classes because tests from multiple subsets within the same category,
+such as functional and structural, ``use different sources of information and
+have been shown to highlight different problems'' \citep[p.~5-16]{SWEBOK2024}.
+However, some subsets, such as deterministic and random, may have ``conditions
+that make one approach more effective than the other''
+\citep[p.~5-16]{SWEBOK2024}.
+
+\begin{itemize}
+    \item Visibility of code: black-, white-, or grey-box
+          (specificational/functional, structural, or a mix of the two)
+          (\citealp[p.~8]{IEEE2021}; \citealp[pp.~5-10,~5-16]{SWEBOK2024};
+          \citealp[p.~601, called ``testing approaches'' and (stepwise) code
+              reading replaced ``grey-box testing'']{SharmaEtAl2021};
+          \todo{OG [3, 4, 5, 8]}
+          \citealp[pp.~57-58]{AmmannAndOffutt2017};
+          \citealp[p.~213]{KuļešovsEtAl2013};
+          \citealp[pp.~53,~218]{Patton2006}; \citealp[p.~69]{Perry2006};
+          \citealp[pp.~4-5, called ``testing methods'']{Kam2008})
+    \item Level/stage\seeSectionFoot{tab:ieeeTestTerms} of testing:
+          unit, integration, system, or acceptance
+          (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citealpISTQB{};
+          \citealp[p.~218]{KuļešovsEtAl2013} \todo{OG Black, 2009};
+          \citealp{Patton2006}; \citealp{Perry2006};
+          \citealp{PetersAndPedrycz2000}; \citealp[pp.~9,~13]{Gerrard2000a})
+          (sometimes includes installation \citep[p.~439]{vanVliet2000} or
+          regression \citep[p.~3]{BarbosaEtAl2006})
+    \item Source of information for design: specification, structure, or
+          experience \citep[p.~8]{IEEE2021}
+          \begin{itemize}
+              \item Source of test data: specification-, implementation-,
+                    or error-oriented \citep[p.~440]{PetersAndPedrycz2000}
+          \end{itemize}
+    \item Test case selection process: deterministic or random
+          \citep[p.~5-16]{SWEBOK2024}
+    \item Coverage criteria: input space partitioning, graph coverage, logic
+          coverage, or syntax-based testing \citep[pp.~18-19]{AmmannAndOffutt2017}
+    \item Question: what-, when-, where-, who-, why-, how-, and how-well-based
+          testing; these are then divided into a total of ``16 categories of
+          testing types''\notDefDistinctIEEE{type}
+          \citep[p.~17]{Firesmith2015}
+    \item Execution of code: static or dynamic
+          (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
+          \citealp[p.~53]{Patton2006})
+    \item Goal of testing: verification or validation
+          (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[pp.~69-70]{Perry2006})
+    \item Property of code \citep[p.~213]{KuļešovsEtAl2013} or test target
+          \citep[pp.~4-5]{Kam2008}: functional or non-functional
+    \item Human involvement: manual or automated
+          \citep[p.~214]{KuļešovsEtAl2013}
+    \item Structuredness: scripted or exploratory
+          \citep[p.~214]{KuļešovsEtAl2013}
+    \item Coverage requirement: data or control flow \citep[pp.~4-5]{Kam2008}
+    \item Adequacy criterion: coverage-, fault-, or error-based
+          (``based on knowledge of the typical errors that people make'')
+          \citep[pp.~398-399]{vanVliet2000}
+    \item Priority\footnote{In the context of testing e-business projects.}:
+          smoke, usability, performance, or functionality testing
+          \citep[p.~12]{Gerrard2000a}
+    \item Category of test ``type''\gerrardDistinctIEEE{type}: static testing,
+          test browsing, functional testing, non-functional testing, or large
+          scale integration (testing) \citep[p.~12]{Gerrard2000a}
+    \item Purpose: correctness, performance, reliability, or security
+          \citep{Pan1999}
+\end{itemize}
+
+Tests can also be tailored to ``test factors'' (also called ``quality factors''
+or ``quality attributes''): ``attributes of the software that, if they are
+wanted, pose a risk to the success of the software''
+\citep[p.~40]{Perry2006}. These include correctness, file integrity,
+authorization, audit trail, continuity of processing, service levels
+(e.g., response time), access control, compliance, reliability, ease of use,
+maintainability, portability, coupling (e.g., with other applications in a
+given environment), performance, and ease of operation (e.g., documentation,
+training) \citep[pp.~40-41]{Perry2006}. \emph{These may overlap with
+    \nameref{chap:testing:sec:derived-tests} and/or
+    the ``Results of Testing (Area of Confidence)'' column in the summary
+    spreadsheet.}
+
+Engström ``investigated classifications of research''
+\citep[p.~1]{engström_mapping_2015} on the following four testing techniques.
+\emph{These four categories seem like comparing apples to oranges to me.}
+
+\begin{itemize}
+    \item \textbf{Combinatorial testing:} how the system under test is
+          modelled, ``which combination strategies are used to generate test
+          suites and how test cases are prioritized''
+          \citep[pp.~1-2]{engström_mapping_2015}
+    \item \textbf{Model-based testing:} the information represented and
+          described by the test model \citep[p.~2]{engström_mapping_2015}
+    \item \textbf{Search-based testing:} ``how techniques
+          \notDefDistinctIEEE{technique} had been empirically evaluated
+          (i.e. objective and context)'' \citep[p.~2]{engström_mapping_2015}
+    \item \textbf{Unit testing:} ``source of information (e.g. code,
+          specifications or testers intuition)''
+          \citep[p.~2]{engström_mapping_2015}
+\end{itemize}
+
+\subsection{Existing Taxonomies, Ontologies, and the State of Practice}
+
+One thing we may want to consider when building a taxonomy/ontology is the
+semantic difference between related terms. For example, one ontology found
+that the term ``\,`IntegrationTest' is a kind of Context (with
+semantic of stage, but not a kind of Activity)'' while ``\,`IntegrationTesting'
+has semantic of Level-based Testing that is a kind of Testing Activity [or]
+\dots\ of Test strategy'' \citep[p.~157]{TebesEtAl2019}.
+
+A note on testing artifacts is that they are ``produced and used throughout
+the testing process'' and include test plans, test procedures, test cases, and
+test results \citep[p.~3]{SouzaEtAl2017}. The role of testing
+artifacts is not specified in \citep{BarbosaEtAl2006};
+requirements, drivers, and source code are all treated the same
+with no distinction \citep[p.~3]{BarbosaEtAl2006}.
+
+In \citep{SouzaEtAl2017}, the ontology (ROoST) \todo{add acronym?} is made to
+answer a series of questions, including ``What is the test level of a testing
+activity?'' and ``What are the artifacts used by a testing activity?''
+\citep[pp.~8-9]{SouzaEtAl2017}. \todo{is this punctuation right?}
+The question ``How do testing artifacts relate to each other?''
+\citep[p.~8]{SouzaEtAl2017} is later broken down into multiple questions,
+such as ``What are the test case inputs of a given test case?'' and ``What are
+the expected results of a given test case?'' \citep[p.~21]{SouzaEtAl2017}.
+\emph{These questions seem to overlap with the questions we were trying to ask
+    about different testing techniques.}
+
+Most ontologies I can find seem to focus on the high-level testing process
+rather than the testing approaches themselves. For example, the terms and
+definitions \citep{TebesEtAl2020b}
+from TestTDO \citep{TebesEtAl2020a} provide \emph{some} definitions of
+testing approaches, but mainly focus on parts of the testing process
+(e.g., test goal, test plan, testing role, testable entity) and how they relate
+to one another. \citet[pp.~152-153]{TebesEtAl2019} may provide some
+sources for software testing terminology and definitions (this seems to include
+\href{https://github.com/samm82/TestGen-Thesis/issues/14#issuecomment-1839922715}
+{the ones suggested by Dr.~Carette}) in addition to a list of ontologies
+(some of which have been investigated).
+
+One software testing model developed by the \acf{qai} includes the test
+environment (``conditions \dots
+that both enable and constrain how testing is performed'', including mission,
+goals, strategy, ``management support, resources, work processes, tools,
+motivation''), test process (testing ``standards and procedures''), and tester
+competency (``skill sets needed to test software in a test environment'')
+\citep[pp.~5-6]{Perry2006}.
+
+\citet{UnterkalmsteinerEtAl2014} provide a foundation to allow one ``to
+classify and characterize alignment research and solutions that focus on the
+boundary between [requirements engineering and software testing]'' but ``do[]
+not aim at providing a systematic and exhaustive state-of-the-art survey of
+    [either domain]'' (p.~A:2).
+
+Another source
+introduced the notion of an ``intervention'': ``an act performed (e.g. use of a
+technique\notDefDistinctIEEE{technique} or a process change) to adapt testing
+to a specific context, to solve
+a test issue, to diagnose testing or to improve testing''
+\citep[p.~1]{engström_mapping_2015} and noted that ``academia tend[s] to focus on
+characteristics of the intervention [while] industrial standards categorize the
+area from a process perspective'' \citep[p.~2]{engström_mapping_2015}.
+It provides a structure to ``capture both a problem perspective and a solution
+perspective with respect to software testing'' \citep[pp.~3-4]{engström_mapping_2015},
+but this seems to focus more on test interventions and challenges rather than
+approaches \citep[Fig.~5]{engström_mapping_2015}.

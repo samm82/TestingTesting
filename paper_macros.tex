@@ -43,6 +43,29 @@
 \newcommand{\seeSectionFootAlways}[1]{{\footnote{See \nameref{#1}.}}}
 
 %------------------------------------------------------------------------------
+% Generic "chunks" that get reused
+%------------------------------------------------------------------------------
+
+% Defined here to reduce duplication of distinction between ``level'' and
+%    ``phase'' and avoid ``already defined'' error
+\newcommand{\procLevel}[1]{``Test level'' can also refer to the scope
+of a test process; for example, ``across the whole organization'' or only
+``to specific projects'' #1[p.~24]{IEEE2022}}
+\newcommand{\phaseDef}{can also refer to the ``period of time in the software
+  life cycle'' when testing occurs \citeyearpar[p.~470]{IEEE2017}, usually
+  after the implementation phase (\citeyear[pp.~420,~509]{IEEE2017};
+  \citealp[p.~56]{Perry2006}).}
+
+% Define common footnotes about IEEE testing terms for reuse
+\newcommand{\distinctIEEE}[1]{distinct from the notion of ``test #1'' described
+  in \nameref{tab:ieeeTestTerms}.}
+\newcommand{\notDefDistinctIEEE}[1]{\footnote{Not formally defined, but
+    \distinctIEEE{#1}}}
+\newcommand{\gerrardDistinctIEEE}[1]{\footnote{``Each type of test addresses a
+    different risk area'' \citep[p.~12]{Gerrard2000a}, which is
+    \distinctIEEE{#1}}}
+
+%------------------------------------------------------------------------------
 % TODOs
 %------------------------------------------------------------------------------
 
