@@ -45,19 +45,35 @@ By looking at a variety of sources, discrepancies both within and between them
 can be uncovered, and the various classifications of terminology can be
 analyzed.
 
-\subsection{TODO}
+\subsection{Procedure}
 
-I went through these resources by going through them looking for relevant
-terminology, taking special care with glossaries and lists of terms. Of
-particular note were terms that included ``test(ing)'', ``validation'',
-``verification'', ``review'', ``audit'', or terms that had come up before
-as part of already-discovered testing approaches, such as ``performance'',
-``recovery'', ``component'', ``bottom-up'', ``boundary'', and ``configuration''.
-A type of ``coverage'' was assumed to imply a type of testing that aimed to
-maximize this coverage (e.g., ``path testing'' is testing that ``aims to
-execute all entry-to-exit control flow paths in a SUT's control flow graph''
-\citep[p.~5013]{SWEBOK2024}, thus maximizing the path coverage; see also
-\thesisissueref{63}, \citet[Fig.~1]{SharmaEtAl2021}).
+Except for some sources in \nameref{undef-terms}, all sources were looked
+through in their entirely to ``extract'' as much terminology as possible.
+Heuristics were used to guide this process, by investigating\dots
+
+\begin{itemize}
+      \item \dots glossaries and lists of terms
+      \item \dots testing-related terms\\
+            e.g., terms that included ``test(ing)'', ``validation'',
+            ``verification'', ``review(s)'', or ``audit(s)''
+      \item \dots terms that had emerged as part of already-discovered
+            testing approaches, \emph{especially} those that were ambiguous
+            or prompted further discussion\\
+            e.g., terms that included ``performance'', ``recovery'',
+            ``component'', ``bottom-up'', ``boundary'', or ``configuration''
+      \item \dots terms that implied testing approaches
+            \begin{itemize}
+                  \item A kind of ``coverage'' implies a test approach aimed to
+                        maximize this coverage; for example, ``path testing''
+                        is testing that ``aims to execute all entry-to-exit
+                        control flow paths in a SUT's control flow graph''
+                        \citep[p.~5013]{SWEBOK2024}, thus maximizing the path
+                        coverage (see also \thesisissueref{63},
+                        \citep[Fig.~1]{SharmaEtAl2021})
+                  \item TODO: qualities imply types
+            \end{itemize}
+\end{itemize}
+
 If a term's definition had already been recorded, either the ``new'' one
 replaced it if the ``old'' one wasn't as clear/concise or parts of both were
 merged to paint a more complete picture. If any discrepancies or ambiguities
