@@ -52,7 +52,10 @@ update_diffs: gen_csv_diffs
 		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
 	done
 
-csv_process:
+mk_build:
+	-mkdir build
+
+csv_process: mk_build
 	py scripts/csvToGraph.py
 
 gen_latex: csv_process
