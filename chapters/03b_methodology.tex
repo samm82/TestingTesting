@@ -63,13 +63,8 @@ Heuristics were used to guide this process, by investigating\dots
             ``component'', ``bottom-up'', ``boundary'', or ``configuration''
       \item \dots terms that implied testing approaches
             \begin{itemize}
-                  \item A kind of ``coverage'' implies a test approach aimed to
-                        maximize this coverage; for example, ``path testing''
-                        is testing that ``aims to execute all entry-to-exit
-                        control flow paths in a SUT's control flow graph''
-                        \citep[p.~5013]{SWEBOK2024}, thus maximizing the path
-                        coverage (see also \thesisissueref{63},
-                        \citep[Fig.~1]{SharmaEtAl2021})
+                  \item Coverage metrics, which imply test techniques%
+                        \seeSectionParAlways{tech-cov}
                   \item TODO: qualities imply types
             \end{itemize}
 \end{itemize}
@@ -122,11 +117,11 @@ constraints.
 \newcount\UndefBefore
 \newcount\UndefAfter
 
-\TotalBefore=431
-\UndefBefore=152
+\TotalBefore=432
+\UndefBefore=153
 
-\TotalAfter=514
-\UndefAfter=170
+\TotalAfter=515
+\UndefAfter=171
 
 This process also led to some testing approaches without definitions;
 \citep{IEEE2022} and \citep{Firesmith2015} in particular introduced many.

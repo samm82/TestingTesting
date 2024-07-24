@@ -213,7 +213,14 @@ Examples of discrepancies in test-approach categorization:
     \ieeeTestTermsTable{}
 \fi
 
-Since test techniques are able to ``identify test coverage items \dots\ and
+\ifnotpaper
+    \subsubsection{Techniques and Coverage}
+\else
+    \phantomsection
+\fi
+\label{tech-cov}
+
+Test techniques are able to ``identify test coverage items \dots\ and
 derive corresponding test cases''
 \ifnotpaper
     (\citealp[p.~11]{IEEE2022}; similar in \citeyear[p.~467]{IEEE2017})
@@ -221,10 +228,19 @@ derive corresponding test cases''
     \cite[p.~11]{IEEE2022} (similar in \cite[p.~467]{IEEE2017})
 \fi
 in a ``systematic'' way
-\citeyearpar[p.~464]{IEEE2017}, ``the coverage achieved by a specific test
-design technique'' can be calculated as ``the number of test coverage items
-covered by executed test cases'' divided by ``the total number of test coverage
-items identified'' \citeyearpar[p.~30]{IEEE2021}. ``Coverage levels can range
+\citeyearpar[p.~464]{IEEE2017}.
+\ifnotpaper
+    This allows for ``the coverage achieved by a specific test
+    design technique'' to be calculated as ``the number of test coverage items
+    covered by executed test cases'' divided by ``the total number of test
+    coverage items identified'' \citeyearpar[p.~30]{IEEE2021}.
+\fi
+``Coverage levels can range
 from 0\% to 100\%'' and may or may not include ``infeasible'' test coverage
 items, which are ``not \dots\ executable or [are] impossible to be covered by a
-test case'' \citetext{p.~30}.
+test case'' \citetext{p.~30}. The further implication is that different
+coverage metrics imply test approaches aimed to maximize them; for example,
+``path testing'' is testing that ``aims to execute all entry-to-exit
+control flow paths in a SUT's control flow graph'' \citep[p.~5013]{SWEBOK2024},
+thus maximizing the path coverage (see also \thesisissueref{63},
+\citep[Fig.~1]{SharmaEtAl2021}).
