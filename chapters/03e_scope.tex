@@ -1,30 +1,41 @@
 \section{Scope}
 \label{scope}
 
-This project is focused on the generation of test cases for code, so only
-the ``testing'' component of \acf{vnv} is considered (see \thesisissueref{22}).
-For example, design reviews (see \citealp[p.~132]{IEEE2017}) and
-documentation reviews (see \citealp[p.~144]{IEEE2017}) are out of scope,
-since they focus on the \acs{vnv} of the design and documentation of the code,
+\newcommand{\acsVNV}{\ifnotpaper \acs{vnv}\else V\&V\fi}
+
+Since the motivation for this project is the generation of test cases for code,
+only the ``testing'' component of
+\ifnotpaper \acf{vnv} \else Verification and Validation \acf{V\&V} \fi is
+considered (see \thesisissueref{22}).
+For example, design reviews \ifnotpaper \citep[see][p.~132]{IEEE2017}
+\else (see \cite[p.~132]{IEEE2017}) \fi and documentation reviews
+\ifnotpaper \citetext{see p.~132} \else (see \citetext{p.~132}) \fi
+% \citep[see][p.~144]{IEEE2017}
+are out of scope, since they focus on the \acsVNV{}
+of the design and documentation of the code,
 respectively, and not on the code itself. Likewise, ergonomics testing
 and proximity-based testing (see \citealpISTQB{}) are out of scope since
-they are for testing hardware systems, as is \acf{emsec} testing
-(\citealp{ISO2021}; \citealp[p.~95]{ZhouEtAl2012}), which deals with the
-``security risk'' of ``information leakage via electromagnetic emanation''
-\citep[p.~95]{ZhouEtAl2012}. Security audits that focus on ``an organization's
+they are for testing hardware systems%
+\ifnotpaper%
+    , as is \acf{emsec} testing
+    (\citealp{ISO2021}; \citealp[p.~95]{ZhouEtAl2012}), which deals with the
+    ``security risk'' of ``information leakage via electromagnetic emanation''
+    \citep[p.~95]{ZhouEtAl2012}%
+\fi. Security audits that focus on ``an organization's
 \dots\ processes and infrastructure'' \citepISTQB{}, are also out of scope,
 but security audits that ``aim to ensure that all of the products installed on
 a site are secure when checked against the known vulnerabilities for those
-products'' \citep[p.~28]{Gerrard2000b} are not. While \acf{oat}
-can be used when testing software \citep{Mandl1985}, it can also be used for
-hardware \citep[pp.~471-472]{Valcheva2013}, such as ``processors \dots\ made
-from pre-built and pre-tested hardware components'' (p.~471). A subset of
-\acs{oat} called ``\acf{toat}'' is used for ``experimental design problems in
-manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product and manufacturing
-process design'' \cite[p.~44]{Tsui2007} and is thus out of scope.
+products'' \citep[p.~28]{Gerrard2000b} are not.
+\ifnotpaper While \acf{oat}
+    can be used when testing software \citep{Mandl1985}, it can also be used for
+    hardware \citep[pp.~471-472]{Valcheva2013}, such as ``processors \dots\ made
+    from pre-built and pre-tested hardware components'' (p.~471). A subset of
+    \acs{oat} called ``\acf{toat}'' is used for ``experimental design problems in
+    manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product and manufacturing
+    process design'' \cite[p.~44]{Tsui2007} and is thus out of scope. \fi
 
-This sometimes leads to making wider decisions on whether a whole category of
-testing is in scope. For example, while all the examples of domain-specific
+Sometimes, wider decisions must be made on whether a whole category of
+testing is in scope or not. For example, while all the examples of domain-specific
 testing given by \citet[p.~26]{Firesmith2015} are focused on hardware, this
 might not be representative of all types (e.g., ML model testing seems
 domain-specific).
@@ -50,36 +61,36 @@ domain-specific).
 \fi
 
 This also means that only some aspects of some testing approaches are relevant.
-This mainly manifests as a testing approach that can verify both the \acs{vnv}
+This mainly manifests as a testing approach that can verify both the \acsVNV{}
 itself and the code. For example:
 
 \begin{enumerate}
     \item \emph{Error seeding} is the ``process of intentionally adding
           known faults to those already in a computer program'',
           done to both ``monitor[] the rate of detection and removal'',
-          which is a part of \acs{vnv} of the \acs{vnv} itself, ``and
+          which is a part of \acsVNV{} of the \acsVNV{} itself, ``and
           estimat[e] the number of faults remaining''
           \citep[p.~165]{IEEE2017}, which helps verify the actual code.
     \item \emph{Fault injection testing}, where ``faults are artificially
           introduced into the \acs{sut}'', can be used to evaluate the
           effectiveness of a test suite \citep[p.~5-18]{SWEBOK2024},
-          which is a part of \acs{vnv} of the \acs{vnv} itself, or ``to test
+          which is a part of \acsVNV{} of the \acsVNV{} itself, or ``to test
           the robustness of the system in the event of internal and
           external failures'' \citep[p.~42]{IEEE2022}, which helps verify
           the actual code.
     \item ``\emph{Mutation [t]esting} was originally conceived as a
           technique to evaluate test suites in which a mutant is a slightly
           modified version of the \acs{sut}'' \citep[p.~5-15]{SWEBOK2024},
-          which is in the realm of \acs{vnv} of the \acs{vnv} itself.
+          which is in the realm of \acsVNV{} of the \acsVNV{} itself.
           However, it ``can also be categorized as a structure-based
           technique'' and can be used to assist fuzz and metamorphic testing
           \citep[p.~5-15]{SWEBOK2024}.
+          \ifnotpaper
     \item Even though \emph{reliability testing} and \emph{maintainability
               testing} can start \emph{without} code by ``measur[ing]
           structural attributes of representations of the software''
           \citep[p.~18]{FentonAndPfleeger1997}, only reliability and
           maintainability testing done \emph{on} code is in scope.
-          \ifnotpaper
     \item Since control systems often have a software \emph{and} hardware
           component \citep{ISO2015, PreußeEtAl2012,ForsythEtAl2004},
           only the software component is in scope. In some cases, it is
