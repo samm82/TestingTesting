@@ -142,25 +142,30 @@ itself and the code. For example:
 \subsection{Static Testing}
 \label{static-test}
 Sometimes, the term ``testing'' excludes static testing
-(\citealp[p.~222]{AmmannAndOffutt2017}; \citealp[p.~13]{Firesmith2015});
-restricting it to ``dynamic validation'' \citep[p.~5-1]{SWEBOK2024} or
+\ifnotpaper
+    (\citealp[p.~222]{AmmannAndOffutt2017}; \citealp[p.~13]{Firesmith2015})%
+\else
+    \cite[p.~222]{AmmannAndOffutt2017}, \cite[p.~13]{Firesmith2015}%
+\fi, restricting it to ``dynamic validation'' \citep[p.~5-1]{SWEBOK2024} or
 ``dynamic verification'' ``in which a system or component is
 executed'' \citep[p.~427]{IEEE2017}. Since ``terminology is not uniform
 among different communities, and some use the term \emph{testing} to refer to
 static techniques\notDefDistinctIEEE{technique} as well''
-\citep[p.~5-2]{SWEBOK2024} (such as \citep[pp.~8-9]{Gerrard2000a} and even
-\citep[p.~440]{IEEE2017}!), the scope of ``testing'' for the purpose of this
-project originally included both ``static testing'' and ``dynamic testing'', as
-done by \citet[p.~17]{IEEE2022}. However, static testing tends to be less
+\citep[p.~5-2]{SWEBOK2024}, the scope of ``testing'' for the purpose of this
+project will include both ``static testing'' and ``dynamic testing'', as
+done by \citet[p.~17]{IEEE2022}, \citet[pp.~8-9]{Gerrard2000a}, and even a
+source that explicitly excluded static testing \citep[p.~440]{IEEE2017}!
+
+Static testing tends to be less
 systematic/consistent and often requires human intervention, which makes it
-less relevant to this project's end goal: to generate test cases automatically.
+less relevant to this project's end goal: generating test cases automatically.
 However, understanding the breadth of testing approaches provides a more
 complete picture of how software can be tested, how the various approaches are
 related to one another, and potentially how even parts of these ``out-of-scope''
-approaches may be generated in the future! These ``out-of-scope'' approaches
-will be identified more systematically, but gathering information about them is
-an important precursor, making them within the scope of this research, although
-they will be excluded at a later phase. Even some dynamic methods, such as
-demonstrations and dynamic analysis, which fall under the realm of ``evaluation''
-as opposed to ``testing'' \citep[p.~13]{Firesmith2015} may be out of scope, due
+approaches may be generated in the future! Therefore, these ``out-of-scope''
+approaches are within the scope of this research (at least in the preliminary
+phase) and will be identified systematically and excluded before analysis. Even
+some dynamic methods, such as demonstrations and dynamic analysis, which fall
+under the realm of ``evaluation'' as opposed to ``testing''
+\citep[p.~13]{Firesmith2015} may be ineligible for automatic generation, due
 to their reliance on human intervention.
