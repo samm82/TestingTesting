@@ -1,0 +1,758 @@
+\section{Discrepancies and Ambiguities}
+\label{discrep}
+
+Many subsets of the current state of testing literature contain discrepancies
+and ambiguities. The following sections outline some of the larger ones,
+followed by more \nameref{minor-discrep}, both among sources and within
+individual ones, that may be areas for further investigation.
+
+\subsection{Synonyms}
+There exist many test approaches with multiple synonyms. For example, synonyms
+for specification-based testing include\todo{more in Umar2000}:
+\begin{enumerate}
+      \item Black-Box Testing (\citealp[p.~9]{IEEE2022}; \citeyear[p.~8]{IEEE2021};
+            \citeyear[p.~431]{IEEE2017}; \citealp[p.~5-10]{SWEBOK2024};
+            \citealpISTQB{}; \citealp[p.~46]{Firesmith2015} (without hyphen);
+            \citealp[p.~344]{SakamotoEtAl2013}; \citealp[p.~399]{vanVliet2000})
+      \item Closed-Box Testing (\citealp[p.~9]{IEEE2022}; \citeyear[p.~431]{IEEE2017})
+      \item Functional Testing (\citeyear[p.~196]{IEEE2017}; \citealp[p.~44]{Kam2008};
+            \citealp[p.~399]{vanVliet2000}; implied by \citeyear[p.~129]{IEEE2021};
+            \citeyear[p.~431]{IEEE2017})
+      \item Domain Testing (\citealp[p.~5-10]{SWEBOK2024})
+      \item Input Domain-Based Testing (implied by \citealp[p.~4-8]{SWEBOK2014})
+\end{enumerate}
+
+While some of these synonyms may be incorrect, the legitimate ones carry
+different connotations. I use the terms ``specification-based'' and
+``structure-based testing'' since they articulate the source of the information
+for designing test cases, but a team or project also using gray-box testing may
+prefer the terms ``black-box'' and ``white-box testing'' for consistency.
+Because of this, the existence of synonyms is not inherently a discrepancy.
+
+However, there are instances in which a term is given a synonym to two (or more)
+disjoint, unrelated terms, which would be a source of ambiguity to teams using
+these terms. The following are examples that have arisen (synonyms in
+\emph{italics} have at least one of their synonyms implied):
+
+\begin{enumerate}
+      \input{build/multiSyns}
+\end{enumerate}
+
+Some interesting notes about these synonyms:
+\begin{itemize}
+      \item The terms are not synonyms, although endurance testing is given
+            as a kind of reliability testing by \citet[p.~55]{Firesmith2015}.
+      \item ``Scenario testing'' and ``use case testing'' are given as synonyms
+            by \citetISTQB{} and \citet[pp.~47-49]{Kam2008}, but listed
+            separately by \citet[p.~22]{IEEE2022}, who also give ``use case
+            testing'' as a ``common form of scenario testing''
+            \citeyearpar[p.~20]{IEEE2021}.
+      \item \citeauthor{ChalinEtAl2006}~list \acf{rac} and \acf{sv} as ``two
+            complementary forms of assertion checking''
+            \citeyearpar[p.~343]{ChalinEtAl2006}; based on how the term ``static
+            assertion checking'' is used by \citet[p.~345]{LahiriEtAl2013}, it
+            seems like this should be the complement to \acs{rac} instead.
+      \item ``Operational'' and ``production acceptance testing'' are treated
+            as synonyms by \citetISTQB{}, but listed separately by
+            \citet[p.~30]{Firesmith2015}.
+      \item ``Production acceptance testing'' \citep[p.~30]{Firesmith2015}
+            seems to be the same as ``production verification testing''
+            \citep[p.~22]{IEEE2022}, but neither are defined.
+\end{itemize}
+
+There are also some pairs of synonyms where one is sometimes described as a
+sub-approach of the other, making the relationship between them unclear. As
+above, some examples are given below, with as many sources given as possible
+(any relationships without a source provided are inferred from their
+definitions):
+
+\input{build/parSyns}
+
+Some interesting notes about these two lists of discrepancies:
+
+\begin{itemize}
+      \item Fault tolerance testing may also be a
+            subtype\notDefDistinctIEEE{type} of reliability testing
+            (\citealp[p.~375]{IEEE2017}; \citealp[p.~7-10]{SWEBOK2024}), which
+            is distinct from reliability testing \citep[p.~53]{Firesmith2015}.
+      \item \citeauthor{Firesmith2015}'s distinction between organization-
+            and role-based testing \citeyearpar[pp.~17,~37,~39]{Firesmith2015}
+            seems arbitrary, but further investigation may prove it to be
+            meaningful (see \thesisissueref{59}).
+\end{itemize}
+
+\subsection{Parent Relations}
+
+There are also some issues with how parent relations are defined in the
+literature, the most trivial being self-cycles, where a source describes a
+test approach as a subset of itself:
+
+\input{build/selfCycles}
+
+Interestingly, \citeauthor{Gerrard2000a} does \emph{not} describe performance
+testing as a sub-category of usability testing (\citeyear[Tab.~2]{Gerrard2000a};
+\citeyear[Tab.~1]{Gerrard2000b}), which would have been more meaningful.
+
+\subsection{Functional Testing}
+
+Throughout the literature, ``functional testing'' seems to be described in many
+ways, alongside other, potentially related, terms:
+
+\begin{itemize}
+      \item \textbf{Specification-based Testing:} This is defined as ``testing
+            in which the principal test basis is the external inputs and
+            outputs of the test item'' \citep[p.~9]{IEEE2022}, which agrees
+            with a definition of ``functional testing'': ``testing that
+            \dots\ focuses solely on the outputs generated in response to
+            selected inputs and execution conditions'' \citep[p.~196]{IEEE2017}.
+            \todo{\citet[p.~399]{vanVliet2000} may list these as synonyms;
+                  investigate}
+            Notably, \citet{IEEE2017} lists both as synonyms of
+            ``black-box testing'' (pp. 431, 196, respectively). However,
+            they are sometimes defined as separate terms: ``specification-based
+            testing'' as ``testing based on an analysis of the specification
+            of the component or system'' (including ``black-box testing'' as a
+            synonym) and ``functional testing'' as ``testing performed to
+            evaluate if a component or system satisfies functional
+            requirements'' (specifying no synonyms) \citepISTQB{}. This
+            definition of
+            ``functional testing'' references \citet[p.~196]{IEEE2017}
+            (``testing conducted to evaluate the compliance of a system or
+            component with specified functional requirements'') which
+            \emph{has} ``black-box testing'' as a synonym, and mirrors
+            \citet[p.~21]{IEEE2022} (testing ``used to check the implementation
+            of functional requirements''). Overall, specification-based testing
+            \citep[pp.~2-4,~6-9,~22]{IEEE2022} and black-box testing
+            (\citealp[p.~5-10]{SWEBOK2024}; \citealp[p.~3]{SouzaEtAl2017})
+            are test design techniques used to ``derive corresponding test cases''
+            \citep[p.~11]{IEEE2022} (from given ``selected inputs and execution
+            conditions'' \citep[p.~196]{IEEE2017}).
+
+      \item \textbf{Correctness Testing:} \citet[p.~5-7]{SWEBOK2024} says
+            ``test cases can be designed to check that the functional
+            specifications are correctly implemented, which is variously
+            referred to in the literature as conformance testing, correctness
+            testing or functional testing''; this mirrors previous definitions
+            of ``functional testing'' (\citealp[p.~21]{IEEE2022};
+            \citeyear[p.~196]{IEEE2017}) but groups it with ``correctness
+            testing''. Since ``correctness'' is a software quality
+            (\citealp[p.~104]{IEEE2017}; \citealp[p.~3-13]{SWEBOK2024}) which is
+            what defines a ``test type'' \citep[p.~15]{IEEE2022}, it seems
+            consistent to label ``functional testing'' as a ``test type''
+            \citep[pp.~15,~20,~22]{IEEE2022}. This is listed separately from
+            ``functionality testing'' by \citet[p.~53]{Firesmith2015}.
+
+      \item \textbf{Conformance Testing:} As mentioned above,
+            \citet[p.~5-7]{SWEBOK2024} says testing ``that the functional
+            specifications are correctly implemented'' can be called
+            ``conformance testing'' or ``functional testing''. The definition
+            of ``conformance testing'' is later given as testing used ``to
+            verify that the \acs{sut} conforms to standards, rules,
+            specifications, requirements, design, processes, or practices''
+            \citep[p.~5-7]{SWEBOK2024}. This definition seems to be a superset
+            of the testing mentioned earlier; the former only lists
+            ``specifications'' while the latter also includes ``standards'',
+            ``rules'', ``requirements'', ``design'', ``processes'', and
+            ``practices''!
+
+            Another complicating factor is that ``compliance testing'' is also
+            given as a synonym of ``conformance testing''
+            \citep[p.~43]{Kam2008}, which seems plausible. However, ``conformance
+            testing'' can also be defined as testing that evaluates the degree
+            to which ``results \dots\ fall within the limits that define
+            acceptable variation for a quality requirement''
+            \citep[p.~93]{IEEE2017} \todo{OG PMBOK 5th ed.}, which seems to
+            describe something different. Perhaps this second definition of
+            ``conformance testing'' should be used, and the previous definition
+            of ``compliance testing'' be used for describing compliance with
+            external standards, rules, etc.~to keep them distinct.
+
+      \item \textbf{Functional Suitability Testing:} Procedure testing is
+            called a ``type of functional suitability testing''
+            \citep[p.~7]{IEEE2022}, but no definition of ``functional
+            suitability testing'' is given. ``Functional suitability'' is the
+            ``capability of a product to provide functions that meet stated and
+            implied needs of intended users when it is used under specified
+            conditions'', including meeting ``the functional specification''
+            \citep{ISO_IEC2023a}. This seems to align with the definition of
+            ``functional testing'' as related to ``black-box/
+            specification-based testing''. ``Functional suitability'' has
+            three child terms: ``functional completeness'' (the ``capability of
+            a product to provide a set of functions that covers all the
+            specified tasks and intended users' objectives''), ``functional
+            correctness'' (the ``capability of a product to provide accurate
+            results when used by intended users''), and ``functional
+            appropriateness'' (the ``capability of a product to provide
+            functions that facilitate the accomplishment of specified tasks and
+            objectives'') \citep{ISO_IEC2023a}. Notably, ``functional
+            correctness'', which includes precision and accuracy
+            (\citealp{ISO_IEC2023a}; \citealpISTQB{}), seems to align with
+            the quality/ies that would be tested by ``correctness'' testing.
+
+      \item \textbf{Functionality Testing:} ``Functionality'' is defined as the
+            ``capabilities of the various \dots\ features provided by a product''
+            \citep[p.~196]{IEEE2017} and is said to be a synonym of
+            ``functional suitability'' \citepISTQB{}, although it seems
+            like it should really be its ``parent''. Its associated test type
+            is implied to be a sub-approach of build verification testing
+            \citepISTQB{} and made distinct from ``functional testing'';
+            interestingly, security is described as a sub-approach of both
+            non-functional and functionality testing \citep[Tab.~2]{Gerrard2000a}.
+            This is listed separately from ``correctness testing'' by
+            \citet[p.~53]{Firesmith2015}.
+\end{itemize}
+
+\subsection{Operational (Acceptance) Testing}
+Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE2022};
+\citealpISTQB{}) while some refer to ``operational testing''
+(\citealp[p.~6-9,~in the context of software engineering operations]{SWEBOK2024};
+\citealp{ISO_IEC2018}; \citealp[p.~303]{IEEE2017};
+\citealp[pp.~4-6,~4-9]{SWEBOK2014}). A distinction is sometimes made
+\citep[p.~30]{Firesmith2015} but without accompanying definitions, it is hard
+to evaluate its merit. Since this terminology is not standardized, I
+propose that the two terms are treated as synonyms (as done by other sources
+\citep{LambdaTest2024, BocchinoAndHamilton1996}) as a type of
+acceptance testing (\citealp[p.~22]{IEEE2022}; \citealpISTQB{}) that focuses on
+``non-functional'' attributes of the system \citep{LambdaTest2024}
+\todo{find more academic sources}.
+
+A summary of given definitions of ``operational (acceptance) testing'' is that
+it is ``test[ing] to determine the correct
+installation, configuration and operation of a module and that it operates
+securely in the operational environment'' \citep{ISO_IEC2018} or ``evaluate a
+system or component in its operational environment'' \citep[p.~303]{IEEE2017},
+particularly ``to determine if operations and/or systems administration staff
+can accept [it]'' \citepISTQB{}.
+
+\subsection{Recovery Testing}
+\label{rec-test-ambiguity}
+
+There are many terms related to ``recovery testing'', which is ``testing
+\dots\ aimed at verifying
+software restart capabilities after a system crash or other disaster''
+\citep[p.~5-9]{SWEBOK2024} including ``recover[ing] the data directly affected
+and re-establish[ing] the desired state of the system'' (\citealp{ISO_IEC2023a};
+similar in \citealp[p.~7-10]{SWEBOK2024}) so
+that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
+It is also called ``recoverability testing'' \cite[p.~47]{Kam2008} and
+potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}. The
+following terms, along with ``recovery testing'' itself \citep[p.~22]{IEEE2022}
+are all classified as test types, and the relations between them can be found
+in Figure~\ref{fig:recovery-graph-current}.
+
+\begin{itemize}
+      \item \textbf{Recoverability Testing:} Testing ``how well a system or
+            software can recover data during an interruption or failure''
+            (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
+            and ``re-establish the desired state of the system'' \citep{ISO_IEC2023a}.
+            Given as a synonym for ``recovery testing'' by \citet[p.~47]{Kam2008}.
+      \item \textbf{Disaster/Recovery Testing:} Testing to evaluate if a system
+            can ``return to normal operation after a hardware
+            or software failure'' \citep[p.~140]{IEEE2017} or if ``operation of
+            the test item can be transferred to a different operating site and
+            \dots\ be transferred back again once the failure has been
+            resolved'' \citeyearpar[p.~37]{IEEE2021}. These two definitions seem to
+            describe different aspects of the system, where the first is
+            intrinsic to the hardware/software and the second might not be.
+      \item \textbf{Backup and Recovery Testing:} Testing ``that measures the
+            degree to which system state can be restored from backup within
+            specified parameters of time, cost, completeness, and accuracy in
+            the event of failure'' \citep[p.~2]{IEEE2013}. This may be what is
+            meant by ``recovery testing'' in the context of performance-related
+            testing and seems to correspond to the definition of
+            ``disaster/recovery testing'' in \citeyearpar[p.~140]{IEEE2017}.
+      \item \textbf{Backup/Recovery Testing:} Testing that determines the
+            ability ``to restor[e] from back-up memory in the event of failure,
+            without transfer[ing] to a different operating site or back-up
+            system'' \citep[p.~37]{IEEE2021}. This seems to correspond to the
+            definition of ``disaster/recovery testing'' in
+            \citeyearpar[p.~37]{IEEE2021}. It is also given as a sub-type of
+            ``disaster/recovery testing'', even though that tests if ``operation
+            of the test item can be transferred to a different operating site''
+            (p.~37).
+      \item \textbf{Failover/Recovery Testing:} Testing that determines the
+            ability ``to mov[e] to a back-up system in the event of failure,
+            without transfer[ing] to a different operating site''
+            \citep[p.~37]{IEEE2021}. This is given as a sub-type of
+            ``disaster/recovery testing'', even though that tests if ``operation
+            of the test item can be transferred to a different operating site''
+            (p.~37).
+      \item \textbf{Failover Testing:} Testing that ``validates the SUT's
+            ability to manage heavy loads or unexpected failure to continue
+            typical operations'' \citep[p.~5-9]{SWEBOK2024} by entering a
+            ``backup operational mode in which [these responsibilities] \dots\
+            are assumed by a secondary system'' \citepISTQB{}. While not
+            \emph{explicitly} related to recovery, ``failover/recovery testing''
+            also describes the idea of ``failover'', and \citeauthor{Firesmith2015}
+            uses the term ``failover and recovery testing''
+            \citeyearpar[p.~56]{Firesmith2015}, which could be a synonym of
+            both of these terms.
+\end{itemize}
+
+\subsection{Scalability Testing}
+\label{scal-discrep}
+
+There are a number of confusions regarding the term ``scalability testing''.
+\citeauthor{IEEE2021} give it as a synonym of ``capacity testing'', defined
+as the testing of a system's ability to ``perform under conditions that may
+need to be supported in the future'' which ``may include assessing what level
+of additional resources (e.g. memory, disk capacity, network bandwidth) will
+be required to support anticipated future loads'' \citeyearpar[p.~39]{IEEE2021}.
+This focus on ``the future'' is supported by \citeauthor{ISTQB_author},
+who define ``scalability'' as ``the degree to which a component or system can be
+adjusted for changing capacity'' \citeyearpar{ISTQB}; the original source
+they reference agrees, defining it as ``the measure of a system's ability to be
+upgraded to accommodate increased loads'' \citep[p.~381]{GerrardAndThompson2002}.
+In contrast, capacity testing focuses on the system's present state, evaluating
+the ``capability of a product to meet requirements for the maximum limits of a
+product parameter'', such as the number of concurrent users, transaction
+throughput, or database size \citep{ISO_IEC2023a}. Because of this nuance, it
+makes more sense to consider these terms separate and \emph{not} synonyms, as
+done by \citet[pp.~22-23]{Bas2024}.
+
+Unfortunately, only focusing on future capacity requirements still leaves room
+for ambiguity. While the above definition of ``scalability testing'' refers to
+external modification of the system, \citeauthor{ISO_IEC2023a} describes it as
+testing the ``capability of a product to handle growing or shrinking
+workloads or to adapt its capacity to handle variability''
+\citeyearpar{ISO_IEC2023a}, implying that this is done by the system itself.
+The potential reason for this is implied by SWEBOK V4's claim that one
+objective of elasticity testing is ``to evaluate scalability''
+\citep[p.~5-9]{SWEBOK2024}: \citeauthor{ISO_IEC2023a}'s notion of ``scalability''
+likely refers more accurately to ``elasticity''! This also makes sense in the
+context of other definitions provided by SWEBOK V4 \citep{SWEBOK2024}:
+\begin{itemize}
+      \item \textbf{Scalability:} ``the software's ability to increase and
+            scale up on its nonfunctional requirements, such as load, number of
+            transactions, and volume of data'' (p.~5-5). Based on this
+            definition, scalability testing is then a subtype of load testing
+            and volume testing, as well as potentially transaction flow testing.
+      \item \textbf{Elasticity Testing\footnote{While this definition seems
+                        correct, it \swebokElasRef{}}:} testing that ``assesses
+            the ability of the \acs{sut} \dots\ to rapidly expand or shrink
+            compute, memory, and storage resources without compromising the
+            capacity to meet peak utilization'' (p.~5-9). Based on this
+            definition, elasticity testing is then a subtype of memory
+            management testing (with both being a subtype of resource
+            utilization testing) and stress testing.
+\end{itemize}
+This distinction is also consistent with how the terms are used in industry:
+\citeauthor{Pandey2023} says that scalability is the ability to ``increase
+\dots\ performance or efficiency as demand increases over time'', while
+elasticity allows a system to ``tackle changes in the workload [that] occur for
+a short period'' (\citeyear{Pandey2023}; see \thesisissueref{35}).
+
+To make things even more confusing, SWEBOK V4 says ``scalability
+testing evaluates the capability to use and learn the system and the user
+documentation'' and ``focuses on the system's effectiveness in supporting user
+tasks and the ability to recover from user errors'' \citep[p.~5-9]{SWEBOK2024}.
+\swebokScalDef{}, which is completely separate from the definitions of
+``scalability'', ``capacity'', and ``elasticity testing''!
+
+\subsection{Performance Testing}
+\label{perf-test-ambiguity}
+
+``Performance testing'' is defined as testing ``conducted to evaluate the
+degree to which a test item accomplishes its designated functions''
+(\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017}; similar in
+\citeyear[pp.~38-39]{IEEE2021}; \citealp[p.~1187]{Moghadam2019}). It does this
+by ``measuring the performance metrics'' (\citealp[p.~1187]{Moghadam2019};
+similar in \citealpISTQB{}) (such as the ``system's capacity for growth''
+\citep[p.~23]{Gerrard2000b}), ``detecting the functional problems appearing
+under certain execution conditions'' \citep[p.~1187]{Moghadam2019}, and
+``detecting violations of non-functional requirements under expected and
+stress conditions'' (\citealp[p.~1187]{Moghadam2019}; similar in
+\citep[p.~5-9]{SWEBOK2024}). It is performed either \dots\
+\begin{enumerate}
+      \item \dots\ ``within given constraints of time and other resources''
+            (\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017}; similar in
+            \citealp[p.~1187]{Moghadam2019}), or
+      \item \dots\ ``under a `typical' load'' \citep[p.~39]{IEEE2021}.
+\end{enumerate}
+
+It is listed as a subset of performance-related testing, which is defined as
+testing ``to determine whether a test item performs as required when it is
+placed under various types and sizes of `load'\,'' \citeyearpar[p.~38]{IEEE2021},
+along with other approaches like load and capacity testing
+\citep[p.~22]{IEEE2022}. However, \citet[p.~5-9]{SWEBOK2024}
+gives ``capacity and response time'' as examples of ``performance
+characteristics'' that performance testing would seek to ``assess'', which
+seems to imply that these are subapproaches to performance testing instead.
+
+It seems that ``performance testing'' and ``performance-related testing''
+are treated as synonyms by some sources (\citealp[p.~5-9]{SWEBOK2024};
+\citealp[p.~1187]{Moghadam2019}). This makes sense because of how general the
+concept of ``performance'' is; most definitions of ``performance testing'' seem
+to treat it as a category of tests. However, it seems more consistent to infer
+that the definition of ``performance-related testing'' is the more general one
+often assigned to ``performance testing'' performed ``within given constraints
+of time and other resources'' (\citealp[p.~7]{IEEE2022};
+\citeyear[p.~320]{IEEE2017}; similar in \citealp[p.~1187]{Moghadam2019}), and
+``performance testing'' is a subapproach of this performed ``under a `typical'
+load'' \citep[p.~39]{IEEE2021}. This has other implications for relations
+between these types of testing; for example, ``load testing'' usually occurs
+``between anticipated conditions of low, typical, and peak usage''
+(\citealp[p.~5]{IEEE2022}; \citeyear[p.~39]{IEEE2021};
+\citeyear[p.~253]{IEEE2017} \todo{OG IEEE 2013}; \citealpISTQB{}), so it is a
+child of ``performance-related testing'' and a parent of ``performance testing''.
+
+Similarly, ``performance'' and ``performance efficiency'' are
+both given as software qualities by \citeauthor{IEEE2017}, with the latter
+defined as the ``performance relative to the amount
+of resources used under stated conditions'' \citeyearpar[p.~319]{IEEE2017}
+or the ``capability of a product to perform its functions within specified
+time and throughput parameters and be efficient in the use of resources under
+specified conditions'' \citep{ISO_IEC2023a}.
+Initially, there didn't seem to be any meaningful distinction
+between the two, although the term ``performance testing'' is defined
+\citeyearpar[p.~320]{IEEE2017} and used by \citeauthor{IEEE2017} and
+the term ``performance efficiency testing'' is \emph{also} used by
+\citeauthor{IEEE2017} (but not defined explicitly). Further discussion (see
+\thesisissueref{43}) brought us to the conclusion that ``performance
+efficiency testing'' is a subset of ``performance testing'', and the
+difference of ``relative to the amount of resources used'' or ``be efficient in
+the use of resources'' between the two is meaningful.
+
+This results in the relations between performance-related testing
+approaches (with the changes from \nameref{rec-test-ambiguity} and
+\nameref{scal-discrep} made implicitly) shown in Figure~\ref{fig:perf-graph}.
+
+\begin{figure}[hbtp!]
+      \centering
+      \performanceGraph{}
+      \caption{The relations between ``performance-related testing'' terms.}
+      \label{fig:perf-graph}
+\end{figure}
+
+\subsection{Minor Discrepancies}
+\label{minor-discrep}
+
+The following sections outline more ``minor'' discrepancies/ambiguities found
+in the literature, group by the ``categories'' of sources outlined in
+\nameref{method}.
+
+\subsubsection{Discrepancies in Standards}
+
+The following discrepancies are from \citep{IEEE2022, IEEE2021, IEEE2017,
+      IEEE2013, IEEE2012, ISO_IEC2023a, ISO_IEC2023b, ISO_IEC2018,
+      ISO2021, ISO2015}: % TODO: how much did I *really* use these last two?
+
+\begin{enumerate}
+      \item ``Compatibility testing'' is defined as ``testing that measures the
+            degree to which a test item can function satisfactorily alongside
+            other independent products in a shared environment (co-existence),
+            and where necessary, exchanges information with other systems or
+            components (interoperability)'' \citep[p.~3]{IEEE2022}. This
+            definition is nonatomic as it combines the ideas of ``co-existence''
+            and ``interoperability''. The term ``interoperability testing'' is
+            not defined, but is used three times \citep[pp.~22,~43]{IEEE2022}
+            (although the third usage seems like it should be ``portability
+            testing''). This implies that ``co-existence testing'' and
+            ``interoperability testing'' should be defined as their own terms,
+            which is supported by definitions of ``co-existence'' and
+            ``interoperability'' often being separate (\citealpISTQB{};
+            \citealp[pp.~73,~237]{IEEE2017}), the definition of
+            ``interoperability testing'' from \citet[p.~238]{IEEE2017},
+            and the decomposition of ``compatibility'' into ``co-existence''
+            and ``interoperability'' by \citet{ISO_IEC2023a}!
+            \begin{itemize}
+                  \item The ``interoperability'' element of ``compatibility
+                        testing'' is explicitly excluded by
+                        \citet[p.~37]{IEEE2021}, (incorrectly) implying that
+                        ``compatibility testing'' and ``co-existence testing''
+                        are synonyms.
+                  \item The definition of ``compatibility testing'' in
+                        \citep[p.~43]{Kam2008} unhelpfully says ``See
+                        \emph{interoperability testing}'', adding another
+                        layer of confusion to the direction of their
+                        relationship.
+            \end{itemize}
+      \item ``Fuzz testing'' is ``tagged'' (?) as ``artificial intelligence''
+            \citep[p.~5]{IEEE2022}, although I don't think this is a
+            set-in-stone requirement.
+      \item Integration, system, and system integration testing are all listed
+            as ``common test levels'' (\citealp[p.~12]{IEEE2022};
+            \citeyear[p.~6]{IEEE2021}), but no
+            definitions are given for the latter two, making it unclear what
+            ``system integration testing'' is; it is a combination of the two?
+            somewhere on the spectrum between them? It is listed as a child
+            of integration testing by \citetISTQB{} and of system testing
+            by \citet[p.~23]{Firesmith2015}.
+      \item Similarly, component, integration, and component integration
+            testing are all listed in \citep{IEEE2017}, but ``component
+            integration testing'' is only defined as ``testing of groups of
+            related components'' \citep[p.~82]{IEEE2017}; it is a combination of
+            the two? somewhere on the spectrum between them? Likewise, it is
+            listed as a child of integration testing by \citetISTQB{}.
+      \item ``Installability testing'' is given as a test type
+            (\citealp[p.~22]{IEEE2022}; \citeyear[p.~38]{IEEE2021})
+            but is sometimes called a test level as
+            ``installation testing'' \citep[p.~445]{PetersAndPedrycz2000}.
+      \item Retesting and regression testing seem to be separated from the rest
+            of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
+            clearly detailed why; \citet[p.~3]{BarbosaEtAl2006} consider
+            regression testing to be a test level.
+      \item A component is an ``entity with discrete structure \dots\ within a
+            system considered at a particular level of analysis''
+            \citep{ISO_IEC2023b} and ``the terms module, component, and unit
+                  [sic] are often used interchangeably or defined to be subelements
+            of one another in different ways depending upon the context'' with
+            no standardized relationship \citep[p.~82]{IEEE2017}. This means
+            unit/component/module testing can refer to the testing of both a
+            module and a specific function in a module (see \thesisissueref{14}).
+            However, ``component'' is sometimes defined differently than
+            ``module'': ``components differ from classical modules for being
+            re-used in different contexts independently of their development''
+            \citep[p.~107]{BaresiAndPezzè2006}, so distinguishing the two
+            may be necessary.
+      \item A typo in \citep[Fig.~2]{IEEE2021} means that ``specification-based
+            techniques'' is listed twice, when the latter should be
+            ``structure-based techniques''.
+      \item \citeauthor{IEEE2021} define an ``extended entry (decision) table''
+            both as a decision table where the ``conditions consist of multiple
+            values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021}
+            and one where ``the conditions and actions are generally described
+            but are incomplete'' \citeyearpar[p.~175]{IEEE2017} \todo{OG ISO1984}.
+      \item The subcategories of ``performance-related testing'' that are
+            categorized as test types by other sources \citep{IEEE2022, IEEE2017,
+                  IEEE2013} are categorized as techniques in
+            \citeyearpar[p.~39]{IEEE2021}.
+      \item \citeauthor*{IEEE2017} provide a definition for ``inspections and
+            audits'' \citeyearpar[p.~228]{IEEE2017}, despite also giving
+            definitions for ``inspection'' (p.~227) and ``audit'' (p.~36);
+            while the first term \emph{could} be considered a superset of the
+            latter two, this distinction doesn't seem useful.
+      \item \citeauthor*{IEEE2017} say that ``test level'' and ``test phase''
+            are synonyms, both meaning a ``specific instantiation of [a] test
+            sub-process'' (\citeyear[pp.~469,~470]{IEEE2017};
+            \citeyear[p.~9]{IEEE2013}), but there are also alternative
+            definitions for them. \procLevel{\citeyearpar}, while
+            ``test phase'' \phaseDef{}
+      \item \citeauthor{IEEE2017} use the same definition for ``partial correctness''
+            \citeyearpar[p.~314]{IEEE2017} and ``total correctness'' (p.~480).
+\end{enumerate}
+
+Also of note: \citep{IEEE2022} and \citeyearpar{IEEE2021}, from the
+ISO/IEC/IEEE 29119 family of standards, mention the following 23 test
+approaches without defining them. This means that out of the 114 test
+approaches they mention, about 20\% have no associated definition!
+
+However, the previous version of this standard, \citeyearpar{IEEE2013},
+generally explained two, provided references for two, and explicitly defined
+one of these terms, for a total of five definitions that could (should) have
+been included in \citeyearpar{IEEE2022}! These are marked with
+\underline{underline}, \emph{italics}, and \textbf{bold}, respectively.
+Additionally, entries marked with an asterisk* were defined (at least
+partially) in \citeyearpar{IEEE2017}, which would have been available when
+creating this family of standards. These terms bring the total count of terms
+that could (should) have been defined to nine; almost 40\% of undefined test
+approaches could have been defined!
+
+\begin{itemize}
+      \item \underline{Acceptance Testing*}
+      \item Alpha Testing*
+      \item Beta Testing*
+      \item Capture-Replay Driven Testing
+      \item Data-driven Testing
+      \item Error-based Testing
+      \item Factory Acceptance Testing
+      \item Fault Injection Testing
+      \item Functional Suitability Testing (also mentioned but not defined in
+            \citep{IEEE2017})
+      \item \underline{Integration Testing}*
+      \item Model Verification
+      \item Operational Acceptance Testing
+      \item Orthogonal Array Testing
+      \item Production Verification Testing
+      \item Recovery Testing* (Failover/Recovery Testing, Back-up/Recovery
+            Testing, \textbf{Backup and Recovery Testing}*, Recovery*)
+      \item Response-Time Testing
+      \item \emph{Reviews} (ISO/IEC 20246) (Code Reviews*)
+      \item Scalability Testing (defined as a synonym of ``capacity
+            testing'';\seeSection{scal-discrep})
+      \item Statistical Testing
+      \item System Integration Testing (System Integration*)
+      \item System Testing* (also mentioned but not defined in \citep{IEEE2013})
+      \item \emph{Unit Testing}* (IEEE Std 1008-1987, IEEE Standard for
+            Software Unit Testing implicitly listed in the bibliography!)
+      \item User Acceptance Testing
+\end{itemize}
+
+\subsubsection{Discrepancies in ``Meta-Level'' Sources}
+
+The following discrepancies are either intrinsic to SWEBOK \citep{SWEBOK2024,
+      SWEBOK2014}, ISTQB \citepISTQB{}, or another collection of testing
+terminology \citep[so far only][]{Firesmith2015} (as described in
+\nameref{method}), or between one of these and a source from
+a previous ``category'':
+
+\begin{enumerate}[resume]
+      \item SWEBOK V4 defines ``privacy testing'' as testing that ``assess[es]
+            the security and privacy of users' personal data to prevent local
+            attacks'' \citep[p.~5-10]{SWEBOK2024}; this seems to overlap with
+            \citeauthor{IEEE2022}'s definition of ``security testing'', which is
+            ``conducted to evaluate the degree to which a test item, and
+            associated data and information, are protected so that'' only
+            ``authorized persons or systems'' can use them as intended
+            \citeyearpar[p.~9]{IEEE2022}, both in scope and name.
+      \item Various sources say that alpha testing is performed by different
+            people, including ``only by users within the organization
+            developing the software'' \citep[p.~17]{IEEE2017}, by ``a small,
+            selected group of potential users'' \citep[p.~5-8]{SWEBOK2024}, or
+            ``in the developer's test environment by roles outside the
+            development organization'' \citepISTQB{}.
+      \item While correct, ISTQB's definition of ``specification-based testing''
+            is not helpful: ``testing based on an analysis of the specification
+            of the component or system'' \citepISTQB{}.
+      \item ``ML model testing'' and ``ML functional performance'' are defined
+            in terms of ``ML functional performance criteria'', which is defined
+            in terms of ``ML functional performance metrics'', which is defined
+            as ``a set of measures that relate to the functional correctness of
+            an ML system'' \citepISTQB{}. The use of ``performance'' (or
+            ``correctness'') in these definitions are at best ambiguous and at
+            worst incorrect.
+      \item While ergonomics testing is out of scope (as it tests hardware, not
+            software), its definition of ``testing to determine whether a
+            component or system and its input devices are being used properly
+            with correct posture'' \citepISTQB{} seems to focus on how the
+            system is \emph{used} as opposed to the system \emph{itself}.
+      \item The definition of ``math testing'' given by \citetISTQB{} is
+            too specific to be useful, likely taken from an example instead of
+            a general definition: ``testing to determine the correctness of the
+            pay table implementation, the random number generator results, and
+            the return to player computations''.
+      \item A similar issue exists with multiplayer testing, where its
+            definition specifies ``the casino game world'' \citepISTQB{}.
+      \item Thirdly, ``par sheet testing'' from \citepISTQB{} seems to
+            refer to this specific example and does not seem more widely
+            applicable, since a ``PAR sheet'' is ``a list of all the symbols
+            on each reel of a slot machine'' \citep{Bluejay2024}.
+      \item \citetISTQB{} describe the term ``software in the loop'' as a
+            kind of testing, while the source it references seems to describe
+            ``Software-in-the-Loop-Simulation'' as a ``simulation environment''
+            that may support software integration testing
+            \citep[p.~153]{SPICE2022}; is this a testing approach or a tool
+            that supports testing?
+      \item The source cited for the definition of ``test type'' from
+            \citepISTQB{} does not seem to provide a definition itself.
+      \item The same is true for ``visual testing''.
+      \item The same is true for ``security attack''.
+      \item There is disagreement on the structure of tours; they can either be
+            quite general \citep[p.~34]{IEEE2022} or ``organized around a
+            special focus'' \citepISTQB{}.
+      \item While model testing is said to test the object under test,
+            it seems to describe testing the models themselves
+            \citet[p.~20]{Firesmith2015}; using the models to test the object
+            under test seems to be called ``driver-based testing'' (p.~33).
+      \item ``System testing'' is listed as a subtype of ``system testing'' by
+            \citet[p.~23]{Firesmith2015}.
+      \item ``Hardware-'' and ``human-in-the-loop testing'' have the same
+            acronym: ``HIL''\footnote{``HiL'' is used for the former by
+                  \citet[p.~2]{PreußeEtAl2012}.} \citep[p.~23]{Firesmith2015}.
+      \item The same is true for ``customer'' and ``contract(ual) acceptance
+            testing'' (``CAT'') \citep[p.~30]{Firesmith2015}.
+      \item The acronym ``SoS'' is used but not defined by
+            \citet[p.~23]{Firesmith2015}.
+      \item It is ambiguous whether ``tool/environment testing'' refers to
+            testing the tools/environment \emph{themselves} or \emph{using}
+            them to test the object under test; the latter is implied, but the
+            wording of its subtypes \citep[p.~25]{Firesmith2015} seems to imply
+            the former.
+      \item \citeauthor{ISO_IEC2023a} say that performance and security testing
+            are subtypes of reliability testing \citeyearpar{ISO_IEC2023a}, but
+            these are all listed separately by \citet[p.~53]{Firesmith2015}.
+      \item The terms ``acceleration'' and ``acoustic tolerance testing'' seem
+            to only refer to software testing in \citep[p.~56]{Firesmith2015};
+            elsewhere, they seem to refer to testing the acoustic tolerance of
+            rats \citep{HolleyEtAl1996} or the acceleration tolerance of
+            \accelTolTest{}, which don't exactly seem relevant\dots
+      \item The distinctions between development testing \citep[p.~136]{IEEE2017},
+            developmental testing \citep[p.~30]{Firesmith2015}, and developer
+            testing (\citealp[p.~39]{Firesmith2015}; \citealp[p.~11]{Gerrard2000a})
+            are unclear and seem miniscule.
+\end{enumerate}
+
+\subsubsection{Discrepancies in McMaster-Trusted Sources}
+
+The following discrepancies are either intrinsic to a textbook trusted at
+McMaster \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}, between these
+textbooks, or between one of them and a source from a previous ``category'':
+
+\begin{enumerate}[resume]
+      \item ``Load testing'' is defined as using loads ``usually between
+            anticipated conditions of low, typical, and peak usage''
+            \citep[p.~5]{IEEE2022}, while \citeauthor{Patton2006} says the
+            loads should as large as possible \citeyearpar[p.~86]{Patton2006}.
+\end{enumerate}
+
+\subsubsection{Discrepancies in Other Sources}
+
+The following discrepancies are either intrinsic to a source not in one of the
+above ``categories'', between two of these sources, or between one of these and
+a source from a previous ``category'':
+
+\begin{enumerate}[resume]
+      \item \citeauthor{Bas2024} lists ``three [backup] location categories:
+            local, offsite and cloud based [sic]'' \citeyearpar[p.~16]{Bas2024},
+            but does not define or discuss ``offsite backups'' (pp.~16-17).
+      \item \citeauthor{DoğanEtAl2014} claim that \citep{SakamotoEtAl2013}
+            defines ``prime path coverage'' \citeyearpar[p.~184]{DoğanEtAl2014},
+            but it doesn't.
+      \item ``State-based'' is misspelled by \citeauthor{Kam2008} as
+            ``state-base'' \citeyearpar[pp.~13,~15]{Kam2008} and
+            ``stated-base'' (Tab.~1).
+      \item Although ad hoc testing is sometimes classified as a ``technique''
+            \citep[p.~5-14]{SWEBOK2024}, it is one in which ``no recognized test
+            design technique is used'' \citep[p.~42]{Kam2008}.
+      \item \citeauthor{Kam2008}'s definition of ``boundary value testing''
+            says ``See \emph{boundary value analysis},'' but this definition is
+            not present \citeyearpar{Kam2008}.
+      \item ``Conformance testing'' is implied to be a synonym of ``compliance
+            testing'' by \citeauthor{Kam2008}, which only makes sense because
+            of the vague definition of ``compliance testing'': ``testing to
+            determine the compliance of the component or system''
+            \citeyearpar[p.~43]{Kam2008}.
+      \item \citeauthor{Kam2008} seems to imply that ``mutation testing'' is a
+            synonym of ``back-to-back testing'' \citeyearpar[p.~46]{Kam2008},
+            but these are two quite distinct techniques.
+      \item \citeauthor{Kam2008} also says that the goal of negative testing is
+            ``showing that a component or system does not work''
+            \citeyearpar[p.~46]{Kam2008} \todo{OG Beizer}, which is not true;
+            if robustness is an important quality for the system, then testing
+            the system ``in a way for which it was not intended to be used''
+            \citepISTQB{} (i.e., negative testing) is one way to help
+            test this!
+      \item ``Program testing'' is given as a synonym of ``component testing''
+            \citep[p.~46]{Kam2008}, although it probably should be a synonym of
+            ``system testing'' instead.
+      \item \citeauthor{SneedAndGöschl2000} give ``white-'', ``grey-'', and
+            ``black-box testing'' as synonyms for ``module'', ``integration'',
+            and ``system testing'', respectively
+            \citeyearpar[p.~18]{SneedAndGöschl2000} \todo{OG Hetzel88}, but
+            this mapping is incorrect; black-box testing can be performed on a
+            module, for example \todo{find source}. This makes the claim that
+            ``red-box testing'' is a synonym for ``acceptance testing'' (p.~18)
+            lose credibility.
+      \item Availability testing isn't assigned to a test priority
+            \citep[Tab.~2]{Gerrard2000a}, despite the claim that ``the test
+            types\gerrardDistinctIEEE{type} have been allocated a slot against
+            the four test priorities'' (p.~13); I think usability and/or
+            performance would have made sense.
+      \item ``Visual browser validation'' is described as both static \emph{and}
+            dynamic in the same table \citep[Tab.~2]{Gerrard2000a}, even though
+            they are implied to be orthogonal classifications: ``test
+            types can be static \emph{or} dynamic'' (p.~12,~emphasis added).
+      \item \citeauthor{Gerrard2000a} makes a distinction between ``transaction
+            verification'' and ``transaction testing''
+            \citeyearpar[Tab.~2]{Gerrard2000a} and also uses the phrase
+            ``transaction flows'' (Fig.~5) but doesn't explain them.
+      \item The phrase ``continuous automated testing''  \citep[p.~11]{Gerrard2000a}
+            is redundant since continuous testing is a sub-category of automated
+            testing (\citealp[p.~35]{IEEE2022}, \citealpISTQB{}).
+      \item End-to-end functionality testing is \emph{not} indicated to be
+            functionality testing \citep[Tab.~2]{Gerrard2000a}.
+      \item \citeauthor{Gerrard2000b}'s definition for ``security audits''
+            seems too specific, only applying to ``the products installed on a
+            site'' and ``the known vulnerabilities for those products''
+            \citeyearpar[p.~28]{Gerrard2000b}.
+\end{enumerate}
