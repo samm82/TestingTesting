@@ -61,7 +61,13 @@ Heuristics were used to guide this process, by investigating\dots
             or prompted further discussion\\
             e.g., terms that included ``performance'', ``recovery'',
             ``component'', ``bottom-up'', ``boundary'', or ``configuration''
-      \item \dots terms that implied testing approaches%
+      \item \dots terms that implied testing approaches\footnote{
+                  Since these methods for deriving test approaches only arose
+                  as research progressed, some examples would have been missed
+                  during the first pass(es) of resources investigated earlier
+                  in the process. While reiterating over them would be ideal,
+                  this may not be possible due to time constraints.
+            }%
             \seeSectionParAlways{derived-tests}
 \end{itemize}
 
@@ -70,38 +76,41 @@ replaced it if the ``old'' one wasn't as clear/concise or parts of both were
 merged to paint a more complete picture. If any discrepancies or ambiguities
 arose, they were investigated to a reasonable extent and documented. If a
 testing approach was mentioned but not defined, it was still added to the
-glossary to indicate it should be investigated further. A similar methodology
+glossary to indicate it should be investigated further%
+\seeSectionParAlways{undef-terms}. A similar methodology
 was used for tracking software qualities, albeit in a separate
-document\seeSectionPar{derived-tests}.
+document\seeSectionParAlways{derived-tests}.
 
-During this investigation, some terms came up that seemed to be relevant to
-testing but were so vague, they didn't provide any new information. These were
-decided to be not worth tracking (see \thesisissueref{39}, \thesisissueref{44},
-\thesisissueref{28}) and are listed below:
+During the first pass of data collection, all software-testing-focused terms
+were included. Some of them are less applicable to test case automation
+(such as static testing; see \thesisissueref{39}%
+\todo{link to scope/add to paper}) or too broad (such as attacks; see
+\nameref{attacks}, \thesisissueref{55}), so they will be omitted over the
+course of analysis.
 
-\begin{itemize}
-      \item \textbf{Evaluation:} the ``systematic determination of the extent
-            to which an entity meets its specified criteria''
-            \citep[p.~167]{IEEE2017}
-      \item \textbf{Product Analysis:} the ``process of evaluating a product by
-            manual or automated means to determine if the product has certain
-            characteristics'' \citep[p.~343]{IEEE2017}
-      \item \textbf{Quality Audit:} ``a structured, independent process to
-            determine if project activities comply with organizational and
-            project policies, processes, and procedures'' \citep[p.~361]{IEEE2017}
-            \todo{OG PMBOK}
-      \item \textbf{Software Product Evaluation:} a ``technical operation that
-            consists of producing an assessment of one or more characteristics
-            of a software product according to a specified procedure''
-            \citep[p.~424]{IEEE2017}
-\end{itemize}
+\ifnotpaper
+      During this investigation, some terms came up that seemed to be relevant to
+      testing but were so vague, they didn't provide any new information. These were
+      decided to be not worth tracking (see \thesisissueref{39}, \thesisissueref{44},
+      \thesisissueref{28}) and are listed below:
 
-However, over the course of this research, our scope was adjusted to include
-some terms for our initial list of test approaches to be filtered out later,
-such as types of attacks (see \thesisissueref{55}), meaning that some entries
-were missed during the first pass(es) of these resources. While reiterating
-over these resources would be ideal, this may not be possible due to time
-constraints.
+      \begin{itemize}
+            \item \textbf{Evaluation:} the ``systematic determination of the extent
+                  to which an entity meets its specified criteria''
+                  \citep[p.~167]{IEEE2017}
+            \item \textbf{Product Analysis:} the ``process of evaluating a product by
+                  manual or automated means to determine if the product has certain
+                  characteristics'' \citep[p.~343]{IEEE2017}
+            \item \textbf{Quality Audit:} ``a structured, independent process to
+                  determine if project activities comply with organizational and
+                  project policies, processes, and procedures'' \citep[p.~361]{IEEE2017}
+                  \todo{OG PMBOK}
+            \item \textbf{Software Product Evaluation:} a ``technical operation that
+                  consists of producing an assessment of one or more characteristics
+                  of a software product according to a specified procedure''
+                  \citep[p.~424]{IEEE2017}
+      \end{itemize}
+\fi
 
 \subsection{Undefined Terms}
 \label{undef-terms}
