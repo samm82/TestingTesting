@@ -19,7 +19,7 @@ products'' \citep[p.~28]{Gerrard2000b} are not. While \acf{oat}
 can be used when testing software \citep{Mandl1985}, it can also be used for
 hardware \citep[pp.~471-472]{Valcheva2013}, such as ``processors \dots\ made
 from pre-built and pre-tested hardware components'' (p.~471). A subset of
-\acs{oat} called ``\acf{toat}'' for ``experimental design problems in
+\acs{oat} called ``\acf{toat}'' is used for ``experimental design problems in
 manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product and manufacturing
 process design'' \cite[p.~44]{Tsui2007} and is thus out of scope.
 
@@ -79,6 +79,7 @@ itself and the code. For example:
           structural attributes of representations of the software''
           \citep[p.~18]{FentonAndPfleeger1997}, only reliability and
           maintainability testing done \emph{on} code is in scope.
+          \ifnotpaper
     \item Since control systems often have a software \emph{and} hardware
           component \citep{ISO2015, PreußeEtAl2012,ForsythEtAl2004},
           only the software component is in scope. In some cases, it is
@@ -95,6 +96,7 @@ itself and the code. For example:
                     a finite-state machine (as a subset of model-based
                     testing) \citep[p.~184]{DoğanEtAl2014}.
           \end{itemize}
+          \fi
 \end{enumerate}
 
 \ifnotpaper
