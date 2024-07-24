@@ -158,93 +158,9 @@ demonstrations and dynamic analysis, which fall under the realm of ``evaluation'
 as opposed to ``testing'' \citep[p.~13]{Firesmith2015} may be out of scope, due
 to their reliance on human intervention.
 
-\subsection{Derived Test Approaches}
-\label{chap:testing:sec:derived-tests}
-One group of test approaches given in \nameref{tab:ieeeTestTerms} is ``test
-types'', which can be derived from software qualities: ``capabilit[ies] of
-software product[s] to satisfy stated and implied needs when used under
-specified conditions'' \citep[p.~424]{IEEE2017} \todo{OG ISO/IEC 2014}. This
-is supported by \citeauthor{FentonAndPfleeger1997} who say that reliability
-and performance testing are based on their underlying qualities
-\citeyearpar[p.~18]{FentonAndPfleeger1997} and that measurements should include
-an entity to be measured, a specific attribute to measure, and the actual
-measure (i.e., units, starting state, ending state, what to include) (p.~36)
-% \citeauthoryear[p.~36]{FentonAndPfleeger1997}
-where attributes must be defined before they can be measured (p.~38).
-% \citeauthoryear[p.~38]{FentonAndPfleeger1997}
-
-After discussing this further (see \thesisissueref{21} and \thesisissueref{23}),
-it was decided that tracking
-software qualities, in addition to testing approaches, would be worthwhile
-(see \thesisissueref{27}). This was done by capturing their definitions and any
-rationale for why it might be useful to consider an explicitly separate
-``test type'' in a separate document, so this information could be captured
-without introducing clutter.
-
-Similarly, since some types of requirements have associated types of
-testing (e.g., functional, non-functional, security), it was discussed whether
-each requirement type implies a related testing approach (such as ``technical
-testing''). Even assuming this is the case, some types of requirements do not
-apply to the code itself, and as such are out of scope (see \thesisissueref{43}):
-
-\begin{itemize}
-      \item \textbf{Nontechnical Requirement:} a ``requirement affecting product
-            and service acquisition or development that is not a property of
-            the product or service'' \citep[p.~293]{IEEE2017}
-      \item \textbf{Physical Requirement:} a ``requirement that specifies a
-            physical characteristic that a system or system component must
-            possess'' \citep[p.~322]{IEEE2017}
-\end{itemize}
-
-\subsection{Orthogonally Derived Test Approaches}
-\label{chap:testing:sec:orthogonal-tests}
-Some test approaches seem to just be combinations of other (seemingly
-orthogonal) approaches, such as the following:
-\begin{itemize}
-      \item Black box conformance testing \citep[p.~25]{JardEtAl1999}
-      \item Black-box integration testing \citep[p.~345-346]{SakamotoEtAl2013}
-      \item Checklist-based reviews \citepISTQB{}
-      \item Closed-loop HiL verification \citep[p.~6]{PreußeEtAl2012}
-      \item Closed-loop protection system testing \citep[p.~331]{ForsythEtAl2004}
-      \item Endurance stability testing \citep[p.~55]{Firesmith2015}
-      \item End-to-end functionality testing (\citealp[p.~20]{IEEE2021};
-            \citealp[Tab.~2]{Gerrard2000a})
-      \item Formal reviews \citepISTQB{}
-      \item Gray-box integration testing \citep[p.~344]{SakamotoEtAl2013}
-      \item Incremental integration testing \citep[p.~601]{SharmaEtAl2021}
-            \todo{OG [19]}
-      \item Informal reviews \citepISTQB{}
-      \item Infrastructure compatibility testing \citep[p.~53]{Firesmith2015}
-      \item Invariant-based automatic testing
-            \citep[pp.~184-185,~Tab.~21]{DoğanEtAl2014}, including for
-            ``AJAX user interfaces'' (p.~191)
-      \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000a}
-      \item Machine learning-assisted performance testing? \citep{Moghadam2019}
-      \item Manual procedure testing \citep[p.~47]{Firesmith2015}
-      \item Manual security audits \citep[p.~28]{Gerrard2000b}
-      \item Model-based GUI testing (\citealp[Tab.~1]{DoğanEtAl2014}; implied
-            by \citealp[p.~356]{SakamotoEtAl2013})
-      \item Model-based web application testing (implied by
-            \citealp[p.~356]{SakamotoEtAl2013})
-      \item Non-functional search-based testing \citep[Tab.~1]{DoğanEtAl2014}
-      \item Offline MBT \citepISTQB{}
-      \item Online MBT \citepISTQB{}
-      \item Role-based reviews \citepISTQB{}
-      \item Scenario walkthroughs \citep[Fig.~4]{Gerrard2000a}
-      \item Scenario-based reviews \citepISTQB{}
-      \item Security attacks \citepISTQB{}
-      \item Statistical web testing \citep[p.~185]{DoğanEtAl2014}
-      \item Usability test script(ing) \citepISTQB{}
-      \item Web application regression testing \cite[Tab.~21]{DoğanEtAl2014}
-      \item White-box unit testing \citep[pp.~345-346]{SakamotoEtAl2013}
-\end{itemize}
-
-However, some classes seem to be closely associated, such as remote testing
-with asynchronous testing, and local with synchronous \citep{JardEtAl1999},
-possibly implying a parent-child relation.
-
 \input{chapters/03b_methodology}
 \input{chapters/03c_observations}
+\input{chapters/03ci_orthogonal}
 
 \subsection{Categorizations}
 \label{testing-categories}
@@ -336,7 +252,7 @@ authorization, audit trail, continuity of processing, service levels
 maintainability, portability, coupling (e.g., with other applications in a
 given environment), performance, and ease of operation (e.g., documentation,
 training) \citep[pp.~40-41]{Perry2006}. \emph{These may overlap with
-      \nameref{chap:testing:sec:derived-tests} and/or
+      \nameref{derived-tests} and/or
       the ``Results of Testing (Area of Confidence)'' column in the summary
       spreadsheet.}
 

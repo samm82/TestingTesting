@@ -214,6 +214,9 @@ Examples of discrepancies in test-approach categorization:
     \ieeeTestTermsTable{}
 \fi
 
+\subsection{Derived Test Approaches}
+\label{derived-tests}
+
 \ifnotpaper
     \subsubsection{Techniques and Coverage}
 \else
@@ -245,3 +248,48 @@ coverage metrics imply test approaches aimed to maximize them; for example,
 control flow paths in a SUT's control flow graph'' \citep[p.~5013]{SWEBOK2024},
 thus maximizing the path coverage (see also \thesisissueref{63},
 \citep[Fig.~1]{SharmaEtAl2021}).
+
+One group of test approaches given in \nameref{tab:ieeeTestTerms} is ``test
+types'', which can be derived from software qualities: ``capabilit[ies] of
+software product[s] to satisfy stated and implied needs when used under
+specified conditions'' \citep[p.~424]{IEEE2017}\todo{OG ISO/IEC 2014}. This
+is supported by \ifnotpaper
+    \citeauthor{FentonAndPfleeger1997} who say
+\else
+    \cite{FentonAndPfleeger1997} which says
+\fi that reliability and performance testing, both examples of test types
+\citep{IEEE2022, IEEE2021}, are based on their underlying qualities
+\ifnotpaper
+    \citeyearpar[p.~18]{FentonAndPfleeger1997} and that measurements should include
+    an entity to be measured, a specific attribute to measure, and the actual
+    measure (i.e., units, starting state, ending state, what to include)
+    \citetext{p.~36}
+    % \citeauthoryear[p.~36]{FentonAndPfleeger1997}
+    where attributes must be defined before they can be measured \citetext{p.~38}.
+    % \citeauthoryear[p.~38]{FentonAndPfleeger1997}
+\else
+    \citeyearpar[p.~18]{FentonAndPfleeger1997}.
+\fi
+
+After discussing this further (see \thesisissueref{21} and \thesisissueref{23}),
+it was decided that tracking
+software qualities, in addition to testing approaches, would be worthwhile
+(see \thesisissueref{27}). This was done by capturing their definitions and any
+rationale for why it might be useful to consider an explicitly separate
+``test type'' in a separate document, so this information could be captured
+without introducing clutter.
+
+Similarly, since some types of requirements have associated types of
+testing (e.g., functional, non-functional, security), it was discussed whether
+each requirement type implies a related testing approach (such as ``technical
+testing''). Even assuming this is the case, some types of requirements do not
+apply to the code itself, and as such are out of scope (see \thesisissueref{43}):
+
+\begin{itemize}
+    \item \textbf{Nontechnical Requirement:} a ``requirement affecting product
+          and service acquisition or development that is not a property of
+          the product or service'' \citep[p.~293]{IEEE2017}
+    \item \textbf{Physical Requirement:} a ``requirement that specifies a
+          physical characteristic that a system or system component must
+          possess'' \citep[p.~322]{IEEE2017}
+\end{itemize}
