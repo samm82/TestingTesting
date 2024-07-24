@@ -57,7 +57,7 @@ undefTerms = [
     UndefinedTerm("Orthogonal Array Testing", "Mandl1985,Valcheva2013",
                   footnote="\\citep{YuEtAl2011} and \\citep{Tsui2007} were added as "
                   "out-of-scope examples."),
-    UndefinedTerm("Backup Testing", "Bas2024", seeSectionFoot="rec-test-ambiguity"),
+    UndefinedTerm("Backup Testing", "Bas2024", seeSectionFoot="recov-discrep"),
 ]
 
 for term in undefTerms:

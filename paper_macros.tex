@@ -42,6 +42,14 @@
 \newcommand{\seeSectionParAlways}[2][]{{ (see \nameref{#2}#1)}}
 \newcommand{\seeSectionFootAlways}[1]{{\footnote{See \nameref{#1}.}}}
 
+\newcommand{\formatPaper}[2]{%
+  \ifnotpaper
+    #1{#2}%
+  \else
+    \underline{#2}%
+  \fi
+}
+
 %------------------------------------------------------------------------------
 % Generic "chunks" that get reused
 %------------------------------------------------------------------------------
