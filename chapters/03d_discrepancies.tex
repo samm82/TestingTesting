@@ -10,16 +10,36 @@ individual ones, that may be areas for further investigation.
 There exist many test approaches with multiple synonyms. For example, synonyms
 for specification-based testing include\todo{more in Umar2000}:
 \begin{enumerate}
-      \item Black-Box Testing (\citealp[p.~9]{IEEE2022}; \citeyear[p.~8]{IEEE2021};
-            \citeyear[p.~431]{IEEE2017}; \citealp[p.~5-10]{SWEBOK2024};
-            \citealpISTQB{}; \citealp[p.~46]{Firesmith2015} (without hyphen);
-            \citealp[p.~344]{SakamotoEtAl2013}; \citealp[p.~399]{vanVliet2000})
-      \item Closed-Box Testing (\citealp[p.~9]{IEEE2022}; \citeyear[p.~431]{IEEE2017})
-      \item Functional Testing (\citeyear[p.~196]{IEEE2017}; \citealp[p.~44]{Kam2008};
-            \citealp[p.~399]{vanVliet2000}; implied by \citeyear[p.~129]{IEEE2021};
-            \citeyear[p.~431]{IEEE2017})
-      \item Domain Testing (\citealp[p.~5-10]{SWEBOK2024})
-      \item Input Domain-Based Testing (implied by \citealp[p.~4-8]{SWEBOK2014})
+      \item Black-Box Testing
+            \ifnotpaper
+                  (\citealp[p.~9]{IEEE2022}; \citeyear[p.~8]{IEEE2021};
+                  \citeyear[p.~431]{IEEE2017}; \citealp[p.~5-10]{SWEBOK2024};
+                  \citealpISTQB{}; \citealp[p.~46]{Firesmith2015} (without hyphen);
+                  \citealp[p.~344]{SakamotoEtAl2013}; \citealp[p.~399]{vanVliet2000})
+            \else
+                  \cite[p.~9]{IEEE2022}, \cite[p.~8]{IEEE2021},
+                  \citep[p.~431]{IEEE2017}, \cite[p.~5-10]{SWEBOK2024},
+                  \citepISTQB{}, \cite[p.~46]{Firesmith2015} (without hyphen),
+                  \cite[p.~344]{SakamotoEtAl2013}, \cite[p.~399]{vanVliet2000}
+            \fi
+      \item Closed-Box Testing
+            \ifnotpaper
+                  (\citealp[p.~9]{IEEE2022}; \citeyear[p.~431]{IEEE2017})
+            \else
+                  \cite[p.~9]{IEEE2022}, \cite[p.~431]{IEEE2017}
+            \fi
+      \item Functional Testing
+            \ifnotpaper
+                  (\citeyear[p.~196]{IEEE2017}; \citealp[p.~44]{Kam2008};
+                  \citealp[p.~399]{vanVliet2000}; implied by \citeyear[p.~129]{IEEE2021};
+                  \citeyear[p.~431]{IEEE2017})
+            \else
+                  \cite[p.~196]{IEEE2017}, \cite[p.~44]{Kam2008},
+                  \cite[p.~399]{vanVliet2000} (implied by \citep[p.~129]{IEEE2021},
+                  \cite[p.~431]{IEEE2017})
+            \fi
+      \item Domain Testing \citep[p.~5-10]{SWEBOK2024}
+      \item Input Domain-Based Testing (implied by \citep[p.~4-8]{SWEBOK2014})
 \end{enumerate}
 
 While some of these synonyms may be incorrect, the legitimate ones carry
@@ -44,12 +64,19 @@ Some interesting notes about these synonyms:
             as a kind of reliability testing by \citet[p.~55]{Firesmith2015}.
       \item ``Scenario testing'' and ``use case testing'' are given as synonyms
             by \citetISTQB{} and \citet[pp.~47-49]{Kam2008}, but listed
-            separately by \citet[p.~22]{IEEE2022}, who also give ``use case
+            separately by \citet[p.~22]{IEEE2022},
+            \ifnotpaper who also give \else which also gives \fi ``use case
             testing'' as a ``common form of scenario testing''
             \citeyearpar[p.~20]{IEEE2021}.
-      \item \citeauthor{ChalinEtAl2006}~list \acf{rac} and \acf{sv} as ``two
-            complementary forms of assertion checking''
-            \citeyearpar[p.~343]{ChalinEtAl2006}; based on how the term ``static
+      \item \ifnotpaper
+                  \citeauthor{ChalinEtAl2006}~list \acf{rac} and \acf{sv} as ``two
+                  complementary forms of assertion checking''
+                  \citeyearpar[p.~343]{ChalinEtAl2006}%
+            \else
+                  \cite[p.~343]{ChalinEtAl2006} lists Runtime Assertion
+                  Checking (\acf{rac}) and Software Verification (\acf{sv}) as
+                  ``two complementary forms of assertion checking''%
+            \fi; based on how the term ``static
             assertion checking'' is used by \citet[p.~345]{LahiriEtAl2013}, it
             seems like this should be the complement to \acs{rac} instead.
       \item ``Operational'' and ``production acceptance testing'' are treated
@@ -73,10 +100,10 @@ Some interesting notes about these two lists of discrepancies:
 \begin{itemize}
       \item Fault tolerance testing may also be a
             subtype\notDefDistinctIEEE{type} of reliability testing
-            (\citealp[p.~375]{IEEE2017}; \citealp[p.~7-10]{SWEBOK2024}), which
-            is distinct from reliability testing \citep[p.~53]{Firesmith2015}.
-      \item \citeauthor{Firesmith2015}'s distinction between organization-
-            and role-based testing \citeyearpar[pp.~17,~37,~39]{Firesmith2015}
+            \citetext{\citealp[p.~375]{IEEE2017}; \citealp[p.~7-10]{SWEBOK2024}},
+            which is distinct from reliability testing \citep[p.~53]{Firesmith2015}.
+      \item The distinction between organization- and role-based testing in
+            \citep[pp.~17,~37,~39]{Firesmith2015}
             seems arbitrary, but further investigation may prove it to be
             meaningful (see \thesisissueref{59}).
 \end{itemize}
@@ -89,9 +116,14 @@ test approach as a subset of itself:
 
 \input{build/selfCycles}
 
-Interestingly, \citeauthor{Gerrard2000a} does \emph{not} describe performance
-testing as a sub-category of usability testing (\citeyear[Tab.~2]{Gerrard2000a};
-\citeyear[Tab.~1]{Gerrard2000b}), which would have been more meaningful.
+Interestingly,
+\ifnotpaper \citeauthor{Gerrard2000a} does
+\else  \cite[Tab.~2]{Gerrard2000a} and \cite[Tab.~1]{Gerrard2000b} do
+\fi
+\emph{not} describe performance testing as a sub-category of usability testing%
+\ifnotpaper%
+      { (\citeyear[Tab.~2]{Gerrard2000a}; \citeyear[Tab.~1]{Gerrard2000b})}%
+\fi, which would have been more meaningful.
 
 \subsection{Functional Testing}
 
