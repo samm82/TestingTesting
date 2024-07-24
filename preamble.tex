@@ -152,9 +152,6 @@
 \input{macros}
 \notpapertrue
 
-% McMaster Colours
-\input{mcmaster_colours}
-
 % For fancy pictures
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,cd,babel,arrows.meta,graphs,graphdrawing}
@@ -183,3 +180,9 @@
     \usepackage[disable]{todonotes}
 \fi
 % END   : TODO LIST SETUP
+
+\newenvironment{termTable}{
+    \begin{table}[hbtp!]
+        }{
+    \end{table}
+}

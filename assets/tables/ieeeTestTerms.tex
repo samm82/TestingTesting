@@ -1,75 +1,118 @@
-% Makes footnotes in minipages use numbers instead of the default letters 
-\renewcommand{\thempfootnote}{\arabic{mpfootnote}}
-
 % makecell with new lines so VS Code doesn't freak out
-\newcommand{\techniqueCell}{\makecell{(Design\footnote{``Design technique''
-                  is sometimes abbreviated to ``technique'' (\citealp[p.~11]{IEEE2022};
-                  \citealpISTQB{}).})\\Technique}}
+\newcommand{\techniqueCell}{\makecell{(Design)\footnote{``Design technique''
+            is sometimes abbreviated to ``technique''
+            \ifnotpaper
+                (\citealp[p.~11]{IEEE2022}; \citealpISTQB{}).
+            \else
+                \cite[p.~11]{IEEE2022}, \cite{ISTQB}.
+            \fi
+        }\\Technique}}
 \newcommand{\levelCell}{\makecell{Level\footnote{\procLevel{\citep}.}\\
-            (sometimes\\``Phase''\footnote{``Test phase'' can be a synonym for
-                  ``test level'' (\citealp[p.~469]{IEEE2017};
-                  \citeyear[p.~9]{IEEE2013}) but \phaseDef{}}\\
-            or ``Stage''\footnote{(\citealp[pp.~5-6 to 5-7]{SWEBOK2024};
-                  \citealpISTQB{}; \citealp[pp.~9, 13]{Gerrard2000a}).})}}
+        (sometimes\\``Phase''\footnote{``Test phase'' can be a synonym for
+            ``test level''
+            \ifnotpaper
+                (\citealp[p.~469]{IEEE2017}; \citeyear[p.~9]{IEEE2013})
+            \else
+                \cite[p.~469]{IEEE2017}, \cite[p.~9]{IEEE2013}
+            \fi
+            but \phaseDef{}}\\
+        or ``Stage''\footnote{
+            \ifnotpaper
+                (\citealp[pp.~5-6 to 5-7]{SWEBOK2024};
+                \citealpISTQB{}; \citealp[pp.~9, 13]{Gerrard2000a}).
+            \else
+                \cite[pp.~5-6 to 5-7]{SWEBOK2024}, \cite{ISTQB},
+                \cite[pp.~9, 13]{Gerrard2000a}.
+            \fi
+        })}}
 
-\begin{table}[hbtp!]
-      \centering
-      \caption{IEEE Testing Terminology}
-      \label{tab:ieeeTestTerms}
-      % m{0.145\linewidth}
-      \begin{minipage}{\linewidth}
-            \begin{tabular}{|>{\centering}m{0.08\linewidth}m{0.6\linewidth}m{0.27\linewidth}|}
-                  \hline
-                  \rowcolor{McMasterMediumGrey}
-                  \thead{Term}                            & \thead{Definition}                      & \thead{Examples} \\
-                  \hline
-                  Approach                                & A ``high-level test
-                  implementation choice, typically made as part of the test strategy
-                  design activity'' that includes ``test level, test type, test technique,
-                  test practice and the form of static testing to be used''
-                  \citep[p.~10]{IEEE2022}; described by a \emph{test strategy}
-                  \citeyearpar[p.~472]{IEEE2017} and is also used to ``pick the particular test case
-                  values'' \citeyearpar[p.~465]{IEEE2017} & black or white box, minimum and maximum
-                  boundary value testing \citep[p.~465]{IEEE2017}                                                      \\
-                  \hline
-                  \techniqueCell{}                        & A ``defined'' and ``systematic''
-                  \citep[p.~464]{IEEE2017} ``procedure used to create or select a test model,
-                  identify test coverage items, and derive corresponding test cases''
-                  (\citeyear[p.~11]{IEEE2022}; similar in \citeyear[p.~467]{IEEE2017}) ``that
-                  \dots\ generate evidence that test item requirements have been met or that
-                  defects are present in a test item'' \citeyearpar[p.~vii]{IEEE2021};
-                  ``a variety \dots\ is typically
-                  required to suitably cover any system'' \citeyearpar[p.~33]{IEEE2022} and is
-                  ``often selected based on team skills and familiarity,
-                  on the format of the test basis'', and on expectations
-                  \citeyearpar[p.~23]{IEEE2022}           & equivalence partitioning,
-                  boundary value analysis, branch testing \citep[p.~11]{IEEE2022}                                      \\
-                  \hline
-                  \levelCell{}                            & A stage of testing
-                  ``typically associated with the achievement of particular objectives
-                  and used to treat particular risks'', each performed in sequence
-                  (\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021}) with their
-                  ``own documentation and resources'' \citeyearpar[p.~469]{IEEE2017};
-                  more generally, ``designat[es] \dots\ the coverage and detail''
-                  \citeyearpar[p.~249]{IEEE2017}          & unit/component testing,
-                  integration testing, system testing (\citealp[p.~12]{IEEE2022};
-                  \citeyear[p.~6]{IEEE2021}; \citeyear[p.~467]{IEEE2017})                                              \\
-                  \hline
-                  Practice                                & A ``conceptual framework
-                  that can be applied to \dots\ [a] test process to facilitate testing''
-                  (\citealp[p.~14]{IEEE2022}; \citeyear[p.~471]{IEEE2017}; OG IEEE 2013);
-                  more generally, a ``specific type of activity
-                  that contributes to the execution of a process''
-                  \citeyearpar[p.~331]{IEEE2017}          & scripted testing,
-                  exploratory testing, automated testing \citep[p.~20]{IEEE2022}                                       \\
-                  \hline
-                  Type                                    & ``Testing that is focused
-                  on specific quality characteristics'' (\citealp[p.~15]{IEEE2022};
-                  \citeyear[p.~7]{IEEE2021}; \citeyear[p.~473]{IEEE2017};
-                  OG IEEE 2013)                           & security testing, usability testing,
-                  performance testing (\citealp[p.~15]{IEEE2022};
-                  \citeyear[p.~473]{IEEE2017})                                                                         \\
-                  \hline
-            \end{tabular}
-      \end{minipage}
-\end{table}
+\begin{termTable}
+    \centering
+    \caption{IEEE Testing Terminology}
+    \label{tab:ieeeTestTerms}
+    % m{0.145\linewidth}
+    \begin{minipage}{\linewidth}
+        \begin{tabular}{|>{\centering}m{0.08\linewidth}m{0.6\linewidth}m{0.27\linewidth}|}
+            \hline
+            \rowcolor{McMasterMediumGrey}
+            \thead{Term}                   & \thead{Definition}               & \thead{Examples} \\
+            \hline
+            Approach                       & A ``high-level test
+            implementation choice, typically made as part of the test strategy
+            design activity'' that includes ``test level, test type, test technique,
+            test practice and the form of static testing to be used''
+            \citep[p.~10]{IEEE2022}; described by a \emph{test strategy}
+            \citeyearpar[p.~472]{IEEE2017} and is also used to ``pick the particular test case
+            values'' \citeyearpar[p.~465]{IEEE2017}
+                                           &
+            black or white box, minimum and maximum
+            boundary value testing \citep[p.~465]{IEEE2017}                                      \\
+            \hline
+            \techniqueCell{}               & A ``defined'' and ``systematic''
+            \citep[p.~464]{IEEE2017} ``procedure used to create or select a test model,
+            identify test coverage items, and derive corresponding test cases''
+            \ifnotpaper
+            (\citeyear[p.~11]{IEEE2022}; similar in \citeyear[p.~467]{IEEE2017})
+            \else
+            \cite[p.~11]{IEEE2022}, similar in \cite[p.~467]{IEEE2017}
+            \fi ``that
+            \dots\ generate evidence that test item requirements have been met or that
+            defects are present in a test item'' \citeyearpar[p.~vii]{IEEE2021};
+            ``a variety \dots\ is typically
+            required to suitably cover any system'' \citeyearpar[p.~33]{IEEE2022} and is
+            ``often selected based on team skills and familiarity,
+            on the format of the test basis'', and on expectations
+            \citeyearpar[p.~23]{IEEE2022}  &
+            equivalence partitioning,
+            boundary value analysis, branch testing \citep[p.~11]{IEEE2022}                      \\
+            \hline
+            \levelCell{}                   & A stage of testing
+            ``typically associated with the achievement of particular objectives
+            and used to treat particular risks'', each performed in sequence
+            \ifnotpaper
+            (\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021})
+            \else
+            \cite[p.~12]{IEEE2022}, \cite[p.~6]{IEEE2021}
+            \fi
+            with their
+            ``own documentation and resources'' \citeyearpar[p.~469]{IEEE2017};
+            more generally, ``designat[es] \dots\ the coverage and detail''
+            \citeyearpar[p.~249]{IEEE2017} &
+            unit/component testing, integration testing, system testing
+            \ifnotpaper
+            (\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021};
+            \citeyear[p.~467]{IEEE2017})
+            \else
+            \cite[p.~12]{IEEE2022}, \cite[p.~6]{IEEE2021}, \cite[p.~467]{IEEE2017}
+            \fi                                                                                  \\
+            \hline
+            Practice                       & A ``conceptual framework
+            that can be applied to \dots\ [a] test process to facilitate testing''
+            \ifnotpaper
+            (\citealp[p.~14]{IEEE2022}; \citeyear[p.~471]{IEEE2017}; OG IEEE 2013);
+            \else
+            \cite[p.~14]{IEEE2022}, \cite[p.~471]{IEEE2017};
+            \fi
+            more generally, a ``specific type of activity
+            that contributes to the execution of a process''
+            \citeyearpar[p.~331]{IEEE2017} & scripted testing,
+            exploratory testing, automated testing \citep[p.~20]{IEEE2022}                       \\
+            \hline
+            Type                           & ``Testing that is focused
+            on specific quality characteristics''
+            \ifnotpaper
+            (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021};
+            \citeyear[p.~473]{IEEE2017}; OG IEEE 2013)
+            \else
+            \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}, \cite[p.~473]{IEEE2017}
+            \fi                            &
+            security testing, usability testing, performance testing
+            \ifnotpaper
+            (\citealp[p.~15]{IEEE2022}; \citeyear[p.~473]{IEEE2017})
+            \else
+            \cite[p.~15]{IEEE2022}, \cite[p.~473]{IEEE2017}
+            \fi                                                                                  \\
+            \hline
+        \end{tabular}
+    \end{minipage}
+\end{termTable}

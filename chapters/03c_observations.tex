@@ -8,15 +8,15 @@ For classifying different kinds of tests,
 \else
     \cite{IEEE2022} provides
 \fi
-some terminology (see \refIEEETestTerms{}). However,
+some terminology (see \refIEEETestTerms{}).
 \ifnotpaper
-    other sources \citep{BarbosaEtAl2006, SouzaEtAl2017}
-\else
-    \cite{BarbosaEtAl2006, SouzaEtAl2017}
-\fi provide alternate
-categories (see \refOtherTestTerms{}) which may be beneficial to investigate to
-determine if this categorization is sufficient.
-\ifnotpaper
+    However, other sources \citep{BarbosaEtAl2006, SouzaEtAl2017}
+    % \cite{BarbosaEtAl2006, SouzaEtAl2017}
+    provide alternate categories
+    (see \refOtherTestTerms{}) which may be beneficial to investigate to
+    determine if this categorization is sufficient.
+    % \fi 
+    % \ifnotpaper
     A ``metric'' categorization was considered at one point, but was decided
     to be out of the scope of this project
     \seeSectionPar{chap:testing:sec:scope}{, \thesisissueref{21}, and
@@ -211,6 +211,8 @@ Examples of discrepancies in test-approach categorization:
         \otherTestTermsTable{}
     \end{landscape}
     \restoregeometry
+\else
+    \ieeeTestTermsTable{}
 \fi
 
 Since test techniques are able to ``identify test coverage items \dots\ and

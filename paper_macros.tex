@@ -53,8 +53,12 @@ of a test process; for example, ``across the whole organization'' or only
 ``to specific projects'' #1[p.~24]{IEEE2022}}
 \newcommand{\phaseDef}{can also refer to the ``period of time in the software
   life cycle'' when testing occurs \citeyearpar[p.~470]{IEEE2017}, usually
-  after the implementation phase (\citeyear[pp.~420,~509]{IEEE2017};
-  \citealp[p.~56]{Perry2006}).}
+  after the implementation phase
+  \ifnotpaper
+    (\citeyear[pp.~420,~509]{IEEE2017}; \citealp[p.~56]{Perry2006}).
+  \else
+    \cite[pp.~420,~509]{IEEE2017}, \cite[p.~56]{Perry2006}.
+  \fi}
 
 % Define common footnotes about IEEE testing terms for reuse
 \newcommand{\distinctIEEE}[1]{distinct from the notion of ``test #1'' described
