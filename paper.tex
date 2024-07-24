@@ -49,8 +49,41 @@
 \end{abstract}
 
 \begin{IEEEkeywords}
-    component, formatting, style, styling, insert.
+    software testing, terminology, taxonomy, literature review, test approaches
 \end{IEEEkeywords}
+
+\section{Background}
+
+% TODO: tighten up, add sources
+
+Testing software is complicated, expensive, and often expensive. Therefore,
+automating the software testing process is an area of interest. In particular,
+test case generation for Drasil, a framework for ``generating all of the
+software artifacts for (well understood) research software'' \cite{Drasil} was
+desired.
+
+Before attempting to automate a knowledge-based process in ad hoc manner, it is
+important to understand the underlying domain. This allows the information
+itself to drive the scope, including both what is possible and what is needed.
+In this case, the goal was to uncover the various approaches towards testing,
+as well as which prerequisites (e.g., input files, oracles) existed for each.
+A search for a systematic, rigorous, and ``complete'' taxonomy revealed that
+existing software testing taxonomies are inadequate:
+
+\begin{itemize}
+    \item \cite{TebesEtAl2020a} focuses on \emph{parts} of the
+          testing process (e.g., test goal, testable entity)
+    \item \cite{SouzaEtAl2017} prioritizes organizing testing
+          approaches over defining them
+    \item \cite{UnterkalmsteinerEtAl2014} provides a foundation for
+          classification but not how it applies to software testing terminology
+\end{itemize}
+
+The ``solution'' to this gap was to examine existing literature (\ref{method}),
+which quickly reinforced the need for a taxonomy! Despite the amount of
+well understood and organized knowledge, there were still many discrepancies
+and ambiguities, either within the same source or between various sources
+(\ref{observ}).
 
 \input{chapters/03b_methodology}
 \input{chapters/03c_observations}
