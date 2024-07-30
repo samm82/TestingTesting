@@ -19,7 +19,7 @@
 \newcommand{\porthreftm}[2]{\href{#2}{#1\printOnlyFootnoteMark}}
 
 %------------------------------------------------------------------------------
-% Optional namerefs in context of (see <section name>)
+% Optional refs in format of (see <ref>)
 %------------------------------------------------------------------------------
 
 \newif\ifnotpaper
@@ -38,9 +38,13 @@
     \seeSectionFootAlways{#1}%
   \fi
 }
-\newcommand{\seeSectionAlways}[1]{{ see \nameref{#1}}}
-\newcommand{\seeSectionParAlways}[2][]{{ (see \nameref{#2}#1)}}
-\newcommand{\seeSectionFootAlways}[1]{{\footnote{See \nameref{#1}.}}}
+\NewDocumentCommand{\seeSectionAlways}{ m }{\seeAlways{#1}}
+\NewDocumentCommand{\seeSectionParAlways}{ m O{} }{\seeParAlways{#1}[#2]}
+\NewDocumentCommand{\seeSectionFootAlways}{ m }{\seeFootAlways{#1}}
+
+\NewDocumentCommand{\seeAlways}{ O{\nameref} m }{{ see #1{#2}}}
+\NewDocumentCommand{\seeParAlways}{ O{\nameref} m o }{{ (see #1{#2}#3)}}
+\NewDocumentCommand{\seeFootAlways}{ O{\nameref} m }{\footnote{See #1{#2}.}}
 
 \newcommand{\formatPaper}[2]{%
   \ifnotpaper
