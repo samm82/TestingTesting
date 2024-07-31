@@ -263,9 +263,13 @@ There are many terms related to ``recovery testing'', which is ``testing
 \dots\ aimed at verifying
 software restart capabilities after a system crash or other disaster''
 \citep[p.~5-9]{SWEBOK2024} including ``recover[ing] the data directly affected
-and re-establish[ing] the desired state of the system'' (\citealp{ISO_IEC2023a};
-similar in \citealp[p.~7-10]{SWEBOK2024}) so
-that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
+and re-establish[ing] the desired state of the system''
+\ifnotpaper
+      (\citealp{ISO_IEC2023a}; similar in \citealp[p.~7-10]{SWEBOK2024})
+\else
+      \cite{ISO_IEC2023a} (similar in \cite[p.~7-10]{SWEBOK2024})
+\fi
+so that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
 It is also called ``recoverability testing'' \cite[p.~47]{Kam2008} and
 potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}. The
 following terms, along with ``recovery testing'' itself \citep[p.~22]{IEEE2022}
@@ -275,7 +279,11 @@ in Figure~\ref{fig:recovery-graph-current}.
 \begin{itemize}
       \item \textbf{Recoverability Testing:} Testing ``how well a system or
             software can recover data during an interruption or failure''
-            (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
+            \ifnotpaper
+                  (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
+            \else
+                  \cite[p.~7-10]{SWEBOK2024} (similar in \cite{ISO_IEC2023a})
+            \fi
             and ``re-establish the desired state of the system'' \citep{ISO_IEC2023a}.
             Given as a synonym for ``recovery testing'' by \citet[p.~47]{Kam2008}.
       \item \textbf{Disaster/Recovery Testing:} Testing to evaluate if a system
@@ -301,23 +309,24 @@ in Figure~\ref{fig:recovery-graph-current}.
             \citeyearpar[p.~37]{IEEE2021}. It is also given as a sub-type of
             ``disaster/recovery testing'', even though that tests if ``operation
             of the test item can be transferred to a different operating site''
-            (p.~37).
+            \citetext{p.~37}.
       \item \textbf{Failover/Recovery Testing:} Testing that determines the
             ability ``to mov[e] to a back-up system in the event of failure,
             without transfer[ing] to a different operating site''
             \citep[p.~37]{IEEE2021}. This is given as a sub-type of
             ``disaster/recovery testing'', even though that tests if ``operation
             of the test item can be transferred to a different operating site''
-            (p.~37).
+            \citetext{p.~37}.
       \item \textbf{Failover Testing:} Testing that ``validates the SUT's
             ability to manage heavy loads or unexpected failure to continue
             typical operations'' \citep[p.~5-9]{SWEBOK2024} by entering a
             ``backup operational mode in which [these responsibilities] \dots\
             are assumed by a secondary system'' \citepISTQB{}. While not
             \emph{explicitly} related to recovery, ``failover/recovery testing''
-            also describes the idea of ``failover'', and \citeauthor{Firesmith2015}
-            uses the term ``failover and recovery testing''
-            \citeyearpar[p.~56]{Firesmith2015}, which could be a synonym of
+            also describes the idea of ``failover'', and \ifnotpaper
+                  \citeauthor{Firesmith2015}\else\cite[p.~56]{Firesmith2015}\fi\
+            uses the term ``failover and recovery testing''\ifnotpaper
+                  \ \citeyearpar[p.~56]{Firesmith2015}\fi, which could be a synonym of
             both of these terms.
 \end{itemize}
 
