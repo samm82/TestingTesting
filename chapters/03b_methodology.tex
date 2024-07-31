@@ -83,16 +83,15 @@ document\seeSectionParAlways{derived-tests}.
 
 During the first pass of data collection, all software-testing-focused terms
 were included. Some of them are less applicable to test case automation
-(such as static testing; see \nameref{static-test}, \thesisissueref{39})
-or too broad (such as attacks; see
-\nameref{attacks}, \thesisissueref{55}), so they will be omitted over the
-course of analysis.
+(such as \nameref{static-test}\ifnotpaper{, \thesisissueref{39}}\fi) or too
+broad (such as \nameref{attacks}\ifnotpaper{, \thesisissueref{55}}\fi), so they
+will be omitted over the course of analysis.
 
 \ifnotpaper
       During this investigation, some terms came up that seemed to be relevant to
       testing but were so vague, they didn't provide any new information. These were
-      decided to be not worth tracking (see \thesisissueref{39}, \thesisissueref{44},
-      \thesisissueref{28}) and are listed below:
+      decided to be not worth tracking\seeThesisIssuePar{39}[, \thesisissueref{44},
+            \thesisissueref{28}] and are listed below:
 
       \begin{itemize}
             \item \textbf{Evaluation:} the ``systematic determination of the extent
@@ -132,8 +131,8 @@ This process also led to some testing approaches without definitions;
 \citep{IEEE2022} and \citep{Firesmith2015} in particular introduced many.
 Once more ``standard'' sources had been exhausted, a strategy was proposed to
 look for sources that explicitly defined these terms, with the added benefit of
-uncovering more terms to explore, potentially in different domains (see
-\thesisissueref{57}). This also uncovered some out-of-scope testing approaches,
+uncovering more terms to explore, potentially in different domains%
+\seeThesisIssuePar{57}. This also uncovered some out-of-scope testing approaches,
 including EMSEC testing, HTML testing, and aspects of loop testing and
 orthogonal array testing\seeSectionPar{scope}; since these
 are out of scope, relevant sources were not investigated fully.

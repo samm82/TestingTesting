@@ -36,7 +36,7 @@ some terminology (see \refIEEETestTerms{}).
 Related testing approaches may be grouped into a ``class'' or ``family'' to
 group those with ``commonalities and well-identified variabilities that can be
 instantiated'', where ``the commonalities are large and the variabilities
-smaller'' (see \thesisissueref{64}). Examples of these are the classes of
+smaller''\seeThesisIssuePar{64}. Examples of these are the classes of
 combinatorial \citep[p.~15]{IEEE2021} and data flow testing \citetext{p.~3} and the
 family of performance-related testing \cite[p.~1187]{Moghadam2019}\footnote{The
     original source describes ``performance testing \dots\ as a family of
@@ -65,7 +65,7 @@ applying equivalence partitioning can be used to identify the input parameters
 of test cases derived for scenario testing'' \citetext{p.~8}. Even the categories
 themselves are not consistently defined, as some approaches are categorized
 differently by different sources; these differences will be tracked noted so
-that they can be analyzed more systematically (see \thesisissueref{21}).
+that they can be analyzed more systematically\seeThesisIssuePar{21}.
 There are also several instances of inconsistencies between parent and child
 test approach categorizations (which may indicate they aren't necessarily the
 same, or that more thought must be given to classification/organization).
@@ -97,8 +97,7 @@ Examples of discrepancies in test-approach categorization:
                     sometimes contradicted \citep[p.~46]{Firesmith2015}.
                     However, this conflates the distinction between
                     ``practice'' and ``technique'', making these terms less
-                    useful, so this may just be a mistake
-                    (see \thesisissueref{64}).
+                    useful, so this may just be a mistake\seeThesisIssuePar{64}.
 
                     % Furthermore, if a ``class of \dots\ techniques''
                     % is a practice, then other ``techniques'', such as combinatorial testing
@@ -261,8 +260,8 @@ that a given
 coverage metric implies a test approach aimed to maximize it; for example,
 ``path testing'' is testing that ``aims to execute all entry-to-exit
 control flow paths in a SUT's control flow graph'' \citep[p.~5013]{SWEBOK2024},
-thus maximizing the path coverage (see also \thesisissueref{63},
-\citep[Fig.~1]{SharmaEtAl2021}).
+thus maximizing the path coverage (see also
+\ifnotpaper\thesisissueref{63}, \fi \citep[Fig.~1]{SharmaEtAl2021}).
 
 \subsubsection{Quality-driven Types}
 
@@ -293,10 +292,10 @@ is supported by \ifnotpaper
     \citeyearpar[p.~18]{FentonAndPfleeger1997}.
 \fi
 
-After discussing this further (see \thesisissueref{21} and \thesisissueref{23}),
+After discussing this further\seeThesisIssuePar{21}[ and \thesisissueref{23}],
 it was decided that tracking
-software qualities, in addition to testing approaches, would be worthwhile
-(see \thesisissueref{27}). This was done by capturing their definitions and any
+software qualities, in addition to testing approaches, would be worthwhile%
+\seeThesisIssuePar{27}. This was done by capturing their definitions and any
 rationale for why it might be useful to consider an explicitly separate
 ``test type'' in a separate document, so this information could be captured
 without introducing clutter. Over time, software qualities were ``upgraded''
@@ -307,8 +306,8 @@ While not as universally applicable, some types of requirements have associated
 types of testing (e.g., functional, non-functional, security). This may mean
 that categories of requirements \emph{also} imply related testing approaches
 (such as ``technical testing''). Even assuming this is the case, some types of
-requirements do not apply to the code itself, and as such are out of scope
-(see \thesisissueref{43}):
+requirements do not apply to the code itself, and as such are out of scope%
+\seeThesisIssuePar{43}:
 
 \begin{itemize}
     \item \textbf{Nontechnical Requirement:} a ``requirement affecting product

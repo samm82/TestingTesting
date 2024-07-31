@@ -42,8 +42,14 @@
 \NewDocumentCommand{\seeSectionParAlways}{ m O{} }{\seeParAlways{#1}[#2]}
 \NewDocumentCommand{\seeSectionFootAlways}{ m }{\seeFootAlways{#1}}
 
+\NewDocumentCommand{\seeThesisIssue}{ m }{\ifnotpaper\seeAlways[\thesisissueref]{#1}\fi}
+\NewDocumentCommand{\seeThesisIssuePar}{ m o }
+{\ifnotpaper\seeParAlways[\thesisissueref]{#1}[#2]\fi}
+\NewDocumentCommand{\seeThesisIssueFoot}{ m }
+{\ifnotpaper\seeFootAlways[\thesisissueref]{#1}\fi}
+
 \NewDocumentCommand{\seeAlways}{ O{\nameref} m }{{ see #1{#2}}}
-\NewDocumentCommand{\seeParAlways}{ O{\nameref} m o }{{ (see #1{#2}#3)}}
+\NewDocumentCommand{\seeParAlways}{ O{\nameref} m O{} }{{ (see #1{#2}#3)}}
 \NewDocumentCommand{\seeFootAlways}{ O{\nameref} m }{\footnote{See #1{#2}.}}
 
 \newcommand{\formatPaper}[2]{%
