@@ -75,68 +75,70 @@ Examples of discrepancies in test-approach categorization:
     \item Experience-based testing is categorized as both a test design
           technique and a test practice on the same page
           \citep[pp.~22, 34]{IEEE2022}!
-          \begin{itemize}
-              \item These authors previously say ``experience-based testing
-                    practices like exploratory testing \dots\ are not
-                    \dots\ techniques for designing test cases'', although
-                    they ``can use \dots\ test techniques''
-                    \citeyearpar[p.~viii]{IEEE2021}. This implies that
-                    ``experience-based test design techniques'' are
-                    techniques used by the \emph{practice} of experience-based
-                    testing, not that experience-based testing is
-                    \emph{itself} a test technique. If this is the case, it
-                    is not always clearly articulated
-                    \ifnotpaper
-                        (\citealp[pp.~4,~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021};
-                        \citealp[p.~5-13]{SWEBOK2024}; \citealpISTQB{})
-                    \else
-                        \cite[pp.~4,~22]{IEEE2022}, \cite[p.~4]{IEEE2021},
-                        \cite[p.~5-13]{SWEBOK2024}, \cite{ISTQB}
-                    \fi
-                    and is
-                    sometimes contradicted \citep[p.~46]{Firesmith2015}.
-                    However, this conflates the distinction between
-                    ``practice'' and ``technique'', making these terms less
-                    useful, so this may just be a mistake\seeThesisIssuePar{64}.
+          \ifnotpaper
+              \begin{itemize}
+                  \item These authors previously say ``experience-based testing
+                        practices like exploratory testing \dots\ are not
+                        \dots\ techniques for designing test cases'', although
+                        they ``can use \dots\ test techniques''
+                        \citeyearpar[p.~viii]{IEEE2021}. This implies that
+                        ``experience-based test design techniques'' are
+                        techniques used by the \emph{practice} of experience-based
+                        testing, not that experience-based testing is
+                        \emph{itself} a test technique. If this is the case, it
+                        is not always clearly articulated
+                        \ifnotpaper
+                            (\citealp[pp.~4,~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021};
+                            \citealp[p.~5-13]{SWEBOK2024}; \citealpISTQB{})
+                        \else
+                            \cite[pp.~4,~22]{IEEE2022}, \cite[p.~4]{IEEE2021},
+                            \cite[p.~5-13]{SWEBOK2024}, \cite{ISTQB}
+                        \fi
+                        and is
+                        sometimes contradicted \citep[p.~46]{Firesmith2015}.
+                        However, this conflates the distinction between
+                        ``practice'' and ``technique'', making these terms less
+                        useful, so this may just be a mistake\seeThesisIssuePar{64}.
 
-                    % Furthermore, if a ``class of \dots\ techniques''
-                    % is a practice, then other ``techniques'', such as combinatorial testing
-                    % (\citealp[pp.~3,~22]{IEEE2022}; \citeyear[p.~2]{IEEE2021};
-                    % \citealp[p.~5-11]{SWEBOK2024}; \citealpISTQB{}), data flow testing
-                    % (\citealp[p.~22]{IEEE2022}; \citeyear[p.~3]{IEEE2021};
-                    % \citealp[p.~5-13]{SWEBOK2024}; \citealp[p.~43]{Kam2008}), performance(-related)
-                    % testing (\citealp[p.~38]{IEEE2021}; \citealp[p.~1187]{Moghadam2019}), and
-                    % security testing \citep[p.~40]{IEEE2021} may \emph{also}
-                    % actually be practices, since they are also described as classes or families of
-                    % techniques. The same could be said of the more
-                    % general specification- and structure-based testing, especially since these,
-                    % plus experience-based testing, are described as ``complementary'' \citetext{p.~8,~Fig.~2}.
-                    % % \citeyearpar[p.~8, Fig.~2]{IEEE2021}
+                        % Furthermore, if a ``class of \dots\ techniques''
+                        % is a practice, then other ``techniques'', such as combinatorial testing
+                        % (\citealp[pp.~3,~22]{IEEE2022}; \citeyear[p.~2]{IEEE2021};
+                        % \citealp[p.~5-11]{SWEBOK2024}; \citealpISTQB{}), data flow testing
+                        % (\citealp[p.~22]{IEEE2022}; \citeyear[p.~3]{IEEE2021};
+                        % \citealp[p.~5-13]{SWEBOK2024}; \citealp[p.~43]{Kam2008}), performance(-related)
+                        % testing (\citealp[p.~38]{IEEE2021}; \citealp[p.~1187]{Moghadam2019}), and
+                        % security testing \citep[p.~40]{IEEE2021} may \emph{also}
+                        % actually be practices, since they are also described as classes or families of
+                        % techniques. The same could be said of the more
+                        % general specification- and structure-based testing, especially since these,
+                        % plus experience-based testing, are described as ``complementary'' \citetext{p.~8,~Fig.~2}.
+                        % % \citeyearpar[p.~8, Fig.~2]{IEEE2021}
 
-              \item This also causes confusion about its children, such as
-                    error guessing and exploratory testing; again, on the
-                    same page,
-                    \ifnotpaper
-                        \citeauthor{IEEE2022} say
-                    \else
-                        \cite[p.~34]{IEEE2022} says
-                    \fi error guessing is
-                    an ``experience-based test design technique'' and
-                    ``experience-based test practices include \dots\
-                    exploratory testing, tours, attacks, and
-                    checklist-based testing''%
-                    \ifnotpaper{ \citeyearpar[p.~34]{IEEE2022}.}
-                    \else{.}
-                    \fi
-                    Other sources also do not agree whether error guessing
-                    is a technique
-                    \ifnotpaper
-                        (pp.~20,~22; \citeyear[p.~viii]{IEEE2021})
-                    \else
-                        \cite[pp.~20,~22]{IEEE2022}, \cite[p.~viii]{IEEE2021}
-                    \fi
-                    or a practice \citep[p.~5-14]{SWEBOK2024}.
-          \end{itemize}
+                  \item This also causes confusion about its children, such as
+                        error guessing and exploratory testing; again, on the
+                        same page,
+                        \ifnotpaper
+                            \citeauthor{IEEE2022} say
+                        \else
+                            \cite[p.~34]{IEEE2022} says
+                        \fi error guessing is
+                        an ``experience-based test design technique'' and
+                        ``experience-based test practices include \dots\
+                        exploratory testing, tours, attacks, and
+                        checklist-based testing''%
+                        \ifnotpaper{ \citeyearpar[p.~34]{IEEE2022}.}
+                        \else{.}
+                        \fi
+                        Other sources also do not agree whether error guessing
+                        is a technique
+                        \ifnotpaper
+                            (pp.~20,~22; \citeyear[p.~viii]{IEEE2021})
+                        \else
+                            \cite[pp.~20,~22]{IEEE2022}, \cite[p.~viii]{IEEE2021}
+                        \fi
+                        or a practice \citep[p.~5-14]{SWEBOK2024}.
+              \end{itemize}
+          \fi
     \item The following are test approaches that are categorized as test
           techniques in \citep[p.~38]{IEEE2021}, followed by sources that
           categorize them as test types:
@@ -231,7 +233,7 @@ provides multiple methods to derive new ones. Since the field of software is
 ever-evolving, being able to adapt to new developments, as well as being able
 to talk about and understand them, is crucial.
 
-\subsubsection{Coverage-derived Techniques}
+\subsubsection{Coverage-driven Techniques}
 \label{tech-cov}
 
 Test techniques are able to ``identify test coverage items \dots\ and
@@ -274,22 +276,15 @@ Since test types are ``focused on specific quality characteristics''
 \fi, they can derived from software qualities: ``capabilit[ies] of
 software product[s] to satisfy stated and implied needs when used under
 specified conditions'' \citep[p.~424]{IEEE2017}\todo{OG ISO/IEC 2014}. This
-is supported by \ifnotpaper
-    \citeauthor{FentonAndPfleeger1997} who say
-\else
-    \cite{FentonAndPfleeger1997} which says
-\fi that reliability and performance testing, both examples of test types
-\citep{IEEE2022, IEEE2021}, are based on their underlying qualities
+is supported by reliability and performance testing, which are both examples of
+test types \citep{IEEE2022, IEEE2021} that are based on their underlying
+qualities \citep[p.~18]{FentonAndPfleeger1997}.
 \ifnotpaper
-    \citeyearpar[p.~18]{FentonAndPfleeger1997} and that measurements should include
+    For quantifying quality-driven testing, measurements should include
     an entity to be measured, a specific attribute to measure, and the actual
     measure (i.e., units, starting state, ending state, what to include)
-    \citetext{p.~36}
-    % \citeauthoryear[p.~36]{FentonAndPfleeger1997}
-    where attributes must be defined before they can be measured \citetext{p.~38}.
-    % \citeauthoryear[p.~38]{FentonAndPfleeger1997}
-\else
-    \citeyearpar[p.~18]{FentonAndPfleeger1997}.
+    \citeyearpar[p.~36]{FentonAndPfleeger1997} where attributes must be
+    defined before they can be measured \citetext{p.~38}.
 \fi
 
 After discussing this further\seeThesisIssuePar{21}[ and \thesisissueref{23}],
