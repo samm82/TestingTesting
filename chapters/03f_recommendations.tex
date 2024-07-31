@@ -24,10 +24,14 @@ more clearly distinguish between different recovery-related test approaches:
             verifying software restart capabilities after a system crash or
             other disaster'' \citep[p.~5-9]{SWEBOK2024} including ``recover[ing]
             the data directly affected and re-establish[ing] the desired state
-            of the system'' (\citealp{ISO_IEC2023a}; similar in
-            \citealp[p.~7-10]{SWEBOK2024}) so that the system ``can perform
+            of the system''
+            \ifnotpaper
+                  (\citealp{ISO_IEC2023a}; similar in \citealp[p.~7-10]{SWEBOK2024})
+            \else
+                  \cite{ISO_IEC2023a} (similar in \cite[p.~7-10]{SWEBOK2024})
+            \fi so that the system ``can perform
             required functions'' \citep[p.~370]{IEEE2017}. ``Recovery testing''
-            will be a synonym, as in \citep[p.~47]{Kam2008} and since it is the
+            will be a synonym, as in \citep[p.~47]{Kam2008}, since it is the
             more prevalent term throughout various sources, although
             ``recoverability testing'' is preferred to indicate that this
             explicitly focuses on the \emph{ability} to
@@ -54,23 +58,26 @@ more clearly distinguish between different recovery-related test approaches:
             ability ``to restor[e] from back-up memory in the event of failure''
             \citep[p.~37]{IEEE2021}. The qualification that this occurs
             ``without transfer[ing] to a different operating site or back-up
-            system'' (p.~37) \emph{could} be made explicit, but this is implied
-            since it is separate from transfer recovery testing and failover
-            testing, respectively.
+            system'' \citetext{p.~37} \emph{could} be made explicit, but this is
+            implied since it is separate from transfer recovery testing and
+            failover testing, respectively.
       \item \textbf{Recovery Performance Testing:} Testing ``how well a system or
             software can recover \dots\ [from] an interruption or failure''
-            (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
-            ``within specified parameters of time, cost, completeness, and
+            \ifnotpaper
+                  (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
+            \else
+                  \cite[p.~7-10]{SWEBOK2024} (similar in \cite{ISO_IEC2023a})
+            \fi ``within specified parameters of time, cost, completeness, and
             accuracy'' \citep[p.~2]{IEEE2013}. The distinction between the
             performance-related elements of recovery testing seemed to be
-            meaningful (see \thesisissueref{40}), but was not captured
+            meaningful\seeThesisIssuePar{40}, but was not captured
             consistently by the literature. This will be a subset of
             ``performance-related testing''\seeSectionPar{perf-test-ambiguity}
             as ``recovery testing'' is in \citep[p.~22]{IEEE2022}. This could
             also be extended into testing the performance of specific elements
             of recovery (e.g., failover performance testing), but this be too
             fine-grained and may better be captured as an
-            \hyperref[chap:testing:sec:orthogonal-tests]
+            \hyperref[orthogonal-tests]
             {orthogonally derived test approach}.
 \end{itemize}
 
@@ -159,13 +166,13 @@ This distinction is also consistent with how the terms are used in industry:
 that scalability is the ability to ``increase
 \dots\ performance or efficiency as demand increases over time'', while
 elasticity allows a system to ``tackle changes in the workload [that] occur for
-a short period'' (%
-\ifnotpaper \citeyear{Pandey2023};
-\fi see \thesisissueref{35}).
+a short period''\ifnotpaper\ (\citeyear{Pandey2023};\seeThesisIssue{35})\fi.
 
 To make things even more confusing, SWEBOK V4 says ``scalability
 testing evaluates the capability to use and learn the system and the user
 documentation'' and ``focuses on the system's effectiveness in supporting user
 tasks and the ability to recover from user errors'' \citep[p.~5-9]{SWEBOK2024}.
 \swebokScalDef{}, which is completely separate from the definitions of
-``scalability'', ``capacity'', and ``elasticity testing''!
+``scalability'', ``capacity'', and ``elasticity testing''! This definition
+should simply be disregarded, since it is inconsistent with the rest of the
+literature.
