@@ -359,19 +359,36 @@ in Figure~\ref{fig:recovery-graph-current}.
 
 ``Performance testing'' is defined as testing ``conducted to evaluate the
 degree to which a test item accomplishes its designated functions''
-(\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017}; similar in
-\citeyear[pp.~38-39]{IEEE2021}; \citealp[p.~1187]{Moghadam2019}). It does this
-by ``measuring the performance metrics'' (\citealp[p.~1187]{Moghadam2019};
-similar in \citealpISTQB{}) (such as the ``system's capacity for growth''
+\ifnotpaper
+      (\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017}; similar in
+      \citeyear[pp.~38-39]{IEEE2021}; \citealp[p.~1187]{Moghadam2019})%
+\else
+      \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022} (similar in
+      \cite[pp.~38-39]{IEEE2021}, \cite[p.~1187]{Moghadam2019})%
+\fi. It does this
+by ``measuring the performance metrics''
+\ifnotpaper
+      (\citealp[p.~1187]{Moghadam2019}; similar in \citealpISTQB{})
+\else
+      \cite[p.~1187]{Moghadam2019} (similar in \cite{ISTQB})
+\fi (such as the ``system's capacity for growth''
 \citep[p.~23]{Gerrard2000b}), ``detecting the functional problems appearing
 under certain execution conditions'' \citep[p.~1187]{Moghadam2019}, and
 ``detecting violations of non-functional requirements under expected and
-stress conditions'' (\citealp[p.~1187]{Moghadam2019}; similar in
-\citep[p.~5-9]{SWEBOK2024}). It is performed either \dots\
+stress conditions'' \ifnotpaper
+      (\citealp[p.~1187]{Moghadam2019}; similar in \citep[p.~5-9]{SWEBOK2024})%
+\else
+      \cite[p.~1187]{Moghadam2019} (similar in \cite[p.~5-9]{SWEBOK2024})%
+\fi. It is performed either \dots\
 \begin{enumerate}
       \item \dots\ ``within given constraints of time and other resources''
-            (\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017}; similar in
-            \citealp[p.~1187]{Moghadam2019}), or
+            \ifnotpaper
+                  (\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017};
+                  similar in \citealp[p.~1187]{Moghadam2019})%
+            \else
+                  \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022} (similar
+                  in \cite[p.~1187]{Moghadam2019})%
+            \fi, or
       \item \dots\ ``under a `typical' load'' \citep[p.~39]{IEEE2021}.
 \end{enumerate}
 
@@ -385,35 +402,43 @@ characteristics'' that performance testing would seek to ``assess'', which
 seems to imply that these are subapproaches to performance testing instead.
 
 It seems that ``performance testing'' and ``performance-related testing''
-are treated as synonyms by some sources (\citealp[p.~5-9]{SWEBOK2024};
-\citealp[p.~1187]{Moghadam2019}). This makes sense because of how general the
+are treated as synonyms by some sources \ifnotpaper
+      (\citealp[p.~5-9]{SWEBOK2024}; \citealp[p.~1187]{Moghadam2019})%
+\else \cite[p.~5-9]{SWEBOK2024}, \cite[p.~1187]{Moghadam2019}%
+\fi. This makes sense because of how general the
 concept of ``performance'' is; most definitions of ``performance testing'' seem
 to treat it as a category of tests. However, it seems more consistent to infer
 that the definition of ``performance-related testing'' is the more general one
 often assigned to ``performance testing'' performed ``within given constraints
-of time and other resources'' (\citealp[p.~7]{IEEE2022};
-\citeyear[p.~320]{IEEE2017}; similar in \citealp[p.~1187]{Moghadam2019}), and
+of time and other resources'' \ifnotpaper (\citealp[p.~7]{IEEE2022};
+      \citeyear[p.~320]{IEEE2017}; similar in \citealp[p.~1187]{Moghadam2019})%
+\else \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022}
+      (similar in \cite[p.~1187]{Moghadam2019})\fi, and
 ``performance testing'' is a subapproach of this performed ``under a `typical'
 load'' \citep[p.~39]{IEEE2021}. This has other implications for relations
 between these types of testing; for example, ``load testing'' usually occurs
 ``between anticipated conditions of low, typical, and peak usage''
-(\citealp[p.~5]{IEEE2022}; \citeyear[p.~39]{IEEE2021};
-\citeyear[p.~253]{IEEE2017}\todo{OG IEEE 2013}; \citealpISTQB{}), so it is a
+\ifnotpaper (\citealp[p.~5]{IEEE2022}; \citeyear[p.~39]{IEEE2021};
+      \citeyear[p.~253]{IEEE2017}\todo{OG IEEE 2013}; \citealpISTQB{})%
+\else \cite[p.~253]{IEEE2017}, \cite{ISTQB}, \cite[p.~5]{IEEE2022},
+      \cite[p.~39]{IEEE2021}\fi, so it is a
 child of ``performance-related testing'' and a parent of ``performance testing''.
 
-Similarly, ``performance'' and ``performance efficiency'' are
-both given as software qualities by \citeauthor{IEEE2017}, with the latter
-defined as the ``performance relative to the amount
-of resources used under stated conditions'' \citeyearpar[p.~319]{IEEE2017}
-or the ``capability of a product to perform its functions within specified
-time and throughput parameters and be efficient in the use of resources under
-specified conditions'' \citep{ISO_IEC2023a}.
-Initially, there didn't seem to be any meaningful distinction
-between the two, although the term ``performance testing'' is defined
-\citeyearpar[p.~320]{IEEE2017} and used by \citeauthor{IEEE2017} and
-the term ``performance efficiency testing'' is \emph{also} used by
-\citeauthor{IEEE2017} (but not defined explicitly). Further discussion%
-\seeThesisIssuePar{43} brought us to the conclusion that ``performance
+Similarly, ``performance'' and ``performance efficiency'' are both given as
+software qualities by \ifnotpaper\citeauthor{IEEE2017}\else
+      \cite[p.~319]{IEEE2017}\fi, with the latter defined as the ``performance
+relative to the amount of resources used under stated conditions''
+\ifnotpaper\citeyearpar[p.~319]{IEEE2017} \fi or the ``capability of a product
+to perform its functions within specified time and throughput parameters and be
+efficient in the use of resources under specified conditions'' \citep{ISO_IEC2023a}.
+Initially, there didn't seem to be any meaningful distinction between the two,
+although the term ``performance testing'' is defined
+\ifnotpaper\citeyearpar[p.~320]{IEEE2017}\else\citetext{p.~320}\fi\
+and used by \ifnotpaper\citeauthor{IEEE2017}\else\cite{IEEE2017}\fi\ and the term
+``performance efficiency testing'' is \emph{also} used by
+\ifnotpaper\citeauthor{IEEE2017}\else\cite{IEEE2017}\fi\ (but not defined
+explicitly). \ifnotpaper Further discussion\seeThesisIssuePar{43} brought us to
+      the conclusion \else It can then be concluded \fi that ``performance
 efficiency testing'' is a subset of ``performance testing'', and the
 difference of ``relative to the amount of resources used'' or ``be efficient in
 the use of resources'' between the two is meaningful.
