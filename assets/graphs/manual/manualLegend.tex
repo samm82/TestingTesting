@@ -13,7 +13,7 @@ margin=8
 label="Legend";
 labelloc="t";
 fontsize="48pt"
-rankdir=TB
+rankdir=BT
 {
 rank=same
 chd [label="Child"];
@@ -32,13 +32,21 @@ imp3 [label=<Implied<br/>Synonym>];
 imp4 [label=<Implied<br/>Synonym>];
 imp3 -> imp4 [style="dashed" dir=none label="                "]
 }
-edge [style="invis"]
-imp1 -> chd
-imp2 -> par
-imp3 -> syn1
-imp4 -> syn2
+{
+rank=same
+src1 [style="invis"];
+src2 [style="invis"];
+src3 [style="invis"];
+src4 [style="invis"];
+src1 -> src2 [color="green" label=<From Standards<br/>Organization>]
+src3 -> src4 [color="blue"  label=<From Collection<br/>or Taxonomy>]
 }
-
+edge [style="invis"]
+chd  -> imp1 -> src1
+par  -> imp2 -> src2
+syn1 -> imp3 -> src3
+syn2 -> imp4 -> src4
+}
 }
 
 \end{document}
