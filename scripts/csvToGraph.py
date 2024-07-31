@@ -518,9 +518,9 @@ def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
 
 def writeDotFile(lines, filename):
-    NO_LEGEND = {"recoveryGraph"}
+    CUSTOM_LEGEND = {"recovery"}
     legend = []
-    if filename not in NO_LEGEND:
+    if all(name not in filename for name in CUSTOM_LEGEND):
         LONG_EDGE_LABEL = 'label="                "'
 
         # Only include meaningful synonyms

@@ -41,38 +41,5 @@ RecoverabilityTesting -> FailureToleranceTesting;
 RecoverabilityTesting -> FaultToleranceTesting;
 RecoveryPerformanceTesting -> PerformancerelatedTesting;
 RecoveryPerformanceTesting -> RecoverabilityTesting;
-
-subgraph cluster_legend {
-    label="Legend";
-    labelloc="b";
-    fontsize="48pt"
-    rankdir=BT
-    {
-        rank=same
-        chd [label="Child"];
-        par [label="Parent"];
-        chd -> par [label="                "];
-        syn1 [label="Synonym"];
-        syn2 [label="Synonym"];
-        syn1 -> syn2 [dir=none label="                "];
-    }
-    {
-        rank=same
-        imp1 [label="Child"];
-        imp2 [label=<Implied<br/>Parent>];
-        imp1 -> imp2 [style="dashed" label="                "]
-        imp3 [label=<Implied<br/>Synonym>];
-        imp4 [label=<Implied<br/>Synonym>];
-        imp3 -> imp4 [style="dashed" dir=none label="                "]
-    }
-    edge [style="invis"]
-    imp1 -> chd
-    imp2 -> par
-    imp3 -> syn1
-    imp4 -> syn2
-}
-
-// Connect the dummy node to the first node of the legend
-start -> chd [style="invis"];
 }
 \end{document}

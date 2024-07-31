@@ -53,7 +53,7 @@ update_diffs: gen_csv_diffs
 	done
 
 mk_build:
-	-mkdir build
+	-mkdir build || true
 
 csv_process: mk_build
 	py scripts/csvToGraph.py
@@ -71,6 +71,7 @@ compile_graphs: csv_process
 			cp $${basefilename}.pdf $${filename}.pdf ; \
 	done
 	rm *Graph*
+	rm *Legend*
 
 custom_graphs:
 	make compile_graphs GRAPHS="$(CUSTOM_GRAPHS)"
