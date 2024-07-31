@@ -7,7 +7,7 @@ TXT_GLOSSARIES = $(addsuffix .txt, $(GLOSSARIES))
 DIFF_GLOSSARIES = $(addprefix Diff, $(TXT_GLOSSARIES))
 
 GRAPHS = assets/graphs/*.tex assets/graphs/manual/*.tex
-CUSTOM_STUBS = recovery performance
+CUSTOM_STUBS = recovery scalability performance
 ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
 CUSTOM_GRAPHS = $(addprefix assets/graphs/, $(addsuffix Graph, $(ALL_CUSTOM_STUBS)))
 
@@ -71,7 +71,7 @@ compile_graphs: csv_process
 			cp $${basefilename}.pdf $${filename}.pdf ; \
 	done
 	rm *Graph*
-	rm *Legend*
+	rm *Legend* || true
 
 custom_graphs:
 	make compile_graphs GRAPHS="$(CUSTOM_GRAPHS)"

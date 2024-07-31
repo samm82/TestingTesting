@@ -518,7 +518,7 @@ def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
 
 def writeDotFile(lines, filename):
-    CUSTOM_LEGEND = {"recovery"}
+    CUSTOM_LEGEND = {"recovery", "scalability"}
     legend = []
     if all(name not in filename for name in CUSTOM_LEGEND):
         LONG_EDGE_LABEL = 'label="                "'
@@ -803,6 +803,28 @@ recoveryGraph = CustomGraph(
     }
 )
 
+scalabilityGraph = CustomGraph(
+    "scalability",
+    {"Scalability Testing", "Capacity Testing", "Elasticity Testing",
+     "Load Testing", "Volume Testing", "Transaction Flow Testing",
+     "Memory Management Testing", "Resource Utilization Testing",
+     "Stress Testing", "Performance Testing", "Efficiency Testing",
+     "Performance Efficiency Testing"},
+    # add = {
+    #     "Backup and Recovery Testing" : ["Recoverability Testing"],
+    #     "Recoverability Testing" : ["Availability Testing",
+    #                                 "Failure Tolerance Testing",
+    #                                 "Fault Tolerance Testing"],
+    #     "Recovery Performance Testing" : ["Performance-related Testing",
+    #                                       "Recoverability Testing"],
+    #     "Transfer Recovery Testing" : ["Recoverability Testing"],
+    # },
+    remove = {
+        "Scalability Testing" : [(SYN, "Capacity Testing"),
+                                 (SYN, "Elasticity Testing")],
+    }
+)
+
 performanceGraph = CustomGraph(
     "performance",
     {"Availability Testing", "Capacity Testing", "Concurrency Testing",
@@ -835,8 +857,7 @@ performanceGraph = CustomGraph(
 )
 
 performanceGraph.inherit(recoveryGraph)
+performanceGraph.inherit(scalabilityGraph)
 
-for subgraph in {recoveryGraph, performanceGraph}:
+for subgraph in {recoveryGraph, scalabilityGraph, performanceGraph}:
     subgraph.buildGraph()
-
-# print(staticApproaches)

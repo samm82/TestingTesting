@@ -101,10 +101,8 @@ more clearly distinguish between different recovery-related test approaches:
 \end{figure}
 
 \subsection{Scalability Testing}
-A distinction between the discrepancies mentioned is made in the literature;
-it just needs to be used universally and consistently!
-
-\ifnotpaper \citeauthor{IEEE2021} give
+The ambiguity around scalability testing found in the literature is resolved
+and/or explained by other sources! \ifnotpaper \citeauthor{IEEE2021} give
 \else \cite[p.~39]{IEEE2021} gives \fi ``scalability testing'' as a synonym
 of ``capacity testing'', defined
 as the testing of a system's ability to ``perform under conditions that may
@@ -131,9 +129,9 @@ done by
 \fi.
 
 Unfortunately, only focusing on future capacity requirements still leaves room
-for ambiguity. While the above definition of ``scalability testing'' includes the
-external modification of the system,
-\ifnotpaper \citeauthor{ISO_IEC2023a} \else \cite{ISO_IEC2023a} \fi describes it as
+for ambiguity. While the previous definition of ``scalability testing'' includes
+the external modification of the system, \ifnotpaper \citeauthor{ISO_IEC2023a}
+\else \cite{ISO_IEC2023a} \fi describes it as
 testing the ``capability of a product to handle growing or shrinking
 workloads or to adapt its capacity to handle variability''%
 \ifnotpaper\ \citeyearpar{ISO_IEC2023a}%
@@ -175,4 +173,23 @@ tasks and the ability to recover from user errors'' \citep[p.~5-9]{SWEBOK2024}.
 \swebokScalDef{}, which is completely separate from the definitions of
 ``scalability'', ``capacity'', and ``elasticity testing''! This definition
 should simply be disregarded, since it is inconsistent with the rest of the
-literature.
+literature. The removal of the previous two synonym relations is demonstrated
+in Figures~\ref{fig:scal-graph-current} and \ref{fig:scal-graph-proposed}.
+
+\begin{figure}[hbtp!]
+      \centering
+      \begin{minipage}{.5\linewidth}
+            \centering
+            \scalabilityGraphCurrent{}
+            \caption{The current state of the\\
+                  relations between ``scalability\\
+                  testing'' terms.}
+            \label{fig:scal-graph-current}
+      \end{minipage}%
+      \begin{minipage}{.5\linewidth}
+            \centering
+            \scalabilityGraphProposed{}
+            \caption{The proposed relations between ``scalability testing'' terms.}
+            \label{fig:scal-graph-proposed}
+      \end{minipage}
+\end{figure}
