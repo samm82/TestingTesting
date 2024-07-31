@@ -518,106 +518,110 @@ def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
 
 def writeDotFile(lines, filename):
-    LONG_EDGE_LABEL = 'label="                "'
+    NO_LEGEND = {"recoveryGraph"}
+    legend = []
+    if filename not in NO_LEGEND:
+        LONG_EDGE_LABEL = 'label="                "'
 
-    # Only include meaningful synonyms
-    syns = [line.split(" ")[0] for line in lines if styleInLine("dotted", line)]
-    synsToRemove = [syn for syn in syns if sum(1 for line in lines if syn in line) < 3]
-    lines = [line for line in lines if not any(syn in line for syn in synsToRemove)]
+        # Only include meaningful synonyms
+        syns = [line.split(" ")[0] for line in lines if styleInLine("dotted", line)]
+        synsToRemove = [syn for syn in syns if sum(1 for line in lines if syn in line) < 3]
+        lines = [line for line in lines if not any(syn in line for syn in synsToRemove)]
 
-    impTerm, dynTerm = '', ''
-    if any(styleInLine("dashed", line) for line in lines):
-        impTerm = 'imp5 [label=<Implied<br/>Term> style="dashed"]'
+        impTerm, dynTerm = '', ''
+        if any(styleInLine("dashed", line) for line in lines):
+            impTerm = 'imp5 [label=<Implied<br/>Term> style="dashed"]'
 
-    if any(styleInLine("filled", line) for line in lines):
-        dynTerm = 'dyn [label=<Dynamic<br/>Approach> style="filled"]'
+        if any(styleInLine("filled", line) for line in lines):
+            dynTerm = 'dyn [label=<Dynamic<br/>Approach> style="filled"]'
 
-    twoSyn = [
-        'syn3 [label=<Term>]',
-        'syn4 [label=<Synonym<br/>to Both> style="dotted"]',
-        'syn5 [label=<Term>]',
-        'syn3 -> syn4 -> syn5 [dir=none]',
-    ] if len(syns) > len(synsToRemove) else []
-    
-    def sameRank(lines):
-        return ['{', 'rank=same'] + lines + ['}']
+        twoSyn = [
+            'syn3 [label=<Term>]',
+            'syn4 [label=<Synonym<br/>to Both> style="dotted"]',
+            'syn5 [label=<Term>]',
+            'syn3 -> syn4 -> syn5 [dir=none]',
+        ] if len(syns) > len(synsToRemove) else []
+        
+        def sameRank(lines):
+            return ['{', 'rank=same'] + lines + ['}']
 
-    def impOrDynWithSyn(nodes, forceDyn=False):
-        if len(nodes) == 1:
-            nodes = nodes[0]
-        else:
-            nodes = f'{{ {" ".join(nodes)} }}'
-        return f'{'imp5' if impTerm and not forceDyn else 'dyn'} -> {nodes}'
+        def impOrDynWithSyn(nodes, forceDyn=False):
+            if len(nodes) == 1:
+                nodes = nodes[0]
+            else:
+                nodes = f'{{ {" ".join(nodes)} }}'
+            return f'{'imp5' if impTerm and not forceDyn else 'dyn'} -> {nodes}'
 
-    def twoSynAlign(nodes):
-        synNodes = [f'syn{i}' for i in range(3, 6, 2 if len(nodes) == 2 else 1)]
-        for i in range(len(synNodes)):
-            synNodes[i] = f'{synNodes[i]} -> {nodes[i]}'
-        return synNodes
+        def twoSynAlign(nodes):
+            synNodes = [f'syn{i}' for i in range(3, 6, 2 if len(nodes) == 2 else 1)]
+            for i in range(len(synNodes)):
+                synNodes[i] = f'{synNodes[i]} -> {nodes[i]}'
+            return synNodes
 
-    extras, align = [], []
-    if impTerm and dynTerm:
-        extras = sameRank([impTerm, dynTerm])
-        align = [impOrDynWithSyn(["imp1", "imp2"]),
-                 impOrDynWithSyn(["imp3", "imp4"], forceDyn=True)]
-        if twoSyn:
-            extras += sameRank(twoSyn)
-            align = twoSynAlign(align)
-    elif twoSyn:
-        align = twoSynAlign([f'imp{i}' for i in range(2, 5)])
-        if not (impTerm or dynTerm):
-            extras = sameRank(twoSyn)
-            align += twoSynAlign([f'imp{i}' for i in range(1, 4)])
-        else:
-            extras = sameRank([impTerm if impTerm else dynTerm] + twoSyn)
-            align = [impOrDynWithSyn(["imp1"])] + align
-    elif impTerm or dynTerm:
-        extras = [impTerm if impTerm else dynTerm]
-        align = [impOrDynWithSyn(["imp2", "imp3"])]
+        extras, align = [], []
+        if impTerm and dynTerm:
+            extras = sameRank([impTerm, dynTerm])
+            align = [impOrDynWithSyn(["imp1", "imp2"]),
+                    impOrDynWithSyn(["imp3", "imp4"], forceDyn=True)]
+            if twoSyn:
+                extras += sameRank(twoSyn)
+                align = twoSynAlign(align)
+        elif twoSyn:
+            align = twoSynAlign([f'imp{i}' for i in range(2, 5)])
+            if not (impTerm or dynTerm):
+                extras = sameRank(twoSyn)
+                align += twoSynAlign([f'imp{i}' for i in range(1, 4)])
+            else:
+                extras = sameRank([impTerm if impTerm else dynTerm] + twoSyn)
+                align = [impOrDynWithSyn(["imp1"])] + align
+        elif impTerm or dynTerm:
+            extras = [impTerm if impTerm else dynTerm]
+            align = [impOrDynWithSyn(["imp2", "imp3"])]
 
-    INDENT = "    "
-    extras = [f'{INDENT if line in "}{" else 2*INDENT}{line}' for line in extras]
+        INDENT = "    "
+        extras = [f'{INDENT if line in "}{" else 2*INDENT}{line}' for line in extras]
 
-    # From https://stackoverflow.com/a/65443720/10002168
-    legend = [
-        '',
-        'subgraph cluster_legend {',
-        '    label="Legend";',
-        # This puts the label at the top, not the bottom, because of the rankdir
-        '    labelloc="b";',
-        '    fontsize="48pt"',
-        '    rankdir=BT',
-        '    {',
-        '        rank=same',
-        '        chd [label="Child"];',
-        '        par [label="Parent"];',
-        f'        chd -> par [{LONG_EDGE_LABEL}];',
-        '        syn1 [label="Synonym"];',
-        '        syn2 [label="Synonym"];',
-        f'        syn1 -> syn2 [dir=none {LONG_EDGE_LABEL}];',
-        '    }',
-        '    {',
-        '        rank=same',
-        '        imp1 [label="Child"];',
-        '        imp2 [label=<Implied<br/>Parent>];',
-        f'        imp1 -> imp2 [style="dashed" {LONG_EDGE_LABEL}]',
-        '        imp3 [label=<Implied<br/>Synonym>];',
-        '        imp4 [label=<Implied<br/>Synonym>];',
-        f'        imp3 -> imp4 [style="dashed" dir=none {LONG_EDGE_LABEL}]',
-        '    }',
-    ] + extras + [
-        # For alignment
-        '    edge [style="invis"]',
-        '    imp1 -> chd',
-        '    imp2 -> par',
-        '    imp3 -> syn1',
-        '    imp4 -> syn2',
-    ] + align + [
-        '}',
-        '',
-        '// Connect the dummy node to the first node of the legend',
-        'start -> chd [style="invis"];',
-    ]
+        # From https://stackoverflow.com/a/65443720/10002168
+        legend = [
+            '',
+            'subgraph cluster_legend {',
+            '    label="Legend";',
+            # This puts the label at the top, not the bottom, because of the rankdir
+            '    labelloc="b";',
+            '    fontsize="48pt"',
+            '    rankdir=BT',
+            '    {',
+            '        rank=same',
+            '        chd [label="Child"];',
+            '        par [label="Parent"];',
+            f'        chd -> par [{LONG_EDGE_LABEL}];',
+            '        syn1 [label="Synonym"];',
+            '        syn2 [label="Synonym"];',
+            f'        syn1 -> syn2 [dir=none {LONG_EDGE_LABEL}];',
+            '    }',
+            '    {',
+            '        rank=same',
+            '        imp1 [label="Child"];',
+            '        imp2 [label=<Implied<br/>Parent>];',
+            f'        imp1 -> imp2 [style="dashed" {LONG_EDGE_LABEL}]',
+            '        imp3 [label=<Implied<br/>Synonym>];',
+            '        imp4 [label=<Implied<br/>Synonym>];',
+            f'        imp3 -> imp4 [style="dashed" dir=none {LONG_EDGE_LABEL}]',
+            '    }',
+        ] + extras + [
+            # For alignment
+            '    edge [style="invis"]',
+            '    imp1 -> chd',
+            '    imp2 -> par',
+            '    imp3 -> syn1',
+            '    imp4 -> syn2',
+        ] + align + [
+            '}',
+            '',
+            '// Connect the dummy node to the first node of the legend',
+            'start -> chd [style="invis"];',
+        ]
+
     lines = [
         "\\documentclass{article}",
         "\\usepackage{graphicx}",
