@@ -83,9 +83,15 @@
 
 % TODO: tighten up, add sources
 
-Testing software is complicated, expensive, and often overlooked. In our
+Testing software is complicated, expensive, and often overlooked. 
+\ifnotpaper
+In our
 own project Drasil~\cite{Drasil} aimed at ``generating all of the
-software artifacts for (well understood) research software'', we wanted to
+software artifacts for (well understood) research software''
+\else % for double-blind
+In our own project
+\fi
+, we wanted to
 automate the generation of tests. As we did not want to do this in an
 ad hoc manner, we wanted to get a good grasp on the target domain, testing.
 
