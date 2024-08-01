@@ -805,11 +805,11 @@ recoveryGraph = CustomGraph(
 
 scalabilityGraph = CustomGraph(
     "scalability",
-    {"Scalability Testing", "Capacity Testing", "Elasticity Testing",
-     "Load Testing", "Volume Testing", "Transaction Flow Testing",
-     "Memory Management Testing", "Resource Utilization Testing",
-     "Stress Testing", "Performance Testing", "Efficiency Testing",
-     "Performance Efficiency Testing"},
+    {"Capacity Testing", "Efficiency Testing", "Elasticity Testing",
+     "Load Testing", "Memory Management Testing",
+     "Performance Efficiency Testing", "Performance Testing",
+     "Resource Utilization Testing", "Scalability Testing",
+     "Stress Testing", "Transaction Flow Testing", "Volume Testing"},
     # add = {
     #     "Backup and Recovery Testing" : ["Recoverability Testing"],
     #     "Recoverability Testing" : ["Availability Testing",
@@ -827,14 +827,18 @@ scalabilityGraph = CustomGraph(
 
 performanceGraph = CustomGraph(
     "performance",
-    {"Availability Testing", "Capacity Testing", "Concurrency Testing",
-     "Efficiency Testing", "Elasticity Testing", "Endurance Testing",
-     "Load Testing", "Memory Management Testing", "Performance Testing",
-     "Performance Efficiency Testing", "Performance-related Testing",
-     "Power Testing", "Recoverability Testing", "Recovery Performance Testing",
-     "Reliability Testing", "Resource Utilization Testing",
+    {"Availability Testing", "Backup and Recovery Testing",
+     "Backup/Recovery Testing", "Capacity Testing", "Concurrency Testing",
+     "Disaster/Recovery Testing", "Efficiency Testing", "Elasticity Testing",
+     "Endurance Testing", "Failover Testing", "Failover/Recovery Testing",
+     "Failure Tolerance Testing", "Fault Tolerance Testing", "Load Testing",
+     "Memory Management Testing", "Performance Efficiency Testing",
+     "Performance Testing", "Performance-related Testing", "Power Testing",
+     "Recoverability Testing", "Recovery Performance Testing",
+     "Recovery Testing", "Reliability Testing", "Resource Utilization Testing",
      "Response-Time Testing", "Scalability Testing", "Soak Testing",
-     "Stress Testing", "Transaction Flow Testing", "Volume Testing"},
+     "Stress Testing", "Transaction Flow Testing", "Usability Testing",
+     "Volume Testing"},
     add = {
         "Capacity Testing" : ["Load Testing"],
         "Concurrency Testing" : ["Performance-related Testing"],
@@ -847,12 +851,14 @@ performanceGraph = CustomGraph(
                               "Performance Testing"],
         "Concurrency Testing" : ["Performance Testing"],
         "Load Testing" : ["Capacity Testing", "Performance Testing"],
-        "Performance Testing" : [(SYN, "Performance-related Testing")],
+        "Performance Testing" : [(SYN, "Performance-related Testing"),
+                                 "Performance Testing"],
         "Performance Efficiency Testing" : ["Performance Testing"],
         "Reliability Testing" : ["Performance Testing"],
         "Response-Time Testing" : ["Performance Testing"],
         "Scalability Testing" : ["Elasticity Testing"],
         "Stress Testing" : ["Performance Testing"],
+        "Usability Testing" : ["Usability Testing"],
     }
 )
 

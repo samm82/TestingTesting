@@ -8,9 +8,6 @@
 \digraph{performanceProposedGraph}{
 rankdir=BT;
 
-// Dummy node to push the legend to the top left
-start [style="invis"];
-
 AvailabilityTesting [label=<Availability<br/>Testing>];
 CapacityTesting [label=<Capacity<br/>Testing>];
 ConcurrencyTesting [label=<Concurrency<br/>Testing>];
@@ -40,7 +37,7 @@ VolumeTesting [label=<Volume<br/>Testing>];
 SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
 
 EnduranceTesting -> SoakTesting[dir=none,color="green"];
-ReliabilityTesting -> SoakTesting[dir=none];
+SoakTesting -> ReliabilityTesting[dir=none];
 
 AvailabilityTesting -> ReliabilityTesting[color="green"];
 CapacityTesting -> PerformanceEfficiencyTesting[color="green"];
@@ -97,49 +94,58 @@ RecoveryPerformanceTesting -> PerformancerelatedTesting;
 RecoveryPerformanceTesting -> RecoverabilityTesting;
 
 subgraph cluster_legend {
-    label="Legend";
-    labelloc="b";
-    fontsize="48pt"
-    rankdir=BT
-    {
-        rank=same
-        chd [label="Child"];
-        par [label="Parent"];
-        chd -> par [label="                "];
-        syn1 [label="Synonym"];
-        syn2 [label="Synonym"];
-        syn1 -> syn2 [dir=none label="                "];
-    }
-    {
-        rank=same
-        imp1 [label="Child"];
-        imp2 [label=<Implied<br/>Parent>];
-        imp1 -> imp2 [style="dashed" label="                "]
-        imp3 [label=<Implied<br/>Synonym>];
-        imp4 [label=<Implied<br/>Synonym>];
-        imp3 -> imp4 [style="dashed" dir=none label="                "]
-    }
-    {
-        rank=same
-        syn3 [label=<Term>]
-        syn4 [label=<Synonym<br/>to Both> style="dotted"]
-        syn5 [label=<Term>]
-        syn3 -> syn4 -> syn5 [dir=none]
-    }
-    edge [style="invis"]
-    imp1 -> chd
-    imp2 -> par
-    imp3 -> syn1
-    imp4 -> syn2
+label="Legend";
+labelloc="b";
+fontsize="48pt"
+rankdir=BT
+{
+rank=same
+chd [label="Child"];
+par [label="Parent"];
+chd -> par [label="                "];
+syn1 [label="Synonym"];
+syn2 [label="Synonym"];
+syn1 -> syn2 [dir=none label="                "];
+}
+{
+rank=same
+imp1 [label="Child"];
+imp2 [label=<Implied<br/>Parent>];
+imp1 -> imp2 [style="dashed" label="                "]
+imp3 [label=<Implied<br/>Synonym>];
+imp4 [label=<Implied<br/>Synonym>];
+imp3 -> imp4 [style="dashed" dir=none label="                "]
+}
+{
+rank=same
+syn3 [label=<Term>]
+syn4 [label=<Synonym<br/>to Both> style="dotted"]
+syn5 [label=<Term>]
+syn3 -> syn4 -> syn5 [dir=none]
+}
+{
+rank=same
+src1 [shape="plaintext" label=<From Standards<br/>Organization>];
+src2 [style="invis"];
+src3 [shape="plaintext" label=<From Collection<br/>or Taxonomy>];
+src1 -> src2 [color="green" label="                "]
+src2 -> src3 [color="blue"  label="                "]
+}
+edge [style="invis"]
+imp1 -> chd
+imp2 -> par
+imp3 -> syn1
+imp4 -> syn2
 syn3 -> imp2
 syn4 -> imp3
 syn5 -> imp4
 syn3 -> imp1
 syn4 -> imp2
 syn5 -> imp3
+src1 -> syn3
+src2 -> syn4
+src3 -> syn5
 }
 
-// Connect the dummy node to the first node of the legend
-start -> chd [style="invis"];
 }
 \end{document}

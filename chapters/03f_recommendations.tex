@@ -16,6 +16,7 @@ organizing them more logically and making them:
 \end{enumerate}
 
 \subsection{Recovery Testing}
+\label{rec-test-rec}
 The following terms should be used in place of the current terminology to
 more clearly distinguish between different recovery-related test approaches:
 
@@ -72,7 +73,7 @@ more clearly distinguish between different recovery-related test approaches:
             performance-related elements of recovery testing seemed to be
             meaningful\seeThesisIssuePar{40}, but was not captured
             consistently by the literature. This will be a subset of
-            ``performance-related testing''\seeSectionPar{perf-test-ambiguity}
+            ``performance-related testing''\seeSectionPar{perf-test-rec}
             as ``recovery testing'' is in \citep[p.~22]{IEEE2022}. This could
             also be extended into testing the performance of specific elements
             of recovery (e.g., failover performance testing), but this be too
@@ -101,6 +102,8 @@ more clearly distinguish between different recovery-related test approaches:
 \end{figure}
 
 \subsection{Scalability Testing}
+\label{scal-test-rec}
+
 The ambiguity around scalability testing found in the literature is resolved
 and/or explained by other sources! \ifnotpaper \citeauthor{IEEE2021} give
 \else \cite[p.~39]{IEEE2021} gives \fi ``scalability testing'' as a synonym
@@ -193,3 +196,86 @@ in Figures~\ref{fig:scal-graph-current} and \ref{fig:scal-graph-proposed}.
             \label{fig:scal-graph-proposed}
       \end{minipage}
 \end{figure}
+
+\subsection{Performance(-related) Testing}
+\label{perf-test-rec}
+
+``Performance testing'' is defined as testing ``conducted to evaluate the
+degree to which a test item accomplishes its designated functions''
+\ifnotpaper
+      (\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017}; similar in
+      \citeyear[pp.~38-39]{IEEE2021}; \citealp[p.~1187]{Moghadam2019})%
+\else
+      \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022} (similar in
+      \cite[pp.~38-39]{IEEE2021}, \cite[p.~1187]{Moghadam2019})%
+\fi. It does this
+by ``measuring the performance metrics''
+\ifnotpaper
+      (\citealp[p.~1187]{Moghadam2019}; similar in \citealpISTQB{})
+\else
+      \cite[p.~1187]{Moghadam2019} (similar in \cite{ISTQB})
+\fi (such as the ``system's capacity for growth''
+\citep[p.~23]{Gerrard2000b}), ``detecting the functional problems appearing
+under certain execution conditions'' \citep[p.~1187]{Moghadam2019}, and
+``detecting violations of non-functional requirements under expected and
+stress conditions'' \ifnotpaper
+      (\citealp[p.~1187]{Moghadam2019}; similar in \citep[p.~5-9]{SWEBOK2024})%
+\else
+      \cite[p.~1187]{Moghadam2019} (similar in \cite[p.~5-9]{SWEBOK2024})%
+\fi. It is performed either \dots\
+\begin{enumerate}
+      \item \dots\ ``within given constraints of time and other resources''
+            \ifnotpaper
+                  (\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017};
+                  similar in \citealp[p.~1187]{Moghadam2019})%
+            \else
+                  \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022} (similar
+                  in \cite[p.~1187]{Moghadam2019})%
+            \fi, or
+      \item \dots\ ``under a `typical' load'' \citep[p.~39]{IEEE2021}.
+\end{enumerate}
+
+It is listed as a subset of performance-related testing, which is defined as
+testing ``to determine whether a test item performs as required when it is
+placed under various types and sizes of `load'\,'' \citeyearpar[p.~38]{IEEE2021},
+along with other approaches like load and capacity testing
+\citep[p.~22]{IEEE2022}. In contrast, \citet[p.~5-9]{SWEBOK2024}
+gives ``capacity and response time'' as examples of ``performance
+characteristics'' that performance testing would seek to ``assess'', which
+seems to imply that these are sub-approaches to performance testing instead.
+This is consistent with how some sources treat ``performance testing'' and
+``performance-related testing'' as synonyms \ifnotpaper
+      (\citealp[p.~5-9]{SWEBOK2024}; \citealp[p.~1187]{Moghadam2019})%
+\else \cite[p.~5-9]{SWEBOK2024}, \cite[p.~1187]{Moghadam2019}%
+\fi, as noted in \nameref{syns}. This makes sense because of how general the
+concept of ``performance'' is; most definitions of ``performance testing'' seem
+to treat it as a category of tests.
+
+However, it seems more consistent to infer
+that the definition of ``performance-related testing'' is the more general one
+often assigned to ``performance testing'' performed ``within given constraints
+of time and other resources'' \ifnotpaper (\citealp[p.~7]{IEEE2022};
+      \citeyear[p.~320]{IEEE2017}; similar in \citealp[p.~1187]{Moghadam2019})%
+\else \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022}
+      (similar in \cite[p.~1187]{Moghadam2019})\fi, and
+``performance testing'' is a sub-approach of this performed ``under a `typical'
+load'' \citep[p.~39]{IEEE2021}. This has other implications for relations
+between these types of testing; for example, ``load testing'' usually occurs
+``between anticipated conditions of low, typical, and peak usage''
+\ifnotpaper (\citealp[p.~5]{IEEE2022}; \citeyear[p.~39]{IEEE2021};
+      \citeyear[p.~253]{IEEE2017}\todo{OG IEEE 2013}; \citealpISTQB{})%
+\else \cite[p.~253]{IEEE2017}, \cite{ISTQB}, \cite[p.~5]{IEEE2022},
+      \cite[p.~39]{IEEE2021}\fi, so it is a child of ``performance-related
+testing'' and a parent of ``performance testing''.
+
+Finally, the ``self-loops'' mentioned in \nameref{par-rels} provide no new
+information and can be removed. These changes (along with those from
+\nameref{rec-test-rec} and \nameref{scal-test-rec} made implicitly) result in
+the relations shown in Figure~\ref{fig:perf-graph}.
+
+\begin{paperFigure}
+      \centering
+      \performanceGraph{}
+      \caption{The proposed relations between ``performance-related testing'' terms.}
+      \label{fig:perf-graph}
+\end{paperFigure}
