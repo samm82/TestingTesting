@@ -3,23 +3,37 @@
 
 \subsection{Categories of Testing Approaches}
 
-Different sources categorized software testing approaches in different ways;
-while it is useful to record and think about these
-categorizations\seeSectionPar{testing-categories}, following one (or more)
-during the research
-stage could lead to bias and a prescriptive categorization, instead of letting
-one emerge descriptively during the analysis stage. Since these categorizations
-are not mutually exclusive, it also means that more than one could be useful
-(both in general and to this specific project); more careful thought should be
-given to which are ``best'', and this should happen during the analysis stage.
-
-For classifying different kinds of tests,
 \ifnotpaper
-      \citet{IEEE2022} provide
+      \newgeometry{margin=1.5cm, top=2.5cm}
+      \begin{landscape}
+            \ieeeTestTermsTable{}
+      \end{landscape}
+
+      \begin{landscape}
+            \otherTestTermsTable{}
+      \end{landscape}
+      \restoregeometry
 \else
-      \cite{IEEE2022} provides
+      \ieeeTestTermsTable{}
 \fi
-some terminology (see \refIEEETestTerms{}).
+
+Different sources categorize software testing approaches in different ways%
+\ifnotpaper
+      ; while it is useful to record and think about these
+      categorizations\seeSectionPar{testing-categories}, following one (or more)
+      during the research
+      stage could lead to bias and a prescriptive categorization, instead of letting
+      one emerge descriptively during the analysis stage. Since these categorizations
+      are not mutually exclusive, it also means that more than one could be useful
+      (both in general and to this specific project).\newline \else.\fi\
+\ifnotpaper \citet{IEEE2022} provide \else Reference \cite{IEEE2022} provides
+\fi a classfication for different kinds of tests (see \refIEEETestTerms{}).
+\ifnotpaper\else Since
+      this seems to be widely used (``test level'' and ``test type'' in particular)
+      and is useful when focusing on a particular subset of testing, this terminology
+      is used for now. A deeper rationale for a
+      proposed classification will be given during the analysis stage. \fi
+
 \ifnotpaper
       However, other sources \citep{BarbosaEtAl2006, SouzaEtAl2017}
       % \cite{BarbosaEtAl2006, SouzaEtAl2017}
@@ -58,20 +72,6 @@ can be performed at a single test level or across several test levels''
 test approach can be derived by combining test approaches from different
 categories;\seeSection{orthogonal-tests} for some examples
 of this.
-
-\ifnotpaper
-      \newgeometry{margin=1.5cm, top=2.5cm}
-      \begin{landscape}
-            \ieeeTestTermsTable{}
-      \end{landscape}
-
-      \begin{landscape}
-            \otherTestTermsTable{}
-      \end{landscape}
-      \restoregeometry
-\else
-      \ieeeTestTermsTable{}
-\fi
 
 \subsection{Derived Test Approaches}
 \label{derived-tests}
