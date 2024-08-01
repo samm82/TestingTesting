@@ -83,37 +83,33 @@
 
 % TODO: tighten up, add sources
 
-Testing software is complicated, expensive, and often overlooked. Therefore,
-automating the software testing process is an area of interest. In particular,
-test case generation for Drasil, a framework for ``generating all of the
-software artifacts for (well understood) research software'' \cite{Drasil} was
-desired.
+Testing software is complicated, expensive, and often overlooked. In our
+own project Drasil~\cite{Drasil} aimed at ``generating all of the
+software artifacts for (well understood) research software'', we wanted to
+automate the generation of tests. As we did not want to do this in an
+ad hoc manner, we wanted to get a good grasp on the target domain, testing.
 
-Before attempting to automate a knowledge-based process in ad hoc manner, it is
-important to understand the underlying domain. This allows the information
-itself to drive the scope, including both what is possible and what is needed.
-In this case, the goal was to uncover the various approaches towards testing,
-as well as which prerequisites (e.g., input files, oracles) existed for each.
-A search for a systematic, rigorous, and ``complete'' taxonomy revealed that
-existing software testing taxonomies are inadequate:
+The goal was to uncover the various approaches towards testing, as well as
+which prerequisites (e.g., input files, oracles) are needed for each.  A search
+for a systematic, rigorous, and ``complete'' taxonomy for software testing
+revealed that the existing ones are inadequate:
 
 \begin{itemize}
     \item \cite{TebesEtAl2020a} focuses on \emph{parts} of the
-          testing process (e.g., test goal, testable entity)
+          testing process (e.g., test goal, testable entity),
     \item \cite{SouzaEtAl2017} prioritizes organizing testing
-          approaches over defining them
+          approaches over defining them,
     \item \cite{UnterkalmsteinerEtAl2014} provides a foundation for
-          classification but not how it applies to software testing terminology
+          classification but not how it applies to software testing terminology.
 \end{itemize}
 
-The ``solution'' to this gap was to define the scope of what kinds of
-``software testing'' were of interest (\ref{scope}), then examine the existing
-literature for this subsection (\ref{method}); this
-quickly reinforced the need for a taxonomy! Despite the amount of
-well understood and organized knowledge (\ref{observ}), there are still many
-discrepancies and ambiguities, either within the same source or between various
-sources (\ref{discrep}). We provide some potential solutions to some of these
-(\ref{recs}).
+Thus we set about closing this gap. We first define the scope of what kinds of
+``software testing'' are of interest (\ref{scope}) and examine the existing
+literature (\ref{method}). This reinforced the need for a proper taxonomy!
+Despite the amount of well understood and organized knowledge (\ref{observ}),
+there are still many discrepancies and ambiguities in the literature, either
+within the same source or between various sources (\ref{discrep}). We provide
+some potential solutions covering some of these discrepancies (\ref{recs}).
 
 \input{chapters/03e_scope}
 \input{chapters/03b_methodology}
