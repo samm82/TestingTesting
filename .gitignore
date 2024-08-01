@@ -4,5 +4,7 @@ build/
 *.aux
 *.fls
 *.fdb\_latexmk
+*.out
 
 ~$*
+*.swp
