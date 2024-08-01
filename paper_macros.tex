@@ -24,19 +24,19 @@
 
 \newif\ifnotpaper
 \newcommand{\seeSection}[1]{%
-  \ifnotpaper
-    \seeSectionAlways{#1}%
-  \fi
+    \ifnotpaper
+        \seeSectionAlways{#1}%
+    \fi
 }
 \newcommand{\seeSectionPar}[2][]{%
-  \ifnotpaper
-    \seeSectionParAlways{#2}{#1}%
-  \fi
+    \ifnotpaper
+        \seeSectionParAlways{#2}{#1}%
+    \fi
 }
 \newcommand{\seeSectionFoot}[1]{%
-  \ifnotpaper
-    \seeSectionFootAlways{#1}%
-  \fi
+    \ifnotpaper
+        \seeSectionFootAlways{#1}%
+    \fi
 }
 \NewDocumentCommand{\seeSectionAlways}{ m }{\seeAlways{#1}}
 \NewDocumentCommand{\seeSectionParAlways}{ m O{} }{\seeParAlways{#1}[#2]}
@@ -53,11 +53,11 @@
 \NewDocumentCommand{\seeFootAlways}{ O{\nameref} m }{\footnote{See #1{#2}.}}
 
 \newcommand{\formatPaper}[2]{%
-  \ifnotpaper
-    #1{#2}%
-  \else
-    \underline{#2}%
-  \fi
+    \ifnotpaper
+        #1{#2}%
+    \else
+        \underline{#2}%
+    \fi
 }
 
 %------------------------------------------------------------------------------
@@ -65,29 +65,35 @@
 %------------------------------------------------------------------------------
 
 \newcommand{\accelTolTest}{astronauts \citep[p.~11]{MorgunEtAl1999}, aviators
-  \citep[pp.~27,~42]{HoweAndJohnson1995}, or catalysts
-  \citep[p.~1463]{LiuEtAl2023}}
+    \citep[pp.~27,~42]{HoweAndJohnson1995}, or catalysts
+    \citep[p.~1463]{LiuEtAl2023}}
 
 \newcommand{\procLevel}[1]{``Test level'' can also refer to the scope
 of a test process; for example, ``across the whole organization'' or only
 ``to specific projects'' #1[p.~24]{IEEE2022}}
 \newcommand{\phaseDef}{can also refer to the ``period of time in the software
-  life cycle'' when testing occurs \citeyearpar[p.~470]{IEEE2017}, usually
-  after the implementation phase
-  \ifnotpaper
-    (\citeyear[pp.~420,~509]{IEEE2017}; \citealp[p.~56]{Perry2006}).
-  \else
-    \cite[pp.~420,~509]{IEEE2017}, \cite[p.~56]{Perry2006}.
-  \fi}
+    life cycle'' when testing occurs \citeyearpar[p.~470]{IEEE2017}, usually
+    after the implementation phase
+    \ifnotpaper
+        (\citeyear[pp.~420,~509]{IEEE2017}; \citealp[p.~56]{Perry2006}).
+    \else
+        \cite[pp.~420,~509]{IEEE2017}, \cite[p.~56]{Perry2006}.
+    \fi}
 
 % Define common footnotes about IEEE testing terms for reuse
 \newcommand{\distinctIEEE}[1]{distinct from the notion of ``test #1'' described
-  in \nameref{tab:ieeeTestTerms}.}
+    in \nameref{tab:ieeeTestTerms}.}
 \newcommand{\notDefDistinctIEEE}[1]{\footnote{Not formally defined, but
-    \distinctIEEE{#1}}}
+        \distinctIEEE{#1}}}
 \newcommand{\gerrardDistinctIEEE}[1]{\footnote{``Each type of test addresses a
-    different risk area'' \citep[p.~12]{Gerrard2000a}, which is
-    \distinctIEEE{#1}}}
+        different risk area'' \citep[p.~12]{Gerrard2000a}, which is
+        \distinctIEEE{#1}}}
+
+\def \ftrnote {Fault tolerance testing may also be a sub-approach of
+    reliability testing \ifnotpaper
+        \citetext{\citealp[p.~375]{IEEE2017}; \citealp[p.~7-10]{SWEBOK2024}}%
+    \else \cite[p.~375]{IEEE2017}, \cite[p.~7-10]{SWEBOK2024}%
+    \fi, which is distinct from robustness testing \citep[p.~53]{Firesmith2015}.}
 
 %------------------------------------------------------------------------------
 % TODOs
@@ -119,7 +125,7 @@ of a test process; for example, ``across the whole organization'' or only
 %------------------------------------------------------------------------------
 
 \newcommand{\exhInfCite}{(\citealp[p.~5-5]{SWEBOK2024}; \citealp[p.~4]{IEEE2022};
-  \citealp[p.~421]{vanVliet2000}; \citealp[pp.~439, 461]{PetersAndPedrycz2000})}
+    \citealp[p.~421]{vanVliet2000}; \citealp[pp.~439, 461]{PetersAndPedrycz2000})}
 
 %------------------------------------------------------------------------------
 % Link to Drasil issue

@@ -94,25 +94,24 @@ examples that have arisen\ifnotpaper\ (synonyms in \emph{italics} have at least
 
 There are pairs of synonyms where one is described as a
 sub-approach of the other, abusing the meaning of ``synonym'' and
-causing confusion. In the next list, lack of source implies the relationship
-in inferrable from the definitions.
+causing confusion.
+\ifnotpaper In the next list, lack of source implies the relationship
+      in inferrable from the terms' definitions.
+\else The seven (out of fourteen) pairs where each relation has a concrete
+      source are given in \Cref{tab:parSyns}.
+\fi
 
-% I personally thing that this next information would be better conveyed by
-% a table, with symbols and color denoting things like synonym / sub and
-% other such relationships. Not sure if there is time to do so.
-\input{build/parSyns}
-
-Finally, it is worth pointing out that
-\begin{itemize}
-      \item Fault tolerance testing may also be a
-            subtype\notDefDistinctIEEE{type} of reliability testing
-            \citetext{\citealp[p.~375]{IEEE2017}; \citealp[p.~7-10]{SWEBOK2024}},
-            which is distinct from reliability testing \citep[p.~53]{Firesmith2015}.
-      \item The distinction between organization- and role-based testing in
-            \citep[pp.~17,~37,~39]{Firesmith2015}
-            seems arbitrary, but further investigation may prove it to be
-            meaningful\seeThesisIssuePar{59}.
-\end{itemize}
+\ifnotpaper
+      \input{build/parSyns}
+      Finally, it is worth pointing out that
+      \begin{itemize}
+            \item \ftrnote
+            \item The distinction between organization- and role-based testing in
+                  \citep[pp.~17,~37,~39]{Firesmith2015}
+                  seems arbitrary, but further investigation may prove it to be
+                  meaningful\seeThesisIssuePar{59}.
+      \end{itemize}
+\else \input{assets/misc/parSyns} \fi
 
 \subsection{Parent Relations}
 \label{par-rels}
