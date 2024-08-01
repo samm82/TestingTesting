@@ -52,41 +52,44 @@ Because of this, the existence of synonyms is not inherently a discrepancy.
 
 However, there are instances in which a term is given a synonym to two (or more)
 disjoint, unrelated terms, which would be a source of ambiguity to teams using
-these terms. The following are examples that have arisen (synonyms in
-\emph{italics} have at least one of their synonyms implied):
+these terms. The following are \ifnotpaper\else some \fi examples that have
+arisen\ifnotpaper\ (synonyms in \emph{italics} have at least one of their
+      synonyms implied)\fi:
 
 \begin{enumerate}
-      \input{build/multiSyns}
+      \ifnotpaper \input{build/multiSyns} \else \input{assets/misc/multiSyns} \fi
 \end{enumerate}
 
-Some interesting notes about these synonyms:
-\begin{itemize}
-      \item The terms are not synonyms, although endurance testing is given
-            as a kind of reliability testing by \citet[p.~55]{Firesmith2015}.
-      \item ``Scenario testing'' and ``use case testing'' are given as synonyms
-            by \citetISTQB{} and \citet[pp.~47-49]{Kam2008}, but listed
-            separately by \citet[p.~22]{IEEE2022},
-            \ifnotpaper who also give \else which also gives \fi ``use case
-            testing'' as a ``common form of scenario testing''
-            \citeyearpar[p.~20]{IEEE2021}.
-      \item \ifnotpaper
-                  \citeauthor{ChalinEtAl2006}~list \acf{rac} and \acf{sv} as ``two
-                  complementary forms of assertion checking''
-                  \citeyearpar[p.~343]{ChalinEtAl2006}%
-            \else
-                  \cite[p.~343]{ChalinEtAl2006} lists Runtime Assertion
-                  Checking \acf{rac} and Software Verification \acf{sv} as
-                  ``two complementary forms of assertion checking''%
-            \fi; based on how the term ``static
-            assertion checking'' is used by \citet[p.~345]{LahiriEtAl2013}, it
-            seems like this should be the complement to \acs{rac} instead.
-      \item ``Operational'' and ``production acceptance testing'' are treated
-            as synonyms by \citetISTQB{}, but listed separately by
-            \citet[p.~30]{Firesmith2015}.
-      \item ``Production acceptance testing'' \citep[p.~30]{Firesmith2015}
-            seems to be the same as ``production verification testing''
-            \citep[p.~22]{IEEE2022}, but neither are defined.
-\end{itemize}
+\ifnotpaper
+      Some interesting notes about these synonyms:
+      \begin{itemize}
+            \item The terms are not synonyms, although endurance testing is given
+                  as a kind of reliability testing by \citet[p.~55]{Firesmith2015}.
+            \item ``Scenario testing'' and ``use case testing'' are given as synonyms
+                  by \citetISTQB{} and \citet[pp.~47-49]{Kam2008}, but listed
+                  separately by \citet[p.~22]{IEEE2022},
+                  \ifnotpaper who also give \else which also gives \fi ``use case
+                  testing'' as a ``common form of scenario testing''
+                  \citeyearpar[p.~20]{IEEE2021}.
+            \item \ifnotpaper
+                        \citeauthor{ChalinEtAl2006}~list \acf{rac} and \acf{sv} as ``two
+                        complementary forms of assertion checking''
+                        \citeyearpar[p.~343]{ChalinEtAl2006}%
+                  \else
+                        \cite[p.~343]{ChalinEtAl2006} lists Runtime Assertion
+                        Checking \acf{rac} and Software Verification \acf{sv} as
+                        ``two complementary forms of assertion checking''%
+                  \fi; based on how the term ``static
+                  assertion checking'' is used by \citet[p.~345]{LahiriEtAl2013}, it
+                  seems like this should be the complement to \acs{rac} instead.
+            \item ``Operational'' and ``production acceptance testing'' are treated
+                  as synonyms by \citetISTQB{}, but listed separately by
+                  \citet[p.~30]{Firesmith2015}.
+            \item ``Production acceptance testing'' \citep[p.~30]{Firesmith2015}
+                  seems to be the same as ``production verification testing''
+                  \citep[p.~22]{IEEE2022}, but neither are defined.
+      \end{itemize}
+\fi
 
 There are also some pairs of synonyms where one is sometimes described as a
 sub-approach of the other, making the relationship between them unclear. As
