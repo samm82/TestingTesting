@@ -2,20 +2,19 @@
 \label{method}
 
 \subsection{Source Order}
-To gain the most accurate picture of how software testing terminology is used,
-sources from multiple authors were selected.
-By looking at a variety of sources, discrepancies both within and between them
-can be uncovered, and the various classifications of terminology can be
-analyzed. Other sources can then be found by ``snowballing'' to other sources
-to further investigate specific test approaches.
+As there is no single authoritative source on software testing terminology,
+we need to look at many. Unfortunately, this brings to light a variety of
+discrepancies. Starting from some set of sources, we then use
+``snowballing''% needs a reference!
+to gather further sources.
 
 \begin{enumerate}
       \setcounter{enumi}{-1}
-      \item Textbooks trusted at McMaster
+      \item Trusted textbooks
             \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
             \begin{itemize}
                   \item Ad hoc and arbitrary; not systematic
-                  \item Colored \textcolor{Maroon}{maroon}
+                  \item Colored \textcolor{Maroon}{maroon},
             \end{itemize}
       \item Established standards
             \ifnotpaper
@@ -31,7 +30,7 @@ to further investigate specific test approaches.
                   \item Standards organizations colored \textcolor{green}{green}
                   \item ``Meta-level'' commentaries or collections of
                         terminology (often based on these standards), such as
-                        \citep{Firesmith2015}, colored \textcolor{blue}{blue}
+                        \citep{Firesmith2015}, colored \textcolor{blue}{blue},
             \end{itemize}
       \item Other resources: less-formal classifications of terminology
             \ifnotpaper
@@ -44,40 +43,42 @@ to further investigate specific test approaches.
             and testing-related resources that emerged for unrelated reasons
             \begin{itemize}
                   \item Colored black, along with any ``surface-level''
-                        analysis that followed trivially
+                        analysis that followed straightforwardly.
             \end{itemize}
 \end{enumerate}
 
 \subsection{Procedure}
 
-Except for some sources in \nameref{undef-terms}, all sources were looked
-through in their entirely to ``extract'' as much terminology as possible.
+All sources were analyzed in their entirety, except for some in
+\namedref{under-terms}, to systematically extract terminology.
 Heuristics were used to guide this process, by investigating\dots
 
 \begin{itemize}
-      \item \dots glossaries and lists of terms
-      \item \dots testing-related terms\\
+      \item glossaries and lists of terms,
+      \item testing-related terms\\
             e.g., terms that included ``test(ing)'', ``validation'',
-            ``verification'', ``review(s)'', or ``audit(s)''
-      \item \dots terms that had emerged as part of already-discovered
+            ``verification'', ``review(s)'', or ``audit(s)'',
+      \item terms that had emerged as part of already-discovered
             testing approaches, \emph{especially} those that were ambiguous
             or prompted further discussion\\
             e.g., terms that included ``performance'', ``recovery'',
-            ``component'', ``bottom-up'', ``boundary'', or ``configuration''
-      \item \dots terms that implied testing approaches\footnote{
+            ``component'', ``bottom-up'', ``boundary'', or ``configuration'',
+      \item terms that implied testing approaches%
+          \ifnotpaper\footnote{
                   Since these methods for deriving test approaches only arose
                   as research progressed, some examples would have been missed
                   during the first pass(es) of resources investigated earlier
                   in the process. While reiterating over them would be ideal,
                   this may not be possible due to time constraints.
             }%
-            \seeSectionParAlways{derived-tests}
+            \fi%
+            \seeSectionParAlways{derived-tests}.
 \end{itemize}
 
-If a term's definition had already been recorded, either the ``new'' one
-replaced it if the ``old'' one wasn't as clear/concise or parts of both were
-merged to paint a more complete picture. If any discrepancies or ambiguities
-arose, they were investigated to a reasonable extent and documented. If a
+We terms had multiple definitions, either the clearest and most concise
+version was kept, or they were merged to paint a more complete picture.
+If any discrepancies or ambiguities
+arose, they were reasonably investigated and always documented. If a
 testing approach was mentioned but not defined, it was still added to the
 glossary to indicate it should be investigated further%
 \seeSectionParAlways{undef-terms}. A similar methodology
@@ -130,15 +131,15 @@ will be omitted over the course of analysis.
 \TotalAfter=515
 \UndefAfter=171
 
-This process also led to some testing approaches without definitions;
+This search process led to some testing approaches being
+mentioned without definition;
 \citep{IEEE2022} and \citep{Firesmith2015} in particular introduced many.
-Once more ``standard'' sources had been exhausted, a strategy was proposed to
-look for sources that explicitly defined these terms, with the added benefit of
-uncovering more terms to explore, potentially in different domains%
-\seeThesisIssuePar{57}. This also uncovered some out-of-scope testing approaches,
+Once ``standard'' sources had been exhausted, we devised a strategy to
+look for sources that explicitly defined these terms, consistent with
+our snowballing approach. This uncovered new approaches, both in and out of
+scope (such as
 including EMSEC testing, HTML testing, and aspects of loop testing and
-orthogonal array testing\seeSectionPar{scope}; since these
-are out of scope, relevant sources were not investigated fully.
+orthogonal array testing\seeSectionPar{scope}).
 
 The following terms (and their respective related terms)
 were explored%
