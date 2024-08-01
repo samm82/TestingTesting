@@ -401,19 +401,23 @@ in the literature, grouped by the ``categories'' of sources outlined in
 severity:
 
 \begin{enumerate}
-      \item \sig{}: Semantic differences between test approaches
-      \item \mod{}: Differences in related information about test approaches
+      \item High: Semantic differences between test approaches
+      \item Medium: Differences in related information about test approaches
             (such as classifications or supporting information)
-      \item \triv{}: Typos or redundant information
+      \item Low: Typos, redundant information, or referencing issues
 \end{enumerate}
+
+The numbers of these groups of discrepancies are shown in
+\refMinorDiscrepsReqsTable{}, where a given row corresponds to the number of
+discrepancies either within/between one or more sources within that category
+and/or between a source of that category and one of a ``more trusted'' source
+(i.e., a source from a category higher up in the table;\seeAlways{source-order}).
 
 \minorDiscrepsTable{}
 
-\subsubsection{In Standards}
-
-From \citep{IEEE2022, IEEE2021, IEEE2017,
-      IEEE2013, IEEE2012, ISO_IEC2023a, ISO_IEC2023b, ISO_IEC2018,
-      ISO2021, ISO2015}: % TODO: how much did I *really* use these last two?
+\subsubsection{In Standards \citep{IEEE2022, IEEE2021, IEEE2017,
+            IEEE2013, IEEE2012, ISO_IEC2023a, ISO_IEC2023b, ISO_IEC2018,
+            ISO2021, ISO2015}} % TODO: how much did I *really* use these last two?
 
 %% \paragraph?? Also: \subsubsection uses 1. and enumerate does too, and at
 % the exact same level of indent, which is confusing
@@ -557,13 +561,8 @@ From \citep{IEEE2022, IEEE2021, IEEE2017,
       \end{itemize}
 \fi
 
-\subsubsection{In ``Meta-Level'' Sources}
-
-These are either intrinsic to SWEBOK \citep{SWEBOK2024,
-      SWEBOK2014}, ISTQB \citepISTQB{}, or another collection of testing
-terminology \citep[so far only][]{Firesmith2015} (as described in
-\nameref{method}), or between one of these and a source from
-a previous ``category'':
+\subsubsection{In ``Meta-Level'' Sources (SWEBOK \citep{SWEBOK2024,
+            SWEBOK2014}, ISTQB \citepISTQB{}, or \citep{Firesmith2015})}
 
 %% You may wish to elide some of these for length
 \begin{enumerate}[resume]
@@ -589,7 +588,7 @@ a previous ``category'':
             in terms of ``ML functional performance metrics'', which is defined
             as ``a set of measures that relate to the functional correctness of
             an ML system'' \citepISTQB{}. The use of ``performance'' (or
-            ``correctness'') in these definitions are at best ambiguous and at
+            ``correctness'') in these definitions is at best ambiguous and at
             worst incorrect.
       \item While ergonomics testing is out of scope (as it tests hardware, not
             software), its definition of ``testing to determine whether a
@@ -654,12 +653,8 @@ a previous ``category'':
             are unclear and seem miniscule.
 \end{enumerate}
 
-%%% Since there is a single one, I would actually not list it in the paper
-\subsubsection{In Trusted Books}
-
-These are from trusted books
-\citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}, either internally or
-between them, or between a book and a source from a previous ``category'':
+\subsubsection{In Textbooks \citep{Patton2006, PetersAndPedrycz2000,
+            vanVliet2000}}
 
 \begin{enumerate}[resume]
       \item ``Load testing'' is defined as using loads ``usually between
@@ -673,10 +668,6 @@ between them, or between a book and a source from a previous ``category'':
 \end{enumerate}
 
 \subsubsection{In Other Sources}
-
-% The following discrepancies are either intrinsic to a source not in one of the
-% above ``categories'', between two of these sources, or between one of these and
-% a source from a previous ``category'':
 
 \begin{enumerate}[resume]
       \item \citeauthor{Bas2024} lists ``three [backup] location categories:

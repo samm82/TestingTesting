@@ -1,21 +1,18 @@
-\newcommand{\discrepCell}[3]{\makecell{\sig{}: #1\\\mod{}: #2\\\triv{}: #3}}
-
 \begin{table}[hbtp!]
     \centering
     \caption{Minor Discrepancies}
     \label{tab:minorDiscreps}
-    \begin{tabular}{|r|c|c|c|c|}
+    \begin{spreadtab}{{tabular}{|r|ccc|c|}}
         \hline
         \ifnotpaper\rowcolor{McMasterMediumGrey}\fi
-                    & \thead{Standards}     & \thead{Collections}   & \thead{Textbooks}     & \thead{Other}         \\
+        @ \diagbox{\thead{Category}}{\thead{Severity}} & @ \thead{High} & @ \thead{Medium} & @ \thead{Low} & @ \thead{Total} \\
         \hline
-        Standards   & \discrepCell{2}{6}{3} & --                    & --                    & --                    \\
+        @ Established Standards      & 2              & 6                & 3             & sum(b2:d2)      \\
+        @ ``Meta-level'' Collections & 9              & 5                & 8             & sum(b3:d3)      \\
+        @ Trusted Textbooks          & 1              & 1                & 0             & sum(b4:d4)      \\
+        @ Other                      & 6              & 4                & 6             & sum(b5:d5)      \\
         \hline
-        Collections & \discrepCell{1}{2}{3} & \discrepCell{1}{2}{3} & --                    & --                    \\
+        @ Total                      & sum(b2:b5)     & sum(c2:c5)       & sum(d2:d5)    & sum(b6:d6)      \\
         \hline
-        Textbooks   & \discrepCell{1}{2}{3} & \discrepCell{1}{2}{3} & \discrepCell{1}{2}{3} & --                    \\
-        \hline
-        Other       & \discrepCell{1}{2}{3} & \discrepCell{1}{2}{3} & \discrepCell{1}{2}{3} & \discrepCell{1}{2}{3} \\
-        \hline
-    \end{tabular}
+    \end{spreadtab}
 \end{table}
