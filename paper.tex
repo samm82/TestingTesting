@@ -44,9 +44,9 @@
 
 \begin{abstract}
     Testing is a pervasive software development activity which is often
-    complicated and expensive, while at other times is overlooked.  This is in
-    part due an unstable knowledge base: there is no standard, consistent, and
-    ``complete'' taxonomy for software testing, inhibiting precise
+    complicated and expensive (if not simply overlooked).  This is in
+    part due to an unstable knowledge base: there is no standard, consistent,
+    and ``complete'' taxonomy for software testing, inhibiting precise
     communication.
     Discrepancies and ambiguities are widespread throughout the literature, and
     sometimes exist between different parts of the same document!
@@ -54,16 +54,16 @@
     % and understanding the underlying domain is an important prerequisite.
     We systematically investigate the current state of software terminology.
     We 1) identify established standards
-    and prominent testing resources, 
+    and prominent testing resources,
     2) capture relevant testing terms
     from these sources, along with their definitions and relationships (both
-    explicit and implied), and 
+    explicit and implied), and
     3) build graphs to visualize and analyze
     this data. Over five hundred test approaches were
     uncovered, as well as
-    some methods for describing ``implied'' test approaches. We also built
+    some methods for describing ``implied'' test approaches. We also build
     a tool to generate graphs of the relations between test
-    approaches and track their ambiguities, as well as those captured
+    approaches and track ambiguities captured by this tool and
     manually through the research process. Our results show ten terms are
     given as synonyms to two (or more) disjoint test approaches and fourteen
     pairs of test approaches may be synonyms and/or have a child-parent
@@ -83,15 +83,12 @@
 
 % TODO: tighten up, add sources
 
-Testing software is complicated, expensive, and often overlooked. 
-\ifnotpaper
-In our
-own project Drasil~\cite{Drasil} aimed at ``generating all of the
-software artifacts for (well understood) research software''
-\else % for double-blind
-In our own project
-\fi
-, we wanted to
+Testing software is complicated, expensive, and often overlooked.
+In our own project%
+\ifnotpaper % for double-blind
+    \ Drasil~\cite{Drasil} aimed at ``generating all of the
+    software artifacts for (well understood) research software''%
+\fi, we wanted to
 automate the generation of tests. As we did not want to do this in an
 ad hoc manner, we wanted to get a good grasp on the target domain, testing.
 

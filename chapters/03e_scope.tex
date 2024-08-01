@@ -12,15 +12,14 @@ For example, design reviews \ifnotpaper \citep[see][p.~132]{IEEE2017}
 \ifnotpaper \citetext{see p.~132} \else (see \citetext{p.~132}) \fi
 % \citep[see][p.~144]{IEEE2017}
 are out of scope, as they focus on the \acsVNV{} of design and documentation
-respectively.
-Likewise, ergonomics testing
+respectively. Likewise, ergonomics testing
 and proximity-based testing (see \citealpISTQB{}) are out of scope as they
-fundamentally involve hardware.%
-\ifnotpaper%
+fundamentally involve hardware.
+\ifnotpaper
     Similarly removed is \acf{emsec} testing
     (\citealp{ISO2021}; \citealp[p.~95]{ZhouEtAl2012}), which deals with the
     ``security risk'' of ``information leakage via electromagnetic emanation''
-    \citep[p.~95]{ZhouEtAl2012}.%
+    \citep[p.~95]{ZhouEtAl2012}.
 \fi Security audits that focus on ``an organization's
 \dots\ processes and infrastructure'' \citepISTQB{}, are also out of scope,
 but security audits that ``aim to ensure that all of the products installed on
@@ -32,8 +31,8 @@ products'' \citep[p.~28]{Gerrard2000b} are not.
     from pre-built and pre-tested hardware components'' (p.~471). A subset of
     \acs{oat} called ``\acf{toat}'' is used for ``experimental design problems in
     manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product and manufacturing
-    process design'' \cite[p.~44]{Tsui2007} and is thus out of scope. 
-    \fi
+    process design'' \cite[p.~44]{Tsui2007} and is thus out of scope.
+\fi
 
 Sometimes, wider decisions must be made on whether a whole category of
 testing is in scope or not. For example, while all the examples of domain-specific
@@ -86,7 +85,7 @@ the code. For example:
           However, it ``can also be categorized as a structure-based
           technique'' and can be used to assist fuzz and metamorphic testing
           \citep[p.~5-15]{SWEBOK2024}.
-\ifnotpaper
+          \ifnotpaper
     \item Even though \emph{reliability testing} and \emph{maintainability
               testing} can start \emph{without} code by ``measur[ing]
           structural attributes of representations of the software''
@@ -108,7 +107,7 @@ the code. For example:
                     a finite-state machine (as a subset of model-based
                     testing) \citep[p.~184]{DoğanEtAl2014}.
           \end{itemize}
-\fi
+          \fi
 \end{enumerate}
 
 \ifnotpaper
@@ -159,10 +158,10 @@ project will include both ``static testing'' and ``dynamic testing'', as
 done by \citet[p.~17]{IEEE2022}, \citet[pp.~8-9]{Gerrard2000a}, and even a
 source that explicitly excluded static testing \citep[p.~440]{IEEE2017}!
 
-Static testing seems to be somewhat more ad hoc, in particular some techniques
-generate false positives which require human intervention, which makes it
-less relevant for own goals (automatic generation of tests).
-Nevertheless understanding the breadth of testing approaches provides a more
+Static testing seems to be somewhat more ad hoc which makes it
+less relevant for own goals (automatic generation of tests). In particular,
+some techniques generate false positives which require human intervention.
+Nevertheless, understanding the breadth of testing approaches provides a more
 complete picture of how software can be tested, how the various approaches are
 related to one another, and potentially how even parts of these ``out-of-scope''
 approaches may be generated in the future! For the current purpose of this

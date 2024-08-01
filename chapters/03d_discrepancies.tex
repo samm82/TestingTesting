@@ -44,18 +44,18 @@ The same approach often has many names. For example,
       \item Input Domain-Based Testing (implied by \citep[p.~4-8]{SWEBOK2014})
 \end{enumerate}
 
-While some of these synonyms may express mild variations in meaning, their core
+While some of these synonyms may express mild variations, their core meaning
 is nevertheless the same. Here we use the terms ``specification-based'' and
 ``structure-based testing'' as they articulate the source of the information
 for designing test cases, but a team or project also using gray-box testing may
 prefer the terms ``black-box'' and ``white-box testing'' for consistency.
-Thus synonyms dot not inherently signify a discrepancy.
+Thus, synonyms do not inherently signify a discrepancy.
 
 However, there are cases in which a term is given a synonym to two (or more)
 disjoint, unrelated terms, which would be a source of ambiguity to teams using
-these terms. The following are \ifnotpaper\else some \fi examples that have
-arisen\ifnotpaper\ (synonyms in \emph{italics} have at least one of their
-      synonyms implied)\fi:
+these terms. The following are \ifnotpaper \else four out of ten \fi
+examples that have arisen\ifnotpaper\ (synonyms in \emph{italics} have at least
+      one of their synonyms implied)\fi:
 
 \begin{enumerate}
       \ifnotpaper \input{build/multiSyns} \else \input{assets/misc/multiSyns} \fi
@@ -93,7 +93,7 @@ arisen\ifnotpaper\ (synonyms in \emph{italics} have at least one of their
 \fi
 
 There are pairs of synonyms where one is described as a
-sub-approach of the other, abusing the meaning of \emph{synonym} and
+sub-approach of the other, abusing the meaning of ``synonym'' and
 causing confusion. In the next list, lack of source implies the relationship
 in inferrable from the definitions.
 
@@ -181,7 +181,7 @@ ways, alongside other, likely related, terms:
             \citep[pp.~15,~20,~22]{IEEE2022}. This is listed separately from
             ``functionality testing'' by \citet[p.~53]{Firesmith2015}.
 
-      \item \textbf{Conformance Testing} 
+      \item \textbf{Conformance Testing}
             \citet[p.~5-7]{SWEBOK2024} insures ``that the functional
             specifications are correctly implemented'', and can be called
             ``conformance testing'' or ``functional testing''.
@@ -193,8 +193,6 @@ ways, alongside other, likely related, terms:
             ``rules'', ``requirements'', ``design'', ``processes'', and
             ``practices'' as well as ``specifications''!
 
-            %%% There are recommendations buried in this text. I think that
-            % should be pulled out of here and put in the recommendation section.
             A complicating factor is that ``compliance testing'' is also
             (plausibly!) given as a synonym of ``conformance testing''
             \citep[p.~43]{Kam2008}. However, ``conformance
@@ -202,10 +200,13 @@ ways, alongside other, likely related, terms:
             to which ``results \dots\ fall within the limits that define
             acceptable variation for a quality requirement''
             \citep[p.~93]{IEEE2017}\todo{OG PMBOK 5th ed.}, which seems to
-            describe something different. Perhaps this second definition of
-            ``conformance testing'' should be used, and the previous definition
-            of ``compliance testing'' should be used for describing compliance with
-            external standards, rules, etc.~to keep them distinct.
+            describe something different.
+
+            % TODO: pull out into Recommendations
+            % Perhaps this second definition of
+            % ``conformance testing'' should be used, and the previous definition
+            % of ``compliance testing'' should be used for describing compliance with
+            % external standards, rules, etc.~to keep them distinct.
 
       \item \textbf{Functional Suitability Testing:} Procedure testing is
             called a ``type of functional suitability testing''
@@ -270,8 +271,7 @@ can accept [it]'' \citepISTQB{}.
 \subsection{Recovery Testing}
 \label{recov-discrep}
 
-``Recovery testing'', which is ``testing
-\dots\ aimed at verifying
+``Recovery testing'' is ``testing \dots\ aimed at verifying
 software restart capabilities after a system crash or other disaster''
 \citep[p.~5-9]{SWEBOK2024} including ``recover[ing] the data directly affected
 and re-establish[ing] the desired state of the system''
@@ -655,7 +655,7 @@ a previous ``category'':
 %%% Since there is a single one, I would actually not list it in the paper
 \subsubsection{In Trusted Books}
 
-These are from trusted books 
+These are from trusted books
 \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}, either internally or
 between them, or between a book and a source from a previous ``category'':
 
