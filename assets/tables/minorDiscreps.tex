@@ -1,0 +1,21 @@
+\newcommand{\discrepCell}[3]{\makecell{\sig{}: #1\\\mod{}: #2\\\triv{}: #3}}
+
+\begin{table}[hbtp!]
+    \centering
+    \caption{Minor Discrepancies}
+    \label{tab:minorDiscreps}
+    \begin{tabular}{|r|c|c|c|c|}
+        \hline
+        \ifnotpaper\rowcolor{McMasterMediumGrey}\fi
+                    & \thead{Standards}     & \thead{Collections}   & \thead{Textbooks}     & \thead{Other}         \\
+        \hline
+        Standards   & \discrepCell{2}{6}{3} & --                    & --                    & --                    \\
+        \hline
+        Collections & \discrepCell{1}{2}{3} & \discrepCell{1}{2}{3} & --                    & --                    \\
+        \hline
+        Textbooks   & \discrepCell{1}{2}{3} & \discrepCell{1}{2}{3} & \discrepCell{1}{2}{3} & --                    \\
+        \hline
+        Other       & \discrepCell{1}{2}{3} & \discrepCell{1}{2}{3} & \discrepCell{1}{2}{3} & \discrepCell{1}{2}{3} \\
+        \hline
+    \end{tabular}
+\end{table}

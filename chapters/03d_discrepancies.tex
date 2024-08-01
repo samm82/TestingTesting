@@ -397,7 +397,17 @@ are shown in Figure~\ref{fig:scal-graph-current}.
 
 We now outline ``minor'' discrepancies/ambiguities found
 in the literature, grouped by the ``categories'' of sources outlined in
-\nameref{method}.
+\nameref{method}. These discrepancies can then be grouped into degrees of
+severity:
+
+\begin{enumerate}
+      \item \sig{}: Semantic differences between test approaches
+      \item \mod{}: Differences in related information about test approaches
+            (such as classifications or supporting information)
+      \item \triv{}: Typos or redundant information
+\end{enumerate}
+
+\minorDiscrepsTable{}
 
 \subsubsection{In Standards}
 
@@ -456,10 +466,6 @@ From \citep{IEEE2022, IEEE2021, IEEE2017,
             related components'' \citep[p.~82]{IEEE2017}; it is a combination of
             the two? somewhere on the spectrum between them? Likewise, it is
             listed as a child of integration testing by \citetISTQB{}.
-      \item ``Installability testing'' is given as a test type
-            (\citealp[p.~22]{IEEE2022}; \citeyear[p.~38]{IEEE2021})
-            but is sometimes called a test level as
-            ``installation testing'' \citep[p.~445]{PetersAndPedrycz2000}.
       \item Retesting and regression testing seem to be separated from the rest
             of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
             clearly detailed why; \citet[p.~3]{BarbosaEtAl2006} consider
@@ -485,10 +491,6 @@ From \citep{IEEE2022, IEEE2021, IEEE2017,
             values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021}
             and one where ``the conditions and actions are generally described
             but are incomplete'' \citeyearpar[p.~175]{IEEE2017}\todo{OG ISO1984}.
-      \item The subcategories of ``performance-related testing'' that are
-            categorized as test types by other sources \citep{IEEE2022, IEEE2017,
-                  IEEE2013} are categorized as techniques in
-            \citeyearpar[p.~39]{IEEE2021}.
       \item \citeauthor*{IEEE2017} provide a definition for ``inspections and
             audits'' \citeyearpar[p.~228]{IEEE2017}, despite also giving
             definitions for ``inspection'' (p.~227) and ``audit'' (p.~36);
@@ -664,6 +666,10 @@ between them, or between a book and a source from a previous ``category'':
             anticipated conditions of low, typical, and peak usage''
             \citep[p.~5]{IEEE2022}, while \citeauthor{Patton2006} says the
             loads should as large as possible \citeyearpar[p.~86]{Patton2006}.
+      \item ``Installability testing'' is given as a test type
+            (\citealp[p.~22]{IEEE2022}; \citeyear[p.~38]{IEEE2021})
+            but is sometimes called a test level as
+            ``installation testing'' \citep[p.~445]{PetersAndPedrycz2000}.
 \end{enumerate}
 
 \subsubsection{In Other Sources}
