@@ -47,21 +47,21 @@ Different sources categorize software testing approaches in different ways%
       to be out of the scope of this project
       \seeSectionPar{scope}{, \thesisissueref{21}, and
             \thesisissueref{22}}.
+      Related testing approaches may be grouped into a ``class'' or ``family'' to
+      group those with ``commonalities and well-identified variabilities that can be
+      instantiated'', where ``the commonalities are large and the variabilities
+      smaller''\seeThesisIssuePar{64}. Examples of these are the classes of
+      combinatorial \citep[p.~15]{IEEE2021} and data flow testing \citetext{p.~3} and the
+      family of performance-related testing \cite[p.~1187]{Moghadam2019}\footnote{The
+            original source describes ``performance testing \dots\ as a family of
+            performance-related testing techniques'', but it makes more sense to
+            consider ``performance-related testing'' as the ``family'' with
+            ``performance testing'' being one of the
+            variabilities\seeSectionPar{perf-test-rec}.}, and may also be
+      implied for security testing, a test type that consists of ``a number of
+      techniques\footnote{This may or may not be \distinctIEEE{technique}}''
+      \cite[p.~40]{IEEE2021}.
 \fi
-Related testing approaches may be grouped into a ``class'' or ``family'' to
-group those with ``commonalities and well-identified variabilities that can be
-instantiated'', where ``the commonalities are large and the variabilities
-smaller''\seeThesisIssuePar{64}. Examples of these are the classes of
-combinatorial \citep[p.~15]{IEEE2021} and data flow testing \citetext{p.~3} and the
-family of performance-related testing \cite[p.~1187]{Moghadam2019}\footnote{The
-      original source describes ``performance testing \dots\ as a family of
-      performance-related testing techniques'', but it makes more sense to
-      consider ``performance-related testing'' as the ``family'' with
-      ``performance testing'' being one of the
-      variabilities\seeSectionPar{perf-test-rec}.}, and may also be
-implied for security testing, a test type that consists of ``a number of
-techniques\footnote{This may or may not be \distinctIEEE{technique}}''
-\cite[p.~40]{IEEE2021}.
 
 It also seems that these categories are orthogonal. For example, ``a test type
 can be performed at a single test level or across several test levels''
@@ -149,18 +149,19 @@ to test types when mentioned (or implied) by a source.\todo{Find examples?}
 While not as universally applicable, some types of requirements have associated
 types of testing (e.g., functional, non-functional, security). This may mean
 that categories of requirements \emph{also} imply related testing approaches
-(such as ``technical testing''). Even assuming this is the case, some types of
-requirements do not apply to the code itself, and as such are out of scope%
-\seeThesisIssuePar{43}:
+(such as ``technical testing''). \ifnotpaper Even assuming this is the case, some types of
+      requirements do not apply to the code itself, and as such are out of scope%
+      \seeThesisIssuePar{43}:
 
-\begin{itemize}
-      \item \textbf{Nontechnical Requirement:} a ``requirement affecting product
-            and service acquisition or development that is not a property of
-            the product or service'' \citep[p.~293]{IEEE2017}
-      \item \textbf{Physical Requirement:} a ``requirement that specifies a
-            physical characteristic that a system or system component must
-            possess'' \citep[p.~322]{IEEE2017}
-\end{itemize}
+      \begin{itemize}
+            \item \textbf{Nontechnical Requirement:} a ``requirement affecting product
+                  and service acquisition or development that is not a property of
+                  the product or service'' \citep[p.~293]{IEEE2017}
+            \item \textbf{Physical Requirement:} a ``requirement that specifies a
+                  physical characteristic that a system or system component must
+                  possess'' \citep[p.~322]{IEEE2017}
+      \end{itemize}
+\fi
 
 \subsubsection{Attacks}
 \label{attacks}
