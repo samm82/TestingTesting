@@ -38,7 +38,8 @@ undefTerms = [
                   "LahiriEtAl2013,ChalinEtAl2006,BerdineEtAl2006"),
     UndefinedTerm("Loop Testing", "DhokAndRamanathan2016,"
                   "GodefroidAndLuchaup2011,PreußeEtAl2012,ForsythEtAl2004",
-                  footnote="\\citep{ISO2015} and \\citep{ISO2022} "
+                  footnote="\\ifnotpaper \\else References \\fi"
+                  "\\citep{ISO2015} and \\citep{ISO2022} "
                   "were used as reference for terms but not fully "
                   "investigated, \\citep{TrudnowskiEtAl2017} and "
                   "\\citep{PierreEtAl2017} were added as potentially in "
@@ -55,7 +56,8 @@ undefTerms = [
     UndefinedTerm("DOM Testing", "BajammalAndMesbah2018", indent=True),
     UndefinedTerm("Sandwich Testing", "SharmaEtAl2021,SangwanAndLaPlante2006"),
     UndefinedTerm("Orthogonal Array Testing", "Mandl1985,Valcheva2013",
-                  footnote="\\citep{YuEtAl2011} and \\citep{Tsui2007} were added as "
+                  footnote="\\ifnotpaper \\else References \\fi"
+                  "\\citep{YuEtAl2011} and \\citep{Tsui2007} were added as "
                   "out-of-scope examples."),
     UndefinedTerm("Backup Testing", "Bas2024", seeSectionFoot="recov-discrep"),
 ]

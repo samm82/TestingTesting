@@ -2,10 +2,8 @@
 \newcommand{\techniqueCell}{\makecell{(Design)\footnote{``Design technique''
             is sometimes abbreviated to ``technique''
             \ifnotpaper
-                (\citealp[p.~11]{IEEE2022}; \citealpISTQB{}).
-            \else
-                \cite[p.~11]{IEEE2022}, \cite{ISTQB}.
-            \fi
+                (\citealp[p.~11]{IEEE2022}; \citealpISTQB{})\else
+                \cite{ISTQB}, \cite[p.~11]{IEEE2022}\fi.
         }\\Technique}}
 \newcommand{\levelCell}{\makecell{Level\footnote{\procLevel{\citep}.}\\
         (sometimes\\``Phase''\footnote{``Test phase'' can be a synonym for
@@ -16,14 +14,11 @@
                 \cite[p.~469]{IEEE2017}, \cite[p.~9]{IEEE2013}
             \fi
             but \phaseDef{}}\\
-        or ``Stage''\footnote{
-            \ifnotpaper
+        or ``Stage''\footnote{Used by \ifnotpaper
                 (\citealp[pp.~5-6 to 5-7]{SWEBOK2024};
-                \citealpISTQB{}; \citealp[pp.~9, 13]{Gerrard2000a}).
-            \else
-                \cite[pp.~5-6 to 5-7]{SWEBOK2024}, \cite{ISTQB},
-                \cite[pp.~9, 13]{Gerrard2000a}.
-            \fi
+                \citealpISTQB{}; \citealp[pp.~9, 13]{Gerrard2000a})\else
+                \cite{ISTQB}, \cite[pp.~5-6 to 5-7]{SWEBOK2024},
+                \cite[pp.~9, 13]{Gerrard2000a}\fi.
         })}}
 
 \begin{paperTable}
