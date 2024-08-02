@@ -48,9 +48,9 @@
 \NewDocumentCommand{\seeThesisIssueFoot}{ m }
 {\ifnotpaper\seeFootAlways[\thesisissueref]{#1}\fi}
 
-\NewDocumentCommand{\seeAlways}{ O{\nameref} m }{{ see #1{#2}}}
-\NewDocumentCommand{\seeParAlways}{ O{\nameref} m O{} }{{ (see #1{#2}#3)}}
-\NewDocumentCommand{\seeFootAlways}{ O{\nameref} m }{\footnote{See #1{#2}.}}
+\NewDocumentCommand{\seeAlways}{ O{\Cref} m }{{ see #1{#2}}}
+\NewDocumentCommand{\seeParAlways}{ O{\Cref} m O{} }{{ (see #1{#2}#3)}}
+\NewDocumentCommand{\seeFootAlways}{ O{\Cref} m }{\footnote{See #1{#2}.}}
 
 \newcommand{\formatPaper}[2]{%
     \ifnotpaper
