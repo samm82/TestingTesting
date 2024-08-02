@@ -50,9 +50,36 @@ is nevertheless the same. Here we use the terms ``specification-based'' and
 ``structure-based testing'' as they articulate the source of the information
 for designing test cases, but a team or project also using gray-box testing may
 prefer the terms ``black-box'' and ``white-box testing'' for consistency.
-Thus, synonyms do not inherently signify a discrepancy.
+Thus, synonyms do not inherently signify a discrepancy. Unfortunately, there
+are many instances of incorrect or ambiguous synonyms, such as the following:
 
-However, there are cases in which a term is given a synonym to two (or more)
+\begin{enumerate}
+      \item \ifnotpaper\citeauthor{SneedAndGöschl2000} give \else Reference
+                  \cite{SneedAndGöschl2000} gives \fi ``white-'', ``grey-'', and
+            ``black-box testing'' as synonyms for ``module'', ``integration'',
+            and ``system testing'', respectively%
+            \ifnotpaper\ \citeyearpar[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88}\fi, but
+            this mapping is incorrect; black-box testing can be performed on a
+            module, for example\todo{find source}. This makes the claim that
+            ``red-box testing'' is a synonym for ``acceptance testing''
+            \citetext{p.~18} lose credibility.
+      \item ``Program testing'' is given as a synonym of ``component testing''
+            \citep[p.~46]{Kam2008}, although it probably should be a synonym of
+            ``system testing'' instead.
+      \item \ifnotpaper\citeauthor{Kam2008} \else Reference \cite{Kam2008} \fi
+            seems to imply that ``mutation testing'' is a
+            synonym of ``back-to-back testing''%
+            \ifnotpaper\ \citeyearpar[p.~46]{Kam2008}\fi,
+            but these are two quite distinct techniques.
+      \item ``Conformance testing'' is implied to be a synonym of ``compliance
+            testing'' by \ifnotpaper\citeauthor{Kam2008}\else\cite{Kam2008}\fi,
+            which only makes sense because
+            of the vague definition of ``compliance testing'': ``testing to
+            determine the compliance of the component or system''
+            \ifnotpaper\citeyearpar[p.~43]{Kam2008}\else\citetext{p.~43}\fi.
+\end{enumerate}
+
+There are also cases in which a term is given a synonym to two (or more)
 disjoint, unrelated terms, which would be a source of ambiguity to teams using
 these terms. The following are \ifnotpaper \else four out of ten \fi
 examples that have arisen\ifnotpaper\ (synonyms in \emph{italics} have at least
@@ -567,8 +594,7 @@ severity as follows. (Note that only certain discrepancies with ``high'' or
 
 \begin{itemize}
       \item High: Semantic differences between test approaches
-      \item Medium: Differences in related information about test approaches
-            (such as synonyms or supporting information)
+      \item Medium: Differences in supporting information about test approaches
       \item Low: Typos, redundant information, or referencing issues
 \end{itemize}
 
@@ -598,8 +624,12 @@ and/or between a source of that category and one of a ``more trusted'' source
             testing''). This implies that ``co-existence testing'' and
             ``interoperability testing'' should be defined as their own terms,
             which is supported by definitions of ``co-existence'' and
-            ``interoperability'' often being separate (\citealpISTQB{};
-            \citealp[pp.~73,~237]{IEEE2017}), the definition of
+            ``interoperability'' often being separate
+            \ifnotpaper
+                  (\citealpISTQB{}; \citealp[pp.~73,~237]{IEEE2017})%
+            \else
+                  \cite[pp.~73,~237]{IEEE2017}, \cite{ISTQB}%
+            \fi, the definition of
             ``interoperability testing'' from \citet[p.~238]{IEEE2017},
             and the decomposition of ``compatibility'' into ``co-existence''
             and ``interoperability'' by \citet{ISO_IEC2023a}!
@@ -664,14 +694,12 @@ and/or between a source of that category and one of a ``more trusted'' source
             definitions for ``inspection'' (p.~227) and ``audit'' (p.~36);
             while the first term \emph{could} be considered a superset of the
             latter two, this distinction doesn't seem useful.
-            \fi
       \item \citeauthor*{IEEE2017} say that ``test level'' and ``test phase''
             are synonyms, both meaning a ``specific instantiation of [a] test
             sub-process'' (\citeyear[pp.~469,~470]{IEEE2017};
             \citeyear[p.~9]{IEEE2013}), but there are also alternative
             definitions for them. \procLevel{\citeyearpar}, while
             ``test phase'' \phaseDef{}
-            \ifnotpaper
       \item \citeauthor{IEEE2017} use the same definition for ``partial correctness''
             \citeyearpar[p.~314]{IEEE2017} and ``total correctness'' (p.~480).
             \fi
@@ -734,12 +762,12 @@ and/or between a source of that category and one of a ``more trusted'' source
 \begin{itemize}
       \item SWEBOK V4 defines ``privacy testing'' as testing that ``assess[es]
             the security and privacy of users' personal data to prevent local
-            attacks'' \citep[p.~5-10]{SWEBOK2024}; this seems to overlap with
-            \citeauthor{IEEE2022}'s definition of ``security testing'', which is
-            ``conducted to evaluate the degree to which a test item, and
+            attacks'' \citep[p.~5-10]{SWEBOK2024}; this seems to overlap
+            (both in scope and name) with
+            the definition of ``security testing'' in \citep{IEEE2022}: testing
+            ``conducted to evaluate the degree to which a test item, [sic] and
             associated data and information, are protected so that'' only
-            ``authorized persons or systems'' can use them as intended
-            \citeyearpar[p.~9]{IEEE2022}, both in scope and name.
+            ``authorized persons or systems'' can use them as intended.
       \item Various sources say that alpha testing is performed by different
             people, including ``only by users within the organization
             developing the software'' \citep[p.~17]{IEEE2017}, by ``a small,
@@ -809,8 +837,8 @@ and/or between a source of that category and one of a ``more trusted'' source
             wording of its subtypes \citep[p.~25]{Firesmith2015} seems to imply
             the former.
             \fi
-      \item \citeauthor{ISO_IEC2023a} say that performance and security testing
-            are subtypes of reliability testing \citeyearpar{ISO_IEC2023a}, but
+      \item Performance and security testing are given as subtypes of
+            reliability testing by \citep{ISO_IEC2023a} but
             these are all listed separately by \citet[p.~53]{Firesmith2015}.
             \ifnotpaper
       \item The terms ``acceleration'' and ``acoustic tolerance testing'' seem
@@ -821,8 +849,12 @@ and/or between a source of that category and one of a ``more trusted'' source
             \fi
       \item The distinctions between development testing \citep[p.~136]{IEEE2017},
             developmental testing \citep[p.~30]{Firesmith2015}, and developer
-            testing (\citealp[p.~39]{Firesmith2015}; \citealp[p.~11]{Gerrard2000a})
-            are unclear and seem miniscule.
+            testing
+            \ifnotpaper
+                  (\citealp[p.~39]{Firesmith2015}; \citealp[p.~11]{Gerrard2000a})
+            \else
+                  \cite[p.~39]{Firesmith2015}, \cite[p.~11]{Gerrard2000a}
+            \fi are unclear and seem miniscule.
 \end{itemize}
 
 \ifnotpaper
@@ -854,47 +886,32 @@ and/or between a source of that category and one of a ``more trusted'' source
             says ``See \emph{boundary value analysis},'' but this definition is
             not present \citeyearpar{Kam2008}.
             \fi
-      \item ``Conformance testing'' is implied to be a synonym of ``compliance
-            testing'' by \citeauthor{Kam2008}, which only makes sense because
-            of the vague definition of ``compliance testing'': ``testing to
-            determine the compliance of the component or system''
-            \citeyearpar[p.~43]{Kam2008}.
-      \item \citeauthor{Kam2008} seems to imply that ``mutation testing'' is a
-            synonym of ``back-to-back testing'' \citeyearpar[p.~46]{Kam2008},
-            but these are two quite distinct techniques.
-      \item \citeauthor{Kam2008} also says that the goal of negative testing is
+      \item \ifnotpaper\citeauthor{Kam2008} \else Reference \cite{Kam2008} \fi
+            also says that the goal of negative testing is
             ``showing that a component or system does not work''
-            \citeyearpar[p.~46]{Kam2008}\todo{OG Beizer}, which is not true;
+            \ifnotpaper\citeyearpar[p.~46]{Kam2008}\todo{OG Beizer} \fi
+            which is not true;
             if robustness is an important quality for the system, then testing
             the system ``in a way for which it was not intended to be used''
             \citepISTQB{} (i.e., negative testing) is one way to help
             test this!
-      \item ``Program testing'' is given as a synonym of ``component testing''
-            \citep[p.~46]{Kam2008}, although it probably should be a synonym of
-            ``system testing'' instead.
-      \item \citeauthor{SneedAndGöschl2000} give ``white-'', ``grey-'', and
-            ``black-box testing'' as synonyms for ``module'', ``integration'',
-            and ``system testing'', respectively
-            \citeyearpar[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88}, but
-            this mapping is incorrect; black-box testing can be performed on a
-            module, for example\todo{find source}. This makes the claim that
-            ``red-box testing'' is a synonym for ``acceptance testing'' (p.~18)
-            lose credibility.
             \ifnotpaper
       \item Availability testing isn't assigned to a test priority
             \citep[Tab.~2]{Gerrard2000a}, despite the claim that ``the test
             types\gerrardDistinctIEEE{type} have been allocated a slot against
-            the four test priorities'' (p.~13); I think usability and/or
+            the four test priorities'' \citetext{p.~13}; I think usability and/or
             performance would have made sense.
             \fi
       \item ``Visual browser validation'' is described as both static \emph{and}
             dynamic in the same table \citep[Tab.~2]{Gerrard2000a}, even though
-            they are implied to be orthogonal classifications: ``test
-            types can be static \emph{or} dynamic'' (p.~12,~emphasis added).
-      \item \citeauthor{Gerrard2000a} makes a distinction between ``transaction
-            verification'' and ``transaction testing''
-            \citeyearpar[Tab.~2]{Gerrard2000a} and also uses the phrase
-            ``transaction flows'' (Fig.~5) but doesn't explain them.
+            they are implied to be orthogonal classifications: ``test types can
+            be static \emph{or} dynamic'' \citetext{p.~12,~emphasis added}.
+      \item \ifnotpaper\citeauthor{Gerrard2000a} \else Reference
+                  \cite{Gerrard2000a} \fi
+            makes a distinction between ``transaction verification'' and
+            ``transaction testing'' \ifnotpaper\citeyearpar[Tab.~2]{Gerrard2000a} \fi
+            and uses the phrase ``transaction flows'' \citetext{Fig.~5},
+            but doesn't explain them.
             \ifnotpaper
       \item The phrase ``continuous automated testing''  \citep[p.~11]{Gerrard2000a}
             is redundant since continuous testing is a sub-category of automated
