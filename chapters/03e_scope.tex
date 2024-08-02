@@ -1,16 +1,12 @@
 \section{Scope}
 \label{scope}
 
-\newcommand{\acsVNV}{\ifnotpaper \acs{vnv}\else V\&V\fi}
-
-Since our motivation is restricted to testing of code,
-only the ``testing'' component of
-\ifnotpaper \acf{vnv} \else Verification and Validation \acf{V\&V} \fi is
-considered\seeThesisIssuePar{22}.
+Since our motivation is restricted to testing of code, only the ``testing''
+component of \acf{vnv} is considered\seeThesisIssuePar{22}.
 For example, design reviews and documentation reviews
 \ifnotpaper \citep[see][pp.~132, 144, respectively]{IEEE2017}
 \else (see \cite[pp.~132, 144]{IEEE2017}, respectively) \fi
-are out of scope, as they focus on the \acsVNV{} of design and documentation,
+are out of scope, as they focus on the \acs{vnv} of design and documentation,
 respectively. Likewise, ergonomics testing
 and proximity-based testing (see \citealpISTQB{}) are out of scope as they
 fundamentally involve hardware.
@@ -35,7 +31,7 @@ products'' \citep[p.~28]{Gerrard2000b} are not.
     Sometimes, wider decisions must be made on whether a whole category of
     testing is in scope or not. For example, while all the examples of domain-specific
     testing given by \citet[p.~26]{Firesmith2015} are focused on hardware, this
-    might not be representative of all types (e.g., ML model testing seems
+    might not be representative of all types (e.g., \acf{ml} model testing seems
     domain-specific). Conversely, the examples of environmental tolerance testing
     (p.~56) do not seem to apply to software. For example, radiation tolerance
     testing seems to focus on hardware, such as motors \citep{MukhinEtAl2022},
@@ -57,20 +53,20 @@ products'' \citep[p.~28]{Gerrard2000b} are not.
 \fi
 
 Furthermore, only some aspects of some testing approaches are relevant. This
-mainly manifests as a testing approach that applies to both the \acsVNV{} itself
+mainly manifests as a testing approach that applies to both the \acs{vnv} itself
 and the code. For example:
 
 \begin{enumerate}
     \item \emph{Error seeding} is the ``process of intentionally adding
           known faults to those already in a computer program'',
           done to both ``monitor[] the rate of detection and removal'',
-          which is a part of \acsVNV{} of the \acsVNV{} itself (out of scope),
+          which is a part of \acs{vnv} of the \acs{vnv} itself (out of scope),
           ``and estimat[e] the number of faults remaining''
           \citep[p.~165]{IEEE2017}, which helps verify the actual code (in scope).
     \item \emph{Fault injection testing}, where ``faults are artificially
-          introduced into the \acs{sut}'', can be used to evaluate the
-          effectiveness of a test suite \citep[p.~5-18]{SWEBOK2024},
-          which is a part of \acsVNV{} of the \acsVNV{} itself (out of scope),
+          introduced into the \acs{sut} [System Under Test]'', can be used to
+          evaluate the effectiveness of a test suite \citep[p.~5-18]{SWEBOK2024},
+          which is a part of \acs{vnv} of the \acs{vnv} itself (out of scope),
           or ``to test
           the robustness of the system in the event of internal and
           external failures'' \citep[p.~42]{IEEE2022}, which helps verify
@@ -78,7 +74,7 @@ and the code. For example:
     \item ``\emph{Mutation [t]esting} was originally conceived as a
           technique to evaluate test suites in which a mutant is a slightly
           modified version of the \acs{sut}'' \citep[p.~5-15]{SWEBOK2024},
-          which is in the realm of \acsVNV{} of the \acsVNV{} itself (out of
+          which is in the realm of \acs{vnv} of the \acs{vnv} itself (out of
           scope). However, it ``can also be categorized as a structure-based
           technique'' and can be used to assist fuzz and metamorphic testing
           \citep[p.~5-15]{SWEBOK2024} (in scope).

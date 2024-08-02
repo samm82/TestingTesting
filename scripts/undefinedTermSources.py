@@ -53,7 +53,7 @@ undefTerms = [
     UndefinedTerm("HTML Testing",
                   "ChoudharyEtAl2010,SneedAndGöschl2000,Gerrard2000b",
                   indent=True),
-    UndefinedTerm("DOM Testing", "BajammalAndMesbah2018", indent=True),
+    UndefinedTerm("\\acf{dom} Testing", "BajammalAndMesbah2018", indent=True),
     UndefinedTerm("Sandwich Testing", "SharmaEtAl2021,SangwanAndLaPlante2006"),
     UndefinedTerm("Orthogonal Array Testing", "Mandl1985,Valcheva2013",
                   footnote="\\ifnotpaper \\else References \\fi"

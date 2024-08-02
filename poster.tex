@@ -30,6 +30,10 @@
 
 \input{assets/misc/posterHelpers}
 
+% Acronyms
+\usepackage{acro}
+\input{acronyms}
+
 %\mode<presentation>
 %this doesn't seem to make any difference; leave for now for trying out
 \usetheme{Berlin}
@@ -125,7 +129,9 @@
             \begin{itemize}
                 \item Start from \textbf{``standard'' resources}
                       (e.g., IEEE \cite{IEEE2022}, \cite{IEEE2021},
-                      \cite{IEEE2017}, \cite{IEEE2013}; SWEBOK \cite{SWEBOK2024})
+                      \cite{IEEE2017}, \cite{IEEE2013};
+                      %   the \acf{swebok}
+                      the SWEBOK Guide \cite{SWEBOK2024})
                 \item \textbf{Collect} relevant information (over 500 testing
                       approaches and 70 software qualities, along with their
                       definitions) and \textbf{organize} it into spreadsheets
@@ -249,7 +255,8 @@
 
             \begin{center}
                 \begin{minipage}{.9\textwidth}
-                    \begin{exampleblock}{SWEBOK's Definition of ``Scalability Testing''}
+                    \begin{exampleblock}{The \acs{swebok}'s Definition of
+                            ``Scalability Testing''}
                         {\fontsize{28}{13}\selectfont
                             ``Scalability testing evaluates the capability to
                             use and learn the system and the user documentation.
@@ -257,14 +264,14 @@
                             supporting user tasks and the ability to recover
                             from user errors'' \cite[p.~5-9]{SWEBOK2024}}
                         % \vskip3mm
-                        % \hspace*\fill{\small--- SWEBOK V4 \cite[p.~5-9]{SWEBOK2024}}
+                        % \hspace*\fill{\small--- The \acs{swebok} V4 \cite[p.~5-9]{SWEBOK2024}}
                     \end{exampleblock}
                 \end{minipage}
             \end{center}
 
             \begin{itemize}
                 \item \swebokScalDef{}
-                \item SWEBOK's definition of elasticity testing
+                \item The \acs{swebok}'s definition of elasticity testing
                       \cite[p.~5-9]{SWEBOK2024} \swebokElasRef{}
             \end{itemize}
 
