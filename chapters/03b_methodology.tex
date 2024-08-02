@@ -50,9 +50,21 @@ to gather further sources\seeParAlways{undef-terms}.
 
 \subsection{Procedure}
 
-All sources were analyzed in their entirety, except for some in
-\Cref{undef-terms}, to systematically extract terminology.
-Heuristics were used to guide this process, by investigating:
+To track terminology used in the literature, we build a glossary of test
+approaches, including the term itself, its definition, and
+any synonyms or parents. Many test approaches are multi-faceted and can be
+``specialized'' into others, such as \nameref{perf-test-rec}. These
+``specializations'' will be referred to as ``children'' of the multi-faceted
+``parent''. Any additional notes, such as questions or sources to investigate
+further, are also recorded. Approach categorizations, such as those found in
+\Cref{tab:ieeeTestTerms} and some outliers (e.g., ``artifact''), are tracked
+for future investigation.
+
+All sources are analyzed in their entirety to systematically extract
+terminology. (Some sources given in \Cref{undef-terms}
+were only partially investigated to focus on the area of interest or since
+the test approach was determined to be out-of-scope.)
+Heuristics are used to guide this process, by investigating:
 
 \begin{itemize}
       \item glossaries and lists of terms,
@@ -75,18 +87,18 @@ Heuristics were used to guide this process, by investigating:
             \seeSectionParAlways{derived-tests}.
 \end{itemize}
 
-When terms had multiple definitions, either the clearest and most concise
-version was kept, or they were merged to paint a more complete picture.
+When terms have multiple definitions, either the clearest and most concise
+version is kept, or they are merged to paint a more complete picture.
 If any discrepancies or ambiguities
-arose, they were reasonably investigated and always documented. If a
-testing approach was mentioned but not defined, it was still added to the
+arise, they are reasonably investigated and always documented. If a
+testing approach is mentioned but not defined, it is added to the
 glossary to indicate it should be investigated further%
 \seeSectionParAlways{undef-terms}. A similar methodology
-was used for tracking software qualities, albeit in a separate
+is used for tracking software qualities, albeit in a separate
 document\seeSectionParAlways{derived-tests}.
 
 During the first pass of data collection, all software-testing-focused terms
-were included. Some of them are less applicable to test case automation
+are included. Some of them are less applicable to test case automation
 \ifnotpaper{(such as \Cref{static-test}, \thesisissueref{39})}\fi or too
 broad (such as \Cref{attacks}\ifnotpaper{, \thesisissueref{55}}\fi), so they
 will be omitted over the course of analysis.
