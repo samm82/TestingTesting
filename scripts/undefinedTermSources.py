@@ -66,6 +66,11 @@ for term in undefTerms:
 paperOut = [BEGIN] + paperOut + [END]
 notPaperOut = [BEGIN] + notPaperOut + [END]
 
+PAPER_SOURCES = True
+
 with open(f"build/undefTerms.tex", "w+", encoding="utf-8") as outFile:
-   outFile.writelines("\n".join(
-       ["\\ifnotpaper"] + notPaperOut + ["\\else"] + paperOut + ["\\fi"]))
+    if PAPER_SOURCES:
+        outFile.writelines("\n".join(notPaperOut))
+    else:
+       outFile.writelines("\n".join(
+            ["\\ifnotpaper"] + notPaperOut + ["\\else"] + paperOut + ["\\fi"]))
