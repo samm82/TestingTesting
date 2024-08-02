@@ -15,6 +15,9 @@ organizing them more logically and making them:
             testing explicitly exclude an aspect included in its parent
             disaster/recovery testing)
 \end{enumerate}
+The following are our recommendations for the areas of
+\hyperref[rec-test-rec]{Recovery}, \hyperref[scal-test-rec]{Scalability}, and
+\nameref{perf-test-rec}, along with graphs of these subsets.
 
 \subsection{Recovery Testing}
 \label{rec-test-rec}
@@ -189,6 +192,13 @@ a short period''\ifnotpaper\ (\citeyear{Pandey2023};\seeThesisIssue{35})\fi.
       \end{minipage}
 \end{figure}
 
+\begin{paperFigure}
+      \centering
+      \performanceGraph{}
+      \caption{Proposed relations between rationalized ``performance-related testing'' terms.}
+      \label{fig:perf-graph}
+\end{paperFigure}
+
 To make things even more confusing, the \acs{swebok} V4 says ``scalability
 testing evaluates the capability to use and learn the system and the user
 documentation'' and ``focuses on the system's effectiveness in supporting user
@@ -198,13 +208,6 @@ tasks and the ability to recover from user errors'' \citep[p.~5-9]{SWEBOK2024}.
 should simply be disregarded, since it is inconsistent with the rest of the
 literature. The removal of the previous two synonym relations is demonstrated
 in \Cref{fig:scal-graph-current,fig:scal-graph-proposed}.
-
-\begin{paperFigure}
-      \centering
-      \performanceGraph{}
-      \caption{Proposed relations between rationalized ``performance-related testing'' terms.}
-      \label{fig:perf-graph}
-\end{paperFigure}
 
 \subsection{Performance(-related) Testing}
 \label{perf-test-rec}

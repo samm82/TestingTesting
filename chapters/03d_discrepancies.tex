@@ -177,9 +177,11 @@ differently by different sources:
 % they can be analyzed more systematically\seeThesisIssuePar{21}.
 
 \begin{enumerate}
-      \item Experience-based testing is categorized as both a test design
+      \item \ifnotpaper \citeauthor{IEEE2022} \else ISO/IEC and IEEE \fi
+            categorize experience-based testing as both a test design
             technique and a test practice on the same page---twice
-            \citep[Fig.~2,~p.~34]{IEEE2022}!
+            \ifnotpaper \citeyearpar[Fig.~2,~p.~34]{IEEE2022}\else
+                  \cite[Fig.~2,~p.~34]{IEEE2022}\fi!
             \ifnotpaper
                   \begin{itemize}
                         \item These authors previously say ``experience-based testing
