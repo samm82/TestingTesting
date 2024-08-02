@@ -7,11 +7,10 @@ Since our motivation is restricted to testing of code,
 only the ``testing'' component of
 \ifnotpaper \acf{vnv} \else Verification and Validation \acf{V\&V} \fi is
 considered\seeThesisIssuePar{22}.
-For example, design reviews \ifnotpaper \citep[see][p.~132]{IEEE2017}
-\else (see \cite[p.~132]{IEEE2017}) \fi and documentation reviews
-\ifnotpaper \citetext{see p.~132} \else (see \citetext{p.~132}) \fi
-% \citep[see][p.~144]{IEEE2017}
-are out of scope, as they focus on the \acsVNV{} of design and documentation
+For example, design reviews and documentation reviews
+\ifnotpaper \citep[see][pp.~132, 144, respectively]{IEEE2017}
+\else (see \cite[pp.~132, 144]{IEEE2017}, respectively) \fi
+are out of scope, as they focus on the \acsVNV{} of design and documentation,
 respectively. Likewise, ergonomics testing
 and proximity-based testing (see \citealpISTQB{}) are out of scope as they
 fundamentally involve hardware.
@@ -57,31 +56,32 @@ products'' \citep[p.~28]{Gerrard2000b} are not.
     device, ``into a reliable and marketable product'' \citep[p.~1]{SuhirEtAl2013}.
 \fi
 
-Furthermore, only some aspects of testing approaches are relevant.  This mainly
-manifests as a testing approach that applies to both the \acsVNV{} itself and
-the code. For example:
+Furthermore, only some aspects of some testing approaches are relevant. This
+mainly manifests as a testing approach that applies to both the \acsVNV{} itself
+and the code. For example:
 
 \begin{enumerate}
     \item \emph{Error seeding} is the ``process of intentionally adding
           known faults to those already in a computer program'',
           done to both ``monitor[] the rate of detection and removal'',
-          which is a part of \acsVNV{} of the \acsVNV{} itself, ``and
-          estimat[e] the number of faults remaining''
-          \citep[p.~165]{IEEE2017}, which helps verify the actual code.
+          which is a part of \acsVNV{} of the \acsVNV{} itself (out of scope),
+          ``and estimat[e] the number of faults remaining''
+          \citep[p.~165]{IEEE2017}, which helps verify the actual code (in scope).
     \item \emph{Fault injection testing}, where ``faults are artificially
           introduced into the \acs{sut}'', can be used to evaluate the
           effectiveness of a test suite \citep[p.~5-18]{SWEBOK2024},
-          which is a part of \acsVNV{} of the \acsVNV{} itself, or ``to test
+          which is a part of \acsVNV{} of the \acsVNV{} itself (out of scope),
+          or ``to test
           the robustness of the system in the event of internal and
           external failures'' \citep[p.~42]{IEEE2022}, which helps verify
-          the actual code.
+          the actual code (in scope).
     \item ``\emph{Mutation [t]esting} was originally conceived as a
           technique to evaluate test suites in which a mutant is a slightly
           modified version of the \acs{sut}'' \citep[p.~5-15]{SWEBOK2024},
-          which is in the realm of \acsVNV{} of the \acsVNV{} itself.
-          However, it ``can also be categorized as a structure-based
+          which is in the realm of \acsVNV{} of the \acsVNV{} itself (out of
+          scope). However, it ``can also be categorized as a structure-based
           technique'' and can be used to assist fuzz and metamorphic testing
-          \citep[p.~5-15]{SWEBOK2024}.
+          \citep[p.~5-15]{SWEBOK2024} (in scope).
           \ifnotpaper
     \item Even though \emph{reliability testing} and \emph{maintainability
               testing} can start \emph{without} code by ``measur[ing]
