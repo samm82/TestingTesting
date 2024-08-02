@@ -19,7 +19,28 @@ organizing them more logically and making them:
 \subsection{Recovery Testing}
 \label{rec-test-rec}
 The following terms should be used in place of the current terminology to
-more clearly distinguish between different recovery-related test approaches:
+more clearly distinguish between different recovery-related test approaches.
+The result of the proposed terminology, along with their relations, is
+demonstrated in \Cref{fig:recovery-graph-current,fig:recovery-graph-proposed}.
+
+% Only top or bottom to comply with IEEE guidelines
+\begin{figure}[bt]
+      \centering
+      \begin{minipage}{.575\linewidth}
+            \centering
+            \recoveryGraphCurrent{}
+            \caption{Relations between ``recovery\\
+                  testing'' terms.}
+            \label{fig:recovery-graph-current}
+      \end{minipage}%
+      \begin{minipage}{.425\linewidth}
+            \centering
+            \recoveryGraphProposed{}
+            \caption{Proposed relations between
+                  rationalized ``recovery testing'' terms.}
+            \label{fig:recovery-graph-proposed}
+      \end{minipage}
+\end{figure}
 
 \begin{itemize}
       \item \textbf{Recoverability Testing:} ``Testing \dots\ aimed at
@@ -82,27 +103,6 @@ more clearly distinguish between different recovery-related test approaches:
             \hyperref[orthogonal-tests]
             {orthogonally derived test approach}.
 \end{itemize}
-
-%% Move the definition of the figure to a bit above (in the file) where
-% you first reference the figure, so that latex will place it closer to
-% its use.
-\begin{figure}[hbtp!]
-      \centering
-      \begin{minipage}{.575\linewidth}
-            \centering
-            \recoveryGraphCurrent{}
-            \caption{ Relations between ``recovery\\
-                  testing'' terms.}
-            \label{fig:recovery-graph-current}
-      \end{minipage}%
-      \begin{minipage}{.425\linewidth}
-            \centering
-            \recoveryGraphProposed{}
-            \caption{Proposed
-                  relations between rationalized ``recovery testing'' terms.}
-            \label{fig:recovery-graph-proposed}
-      \end{minipage}
-\end{figure}
 
 \subsection{Scalability Testing}
 \label{scal-test-rec}
@@ -172,6 +172,26 @@ that scalability is the ability to ``increase
 elasticity allows a system to ``tackle changes in the workload [that] occur for
 a short period''\ifnotpaper\ (\citeyear{Pandey2023};\seeThesisIssue{35})\fi.
 
+% Only top or bottom to comply with IEEE guidelines
+\begin{figure}[bt]
+      \centering
+      \begin{minipage}{.5\linewidth}
+            \centering
+            \scalabilityGraphCurrent{}
+            \caption{Relations between ``scalability\\
+                  testing'' terms.}
+            \label{fig:scal-graph-current}
+      \end{minipage}%
+      \begin{minipage}{.5\linewidth}
+            \centering
+            \scalabilityGraphProposed{}
+            \caption{Proposed relations\\
+                  between rationalized\\
+                  ``scalability testing'' terms.}
+            \label{fig:scal-graph-proposed}
+      \end{minipage}
+\end{figure}
+
 To make things even more confusing, SWEBOK V4 says ``scalability
 testing evaluates the capability to use and learn the system and the user
 documentation'' and ``focuses on the system's effectiveness in supporting user
@@ -182,23 +202,13 @@ should simply be disregarded, since it is inconsistent with the rest of the
 literature. The removal of the previous two synonym relations is demonstrated
 in \Cref{fig:scal-graph-current,fig:scal-graph-proposed}.
 
-\begin{figure}[hbtp!]
+\begin{paperFigure}
       \centering
-      \begin{minipage}{.5\linewidth}
-            \centering
-            \scalabilityGraphCurrent{}
-            \caption{The current state of the\\
-                  relations between ``scalability\\
-                  testing'' terms.}
-            \label{fig:scal-graph-current}
-      \end{minipage}%
-      \begin{minipage}{.5\linewidth}
-            \centering
-            \scalabilityGraphProposed{}
-            \caption{The proposed relations between ``scalability testing'' terms.}
-            \label{fig:scal-graph-proposed}
-      \end{minipage}
-\end{figure}
+      \performanceGraph{}
+      \caption{Proposed relations between rationalized ``performance-related testing'' terms.}
+      \label{fig:perf-graph}
+\end{paperFigure}
+
 
 \subsection{Performance(-related) Testing}
 \label{perf-test-rec}
@@ -275,10 +285,3 @@ Finally, the ``self-loops'' mentioned in \nameref{par-rels} provide no new
 information and can be removed. These changes (along with those from
 \nameref{rec-test-rec} and \nameref{scal-test-rec} made implicitly) result in
 the relations shown in \Cref{fig:perf-graph}.
-
-\begin{paperFigure}
-      \centering
-      \performanceGraph{}
-      \caption{The proposed relations between ``performance-related testing'' terms.}
-      \label{fig:perf-graph}
-\end{paperFigure}
