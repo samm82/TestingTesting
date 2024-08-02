@@ -118,16 +118,16 @@ causing confusion.
 
 Parent relations are not immune to difficulties, including self-referential
 definitions.
-
-\input{build/selfCycles}
-
-\ifnotpaper \citeauthor{Gerrard2000a} does
-\else  \cite[Tab.~2]{Gerrard2000a} and \cite[Tab.~1]{Gerrard2000b} do
+\ifnotpaper
+      \input{build/selfCycles} Performance
+\else
+      Performance and usability testing are both given as sub-approaches of
+      themselves \cite[Tab.~2]{Gerrard2000a}, \cite[Tab.~1]{Gerrard2000b},
+      while performance
 \fi
-\emph{not} describe performance testing as a sub-category of usability testing%
-\ifnotpaper%
-      \ (\citeyear[Tab.~2]{Gerrard2000a}; \citeyear[Tab.~1]{Gerrard2000b})%
-\fi, which would have been more meaningful.
+testing is \emph{not} described as a sub-approach of usability testing%
+\ifnotpaper\ by \citep{Gerrard2000a, Gerrard2000b}, which \else. This
+\fi would have been more meaningful information to capture.
 
 \subsection{Categories of Testing Approaches}
 While the IEEE categorization of testing approaches is useful, it
