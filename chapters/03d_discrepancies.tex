@@ -1,8 +1,10 @@
 \section{Discrepancies and Ambiguities}
 \label{discrep}
 
-After gathering all this data, we found many discrepancies and
-ambiguities. We first report on the more major issues, classified under
+After gathering all this data\footnote{Available in \texttt{ApproachGlossary.csv}
+      and \texttt{QualityGlossary.csv} at [Repository link suppressed].}, we
+found many discrepancies and ambiguities. We first report on the more
+self-contained issues, classified under
 the rubrics of \nameref{syns}, \nameref{par-rels}, \nameref{categories-discrep},
 \nameref{func-test-discrep}, \ifnotpaper\nameref{oat-discrep}, \fi
 \nameref{recov-discrep},
@@ -536,24 +538,23 @@ in \Cref{fig:recovery-graph-current}.
 \subsection{Scalability Testing}
 \label{scal-discrep}
 
-There were three ambiguities around the term ``scalability testing''.
-The relations between these test approaches (and other relevant ones)
+There were three ambiguities around the term ``scalability testing'', listed
+below. The relations between these test approaches (and other relevant ones)
 are shown in \Cref{fig:scal-graph-current}.
 
 \begin{enumerate}
-      \item \ifnotpaper \citeauthor{IEEE2021} give
-            \else Reference \cite[p.~39]{IEEE2021} gives \fi ``scalability
-            testing'' as a synonym of ``capacity testing'' while other sources
-            differentiate between the two
+      \item \ifnotpaper \citeauthor{IEEE2021} \else ISO/IEC and IEEE \fi give
+            ``scalability testing'' as a synonym of ``capacity testing''
+            \ifnotpaper \citeyearpar[p.~39]{IEEE2021} \else \cite[p.~39]{IEEE2021}
+            \fi while other sources differentiate between the two
             \ifnotpaper \citetext{\citealp[p.~53]{Firesmith2015};
                         \citealp[pp.~22-23]{Bas2024}}
             \else \citep[p.~53]{Firesmith2015}, \citep[pp.~22-23]{Bas2024}
             \fi
-      \item \ifnotpaper \citeauthor{IEEE2021} include
-            \else Reference \cite[p.~39]{IEEE2021} includes \fi the external
-            modification
-            of the system as part of ``scalability'', while
-            \ifnotpaper \citeauthor{ISO_IEC2023a}
+      \item \ifnotpaper \citeauthor{IEEE2021} \else ISO/IEC and IEEE \fi give
+            the external modification of the system as part of ``scalability''
+            \ifnotpaper \citeyearpar[p.~39]{IEEE2021}\else
+                  \cite[p.~39]{IEEE2021}\fi, while \ifnotpaper \citeauthor{ISO_IEC2023a}
             \else \cite{ISO_IEC2023a} \fi implies that it is limited to the
             system itself \ifnotpaper \citeyearpar{ISO_IEC2023a} \fi
       \item The \acs{swebok} V4's definition of ``scalability testing''
@@ -606,7 +607,7 @@ and/or between a source of that category and one of a ``more trusted'' source
 
 \minorDiscrepsTable{}
 
-\subsubsection{In Standards} % TODO: how much did I *really* use these last two?
+\subsubsection{Other Discrepancies from Standards} % TODO: how much did I *really* use these last two?
 
 % Made itemized for paper; might want a custom label in future
 \begin{itemize}
@@ -754,7 +755,7 @@ and/or between a source of that category and one of a ``more trusted'' source
       \end{itemize}
 \fi
 
-\subsubsection{In ``Meta-Level'' Sources}
+\subsubsection{Other Discrepancies from ``Meta-Level'' Sources}
 
 \begin{itemize}
       \item The \acs{swebok} V4 defines ``privacy testing'' as testing that ``assess[es]
@@ -855,7 +856,7 @@ and/or between a source of that category and one of a ``more trusted'' source
 \end{itemize}
 
 \ifnotpaper
-      \subsubsection{In Textbooks}
+      \subsubsection{Other Discrepancies from Textbooks}
 
       \begin{itemize}
             \item ``Load testing'' is defined as using loads ``usually between
@@ -865,7 +866,7 @@ and/or between a source of that category and one of a ``more trusted'' source
       \end{itemize}
 \fi
 
-\subsubsection{In Other Sources}
+\subsubsection{Other Discrepancies from Other Sources}
 
 \begin{itemize}
       \ifnotpaper
