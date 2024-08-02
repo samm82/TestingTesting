@@ -3,9 +3,9 @@
 
 After gathering all this data, we found many discrepancies and
 ambiguities. We first report on the more major issues, classified under
-the rubrics of Synonyms, Parent Relations, Functional Testing, Operational
-(Acceptance) Testing, Recovery Testing, and Scalability Testing. We then
-close with some \nameref{minor-discrep}.
+the rubrics of \nameref{syns}, \nameref{par-rels}, \nameref{categories-discrep},
+\nameref{func-test-discrep}, \nameref{oat-discrep}, \nameref{recov-discrep},
+and \nameref{scal-discrep}. We then close with some \nameref{minor-discrep}.
 
 \subsection{Synonyms}
 \label{syns}
@@ -130,6 +130,7 @@ testing is \emph{not} described as a sub-approach of usability testing%
 \fi would have been more meaningful information to capture.
 
 \subsection{Categories of Testing Approaches}
+\label{categories-discrep}
 While the IEEE categorization of testing approaches is useful, it
 is not without its faults. The boundaries between items within a category may
 be unclear: ``although each technique is defined independently of all others,
@@ -289,6 +290,7 @@ test approach categorizations. This may indicate they aren't necessarily the
 same, or that more thought must be given to this method of classification.
 
 \subsection{Functional Testing}
+\label{func-test-discrep}
 
 ``Functional testing'' seems to be described in many
 ways, alongside other, likely related, terms:
@@ -402,6 +404,7 @@ ways, alongside other, likely related, terms:
 \end{itemize}
 
 \subsection{Operational (Acceptance) Testing}
+\label{oat-discrep}
 Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE2022};
 \citealpISTQB{}) while some refer to ``operational testing''
 (\citealp[p.~6-9,~in the context of software engineering operations]{SWEBOK2024};
@@ -443,7 +446,7 @@ It is also called ``recoverability testing'' \cite[p.~47]{Kam2008} and
 potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}. The
 following terms, along with ``recovery testing'' itself \citep[p.~22]{IEEE2022}
 are all classified as test types, and the relations between them can be found
-in Figure~\ref{fig:recovery-graph-current}.
+in \Cref{fig:recovery-graph-current}.
 
 %% again, maybe convert to \paragraph ?
 \begin{itemize}
@@ -505,7 +508,7 @@ in Figure~\ref{fig:recovery-graph-current}.
 
 There were three ambiguities around the term ``scalability testing''.
 The relations between these test approaches (and other relevant ones)
-are shown in Figure~\ref{fig:scal-graph-current}.
+are shown in \Cref{fig:scal-graph-current}.
 
 \begin{enumerate}
       \item \ifnotpaper \citeauthor{IEEE2021} give
