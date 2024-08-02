@@ -559,8 +559,8 @@ are shown in \Cref{fig:scal-graph-current}.
 We now outline ``minor'' discrepancies/ambiguities found
 in the literature, grouped by the ``categories'' of sources outlined in
 \nameref{source-order}. These discrepancies can then be grouped into degrees of
-severity as follows. (Note that discrepancies with ``low'' severity are
-omitted for brevity.)
+severity as follows. (Note that only certain discrepancies with ``high'' or
+``medium'' severity are listed for brevity.)
 
 \begin{itemize}
       \item High: Semantic differences between test approaches
@@ -612,6 +612,7 @@ and/or between a source of that category and one of a ``more trusted'' source
                         layer of confusion to the direction of their
                         relationship.
             \end{itemize}
+            \ifnotpaper
       \item ``Fuzz testing'' is ``tagged'' (?) as ``artificial intelligence''
             \citep[p.~5]{IEEE2022}.
       \item Integration, system, and system integration testing are all listed
@@ -628,6 +629,7 @@ and/or between a source of that category and one of a ``more trusted'' source
             related components'' \citep[p.~82]{IEEE2017}; it is a combination of
             the two? somewhere on the spectrum between them? Likewise, it is
             listed as a child of integration testing by \citetISTQB{}.
+            \fi
       \item Retesting and regression testing seem to be separated from the rest
             of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
             clearly detailed why; \citet[p.~3]{BarbosaEtAl2006} consider
@@ -649,13 +651,11 @@ and/or between a source of that category and one of a ``more trusted'' source
       \item A typo in \citep[Fig.~2]{IEEE2021} means that ``specification-based
             techniques'' is listed twice, when the latter should be
             ``structure-based techniques''.
-            \fi
       \item \citeauthor{IEEE2021} define an ``extended entry (decision) table''
             both as a decision table where the ``conditions consist of multiple
             values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021}
             and one where ``the conditions and actions are generally described
             but are incomplete'' \citeyearpar[p.~175]{IEEE2017}\todo{OG ISO1984}.
-            \ifnotpaper
       \item \citeauthor*{IEEE2017} provide a definition for ``inspections and
             audits'' \citeyearpar[p.~228]{IEEE2017}, despite also giving
             definitions for ``inspection'' (p.~227) and ``audit'' (p.~36);
@@ -728,7 +728,6 @@ and/or between a source of that category and one of a ``more trusted'' source
 \subsubsection{In ``Meta-Level'' Sources (SWEBOK \citep{SWEBOK2024,
             SWEBOK2014}, ISTQB \citepISTQB{}, or \citep{Firesmith2015})}
 
-%% You may wish to elide some of these for length
 \begin{itemize}
       \item SWEBOK V4 defines ``privacy testing'' as testing that ``assess[es]
             the security and privacy of users' personal data to prevent local
@@ -756,6 +755,7 @@ and/or between a source of that category and one of a ``more trusted'' source
             an ML system'' \citepISTQB{}. The use of ``performance'' (or
             ``correctness'') in these definitions is at best ambiguous and at
             worst incorrect.
+            \ifnotpaper
       \item While ergonomics testing is out of scope (as it tests hardware, not
             software), its definition of ``testing to determine whether a
             component or system and its input devices are being used properly
@@ -778,7 +778,6 @@ and/or between a source of that category and one of a ``more trusted'' source
             that may support software integration testing
             \citep[p.~153]{SPICE2022}; is this a testing approach or a tool
             that supports testing?
-            \ifnotpaper
       \item The source cited for the definition of ``test type'' from
             \citepISTQB{} does not seem to provide a definition itself.
       \item The same is true for ``visual testing''.
@@ -787,11 +786,11 @@ and/or between a source of that category and one of a ``more trusted'' source
       \item There is disagreement on the structure of tours; they can either be
             quite general \citep[p.~34]{IEEE2022} or ``organized around a
             special focus'' \citepISTQB{}.
+            \ifnotpaper
       \item While model testing is said to test the object under test,
             it seems to describe testing the models themselves
             \citet[p.~20]{Firesmith2015}; using the models to test the object
             under test seems to be called ``driver-based testing'' (p.~33).
-            \ifnotpaper
       \item ``System testing'' is listed as a subtype of ``system testing'' by
             \citet[p.~23]{Firesmith2015}.
       \item ``Hardware-'' and ``human-in-the-loop testing'' have the same
@@ -801,12 +800,12 @@ and/or between a source of that category and one of a ``more trusted'' source
             testing'' (``CAT'') \citep[p.~30]{Firesmith2015}.
       \item The acronym ``SoS'' is used but not defined by
             \citet[p.~23]{Firesmith2015}.
-            \fi
       \item It is ambiguous whether ``tool/environment testing'' refers to
             testing the tools/environment \emph{themselves} or \emph{using}
             them to test the object under test; the latter is implied, but the
             wording of its subtypes \citep[p.~25]{Firesmith2015} seems to imply
             the former.
+            \fi
       \item \citeauthor{ISO_IEC2023a} say that performance and security testing
             are subtypes of reliability testing \citeyearpar{ISO_IEC2023a}, but
             these are all listed separately by \citet[p.~53]{Firesmith2015}.
@@ -823,23 +822,25 @@ and/or between a source of that category and one of a ``more trusted'' source
             are unclear and seem miniscule.
 \end{itemize}
 
-\subsubsection{In Textbooks \citep{Patton2006, PetersAndPedrycz2000,
-            vanVliet2000}}
+\ifnotpaper
+      \subsubsection{In Textbooks \citep{Patton2006, PetersAndPedrycz2000,
+                  vanVliet2000}}
 
-\begin{itemize}
-      \item ``Load testing'' is defined as using loads ``usually between
-            anticipated conditions of low, typical, and peak usage''
-            \citep[p.~5]{IEEE2022}, while \citeauthor{Patton2006} says the
-            loads should as large as possible \citeyearpar[p.~86]{Patton2006}.
-\end{itemize}
+      \begin{itemize}
+            \item ``Load testing'' is defined as using loads ``usually between
+                  anticipated conditions of low, typical, and peak usage''
+                  \citep[p.~5]{IEEE2022}, while \citeauthor{Patton2006} says the
+                  loads should as large as possible \citeyearpar[p.~86]{Patton2006}.
+      \end{itemize}
+\fi
 
 \subsubsection{In Other Sources}
 
 \begin{itemize}
+      \ifnotpaper
       \item \citeauthor{Bas2024} lists ``three [backup] location categories:
             local, offsite and cloud based [sic]'' \citeyearpar[p.~16]{Bas2024},
             but does not define or discuss ``offsite backups'' (pp.~16-17).
-            \ifnotpaper
       \item \citeauthor{DoğanEtAl2014} claim that \citep{SakamotoEtAl2013}
             defines ``prime path coverage'' \citeyearpar[p.~184]{DoğanEtAl2014},
             but it doesn't.
@@ -897,9 +898,9 @@ and/or between a source of that category and one of a ``more trusted'' source
             testing (\citealp[p.~35]{IEEE2022}, \citealpISTQB{}).
       \item End-to-end functionality testing is \emph{not} indicated to be
             functionality testing \citep[Tab.~2]{Gerrard2000a}.
-            \fi
       \item \citeauthor{Gerrard2000b}'s definition for ``security audits''
             seems too specific, only applying to ``the products installed on a
             site'' and ``the known vulnerabilities for those products''
             \citeyearpar[p.~28]{Gerrard2000b}.
+            \fi
 \end{itemize}
