@@ -17,21 +17,21 @@ to gather further sources.
                   \item Ad hoc and arbitrary; not systematic
                   \item Colored \textcolor{Maroon}{maroon},
             \end{itemize}
-      \item Established standards
-            \ifnotpaper
-                  (\citealp{IEEE2022, SWEBOK2024, SWEBOK2014, IEEE2017, IEEE2013,
-                        ISO_IEC2023b, IEEE2012, ISO_IEC2023a}; \citealpISTQB{};
-                  \citealp{IEEE2021})
-            \else
-                  (such as IEEE, ISO/IEC, and SWEBOK)
-                  \citep{IEEE2022, SWEBOK2024, SWEBOK2014, IEEE2017, IEEE2013,
-                        ISO_IEC2023b, IEEE2012, ISO_IEC2023a, ISTQB, IEEE2021}
-            \fi
+      \item Established standards (such as IEEE, ISO/IEC, and SWEBOK)
             \begin{itemize}
-                  \item Standards organizations colored \textcolor{green}{green}
+                  \item Standards organizations \citep{IEEE2022, IEEE2017,
+                              IEEE2013, ISO_IEC2023b, IEEE2012, ISO_IEC2023a,
+                              IEEE2021, ISO_IEC2018, ISO2021, ISO2015}
+                        colored \textcolor{green}{green}
                   \item ``Meta-level'' commentaries or collections of
-                        terminology (often based on these standards), such as
-                        \citep{Firesmith2015}, colored \textcolor{blue}{blue},
+                        terminology (often based on these standards)
+                        \ifnotpaper
+                              (\citealp{SWEBOK2024, SWEBOK2014};
+                              \citealpISTQB{}; \citealp{Firesmith2015})
+                        \else
+                              \cite{ISTQB}, \cite{Firesmith2015},
+                              \cite{SWEBOK2024}, \cite{SWEBOK2014}
+                        \fi colored \textcolor{blue}{blue},
             \end{itemize}
       \item Other resources: less-formal classifications of terminology
             \ifnotpaper
