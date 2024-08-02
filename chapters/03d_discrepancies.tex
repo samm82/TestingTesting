@@ -81,11 +81,15 @@ are many instances of incorrect or ambiguous synonyms, such as the following:
             \ifnotpaper\citeyearpar[p.~43]{Kam2008}\else\citetext{p.~43}\fi.
 \end{enumerate}
 
+\phantomsection{}
+\label{multiSyns}
 There are also cases in which a term is given a synonym to two (or more)
 disjoint, unrelated terms, which would be a source of ambiguity to teams using
-these terms. The following are \ifnotpaper \else four out of ten \fi
-examples that have arisen\ifnotpaper\ (synonyms in \emph{italics} have at least
-      one of their synonyms implied)\fi:
+these terms. Ten of these cases were identified through automatic analysis of
+the generated graphs%
+\ifnotpaper, listed below (synonyms in \emph{italics} have at least
+one of their synonyms implied)%
+\else. The following four are the most prominent examples\fi:
 
 \begin{enumerate}
       \ifnotpaper \input{build/multiSyns} \else \input{assets/misc/multiSyns} \fi
@@ -127,7 +131,8 @@ sub-approach of the other, abusing the meaning of ``synonym'' and
 causing confusion.
 \ifnotpaper In the next list, lack of source implies the relationship
       in inferrable from the terms' definitions.
-\else The 7 (out of 14) pairs where each relation has a concrete
+\else Fourteen of these pairs were identified through automatic analysis of the
+      generated graphs. The seven pairs where each relation has a concrete
       source are given in \Cref{tab:parSyns}.
 \fi
 
@@ -147,14 +152,11 @@ causing confusion.
 \label{par-rels}
 
 Parent relations are not immune to difficulties, including self-referential
-definitions.
-\ifnotpaper
-      \input{build/selfCycles} Performance
-\else
-      Performance and usability testing are both given as sub-approaches of
-      themselves \cite[Tab.~2]{Gerrard2000a}, \cite[Tab.~1]{Gerrard2000b},
-      while performance
-\fi
+definitions, which were identified through automatic analysis of the generated
+graphs. \ifnotpaper \input{build/selfCycles} Performance
+\else Performance and usability testing are both given as sub-approaches of
+      themselves \cite[Tab.~1]{Gerrard2000b}, \cite[Tab.~2]{Gerrard2000a},
+      while performance \fi
 testing is \emph{not} described as a sub-approach of usability testing%
 \ifnotpaper\ by \citep{Gerrard2000a, Gerrard2000b}, which \else. This
 \fi would have been more meaningful information to capture.
@@ -338,7 +340,7 @@ ways, alongside other, likely related, terms:
             \todo{\citet[p.~399]{vanVliet2000} may list these as synonyms;
                   investigate}
             Notably, \citet{IEEE2017} lists both as synonyms of
-            ``black-box testing'' (pp. 431, 196, respectively). But
+            ``black-box testing'' \citetext{pp. 431, 196, respectively}. But
             they are sometimes defined as separate terms: ``specification-based
             testing'' as ``testing based on an analysis of the specification
             of the component or system'' (including ``black-box testing'' as a

@@ -168,3 +168,18 @@ can be made that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
 (\TotalAfter - \TotalBefore)\relax\% of added terms also included a definition):
 
 \input{build/undefTerms}
+
+We then develop a tool to automatically generate graphs of the relations
+between test approaches. All child-parent relations are graphed, as well as
+synonym relations where either:
+\begin{enumerate}
+      \item both terms are present in the glossary, or
+      \item one term is synonyms with more than one term that is present in the
+            glossary\seeParAlways{multiSyns}.
+\end{enumerate}
+\Cref{fig:recovery-graph-current,fig:scal-graph-current} are modified versions
+of these graphs generated based on the existing literature, focused on specific
+subsets of testing terminology. This tool was also expanded to be able to make
+changes to these generated graphs based on our \nameref{recs}.
+\Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed,fig:perf-graph} are
+modified versions of these proposed graphs.
