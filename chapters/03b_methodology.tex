@@ -1,13 +1,17 @@
 \section{Methodology}
 \label{method}
 
-\subsection{Source Order}
-\label{source-order}
+\subsection{Sources}
+\label{sources}
 As there is no single authoritative source on software testing terminology,
 we need to look at many. Unfortunately, this brings to light a variety of
 discrepancies. Starting from some set of sources, we then use
 ``snowballing'' % needs a reference!
-to gather further sources\seeParAlways{undef-terms}.
+to gather further sources\seeParAlways{undef-terms}. Groups of sources with
+information that shows up in a relevant graph are given a unique colour to
+better visualize them; see \Cref{fig:recovery-graph-current,%
+      fig:recovery-graph-proposed,fig:scal-graph-current,%
+      fig:scal-graph-proposed,fig:perf-graph}.
 
 \begin{enumerate}
       \setcounter{enumi}{-1}
@@ -15,7 +19,7 @@ to gather further sources\seeParAlways{undef-terms}.
             \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
             \begin{itemize}
                   \item Ad hoc and arbitrary; not systematic
-                  \item Colored \textcolor{Maroon}{maroon},
+                        % \item Colored \textcolor{Maroon}{maroon},
             \end{itemize}
       \item Established standards, such as IEEE, ISO/IEC, and the \acf{swebok}
             \begin{itemize}
@@ -29,8 +33,7 @@ to gather further sources\seeParAlways{undef-terms}.
                               (\citealp{SWEBOK2024, SWEBOK2014};
                               \citealpISTQB{}; \citealp{Firesmith2015})
                         \else
-                              \cite{ISTQB}, \cite{Firesmith2015},
-                              \cite{SWEBOK2024}, \cite{SWEBOK2014}
+                              \cite{SWEBOK2024, SWEBOK2014, ISTQB, Firesmith2015}
                         \fi colored \textcolor{blue}{blue},
             \end{itemize}
       \item Other resources: less-formal classifications of terminology
@@ -126,7 +129,6 @@ will be omitted over the course of analysis.
                   \citep[p.~424]{IEEE2017}
       \end{itemize}
 \fi
-
 \subsection{Undefined Terms}
 \label{undef-terms}
 
