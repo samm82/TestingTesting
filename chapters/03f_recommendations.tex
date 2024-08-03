@@ -149,18 +149,20 @@ claim that one objective of elasticity testing is ``to evaluate scalability''
 \citep[p.~5-9]{SWEBOK2024}: \ifnotpaper \citeauthor{ISO_IEC2023a}%
 \else \cite{ISO_IEC2023a}\fi's notion of ``scalability''
 likely refers more accurately to ``elasticity''! This also makes sense in the
-context of other definitions provided by the \acs{swebok} V4 \citep{SWEBOK2024}:
+context of other definitions provided by the \acs{swebok} V4:
 \begin{itemize}
       \item \textbf{Scalability:} ``the software's ability to increase and
             scale up on its nonfunctional requirements, such as load, number of
-            transactions, and volume of data'' \citetext{p.~5-5}. Based on this
+            transactions, and volume of data'' \citep[p.~5-5]{SWEBOK2024}.
+            Based on this
             definition, scalability testing is then a subtype of load testing
             and volume testing, as well as potentially transaction flow testing.
       \item \textbf{Elasticity Testing\footnote{While this definition seems
                         correct, it \swebokElasRef{}}:} testing that ``assesses
             the ability of the \acs{sut} \dots\ to rapidly expand or shrink
             compute, memory, and storage resources without compromising the
-            capacity to meet peak utilization'' \citetext{p.~5-9}. Based on this
+            capacity to meet peak utilization'' \citep[p.~5-9]{SWEBOK2024}.
+            Based on this
             definition, elasticity testing is then a subtype of memory
             management testing (with both being a subtype of resource
             utilization testing) and stress testing.
