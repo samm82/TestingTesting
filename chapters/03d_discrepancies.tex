@@ -148,7 +148,20 @@ one of their synonyms implied)%
       \end{itemize}
 \fi
 
-There are pairs of synonyms where one is described as a
+\subsection{Parent Relations}
+\label{par-rels}
+
+Parent relations are not immune to difficulties, including self-referential
+definitions, which were identified through automatic analysis of the generated
+graphs. \ifnotpaper \input{build/selfCycles} Performance
+\else Performance and usability testing are both given as sub-approaches of
+      themselves \cite[Tab.~1]{Gerrard2000b}, \cite[Tab.~2]{Gerrard2000a},
+      while performance \fi
+testing is \emph{not} described as a sub-approach of usability testing%
+\ifnotpaper\ by \citep{Gerrard2000a, Gerrard2000b}, which \else. This
+\fi would have been more meaningful information to capture.
+
+There are also pairs of synonyms where one is described as a
 sub-approach of the other, abusing the meaning of ``synonym'' and
 causing confusion.
 \ifnotpaper In the next list, lack of source implies the relationship
@@ -169,19 +182,6 @@ causing confusion.
                   meaningful\seeThesisIssuePar{59}.
       \end{itemize}
 \else \input{assets/misc/parSyns} \fi
-
-\subsection{Parent Relations}
-\label{par-rels}
-
-Parent relations are not immune to difficulties, including self-referential
-definitions, which were identified through automatic analysis of the generated
-graphs. \ifnotpaper \input{build/selfCycles} Performance
-\else Performance and usability testing are both given as sub-approaches of
-      themselves \cite[Tab.~1]{Gerrard2000b}, \cite[Tab.~2]{Gerrard2000a},
-      while performance \fi
-testing is \emph{not} described as a sub-approach of usability testing%
-\ifnotpaper\ by \citep{Gerrard2000a, Gerrard2000b}, which \else. This
-\fi would have been more meaningful information to capture.
 
 \subsection{Categories of Testing Approaches}
 \label{categories-discrep}
