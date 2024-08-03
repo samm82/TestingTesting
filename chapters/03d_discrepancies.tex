@@ -4,12 +4,6 @@
 After gathering all this data\footnote{Available in \texttt{ApproachGlossary.csv}
       and \texttt{QualityGlossary.csv} at [Repository link suppressed].}, we
 found many discrepancies and ambiguities.
-% We first report on the more
-% self-contained issues, classified under
-% the rubrics of \nameref{syns}, \nameref{par-rels}, \nameref{categories-discrep},
-% \nameref{func-test-discrep}, \ifnotpaper\nameref{oat-discrep}, \fi
-% \nameref{recov-discrep},
-% and \nameref{scal-discrep}. We then close with some \nameref{other-discrep}.
 
 A summary of the number of different kinds of discrepancies is shown in
 \refDiscrepsReqsTable{}, where a given row corresponds to the number of
@@ -17,9 +11,13 @@ discrepancies either within/between one or more sources within that category
 and/or between a source of that category and one of a ``more trusted'' source
 (i.e., a source from a category higher up in the table). Issues with
 \nameref{syns}, \nameref{par-rels}, and \nameref{categories-discrep} are
-(Exp)licit or (Imp)lied. \nameref{other-discrep}
-are grouped into degrees of severity as follows. (Note that only certain
-discrepancies with ``high'' or ``medium'' severity are listed for brevity.)
+(Exp)licit or (Imp)lied. Issues with the following test approaches are also
+given: \hyperref[func-test-discrep]{(Func)tional Testing},
+\hyperref[oat-discrep]{\acf{oat}\ifnotpaper\else\footnote{Section omitted for
+                  brevity.}\fi}, \hyperref[recov-discrep]{(Rec)overy Testing},
+and \hyperref[scal-discrep]{(Scal)ability Testing}. \nameref{other-discrep}
+are grouped into degrees of severity as follows. (Note that only select
+discrepancies are listed for brevity.)
 
 \begin{itemize}
       \item High: Semantic differences between test approaches
@@ -387,8 +385,8 @@ specification-based testing \citep[pp.~2-4,~6-9,~22]{IEEE2022} \ifnotpaper and
 ``test cases can be designed to check that the functional
 specifications are correctly implemented, which is variously
 referred to in the literature as conformance testing, correctness
-testing or functional testing'' \ifnotpaper \citet[p.~5-7]{SWEBOK2024}\else
-      \cite[p.~5-7]{SWEBOK2024}\fi; this mirrors previous definitions
+testing or functional testing'' \ifnotpaper \citeyearpar[p.~5-7]{SWEBOK2024}%
+\else \cite[p.~5-7]{SWEBOK2024}\fi; this mirrors previous definitions
 of ``functional testing'' \ifnotpaper (\citealp[p.~21]{IEEE2022};
       \citeyear[p.~196]{IEEE2017}) \else \cite[p.~196]{IEEE2017},
       \cite[p.~21]{IEEE2022} \fi but groups it with ``correctness
