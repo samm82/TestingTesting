@@ -326,116 +326,127 @@ same, or that more thought must be given to this method of classification.
 \subsection{Functional Testing}
 \label{func-test-discrep}
 
-``Functional testing'' seems to be described in many
-ways, alongside other, likely related, terms:
+``Functional testing'' is described alongside many other, likely related,
+terms. This leads to confusion about what distinguishes these terms, as shown
+by the following five:
 
-% Rather than using 'itemize', which steals which a lot of space (by
-% indenting), use \paragraph{} instead, i.e.
-% \paragraph{Specification-based Testing} is defined as ...
-\begin{itemize}
-      \item \textbf{Specification-based Testing} is defined as ``testing
-            in which the principal test basis is the external inputs and
-            outputs of the test item'' \citep[p.~9]{IEEE2022}, which agrees
-            with a definition of ``functional testing'': ``testing that
-            \dots\ focuses solely on the outputs generated in response to
-            selected inputs and execution conditions'' \citep[p.~196]{IEEE2017}.
-            \todo{\citet[p.~399]{vanVliet2000} may list these as synonyms;
-                  investigate}
-            Notably, \citet{IEEE2017} lists both as synonyms of
-            ``black-box testing'' \citetext{pp. 431, 196, respectively}. But
-            they are sometimes defined as separate terms: ``specification-based
-            testing'' as ``testing based on an analysis of the specification
-            of the component or system'' (including ``black-box testing'' as a
-            synonym) and ``functional testing'' as ``testing performed to
-            evaluate if a component or system satisfies functional
-            requirements'' (specifying no synonyms) \citepISTQB{}; the latter
-            references \citet[p.~196]{IEEE2017}
-            (``testing conducted to evaluate the compliance of a system or
-            component with specified functional requirements'') which
-            \emph{has} ``black-box testing'' as a synonym, and mirrors
-            \citet[p.~21]{IEEE2022} (testing ``used to check the implementation
-            of functional requirements''). Overall, specification-based testing
-            \citep[pp.~2-4,~6-9,~22]{IEEE2022} and black-box testing
-            (\citealp[p.~5-10]{SWEBOK2024}; \citealp[p.~3]{SouzaEtAl2017})
-            are test design techniques used to ``derive corresponding test cases''
-            \citep[p.~11]{IEEE2022} (from given ``selected inputs and execution
-            conditions'' \citep[p.~196]{IEEE2017}).
+\subsubsection{Specification-based Testing}
+\label{spec-func-test}
+This is defined as ``testing in which the principal test basis is the external
+inputs and outputs of the test item'' \citep[p.~9]{IEEE2022}. This agrees
+with a definition of ``functional testing'': ``testing that
+\dots\ focuses solely on the outputs generated in response to
+selected inputs and execution conditions'' \citep[p.~196]{IEEE2017}.
+\todo{\citet[p.~399]{vanVliet2000} may list these as synonyms; investigate}
+Notably, \citet{IEEE2017} lists both as synonyms of
+``black-box testing'' \citetext{pp. 431, 196, respectively}, despite them
+sometimes being defined separately. For example, the \acf{istqb} defines
+``specification-based testing'' as ``testing based on an analysis of the
+specification of the component or system'' \ifnotpaper (and gives ``black-box
+      testing'' as a synonym) \fi and ``functional testing'' as ``testing
+performed to evaluate if a component or system satisfies functional
+requirements'' \ifnotpaper (specifying no synonyms) \citepISTQB{};
+      the latter references \citet[p.~196]{IEEE2017}
+      (``testing conducted to evaluate the compliance of a system or
+      component with specified functional requirements'') which
+      \emph{has} ``black-box testing'' as a synonym, and mirrors
+      \citet[p.~21]{IEEE2022} (testing ``used to check the implementation
+      of functional requirements'')\else \cite{ISTQB}\fi. Overall,
+specification-based testing \citep[pp.~2-4,~6-9,~22]{IEEE2022} \ifnotpaper and
+      black-box testing (\citealp[p.~5-10]{SWEBOK2024};
+      \citealp[p.~3]{SouzaEtAl2017})
+      % \else \cite[p.~3]{SouzaEtAl2017}, \cite[p.~5-10]{SWEBOK2024}
+      are test design techniques \else is a test design technique \fi used to
+``derive corresponding test cases'' \citep[p.~11]{IEEE2022} from
+``selected inputs and execution conditions'' \citep[p.~196]{IEEE2017}.
 
-      \item \textbf{Correctness Testing} \citet[p.~5-7]{SWEBOK2024} says
-            ``test cases can be designed to check that the functional
-            specifications are correctly implemented, which is variously
-            referred to in the literature as conformance testing, correctness
-            testing or functional testing''; this mirrors previous definitions
-            of ``functional testing'' (\citealp[p.~21]{IEEE2022};
-            \citeyear[p.~196]{IEEE2017}) but groups it with ``correctness
-            testing''. Since ``correctness'' is a software quality
-            (\citealp[p.~104]{IEEE2017}; \citealp[p.~3-13]{SWEBOK2024}) which is
-            what defines a ``test type'' \citep[p.~15]{IEEE2022}, it seems
-            consistent to label ``functional testing'' as a ``test type''
-            \citep[pp.~15,~20,~22]{IEEE2022}. This is listed separately from
-            ``functionality testing'' by \citet[p.~53]{Firesmith2015}.
+\subsubsection{Correctness Testing}
+\ifnotpaper \citeauthor{SWEBOK2024} \else The \acs{swebok} V4 \fi says
+``test cases can be designed to check that the functional
+specifications are correctly implemented, which is variously
+referred to in the literature as conformance testing, correctness
+testing or functional testing'' \ifnotpaper \citet[p.~5-7]{SWEBOK2024}\else
+      \cite[p.~5-7]{SWEBOK2024}\fi; this mirrors previous definitions
+of ``functional testing'' \ifnotpaper (\citealp[p.~21]{IEEE2022};
+      \citeyear[p.~196]{IEEE2017}) \else \cite[p.~196]{IEEE2017},
+      \cite[p.~21]{IEEE2022} \fi but groups it with ``correctness
+testing''. Since ``correctness'' is a software quality \ifnotpaper
+      (\citealp[p.~104]{IEEE2017}; \citealp[p.~3-13]{SWEBOK2024}) \else
+      \cite[p.~104]{IEEE2017}, \cite[p.~3-13]{SWEBOK2024} \fi which is
+what defines a ``test type'' \citep[p.~15]{IEEE2022}\seeParAlways{qual-test},
+it seems consistent to label ``functional testing'' as a ``test type''
+\citep[pp.~15,~20,~22]{IEEE2022}; this conflicts with its categorization
+as a ``technique'' if considered a synonym of \nameref{spec-func-test}.
+``Correctness testing'' is listed separately from ``functionality testing'' by
+\citet[p.~53]{Firesmith2015}.
 
-      \item \textbf{Conformance Testing}
-            \citet[p.~5-7]{SWEBOK2024} insures ``that the functional
-            specifications are correctly implemented'', and can be called
-            ``conformance testing'' or ``functional testing''.
-            ``Conformance testing'' is later defined as used ``to
-            verify that the \acs{sut} conforms to standards, rules,
-            specifications, requirements, design, processes, or practices''
-            \citep[p.~5-7]{SWEBOK2024}. This definition seems to be a superset
-            of testing methods mentioned earlier as the latter includes ``standards'',
-            ``rules'', ``requirements'', ``design'', ``processes'', and
-            ``practices'' as well as ``specifications''!
+\subsubsection{Conformance Testing}
+Testing that ensures ``that the functional specifications are correctly
+implemented'', and can be called ``conformance testing'' or ``functional
+testing'' \citep[p.~5-7]{SWEBOK2024}.
+``Conformance testing'' is later defined as testing used ``to
+verify that the \acs{sut} conforms to standards, rules,
+specifications, requirements, design, processes, or practices''
+\citep[p.~5-7]{SWEBOK2024}. This definition seems to be a superset
+of testing methods mentioned earlier as the latter includes ``standards,
+rules, requirements, design, processes, \dots\ [and]'' practices in
+\emph{addition} to specifications!
 
-            A complicating factor is that ``compliance testing'' is also
-            (plausibly!) given as a synonym of ``conformance testing''
-            \citep[p.~43]{Kam2008}. However, ``conformance
-            testing'' can also be defined as testing that evaluates the degree
-            to which ``results \dots\ fall within the limits that define
-            acceptable variation for a quality requirement''
-            \citep[p.~93]{IEEE2017}\todo{OG PMBOK 5th ed.}, which seems to
-            describe something different.
+A complicating factor is that ``compliance testing'' is also
+(plausibly) given as a synonym of ``conformance testing''
+\citep[p.~43]{Kam2008}. However, ``conformance
+testing'' can also be defined as testing that evaluates the degree
+to which ``results \dots\ fall within the limits that define
+acceptable variation for a quality requirement''
+\citep[p.~93]{IEEE2017}\todo{OG PMBOK 5th ed.}, which seems to
+describe something different.
 
-            % TODO: pull out into Recommendations
-            % Perhaps this second definition of
-            % ``conformance testing'' should be used, and the previous definition
-            % of ``compliance testing'' should be used for describing compliance with
-            % external standards, rules, etc.~to keep them distinct.
+% TODO: pull out into Recommendations
+% Perhaps this second definition of
+% ``conformance testing'' should be used, and the previous definition
+% of ``compliance testing'' should be used for describing compliance with
+% external standards, rules, etc.~to keep them distinct.
 
-      \item \textbf{Functional Suitability Testing:} Procedure testing is
-            called a ``type of functional suitability testing''
-            \citep[p.~7]{IEEE2022}, but no definition of that term is given.
-            ``Functional suitability'' is the
-            ``capability of a product to provide functions that meet stated and
-            implied needs of intended users when it is used under specified
-            conditions'', including meeting ``the functional specification''
-            \citep{ISO_IEC2023a}. This seems to align with the definition of
-            ``functional testing'' as related to ``black-box/%
-            specification-based testing''. ``Functional suitability'' has
-            three child terms: ``functional completeness'' (the ``capability of
-            a product to provide a set of functions that covers all the
-            specified tasks and intended users' objectives''), ``functional
-            correctness'' (the ``capability of a product to provide accurate
-            results when used by intended users''), and ``functional
-            appropriateness'' (the ``capability of a product to provide
-            functions that facilitate the accomplishment of specified tasks and
-            objectives'') \citep{ISO_IEC2023a}. Notably, ``functional
-            correctness'', which includes precision and accuracy
-            (\citealp{ISO_IEC2023a}; \citealpISTQB{}), seems to align with
-            the quality/ies that would be tested by ``correctness'' testing.
+\subsubsection{Functional Suitability Testing}
+Procedure testing is
+called a ``type of functional suitability testing''
+\citep[p.~7]{IEEE2022}, but no definition of that term is given.
+``Functional suitability'' is the
+``capability of a product to provide functions that meet stated and
+implied needs of intended users when it is used under specified
+conditions'', including meeting ``the functional specification''
+\citep{ISO_IEC2023a}. This seems to align with the definition of
+``functional testing'' as related to ``black-box/%
+specification-based testing''.
+\ifnotpaper
+      ``Functional suitability'' has
+      three child terms: ``functional completeness'' (the ``capability of
+      a product to provide a set of functions that covers all the
+      specified tasks and intended users' objectives''), ``functional
+      correctness'' (the ``capability of a product to provide accurate
+      results when used by intended users''), and ``functional
+      appropriateness'' (the ``capability of a product to provide
+      functions that facilitate the accomplishment of specified tasks and
+      objectives'') \citep{ISO_IEC2023a}. Notably, ``functional
+      correctness'', which includes precision and accuracy
+      (\citealp{ISO_IEC2023a}; \citealpISTQB{}), \else ``Functional
+      correctness'', a child of ``functional suitability'', is the ``capability
+      of a product to provide accurate results when used by intended users''
+      \cite{ISO_IEC2023a} and \fi seems to align with
+the quality/ies that would be tested by ``correctness'' testing.
 
-      \item \textbf{Functionality Testing}, ``Functionality'' is defined as the
-            ``capabilities of the various \dots\ features provided by a product''
-            \citep[p.~196]{IEEE2017} and is said to be a synonym of
-            ``functional suitability'' \citepISTQB{}, although it seems
-            like it should really be its ``parent''. Its associated test type
-            is implied to be a sub-approach of build verification testing
-            \citepISTQB{} and made distinct from ``functional testing'';
-            interestingly, security is described as a sub-approach of both
-            non-functional and functionality testing \citep[Tab.~2]{Gerrard2000a}.
-            This is listed separately from ``correctness testing'' by
-            \citet[p.~53]{Firesmith2015}.
-\end{itemize}
+\subsubsection{Functionality Testing}
+``Functionality'' is defined as the
+``capabilities of the various \dots\ features provided by a product''
+\citep[p.~196]{IEEE2017} and is said to be a synonym of
+``functional suitability'' \citepISTQB{}, although it seems
+like it should really be its ``parent''. Its associated test type
+is implied to be a sub-approach of build verification testing
+\citepISTQB{} and made distinct from ``functional testing''%
+\ifnotpaper; interestingly, security is described as a sub-approach of both
+non-functional and functionality testing\fi\ \citep[Tab.~2]{Gerrard2000a}.
+``Functionality testing'' is listed separately from ``correctness testing'' by
+\citet[p.~53]{Firesmith2015}.
 
 \ifnotpaper
       \subsection{Operational (Acceptance) Testing}
