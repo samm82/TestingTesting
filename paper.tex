@@ -46,33 +46,30 @@
 
 \begin{abstract}
     Testing is a pervasive software development activity that is often
-    complicated and expensive (if not simply overlooked).  This is in
-    part due to an unstable knowledge base: there is no standard, consistent,
-    and ``complete'' taxonomy for software testing, inhibiting precise
-    communication.
-    Discrepancies and ambiguities are widespread throughout the literature, and
-    sometimes exist between different parts of the same document!
+    complicated and expensive (if not simply overlooked), partly due to
+    the lack of a standardized and consistent taxonomy for software testing.
+    This hinders precise communication, leading to discrepancies and
+    ambiguities across the literature and even within individual documents!
     % Therefore, automating the software testing process is an area of interest,
     % and understanding the underlying domain is an important prerequisite.
-    We systematically investigate the current state of software terminology.
-    We 1) identify established standards
-    and prominent testing resources,
-    2) capture relevant testing terms
-    from these sources, along with their definitions and relationships (both
-    explicit and implied), and 3) build graphs to visualize and analyze
-    this data. Over 500 test approaches were uncovered, as well as
+    In this paper, we systematically examine the current state of software
+    testing terminology. We 1) identify established standards
+    and prominent testing resources, 2) capture relevant testing terms
+    from these sources, along with their definitions and relationships---both
+    explicit and implied---and 3) construct graphs to visualize and analyze
+    this data. Our research uncovered more than 500 test approaches and
     four methods for describing ``implied'' test approaches. We also build
-    a tool to generate graphs of the relations between test
+    a tool for generating graphs that illustrate relations between test
     approaches and track ambiguities captured by this tool and
     manually through the research process. Our results reveal 127 discrepancies
-    or ambiguities, including ten terms given as synonyms to two (or more)
-    disjoint test approaches and 14 pairs of test approaches may be synonyms
-    and/or have a child-parent relationship. There is also confusion
-    surrounding functional, recovery, scalability, and performance testing,
-    along with 45 ``smaller'' discrepancies. Overall, there is a need for
-    testing terminology to be standardized to make the discussion, analysis,
-    and implementation of various test approaches more coherent. We
-    provide some preliminary advice on how to accomplish this.
+    or ambiguities, including ten terms used as synonyms to two (or more)
+    disjoint test approaches and 14 pairs of test approaches may either be
+    synonyms or have a child-parent relationship. Confusion was notable
+    around functional, recovery, scalability, and performance testing,
+    along with 45 other discrepancies. These findings make clear the urgent
+    need for improved testing terminology so that the discussion, analysis and
+    implementation of various test approaches can be more coherent. We
+    provide some preliminary advice on how to achieve this standardization.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -128,8 +125,9 @@ and relations between terms.
 
 \section*{Acknowledgment}
 
-ChatGPT was used to assist with \LaTeX{} formatting and supplementary Python
-code for building graphs and generating \LaTeX{} code, including regex.
+ChatGPT was used for proofreading and assistance with \LaTeX{} formatting and
+supplementary Python code for constructing graphs and generating \LaTeX{} code,
+including regex.
 % Double blind
 % Jason Balaci's \href{https://github.com/balacij/McMaster-Thesis-Template}
 % {Mcmaster thesis template} provided many helper \LaTeX{} functions.
