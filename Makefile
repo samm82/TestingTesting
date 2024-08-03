@@ -11,6 +11,8 @@ CUSTOM_STUBS = recovery scalability performance
 ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
 CUSTOM_GRAPHS = $(addprefix assets/graphs/, $(addsuffix Graph, $(ALL_CUSTOM_STUBS)))
 
+PAPER_NAME = PuttingSoftwareTestingTerminologyToTheTest
+
 help:
 	@echo "Build:"
 	@echo "  - build : Build a fresh copy of the thesis."
@@ -79,13 +81,13 @@ custom_graphs:
 graphs:
 	make compile_graphs
 
-paper: gen_latex # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+paper: gen_latex # standard build of ICSE paper -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
 # grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
-	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape paper.tex
-	cp build/paper.pdf paper.pdf
+	-latexmk -jobname=build/$(PAPER_NAME) -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape paper.tex
+	cp build/$(PAPER_NAME).pdf $(PAPER_NAME).pdf
 
 notes: gen_latex # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
