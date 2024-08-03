@@ -11,7 +11,7 @@ CUSTOM_STUBS = recovery scalability performance
 ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
 CUSTOM_GRAPHS = $(addprefix assets/graphs/, $(addsuffix Graph, $(ALL_CUSTOM_STUBS)))
 
-PAPER_NAME = PuttingSoftwareTestingTerminologyToTheTest
+PAPER_NAME = PuttingSoftwareTestingTerminologyToTheTestBLIND
 
 help:
 	@echo "Build:"
