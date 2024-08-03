@@ -1,16 +1,16 @@
 \section{Discrepancies and Ambiguities}
 \label{discrep}
 
+% Moved earlier to display nicely in paper
+% \discrepsTable{}
+
 After gathering all this data\footnote{Available in \texttt{ApproachGlossary.csv}
       and \texttt{QualityGlossary.csv} at [Repository link suppressed].}, we
-found many discrepancies and ambiguities.
-
-A summary of the number of different kinds of discrepancies is shown in
+found many discrepancies and ambiguities. A summary of these is shown in
 \refDiscrepsReqsTable{}, where a given row corresponds to the number of
-discrepancies either within/between one or more sources within that category
-and/or between a source of that category and one of a ``more trusted'' source
-(i.e., a source from a category higher up in the table). Issues with
-\nameref{syns}, \nameref{par-rels}, and \nameref{categories-discrep} are
+discrepancies either within that category and/or with a ``more trusted''
+category (i.e., with a source from a category higher up in the table). Issues
+with \nameref{syns}, \nameref{par-rels}, and \nameref{categories-discrep} are
 (Exp)licit or (Imp)lied. Issues with the following test approaches are also
 given: \hyperref[func-test-discrep]{(Func)tional Testing},
 \hyperref[oat-discrep]{\acf{oat}\ifnotpaper\else\footnote{Section omitted for
@@ -22,10 +22,8 @@ discrepancies are listed for brevity.)
 \begin{itemize}
       \item High: Semantic differences between test approaches
       \item (Med)ium: Differences in supporting information about test approaches
-      \item Low: Typos, redundant information, or referencing issues
+      \item Low: Typos, redundancy, or issues with referencing
 \end{itemize}
-
-\discrepsTable{}
 
 \subsection{Synonyms}
 \label{syns}
@@ -111,6 +109,9 @@ the generated graphs%
 one of their synonyms implied)%
 \else. The following four are the most prominent examples\fi:
 
+% Moved here to display nicely in paper
+\ifnotpaper\else\input{assets/misc/parSyns}\fi
+
 \begin{enumerate}
       \ifnotpaper \input{build/multiSyns} \else \input{assets/misc/multiSyns} \fi
 \end{enumerate}
@@ -179,7 +180,8 @@ causing confusion.
                   seems arbitrary, but further investigation may prove it to be
                   meaningful\seeThesisIssuePar{59}.
       \end{itemize}
-\else \input{assets/misc/parSyns} \fi
+\else % \input{assets/misc/parSyns} Moved earlier to display nicely in paper
+\fi
 
 \subsection{Categories of Testing Approaches}
 \label{categories-discrep}

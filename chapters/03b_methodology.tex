@@ -152,8 +152,8 @@ The search process led to some testing approaches being
 mentioned without definition;
 \citep{IEEE2022} and \citep{Firesmith2015} in particular introduced many.
 Once ``standard'' sources had been exhausted, we devised a strategy to
-look for sources that explicitly defined these terms, consistent with
-our snowballing approach. This uncovered new approaches, both in and out of
+look for sources that explicitly define these terms, consistent with
+our snowballing approach. This uncovers new approaches, both in and out of
 scope (such as \acf{emsec} testing, HTML testing, and aspects of loop testing and
 orthogonal array testing\seeSectionPar{scope}).
 
@@ -169,7 +169,10 @@ can be made that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
 
 \input{build/undefTerms}
 
-We then develop a tool to automatically generate graphs of the relations
+% Moved here to display nicely in paper
+\ifnotpaper\else\ieeeTestTermsTable{}\fi
+
+We then developed a tool to automatically generate graphs of the relations
 between test approaches. All child-parent relations are graphed, as well as
 synonym relations where either:
 \begin{enumerate}
