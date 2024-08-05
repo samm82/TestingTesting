@@ -379,13 +379,21 @@ for synList in [expMultiSyns, impMultiSyns]:
             noSources.append(line)
     synLines += allSources + someSources + noSources
 
-def writeHelperFile(lines, filename):
-    lines = "\n".join(lines)
+def writeFile(lines, filename, helper: bool = False):
+    lines = [line + '\n' for line in lines]
+    if helper:
+        filename = f"build/{filename}.tex"
+    else:
+        filename = f"assets/graphs/{filename}.tex"
 
-    with open(f"build/{filename}.tex", "w+", encoding="utf-8") as outFile:
-        outFile.writelines(lines)
+    with open(filename, "r", encoding="utf-8") as readFile:
+        if readFile.readlines() != lines:
+            with open(filename, "w+", encoding="utf-8") as outFile:
+                outFile.writelines(lines)
+        else:
+            print(f"No changes to {filename}")
 
-writeHelperFile(synLines, "multiSyns")
+writeFile(synLines, "multiSyns", True)
 
 workingStaticSet = staticApproaches.copy()
 
@@ -418,7 +426,7 @@ selfCycles = (["\\begin{enumerate}"] +
                for cycle in selfCycles] +
                ["\\end{enumerate}"])
 
-writeHelperFile(selfCycles, "selfCycles")
+writeFile(selfCycles, "selfCycles", True)
 
 def splitListAtEmpty(listToSplit):
     recArr = np.array(listToSplit)
@@ -512,7 +520,7 @@ for i, parSyns in enumerate([twoSourcesParSyns, oneSourceParSyns,
                              "sub-approach of the second, or they may be "
                              "synonyms.", "\\begin{itemize}"] + parSyns +
                              ["\\end{itemize}"])
-writeHelperFile(parSynLines, "parSyns")
+writeFile(parSynLines, "parSyns", True)
 
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
@@ -641,8 +649,7 @@ def writeDotFile(lines, filename):
         "\\end{document}",
     ]
 
-    with open(f"assets/graphs/{filename}.tex", "w+") as outFile:
-        outFile.writelines(line + '\n' for line in lines)
+    writeFile(lines, filename)
 
 for key, value in categoryDict.items():
     lines = value[1]
