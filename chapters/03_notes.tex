@@ -537,91 +537,10 @@ project), indicating that a requirement is ambiguous or incomplete
 \section[Dynamic Black-Box (Behavioural) Testing]{Dynamic Black-Box
   (Behavioural) Testing \citep[pp.~64-65]{Patton2006}}
 
-This is the process of ``entering inputs, receiving outputs, and checking the
-results'' \citep[p.~64]{Patton2006}. \citep[p.~399]{vanVliet2000}
-also calls this ``functional testing''.
-
-\subsubsection{Requirements}
-\begin{itemize}
-      \item Requirements documentation (definition of what the software does)
-            \citep[p.~64]{Patton2006}; relevant information could be:
-            \begin{itemize}
-                  \item Requirements: Input-Values and Output-Values
-                  \item Input/output data constraints
-            \end{itemize}
-\end{itemize}
-
-\subsection[Exploratory Testing]{Exploratory Testing \citep[p.~65]{Patton2006}}
-
-An alternative to dynamic black-box testing when a specification is not
-available \citep[p.~65]{Patton2006}. The software is explored to
-determine its features, and these features are then tested
-\citep[p.~65]{Patton2006}. Finding any bugs using this method is a
-positive thing \citep[p.~65]{Patton2006}, since despite not knowing
-what the software \emph{should} do, you were able to determine that something
-is wrong.
-
-This is not applicable to Drasil, because not only does it already generate a
-specification, making this type of testing unnecessary, there is also a lot of
-human-based trial and error required for this kind of testing
-\citep{june_11_meeting}.
-
-\subsection[Equivalence Partitioning/Classing]{Equivalence Partitioning/Classing
-      \citep[pp.~67-69]{Patton2006}}
-
-The process of dividing the infinite set of test cases into a finite set that is
-just as effective (i.e., that reveals the same bugs) \citep[p.~67]{Patton2006}.
-The opposite of this, testing every combination of inputs, is called
-``exhaustive testing'' and is ``probably not feasible'' \exhInfCite{}.
-
-\subsubsection{Requirements}
-\begin{itemize}
-      \item Ranges of possible values \citep[p.~67]{Patton2006};
-            could be obtained through:
-            \begin{itemize}
-                  \item Input/output data constraints
-                  \item Case statements
-            \end{itemize}
-\end{itemize}
-
 \subsection[Data Testing]{Data Testing \citep[pp.~70-79]{Patton2006}}
-
-The process of ``checking that information the user inputs [and] results'',
-both final and intermediate, ``are handled correctly''
-\citep[p.~70]{Patton2006}. This type of testing can also occur at the
-white-box level, such as the implementation of boundaries
-\citep[p.~431]{vanVliet2000} or intermediate values within
-components.
 
 \subsubsection[Boundary Conditions]{Boundary Conditions
       \citep[pp.~70-74]{Patton2006}}
-
-``[S]ituations at the edge of the planned operational limits of the software''
-\citep[p.~72]{Patton2006}. Often affects types of data (e.g., numeric,
-speed, character, location, position, size, quantity
-\citep[p.~72]{Patton2006}) each with its own set of (e.g., first/last,
-min/max, start/finish, over/under, empty/full, shortest/longest,
-slowest/fastest, soonest/latest, largest/smallest, highest/lowest,
-next-to/farthest-from \citep[pp.~72-73]{Patton2006}). Data at these
-boundaries should be included in an equivalence partition, but so should
-data in between them \citep[p.~73]{Patton2006}. Boundary conditions
-should be tested using ``the valid data just inside the boundary,
-\dots\ the last possible valid data, and \dots\ the invalid data just outside the
-boundary'' \citep[p.~73]{Patton2006}, and values at the boundaries
-themselves should still be tested even if they occur ``with zero probability'',
-in case there actually \emph{is} a case where it can occur; this process of
-testing may reveal it \citep[p.~460]{PetersAndPedrycz2000}.
-
-\paragraph{Requirements}
-\begin{itemize}
-      \item Ranges of possible values \citep[p.~67,~73]{Patton2006};
-            could be obtained through:
-            \begin{itemize}
-                  \item Case statements
-                  \item Input/output data constraints (e.g., inputs that
-                        would lead to a boundary output)
-            \end{itemize}
-\end{itemize}
 
 \paragraph{Buffer Overruns \citep[pp.~201-205]{Patton2006}}
 
