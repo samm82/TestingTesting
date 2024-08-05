@@ -513,15 +513,14 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
   (Specification) Testing \citep[pp.~56-62]{Patton2006}}
 
 Most of this section is irrelevant to generating test cases, as they require
-human involvement \todo{Describe anyway} (e.g., Pretend to Be the Customer
+human involvement\todo{Describe anyway} (e.g., Pretend to Be the Customer
 \citep[pp.~57-58]{Patton2006}, Research Existing Standards and
 Guidelines \citep[pp.~58-59]{Patton2006}). However, it provides a
 ``Specification Terminology Checklist'' \citep[p.~61]{Patton2006} that
 includes some keywords that, if found, could trigger an applicable warning to
 the user (similar to the idea behind the correctness/consistency checks
-project). In general, each requirement should be unambiguous, testable,
-binding, and ``acceptable to all stakeholders'', and the ``overall collection''
-should be complete, consistent, and feasible \citep[p.~1-8]{SWEBOK2024}:
+project), indicating that a requirement is ambiguous or incomplete
+\citep[see][p.~1-8]{SWEBOK2024}:
 
 \begin{itemize}
       \item \textbf{Potentially unrealistic:} always, every, all, none, every,
@@ -534,16 +533,6 @@ should be complete, consistent, and feasible \citep[p.~1-8]{SWEBOK2024}:
             if \dots\ then \dots\ (without ``else'' or ``otherwise''),
             to be determined \citep[p.~408]{vanVliet2000}
 \end{itemize}
-
-\subsection[Coverage-Based Testing of Specification]{Coverage-Based Testing of
-      Specification \citep[pp.~425-426]{vanVliet2000}}
-
-Requirements can be ``depicted as a graph, where the nodes denote elementary
-requirements and the edges denote relations between [them]'' from which test
-cases can be derived \citep[p.~425]{vanVliet2000}. However, it can
-be difficult to assess whether a set of equivalence classes are truly
-equivalent, since the specific data available in each node is not apparent
-\citep[p.~426]{vanVliet2000}.
 
 \section[Dynamic Black-Box (Behavioural) Testing]{Dynamic Black-Box
   (Behavioural) Testing \citep[pp.~64-65]{Patton2006}}
