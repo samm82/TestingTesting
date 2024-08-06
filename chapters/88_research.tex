@@ -342,7 +342,7 @@ approaches \citep[Fig.~5]{engström_mapping_2015}.
             See also \citep[p.~109]{Patton2006}.
             \begin{itemize}
                   \item Bottom-up testing: uses \emph{test drivers}: ``tool[s]
-                        that generate[] the test environment for a component to
+                        that  e[] the test environment for a component to
                         be tested'' \citep[p.~410]{vanVliet2000} by
                         ``sending test-case data to the modules under test,
                         read[ing] back the results, and verify[ing] that
@@ -500,15 +500,16 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
             testing is difficult, but can be generated from a different,
             simpler kind (e.g., asynchronous testing from synchronous testing
             \citep{JardEtAl1999})
+      \item Since some values may not always be applicable to a given scenario
+            (e.g., a test case for zero doesn't make sense if there is a
+            constraint that the value in question cannot be zero), the user
+            should likely be able to select categories of tests to generate
+            instead of Drasil just generating all possible test cases based on
+            the inputs \citep{june_11_meeting}.
 \end{itemize}
 
 \section[Dynamic Black-Box (Behavioural) Testing]{Dynamic Black-Box
   (Behavioural) Testing \citep[pp.~64-65]{Patton2006}}
-
-\subsection[Data Testing]{Data Testing \citep[pp.~70-79]{Patton2006}}
-
-\subsubsection[Boundary Conditions]{Boundary Conditions
-      \citep[pp.~70-74]{Patton2006}}
 
 ``Error prone'' points around boundaries---``the valid data just inside the
 boundary, \dots\ the last possible valid data, and \dots\ the invalid data
@@ -518,38 +519,6 @@ data is called an ``ON point'', the first type is an ``OFF point'' for the
 domain on the \emph{other} side of the boundary, and the third type is an ``OFF
 point'' for the domain on the \emph{same} side of the boundary
 \citep[p.~430]{vanVliet2000}.
-
-\subsubsection[Default, Empty, Blank, Null, Zero, and None]{Default, Empty,
-      Blank, Null, Zero, and None \citep[pp.~77-78]{Patton2006}}
-
-These should be their own equivalence class, since ``the software usually
-handles them differently'' than ``the valid cases or \dots\ invalid cases''
-\citep[p.~78]{Patton2006}.
-
-Since these values may not always be applicable to a given scenario (e.g., a
-test case for zero doesn't make sense if there is a constraint that the value
-in question cannot be zero), the user should likely be able to select
-categories of tests to generate instead of Drasil just generating all possible
-test cases based on the inputs \citep{june_11_meeting}.
-
-\subsubsection[Syntax-Driven Testing]{Syntax-Driven Testing
-      \citep[pp.~448-449]{PetersAndPedrycz2000}}
-
-If the inputs to the system ``are described by a certain grammar''
-\citep[p.~448]{PetersAndPedrycz2000}, ``test cases \dots\ [can] be designed
-according to the syntax or constraint of input domains defined in requirement
-specification'' \citep[p.~260]{IntanaEtAl2020}
-\todo{Investigate this source more!}.
-
-\subsubsection[Decision Table-Based Testing]{Decision Table-Based Testing
-      \citep[pp.~448,~450-453]{PetersAndPedrycz2000}}
-
-``When the original software requirements have been formulated in the format of
-`if-then' statements,'' a decision table can be created with a column for each
-test situation \citep[p.~448]{PetersAndPedrycz2000}. ``The upper part of the
-column contains conditions that must be satisfied. The lower portion of a
-decision table specifies the action that results from the satisfaction of
-conditions in a rule'' (from the specification) \citep[p.~450]{PetersAndPedrycz2000}.
 
 \subsection[State Testing]{State Testing \citep[pp.~79-87]{Patton2006}}
 
