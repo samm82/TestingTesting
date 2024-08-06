@@ -510,52 +510,14 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
 \subsubsection[Boundary Conditions]{Boundary Conditions
       \citep[pp.~70-74]{Patton2006}}
 
-\paragraph{Buffer Overruns \citep[pp.~201-205]{Patton2006}}
-
-\emph{Buffer overruns} are ``the number one cause of software security issues''
-\citep[p.~75]{Patton2006}. They occur when the size of the destination
-for some data is smaller than the data itself, causing existing data (including
-code) to be overwritten and malicious code to potentially be injected
-\citep[p.~202,~204-205]{Patton2006}. They often arise from bad
-programming practices in ``languages [sic] such as C and C++, that lack safe
-string handling functions'' \citep[p.~201]{Patton2006}. Any unsafe
-versions of these functions that are used should be replaced with the
-corresponding safe versions \citep[pp.~203-204]{Patton2006}.
-
-\subsubsection[Sub-Boundary Conditions]{Sub-Boundary Conditions
-      \citep[pp.~75-77]{Patton2006}}
-\label{sub-bound-conds}
-
-Boundary conditions ``that are internal to the software [but] aren't necessarily
-apparent to an end user'' \citep[p.~75]{Patton2006}. These include
-powers of two \citep[pp.~75-76]{Patton2006} and ASCII and Unicode tables
-\citep[pp.~76-77]{Patton2006}.
-
-While this is of interest to the domain of scientific computing, this is too
-involved for Drasil right now, and the existing software constraints limit much
-of the potential errors from over/underflow \citep{june_11_meeting}. Additionally,
-strings are not really used as inputs to Drasil and only occur in output with
-predefined values, so testing these values are unlikely to be fruitful.
-
-There also exist sub-boundary conditions that arise from ``complex''
-requirements, where behaviour depends on multiple conditions
-\citep[p.~430]{vanVliet2000}. These ``error prone'' points around
-these boundaries should be tested \citep[p.~430]{vanVliet2000} as
-before: ``the valid data just inside the boundary, \dots\ the last possible
-valid data, and \dots\ the invalid data just outside the boundary''
-\citep[p.~73]{Patton2006}. In this type of testing, the second type of
+``Error prone'' points around boundaries---``the valid data just inside the
+boundary, \dots\ the last possible valid data, and \dots\ the invalid data
+just outside the boundary''\citep[p.~73]{Patton2006}---should be tested
+\citep[p.~430]{vanVliet2000}. In this type of testing, the second type of
 data is called an ``ON point'', the first type is an ``OFF point'' for the
 domain on the \emph{other} side of the boundary, and the third type is an ``OFF
 point'' for the domain on the \emph{same} side of the boundary
 \citep[p.~430]{vanVliet2000}.
-
-\paragraph{Requirements}
-\begin{itemize}
-      \item Increased knowledge of data type structures (e.g., monoids, rings,
-            etc. \citep{june_11_meeting}); this would capture these sub-boundaries,
-            as well as other information like relevant tests cases, along with
-            our notion of these data types (\texttt{Space})
-\end{itemize}
 
 \subsubsection[Default, Empty, Blank, Null, Zero, and None]{Default, Empty,
       Blank, Null, Zero, and None \citep[pp.~77-78]{Patton2006}}
@@ -569,38 +531,6 @@ test case for zero doesn't make sense if there is a constraint that the value
 in question cannot be zero), the user should likely be able to select
 categories of tests to generate instead of Drasil just generating all possible
 test cases based on the inputs \citep{june_11_meeting}.
-
-\paragraph{Requirements}
-\begin{itemize}
-      \item Knowledge of an ``empty'' value for each \texttt{Space} (stored
-            alongside each type in \texttt{Space}?)
-      \item Knowledge of how input data could be omitted from an input
-            (e.g., a missing command line argument, an empty line in a file);
-            could be obtained from:
-            \begin{itemize}
-                  \item User responsibilities
-            \end{itemize}
-      \item Knowledge of how a programming language deals with \texttt{Null}
-            values and how these can be passed as arguments
-\end{itemize}
-
-\subsubsection[Invalid, Wrong, Incorrect, and Garbage Data]{Invalid, Wrong,
-      Incorrect, and Garbage Data \citep[pp.~78-79]{Patton2006}}
-
-This is testing-to-fail \citep[p.~77]{Patton2006}.
-
-\paragraph{Requirements}
-This seems to be the most open-ended category of testing.
-\begin{itemize}
-      \item Specification of correct inputs that can be ignored;
-            could be obtained through:
-            \begin{itemize}
-                  \item Input/output data constraints (e.g., inputs that would
-                        lead to a violated output constraint)
-                  \item Type information for each input (e.g., passing a string
-                        instead of a number)
-            \end{itemize}
-\end{itemize}
 
 \subsubsection[Syntax-Driven Testing]{Syntax-Driven Testing
       \citep[pp.~448-449]{PetersAndPedrycz2000}}
