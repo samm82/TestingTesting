@@ -10,22 +10,20 @@
 
 \title{Putting Software Testing Terminology to the Test\\
     % Sub-titles should not be used!
-    \thanks{Funding information suppressed.\vspace{4mm}
-        % Funding for this work was provided by the Ontario Graduate
-        % Scholarship and McMaster University.
+    \ifblind{\thanks{Funding information suppressed.\vspace{4mm}}}
+    {\thanks{Funding for this work was provided by the Ontario Graduate
+            Scholarship and McMaster University.}
     }
 }
 
-% Double-blind
-\author{Author details suppressed\vspace{18mm}}
-
-% % Current version
-% \author{\IEEEauthorblockN{Samuel J. Crawford\IEEEauthorrefmark{1},
-%         Spencer Smith\IEEEauthorrefmark{1}, Jacques Carette\IEEEauthorrefmark{1}}
-%     \IEEEauthorblockA{\IEEEauthorrefmark{1}Department of Computing and Software \\
-%         McMaster University\\
-%         Hamilton, Canada \\
-%         \{crawfs1, smiths, carette\}@mcmaster.ca}}
+\author{
+    \ifblind{Author details suppressed\vspace{18mm}}
+    {\IEEEauthorblockN{Samuel J. Crawford\IEEEauthorrefmark{1},
+            Spencer Smith\IEEEauthorrefmark{1}, Jacques Carette\IEEEauthorrefmark{1}}
+        \IEEEauthorblockA{\IEEEauthorrefmark{1}Department of Computing and Software \\
+            McMaster University\\
+            Hamilton, Canada \\
+            \{crawfs1, smiths, carette\}@mcmaster.ca}}}
 
 % % Previous version (weird formatting)
 % \newcommand{\deptCAS}[1]{
@@ -129,10 +127,9 @@ and relations between terms.
 
 ChatGPT was used for proofreading and assistance with \LaTeX{} formatting and
 supplementary Python code for constructing graphs and generating \LaTeX{} code,
-including regex.
-% Double blind
-% Jason Balaci's \href{https://github.com/balacij/McMaster-Thesis-Template}
-% {Mcmaster thesis template} provided many helper \LaTeX{} functions.
+including regex. \ifblind{}{Jason Balaci's
+    \href{https://github.com/balacij/McMaster-Thesis-Template}
+    {McMaster thesis template} provided many helper \LaTeX{} functions.}
 
 \newpage
 

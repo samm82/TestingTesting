@@ -11,7 +11,8 @@ CUSTOM_STUBS = recovery scalability performance
 ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
 CUSTOM_GRAPHS = $(addprefix assets/graphs/, $(addsuffix Graph, $(ALL_CUSTOM_STUBS)))
 
-PAPER_NAME = PuttingSoftwareTestingTerminologyToTheTestBLIND
+PAPER_NAME = PuttingSoftwareTestingTerminologyToTheTest
+PAPER_NAME_BLIND = $(addsuffix BLIND, $(PAPER_NAME))
 
 help:
 	@echo "Build:"
@@ -80,6 +81,10 @@ custom_graphs:
 
 graphs:
 	make compile_graphs
+
+paper_blind: paper # double-blind build of ICSE paper for review submission -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+	-latexmk -jobname=build/$(PAPER_NAME_BLIND) -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape paper.tex
+	cp build/$(PAPER_NAME_BLIND).pdf $(PAPER_NAME_BLIND).pdf
 
 paper: gen_latex # standard build of ICSE paper -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:

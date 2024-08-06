@@ -386,12 +386,17 @@ def writeFile(lines, filename, helper: bool = False):
     else:
         filename = f"assets/graphs/{filename}.tex"
 
-    with open(filename, "r", encoding="utf-8") as readFile:
-        if readFile.readlines() != lines:
-            with open(filename, "w+", encoding="utf-8") as outFile:
-                outFile.writelines(lines)
-        else:
-            print(f"No changes to {filename}")
+    try:
+        with open(filename, "r", encoding="utf-8") as readFile:
+            existingLines = readFile.readlines()
+    except FileNotFoundError:
+        existingLines = []
+
+    if existingLines != lines:
+        with open(filename, "w+", encoding="utf-8") as outFile:
+            outFile.writelines(lines)
+    else:
+        print(f"No changes to {filename}")
 
 writeFile(synLines, "multiSyns", True)
 
