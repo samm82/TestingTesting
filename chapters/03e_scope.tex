@@ -28,6 +28,28 @@ products'' \citep[p.~28]{Gerrard2000b} are not.
     manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product and manufacturing
     process design'' \cite[p.~44]{Tsui2007} and is thus out of scope.
 
+    \citeauthor{Patton2006} introduces ``specification testing''
+    \citeyearpar[pp.~56-62]{Patton2006}, which is static black-box testing.
+    Most of this section is irrelevant to generating test cases, due to
+    requiring human involvement and verifying the specification, not the code.
+    However, it provides a ``Specification Terminology Checklist''
+    \citep[p.~61]{Patton2006} that includes some keywords that, if found, could
+    trigger an applicable warning to the user (similar to the idea behind the
+    correctness/consistency checks project), indicating that a requirement is
+    ambiguous or incomplete \citep[see][p.~1-8]{SWEBOK2024}:
+
+    \begin{itemize}
+        \item \textbf{Potentially unrealistic:} always, every, all, none, every,
+              certainly, therefore, clearly, obviously, evidently
+        \item \textbf{Potentially vague:} some, sometimes, often, usually,
+              ordinarily, customarily, most, mostly, good, high-quality, fast,
+              quickly, cheap, inexpensive, efficient, small, stable
+        \item \textbf{Potentially incomplete:} etc., and so forth, and so on,
+              such as, handled, processed, rejected, skipped, eliminated,
+              if \dots\ then \dots\ (without ``else'' or ``otherwise''),
+              to be determined \citep[p.~408]{vanVliet2000}
+    \end{itemize}
+
     Sometimes, wider decisions must be made on whether a whole category of
     testing is in scope or not. For example, while all the examples of domain-specific
     testing given by \citet[p.~26]{Firesmith2015} are focused on hardware, this
