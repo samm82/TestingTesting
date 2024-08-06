@@ -277,16 +277,18 @@ for name, synonym in zip(names, synonyms):
 
 nameDict.update(synDict)
 
-def formatLineWithSources(line):
+def formatLineWithSources(line, todo=True):
     line = line.replace("(Hamburg and Mogyorodi, 2024)", "\\citepISTQB{}")
     line = line.replace("Hamburg and Mogyorodi, 2024", "\\citealpISTQB{}")
+
     for swebokAuthor in {"Washizaki", "Bourque and Fairley"}:
         line = line.replace(swebokAuthor, "SWEBOK")
     line = line.replace("ISO/IEC", "ISO_IEC")
 
-    # Explicitly *want* to capture "OG"
-    line = re.sub(fr"; (OG {AUTHOR_REGEX[15:]}(?:, {YEAR_REGEX}(?:, {BEGIN_INFO_REGEX} {NUM_INFO_REGEX})?)?)\)",
-                  r" \\todo{\1})", line)
+    if todo:
+        # Explicitly *want* to capture "OG"
+        line = re.sub(fr"; (OG {AUTHOR_REGEX[15:]}(?:, {YEAR_REGEX}(?:, {BEGIN_INFO_REGEX} {NUM_INFO_REGEX})?)?)\)",
+                    r"\\todo{\1})", line)
 
     line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX}); ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
                   r"\\citealp[\3~\4]{\1\2}; \\citeyear[\6~\7]{\1\5}", line)
@@ -467,10 +469,16 @@ def makeParSynLine(chd, par, parSource, synSource):
     parCallImply, parSource = parseSource(parSource)
     synCallImply, synSource = parseSource(synSource)
 
+    def sourceForTable(source):
+        return ("Inferred from their definitions" if not source
+                else source.lstrip(" in "))
+
     addTo.add(formatLineWithSources(
-        f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "
-        f"a sub-approach of \\textbf{{``{par.lower()}''}}{parSource}, but the "
-        f"two {synCallImply} synonyms{synSource}."))
+        f"{chd} & $\\to$ & {par} & {sourceForTable(parSource)} & {sourceForTable(synSource)} \\\\",
+        False))
+        # f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "
+        # f"a sub-approach of \\textbf{{``{par.lower()}''}}{parSource}, but the "
+        # f"two {synCallImply} synonyms{synSource}."))
 
 parentLines = splitListAtEmpty(categoryDict["Approach"][1])[-1]
 for chd, syns in nameDict.items():
@@ -515,8 +523,20 @@ for i, parSyns in enumerate([twoSourcesParSyns, oneSourceParSyns,
     else:
         # parSyns = noSourcesParSyns
         if parSynLines:
-            parSynLines = (["\\begin{enumerate}"] + parSynLines +
-                           ["\\end{enumerate}"])
+            parSynLines = (["\\begin{landscape}",
+                            "  \\begin{longtblr}[",
+                            "     caption = {Pairs of test approaches with both child-parent and synonym relations.},",
+                            "     label = {tab:parSyns}",
+                            "     ]{",
+                            "     colspec = {|rcl|X|X|}, width = \\linewidth,",
+                            "     rowhead = 1, row{1} = {McMasterMediumGrey}",
+                            "     }",
+                            "    \\hline",
+                            "    \\thead{``Child''} & \\thead{$\\to$} & \\thead{``Parent''}  & \\thead{Child-Parent Source(s)}   & \\thead{Synonym Source(s)}    \\\\",
+                            "    \\hline"] + parSynLines +
+                           ["    \\hline",
+		                    "  \\end{longtblr}",
+                            "\\end{landscape}"])
         if parSyns:
             parSynLines += (["The relationships between the following pairs "
                              "of approaches aren't given in any investigated "
