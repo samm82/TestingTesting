@@ -87,22 +87,10 @@ paper_blind: paper # double-blind build of ICSE paper for review submission -- '
 	cp build/$(PAPER_NAME_BLIND).pdf $(PAPER_NAME_BLIND).pdf
 
 paper: gen_latex # standard build of ICSE paper -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
-# Attempted to convert the following find and replace working in VS Code:
-# ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
-# To a Makefile rule unsuccessfully (grep not finding tildes):
-# grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
 	-latexmk -jobname=build/$(PAPER_NAME) -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape paper.tex
 	cp build/$(PAPER_NAME).pdf $(PAPER_NAME).pdf
 
-notes: gen_latex # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
-# Attempted to convert the following find and replace working in VS Code:
-# ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
-# To a Makefile rule unsuccessfully (grep not finding tildes):
-# grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
-	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape notes.tex
-	cp build/notes.pdf notes.pdf
-
-thesis: notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+thesis: paper # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):

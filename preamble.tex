@@ -178,6 +178,24 @@
 \fi
 % END   : TODO LIST SETUP
 
+% From https://tex.stackexchange.com/a/61803/192195
+\newenvironment{leveldown}% Demote sectional commands
+{\let\chapter\section%
+    \let\section\subsection%
+    \let\subsection\subsubsection%
+    \let\subsubsection\paragraph%
+    \let\paragraph\subparagraph%
+    %\let\subparagraph\relax%
+}{}
+\newenvironment{levelup}% Promote sectional commands
+{\let\subparagraph\paragraph%
+    \let\paragraph\subsubsection%
+    \let\subsubsection\subsection%
+    \let\subsection\section%
+    \let\section\chapter%
+    %\let\chapter\relax%
+}{}
+
 \newenvironment{paperTable}{
     \begin{table}[hbtp!]
         }{
