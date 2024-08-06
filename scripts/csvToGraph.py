@@ -523,20 +523,18 @@ for i, parSyns in enumerate([twoSourcesParSyns, oneSourceParSyns,
     else:
         # parSyns = noSourcesParSyns
         if parSynLines:
-            parSynLines = (["\\begin{landscape}",
-                            "  \\begin{longtblr}[",
-                            "     caption = {Pairs of test approaches with both child-parent and synonym relations.},",
-                            "     label = {tab:parSyns}",
-                            "     ]{",
-                            "     colspec = {|rcl|X|X|}, width = \\linewidth,",
-                            "     rowhead = 1, row{1} = {McMasterMediumGrey}",
-                            "     }",
-                            "    \\hline",
-                            "    \\thead{``Child''} & \\thead{$\\to$} & \\thead{``Parent''}  & \\thead{Child-Parent Source(s)}   & \\thead{Synonym Source(s)}    \\\\",
-                            "    \\hline"] + parSynLines +
-                           ["    \\hline",
-		                    "  \\end{longtblr}",
-                            "\\end{landscape}"])
+            parSynLines = (["\\begin{longtblr}[",
+                            "   caption = {Pairs of test approaches with both child-parent and synonym relations.},",
+                            "   label = {tab:parSyns}",
+                            "   ]{",
+                            "   colspec = {|rcl|X|X|}, width = \\linewidth,",
+                            "   rowhead = 1, row{1} = {McMasterMediumGrey}",
+                            "   }",
+                            "  \\hline",
+                            "  \\thead{``Child''} & \\thead{$\\to$} & \\thead{``Parent''}  & \\thead{Child-Parent Source(s)}   & \\thead{Synonym Source(s)}    \\\\",
+                            "  \\hline"] + parSynLines +
+                           ["  \\hline",
+		                    "\\end{longtblr}"])
         if parSyns:
             parSynLines += (["The relationships between the following pairs "
                              "of approaches aren't given in any investigated "
