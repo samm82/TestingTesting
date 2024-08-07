@@ -543,6 +543,10 @@ for i, parSyns in enumerate([twoSourcesParSyns, oneSourceParSyns,
                              "sub-approach of the second, or they may be "
                              "synonyms.", "\\begin{itemize}"] + parSyns +
                              ["\\end{itemize}"])
+        parSynLinesStr = "".join(parSynLines)
+        inferredCount = parSynLinesStr.count("& Inferred")
+        parSynLines.append("% " + str(parSynLinesStr.count("\\to") - inferredCount - 1) +
+                            " " + str(parSynLinesStr.count("\\item") + inferredCount))
 writeFile(parSynLines, "parSyns", True)
 
 def styleInLine(style, line):
