@@ -35,9 +35,12 @@
 \usepackage{xstring}
 
 \newenvironment{paperTable}{
+    \begingroup
+    \renewcommand*{\thefootnote}{\alph{footnote}}
     \begin{table*}[t!]
         }{
     \end{table*}
+    \endgroup
 }
 
 \newenvironment{paperFigure}{

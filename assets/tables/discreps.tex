@@ -2,20 +2,26 @@
     \centering
     \caption{Breakdown of Discrepancies Found}
     \label{tab:discreps}
-    \begin{spreadtab}{{tabular}{|r|cc|cc|cc|cccc|ccc|c|}}
-        \hline
-        \ifnotpaper\rowcolor{McMasterMediumGrey}\fi
-        @ & @ \multicolumn{2}{c|}{\thead{Synonyms}} & @ \multicolumn{2}{c|}{\thead{Parents}} & @ \multicolumn{2}{c|}{\thead{Categories}} & @ \multicolumn{4}{c|}{\thead{Standalone}} & @ \multicolumn{3}{c|}{\thead{Other}} & @ \\
-        % \cline{2-10}
-        \ifnotpaper\rowcolor{McMasterMediumGrey}\fi
-        @ \thead{Source Category} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Func} & @ \thead{OAT} & @ \thead{Rec} & @ \thead{Scal} & @ \thead{High} & @ \thead{Med} & @ \thead{Low} & @ \thead{Total} \\
-        \hline
-        @ Established Standards      & 0 & 0 & 2 & 1 & 7 & 2 & 2 & 1 & 4 & 1 & 2              & 6                & 3             & sum([-13,0]:[-1,0]) \\
-        @ ``Meta-level'' Collections & 2 & 1 & 1 & 5 & 2 & 6 & 5 & 1 & 1 & 1 & 9              & 5                & 8             & sum([-13,0]:[-1,0]) \\
-        @ Trusted Textbooks          & 2 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1              & 0                & 0             & sum([-13,0]:[-1,0]) \\
-        @ Other                      & 6 & 6 & 6 & 6 & 3 & 0 & 3 & 1 & 1 & 1 & 3              & 2                & 6             & sum([-13,0]:[-1,0]) \\
-        \hline
-        @ Total                      & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) \\
-        \hline
-    \end{spreadtab}
+    \begin{minipage}{\linewidth}
+        \begin{spreadtab}{{tabular}{|r|cc|cc|cc|cccc|ccc|c|}}
+            \hline
+            \ifnotpaper\rowcolor{McMasterMediumGrey}\fi
+            @ & @ \multicolumn{2}{c|}{\thead{Synonyms}} & @ \multicolumn{2}{c|}{\thead{Parents}} & @ \multicolumn{2}{c|}{\thead{Categories}} & @ \multicolumn{4}{c|}{\thead{Standalone}} & @ \multicolumn{3}{c|}{\thead{Other}} & @ \\
+            % \cline{2-10}
+            \ifnotpaper\rowcolor{McMasterMediumGrey}\fi
+            @ \thead{Source Category} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Func} & @ \thead{OAT} & @ \thead{Rec} & @ \thead{Scal} & @ \thead{High} & @ \thead{Med} & @ \thead{Low} & @ \thead{Total\hyperref[totalFN]{\footnotemark[1]}} \\
+            \hline
+            @ Established Standards      & 0 & 0 & 2 & 1 & 7 & 2 & 2 & 1 & 4 & 1 & 2              & 6                & 3             & sum([-13,0]:[-1,0]) \\
+            @ ``Meta-level'' Collections & 2 & 1 & 1 & 5 & 2 & 6 & 5 & 1 & 1 & 1 & 9              & 5                & 8             & sum([-13,0]:[-1,0]) \\
+            @ Trusted Textbooks          & 2 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1              & 0                & 0             & sum([-13,0]:[-1,0]) \\
+            @ Other                      & 6 & 6 & 6 & 6 & 3 & 0 & 3 & 1 & 1 & 1 & 3              & 2                & 6             & sum([-13,0]:[-1,0]) \\
+            \hline
+            @ Total\footnote{\phantomsection\label{totalFN}%
+                Numbers in the table may refer to the same discrepancy, such as
+                one that appears in multiple categories of sources. This causes
+                some totals to appear to not add up correctly.}
+            & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & \multicolumn{2}{c|}{:=\parSynCount{}} & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([-13,0]:[-1,0]) \\
+            \hline
+        \end{spreadtab}
+    \end{minipage}
 \end{paperTable}

@@ -198,9 +198,12 @@
 }{}
 
 \newenvironment{paperTable}{
+    \begingroup
+    \renewcommand*{\thefootnote}{\alph{footnote}}
     \begin{table}[hbtp!]
         }{
     \end{table}
+    \endgroup
 }
 
 \newenvironment{paperFigure}{
