@@ -536,18 +536,24 @@ for i, parSyns in enumerate([twoSourcesParSyns, oneSourceParSyns,
                            ["  \\hline",
 		                    "\\end{longtblr}"])
         if parSyns:
-            parSynLines += (["The relationships between the following pairs "
-                             "of approaches aren't given in any investigated "
+            parSynLines += (["Additionally, the relationships between the following "
+                             "pairs of approaches aren't given in any investigated "
                              "sources and are also ambiguous, based on their "
                              "definitions. In each pair, the first may be a "
                              "sub-approach of the second, or they may be "
                              "synonyms.", "\\begin{itemize}"] + parSyns +
                              ["\\end{itemize}"])
-        parSynLinesStr = "".join(parSynLines)
-        inferredCount = parSynLinesStr.count("& Inferred")
-        parSynLines.append("% " + str(parSynLinesStr.count("\\to") - inferredCount - 1) +
-                            " " + str(parSynLinesStr.count("\\item") + inferredCount))
-writeFile(parSynLines, "parSyns", True)
+        if parSynLines:
+            parSynLinesStr = "".join(parSynLines)
+            inferredCount = parSynLinesStr.count("& Inferred")
+            parSynExp = parSynLinesStr.count("\\to") - 1
+            parSynItem = parSynLinesStr.count("\\item")
+            writeFile(["%\n".join(
+                map(str, [parSynExp + parSynItem,      # All pairs
+                          parSynExp,                   # Pairs with at least one source
+                          parSynExp - inferredCount])) # Pairs with both sources
+                            ], "parSynsCount", True)
+            writeFile(parSynLines, "parSyns", True)
 
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)

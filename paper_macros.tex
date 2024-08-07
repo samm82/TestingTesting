@@ -98,6 +98,45 @@ of a test process; for example, ``across the whole organization'' or only
     \fi, which is distinct from robustness testing \citep[p.~53]{Firesmith2015}.}
 
 %------------------------------------------------------------------------------
+% For populating values from files
+%------------------------------------------------------------------------------
+
+\ExplSyntaxOn
+\ior_new:N \g_hringriin_file_stream
+
+\NewDocumentCommand{\ReadFile}{mm}
+{
+    \hringriin_read_file:nn { #1 } { #2 }
+    \cs_new:Npn #1 ##1
+    {
+        \str_if_eq:nnTF { ##1 } { * }
+        { \seq_count:c { g_hringriin_file_ \cs_to_str:N #1 _seq } }
+        { \seq_item:cn { g_hringriin_file_ \cs_to_str:N #1 _seq } { ##1 } }
+    }
+}
+
+\cs_new_protected:Nn \hringriin_read_file:nn
+{
+    \ior_open:Nn \g_hringriin_file_stream { #2 }
+    \seq_gclear_new:c { g_hringriin_file_ \cs_to_str:N #1 _seq }
+    \ior_map_inline:Nn \g_hringriin_file_stream
+    {
+        \seq_gput_right:cx
+        { g_hringriin_file_ \cs_to_str:N #1 _seq }
+        { \tl_trim_spaces:n { ##1 } }
+    }
+    \ior_close:N \g_hringriin_file_stream
+}
+
+\ExplSyntaxOff
+
+\ReadFile{\parSynCounts}{build/parSynsCount}
+
+\def\parSynCount{\parSynCounts{1}}
+\def\parSynOne{\parSynCounts{2}}
+\def\parSynAll{\parSynCounts{3}}
+
+%------------------------------------------------------------------------------
 % TODOs
 %------------------------------------------------------------------------------
 
