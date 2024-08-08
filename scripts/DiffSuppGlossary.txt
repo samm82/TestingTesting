@@ -43,6 +43,7 @@ Risk Analysis | "The process of finding, recognizing and describing risks" (Hamb
 Separation Logic Specification | The specification of "dynamically-allocated linked data structures" that only "concentrates on the resources relevant to its correct operation" (Berdine et al., 2006, p. 115) | Assertion (Lahiri et al., 2013, p. 345), Specification, with context (Berdine et al., 2006; likely Chalin et al., 2006) | 
 Single-hit Decision Table | A "decision table where any set of conditions will be satisfied by one, and only one, rule" (IEEE, 2017, p. 415; OG ISO, 1984) |  | 
 Software Life Cycle Process (SLCP) (IEEE, 2017, p. 416) |  |  | 
+State (Transition) Diagram | A diagram that maps out the logic flow from the user's perspective by showing every possible unique state, the conditions that take the program between states, and the conditions and outputs when a state is entered or exited (Patton, 2006, p. 81-82) |  | 
 State Transition | A "change from one state to another … or the same state" (IEEE, 2017, p. 484; OG ISO/IEC, 1995) |  | "An individual transition may be constrained by an event guard" (IEEE, 2021, p. 19)
 Statechart |  |  | 
 (Test) Stub | A "skeletal or special-purpose implementation of a software module, used to develop or test a module that calls or is otherwise dependent on it" (IEEE, 2017, p. 444) |  | 

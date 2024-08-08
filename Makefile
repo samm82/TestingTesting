@@ -90,7 +90,7 @@ paper: gen_latex # standard build of ICSE paper -- '-output-directory=build' is 
 	-latexmk -jobname=build/$(PAPER_NAME) -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape paper.tex
 	cp build/$(PAPER_NAME).pdf $(PAPER_NAME).pdf
 
-thesis: paper # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+thesis: gen_latex # standard build of thesis -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
@@ -98,7 +98,7 @@ thesis: paper # standard build -- '-output-directory=build' is a special name an
 	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape thesis.tex
 	cp build/thesis.pdf thesis.pdf
 
-build: thesis graphs update_diffs 
+build: paper thesis graphs update_diffs 
 
 debug: # for finding hard issues, this is an interactive version of 'build'
 	latexmk -output-directory=build -pdflatex=lualatex -pdf -shell-escape thesis.tex

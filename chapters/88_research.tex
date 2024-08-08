@@ -520,51 +520,6 @@ domain on the \emph{other} side of the boundary, and the third type is an ``OFF
 point'' for the domain on the \emph{same} side of the boundary
 \citep[p.~430]{vanVliet2000}.
 
-\subsection[State Testing]{State Testing \citep[pp.~79-87]{Patton2006}}
-
-The process of testing ``the program's logic flow through its various states''
-\citep[p.~79]{Patton2006} by checking that state variables are
-correct after different transitions \citetext{p.~83}. This is usually done by
-creating a state transition diagram that includes:
-
-\begin{itemize}
-      \item Every possible unique state
-      \item The condition(s) that take(s) the program between states
-      \item The condition(s) and output(s) when a state is entered or exited
-\end{itemize}
-
-to map out the logic flow from the user's perspective
-\citep[pp.~81-82]{Patton2006}. Next, these states should be
-partitioned using one (or more) of the following methods:
-
-\begin{enumerate}
-      \item Test each state once
-      \item Test the most common state transitions
-      \item Test the least common state transitions
-      \item Test all error states and error return transitions
-      \item Test random state transitions
-            \citep[pp.~82-83]{Patton2006}
-\end{enumerate}
-
-For all of these tests, the values of the state variables should be verified
-\citep[p.~83]{Patton2006}.
-
-\paragraph{Requirements}
-\begin{itemize}
-      \item Knowledge of the different states of the program
-            \citep[p.~82]{Patton2006}; could be obtained through:
-            \begin{itemize}
-                  \item The program's modules and/or functions
-                  \item The program's exceptions
-            \end{itemize}
-      \item Knowledge about the different state transitions
-            \citep[p.~82]{Patton2006}; could be obtained through:
-            \begin{itemize}
-                  \item Testing the state transitions near the beginning of a
-                        workflow more?
-            \end{itemize}
-\end{itemize}
-
 \subsubsection{Performance Testing}
 
 Testing to determine how efficiently software uses resources (including time
