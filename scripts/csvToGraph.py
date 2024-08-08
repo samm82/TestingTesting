@@ -522,38 +522,41 @@ for i, parSyns in enumerate([twoSourcesParSyns, oneSourceParSyns,
         parSynLines += parSyns
     else:
         # parSyns = noSourcesParSyns
+
+        # Pairs with at least one source
+        parSynOne  = "".join(parSynLines).count("\\to")
+        # Pairs with sources for both
+        parSynBoth = parSynOne - "".join(parSynLines).count("& Inferred")
+        # All pairs (even without sources)
+        parSynAll  = parSynOne + "".join(parSyns    ).count("\\item")
+
         if parSynLines:
-            parSynLines = (["\\begin{longtblr}[",
-                            "   caption = {Pairs of test approaches with both child-parent and synonym relations.},",
-                            "   label = {tab:parSyns}",
-                            "   ]{",
-                            "   colspec = {|rcl|X|X|}, width = \\linewidth,",
-                            "   rowhead = 1, row{1} = {McMasterMediumGrey}",
-                            "   }",
-                            "  \\hline",
-                            "  \\thead{``Child''} & \\thead{$\\to$} & \\thead{``Parent''}  & \\thead{Child-Parent Source(s)}   & \\thead{Synonym Source(s)}    \\\\",
-                            "  \\hline"] + parSynLines +
-                           ["  \\hline",
-		                    "\\end{longtblr}"])
+            writeFile(["\\begin{longtblr}[",
+                       "   caption = {Pairs of test approaches with both child-parent and synonym relations.},",
+                       "   label = {tab:parSyns}",
+                       "   ]{",
+                       "   colspec = {|rcl|X|X|}, width = \\linewidth,",
+                       "   rowhead = 1, row{1} = {McMasterMediumGrey}",
+                       "   }",
+                       "  \\hline",
+                       "  \\thead{``Child''} & \\thead{$\\to$} & \\thead{``Parent''}  & \\thead{Child-Parent Source(s)}   & \\thead{Synonym Source(s)}    \\\\",
+                       "  \\hline"] + parSynLines +
+                      ["  \\hline",
+		               "\\end{longtblr}"],
+                       "parSyns", True)
+
         if parSyns:
-            parSynLines += (["Additionally, the relationships between the following "
-                             "pairs of approaches aren't given in any investigated "
-                             "sources and are also ambiguous, based on their "
-                             "definitions. In each pair, the first may be a "
-                             "sub-approach of the second, or they may be "
-                             "synonyms.", "\\begin{itemize}"] + parSyns +
-                             ["\\end{itemize}"])
-        if parSynLines:
-            parSynLinesStr = "".join(parSynLines)
-            inferredCount = parSynLinesStr.count("& Inferred")
-            parSynExp = parSynLinesStr.count("\\to") - 1
-            parSynItem = parSynLinesStr.count("\\item")
-            writeFile(["%\n".join(
-                map(str, [parSynExp + parSynItem,      # All pairs
-                          parSynExp,                   # Pairs with at least one source
-                          parSynExp - inferredCount])) # Pairs with both sources
-                            ], "parSynsCount", True)
-            writeFile(parSynLines, "parSyns", True)
+            writeFile([f"{"Additionally, t" if parSynLines else "T"}he "
+                        "relationships between the following "
+                        "pairs of approaches aren't given in any investigated "
+                        "sources and are also ambiguous, based on their "
+                        "definitions. In each pair, the first may be a "
+                        "sub-approach of the second, or they may be "
+                        "synonyms.", "\\begin{itemize}"] + parSyns +
+                        ["\\end{itemize}"], "parSynsExtra", True)
+            
+        writeFile(["%\n".join(map(str, [parSynAll, parSynOne, parSynBoth]))],
+                  "parSynsCount", True)
 
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)

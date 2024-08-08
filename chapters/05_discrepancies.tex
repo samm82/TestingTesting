@@ -5,10 +5,9 @@
 % \discrepsTable{}
 
 After gathering all this data\footnote{Available in \texttt{ApproachGlossary.csv}
-      and \texttt{QualityGlossary.csv} at
-      \ifblind{[Repository link suppressed]}{TODO}.}, we found many discrepancies
-and ambiguities. A summary
-of these is shown in
+      and \texttt{QualityGlossary.csv} at \ifblind{[Repository link suppressed]}
+      {\url{https://github.com/samm82/TestGen-Thesis}}.}, we found many discrepancies
+and ambiguities. A summary of these is shown in
 \refDiscrepsReqsTable{}, where a given row corresponds to the number of
 discrepancies either within that category and/or with a ``more trusted''
 category (i.e., with a source from a category higher up in the table). Issues
@@ -18,8 +17,8 @@ given: \hyperref[func-test-discrep]{(Func)tional Testing},
 \hyperref[oat-discrep]{\acf{oat}\ifnotpaper\else\footnote{Section omitted for
                   brevity.}\fi}, \hyperref[recov-discrep]{(Rec)overy Testing},
 and \hyperref[scal-discrep]{(Scal)ability Testing}. \nameref{other-discrep}
-are grouped into degrees of severity as follows. (Note that only select
-discrepancies are listed for brevity.)
+are grouped into degrees of severity as follows\ifnotpaper:\else.
+(Note that only select discrepancies are listed for brevity.) \fi
 
 \begin{itemize}
       \item High: Semantic differences between test approaches
@@ -164,26 +163,29 @@ testing is \emph{not} described as a sub-approach of usability testing%
 
 There are also pairs of synonyms where one is described as a
 sub-approach of the other, abusing the meaning of ``synonym'' and
-causing confusion. We identified \parSynCount{} of these pairs through automatic
+causing confusion. We identified \parSynAll{} of these pairs through automatic
 analysis of the generated graphs. The \ifnotpaper \parSynOne{} pairs where at
-      least one \else % \parSynAll{}
+      least one \else % \parSynBoth{}
       seven pairs where each \fi relation has a concrete
 source are given in \Cref{tab:parSyns}.
 
 \ifnotpaper
       \begin{landscape}
+            \ifnotpaper\discrepsTable{}\fi
             \input{build/parSyns}
-            Finally, it is worth pointing out that
-            \begin{itemize}
-                  \item \ftrnote
-                  \item The distinction between organization- and role-based testing in
-                        \citep[pp.~17,~37,~39]{Firesmith2015}
-                        seems arbitrary, but further investigation may prove it to be
-                        meaningful\seeThesisIssuePar{59}.
-            \end{itemize}
       \end{landscape}
-\else % \input{assets/misc/parSyns} Moved earlier to display nicely in paper
+      \input{build/parSynsExtra}
+\else % Moved earlier to display nicely in paper
 \fi
+
+Finally, it is worth pointing out that
+\begin{itemize}
+      \item \ftrnote
+      \item The distinction between organization- and role-based testing in
+            \citep[pp.~17,~37,~39]{Firesmith2015}
+            seems arbitrary, but further investigation may prove it to be
+            meaningful\seeThesisIssuePar{59}.
+\end{itemize}
 
 \subsection{Categories of Testing Approaches}
 \label{categories-discrep}
