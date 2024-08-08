@@ -87,6 +87,7 @@ SecurityTesting [label=<Security<br/>Testing>];
 StabilityTesting [label=<Stability<br/>Testing>];
 StressTesting [label=<Stress<br/>Testing>];
 TailoredConformanceTesting [label=<Tailored<br/>Conformance<br/>Testing>,style="dashed"];
+TimingTesting [label=<Timing<br/>Testing>,style="dashed"];
 UsabilityTesting [label=<Usability<br/>Testing>];
 VolumeTesting [label=<Volume<br/>Testing>];
 
@@ -169,6 +170,7 @@ LoadTesting -> PerformanceEfficiencyTesting[color="green"];
 LoadTesting -> StabilityTesting[color="blue"];
 LoadTesting -> RobustnessTesting[color="blue"];
 LoadTesting -> CapacityTesting[color="blue"];
+LoadTesting -> TimingTesting[style="dashed"];
 LocalizationTesting -> FunctionalSuitabilityTesting[color="green"];
 LocalizationTesting -> AccessibilityTesting[color="green"];
 LocalizationTesting -> PortabilityTesting[color="green"];

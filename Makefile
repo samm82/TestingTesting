@@ -16,9 +16,9 @@ PAPER_NAME_BLIND = $(addsuffix BLIND, $(PAPER_NAME))
 
 help:
 	@echo "Build:"
-	@echo "  - build : Build a fresh copy of the thesis."
-	@echo "  - notes : Build a fresh copy of just the notes section."
-	@echo "  - debug : Same as 'build', but pauses build on errors for easier debugging."
+	@echo "  - build : Build a fresh copy of the artifacts."
+	@echo "  - thesis: Build a fresh copy of just the thesis."
+	@echo "  - debug : Same as 'thesis', but pauses build on errors for easier debugging."
 	@echo "  - poster: Build a fresh copy of the testing terminology poster."
 	@echo "  - clean : Clean working TeX build artifacts."
 	@echo "  - open  : Open up the current thesis PDF."
@@ -98,7 +98,7 @@ thesis: gen_latex # standard build of thesis -- '-output-directory=build' is a s
 	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape thesis.tex
 	cp build/thesis.pdf thesis.pdf
 
-build: paper thesis graphs update_diffs 
+build: csv_diff paper thesis graphs
 
 debug: # for finding hard issues, this is an interactive version of 'build'
 	latexmk -output-directory=build -pdflatex=lualatex -pdf -shell-escape thesis.tex

@@ -532,35 +532,6 @@ and capacity) ``when accomplishing its designated functions''
 \todo{Originally used a \emph{very} vague definition from
       \citep[p.~447]{PetersAndPedrycz2000}; re-investigate!}
 
-\subsubsection[Testing States to Fail]{Testing States to Fail
-      \citep[pp.~84-87]{Patton2006}}
-
-The goal here is to try and put the program in a fail state by doing things
-that are out of the ordinary. These include:
-
-\begin{itemize}
-      \item Race Conditions and Bad Timing \citep[pp.~85-86]{Patton2006}
-            (Is this relevant to our examples?)
-      \item Repetition Testing: ``doing the same operation over and over'',
-            potentially up to ``thousands of attempts''
-            \citep[p.~86]{Patton2006}
-      \item Stress Testing: ``running the software under less-than-ideal
-            conditions'' to see how it functions \citep[p.~86]{Patton2006}
-      \item Load testing: running the software with as large of a load as
-            possible (e.g., large inputs, many peripherals)
-            \citep[p.~86]{Patton2006}
-\end{itemize}
-
-\paragraph{Requirements}
-\begin{itemize}
-      \item Repetition Testing: The types of operations that are likely to lead
-            to errors when repeated (e.g., overwriting files?)
-      \item Stress testing: can these be automated with pytest or are they
-            outside our scope? \todo{Investigate}
-      \item Load testing: Knowledge about the types of inputs that could
-            overload the system (e.g., upper bounds on values of certain types)
-\end{itemize}
-
 \subsection[Other Black-Box Testing]{Other Black-Box Testing
       \citep[pp.~87-89]{Patton2006}}
 \begin{itemize}
@@ -568,8 +539,6 @@ that are out of the ordinary. These include:
       \item Look for bugs where they've already been found (\emph{keep track of
                   previous failed test cases? This could pair well with
                   \nameref{chap:testing:sec:metamorphic-testing}!})
-      \item Think like a hacker (\emph{likely out of scope})
-      \item Follow experience (\emph{implicitly done by using Drasil})
 \end{itemize}
 
 \section[Static White-Box Testing (Structural Analysis)]{Static White-Box
