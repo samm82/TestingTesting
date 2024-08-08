@@ -3,7 +3,7 @@
     \caption{Breakdown of Discrepancies Found}
     \label{tab:discreps}
     \begin{minipage}{\linewidth}
-        \begin{spreadtab}{{tabular}{|r|cc|cc|cc|cccc|ccc|c|}}
+        \begin{spreadtab}[\STsavecell\oSeven{o7}]{{tabular}{|r|cc|cc|cc|cccc|ccc|c|}}
             \hline
             \ifnotpaper\rowcolor{McMasterMediumGrey}\fi
             @ & @ \multicolumn{2}{c|}{\thead{Synonyms}} & @ \multicolumn{2}{c|}{\thead{Parents}} & @ \multicolumn{2}{c|}{\thead{Categories}} & @ \multicolumn{4}{c|}{\thead{Standalone}} & @ \multicolumn{3}{c|}{\thead{Other}} & @ \\
@@ -25,3 +25,6 @@
         \end{spreadtab}
     \end{minipage}
 \end{paperTable}
+
+% From https://tex.stackexchange.com/a/248135/192195
+\laterdef{totalDiscreps}{\oSeven{}}

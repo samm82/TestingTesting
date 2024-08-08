@@ -136,6 +136,13 @@ of a test process; for example, ``across the whole organization'' or only
 \def\parSynOne{\parSynCounts{2}}
 \def\parSynAll{\parSynCounts{3}}
 
+% From https://tex.stackexchange.com/a/248135/192195
+\newcounter{laterdef} % just a dummy counter
+\newcommand{\laterdef}[2]{%
+    \renewcommand\thelaterdef{#2}%
+    \refstepcounter{laterdef}\label{#1}%
+}
+
 %------------------------------------------------------------------------------
 % TODOs
 %------------------------------------------------------------------------------
