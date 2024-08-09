@@ -125,13 +125,17 @@ def addLineToCategory(key, line):
     if line not in categoryDict[key][1] and "-> ;" not in line:
         categoryDict[key][1].append(line)
 
-def removeInParens(s):
+def removeInParens(s, stripInit=False):
     s = s.replace(" (Testing)", " Testing")
     # s = re.sub(r" \(.*?\) \(.*?\)", "", s)
     # Remove nested parentheses first, if they exist
     s = re.sub(r" \([^\)]*\([^\)]*\)[^\)]*\)", "", s)
     s = re.sub(r"\([^\)]*\([^\)]*\)[^\)]*\)", "", s)
     s = re.sub(r" \(.*?\)", "", s)
+
+    if stripInit:
+        s = re.sub(r"\(.*?\)", "", s)
+
     if "(" not in s:
         s = s.strip(")")
     return s.replace("?", "")
@@ -139,8 +143,8 @@ def removeInParens(s):
 def lineBreak(s):
     return f"<{s.replace(" ", "<br/>")}>"
 
-def formatApproach(s):
-    s = removeInParens(s)
+def formatApproach(s, stripInit=False):
+    s = removeInParens(s, stripInit)
     for c in "?-/() ":
         s = s.replace(c, "")
     s = s.replace("0", "Zero")
@@ -407,11 +411,12 @@ workingStaticSet = staticApproaches.copy()
 selfCycles = []
 # Add parent relations
 for name, parent in zip(names, parents):
-    # if [x for x in parent + [name] if "keyword" in x.lower()]:
     fname = formatApproach(name)
     for par in parent:
-        fpar = formatApproach(par)
-        if not fpar:
+        if "Reada" in par:
+            print(par, formatApproach(par, stripInit=True), formatApproach(par, stripInit=True).replace(" ", ""))
+        fpar = formatApproach(par, stripInit=True)
+        if not fpar.replace(" ", ""):
             continue
         if fname == fpar:
             selfCycles.append(par)
