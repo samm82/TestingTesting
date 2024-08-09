@@ -1,4 +1,4 @@
-.PHONY: help system_requirements build debug clean open
+.PHONY: help system_requirements gloss gen_csv_diffs gen_latex gen_latex compile_doc clean
 
 STUBS = Supp Quality Approach
 GLOSSARIES = $(addsuffix Glossary, $(STUBS))
@@ -11,17 +11,18 @@ CUSTOM_STUBS = recovery scalability performance
 ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
 CUSTOM_GRAPHS = $(addprefix assets/graphs/, $(addsuffix Graph, $(ALL_CUSTOM_STUBS)))
 
-PAPER_NAME = PuttingSoftwareTestingTerminologyToTheTest
-PAPER_NAME_BLIND = $(addsuffix BLIND, $(PAPER_NAME))
+DOC_NAME =
+TEX_NAME ?= $(DOC_NAME)
+TEX_FLAGS = -interaction=nonstopmode
 
 help:
 	@echo "Build:"
-	@echo "  - build : Build a fresh copy of the artifacts."
+	@echo "  - build : Build a fresh copy of relevant artifacts."
+	@echo "  - paper : Build a fresh copy of just the ICSE paper."
 	@echo "  - thesis: Build a fresh copy of just the thesis."
 	@echo "  - debug : Same as 'thesis', but pauses build on errors for easier debugging."
 	@echo "  - poster: Build a fresh copy of the testing terminology poster."
 	@echo "  - clean : Clean working TeX build artifacts."
-	@echo "  - open  : Open up the current thesis PDF."
 	@echo ""
 	@echo "Supplementary Information:"
 	@echo "  - help               : View this help guide."
@@ -55,16 +56,12 @@ update_diffs: gen_csv_diffs
 		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
 	done
 
-mk_build:
+gen_latex:
 	-mkdir build || true
-
-csv_process: mk_build
 	py scripts/csvToGraph.py
-
-gen_latex: csv_process
 	py scripts/undefinedTermSources.py
 
-compile_graphs: csv_process
+compile_graphs:
 	for filename in $(GRAPHS) ; do \
 			filename=$${filename%.tex} ; \
 			# -rm filename.pdf ; \
@@ -76,39 +73,31 @@ compile_graphs: csv_process
 	rm *Graph*
 	rm *Legend* || true
 
-custom_graphs:
-	make compile_graphs GRAPHS="$(CUSTOM_GRAPHS)"
+custom_graphs: GRAPHS="$(CUSTOM_GRAPHS)"
+custom_graphs: gen_latex compile_graphs
 
-graphs:
-	make compile_graphs
+graphs: gen_latex compile_graphs
 
-paper_blind: paper # double-blind build of ICSE paper for review submission -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
-	-latexmk -jobname=build/$(PAPER_NAME_BLIND) -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape paper.tex
-	cp build/$(PAPER_NAME_BLIND).pdf $(PAPER_NAME_BLIND).pdf
+compile_doc: # '-output-directory=build' is a special name and is referenced from '\usepackage{minted}' region in some .tex files
+	-latexmk -output-directory=build -jobname=$(DOC_NAME) -pdflatex=lualatex -pdf $(TEX_FLAGS) -shell-escape $(TEX_NAME).tex
+	cp build/$(DOC_NAME).pdf $(DOC_NAME).pdf
+	-rm lualatex*.fls || true
 
-paper: gen_latex # standard build of ICSE paper -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
-	-latexmk -jobname=build/$(PAPER_NAME) -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape paper.tex
-	cp build/$(PAPER_NAME).pdf $(PAPER_NAME).pdf
-
-thesis: gen_latex # standard build of thesis -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+paper thesis poster: gen_latex # standard build of documents
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
 # grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
-	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape thesis.tex
-	cp build/thesis.pdf thesis.pdf
+	make compile_doc DOC_NAME=$@
+
+paper_blind: paper # double-blind build of ICSE paper for review submission
+	make compile_doc DOC_NAME=$@ TEX_NAME=$<
 
 build: csv_diff paper thesis graphs
 
-debug: # for finding hard issues, this is an interactive version of 'build'
-	latexmk -output-directory=build -pdflatex=lualatex -pdf -shell-escape thesis.tex
-
-poster:
-	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape poster.tex
-	cp build/poster.pdf poster.pdf
+debug: DOC_NAME=thesis
+debug: TEX_FLAGS=
+debug: gen_latex compile_doc # for finding hard issues, this is an interactive version of 'thesis'
 
 clean:
 	rm -rf build/
-
-open:
-	xdg-open build/thesis.pdf
