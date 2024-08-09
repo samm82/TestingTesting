@@ -1,106 +1,106 @@
 \ifnotpaper\paragraph{High Severity}\fi
 \begin{itemize}
-    \item ``Compatibility testing'' is defined as ``testing that measures the
-          degree to which a test item can function satisfactorily alongside
-          other independent products in a shared environment (co-existence),
-          and where necessary, exchanges information with other systems or
-          components (interoperability)'' \citep[p.~3]{IEEE2022}. This
-          definition is nonatomic as it combines the ideas of ``co-existence''
-          and ``interoperability''. The term ``interoperability testing'' is
-          not defined, but is used three times \citep[pp.~22,~43]{IEEE2022}
-          % Severity: High (Std)
-          (although the third usage seems like it should be ``portability
-          testing''). This implies that ``co-existence testing'' and
-          ``interoperability testing'' should be defined as their own terms,
-          which is supported by definitions of ``co-existence'' and
-          ``interoperability'' often being separate
-          \ifnotpaper
-              (\citealpISTQB{}; \citealp[pp.~73,~237]{IEEE2017})%
-          \else
-              \cite[pp.~73,~237]{IEEE2017}, \cite{ISTQB}%
-          \fi, the definition of
-          ``interoperability testing'' from \citet[p.~238]{IEEE2017},
-          and the decomposition of ``compatibility'' into ``co-existence''
-          and ``interoperability'' by \citet{ISO_IEC2023a}!
-          \begin{itemize}
-              \item % Severity: Medium (Std)
-                    The ``interoperability'' element of ``compatibility
-                    testing'' is explicitly excluded by
-                    \citet[p.~37]{IEEE2021}, (incorrectly) implying that
-                    ``compatibility testing'' and ``co-existence testing''
-                    are synonyms.
-              \item % Severity: Low (Other)
-                    The definition of ``compatibility testing'' in
-                    \citep[p.~43]{Kam2008} unhelpfully says ``See
-                    \emph{interoperability testing}'', adding another
-                    layer of confusion to the direction of their
-                    relationship.
-          \end{itemize}
-    \item A component is an ``entity with discrete structure \dots\ within a
-          system considered at a particular level of analysis''
-          \citep{ISO_IEC2023b} and ``the terms module, component, and unit
-              [sic] are often used interchangeably or defined to be subelements
-          of one another in different ways depending upon the context'' with
-          no standardized relationship \citep[p.~82]{IEEE2017}. This means
-          unit/component/module testing can refer to the testing of both a
-          module and a specific function in a module\seeThesisIssuePar{14}.
-          However, ``component'' is sometimes defined differently than
-          ``module'': ``components differ from classical modules for being
-          re-used in different contexts independently of their development''
-          \citep[p.~107]{BaresiAndPezzè2006}, so distinguishing the two
-          may be necessary.
-          \ifnotpaper
+      \item ``Compatibility testing'' is defined as ``testing that measures the
+            degree to which a test item can function satisfactorily alongside
+            other independent products in a shared environment (co-existence),
+            and where necessary, exchanges information with other systems or
+            components (interoperability)'' \citep[p.~3]{IEEE2022}. This
+            definition is nonatomic as it combines the ideas of ``co-existence''
+            and ``interoperability''. The term ``interoperability testing'' is
+            not defined, but is used three times \citep[pp.~22,~43]{IEEE2022}
+            % Severity: High (Std)
+            (although the third usage seems like it should be ``portability
+            testing''). This implies that ``co-existence testing'' and
+            ``interoperability testing'' should be defined as their own terms,
+            which is supported by definitions of ``co-existence'' and
+            ``interoperability'' often being separate
+            \ifnotpaper
+                  (\citealpISTQB{}; \citealp[pp.~73,~237]{IEEE2017})%
+            \else
+                  \cite[pp.~73,~237]{IEEE2017}, \cite{ISTQB}%
+            \fi, the definition of
+            ``interoperability testing'' from \citet[p.~238]{IEEE2017},
+            and the decomposition of ``compatibility'' into ``co-existence''
+            and ``interoperability'' by \citet{ISO_IEC2023a}!
+            \begin{itemize}
+                  \item % Severity: Med (Std)
+                        The ``interoperability'' element of ``compatibility
+                        testing'' is explicitly excluded by
+                        \citet[p.~37]{IEEE2021}, (incorrectly) implying that
+                        ``compatibility testing'' and ``co-existence testing''
+                        are synonyms.
+                  \item % Severity: Low (Other)
+                        The definition of ``compatibility testing'' in
+                        \citep[p.~43]{Kam2008} unhelpfully says ``See
+                        \emph{interoperability testing}'', adding another
+                        layer of confusion to the direction of their
+                        relationship.
+            \end{itemize}
+      \item A component is an ``entity with discrete structure \dots\ within a
+            system considered at a particular level of analysis''
+            \citep{ISO_IEC2023b} and ``the terms module, component, and unit
+                  [sic] are often used interchangeably or defined to be subelements
+            of one another in different ways depending upon the context'' with
+            no standardized relationship \citep[p.~82]{IEEE2017}. This means
+            unit/component/module testing can refer to the testing of both a
+            module and a specific function in a module\seeThesisIssuePar{14}.
+            However, ``component'' is sometimes defined differently than
+            ``module'': ``components differ from classical modules for being
+            re-used in different contexts independently of their development''
+            \citep[p.~107]{BaresiAndPezzè2006}, so distinguishing the two
+            may be necessary.
+            \ifnotpaper
 \end{itemize}
 
 \paragraph{Medium Severity}
 \begin{itemize}\fi
-    \item Retesting and regression testing seem to be separated from the rest
-          of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
-          clearly detailed why; \citet[p.~3]{BarbosaEtAl2006} \ifnotpaper
-              consider \else considers \fi regression testing to be a test level.
-          \ifnotpaper
-    \item \citeauthor{IEEE2021} define an ``extended entry (decision) table''
-          both as a decision table where the ``conditions consist of multiple
-          values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021}
-          and one where ``the conditions and actions are generally described
-          but are incomplete'' \citeyearpar[p.~175]{IEEE2017}\todo{OG ISO1984}.
-    \item \citeauthor*{IEEE2017} say that ``test level'' and ``test phase''
-          are synonyms, both meaning a ``specific instantiation of [a] test
-          sub-process'' (\citeyear[pp.~469,~470]{IEEE2017};
-          \citeyear[p.~9]{IEEE2013}), but there are also alternative
-          definitions for them. \procLevel{\citeyearpar}, while
-          ``test phase'' \phaseDef{}
-    \item \citeauthor{IEEE2017} use the same definition for ``partial correctness''
-          \citeyearpar[p.~314]{IEEE2017} and ``total correctness'' (p.~480).
-          \fi
+      \item Retesting and regression testing seem to be separated from the rest
+            of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
+            clearly detailed why; \citet[p.~3]{BarbosaEtAl2006} \ifnotpaper
+                  consider \else considers \fi regression testing to be a test level.
+            \ifnotpaper
+      \item \citeauthor{IEEE2021} define an ``extended entry (decision) table''
+            both as a decision table where the ``conditions consist of multiple
+            values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021}
+            and one where ``the conditions and actions are generally described
+            but are incomplete'' \citeyearpar[p.~175]{IEEE2017}\todo{OG ISO1984}.
+      \item \citeauthor*{IEEE2017} say that ``test level'' and ``test phase''
+            are synonyms, both meaning a ``specific instantiation of [a] test
+            sub-process'' (\citeyear[pp.~469,~470]{IEEE2017};
+            \citeyear[p.~9]{IEEE2013}), but there are also alternative
+            definitions for them. \procLevel{\citeyearpar}, while
+            ``test phase'' \phaseDef{}
+      \item \citeauthor{IEEE2017} use the same definition for ``partial correctness''
+            \citeyearpar[p.~314]{IEEE2017} and ``total correctness'' (p.~480).
+            \fi
 \end{itemize}
 
 \ifnotpaper
-    \paragraph{Low Severity}
-    \begin{itemize}
-        \item ``Fuzz testing'' is ``tagged'' (?) as ``artificial intelligence''
-              \citep[p.~5]{IEEE2022}.
-        \item Integration, system, and system integration testing are all listed
-              as ``common test levels'' (\citealp[p.~12]{IEEE2022};
-              \citeyear[p.~6]{IEEE2021}), but no
-              definitions are given for the latter two, making it unclear what
-              ``system integration testing'' is; it is a combination of the two?
-              somewhere on the spectrum between them? It is listed as a child
-              % Severity: Med (Meta)
-              of integration testing by \citetISTQB{} and of system testing
-              by \citet[p.~23]{Firesmith2015}.
-        \item Similarly, component, integration, and component integration
-              testing are all listed in \citep{IEEE2017}, but ``component
-              integration testing'' is only defined as ``testing of groups of
-              related components'' \citep[p.~82]{IEEE2017}; it is a combination of
-              the two? somewhere on the spectrum between them? As above, it is
-              listed as a child of integration testing by \citetISTQB{}.
-        \item A typo in \citep[Fig.~2]{IEEE2021} means that ``specification-based
-              techniques'' is listed twice, when the latter should be
-              ``structure-based techniques''.
-        \item \citeauthor*{IEEE2017} provide a definition for ``inspections and
-              audits'' \citeyearpar[p.~228]{IEEE2017}, despite also giving
-              definitions for ``inspection'' (p.~227) and ``audit'' (p.~36);
-              while the first term \emph{could} be considered a superset of the
-              latter two, this distinction doesn't seem useful.
-    \end{itemize}\fi
+      \paragraph{Low Severity}
+      \begin{itemize}
+            \item ``Fuzz testing'' is ``tagged'' (?) as ``artificial intelligence''
+                  \citep[p.~5]{IEEE2022}.
+            \item Integration, system, and system integration testing are all listed
+                  as ``common test levels'' (\citealp[p.~12]{IEEE2022};
+                  \citeyear[p.~6]{IEEE2021}), but no
+                  definitions are given for the latter two, making it unclear what
+                  ``system integration testing'' is; it is a combination of the two?
+                  somewhere on the spectrum between them? It is listed as a child
+                  % Severity: Med (Meta)
+                  of integration testing by \citetISTQB{} and of system testing
+                  by \citet[p.~23]{Firesmith2015}.
+            \item Similarly, component, integration, and component integration
+                  testing are all listed in \citep{IEEE2017}, but ``component
+                  integration testing'' is only defined as ``testing of groups of
+                  related components'' \citep[p.~82]{IEEE2017}; it is a combination of
+                  the two? somewhere on the spectrum between them? As above, it is
+                  listed as a child of integration testing by \citetISTQB{}.
+            \item A typo in \citep[Fig.~2]{IEEE2021} means that ``specification-based
+                  techniques'' is listed twice, when the latter should be
+                  ``structure-based techniques''.
+            \item \citeauthor*{IEEE2017} provide a definition for ``inspections and
+                  audits'' \citeyearpar[p.~228]{IEEE2017}, despite also giving
+                  definitions for ``inspection'' (p.~227) and ``audit'' (p.~36);
+                  while the first term \emph{could} be considered a superset of the
+                  latter two, this distinction doesn't seem useful.
+      \end{itemize}\fi

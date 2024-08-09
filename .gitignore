@@ -6,5 +6,7 @@ build/
 *.fdb\_latexmk
 *.out
 
+*/__pycache__/*
+
 ~$*
 *.swp

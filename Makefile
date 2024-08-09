@@ -58,8 +58,9 @@ update_diffs: gen_csv_diffs
 
 gen_latex:
 	-mkdir build || true
-	py scripts/csvToGraph.py
-	py scripts/undefinedTermSources.py
+	py scripts/csvToGraph.py &
+	py scripts/undefinedTermSources.py &
+	py scripts/otherDiscrepCounts.py &
 
 compile_graphs:
 	for filename in $(GRAPHS) ; do \

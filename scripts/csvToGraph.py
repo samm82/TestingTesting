@@ -2,6 +2,8 @@ import numpy as np
 from pandas import read_csv
 import re
 
+from helpers import writeFile
+
 # Whether or not to display information for pulling source information
 # Will only display information for approaches containing the provided string
 DEBUG_SOURCE: str = ""
@@ -385,25 +387,6 @@ for synList in [expMultiSyns, impMultiSyns]:
             noSources.append(line)
     synLines += allSources + someSources + noSources
 
-def writeFile(lines, filename, helper: bool = False):
-    lines = [line + '\n' for line in lines]
-    if helper:
-        filename = f"build/{filename}.tex"
-    else:
-        filename = f"assets/graphs/{filename}.tex"
-
-    try:
-        with open(filename, "r", encoding="utf-8") as readFile:
-            existingLines = readFile.readlines()
-    except FileNotFoundError:
-        existingLines = []
-
-    if existingLines != lines:
-        with open(filename, "w+", encoding="utf-8") as outFile:
-            outFile.writelines(lines)
-    else:
-        print(f"No changes to {filename}")
-
 writeFile(synLines, "multiSyns", True)
 
 workingStaticSet = staticApproaches.copy()
@@ -562,7 +545,7 @@ for i, parSyns in enumerate([twoSourcesParSyns, oneSourceParSyns,
         writeFile([f"{parSynAll}% All pairs (even without sources)",
                    f"{parSynOne}% Pairs with at least one source",
                    f"{parSynBoth}% Pairs with sources for both",
-                   f"{selfCycleCount}% Self-cycles"], "parSynsCount", True)
+                   f"{selfCycleCount}% Self-cycles"], "parSynCounts", True)
 
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
