@@ -120,6 +120,8 @@ StaticAnalysis -> WModelTesting;
 StaticAssertionChecking -> AssertionChecking;
 StaticAssertionChecking -> StaticAnalysis;
 StaticTesting -> WModelTesting;
+StructuralAnalysis [label=<Structural<br/>Analysis>,style="filled"];
+StructuralAnalysis -> StaticTesting[color="maroon"];
 StructurebasedTesting [label=<Structure-based<br/>Testing>,style="filled"];
 StructurebasedTesting -> StaticTesting[color="green"];
 StructuredWalkthroughs -> Walkthroughs;
