@@ -577,62 +577,11 @@ and capacity) ``when accomplishing its designated functions''
             ``knows that his work is being carefully reviewed by his peers, he
             might make an extra effort to \dots\ make sure that it's right''
             \citep[pp.~93-94]{Patton2006}
-
-      \item Many forms:
-            \begin{itemize}
-                  \item Peer Review: Also called ``buddy review''
-                        \citep[p.~94]{Patton2006}. The most informal
-                        review at the smallest scale \citep[p.~94]{Patton2006}.
-                        One variation is where a group of two or three people
-                        go through code that one of them wrote
-                        \citep[p.~94]{Patton2006}. Another is to
-                        have each person in a larger group submit ``a `best'
-                        program and one of lesser quality'', randomly distribute
-                        all programs to be assessed by two people in the group,
-                        and return all feedback anonymously to the appropriate
-                        developer \citep[p.~414]{vanVliet2000}
-                  \item Walkthrough: The author of the code presents it line
-                        by line to a small group that ``question anything that
-                        looks suspicious'' \citep[p.~95]{Patton2006};
-                        this is done by using test data to ``walk through''
-                        the execution of the program
-                        \citep[p.~416]{vanVliet2000}. A more
-                        structured walkthrough may have specific roles
-                        (presenter, coordinator, secretary, maintenance oracle,
-                        standards bearer, and user representative)
-                        \citep[p.~484]{PetersAndPedrycz2000}
-                  \item Inspection: Someone who is \emph{not} the author of the
-                        code presents it to a small group of people
-                        \citep[p.~95]{Patton2006}; the author
-                        should be ``a largely silent observer'' who
-                        ``may be consulted by the inspectors''
-                        \citep[p.~415]{vanVliet2000}. Each member has
-                        a role, which may be tied to a different perspective
-                        (e.g., designer, implementer, tester,
-                        \citep[p.~439]{PetersAndPedrycz2000} user, or product
-                        support person) \citep[p.~95]{Patton2006}.
-                        Changes are made based on issues identified \emph{after}
-                        the inspection \citep[p.~415]{vanVliet2000},
-                        and a reinspection may take place
-                        \citep[p.~95]{Patton2006}; one guideline is to
-                        reinspect \emph{100\%} of the code ``[i]f more than 5\%
-                        of the material inspected has been reworked''
-                        \citep[p.~483]{PetersAndPedrycz2000}.
-            \end{itemize}
-
-      \item Can use various tools \seeSectionPar{code-stds-and-guidelines}{ and
-                  \nameref{gen-code-review-checklist}}
-
-      \item \emph{Could be used to evaluate Drasil and/or generated code, but
-                  couldn't be automated due to the human element}
-
 \end{itemize}
 
-\subsection[Coding Standards and Guidelines]{Coding Standards and Guidelines
+\subsubsection[Coding Standards and Guidelines]{Coding Standards and Guidelines
       \citep[pp.~96-99]{Patton2006}}
 \label{code-stds-and-guidelines}
-\todo{This shouldn't really be at the same level as \nameref{reviews}, but I
-      didn't want to fight with more subsections yet}
 
 \begin{itemize}
       \item Code may work but still be incorrect if it doesn't meet certain
@@ -645,11 +594,9 @@ and capacity) ``when accomplishing its designated functions''
       \item This could be checked using linters
 \end{itemize}
 
-\subsection[Generic Code Review Checklist]{Generic Code Review Checklist
+\subsubsection[Generic Code Review Checklist]{Generic Code Review Checklist
       \citep[pp.~99-103]{Patton2006}}
 \label{gen-code-review-checklist}
-\todo{This shouldn't really be at the same level as \nameref{reviews}, but I
-      didn't want to fight with more subsections yet}
 
 \begin{itemize}
       \item \phantomsection
@@ -677,34 +624,6 @@ and capacity) ``when accomplishing its designated functions''
             \citep[pp.~102-103]{Patton2006}
       \item ASCII character handling, portability, compilation warnings
             \citep[p.~103]{Patton2006}
-\end{itemize}
-
-\subsubsection{Requirements}
-\begin{itemize}
-      \item Data reference errors: know what operations are allowed for each
-            type and check that values are only used for those operations
-      \item Data declaration errors: I think this will mainly be covered by
-            checking for data reference errors and by our generator (e.g., no
-            typos in type names)
-      \item Computation errors: partially tested dynamically by system tests,
-            but could also more formally check for things like type mismatches
-            (does \acs{gool} do this already?) or if divisors can ever be zero
-      \item Comparison errors: I think this would mainly have to be done
-            manually (maybe except for checking for (in)equality between values
-            where it can never occur), but we may be able to generate a summary
-            of all comparisons for manual verification
-      \item Control flow errors: mostly irrelevant since we don't implement
-            loops yet; would this include system tests?
-      \item Subroutine parameter errors: we could check the types of values
-            returned by a subroutine with the expected type (at least for
-            languages like Python)
-      \item Input/output errors: knowledge of (and more formal specification of)
-            requirements would be needed here
-      \item ASCII character handling, portability, compilation warnings:
-            we could automatically check that the compiler (for languages that
-            meaningfully have a compile stage) doesn't output any warnings
-            (e.g., by saving output to a file and checking it is what is
-            expected from a normal compilation); do we have any string inputs?
 \end{itemize}
 
 \subsection[Correctness Proofs]{Correctness Proofs
