@@ -413,8 +413,6 @@ selfCycles = []
 for name, parent in zip(names, parents):
     fname = formatApproach(name)
     for par in parent:
-        if "Reada" in par:
-            print(par, formatApproach(par, stripInit=True), formatApproach(par, stripInit=True).replace(" ", ""))
         fpar = formatApproach(par, stripInit=True)
         if not fpar.replace(" ", ""):
             continue
@@ -433,6 +431,7 @@ for name, parent in zip(names, parents):
                     removeInParens(par) in categoryDict[key][0]):
                     addLineToCategory(key, parentLine)
 
+selfCycleCount = len(selfCycles)
 selfCycles = (["\\begin{enumerate}"] +
               [formatLineWithSources(f"\\item {cycle}")
                for cycle in selfCycles] +
@@ -560,8 +559,10 @@ for i, parSyns in enumerate([twoSourcesParSyns, oneSourceParSyns,
                         "synonyms.", "\\begin{itemize}"] + parSyns +
                         ["\\end{itemize}"], "parSynsExtra", True)
             
-        writeFile(["%\n".join(map(str, [parSynAll, parSynOne, parSynBoth]))],
-                  "parSynsCount", True)
+        writeFile([f"{parSynAll}% All pairs (even without sources)",
+                   f"{parSynOne}% Pairs with at least one source",
+                   f"{parSynBoth}% Pairs with sources for both",
+                   f"{selfCycleCount}% Self-cycles"], "parSynsCount", True)
 
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)

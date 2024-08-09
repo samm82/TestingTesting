@@ -1,0 +1,102 @@
+\ifnotpaper\paragraph{High Severity}\fi
+\begin{itemize}
+    \item The \acs{swebok} V4 defines ``privacy testing'' as testing that
+          ``assess[es] the security and privacy of users' personal data to
+          prevent local attacks'' \citep[p.~5-10]{SWEBOK2024}; this seems to
+          overlap (both in scope and name) with
+          the definition of ``security testing'' in \citep{IEEE2022}: testing
+          ``conducted to evaluate the degree to which a test item, [sic] and
+          associated data and information, are protected so that'' only
+          ``authorized persons or systems'' can use them as intended.
+          \ifnotpaper
+    \item While ergonomics testing is out of scope (as it tests hardware, not
+          software), its definition of ``testing to determine whether a
+          component or system and its input devices are being used properly
+          with correct posture'' \citepISTQB{} seems to focus on how the
+          system is \emph{used} as opposed to the system \emph{itself}.
+    \item \citetISTQB{} describe the term ``software in the loop'' as a
+          kind of testing, while the source it references seems to describe
+          ``Software-in-the-Loop-Simulation'' as a ``simulation environment''
+          that may support software integration testing
+          \citep[p.~153]{SPICE2022}; is this a testing approach or a tool
+          that supports testing?
+    \item While model testing is said to test the object under test,
+          it seems to describe testing the models themselves
+          \citet[p.~20]{Firesmith2015}; using the models to test the object
+          under test seems to be called ``driver-based testing'' (p.~33).\fi
+    \item It is ambiguous whether ``tool/environment testing'' refers to
+          testing the tools/environment \emph{themselves} or \emph{using}
+          them to test the object under test; the latter is implied, but the
+          wording of its subtypes \citep[p.~25]{Firesmith2015} seems to imply
+          the former.
+          \ifnotpaper
+    \item The terms ``acceleration'' and ``acoustic tolerance testing'' seem
+          to only refer to software testing in \citep[p.~56]{Firesmith2015};
+          elsewhere, they seem to refer to testing the acoustic tolerance of
+          rats \citep{HolleyEtAl1996} or the acceleration tolerance of
+          \accelTolTest{}, which don't exactly seem relevant\dots\fi
+    \item The distinctions between development testing \citep[p.~136]{IEEE2017},
+          developmental testing \citep[p.~30]{Firesmith2015}, and developer
+          testing
+          % Severity: High (Other)
+          \ifnotpaper
+              (\citealp[p.~39]{Firesmith2015}; \citealp[p.~11]{Gerrard2000a})
+          \else
+              \cite[p.~39]{Firesmith2015}, \cite[p.~11]{Gerrard2000a}
+          \fi are unclear and seem miniscule.
+          \ifnotpaper
+\end{itemize}
+
+\paragraph{Medium Severity}
+\begin{itemize}\fi
+    \item Various sources say that alpha testing is performed by different
+          people, including ``only by users within the organization
+          developing the software'' \citep[p.~17]{IEEE2017}, by ``a small,
+          selected group of potential users'' \citep[p.~5-8]{SWEBOK2024}, or
+          ``in the developer's test environment by roles outside the
+          development organization'' \citepISTQB{}.
+    \item ``\acf{ml} model testing'' and ``\acs{ml} functional performance''
+          are defined in terms of ``\acs{ml} functional performance criteria'',
+          which is defined in terms of ``\acs{ml} functional performance
+          metrics'', which is defined as ``a set of measures that relate to the
+          functional correctness of an \acs{ml} system'' \citepISTQB{}. The use
+          of ``performance'' (or ``correctness'') in these definitions is at
+          best ambiguous and at worst incorrect.
+          \ifnotpaper
+    \item The definition of ``math testing'' given by \citetISTQB{} is
+          too specific to be useful, likely taken from an example instead of
+          a general definition: ``testing to determine the correctness of the
+          pay table implementation, the random number generator results, and
+          the return to player computations''.
+    \item A similar issue exists with multiplayer testing, where its
+          definition specifies ``the casino game world'' \citepISTQB{}.
+    \item Thirdly, ``par sheet testing'' from \citepISTQB{} seems to
+          refer to this specific example and does not seem more widely
+          applicable, since a ``PAR sheet'' is ``a list of all the symbols
+          on each reel of a slot machine'' \citep{Bluejay2024}.\fi
+    \item There is disagreement on the structure of tours; they can either be
+          quite general \citep[p.~34]{IEEE2022} or ``organized around a
+          special focus'' \citepISTQB{}.
+    \item Performance and security testing are given as subtypes of
+          reliability testing by \citep{ISO_IEC2023a} but
+          these are all listed separately by \citet[p.~53]{Firesmith2015}.
+\end{itemize}
+
+\ifnotpaper
+    \paragraph{Low Severity}
+    \begin{itemize}
+        \item While correct, ISTQB's definition of ``specification-based testing''
+              is not helpful: ``testing based on an analysis of the specification
+              of the component or system'' \citepISTQB{}.
+        \item The source cited for the definition of ``test type'' from
+              \citepISTQB{} does not seem to provide a definition itself.
+        \item The same is true for ``visual testing''.
+        \item The same is true for ``security attack''.
+        \item ``Hardware-'' and ``human-in-the-loop testing'' have the same
+              acronym: ``HIL''\footnote{``HiL'' is used for the former by
+                  \citet[p.~2]{PreußeEtAl2012}.} \citep[p.~23]{Firesmith2015}.
+        \item The same is true for ``customer'' and ``contract(ual) acceptance
+              testing'' (``CAT'') \citep[p.~30]{Firesmith2015}.
+        \item The acronym ``SoS'' is used but not defined by
+              \citet[p.~23]{Firesmith2015}.
+    \end{itemize}\fi
