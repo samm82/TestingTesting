@@ -38,6 +38,7 @@ for name, s in sections.items():
         else:
             update_section(name, severity, contents)
 
+total = sum(getattr(sections[sec], sev) for sec in SECTIONS for sev in SEVERITIES.keys())
 writeFile([f"{getattr(sections[sec], sev)}% {sev.capitalize()} {sec} Discrepancies"
-           for sec in SECTIONS for sev in SEVERITIES.keys()],
-           "otherDiscrepCounts", True)
+           for sec in SECTIONS for sev in SEVERITIES.keys()] +
+           [f"{total}% Total Other Discrepancies"], "otherDiscrepCounts", True)
