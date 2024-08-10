@@ -525,8 +525,3 @@ Waterfall Testing | Practice? | Testing performed in the context of the waterfal
 Web Application Testing (WAT) (Doğan et al., 2014; Choudhary et al., 2010; Kam, 2008) | Approach | Testing of "an application that is accessed via a web browser using the Hypertext Transfer Protocol (HTTP) over a network such as the Internet or intranet" (Kam, 2008, p. 1) | Domain-Specific Testing? | Sometimes called "Web Testing" (FIND SOURCES FROM Doğan et al., 2014; Choudhary et al., 2010; Kam, 2008), Rich Internet Applications Testing? (implied by Doğan et al., 2014, p. 176; OG Amalfitano et al., 2010) | Difficult due to many factors (e.g., asynchronicity, heterogeneity, nondeterminism) (Doğan et al., 2014, pp. 174-15) and is often overlooked (Kam, 2008, p. 7; OG [12]). About 70% of websites in 2003 had defects (Doğan et al., 2014, p. 174; OG BIG-SF)
 WebApp Slicing | Approach |  | Web Application Testing, Slicing, Structure-based Testing, Data Flow Testing, Functional Testing (Kam, 2008, Tab. 1) |  | 
 W-Model Testing | Practice? | The combination of "static testing of early document or code deliverables and dynamic test stages of software deliverables" (Gerrard, 2000a, p. 9) | Incremental Testing?, Continuous Testing? | Since only dynamic testing is considered for this research, the in-scope part of W-model testing is equivalent to V-model testing | 
- |  |  |  |  | 
- |  |  |  |  | See also the ISO/IEC/IEEE 29119 series; 29119-2 provides more information on test processes
- |  |  |  |  | See also ISO/IEC 2382:2015, Information technology -— Vocabulary
- |  |  |  |  | Compare ISO/IEC TR 19759:2016 to SWEBOK
- |  |  |  |  | Investigate convertibility/functional size measurement (IEEE, 2017, p. 103)

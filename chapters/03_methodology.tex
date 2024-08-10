@@ -136,18 +136,18 @@ will be omitted over the course of analysis.
 \subsection{Undefined Terms}
 \label{undef-terms}
 
-% Define values to be easily reused and used in calculation!
+% Define/read values to be easily reused and used in calculation!
+\ReadFile{\undefTermCounts}{\miscAssets/undefTermCounts}
 
 \newcount\TotalBefore
-\newcount\TotalAfter
 \newcount\UndefBefore
+\TotalBefore=442
+\UndefBefore=156
+
+\newcount\TotalAfter
 \newcount\UndefAfter
-
-\TotalBefore=432
-\UndefBefore=153
-
-\TotalAfter=515
-\UndefAfter=171
+\TotalAfter=\undefTermCounts{1}
+\UndefAfter=\undefTermCounts{2}
 
 The search process led to some testing approaches being
 mentioned without definition;

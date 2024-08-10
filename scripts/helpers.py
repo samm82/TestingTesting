@@ -1,9 +1,9 @@
-def writeFile(lines, filename, helper: bool = False):
+def writeFile(lines, filename, helper: bool = False, dir: str = "graphs"):
     lines = [line + '\n' for line in lines]
     if helper:
         filename = f"build/{filename}.tex"
     else:
-        filename = f"assets/graphs/{filename}.tex"
+        filename = f"assets/{dir}/{filename}.tex"
 
     try:
         with open(filename, "r", encoding="utf-8") as readFile:

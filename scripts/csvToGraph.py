@@ -37,6 +37,11 @@ categories = approaches["Approach Category"].to_list()
 synonyms = approaches["Synonym(s)"].to_list()
 parents = approaches["Parent(s)"].to_list()
 
+# Populate values for Undefined Terms section
+writeFile(map(str, [len(approaches),             # TotalAfter
+           approaches["Definition"].isna().sum() # UndefAfter
+           ]), "undefTermCounts", dir="misc")
+
 def processCol(col):
     SOURCE_CHUNKS = [AUTHOR_REGEX, YEAR_REGEX, BEGIN_INFO_REGEX]
 
