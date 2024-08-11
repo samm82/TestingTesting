@@ -130,6 +130,21 @@ of a test process; for example, ``across the whole organization'' or only
 
 \ExplSyntaxOff
 
+% Define/read values for Undefined Terms methodology for reuse and calculation!
+\ReadFile{\undefTermCounts}{\miscAssets/undefTermCounts}
+
+\newcount\TotalBefore
+\newcount\UndefBefore
+\newcount\TotalAfter
+\newcount\UndefAfter
+
+\TotalBefore=\undefTermCounts{1}
+\UndefBefore=\undefTermCounts{2}
+\TotalAfter=\undefTermCounts{3}
+\UndefAfter=\undefTermCounts{4}
+
+\def\approachCount{\undefTermCounts{3}}
+
 \ReadFile{\parSynCounts}{build/parSynCounts}
 
 \def\parSynAll{\parSynCounts{1}}

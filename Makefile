@@ -15,6 +15,9 @@ DOC_NAME =
 TEX_NAME ?= $(DOC_NAME)
 TEX_FLAGS = -interaction=nonstopmode
 
+# Whether or not to update "before" counts
+UNDEF =
+
 help:
 	@echo "Build:"
 	@echo "  - build : Build a fresh copy of relevant artifacts."
@@ -40,6 +43,7 @@ gloss:
 	$(foreach gloss, $(CSV_GLOSSARIES),EXCEL.EXE $(gloss) &)
 
 gen_csv_diffs:
+	py scripts/undefTermCounts.py $(UNDEF)
 	for gloss in $(GLOSSARIES) ; do \
 		py scripts/diffCSV.py $$gloss; \
 	done
@@ -59,7 +63,7 @@ update_diffs: gen_csv_diffs
 gen_latex:
 	-mkdir build || true
 	py scripts/csvToGraph.py &
-	py scripts/undefinedTermSources.py &
+	py scripts/undefTermSources.py &
 	py scripts/otherDiscrepCounts.py &
 
 compile_graphs:
