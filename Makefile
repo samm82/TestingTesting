@@ -1,3 +1,5 @@
+MAKEFLAGS += -j3
+
 .PHONY: help system_requirements gloss gen_csv_diffs gen_latex compile_graphs compile_doc clean
 
 STUBS = Supp Quality Approach
@@ -60,13 +62,13 @@ update_diffs: gen_csv_diffs
 		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
 	done
 
-gen_latex:
-	-mkdir build || true
-	py scripts/csvToGraph.py &
-	py scripts/undefTermSources.py &
-	py scripts/otherDiscrepCounts.py &
+LATEX_SCRIPTS = csvToGraph undefTermSources otherDiscrepCounts
 
-compile_graphs:
+$(LATEX_SCRIPTS):
+	-mkdir build || true
+	py scripts/$@.py
+
+compile_graphs: csvToGraph
 	for filename in $(GRAPHS) ; do \
 			filename=$${filename%.tex} ; \
 			# -rm filename.pdf ; \
@@ -79,16 +81,16 @@ compile_graphs:
 	rm *Legend* || true
 
 custom_graphs: GRAPHS="$(CUSTOM_GRAPHS)"
-custom_graphs: gen_latex compile_graphs
+custom_graphs: compile_graphs
 
-graphs: gen_latex compile_graphs
+graphs: compile_graphs
 
 compile_doc: # '-output-directory=build' is a special name and is referenced from '\usepackage{minted}' region in some .tex files
 	-latexmk -output-directory=build -jobname=$(DOC_NAME) -pdflatex=lualatex -pdf $(TEX_FLAGS) -shell-escape $(TEX_NAME).tex
 	cp build/$(DOC_NAME).pdf $(DOC_NAME).pdf
 	-rm lualatex*.fls || true
 
-paper thesis poster: gen_latex # standard build of documents
+paper thesis poster: $(LATEX_SCRIPTS) # standard build of documents
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
@@ -102,7 +104,7 @@ build: csv_diff paper thesis graphs
 
 debug: DOC_NAME=thesis
 debug: TEX_FLAGS=
-debug: gen_latex compile_doc # for finding hard issues, this is an interactive version of 'thesis'
+debug: $(LATEX_SCRIPTS) compile_doc # for finding hard issues, this is an interactive version of 'thesis'
 
 clean:
 	rm -rf build/
