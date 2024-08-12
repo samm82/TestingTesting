@@ -127,7 +127,7 @@ def addLineToCategory(key, line):
     if line not in categoryDict[key][1] and "-> ;" not in line:
         categoryDict[key][1].append(line)
 
-def removeInParens(s, stripInit=False):
+def removeInParens(s: str, stripInit: bool=False):
     s = s.replace(" (Testing)", " Testing")
     # s = re.sub(r" \(.*?\) \(.*?\)", "", s)
     # Remove nested parentheses first, if they exist
@@ -142,10 +142,10 @@ def removeInParens(s, stripInit=False):
         s = s.strip(")")
     return s.replace("?", "")
 
-def lineBreak(s):
+def lineBreak(s: str):
     return f"<{s.replace(" ", "<br/>")}>"
 
-def formatApproach(s, stripInit=False):
+def formatApproach(s: str, stripInit=False):
     s = removeInParens(s, stripInit)
     for c in "?-/() ":
         s = s.replace(c, "")
@@ -434,16 +434,19 @@ def makeParSynLine(chd, par, parSource, synSource):
         noSourcesParSyns.add(f"\t\\item {chd.capitalize()} and {par.lower()}")
         return
 
-    def parseSource(s):
+    def parseSource(s: str, default: str = ""):
         if not s:
-            return ("may be", "")
-        verb = "is" if s == parSource else "are"
-        if not isUnsure(s):
-            return (f"{verb} called", f" in {s}")
-        callImply = s.split(re.search(AUTHOR_REGEX, s).group())[0]
-        for x in {"by", "in"}:
-            callImply = callImply.strip(f" {x}")
-        return (f"{verb} {callImply[1:]} to be", " in (" + s.lstrip(callImply + " by"))
+            return default
+
+        s = s.lstrip("(").rstrip(")").split(";")
+
+        try:
+            i = [isUnsure(source) for source in s].index(True)
+            s[i] = f"implied by {s[i]}"
+        except ValueError:
+            pass
+
+        return f"({';'.join(s)})"
 
     numSources = f"{parSource}{synSource}".count("(")
     if numSources == 2:
@@ -453,8 +456,8 @@ def makeParSynLine(chd, par, parSource, synSource):
     else:
         raise ValueError("Unexpected number of '(' in makeParSynLine")
 
-    parCallImply, parSource = parseSource(parSource)
-    synCallImply, synSource = parseSource(synSource)
+    parSource = parseSource(parSource)
+    synSource = parseSource(synSource)
 
     def sourceForTable(source):
         return ("Inferred from their definitions" if not source
@@ -504,7 +507,7 @@ parSynLines = []
 for i, parSyns in enumerate([twoSourcesParSyns, oneSourceParSyns,
                              noSourcesParSyns]):
     parSyns = sortIgnoringParens(parSyns)
-    parSyns.sort(key=lambda x: removeInParens(x).count("implied"))
+    parSyns.sort(key=lambda x: x.count("(implied"))
     if i != 2:
         parSynLines += parSyns
     else:
