@@ -218,15 +218,15 @@ COLOR_ORDERING = [GREEN, BLUE, MAROON, BLACK]
 def getColor(name):
     def determineColor(s):
         if any(std in s for std in {"IEEE", "ISO", "IEC"}):
-            return "green"
+            return GREEN
         if any(metastd in s for metastd in 
             {"Washizaki", "Bourque and Fairley",
                 "Hamburg and Mogyorodi", "Firesmith"}):
-            return "blue"
+            return BLUE
         if any(textbook in s for textbook in
             {"van Vliet", "Patton", "Peters and Pedrycz"}):
-            return "maroon"
-        return "black"
+            return MAROON
+        return BLACK
 
     if isUnsure(name):
         return (None, determineColor(name))
@@ -234,12 +234,11 @@ def getColor(name):
         for term in UNSURE_KEYWORDS:
             if term + " " in name:
                 name = name.split(term)
-                break
-        if isinstance(name, list):
-            colors = (determineColor(name[0]), determineColor(name[1]))
-            if COLOR_ORDERING.index(colors[1]) >= COLOR_ORDERING.index(colors[0]):
-                return (determineColor(name[0]), None)
-            return colors
+                colors = tuple(map(determineColor, name))
+                if (COLOR_ORDERING.index(colors[1]) >=
+                        COLOR_ORDERING.index(colors[0])):
+                    return (colors[0], None)
+                return colors
         return (determineColor(name), None)
 
 def colorRelations(colors, edge, extra=""):
@@ -438,15 +437,12 @@ def makeParSynLine(chd, par, parSource, synSource):
         if not s:
             return default
 
-        s = s.lstrip("(").rstrip(")").split(";")
-
-        try:
+        if isUnsure(s.lstrip("(")):
+            s = s.lstrip("(").rstrip(")").split(";")
             i = [isUnsure(source) for source in s].index(True)
             s[i] = f"implied by {s[i]}"
-        except ValueError:
-            pass
-
-        return f"({';'.join(s)})"
+            return f"({';'.join(s)})"
+        return s
 
     numSources = f"{parSource}{synSource}".count("(")
     if numSources == 2:
@@ -456,15 +452,11 @@ def makeParSynLine(chd, par, parSource, synSource):
     else:
         raise ValueError("Unexpected number of '(' in makeParSynLine")
 
-    parSource = parseSource(parSource)
-    synSource = parseSource(synSource)
-
-    def sourceForTable(source):
-        return ("Inferred from their definitions" if not source
-                else source.lstrip(" in "))
+    parSource = parseSource(parSource, "Inferred from their definitions")
+    synSource = parseSource(synSource, "Inferred from their definitions")
 
     addTo.add(formatLineWithSources(
-        f"{chd} & $\\to$ & {par} & {sourceForTable(parSource)} & {sourceForTable(synSource)} \\\\",
+        f"{chd} & $\\to$ & {par} & {parSource} & {synSource} \\\\",
         False))
         # f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "
         # f"a sub-approach of \\textbf{{``{par.lower()}''}}{parSource}, but the "
