@@ -14,5 +14,5 @@ def writeFile(lines, filename, helper: bool = False, dir: str = "graphs"):
     if existingLines != lines:
         with open(filename, "w+", encoding="utf-8") as outFile:
             outFile.writelines(lines)
-    else:
-        print(f"No changes to {filename}")
+    # else:
+    #     print(f"No changes to {filename}")

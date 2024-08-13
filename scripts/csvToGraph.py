@@ -512,16 +512,13 @@ def makeParSynLine(chd, par, parSource, synSource):
             parSet = set(sourceDict["par"][i])
             synSet = set(sourceDict["syn"][j])
 
-            rigidKey = "exp" if i == j == "exp" else "imp"
-
-            sameSource = parSet & synSet
-            for tup in sameSource:
+            for tup in parSet & synSet:
                 discrepsWithinSource.addDiscrep([i, j], tup[0])
 
-            for parTup, synTup in itertools.product(parSet - sameSource,
-                                                    synSet - sameSource):
-                if parTup[0] == synTup[0] and parTup[1] != synTup[1]:
-                    discrepsWithinAuthor.addDiscrep([i, j], parTup[0])
+            for parTup in parSet - synSet:
+                for synTup in synSet - parSet:
+                    if parTup[0] == synTup[0] and parTup[1] != synTup[1]:
+                        discrepsWithinAuthor.addDiscrep([i, j], parTup[0])
 
         except KeyError:
             continue
