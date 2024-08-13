@@ -1,3 +1,6 @@
+from copy import deepcopy
+from enum import Enum
+import itertools
 import numpy as np
 from pandas import read_csv
 import re
@@ -117,6 +120,37 @@ categoryDict = {
     "Type": ([], []),
 }
 
+GREEN = "green"
+BLUE = "blue"
+MAROON = "maroon"
+BLACK = "black"
+COLOR_ORDERING = [GREEN, BLUE, MAROON, BLACK]
+
+class Rigidity(Enum):
+    EXP = "exp"
+    IMP = "imp"
+
+class DiscrepancyCounter:
+    def __init__(self):
+        self.dict = {c: {k: 0 for k in list(Rigidity)} for c in COLOR_ORDERING}
+
+    def __str__(self):
+        return "{'" + "', '".join(f"{k}: ({v[Rigidity.EXP]}, {v[Rigidity.IMP]})"
+                                  for k, v in self.dict.items()) + "'}"
+
+    def addDiscrep(self, rigidity: str | list, a: str, b : str=None):
+        if not b: b = a
+        if isinstance(rigidity, list):
+            if any(r not in Rigidity for r in rigidity):
+                raise ValueError(f"Invalid rigidity value in {rigidity}.")
+            rigidity = Rigidity.IMP if Rigidity.IMP in rigidity else Rigidity.EXP
+
+        self.dict[getSourceColor(a)][rigidity] += 1
+
+discrepsWithinSource   = DiscrepancyCounter()
+discrepsWithinAuthor   = DiscrepancyCounter()
+discrepsWithinCategory = DiscrepancyCounter()
+
 UNSURE_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually", "most",
                    "often", "if", "although"]
 def isUnsure(name):
@@ -207,39 +241,34 @@ def addToIterable(s, iterable, key=key):
     else:
         raise ValueError(f"addToIterable unimplemented for {type(iterable)}")
 
-GREEN = "green"
-BLUE = "blue"
-MAROON = "maroon"
-BLACK = "black"
-COLOR_ORDERING = [GREEN, BLUE, MAROON, BLACK]
+def getSourceColor(s):
+    if any(std in s for std in {"IEEE", "ISO", "IEC"}):
+        return GREEN
+    if any(metastd in s for metastd in
+        {"Washizaki", "Bourque and Fairley", "SWEBOK",
+            "Hamburg and Mogyorodi", "ISTQB", "Firesmith"}):
+        return BLUE
+    if any(textbook in s for textbook in
+        {"van Vliet", "vanVliet", "Patton", "Peters and Pedrycz",
+            "PetersAndPedrycz"}):
+        return MAROON
+    return BLACK
 
 # Returns a tuple with the color for the rigid relations (if any),
 # then for the unsure ones (if any)
-def getColor(name):
-    def determineColor(s):
-        if any(std in s for std in {"IEEE", "ISO", "IEC"}):
-            return GREEN
-        if any(metastd in s for metastd in 
-            {"Washizaki", "Bourque and Fairley",
-                "Hamburg and Mogyorodi", "Firesmith"}):
-            return BLUE
-        if any(textbook in s for textbook in
-            {"van Vliet", "Patton", "Peters and Pedrycz"}):
-            return MAROON
-        return BLACK
-
+def getRelColor(name):
     if isUnsure(name):
-        return (None, determineColor(name))
+        return (None, getSourceColor(name))
     else:
         for term in UNSURE_KEYWORDS:
             if term + " " in name:
                 name = name.split(term)
-                colors = tuple(map(determineColor, name))
+                colors = tuple(map(getSourceColor, name))
                 if (COLOR_ORDERING.index(colors[1]) >=
                         COLOR_ORDERING.index(colors[0])):
                     return (colors[0], None)
                 return colors
-        return (determineColor(name), None)
+        return (getSourceColor(name), None)
 
 def colorRelations(colors, edge, extra=""):
     out = []
@@ -274,11 +303,11 @@ for name, synonym in zip(names, synonyms):
                 nameDict[nameWithSource] = [rsyn]
             # To only track relation one way and check inconsistencies
             try:
-                if synSets[f"{fname} -> {fsyn}"] != getColor(syn):
+                if synSets[f"{fname} -> {fsyn}"] != getRelColor(syn):
                     raise ValueError(
                         f"Mismatch between rigidity of synonyms {fsyn} and {fname}")
             except KeyError:
-                synSets[f"{fsyn} -> {fname}"] = getColor(syn)
+                synSets[f"{fsyn} -> {fname}"] = getRelColor(syn)
 
 nameDict.update(synDict)
 
@@ -403,7 +432,7 @@ for name, parent in zip(names, parents):
 
         for key in categoryDict.keys():
             for parentLine in colorRelations(
-                    getColor(par), f"{fname} -> {fpar}"):
+                    getRelColor(par), f"{fname} -> {fpar}"):
                 if key == "Static" and (fname in staticApproaches or
                                         fpar in staticApproaches):
                     addToIterable(name, workingStaticSet, "Static")
@@ -433,7 +462,7 @@ def makeParSynLine(chd, par, parSource, synSource):
         noSourcesParSyns.add(f"\t\\item {chd.capitalize()} and {par.lower()}")
         return
 
-    def parseSource(s: str, default: str = ""):
+    def parseSource(s: str, default: str = "Inferred from their definitions"):
         if not s:
             return default
 
@@ -441,8 +470,9 @@ def makeParSynLine(chd, par, parSource, synSource):
             s = s.lstrip("(").rstrip(")").split(";")
             i = [isUnsure(source) for source in s].index(True)
             s[i] = f"implied by {s[i]}"
-            return f"({';'.join(s)})"
-        return s
+            s = f"({';'.join(s)})"
+
+        return formatLineWithSources(s, False)
 
     numSources = f"{parSource}{synSource}".count("(")
     if numSources == 2:
@@ -452,12 +482,53 @@ def makeParSynLine(chd, par, parSource, synSource):
     else:
         raise ValueError("Unexpected number of '(' in makeParSynLine")
 
-    parSource = parseSource(parSource, "Inferred from their definitions")
-    synSource = parseSource(synSource, "Inferred from their definitions")
+    parSource = parseSource(parSource)
+    synSource = parseSource(synSource)
 
-    addTo.add(formatLineWithSources(
-        f"{chd} & $\\to$ & {par} & {parSource} & {synSource} \\\\",
-        False))
+    print(parSource, synSource)
+
+    def getSources(k, s):
+        return {k : re.findall(fr"\{{({AUTHOR_REGEX})({YEAR_REGEX})\}}", s) +
+            ([("ISTQB", "2024")] if "ISTQB" in s else [])}
+
+    sourceDict = {"par" : parSource, "syn" : synSource}
+    for k, v in sourceDict.items():
+        if v.startswith("(implied"):
+            sourceDict[k] = getSources("imp", v)
+        elif "implied" in v:
+            v = v.split("implied by")
+            splitSource = {key: val for i, k in enumerate(["exp", "imp"])
+                           for key, val in getSources(k, v[i]).items()}
+            splitSource["imp"] = [t for t in splitSource["imp"]
+                                  if t not in splitSource["exp"]]
+            sourceDict[k] = splitSource
+        else:
+            sourceDict[k] = getSources("exp", v)
+
+    print(sourceDict)
+
+    for i, j in itertools.product(["exp", "imp"], repeat=2):
+        try:
+            parSet = set(sourceDict["par"][i])
+            synSet = set(sourceDict["syn"][j])
+
+            rigidKey = "exp" if i == j == "exp" else "imp"
+
+            sameSource = parSet & synSet
+            for tup in sameSource:
+                discrepsWithinSource.addDiscrep([i, j], tup[0])
+
+            for parTup, synTup in itertools.product(parSet - sameSource,
+                                                    synSet - sameSource):
+                if parTup[0] == synTup[0] and parTup[1] != synTup[1]:
+                    discrepsWithinAuthor.addDiscrep([i, j], parTup[0])
+
+        except KeyError:
+            continue
+
+    print()
+
+    addTo.add(f"{chd} & $\\to$ & {par} & {parSource} & {synSource} \\\\")
         # f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "
         # f"a sub-approach of \\textbf{{``{par.lower()}''}}{parSource}, but the "
         # f"two {synCallImply} synonyms{synSource}."))
@@ -491,6 +562,10 @@ for chd, syns in nameDict.items():
             parSource = "(" + parSource[-1] if len(parSource) > 1 else ""
             synSource = "(" + synSource[-1] if len(synSource) > 1 else ""
             makeParSynLine(chd, par, parSource, synSource)
+
+print(discrepsWithinSource)
+print(discrepsWithinAuthor)
+print(discrepsWithinCategory)
 
 def sortIgnoringParens(ls):
     return sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", x))
@@ -677,8 +752,6 @@ for key, value in categoryDict.items():
     unsure = ["dashed"] + [c.split()[0] for c in lines if styleInLine("dashed", c)]
     writeDotFile([c for c in lines if all(x not in c for x in unsure)],
                   f"rigid{key}Graph")
-
-from copy import deepcopy
 
 SYN = "syn"
 class CustomGraph:
