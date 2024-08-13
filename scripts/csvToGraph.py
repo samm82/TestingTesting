@@ -138,7 +138,9 @@ class DiscrepancyCounter:
         return "{'" + "', '".join(f"{k}: ({v[Rigidity.EXP]}, {v[Rigidity.IMP]})"
                                   for k, v in self.dict.items()) + "'}"
 
-    def addDiscrep(self, rigidity: str | list, a: str, b : str=None):
+    def addDiscrep(self, rigidity: Rigidity | list[Rigidity],
+                   # Source categories
+                   a: str, b : str=None):
         if not b: b = a
         if isinstance(rigidity, list):
             if any(r not in Rigidity for r in rigidity):
@@ -151,8 +153,8 @@ discrepsWithinSource   = DiscrepancyCounter()
 discrepsWithinAuthor   = DiscrepancyCounter()
 discrepsWithinCategory = DiscrepancyCounter()
 
-UNSURE_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually", "most",
-                   "often", "if", "although"]
+UNSURE_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
+                   "most", "often", "if", "although"]
 def isUnsure(name):
     return any(unsure in name for unsure in
                {"?", " (Testing)"}.union(f"({term}" for term in UNSURE_KEYWORDS))
@@ -276,7 +278,8 @@ def colorRelations(colors, edge, extra=""):
     for i, style in enumerate(['', 'style="dashed"']):
         if colors[i]:
             color = f'color="{colors[i]}"' if colors[i] != BLACK else ""
-            out.append(f"{edge}[{",".join(list(filter(None, [extra, style, color])))}];".replace("[]", ""))
+            out.append(f"{edge}[{",".join(list(
+                filter(None, [extra, style, color])))}];".replace("[]", ""))
     return out
 
 # Add synonym relations
@@ -366,7 +369,8 @@ for key in categoryDict.keys():
         knownTerm = lambda x: removeInParens(x) in categoryDict[key][0]
         if (knownTerm(syn) or (sum(1 for x in terms if knownTerm(x)) > 1)):
             validTerms = [term for term in terms
-                          if (f"{fsyn} -> {formatApproach(term)}" in synSets.keys())
+                          if (f"{fsyn} -> {formatApproach(term)}"
+                              in synSets.keys())
                           and knownTerm(term)]
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
@@ -374,7 +378,8 @@ for key in categoryDict.keys():
                         (impMultiSyns, f"\\emph{{{syn}}}")
                         if not all(synSets[f"{fsyn} -> {formatApproach(term)}"][0]
                                    for term in validTerms) else (expMultiSyns, syn))
-                    multiSynsList.append(makeMultiSynLine(synStr, filter(knownTerm, terms)))
+                    multiSynsList.append(
+                        makeMultiSynLine(synStr, filter(knownTerm, terms)))
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
@@ -494,20 +499,20 @@ def makeParSynLine(chd, par, parSource, synSource):
     sourceDict = {"par" : parSource, "syn" : synSource}
     for k, v in sourceDict.items():
         if v.startswith("(implied"):
-            sourceDict[k] = getSources("imp", v)
+            sourceDict[k] = getSources(Rigidity.IMP, v)
         elif "implied" in v:
             v = v.split("implied by")
-            splitSource = {key: val for i, k in enumerate(["exp", "imp"])
+            splitSource = {key: val for i, k in enumerate(list(Rigidity))
                            for key, val in getSources(k, v[i]).items()}
-            splitSource["imp"] = [t for t in splitSource["imp"]
-                                  if t not in splitSource["exp"]]
+            splitSource[Rigidity.IMP] = [t for t in splitSource[Rigidity.IMP]
+                                         if t not in splitSource[Rigidity.EXP]]
             sourceDict[k] = splitSource
         else:
-            sourceDict[k] = getSources("exp", v)
+            sourceDict[k] = getSources(Rigidity.EXP, v)
 
     print(sourceDict)
 
-    for i, j in itertools.product(["exp", "imp"], repeat=2):
+    for i, j in itertools.product(list(Rigidity), repeat=2):
         try:
             parSet = set(sourceDict["par"][i])
             synSet = set(sourceDict["syn"][j])
@@ -517,8 +522,14 @@ def makeParSynLine(chd, par, parSource, synSource):
 
             for parTup in parSet - synSet:
                 for synTup in synSet - parSet:
-                    if parTup[0] == synTup[0] and parTup[1] != synTup[1]:
-                        discrepsWithinAuthor.addDiscrep([i, j], parTup[0])
+                    parAuthor, synAuthor = parTup[0], synTup[0]
+                    if parAuthor == synAuthor and parTup[1] != synTup[1]:
+                        discrepsWithinAuthor.addDiscrep([i, j], parAuthor)
+                    else:
+                        parColor = getSourceColor(parAuthor)
+                        synColor = getSourceColor(synAuthor)
+                        if parColor == synColor:
+                            discrepsWithinCategory.addDiscrep([i, j], parAuthor)
 
         except KeyError:
             continue
