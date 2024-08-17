@@ -1,11 +1,13 @@
 from copy import deepcopy
 from enum import Enum
+from aenum import AutoNumberEnum
 import itertools
 import numpy as np
 from pandas import read_csv
 import re
 
-from helpers import writeFile
+from discrepCounter import *
+from helpers import *
 
 # Whether or not to display information for pulling source information
 # Will only display information for approaches containing the provided string
@@ -120,38 +122,7 @@ categoryDict = {
     "Type": ([], []),
 }
 
-GREEN = "green"
-BLUE = "blue"
-MAROON = "maroon"
-BLACK = "black"
-COLOR_ORDERING = [GREEN, BLUE, MAROON, BLACK]
-
-class Rigidity(Enum):
-    EXP = "exp"
-    IMP = "imp"
-
-class DiscrepancyCounter:
-    def __init__(self):
-        self.dict = {c: {k: 0 for k in list(Rigidity)} for c in COLOR_ORDERING}
-
-    def __str__(self):
-        return "{'" + "', '".join(f"{k}: ({v[Rigidity.EXP]}, {v[Rigidity.IMP]})"
-                                  for k, v in self.dict.items()) + "'}"
-
-    def addDiscrep(self, rigidity: Rigidity | list[Rigidity],
-                   # Source categories
-                   a: str, b : str=None):
-        if not b: b = a
-        if isinstance(rigidity, list):
-            if any(r not in Rigidity for r in rigidity):
-                raise ValueError(f"Invalid rigidity value in {rigidity}.")
-            rigidity = Rigidity.IMP if Rigidity.IMP in rigidity else Rigidity.EXP
-
-        self.dict[getSourceColor(a)][rigidity] += 1
-
-discrepsWithinSource   = DiscrepancyCounter()
-discrepsWithinAuthor   = DiscrepancyCounter()
-discrepsWithinCategory = DiscrepancyCounter()
+discrepsSrcCounter = DiscrepSourceCounter()
 
 UNSURE_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
                    "most", "often", "if", "although"]
@@ -244,17 +215,7 @@ def addToIterable(s, iterable, key=key):
         raise ValueError(f"addToIterable unimplemented for {type(iterable)}")
 
 def getSourceColor(s):
-    if any(std in s for std in {"IEEE", "ISO", "IEC"}):
-        return GREEN
-    if any(metastd in s for metastd in
-        {"Washizaki", "Bourque and Fairley", "SWEBOK",
-            "Hamburg and Mogyorodi", "ISTQB", "Firesmith"}):
-        return BLUE
-    if any(textbook in s for textbook in
-        {"van Vliet", "vanVliet", "Patton", "Peters and Pedrycz",
-            "PetersAndPedrycz"}):
-        return MAROON
-    return BLACK
+    return getSrcCat(s).color
 
 # Returns a tuple with the color for the rigid relations (if any),
 # then for the unsure ones (if any)
@@ -266,10 +227,9 @@ def getRelColor(name):
             if term + " " in name:
                 name = name.split(term)
                 colors = tuple(map(getSourceColor, name))
-                if (COLOR_ORDERING.index(colors[1]) >=
-                        COLOR_ORDERING.index(colors[0])):
-                    return (colors[0], None)
-                return colors
+                if (colors[1] > colors[0]):
+                    return colors
+                return (colors[0], None)
         return (getSourceColor(name), None)
 
 def colorRelations(colors, edge, extra=""):
@@ -277,7 +237,7 @@ def colorRelations(colors, edge, extra=""):
     # Second iteration is for unsure relations
     for i, style in enumerate(['', 'style="dashed"']):
         if colors[i]:
-            color = f'color="{colors[i]}"' if colors[i] != BLACK else ""
+            color = f'color="{colors[i]}"' if colors[i] != Color.BLACK else ""
             out.append(f"{edge}[{",".join(list(
                 filter(None, [extra, style, color])))}];".replace("[]", ""))
     return out
@@ -498,7 +458,7 @@ def makeParSynLine(chd, par, parSource, synSource):
 
     sourceDict = {"par" : parSource, "syn" : synSource}
     for k, v in sourceDict.items():
-        if v.startswith("(implied"):
+        if v.startswith(("(implied", "Inferred")):
             sourceDict[k] = getSources(Rigidity.IMP, v)
         elif "implied" in v:
             v = v.split("implied by")
@@ -511,29 +471,7 @@ def makeParSynLine(chd, par, parSource, synSource):
             sourceDict[k] = getSources(Rigidity.EXP, v)
 
     print(sourceDict)
-
-    for i, j in itertools.product(list(Rigidity), repeat=2):
-        try:
-            parSet = set(sourceDict["par"][i])
-            synSet = set(sourceDict["syn"][j])
-
-            for tup in parSet & synSet:
-                discrepsWithinSource.addDiscrep([i, j], tup[0])
-
-            for parTup in parSet - synSet:
-                for synTup in synSet - parSet:
-                    parAuthor, synAuthor = parTup[0], synTup[0]
-                    if parAuthor == synAuthor and parTup[1] != synTup[1]:
-                        discrepsWithinAuthor.addDiscrep([i, j], parAuthor)
-                    else:
-                        parColor = getSourceColor(parAuthor)
-                        synColor = getSourceColor(synAuthor)
-                        if parColor == synColor:
-                            discrepsWithinCategory.addDiscrep([i, j], parAuthor)
-
-        except KeyError:
-            continue
-
+    discrepsSrcCounter.countDiscreps(sourceDict)
     print()
 
     addTo.add(f"{chd} & $\\to$ & {par} & {parSource} & {synSource} \\\\")
@@ -570,10 +508,6 @@ for chd, syns in nameDict.items():
             parSource = "(" + parSource[-1] if len(parSource) > 1 else ""
             synSource = "(" + synSource[-1] if len(synSource) > 1 else ""
             makeParSynLine(chd, par, parSource, synSource)
-
-print(discrepsWithinSource)
-print(discrepsWithinAuthor)
-print(discrepsWithinCategory)
 
 def sortIgnoringParens(ls):
     return sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", x))
@@ -975,3 +909,5 @@ performanceGraph.inherit(scalabilityGraph)
 
 for subgraph in {recoveryGraph, scalabilityGraph, performanceGraph}:
     subgraph.buildGraph()
+
+print(discrepsSrcCounter)
