@@ -223,6 +223,8 @@ def getRelColor(name):
     if isUnsure(name):
         return (None, getSourceColor(name))
     else:
+        if sum(1 for term in UNSURE_KEYWORDS if term + " " in name) > 1:
+            print(f"Multiple 'unsure' cutoffs in {name}.")
         for term in UNSURE_KEYWORDS:
             if term + " " in name:
                 name = name.split(term)
