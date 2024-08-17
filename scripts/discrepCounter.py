@@ -1,7 +1,9 @@
 from enum import Enum, auto
-from functools import total_ordering
 from aenum import AutoNumberEnum, OrderedEnum
+from functools import total_ordering
 import itertools
+
+DEBUG_COUNTERS = False
 
 class Color(OrderedEnum):
     GREEN  = 3
@@ -23,13 +25,6 @@ class SrcCat(AutoNumberEnum):
         self.longname  = longname
         self.shortname = shortname
         self.color     = color
-
-    __hash__ = AutoNumberEnum.__hash__
-
-    def __eq__(self, other):
-        if self.__class__ is other.__class__:
-            return self.color == other.color
-        return NotImplemented
 
     def __lt__(self, other):
         if self.__class__ is other.__class__:
@@ -99,41 +94,66 @@ class DiscrepSourceCounter:
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
 
     def countDiscreps(self, sourceDict):
-        added = set()
+        # catsAdded are counts for building pie charts
+        # parsAdded are counts for building table
+        catsAdded, parsAdded = set(), set()
         for i, j in itertools.product(list(Rigidity), repeat=2):
             try:
                 parSet = set(sourceDict["par"][i])
                 synSet = set(sourceDict["syn"][j])
-
-                for tup in parSet & synSet:
-                    if tup[0] not in added and "".join(tup) not in added:
-                        tupSrc = getSrcCat(tup[0])
-                        self.dict[tupSrc].withinSrc += 1
-                        self.dict[tupSrc].pars.addDiscrep([i, j])
-                        added.add("".join(tup))
-                        print("source:", "".join(tup))
-
-                for author in {auth for auth in
-                                    {s[0] for s in parSet - synSet} &
-                                    {s[0] for s in synSet - parSet}
-                                if auth not in added or
-                                getRigidity([i,j]) == Rigidity.EXP}:
-                    authSrc = getSrcCat(author)
-                    self.dict[authSrc].withinAuth += 1
-                    self.dict[authSrc].pars.addDiscrep([i, j])
-                    added.add(author)
-                    print("author:", author)
-
-                for a, b in {tuple(sorted([parTup[0], synTup[0]], reverse=True))
-                        for parTup in parSet for synTup in synSet
-                        if parTup[0] != synTup[0]}:
-                    discID = "".join(a) + " " + "".join(b)
-                    if discID not in added:
-                        aSrc = getSrcCat(a)
-                        self.dict[aSrc].betweenCats[getSrcCat(b)] += 1
-                        self.dict[aSrc].pars.addDiscrep([i, j])
-                        added.add(discID)
-                        print("category:", discID)
-
             except KeyError:
                 continue
+
+            for tup in parSet & synSet:
+                source = "".join(tup)
+                tupSrc = getSrcCat(source)
+                if source not in catsAdded:
+                    self.dict[tupSrc].withinSrc += 1
+                    catsAdded.add((source, source))
+                    if DEBUG_COUNTERS:
+                        print("source:", source)
+                srcTuple = (tupSrc, tupSrc)
+                if srcTuple not in parsAdded:
+                    self.dict[tupSrc].pars.addDiscrep([i, j])
+                    parsAdded.add(srcTuple)
+                    if DEBUG_COUNTERS:
+                        print("source (src):", srcTuple)
+
+            for author in ({tup[0] for tup in parSet} &
+                            {tup[0] for tup in synSet}):
+                authSrc = getSrcCat(author)
+                if author not in catsAdded:
+                    parYears = {y for a, y in parSet if a == author}
+                    synYears = {y for a, y in synSet if a == author}
+                    inc = (len(parYears) * len(synYears) -
+                           len(parYears & synYears))
+                    if inc:
+                        self.dict[authSrc].withinAuth += inc
+                        if DEBUG_COUNTERS:
+                            print("author:", author)
+                            print("years: ", parYears, synYears)
+                            print("   increase:", inc)
+                        catsAdded.add(author)
+                srcTuple = (authSrc, authSrc)
+                if srcTuple not in parsAdded:
+                    self.dict[authSrc].pars.addDiscrep([i, j])
+                    parsAdded.add(srcTuple)
+                    if DEBUG_COUNTERS:
+                        print("author src:", srcTuple)
+
+            for tup in {tuple(sorted([parTup[0], synTup[0]],
+                                     key=lambda x: getSrcCat(x)))
+                        for parTup in parSet for synTup in synSet
+                        if parTup[0] != synTup[0]}:
+                discStr = " ".join(tup)
+                discTup = tuple(map(getSrcCat, tup))
+                if discStr not in catsAdded:
+                    self.dict[discTup[0]].betweenCats[discTup[1]] += 1
+                    catsAdded.add(discStr)
+                    if DEBUG_COUNTERS:
+                        print("category (cat):", discStr)
+                if discTup not in parsAdded:
+                    self.dict[discTup[0]].pars.addDiscrep([i, j])
+                    parsAdded.add(discTup)
+                    if DEBUG_COUNTERS:
+                        print("category (par):", discTup)
