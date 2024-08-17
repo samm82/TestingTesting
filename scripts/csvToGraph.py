@@ -25,7 +25,7 @@ def debugSource(x, toPrint = ""):
 
 # RegEx patterns
 AUTHOR_CHARS = r"a-zA-Zßğö.\/_"
-AUTHOR_REGEX = fr"(?<!OG )(?!OG )\b(?:van |[A-Z])[{AUTHOR_CHARS} ]+"
+AUTHOR_REGEX = fr"(?<!OG )(?!OG )\b(?:van|[A-Z])[{AUTHOR_CHARS} ]+"
 YEAR_REGEX = r"\d{4}[a-z]?"
 BEGIN_INFO_REGEX = r"(?!al)[a-zA-Z]+\."  # To avoid matching "et al."
 NUM_INFO_REGEX = r"(?:[A-Z\d\.]+(?:, |-))*[A-Z\d\.]+"

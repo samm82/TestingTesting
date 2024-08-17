@@ -1,4 +1,5 @@
 from enum import Enum, auto
+from functools import total_ordering
 from aenum import AutoNumberEnum, OrderedEnum
 import itertools
 
@@ -11,6 +12,7 @@ class Color(OrderedEnum):
     def __str__(self):
         return self.name.lower()
 
+@total_ordering
 class SrcCat(AutoNumberEnum):
     STD    = "Established Standards", "Standards", Color.GREEN
     META   = '"Meta-level" Collections', '"Meta-level Sources"', Color.BLUE
@@ -21,6 +23,18 @@ class SrcCat(AutoNumberEnum):
         self.longname  = longname
         self.shortname = shortname
         self.color     = color
+
+    __hash__ = AutoNumberEnum.__hash__
+
+    def __eq__(self, other):
+        if self.__class__ is other.__class__:
+            return self.color == other.color
+        return NotImplemented
+
+    def __lt__(self, other):
+        if self.__class__ is other.__class__:
+            return self.color < other.color
+        return NotImplemented
 
 def getSrcCat(s) -> SrcCat:
     if any(std in s for std in {"IEEE", "ISO", "IEC"}):
@@ -97,7 +111,7 @@ class DiscrepSourceCounter:
                         self.dict[tupSrc].withinSrc += 1
                         self.dict[tupSrc].pars.addDiscrep([i, j])
                         added.add("".join(tup))
-                        print("".join(tup))
+                        print("source:", "".join(tup))
 
                 for author in {auth for auth in
                                     {s[0] for s in parSet - synSet} &
@@ -108,10 +122,9 @@ class DiscrepSourceCounter:
                     self.dict[authSrc].withinAuth += 1
                     self.dict[authSrc].pars.addDiscrep([i, j])
                     added.add(author)
-                    print(author)
+                    print("author:", author)
 
-                for a, b in {tuple(sorted(
-                        [parTup[0], synTup[0]], key=lambda x: getSrcCat(x).color))
+                for a, b in {tuple(sorted([parTup[0], synTup[0]], reverse=True))
                         for parTup in parSet for synTup in synSet
                         if parTup[0] != synTup[0]}:
                     discID = "".join(a) + " " + "".join(b)
@@ -120,7 +133,7 @@ class DiscrepSourceCounter:
                         self.dict[aSrc].betweenCats[getSrcCat(b)] += 1
                         self.dict[aSrc].pars.addDiscrep([i, j])
                         added.add(discID)
-                        print(discID)
+                        print("category:", discID)
 
             except KeyError:
                 continue
