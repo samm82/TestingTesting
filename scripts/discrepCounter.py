@@ -108,8 +108,12 @@ class DiscrepSourceCounter:
         catsAdded, parsAdded = set(), set()
         def updateCounters(source, pieSec: str, inc: int, r,
                            srcTuple = None) -> bool:
-            sourceCat = getSrcCat(source)
-            srcTuple = srcTuple or (sourceCat, sourceCat)
+            if srcTuple:
+                sourceCat = srcTuple[0]
+            else:
+                sourceCat = getSrcCat(source)
+                srcTuple = (sourceCat, sourceCat)
+
             if srcTuple not in parsAdded:
                 getattr(self.dict[sourceCat], discCat.name.lower()
                         ).addDiscrep(r)
@@ -117,8 +121,11 @@ class DiscrepSourceCounter:
                 if DEBUG_COUNTERS:
                     print(f"{pieSec} src:", srcTuple)
             if source not in catsAdded and inc:
-                setattr(self.dict[sourceCat], pieSec,
-                        getattr(self.dict[sourceCat], pieSec) + inc)
+                try:
+                    getattr(self.dict[sourceCat], pieSec)[srcTuple[1]] += inc
+                except TypeError:
+                    setattr(self.dict[sourceCat], pieSec,
+                            getattr(self.dict[sourceCat], pieSec) + inc)
                 catsAdded.add(source)
                 if DEBUG_COUNTERS:
                     print(f"{pieSec}:", source)
@@ -148,15 +155,5 @@ class DiscrepSourceCounter:
             for tup in {tuple(sorted([ai[0], bi[0]], key=getSrcCat))
                     for a, b in itertools.combinations(sets, 2)
                     for ai in a for bi in b if ai[0] != bi[0]}:
-                discStr = " ".join(tup)
-                discTup = tuple(map(getSrcCat, tup))
-                if discStr not in catsAdded:
-                    self.dict[discTup[0]].betweenCats[discTup[1]] += 1
-                    catsAdded.add(discStr)
-                    if DEBUG_COUNTERS:
-                        print("category (cat):", discStr)
-                if discTup not in parsAdded:
-                    self.dict[discTup[0]].pars.addDiscrep(r)
-                    parsAdded.add(discTup)
-                    if DEBUG_COUNTERS:
-                        print("category (par):", discTup)
+                updateCounters(" ".join(tup), "betweenCats", 1, r,
+                               srcTuple=tuple(map(getSrcCat, tup)))
