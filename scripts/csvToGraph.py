@@ -319,7 +319,45 @@ def formatLineWithSources(line, todo=True):
 
     return line
 
+def parseSource(s: str, default: str = "Inferred from their definitions"):
+    if not s:
+        return default
+
+    if isUnsure(s.lstrip("(")):
+        s = s.lstrip("(").rstrip(")").split(";")
+        i = [isUnsure(source) for source in s].index(True)
+        s[i] = f"implied by {s[i]}"
+        s = f"({';'.join(s)})"
+
+    return formatLineWithSources(s, False)
+
+def getSources(s):
+    sources = re.findall(fr"\{{({AUTHOR_REGEX})({YEAR_REGEX})\}}", s)
+    if "ISTQB" in s:
+        sources.append(("ISTQB", "2024"))
+    return sources
+
+def categorizeSources(sources: str):
+    if sources.startswith(("(implied", "Inferred")):
+        return {Rigidity.IMP: getSources(sources)}
+    elif "implied" in sources:
+        parts = sources.split("implied by")
+        parsed = {Rigidity.EXP: getSources(parts[0])}
+        # Exclude implicit elements that are also explicit
+        parsed[Rigidity.IMP] = [t for t in getSources(parts[1])
+                                if t not in parsed[Rigidity.EXP]]
+        return parsed
+    else:
+        return {Rigidity.EXP: getSources(sources)}
+
 def makeMultiSynLine(syn, terms):
+    multiSynSrcDicts = list(map(lambda x: categorizeSources(parseSource(x)),
+                                list(terms)))
+
+    print(multiSynSrcDicts)
+    discrepsSrcCounter.countDiscreps(multiSynSrcDicts, DiscrepCat.SYNS)
+    print()
+
     return formatLineWithSources(
         f"\\item \\textbf{{{syn}:}}\n\t\\begin{{itemize}}\n{'\n'.join(
             f"\t\t\\item {term}" for term in terms)}\n\t\\end{{itemize}}")
@@ -341,7 +379,7 @@ for key in categoryDict.keys():
                         if not all(synSets[f"{fsyn} -> {formatApproach(term)}"][0]
                                    for term in validTerms) else (expMultiSyns, syn))
                     multiSynsList.append(
-                        makeMultiSynLine(synStr, filter(knownTerm, terms)))
+                        makeMultiSynLine(synStr, list(filter(knownTerm, terms))))
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
@@ -429,18 +467,6 @@ def makeParSynLine(chd, par, parSource, synSource):
         noSourcesParSyns.add(f"\t\\item {chd.capitalize()} and {par.lower()}")
         return
 
-    def parseSource(s: str, default: str = "Inferred from their definitions"):
-        if not s:
-            return default
-
-        if isUnsure(s.lstrip("(")):
-            s = s.lstrip("(").rstrip(")").split(";")
-            i = [isUnsure(source) for source in s].index(True)
-            s[i] = f"implied by {s[i]}"
-            s = f"({';'.join(s)})"
-
-        return formatLineWithSources(s, False)
-
     numSources = f"{parSource}{synSource}".count("(")
     if numSources == 2:
         addTo = twoSourcesParSyns
@@ -452,32 +478,13 @@ def makeParSynLine(chd, par, parSource, synSource):
     parSource = parseSource(parSource)
     synSource = parseSource(synSource)
 
-    print(parSource, synSource)
+    # print(parSource, synSource)
 
-    def getSources(s):
-        sources = re.findall(fr"\{{({AUTHOR_REGEX})({YEAR_REGEX})\}}", s)
-        if "ISTQB" in s:
-            sources.append(("ISTQB", "2024"))
-        return sources
+    # parSynSrcDicts = list(map(categorizeSources, [parSource, synSource]))
 
-    def categorizeSources(sources: str):
-        if sources.startswith(("(implied", "Inferred")):
-            return {Rigidity.IMP: getSources(sources)}
-        elif "implied" in sources:
-            parts = sources.split("implied by")
-            parsed = {Rigidity.EXP: getSources(parts[0])}
-            # Exclude implicit elements that are also explicit
-            parsed[Rigidity.IMP] = [t for t in getSources(parts[1])
-                                    if t not in parsed[Rigidity.EXP]]
-            return parsed
-        else:
-            return {Rigidity.EXP: getSources(sources)}
-
-    parSynSrcDicts = list(map(categorizeSources, [parSource, synSource]))
-
-    print(parSynSrcDicts)
-    discrepsSrcCounter.countDiscreps(parSynSrcDicts, DiscrepCat.PARS)
-    print()
+    # print(parSynSrcDicts)
+    # discrepsSrcCounter.countDiscreps(parSynSrcDicts, DiscrepCat.PARS)
+    # print()
 
     addTo.add(f"{chd} & $\\to$ & {par} & {parSource} & {synSource} \\\\")
         # f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "

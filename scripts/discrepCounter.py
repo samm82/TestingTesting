@@ -3,7 +3,7 @@ from functools import reduce, total_ordering
 import itertools
 import operator
 
-DEBUG_COUNTERS = False
+DEBUG_COUNTERS = True
 
 class Color(OrderedEnum):
     GREEN  = 3
@@ -87,6 +87,7 @@ class DiscrepCounter:
             ])) + "\n"
 
 class DiscrepCat(Enum):
+    SYNS = "Synonyms"
     PARS = "Parents"
 
 class DiscrepSourceCounter:
@@ -132,28 +133,30 @@ class DiscrepSourceCounter:
                 return True
             return False
 
-        for r in itertools.product(list(Rigidity), repeat=2):
-            try:
-                sets = [set(s[xi]) for s, xi in zip(sourceDicts, r)]
-            except KeyError:
-                continue
+        GROUP_SIZE = 2
+        for dicts in itertools.combinations(sourceDicts, r=GROUP_SIZE):
+            for r in itertools.product(list(Rigidity), repeat=GROUP_SIZE):
+                try:
+                    sets = [set(s[xi]) for s, xi in zip(dicts, r)]
+                except KeyError:
+                    continue
 
-            for tup in inPairs(sets):
-                updateCounters("".join(tup), "withinSrc", 1, r)
+                for tup in inPairs(sets):
+                    updateCounters("".join(tup), "withinSrc", 1, r)
 
-            for author in inPairs(sets, sFunc=lambda x: x[0]):
-                yearSets = [{y for a, y in s if a == author} for s in sets]
-                # Finds number of discrepancies between author's documents
-                # unless within a single document; those have been counted
-                inc = (reduce(operator.mul, map(len, yearSets)) -
-                        len(inPairs(yearSets)))
+                for author in inPairs(sets, sFunc=lambda x: x[0]):
+                    yearSets = [{y for a, y in s if a == author} for s in sets]
+                    # Finds number of discrepancies between author's documents
+                    # unless within a single document; those have been counted
+                    inc = (reduce(operator.mul, map(len, yearSets)) -
+                            len(inPairs(yearSets)))
 
-                if (updateCounters(author, "withinAuth", inc, r) and DEBUG_COUNTERS):
-                    print("years: ", yearSets)
-                    print("   increase:", inc)
+                    if (updateCounters(author, "withinAuth", inc, r) and DEBUG_COUNTERS):
+                        print("years: ", yearSets)
+                        print("   increase:", inc)
 
-            for tup in {tuple(sorted([ai[0], bi[0]], key=getSrcCat))
-                    for a, b in itertools.combinations(sets, 2)
-                    for ai in a for bi in b if ai[0] != bi[0]}:
-                updateCounters(" ".join(tup), "betweenCats", 1, r,
-                               srcTuple=tuple(map(getSrcCat, tup)))
+                for tup in {tuple(sorted([ai[0], bi[0]], key=getSrcCat))
+                        for a, b in itertools.combinations(sets, 2)
+                        for ai in a for bi in b if ai[0] != bi[0]}:
+                    updateCounters(" ".join(tup), "betweenCats", 1, r,
+                                srcTuple=tuple(map(getSrcCat, tup)))
