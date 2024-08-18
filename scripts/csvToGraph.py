@@ -476,7 +476,7 @@ def makeParSynLine(chd, par, parSource, synSource):
     parSynSrcDicts = list(map(categorizeSources, [parSource, synSource]))
 
     print(parSynSrcDicts)
-    discrepsSrcCounter.countDiscreps(parSynSrcDicts)
+    discrepsSrcCounter.countDiscreps(parSynSrcDicts, DiscrepCat.PARS)
     print()
 
     addTo.add(f"{chd} & $\\to$ & {par} & {parSource} & {synSource} \\\\")

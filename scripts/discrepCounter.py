@@ -1,5 +1,4 @@
-from enum import Enum, auto
-from aenum import AutoNumberEnum, OrderedEnum
+from aenum import AutoNumberEnum, Enum, OrderedEnum, auto
 from functools import reduce, total_ordering
 import itertools
 import operator
@@ -87,6 +86,9 @@ class DiscrepCounter:
             # "Other: " + ", ".join([f"{k} {v}" for k, v in self.other.items()])
             ])) + "\n"
 
+class DiscrepCat(Enum):
+    PARS = "Parents"
+
 class DiscrepSourceCounter:
     def __init__(self):
         self.dict = {k : DiscrepCounter(k.value) for k in SrcCat}
@@ -94,15 +96,30 @@ class DiscrepSourceCounter:
     def __str__(self):
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
 
-    def countDiscreps(self, sourceDicts):
+    def countDiscreps(self, sourceDicts, discCat: DiscrepCat):
         def inPairs(s, *, sFunc = None):
-            if sFunc is not None:
+            if sFunc:
                 s = [{sFunc(x) for x in si} for si in s]
             return set.union(*(a & b for a, b in itertools.combinations(s, 2)))
 
         # catsAdded are counts for building pie charts
         # parsAdded are counts for building table
         catsAdded, parsAdded = set(), set()
+        def updateCounters(source, sourceCat, pieSec: str, r, srcTuple = None):
+            if source not in catsAdded:
+                setattr(self.dict[sourceCat], pieSec,
+                        getattr(self.dict[sourceCat], pieSec) + 1)
+                catsAdded.add(source)
+                if DEBUG_COUNTERS:
+                    print(f"{pieSec}:", source)
+            srcTuple = srcTuple or (sourceCat, sourceCat)
+            if srcTuple not in parsAdded:
+                getattr(self.dict[sourceCat], discCat.name.lower()
+                        ).addDiscrep(r)
+                parsAdded.add(srcTuple)
+                if DEBUG_COUNTERS:
+                    print(f"{pieSec} src:", srcTuple)
+
         for x in itertools.product(list(Rigidity), repeat=2):
             try:
                 sets = [set(s[xi]) for s, xi in zip(sourceDicts, x)]
@@ -112,17 +129,7 @@ class DiscrepSourceCounter:
             for tup in inPairs(sets):
                 source = "".join(tup)
                 tupSrc = getSrcCat(source)
-                if source not in catsAdded:
-                    self.dict[tupSrc].withinSrc += 1
-                    catsAdded.add((source, source))
-                    if DEBUG_COUNTERS:
-                        print("source:", source)
-                srcTuple = (tupSrc, tupSrc)
-                if srcTuple not in parsAdded:
-                    self.dict[tupSrc].pars.addDiscrep(x)
-                    parsAdded.add(srcTuple)
-                    if DEBUG_COUNTERS:
-                        print("source (src):", srcTuple)
+                updateCounters(source, tupSrc, "withinSrc", x)
 
             for author in inPairs(sets, sFunc=lambda x: x[0]):
                 authSrc = getSrcCat(author)
