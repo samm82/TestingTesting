@@ -93,14 +93,15 @@ class DiscrepSourceCounter:
     def __str__(self):
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
 
-    def countDiscreps(self, sourceDict):
+    def countDiscreps(self, sourceDicts):
         # catsAdded are counts for building pie charts
         # parsAdded are counts for building table
         catsAdded, parsAdded = set(), set()
-        for i, j in itertools.product(list(Rigidity), repeat=2):
+        for x in itertools.product(list(Rigidity), repeat=2):
             try:
-                parSet = set(sourceDict["par"][i])
-                synSet = set(sourceDict["syn"][j])
+                i, j = x
+                sets = [set(s[xi]) for s, xi in zip(sourceDicts, x)]
+                parSet, synSet = sets
             except KeyError:
                 continue
 

@@ -454,26 +454,29 @@ def makeParSynLine(chd, par, parSource, synSource):
 
     print(parSource, synSource)
 
-    def getSources(k, s):
-        return {k : re.findall(fr"\{{({AUTHOR_REGEX})({YEAR_REGEX})\}}", s) +
-            ([("ISTQB", "2024")] if "ISTQB" in s else [])}
+    def getSources(s):
+        sources = re.findall(fr"\{{({AUTHOR_REGEX})({YEAR_REGEX})\}}", s)
+        if "ISTQB" in s:
+            sources.append(("ISTQB", "2024"))
+        return sources
 
-    sourceDict = {"par" : parSource, "syn" : synSource}
-    for k, v in sourceDict.items():
-        if v.startswith(("(implied", "Inferred")):
-            sourceDict[k] = getSources(Rigidity.IMP, v)
-        elif "implied" in v:
-            v = v.split("implied by")
-            splitSource = {key: val for i, k in enumerate(list(Rigidity))
-                           for key, val in getSources(k, v[i]).items()}
-            splitSource[Rigidity.IMP] = [t for t in splitSource[Rigidity.IMP]
-                                         if t not in splitSource[Rigidity.EXP]]
-            sourceDict[k] = splitSource
+    def categorizeSources(sources: str):
+        if sources.startswith(("(implied", "Inferred")):
+            return {Rigidity.IMP: getSources(sources)}
+        elif "implied" in sources:
+            parts = sources.split("implied by")
+            parsed = {Rigidity.EXP: getSources(parts[0])}
+            # Exclude implicit elements that are also explicit
+            parsed[Rigidity.IMP] = [t for t in getSources(parts[1])
+                                    if t not in parsed[Rigidity.EXP]]
+            return parsed
         else:
-            sourceDict[k] = getSources(Rigidity.EXP, v)
+            return {Rigidity.EXP: getSources(sources)}
 
-    print(sourceDict)
-    discrepsSrcCounter.countDiscreps(sourceDict)
+    parSynSrcDicts = list(map(categorizeSources, [parSource, synSource]))
+
+    print(parSynSrcDicts)
+    discrepsSrcCounter.countDiscreps(parSynSrcDicts)
     print()
 
     addTo.add(f"{chd} & $\\to$ & {par} & {parSource} & {synSource} \\\\")
