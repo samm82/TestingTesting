@@ -1,7 +1,8 @@
 from enum import Enum, auto
 from aenum import AutoNumberEnum, OrderedEnum
-from functools import total_ordering
+from functools import reduce, total_ordering
 import itertools
+import operator
 
 DEBUG_COUNTERS = False
 
@@ -48,8 +49,8 @@ class Rigidity(Enum):
     EXP = auto()
     IMP = auto()
 
-def getRigidity(rigidity: Rigidity | list[Rigidity]):
-    if isinstance(rigidity, list):
+def getRigidity(rigidity: Rigidity | tuple[Rigidity]):
+    if isinstance(rigidity, tuple):
         if any(r not in Rigidity for r in rigidity):
             raise ValueError(f"Invalid rigidity value in {rigidity}.")
         return Rigidity.IMP if Rigidity.IMP in rigidity else Rigidity.EXP
@@ -94,18 +95,21 @@ class DiscrepSourceCounter:
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
 
     def countDiscreps(self, sourceDicts):
+        def inPairs(s, *, sFunc = None):
+            if sFunc is not None:
+                s = [{sFunc(x) for x in si} for si in s]
+            return set.union(*(a & b for a, b in itertools.combinations(s, 2)))
+
         # catsAdded are counts for building pie charts
         # parsAdded are counts for building table
         catsAdded, parsAdded = set(), set()
         for x in itertools.product(list(Rigidity), repeat=2):
             try:
-                i, j = x
                 sets = [set(s[xi]) for s, xi in zip(sourceDicts, x)]
-                parSet, synSet = sets
             except KeyError:
                 continue
 
-            for tup in parSet & synSet:
+            for tup in inPairs(sets):
                 source = "".join(tup)
                 tupSrc = getSrcCat(source)
                 if source not in catsAdded:
@@ -115,37 +119,36 @@ class DiscrepSourceCounter:
                         print("source:", source)
                 srcTuple = (tupSrc, tupSrc)
                 if srcTuple not in parsAdded:
-                    self.dict[tupSrc].pars.addDiscrep([i, j])
+                    self.dict[tupSrc].pars.addDiscrep(x)
                     parsAdded.add(srcTuple)
                     if DEBUG_COUNTERS:
                         print("source (src):", srcTuple)
 
-            for author in ({tup[0] for tup in parSet} &
-                            {tup[0] for tup in synSet}):
+            for author in inPairs(sets, sFunc=lambda x: x[0]):
                 authSrc = getSrcCat(author)
                 if author not in catsAdded:
-                    parYears = {y for a, y in parSet if a == author}
-                    synYears = {y for a, y in synSet if a == author}
-                    inc = (len(parYears) * len(synYears) -
-                           len(parYears & synYears))
+                    yearSets = [{y for a, y in s if a == author} for s in sets]
+                    # Finds number of discrepancies between author's documents
+                    # unless within a single document; those have been counted
+                    inc = (reduce(operator.mul, map(len, yearSets)) -
+                           len(inPairs(yearSets)))
                     if inc:
                         self.dict[authSrc].withinAuth += inc
                         if DEBUG_COUNTERS:
                             print("author:", author)
-                            print("years: ", parYears, synYears)
+                            print("years: ", yearSets)
                             print("   increase:", inc)
                         catsAdded.add(author)
                 srcTuple = (authSrc, authSrc)
                 if srcTuple not in parsAdded:
-                    self.dict[authSrc].pars.addDiscrep([i, j])
+                    self.dict[authSrc].pars.addDiscrep(x)
                     parsAdded.add(srcTuple)
                     if DEBUG_COUNTERS:
                         print("author src:", srcTuple)
 
-            for tup in {tuple(sorted([parTup[0], synTup[0]],
-                                     key=lambda x: getSrcCat(x)))
-                        for parTup in parSet for synTup in synSet
-                        if parTup[0] != synTup[0]}:
+            for tup in {tuple(sorted([ai[0], bi[0]], key=getSrcCat))
+                    for a, b in itertools.combinations(sets, 2)
+                    for ai in a for bi in b if ai[0] != bi[0]}:
                 discStr = " ".join(tup)
                 discTup = tuple(map(getSrcCat, tup))
                 if discStr not in catsAdded:
@@ -154,7 +157,7 @@ class DiscrepSourceCounter:
                     if DEBUG_COUNTERS:
                         print("category (cat):", discStr)
                 if discTup not in parsAdded:
-                    self.dict[discTup[0]].pars.addDiscrep([i, j])
+                    self.dict[discTup[0]].pars.addDiscrep(x)
                     parsAdded.add(discTup)
                     if DEBUG_COUNTERS:
                         print("category (par):", discTup)
