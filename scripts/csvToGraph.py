@@ -350,19 +350,25 @@ def categorizeSources(sources: str):
     else:
         return {Rigidity.EXP: getSources(sources)}
 
-def makeMultiSynLine(syn, terms):
-    multiSynSrcDicts = list(map(lambda x: categorizeSources(parseSource(x)),
+expMultiSyns, impMultiSyns, infMultiSyns = [], [], []
+def makeMultiSynLine(valid, syn, terms):
+    if any("(" not in term for term in terms):
+        multiSynsList = infMultiSyns
+    else:
+        multiSynsList = (impMultiSyns if not all(
+            synSets[f"{fsyn} -> {formatApproach(term)}"][0]
+            for term in valid) else expMultiSyns)
+        multiSynSrcDicts = list(map(lambda x: categorizeSources(parseSource(x)),
                                 list(terms)))
 
-    print(multiSynSrcDicts)
-    discrepsSrcCounter.countDiscreps(multiSynSrcDicts, DiscrepCat.SYNS)
-    print()
+        print(multiSynSrcDicts)
+        discrepsSrcCounter.countDiscreps(multiSynSrcDicts, DiscrepCat.SYNS)
+        print()
 
-    return formatLineWithSources(
+    multiSynsList.append(formatLineWithSources(
         f"\\item \\textbf{{{syn}:}}\n\t\\begin{{itemize}}\n{'\n'.join(
-            f"\t\t\\item {term}" for term in terms)}\n\t\\end{{itemize}}")
+            f"\t\t\\item {term}" for term in terms)}\n\t\\end{{itemize}}"))
 
-expMultiSyns, impMultiSyns = [], []
 for key in categoryDict.keys():
     for syn, terms in synDict.items():
         fsyn = formatApproach(syn)
@@ -374,11 +380,7 @@ for key in categoryDict.keys():
                           and knownTerm(term)]
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
-                    multiSynsList = (impMultiSyns if not all(
-                        synSets[f"{fsyn} -> {formatApproach(term)}"][0]
-                        for term in validTerms) else expMultiSyns)
-                    multiSynsList.append(
-                        makeMultiSynLine(syn, list(filter(knownTerm, terms))))
+                    makeMultiSynLine(validTerms, syn, list(filter(knownTerm, terms)))
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
@@ -404,22 +406,11 @@ for key in categoryDict.keys():
         if blacklistSyns:
             categoryDict[key][1].append("")
 
-# Sort explicit and implicit synonyms based on number of them with sources
-synLines = []
 for synList in [expMultiSyns, impMultiSyns]:
     synList.sort(key=lambda x: re.sub(r"\(.+\) ", "", x))
-    allSources, someSources, noSources = [], [], []
-    for line in synList:
-        # The itemized list is itself an item
-        if line.count("\\item") - 1 <= line.count("\\cite"):
-            allSources.append(line)
-        elif line.count("\\cite"):
-            someSources.append(line)
-        else:
-            noSources.append(line)
-    synLines += allSources + someSources + noSources
+    synList.sort(key=lambda x: x.count("\\item"), reverse=True)
 
-writeFile(synLines, "multiSyns", True)
+writeFile(expMultiSyns + impMultiSyns, "multiSyns", True)
 
 workingStaticSet = staticApproaches.copy()
 
