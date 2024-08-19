@@ -533,7 +533,7 @@ writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(
     map(lambda x: f"\\paragraph{{{x}}}",
         ["Pairs labelled as ``children/parents''",
          "Pairs labelled as ``synonyms''",
-         "Pairs that could be either"]),
+         "Pairs that could be ``children/parents'' \\emph{or} ``synonyms''"]),
     map(lambda x: "\n".join(["\\begin{enumerate}"] + list(
         map(lambda x: f"\t{x}", sortByImplied(sortIgnoringParens(x)))) +
         ["\\end{enumerate}"]), [infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc])))],
