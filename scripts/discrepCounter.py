@@ -107,20 +107,18 @@ class DiscrepSourceCounter:
         # catsAdded is for building pie charts
         # parsAdded is for building table
         catsAdded, parsAdded = set(), set()
-        def updateCounters(source, pieSec: str, inc: int, r,
-                           srcTuple = None) -> bool:
-            if srcTuple:
-                sourceCat = srcTuple[0]
+        def updateCounters(source, pieSec: str, inc: int, r) -> bool:
+            if type(source) is tuple:
+                srcTuple = tuple(map(getSrcCat, source))
+                source = " ".join(map(lambda x: x.name.capitalize(), srcTuple))
             else:
-                sourceCat = getSrcCat(source)
-                srcTuple = (sourceCat, sourceCat)
+                srcTuple = tuple(map(getSrcCat, [source] * 2))
+            sourceCat = srcTuple[0]
 
             if srcTuple not in parsAdded:
                 getattr(self.dict[sourceCat], discCat.name.lower()
                         ).addDiscrep(r)
                 parsAdded.add(srcTuple)
-                if DEBUG_COUNTERS:
-                    print(f"{pieSec} src:", srcTuple)
             if source not in catsAdded and inc:
                 try:
                     getattr(self.dict[sourceCat], pieSec)[srcTuple[1]] += inc
@@ -141,8 +139,8 @@ class DiscrepSourceCounter:
                 except KeyError:
                     continue
 
-                for tup in inPairs(sets):
-                    updateCounters("".join(tup), "withinSrc", 1, r)
+                for source in inPairs(sets, sFunc="".join):
+                    updateCounters(source, "withinSrc", 1, r)
 
                 for author in inPairs(sets, sFunc=lambda x: x[0]):
                     yearSets = [{y for a, y in s if a == author} for s in sets]
@@ -158,5 +156,4 @@ class DiscrepSourceCounter:
                 for tup in {tuple(sorted([ai[0], bi[0]], key=getSrcCat))
                         for a, b in itertools.combinations(sets, 2)
                         for ai in a for bi in b if ai[0] != bi[0]}:
-                    updateCounters(" ".join(tup), "betweenCats", 1, r,
-                                srcTuple=tuple(map(getSrcCat, tup)))
+                    updateCounters(tup, "betweenCats", 1, r)
