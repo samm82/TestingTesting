@@ -319,10 +319,7 @@ def formatLineWithSources(line, todo=True):
 
     return line
 
-def parseSource(s: str, default: str = "Inferred from their definitions"):
-    if not s:
-        return default
-
+def parseSource(s: str):
     if isUnsure(s.lstrip("(")):
         s = s.lstrip("(").rstrip(")").split(";")
         i = [isUnsure(source) for source in s].index(True)
@@ -338,7 +335,7 @@ def getSources(s):
     return sources
 
 def categorizeSources(sources: str):
-    if sources.startswith(("(implied", "Inferred")):
+    if sources.startswith(("(implied")):
         return {Rigidity.IMP: getSources(sources)}
     elif "implied" in sources:
         parts = sources.split("implied by")
@@ -453,22 +450,21 @@ def splitListAtEmpty(listToSplit):
             np.split(recArr, np.where(recArr == "")[0]+1)
             if len(subarray) > 0]
 
-twoSourcesParSyns, oneSourceParSyns, noSourcesParSyns = set(), set(), set()
+parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
+    set(), set(), set(), set()
 def makeParSynLine(chd, par, parSource, synSource):
-    if not (parSource or synSource):
-        noSourcesParSyns.add(f"\t\\item {chd.capitalize()} and {par.lower()}")
-        return
-
-    numSources = f"{parSource}{synSource}".count("(")
-    if numSources == 2:
-        addTo = twoSourcesParSyns
-    elif numSources == 1:
-        addTo = oneSourceParSyns
-    else:
-        raise ValueError("Unexpected number of '(' in makeParSynLine")
-
     parSource = parseSource(parSource)
     synSource = parseSource(synSource)
+
+    if not (parSource and synSource):
+        if parSource:
+            parSynSet = infParSynsParSrc
+        elif synSource:
+            parSynSet = infParSynsSynSrc
+        else:
+            parSynSet = infParSynsNoSrc
+        parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
+        return
 
     parSynSrcDicts = list(map(categorizeSources, [parSource, synSource]))
 
@@ -476,7 +472,7 @@ def makeParSynLine(chd, par, parSource, synSource):
     discrepsSrcCounter.countDiscreps(parSynSrcDicts, DiscrepCat.PARS)
     print()
 
-    addTo.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
+    parSyns.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
         # f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "
         # f"a sub-approach of \\textbf{{``{par.lower()}''}}{parSource}, but the "
         # f"two {synCallImply} synonyms{synSource}."))
@@ -514,52 +510,38 @@ for chd, syns in nameDict.items():
 def sortIgnoringParens(ls):
     return sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", x))
 
-parSynLines = []
-for i, parSyns in enumerate([twoSourcesParSyns, oneSourceParSyns,
-                             noSourcesParSyns]):
-    parSyns = sortIgnoringParens(parSyns)
-    parSyns.sort(key=lambda x: x.count("(implied"))
-    if i != 2:
-        parSynLines += parSyns
-    else:
-        # parSyns = noSourcesParSyns
+# Pairs with sources for both
+parSynCount = "".join(parSyns).count("\\to")
 
-        # Pairs with at least one source
-        parSynOne  = "".join(parSynLines).count("\\to")
-        # Pairs with sources for both
-        parSynBoth = parSynOne - "".join(parSynLines).count("& Inferred")
-        # All pairs (even without sources)
-        parSynAll  = parSynOne + "".join(parSyns    ).count("\\item")
+def sortByImplied(ls):
+    return sorted(ls, key=lambda x: x.count("(implied"))
 
-        if parSynLines:
-            writeFile(["\\begin{longtblr}[",
-                       "   caption = {Pairs of test approaches with both child-parent and synonym relations.},",
-                       "   label = {tab:parSyns}",
-                       "   ]{",
-                       "   colspec = {|c|X|X|}, width = \\linewidth,",
-                       "   rowhead = 1, row{1} = {McMasterMediumGrey}",
-                       "   }",
-                       "  \\hline",
-                       "  \\thead{``Child'' $\\to$ ``Parent''}  & \\thead{Child-Parent Source(s)}   & \\thead{Synonym Source(s)}    \\\\",
-                       "  \\hline"] + parSynLines +
-                      ["  \\hline",
-		               "\\end{longtblr}"],
-                       "parSyns", True)
+writeFile(["\\begin{longtblr}[",
+           "   caption = {Pairs of test approaches with both child-parent and synonym relations.},",
+           "   label = {tab:parSyns}",
+           "   ]{",
+           "   colspec = {|c|X|X|}, width = \\linewidth,",
+           "   rowhead = 1, row{1} = {McMasterMediumGrey}",
+           "   }",
+           "  \\hline",
+           "  \\thead{``Child'' $\\to$ ``Parent''}  & \\thead{Child-Parent Source(s)} & \\thead{Synonym Source(s)} \\\\",
+           "  \\hline"] + sortByImplied(sortIgnoringParens(parSyns)) +
+          ["  \\hline", "\\end{longtblr}"],
+           "parSyns", True)
 
-        if parSyns:
-            writeFile([f"{"Additionally, t" if parSynLines else "T"}he "
-                        "relationships between the following "
-                        "pairs of approaches aren't given in any investigated "
-                        "sources and are also ambiguous, based on their "
-                        "definitions. In each pair, the first may be a "
-                        "sub-approach of the second, or they may be "
-                        "synonyms.", "\\begin{itemize}"] + parSyns +
-                        ["\\end{itemize}"], "parSynsExtra", True)
-            
-        writeFile([f"{parSynAll}% All pairs (even without sources)",
-                   f"{parSynOne}% Pairs with at least one source",
-                   f"{parSynBoth}% Pairs with sources for both",
-                   f"{selfCycleCount}% Self-cycles"], "parSynCounts", True)
+writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(
+    map(lambda x: f"\\paragraph{{{x}}}",
+        ["Pairs labelled as ``children/parents''",
+         "Pairs labelled as ``synonyms''",
+         "Pairs that could be either"]),
+    map(lambda x: "\n".join(["\\begin{enumerate}"] + list(
+        map(lambda x: f"\t{x}", sortByImplied(sortIgnoringParens(x)))) +
+        ["\\end{enumerate}"]), [infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc])))],
+        "infParSyns", True)
+
+writeFile([f"{parSynCount}% Pairs with at least one source",
+           f"{selfCycleCount}% Self-cycles"],
+           "parSynCounts", True)
 
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)

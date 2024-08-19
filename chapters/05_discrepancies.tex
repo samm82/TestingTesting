@@ -161,11 +161,8 @@ testing is \emph{not} described as a sub-approach of usability testing%
 
 There are also pairs of synonyms where one is described as a
 sub-approach of the other, abusing the meaning of ``synonym'' and
-causing confusion. We identified \parSynAll{} of these pairs through automatic
-analysis of the generated graphs. The \ifnotpaper \parSynOne{} pairs where at
-      least one \else % \parSynBoth{}
-      seven pairs where each \fi relation has a concrete
-source are given in \Cref{tab:parSyns}.
+causing confusion. We identified \parSynCount{} of these pairs through automatic
+analysis of the generated graphs, which are given in \Cref{tab:parSyns}.
 
 \ifnotpaper
       \begin{landscape}
@@ -709,4 +706,15 @@ sources outlined in \Cref{sources}.
       \begin{enumerate}
             \input{build/infMultiSyns}
       \end{enumerate}
+
+      \subsubsection{Inferred Parent Discrepancies}
+      As in \Cref{tab:parSyns}, some discrepancies occur when test approaches
+      are classified as both children/parents \emph{and} synonyms. The following
+      two lists give approaches that are given one of these relations by at
+      least one source when it may make more sense for them to have the other
+      relation. The third list gives approaches that could be inferred to have
+      either relation, so more thought would have to be given before a
+      recommendation can be made.
+
+      \input{build/infParSyns}
 \fi
