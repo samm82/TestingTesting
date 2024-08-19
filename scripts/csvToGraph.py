@@ -484,7 +484,7 @@ def makeParSynLine(chd, par, parSource, synSource):
     discrepsSrcCounter.countDiscreps(parSynSrcDicts, DiscrepCat.PARS)
     print()
 
-    addTo.add(f"{chd} & $\\to$ & {par} & {parSource} & {synSource} \\\\")
+    addTo.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
         # f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "
         # f"a sub-approach of \\textbf{{``{par.lower()}''}}{parSource}, but the "
         # f"two {synCallImply} synonyms{synSource}."))
@@ -544,11 +544,11 @@ for i, parSyns in enumerate([twoSourcesParSyns, oneSourceParSyns,
                        "   caption = {Pairs of test approaches with both child-parent and synonym relations.},",
                        "   label = {tab:parSyns}",
                        "   ]{",
-                       "   colspec = {|rcl|X|X|}, width = \\linewidth,",
+                       "   colspec = {|c|X|X|}, width = \\linewidth,",
                        "   rowhead = 1, row{1} = {McMasterMediumGrey}",
                        "   }",
                        "  \\hline",
-                       "  \\thead{``Child''} & \\thead{$\\to$} & \\thead{``Parent''}  & \\thead{Child-Parent Source(s)}   & \\thead{Synonym Source(s)}    \\\\",
+                       "  \\thead{``Child'' $\\to$ ``Parent''}  & \\thead{Child-Parent Source(s)}   & \\thead{Synonym Source(s)}    \\\\",
                        "  \\hline"] + parSynLines +
                       ["  \\hline",
 		               "\\end{longtblr}"],
