@@ -406,11 +406,13 @@ for key in categoryDict.keys():
         if blacklistSyns:
             categoryDict[key][1].append("")
 
-for synList in [expMultiSyns, impMultiSyns]:
+for synList in [expMultiSyns, impMultiSyns, infMultiSyns]:
     synList.sort(key=lambda x: re.sub(r"\(.+\) ", "", x))
     synList.sort(key=lambda x: x.count("\\item"), reverse=True)
 
 writeFile(expMultiSyns + impMultiSyns, "multiSyns", True)
+writeFile(sorted(infMultiSyns, key=lambda x: x.count("\\cite"), reverse=True),
+          "infMultiSyns", True)
 
 workingStaticSet = staticApproaches.copy()
 
