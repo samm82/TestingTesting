@@ -527,7 +527,7 @@ writeFile(["\\begin{longtblr}[",
            "  \\thead{``Child'' $\\to$ ``Parent''}  & \\thead{Child-Parent Source(s)} & \\thead{Synonym Source(s)} \\\\",
            "  \\hline"] + sortByImplied(sortIgnoringParens(parSyns)) +
           ["  \\hline", "\\end{longtblr}"],
-           "parSyns", True)
+          "parSyns", True)
 
 writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(
     map(lambda x: f"\\paragraph{{{x}}}",
@@ -545,6 +545,8 @@ writeFile([f"{parSynCount}% Pairs with at least one source",
 
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
+
+discrepsSrcCounter.output()
 
 def writeDotFile(lines, filename):
     CUSTOM_LEGEND = {"recovery", "scalability"}
@@ -893,5 +895,3 @@ performanceGraph.inherit(scalabilityGraph)
 
 for subgraph in {recoveryGraph, scalabilityGraph, performanceGraph}:
     subgraph.buildGraph()
-
-print(discrepsSrcCounter)

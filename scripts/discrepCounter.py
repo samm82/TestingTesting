@@ -3,6 +3,8 @@ from functools import reduce, total_ordering
 import itertools
 import operator
 
+from helpers import writeFile
+
 DEBUG_COUNTERS = True
 
 class Color(OrderedEnum):
@@ -17,7 +19,7 @@ class Color(OrderedEnum):
 @total_ordering
 class SrcCat(AutoNumberEnum):
     STD    = "Established Standards", "Standards", Color.GREEN
-    META   = '"Meta-level" Collections', '"Meta-level Sources"', Color.BLUE
+    META   = "``Meta-level'' Collections", "``Meta-level Sources''", Color.BLUE
     TEXT   = "Trusted Textbooks", "Textbooks", Color.MAROON
     OTHER  = "Other Sources", "Other Sources", Color.BLACK
 
@@ -55,12 +57,18 @@ def getRigidity(rigidity: Rigidity | tuple[Rigidity]):
         return Rigidity.IMP if Rigidity.IMP in rigidity else Rigidity.EXP
     return rigidity
 
+def formatOutput(ls):
+    return "%\n".join(map(str, ls))
+
 class ExpImpCounter:
     def __init__(self):
         self.dict = {k: 0 for k in list(Rigidity)}
     
     def __str__(self):
         return str(tuple(self.dict.values()))
+
+    def output(self):
+        return formatOutput(self.dict.values())
 
     def addDiscrep(self, rigidity: Rigidity | list[Rigidity]):
         self.dict[getRigidity(rigidity)] += 1
@@ -96,6 +104,13 @@ class DiscrepSourceCounter:
 
     def __str__(self):
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
+
+    def output(self):
+        for k, v in self.dict.items():
+            writeFile([formatOutput(
+                [k.longname] + [getattr(v, dc.name.lower()).output()
+                                for dc in DiscrepCat]
+                ) + "%"], f"{k.name.lower()}DiscBrkdwn", True)
 
     def countDiscreps(self, sourceDicts, discCat: DiscrepCat):
         def inPairs(s, *, sFunc = None):
