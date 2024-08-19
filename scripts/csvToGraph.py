@@ -374,12 +374,11 @@ for key in categoryDict.keys():
                           and knownTerm(term)]
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
-                    multiSynsList, synStr = (
-                        (impMultiSyns, f"\\emph{{{syn}}}")
-                        if not all(synSets[f"{fsyn} -> {formatApproach(term)}"][0]
-                                   for term in validTerms) else (expMultiSyns, syn))
+                    multiSynsList = (impMultiSyns if not all(
+                        synSets[f"{fsyn} -> {formatApproach(term)}"][0]
+                        for term in validTerms) else expMultiSyns)
                     multiSynsList.append(
-                        makeMultiSynLine(synStr, list(filter(knownTerm, terms))))
+                        makeMultiSynLine(syn, list(filter(knownTerm, terms))))
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
