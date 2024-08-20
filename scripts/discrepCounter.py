@@ -95,6 +95,7 @@ class DiscrepCounter:
 class DiscrepCat(Enum):
     SYNS = "Synonyms"
     PARS = "Parents"
+    CATS = "Categories"
 
 class DiscrepSourceCounter:
     def __init__(self):
@@ -113,6 +114,8 @@ class DiscrepSourceCounter:
     def countDiscreps(self, sourceDicts, discCat: DiscrepCat,
                       debug: bool = False):
         sourceDicts = list(sourceDicts)
+        if debug:
+            print(sourceDicts)
 
         def inPairs(s, *, sFunc = None):
             if sFunc:

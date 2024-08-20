@@ -544,6 +544,14 @@ writeFile([f"{parSynCount}% Pairs of terms with parent/child AND synonym relatio
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
 
+with open("chapters/05e_cat_discreps.tex", "r") as file:
+    content = [line for line in file.readlines() if "% Discrep count:" in line]
+
+for discrep in content:
+    discrepsSrcCounter.countDiscreps(
+        map(lambda x: categorizeSources(x), discrep.split("|")),
+        DiscrepCat.CATS)
+
 discrepsSrcCounter.output()
 
 def writeDotFile(lines, filename):

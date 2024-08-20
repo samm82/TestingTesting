@@ -1,3 +1,7 @@
+def readFileAsStr(filename) -> str:
+    with open(filename, "r") as file:
+        return "\n".join(file.readlines())
+
 def writeFile(lines, filename, helper: bool = False, dir: str = "graphs"):
     lines = [line + '\n' for line in lines]
     if helper:

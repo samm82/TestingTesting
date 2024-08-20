@@ -1,6 +1,6 @@
 import re
 
-from helpers import writeFile
+from helpers import *
 
 SECTIONS = ["Std", "Meta", "Text", "Other"]
 SEVERITIES = {"high": "Medium", "med": "Low", "low": ""}
@@ -20,8 +20,7 @@ def update_section(sec, sev, contents: str ="\n\\item"):
             len(re.findall(r"\n\s{0,12}\\item", contents)))
 
 for name, s in sections.items():
-    with open(s.filename, "r") as file:
-        contents = "\n".join(file.readlines())
+    contents = readFileAsStr(s.filename)
 
     overrides = re.findall(r"% Severity: (\w+) \((\w+)\)", contents)
     for overrideSeverity, overrideSection in overrides:
