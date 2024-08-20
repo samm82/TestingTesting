@@ -464,6 +464,11 @@ def makeParSynLine(chd, par, parSource, synSource):
             parSynSet = infParSynsSynSrc
         else:
             parSynSet = infParSynsNoSrc
+        if chd == "Organization-based Testing" and par == "Role-based Testing":
+            par += ("\\footnote{The distinction between organization- and "
+                    "role-based testing in \\citep[pp.~17,~37,~39]{Firesmith2015} "
+                    "seems arbitrary, but further investigation may prove it to be "
+                    "meaningful\\seeThesisIssuePar{59}.}")
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return
 
