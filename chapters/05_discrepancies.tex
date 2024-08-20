@@ -188,6 +188,7 @@ specification of the component or system'' \ifnotpaper (and gives ``black-box
       testing'' as a synonym) \fi and ``functional testing'' as ``testing
 performed to evaluate if a component or system satisfies functional
 requirements'' \ifnotpaper (specifying no synonyms) \citepISTQB{};
+      % Discrep count (FUNC): {IEEE2022} {IEEE2017} | ISTQB
       the latter references \citet[p.~196]{IEEE2017}
       (``testing conducted to evaluate the compliance of a system or
       component with specified functional requirements'') which
@@ -219,8 +220,10 @@ what defines a ``test type'' \citep[p.~15]{IEEE2022}\seeParAlways{qual-test},
 it seems consistent to label ``functional testing'' as a ``test type''
 \citep[pp.~15,~20,~22]{IEEE2022}; this conflicts with its categorization
 as a ``technique'' if considered a synonym of \nameref{spec-func-test}.
+% Discrep count (FUNC): implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
 ``Correctness testing'' is listed separately from ``functionality testing'' by
 \citet[p.~53]{Firesmith2015}.
+% Discrep count (FUNC): {SWEBOK2024} | {Firesmith2015}
 
 \subsubsection{Conformance Testing}
 Testing that ensures ``that the functional specifications are correctly
@@ -233,6 +236,7 @@ specifications, requirements, design, processes, or practices''
 of testing methods mentioned earlier as the latter includes ``standards,
 rules, requirements, design, processes, \dots\ [and]'' practices in
 \emph{addition} to specifications!
+% Discrep count (FUNC): {SWEBOK2024} | implied by {SWEBOK2024}
 
 A complicating factor is that ``compliance testing'' is also
 (plausibly) given as a synonym of ``conformance testing''
@@ -242,6 +246,7 @@ to which ``results \dots\ fall within the limits that define
 acceptable variation for a quality requirement''
 \citep[p.~93]{IEEE2017}\todo{OG PMBOK 5th ed.}, which seems to
 describe something different.
+% Discrep count (FUNC): {Kam2008} | implied by {IEEE2017}
 
 % TODO: pull out into Recommendations
 % Perhaps this second definition of
@@ -282,7 +287,10 @@ the quality/ies that would be tested by ``correctness'' testing.
 ``capabilities of the various \dots\ features provided by a product''
 \citep[p.~196]{IEEE2017} and is said to be a synonym of
 ``functional suitability'' \citepISTQB{}, although it seems
-like it should really be its ``parent''. Its associated test type
+like it should really be a synonym of ``functional completeness'' based on
+\citep{ISO_IEC2023a}, which would make ``functional suitability'' a
+% Discrep count (FUNC): ISTQB | implied by {ISO_IEC2023a}
+sub-approach. Its associated test type
 is implied to be a sub-approach of build verification testing
 \citepISTQB{} and made distinct from ``functional testing''%
 \ifnotpaper; interestingly, security is described as a sub-approach of both

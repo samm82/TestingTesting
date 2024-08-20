@@ -1,3 +1,4 @@
+import re
 from aenum import AutoNumberEnum, Enum, OrderedEnum
 from functools import reduce, total_ordering
 import itertools
@@ -69,14 +70,15 @@ class ExpImpCounter:
 
 class DiscrepCounter:
     def __init__(self, value):
-        self.withinSrc  = 0
-        self.withinAuth = 0
+        self.withinSrc, self.withinAuth = 0, 0
         # Differences between two categories; may be within the same category
         self.betweenCats = {k : 0 for k in SrcCat if k.value <= value}
 
         self.syns = ExpImpCounter()
         self.pars = ExpImpCounter()
         self.cats = ExpImpCounter()
+
+        self.func, self.oat, self.rec, self.scal = 0, 0, 0, 0
 
         # self.other = {s : 0 for s in ["High", "Med", "Low"]}
 
@@ -85,6 +87,7 @@ class DiscrepCounter:
             ", ".join(map(str, [self.withinSrc, self.withinAuth])),
             "Diffs: " + ", ".join([f"{k.name} {v}" for k, v in self.betweenCats.items()]),
             " | ".join(map(str, [self.syns, self.pars, self.cats])),
+            " | ".join(map(str, [self.func, self.oat, self.rec, self.scal])),
             # "Other: " + ", ".join([f"{k} {v}" for k, v in self.other.items()])
             ])) + "\n"
 
@@ -92,10 +95,12 @@ class DiscrepCat(Enum):
     SYNS = "Synonyms"
     PARS = "Parents"
     CATS = "Categories"
+    MISC = "Standalone"
 
 texFileDiscreps = {
     "chapters/05e_cat_discreps.tex": DiscrepCat.CATS,
-    "build/multiSyns.tex": DiscrepCat.SYNS
+    "build/multiSyns.tex": DiscrepCat.SYNS,
+    "chapters/05_discrepancies.tex": DiscrepCat.MISC
 }
 
 class DiscrepSourceCounter:
@@ -109,22 +114,25 @@ class DiscrepSourceCounter:
         for filename, type in texFileDiscreps.items():
             with open(filename, "r") as file:
                 content = [line for line in file.readlines()
-                        if "% Discrep count:" in line]
+                        if "% Discrep count" in line]
 
             for discrep in content:
+                if type == DiscrepCat.MISC:
+                    type = re.search(r"% Discrep count \(([A-Z]+)\):", discrep)[1]
                 self.countDiscreps(
                     map(lambda x: categorizeSources(x), discrep.split("|")),
-                    type)
+                    type, type == "FUNC")
 
     def output(self):
         self.texDiscreps()
         for k, v in self.dict.items():
             writeFile([formatOutput(
                 [k.longname] + [getattr(v, dc.name.lower()).output()
-                                for dc in DiscrepCat]
-                ) + "%"], f"{k.name.lower()}DiscBrkdwn", True)
+                                for dc in DiscrepCat if dc != DiscrepCat.MISC]+
+                                [formatOutput([v.func, v.oat, v.rec, v.scal]), ""]
+                )], f"{k.name.lower()}DiscBrkdwn", True)
 
-    def countDiscreps(self, sourceDicts, discCat: DiscrepCat,
+    def countDiscreps(self, sourceDicts, discCat: str | DiscrepCat,
                       debug: bool = False):
         sourceDicts = list(sourceDicts)
         if debug:
@@ -148,8 +156,12 @@ class DiscrepSourceCounter:
             sourceCat = srcTuple[0]
 
             if srcTuple not in parsAdded:
-                getattr(self.dict[sourceCat], discCat.name.lower()
-                        ).addDiscrep(r)
+                if type(discCat) is DiscrepCat:
+                    getattr(self.dict[sourceCat], discCat.name.lower()
+                            ).addDiscrep(r)
+                else:
+                    setattr(self.dict[sourceCat], discCat.lower(),
+                        getattr(self.dict[sourceCat], discCat.lower()) + 1)
                 parsAdded.add(srcTuple)
             if source not in catsAdded and inc:
                 try:
@@ -202,4 +214,5 @@ class DiscrepSourceCounter:
                             for ai in a for bi in b if ai[0] != bi[0]}:
                         updateCounters(tup, "betweenCats", 1, r)
         if debug:
+            print(self)
             print()
