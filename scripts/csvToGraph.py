@@ -355,12 +355,9 @@ def makeMultiSynLine(valid, syn, terms):
         multiSynsList = (impMultiSyns if not all(
             synSets[f"{fsyn} -> {formatApproach(term)}"][0]
             for term in valid) else expMultiSyns)
-        multiSynSrcDicts = list(map(lambda x: categorizeSources(parseSource(x)),
-                                list(terms)))
-
-        print(multiSynSrcDicts)
-        discrepsSrcCounter.countDiscreps(multiSynSrcDicts, DiscrepCat.SYNS)
-        print()
+        discrepsSrcCounter.countDiscreps(
+            map(lambda x: categorizeSources(parseSource(x)), list(terms)),
+            DiscrepCat.SYNS)
 
     multiSynsList.append(formatLineWithSources(
         f"\\item \\textbf{{{syn}:}}\n\t\\begin{{itemize}}\n{'\n'.join(
@@ -436,13 +433,17 @@ for name, parent in zip(names, parents):
                     removeInParens(par) in categoryDict[key][0]):
                     addLineToCategory(key, parentLine)
 
-selfCycleCount = len(selfCycles)
-selfCycles = (["\\begin{enumerate}"] +
-              [formatLineWithSources(f"\\item {cycle}")
-               for cycle in selfCycles] +
-               ["\\end{enumerate}"])
+print()
 
-writeFile(selfCycles, "selfCycles", True)
+selfCycleCount = len(selfCycles)
+
+selfCycles = [formatLineWithSources(f"\\item {cycle}") for cycle in selfCycles]
+writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
+          "selfCycles", True)
+
+for cycle in selfCycles:
+    discrepsSrcCounter.countDiscreps(
+        [categorizeSources(parseSource(cycle))], DiscrepCat.PARS)
 
 def splitListAtEmpty(listToSplit):
     recArr = np.array(listToSplit)
@@ -466,11 +467,8 @@ def makeParSynLine(chd, par, parSource, synSource):
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return
 
-    parSynSrcDicts = list(map(categorizeSources, [parSource, synSource]))
-
-    print(parSynSrcDicts)
-    discrepsSrcCounter.countDiscreps(parSynSrcDicts, DiscrepCat.PARS)
-    print()
+    discrepsSrcCounter.countDiscreps(
+        map(categorizeSources, [parSource, synSource]), DiscrepCat.PARS)
 
     parSyns.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
         # f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "
@@ -539,7 +537,7 @@ writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(
         ["\\end{enumerate}"]), [infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc])))],
         "infParSyns", True)
 
-writeFile([f"{parSynCount}% Pairs with at least one source",
+writeFile([f"{parSynCount}% Pairs of terms with parent/child AND synonym relations",
            f"{selfCycleCount}% Self-cycles"],
            "parSynCounts", True)
 

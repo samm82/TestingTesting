@@ -5,8 +5,6 @@ import operator
 
 from helpers import writeFile
 
-DEBUG_COUNTERS = True
-
 class Color(OrderedEnum):
     GREEN  = 3
     BLUE   = 2
@@ -112,7 +110,10 @@ class DiscrepSourceCounter:
                                 for dc in DiscrepCat]
                 ) + "%"], f"{k.name.lower()}DiscBrkdwn", True)
 
-    def countDiscreps(self, sourceDicts, discCat: DiscrepCat):
+    def countDiscreps(self, sourceDicts, discCat: DiscrepCat,
+                      debug: bool = False):
+        sourceDicts = list(sourceDicts)
+
         def inPairs(s, *, sFunc = None):
             if sFunc:
                 s = [{sFunc(x) for x in si} for si in s]
@@ -141,34 +142,48 @@ class DiscrepSourceCounter:
                     setattr(self.dict[sourceCat], pieSec,
                             getattr(self.dict[sourceCat], pieSec) + inc)
                 catsAdded.add(source)
-                if DEBUG_COUNTERS:
+                if debug:
                     print(f"{pieSec}:", source)
                 return True
             return False
 
         GROUP_SIZE = 2
-        for dicts in itertools.combinations(sourceDicts, r=GROUP_SIZE):
-            for r in itertools.product(list(Rigidity), repeat=GROUP_SIZE):
+        if len(sourceDicts) == 1:
+            for r in list(Rigidity):
                 try:
-                    sets = [set(s[xi]) for s, xi in zip(dicts, r)]
+                    sources = sourceDicts[0][r]
                 except KeyError:
                     continue
 
-                for source in inPairs(sets, sFunc="".join):
-                    updateCounters(source, "withinSrc", 1, r)
+                if sources:
+                    updateCounters(str(list(map("".join, sources))),
+                                   "withinSrc", 1, r)
 
-                for author in inPairs(sets, sFunc=lambda x: x[0]):
-                    yearSets = [{y for a, y in s if a == author} for s in sets]
-                    # Finds number of discrepancies between author's documents
-                    # unless within a single document; those have been counted
-                    inc = (reduce(operator.mul, map(len, yearSets)) -
-                            len(inPairs(yearSets)))
+        else:
+            for dicts in itertools.combinations(sourceDicts, r=GROUP_SIZE):
+                for r in itertools.product(list(Rigidity), repeat=GROUP_SIZE):
+                    try:
+                        sets = [set(s[xi]) for s, xi in zip(dicts, r)]
+                    except KeyError:
+                        continue
 
-                    if (updateCounters(author, "withinAuth", inc, r) and DEBUG_COUNTERS):
-                        print("years: ", yearSets)
-                        print("   increase:", inc)
+                    for source in inPairs(sets, sFunc="".join):
+                        updateCounters(source, "withinSrc", 1, r)
 
-                for tup in {tuple(sorted([ai[0], bi[0]], key=getSrcCat))
-                        for a, b in itertools.combinations(sets, 2)
-                        for ai in a for bi in b if ai[0] != bi[0]}:
-                    updateCounters(tup, "betweenCats", 1, r)
+                    for author in inPairs(sets, sFunc=lambda x: x[0]):
+                        yearSets = [{y for a, y in s if a == author} for s in sets]
+                        # Finds number of discrepancies between author's documents
+                        # unless within a single document; those have been counted
+                        inc = (reduce(operator.mul, map(len, yearSets)) -
+                                len(inPairs(yearSets)))
+
+                        if (updateCounters(author, "withinAuth", inc, r) and debug):
+                            print("years: ", yearSets)
+                            print("   increase:", inc)
+
+                    for tup in {tuple(sorted([ai[0], bi[0]], key=getSrcCat))
+                            for a, b in itertools.combinations(sets, 2)
+                            for ai in a for bi in b if ai[0] != bi[0]}:
+                        updateCounters(tup, "betweenCats", 1, r)
+        if debug:
+            print()

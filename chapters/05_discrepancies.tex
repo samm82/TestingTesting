@@ -150,8 +150,11 @@ most prominent examples\fi:
 \label{par-rels}
 
 Parent relations are not immune to difficulties, including self-referential
-definitions, which were identified through automatic analysis of the generated
-graphs. \ifnotpaper \input{build/selfCycles} Performance
+definitions\footnote{Since these are by nature self-contained within a given
+      source, these are counted as explicit discrepancies within the
+      applicable sources in \Cref{tab:discreps}.}, which were identified
+through automatic analysis of the generated graphs.
+\ifnotpaper \input{build/selfCycles} Performance
 \else Performance and usability testing are both given as sub-approaches of
       themselves \cite[Tab.~1]{Gerrard2000b}, \cite[Tab.~2]{Gerrard2000a},
       while performance \fi
