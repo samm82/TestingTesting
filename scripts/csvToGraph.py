@@ -373,10 +373,19 @@ multiSynNotes = {
         "based on how the term ``static assertion checking'' is used by "
         "\\citet[p.~345]{LahiriEtAl2013}, it seems like this should be the "
         "complement to \\acs{rac} instead."
+    ),
+    "Operational Testing": (
+        "``Operational'' and ``production acceptance testing'' are treated as "
+        "synonyms by \\citetISTQB{} but listed separately by \\citet[p.~30]{Firesmith2015}."
+    ),
+    "Production Verification Testing": (
+        "``Production acceptance testing'' \\citep[p.~30]{Firesmith2015} seems "
+        "to be the same as ``production verification testing'' "
+        "\\citep[p.~22]{IEEE2022} but neither is defined."
     )
 }
 
-noteOnSource = {}
+noteOnSource = {"Operational Testing"}
 
 expMultiSyns, impMultiSyns, infMultiSyns = [], [], []
 def makeMultiSynLine(valid, syn, terms):
@@ -391,11 +400,10 @@ def makeMultiSynLine(valid, syn, terms):
             DiscrepCat.SYNS)
 
     def processTerm(term):
-        if term.startswith(tuple(multiSynNotes.keys())):
-            term = term.split(" (")
-            note = multiSynNotes[term[0]]
-            term[note in noteOnSource] += f"\\footnote{{{note}}}"
-            term = " (".join(term)
+        term = term.split(" (")
+        if term[0] in multiSynNotes.keys():
+            term[term[0] in noteOnSource] += f"\\footnote{{{multiSynNotes[term[0]]}}}"
+        term = " (".join(term)
         return f"\t\t\\item {term}"
 
     line = f"\\item \\textbf{{{syn}:}}\n\t\\begin{{itemize}}\n{'\n'.join(
