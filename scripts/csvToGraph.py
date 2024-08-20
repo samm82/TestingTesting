@@ -347,6 +347,37 @@ def categorizeSources(sources: str):
     else:
         return {Rigidity.EXP: getSources(sources)}
 
+paperExamples = {"Invalid Testing", "Soak Testing", "User Scenario Testing",
+                 "Link Testing"}
+
+multiSynNotes = {
+    "Reliability Testing": (
+        "Endurance testing is given as a kind of reliability testing by "
+        "\\citet[p.~55]{Firesmith2015}, although the terms are not synonyms."
+    ),
+    "Use Case Testing": (
+        "``Scenario testing'' and ``use case testing'' are given as synonyms "
+        "by \\citetISTQB{} and \\citet[pp.~47-49]{Kam2008} but listed "
+        "separately by \\citet[p.~22]{IEEE2022}, \\ifnotpaper who also give "
+        "\\else which also gives \\fi ``use case testing'' as a ``common form "
+        "of scenario testing'' \\citeyearpar[p.~20]{IEEE2021}. This implies that "
+        "``use case testing'' may instead be a child of ``user scenario testing''"
+        "\\seeParAlways{tab:parSyns}."
+    ),
+    "Static Assertion Checking": (
+        "\\ifnotpaper \\citeauthor{ChalinEtAl2006}~list \\acf{rac} and \\acf{sv} "
+        "as ``two complementary forms of assertion checking'' "
+        "\\citeyearpar[p.~343]{ChalinEtAl2006}\\else \\cite[p.~343]{ChalinEtAl2006} "
+        "lists Runtime Assertion Checking \\acf{rac} and Software Verification "
+        "\\acf{sv} as ``two complementary forms of assertion checking''\\fi; "
+        "based on how the term ``static assertion checking'' is used by "
+        "\\citet[p.~345]{LahiriEtAl2013}, it seems like this should be the "
+        "complement to \\acs{rac} instead."
+    )
+}
+
+noteOnSource = {}
+
 expMultiSyns, impMultiSyns, infMultiSyns = [], [], []
 def makeMultiSynLine(valid, syn, terms):
     if any("(" not in term for term in terms):
@@ -359,9 +390,20 @@ def makeMultiSynLine(valid, syn, terms):
             map(lambda x: categorizeSources(parseSource(x)), list(terms)),
             DiscrepCat.SYNS)
 
-    multiSynsList.append(formatLineWithSources(
-        f"\\item \\textbf{{{syn}:}}\n\t\\begin{{itemize}}\n{'\n'.join(
-            f"\t\t\\item {term}" for term in terms)}\n\t\\end{{itemize}}"))
+    def processTerm(term):
+        if term.startswith(tuple(multiSynNotes.keys())):
+            term = term.split(" (")
+            note = multiSynNotes[term[0]]
+            term[note in noteOnSource] += f"\\footnote{{{note}}}"
+            term = " (".join(term)
+        return f"\t\t\\item {term}"
+
+    line = f"\\item \\textbf{{{syn}:}}\n\t\\begin{{itemize}}\n{'\n'.join(
+            map(processTerm, terms))}\n\t\\end{{itemize}}"
+    if syn not in paperExamples:
+        line = f"\\ifnotpaper\n{line}\n\\fi"
+
+    multiSynsList.append(formatLineWithSources(line))
 
 for key in categoryDict.keys():
     for syn, terms in synDict.items():

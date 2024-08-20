@@ -1,28 +1,30 @@
 \item \textbf{Invalid Testing:}
 \begin{itemize}
-	\item Error Tolerance Testing \citep[p.~45]{Kam2008}
-	\item Negative Testing \cite{ISTQB}, implied by \cite[p.~10]{IEEE2021}
+	\item Error Tolerance Testing \cite[p.~45]{Kam2008}
+	\item Negative Testing \cite{ISTQB} (implied by \cite[p.~10]{IEEE2021})
 \end{itemize}
 \item \textbf{Soak Testing:}
 \begin{itemize}
-	\item Endurance Testing \citep[p.~39]{IEEE2021}
-	\item Reliability Testing \cite[Tab.~1,~p.~26]{Gerrard2000b}, \cite[Tab.~2]{Gerrard2000a}
+	\item Endurance Testing \cite[p.~39]{IEEE2021}
+	\item Reliability Testing\footnote{Endurance testing is given as a kind of
+		      reliability testing by \cite[p.~55]{Firesmith2015}, although the
+		      terms are not synonyms.} \cite[Tab.~1,~p.~26]{Gerrard2000b},
+	      \cite[Tab.~2]{Gerrard2000a}
 \end{itemize}
-Endurance testing is given as a kind of reliability testing by
-\cite[p.~55]{Firesmith2015}, but the two are not described as synonyms.
 \item \textbf{User Scenario Testing:}
 \begin{itemize}
 	\item Scenario Testing \cite{ISTQB}
-	\item Use Case Testing \cite[p.~48]{Kam2008}
+	\item Use Case Testing\footnote{``Scenario testing'' and ``use case testing''
+		      are given as synonyms by \cite{ISTQB} and \cite[pp.~47-49]{Kam2008}
+		      but listed separately by \cite[p.~22]{IEEE2022}, \ifnotpaper who
+			      also give \else which also gives \fi ``use case testing'' as a
+		      ``common form of scenario testing'' \cite[p.~20]{IEEE2021}.
+		      This implies that ``use case testing'' may instead be a child of
+		      ``user scenario testing''\seeParAlways{tab:parSyns}.}
+	      \cite[p.~48]{Kam2008} (although ``an actor can be a user or another
+	      system'' \cite[p.~20]{IEEE2021})
 \end{itemize}
-``Scenario testing'' and ``use case testing'' are given as synonyms
-by \cite{ISTQB} and \cite[pp.~47-49]{Kam2008}, but listed
-separately by \cite[p.~22]{IEEE2022} and \cite[p.~20]{IEEE2021}; the
-latter gives use case testing as a ``common form of scenario testing''.
-Since the actor in a use case ``can be a user or another system''
-\citep[p.~20]{IEEE2021}, ``use case testing'' may instead be a child of
-``user scenario testing''\seeParAlways{tab:parSyns}.
-\item \textbf{\emph{Link Testing}:}
+\item \textbf{Link Testing:}
 \begin{itemize}
 	\item Branch Testing (implied by \cite[p.~24]{IEEE2021})
 	\item Component Integration Testing \cite[p.~45]{Kam2008}
