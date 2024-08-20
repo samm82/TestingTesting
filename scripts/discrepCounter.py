@@ -93,6 +93,11 @@ class DiscrepCat(Enum):
     PARS = "Parents"
     CATS = "Categories"
 
+texFileDiscreps = {
+    "chapters/05e_cat_discreps.tex": DiscrepCat.CATS,
+    "build/multiSyns.tex": DiscrepCat.SYNS
+}
+
 class DiscrepSourceCounter:
     def __init__(self):
         self.dict = {k : DiscrepCounter(k.value) for k in SrcCat}
@@ -101,14 +106,15 @@ class DiscrepSourceCounter:
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
 
     def texDiscreps(self):
-        with open("chapters/05e_cat_discreps.tex", "r") as file:
-            content = [line for line in file.readlines()
-                       if "% Discrep count:" in line]
+        for filename, type in texFileDiscreps.items():
+            with open(filename, "r") as file:
+                content = [line for line in file.readlines()
+                        if "% Discrep count:" in line]
 
-        for discrep in content:
-            self.countDiscreps(
-                map(lambda x: categorizeSources(x), discrep.split("|")),
-                DiscrepCat.CATS)
+            for discrep in content:
+                self.countDiscreps(
+                    map(lambda x: categorizeSources(x), discrep.split("|")),
+                    type)
 
     def output(self):
         self.texDiscreps()

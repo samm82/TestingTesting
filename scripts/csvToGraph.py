@@ -325,6 +325,7 @@ multiSynNotes = {
         "\\citet[p.~55]{Firesmith2015}, although the terms are not synonyms."
     ),
     "Use Case Testing": (
+        "% Discrep count: ISTQB {Kam2008} | {IEEE2022} {IEEE2021} \n"
         "``Scenario testing'' and ``use case testing'' are given as synonyms "
         "by \\citetISTQB{} and \\citet[pp.~47-49]{Kam2008} but listed "
         "separately by \\citet[p.~22]{IEEE2022}, \\ifnotpaper who also give "
@@ -334,6 +335,7 @@ multiSynNotes = {
         "\\seeParAlways{tab:parSyns}."
     ),
     "Static Assertion Checking": (
+        "% Discrep count: {ChalinEtAl2006} | {LahiriEtAl2013} \n"
         "\\ifnotpaper \\citeauthor{ChalinEtAl2006}~list \\acf{rac} and \\acf{sv} "
         "as ``two complementary forms of assertion checking'' "
         "\\citeyearpar[p.~343]{ChalinEtAl2006}\\else \\cite[p.~343]{ChalinEtAl2006} "
@@ -344,6 +346,7 @@ multiSynNotes = {
         "complement to \\acs{rac} instead."
     ),
     "Operational Testing": (
+        "% Discrep count: ISTQB | {Firesmith2015} \n"
         "``Operational'' and ``production acceptance testing'' are treated as "
         "synonyms by \\citetISTQB{} but listed separately by \\citet[p.~30]{Firesmith2015}."
     ),
