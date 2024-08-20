@@ -111,17 +111,16 @@ class DiscrepSourceCounter:
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
 
     def texDiscreps(self):
-        for filename, type in texFileDiscreps.items():
+        for filename, origType in texFileDiscreps.items():
             with open(filename, "r") as file:
                 content = [line for line in file.readlines()
                         if "% Discrep count" in line]
-
+                
             for discrep in content:
-                if type == DiscrepCat.MISC:
-                    type = re.search(r"% Discrep count \(([A-Z]+)\):", discrep)[1]
                 self.countDiscreps(
                     map(lambda x: categorizeSources(x), discrep.split("|")),
-                    type, type == "FUNC")
+                    re.search(r"% Discrep count \(([A-Z]+)\):", discrep)[1]
+                    if origType == DiscrepCat.MISC else origType)
 
     def output(self):
         self.texDiscreps()
