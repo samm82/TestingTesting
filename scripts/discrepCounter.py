@@ -1,9 +1,9 @@
-from aenum import AutoNumberEnum, Enum, OrderedEnum, auto
+from aenum import AutoNumberEnum, Enum, OrderedEnum
 from functools import reduce, total_ordering
 import itertools
 import operator
 
-from helpers import writeFile
+from helpers import Rigidity, categorizeSources, writeFile
 
 class Color(OrderedEnum):
     GREEN  = 3
@@ -43,10 +43,6 @@ def getSrcCat(s) -> SrcCat:
             "PetersAndPedrycz"}):
         return SrcCat.TEXT
     return SrcCat.OTHER
-
-class Rigidity(Enum):
-    EXP = auto()
-    IMP = auto()
 
 def getRigidity(rigidity: Rigidity | tuple[Rigidity]):
     if isinstance(rigidity, tuple):
@@ -104,7 +100,18 @@ class DiscrepSourceCounter:
     def __str__(self):
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
 
+    def texDiscreps(self):
+        with open("chapters/05e_cat_discreps.tex", "r") as file:
+            content = [line for line in file.readlines()
+                       if "% Discrep count:" in line]
+
+        for discrep in content:
+            self.countDiscreps(
+                map(lambda x: categorizeSources(x), discrep.split("|")),
+                DiscrepCat.CATS)
+
     def output(self):
+        self.texDiscreps()
         for k, v in self.dict.items():
             writeFile([formatOutput(
                 [k.longname] + [getattr(v, dc.name.lower()).output()
