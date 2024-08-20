@@ -91,7 +91,8 @@ of a test process; for example, ``across the whole organization'' or only
         different risk area'' \citep[p.~12]{Gerrard2000a}, which is
         \distinctIEEE{#1}}}
 
-\def \ftrnote {Fault tolerance testing may also be a sub-approach of
+% Capitalization can change
+\newcommand{\ftrnote}[1]{#1ault tolerance testing may also be a sub-approach of
     reliability testing \ifnotpaper
         \citetext{\citealp[p.~375]{IEEE2017}; \citealp[p.~7-10]{SWEBOK2024}}%
     \else \cite[p.~375]{IEEE2017}, \cite[p.~7-10]{SWEBOK2024}%
