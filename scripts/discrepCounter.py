@@ -131,7 +131,7 @@ class DiscrepSourceCounter:
         for k, v in self.dict.items():
             writeFile([formatOutput(
                 [k.longname] + [getattr(v, dc.name.lower()).output()
-                                for dc in DiscrepCat if dc != DiscrepCat.MISC]+
+                                for dc in DiscrepCat if dc != DiscrepCat.MISC] +
                                 [formatOutput([v.func, v.oat, v.rec, v.scal]), ""]
                 )], f"{k.name.lower()}DiscBrkdwn", True)
 
@@ -147,9 +147,7 @@ class DiscrepSourceCounter:
             return set.union(*(a & b for a, b in itertools.combinations(s, 2)))
 
         # These ensure that sources aren't double counted
-        # catsAdded is for building pie charts
-        # parsAdded is for building table
-        catsAdded, parsAdded = set(), set()
+        pieAdded, tableAdded = set(), set()
         def updateCounters(source, pieSec: str, inc: int, r) -> bool:
             if type(source) is tuple:
                 srcTuple = tuple(map(getSrcCat, source))
@@ -161,7 +159,7 @@ class DiscrepSourceCounter:
             if debug:
                 print(source, sourceCat, pieSec, inc, r)
 
-            if srcTuple not in parsAdded:
+            if srcTuple not in tableAdded:
                 discCatName = (discCat.name if type(discCat) is DiscrepCat
                                else discCat).lower()
                 discCatAttr = getattr(self.dict[sourceCat], discCatName)
@@ -170,14 +168,14 @@ class DiscrepSourceCounter:
                             discCatAttr + 1)
                 else:
                     discCatAttr.addDiscrep(r)
-                parsAdded.add(srcTuple)
-            if source not in catsAdded and inc:
+                tableAdded.add(srcTuple)
+            if source not in pieAdded and inc:
                 try:
                     getattr(self.dict[sourceCat], pieSec)[srcTuple[1]] += inc
                 except TypeError:
                     setattr(self.dict[sourceCat], pieSec,
                             getattr(self.dict[sourceCat], pieSec) + inc)
-                catsAdded.add(source)
+                pieAdded.add(source)
                 if debug:
                     print(f"{pieSec}:", source)
                 return True
