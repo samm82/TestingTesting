@@ -342,10 +342,11 @@ and re-establish[ing] the desired state of the system''
 \fi
 so that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
 It is also called ``recoverability testing'' \cite[p.~47]{Kam2008} and
-potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}. The
-following terms, along with ``recovery testing'' itself \citep[p.~22]{IEEE2022}
-are all classified as test types, and the relations between them can be found
-in \Cref{fig:recovery-graph-current}.
+potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}.
+% Discrep count (REC): {Gerrard2000a}
+The following terms, along with ``recovery testing'' itself
+\citep[p.~22]{IEEE2022} are all classified as test types, and the relations
+between them can be found in \Cref{fig:recovery-graph-current}.
 
 %% again, maybe convert to \paragraph ?
 \begin{itemize}
@@ -366,6 +367,7 @@ in \Cref{fig:recovery-graph-current}.
             resolved'' \citeyearpar[p.~37]{IEEE2021}. These two definitions seem to
             describe different aspects of the system, where the first is
             intrinsic to the hardware/software and the second might not be.
+            % Discrep count (REC): {IEEE2017} | {IEEE2021}
       \item \textbf{Backup and Recovery Testing} ``measures the
             degree to which system state can be restored from backup within
             specified parameters of time, cost, completeness, and accuracy in
@@ -381,14 +383,17 @@ in \Cref{fig:recovery-graph-current}.
             \citeyearpar[p.~37]{IEEE2021}. It is also given as a sub-type of
             ``disaster/recovery testing'', even though that tests if ``operation
             of the test item can be transferred to a different operating site''
-            \citetext{p.~37}.
+            \citetext{p.~37}. % Discrep count (REC): {IEEE2021} | {IEEE2021}
+            It also seems to overlap with ``backup and
+            recovery testing'', which adds confusion.
+            % Discrep count (REC): {IEEE2021} | {IEEE2013}
       \item \textbf{Failover/Recovery Testing:} Testing that determines the
             ability ``to mov[e] to a back-up system in the event of failure,
             without transfer[ing] to a different operating site''
             \citep[p.~37]{IEEE2021}. This is given as a sub-type of
             ``disaster/recovery testing'', even though that tests if ``operation
             of the test item can be transferred to a different operating site''
-            \citetext{p.~37}.
+            \citetext{p.~37}. % Discrep count (REC): {IEEE2021} | {IEEE2021}
       \item \textbf{Failover Testing:} Testing that ``validates the SUT's
             ability to manage heavy loads or unexpected failure to continue
             typical operations'' \citep[p.~5-9]{SWEBOK2024} by entering a
@@ -396,10 +401,11 @@ in \Cref{fig:recovery-graph-current}.
             are assumed by a secondary system'' \citepISTQB{}. While not
             \emph{explicitly} related to recovery, ``failover/recovery testing''
             also describes the idea of ``failover'', and \ifnotpaper
-                  \citeauthor{Firesmith2015}\else\cite[p.~56]{Firesmith2015}\fi\
+                  \citeauthor{Firesmith2015} \else \cite[p.~56]{Firesmith2015} \fi
             uses the term ``failover and recovery testing''\ifnotpaper
-                  \ \citeyearpar[p.~56]{Firesmith2015}\fi, which could be a synonym of
-            both of these terms.
+                  \ \citeyearpar[p.~56]{Firesmith2015}\fi, which could be a
+            synonym of both of these terms.
+            % Discrep count (REC): {IEEE2021} | {Firesmith2015}
 \end{itemize}
 
 \subsection{Scalability Testing}
