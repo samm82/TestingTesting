@@ -97,10 +97,13 @@ class DiscrepCat(Enum):
     CATS = "Categories"
     MISC = "Standalone"
 
+otherDiscFiles = {"chapters/05a_std_discreps.tex"}
+
 texFileDiscreps = {
     "chapters/05e_cat_discreps.tex": DiscrepCat.CATS,
     "build/multiSyns.tex": DiscrepCat.SYNS,
-    "chapters/05_discrepancies.tex": DiscrepCat.MISC
+    "chapters/05_discrepancies.tex": DiscrepCat.MISC,
+    "chapters/05a_std_discreps.tex": DiscrepCat.MISC
 }
 
 class DiscrepSourceCounter:
@@ -120,7 +123,8 @@ class DiscrepSourceCounter:
                 self.countDiscreps(
                     map(lambda x: categorizeSources(x), discrep.split("|")),
                     re.search(r"% Discrep count \(([A-Z]+)\):", discrep)[1]
-                    if origType == DiscrepCat.MISC else origType)
+                    if origType == DiscrepCat.MISC else origType,
+                    other=filename in otherDiscFiles)
 
     def output(self):
         self.texDiscreps()
@@ -132,10 +136,10 @@ class DiscrepSourceCounter:
                 )], f"{k.name.lower()}DiscBrkdwn", True)
 
     def countDiscreps(self, sourceDicts, discCat: str | DiscrepCat,
-                      debug: bool = False):
+                      other: bool = False, debug: bool = False):
         sourceDicts = list(sourceDicts)
         if debug:
-            print(sourceDicts)
+            print(sourceDicts, discCat)
 
         def inPairs(s, *, sFunc = None):
             if sFunc:
@@ -154,13 +158,18 @@ class DiscrepSourceCounter:
                 srcTuple = tuple(map(getSrcCat, [source] * 2))
             sourceCat = srcTuple[0]
 
+            if debug:
+                print(source, sourceCat, pieSec, inc, r)
+
             if srcTuple not in parsAdded:
-                if type(discCat) is DiscrepCat:
-                    getattr(self.dict[sourceCat], discCat.name.lower()
-                            ).addDiscrep(r)
-                else:
+                discCatName = (discCat.name if type(discCat) is DiscrepCat
+                               else discCat).lower()
+                discCatAttr = getattr(self.dict[sourceCat], discCatName)
+                if type(discCatAttr) is int:
                     setattr(self.dict[sourceCat], discCat.lower(),
-                        getattr(self.dict[sourceCat], discCat.lower()) + 1)
+                            discCatAttr + 1)
+                else:
+                    discCatAttr.addDiscrep(r)
                 parsAdded.add(srcTuple)
             if source not in catsAdded and inc:
                 try:
