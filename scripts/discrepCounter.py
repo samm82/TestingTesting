@@ -18,7 +18,7 @@ class Color(OrderedEnum):
 @total_ordering
 class SrcCat(AutoNumberEnum):
     STD    = "Established Standards", "Standards", Color.GREEN
-    META   = "``Meta-level'' Collections", "``Meta-level Sources''", Color.BLUE
+    META   = "``Meta-level'' Collections", "``Meta-level'' Sources", Color.BLUE
     TEXT   = "Trusted Textbooks", "Textbooks", Color.MAROON
     OTHER  = "Other Sources", "Other Sources", Color.BLACK
 
@@ -123,11 +123,11 @@ class DiscrepSourceCounter:
                 self.countDiscreps(
                     map(lambda x: categorizeSources(x), discrep.split("|")),
                     re.search(r"% Discrep count \(([A-Z]+)\):", discrep)[1]
-                    if origType == DiscrepCat.MISC else origType,
-                    other=filename in otherDiscFiles)
+                    if origType == DiscrepCat.MISC else origType)
 
     def output(self):
         self.texDiscreps()
+        pieCharts = []
         for k, v in self.dict.items():
             writeFile([formatOutput(
                 [k.longname] + [getattr(v, dc.name.lower()).output()
@@ -135,8 +135,56 @@ class DiscrepSourceCounter:
                                 [formatOutput([v.func, v.oat, v.rec, v.scal]), ""]
                 )], f"{k.name.lower()}DiscBrkdwn", True)
 
+            totalDiscreps = sum({v.withinSrc, v.withinAuth,
+                                 sum(v.betweenCats.values())})
+            
+            def calcPerc(val):
+                return round(val/totalDiscreps*100, 1)
+
+            slices = ([(v.withinSrc, "Within a single source"),
+                       (v.withinAuth, "Between sources by the same author")] +
+                      [(catCount, f"Between {cat.shortname.lower()}")
+                       for cat, catCount in v.betweenCats.items()])
+
+            # Default color palette for pgf-pie
+            # https://github.com/pgf-tikz/pgf-pie/blob/ede5ceea348b0b1c1bbe8ccd0d75167ee3cc53bf/tex/latex/pgf-pie/tikzlibrarypie.code.tex#L239-L241
+            DEFAULT_COLORS = ["blue!60", "cyan!60", "yellow!60", "orange!60", "red!60",
+                              "blue!60!cyan!60", "cyan!60!yellow!60", "red!60!cyan!60",
+                              "red!60!blue!60", "orange!60!cyan!60"]
+
+            colors = [DEFAULT_COLORS[i] for i, slice in enumerate(slices) if slice[0]]
+
+            # LaTeX from https://tex.stackexchange.com/a/196483/192195
+            pieCharts.append(["\\begin{subfigure}[t]{0.475\\textwidth}",
+                              "\\begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]",
+                             f"   \\pie[text=legend, hide number, color={{{", ".join(colors)}}}]{{",
+                              ",\n".join([f"      {calcPerc(val)}/{calcPerc(val)}\\%" for val, _ in slices if val]),
+                              "}", "\\end{tikzpicture}",
+                             f"\\caption{{Breakdown of sources of\\\\discrepancies within {k.shortname.lower()}.}}",
+                             f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
+                              "\\end{subfigure}"
+                              ])
+        
+        pieCharts.append(["\\begin{subfigure}[t]{0.475\\textwidth}", "\\begin{tikzpicture}", "\matrix [thick, draw=black] {",
+                          "\\node[label={[centered]:Legend}] {{}}; \\\\"] +
+                         [f"\\node[thick, shape=rectangle, draw=black, fill={DEFAULT_COLORS[i]}, label=right:{{{slice[1]}}}]({i}) {{}}; \\\\"
+                          for i, slice in enumerate(slices)] + ["};", "\\end{tikzpicture}", "\\end{subfigure}"])
+
+        # From ChatGPT
+        sepPieCharts: list[str] = []
+        for i, item in enumerate(pieCharts):
+            sepPieCharts += item
+            if i % 2:
+                sepPieCharts.append("\\vskip\\baselineskip")
+            else:
+                sepPieCharts.append("\\hfill")
+
+        writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
+                  ["\\caption{Breakdown of sources of discrepancies by source category}",
+                   "\\label{fig:discrepSources}", "\\end{figure*}"], "pieCharts")
+
     def countDiscreps(self, sourceDicts, discCat: str | DiscrepCat,
-                      other: bool = False, debug: bool = False):
+                      debug: bool = False):
         sourceDicts = list(sourceDicts)
         if debug:
             print(sourceDicts, discCat)
