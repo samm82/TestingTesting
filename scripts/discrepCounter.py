@@ -124,10 +124,11 @@ class DiscrepSourceCounter:
                         if "% Discrep count" in line]
                 
             for discrep in content:
+                discType = (re.search(r"% Discrep count \(([A-Z]+)\):", discrep)[1]
+                            if origType == DiscrepCat.MISC else origType)
                 self.countDiscreps(
                     map(lambda x: categorizeSources(x), discrep.split("|")),
-                    re.search(r"% Discrep count \(([A-Z]+)\):", discrep)[1]
-                    if origType == DiscrepCat.MISC else origType)
+                    discType, discType == "OTHER")
 
     def output(self):
         self.texDiscreps()
