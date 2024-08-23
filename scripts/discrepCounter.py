@@ -160,7 +160,7 @@ class DiscrepSourceCounter:
                              f"   \\pie[text=legend, hide number, color={{{", ".join(colors)}}}]{{",
                               ",\n".join([f"      {calcPerc(val)}/{calcPerc(val)}\\%" for val, _ in slices if val]),
                               "}", "\\end{tikzpicture}",
-                             f"\\caption{{Breakdown of sources of\\\\discrepancies within {k.shortname.lower()}.}}",
+                             f"\\caption{{Discrepancies from {k.shortname.lower()}.}}",
                              f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
                               "\\end{subfigure}"
                               ])
@@ -180,7 +180,7 @@ class DiscrepSourceCounter:
                 sepPieCharts.append("\\hfill")
 
         writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
-                  ["\\caption{Breakdown of sources of discrepancies by source category}",
+                  ["\\caption{Sources of discrepancies based on \\hyperref[sources]{source category}.}",
                    "\\label{fig:discrepSources}", "\\end{figure*}"], "pieCharts")
 
     def countDiscreps(self, sourceDicts, discCat: str | DiscrepCat,
