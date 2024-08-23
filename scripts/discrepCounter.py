@@ -96,14 +96,18 @@ class DiscrepCat(Enum):
     PARS = "Parents"
     CATS = "Categories"
     MISC = "Standalone"
+    OTHER = "Other"
 
 otherDiscFiles = {"chapters/05a_std_discreps.tex"}
 
 texFileDiscreps = {
-    "chapters/05e_cat_discreps.tex": DiscrepCat.CATS,
     "build/multiSyns.tex": DiscrepCat.SYNS,
     "chapters/05_discrepancies.tex": DiscrepCat.MISC,
-    "chapters/05a_std_discreps.tex": DiscrepCat.MISC
+    "chapters/05a_std_discreps.tex": DiscrepCat.MISC,
+    "chapters/05b_meta_discreps.tex": DiscrepCat.MISC,
+    "chapters/05c_text_discreps.tex": DiscrepCat.MISC,
+    "chapters/05d_other_discreps.tex": DiscrepCat.MISC,
+    "chapters/05e_cat_discreps.tex": DiscrepCat.CATS,
 }
 
 class DiscrepSourceCounter:
@@ -131,7 +135,8 @@ class DiscrepSourceCounter:
         for k, v in self.dict.items():
             writeFile([formatOutput(
                 [k.longname] + [getattr(v, dc.name.lower()).output()
-                                for dc in DiscrepCat if dc != DiscrepCat.MISC] +
+                                for dc in [DiscrepCat.SYNS, DiscrepCat.PARS,
+                                           DiscrepCat.CATS]] +
                                 [formatOutput([v.func, v.oat, v.rec, v.scal]), ""]
                 )], f"{k.name.lower()}DiscBrkdwn", True)
 
@@ -165,7 +170,7 @@ class DiscrepSourceCounter:
                               "\\end{subfigure}"
                               ])
         
-        pieCharts.append(["\\begin{subfigure}[t]{0.475\\textwidth}", "\\begin{tikzpicture}", "\matrix [thick, draw=black] {",
+        pieCharts.append(["\\begin{subfigure}[t]{0.475\\textwidth}", "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",
                           "\\node[label={[centered]:Legend}] {{}}; \\\\"] +
                          [f"\\node[thick, shape=rectangle, draw=black, fill={DEFAULT_COLORS[i]}, label=right:{{{slice[1]}}}]({i}) {{}}; \\\\"
                           for i, slice in enumerate(slices)] + ["};", "\\end{tikzpicture}", "\\end{subfigure}"])
@@ -184,7 +189,7 @@ class DiscrepSourceCounter:
                    "\\label{fig:discrepSources}", "\\end{figure*}"], "pieCharts")
 
     def countDiscreps(self, sourceDicts, discCat: str | DiscrepCat,
-                      debug: bool = False):
+                      other: bool = False, debug: bool = False):
         sourceDicts = list(sourceDicts)
         if debug:
             print(sourceDicts, discCat)
@@ -207,7 +212,7 @@ class DiscrepSourceCounter:
             if debug:
                 print(source, sourceCat, pieSec, inc, r)
 
-            if srcTuple not in tableAdded:
+            if srcTuple not in tableAdded and not other:
                 discCatName = (discCat.name if type(discCat) is DiscrepCat
                                else discCat).lower()
                 discCatAttr = getattr(self.dict[sourceCat], discCatName)
