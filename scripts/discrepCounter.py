@@ -143,9 +143,6 @@ class DiscrepSourceCounter:
 
             totalDiscreps = sum({v.withinSrc, v.withinAuth,
                                  sum(v.betweenCats.values())})
-            
-            def calcPerc(val):
-                return round(val/totalDiscreps*100, 1)
 
             slices = ([(v.withinSrc, "Within a single source"),
                        (v.withinAuth, "Between sources by the same author")] +
@@ -163,8 +160,10 @@ class DiscrepSourceCounter:
             # LaTeX from https://tex.stackexchange.com/a/196483/192195
             pieCharts.append(["\\begin{subfigure}[t]{0.475\\textwidth}",
                               "\\begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]",
-                             f"   \\pie[text=legend, hide number, color={{{", ".join(colors)}}}]{{",
-                              ",\n".join([f"      {calcPerc(val)}/{calcPerc(val)}\\%" for val, _ in slices if val]),
+                             f"   \\pie[text=legend, sum=auto, hide number, color={{{", ".join(colors)}}}]{{",
+                              ",\n".join(
+                                  [f"      {val}/{str(round(val/totalDiscreps*100, 1)).strip("0").strip(".")}\\%"
+                                   for val, _ in slices if val]),
                               "}", "\\end{tikzpicture}",
                              f"\\caption{{Discrepancies from {k.shortname.lower()}.}}",
                              f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
