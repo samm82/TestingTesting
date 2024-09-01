@@ -167,7 +167,7 @@ class DiscrepSourceCounter:
                                   [f"      {val}/{str(round(val/totalDiscreps*100, 1)).strip("0").strip(".")}\\%"
                                    for val, _ in slices if val]),
                               "}", "\\end{tikzpicture}",
-                             f"\\caption{{Discrepancies found in {k.shortname.lower()}.}}",
+                             f"\\caption{{Discrepancies found in {k.shortname.lower().replace(" ", "\\\\")}.}}",
                              f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
                               "\\end{subfigure}"
                               ])
