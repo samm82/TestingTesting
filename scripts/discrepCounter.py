@@ -18,9 +18,9 @@ class Color(OrderedEnum):
 @total_ordering
 class SrcCat(AutoNumberEnum):
     STD    = "Established Standards", "Standards", Color.GREEN
-    META   = "``Meta-level'' Collections", "``Meta-level'' Sources", Color.BLUE
+    META   = "``Meta-level'' Collections", "``Meta-level'' Documents", Color.BLUE
     TEXT   = "Trusted Textbooks", "Textbooks", Color.MAROON
-    OTHER  = "Other Sources", "Other Sources", Color.BLACK
+    OTHER  = "Other Sources", "Other Documents", Color.BLACK
 
     def __init__(self, longname, shortname, color):
         self.longname  = longname
@@ -144,10 +144,12 @@ class DiscrepSourceCounter:
             totalDiscreps = sum({v.withinSrc, v.withinAuth,
                                  sum(v.betweenCats.values())})
 
-            slices = ([(v.withinSrc, "Within a single source"),
-                       (v.withinAuth, "Between sources by the same author")] +
-                      [(catCount, f"Between {cat.shortname.lower()}")
-                       for cat, catCount in v.betweenCats.items()])
+            slices = ([(v.withinSrc, "Within a single document"),
+                       (v.withinAuth, "Between documents by the same author")] +
+                      [(catCount, "Between a document from this category and " +
+                                  ("an" if cat.shortname.startswith("Other") else "a ") +
+                                  cat.shortname.lower()[:-1])
+                        for cat, catCount in v.betweenCats.items()])
 
             # Default color palette for pgf-pie
             # https://github.com/pgf-tikz/pgf-pie/blob/ede5ceea348b0b1c1bbe8ccd0d75167ee3cc53bf/tex/latex/pgf-pie/tikzlibrarypie.code.tex#L239-L241
@@ -165,15 +167,17 @@ class DiscrepSourceCounter:
                                   [f"      {val}/{str(round(val/totalDiscreps*100, 1)).strip("0").strip(".")}\\%"
                                    for val, _ in slices if val]),
                               "}", "\\end{tikzpicture}",
-                             f"\\caption{{Discrepancies from {k.shortname.lower()}.}}",
+                             f"\\caption{{Discrepancies found in {k.shortname.lower()}.}}",
                              f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
                               "\\end{subfigure}"
                               ])
         
-        pieCharts.append(["\\begin{subfigure}[t]{0.475\\textwidth}", "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",
-                          "\\node[label={[centered]:Legend}] {{}}; \\\\"] +
+        pieCharts.append(["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
+                          "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",
+                          "\\node[label=center:Legend] {{}}; \\\\"] +
                          [f"\\node[thick, shape=rectangle, draw=black, fill={DEFAULT_COLORS[i]}, label=right:{{{slice[1]}}}]({i}) {{}}; \\\\"
-                          for i, slice in enumerate(slices)] + ["};", "\\end{tikzpicture}", "\\end{subfigure}"])
+                          for i, slice in enumerate(slices)] +
+                          ["};", "\\end{tikzpicture}", "\\end{subfigure}", "\\end{center}"])
 
         # From ChatGPT
         sepPieCharts: list[str] = []

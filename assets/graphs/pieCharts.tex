@@ -8,7 +8,7 @@
       5/9.6\%
 }
 \end{tikzpicture}
-\caption{Discrepancies from standards.}
+\caption{Discrepancies found in standards.}
 \label{fig:stdDiscrepSources}
 \end{subfigure}
 \hfill
@@ -20,7 +20,7 @@
       7/13.7\%
 }
 \end{tikzpicture}
-\caption{Discrepancies from ``meta-level'' sources.}
+\caption{Discrepancies found in ``meta-level'' documents.}
 \label{fig:metaDiscrepSources}
 \end{subfigure}
 \vskip\baselineskip
@@ -33,7 +33,7 @@
       1/5.9\%
 }
 \end{tikzpicture}
-\caption{Discrepancies from textbooks.}
+\caption{Discrepancies found in textbooks.}
 \label{fig:textDiscrepSources}
 \end{subfigure}
 \hfill
@@ -47,23 +47,25 @@
       3/6.2\%
 }
 \end{tikzpicture}
-\caption{Discrepancies from other sources.}
+\caption{Discrepancies found in other documents.}
 \label{fig:otherDiscrepSources}
 \end{subfigure}
 \vskip\baselineskip
-\begin{subfigure}[t]{0.475\textwidth}
+\begin{center}
+\begin{subfigure}[t]{\linewidth}
 \begin{tikzpicture}
 \matrix [thick, draw=black] {
-\node[label={[centered]:Legend}] {{}}; \\
-\node[thick, shape=rectangle, draw=black, fill=blue!60, label=right:{Within a single source}](0) {}; \\
-\node[thick, shape=rectangle, draw=black, fill=cyan!60, label=right:{Between sources by the same author}](1) {}; \\
-\node[thick, shape=rectangle, draw=black, fill=yellow!60, label=right:{Between standards}](2) {}; \\
-\node[thick, shape=rectangle, draw=black, fill=orange!60, label=right:{Between ``meta-level'' sources}](3) {}; \\
-\node[thick, shape=rectangle, draw=black, fill=red!60, label=right:{Between textbooks}](4) {}; \\
-\node[thick, shape=rectangle, draw=black, fill=blue!60!cyan!60, label=right:{Between other sources}](5) {}; \\
+\node[label=center:Legend] {{}}; \\
+\node[thick, shape=rectangle, draw=black, fill=blue!60, label=right:{Within a single document}](0) {}; \\
+\node[thick, shape=rectangle, draw=black, fill=cyan!60, label=right:{Between documents by the same author}](1) {}; \\
+\node[thick, shape=rectangle, draw=black, fill=yellow!60, label=right:{Between a document from this category and a standard}](2) {}; \\
+\node[thick, shape=rectangle, draw=black, fill=orange!60, label=right:{Between a document from this category and a ``meta-level'' document}](3) {}; \\
+\node[thick, shape=rectangle, draw=black, fill=red!60, label=right:{Between a document from this category and a textbook}](4) {}; \\
+\node[thick, shape=rectangle, draw=black, fill=blue!60!cyan!60, label=right:{Between a document from this category and another document}](5) {}; \\
 };
 \end{tikzpicture}
 \end{subfigure}
+\end{center}
 \hfill
 \caption{Sources of discrepancies based on \hyperref[sources]{source category}.}
 \label{fig:discrepSources}
