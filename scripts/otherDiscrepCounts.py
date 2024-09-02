@@ -23,6 +23,8 @@ def override_severities(contents):
     for sev, sec in re.findall(r"% Severity: (\w+) \((\w+)\)", contents):
         update_section(sec, sev.lower())
 
+override_severities(readFileAsStr("chapters/05_discrepancies.tex"))
+
 for name, s in sections.items():
     contents = readFileAsStr(s.filename)
     override_severities(contents)
