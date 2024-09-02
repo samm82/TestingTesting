@@ -78,8 +78,6 @@ class DiscrepCounter:
         self.pars = ExpImpCounter()
         self.cats = ExpImpCounter()
 
-        self.func, self.oat, self.rec, self.scal = 0, 0, 0, 0
-
         # self.other = {s : 0 for s in ["High", "Med", "Low"]}
 
     def __str__(self):
@@ -87,7 +85,6 @@ class DiscrepCounter:
             ", ".join(map(str, [self.withinSrc, self.withinAuth])),
             "Diffs: " + ", ".join([f"{k.name} {v}" for k, v in self.betweenCats.items()]),
             " | ".join(map(str, [self.syns, self.pars, self.cats])),
-            " | ".join(map(str, [self.func, self.oat, self.rec, self.scal])),
             # "Other: " + ", ".join([f"{k} {v}" for k, v in self.other.items()])
             ])) + "\n"
 
@@ -137,8 +134,7 @@ class DiscrepSourceCounter:
             writeFile([formatOutput(
                 [k.longname] + [getattr(v, dc.name.lower()).output()
                                 for dc in [DiscrepCat.SYNS, DiscrepCat.PARS,
-                                           DiscrepCat.CATS]] +
-                                [formatOutput([v.func, v.oat, v.rec, v.scal]), ""]
+                                           DiscrepCat.CATS]]
                 )], f"{k.name.lower()}DiscBrkdwn", True)
 
             totalDiscreps = sum({v.withinSrc, v.withinAuth,
