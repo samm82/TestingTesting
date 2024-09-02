@@ -20,8 +20,9 @@ def update_section(sec, sev, contents: str ="\n\\item"):
             len(re.findall(r"\n\s{0,12}\\item", contents)))
 
 def override_severities(contents):
-    for sev, sec in re.findall(r"% Severity: (\w+) \((\w+)\)", contents):
-        update_section(sec, sev.lower())
+    for sev, secs in re.findall(r"% Severity: (\w+) \(([\w, ]+)\)", contents):
+        for sec in secs.split(", "):
+            update_section(sec, sev.lower())
 
 override_severities(readFileAsStr("chapters/05_discrepancies.tex"))
 

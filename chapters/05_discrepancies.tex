@@ -17,7 +17,10 @@ given: \hyperref[func-test-discrep]{(Func)tional Testing},
 \hyperref[oat-discrep]{\acf{oat}\ifnotpaper\else\footnote{Section omitted for
                   brevity.}\fi}, \hyperref[recov-discrep]{(Rec)overy Testing},
 and \hyperref[scal-discrep]{(Scal)ability Testing}. \nameref{other-discrep}
-are grouped into degrees of severity as follows\ifnotpaper:\else.
+are grouped into degrees of severity\footnote{These degrees of severity are
+      also used when counting discrepancies with functional, operational
+      acceptance, recovery, and scalability testing in \refDiscrepsReqsTable{}.}
+as follows\ifnotpaper:\else.
 (Note that only select discrepancies are listed for brevity.) \fi
 
 \begin{itemize}
@@ -190,7 +193,7 @@ specification of the component or system'' \ifnotpaper (and gives ``black-box
       testing'' as a synonym) \fi and ``functional testing'' as ``testing
 performed to evaluate if a component or system satisfies functional
 requirements'' \ifnotpaper (specifying no synonyms) \citepISTQB{};
-      % Discrep count (FUNC): {IEEE2022} {IEEE2017} | ISTQB
+      % Discrep count (SYNS): {IEEE2022} {IEEE2017} | ISTQB
       the latter references \citet[p.~196]{IEEE2017}
       (``testing conducted to evaluate the compliance of a system or
       component with specified functional requirements'') which
@@ -222,10 +225,10 @@ what defines a ``test type'' \citep[p.~15]{IEEE2022}\seeParAlways{qual-test},
 it seems consistent to label ``functional testing'' as a ``test type''
 \citep[pp.~15,~20,~22]{IEEE2022}; this conflicts with its categorization
 as a ``technique'' if considered a synonym of \nameref{spec-func-test}.
-% Discrep count (FUNC): implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
+% Discrep count (CATS): implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
 ``Correctness testing'' is listed separately from ``functionality testing'' by
 \citet[p.~53]{Firesmith2015}.
-% Discrep count (FUNC): {SWEBOK2024} | {Firesmith2015}
+% Discrep count (SYNS): {SWEBOK2024} | {Firesmith2015}
 
 \subsubsection{Conformance Testing}
 Testing that ensures ``that the functional specifications are correctly
@@ -238,7 +241,7 @@ specifications, requirements, design, processes, or practices''
 of testing methods mentioned earlier as the latter includes ``standards,
 rules, requirements, design, processes, \dots\ [and]'' practices in
 \emph{addition} to specifications!
-% Discrep count (FUNC): {SWEBOK2024} | implied by {SWEBOK2024}
+% Discrep count (SYNS): {SWEBOK2024} | implied by {SWEBOK2024}
 
 A complicating factor is that ``compliance testing'' is also
 (plausibly) given as a synonym of ``conformance testing''
@@ -248,7 +251,7 @@ to which ``results \dots\ fall within the limits that define
 acceptable variation for a quality requirement''
 \citep[p.~93]{IEEE2017}\todo{OG PMBOK 5th ed.}, which seems to
 describe something different.
-% Discrep count (FUNC): {Kam2008} | implied by {IEEE2017}
+% Discrep count (SYNS): {Kam2008} | implied by {IEEE2017}
 
 % TODO: pull out into Recommendations
 % Perhaps this second definition of
@@ -291,7 +294,7 @@ the quality/ies that would be tested by ``correctness'' testing.
 ``functional suitability'' \citepISTQB{}, although it seems
 like it should really be a synonym of ``functional completeness'' based on
 \citep{ISO_IEC2023a}, which would make ``functional suitability'' a
-% Discrep count (FUNC): ISTQB | implied by {ISO_IEC2023a}
+% Discrep count (SYNS): ISTQB | implied by {ISO_IEC2023a}
 sub-approach. Its associated test type
 is implied to be a sub-approach of build verification testing
 \citepISTQB{} and made distinct from ``functional testing''%
@@ -303,8 +306,9 @@ non-functional and functionality testing\fi\ \citep[Tab.~2]{Gerrard2000a}.
 \ifnotpaper
       \subsection{Operational (Acceptance) Testing}
       \label{oat-discrep}
-      % Discrep count (OAT): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}
-      % Discrep count (OAT): {LambdaTest2024} {BocchinoAndHamilton1996} | {Firesmith2015}
+      % Discrep count (OTHER): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}
+      % Severity: Med (Std, Meta)
+      % Discrep count (SYNS): {LambdaTest2024} {BocchinoAndHamilton1996} | {Firesmith2015}
       Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE2022};
       \citealpISTQB{}) while some refer to ``operational testing''
       (\citealp[p.~6-9,~in the context of software engineering operations]{SWEBOK2024};
@@ -423,7 +427,8 @@ below. The relations between these test approaches (and other relevant ones)
 are shown in \Cref{fig:scal-graph-current}.
 
 \begin{enumerate}
-      \item % Discrep count (SCAL): {IEEE2021} | {Firesmith2015} {Bas2024}
+      \item % Discrep count (OTHER): {IEEE2021} | {Firesmith2015} {Bas2024}
+            % Severity: Med (Meta, Other)
             \ifnotpaper \citeauthor{IEEE2021} \else ISO/IEC and IEEE \fi give
             ``scalability testing'' as a synonym of ``capacity testing''
             \ifnotpaper \citeyearpar[p.~39]{IEEE2021} \else \cite[p.~39]{IEEE2021}
@@ -432,14 +437,16 @@ are shown in \Cref{fig:scal-graph-current}.
                         \citealp[pp.~22-23]{Bas2024}}
             \else \citep[p.~53]{Firesmith2015}, \citep[pp.~22-23]{Bas2024}
             \fi
-      \item % Discrep count (SCAL): {IEEE2021} | implied by {ISO_IEC2023a}
+      \item % Discrep count (OTHER): {IEEE2021} | implied by {ISO_IEC2023a}
+            % Severity: Med (Meta, Other)
             \ifnotpaper \citeauthor{IEEE2021} \else ISO/IEC and IEEE \fi give
             the external modification of the system as part of ``scalability''
             \ifnotpaper \citeyearpar[p.~39]{IEEE2021}\else
                   \cite[p.~39]{IEEE2021}\fi, while \ifnotpaper \citeauthor{ISO_IEC2023a}
             \else \cite{ISO_IEC2023a} \fi implies that it is limited to the
             system itself \ifnotpaper \citeyearpar{ISO_IEC2023a} \fi
-      \item % Discrep count (SCAL): {SWEBOK2024}
+      \item % Discrep count (OTHER): {SWEBOK2024}
+            % Severity: High (Meta)
             The \acs{swebok} V4's definition of ``scalability testing''
             \citep[p.~5-9]{SWEBOK2024} is really a definition of usability
             testing!
