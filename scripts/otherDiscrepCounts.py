@@ -19,13 +19,13 @@ def update_section(sec, sev, contents: str ="\n\\item"):
     setattr(sections[sec], sev, getattr(sections[sec], sev) +
             len(re.findall(r"\n\s{0,12}\\item", contents)))
 
+def override_severities(contents):
+    for sev, sec in re.findall(r"% Severity: (\w+) \((\w+)\)", contents):
+        update_section(sec, sev.lower())
+
 for name, s in sections.items():
     contents = readFileAsStr(s.filename)
-
-    overrides = re.findall(r"% Severity: (\w+) \((\w+)\)", contents)
-    for overrideSeverity, overrideSection in overrides:
-        overrideSeverity = overrideSeverity.lower()
-        update_section(overrideSection, overrideSeverity.lower())
+    override_severities(contents)
 
     for severity, splitVal in SEVERITIES.items():
         if splitVal:
