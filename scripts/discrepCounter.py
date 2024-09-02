@@ -145,7 +145,7 @@ class DiscrepSourceCounter:
                                  sum(v.betweenCats.values())})
 
             slices = ([(v.withinSrc, "Within a single document"),
-                       (v.withinAuth, "Between documents by the same author")] +
+                       (v.withinAuth, "Between documents by the same author(s) or standards organization(s)")] +
                       [(catCount, "Between a document from this category and " +
                                   ("an" if cat.shortname.startswith("Other") else "a ") +
                                   cat.shortname.lower()[:-1])
