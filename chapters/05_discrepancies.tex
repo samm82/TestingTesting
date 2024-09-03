@@ -12,15 +12,12 @@ and ambiguities. A summary of these is shown in
 discrepancies either within that category and/or with a ``more trusted''
 category (i.e., with a source from a category higher up in the table). Issues
 with \nameref{syns}, \nameref{par-rels}, and \nameref{categories-discrep} are
-(Exp)licit or (Imp)licit. Issues with the following test approaches are also
-given: \hyperref[func-test-discrep]{(Func)tional Testing},
-\hyperref[oat-discrep]{\acf{oat}\ifnotpaper\else\footnote{Section omitted for
-                  brevity.}\fi}, \hyperref[recov-discrep]{(Rec)overy Testing},
-and \hyperref[scal-discrep]{(Scal)ability Testing}. \nameref{other-discrep}
-are grouped into degrees of severity\footnote{These degrees of severity are
-      also used when counting discrepancies with functional, operational
-      acceptance, recovery, and scalability testing in \refDiscrepsReqsTable{}.}
-as follows\ifnotpaper:\else.
+(Exp)licit or (Imp)licit. Issues with \nameref{func-test-discrep},
+\ifnotpaper\nameref{oat-discrep}\else\acf{operat}\footnote{Section omitted for
+            brevity.}\fi, \nameref{recov-discrep}, and \nameref{scal-discrep} are
+also given, although not listed separately in \refDiscrepsReqsTable{}; these
+are counted alongside \nameref{other-discrep}, all grouped into
+degrees of severity as follows\ifnotpaper:\else.
 (Note that only select discrepancies are listed for brevity.) \fi
 
 \begin{itemize}
@@ -304,7 +301,7 @@ non-functional and functionality testing\fi\ \citep[Tab.~2]{Gerrard2000a}.
 \citet[p.~53]{Firesmith2015}.
 
 \ifnotpaper
-      \subsection{Operational (Acceptance) Testing}
+      \subsection[Operational (Acceptance) Testing (OAT)]{\acf{operat}}
       \label{oat-discrep}
       % Discrep count (OTHER): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}
       % Severity: Med (Std, Meta)
