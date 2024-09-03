@@ -17,7 +17,9 @@ sections = {x: DiscrepSection(f"chapters/05{chr(97+i)}_{x.lower()}_discreps.tex"
 # Default value is one, for overriding counts
 def update_section(sec, sev, contents: str ="\n\\item"):
     setattr(sections[sec], sev, getattr(sections[sec], sev) +
-            len(re.findall(r"\n\s{0,12}\\item", contents)))
+            len(re.findall(r"\n\s{0,12}\\item", contents)) -
+            # Count all discrepancies except those that are categorized
+            len(re.findall(r"\\item % Discrep count \([A-Z]+(?<!OTHER)\):", contents)))
 
 def override_severities(contents):
     for sev, secs in re.findall(r"% Severity: (\w+) \(([\w, ]+)\)", contents):
