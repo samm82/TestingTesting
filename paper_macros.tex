@@ -100,14 +100,22 @@ of a test process; for example, ``across the whole organization'' or only
 
 \def\graphGenDesc{
     We \ifnotpaper\else then \fi developed a tool to automatically
-    generate graphs of the relations
-    between test approaches. All child-parent relations are graphed, as well as
+    generate graphs of the relations between test approaches.
+    \ifnotpaper Since child-parent and synonym relations between approaches are
+        tracked in \ifblind{our glossary}{\href{
+                https://github.com/samm82/TestGen-Thesis/blob/main/ApproachGlossary.csv
+            }{our glossary}} in a consistent format, they can be parsed systematically.
+    \fi
+    All child-parent relations are graphed, as well as
     synonym relations where either:
     \begin{enumerate}
         \item both terms are present in the glossary, or
         \item one term is synonyms with more than one term that is present in the
               glossary\seeParAlways{multiSyns}.
     \end{enumerate}
+    \ifnotpaper These conditions are also deduced from the information parsed
+        from the glossary.
+    \fi
     \Cref{fig:recovery-graph-current,fig:scal-graph-current} are modified versions
     of these graphs generated based on the existing literature, focused on specific
     subsets of testing terminology. This tool was also expanded to be able to make
