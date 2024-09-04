@@ -8,7 +8,10 @@ CSV_GLOSSARIES = $(addsuffix .csv, $(GLOSSARIES))
 TXT_GLOSSARIES = $(addsuffix .txt, $(GLOSSARIES))
 DIFF_GLOSSARIES = $(addprefix Diff, $(TXT_GLOSSARIES))
 
-GRAPHS = assets/graphs/*.tex assets/graphs/manual/*.tex
+GRAPH_GLOSSARY_STUBS = Approach Example
+GRAPH_GLOSSARIES = $(addsuffix Glossary, $(GRAPH_GLOSSARY_STUBS))
+
+GRAPHS = assets/graphs/*Graph.tex assets/graphs/manual/*Graph.tex
 CUSTOM_STUBS = recovery scalability performance
 ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
 CUSTOM_GRAPHS = $(addprefix assets/graphs/, $(addsuffix Graph, $(ALL_CUSTOM_STUBS)))
@@ -67,6 +70,12 @@ LATEX_SCRIPTS = csvToGraph undefTermSources otherDiscrepCounts
 $(LATEX_SCRIPTS):
 	-mkdir build || true
 	py scripts/$@.py
+
+csvToGraph:
+	-mkdir build || true
+	for filename in $(GRAPH_GLOSSARIES) ; do \
+		py scripts/$@.py $${filename} ; \
+	done
 
 compile_graphs: csvToGraph
 	for filename in $(GRAPHS) ; do \

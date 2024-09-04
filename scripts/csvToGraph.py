@@ -3,6 +3,7 @@ import numpy as np
 import itertools
 from pandas import read_csv
 import re
+import sys
 
 from discrepCounter import *
 from helpers import *
@@ -21,14 +22,21 @@ def debugSource(x, toPrint = ""):
     else:
         return False    
 
-# Terms in parentheses we want to keep
-PAREN_EXC = {"Acceptance"}
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python ApproachGlossary.py <filename>")
+        sys.exit(1)
+    
+    csvFilename = sys.argv[1]
 
-approaches = read_csv('ApproachGlossary.csv')
+approaches = read_csv(f"{csvFilename}.csv")
 names = approaches["Name"].to_list()
 categories = approaches["Approach Category"].to_list()
 synonyms = approaches["Synonym(s)"].to_list()
 parents = approaches["Parent(s)"].to_list()
+
+# Terms in parentheses we want to keep
+PAREN_EXC = {"Acceptance"}
 
 def processCol(col):
     SOURCE_CHUNKS = [AUTHOR_REGEX, YEAR_REGEX, BEGIN_INFO_REGEX]
@@ -580,7 +588,8 @@ writeFile([f"{parSynCount}% Pairs of terms with parent/child AND synonym relatio
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
 
-discrepsSrcCounter.output()
+if "Example" not in csvFilename:
+    discrepsSrcCounter.output()
 
 def writeDotFile(lines, filename):
     CUSTOM_LEGEND = {"recovery", "scalability"}
@@ -708,12 +717,15 @@ def writeDotFile(lines, filename):
 
     writeFile(lines, filename)
 
-for key, value in categoryDict.items():
-    lines = value[1]
-    writeDotFile(lines, f"{key.lower()}Graph")
-    unsure = ["dashed"] + [c.split()[0] for c in lines if styleInLine("dashed", c)]
-    writeDotFile([c for c in lines if all(x not in c for x in unsure)],
-                  f"rigid{key}Graph")
+if "Example" in csvFilename:
+    writeDotFile(categoryDict["Approach"][1], f"{csvFilename}Graph")
+else:
+    for key, value in categoryDict.items():
+        lines = value[1]
+        writeDotFile(lines, f"{key.lower()}Graph")
+        unsure = ["dashed"] + [c.split()[0] for c in lines if styleInLine("dashed", c)]
+        writeDotFile([c for c in lines if all(x not in c for x in unsure)],
+                    f"rigid{key}Graph")
 
 SYN = "syn"
 class CustomGraph:
@@ -758,7 +770,10 @@ class CustomGraph:
         #          if any(term in line for term in formattedTerms) or line == ""]
 
         chunks = splitListAtEmpty(categoryDict["Approach"][1])
-        if len(chunks) == 3:
+        if len(chunks) == 2:
+            nodes = chunks[0]
+            rels = chunks[1]
+        elif len(chunks) == 3:
             nodes = chunks[0] + chunks[1]
             rels = chunks[1] + chunks[2]
         elif len(chunks) == 4:
@@ -927,5 +942,6 @@ performanceGraph = CustomGraph(
 performanceGraph.inherit(recoveryGraph)
 performanceGraph.inherit(scalabilityGraph)
 
-for subgraph in {recoveryGraph, scalabilityGraph, performanceGraph}:
-    subgraph.buildGraph()
+if "Example" not in csvFilename:
+    for subgraph in {recoveryGraph, scalabilityGraph, performanceGraph}:
+        subgraph.buildGraph()
