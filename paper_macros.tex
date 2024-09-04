@@ -104,7 +104,30 @@ of a test process; for example, ``across the whole organization'' or only
     \ifnotpaper Since child-parent and synonym relations between approaches are
         tracked in \ifblind{our glossary}{\href{
                 https://github.com/samm82/TestGen-Thesis/blob/main/ApproachGlossary.csv
-            }{our glossary}} in a consistent format, they can be parsed systematically.
+            }{our glossary}} in a consistent format, they can be parsed
+        systematically. For example, if the entries in \Cref{tab:exampleGlossary}
+        appear in the glossary, then they are displayed as \Cref{fig:exampleGraph}
+        in the generated graph.
+
+        \begin{table}[hbtp!]
+            \centering
+            \begin{tabular}{ll} \hline
+                Name                        & Parent(s)                                       \\ \hline
+                A                           & B (Author, 0000; Author 0001), C (Author, 0000) \\
+                B                           & C (implied by Author, 0000)                     \\
+                C                           & D (Author, 0002)                                \\
+                D (implied by Author, 0002) &                                                 \\ \hline
+            \end{tabular}
+            \caption{Sample example glossary entries with only relevant columns shown.}
+            \label{tab:exampleGlossary}
+        \end{table}
+
+        \begin{figure}[hbtp!]
+            \ExampleGraph{}
+            \caption{Graph generated from the glossary entries in \Cref{tab:exampleGlossary}.}
+            \label{fig:exampleGraph}
+        \end{figure}
+
     \fi
     All child-parent relations are graphed, as well as
     synonym relations where either:

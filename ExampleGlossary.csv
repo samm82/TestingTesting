@@ -1,5 +1,5 @@
 ﻿Name,Approach Category,Definition,Parent(s),Synonym(s),Notes
-A,Approach,,"B (source, 0000; source 0001), C (source, 0000)",,
-B,Approach,,"C (implied by source, 0000)",,
-C,Approach,,"D (source, 0002)",,
-"D (implied by source, 0002)",Approach,,,,
+A,Approach,,"B (Author, 0000; Author, 0001), C (Author, 0000)",,
+B,Approach,,"C (implied by Author, 0000)",,
+C,Approach,,"D (Author, 0002)",,
+"D (implied by Author, 0002)",Approach,,,,

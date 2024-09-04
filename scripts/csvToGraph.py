@@ -434,9 +434,10 @@ for synList in [expMultiSyns, impMultiSyns, infMultiSyns]:
     synList.sort(key=lambda x: re.sub(r"\(.+\) ", "", x))
     synList.sort(key=lambda x: x.count("\\item"), reverse=True)
 
-writeFile(expMultiSyns + impMultiSyns, "multiSyns", True)
-writeFile(sorted(infMultiSyns, key=lambda x: x.count("\\cite"), reverse=True),
-          "infMultiSyns", True)
+if "Example" not in csvFilename:
+    writeFile(expMultiSyns + impMultiSyns, "multiSyns", True)
+    writeFile(sorted(infMultiSyns, key=lambda x: x.count("\\cite"), reverse=True),
+            "infMultiSyns", True)
 
 workingStaticSet = staticApproaches.copy()
 
@@ -467,13 +468,14 @@ print()
 
 selfCycleCount = len(selfCycles)
 
-selfCycles = [formatLineWithSources(f"\\item {cycle}") for cycle in selfCycles]
-writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
-          "selfCycles", True)
+if "Example" not in csvFilename:
+    selfCycles = [formatLineWithSources(f"\\item {cycle}") for cycle in selfCycles]
+    writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
+            "selfCycles", True)
 
-for cycle in selfCycles:
-    discrepsSrcCounter.countDiscreps(
-        [categorizeSources(parseSource(cycle))], DiscrepCat.PARS)
+    for cycle in selfCycles:
+        discrepsSrcCounter.countDiscreps(
+            [categorizeSources(parseSource(cycle))], DiscrepCat.PARS)
 
 def splitListAtEmpty(listToSplit):
     recArr = np.array(listToSplit)
@@ -558,32 +560,33 @@ parSynCount = "".join(parSyns).count("\\to")
 def sortByImplied(ls):
     return sorted(ls, key=lambda x: x.count("(implied"))
 
-writeFile(["\\begin{longtblr}[",
-           "   caption = {Pairs of test approaches with both child-parent and synonym relations.},",
-           "   label = {tab:parSyns}",
-           "   ]{",
-           "   colspec = {|c|X|X|}, width = \\linewidth,",
-           "   rowhead = 1, row{1} = {McMasterMediumGrey}",
-           "   }",
-           "  \\hline",
-           "  \\thead{``Child'' $\\to$ ``Parent''}  & \\thead{Child-Parent Source(s)} & \\thead{Synonym Source(s)} \\\\",
-           "  \\hline"] + sortByImplied(sortIgnoringParens(parSyns)) +
-          ["  \\hline", "\\end{longtblr}"],
-          "parSyns", True)
+if "Example" not in csvFilename:
+    writeFile(["\\begin{longtblr}[",
+            "   caption = {Pairs of test approaches with both child-parent and synonym relations.},",
+            "   label = {tab:parSyns}",
+            "   ]{",
+            "   colspec = {|c|X|X|}, width = \\linewidth,",
+            "   rowhead = 1, row{1} = {McMasterMediumGrey}",
+            "   }",
+            "  \\hline",
+            "  \\thead{``Child'' $\\to$ ``Parent''}  & \\thead{Child-Parent Source(s)} & \\thead{Synonym Source(s)} \\\\",
+            "  \\hline"] + sortByImplied(sortIgnoringParens(parSyns)) +
+            ["  \\hline", "\\end{longtblr}"],
+            "parSyns", True)
 
-writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(
-    map(lambda x: f"\\paragraph{{{x}}}",
-        ["Pairs labelled as ``children/parents''",
-         "Pairs labelled as ``synonyms''",
-         "Pairs that could be ``children/parents'' \\emph{or} ``synonyms''"]),
-    map(lambda x: "\n".join(["\\begin{enumerate}"] + list(
-        map(lambda x: f"\t{x}", sortByImplied(sortIgnoringParens(x)))) +
-        ["\\end{enumerate}"]), [infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc])))],
-        "infParSyns", True)
+    writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(
+        map(lambda x: f"\\paragraph{{{x}}}",
+            ["Pairs labelled as ``children/parents''",
+            "Pairs labelled as ``synonyms''",
+            "Pairs that could be ``children/parents'' \\emph{or} ``synonyms''"]),
+        map(lambda x: "\n".join(["\\begin{enumerate}"] + list(
+            map(lambda x: f"\t{x}", sortByImplied(sortIgnoringParens(x)))) +
+            ["\\end{enumerate}"]), [infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc])))],
+            "infParSyns", True)
 
-writeFile([f"{parSynCount}% Pairs of terms with parent/child AND synonym relations",
-           f"{selfCycleCount}% Self-cycles"],
-           "parSynCounts", True)
+    writeFile([f"{parSynCount}% Pairs of terms with parent/child AND synonym relations",
+            f"{selfCycleCount}% Self-cycles"],
+            "parSynCounts", True)
 
 def styleInLine(style, line):
         return re.search(r"label=.+,style=.+" + style, line)
