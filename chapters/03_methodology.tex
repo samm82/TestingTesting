@@ -1,5 +1,5 @@
 \section{Methodology}
-\label{method}
+\label{methodology}
 
 \subsection{Sources}
 \label{sources}
@@ -11,45 +11,45 @@ locate hidden populations'' \citep{Johnson2014})
 to gather further sources\seeParAlways{undef-terms}. Groups of sources with
 information that shows up in a relevant graph are given a unique colour to
 better visualize them; see \Cref{fig:recovery-graph-current,%
-      fig:recovery-graph-proposed,fig:scal-graph-current,%
-      fig:scal-graph-proposed,fig:perf-graph}.
+    fig:recovery-graph-proposed,fig:scal-graph-current,%
+    fig:scal-graph-proposed,fig:perf-graph}.
 
 \begin{enumerate}
-      \setcounter{enumi}{-1}
-      \item Trusted textbooks
-            \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
-            \begin{itemize}
-                  \item Ad hoc and arbitrary; not systematic
-                        % \item Colored \textcolor{Maroon}{maroon},
-            \end{itemize}
-      \item Established standards, such as IEEE, ISO/IEC, and the \acf{swebok}
-            \begin{itemize}
-                  \item Standards organizations \citep{IEEE2022, IEEE2017,
-                              IEEE2013, ISO_IEC2023b, IEEE2012, ISO_IEC2023a,
-                              IEEE2021, ISO_IEC2018, ISO2021, ISO2015}
-                        colored \textcolor{green}{green}
-                  \item ``Meta-level'' commentaries or collections of
-                        terminology (often based on these standards)
-                        \ifnotpaper
-                              (\citealp{SWEBOK2024, SWEBOK2014};
-                              \citealpISTQB{}; \citealp{Firesmith2015})
-                        \else
-                              \cite{SWEBOK2024, SWEBOK2014, ISTQB, Firesmith2015}
-                        \fi colored \textcolor{blue}{blue},
-            \end{itemize}
-      \item Other resources: less-formal classifications of terminology
-            \ifnotpaper
-                  \citep[e.g.,][]{KuļešovsEtAl2013}%
-            \else
-                  (such as \citep{KuļešovsEtAl2013})%
-            \fi%
-            , sources investigated to
-            ``fill in'' missing definitions\seeSectionParAlways{undef-terms},
-            and testing-related resources that emerged for unrelated reasons
-            \begin{itemize}
-                  \item Colored black, along with any ``surface-level''
-                        analysis that followed straightforwardly.
-            \end{itemize}
+    \setcounter{enumi}{-1}
+    \item Trusted textbooks
+          \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
+          \begin{itemize}
+              \item Ad hoc and arbitrary; not systematic
+                    % \item Colored \textcolor{Maroon}{maroon},
+          \end{itemize}
+    \item Established standards, such as IEEE, ISO/IEC, and the \acf{swebok}
+          \begin{itemize}
+              \item Standards organizations \citep{IEEE2022, IEEE2017,
+                        IEEE2013, ISO_IEC2023b, IEEE2012, ISO_IEC2023a,
+                        IEEE2021, ISO_IEC2018, ISO2021, ISO2015}
+                    colored \textcolor{green}{green}
+              \item ``Meta-level'' commentaries or collections of
+                    terminology (often based on these standards)
+                    \ifnotpaper
+                        (\citealp{SWEBOK2024, SWEBOK2014};
+                        \citealpISTQB{}; \citealp{Firesmith2015})
+                    \else
+                        \cite{SWEBOK2024, SWEBOK2014, ISTQB, Firesmith2015}
+                    \fi colored \textcolor{blue}{blue},
+          \end{itemize}
+    \item Other resources: less-formal classifications of terminology
+          \ifnotpaper
+              \citep[e.g.,][]{KuļešovsEtAl2013}%
+          \else
+              (such as \citep{KuļešovsEtAl2013})%
+          \fi%
+          , sources investigated to
+          ``fill in'' missing definitions\seeSectionParAlways{undef-terms},
+          and testing-related resources that emerged for unrelated reasons
+          \begin{itemize}
+              \item Colored black, along with any ``surface-level''
+                    analysis that followed straightforwardly.
+          \end{itemize}
 \end{enumerate}
 
 \subsection{Procedure}
@@ -60,7 +60,7 @@ any synonyms or parents. Many test approaches are multi-faceted and can be
 ``specialized'' into others, such as \nameref{perf-test-rec}. These
 ``specializations'' will be referred to as ``children'' or
 ``sub-approaches\footnote{This nomenclature extends to other categories of
-      approaches from \Cref{tab:ieeeTestTerms}, such as ``sub-type''.}''
+    approaches from \Cref{tab:ieeeTestTerms}, such as ``sub-type''.}''
 of the multi-faceted
 ``parent''. Any additional notes, such as questions or sources to investigate
 further, are also recorded. Approach categorizations, such as those found in
@@ -74,24 +74,24 @@ the test approach was determined to be out-of-scope.)
 Heuristics are used to guide this process, by investigating:
 
 \begin{itemize}
-      \item glossaries and lists of terms,
-      \item testing-related terms (e.g., terms containing ``test(ing)'',
-            \ifnotpaper ``review(s)'', ``audit(s)'', \fi
-            ``validation'', or ``verification''),
-      \item terms that had emerged as part of already-discovered
-            testing approaches, \emph{especially} those that were ambiguous
-            or prompted further discussion (e.g., terms containing
-            ``performance'', ``recovery'', ``component'', ``bottom-up'',
-            \ifnotpaper ``boundary'', \fi or ``configuration''), and
-      \item terms that implied testing approaches%
-            \ifnotpaper\footnote{
-                        Since these methods for deriving test approaches only arose
-                        as research progressed, some examples would have been missed
-                        during the first pass(es) of resources investigated earlier
-                        in the process. While reiterating over them would be ideal,
-                        this may not be possible due to time constraints.
-                  }\fi%
-            \seeSectionParAlways{derived-tests}.
+    \item glossaries and lists of terms,
+    \item testing-related terms (e.g., terms containing ``test(ing)'',
+          \ifnotpaper ``review(s)'', ``audit(s)'', \fi
+          ``validation'', or ``verification''),
+    \item terms that had emerged as part of already-discovered
+          testing approaches, \emph{especially} those that were ambiguous
+          or prompted further discussion (e.g., terms containing
+          ``performance'', ``recovery'', ``component'', ``bottom-up'',
+          \ifnotpaper ``boundary'', \fi or ``configuration''), and
+    \item terms that implied testing approaches%
+          \ifnotpaper\footnote{
+                  Since these methods for deriving test approaches only arose
+                  as research progressed, some examples would have been missed
+                  during the first pass(es) of resources investigated earlier
+                  in the process. While reiterating over them would be ideal,
+                  this may not be possible due to time constraints.
+              }\fi%
+          \seeSectionParAlways{derived-tests}.
 \end{itemize}
 
 When terms have multiple definitions, either the clearest and most concise
@@ -111,27 +111,27 @@ broad (such as \Cref{attacks}\ifnotpaper{, \thesisissueref{55}}\fi), so they
 will be omitted over the course of analysis.
 
 \ifnotpaper
-      During this investigation, some terms came up that seemed to be relevant to
-      testing but were so vague, they didn't provide any new information. These were
-      decided to be not worth tracking\seeThesisIssuePar{39}[, \thesisissueref{44},
-            \thesisissueref{28}] and are listed below:
+    During this investigation, some terms came up that seemed to be relevant to
+    testing but were so vague, they didn't provide any new information. These were
+    decided to be not worth tracking\seeThesisIssuePar{39}[, \thesisissueref{44},
+        \thesisissueref{28}] and are listed below:
 
-      \begin{itemize}
-            \item \textbf{Evaluation:} the ``systematic determination of the extent
-                  to which an entity meets its specified criteria''
-                  \citep[p.~167]{IEEE2017}
-            \item \textbf{Product Analysis:} the ``process of evaluating a product by
-                  manual or automated means to determine if the product has certain
-                  characteristics'' \citep[p.~343]{IEEE2017}
-            \item \textbf{Quality Audit:} ``a structured, independent process to
-                  determine if project activities comply with organizational and
-                  project policies, processes, and procedures'' \citep[p.~361]{IEEE2017}
-                  \todo{OG PMBOK}
-            \item \textbf{Software Product Evaluation:} a ``technical operation that
-                  consists of producing an assessment of one or more characteristics
-                  of a software product according to a specified procedure''
-                  \citep[p.~424]{IEEE2017}
-      \end{itemize}
+    \begin{itemize}
+        \item \textbf{Evaluation:} the ``systematic determination of the extent
+              to which an entity meets its specified criteria''
+              \citep[p.~167]{IEEE2017}
+        \item \textbf{Product Analysis:} the ``process of evaluating a product by
+              manual or automated means to determine if the product has certain
+              characteristics'' \citep[p.~343]{IEEE2017}
+        \item \textbf{Quality Audit:} ``a structured, independent process to
+              determine if project activities comply with organizational and
+              project policies, processes, and procedures'' \citep[p.~361]{IEEE2017}
+              \todo{OG PMBOK}
+        \item \textbf{Software Product Evaluation:} a ``technical operation that
+              consists of producing an assessment of one or more characteristics
+              of a software product according to a specified procedure''
+              \citep[p.~424]{IEEE2017}
+    \end{itemize}
 \fi
 \subsection{Undefined Terms}
 \label{undef-terms}
@@ -162,9 +162,9 @@ We then developed a tool to automatically generate graphs of the relations
 between test approaches. All child-parent relations are graphed, as well as
 synonym relations where either:
 \begin{enumerate}
-      \item both terms are present in the glossary, or
-      \item one term is synonyms with more than one term that is present in the
-            glossary\seeParAlways{multiSyns}.
+    \item both terms are present in the glossary, or
+    \item one term is synonyms with more than one term that is present in the
+          glossary\seeParAlways{multiSyns}.
 \end{enumerate}
 \Cref{fig:recovery-graph-current,fig:scal-graph-current} are modified versions
 of these graphs generated based on the existing literature, focused on specific
