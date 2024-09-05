@@ -11,7 +11,7 @@ DIFF_GLOSSARIES = $(addprefix Diff, $(TXT_GLOSSARIES))
 GRAPH_GLOSSARY_STUBS = Approach Example SynExample
 GRAPH_GLOSSARIES = $(addsuffix Glossary, $(GRAPH_GLOSSARY_STUBS))
 
-GRAPHS = assets/graphs/*Graph.tex assets/graphs/manual/*Graph.tex
+GRAPHS = assets/graphs/**/{*Graph,manualLegend*}.tex
 CUSTOM_STUBS = recovery scalability performance
 ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
 CUSTOM_GRAPHS = $(addprefix assets/graphs/, $(addsuffix Graph, $(ALL_CUSTOM_STUBS)))
