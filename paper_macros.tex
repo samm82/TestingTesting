@@ -129,15 +129,34 @@ of a test process; for example, ``across the whole organization'' or only
         \end{figure}
 
     \fi
-    All child-parent relations are graphed, as well as
-    synonym relations where either:
+    All child-parent relations are graphed, as well as synonym relations where either:
     \begin{enumerate}
         \item both terms are present in the glossary, or
         \item one term is synonyms with more than one term that is present in the
               glossary\seeParAlways{multiSyns}.
     \end{enumerate}
     \ifnotpaper These conditions are also deduced from the information parsed
-        from the glossary.
+        from the glossary. For example, if the entries in \Cref{tab:synExampleGlossary}
+        appear in the glossary, then they are displayed as \Cref{fig:synExampleGraph}
+        in the generated graph.
+
+        \begin{table}[hbtp!]
+            \centering
+            \begin{tabular}{ll} \hline
+                Name & Synonym(s)                               \\ \hline
+                E    & F (Author, 0000; implied by Author 0001) \\
+                G    & H (Author, 0000), F (Author, 0002)       \\
+                H    &                                          \\ \hline
+            \end{tabular}
+            \caption{Sample example glossary entries with only relevant columns shown.}
+            \label{tab:synExampleGlossary}
+        \end{table}
+
+        \begin{figure}[hbtp!]
+            \SynExampleGraph{}
+            \caption{Graph generated from the glossary entries in \Cref{tab:synExampleGlossary}.}
+            \label{fig:synExampleGraph}
+        \end{figure}
     \fi
     \Cref{fig:recovery-graph-current,fig:scal-graph-current} are modified versions
     of these graphs generated based on the existing literature, focused on specific

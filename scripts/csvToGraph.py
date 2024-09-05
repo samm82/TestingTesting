@@ -248,7 +248,7 @@ for name, synonym in zip(names, synonyms):
     for syn in synonym:
         rsyn, fsyn = removeInParens(syn), formatApproach(syn)
         if not (any(minor in syn.lower() for minor in {"spelled", "called"}) or
-                fsyn.isupper()):
+                (fsyn.isupper() and "Example" not in csvFilename)):
             nameWithSource = rname + ("?" if name.endswith("?") else "")
             if "(" in syn and syn.count(" (") != rsyn.count(" ("):
                 source = syn.split(' (')
@@ -521,7 +521,9 @@ def makeParSynLine(chd, par, parSource, synSource):
         # f"a sub-approach of \\textbf{{``{par.lower()}''}}{parSource}, but the "
         # f"two {synCallImply} synonyms{synSource}."))
 
-parentLines = splitListAtEmpty(categoryDict["Approach"][1])[-1]
+splitAtEmpty = splitListAtEmpty(categoryDict["Approach"][1])
+# Don't look for parent/synonym discrepancies unless both are present
+parentLines = splitAtEmpty[-1] if len(splitAtEmpty) > 2 else []
 for chd, syns in nameDict.items():
     par: str
     for par in syns:
@@ -543,7 +545,7 @@ for chd, syns in nameDict.items():
                          if parItem.startswith(par)]
             if len(parSource) != 1:
                 raise ValueError(
-                    "Problem with finding source for parent relation between"
+                    "Problem with finding source for parent relation between "
                      f"'{removeInParens(chd)}' and '{removeInParens(par)}'")
             parSource = parSource[0].split("(", 1)
 

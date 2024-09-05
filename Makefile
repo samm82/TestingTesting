@@ -8,7 +8,7 @@ CSV_GLOSSARIES = $(addsuffix .csv, $(GLOSSARIES))
 TXT_GLOSSARIES = $(addsuffix .txt, $(GLOSSARIES))
 DIFF_GLOSSARIES = $(addprefix Diff, $(TXT_GLOSSARIES))
 
-GRAPH_GLOSSARY_STUBS = Approach Example
+GRAPH_GLOSSARY_STUBS = Approach Example SynExample
 GRAPH_GLOSSARIES = $(addsuffix Glossary, $(GRAPH_GLOSSARY_STUBS))
 
 GRAPHS = assets/graphs/*Graph.tex assets/graphs/manual/*Graph.tex
@@ -109,7 +109,7 @@ paper thesis poster: $(LATEX_SCRIPTS) # standard build of documents
 paper_blind: paper # double-blind build of ICSE paper for review submission
 	make compile_doc DOC_NAME=$@ TEX_NAME=$<
 
-build: csv_diff paper thesis graphs
+build: csv_diff paper graphs thesis
 
 debug: DOC_NAME=thesis
 debug: TEX_FLAGS=
