@@ -44,29 +44,33 @@
 % Organization of files
 \newcommand{\ExampleGraph}{
     \begin{figure*}
-        \centering
-        \begin{subfigure}[b]{0.3\linewidth}
+        \begin{subfigure}[b]{0.4\linewidth}
             \includegraphics[width=\linewidth]{\graphAssets/ExampleGlossaryGraph.pdf}
             \caption{Graph from \Cref{tab:exampleGlossary}.}
             \label{fig:exampleGraph}
         \end{subfigure}
-        \begin{subfigure}[b]{0.58\linewidth}
+        \begin{subfigure}[b]{0.575\linewidth}
             \centering
-            % Legend
-            \includegraphics[width=0.9\linewidth]{\graphAssets/manual/manualLegendNonSolidTerms.pdf}
-            \begin{subfigure}[b]{0.54\linewidth}
-                \centering
-                \includegraphics[width=\linewidth]{\graphAssets/SynExampleGlossaryGraph.pdf}
-                \caption{Graph from \Cref{tab:synExampleGlossary}.}
-                \label{fig:synExampleGraph}
-            \end{subfigure}
-            \hfill
-            \begin{subfigure}[b]{0.425\linewidth}
-                \centering
-                \includegraphics[width=\linewidth]{\graphAssets/SelfExampleGlossaryGraph.pdf}
-                \caption{Graph from the line \texttt{I -> I;} appearing in the .tex file of a generated graph.}
-                \label{fig:selfExampleGraph}
-            \end{subfigure}
+            \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegendNonSolidTerms.pdf}
+            \includegraphics[width=0.85\linewidth]{\graphAssets/SynExampleGlossaryGraph.pdf}
+            \caption{Graph from \Cref{tab:synExampleGlossary}.}
+            \label{fig:synExampleGraph}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[width=0.875\linewidth]{\graphAssets/SelfExampleGlossaryGraph.pdf}
+            \vspace{5mm}
+            \caption{Graph generated from a .tex file containing a line starting with
+                \texttt{I -> I}.}
+            \label{fig:selfExampleGraph}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[width=0.75\linewidth]{\graphAssets/ParSynExampleGlossaryGraph.pdf}
+            \caption{Graph generated from a .tex file containing a line starting with
+                \texttt{J -> K} if J and K are synonyms.}
+            \label{fig:parSynExampleGraph}
         \end{subfigure}
         \caption{Example generated graphs.}
         \label{fig:exampleGraphs}

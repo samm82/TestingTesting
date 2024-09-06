@@ -154,8 +154,16 @@ of a test process; for example, ``across the whole organization'' or only
         is automatically generated based on glossary entries such as those found
         in \Cref{tab:synExampleGlossary}. The self-referential definitions in
         \Cref{par-rels} were also trivial, found by simply looking for lines
-        the generated .tex files of the form \texttt{I -> I;} which would
-        result in the graph in \Cref{fig:selfExampleGraph}.
+        the generated .tex files starting with \texttt{I -> I} which would
+        result in the graph in \Cref{fig:selfExampleGraph}. A similar process
+        is used to detect instances where two approaches have a synonym
+        \emph{and} a child-parent relation. A dictionary of each term's
+        synonyms is built to evaluate which synonym relations are notable
+        enough to include in the graph, and these mappings are then checked to
+        see if one appears as a parent of the other. For example, if J and K
+        are synonyms, a generated .tex file with a parent line starting with
+        \texttt{J -> K} would result in these approaches being graphed as shown
+        in \Cref{fig:parSynExampleGraph}.
 
     \fi
     \Cref{fig:recovery-graph-current,fig:scal-graph-current} are modified versions

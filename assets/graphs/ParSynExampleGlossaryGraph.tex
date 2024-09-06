@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{ParSynExampleGlossaryGraph}{
+rankdir=BT;
+
+J [label=<J>];
+K [label=<K>];
+
+J -> K[dir=none];
+
+J -> K;
+}
+\end{document}
