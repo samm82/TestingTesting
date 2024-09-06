@@ -1,4 +1,4 @@
 ﻿Name,Approach Category,Definition,Parent(s),Synonym(s),Notes
-E,Approach,,,"F (Author, 0000; implied by Author 0001)",
-G,Approach,,,"H (Author, 0000), F (Author, 0002)",
+E,Approach,,,"F (Author, 0000; implied by 0001)",
+G,Approach,,,"H (Author, 0000), F (0002)",
 H,Approach,,,,
