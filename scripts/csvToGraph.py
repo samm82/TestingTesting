@@ -29,7 +29,7 @@ if __name__ == "__main__":
     
     csvFilename = sys.argv[1]
 
-approaches = read_csv(f"{csvFilename}.csv")
+approaches = read_csv(csvFilename)
 names = approaches["Name"].to_list()
 categories = approaches["Approach Category"].to_list()
 synonyms = approaches["Synonym(s)"].to_list()
@@ -722,7 +722,7 @@ def writeDotFile(lines, filename):
     writeFile(lines, filename)
 
 if "Example" in csvFilename:
-    writeDotFile(categoryDict["Approach"][1], f"{csvFilename}Graph")
+    writeDotFile(categoryDict["Approach"][1], f"{csvFilename.split("/")[-1][:-4]}Graph")
 else:
     for key, value in categoryDict.items():
         lines = value[1]

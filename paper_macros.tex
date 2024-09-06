@@ -128,8 +128,8 @@ of a test process; for example, ``across the whole organization'' or only
     All child-parent relations are graphed, as well as synonym relations where either:
     \begin{enumerate}
         \item both terms are present in the glossary, or
-        \item one term is synonyms with more than one term that is present in the
-              glossary\seeParAlways{multiSyns}.
+        \item a term is a synonym to more than one term present in the
+              glossary.
     \end{enumerate}
     \ifnotpaper These conditions are also deduced from the information parsed
         from the glossary. For example, if the entries in \Cref{tab:synExampleGlossary}
@@ -147,6 +147,15 @@ of a test process; for example, ``across the whole organization'' or only
             \caption{Sample example glossary entries with only relevant columns shown.}
             \label{tab:synExampleGlossary}
         \end{table}
+
+        This allows for automatic detection of some classes of discrepancies. The
+        most trivial to automate is ``multi-synonym'' relations, which are already
+        found to generate the graph as desired. The list found in \Cref{multiSyns}
+        is automatically generated based on glossary entries such as those found
+        in \Cref{tab:synExampleGlossary}. The self-referential definitions in
+        \Cref{par-rels} were also trivial, found by simply looking for lines
+        the generated .tex files of the form \texttt{I -> I;} which would
+        result in the graph in \Cref{fig:selfExampleGraph}.
 
     \fi
     \Cref{fig:recovery-graph-current,fig:scal-graph-current} are modified versions

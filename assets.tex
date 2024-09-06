@@ -45,20 +45,30 @@
 \newcommand{\ExampleGraph}{
     \begin{figure*}
         \centering
-        \begin{subfigure}[b]{0.4\linewidth}
+        \begin{subfigure}[b]{0.3\linewidth}
             \includegraphics[width=\linewidth]{\graphAssets/ExampleGlossaryGraph.pdf}
             \caption{Graph from \Cref{tab:exampleGlossary}.}
             \label{fig:exampleGraph}
         \end{subfigure}
-        \begin{subfigure}[b]{0.575\linewidth}
+        \begin{subfigure}[b]{0.58\linewidth}
             \centering
-            \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegendNonSolidTerms.pdf}
-            \includegraphics[width=0.8\linewidth]{\graphAssets/SynExampleGlossaryGraph.pdf}
-            \caption{Graph from \Cref{tab:synExampleGlossary}.}
-            \label{fig:synExampleGraph}
+            % Legend
+            \includegraphics[width=0.9\linewidth]{\graphAssets/manual/manualLegendNonSolidTerms.pdf}
+            \begin{subfigure}[b]{0.54\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{\graphAssets/SynExampleGlossaryGraph.pdf}
+                \caption{Graph from \Cref{tab:synExampleGlossary}.}
+                \label{fig:synExampleGraph}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.425\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{\graphAssets/SelfExampleGlossaryGraph.pdf}
+                \caption{Graph from the line \texttt{I -> I;} appearing in the .tex file of a generated graph.}
+                \label{fig:selfExampleGraph}
+            \end{subfigure}
         \end{subfigure}
-        \caption{Graphs generated from the glossary entries in
-            \Cref{tab:exampleGlossary,tab:synExampleGlossary}.}
+        \caption{Example generated graphs.}
         \label{fig:exampleGraphs}
     \end{figure*}
 }

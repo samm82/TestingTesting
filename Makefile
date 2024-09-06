@@ -8,8 +8,7 @@ CSV_GLOSSARIES = $(addsuffix .csv, $(GLOSSARIES))
 TXT_GLOSSARIES = $(addsuffix .txt, $(GLOSSARIES))
 DIFF_GLOSSARIES = $(addprefix Diff, $(TXT_GLOSSARIES))
 
-GRAPH_GLOSSARY_STUBS = Approach Example SynExample
-GRAPH_GLOSSARIES = $(addsuffix Glossary, $(GRAPH_GLOSSARY_STUBS))
+GRAPH_GLOSSARIES = ApproachGlossary.csv assets/graphs/exampleGlossaries/*Glossary.csv
 
 GRAPHS = assets/graphs/*Graph.tex assets/graphs/manual/{*Graph,manualLegend*}.tex
 CUSTOM_STUBS = recovery scalability performance
@@ -72,6 +71,7 @@ $(LATEX_SCRIPTS):
 	py scripts/$@.py
 
 csvToGraph:
+	echo $(GRAPH_GLOSSARIES)
 	-mkdir build || true
 	for filename in $(GRAPH_GLOSSARIES) ; do \
 		py scripts/$@.py $${filename} ; \
