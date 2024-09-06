@@ -597,7 +597,7 @@ if "Example" not in csvFilename:
     discrepsSrcCounter.output()
 
 def writeDotFile(lines, filename):
-    CUSTOM_LEGEND = {"recovery", "scalability"}
+    CUSTOM_LEGEND = {"recovery", "scalability", "Example"}
     legend = []
     if all(name not in filename for name in CUSTOM_LEGEND):
         LONG_EDGE_LABEL = 'label="                "'
@@ -711,11 +711,10 @@ def writeDotFile(lines, filename):
         "\\begin{document}",
         f"\\digraph{{{filename}}}{{",
         "rankdir=BT;",
-        '',
-        '// Dummy node to push the legend to the top left',
-        'start [style="invis"];',
         "",
-    ] + lines + legend + [
+    ] + (["// Dummy node to push the legend to the top left",
+          'start [style="invis"];', ""] if legend else []
+        ) + lines + legend + [
         "}",
         "\\end{document}",
     ]

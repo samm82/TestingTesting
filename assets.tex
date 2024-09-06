@@ -42,20 +42,38 @@
 %------------------------------------------------------------------------------
 
 % Organization of files
-\newcommand{\ExampleGraph}{\includegraphics[width=\linewidth]{\graphAssets/ExampleGlossaryGraph.pdf}}
-\newcommand{\SynExampleGraph}{\includegraphics[width=\linewidth]{\graphAssets/SynExampleGlossaryGraph.pdf}}
+\newcommand{\ExampleGraph}{
+    \begin{figure*}
+        \centering
+        \begin{subfigure}[b]{0.4\linewidth}
+            \includegraphics[width=\linewidth]{\graphAssets/ExampleGlossaryGraph.pdf}
+            \caption{Graph from \Cref{tab:exampleGlossary}.}
+            \label{fig:exampleGraph}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.575\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegendNonSolidTerms.pdf}
+            \includegraphics[width=0.8\linewidth]{\graphAssets/SynExampleGlossaryGraph.pdf}
+            \caption{Graph from \Cref{tab:synExampleGlossary}.}
+            \label{fig:synExampleGraph}
+        \end{subfigure}
+        \caption{Graphs generated from the glossary entries in
+            \Cref{tab:exampleGlossary,tab:synExampleGlossary}.}
+        \label{fig:exampleGraphs}
+    \end{figure*}
+}
 
 \newcommand{\performanceGraph}{\includegraphics[width=0.8\linewidth]{\graphAssets/manual/performanceProposedGraph.pdf}}
 \newcommand{\recoveryGraphCurrent}{\includegraphics[width=\linewidth]{\graphAssets/recoveryGraph.pdf}}
 \newcommand{\recoveryGraphProposed}{
     \includegraphics[width=\linewidth]{\graphAssets/recoveryProposedGraph.pdf}
-    \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegend.pdf}
+    \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegendGreenBlue.pdf}
 }
 
 \newcommand{\scalabilityGraphCurrent}{\includegraphics[width=\linewidth]{\graphAssets/scalabilityGraph.pdf}}
 \newcommand{\scalabilityGraphProposed}{
     \includegraphics[width=\linewidth]{\graphAssets/scalabilityProposedGraph.pdf}
-    \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegend.pdf}
+    \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegendGreenBlue.pdf}
 }
 
 %------------------------------------------------------------------------------
