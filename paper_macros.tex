@@ -134,7 +134,8 @@ of a test process; for example, ``across the whole organization'' or only
     \ifnotpaper These conditions are also deduced from the information parsed
         from the glossary. For example, if the entries in \Cref{tab:synExampleGlossary}
         appear in the glossary, then they are displayed as \Cref{fig:synExampleGraph}
-        in the generated graph.
+        in the generated graph (note that X does not appear since it does not
+        meet the criteria given above).
 
         \begin{table}[hbtp!]
             \centering
@@ -142,7 +143,7 @@ of a test process; for example, ``across the whole organization'' or only
                 Name & Synonym(s)                        \\ \hline
                 E    & F (Author, 0000; implied by 0001) \\
                 G    & H (Author, 0000), F (0002)        \\
-                H    &                                   \\ \hline
+                H    & X                                 \\ \hline
             \end{tabular}
             \caption{Sample example glossary entries with only relevant columns shown.}
             \label{tab:synExampleGlossary}
