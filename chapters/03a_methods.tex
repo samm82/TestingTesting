@@ -20,11 +20,16 @@ done manually (such as finding and categorizing the discrepancies from
 \Cref{other-discrep}) can be augmented with automated tools.
 
 As outlined in \Cref{graph-gen}, some types of discrepancies can be detected
-automatically. Purely counting the total number of these types of
-discrepancies is then trivial. Slightly less-trivial is tracking the source
-category of these discrepancies, as well as whether they are explicit or
-implicit, as done in \Cref{tab:discreps}. Since the appropriate citations for
-each piece of information is tracked (see \Cref{tab:exampleGlossary,%
-    tab:synExampleGlossary} for examples of how these citations are formatted
+automatically. While just counting the total number of these types of
+discrepancies is trivial, tracking the source(s) of these discrepancies is more
+difficult. Since the appropriate citations for each piece of information is
+tracked (see \Cref{tab:exampleGlossary,tab:synExampleGlossary} for examples of
+how these citations are formatted
 in the glossaries), they can be taken into consideration when performing
-these counts.
+these counts. This is how sources are provided in the lists of discrepancies in
+\Cref{syns,par-rels}, including \refDiscrepsReqsTable{} (after being formatted
+to use \LaTeX{}'s citation commands).
+
+\Cref{tab:discreps} also makes a distinction between explicit and implicit%
+\todo{Elaborate on this distinction!}
+discrepancies to provide a fuller picture with some degree of nuance.
