@@ -12,3 +12,19 @@ discrepancies surrounding them automatically (\Cref{discrep-count}).
 
 \subsection{Discrepancy Counting}
 \label{discrep-count}
+
+In addition to analyzing specific discrepancies (or classes of discrepancies),
+an overview of the amount, severity, and source of these discrepancies is also
+useful. Subsets of this task can be automated, and even parts that need to be
+done manually (such as finding and categorizing the discrepancies from
+\Cref{other-discrep}) can be augmented with automated tools.
+
+As outlined in \Cref{graph-gen}, some types of discrepancies can be detected
+automatically. Purely counting the total number of these types of
+discrepancies is then trivial. Slightly less-trivial is tracking the source
+category of these discrepancies, as well as whether they are explicit or
+implicit, as done in \Cref{tab:discreps}. Since the appropriate citations for
+each piece of information is tracked (see \Cref{tab:exampleGlossary,%
+    tab:synExampleGlossary} for examples of how these citations are formatted
+in the glossaries), they can be taken into consideration when performing
+these counts.
