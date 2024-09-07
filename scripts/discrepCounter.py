@@ -232,16 +232,9 @@ class DiscrepSourceCounter:
 
         GROUP_SIZE = 2
         if len(sourceDicts) == 1:
-            for r in list(Rigidity):
-                try:
-                    sources = sourceDicts[0][r]
-                except KeyError:
-                    continue
-
-                if sources:
-                    updateCounters(str(list(map("".join, sources))),
-                                   "withinSrc", 1, r)
-
+            for r, sources in sourceDicts[0].items():
+                if sources and isinstance(r, Rigidity):
+                    updateCounters(str(list(map("".join, sources))), "withinSrc", 1, r)
         else:
             for dicts in itertools.combinations(sourceDicts, r=GROUP_SIZE):
                 for r in itertools.product(list(Rigidity), repeat=GROUP_SIZE):
