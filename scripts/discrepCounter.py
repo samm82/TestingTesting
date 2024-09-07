@@ -95,8 +95,6 @@ class DiscrepCat(Enum):
     MISC = "Standalone"
     OTHER = "Other"
 
-otherDiscFiles = {"chapters/05a_std_discreps.tex"}
-
 texFileDiscreps = {
     "build/multiSyns.tex": DiscrepCat.SYNS,
     "chapters/05_discrepancies.tex": DiscrepCat.MISC,
@@ -114,7 +112,7 @@ class DiscrepSourceCounter:
     def __str__(self):
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
 
-    def texDiscreps(self):
+    def output(self):
         for filename, origType in texFileDiscreps.items():
             with open(filename, "r") as file:
                 content = [line for line in file.readlines()
@@ -127,8 +125,6 @@ class DiscrepSourceCounter:
                     map(lambda x: categorizeSources(x), discrep.split("|")),
                     discType, discType == "OTHER")
 
-    def output(self):
-        self.texDiscreps()
         pieCharts = []
         for k, v in self.dict.items():
             writeFile([formatOutput(
