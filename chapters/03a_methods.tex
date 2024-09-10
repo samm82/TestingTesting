@@ -27,8 +27,38 @@ tracked (see \Cref{tab:exampleGlossary,tab:synExampleGlossary} for examples of
 how these citations are formatted
 in the glossaries), they can be taken into consideration when performing
 these counts. This is how sources are provided in the lists of discrepancies in
-\Cref{syns,par-rels}, including \refDiscrepsReqsTable{} (after being formatted
-to use \LaTeX{}'s citation commands).
+\Cref{syns,par-rels}, including \refDiscrepsTable{}, after being formatted
+to use \LaTeX{}'s citation commands. These discrepancies are then categorized
+based on the source categories involved (see \Cref{sources}) to identify how
+many of a given discrepancy type a source category is responsible for. These
+are then counted \emph{once} if this discrepancy exists in a source category at
+least as ``trusted'' as the current source category under consideration, which
+avoids counting the same discrepancy twice for a given category (see
+\thesisissueref{83}). Not doing this would result in the number of
+\emph{occurrences} of all discrepancies, instead of the number of discrepancies
+\emph{themselves}, which is more useful.
+
+As an example of this process, consider a discrepancy \emph{within} an IEEE
+document (e.g., two different definitions are given for a term within the same
+IEEE document) \emph{and} between the \acs{swebok} \emph{and} two papers%
+\todo{Is this clear?}. This would add one to the following rows of
+\refDiscrepsTable{} in the relevant column:
+
+\begin{itemize}
+    \item \textbf{\stdDiscBrkdwn{1}}, since this discrepancy occurs between
+          sources within this category, even though these ``sources'' are the
+          same document\footnote{A more nuanced breakdown that identifies
+              discrepancies within a singular document is given in
+              \Cref{fig:discrepSources}.},
+    \item \textbf{\metaDiscBrkdwn{1}}, since this discrepancy occurs between a
+          source in this category and a ``more trusted'' one
+          (the IEEE standard), and
+    \item \textbf{\otherDiscBrkdwn{1}}, since this discrepancy occurs between a
+          source in this category and a ``more trusted'' one; even though there
+          are two sources in this category \emph{and} two ``more trusted''
+          categories involved, this discrepancy is only counted once to avoid
+          any double counting.
+\end{itemize}
 
 \Cref{tab:discreps} also makes a distinction between explicit and implicit%
 \todo{Elaborate on this distinction!}
