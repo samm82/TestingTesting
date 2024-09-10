@@ -1,43 +1,37 @@
 \section{Methods}
 \label{methods}
 
+\newcommand{\autoDiscreps}[1][,]{discrepancies in \Cref{syns,par-rels},
+    including \refDiscrepsTable{}#1}
+
 To better understand our findings, we built tools to visualize the
 relations between test approaches more intuitively (\Cref{graph-gen}) and track
-discrepancies surrounding them automatically (\Cref{discrep-count}).
+discrepancies surrounding them automatically (\Cref{discrep-analysis}).
 
 \subsection{Approach Graph Generation}
 \label{graph-gen}
 
 \graphGenDesc{}
 
-\subsection{Discrepancy Counting}
-\label{discrep-count}
+\subsection{Discrepancy Analysis}
+\label{discrep-analysis}
 
 In addition to analyzing specific discrepancies (or classes of discrepancies),
 an overview of the amount, severity, and source of these discrepancies is also
-useful. Subsets of this task can be automated, and even parts that need to be
-done manually (such as finding and categorizing the discrepancies from
-\Cref{other-discrep}) can be augmented with automated tools.
+useful. Subsets of this task can be automated (\Cref{auto-discrep-analysis}),
+and even parts that need to be done manually (such as finding and categorizing
+\nameref{other-discrep}) can be augmented with automated
+tools (\Cref{aug-discrep-analysis}).
 
-As outlined in \Cref{graph-gen}, some types of discrepancies can be detected
-automatically. While just counting the total number of these types of
-discrepancies is trivial, tracking the source(s) of these discrepancies is more
-difficult. Since the appropriate citations for each piece of information is
-tracked (see \Cref{tab:exampleGlossary,tab:synExampleGlossary} for examples of
-how these citations are formatted
-in the glossaries), they can be taken into consideration when performing
-these counts. This is how sources are provided in the lists of discrepancies in
-\Cref{syns,par-rels}, including \refDiscrepsTable{}, after being formatted
-to use \LaTeX{}'s citation commands. These discrepancies are then categorized
+As the main portion of this analysis, discrepancies are categorized
 based on the source categories involved (see \Cref{sources}) to identify how
-many of a given discrepancy type a source category is responsible for. These
+many discrepancies a source category is responsible for. These
 are then counted \emph{once} if this discrepancy exists in a source category at
 least as ``trusted'' as the current source category under consideration, which
 avoids counting the same discrepancy twice for a given category (see
 \thesisissueref{83}). Not doing this would result in the number of
 \emph{occurrences} of all discrepancies, instead of the number of discrepancies
 \emph{themselves}, which is more useful.
-
 As an example of this process, consider a discrepancy \emph{within} an IEEE
 document (e.g., two different definitions are given for a term within the same
 IEEE document) \emph{and} between the \acs{swebok} \emph{and} two papers%
@@ -59,6 +53,27 @@ IEEE document) \emph{and} between the \acs{swebok} \emph{and} two papers%
           categories involved, this discrepancy is only counted once to avoid
           any double counting.
 \end{itemize}
+
+\subsubsection{Automated Discrepancy Analysis}
+\label{auto-discrep-analysis}
+
+As outlined in \Cref{graph-gen}, some types of discrepancies can be detected
+automatically. While just counting the total number of these types of
+discrepancies is trivial, tracking the source(s) of these discrepancies is more
+involved. Since the appropriate citations for each piece of information is
+tracked (see \Cref{tab:exampleGlossary,tab:synExampleGlossary} for examples of
+how these citations are formatted in the glossaries), they can be used to find
+the offending source categories. This comes with the added benefit of being
+available to format these citations to use \LaTeX{}'s citation commands for use
+in the lists of \autoDiscreps[.]{}
+
+% TODO: how are these source categories determined by analyzing citation info?
+
+\subsubsection{Augmented Discrepancy Analysis}
+\label{aug-discrep-analysis}
+While the \autoDiscreps{} could be deduced automatically from analyzing the
+testing approach glossary, other types of discrepancies (namely
+\nameref{other-discrep}) needed to be tracked manually.
 
 \Cref{tab:discreps} also makes a distinction between explicit and implicit%
 \todo{Elaborate on this distinction!}
