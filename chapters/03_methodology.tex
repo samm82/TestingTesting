@@ -7,50 +7,58 @@ As there is no single authoritative source on software testing terminology,
 we need to look at many. Unfortunately, this brings to light a variety of
 discrepancies. Starting from some set of sources, we then use
 ``snowball sampling'' (a ``method of \dots\ sample selection \dots\ used to
-locate hidden populations'' \citep{Johnson2014})
-to gather further sources\seeParAlways{undef-terms}. Groups of sources with
-information that shows up in a relevant graph are given a unique colour to
-better visualize them; see \Cref{fig:recovery-graph-current,%
-    fig:recovery-graph-proposed,fig:scal-graph-current,%
-    fig:scal-graph-proposed,fig:perf-graph}.
+locate hidden populations'' \citep{Johnson2014}) to gather further sources%
+\seeParAlways{undef-terms}. Sources with a similar degree of
+``trustworthiness''\todo{Elaborate on this!} are grouped in the categories
+given by \Cref{stds,metas,texts,others}; each category is given given a unique
+colour to better track how their information appears in relevant graphs
+(see \Cref{fig:recovery-graph-current,fig:recovery-graph-proposed,%
+    fig:scal-graph-current,fig:scal-graph-proposed,fig:perf-graph}).
 
-\begin{enumerate}
-    \setcounter{enumi}{-1}
-    \item Trusted textbooks
-          \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
-          \begin{itemize}
-              \item Ad hoc and arbitrary; not systematic
-                    % \item Colored \textcolor{Maroon}{maroon},
-          \end{itemize}
-    \item Established standards, such as IEEE, ISO/IEC, and the \acf{swebok}
-          \begin{itemize}
-              \item Standards organizations \citep{IEEE2022, IEEE2017,
-                        IEEE2013, ISO_IEC2023b, IEEE2012, ISO_IEC2023a,
-                        IEEE2021, ISO_IEC2018, ISO2021, ISO2015}
-                    colored \textcolor{green}{green}
-              \item ``Meta-level'' commentaries or collections of
-                    terminology (often based on these standards)
-                    \ifnotpaper
-                        (\citealp{SWEBOK2024, SWEBOK2014};
-                        \citealpISTQB{}; \citealp{Firesmith2015})
-                    \else
-                        \cite{SWEBOK2024, SWEBOK2014, ISTQB, Firesmith2015}
-                    \fi colored \textcolor{blue}{blue},
-          \end{itemize}
-    \item Other resources: less-formal classifications of terminology
-          \ifnotpaper
-              \citep[e.g.,][]{KuļešovsEtAl2013}%
-          \else
-              (such as \citep{KuļešovsEtAl2013})%
-          \fi%
-          , sources investigated to
-          ``fill in'' missing definitions\seeSectionParAlways{undef-terms},
-          and testing-related resources that emerged for unrelated reasons
-          \begin{itemize}
-              \item Colored black, along with any ``surface-level''
-                    analysis that followed straightforwardly.
-          \end{itemize}
-\end{enumerate}
+\subsubsection{\stdDiscBrkdwn{1}}
+\label{stds}
+\citep{IEEE2022, IEEE2017,
+    IEEE2013, ISO_IEC2023b, IEEE2012, ISO_IEC2023a,
+    IEEE2021, ISO_IEC2018, ISO2021, ISO2015}
+\begin{itemize}
+    \item Colored \textcolor{green}{green}
+    \item Information on software development and testing from
+          standards bodies \ifnotpaper\else (such as IEEE and ISO)\fi
+\end{itemize}
+
+\subsubsection{\metaDiscBrkdwn{1}}
+\label{metas}
+\ifnotpaper
+    (\citealp{SWEBOK2024, SWEBOK2014};
+    \citealpISTQB{}; \citealp{Firesmith2015})
+\else
+    \cite{SWEBOK2024, SWEBOK2014, ISTQB, Firesmith2015}
+\fi
+\begin{itemize}
+    \item Colored \textcolor{blue}{blue}
+    \item Collections of relevant terminology (such as the \acs{swebok} and
+          \acs{istqb}'s glossary)
+    \item Often based on \nameref{stds}
+\end{itemize}
+
+\subsubsection{\textDiscBrkdwn{1}}
+\label{texts}
+\citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
+\begin{itemize}
+    \item Colored \textcolor{Maroon}{maroon}
+    \item Was the original (albeit ad hoc and arbitrary) starting point
+\end{itemize}
+
+\subsubsection{\otherDiscBrkdwn{1}}
+\label{others}
+\begin{itemize}
+    \item Colored black, along with any ``surface-level''
+          analysis that followed straightforwardly
+    \item Includes less-formal classifications (such as
+          \citep{KuļešovsEtAl2013}), sources investigated to ``fill in''
+          missing definitions\seeSectionParAlways{undef-terms}, and
+          testing-related resources that emerged for unrelated reasons
+\end{itemize}
 
 \subsection{Procedure}
 
