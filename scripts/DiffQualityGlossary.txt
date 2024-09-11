@@ -45,7 +45,7 @@ Non-Repudiation | The "capability of a product to prove that actions or events h
 Operability | The "capability of a product to have functions and attributes that make it easy to operate and control" (ISO/IEC, 2023a) | Originally a sub-quality of usability (IEEE, 2021, Tab. A.1; ISO/IEC, 2011), which has an associated test type | A sub-quality of interaction capability (ISO/IEC, 2023a) and "related to controllability, user error robustness and conformity with user expectations" (ISO/IEC, 2023a; see ISO 9241-110)
 Permanence | The "degree to which failures can affect object state changes due to completed transactions" (IEEE, 2017, p. 320; OG ISO/IEC, 2009) |  | 
 Pleasure | The "degree to which a user obtains pleasure from fulfilling their personal needs" (ISO/IEC, 2011) |  | 
-Precision | The "degree of exactness or discrimination with which a quantity is stated" (IEEE, 2017, p. 331) |  | A sub-quality of correctness (ISO/IEC, 2023)
+Precision | The "degree of exactness or discrimination with which a quantity is stated" (IEEE, 2017, p. 331) |  | A sub-quality of correctness (ISO/IEC, 2023a)
 Presentability | The ability to "be retrieved and viewed" (IEEE, 2017, p. 333; OG IEEE, 2015) |  | 
 (Product) Quality | The "degree to which the product satisfies stated and implied needs when used under specified conditions" (IEEE, 2017, p. 345; OG ISO/IEC, 2012) |  | 
 Readability | The "ease with which a system's source code can be read and understood, especially at the detailed, statement level" (IEEE, 2017, p. 367) |  | 

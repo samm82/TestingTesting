@@ -112,12 +112,6 @@ categoryDict = {
 
 discrepsSrcCounter = DiscrepSourceCounter()
 
-UNSURE_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
-                   "most", "often", "if", "although"]
-def isUnsure(name):
-    return any(unsure in name for unsure in
-               {"?", " (Testing)"}.union(f"({term}" for term in UNSURE_KEYWORDS))
-
 def addLineToCategory(key, line):
     if line not in categoryDict[key][1] and "-> ;" not in line:
         categoryDict[key][1].append(line)
@@ -263,93 +257,6 @@ for name, synonym in zip(names, synonyms):
                 synSets[f"{fsyn} -> {fname}"] = getRelColor(syn)
 
 nameDict.update(synDict)
-
-def formatLineWithSources(line, todo=True):
-    line = line.replace("(Hamburg and Mogyorodi, 2024)", "\\citepISTQB{}")
-    line = line.replace("Hamburg and Mogyorodi, 2024", "\\citealpISTQB{}")
-
-    for swebokAuthor in {"Washizaki", "Bourque and Fairley"}:
-        line = line.replace(swebokAuthor, "SWEBOK")
-    line = line.replace("ISO/IEC", "ISO_IEC")
-
-    if todo:
-        # Explicitly *want* to capture "OG"
-        line = re.sub(fr"; (OG {AUTHOR_REGEX[15:]}(?:, {YEAR_REGEX}(?:, {BEGIN_INFO_REGEX} {NUM_INFO_REGEX})?)?)\)",
-                    r"\\todo{\1})", line)
-
-    line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX}); ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
-                  r"\\citealp[\3~\4]{\1\2}; \\citeyear[\6~\7]{\1\5}", line)
-    line = re.sub(fr"\(({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})\)",
-                  r"\\citep[\3~\4]{\1\2}", line)
-    line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
-                  r"\\citealp[\3~\4]{\1\2}", line)
-    line = re.sub(fr"\(({AUTHOR_REGEX}), ({YEAR_REGEX})\)",
-                  r"\\citep{\1\2}", line)
-    line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX})",
-                  r"\\citealp{\1\2}", line)
-
-    line = line.replace(" et al.", "EtAl")
-    line = line.replace("van V", "vanV")
-
-    # if "17, 25" in line: input(line)
-
-    line = re.sub(fr"\[([\w\d~.]+)\]{{(\w+)}}, ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
-                  r"[\1,~\3~\4]{\2}", line)
-
-    while True:
-        newLine = re.sub(fr"({BEGIN_INFO_REGEX}(?:~[\d\.]+-?,)*) ({NUM_INFO_REGEX})",
-                                r"\1~\2", line)
-        if newLine == line:
-            break
-        line = newLine
-
-    line = re.sub(r"\"([\w\s]*)\"", r"``\1''", line)
-
-    return line
-
-def parseSource(s: str):
-    if isUnsure(s.lstrip("(")):
-        s = s.lstrip("(").rstrip(")").split(";")
-        i = [isUnsure(source) for source in s].index(True)
-        s[i] = f"implied by {s[i]}"
-        s = f"({';'.join(s)})"
-
-    return formatLineWithSources(s, False)
-
-if "Example" not in csvFilename:
-    sources = set()
-    for _, row in approaches.iterrows():
-        for cell in row.to_list():
-            for word in {"See", "OG", "FIND"}:
-                cell = str(cell).split(word+" ")[0]
-        sources.update(s[1:-1].replace(" and ", "And") for s in re.findall(
-            r"\{.*?\}",formatLineWithSources(parseSource(cell), False)))
-    # Omit private communication as a source; used for notes
-    sources.discard("SmithAndCarette2023")
-    # Reintroduce ISTQB because of how it is formatted for citations
-    sources.discard("")
-    sources.add("ISTQB2024")
-
-    unknownSpaces = {s for s in sources if " " in s and s not in
-                    # List of sources with spaces that can be parsed by just removing them
-                    {"Mackert GmbH2022", "Kuan Tan2008"}}
-    if unknownSpaces:
-        print("Sources with spaces to double check: ")
-        for s in unknownSpaces:
-            print("\t" + s)
-        print()
-    else:
-        for cat in SrcCat:
-            catSources = sorted({s.replace(' ', '') for s in sources if getSrcCat(s) == cat},
-                                reverse=True, key=lambda s: re.search(r'(\d+)(\w?)', s).groups())
-            catSourceLine = f"\\citep{{{','.join(catSources).replace("ISTQB2024", "ISTQB")}}}"
-            if cat == SrcCat.META:
-                # Handle edge case of ISTQB; this might not be stable
-                catSourceLine = ("\\ifnotpaper \\citetext{\\citealpISTQB{}; \\citealp{" +
-                                 ','.join([s for s in catSources if not s.startswith("ISTQB")]) +
-                                 "}} \\else " + catSourceLine + " \\fi")
-            writeFile([cat.longname, catSourceLine,
-                       str(len(catSources))], f"{cat.name.lower()}Sources", True)
 
 paperExamples = {"Invalid Testing", "Soak Testing", "User Scenario Testing",
                  "Link Testing"}
