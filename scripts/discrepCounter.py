@@ -132,9 +132,9 @@ class DiscrepSourceCounter:
         pieCharts = []
         for k, v in self.dict.items():
             writeFile([formatOutput(
-                [k.longname] + [getattr(v, dc.name.lower()).output()
-                                for dc in [DiscrepCat.SYNS, DiscrepCat.PARS,
-                                           DiscrepCat.CATS]]
+                ["% " + k.longname] + [getattr(v, dc.name.lower()).output()
+                                       for dc in [DiscrepCat.SYNS, DiscrepCat.PARS,
+                                                  DiscrepCat.CATS]]
                 )], f"{k.name.lower()}DiscBrkdwn", True)
 
             totalDiscreps = sum({v.withinSrc, v.withinAuth,

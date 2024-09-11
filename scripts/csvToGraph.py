@@ -337,8 +337,10 @@ if "Example" not in csvFilename:
         print()
     else:
         for cat in SrcCat:
-            print(cat.longname, end=": ")
-            print(sorted(s.replace(" ", "") for s in sources if getSrcCat(s) == cat))
+            catSources = {s.replace(' ', '') for s in sources if getSrcCat(s) == cat}
+            writeFile([cat.longname,
+                       f"\\citep{{{','.join(catSources)}}}",
+                       str(len(catSources))], f"{cat.name.lower()}Sources", True)
 
 paperExamples = {"Invalid Testing", "Soak Testing", "User Scenario Testing",
                  "Link Testing"}
