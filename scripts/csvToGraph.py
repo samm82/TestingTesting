@@ -324,8 +324,11 @@ if "Example" not in csvFilename:
                 cell = str(cell).split(word+" ")[0]
         sources.update(s[1:-1].replace(" and ", "And") for s in re.findall(
             r"\{.*?\}",formatLineWithSources(parseSource(cell), False)))
+    # Omit private communication as a source; used for notes
+    sources.discard("SmithAndCarette2023")
+    # Reintroduce ISTQB because of how it is formatted for citations
     sources.discard("")
-    sources.add("ISTQB")
+    sources.add("ISTQB2024")
 
     unknownSpaces = {s for s in sources if " " in s and s not in
                     # List of sources with spaces that can be parsed by just removing them
@@ -337,9 +340,15 @@ if "Example" not in csvFilename:
         print()
     else:
         for cat in SrcCat:
-            catSources = {s.replace(' ', '') for s in sources if getSrcCat(s) == cat}
-            writeFile([cat.longname,
-                       f"\\citep{{{','.join(catSources)}}}",
+            catSources = sorted({s.replace(' ', '') for s in sources if getSrcCat(s) == cat},
+                                reverse=True, key=lambda s: re.search(r'(\d+)(\w?)', s).groups())
+            catSourceLine = f"\\citep{{{','.join(catSources).replace("ISTQB2024", "ISTQB")}}}"
+            if cat == SrcCat.META:
+                # Handle edge case of ISTQB; this might not be stable
+                catSourceLine = ("\\ifnotpaper \\citetext{\\citealpISTQB{}; \\citealp{" +
+                                 ','.join([s for s in catSources if not s.startswith("ISTQB")]) +
+                                 "}} \\else " + catSourceLine + " \\fi")
+            writeFile([cat.longname, catSourceLine,
                        str(len(catSources))], f"{cat.name.lower()}Sources", True)
 
 paperExamples = {"Invalid Testing", "Soak Testing", "User Scenario Testing",
