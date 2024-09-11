@@ -322,9 +322,10 @@ if "Example" not in csvFilename:
         for cell in row.to_list():
             for word in {"See", "OG", "FIND"}:
                 cell = str(cell).split(word+" ")[0]
-            cell = cell.replace(" and ", "And")
-        sources.update(s[1:-1] for s in re.findall(
+        sources.update(s[1:-1].replace(" and ", "And") for s in re.findall(
             r"\{.*?\}",formatLineWithSources(parseSource(cell), False)))
+    sources.discard("")
+    sources.add("ISTQB")
 
     unknownSpaces = {s for s in sources if " " in s and s not in
                     # List of sources with spaces that can be parsed by just removing them
@@ -335,7 +336,9 @@ if "Example" not in csvFilename:
             print("\t" + s)
         print()
     else:
-        print(sorted(s.replace(" ", "") for s in sources))
+        for cat in SrcCat:
+            print(cat.longname, end=": ")
+            print(sorted(s.replace(" ", "") for s in sources if getSrcCat(s) == cat))
 
 paperExamples = {"Invalid Testing", "Soak Testing", "User Scenario Testing",
                  "Link Testing"}
