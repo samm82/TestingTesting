@@ -316,17 +316,26 @@ def parseSource(s: str):
 
     return formatLineWithSources(s, False)
 
-sources = set()
-for _, row in approaches.iterrows():
-    sources.update(s[1:-1].replace(" and ", "And")
-                   for s in re.findall(r"\{.*?\}", formatLineWithSources(
-                       parseSource(", ".join(map(str, row.to_list()))), False)))
+if "Example" not in csvFilename:
+    sources = set()
+    for _, row in approaches.iterrows():
+        for cell in row.to_list():
+            for word in {"See", "OG", "FIND"}:
+                cell = str(cell).split(word+" ")[0]
+            cell = cell.replace(" and ", "And")
+        sources.update(s[1:-1] for s in re.findall(
+            r"\{.*?\}",formatLineWithSources(parseSource(cell), False)))
 
-sources = {s for s in sources if s and not s.startswith(("FIND ", "OG ", "See "))}
-for s in sources:
-    if " " in s and s not in {"Mackert GmbH2022", "Kuan Tan2008"}:
-        print(s)
-print(sorted(s.replace(" ", "") for s in sources))
+    unknownSpaces = {s for s in sources if " " in s and s not in
+                    # List of sources with spaces that can be parsed by just removing them
+                    {"Mackert GmbH2022", "Kuan Tan2008"}}
+    if unknownSpaces:
+        print("Sources with spaces to double check: ")
+        for s in unknownSpaces:
+            print("\t" + s)
+        print()
+    else:
+        print(sorted(s.replace(" ", "") for s in sources))
 
 paperExamples = {"Invalid Testing", "Soak Testing", "User Scenario Testing",
                  "Link Testing"}
