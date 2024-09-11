@@ -24,6 +24,11 @@ sources.discard("SmithAndCarette2023")
 sources.discard("")
 sources.add("ISTQB2024")
 
+# Based on ChatGPT
+def sort_key(s):
+    match = re.search(r'(\d+)', s)
+    return (-int(match.group()), s[match.end():], s[:match.start()])
+
 unknownSpaces = {s for s in sources if " " in s and s not in
                 # List of sources with spaces that can be parsed by just removing them
                 {"Mackert GmbH2022", "Kuan Tan2008"}}
@@ -35,11 +40,7 @@ if unknownSpaces:
 else:
     for cat in SrcCat:
         catSources = sorted({s.replace(' ', '') for s in sources if getSrcCat(s) == cat},
-                            reverse=True, key=lambda s: re.search(r'(\d+)(\w?)', s).groups())
-        if cat == SrcCat.STD:
-            for s in sources:
-                if getSrcCat(s) == cat:
-                    print(s)
+                            key=sort_key)
         catSourceLine = f"\\citep{{{','.join(catSources).replace("ISTQB2024", "ISTQB")}}}"
         if cat == SrcCat.META:
             # Handle edge case of ISTQB; this might not be stable
