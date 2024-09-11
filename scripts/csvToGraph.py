@@ -316,6 +316,18 @@ def parseSource(s: str):
 
     return formatLineWithSources(s, False)
 
+sources = set()
+for _, row in approaches.iterrows():
+    sources.update(s[1:-1].replace(" and ", "And")
+                   for s in re.findall(r"\{.*?\}", formatLineWithSources(
+                       parseSource(", ".join(map(str, row.to_list()))), False)))
+
+sources = {s for s in sources if s and not s.startswith(("FIND ", "OG ", "See "))}
+for s in sources:
+    if " " in s and s not in {"Mackert GmbH2022", "Kuan Tan2008"}:
+        print(s)
+print(sorted(s.replace(" ", "") for s in sources))
+
 paperExamples = {"Invalid Testing", "Soak Testing", "User Scenario Testing",
                  "Link Testing"}
 
