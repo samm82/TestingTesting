@@ -1,4 +1,4 @@
-\begin{codeSnippet}{python}{Code for determining a source's category based on its citation.}{getSrcCat}{https://github.com/samm82/TestGen-Thesis/blob/fdf031b732f0ded0b5d970069561e25b10755a5c/scripts/discrepCounter.py\#L35-L46}
+\begin{codeSnippet}{python}{Code for determining a source's category based on its citation.}{getSrcCat}{https://github.com/samm82/TestGen-Thesis/blob/113dda9744af0f6f2bdf720475a619eb208c7ce8/scripts/csvToGraph.py\#L123-L124}
 def getSrcCat(s) -> SrcCat:
     if any(std in s for std in {"IEEE", "ISO", "IEC"}):
         return SrcCat.STD

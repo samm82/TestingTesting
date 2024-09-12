@@ -121,7 +121,7 @@ categoryDict = {
 discrepsSrcCounter = DiscrepSourceCounter()
 
 IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
-                     "most", "often", "if", "although"]
+                     "most", "likely", "often", "if", "although"]
 def isUnsure(name):
     return any(unsure in name for unsure in
                {"?", " (Testing)"}.union(f"({term}" for term in IMPLICIT_KEYWORDS))
