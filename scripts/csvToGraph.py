@@ -120,11 +120,11 @@ categoryDict = {
 
 discrepsSrcCounter = DiscrepSourceCounter()
 
-UNSURE_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
-                   "most", "often", "if", "although"]
+IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
+                     "most", "often", "if", "although"]
 def isUnsure(name):
     return any(unsure in name for unsure in
-               {"?", " (Testing)"}.union(f"({term}" for term in UNSURE_KEYWORDS))
+               {"?", " (Testing)"}.union(f"({term}" for term in IMPLICIT_KEYWORDS))
 
 def addLineToCategory(key, line):
     if line not in categoryDict[key][1] and "-> ;" not in line:
@@ -219,9 +219,9 @@ def getRelColor(name):
     if isUnsure(name):
         return (None, getSourceColor(name))
     else:
-        if sum(1 for term in UNSURE_KEYWORDS if term + " " in name) > 1:
+        if sum(1 for term in IMPLICIT_KEYWORDS if term + " " in name) > 1:
             print(f"Multiple 'unsure' cutoffs in {name}.")
-        for term in UNSURE_KEYWORDS:
+        for term in IMPLICIT_KEYWORDS:
             if term + " " in name:
                 name = name.split(term)
                 colors = tuple(map(getSourceColor, name))

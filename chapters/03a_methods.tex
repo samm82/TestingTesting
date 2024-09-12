@@ -4,9 +4,29 @@
 \newcommand{\autoDiscreps}[1][,]{discrepancies in \Cref{syns,par-rels},
     including \refDiscrepsTable{}#1}
 
-To better understand our findings, we built tools to visualize the
+To better understand our findings, we define classifications of discrepancies,
+including ``rigidity'' (\Cref{rigidity}) and build tools to visualize the
 relations between test approaches more intuitively (\Cref{graph-gen}) and track
 discrepancies surrounding them automatically (\Cref{discrep-analysis}).
+
+\subsection{Rigidity}
+\label{rigidity}
+
+Since there is a considerable degree of nuance introduced by the use of natural
+language, not all discrepancies are equal! To capture this nuance and provide a
+more complete picture, we make a distinction between explicit and implicit
+discrepancies, such as in \Cref{tab:discreps}. A piece of information is
+``implicit'' if it is not directly given by a source but seems to be implied
+or if it is sometimes, but not always, true. Discrepancies based on implicit
+information are themselves implicit. These are automatically detected when
+\hyperref[graph-gen]{generating graphs} and
+\hyperref[discrep-analysis]{analyzing discrepancies} by
+looking for keywords used in the glossaries that indicate that a piece of
+infomation is implicit: ``implied'', ``inferred'', ``can be'', ``ideally'',
+``usually'', ``most'', ``often'', ``if'', and ``although''\todo{Question marks?}
+(see the \href
+{https://github.com/samm82/TestGen-Thesis/blob/fdf031b732f0ded0b5d970069561e25b10755a5c/scripts/csvToGraph.py#L115-L116}
+{relevant source code}).
 
 \subsection{Approach Graph Generation}
 \label{graph-gen}
@@ -81,6 +101,14 @@ each other to determine how times a given discrepancy manifests between source
 categories. This process is described in more detail, with examples, in
 \Cref{aug-discrep-analysis}.
 
+Alongside this citation information are the keywords relevant for assessing a
+piece of information's \nameref{rigidity}. This is useful when counting
+discrepancies, since a discrepancy can be both explicit and implicit, but
+should not be double counted as both (see \thesisissueref{83})! When counting
+discrepancies in \Cref{tab:discreps}, a given discrepancy is counted only for
+its most ``rigid'' manifest (i.e., it will only increment a value in the
+``Implicit'' column if it is \emph{not} also explicit).
+
 % TODO: how are these source categories determined by analyzing citation info?
 
 \subsubsection{Augmented Discrepancy Analysis}
@@ -88,7 +116,3 @@ categories. This process is described in more detail, with examples, in
 While the \autoDiscreps{} could be deduced automatically from analyzing the
 testing approach glossary, other types of discrepancies (namely
 \nameref{other-discrep}) needed to be tracked manually.
-
-\Cref{tab:discreps} also makes a distinction between explicit and implicit%
-\todo{Elaborate on this distinction!}
-discrepancies to provide a fuller picture with some degree of nuance.
