@@ -10,17 +10,15 @@ discrepancies. Starting from some set of sources, we then use
 locate hidden populations'' \citep{Johnson2014}) to gather further sources%
 \seeParAlways{undef-terms}. Sources with a similar degree of
 ``trustworthiness''\todo{Elaborate on this!} are grouped in the categories
-given by \Cref{stds,metas,texts,others}; each category is given given a unique
-colour to better track how their information appears in relevant graphs
-(see \Cref{fig:recovery-graph-current,fig:recovery-graph-proposed,%
+given by \Cref{stds,metas,texts,others}, and a summary of how many sources
+comprise each category is given in \Cref{fig:sourceSummary}. Each category is
+given a unique colour to better track how their information appears in relevant
+graphs (see \Cref{fig:recovery-graph-current,fig:recovery-graph-proposed,%
     fig:scal-graph-current,fig:scal-graph-proposed,fig:perf-graph}).
 
 \subsubsection{\stdSources{1}}
 \label{stds}
 \stdSources{2}
-% \citep{IEEE2022, IEEE2017,
-%     IEEE2013, ISO_IEC2023b, IEEE2012, ISO_IEC2023a,
-%     IEEE2021, ISO_IEC2018, ISO2021, ISO2015}
 \begin{itemize}
     \item Colored \textcolor{green}{green}
     \item Information on software development and testing from
@@ -56,6 +54,21 @@ colour to better track how their information appears in relevant graphs
           missing definitions\seeSectionParAlways{undef-terms}, and
           testing-related resources that emerged for unrelated reasons
 \end{itemize}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \pie[sum=auto, after number=, text=legend, thick,
+            scale=\ifnotpaper0.7\else0.5\fi,
+            every label/.style={align=left, scale=0.7}]
+        {\stdSources{3}/\stds{},
+            \metaSources{3}/\metas{},
+            \textSources{3}/\texts{},
+            \otherSources{3}/\others{}}
+    \end{tikzpicture}
+    \caption{Summary of how many sources comprise each source category.}
+    \label{fig:sourceSummary}
+\end{figure}
 
 \subsection{Procedure}
 
