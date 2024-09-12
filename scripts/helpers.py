@@ -52,6 +52,7 @@ def formatLineWithSources(line, todo=True):
     for swebokAuthor in {"Washizaki", "Bourque and Fairley"}:
         line = line.replace(swebokAuthor, "SWEBOK")
     line = line.replace("ISO/IEC", "ISO_IEC")
+    line = line.replace("Mackert GmbH", "SPICE")
 
     if todo:
         # Explicitly *want* to capture "OG"

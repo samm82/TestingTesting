@@ -14,10 +14,12 @@ sources = set()
 for filename in sys.argv[1:]:
     for _, row in read_csv(filename).iterrows():
         for cell in row.to_list():
-            for word in {"See", "OG", "FIND"}:
-                cell = str(cell).split(word+" ")[0]
-        sources.update(s[1:-1].replace(" and ", "And") for s in re.findall(
-            r"\{.*?\}", formatLineWithSources(parseSource(cell), False)))
+            cell = re.sub(r"See .*\d{4}.*", "", str(cell))
+            for word in {"FIND", "OG"}:
+                cell = re.sub(fr"{word} [^;]*?\)", ")", cell)
+                cell = re.sub(fr"{word} [^\)]*?;", ";", cell)
+            sources.update(s[1:-1].replace(" and ", "And") for s in re.findall(
+                r"\{.*?\}", formatLineWithSources(parseSource(cell), False)))
 # Omit private communication as a source; used for notes
 sources.discard("SmithAndCarette2023")
 # Reintroduce ISTQB because of how it is formatted for citations
