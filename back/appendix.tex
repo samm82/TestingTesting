@@ -1,3 +1,18 @@
+\begin{codeSnippet}{python}{Code for determining a source's category based on its citation.}{getSrcCat}{https://github.com/samm82/TestGen-Thesis/blob/fdf031b732f0ded0b5d970069561e25b10755a5c/scripts/discrepCounter.py\#L35-L46}
+def getSrcCat(s) -> SrcCat:
+    if any(std in s for std in {"IEEE", "ISO", "IEC"}):
+        return SrcCat.STD
+    if any(metastd in s for metastd in
+        {"Washizaki", "Bourque and Fairley", "SWEBOK",
+            "Hamburg and Mogyorodi", "ISTQB", "Firesmith"}):
+        return SrcCat.META
+    if any(textbook in s for textbook in
+        {"van Vliet", "vanVliet", "Patton", "Peters and Pedrycz",
+            "PetersAndPedrycz"}):
+        return SrcCat.TEXT
+    return SrcCat.OTHER
+\end{codeSnippet}
+
 \mainInvalidInputTest{}
 
 \projViolationChoice{}

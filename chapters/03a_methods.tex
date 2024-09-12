@@ -67,6 +67,20 @@ the offending source categories. This comes with the added benefit of being
 available to format these citations to use \LaTeX{}'s citation commands for use
 in the lists of \autoDiscreps[.]{}
 
+Comparing the authors and years of each source related to a given discrepancy
+can determine if it manifests within a single document and/or between documents
+by the same author(s) when creating \Cref{fig:discrepSources}. Then, the
+relevant sources can be sorted into their categories based on their citations,
+done by the function in \Cref{lst:getSrcCat}, since each source category
+outlined in \Cref{sources} is comprised of a small number of authors (with the
+exception of \otherDiscBrkdwn{1}\todo{Update with \texttt{sources} branch!}).
+This determines the appropriate row of \refDiscrepsTable{} and the appropriate
+graph and slice in \Cref{fig:discrepSources}. In the latter case, lists of
+sources can be distilled down to sets of categories which are compared against
+each other to determine how times a given discrepancy manifests between source
+categories. This process is described in more detail, with examples, in
+\Cref{aug-discrep-analysis}.
+
 % TODO: how are these source categories determined by analyzing citation info?
 
 \subsubsection{Augmented Discrepancy Analysis}
