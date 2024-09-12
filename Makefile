@@ -68,6 +68,10 @@ $(LATEX_SCRIPTS):
 	-mkdir build || true
 	py scripts/$@.py
 
+sourceCounts:
+	-mkdir build || true
+	py scripts/$@.py $(CSV_GLOSSARIES)
+
 compile_graphs: csvToGraph
 	for filename in $(GRAPHS) ; do \
 			filename=$${filename%.tex} ; \
