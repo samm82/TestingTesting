@@ -110,6 +110,8 @@ each other to determine how times a given discrepancy manifests between source
 categories. An example of this process is described in more detail in
 \Cref{aug-discrep-analysis}.
 
+\phantomsection{}
+\label{auto-discrep-analysis-rigidity}
 Alongside this citation information are the keywords relevant for assessing a
 piece of information's \nameref{rigidity}. This is useful when counting
 discrepancies, since a discrepancy can be both explicit and implicit, but
@@ -160,3 +162,27 @@ counted. The maximum number of discrepancies possible within a source category
 in \Cref{fig:discrepSources} is three (once for each type), but only if there
 is an example of each type where a ``stricter'' type does not apply.%
 \todo{Does this make sense? Is this sentence necessary?}
+
+The \nameref{rigidity} of discrepancies can also be manually specified by
+inserting the phrase ``implied by'' after the sources of explicit information
+and before those of implicit information. Parsing this information follows the
+same rules as \nameref{auto-discrep-analysis-rigidity}. For example, the line
+
+\begin{displayquote}
+    \texttt{\% Discrep count: \{IEEE2022\} implied by \{Kam2008\} |\\
+        $\,\hookrightarrow\,$\quad \{IEEE2017\} implied by \{IEEE2022\}}
+\end{displayquote}
+
+indicates that the following discrepancies are present. These all increment
+counts in both \Cref{fig:discrepSources} and \refDiscrepsTable{} by only one,
+except for the second, which only affects \Cref{fig:discrepSources}. This is
+because it is less ``rigid'' than another discrepancy within Establish Standards%
+\todo{Update in \texttt{sources} branch!} (i.e., the first one) and as such is
+not double counted in \refDiscrepsTable{}:
+
+\begin{itemize}
+    \item an explicit discrepancy between documents by
+          \begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper},
+    \item an implicit discrepancy within a single document, and
+    \item an implicit discrepancy between a paper and a standard.
+\end{itemize}
