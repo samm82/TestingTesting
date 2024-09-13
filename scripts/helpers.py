@@ -35,6 +35,49 @@ def categorizeSources(sources: str):
     else:
         return {Rigidity.EXP: getSources(sources)}
 
+def formatLineWithSources(line, todo=True):
+    line = line.replace("(Hamburg and Mogyorodi, 2024)", "\\citepISTQB{}")
+    line = line.replace("Hamburg and Mogyorodi, 2024", "\\citealpISTQB{}")
+
+    for swebokAuthor in {"Washizaki", "Bourque and Fairley"}:
+        line = line.replace(swebokAuthor, "SWEBOK")
+    line = line.replace("ISO/IEC", "ISO_IEC")
+
+    if todo:
+        # Explicitly *want* to capture "OG"
+        line = re.sub(fr"; (OG {AUTHOR_REGEX[15:]}(?:, {YEAR_REGEX}(?:, {BEGIN_INFO_REGEX} {NUM_INFO_REGEX})?)?)\)",
+                    r"\\todo{\1})", line)
+
+    line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX}); ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
+                  r"\\citealp[\3~\4]{\1\2}; \\citeyear[\6~\7]{\1\5}", line)
+    line = re.sub(fr"\(({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})\)",
+                  r"\\citep[\3~\4]{\1\2}", line)
+    line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
+                  r"\\citealp[\3~\4]{\1\2}", line)
+    line = re.sub(fr"\(({AUTHOR_REGEX}), ({YEAR_REGEX})\)",
+                  r"\\citep{\1\2}", line)
+    line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX})",
+                  r"\\citealp{\1\2}", line)
+
+    line = line.replace(" et al.", "EtAl")
+    line = line.replace("van V", "vanV")
+
+    # if "17, 25" in line: input(line)
+
+    line = re.sub(fr"\[([\w\d~.]+)\]{{(\w+)}}, ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
+                  r"[\1,~\3~\4]{\2}", line)
+
+    while True:
+        newLine = re.sub(fr"({BEGIN_INFO_REGEX}(?:~[\d\.]+-?,)*) ({NUM_INFO_REGEX})",
+                                r"\1~\2", line)
+        if newLine == line:
+            break
+        line = newLine
+
+    line = re.sub(r"\"([\w\s]*)\"", r"``\1''", line)
+
+    return line
+
 # I/O
 def readFileAsStr(filename) -> str:
     with open(filename, "r") as file:
