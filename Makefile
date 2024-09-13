@@ -10,7 +10,7 @@ DIFF_GLOSSARIES = $(addprefix Diff, $(TXT_GLOSSARIES))
 
 GRAPH_GLOSSARIES = ApproachGlossary.csv assets/graphs/exampleGlossaries/*Glossary.csv
 
-GRAPHS = assets/graphs/*Graph.tex assets/graphs/manual/{*Graph,manualLegend*}.tex
+GRAPHS = assets/graphs/*Graph.tex assets/graphs/manual/*.tex
 CUSTOM_STUBS = recovery scalability performance
 ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
 CUSTOM_GRAPHS = $(addprefix assets/graphs/, $(addsuffix Graph, $(ALL_CUSTOM_STUBS)))

@@ -272,58 +272,6 @@ for name, synonym in zip(names, synonyms):
 
 nameDict.update(synDict)
 
-def formatLineWithSources(line, todo=True):
-    line = line.replace("(Hamburg and Mogyorodi, 2024)", "\\citepISTQB{}")
-    line = line.replace("Hamburg and Mogyorodi, 2024", "\\citealpISTQB{}")
-
-    for swebokAuthor in {"Washizaki", "Bourque and Fairley"}:
-        line = line.replace(swebokAuthor, "SWEBOK")
-    line = line.replace("ISO/IEC", "ISO_IEC")
-
-    if todo:
-        # Explicitly *want* to capture "OG"
-        line = re.sub(fr"; (OG {AUTHOR_REGEX[15:]}(?:, {YEAR_REGEX}(?:, {BEGIN_INFO_REGEX} {NUM_INFO_REGEX})?)?)\)",
-                    r"\\todo{\1})", line)
-
-    line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX}); ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
-                  r"\\citealp[\3~\4]{\1\2}; \\citeyear[\6~\7]{\1\5}", line)
-    line = re.sub(fr"\(({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})\)",
-                  r"\\citep[\3~\4]{\1\2}", line)
-    line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
-                  r"\\citealp[\3~\4]{\1\2}", line)
-    line = re.sub(fr"\(({AUTHOR_REGEX}), ({YEAR_REGEX})\)",
-                  r"\\citep{\1\2}", line)
-    line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX})",
-                  r"\\citealp{\1\2}", line)
-
-    line = line.replace(" et al.", "EtAl")
-    line = line.replace("van V", "vanV")
-
-    # if "17, 25" in line: input(line)
-
-    line = re.sub(fr"\[([\w\d~.]+)\]{{(\w+)}}, ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
-                  r"[\1,~\3~\4]{\2}", line)
-
-    while True:
-        newLine = re.sub(fr"({BEGIN_INFO_REGEX}(?:~[\d\.]+-?,)*) ({NUM_INFO_REGEX})",
-                                r"\1~\2", line)
-        if newLine == line:
-            break
-        line = newLine
-
-    line = re.sub(r"\"([\w\s]*)\"", r"``\1''", line)
-
-    return line
-
-def parseSource(s: str):
-    if isUnsure(s.lstrip("(")):
-        s = s.lstrip("(").rstrip(")").split(";")
-        i = [isUnsure(source) for source in s].index(True)
-        s[i] = f"implied by {s[i]}"
-        s = f"({';'.join(s)})"
-
-    return formatLineWithSources(s, False)
-
 paperExamples = {"Invalid Testing", "Soak Testing", "User Scenario Testing",
                  "Link Testing"}
 
@@ -375,9 +323,7 @@ def makeMultiSynLine(valid, syn, terms):
         multiSynsList = (impMultiSyns if not all(
             synSets[f"{fsyn} -> {formatApproach(term)}"][0]
             for term in valid) else expMultiSyns)
-        discrepsSrcCounter.countDiscreps(
-            map(lambda x: categorizeSources(parseSource(x)), list(terms)),
-            DiscrepCat.SYNS)
+        discrepsSrcCounter.countDiscreps(terms, DiscrepCat.SYNS)
 
     def processTerm(term):
         term = term.split(" (")
@@ -474,8 +420,7 @@ if "Example" not in csvFilename:
             "selfCycles", True)
 
     for cycle in selfCycles:
-        discrepsSrcCounter.countDiscreps(
-            [categorizeSources(parseSource(cycle))], DiscrepCat.PARS)
+        discrepsSrcCounter.countDiscreps([cycle], DiscrepCat.PARS)
 
 def splitListAtEmpty(listToSplit):
     recArr = np.array(listToSplit)
@@ -496,8 +441,9 @@ parSynNotes = {
 parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
     set(), set(), set(), set()
 def makeParSynLine(chd, par, parSource, synSource):
-    parSource = parseSource(parSource)
-    synSource = parseSource(synSource)
+    discrepsSrcCounter.countDiscreps([parSource, synSource], DiscrepCat.PARS)
+    parSource = formatLineWithSources(parSource, False)
+    synSource = formatLineWithSources(synSource, False)
 
     if not (parSource and synSource):
         if parSource:
@@ -512,9 +458,6 @@ def makeParSynLine(chd, par, parSource, synSource):
                 break
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return
-
-    discrepsSrcCounter.countDiscreps(
-        map(categorizeSources, [parSource, synSource]), DiscrepCat.PARS)
 
     parSyns.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
         # f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "
