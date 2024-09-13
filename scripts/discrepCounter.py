@@ -4,7 +4,7 @@ from functools import reduce, total_ordering
 import itertools
 import operator
 
-from helpers import Rigidity, categorizeSources, writeFile
+from helpers import *
 
 class Color(OrderedEnum):
     GREEN  = 3
@@ -123,9 +123,7 @@ class DiscrepSourceCounter:
             for discrep in content:
                 discType = (re.search(r"% Discrep count \(([A-Z]+)\):", discrep)[1]
                             if origType == DiscrepCat.MISC else origType)
-                self.countDiscreps(
-                    map(lambda x: categorizeSources(x), discrep.split("|")),
-                    discType, discType == "OTHER")
+                self.countDiscreps(discrep.split("|"), discType, discType == "OTHER")
 
     def output(self):
         self.texDiscreps()
@@ -188,9 +186,9 @@ class DiscrepSourceCounter:
                   ["\\caption{Sources of discrepancies based on \\hyperref[sources]{source category}.}",
                    "\\label{fig:discrepSources}", "\\end{figure*}"], "pieCharts")
 
-    def countDiscreps(self, sourceDicts, discCat: str | DiscrepCat,
+    def countDiscreps(self, sources, discCat: str | DiscrepCat,
                       other: bool = False, debug: bool = False):
-        sourceDicts = list(sourceDicts)
+        sourceDicts = [categorizeSources(formatLineWithSources(s, False)) for s in sources]
         if debug:
             print(sourceDicts, discCat)
 

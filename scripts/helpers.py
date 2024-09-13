@@ -43,7 +43,7 @@ def categorizeSources(sources: str):
     else:
         return {Rigidity.EXP: getSources(sources)}
 
-    # Sources for glossaries
+    # Sources for citations
 
 def formatLineWithSources(line, todo=True):
     line = line.replace("(Hamburg and Mogyorodi, 2024)", "\\citepISTQB{}")
@@ -88,15 +88,6 @@ def formatLineWithSources(line, todo=True):
     line = re.sub(r"\"([\w\s]*)\"", r"``\1''", line)
 
     return line
-
-def parseSource(s: str):
-    if isUnsure(s.lstrip("(")):
-        s = s.lstrip("(").rstrip(")").split(";")
-        i = [isUnsure(source) for source in s].index(True)
-        s[i] = f"implied by {s[i]}"
-        s = f"({';'.join(s)})"
-
-    return formatLineWithSources(s, False)
 
 # I/O
 def readFileAsStr(filename) -> str:

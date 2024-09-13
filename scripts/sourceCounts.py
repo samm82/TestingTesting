@@ -19,7 +19,7 @@ for filename in sys.argv[1:]:
                 cell = re.sub(fr"{word} [^;]*?\)", ")", cell)
                 cell = re.sub(fr"{word} [^\)]*?;", ";", cell)
             sources.update(s[1:-1].replace(" and ", "And") for s in re.findall(
-                r"\{.*?\}", formatLineWithSources(parseSource(cell), False)))
+                r"\{.*?\}", formatLineWithSources(cell, False)))
 # Omit private communication as a source; used for notes
 sources.discard("SmithAndCarette2023")
 # Reintroduce ISTQB because of how it is formatted for citations

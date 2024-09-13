@@ -309,9 +309,7 @@ def makeMultiSynLine(valid, syn, terms):
         multiSynsList = (impMultiSyns if not all(
             synSets[f"{fsyn} -> {formatApproach(term)}"][0]
             for term in valid) else expMultiSyns)
-        discrepsSrcCounter.countDiscreps(
-            map(lambda x: categorizeSources(parseSource(x)), list(terms)),
-            DiscrepCat.SYNS)
+        discrepsSrcCounter.countDiscreps(terms, DiscrepCat.SYNS)
 
     def processTerm(term):
         term = term.split(" (")
@@ -406,8 +404,7 @@ writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
           "selfCycles", True)
 
 for cycle in selfCycles:
-    discrepsSrcCounter.countDiscreps(
-        [categorizeSources(parseSource(cycle))], DiscrepCat.PARS)
+    discrepsSrcCounter.countDiscreps([cycle], DiscrepCat.PARS)
 
 def splitListAtEmpty(listToSplit):
     recArr = np.array(listToSplit)
@@ -428,8 +425,9 @@ parSynNotes = {
 parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
     set(), set(), set(), set()
 def makeParSynLine(chd, par, parSource, synSource):
-    parSource = parseSource(parSource)
-    synSource = parseSource(synSource)
+    discrepsSrcCounter.countDiscreps([parSource, synSource], DiscrepCat.PARS)
+    parSource = formatLineWithSources(parSource, False)
+    synSource = formatLineWithSources(synSource, False)
 
     if not (parSource and synSource):
         if parSource:
@@ -444,9 +442,6 @@ def makeParSynLine(chd, par, parSource, synSource):
                 break
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return
-
-    discrepsSrcCounter.countDiscreps(
-        map(categorizeSources, [parSource, synSource]), DiscrepCat.PARS)
 
     parSyns.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
         # f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "
