@@ -52,26 +52,35 @@ avoids counting the same discrepancy twice for a given category (see
 \thesisissueref{83}). Not doing this would result in the number of
 \emph{occurrences} of all discrepancies, instead of the number of discrepancies
 \emph{themselves}, which is more useful.
+
+\phantomsection{}
+\label{discrep-analysis-example}
 As an example of this process, consider a discrepancy \emph{within} an IEEE
 document (e.g., two different definitions are given for a term within the same
-IEEE document) \emph{and} between the \acs{swebok} \emph{and} two papers%
-\todo{Is this clear?}. This would add one to the following rows of
-\refDiscrepsTable{} in the relevant column:
+IEEE document) \emph{and} between another IEEE document, the \acs{istqb}
+glossary \emph{and} two papers. This would add one to the
+following rows of \refDiscrepsTable{} in the relevant column:
 
 \begin{itemize}
-    \item \textbf{\stdDiscBrkdwn{1}}, since this discrepancy occurs between
-          sources within this category, even though these ``sources'' are the
-          same document\footnote{A more nuanced breakdown that identifies
-              discrepancies within a singular document is given in
-              \Cref{fig:discrepSources}.},
-    \item \textbf{\metaDiscBrkdwn{1}}, since this discrepancy occurs between a
+    \item \textbf{\stdDiscBrkdwn{1}}: this discrepancy occurs:
+          \begin{enumerate}
+              \item within one standard and
+              \item between two standards.
+          \end{enumerate}
+          This increments the count by just one to avoid double counting and
+          would do so even if only one of the above conditions was true. A more
+          nuanced breakdown of discrepancies that identifies those within a
+          singular document and those between documents by the same author is
+          given in \Cref{fig:discrepSources} and explained in more detail in
+          \Cref{aug-discrep-analysis}.
+    \item \textbf{\metaDiscBrkdwn{1}}: this discrepancy occurs between a
           source in this category and a ``more trusted'' one
-          (the IEEE standard), and
-    \item \textbf{\otherDiscBrkdwn{1}}, since this discrepancy occurs between a
-          source in this category and a ``more trusted'' one; even though there
+          (the IEEE standards).
+    \item \textbf{\otherDiscBrkdwn{1}}: this discrepancy occurs between a
+          source in this category and a ``more trusted'' one. Even though there
           are two sources in this category \emph{and} two ``more trusted''
-          categories involved, this discrepancy is only counted once to avoid
-          any double counting.
+          categories involved, this increments the count by just one to avoid
+          double counting.
 \end{itemize}
 
 \subsubsection{Automated Discrepancy Analysis}
@@ -98,7 +107,7 @@ This determines the appropriate row of \refDiscrepsTable{} and the appropriate
 graph and slice in \Cref{fig:discrepSources}. In the latter case, lists of
 sources can be distilled down to sets of categories which are compared against
 each other to determine how times a given discrepancy manifests between source
-categories. This process is described in more detail, with examples, in
+categories. An example of this process is described in more detail in
 \Cref{aug-discrep-analysis}.
 
 Alongside this citation information are the keywords relevant for assessing a
@@ -109,10 +118,31 @@ discrepancies in \Cref{tab:discreps}, a given discrepancy is counted only for
 its most ``rigid'' manifest (i.e., it will only increment a value in the
 ``Implicit'' column if it is \emph{not} also explicit).
 
-% TODO: how are these source categories determined by analyzing citation info?
-
 \subsubsection{Augmented Discrepancy Analysis}
 \label{aug-discrep-analysis}
 While the \autoDiscreps{} could be deduced automatically from analyzing the
 testing approach glossary, other types of discrepancies (namely
-\nameref{other-discrep}) needed to be tracked manually.
+\nameref{other-discrep}) needed to be tracked manually. This is done by adding
+comments to the relevant \LaTeX{} files (generated or not) of the form
+\begin{displayquote}
+    \texttt{\% Discrep count: \{A1\} \{A2\} \dots{} | \{B1\} \{B2\} \dots}
+\end{displayquote}
+which can then be parsed to detemine where discrepancies occur. Each source is
+given using its BibTeX key wrapped in curly braces to mimic \LaTeX{}'s citation
+commands for ease of parsing, with the exception of the \acs{istqb} glossary,
+due to its use of custom commands via \texttt{\textbackslash citealias}. For
+example, the line
+\begin{displayquote}
+    \texttt{\% Discrep count: \{IEEE2022\} | \{IEEE2022\} \{IEEE2017\}\\
+        $\,\hookrightarrow\,$\quad ISTQB \{Kam2008\} \{Bas2024\}}
+\end{displayquote}
+would be parsed as the example given in \Cref{discrep-analysis-example}. Since
+the IEEE documents are written by the same standards organizations
+(\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), they are counted as a
+discrepancy between documents by the same author(s) in \Cref{fig:discrepSources}.
+Note that discrepancies within a single document, between documents by the same
+author(s), and between documents from the same source category are not double
+counted. The maximum number of discrepancies possible within a source category
+in \Cref{fig:discrepSources} is three (once for each type), but only if there
+is an example of each type where a ``stricter'' type does not apply.%
+\todo{Does this make sense? Is this sentence necessary?}
