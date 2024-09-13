@@ -20,12 +20,12 @@ discrepancies, such as in \Cref{tab:discreps}. A piece of information is
 or if it is sometimes, but not always, true. Discrepancies based on implicit
 information are themselves implicit. These are automatically detected when
 \hyperref[graph-gen]{generating graphs} and
-\hyperref[discrep-analysis]{analyzing discrepancies} by
-looking for keywords used in the glossaries that indicate that a piece of
-infomation is implicit: ``implied'', ``inferred'', ``can be'', ``ideally'',
-``usually'', ``most'', ``likely'', ``often'', ``if'', and ``although''%
-\todo{Question marks?} (see the \href
-{https://github.com/samm82/TestGen-Thesis/blob/44b489c/scripts/csvToGraph.py#L123-L124}
+\hyperref[discrep-analysis]{analyzing discrepancies} by looking for indicators
+of uncertainty, which include question marks, ``~(Testing)'' (which indicates
+that a test approach isn't explicitly denoted as such), and the keywords
+``implied'', ``inferred'', ``can be'', ``ideally'', ``usually'', ``most'',
+``likely'', ``often'', ``if'', and ``although''(see the \href
+{https://github.com/samm82/TestGen-Thesis/blob/50380a3/scripts/csvToGraph.py#L124-L140}
 {relevant source code}).
 
 \subsection{Approach Graph Generation}
