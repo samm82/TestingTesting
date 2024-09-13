@@ -4,6 +4,7 @@ import itertools
 from pandas import read_csv
 import re
 import sys
+from typing import Optional
 
 from discrepCounter import *
 from helpers import *
@@ -122,9 +123,21 @@ discrepsSrcCounter = DiscrepSourceCounter()
 
 IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
                      "most", "likely", "often", "if", "although"]
-def isUnsure(name):
-    return any(unsure in name for unsure in
-               {"?", " (Testing)"}.union(f"({term}" for term in IMPLICIT_KEYWORDS))
+warned_multi_unsure = set()
+# only == True returns a string iff the passed `name` is not explicit
+def isUnsure(name: str, only: bool = False) -> Optional[str]:
+    unsureTerms = {"?", " (Testing)"}.union(f"({term}" for term in IMPLICIT_KEYWORDS)
+    if not only:
+        unsureTerms.update(f" {term}" for term in IMPLICIT_KEYWORDS)
+
+    outTerms = {unsure for unsure in unsureTerms if unsure in name}
+    if (len(outTerms) > 1 and "?" not in outTerms and
+            name not in warned_multi_unsure):
+        print(f"Multiple 'unsure' cutoffs in {name}.")
+        warned_multi_unsure.add(name)
+
+    return (sorted(outTerms, key=name.index, reverse=True)[0]
+            if outTerms else None)
 
 def addLineToCategory(key, line):
     if line not in categoryDict[key][1] and "-> ;" not in line:
@@ -157,7 +170,7 @@ def formatApproach(s: str, stripInit=False):
     return s.strip(",")
 
 def addNode(name, style = "", key = "Approach"):
-    dashed = isUnsure(name)
+    dashed = isUnsure(name, only=True)
     if dashed:
         name = name.replace("?", "")
 
@@ -215,20 +228,15 @@ def getSourceColor(s):
 
 # Returns a tuple with the color for the rigid relations (if any),
 # then for the unsure ones (if any)
-def getRelColor(name):
-    if isUnsure(name):
+def getRelColor(name: str) -> tuple[str]:
+    if isUnsure(name, only=True):
         return (None, getSourceColor(name))
-    else:
-        if sum(1 for term in IMPLICIT_KEYWORDS if term + " " in name) > 1:
-            print(f"Multiple 'unsure' cutoffs in {name}.")
-        for term in IMPLICIT_KEYWORDS:
-            if term + " " in name:
-                name = name.split(term)
-                colors = tuple(map(getSourceColor, name))
-                if (colors[1] > colors[0]):
-                    return colors
-                return (colors[0], None)
+
+    if not isUnsure(name):
         return (getSourceColor(name), None)
+
+    colors = tuple(map(getSourceColor, name.split(isUnsure(name), 1)))
+    return (colors[0], colors[1] if colors[1] > colors[0] else None)
 
 def colorRelations(colors, edge, extra=""):
     out = []
