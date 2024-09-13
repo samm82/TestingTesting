@@ -143,7 +143,7 @@ def formatApproach(s: str, stripInit=False):
     return s.strip(",")
 
 def addNode(name, style = "", key = "Approach"):
-    dashed = isUnsure(name)
+    dashed = isUnsure(name, only=True)
     if dashed:
         name = name.replace("?", "")
 
@@ -201,20 +201,15 @@ def getSourceColor(s):
 
 # Returns a tuple with the color for the rigid relations (if any),
 # then for the unsure ones (if any)
-def getRelColor(name):
-    if isUnsure(name):
+def getRelColor(name: str) -> tuple[str]:
+    if isUnsure(name, only=True):
         return (None, getSourceColor(name))
-    else:
-        if sum(1 for term in UNSURE_KEYWORDS if term + " " in name) > 1:
-            print(f"Multiple 'unsure' cutoffs in {name}.")
-        for term in UNSURE_KEYWORDS:
-            if term + " " in name:
-                name = name.split(term)
-                colors = tuple(map(getSourceColor, name))
-                if (colors[1] > colors[0]):
-                    return colors
-                return (colors[0], None)
+
+    if not isUnsure(name):
         return (getSourceColor(name), None)
+
+    colors = tuple(map(getSourceColor, name.split(isUnsure(name), 1)))
+    return (colors[0], colors[1] if colors[1] > colors[0] else None)
 
 def colorRelations(colors, edge, extra=""):
     out = []

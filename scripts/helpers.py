@@ -1,5 +1,6 @@
 from enum import Enum, auto
 import re
+from typing import Optional
 
 # RegEx patterns
 AUTHOR_CHARS = r"a-zA-Zßğö.\/_"
@@ -14,9 +15,21 @@ SPLIT_REGEX = r',(?!(?:[^()]*\([^()]*\))*[^()]*\)) '
 # Used in multiple files
 UNSURE_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
                    "most", "often", "if", "although"]
-def isUnsure(name):
-    return any(unsure in name for unsure in
-               {"?", " (Testing)"}.union(f"({term}" for term in UNSURE_KEYWORDS))
+warned_multi_unsure = set()
+# only == True returns a string iff the passed `name` is not explicit
+def isUnsure(name: str, only: bool = False) -> Optional[str]:
+    unsureTerms = {"?", " (Testing)"}.union(f"({term}" for term in UNSURE_KEYWORDS)
+    if not only:
+        unsureTerms.update(f" {term}" for term in UNSURE_KEYWORDS)
+
+    outTerms = {unsure for unsure in unsureTerms if unsure in name}
+    if (len(outTerms) > 1 and "?" not in outTerms and
+            name not in warned_multi_unsure):
+        print(f"Multiple 'unsure' cutoffs in {name}.")
+        warned_multi_unsure.add(name)
+
+    return (sorted(outTerms, key=name.index, reverse=True)[0]
+            if outTerms else None)
 
 class Rigidity(Enum):
     EXP = auto()
