@@ -11,6 +11,7 @@ class Color(OrderedEnum):
     BLUE   = 2
     MAROON = 1
     BLACK  = 0
+    GRAY   = -1
 
     def __str__(self):
         return self.name.lower()
@@ -21,6 +22,7 @@ class SrcCat(AutoNumberEnum):
     META   = "``Meta-level'' Collections", "``Meta-level'' Documents", Color.BLUE
     TEXT   = "Textbooks", "Textbooks", Color.MAROON
     OTHER  = "Other Sources", "Other Documents", Color.BLACK
+    INFER  = "Inferences", "Inferences", Color.GRAY
 
     def __init__(self, longname, shortname, color):
         self.longname  = longname
@@ -32,7 +34,8 @@ class SrcCat(AutoNumberEnum):
             return self.color < other.color
         return NotImplemented
 
-def getSrcCat(s) -> SrcCat:
+# rel == True if the SrcCat is used for coloring relations
+def getSrcCat(s, rel: bool = False) -> SrcCat:
     if any(std in s for std in {"IEEE", "ISO", "IEC"}):
         return SrcCat.STD
     if any(metastd in s for metastd in
@@ -47,7 +50,7 @@ def getSrcCat(s) -> SrcCat:
             "Perry", "Ammann and Offutt", "AmmannAndOffutt",
             "Fenton and Pfleeger", "FentonAndPfleeger"}):
         return SrcCat.TEXT
-    return SrcCat.OTHER
+    return SrcCat.INFER if rel and not any(par in s for par in "()") else SrcCat.OTHER
 
 def getRigidity(rigidity: Rigidity | tuple[Rigidity]):
     if isinstance(rigidity, tuple):
@@ -113,7 +116,7 @@ texFileDiscreps = {
 
 class DiscrepSourceCounter:
     def __init__(self):
-        self.dict = {k : DiscrepCounter(k.value) for k in SrcCat}
+        self.dict = {k : DiscrepCounter(k.value) for k in SrcCat if k != SrcCat.INFER}
 
     def __str__(self):
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())

@@ -3,6 +3,7 @@ import numpy as np
 import itertools
 from pandas import read_csv
 import re
+from typing import Optional
 
 from discrepCounter import *
 from helpers import *
@@ -112,6 +113,24 @@ categoryDict = {
 
 discrepsSrcCounter = DiscrepSourceCounter()
 
+UNSURE_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
+                   "most", "often", "if", "although"]
+warned_multi_unsure = set()
+# only == True returns a string iff the passed `name` is not explicit
+def isUnsure(name: str, only: bool = False) -> Optional[str]:
+    unsureTerms = {"?", " (Testing)"}.union(f"({term}" for term in UNSURE_KEYWORDS)
+    if not only:
+        unsureTerms.update(f" {term}" for term in UNSURE_KEYWORDS)
+
+    outTerms = {unsure for unsure in unsureTerms if unsure in name}
+    if (len(outTerms) > 1 and "?" not in outTerms and
+            name not in warned_multi_unsure):
+        print(f"Multiple 'unsure' cutoffs in {name}.")
+        warned_multi_unsure.add(name)
+
+    return (sorted(outTerms, key=name.index, reverse=True)[0]
+            if outTerms else None)
+
 def addLineToCategory(key, line):
     if line not in categoryDict[key][1] and "-> ;" not in line:
         categoryDict[key][1].append(line)
@@ -196,19 +215,19 @@ def addToIterable(s, iterable, key=key):
     else:
         raise ValueError(f"addToIterable unimplemented for {type(iterable)}")
 
-def getSourceColor(s):
-    return getSrcCat(s).color
-
 # Returns a tuple with the color for the rigid relations (if any),
 # then for the unsure ones (if any)
 def getRelColor(name: str) -> tuple[str]:
+    def getSourceColor(s):
+        return getSrcCat(s, rel=True).color
+
     if isUnsure(name, only=True):
         return (None, getSourceColor(name))
 
     if not isUnsure(name):
         return (getSourceColor(name), None)
 
-    colors = tuple(map(getSourceColor, name.split(isUnsure(name), 1)))
+    colors = [getSourceColor(src) for src in name.split(isUnsure(name), 1)]
     return (colors[0], colors[1] if colors[1] > colors[0] else None)
 
 def colorRelations(colors, edge, extra=""):

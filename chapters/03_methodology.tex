@@ -9,12 +9,13 @@ discrepancies. Starting from some set of sources, we then use
 ``snowball sampling'' (a ``method of \dots\ sample selection \dots\ used to
 locate hidden populations'' \citep{Johnson2014}) to gather further sources%
 \seeParAlways{undef-terms}. Sources with a similar degree of
-``trustworthiness''\todo{Elaborate on this!} are grouped in the categories
-given by \Cref{stds,metas,texts,others}, and a summary of how many sources
-comprise each category is given in \Cref{fig:sourceSummary}. Each category is
+``trustworthiness''\todo{Elaborate on this!} are grouped into the following
+categories: \stds{}, \metas{}, \texts{}, and \others{}. \ifnotpaper
+    Additionally, some information comes from \nameref{infers}. \fi Each category is
 given a unique colour to better track how their information appears in relevant
 graphs (see \Cref{fig:recovery-graph-current,fig:recovery-graph-proposed,%
-    fig:scal-graph-current,fig:scal-graph-proposed,fig:perf-graph}).
+    fig:scal-graph-current,fig:scal-graph-proposed,fig:perf-graph}). A summary
+of how many sources comprise each category is given in \Cref{fig:sourceSummary}.
 
 \subsubsection{\stdSources{1}}
 \label{stds}
@@ -50,13 +51,22 @@ graphs (see \Cref{fig:recovery-graph-current,fig:recovery-graph-proposed,%
 \label{others}
 \otherSources{2}
 \begin{itemize}
-    \item Colored black, along with any ``surface-level''
-          analysis that followed straightforwardly
+    \item Colored black
     \item Includes less-formal classifications (such as
           \citep{KuļešovsEtAl2013}), sources investigated to ``fill in''
           missing definitions\seeSectionParAlways{undef-terms}, and
           testing-related resources that emerged for unrelated reasons
 \end{itemize}
+
+\ifnotpaper
+    \subsubsection{Inferences}
+    \label{infers}
+    While not as clear-cut as the other source categories, some information is
+    inferred from various sources, such as ``surface-level'' analysis that
+    follows straightforwardly without being explicitly stated in the text.
+    Inferred relations are colored \textcolor{gray}{gray} and
+    inferred discrepancies are given in \Cref{infer-discreps}.
+\fi
 
 \begin{figure}
     \centering
