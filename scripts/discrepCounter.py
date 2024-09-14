@@ -102,8 +102,6 @@ class DiscrepCat(Enum):
     MISC = "Standalone"
     OTHER = "Other"
 
-otherDiscFiles = {"chapters/05a_std_discreps.tex"}
-
 texFileDiscreps = {
     "build/multiSyns.tex": DiscrepCat.SYNS,
     "chapters/05_discrepancies.tex": DiscrepCat.MISC,

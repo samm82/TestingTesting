@@ -2,7 +2,7 @@ from pandas import read_csv
 import re
 import sys
 
-from discrepCounter import SrcCat, getSrcCat
+from discrepCounter import SrcCat, getSrcCat, texFileDiscreps
 from helpers import *
 
 if __name__ == "__main__":
@@ -20,6 +20,11 @@ for filename in sys.argv[1:]:
                 cell = re.sub(fr"{word} [^\)]*?;", ";", cell)
             sources.update(s[1:-1].replace(" and ", "And") for s in re.findall(
                 r"\{.*?\}", formatLineWithSources(cell, False)))
+for filename in texFileDiscreps.keys():
+    with open(filename, "r", encoding="utf-8") as file:
+        sources.update(s[1:-1].replace(" and ", "And") for s in re.findall(
+            r"\{.*?\}", " ".join([line.split(":")[1] for line in file.readlines()
+                                  if "% Discrep count" in line])))
 # Omit private communication as a source; used for notes
 sources.discard("SmithAndCarette2023")
 # Reintroduce ISTQB because of how it is formatted for citations
