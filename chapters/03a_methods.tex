@@ -16,12 +16,15 @@ Since there is a considerable degree of nuance introduced by the use of natural
 language, not all discrepancies are equal! To capture this nuance and provide a
 more complete picture, we make a distinction between explicit and implicit
 discrepancies, such as in \Cref{tab:discreps}. A piece of information is
-``implicit'' if it is not directly given by a source but seems to be implied
-or if it is sometimes, but not always, true. Discrepancies based on implicit
-information are themselves implicit. These are automatically detected when
-\hyperref[graph-gen]{generating graphs} and
+``implicit'' if:
+\begin{itemize}
+    \item it is not directly given by a source but seems to be implied, and/or
+    \item it is only true some of the time (e.g., under certain conditions).
+\end{itemize}
+Discrepancies based on implicit information are themselves implicit. These are
+automatically detected when \hyperref[graph-gen]{generating graphs} and
 \hyperref[discrep-analysis]{analyzing discrepancies} by looking for indicators
-of uncertainty, which include question marks, ``~(Testing)'' (which indicates
+of uncertainty, such as question marks, ``~(Testing)'' (which indicates
 that a test approach isn't explicitly denoted as such), and the keywords
 ``implied'', ``inferred'', ``can be'', ``ideally'', ``usually'', ``most'',
 ``likely'', ``often'', ``if'', and ``although'' (see the \href
