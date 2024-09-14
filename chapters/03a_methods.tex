@@ -24,7 +24,7 @@ information are themselves implicit. These are automatically detected when
 of uncertainty, which include question marks, ``~(Testing)'' (which indicates
 that a test approach isn't explicitly denoted as such), and the keywords
 ``implied'', ``inferred'', ``can be'', ``ideally'', ``usually'', ``most'',
-``likely'', ``often'', ``if'', and ``although''(see the \href
+``likely'', ``often'', ``if'', and ``although'' (see the \href
 {https://github.com/samm82/TestGen-Thesis/blob/50380a3/scripts/csvToGraph.py#L124-L140}
 {relevant source code}).
 
@@ -37,21 +37,29 @@ that a test approach isn't explicitly denoted as such), and the keywords
 \label{discrep-analysis}
 
 In addition to analyzing specific discrepancies (or classes of discrepancies),
-an overview of the amount, severity, and source of these discrepancies is also
-useful. Subsets of this task can be automated (\Cref{auto-discrep-analysis}),
-and even parts that need to be done manually (such as finding and categorizing
+an overview of the amounts, sources, \hyperref[rigidity]{rigidities}, and
+severities of these discrepancies is also
+useful. Subsets of this task can be automated (\Cref{auto-discrep-analysis})
+and the remaining manual portion (such as finding and categorizing
 \nameref{other-discrep}) can be augmented with automated
 tools (\Cref{aug-discrep-analysis}).
 
-As the main portion of this analysis, discrepancies are categorized
-based on the source categories involved (see \Cref{sources}) to identify how
-many discrepancies a source category is responsible for. These
-are then counted \emph{once} if this discrepancy exists in a source category at
-least as ``trusted'' as the current source category under consideration, which
-avoids counting the same discrepancy twice for a given category (see
-\thesisissueref{83}). Not doing this would result in the number of
+To understand where discrepancies exist in the literature, they are
+grouped based on the source categories (as described in \Cref{sources})
+responsible for them. Each discrepancy is then counted \emph{once} per source
+category if it appears within it \emph{and/or} between it and a more
+``trusted'' category\todo{To be formalized in the \texttt{sources} branch}.
+This avoids counting the same discrepancy twice for a given category (see
+\thesisissueref{83}), which would result in the number of
 \emph{occurrences} of all discrepancies, instead of the number of discrepancies
-\emph{themselves}, which is more useful.
+\emph{themselves}, which is more useful. An exception to this is
+\Cref{fig:discrepSources}, which counts discrepancies within a single document
+and those between documents by the same author(s) or standards organization(s)
+separately from those within a source category. As before, these are not double
+counted, meaning that the maximum number of counted discrepancies possible
+within a source category in \Cref{fig:discrepSources} is three (once for each
+type). This only occurs if there is an example of each type of discrepancy
+source where a ``stricter'' type does not apply.
 
 \phantomsection{}
 \label{discrep-analysis-example}
@@ -156,12 +164,6 @@ would be parsed as the example given in \Cref{discrep-analysis-example}. Since
 the IEEE documents are written by the same standards organizations
 (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), they are counted as a
 discrepancy between documents by the same author(s) in \Cref{fig:discrepSources}.
-Note that discrepancies within a single document, between documents by the same
-author(s), and between documents from the same source category are not double
-counted. The maximum number of discrepancies possible within a source category
-in \Cref{fig:discrepSources} is three (once for each type), but only if there
-is an example of each type where a ``stricter'' type does not apply.%
-\todo{Does this make sense? Is this sentence necessary?}
 
 The \nameref{rigidity} of discrepancies can also be manually specified by
 inserting the phrase ``implied by'' after the sources of explicit information
