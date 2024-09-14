@@ -99,13 +99,13 @@ of a test process; for example, ``across the whole organization'' or only
     \fi, which is distinct from robustness testing \citep[p.~53]{Firesmith2015}.}
 
 \def\graphGenDesc{
-    To better visualize how test approaches related to each other, we
+    To better visualize how test approaches relate to each other, we
     \ifnotpaper\else then \fi developed a tool to automatically
     generate graphs of these relations.
     \ifnotpaper Since child-parent and synonym relations between approaches are
-        tracked in \ifblind{our glossary}{\href{
+        tracked in \ifblind{our approach glossary}{\href{
                 https://github.com/samm82/TestGen-Thesis/blob/main/ApproachGlossary.csv
-            }{our glossary}} in a consistent format, they can be parsed
+            }{our approach glossary}} in a consistent format, they can be parsed
         systematically. For example, if the entries in \Cref{tab:exampleGlossary}
         appear in the glossary, then their parent relations are displayed as
         \Cref{fig:exampleGraph} in the generated graph.
@@ -141,10 +141,10 @@ of a test process; for example, ``across the whole organization'' or only
         \begin{table}[hbtp!]
             \centering
             \begin{tabular}{ll} \hline
-                Name & Synonym(s)                        \\ \hline
-                E    & F (Author, 0000; implied by 0001) \\
-                G    & H (Author, 0000), F (0002)        \\
-                H    & X                                 \\ \hline
+                Name & Synonym(s)                            \\ \hline
+                E    & F (Author, 0000; implied by 0001)     \\
+                G    & F (Author, 0002), H (implied by 0000) \\
+                H    & X                                     \\ \hline
             \end{tabular}
             \caption{Example glossary entries demonstrating how synonym relations are tracked.}
             \label{tab:synExampleGlossary}
@@ -172,11 +172,13 @@ of a test process; for example, ``across the whole organization'' or only
         \hyperref[discrep-analysis]{analysis}.
         If a relation is both explicit \emph{and} implicit, the implicit relation
         is only shown in the graph if it is from a more ``trusted'' source
-        category. Implicit approaches and relations are denoted by dashed lines,
-        as shown in \Cref{fig:exampleGraph}; explicit approaches are \emph{always}
-        denoted by solid lines, even if they are also implicit. ``Rigid''
-        versions of graphs that exclude implicit approaches and relations can
-        also be generated.
+        category; note that only the explicit synonym relation between E and F
+        from \Cref{tab:exampleGlossary} is shown in \Cref{fig:synExampleGraph}.
+        Implicit approaches and relations are denoted by dashed lines, as shown
+        in \Cref{fig:exampleGraph,fig:synExampleGraph}; explicit approaches are
+        \emph{always} denoted by solid lines, even if they are also implicit.
+        ``Rigid'' versions of graphs that exclude implicit approaches and
+        relations can also be generated\todo{Should I add an example of this?}.
 
     \fi
     \Cref{fig:recovery-graph-current,fig:scal-graph-current} are modified versions
