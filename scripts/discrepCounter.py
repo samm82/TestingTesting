@@ -19,7 +19,7 @@ class Color(OrderedEnum):
 class SrcCat(AutoNumberEnum):
     STD    = "Established Standards", "Standards", Color.GREEN
     META   = "``Meta-level'' Collections", "``Meta-level'' Documents", Color.BLUE
-    TEXT   = "Trusted Textbooks", "Textbooks", Color.MAROON
+    TEXT   = "Textbooks", "Textbooks", Color.MAROON
     OTHER  = "Other Sources", "Other Documents", Color.BLACK
 
     def __init__(self, longname, shortname, color):
@@ -37,11 +37,15 @@ def getSrcCat(s) -> SrcCat:
         return SrcCat.STD
     if any(metastd in s for metastd in
         {"Washizaki", "Bourque and Fairley", "SWEBOK",
-            "Hamburg and Mogyorodi", "ISTQB", "Firesmith"}):
+            "Hamburg and Mogyorodi", "ISTQB", "Firesmith",
+            "Doğan et al", "DoğanEtAl"}):
         return SrcCat.META
     if any(textbook in s for textbook in
         {"van Vliet", "vanVliet", "Patton", "Peters and Pedrycz",
-            "PetersAndPedrycz"}):
+            "PetersAndPedrycz", "Gerrard and Thompson",
+            "GerrardAndThompson", "Dennis et al", "DennisEtAl",
+            "Perry", "Ammann and Offutt", "AmmannAndOffutt",
+            "Fenton and Pfleeger", "FentonAndPfleeger"}):
         return SrcCat.TEXT
     return SrcCat.OTHER
 
