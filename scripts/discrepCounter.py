@@ -195,13 +195,17 @@ class DiscrepSourceCounter:
 
         # These ensure that sources aren't double counted
         pieAdded, tableAdded = set(), set()
-        def updateCounters(source, pieSec: str, r) -> bool:
+        def updateCounters(source, pieSec: str, r):
             if type(source) is tuple:
                 srcTuple = tuple(map(getSrcCat, source))
                 source = " ".join(map(lambda x: x.name.capitalize(), srcTuple))
             else:
                 srcTuple = tuple(map(getSrcCat, [source] * 2))
             sourceCat = srcTuple[0]
+
+            # Don't bother counting discrepancies for examples
+            if "Author" in source:
+                return
 
             if debug:
                 print(source, sourceCat, pieSec, r)
