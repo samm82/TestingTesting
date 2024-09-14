@@ -662,7 +662,7 @@ def writeDotFile(lines, filename):
 for key, value in categoryDict.items():
     lines = value[1]
     writeDotFile(lines, f"{key.lower()}Graph")
-    unsure = ["dashed"] + [c.split()[0] for c in lines if styleInLine("dashed", c)]
+    unsure = ["dashed", "gray"] + [c.split()[0] for c in lines if styleInLine("dashed", c)]
     writeDotFile([c for c in lines if all(x not in c for x in unsure)],
                   f"rigid{key}Graph")
 
