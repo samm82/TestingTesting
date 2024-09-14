@@ -177,16 +177,31 @@ of a test process; for example, ``across the whole organization'' or only
         Implicit approaches and relations are denoted by dashed lines, as shown
         in \Cref{fig:exampleGraph,fig:synExampleGraph}; explicit approaches are
         \emph{always} denoted by solid lines, even if they are also implicit.
-        ``Rigid'' versions of graphs that exclude implicit approaches and
-        relations can also be generated\todo{Should I add an example of this?}.
+        ``Rigid'' versions, which exclude implicit approaches and relations,
+        can also be generated for each graph\todo{Should I add an example?}.
 
     \fi
-    \Cref{fig:recovery-graph-current,fig:scal-graph-current} are modified versions
-    of these graphs generated based on the existing literature, focused on specific
-    subsets of testing terminology. This tool was also expanded to be able to make
-    changes to these generated graphs based on our \nameref{recs}.
-    \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed,fig:perf-graph} are
-    modified versions of these proposed graphs.}
+    Since these graphs tend to be large, it is useful to focus on specific
+    subsets of them. \ifnotpaper Graphs limited to approaches from a given
+        \hyperref[categories-observ]{approach category} are generated, as well
+        as a graph of static approaches; interestingly, static testing seems to
+        be considered a separate approach category in \citep[Fig.~2]{IEEE2022}%
+        \todo{Better place to include this, if at all?}. Since static testing is
+        \hyperref[static-test]{out of scope}, it is also helpful to see how it
+        overlaps with the in-scope dynamic testing, so these ``connecting''
+        relations are also graphed. Additionally, more specific subsets of
+        these graphs \else These \fi can be generated based on a given subset
+    of approaches to include, such as those pertaining to
+    \hyperref[recov-discrep]{recovery} or \hyperref[scal-discrep]{scability},
+    as shown in \Cref{fig:recovery-graph-current,fig:scal-graph-current},
+    respectively (albeit with manually created legends). By specifying sets of
+    approaches and relations to add or remove, these generated graphs can be
+    updated in accordance with our \nameref{recs}, as shown in
+    \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed}, respectively.
+    These modifications can also be inherited, as in \Cref{fig:perf-graph},
+    which was generated based on the modifications from
+    \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed} and then
+    manually tweaked\todo{Ensure these tweaks are on an up-to-date version!}.}
 
 %------------------------------------------------------------------------------
 % For populating values from files
