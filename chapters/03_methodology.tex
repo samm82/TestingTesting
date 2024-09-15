@@ -10,7 +10,7 @@ discrepancies. Starting from some set of sources, we then use
 locate hidden populations'' \citep{Johnson2014}) to gather further sources%
 \seeParAlways{undef-terms}. Sources with a similar degree of
 ``trustworthiness''\todo{Elaborate on this!} are grouped into the following
-categories: \stds{}, \metas{}, \texts{}, and \others{}. \ifnotpaper
+categories: \stds{}, \metas{}, \texts{}, and \papers{}. \ifnotpaper
     Additionally, some information comes from \nameref{infers}. \fi Each category is
 given a unique colour to better track how their information appears in relevant
 graphs (see \Cref{fig:recovery-graph-current,fig:recovery-graph-proposed,%
@@ -47,15 +47,21 @@ of how many sources comprise each category is given in \Cref{fig:sourceSummary}.
           point
 \end{itemize}
 
-\subsubsection{\otherSources{1}}
-\label{others}
-\otherSources{2}
+\subsubsection{\paperSources{1}}
+\label{papers}
+\paperSources{2}
 \begin{itemize}
     \item Colored black
-    \item Includes less-formal classifications (such as
-          \citep{KuļešovsEtAl2013}), sources investigated to ``fill in''
-          missing definitions\seeSectionParAlways{undef-terms}, and
-          testing-related resources that emerged for unrelated reasons
+    \item Mainly consists of academic papers: journal articles, conference
+          papers, reports \citep{Kam2008,Gerrard2000a,Gerrard2000b}, and a
+          thesis \citep{Bas2024}
+          % \item Includes less-formal classifications (such as
+          %       \citep{KuļešovsEtAl2013})
+    \item Many of these sources were investigated to ``fill in''
+          missing definitions\seeSectionParAlways{undef-terms}
+    \item Also included (for brevity) are some less-than-academic sources to
+          investigate how terms are used in practice, such as websites
+          \citep{LambdaTest2024,Pandey2023} and a booklet \citep{SPICE2022}
 \end{itemize}
 
 \ifnotpaper
@@ -77,7 +83,7 @@ of how many sources comprise each category is given in \Cref{fig:sourceSummary}.
         {\stdSources{3}/\stds{},
             \metaSources{3}/\metas{},
             \textSources{3}/\texts{},
-            \otherSources{3}/\others{}}
+            \paperSources{3}/\papers{}}
     \end{tikzpicture}
     \caption{Summary of how many sources comprise each source category.}
     \label{fig:sourceSummary}

@@ -21,7 +21,7 @@ class SrcCat(AutoNumberEnum):
     STD    = "Established Standards", "Standards", Color.GREEN
     META   = "``Meta-level'' Collections", "``Meta-level'' Documents", Color.BLUE
     TEXT   = "Textbooks", "Textbooks", Color.MAROON
-    OTHER  = "Other Sources", "Other Documents", Color.BLACK
+    PAPER  = "Papers and Other Documents", "Papers", Color.BLACK
     INFER  = "Inferences", "Inferences", Color.GRAY
 
     def __init__(self, longname, shortname, color):
@@ -50,7 +50,7 @@ def getSrcCat(s, rel: bool = False) -> SrcCat:
             "Perry", "Ammann and Offutt", "AmmannAndOffutt",
             "Fenton and Pfleeger", "FentonAndPfleeger"}):
         return SrcCat.TEXT
-    return SrcCat.INFER if rel and not any(par in s for par in "()") else SrcCat.OTHER
+    return SrcCat.INFER if rel and not any(par in s for par in "()") else SrcCat.PAPER
 
 def getRigidity(rigidity: Rigidity | tuple[Rigidity]):
     if isinstance(rigidity, tuple):
@@ -108,7 +108,7 @@ texFileDiscreps = {
     "chapters/05a_std_discreps.tex": DiscrepCat.MISC,
     "chapters/05b_meta_discreps.tex": DiscrepCat.MISC,
     "chapters/05c_text_discreps.tex": DiscrepCat.MISC,
-    "chapters/05d_other_discreps.tex": DiscrepCat.MISC,
+    "chapters/05d_paper_discreps.tex": DiscrepCat.MISC,
     "chapters/05e_cat_discreps.tex": DiscrepCat.CATS,
 }
 
@@ -145,9 +145,8 @@ class DiscrepSourceCounter:
 
             slices = ([(v.withinSrc, "Within a single document"),
                        (v.withinAuth, "Between documents by the same author(s) or standards organization(s)")] +
-                      [(catCount, "Between a document from this category and " +
-                                  ("an" if cat.shortname.startswith("Other") else "a ") +
-                                  cat.shortname.lower()[:-1])
+                      [(catCount, "Between a document from this category and a " +
+                                  cat.shortname.lower()[:-1])  # Strip plural "s"
                         for cat, catCount in v.betweenCats.items()])
 
             # Default color palette for pgf-pie

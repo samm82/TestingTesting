@@ -2,7 +2,7 @@ import re
 
 from helpers import *
 
-SECTIONS = ["Std", "Meta", "Text", "Other"]
+SECTIONS = ["Std", "Meta", "Text", "Paper"]
 SEVERITIES = {"high": "Medium", "med": "Low", "low": ""}
 
 class DiscrepSection:
