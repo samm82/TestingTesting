@@ -114,7 +114,7 @@ texFileDiscreps = {
 
 class DiscrepSourceCounter:
     def __init__(self):
-        self.dict = {k : DiscrepCounter(k.value) for k in SrcCat if k != SrcCat.INFER}
+        self.dict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
 
     def __str__(self):
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
