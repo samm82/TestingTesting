@@ -599,6 +599,26 @@ def writeDotFile(lines, filename):
         INDENT = "    "
         extras = [f'{INDENT if line in "}{" else 2*INDENT}{line}' for line in extras]
 
+        srcCats = [srcCat for srcCat in SrcCat
+                  if any(srcCat.color.name.lower() in line for line in lines)]
+
+        colors, colorRow = [], []
+        prevAlignNodes = sorted(set(a.split(" -> ")[0] for a in align))
+        for i in range(0, len(srcCats) * 2, 2):
+            colorRow += [f"src{i+1} [style=invis];", f"src{i+2} [style=invis];",
+                 f"src{i+1} -> src{i+2} [color={srcCats[i//2].color.name.lower()}, "
+                 f"label=<From {srcCats[i//2].longname.replace(" ", "<br/>")}>]"]
+            if i % 4:
+                colors += sameRank(colorRow)
+                colorRow = []
+                newAlignNodes = [f"src{j}" for j in range(i-1, i+3)]
+                align += [f"{a} -> {b}" for a, b in zip(newAlignNodes, prevAlignNodes)]
+                prevAlignNodes = newAlignNodes
+        if colorRow:
+            colors += sameRank(colorRow)
+            align += [f"{a} -> {b}" for a, b in
+                      zip([f"src{j}" for j in range(i+1, i+3)], prevAlignNodes[1:])]
+
         # From https://stackoverflow.com/a/65443720/10002168
         legend = [
             '',
@@ -626,7 +646,7 @@ def writeDotFile(lines, filename):
             '        imp4 [label=<Implied<br/>Synonym>];',
             f'        imp3 -> imp4 [style="dashed" dir=none {LONG_EDGE_LABEL}]',
             '    }',
-        ] + extras + [
+        ] + extras + colors + [
             # For alignment
             '    edge [style="invis"]',
             '    imp1 -> chd',

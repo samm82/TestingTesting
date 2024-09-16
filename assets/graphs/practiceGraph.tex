@@ -243,12 +243,30 @@ subgraph cluster_legend {
         imp3 -> imp4 [style="dashed" dir=none label="                "]
     }
         imp5 [label=<Implied<br/>Term> style="dashed"]
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
+}
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=gray, label=<From Inferences>]
+}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par
     imp3 -> syn1
     imp4 -> syn2
 imp5 -> { imp2 imp3 }
+src1 -> imp5
+src5 -> src2
+src6 -> src3
 }
 
 // Connect the dummy node to the first node of the legend
