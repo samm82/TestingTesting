@@ -641,7 +641,6 @@ def writeDotFile(lines, filename):
             # This puts the label at the top, not the bottom, because of the rankdir
             '    labelloc="b";',
             '    fontsize="48pt"',
-            '    rankdir=BT',
             '    {',
             '        rank=same',
             '        chd [label="Child"];',
