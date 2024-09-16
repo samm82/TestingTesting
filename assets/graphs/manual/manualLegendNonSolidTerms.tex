@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+
+\digraph{manualLegendNonSolidTerms}{
+margin=0
+subgraph cluster_legend {
+margin=8
+label="Legend";
+labelloc="t";
+fontsize="48pt"
+rankdir=BT
+{
+rank=same
+chd [label="Child"];
+par [label="Parent"];
+chd -> par [label="                "];
+syn1 [label="Synonym"];
+syn2 [label="Synonym"];
+syn1 -> syn2 [dir=none label="                "];
+}
+{
+rank=same
+imp1 [label="Child"];
+imp2 [label=<Implied<br/>Parent>];
+imp1 -> imp2 [style="dashed" label="                "]
+imp3 [label=<Implied<br/>Synonym>];
+imp4 [label=<Implied<br/>Synonym>];
+imp3 -> imp4 [style="dashed" dir=none label="                "]
+}
+{
+rank=same
+imp5 [label=<Implied<br/>Term> style="dashed"]
+syn3 [label=<Term>]
+syn4 [label=<Synonym<br/>to Both> style="dotted"]
+syn5 [label=<Term>]
+syn3 -> syn4 -> syn5 [dir=none]
+}
+edge [style="invis"]
+chd -> imp1 -> imp5
+par -> imp2 -> syn3
+syn1 -> imp3 -> syn4
+syn2 -> imp4 -> syn5
+}
+}
+
+\end{document}

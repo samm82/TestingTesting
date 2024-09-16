@@ -3,6 +3,7 @@ import numpy as np
 import itertools
 from pandas import read_csv
 import re
+import sys
 from typing import Optional
 
 from discrepCounter import *
@@ -22,14 +23,21 @@ def debugSource(x, toPrint = ""):
     else:
         return False    
 
-# Terms in parentheses we want to keep
-PAREN_EXC = {"Acceptance"}
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python ApproachGlossary.py <filename>")
+        sys.exit(1)
+    
+    csvFilename = sys.argv[1]
 
-approaches = read_csv('ApproachGlossary.csv')
+approaches = read_csv(csvFilename)
 names = approaches["Name"].to_list()
 categories = approaches["Approach Category"].to_list()
 synonyms = approaches["Synonym(s)"].to_list()
 parents = approaches["Parent(s)"].to_list()
+
+# Terms in parentheses we want to keep
+PAREN_EXC = {"Acceptance"}
 
 def processCol(col):
     SOURCE_CHUNKS = [AUTHOR_REGEX, YEAR_REGEX, BEGIN_INFO_REGEX]
@@ -113,14 +121,14 @@ categoryDict = {
 
 discrepsSrcCounter = DiscrepSourceCounter()
 
-UNSURE_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
-                   "most", "often", "if", "although"]
+IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
+                     "most", "likely", "often", "if", "although"]
 warned_multi_unsure = set()
 # only == True returns a string iff the passed `name` is not explicit
 def isUnsure(name: str, only: bool = False) -> Optional[str]:
-    unsureTerms = {"?", " (Testing)"}.union(f"({term}" for term in UNSURE_KEYWORDS)
+    unsureTerms = {"?", " (Testing)"}.union(f"({term}" for term in IMPLICIT_KEYWORDS)
     if not only:
-        unsureTerms.update(f" {term}" for term in UNSURE_KEYWORDS)
+        unsureTerms.update(f" {term}" for term in IMPLICIT_KEYWORDS)
 
     outTerms = {unsure for unsure in unsureTerms if unsure in name}
     if (len(outTerms) > 1 and "?" not in outTerms and
@@ -248,7 +256,7 @@ for name, synonym in zip(names, synonyms):
     for syn in synonym:
         rsyn, fsyn = removeInParens(syn), formatApproach(syn)
         if not (any(minor in syn.lower() for minor in {"spelled", "called"}) or
-                fsyn.isupper()):
+                (fsyn.isupper() and "Example" not in csvFilename)):
             nameWithSource = rname + ("?" if name.endswith("?") else "")
             if "(" in syn and syn.count(" (") != rsyn.count(" ("):
                 source = syn.split(' (')
@@ -380,9 +388,10 @@ for synList in [expMultiSyns, impMultiSyns, infMultiSyns]:
     synList.sort(key=lambda x: re.sub(r"\(.+\) ", "", x))
     synList.sort(key=lambda x: x.count("\\item"), reverse=True)
 
-writeFile(expMultiSyns + impMultiSyns, "multiSyns", True)
-writeFile(sorted(infMultiSyns, key=lambda x: x.count("\\cite"), reverse=True),
-          "infMultiSyns", True)
+if "Example" not in csvFilename:
+    writeFile(expMultiSyns + impMultiSyns, "multiSyns", True)
+    writeFile(sorted(infMultiSyns, key=lambda x: x.count("\\cite"), reverse=True),
+            "infMultiSyns", True)
 
 workingStaticSet = staticApproaches.copy()
 
@@ -413,12 +422,13 @@ print()
 
 selfCycleCount = len(selfCycles)
 
-selfCycles = [formatLineWithSources(f"\\item {cycle}") for cycle in selfCycles]
-writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
-          "selfCycles", True)
+if "Example" not in csvFilename:
+    selfCycles = [formatLineWithSources(f"\\item {cycle}") for cycle in selfCycles]
+    writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
+            "selfCycles", True)
 
-for cycle in selfCycles:
-    discrepsSrcCounter.countDiscreps([cycle], DiscrepCat.PARS)
+    for cycle in selfCycles:
+        discrepsSrcCounter.countDiscreps([cycle], DiscrepCat.PARS)
 
 def splitListAtEmpty(listToSplit):
     recArr = np.array(listToSplit)
@@ -462,7 +472,9 @@ def makeParSynLine(chd, par, parSource, synSource):
         # f"a sub-approach of \\textbf{{``{par.lower()}''}}{parSource}, but the "
         # f"two {synCallImply} synonyms{synSource}."))
 
-parentLines = splitListAtEmpty(categoryDict["Approach"][1])[-1]
+splitAtEmpty = splitListAtEmpty(categoryDict["Approach"][1])
+# Don't look for parent/synonym discrepancies unless both are present
+parentLines = splitAtEmpty[-1] if len(splitAtEmpty) > 2 else []
 for chd, syns in nameDict.items():
     par: str
     for par in syns:
@@ -484,7 +496,7 @@ for chd, syns in nameDict.items():
                          if parItem.startswith(par)]
             if len(parSource) != 1:
                 raise ValueError(
-                    "Problem with finding source for parent relation between"
+                    "Problem with finding source for parent relation between "
                      f"'{removeInParens(chd)}' and '{removeInParens(par)}'")
             parSource = parSource[0].split("(", 1)
 
@@ -501,32 +513,33 @@ parSynCount = "".join(parSyns).count("\\to")
 def sortByImplied(ls):
     return sorted(ls, key=lambda x: x.count("(implied"))
 
-writeFile(["\\begin{longtblr}[",
-           "   caption = {Pairs of test approaches with both child-parent and synonym relations.},",
-           "   label = {tab:parSyns}",
-           "   ]{",
-           "   colspec = {|c|X|X|}, width = \\linewidth,",
-           "   rowhead = 1, row{1} = {McMasterMediumGrey}",
-           "   }",
-           "  \\hline",
-           "  \\thead{``Child'' $\\to$ ``Parent''}  & \\thead{Child-Parent Source(s)} & \\thead{Synonym Source(s)} \\\\",
-           "  \\hline"] + sortByImplied(sortIgnoringParens(parSyns)) +
-          ["  \\hline", "\\end{longtblr}"],
-          "parSyns", True)
+if "Example" not in csvFilename:
+    writeFile(["\\begin{longtblr}[",
+            "   caption = {Pairs of test approaches with both child-parent and synonym relations.},",
+            "   label = {tab:parSyns}",
+            "   ]{",
+            "   colspec = {|c|X|X|}, width = \\linewidth,",
+            "   rowhead = 1, row{1} = {McMasterMediumGrey}",
+            "   }",
+            "  \\hline",
+            "  \\thead{``Child'' $\\to$ ``Parent''}  & \\thead{Child-Parent Source(s)} & \\thead{Synonym Source(s)} \\\\",
+            "  \\hline"] + sortByImplied(sortIgnoringParens(parSyns)) +
+            ["  \\hline", "\\end{longtblr}"],
+            "parSyns", True)
 
-writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(
-    map(lambda x: f"\\paragraph{{{x}}}",
-        ["Pairs labelled as ``children/parents''",
-         "Pairs labelled as ``synonyms''",
-         "Pairs that could be ``children/parents'' \\emph{or} ``synonyms''"]),
-    map(lambda x: "\n".join(["\\begin{enumerate}"] + list(
-        map(lambda x: f"\t{x}", sortByImplied(sortIgnoringParens(x)))) +
-        ["\\end{enumerate}"]), [infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc])))],
-        "infParSyns", True)
+    writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(
+        map(lambda x: f"\\paragraph{{{x}}}",
+            ["Pairs labelled as ``children/parents''",
+            "Pairs labelled as ``synonyms''",
+            "Pairs that could be ``children/parents'' \\emph{or} ``synonyms''"]),
+        map(lambda x: "\n".join(["\\begin{enumerate}"] + list(
+            map(lambda x: f"\t{x}", sortByImplied(sortIgnoringParens(x)))) +
+            ["\\end{enumerate}"]), [infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc])))],
+            "infParSyns", True)
 
-writeFile([f"{parSynCount}% Pairs of terms with parent/child AND synonym relations",
-           f"{selfCycleCount}% Self-cycles"],
-           "parSynCounts", True)
+    writeFile([f"{parSynCount}% Pairs of terms with parent/child AND synonym relations",
+            f"{selfCycleCount}% Self-cycles"],
+            "parSynCounts", True)
 
 class Flag(Enum):
     COLOR = auto()
@@ -535,10 +548,11 @@ class Flag(Enum):
 def inLine(flag, style, line):
         return re.search(fr"label=.+,{flag.name.lower()}=.+" + style, line)
 
-discrepsSrcCounter.output()
+if "Example" not in csvFilename:
+    discrepsSrcCounter.output()
 
 def writeDotFile(lines, filename):
-    CUSTOM_LEGEND = {"recovery", "scalability"}
+    CUSTOM_LEGEND = {"recovery", "scalability", "Example"}
     legend = []
     if all(name not in filename for name in CUSTOM_LEGEND):
         LONG_EDGE_LABEL = 'label="                "'
@@ -670,26 +684,28 @@ def writeDotFile(lines, filename):
         "\\begin{document}",
         f"\\digraph{{{filename}}}{{",
         "rankdir=BT;",
-        '',
-        '// Dummy node to push the legend to the top left',
-        'start [style="invis"];',
         "",
-    ] + lines + legend + [
+    ] + (["// Dummy node to push the legend to the top left",
+          'start [style="invis"];', ""] if legend else []
+        ) + lines + legend + [
         "}",
         "\\end{document}",
     ]
 
     writeFile(lines, filename)
 
-for key, value in categoryDict.items():
-    lines = value[1]
-    writeDotFile(lines, f"{key.lower()}Graph")
-    unsure = reduce(operator.add,
-                    [[val] + [c.split()[0] for c in lines if inLine(flag, val, c)]
-                     for flag, val in {(Flag.STYLE, "dashed"), (Flag.COLOR, "gray")}])
-    
-    writeDotFile([c for c in lines if all(x not in c for x in unsure)],
-                  f"rigid{key}Graph")
+if "Example" in csvFilename:
+    writeDotFile(categoryDict["Approach"][1], f"{csvFilename.split("/")[-1][:-4]}Graph")
+else:
+    for key, value in categoryDict.items():
+        lines = value[1]
+        writeDotFile(lines, f"{key.lower()}Graph")
+        unsure = reduce(operator.add,
+                        [[val] + [c.split()[0] for c in lines if inLine(flag, val, c)]
+                        for flag, val in {(Flag.STYLE, "dashed"), (Flag.COLOR, "gray")}])
+        
+        writeDotFile([c for c in lines if all(x not in c for x in unsure)],
+                    f"rigid{key}Graph")
 
 SYN = "syn"
 class CustomGraph:
@@ -734,7 +750,10 @@ class CustomGraph:
         #          if any(term in line for term in formattedTerms) or line == ""]
 
         chunks = splitListAtEmpty(categoryDict["Approach"][1])
-        if len(chunks) == 3:
+        if len(chunks) == 2:
+            nodes = chunks[0]
+            rels = chunks[1]
+        elif len(chunks) == 3:
             nodes = chunks[0] + chunks[1]
             rels = chunks[1] + chunks[2]
         elif len(chunks) == 4:
@@ -903,5 +922,6 @@ performanceGraph = CustomGraph(
 performanceGraph.inherit(recoveryGraph)
 performanceGraph.inherit(scalabilityGraph)
 
-for subgraph in {recoveryGraph, scalabilityGraph, performanceGraph}:
-    subgraph.buildGraph()
+if "Example" not in csvFilename:
+    for subgraph in {recoveryGraph, scalabilityGraph, performanceGraph}:
+        subgraph.buildGraph()
