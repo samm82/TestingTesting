@@ -528,8 +528,12 @@ writeFile([f"{parSynCount}% Pairs of terms with parent/child AND synonym relatio
            f"{selfCycleCount}% Self-cycles"],
            "parSynCounts", True)
 
-def styleInLine(style, line):
-        return re.search(r"label=.+,style=.+" + style, line)
+class Flag(Enum):
+    COLOR = auto()
+    STYLE = auto()
+
+def inLine(flag, style, line):
+        return re.search(fr"label=.+,{flag.name.lower()}=.+" + style, line)
 
 discrepsSrcCounter.output()
 
@@ -540,15 +544,15 @@ def writeDotFile(lines, filename):
         LONG_EDGE_LABEL = 'label="                "'
 
         # Only include meaningful synonyms
-        syns = [line.split(" ")[0] for line in lines if styleInLine("dotted", line)]
+        syns = [line.split(" ")[0] for line in lines if inLine(Flag.STYLE, "dotted", line)]
         synsToRemove = [syn for syn in syns if sum(1 for line in lines if syn in line) < 3]
         lines = [line for line in lines if not any(syn in line for syn in synsToRemove)]
 
         impTerm, dynTerm = '', ''
-        if any(styleInLine("dashed", line) for line in lines):
+        if any(inLine(Flag.STYLE, "dashed", line) for line in lines):
             impTerm = 'imp5 [label=<Implied<br/>Term> style="dashed"]'
 
-        if any(styleInLine("filled", line) for line in lines):
+        if any(inLine(Flag.STYLE, "filled", line) for line in lines):
             dynTerm = 'dyn [label=<Dynamic<br/>Approach> style="filled"]'
 
         twoSyn = [
@@ -662,7 +666,10 @@ def writeDotFile(lines, filename):
 for key, value in categoryDict.items():
     lines = value[1]
     writeDotFile(lines, f"{key.lower()}Graph")
-    unsure = ["dashed", "gray"] + [c.split()[0] for c in lines if styleInLine("dashed", c)]
+    unsure = reduce(operator.add,
+                    [[val] + [c.split()[0] for c in lines if inLine(flag, val, c)]
+                     for flag, val in {(Flag.STYLE, "dashed"), (Flag.COLOR, "gray")}])
+    
     writeDotFile([c for c in lines if all(x not in c for x in unsure)],
                   f"rigid{key}Graph")
 
