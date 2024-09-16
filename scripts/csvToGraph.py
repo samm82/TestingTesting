@@ -574,9 +574,7 @@ def writeDotFile(lines, filename):
 
         def twoSynAlign(nodes):
             synNodes = [f'syn{i}' for i in range(3, 6, 2 if len(nodes) == 2 else 1)]
-            for i in range(len(synNodes)):
-                synNodes[i] = f'{synNodes[i]} -> {nodes[i]}'
-            return synNodes
+            return [f'{synNode} -> {nodes[i]}' for i, synNode in enumerate(synNodes)]
 
         extras, align = [], []
         if impTerm and dynTerm:
