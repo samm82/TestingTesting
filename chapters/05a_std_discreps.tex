@@ -1,6 +1,6 @@
 \ifnotpaper\paragraph{High Severity}\fi
 \begin{itemize}
-      \item % Discrep count (OTHER): {IEEE2022} {IEEE2021} {Kam2008} | {IEEE2017} ISTQB {ISO_IEC2023a}
+      \item % Discrep count (DEFS): {IEEE2022} | {IEEE2017} ISTQB {ISO_IEC2023a}
             ``Compatibility testing'' is defined as ``testing that measures the
             degree to which a test item can function satisfactorily alongside
             other independent products in a shared environment (co-existence),
@@ -9,7 +9,7 @@
             definition is nonatomic as it combines the ideas of ``co-existence''
             and ``interoperability''. The term ``interoperability testing'' is
             not defined, but is used three times \citep[pp.~22,~43]{IEEE2022}
-            % Severity: High (Std)
+            % Discrep count (TERMS): {IEEE2022}
             (although the third usage seems like it should be ``portability
             testing''). This implies that ``co-existence testing'' and
             ``interoperability testing'' should be defined as their own terms,
@@ -24,13 +24,13 @@
             and the decomposition of ``compatibility'' into ``co-existence''
             and ``interoperability'' by \citet{ISO_IEC2023a}!
             \begin{itemize}
-                  \item % Discrep count (SYNS): implied by {IEEE2021}
+                  \item % Discrep count (SYNS): implied by {IEEE2021} | {IEEE2022}
                         The ``interoperability'' element of ``compatibility
                         testing'' is explicitly excluded by
                         \citet[p.~37]{IEEE2021}, (incorrectly) implying that
                         ``compatibility testing'' and ``co-existence testing''
                         are synonyms.
-                  \item % Discrep count (SYNS): {Kam2008}
+                  \item % Discrep count (SYNS): {Kam2008} | {IEEE2022}
                         The definition of ``compatibility testing'' in
                         \citep[p.~43]{Kam2008} unhelpfully says ``See
                         \emph{interoperability testing}'', adding another
@@ -62,13 +62,15 @@
             clearly detailed why; \citet[p.~3]{BarbosaEtAl2006} \ifnotpaper
                   consider \else considers \fi regression testing to be a test level.
             \ifnotpaper
-      \item % Discrep count (OTHER): {IEEE2021} | {IEEE2017}
+      \item % Discrep count (DEFS): {IEEE2021} | {IEEE2017}
+            % TODO: SUPP DEFS?
             \citeauthor{IEEE2021} define an ``extended entry (decision) table''
             both as a decision table where the ``conditions consist of multiple
             values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021}
             and one where ``the conditions and actions are generally described
             but are incomplete'' \citeyearpar[p.~175]{IEEE2017}\todo{OG ISO1984}.
-      \item % Discrep count (OTHER): {IEEE2017} {IEEE2013} | {IEEE2022} {IEEE2017} {Perry2006}
+      \item % Discrep count (DEFS): {IEEE2017} {IEEE2013} | {IEEE2022} {IEEE2017} {Perry2006}
+            % TODO: SUPP DEFS?
             \citeauthor*{IEEE2017} say that ``test level'' and ``test phase''
             are synonyms\footnote{Although this is a discrepancy based on a
                   synonym relation, the ``synonyms'' are supporting terms and
@@ -78,7 +80,7 @@
             (\citeyear[pp.~469,~470]{IEEE2017}; \citeyear[p.~9]{IEEE2013}), but
             there are also alternative definitions for them.
             \procLevel{\citeyearpar}, while ``test phase'' \phaseDef{}
-      \item % Discrep count (OTHER): {IEEE2017}
+      \item % Discrep count (DEFS): {IEEE2017}
             \citeauthor{IEEE2017} use the same definition for ``partial correctness''
             \citeyearpar[p.~314]{IEEE2017} and ``total correctness'' (p.~480).
             \fi
@@ -87,7 +89,8 @@
 \ifnotpaper
       \paragraph{Low Severity}
       \begin{itemize}
-            \item % Discrep count (OTHER): {IEEE2022} {IEEE2021}
+            \item % Discrep count (DEFS): {IEEE2022} {IEEE2021}
+                  % TODO: NO DEFS?
                   Integration, system, and system integration testing are all listed
                   as ``common test levels'' (\citealp[p.~12]{IEEE2022};
                   \citeyear[p.~6]{IEEE2021}), but no
@@ -97,18 +100,19 @@
                   % Discrep count (PARS): ISTQB | {Firesmith2015}
                   of integration testing by \citetISTQB{} and of system testing
                   by \citet[p.~23]{Firesmith2015}.
-            \item % Discrep count (OTHER): {IEEE2017}
+            \item % Discrep count (DEFS): {IEEE2017}
+                  % TODO: NO DEFS?
                   Similarly, component, integration, and component integration
                   testing are all listed in \citep{IEEE2017}, but ``component
                   integration testing'' is only defined as ``testing of groups of
                   related components'' \citep[p.~82]{IEEE2017}; it is a combination of
                   the two? somewhere on the spectrum between them? As above, it is
                   listed as a child of integration testing by \citetISTQB{}.
-            \item % Discrep count (OTHER): {IEEE2021}
+            \item % Discrep count (TERMS): {IEEE2021}
                   A typo in \citep[Fig.~2]{IEEE2021} means that ``specification-based
                   techniques'' is listed twice, when the latter should be
                   ``structure-based techniques''.
-            \item % Discrep count (OTHER): {IEEE2017}
+            \item % Discrep count (PARS): {IEEE2017}
                   \citeauthor*{IEEE2017} provide a definition for ``inspections and
                   audits'' \citeyearpar[p.~228]{IEEE2017}, despite also giving
                   definitions for ``inspection'' (p.~227) and ``audit'' (p.~36);

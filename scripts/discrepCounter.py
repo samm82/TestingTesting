@@ -74,9 +74,8 @@ class DiscrepCounter:
         # Differences between two categories; may be within the same category
         self.betweenCats = {k : 0 for k in SrcCat if k.value <= value}
 
-        self.syns = ExpImpCounter()
-        self.pars = ExpImpCounter()
-        self.cats = ExpImpCounter()
+        self.discrepCats = {k : ExpImpCounter() for k in DiscrepCat
+                            if k not in {DiscrepCat.MISC, DiscrepCat.OTHER}}
 
         # self.other = {s : 0 for s in ["High", "Med", "Low"]}
 
@@ -84,7 +83,7 @@ class DiscrepCounter:
         return "\n".join(filter(None, [
             ", ".join(map(str, [self.withinSrc, self.withinAuth])),
             "Diffs: " + ", ".join([f"{k.name} {v}" for k, v in self.betweenCats.items()]),
-            " | ".join(map(str, [self.syns, self.pars, self.cats])),
+            " | ".join(map(str, self.discrepCats.values())),
             # "Other: " + ", ".join([f"{k} {v}" for k, v in self.other.items()])
             ])) + "\n"
 
@@ -92,10 +91,10 @@ class DiscrepCat(Enum):
     SYNS = "Synonyms"
     PARS = "Parents"
     CATS = "Categories"
+    DEFS = "Definitions"
+    TERMS = "Terminology"
     MISC = "Standalone"
     OTHER = "Other"
-
-otherDiscFiles = {"chapters/05a_std_discreps.tex"}
 
 texFileDiscreps = {
     "build/multiSyns.tex": DiscrepCat.SYNS,
@@ -130,9 +129,8 @@ class DiscrepSourceCounter:
         pieCharts = []
         for k, v in self.dict.items():
             writeFile([formatOutput(
-                [k.longname] + [getattr(v, dc.name.lower()).output()
-                                for dc in [DiscrepCat.SYNS, DiscrepCat.PARS,
-                                           DiscrepCat.CATS]]
+                [k.longname] + [v.discrepCats[dc].output() for dc in DiscrepCat
+                                if dc not in {DiscrepCat.MISC, DiscrepCat.OTHER}]
                 )], f"{k.name.lower()}DiscBrkdwn", True)
 
             totalDiscreps = sum({v.withinSrc, v.withinAuth,
@@ -199,7 +197,8 @@ class DiscrepSourceCounter:
 
         # These ensure that sources aren't double counted
         pieAdded, tableAdded = set(), set()
-        def updateCounters(source, pieSec: str, inc: int, r) -> bool:
+        def updateCounters(source, discCat: str | DiscrepCat, pieSec: str,
+                           inc: int, r) -> bool:
             if type(source) is tuple:
                 srcTuple = tuple(map(getSrcCat, source))
                 source = " ".join(map(lambda x: x.name.capitalize(), srcTuple))
@@ -211,14 +210,13 @@ class DiscrepSourceCounter:
                 print(source, sourceCat, pieSec, inc, r)
 
             if srcTuple not in tableAdded and not other:
-                discCatName = (discCat.name if type(discCat) is DiscrepCat
-                               else discCat).lower()
-                discCatAttr = getattr(self.dict[sourceCat], discCatName)
-                if type(discCatAttr) is int:
-                    setattr(self.dict[sourceCat], discCat.lower(),
-                            discCatAttr + 1)
+                if type(discCat) is str:
+                    discCat = DiscrepCat[discCat.upper()]
+                           
+                if type(self.dict[sourceCat].discrepCats[discCat]) is int:
+                    self.dict[sourceCat].discrepCats[discCat] += 1
                 else:
-                    discCatAttr.addDiscrep(r)
+                    self.dict[sourceCat].discrepCats[discCat].addDiscrep(r)
                 tableAdded.add(srcTuple)
             if source not in pieAdded and inc:
                 try:
@@ -242,7 +240,7 @@ class DiscrepSourceCounter:
 
                 if sources:
                     updateCounters(str(list(map("".join, sources))),
-                                   "withinSrc", 1, r)
+                                   discCat, "withinSrc", 1, r)
 
         else:
             for dicts in itertools.combinations(sourceDicts, r=GROUP_SIZE):
@@ -253,7 +251,7 @@ class DiscrepSourceCounter:
                         continue
 
                     for source in inPairs(sets, sFunc="".join):
-                        updateCounters(source, "withinSrc", 1, r)
+                        updateCounters(source, discCat, "withinSrc", 1, r)
 
                     for author in inPairs(sets, sFunc=lambda x: x[0]):
                         yearSets = [{y for a, y in s if a == author} for s in sets]
@@ -262,14 +260,14 @@ class DiscrepSourceCounter:
                         inc = (reduce(operator.mul, map(len, yearSets)) -
                                 len(inPairs(yearSets)))
 
-                        if (updateCounters(author, "withinAuth", inc, r) and debug):
+                        if (updateCounters(author, discCat, "withinAuth", inc, r) and debug):
                             print("years: ", yearSets)
                             print("   increase:", inc)
 
                     for tup in {tuple(sorted([ai[0], bi[0]], key=getSrcCat))
                             for a, b in itertools.combinations(sets, 2)
                             for ai in a for bi in b if ai[0] != bi[0]}:
-                        updateCounters(tup, "betweenCats", 1, r)
+                        updateCounters(tup, discCat, "betweenCats", 1, r)
         if debug:
             print(self)
             print()
