@@ -74,17 +74,14 @@ class DiscrepCounter:
         # Differences between two categories; may be within the same category
         self.betweenCats = {k : 0 for k in SrcCat if k.value <= value}
 
-        self.discrepCats = {k : ExpImpCounter() for k in DiscrepCat
-                            if k not in {DiscrepCat.MISC, DiscrepCat.OTHER}}
-
-        # self.other = {s : 0 for s in ["High", "Med", "Low"]}
+        self.discrepCats = {dc : ExpImpCounter() for dc in DiscrepCat
+                            if dc is not DiscrepCat.MISC}
 
     def __str__(self):
         return "\n".join(filter(None, [
             ", ".join(map(str, [self.withinSrc, self.withinAuth])),
             "Diffs: " + ", ".join([f"{k.name} {v}" for k, v in self.betweenCats.items()]),
             " | ".join(map(str, self.discrepCats.values())),
-            # "Other: " + ", ".join([f"{k} {v}" for k, v in self.other.items()])
             ])) + "\n"
 
 class DiscrepCat(Enum):
@@ -93,8 +90,8 @@ class DiscrepCat(Enum):
     CATS = "Categories"
     DEFS = "Definitions"
     TERMS = "Terminology"
-    MISC = "Standalone"
-    OTHER = "Other"
+    SRCS = "Sources"
+    MISC = auto()
 
 texFileDiscreps = {
     "build/multiSyns.tex": DiscrepCat.SYNS,
@@ -122,7 +119,7 @@ class DiscrepSourceCounter:
             for discrep in content:
                 discType = (re.search(r"% Discrep count \(([A-Z]+)\):", discrep)[1]
                             if origType == DiscrepCat.MISC else origType)
-                self.countDiscreps(discrep.split("|"), discType, discType == "OTHER")
+                self.countDiscreps(discrep.split("|"), discType)
 
     def output(self):
         self.texDiscreps()
@@ -130,7 +127,7 @@ class DiscrepSourceCounter:
         for k, v in self.dict.items():
             writeFile([formatOutput(
                 [k.longname] + [v.discrepCats[dc].output() for dc in DiscrepCat
-                                if dc not in {DiscrepCat.MISC, DiscrepCat.OTHER}]
+                                if dc is not DiscrepCat.MISC]
                 )], f"{k.name.lower()}DiscBrkdwn", True)
 
             totalDiscreps = sum({v.withinSrc, v.withinAuth,
@@ -185,7 +182,7 @@ class DiscrepSourceCounter:
                    "\\label{fig:discrepSources}", "\\end{figure*}"], "pieCharts")
 
     def countDiscreps(self, sources, discCat: str | DiscrepCat,
-                      other: bool = False, debug: bool = False):
+                      debug: bool = False):
         sourceDicts = [categorizeSources(formatLineWithSources(s, False)) for s in sources]
         if debug:
             print(sourceDicts, discCat)
@@ -209,7 +206,7 @@ class DiscrepSourceCounter:
             if debug:
                 print(source, sourceCat, pieSec, inc, r)
 
-            if srcTuple not in tableAdded and not other:
+            if srcTuple not in tableAdded:
                 if type(discCat) is str:
                     discCat = DiscrepCat[discCat.upper()]
                            
