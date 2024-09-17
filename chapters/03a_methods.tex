@@ -27,9 +27,11 @@ automatically detected when \hyperref[graph-gen]{generating graphs} and
 of uncertainty, such as question marks, ``~(Testing)'' (which indicates
 that a test approach isn't explicitly denoted as such), and the keywords
 ``implied'', ``inferred'', ``can be'', ``ideally'', ``usually'', ``most'',
-``likely'', ``often'', ``if'', and ``although'' (see the \href
-{https://github.com/samm82/TestGen-Thesis/blob/50380a3/scripts/csvToGraph.py#L124-L140}
-{relevant source code}).
+``likely'', ``often'', ``if'', and ``although''
+\seeSrcCode{50380a3}{csvToGraph}{124}{140}. These words were used when creating
+the glossaries to capture varying degrees of nuance, such as when a test
+approach ``can be'' a child of another or a synonym of another ``most of the
+time'', but isn't always.
 
 \subsection{Approach Graph Generation}
 \label{graph-gen}
@@ -62,7 +64,8 @@ separately from those within a source category. As before, these are not double
 counted, meaning that the maximum number of counted discrepancies possible
 within a source category in \Cref{fig:discrepSources} is three (once for each
 type). This only occurs if there is an example of each type of discrepancy
-source where a ``stricter'' type does not apply.
+source where a ``stricter'' type does not apply\todo{To be explained in
+    \texttt{sources} branch}.
 
 \phantomsection{}
 \label{discrep-analysis-example}
@@ -117,8 +120,8 @@ exception of \papers{}).
 This determines the appropriate row of \refDiscrepsTable{} and the appropriate
 graph and slice in \Cref{fig:discrepSources}. These lists of sources can then
 be distilled down to sets of categories which are compared against
-each other to determine how times a given discrepancy manifests between source
-categories. Examples of this process are described in more detail in
+each other to determine how many times a given discrepancy manifests between
+source categories. Examples of this process are described in more detail in
 \Cref{aug-discrep-analysis}.
 
 \phantomsection{}
