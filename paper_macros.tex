@@ -66,6 +66,13 @@
 % Generic "chunks" that get reused
 %------------------------------------------------------------------------------
 
+\DeclareDocumentCommand\seeSrcCode{ m m m g }{%
+    (see the \href
+    {https://github.com/samm82/TestGen-Thesis/blob/#1/scripts/#2.py\#L#3%
+        \IfNoValueF {#4} {-L#4}}
+    {relevant source code})%
+}
+
 \newcommand{\accelTolTest}{astronauts \citep[p.~11]{MorgunEtAl1999}, aviators
     \citep[pp.~27,~42]{HoweAndJohnson1995}, or catalysts
     \citep[p.~1463]{LiuEtAl2023}}
@@ -117,10 +124,8 @@ of a test process; for example, ``across the whole organization'' or only
         the year 0000, and one in 0001. The following citation, ``(0000)'',
         contains no author, which means it was written by the same one as the
         previous citationg. These citations are processed according to this
-        logic (see the \href
-        {https://github.com/samm82/TestGen-Thesis/blob/f0b92ad/scripts/csvToGraph.py\#L49-L90}
-        {relevant source code}) so they can be consistently tracked throughout
-        the analysis.
+        logic \seeSrcCode{f0b92ad}{csvToGraph}{49}{90} so they can be
+        consistently tracked throughout the analysis.
 
         \begin{table}[hbtp!]
             \centering
