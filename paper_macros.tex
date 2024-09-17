@@ -108,7 +108,19 @@ of a test process; for example, ``across the whole organization'' or only
             }{our approach glossary}} in a consistent format, they can be parsed
         systematically. For example, if the entries in \Cref{tab:exampleGlossary}
         appear in the glossary, then their parent relations are displayed as
-        \Cref{fig:exampleGraph} in the generated graph.
+        \Cref{fig:exampleGraph} in the generated graph. Relevant citation
+        information is also captured in our glossary following the author-year
+        citation format, including ``reusing'' information from previous
+        citations. For example, the first row of \Cref{tab:exampleGlossary}
+        contains the citation ``(Author, 0000; 0001)'', which means that this
+        information was present in two documents by ``Author'': one written in
+        the year 0000, and one in 0001. The following citation, ``(0000)'',
+        contains no author, which means it was written by the same one as the
+        previous citationg. These citations are processed according to this
+        logic (see the \href
+        {https://github.com/samm82/TestGen-Thesis/blob/f0b92ad/scripts/csvToGraph.py\#L49-L90}
+        {relevant source code}) so they can be consistently tracked throughout
+        the analysis.
 
         \begin{table}[hbtp!]
             \centering
