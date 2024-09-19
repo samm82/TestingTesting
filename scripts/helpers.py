@@ -85,10 +85,16 @@ def readFileAsStr(filename) -> str:
 
 def writeFile(lines, filename, helper: bool = False, dir: str = "graphs"):
     lines = [line + '\n' for line in lines]
+    filename += ".tex"
     if helper:
-        filename = f"build/{filename}.tex"
+        filename = f"build/{filename}"
     else:
-        filename = f"assets/{dir}/{filename}.tex"
+        if not filename.startswith(f"assets/{dir}"):
+            filename = f"assets/{dir}/{filename}"
+        elif filename.startswith(f"assets/graphs/exampleGlossaries"):
+            filename = filename.split("/")
+            filename.remove("exampleGlossaries")
+            filename = "/".join(filename)
 
     try:
         with open(filename, "r", encoding="utf-8") as readFile:
