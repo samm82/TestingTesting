@@ -7,50 +7,105 @@ As there is no single authoritative source on software testing terminology,
 we need to look at many. Unfortunately, this brings to light a variety of
 discrepancies. Starting from some set of sources, we then use
 ``snowball sampling'' (a ``method of \dots\ sample selection \dots\ used to
-locate hidden populations'' \citep{Johnson2014})
-to gather further sources\seeParAlways{undef-terms}. Groups of sources with
-information that shows up in a relevant graph are given a unique colour to
-better visualize them; see \Cref{fig:recovery-graph-current,%
-    fig:recovery-graph-proposed,fig:scal-graph-current,%
-    fig:scal-graph-proposed,fig:perf-graph}.
-
+locate hidden populations'' \citep{Johnson2014}) to gather further sources%
+\seeParAlways{undef-terms}. Sources with a similar degree of
+``trustworthiness'' are grouped into categories; sources that are more
+``trustworthy'':
 \begin{enumerate}
-    \setcounter{enumi}{-1}
-    \item Trusted textbooks
-          \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
-          \begin{itemize}
-              \item Ad hoc and arbitrary; not systematic
-                    % \item Colored \textcolor{Maroon}{maroon},
-          \end{itemize}
-    \item Established standards, such as IEEE, ISO/IEC, and the \acf{swebok}
-          \begin{itemize}
-              \item Standards organizations \citep{IEEE2022, IEEE2017,
-                        IEEE2013, ISO_IEC2023b, IEEE2012, ISO_IEC2023a,
-                        IEEE2021, ISO_IEC2018, ISO2021, ISO2015}
-                    colored \textcolor{green}{green}
-              \item ``Meta-level'' commentaries or collections of
-                    terminology (often based on these standards)
-                    \ifnotpaper
-                        (\citealp{SWEBOK2024, SWEBOK2014};
-                        \citealpISTQB{}; \citealp{Firesmith2015})
-                    \else
-                        \cite{SWEBOK2024, SWEBOK2014, ISTQB, Firesmith2015}
-                    \fi colored \textcolor{blue}{blue},
-          \end{itemize}
-    \item Other resources: less-formal classifications of terminology
-          \ifnotpaper
-              \citep[e.g.,][]{KuļešovsEtAl2013}%
-          \else
-              (such as \citep{KuļešovsEtAl2013})%
-          \fi%
-          , sources investigated to
-          ``fill in'' missing definitions\seeSectionParAlways{undef-terms},
-          and testing-related resources that emerged for unrelated reasons
-          \begin{itemize}
-              \item Colored black, along with any ``surface-level''
-                    analysis that followed straightforwardly.
-          \end{itemize}
+    \item have gone through a peer-review process,
+    \item are written by numerous, well-respected authors,
+    \item are informed by many sources, and
+    \item are accepted and used in the field of software.
 \end{enumerate}
+
+We therefore create the following categories, given in order of descending
+trustworthiness: \stds{}, \metas{}, \texts{}, and \papers{}. \ifnotpaper
+    Additionally, some information comes from \nameref{infers}. \fi Each category is
+given a unique colour to better track how their information appears in relevant
+graphs (see \Cref{fig:recovery-graph-current,fig:recovery-graph-proposed,%
+    fig:scal-graph-current,fig:scal-graph-proposed,fig:perf-graph}). A summary
+of how many sources comprise each category is given in \Cref{fig:sourceSummary}.
+
+\subsubsection{\stdSources{1}}
+\label{stds}
+\stdSources{2}
+\begin{itemize}
+    \item Colored \textcolor{green}{green}
+    \item Information on software development and testing from
+          standards bodies \ifnotpaper\else (such as IEEE and ISO)\fi
+    \item Written by reputable organizations for use in software engineering
+\end{itemize}
+
+\subsubsection{\metaSources{1}}
+\label{metas}
+\metaSources{2}
+\begin{itemize}
+    \item Colored \textcolor{blue}{blue}
+    \item Collections of relevant terminology (such as \acs{istqb}'s glossary,
+          the \acs{swebok}, and \ifnotpaper \citeauthor{DoğanEtAl2014}\else
+              Doğan et al.\fi's literature review \citeyearpar{DoğanEtAl2014})
+    \item Built up from various sources, including \stds{}, and often written
+          by a large organization (such as \acs{istqb})
+\end{itemize}
+
+\subsubsection{\textSources{1}}
+\label{texts}
+\textSources{2}
+\begin{itemize}
+    \item Colored \textcolor{Maroon}{maroon}
+    \item Textbooks trusted at McMaster \citep{Patton2006, PetersAndPedrycz2000,
+              vanVliet2000} were the original (albeit ad hoc and arbitrary)
+          starting point
+    \item Written by smaller sets of authors, but with a formal review process
+          before publication
+    \item Used as resources for teaching software engineering and may be used
+          as guides in industry
+\end{itemize}
+
+\subsubsection{\paperSources{1}}
+\label{papers}
+\paperSources{2}
+\begin{itemize}
+    \item Colored black
+    \item Mainly consists of academic papers: journal articles, conference
+          papers, reports \citep{Kam2008,Gerrard2000a,Gerrard2000b}, and a
+          thesis \citep{Bas2024}
+          % \item Includes less-formal classifications (such as
+          %       \citep{KuļešovsEtAl2013})
+    \item Written by much smaller sets of authors with unknown peer review
+          processes
+    \item Much less widespread than other categories of sources
+    \item Many of these sources were investigated to ``fill in''
+          missing definitions\seeSectionParAlways{undef-terms}
+    \item Also included (for brevity) are some less-than-academic sources to
+          investigate how terms are used in practice, such as websites
+          \citep{LambdaTest2024,Pandey2023} and a booklet \citep{SPICE2022}
+\end{itemize}
+
+\ifnotpaper
+    \subsubsection{Inferences}
+    \label{infers}
+    While not as clear-cut as the other source categories, some information is
+    inferred from various sources, such as ``surface-level'' analysis that
+    follows straightforwardly without being explicitly stated in the text.
+    Inferred relations are colored \textcolor{gray}{gray} and
+    inferred discrepancies are given in \Cref{infer-discreps}.
+\fi
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \pie[sum=auto, after number=, text=legend, thick,
+            scale=\ifnotpaper0.7\else0.5\fi,
+            every label/.style={align=left, scale=0.7}]
+        {\stdSources{3}/\stds{},
+            \metaSources{3}/\metas{},
+            \textSources{3}/\texts{},
+            \paperSources{3}/\papers{}}
+    \end{tikzpicture}
+    \caption{Summary of how many sources comprise each source category.}
+    \label{fig:sourceSummary}
+\end{figure}
 
 \subsection{Procedure}
 
@@ -67,10 +122,11 @@ further, are also recorded. Approach categorizations, such as those found in
 \Cref{tab:ieeeTestTerms} and some outliers (e.g., ``artifact''), are tracked
 for future investigation.
 
-All sources are analyzed in their entirety to systematically extract
-terminology. (Some sources given in \Cref{undef-terms}
-were only partially investigated to focus on the area of interest or since
-the test approach was determined to be out-of-scope.)
+Most relevant sources are analyzed in their entirety to systematically extract
+terminology, with the exception of some sources that were only partially
+investigated. This is the case for sources chosen for a specific area of
+interest or based on a test approach that was determined to be out-of-scope,
+such as some sources given in \Cref{undef-terms}.
 Heuristics are used to guide this process, by investigating:
 
 \begin{itemize}
@@ -139,7 +195,7 @@ will be omitted over the course of analysis.
 The search process led to some testing approaches being
 mentioned without definition;
 \citep{IEEE2022} and \citep{Firesmith2015} in particular introduced many.
-Once ``standard'' sources had been exhausted, we devised a strategy to
+Once \stds{} had been exhausted, we devised a strategy to
 look for sources that explicitly define these terms, consistent with
 our snowballing approach. This uncovers new approaches, both in and out of
 scope (such as \acf{emsec} testing, HTML testing, and aspects of loop testing and

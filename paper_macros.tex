@@ -188,8 +188,9 @@ of a test process; for example, ``across the whole organization'' or only
         explicit and implicit relations without double counting them during
         \hyperref[discrep-analysis]{analysis}.
         If a relation is both explicit \emph{and} implicit, the implicit relation
-        is only shown in the graph if it is from a more ``trusted'' source
-        category; note that only the explicit synonym relation between E and F
+        is only shown in the graph if it is from a more ``trusted''
+        \hyperref[sources]{source category}; note that only the explicit
+        synonym relation between E and F
         from \Cref{tab:exampleGlossary} is shown in \Cref{fig:synExampleGraph}.
         Implicit approaches and relations are denoted by dashed lines, as shown
         in \Cref{fig:exampleGraph,fig:synExampleGraph}; explicit approaches are
@@ -275,12 +276,22 @@ of a test process; for example, ``across the whole organization'' or only
 % \def\parSynBoth{\parSynCounts{3}}
 \def\selfCycleCount{\parSynCounts{2}}
 
+\ReadFile{\stdSources}{build/stdSources}
+\ReadFile{\metaSources}{build/metaSources}
+\ReadFile{\textSources}{build/textSources}
+\ReadFile{\paperSources}{build/paperSources}
+
 \ReadFile{\stdDiscBrkdwn}{build/stdDiscBrkdwn}
 \ReadFile{\metaDiscBrkdwn}{build/metaDiscBrkdwn}
 \ReadFile{\textDiscBrkdwn}{build/textDiscBrkdwn}
-\ReadFile{\otherDiscBrkdwn}{build/otherDiscBrkdwn}
+\ReadFile{\paperDiscBrkdwn}{build/paperDiscBrkdwn}
 
 \ReadFile{\otherDiscrepCounts}{build/otherDiscrepCounts}
+
+\def\stds{\nameref{stds}}
+\def\metas{\nameref{metas}}
+\def\texts{\nameref{texts}}
+\def\papers{\nameref{papers}}
 
 % From https://tex.stackexchange.com/a/248135/192195
 \newcounter{laterdef} % just a dummy counter

@@ -11,6 +11,7 @@ class Color(OrderedEnum):
     BLUE   = 2
     MAROON = 1
     BLACK  = 0
+    GRAY   = -1
 
     def __str__(self):
         return self.name.lower()
@@ -19,8 +20,9 @@ class Color(OrderedEnum):
 class SrcCat(AutoNumberEnum):
     STD    = "Established Standards", "Standards", Color.GREEN
     META   = "``Meta-level'' Collections", "``Meta-level'' Documents", Color.BLUE
-    TEXT   = "Trusted Textbooks", "Textbooks", Color.MAROON
-    OTHER  = "Other Sources", "Other Documents", Color.BLACK
+    TEXT   = "Textbooks", "Textbooks", Color.MAROON
+    PAPER  = "Papers and Other Documents", "Papers", Color.BLACK
+    INFER  = "Inferences", "Inferences", Color.GRAY
 
     def __init__(self, longname, shortname, color):
         self.longname  = longname
@@ -32,18 +34,23 @@ class SrcCat(AutoNumberEnum):
             return self.color < other.color
         return NotImplemented
 
-def getSrcCat(s) -> SrcCat:
+# rel == True if the SrcCat is used for coloring relations
+def getSrcCat(s, rel: bool = False) -> SrcCat:
     if any(std in s for std in {"IEEE", "ISO", "IEC"}):
         return SrcCat.STD
     if any(metastd in s for metastd in
         {"Washizaki", "Bourque and Fairley", "SWEBOK",
-            "Hamburg and Mogyorodi", "ISTQB", "Firesmith"}):
+            "Hamburg and Mogyorodi", "ISTQB", "Firesmith",
+            "Doğan et al", "DoğanEtAl"}):
         return SrcCat.META
     if any(textbook in s for textbook in
         {"van Vliet", "vanVliet", "Patton", "Peters and Pedrycz",
-            "PetersAndPedrycz"}):
+            "PetersAndPedrycz", "Gerrard and Thompson",
+            "GerrardAndThompson", "Dennis et al", "DennisEtAl",
+            "Perry", "Ammann and Offutt", "AmmannAndOffutt",
+            "Fenton and Pfleeger", "FentonAndPfleeger"}):
         return SrcCat.TEXT
-    return SrcCat.OTHER
+    return SrcCat.INFER if rel and not any(par in s for par in "()") else SrcCat.PAPER
 
 def getRigidity(rigidity: Rigidity | tuple[Rigidity]):
     if isinstance(rigidity, tuple):
@@ -101,13 +108,13 @@ texFileDiscreps = {
     "chapters/05a_std_discreps.tex": DiscrepCat.MISC,
     "chapters/05b_meta_discreps.tex": DiscrepCat.MISC,
     "chapters/05c_text_discreps.tex": DiscrepCat.MISC,
-    "chapters/05d_other_discreps.tex": DiscrepCat.MISC,
+    "chapters/05d_paper_discreps.tex": DiscrepCat.MISC,
     "chapters/05e_cat_discreps.tex": DiscrepCat.CATS,
 }
 
 class DiscrepSourceCounter:
     def __init__(self):
-        self.dict = {k : DiscrepCounter(k.value) for k in SrcCat}
+        self.dict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
 
     def __str__(self):
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
@@ -126,9 +133,9 @@ class DiscrepSourceCounter:
         pieCharts = []
         for k, v in self.dict.items():
             writeFile([formatOutput(
-                [k.longname] + [getattr(v, dc.name.lower()).output()
-                                for dc in [DiscrepCat.SYNS, DiscrepCat.PARS,
-                                           DiscrepCat.CATS]]
+                ["% " + k.longname] + [getattr(v, dc.name.lower()).output()
+                                       for dc in [DiscrepCat.SYNS, DiscrepCat.PARS,
+                                                  DiscrepCat.CATS]]
                 )], f"{k.name.lower()}DiscBrkdwn", True)
 
             totalDiscreps = sum({v.withinDoc, v.withinAuth,
@@ -136,9 +143,8 @@ class DiscrepSourceCounter:
 
             slices = ([(v.withinDoc, "Within a single document"),
                        (v.withinAuth, "Between documents by the same author(s) or standards organization(s)")] +
-                      [(catCount, "Between a document from this category and " +
-                                  ("an" if cat.shortname.startswith("Other") else "a ") +
-                                  cat.shortname.lower()[:-1])
+                      [(catCount, "Between a document from this category and a " +
+                                  cat.shortname.lower()[:-1])  # Strip plural "s"
                         for cat, catCount in v.betweenCats.items()])
 
             # Default color palette for pgf-pie
@@ -157,7 +163,7 @@ class DiscrepSourceCounter:
                                   [f"      {val}/{str(round(val/totalDiscreps*100, 1)).strip("0").strip(".")}\\%"
                                    for val, _ in slices if val]),
                               "}", "\\end{tikzpicture}",
-                             f"\\caption{{Discrepancies found in {k.shortname.lower().replace(" ", "\\\\")}.}}",
+                             f"\\caption{{Discrepancies found in \\{k.name.lower()}s{{}}.}}",
                              f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
                               "\\end{subfigure}"
                               ])

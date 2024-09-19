@@ -53,7 +53,7 @@ To understand where discrepancies exist in the literature, they are
 grouped based on the source categories (as described in \Cref{sources})
 responsible for them. Each discrepancy is then counted \emph{once} per source
 category if it appears within it \emph{and/or} between it and a more
-``trusted'' category\todo{To be formalized in the \texttt{sources} branch}.
+``trusted'' category.
 This avoids counting the same discrepancy twice for a given category (see
 \thesisissueref{83}), which would result in the number of
 \emph{occurrences} of all discrepancies, instead of the number of discrepancies
@@ -76,7 +76,7 @@ glossary \emph{and} two papers. This would add one to the
 following rows of \refDiscrepsTable{} in the relevant column:
 
 \begin{itemize}
-    \item \textbf{\stdDiscBrkdwn{1}}: this discrepancy occurs:
+    \item \textbf{\stds{}}: this discrepancy occurs:
           \begin{enumerate}
               \item within one standard and
               \item between two standards.
@@ -87,10 +87,10 @@ following rows of \refDiscrepsTable{} in the relevant column:
           singular document and those between documents by the same author is
           given in \Cref{fig:discrepSources} and explained in more detail in
           \Cref{aug-discrep-analysis}.
-    \item \textbf{\metaDiscBrkdwn{1}}: this discrepancy occurs between a
+    \item \textbf{\metas{}}: this discrepancy occurs between a
           source in this category and a ``more trusted'' one
           (the IEEE standards).
-    \item \textbf{\otherDiscBrkdwn{1}}: this discrepancy occurs between a
+    \item \textbf{\papers{}}: this discrepancy occurs between a
           source in this category and a ``more trusted'' one. Even though there
           are two sources in this category \emph{and} two ``more trusted''
           categories involved, this increments the count by just one to avoid
@@ -116,7 +116,7 @@ by the same author(s) when creating \Cref{fig:discrepSources}. Then, the
 relevant sources can be sorted into their categories based on their citations,
 done by the function in \Cref{lst:getSrcCat}, since each source category
 outlined in \Cref{sources} is comprised of a small number of authors (with the
-exception of \otherDiscBrkdwn{1}\todo{Update with \texttt{sources} branch!}).
+exception of \papers{}).
 This determines the appropriate row of \refDiscrepsTable{} and the appropriate
 graph and slice in \Cref{fig:discrepSources}. These lists of sources can then
 be distilled down to sets of categories which are compared against
@@ -184,9 +184,8 @@ same rules as \nameref{auto-discrep-analysis-rigidity}. For example, the line
 indicates that the following discrepancies are present. These all increment
 counts in both \Cref{fig:discrepSources} and \refDiscrepsTable{} by only one,
 except for the second, which only affects \Cref{fig:discrepSources}. This is
-because it is less ``rigid'' than another discrepancy within Establish Standards%
-\todo{Update in \texttt{sources} branch!} (i.e., the first one) and as such is
-not double counted in \refDiscrepsTable{}:
+because it is less ``rigid'' than another discrepancy within \stds{} (i.e., the
+first one) and as such is not double counted in \refDiscrepsTable{}:
 
 \begin{itemize}
     \item an explicit discrepancy between documents by

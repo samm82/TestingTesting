@@ -61,7 +61,7 @@ DisasterRecoveryTesting -> FaultToleranceTesting[color="green"];
 DisasterRecoveryTesting -> RecoverabilityTesting[color="green"];
 ElasticityTesting -> MemoryManagementTesting[color="blue"];
 ElasticityTesting -> ResourceUtilizationTesting[color="blue"];
-ElasticityTesting -> StressTesting;
+ElasticityTesting -> StressTesting[color="gray"];
 EnduranceTesting -> PerformancerelatedTesting[color="green"];
 EnduranceTesting -> PerformanceEfficiencyTesting[color="green"];
 EnduranceTesting -> ReliabilityTesting[color="blue"];
@@ -75,7 +75,7 @@ LoadTesting -> ReliabilityTesting[color="green"];
 LoadTesting -> PerformanceEfficiencyTesting[color="green"];
 LoadTesting -> CapacityTesting[color="blue"];
 MemoryManagementTesting -> PerformancerelatedTesting[color="green"];
-MemoryManagementTesting -> ResourceUtilizationTesting;
+MemoryManagementTesting -> ResourceUtilizationTesting[color="gray"];
 PerformanceEfficiencyTesting -> ReliabilityTesting[color="green"];
 PerformanceEfficiencyTesting -> PerformancerelatedTesting[color="green"];
 PerformanceEfficiencyTesting -> PerformanceTesting[style="dashed",color="green"];
@@ -115,7 +115,6 @@ subgraph cluster_legend {
     label="Legend";
     labelloc="b";
     fontsize="48pt"
-    rankdir=BT
     {
         rank=same
         chd [label="Child"];
@@ -141,6 +140,21 @@ subgraph cluster_legend {
         syn5 [label=<Term>]
         syn3 -> syn4 -> syn5 [dir=none]
     }
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
+}
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=gray, label=<From Inferences>]
+}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par
@@ -152,6 +166,11 @@ syn5 -> imp4
 syn3 -> imp1
 syn4 -> imp2
 syn5 -> imp3
+src1 -> syn3
+src2 -> syn4
+src3 -> syn5
+src5 -> src2
+src6 -> src3
 }
 
 // Connect the dummy node to the first node of the legend

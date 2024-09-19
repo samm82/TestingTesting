@@ -74,11 +74,11 @@ AcceptanceTesting -> QualificationTesting[dir=none,color="blue"];
 LinkTesting [label=<Link<br/>Testing>,style="dotted"];
 ComponentIntegrationTesting -> LinkTesting[dir=none,style="dashed"];
 IntegrationTesting -> LinkTesting[dir=none,style="dashed"];
-QualificationTesting -> OperationalTesting[dir=none,style="dashed"];
-IntegratedSystemTesting -> SystemsIntegrationTesting[dir=none,style="dashed"];
+QualificationTesting -> OperationalTesting[dir=none,style="dashed",color="gray"];
+IntegratedSystemTesting -> SystemsIntegrationTesting[dir=none,style="dashed",color="gray"];
 OperationalTesting -> ProductionAcceptanceTesting[dir=none,color="blue"];
-ProductionVerificationTesting -> ProductionAcceptanceTesting[dir=none,style="dashed"];
-SystemQualificationTesting -> SystemTesting[dir=none,style="dashed"];
+ProductionVerificationTesting -> ProductionAcceptanceTesting[dir=none,style="dashed",color="gray"];
+SystemQualificationTesting -> SystemTesting[dir=none,style="dashed",color="gray"];
 
 AcceptanceTesting -> SystemTesting[color="maroon"];
 AcceptanceTesting -> IntegrationTesting[style="dashed"];
@@ -94,20 +94,20 @@ ComponentIntegrationTesting -> IntegrationTesting[color="blue"];
 ContractualAcceptanceTesting -> AcceptanceTesting[color="blue"];
 CustomerAcceptanceTesting -> AcceptanceTesting[color="blue"];
 DataCenterTesting -> OperationalTesting[color="blue"];
-DesktopDevelopmentTesting -> DevelopmentTesting[style="dashed"];
+DesktopDevelopmentTesting -> DevelopmentTesting[style="dashed",color="gray"];
 EndtoendTesting -> IntegrationTesting;
-EndtoendTesting -> OperationalTesting[style="dashed"];
-ExternalLinksIntegrationTesting -> IntegrationTesting;
+EndtoendTesting -> OperationalTesting[style="dashed",color="gray"];
+ExternalLinksIntegrationTesting -> IntegrationTesting[color="gray"];
 FactoryAcceptanceTesting -> AcceptanceTesting[color="green"];
 FollowonOperationalTesting -> OperationalTesting[color="blue"];
 HumanintheLoopTesting -> SystemTesting[color="blue"];
 InitialOperationalTesting -> OperationalTesting[color="blue"];
-InputDataTesting -> MLModelTesting;
+InputDataTesting -> MLModelTesting[color="gray"];
 InstallationTesting -> SystemTesting[style="dashed"];
 IntegratedSystemTesting -> DataCenterTesting[color="blue"];
 InterfaceTesting -> IntegrationTesting[color="blue"];
 InterfaceTesting -> SystemIntegrationTesting[style="dashed"];
-LegacySystemIntegrationTesting -> SystemIntegrationTesting;
+LegacySystemIntegrationTesting -> SystemIntegrationTesting[color="gray"];
 NeighborhoodIntegrationTesting -> IntegrationTesting[color="blue"];
 OpenBetaTesting -> BetaTesting[color="blue"];
 OperationalTesting -> AcceptanceTesting[color="green"];
@@ -115,30 +115,30 @@ OperationalEffectivenessTesting -> OperationalTesting[color="blue"];
 OperationalSuitabilityTesting -> OperationalTesting[color="blue"];
 OutsideInTesting -> IntegrationTesting[style="dashed"];
 PairwiseIntegrationTesting -> IntegrationTesting[color="blue"];
-PostDeploymentMonitoring -> RegressionTesting;
+PostDeploymentMonitoring -> RegressionTesting[color="gray"];
 ProcessorintheLoopTesting -> SystemTesting[color="blue"];
 ProductionAcceptanceTesting -> AcceptanceTesting[color="blue"];
 ProductionVerificationTesting -> AcceptanceTesting[color="green"];
-ProductionVerificationTesting -> OperationalTesting[style="dashed"];
+ProductionVerificationTesting -> OperationalTesting[style="dashed",color="gray"];
 QualificationOperationalTesting -> OperationalTesting[color="blue"];
-QualificationOperationalTesting -> QualificationTesting[style="dashed"];
+QualificationOperationalTesting -> QualificationTesting[style="dashed",color="gray"];
 RegulatoryAcceptanceTesting -> AcceptanceTesting[color="blue"];
 SandwichTesting -> IntegrationTesting[color="blue"];
 SiteAcceptanceTesting -> AcceptanceTesting[color="blue"];
-SoftwareQualificationTesting -> SystemTesting[style="dashed"];
+SoftwareQualificationTesting -> SystemTesting[style="dashed",color="gray"];
 SoftwareintheLoopTesting -> SystemTesting[color="blue"];
 SoftwareintheLoopTesting -> IntegrationTesting[style="dashed"];
 SoSIntegrationTesting -> SystemTesting[color="blue"];
-SoSIntegrationTesting -> IntegrationTesting;
+SoSIntegrationTesting -> IntegrationTesting[color="gray"];
 SoSTesting -> SystemTesting[color="blue"];
 SubsystemTesting -> SystemTesting[color="blue"];
 SubsystemTesting -> UnitTesting[style="dashed",color="blue"];
 SystemIntegrationTesting -> IntegrationTesting[color="blue"];
 SystemIntegrationTesting -> SystemTesting[color="blue"];
-SystemQualificationTesting -> SystemTesting[style="dashed"];
+SystemQualificationTesting -> SystemTesting[style="dashed",color="gray"];
 SystemTesting -> SystemTesting[color="blue"];
 SystemTesting -> IntegrationTesting[style="dashed"];
-SystemsIntegrationTesting -> IntegrationTesting;
+SystemsIntegrationTesting -> IntegrationTesting[color="gray"];
 TopDownTesting -> IntegrationTesting[color="blue"];
 UserAcceptanceTesting -> AcceptanceTesting[color="green"];
 
@@ -146,7 +146,6 @@ subgraph cluster_legend {
     label="Legend";
     labelloc="b";
     fontsize="48pt"
-    rankdir=BT
     {
         rank=same
         chd [label="Child"];
@@ -173,6 +172,24 @@ subgraph cluster_legend {
         syn5 [label=<Term>]
         syn3 -> syn4 -> syn5 [dir=none]
     }
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
+}
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=maroon, label=<From Textbooks>]
+src7 [style=invis];
+src8 [style=invis];
+src7 -> src8 [color=gray, label=<From Inferences>]
+}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par
@@ -182,6 +199,14 @@ imp5 -> imp1
 syn3 -> imp2
 syn4 -> imp3
 syn5 -> imp4
+src1 -> imp5
+src2 -> syn3
+src3 -> syn4
+src4 -> syn5
+src5 -> src1
+src6 -> src2
+src7 -> src3
+src8 -> src4
 }
 
 // Connect the dummy node to the first node of the legend

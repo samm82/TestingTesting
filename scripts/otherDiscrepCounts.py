@@ -1,8 +1,9 @@
 import re
 
+from discrepCounter import SrcCat
 from helpers import *
 
-SECTIONS = ["Std", "Meta", "Text", "Other"]
+SECTIONS = [k.name.capitalize() for k in SrcCat if k.color.value >= 0]
 SEVERITIES = {"high": "Medium", "med": "Low", "low": ""}
 
 class DiscrepSection:

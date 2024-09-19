@@ -64,14 +64,17 @@ update_diffs: gen_csv_diffs
 		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
 	done
 
-LATEX_SCRIPTS = csvToGraph undefTermSources otherDiscrepCounts
+LATEX_SCRIPTS = csvToGraph undefTermSources otherDiscrepCounts sourceCounts
 
 $(LATEX_SCRIPTS):
 	-mkdir build || true
 	py scripts/$@.py
 
+sourceCounts:
+	-mkdir build || true
+	py scripts/$@.py $(CSV_GLOSSARIES)
+
 csvToGraph:
-	echo $(GRAPH_GLOSSARIES)
 	-mkdir build || true
 	for filename in $(GRAPH_GLOSSARIES) ; do \
 		py scripts/$@.py $${filename} ; \

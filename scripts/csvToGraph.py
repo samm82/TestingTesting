@@ -223,19 +223,19 @@ def addToIterable(s, iterable, key=key):
     else:
         raise ValueError(f"addToIterable unimplemented for {type(iterable)}")
 
-def getSourceColor(s):
-    return getSrcCat(s).color
-
 # Returns a tuple with the color for the rigid relations (if any),
 # then for the unsure ones (if any)
 def getRelColor(name: str) -> tuple[str]:
+    def getSourceColor(s):
+        return getSrcCat(s, rel=True).color
+
     if isUnsure(name, only=True):
         return (None, getSourceColor(name))
 
     if not isUnsure(name):
         return (getSourceColor(name), None)
 
-    colors = tuple(map(getSourceColor, name.split(isUnsure(name), 1)))
+    colors = [getSourceColor(src) for src in name.split(isUnsure(name), 1)]
     return (colors[0], colors[1] if colors[1] > colors[0] else None)
 
 def colorRelations(colors, edge, extra=""):
@@ -541,8 +541,12 @@ if "Example" not in csvFilename:
             f"{selfCycleCount}% Self-cycles"],
             "parSynCounts", True)
 
-def styleInLine(style, line):
-        return re.search(r"label=.+,style=.+" + style, line)
+class Flag(Enum):
+    COLOR = auto()
+    STYLE = auto()
+
+def inLine(flag, style, line):
+        return re.search(fr"label=.+,{flag.name.lower()}=.+" + style, line)
 
 if "Example" not in csvFilename:
     discrepsSrcCounter.output()
@@ -554,15 +558,15 @@ def writeDotFile(lines, filename):
         LONG_EDGE_LABEL = 'label="                "'
 
         # Only include meaningful synonyms
-        syns = [line.split(" ")[0] for line in lines if styleInLine("dotted", line)]
+        syns = [line.split(" ")[0] for line in lines if inLine(Flag.STYLE, "dotted", line)]
         synsToRemove = [syn for syn in syns if sum(1 for line in lines if syn in line) < 3]
         lines = [line for line in lines if not any(syn in line for syn in synsToRemove)]
 
         impTerm, dynTerm = '', ''
-        if any(styleInLine("dashed", line) for line in lines):
+        if any(inLine(Flag.STYLE, "dashed", line) for line in lines):
             impTerm = 'imp5 [label=<Implied<br/>Term> style="dashed"]'
 
-        if any(styleInLine("filled", line) for line in lines):
+        if any(inLine(Flag.STYLE, "filled", line) for line in lines):
             dynTerm = 'dyn [label=<Dynamic<br/>Approach> style="filled"]'
 
         twoSyn = [
@@ -584,9 +588,7 @@ def writeDotFile(lines, filename):
 
         def twoSynAlign(nodes):
             synNodes = [f'syn{i}' for i in range(3, 6, 2 if len(nodes) == 2 else 1)]
-            for i in range(len(synNodes)):
-                synNodes[i] = f'{synNodes[i]} -> {nodes[i]}'
-            return synNodes
+            return [f'{synNode} -> {nodes[i]}' for i, synNode in enumerate(synNodes)]
 
         extras, align = [], []
         if impTerm and dynTerm:
@@ -611,6 +613,26 @@ def writeDotFile(lines, filename):
         INDENT = "    "
         extras = [f'{INDENT if line in "}{" else 2*INDENT}{line}' for line in extras]
 
+        srcCats = [srcCat for srcCat in SrcCat
+                  if any(srcCat.color.name.lower() in line for line in lines)]
+
+        colors, colorRow = [], []
+        prevAlignNodes = sorted(set(a.split(" -> ")[0] for a in align))
+        for i in range(0, len(srcCats) * 2, 2):
+            colorRow += [f"src{i+1} [style=invis];", f"src{i+2} [style=invis];",
+                 f"src{i+1} -> src{i+2} [color={srcCats[i//2].color.name.lower()}, "
+                 f"label=<From {srcCats[i//2].longname.replace(" ", "<br/>")}>]"]
+            if i % 4:
+                colors += sameRank(colorRow)
+                colorRow = []
+                newAlignNodes = [f"src{j}" for j in range(i-1, i+3)]
+                align += [f"{a} -> {b}" for a, b in zip(newAlignNodes, prevAlignNodes)]
+                prevAlignNodes = newAlignNodes
+        if colorRow:
+            colors += sameRank(colorRow)
+            align += [f"{a} -> {b}" for a, b in
+                      zip([f"src{j}" for j in range(i+1, i+3)], prevAlignNodes[1:])]
+
         # From https://stackoverflow.com/a/65443720/10002168
         legend = [
             '',
@@ -619,7 +641,6 @@ def writeDotFile(lines, filename):
             # This puts the label at the top, not the bottom, because of the rankdir
             '    labelloc="b";',
             '    fontsize="48pt"',
-            '    rankdir=BT',
             '    {',
             '        rank=same',
             '        chd [label="Child"];',
@@ -638,7 +659,7 @@ def writeDotFile(lines, filename):
             '        imp4 [label=<Implied<br/>Synonym>];',
             f'        imp3 -> imp4 [style="dashed" dir=none {LONG_EDGE_LABEL}]',
             '    }',
-        ] + extras + [
+        ] + extras + colors + [
             # For alignment
             '    edge [style="invis"]',
             '    imp1 -> chd',
@@ -678,7 +699,10 @@ else:
     for key, value in categoryDict.items():
         lines = value[1]
         writeDotFile(lines, f"{key.lower()}Graph")
-        unsure = ["dashed"] + [c.split()[0] for c in lines if styleInLine("dashed", c)]
+        unsure = reduce(operator.add,
+                        [[val] + [c.split()[0] for c in lines if inLine(flag, val, c)]
+                        for flag, val in {(Flag.STYLE, "dashed"), (Flag.COLOR, "gray")}])
+        
         writeDotFile([c for c in lines if all(x not in c for x in unsure)],
                     f"rigid{key}Graph")
 
