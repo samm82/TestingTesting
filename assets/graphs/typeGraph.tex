@@ -96,7 +96,7 @@ CorrectnessTesting -> FunctionalTesting[dir=none,style="dashed",color="blue"];
 CapacityTesting -> ScalabilityTesting[dir=none,color="green"];
 CompatibilityTesting -> CoexistenceTesting[dir=none,color="green"];
 ConfigurationTesting -> PortabilityTesting[dir=none,style="dashed"];
-ConformanceTesting -> CorrectnessTesting[dir=none,style="dashed"];
+ConformanceTesting -> CorrectnessTesting[dir=none,style="dashed",color="gray"];
 SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
 EnduranceTesting -> SoakTesting[dir=none,color="green"];
 ReliabilityTesting -> SoakTesting[dir=none];
@@ -131,7 +131,7 @@ CoexistenceTesting -> CompatibilityTesting[color="green"];
 ContentUsageTesting -> UsabilityTesting[color="blue"];
 ConversionTesting -> ConformanceTesting[color="green"];
 ConversionTesting -> FunctionalSuitabilityTesting[color="green"];
-ConversionTesting -> PortabilityTesting[style="dashed"];
+ConversionTesting -> PortabilityTesting[style="dashed",color="gray"];
 CorrectnessTesting -> FunctionalSuitabilityTesting[color="green"];
 DataMigrationTesting -> ConversionTesting[color="green"];
 DataMigrationTesting -> CorrectnessTesting[color="blue"];
@@ -149,12 +149,12 @@ FailureToleranceTesting -> RobustnessTesting[color="blue"];
 FaultToleranceTesting -> ReliabilityTesting[color="green"];
 FaultToleranceTesting -> AvailabilityTesting[color="green"];
 FaultToleranceTesting -> RobustnessTesting[color="blue"];
-FullConformanceTesting -> ConformanceTesting;
+FullConformanceTesting -> ConformanceTesting[color="gray"];
 FunctionalSuitabilityTesting -> CompatibilityTesting[style="dashed",color="green"];
 FunctionalTesting -> FunctionalSuitabilityTesting[color="green"];
-FunctionalityTesting -> FunctionalSuitabilityTesting[style="dashed"];
+FunctionalityTesting -> FunctionalSuitabilityTesting[style="dashed",color="gray"];
 InfrastructureCompatibilityTesting -> CompatibilityTesting[color="blue"];
-InfrastructureCompatibilityTesting -> InfrastructureTesting;
+InfrastructureCompatibilityTesting -> InfrastructureTesting[color="gray"];
 InfrastructureTesting -> SecurityTesting[color="blue"];
 InstallabilityTesting -> PortabilityTesting[color="green"];
 InstallabilityTesting -> CompatibilityTesting[color="green"];
@@ -220,7 +220,7 @@ StressTesting -> PerformanceEfficiencyTesting[color="green"];
 StressTesting -> ConformanceTesting[color="green"];
 StressTesting -> PerformanceTesting[color="blue"];
 StressTesting -> CapacityTesting[color="blue"];
-TailoredConformanceTesting -> ConformanceTesting;
+TailoredConformanceTesting -> ConformanceTesting[color="gray"];
 UsabilityTesting -> ConformanceTesting[color="green"];
 UsabilityTesting -> UsabilityTesting;
 VolumeTesting -> PerformancerelatedTesting[color="green"];
@@ -233,7 +233,6 @@ subgraph cluster_legend {
     label="Legend";
     labelloc="b";
     fontsize="48pt"
-    rankdir=BT
     {
         rank=same
         chd [label="Child"];
@@ -260,6 +259,21 @@ subgraph cluster_legend {
         syn5 [label=<Term>]
         syn3 -> syn4 -> syn5 [dir=none]
     }
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
+}
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=gray, label=<From Inferences>]
+}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par
@@ -269,6 +283,12 @@ imp5 -> imp1
 syn3 -> imp2
 syn4 -> imp3
 syn5 -> imp4
+src1 -> imp5
+src2 -> syn3
+src3 -> syn4
+src4 -> syn5
+src5 -> src2
+src6 -> src3
 }
 
 // Connect the dummy node to the first node of the legend

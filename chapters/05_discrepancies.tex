@@ -8,14 +8,14 @@ After gathering all this data\footnote{Available in \texttt{ApproachGlossary.csv
     and \texttt{QualityGlossary.csv} at \ifblind{[Repository link suppressed]}
     {\url{https://github.com/samm82/TestGen-Thesis}}.}, we found many discrepancies
 and ambiguities. A summary of these is shown in
-\refDiscrepsReqsTable{}, where a given row corresponds to the number of
+\refDiscrepsTable{}, where a given row corresponds to the number of
 discrepancies either within that category and/or with a ``more trusted''
-category (i.e., with a source from a category higher up in the table). Issues
+\hyperref[sources]{source category} (i.e., a previous row in the table). Issues
 with \nameref{syns}, \nameref{par-rels}, and \nameref{categories-discrep} are
 (Exp)licit or (Imp)licit. Issues with \nameref{func-test-discrep},
 \ifnotpaper\nameref{oat-discrep}\else\acf{operat}\footnote{Section omitted for
         brevity.}\fi, \nameref{recov-discrep}, and \nameref{scal-discrep} are
-also given, although not listed separately in \refDiscrepsReqsTable{}; these
+also given, although not listed separately in \refDiscrepsTable{}; these
 are counted alongside \nameref{other-discrep}, all grouped into
 degrees of severity as follows\ifnotpaper:\else.
 (Note that only select discrepancies are listed for brevity.) \fi
@@ -471,7 +471,7 @@ sources outlined in \Cref{sources}.
 
 % These lists were itemized for paper; might want a custom label in future
 
-\subsubsection{Other Discrepancies from Standards}
+\subsubsection{Other Discrepancies from \stds{}}
 \input{chapters/05a_std_discreps}
 
 % TODO: re-investigate this after going through the rest of ISO/IEC/IEEE 29119
@@ -526,21 +526,22 @@ sources outlined in \Cref{sources}.
     \end{itemize}
 \fi
 
-\subsubsection{Other Discrepancies from ``Meta-Level'' Sources}
+\subsubsection{Other Discrepancies from \metas{}}
 \input{chapters/05b_meta_discreps}
 
-\ifnotpaper\subsubsection{Other Discrepancies from Textbooks}
+\ifnotpaper\subsubsection{Other Discrepancies from \texts{}}
     \input{chapters/05c_text_discreps}\fi
 
-\subsubsection{Other Discrepancies from Other Sources}
-\input{chapters/05d_other_discreps}
+\subsubsection{Other Discrepancies from \papers{}}
+\input{chapters/05d_paper_discreps}
 
 \ifnotpaper
     \subsection{Inferred Discrepancies}
+    \label{infer-discreps}
     Along the course of this analysis, we inferred many potential discrepancies.
-    Some of these have a source attached, while others do not. These are excluded
-    from any counts of the numbers of discrepancies, since they are more
-    subjective, but are given below for completeness.
+    Some of these have a conflicting source while others do not. These are
+    excluded from any counts of the numbers of discrepancies, since they are
+    more subjective, but are given below for completeness.
 
     \subsubsection{Inferred Synonym Discrepancies}
     See \Cref{multiSyns}.

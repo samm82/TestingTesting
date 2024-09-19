@@ -8,6 +8,8 @@ CSV_GLOSSARIES = $(addsuffix .csv, $(GLOSSARIES))
 TXT_GLOSSARIES = $(addsuffix .txt, $(GLOSSARIES))
 DIFF_GLOSSARIES = $(addprefix Diff, $(TXT_GLOSSARIES))
 
+GRAPH_GLOSSARIES = ApproachGlossary.csv assets/graphs/exampleGlossaries/*Glossary.csv
+
 GRAPHS = assets/graphs/*Graph.tex assets/graphs/manual/*.tex
 CUSTOM_STUBS = recovery scalability performance
 ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
@@ -62,11 +64,21 @@ update_diffs: gen_csv_diffs
 		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
 	done
 
-LATEX_SCRIPTS = csvToGraph undefTermSources
+LATEX_SCRIPTS = csvToGraph undefTermSources sourceCounts
 
 $(LATEX_SCRIPTS):
 	-mkdir build || true
 	py scripts/$@.py
+
+sourceCounts:
+	-mkdir build || true
+	py scripts/$@.py $(CSV_GLOSSARIES)
+
+csvToGraph:
+	-mkdir build || true
+	for filename in $(GRAPH_GLOSSARIES) ; do \
+		py scripts/$@.py $${filename} ; \
+	done
 
 compile_graphs: csvToGraph
 	for filename in $(GRAPHS) ; do \
@@ -100,7 +112,7 @@ paper thesis poster: $(LATEX_SCRIPTS) # standard build of documents
 paper_blind: paper # double-blind build of ICSE paper for review submission
 	make compile_doc DOC_NAME=$@ TEX_NAME=$<
 
-build: csv_diff paper thesis graphs
+build: csv_diff paper graphs thesis
 
 debug: DOC_NAME=thesis
 debug: TEX_FLAGS=

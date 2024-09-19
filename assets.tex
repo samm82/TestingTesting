@@ -42,17 +42,52 @@
 %------------------------------------------------------------------------------
 
 % Organization of files
+\newcommand{\ExampleGraph}{
+    \begin{figure*}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \includegraphics[width=\linewidth]{\graphAssets/ExampleGlossaryGraph.pdf}
+            \caption{Graph from \Cref{tab:exampleGlossary}.}
+            \label{fig:exampleGraph}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.575\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegendNonSolidTerms.pdf}
+            \includegraphics[width=0.85\linewidth]{\graphAssets/SynExampleGlossaryGraph.pdf}
+            \caption{Graph from \Cref{tab:synExampleGlossary}.}
+            \label{fig:synExampleGraph}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[width=0.875\linewidth]{\graphAssets/SelfExampleGlossaryGraph.pdf}
+            \vspace{5mm}
+            \caption{Graph generated from a .tex file containing a line starting with
+                \texttt{I -> I}.}
+            \label{fig:selfExampleGraph}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[width=0.75\linewidth]{\graphAssets/ParSynExampleGlossaryGraph.pdf}
+            \caption{Graph generated from a .tex file containing a line starting with
+                \texttt{J -> K} if J and K are synonyms.}
+            \label{fig:parSynExampleGraph}
+        \end{subfigure}
+        \caption{Example generated graphs.}
+        \label{fig:exampleGraphs}
+    \end{figure*}
+}
+
 \newcommand{\performanceGraph}{\includegraphics[width=0.8\linewidth]{\graphAssets/manual/performanceProposedGraph.pdf}}
 \newcommand{\recoveryGraphCurrent}{\includegraphics[width=\linewidth]{\graphAssets/recoveryGraph.pdf}}
 \newcommand{\recoveryGraphProposed}{
     \includegraphics[width=\linewidth]{\graphAssets/recoveryProposedGraph.pdf}
-    \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegend.pdf}
+    \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegendGreenBlue.pdf}
 }
 
 \newcommand{\scalabilityGraphCurrent}{\includegraphics[width=\linewidth]{\graphAssets/scalabilityGraph.pdf}}
 \newcommand{\scalabilityGraphProposed}{
     \includegraphics[width=\linewidth]{\graphAssets/scalabilityProposedGraph.pdf}
-    \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegend.pdf}
+    \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegendGreenBlue.pdf}
 }
 
 %------------------------------------------------------------------------------
@@ -78,7 +113,7 @@
 \newcommand{\refOtherTestTerms}{\Cref{tab:otherTestTerms}}
 
 \newcommand{\discrepsTable}{\input{\tableAssets/discreps}}
-\newcommand{\refDiscrepsReqsTable}{\Cref{tab:discreps}}
+\newcommand{\refDiscrepsTable}{\Cref{tab:discreps}}
 
 \newcommand{\testReqsTable}{\input{\tableAssets/testReqs}}
 \newcommand{\reftestReqsTable}{\Cref{tab:testReqs}}

@@ -66,6 +66,13 @@
 % Generic "chunks" that get reused
 %------------------------------------------------------------------------------
 
+\DeclareDocumentCommand\seeSrcCode{ m m m g }{%
+    (see the \href
+    {https://github.com/samm82/TestGen-Thesis/blob/#1/scripts/#2.py\#L#3%
+        \IfNoValueF {#4} {-L#4}}
+    {relevant source code})%
+}
+
 \newcommand{\accelTolTest}{astronauts \citep[p.~11]{MorgunEtAl1999}, aviators
     \citep[pp.~27,~42]{HoweAndJohnson1995}, or catalysts
     \citep[p.~1463]{LiuEtAl2023}}
@@ -97,6 +104,122 @@ of a test process; for example, ``across the whole organization'' or only
         \citetext{\citealp[p.~375]{IEEE2017}; \citealp[p.~7-10]{SWEBOK2024}}%
     \else \cite[p.~375]{IEEE2017}, \cite[p.~7-10]{SWEBOK2024}%
     \fi, which is distinct from robustness testing \citep[p.~53]{Firesmith2015}.}
+
+\def\graphGenDesc{
+    To better visualize how test approaches relate to each other, we
+    \ifnotpaper\else then \fi developed a tool to automatically
+    generate graphs of these relations.
+    \ifnotpaper Since child-parent and synonym relations between approaches are
+        tracked in \ifblind{our approach glossary}{\href{
+                https://github.com/samm82/TestGen-Thesis/blob/main/ApproachGlossary.csv
+            }{our approach glossary}} in a consistent format, they can be parsed
+        systematically. For example, if the entries in \Cref{tab:exampleGlossary}
+        appear in the glossary, then their parent relations are displayed as
+        \Cref{fig:exampleGraph} in the generated graph. Relevant citation
+        information is also captured in our glossary following the author-year
+        citation format, including ``reusing'' information from previous
+        citations. For example, the first row of \Cref{tab:exampleGlossary}
+        contains the citation ``(Author, 0000; 0001)'', which means that this
+        information was present in two documents by ``Author'': one written in
+        the year 0000, and one in 0001. The following citation, ``(0000)'',
+        contains no author, which means it was written by the same one as the
+        previous citationg. These citations are processed according to this
+        logic \seeSrcCode{f0b92ad}{csvToGraph}{49}{90} so they can be
+        consistently tracked throughout the analysis.
+
+        \begin{table}[hbtp!]
+            \centering
+            \begin{tabular}{ll} \hline
+                Name                        & Parent(s)                        \\ \hline
+                A                           & B (Author, 0000; 0001), C (0000) \\
+                B                           & C (implied by Author, 0000)      \\
+                C                           & D (Author, 0002)                 \\
+                D (implied by Author, 0002) &                                  \\ \hline
+            \end{tabular}
+            \caption{Example glossary entries demonstrating how parent relations are tracked.}
+            \label{tab:exampleGlossary}
+        \end{table}
+
+        \ExampleGraph{}
+
+    \fi
+    All child-parent relations are graphed, as well as synonym relations where either:
+    \begin{enumerate}
+        \item both synonyms have their own rows in the glossary, or
+        \item a term is a synonym to more than one term with its own row in the
+              glossary.
+    \end{enumerate}
+    \ifnotpaper These conditions are also deduced from the information parsed
+        from the glossary. For example, if the entries in \Cref{tab:synExampleGlossary}
+        appear in the glossary, then they are displayed as \Cref{fig:synExampleGraph}
+        in the generated graph (note that X does not appear since it does not
+        meet the criteria given above).
+
+        \begin{table}[hbtp!]
+            \centering
+            \begin{tabular}{ll} \hline
+                Name & Synonym(s)                            \\ \hline
+                E    & F (Author, 0000; implied by 0001)     \\
+                G    & F (Author, 0002), H (implied by 0000) \\
+                H    & X                                     \\ \hline
+            \end{tabular}
+            \caption{Example glossary entries demonstrating how synonym relations are tracked.}
+            \label{tab:synExampleGlossary}
+        \end{table}
+
+        This allows for automatic detection of some classes of discrepancies. The
+        most trivial to automate is ``multi-synonym'' relations, which are already
+        found to generate the graph as desired. The list found in \Cref{multiSyns}
+        is automatically generated based on glossary entries such as those found
+        in \Cref{tab:synExampleGlossary}. The self-referential definitions in
+        \Cref{par-rels} were also trivial, found by simply looking for lines
+        the generated .tex files starting with \texttt{I -> I} which would
+        result in the graph in \Cref{fig:selfExampleGraph}. A similar process
+        is used to detect instances where two approaches have a synonym
+        \emph{and} a child-parent relation. A dictionary of each term's
+        synonyms is built to evaluate which synonym relations are notable
+        enough to include in the graph, and these mappings are then checked to
+        see if one appears as a parent of the other. For example, if J and K
+        are synonyms, a generated .tex file with a parent line starting with
+        \texttt{J -> K} would result in these approaches being graphed as shown
+        in \Cref{fig:parSynExampleGraph}.
+
+        The visual nature of these graphs makes it possible to represent both
+        explicit and implicit relations without double counting them during
+        \hyperref[discrep-analysis]{analysis}.
+        If a relation is both explicit \emph{and} implicit, the implicit relation
+        is only shown in the graph if it is from a more ``trusted''
+        \hyperref[sources]{source category}; note that only the explicit
+        synonym relation between E and F
+        from \Cref{tab:exampleGlossary} is shown in \Cref{fig:synExampleGraph}.
+        Implicit approaches and relations are denoted by dashed lines, as shown
+        in \Cref{fig:exampleGraph,fig:synExampleGraph}; explicit approaches are
+        \emph{always} denoted by solid lines, even if they are also implicit.
+        ``Rigid'' versions, which exclude implicit approaches and relations,
+        can also be generated for each graph\todo{Should I add an example?}.
+
+    \fi
+    Since these graphs tend to be large, it is useful to focus on specific
+    subsets of them. \ifnotpaper Graphs limited to approaches from a given
+        \hyperref[categories-observ]{approach category} are generated, as well
+        as a graph of static approaches; interestingly, static testing seems to
+        be considered a separate approach category in \citep[Fig.~2]{IEEE2022}%
+        \todo{Better place to include this, if at all?}. Since static testing is
+        \hyperref[static-test]{out of scope}, it is also helpful to see how it
+        overlaps with the in-scope dynamic testing, so these ``connecting''
+        relations are also graphed. Additionally, more specific subsets of
+        these graphs \else These \fi can be generated based on a given subset
+    of approaches to include, such as those pertaining to
+    \hyperref[recov-discrep]{recovery} or \hyperref[scal-discrep]{scability},
+    as shown in \Cref{fig:recovery-graph-current,fig:scal-graph-current},
+    respectively (albeit with manually created legends). By specifying sets of
+    approaches and relations to add or remove, these generated graphs can be
+    updated in accordance with our \nameref{recs}, as shown in
+    \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed}, respectively.
+    These modifications can also be inherited, as in \Cref{fig:perf-graph},
+    which was generated based on the modifications from
+    \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed} and then
+    manually tweaked\todo{Ensure these tweaks are on an up-to-date version!}.}
 
 %------------------------------------------------------------------------------
 % For populating values from files
@@ -153,10 +276,20 @@ of a test process; for example, ``across the whole organization'' or only
 % \def\parSynBoth{\parSynCounts{3}}
 \def\selfCycleCount{\parSynCounts{2}}
 
+\ReadFile{\stdSources}{build/stdSources}
+\ReadFile{\metaSources}{build/metaSources}
+\ReadFile{\textSources}{build/textSources}
+\ReadFile{\paperSources}{build/paperSources}
+
 \ReadFile{\stdDiscBrkdwn}{build/stdDiscBrkdwn}
 \ReadFile{\metaDiscBrkdwn}{build/metaDiscBrkdwn}
 \ReadFile{\textDiscBrkdwn}{build/textDiscBrkdwn}
-\ReadFile{\otherDiscBrkdwn}{build/otherDiscBrkdwn}
+\ReadFile{\paperDiscBrkdwn}{build/paperDiscBrkdwn}
+
+\def\stds{\nameref{stds}}
+\def\metas{\nameref{metas}}
+\def\texts{\nameref{texts}}
+\def\papers{\nameref{papers}}
 
 % From https://tex.stackexchange.com/a/248135/192195
 \newcounter{laterdef} % just a dummy counter

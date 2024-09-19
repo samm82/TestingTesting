@@ -43,10 +43,7 @@ Walkthroughs [label=<Walkthroughs>];
 
 Walkthroughs -> StructuredWalkthroughs[dir=none,color="blue"];
 
-AdHocReviews -> Reviews;
 ChecklistbasedTesting [label=<Checklist-based<br/>Testing>,style="filled"];
-ChecklistbasedReviews -> ChecklistbasedTesting;
-ChecklistbasedReviews -> Reviews;
 CodeReviews -> Reviews[color="blue"];
 CodeReviews -> PeerReviews[color="blue"];
 UsabilityTesting [label=<Usability<br/>Testing>,style="filled"];
@@ -65,20 +62,15 @@ ExpertUsabilityReviews -> InformalTesting[color="blue"];
 ExpertUsabilityReviews -> UsabilityTesting[color="blue"];
 ExpertUsabilityReviews -> Reviews[color="blue"];
 FaultTreeAnalysis [label=<Fault<br/>Tree<br/>Analysis>,style="filled"];
-FaultTreeAnalysis -> StaticAnalysis;
 FormalReviews -> Reviews[color="blue"];
 FormalTesting [label=<Formal<br/>Testing>,style="filled"];
-FormalReviews -> FormalTesting;
 HeuristicEvaluations [label=<Heuristic<br/>Evaluations>,style="filled"];
 HeuristicEvaluations -> UsabilityReviews[color="blue"];
 ProofsofCorrectness [label=<Proofs<br/>of<br/>Correctness>,style="filled"];
 InductiveAssertionMethods -> ProofsofCorrectness[color="green"];
 MathematicalbasedTesting [label=<Mathematical-based<br/>Testing>,style="filled"];
-InductiveAssertionMethods -> MathematicalbasedTesting;
 AssertionChecking [label=<Assertion<br/>Checking>,style="filled"];
-InductiveAssertionMethods -> AssertionChecking;
 InformalReviews -> Reviews[color="blue"];
-InformalReviews -> InformalTesting;
 CodeInspections [label=<(Code)<br/>Inspections>,style="filled"];
 CodeInspections -> StaticAnalysis[color="green"];
 CodeInspections -> StaticTesting[color="green"];
@@ -105,12 +97,9 @@ Reviews -> StructuredTesting[color="maroon"];
 RolebasedTesting [label=<Role-based<br/>Testing>,style="filled"];
 Reviews -> RolebasedTesting[color="maroon"];
 RolebasedReviews -> Reviews[color="blue"];
-RolebasedReviews -> RolebasedTesting;
 ScenarioWalkthroughs -> StaticTesting;
 ScenarioWalkthroughs -> WModelTesting;
-ScenarioWalkthroughs -> Walkthroughs;
 ScenarioTesting [label=<Scenario<br/>Testing>,style="filled"];
-ScenarioWalkthroughs -> ScenarioTesting;
 ScenariobasedReviews -> Reviews[color="blue"];
 SecurityTesting [label=<Security<br/>Testing>,style="filled"];
 SecurityAudits -> SecurityTesting[color="green"];
@@ -129,11 +118,6 @@ StaticAssertionChecking -> StaticAnalysis;
 StaticTesting -> WModelTesting;
 StructuralAnalysis -> StaticTesting[color="maroon"];
 StructurebasedTesting [label=<Structure-based<br/>Testing>,style="filled"];
-StructurebasedTesting -> StaticTesting[color="green"];
-StructuredWalkthroughs -> Walkthroughs;
-StructuredWalkthroughs -> StructuredTesting;
-StructuredWalkthroughs -> StaticTesting;
-SymbolicExecution -> StaticTesting;
 SyntaxTesting [label=<Syntax<br/>Testing>,style="filled"];
 SyntaxTesting -> StaticTesting;
 TechnicalReviews -> FormalReviews[color="blue"];
@@ -142,7 +126,6 @@ TransactionVerification -> StaticTesting;
 UsabilityReviews -> UsabilityTesting[color="blue"];
 UsabilityReviews -> Reviews[color="blue"];
 UsabilityWalkthroughs -> UsabilityTesting[color="green"];
-UsabilityWalkthroughs -> Walkthroughs;
 VisualBrowserValidation [label=<Visual<br/>Browser<br/>Validation>,style="filled"];
 Walkthroughs -> StaticAnalysis[color="green"];
 Walkthroughs -> FormalReviews[color="blue"];
@@ -152,7 +135,6 @@ subgraph cluster_legend {
     label="Legend";
     labelloc="b";
     fontsize="48pt"
-    rankdir=BT
     {
         rank=same
         chd [label="Child"];
@@ -172,12 +154,30 @@ subgraph cluster_legend {
         imp3 -> imp4 [style="dashed" dir=none label="                "]
     }
         dyn [label=<Dynamic<br/>Approach> style="filled"]
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
+}
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=maroon, label=<From Textbooks>]
+}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par
     imp3 -> syn1
     imp4 -> syn2
 dyn -> { imp2 imp3 }
+src1 -> dyn
+src5 -> src2
+src6 -> src3
 }
 
 // Connect the dummy node to the first node of the legend

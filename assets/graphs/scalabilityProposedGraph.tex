@@ -8,9 +8,6 @@
 \digraph{scalabilityProposedGraph}{
 rankdir=BT;
 
-// Dummy node to push the legend to the top left
-start [style="invis"];
-
 CapacityTesting [label=<Capacity<br/>Testing>];
 EfficiencyTesting [label=<Efficiency<br/>Testing>];
 ElasticityTesting [label=<Elasticity<br/>Testing>];
@@ -30,11 +27,11 @@ CapacityTesting -> PerformanceEfficiencyTesting[color="green"];
 CapacityTesting -> PerformanceTesting[color="blue"];
 ElasticityTesting -> MemoryManagementTesting[color="blue"];
 ElasticityTesting -> ResourceUtilizationTesting[color="blue"];
-ElasticityTesting -> StressTesting;
+ElasticityTesting -> StressTesting[color="gray"];
 LoadTesting -> PerformanceTesting[color="green"];
 LoadTesting -> PerformanceEfficiencyTesting[color="green"];
 LoadTesting -> CapacityTesting[color="blue"];
-MemoryManagementTesting -> ResourceUtilizationTesting;
+MemoryManagementTesting -> ResourceUtilizationTesting[color="gray"];
 PerformanceEfficiencyTesting -> PerformanceTesting[style="dashed",color="green"];
 PerformanceEfficiencyTesting -> EfficiencyTesting[style="dashed",color="green"];
 PerformanceTesting -> PerformanceTesting;

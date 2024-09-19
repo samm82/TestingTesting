@@ -46,7 +46,7 @@ StaticAssertionChecking -> StaticVerification[dir=none];
 StaticTesting -> StaticVerification[dir=none,style="dashed"];
 Walkthroughs -> StructuredWalkthroughs[dir=none,color="blue"];
 
-AdHocReviews -> Reviews;
+AdHocReviews -> Reviews[color="gray"];
 AttheBeginningTesting [label=<At-the-Beginning<br/>Testing>,style="dashed,filled"];
 AttheBeginningTesting -> StaticTesting[style="dashed"];
 Audits -> StaticAnalysis[style="dashed",color="blue"];
@@ -54,17 +54,17 @@ Audits -> StaticTesting[style="dashed",color="green"];
 ComplianceTesting [label=<Compliance<br/>Testing>,style="dashed,filled"];
 Audits -> ComplianceTesting[style="dashed",color="green"];
 IndependentTestOrganizationTesting [label=<Independent<br/>Test<br/>Organization<br/>Testing>,style="dashed,filled"];
-Audits -> IndependentTestOrganizationTesting[style="dashed"];
+Audits -> IndependentTestOrganizationTesting[style="dashed",color="gray"];
 BehaviourAnalysis [label=<Behaviour<br/>Analysis>,style="dashed,filled"];
 BehaviourAnalysis -> StaticTesting;
-BehaviourAnalysis -> StaticAnalysis[style="dashed"];
+BehaviourAnalysis -> StaticAnalysis[style="dashed",color="gray"];
 ChecklistbasedTesting [label=<Checklist-based<br/>Testing>,style="filled"];
-ChecklistbasedReviews -> ChecklistbasedTesting;
-ChecklistbasedReviews -> Reviews;
+ChecklistbasedReviews -> ChecklistbasedTesting[color="gray"];
+ChecklistbasedReviews -> Reviews[color="gray"];
 CodeReviews -> Reviews[color="blue"];
 CodeReviews -> PeerReviews[color="blue"];
 CodeReviews -> StaticAnalysis[style="dashed",color="blue"];
-ConcreteExecution -> StaticTesting[style="dashed"];
+ConcreteExecution -> StaticTesting[style="dashed",color="gray"];
 UsabilityTesting [label=<Usability<br/>Testing>,style="filled"];
 ContentChecking -> UsabilityTesting;
 ContentChecking -> StaticTesting;
@@ -83,21 +83,21 @@ ExpertUsabilityReviews -> InformalTesting[color="blue"];
 ExpertUsabilityReviews -> UsabilityTesting[color="blue"];
 ExpertUsabilityReviews -> Reviews[color="blue"];
 FaultTreeAnalysis [label=<Fault<br/>Tree<br/>Analysis>,style="filled"];
-FaultTreeAnalysis -> StaticAnalysis;
+FaultTreeAnalysis -> StaticAnalysis[color="gray"];
 FormalReviews -> Reviews[color="blue"];
 FormalTesting [label=<Formal<br/>Testing>,style="filled"];
-FormalReviews -> FormalTesting;
+FormalReviews -> FormalTesting[color="gray"];
 HeuristicEvaluations [label=<Heuristic<br/>Evaluations>,style="filled"];
 HeuristicEvaluations -> UsabilityReviews[color="blue"];
 ProofsofCorrectness [label=<Proofs<br/>of<br/>Correctness>,style="filled"];
 InductiveAssertionMethods -> ProofsofCorrectness[color="green"];
 MathematicalbasedTesting [label=<Mathematical-based<br/>Testing>,style="filled"];
-InductiveAssertionMethods -> MathematicalbasedTesting;
+InductiveAssertionMethods -> MathematicalbasedTesting[color="gray"];
 AssertionChecking [label=<Assertion<br/>Checking>,style="filled"];
-InductiveAssertionMethods -> AssertionChecking;
-InductiveAssertionMethods -> StaticTesting[style="dashed"];
+InductiveAssertionMethods -> AssertionChecking[color="gray"];
+InductiveAssertionMethods -> StaticTesting[style="dashed",color="gray"];
 InformalReviews -> Reviews[color="blue"];
-InformalReviews -> InformalTesting;
+InformalReviews -> InformalTesting[color="gray"];
 CodeInspections [label=<(Code)<br/>Inspections>,style="filled"];
 CodeInspections -> StaticAnalysis[color="green"];
 CodeInspections -> StaticTesting[color="green"];
@@ -113,11 +113,11 @@ PeerReviews -> StaticAnalysis[style="dashed",color="blue"];
 PerformanceTesting [label=<Performance<br/>Testing>,style="filled"];
 PerformanceTesting -> StaticAnalysis;
 PhysicalConfigurationAudits -> Audits[color="green"];
-ProofsofCorrectness -> StaticTesting[style="dashed"];
+ProofsofCorrectness -> StaticTesting[style="dashed",color="gray"];
 ProofsofPartialCorrectness [label=<Proofs<br/>of<br/>Partial<br/>Correctness>,style="dashed,filled"];
-ProofsofPartialCorrectness -> StaticTesting[style="dashed"];
+ProofsofPartialCorrectness -> StaticTesting[style="dashed",color="gray"];
 ProofsofTotalCorrectness [label=<Proofs<br/>of<br/>Total<br/>Correctness>,style="dashed,filled"];
-ProofsofTotalCorrectness -> StaticTesting[style="dashed"];
+ProofsofTotalCorrectness -> StaticTesting[style="dashed",color="gray"];
 RequirementsAnimation [label=<Requirements<br/>Animation>,style="filled"];
 RequirementsAnimation -> StaticTesting;
 Reviews -> StaticTesting[color="green"];
@@ -137,16 +137,16 @@ Reviews -> MaintainabilityTesting[style="dashed",color="maroon"];
 PortabilityTesting [label=<Portability<br/>Testing>,style="dashed,filled"];
 Reviews -> PortabilityTesting[style="dashed",color="maroon"];
 RolebasedReviews -> Reviews[color="blue"];
-RolebasedReviews -> RolebasedTesting;
+RolebasedReviews -> RolebasedTesting[color="gray"];
 ScenariobasedTesting [label=<Scenario-based<br/>Testing>,style="dashed,filled"];
-RolebasedReviews -> ScenariobasedTesting[style="dashed"];
+RolebasedReviews -> ScenariobasedTesting[style="dashed",color="gray"];
 ScenarioWalkthroughs -> StaticTesting;
 ScenarioWalkthroughs -> WModelTesting;
-ScenarioWalkthroughs -> Walkthroughs;
+ScenarioWalkthroughs -> Walkthroughs[color="gray"];
 ScenarioTesting [label=<Scenario<br/>Testing>,style="filled"];
-ScenarioWalkthroughs -> ScenarioTesting;
+ScenarioWalkthroughs -> ScenarioTesting[color="gray"];
 ScenariobasedReviews -> Reviews[color="blue"];
-ScenariobasedReviews -> ScenariobasedTesting;
+ScenariobasedReviews -> ScenariobasedTesting[color="gray"];
 SecurityTesting [label=<Security<br/>Testing>,style="filled"];
 SecurityAudits -> SecurityTesting[color="green"];
 SecurityAudits -> Audits[color="green"];
@@ -164,18 +164,18 @@ StaticAnalysis -> DeveloperTesting[style="dashed"];
 StaticAssertionChecking -> AssertionChecking;
 StaticAssertionChecking -> StaticAnalysis;
 SpecificationbasedTesting [label=<Specification-based<br/>Testing>,style="dashed,filled"];
-StaticAssertionChecking -> SpecificationbasedTesting[style="dashed"];
+StaticAssertionChecking -> SpecificationbasedTesting[style="dashed",color="gray"];
 StaticTesting -> WModelTesting;
 StructuralAnalysis -> StaticTesting[color="maroon"];
 StructurebasedTesting [label=<Structure-based<br/>Testing>,style="filled"];
-StructurebasedTesting -> StaticTesting[color="green"];
-StructuredWalkthroughs -> Walkthroughs;
-StructuredWalkthroughs -> StructuredTesting;
-StructuredWalkthroughs -> StaticTesting;
-SymbolicExecution -> StaticTesting;
-SymbolicExecution -> StaticAnalysis[style="dashed"];
+StructurebasedTesting -> StaticTesting[style="dashed",color="green"];
+StructuredWalkthroughs -> Walkthroughs[color="gray"];
+StructuredWalkthroughs -> StructuredTesting[color="gray"];
+StructuredWalkthroughs -> StaticTesting[color="gray"];
+SymbolicExecution -> StaticTesting[color="gray"];
+SymbolicExecution -> StaticAnalysis[style="dashed",color="gray"];
 CorrectnessTesting [label=<Correctness<br/>Testing>,style="dashed,filled"];
-SymbolicExecution -> CorrectnessTesting[style="dashed"];
+SymbolicExecution -> CorrectnessTesting[style="dashed",color="gray"];
 SyntaxTesting [label=<Syntax<br/>Testing>,style="filled"];
 SyntaxTesting -> StaticTesting;
 SyntaxTesting -> StaticTesting[style="dashed",color="blue"];
@@ -185,7 +185,7 @@ TransactionVerification -> StaticTesting;
 UsabilityReviews -> UsabilityTesting[color="blue"];
 UsabilityReviews -> Reviews[color="blue"];
 UsabilityWalkthroughs -> UsabilityTesting[color="green"];
-UsabilityWalkthroughs -> Walkthroughs;
+UsabilityWalkthroughs -> Walkthroughs[color="gray"];
 VisualBrowserValidation [label=<Visual<br/>Browser<br/>Validation>,style="filled"];
 VisualBrowserValidation -> StaticTesting[style="dashed"];
 Walkthroughs -> StaticAnalysis[color="green"];
@@ -197,7 +197,6 @@ subgraph cluster_legend {
     label="Legend";
     labelloc="b";
     fontsize="48pt"
-    rankdir=BT
     {
         rank=same
         chd [label="Child"];
@@ -228,6 +227,24 @@ subgraph cluster_legend {
         syn5 [label=<Term>]
         syn3 -> syn4 -> syn5 [dir=none]
     }
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
+}
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=maroon, label=<From Textbooks>]
+src7 [style=invis];
+src8 [style=invis];
+src7 -> src8 [color=gray, label=<From Inferences>]
+}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par
@@ -235,6 +252,12 @@ subgraph cluster_legend {
     imp4 -> syn2
 syn3 -> imp5 -> { imp1 imp2 }
 syn5 -> dyn -> { imp3 imp4 }
+src1 -> syn3
+src2 -> syn5
+src5 -> src1
+src6 -> src2
+src7 -> src3
+src8 -> src4
 }
 
 // Connect the dummy node to the first node of the legend

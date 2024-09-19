@@ -1,5 +1,6 @@
 from enum import Enum, auto
 import re
+from typing import Optional
 
 # RegEx patterns
 AUTHOR_CHARS = r"a-zA-Zßğö.\/_"
@@ -12,9 +13,29 @@ PREFIX_REGEX = r"\(|[a-z;] "
 SPLIT_REGEX = r',(?!(?:[^()]*\([^()]*\))*[^()]*\)) '
 
 # Used in multiple files
+UNSURE_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
+                   "most", "often", "if", "although"]
+warned_multi_unsure = set()
+# only == True returns a string iff the passed `name` is not explicit
+def isUnsure(name: str, only: bool = False) -> Optional[str]:
+    unsureTerms = {"?", " (Testing)"}.union(f"({term}" for term in UNSURE_KEYWORDS)
+    if not only:
+        unsureTerms.update(f" {term}" for term in UNSURE_KEYWORDS)
+
+    outTerms = {unsure for unsure in unsureTerms if unsure in name}
+    if (len(outTerms) > 1 and "?" not in outTerms and
+            name not in warned_multi_unsure):
+        print(f"Multiple 'unsure' cutoffs in {name}.")
+        warned_multi_unsure.add(name)
+
+    return (sorted(outTerms, key=name.index, reverse=True)[0]
+            if outTerms else None)
+
 class Rigidity(Enum):
     EXP = auto()
     IMP = auto()
+
+    # Sources for discrepancies
 
 def getSources(s):
     sources = re.findall(fr"\{{({AUTHOR_REGEX})({YEAR_REGEX})\}}", s)
@@ -35,6 +56,8 @@ def categorizeSources(sources: str):
     else:
         return {Rigidity.EXP: getSources(sources)}
 
+    # Sources for citations
+
 def formatLineWithSources(line, todo=True):
     line = line.replace("(Hamburg and Mogyorodi, 2024)", "\\citepISTQB{}")
     line = line.replace("Hamburg and Mogyorodi, 2024", "\\citealpISTQB{}")
@@ -42,6 +65,7 @@ def formatLineWithSources(line, todo=True):
     for swebokAuthor in {"Washizaki", "Bourque and Fairley"}:
         line = line.replace(swebokAuthor, "SWEBOK")
     line = line.replace("ISO/IEC", "ISO_IEC")
+    line = line.replace("Mackert GmbH", "SPICE")
 
     if todo:
         # Explicitly *want* to capture "OG"
@@ -85,10 +109,16 @@ def readFileAsStr(filename) -> str:
 
 def writeFile(lines, filename, helper: bool = False, dir: str = "graphs"):
     lines = [line + '\n' for line in lines]
+    filename += ".tex"
     if helper:
-        filename = f"build/{filename}.tex"
+        filename = f"build/{filename}"
     else:
-        filename = f"assets/{dir}/{filename}.tex"
+        if not filename.startswith(f"assets/{dir}"):
+            filename = f"assets/{dir}/{filename}"
+        elif filename.startswith(f"assets/graphs/exampleGlossaries"):
+            filename = filename.split("/")
+            filename.remove("exampleGlossaries")
+            filename = "/".join(filename)
 
     try:
         with open(filename, "r", encoding="utf-8") as readFile:

@@ -209,7 +209,6 @@ BranchConditionCombinationTesting -> ModelbasedTesting[color="green"];
 BranchConditionTesting -> StructurebasedTesting[color="green"];
 BranchConditionTesting -> ControlFlowTesting[color="green"];
 BranchConditionTesting -> ModelbasedTesting[color="green"];
-BranchConditionTesting -> BranchConditionCombinationTesting;
 BranchTesting -> StructurebasedTesting[color="green"];
 BranchTesting -> ControlFlowTesting[color="green"];
 BranchTesting -> ModelbasedTesting[color="green"];
@@ -223,11 +222,9 @@ CauseEffectGraphing -> SpecificationbasedTesting[color="green"];
 CauseEffectGraphing -> ModelbasedTesting[color="green"];
 CheckedStatementTesting -> StatementTesting;
 CheckedStatementTesting -> StructurebasedTesting;
-ChecklistbasedReviews -> ChecklistbasedTesting;
 ChecklistbasedTesting -> ExperiencebasedTesting[color="green"];
 ClassificationTreeMethod -> SpecificationbasedTesting[color="green"];
 ClassificationTreeMethod -> ModelbasedTesting[color="green"];
-ClosedLoopTesting -> LoopTesting;
 ClosedLoopTesting -> SpecificationbasedTesting;
 CombinatorialTesting -> SpecificationbasedTesting[color="green"];
 CombinatorialTesting -> ModelbasedTesting[color="green"];
@@ -247,7 +244,6 @@ DecisionTesting -> ModelbasedTesting[color="green"];
 DomainIndependentTesting -> DomainBasedTesting[color="blue"];
 DomainSpecificTesting -> DomainBasedTesting[color="blue"];
 EachChoiceTesting -> CombinatorialTesting[color="green"];
-EachChoiceTesting -> twiseTesting;
 ElementaryComparisonTesting -> SpecificationbasedTesting;
 EndtoendTesting -> SpecificationbasedTesting[color="blue"];
 EnduranceTesting -> ModelbasedTesting[color="green"];
@@ -274,12 +270,9 @@ Galumphing -> ExploratoryTesting[color="blue"];
 GrayBoxTesting -> StructurebasedTesting[color="green"];
 GrayBoxTesting -> SpecificationbasedTesting[color="green"];
 HyperlinkTesting -> SmokeTesting;
-HyperlinkTesting -> PageTesting;
 InductiveAssertionMethods -> ProofsofCorrectness[color="green"];
-InputValidationTesting -> PathTesting;
-InputParameterTesting -> SpecificationbasedTesting;
+InputParameterTesting -> SpecificationbasedTesting[color="blue"];
 InputParameterTesting -> ModelbasedTesting[color="green"];
-InputParameterTesting -> CombinatorialTesting;
 KeyworddrivenTesting -> DatadrivenTesting;
 LoadTesting -> PerformanceTesting[color="green"];
 LoadTesting -> ModelbasedTesting[color="green"];
@@ -288,7 +281,6 @@ LoopTesting -> StructurebasedTesting;
 MCDCTesting -> StructurebasedTesting[color="green"];
 MCDCTesting -> ControlFlowTesting[color="green"];
 MCDCTesting -> ModelbasedTesting[color="green"];
-MCDCTesting -> BranchConditionCombinationTesting;
 MemoryManagementTesting -> ModelbasedTesting[color="green"];
 MetamorphicTesting -> SpecificationbasedTesting[color="green"];
 MetamorphicTesting -> ModelbasedTesting[color="green"];
@@ -301,7 +293,6 @@ MultipleHitDecisionTableTesting -> DecisionTableTesting[color="green"];
 MutationTesting -> StructurebasedTesting[color="blue"];
 MutationTesting -> FaultbasedTesting[color="blue"];
 NSwitchTesting -> StateTransitionTesting[color="green"];
-OpenLoopTesting -> LoopTesting;
 OrthogonalArrayTesting -> CombinatorialTesting;
 OrthogonalArrayTesting -> StatisticalTesting;
 OrthogonalArrayTesting -> EquivalencePartitioning;
@@ -311,7 +302,6 @@ PairwiseTesting -> CombinatorialTesting[color="green"];
 PairwiseTesting -> SpecificationbasedTesting[color="green"];
 PairwiseTesting -> ModelbasedTesting[color="green"];
 PairwiseTesting -> AllCombinationsTesting[color="green"];
-PairwiseTesting -> twiseTesting;
 PathTesting -> ControlFlowTesting[color="blue"];
 PathTesting -> StructurebasedTesting[color="green"];
 PenetrationTesting -> PrivacyTesting[color="green"];
@@ -347,7 +337,6 @@ StatementTesting -> ModelbasedTesting[color="green"];
 StatementTesting -> ControlFlowTesting[color="green"];
 StatementTesting -> ControlFlowTesting[color="blue"];
 StatisticalTesting -> UsagebasedTesting[color="blue"];
-StatisticalTesting -> ModelbasedTesting;
 StressTesting -> ModelbasedTesting[color="green"];
 StressTesting -> PerformanceTesting[color="blue"];
 StressTesting -> CapacityTesting[color="blue"];
@@ -368,7 +357,6 @@ ThreeValueBoundaryTesting -> BoundaryValueAnalysis[color="green"];
 TransactionFlowTesting -> ScenarioTesting[color="green"];
 twiseTesting -> AllCombinationsTesting[color="blue"];
 TwoValueBoundaryTesting -> BoundaryValueAnalysis[color="green"];
-UMLModelbasedTesting -> ModelbasedTesting;
 UseCaseTesting -> ModelbasedTesting[color="green"];
 UseCaseTesting -> ScenarioTesting[color="green"];
 UseCaseTesting -> SpecificationbasedTesting;
@@ -379,7 +367,6 @@ subgraph cluster_legend {
     label="Legend";
     labelloc="b";
     fontsize="48pt"
-    rankdir=BT
     {
         rank=same
         chd [label="Child"];
@@ -405,6 +392,21 @@ subgraph cluster_legend {
         syn5 [label=<Term>]
         syn3 -> syn4 -> syn5 [dir=none]
     }
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
+}
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=maroon, label=<From Textbooks>]
+}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par
@@ -416,6 +418,11 @@ syn5 -> imp4
 syn3 -> imp1
 syn4 -> imp2
 syn5 -> imp3
+src1 -> syn3
+src2 -> syn4
+src3 -> syn5
+src5 -> src2
+src6 -> src3
 }
 
 // Connect the dummy node to the first node of the legend

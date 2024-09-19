@@ -140,7 +140,6 @@ Heartbeat -> PeriodicBuiltInTesting[color="blue"];
 HumanFactorsEngineerTesting -> DeveloperTesting[color="blue"];
 IncrementalTesting -> LifecyclebasedTesting[color="blue"];
 IndependentTestOrganizationTesting -> OrganizationbasedTesting[color="blue"];
-IndependentTestOrganizationTesting -> IndependentTesterTesting;
 IndependentTesterTesting -> TesterTesting[color="blue"];
 InterruptdrivenBuiltInTesting -> BuiltInTesting[color="blue"];
 LicenseComplianceAudits -> Audits[color="green"];
@@ -159,7 +158,6 @@ PowerUpBuiltInTesting -> BuiltInTesting[color="blue"];
 PrimeContractorTesting -> DevelopmentOrganizationTesting[color="blue"];
 PrognosticsandHealthManagement -> OngoingBuiltInTesting[color="blue"];
 ProgrammerTesting -> DeveloperTesting[color="blue"];
-RapidPrototypingTesting -> LifecyclebasedTesting;
 RequirementsEngineerTesting -> DeveloperTesting[color="blue"];
 RuntimeAssertionChecking -> AssertionChecking;
 SafetyEngineerTesting -> DeveloperTesting[color="blue"];
@@ -169,9 +167,7 @@ ShutdownBuiltInTesting -> BuiltInTesting[color="blue"];
 SimilaritybasedPrioritizationTesting -> PrioritizationTesting[color="blue"];
 SoftwareDesignAudits -> Audits[color="green"];
 SpiralTesting -> LifecyclebasedTesting[color="blue"];
-SpiralTesting -> ContinuousTesting;
 StaticAssertionChecking -> AssertionChecking;
-StructuredWalkthroughs -> StructuredTesting;
 SubcontractorTesting -> DevelopmentOrganizationTesting[color="blue"];
 SysAdminTesting -> OperatorTesting[color="blue"];
 TesterTesting -> RolebasedTesting[color="blue"];
@@ -179,7 +175,6 @@ Tours -> ExploratoryTesting[color="green"];
 Tours -> ExperiencebasedTesting[color="green"];
 UserasTesterTesting -> UserTesting[color="blue"];
 UserOrganizationTesting -> OrganizationbasedTesting[color="blue"];
-UserOrganizationTesting -> UserTesting;
 UserTesting -> RolebasedTesting[color="blue"];
 UserinitiatedBuiltInTesting -> BuiltInTesting[color="blue"];
 VModelTesting -> WaterfallTesting[color="blue"];
@@ -191,7 +186,6 @@ subgraph cluster_legend {
     label="Legend";
     labelloc="b";
     fontsize="48pt"
-    rankdir=BT
     {
         rank=same
         chd [label="Child"];
@@ -210,6 +204,15 @@ subgraph cluster_legend {
         imp4 [label=<Implied<br/>Synonym>];
         imp3 -> imp4 [style="dashed" dir=none label="                "]
     }
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
+}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par

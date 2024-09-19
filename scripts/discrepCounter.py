@@ -11,6 +11,7 @@ class Color(OrderedEnum):
     BLUE   = 2
     MAROON = 1
     BLACK  = 0
+    GRAY   = -1
 
     def __str__(self):
         return self.name.lower()
@@ -19,8 +20,9 @@ class Color(OrderedEnum):
 class SrcCat(AutoNumberEnum):
     STD    = "Established Standards", "Standards", Color.GREEN
     META   = "``Meta-level'' Collections", "``Meta-level'' Documents", Color.BLUE
-    TEXT   = "Trusted Textbooks", "Textbooks", Color.MAROON
-    OTHER  = "Other Sources", "Other Documents", Color.BLACK
+    TEXT   = "Textbooks", "Textbooks", Color.MAROON
+    PAPER  = "Papers and Other Documents", "Papers", Color.BLACK
+    INFER  = "Inferences", "Inferences", Color.GRAY
 
     def __init__(self, longname, shortname, color):
         self.longname  = longname
@@ -32,18 +34,23 @@ class SrcCat(AutoNumberEnum):
             return self.color < other.color
         return NotImplemented
 
-def getSrcCat(s) -> SrcCat:
+# rel == True if the SrcCat is used for coloring relations
+def getSrcCat(s, rel: bool = False) -> SrcCat:
     if any(std in s for std in {"IEEE", "ISO", "IEC"}):
         return SrcCat.STD
     if any(metastd in s for metastd in
         {"Washizaki", "Bourque and Fairley", "SWEBOK",
-            "Hamburg and Mogyorodi", "ISTQB", "Firesmith"}):
+            "Hamburg and Mogyorodi", "ISTQB", "Firesmith",
+            "Doğan et al", "DoğanEtAl"}):
         return SrcCat.META
     if any(textbook in s for textbook in
         {"van Vliet", "vanVliet", "Patton", "Peters and Pedrycz",
-            "PetersAndPedrycz"}):
+            "PetersAndPedrycz", "Gerrard and Thompson",
+            "GerrardAndThompson", "Dennis et al", "DennisEtAl",
+            "Perry", "Ammann and Offutt", "AmmannAndOffutt",
+            "Fenton and Pfleeger", "FentonAndPfleeger"}):
         return SrcCat.TEXT
-    return SrcCat.OTHER
+    return SrcCat.INFER if rel and not any(par in s for par in "()") else SrcCat.PAPER
 
 def getRigidity(rigidity: Rigidity | tuple[Rigidity]):
     if isinstance(rigidity, tuple):
@@ -70,7 +77,7 @@ class ExpImpCounter:
 
 class DiscrepCounter:
     def __init__(self, value):
-        self.withinSrc, self.withinAuth = 0, 0
+        self.withinDoc, self.withinAuth = 0, 0
         # Differences between two categories; may be within the same category
         self.betweenCats = {k : 0 for k in SrcCat if k.value <= value}
 
@@ -79,7 +86,7 @@ class DiscrepCounter:
 
     def __str__(self):
         return "\n".join(filter(None, [
-            ", ".join(map(str, [self.withinSrc, self.withinAuth])),
+            ", ".join(map(str, [self.withinDoc, self.withinAuth])),
             "Diffs: " + ", ".join([f"{k.name} {v}" for k, v in self.betweenCats.items()]),
             " | ".join(map(str, self.discrepCats.values())),
             ])) + "\n"
@@ -99,18 +106,18 @@ texFileDiscreps = {
     "chapters/05a_std_discreps.tex": DiscrepCat.MISC,
     "chapters/05b_meta_discreps.tex": DiscrepCat.MISC,
     "chapters/05c_text_discreps.tex": DiscrepCat.MISC,
-    "chapters/05d_other_discreps.tex": DiscrepCat.MISC,
+    "chapters/05d_paper_discreps.tex": DiscrepCat.MISC,
     "chapters/05e_cat_discreps.tex": DiscrepCat.CATS,
 }
 
 class DiscrepSourceCounter:
     def __init__(self):
-        self.dict = {k : DiscrepCounter(k.value) for k in SrcCat}
+        self.dict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
 
     def __str__(self):
         return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
 
-    def texDiscreps(self):
+    def output(self):
         for filename, origType in texFileDiscreps.items():
             with open(filename, "r") as file:
                 content = [line for line in file.readlines()
@@ -121,23 +128,20 @@ class DiscrepSourceCounter:
                             if origType == DiscrepCat.MISC else origType)
                 self.countDiscreps(discrep.split("|"), discType)
 
-    def output(self):
-        self.texDiscreps()
         pieCharts = []
         for k, v in self.dict.items():
             writeFile([formatOutput(
-                [k.longname] + [v.discrepCats[dc].output() for dc in DiscrepCat
-                                if dc is not DiscrepCat.MISC]
+                ["% " + k.longname] + [v.discrepCats[dc].output() for dc in DiscrepCat
+                                       if dc is not DiscrepCat.MISC]
                 )], f"{k.name.lower()}DiscBrkdwn", True)
 
-            totalDiscreps = sum({v.withinSrc, v.withinAuth,
+            totalDiscreps = sum({v.withinDoc, v.withinAuth,
                                  sum(v.betweenCats.values())})
 
-            slices = ([(v.withinSrc, "Within a single document"),
+            slices = ([(v.withinDoc, "Within a single document"),
                        (v.withinAuth, "Between documents by the same author(s) or standards organization(s)")] +
-                      [(catCount, "Between a document from this category and " +
-                                  ("an" if cat.shortname.startswith("Other") else "a ") +
-                                  cat.shortname.lower()[:-1])
+                      [(catCount, "Between a document from this category and a " +
+                                  cat.shortname.lower()[:-1])  # Strip plural "s"
                         for cat, catCount in v.betweenCats.items()])
 
             # Default color palette for pgf-pie
@@ -156,7 +160,7 @@ class DiscrepSourceCounter:
                                   [f"      {val}/{str(round(val/totalDiscreps*100, 1)).strip("0").strip(".")}\\%"
                                    for val, _ in slices if val]),
                               "}", "\\end{tikzpicture}",
-                             f"\\caption{{Discrepancies found in {k.shortname.lower().replace(" ", "\\\\")}.}}",
+                             f"\\caption{{Discrepancies found in \\{k.name.lower()}s{{}}.}}",
                              f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
                               "\\end{subfigure}"
                               ])
@@ -184,8 +188,11 @@ class DiscrepSourceCounter:
     def countDiscreps(self, sources, discCat: str | DiscrepCat,
                       debug: bool = False):
         sourceDicts = [categorizeSources(formatLineWithSources(s, False)) for s in sources]
+        if type(discCat) is str:
+            discCat = DiscrepCat[discCat.upper()]
+
         if debug:
-            print(sourceDicts, discCat)
+            print(sourceDicts, discCat.name)
 
         def inPairs(s, *, sFunc = None):
             if sFunc:
@@ -194,8 +201,9 @@ class DiscrepSourceCounter:
 
         # These ensure that sources aren't double counted
         pieAdded, tableAdded = set(), set()
-        def updateCounters(source, discCat: str | DiscrepCat, pieSec: str,
-                           inc: int, r) -> bool:
+        def updateCounters(source, pieSec: str, r):
+            nonlocal discCat
+
             if type(source) is tuple:
                 srcTuple = tuple(map(getSrcCat, source))
                 source = " ".join(map(lambda x: x.name.capitalize(), srcTuple))
@@ -203,24 +211,25 @@ class DiscrepSourceCounter:
                 srcTuple = tuple(map(getSrcCat, [source] * 2))
             sourceCat = srcTuple[0]
 
-            if debug:
-                print(source, sourceCat, pieSec, inc, r)
+            # Don't bother counting discrepancies for examples
+            if "Author" in source:
+                return
 
-            if srcTuple not in tableAdded:
-                if type(discCat) is str:
-                    discCat = DiscrepCat[discCat.upper()]
-                           
+            if debug:
+                print(source, sourceCat, pieSec, r)
+
+            if srcTuple not in tableAdded:                           
                 if type(self.dict[sourceCat].discrepCats[discCat]) is int:
                     self.dict[sourceCat].discrepCats[discCat] += 1
                 else:
                     self.dict[sourceCat].discrepCats[discCat].addDiscrep(r)
                 tableAdded.add(srcTuple)
-            if source not in pieAdded and inc:
+            if source not in pieAdded:
                 try:
-                    getattr(self.dict[sourceCat], pieSec)[srcTuple[1]] += inc
+                    getattr(self.dict[sourceCat], pieSec)[srcTuple[1]] += 1
                 except TypeError:
                     setattr(self.dict[sourceCat], pieSec,
-                            getattr(self.dict[sourceCat], pieSec) + inc)
+                            getattr(self.dict[sourceCat], pieSec) + 1)
                 pieAdded.add(source)
                 if debug:
                     print(f"{pieSec}:", source)
@@ -229,16 +238,9 @@ class DiscrepSourceCounter:
 
         GROUP_SIZE = 2
         if len(sourceDicts) == 1:
-            for r in list(Rigidity):
-                try:
-                    sources = sourceDicts[0][r]
-                except KeyError:
-                    continue
-
-                if sources:
-                    updateCounters(str(list(map("".join, sources))),
-                                   discCat, "withinSrc", 1, r)
-
+            for r, sources in sourceDicts[0].items():
+                if sources and isinstance(r, Rigidity):
+                    updateCounters(str(list(map("".join, sources))), "withinDoc", r)
         else:
             for dicts in itertools.combinations(sourceDicts, r=GROUP_SIZE):
                 for r in itertools.product(list(Rigidity), repeat=GROUP_SIZE):
@@ -248,23 +250,19 @@ class DiscrepSourceCounter:
                         continue
 
                     for source in inPairs(sets, sFunc="".join):
-                        updateCounters(source, discCat, "withinSrc", 1, r)
+                        updateCounters(source, "withinDoc", r)
 
                     for author in inPairs(sets, sFunc=lambda x: x[0]):
                         yearSets = [{y for a, y in s if a == author} for s in sets]
-                        # Finds number of discrepancies between author's documents
-                        # unless within a single document; those have been counted
-                        inc = (reduce(operator.mul, map(len, yearSets)) -
-                                len(inPairs(yearSets)))
-
-                        if (updateCounters(author, discCat, "withinAuth", inc, r) and debug):
-                            print("years: ", yearSets)
-                            print("   increase:", inc)
+                        # Don't double count discrepancies within a single document
+                        if (reduce(operator.mul, map(len, yearSets)) >
+                                len(inPairs(yearSets))):
+                            updateCounters(author, "withinAuth", r)
 
                     for tup in {tuple(sorted([ai[0], bi[0]], key=getSrcCat))
                             for a, b in itertools.combinations(sets, 2)
                             for ai in a for bi in b if ai[0] != bi[0]}:
-                        updateCounters(tup, discCat, "betweenCats", 1, r)
+                        updateCounters(tup, "betweenCats", r)
         if debug:
             print(self)
             print()

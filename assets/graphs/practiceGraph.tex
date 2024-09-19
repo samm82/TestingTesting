@@ -112,8 +112,8 @@ VulnerabilityScanning [label=<Vulnerability<br/>Scanning>];
 WaterfallTesting [label=<Waterfall<br/>Testing>];
 WModelTesting [label=<W-Model<br/>Testing>];
 
-OrganizationbasedTesting -> RolebasedTesting[dir=none,style="dashed"];
-ProgrammerTesting -> DeveloperTesting[dir=none,style="dashed"];
+OrganizationbasedTesting -> RolebasedTesting[dir=none,style="dashed",color="gray"];
+ProgrammerTesting -> DeveloperTesting[dir=none,style="dashed",color="gray"];
 
 AcquisitionOrganizationTesting -> OrganizationbasedTesting[color="blue"];
 AgileTesting -> ContinuousTesting[color="blue"];
@@ -125,10 +125,10 @@ ArchitectTesting -> DeveloperTesting[color="blue"];
 AssertionChecking -> OngoingBuiltInTesting[color="blue"];
 Attacks -> ExperiencebasedTesting[color="green"];
 AttheBeginningTesting -> WModelTesting[style="dashed"];
-AttheBeginningTesting -> IncrementalTesting[style="dashed"];
-AttheBeginningTesting -> ContinuousTesting[style="dashed"];
+AttheBeginningTesting -> IncrementalTesting[style="dashed",color="gray"];
+AttheBeginningTesting -> ContinuousTesting[style="dashed",color="gray"];
 AttheEndTesting -> WaterfallTesting[color="blue"];
-Audits -> IndependentTestOrganizationTesting[style="dashed"];
+Audits -> IndependentTestOrganizationTesting[style="dashed",color="gray"];
 AutomatedTesting -> ScriptedTesting[color="green"];
 AutomatedTesting -> DeveloperTesting[style="dashed"];
 BuildVerificationTesting -> AutomatedTesting[color="blue"];
@@ -160,7 +160,7 @@ Heartbeat -> PeriodicBuiltInTesting[color="blue"];
 HumanFactorsEngineerTesting -> DeveloperTesting[color="blue"];
 IncrementalTesting -> LifecyclebasedTesting[color="blue"];
 IndependentTestOrganizationTesting -> OrganizationbasedTesting[color="blue"];
-IndependentTestOrganizationTesting -> IndependentTesterTesting;
+IndependentTestOrganizationTesting -> IndependentTesterTesting[color="gray"];
 IndependentTesterTesting -> TesterTesting[color="blue"];
 InterruptdrivenBuiltInTesting -> BuiltInTesting[color="blue"];
 LicenseComplianceAudits -> Audits[color="green"];
@@ -171,20 +171,20 @@ ModelbasedTesting -> MathematicalbasedTesting[color="green"];
 ModelbasedTesting -> AutomatedTesting[color="blue"];
 NetworkAdminTesting -> OperatorTesting[color="blue"];
 OngoingBuiltInTesting -> BuiltInTesting[color="blue"];
-OngoingBuiltInTesting -> ContinuousTesting[style="dashed"];
+OngoingBuiltInTesting -> ContinuousTesting[style="dashed",color="gray"];
 OperationsOrganizationTesting -> OrganizationbasedTesting[color="blue"];
 OperatorTesting -> RolebasedTesting[color="blue"];
-OrganizationbasedTesting -> RolebasedTesting[style="dashed"];
+OrganizationbasedTesting -> RolebasedTesting[style="dashed",color="gray"];
 OTOrganizationTesting -> IndependentTestOrganizationTesting[color="blue"];
-OutsourcedTesting -> IndependentTesterTesting[style="dashed"];
+OutsourcedTesting -> IndependentTesterTesting[style="dashed",color="gray"];
 PeriodicBuiltInTesting -> BuiltInTesting[color="blue"];
 PhysicalConfigurationAudits -> Audits[color="green"];
 PowerUpBuiltInTesting -> BuiltInTesting[color="blue"];
 PrimeContractorTesting -> DevelopmentOrganizationTesting[color="blue"];
 PrognosticsandHealthManagement -> OngoingBuiltInTesting[color="blue"];
 ProgrammerTesting -> DeveloperTesting[color="blue"];
-RapidPrototypingTesting -> LifecyclebasedTesting;
-RapidPrototypingTesting -> AttheBeginningTesting[style="dashed"];
+RapidPrototypingTesting -> LifecyclebasedTesting[color="gray"];
+RapidPrototypingTesting -> AttheBeginningTesting[style="dashed",color="gray"];
 RemoteTesting -> AsynchronousTesting[style="dashed"];
 RemoteTesting -> ManualTesting[style="dashed"];
 RequirementsEngineerTesting -> DeveloperTesting[color="blue"];
@@ -193,14 +193,14 @@ SafetyEngineerTesting -> DeveloperTesting[color="blue"];
 ScriptedTesting -> ManualTesting[style="dashed",color="green"];
 SecurityAudits -> Audits[color="green"];
 SecurityEngineerTesting -> DeveloperTesting[color="blue"];
-ShiftLeftTesting -> LifecyclebasedTesting[style="dashed"];
+ShiftLeftTesting -> LifecyclebasedTesting[style="dashed",color="gray"];
 ShutdownBuiltInTesting -> BuiltInTesting[color="blue"];
 SimilaritybasedPrioritizationTesting -> PrioritizationTesting[color="blue"];
 SoftwareDesignAudits -> Audits[color="green"];
 SpiralTesting -> LifecyclebasedTesting[color="blue"];
-SpiralTesting -> ContinuousTesting;
+SpiralTesting -> ContinuousTesting[color="gray"];
 StaticAssertionChecking -> AssertionChecking;
-StructuredWalkthroughs -> StructuredTesting;
+StructuredWalkthroughs -> StructuredTesting[color="gray"];
 SubcontractorTesting -> DevelopmentOrganizationTesting[color="blue"];
 SysAdminTesting -> OperatorTesting[color="blue"];
 TesterTesting -> RolebasedTesting[color="blue"];
@@ -208,7 +208,7 @@ Tours -> ExploratoryTesting[color="green"];
 Tours -> ExperiencebasedTesting[color="green"];
 UserasTesterTesting -> UserTesting[color="blue"];
 UserOrganizationTesting -> OrganizationbasedTesting[color="blue"];
-UserOrganizationTesting -> UserTesting;
+UserOrganizationTesting -> UserTesting[color="gray"];
 UserTesting -> RolebasedTesting[color="blue"];
 UserinitiatedBuiltInTesting -> BuiltInTesting[color="blue"];
 VModelTesting -> WaterfallTesting[color="blue"];
@@ -216,14 +216,13 @@ VModelTesting -> LifecyclebasedTesting[color="blue"];
 VModelTesting -> WModelTesting[style="dashed"];
 VulnerabilityScanning -> AutomatedTesting[color="green"];
 WaterfallTesting -> LifecyclebasedTesting[color="blue"];
-WModelTesting -> IncrementalTesting[style="dashed"];
-WModelTesting -> ContinuousTesting[style="dashed"];
+WModelTesting -> IncrementalTesting[style="dashed",color="gray"];
+WModelTesting -> ContinuousTesting[style="dashed",color="gray"];
 
 subgraph cluster_legend {
     label="Legend";
     labelloc="b";
     fontsize="48pt"
-    rankdir=BT
     {
         rank=same
         chd [label="Child"];
@@ -243,12 +242,30 @@ subgraph cluster_legend {
         imp3 -> imp4 [style="dashed" dir=none label="                "]
     }
         imp5 [label=<Implied<br/>Term> style="dashed"]
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
+}
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=gray, label=<From Inferences>]
+}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par
     imp3 -> syn1
     imp4 -> syn2
 imp5 -> { imp2 imp3 }
+src1 -> imp5
+src5 -> src2
+src6 -> src3
 }
 
 // Connect the dummy node to the first node of the legend

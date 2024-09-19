@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{SynExampleGlossaryGraph}{
+rankdir=BT;
+
+E [label=<E>];
+G [label=<G>];
+H [label=<H>];
+
+F [label=<F>,style="dotted"];
+E -> F[dir=none];
+G -> F[dir=none];
+G -> H[dir=none,style="dashed"];
+
+}
+\end{document}
