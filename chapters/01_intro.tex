@@ -22,7 +22,27 @@ revealed that the existing ones are inadequate:
           testing terminology.
 \end{itemize}
 
-Thus we set about closing this gap. We first define the scope of what kinds of
+\ifnotpaper
+    Some existing collections of software testing terminology were found, but
+    in addition to being incomplete, they also contained many oversights. For
+    example, \citep{IEEE2017} provides the following incomplete/nonsensical
+    definitions for the following terms:
+    \begin{enumerate}
+        \item \textbf{Event Sequence Analysis:} ``per'' \citetext{p.~170}
+        \item \textbf{Operable:} ``state of'' \citetext{p.~301}
+              % This may be a bad example, since the cf. provides some more context
+              % \item \textbf{Software Element:} a ``system element that is software''
+              %       \citetext{p.~421}
+    \end{enumerate}
+    Additionally, it also defines ``device'' as a ``mechanism or piece of
+    equipment designed to serve a purpose or perform a function''
+    \citetext{p.~136}, but does not define ``equipment'' and only defines
+    ``mechanism'' in the software sense as how ``a function \dots{} transform[s]
+    input into output'' \citetext{p.~270}.
+\fi
+
+Thus we set about closing this gap in the literature. We first define the scope
+of what kinds of
 ``software testing'' are of interest (\Cref{scope}) and examine the existing
 literature (\Cref{methodology})\ifnotpaper, partially through the use of tools
 created for analysis (\Cref{methods})\fi. Despite the amount of well understood
