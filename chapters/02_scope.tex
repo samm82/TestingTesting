@@ -15,19 +15,6 @@ fundamentally involve hardware.
     (\citealp{ISO2021}; \citealp[p.~95]{ZhouEtAl2012}), which deals with the
     ``security risk'' of ``information leakage via electromagnetic emanation''
     \citep[p.~95]{ZhouEtAl2012}.
-\fi Security audits that focus on ``an organization's
-\dots\ processes and infrastructure'' \citepISTQB{}, are also out of scope,
-but security audits that ``aim to ensure that all of the products installed on
-a site are secure when checked against the known vulnerabilities for those
-products'' \citep[p.~28]{Gerrard2000b} are not.
-\ifnotpaper While \acf{orthat}
-    can be used when testing software \citep{Mandl1985}, it can also be used for
-    hardware \citep[pp.~471-472]{Valcheva2013}, such as ``processors \dots\ made
-    from pre-built and pre-tested hardware components'' \citetext{p.~471}. A subset of
-    \acs{orthat} called ``\acf{toat}'' is used for ``experimental design problems in
-    manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product and manufacturing
-    process design'' \cite[p.~44]{Tsui2007} and is thus out of scope.
-
     Sometimes, wider decisions must be made on whether a whole category of
     testing is in scope or not. For example, while all the examples of domain-specific
     testing given by \citet[p.~26]{Firesmith2015} are focused on hardware, this
@@ -79,6 +66,19 @@ and to the code. For example:
           technique'' and can be used to assist fuzz and metamorphic testing
           \citep[p.~5-15]{SWEBOK2024} (in scope).
           \ifnotpaper
+    \item Security audits can focus on ``an organization's \dots\ processes
+          and infrastructure'' \citepISTQB{} (out of scope) or
+          ``aim to ensure that all of the products installed on a site are
+          secure when checked against the known vulnerabilities for those
+          products'' \citep[p.~28]{Gerrard2000b} (in scope).
+    \item \acf{orthat} can be used when testing software \citep{Mandl1985} (in
+          scope) but can also be used for hardware \citep[pp.~471-472]{Valcheva2013},
+          such as ``processors \dots\ made from pre-built and pre-tested
+          hardware components'' \citetext{p.~471} (out of scope). A subset of
+          \acs{orthat} called ``\acf{toat}'' is used for ``experimental design
+          problems in manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product
+          and manufacturing process design'' \cite[p.~44]{Tsui2007} and is thus
+          also out of scope.
     \item Even though \emph{reliability testing} and \emph{maintainability
               testing} can start \emph{without} code by ``measur[ing]
           structural attributes of representations of the software''
@@ -315,9 +315,11 @@ and to the code. For example:
     \subsubsection{Orthogonally Derived Approaches}
     \label{orthogonal-tests}
     Some test approaches appear to be combinations of other (seemingly
-    orthogonal) approaches. We indicate the combination for the first item,
-    but omit them (for space) otherwise as the name makes it clear what the
-    combination is. Some examples:
+    orthogonal) approaches. These are considered out of scope, since they are
+    just trivial specializations of documented test approaches that are in
+    scope. For the following examples; we indicate the combination for the
+    first item, but omit the rest for brevity as the name makes it clear
+    what the combination is:
     \begin{itemize}
         \item Black box conformance testing \citep[p.~25]{JardEtAl1999}
               (combining black box and conformance testing)
@@ -358,8 +360,9 @@ and to the code. For example:
         \item White-box unit testing \citep[pp.~345-346]{SakamotoEtAl2013}
     \end{itemize}
 
-    Some classes seem to be closely associated, such as remote testing
+    While some approaches are closely associated, such as remote testing
     with asynchronous testing, and local with synchronous \citep{JardEtAl1999},
-    possibly implying a parent-child relation rather than a combination.
+    these seem to imply a \hyperref[par-chd-rels]{parent-child relation}
+    rather than a combination.
 
 \fi

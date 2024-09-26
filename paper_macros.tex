@@ -97,7 +97,7 @@ of a test process; for example, ``across the whole organization'' or only
     To better visualize how test approaches relate to each other, we
     \ifnotpaper\else then \fi developed a tool to automatically
     generate graphs of these relations.
-    \ifnotpaper Since child-parent and synonym relations between approaches are
+    \ifnotpaper Since parent-child and synonym relations between approaches are
         tracked in \ifblind{our approach glossary}{\href{
                 https://github.com/samm82/TestGen-Thesis/blob/main/ApproachGlossary.csv
             }{our approach glossary}} in a consistent format, they can be parsed
@@ -131,7 +131,7 @@ of a test process; for example, ``across the whole organization'' or only
         \ExampleGraph{}
 
     \fi
-    All child-parent relations are graphed, as well as synonym relations where either:
+    All parent-child relations are graphed, as well as synonym relations where either:
     \begin{enumerate}
         \item both synonyms have their own rows in the glossary, or
         \item a term is a synonym to more than one term with its own row in the
@@ -164,7 +164,7 @@ of a test process; for example, ``across the whole organization'' or only
         the generated .tex files starting with \texttt{I -> I} which would
         result in the graph in \Cref{fig:selfExampleGraph}. A similar process
         is used to detect instances where two approaches have a synonym
-        \emph{and} a child-parent relation. A dictionary of each term's
+        \emph{and} a parent-child relation. A dictionary of each term's
         synonyms is built to evaluate which synonym relations are notable
         enough to include in the graph, and these mappings are then checked to
         see if one appears as a parent of the other. For example, if J and K
