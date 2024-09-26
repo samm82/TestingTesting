@@ -4,8 +4,9 @@
 \subsection{Sources}
 \label{sources}
 As there is no single authoritative source on software testing terminology,
-we need to look at many. Unfortunately, this brings to light a variety of
-discrepancies. Starting from some set of sources, we then use
+we need to look at many to see how various terms are used in practice.
+% Unfortunately, this brings to light a variety of discrepancies.
+Starting from some set of sources, we then use
 ``snowball sampling'' (a ``method of \dots\ sample selection \dots\ used to
 locate hidden populations'' \citep{Johnson2014}) to gather further sources%
 \seeParAlways{undef-terms}. Sources with a similar degree of
@@ -45,7 +46,11 @@ of how many sources comprise each category is given in \Cref{fig:sourceSummary}.
           the \acs{swebok}, and \ifnotpaper \citeauthor{DoğanEtAl2014}\else
               Doğan et al.\fi's literature review \citeyearpar{DoğanEtAl2014})
     \item Built up from various sources, including \stds{}, and often written
-          by a large organization (such as \acs{istqb})
+          by a large organization (such as \acs{istqb}); the \acs{swebok} is
+          ``proposed as a suitable foundation for government licensing, for the
+          regulation of software engineers, and for the development of
+          university curricula in software engineering''
+          \citep[p.~xix]{KanerEtAl2011}
 \end{itemize}
 
 \subsubsection{\textSources{1}}
@@ -76,7 +81,7 @@ of how many sources comprise each category is given in \Cref{fig:sourceSummary}.
           processes
     \item Much less widespread than other categories of sources
     \item Many of these sources were investigated to ``fill in''
-          missing definitions\seeSectionParAlways{undef-terms}
+          missing definitions\seeParAlways{undef-terms}
     \item Also included (for brevity) are some less-than-academic sources to
           investigate how terms are used in practice, such as websites
           \citep{LambdaTest2024,Pandey2023} and a booklet \citep{SPICE2022}
@@ -107,17 +112,126 @@ of how many sources comprise each category is given in \Cref{fig:sourceSummary}.
     \label{fig:sourceSummary}
 \end{figure}
 
+\subsection{Terminology}
+
+This research was intended to describe the current state of testing
+terminology instead of prematurely applying any classifications to reduce bias.
+Therefore, the notions of \nameref{categories-observ} and \nameref{par-chd-rels}
+arose naturally from the literature. Even though these are ``results'' of this
+research, they are defined here for clarity since they are used throughout this
+thesis. We also define the notion of \nameref{rigidity}.
+
+\subsubsection{Categories of Testing Approaches}
+\label{categories-observ}
+
+Different sources categorize software testing approaches in different ways%
+\ifnotpaper
+    ; while it is useful to record and think about these
+    categorizations (see \Cref{testing-categories}), following one (or more)
+    during the research
+    stage could lead to bias and a prescriptive categorization, instead of letting
+    one emerge descriptively during the analysis stage. Since these categorizations
+    are not mutually exclusive, it also means that more than one could be useful
+    (both in general and to this specific project).\newline \else.\fi\
+\ifnotpaper \citet{IEEE2022} \else ISO/IEC and IEEE \cite{IEEE2022} \fi provide
+a classification for different kinds of tests (see \refIEEETestTerms{}).
+\ifnotpaper A deeper rationale for a proposed classification will be given
+    during the analysis stage. \else Since
+    this seems to be widely used (``test level'' and ``test type'' in particular)
+    and is useful when focusing on a particular subset of testing, this terminology
+    is used for now. \fi
+
+\ifnotpaper
+    However, other sources \citep{BarbosaEtAl2006, SouzaEtAl2017}
+    % \cite{BarbosaEtAl2006, SouzaEtAl2017}
+    provide alternate categories
+    (see \refOtherTestTerms{}) which may be beneficial to investigate to
+    determine if this categorization is sufficient.
+
+    A ``metric'' categorization was considered at one point, but was decided
+    to be out of the scope of this project (see \Cref{scope}, \thesisissueref{21},
+    and \thesisissueref{22}).
+    Related testing approaches may be grouped into a ``class'' or ``family'' to
+    group those with ``commonalities and well-identified variabilities that can be
+    instantiated'', where ``the commonalities are large and the variabilities
+    smaller''\seeThesisIssuePar{64}. Examples of these are the classes of
+    combinatorial \citep[p.~15]{IEEE2021} and data flow testing \citetext{p.~3} and the
+    family of performance-related testing \cite[p.~1187]{Moghadam2019}\footnote{The
+        original source describes ``performance testing \dots\ as a family of
+        performance-related testing techniques'', but it makes more sense to
+        consider ``performance-related testing'' as the ``family'' with
+        ``performance testing'' being one of the
+        variabilities (see \Cref{perf-test-rec}).}, and may also be
+    implied for security testing, a test type that consists of ``a number of
+    techniques\footnote{This may or may not be \distinctIEEE{technique}}''
+    \cite[p.~40]{IEEE2021}.
+
+    \newgeometry{margin=1.5cm, top=2.5cm}
+    \begin{landscape}
+        \ieeeTestTermsTable{}
+    \end{landscape}
+
+    \begin{landscape}
+        \otherTestTermsTable{}
+    \end{landscape}
+    \restoregeometry
+    % These were moved earlier to display nicely in paper
+
+\fi
+
+It also seems that these categories are orthogonal. For example, ``a test type
+can be performed at a single test level or across several test levels''
+\ifnotpaper
+    (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021})%
+\else
+    \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}%
+\fi. Due to this, a specific
+test approach can be derived by combining test approaches from different
+categories\ifnotpaper; see \Cref{orthogonal-tests} for some examples
+of this\fi.
+
+% Moved here to display nicely in paper
+\ifnotpaper\else\discrepsTable{}\fi
+
+\subsubsection{Parent-Child Relations}
+\label{par-chd-rels}
+Many test approaches are multi-faceted and can be ``specialized'' into others,
+such as \nameref{perf-test-rec}. These ``specializations'' will be referred to
+as ``children'' or ``sub-approaches'' of the multi-faceted ``parent''. This
+nomenclature also extends to other \nameref{categories-observ} from
+\Cref{tab:ieeeTestTerms}, such as ``sub-type''.
+
+\subsubsection{Rigidity}
+\label{rigidity}
+
+Since there is a considerable degree of nuance introduced by the use of natural
+language, not all discrepancies are equal! To capture this nuance and provide a
+more complete picture, we make a distinction between explicit and implicit
+discrepancies, such as in \Cref{tab:discreps}. A piece of information is
+``implicit'' if:
+\begin{itemize}
+    \item it is not directly given by a source but seems to be implied, and/or
+    \item it is only true some of the time (e.g., under certain conditions).
+\end{itemize}
+Discrepancies based on implicit information are themselves implicit. These are
+automatically detected when \hyperref[graph-gen]{generating graphs} and
+\hyperref[discrep-analysis]{analyzing discrepancies} by looking for indicators
+of uncertainty, such as question marks, ``~(Testing)'' (which indicates
+that a test approach isn't explicitly denoted as such), and the keywords
+``implied'', ``inferred'', ``can be'', ``ideally'', ``usually'', ``most'',
+``likely'', ``often'', ``if'', and ``although''
+\seeSrcCode{50380a3}{csvToGraph}{124}{140}. These words were used when creating
+the glossaries to capture varying degrees of nuance, such as when a test
+approach ``can be'' a child of another or is a synonym of another ``most of the
+time'', but isn't always. As an example, \Cref{tab:parSyns} contains relations
+that are explicit, implicit, and both; implicit relations are marked by the
+phrase ``implied by''.
+
 \subsection{Procedure}
 
 To track terminology used in the literature, we build a glossary of test
 approaches, including the term itself, its definition, and
-any synonyms or parents. Many test approaches are multi-faceted and can be
-``specialized'' into others, such as \nameref{perf-test-rec}. These
-``specializations'' will be referred to as ``children'' or
-``sub-approaches\footnote{This nomenclature extends to other categories of
-    approaches from \Cref{tab:ieeeTestTerms}, such as ``sub-type''.}''
-of the multi-faceted
-``parent''. Any additional notes, such as questions or sources to investigate
+any synonyms or parents. Any additional notes, such as questions or sources to investigate
 further, are also recorded. Approach categorizations, such as those found in
 \Cref{tab:ieeeTestTerms} and some outliers (e.g., ``artifact''), are tracked
 for future investigation.
@@ -146,8 +260,7 @@ Heuristics are used to guide this process, by investigating:
                   during the first pass(es) of resources investigated earlier
                   in the process. While reiterating over them would be ideal,
                   this may not be possible due to time constraints.
-              }\fi%
-          \seeSectionParAlways{derived-tests}.
+              } (see \Cref{derived-tests})\fi.
 \end{itemize}
 
 When terms have multiple definitions, either the clearest and most concise
@@ -155,15 +268,15 @@ version is kept, or they are merged to paint a more complete picture.
 If any discrepancies or ambiguities
 arise, they are reasonably investigated and always documented. If a
 testing approach is mentioned but not defined, it is added to the
-glossary to indicate it should be investigated further%
-\seeSectionParAlways{undef-terms}. A similar methodology
+glossary to indicate it should be investigated further (see
+\Cref{undef-terms}). A similar methodology
 is used for tracking software qualities, albeit in a separate
-document\seeSectionParAlways{qual-test}.
+document\ifnotpaper\ (see \Cref{qual-test})\fi.
 
 During the first pass of data collection, all software-testing-focused terms
 are included. Some of them are less applicable to test case automation
 \ifnotpaper(such as \Cref{static-test}, \thesisissueref{39}) \fi or too
-broad (such as \Cref{attacks}\ifnotpaper{, \thesisissueref{55}}\fi), so they
+broad\ifnotpaper (such as \Cref{attacks}, \thesisissueref{55})\fi, so they
 will be omitted over the course of analysis.
 
 \ifnotpaper
@@ -199,7 +312,7 @@ Once \stds{} had been exhausted, we devised a strategy to
 look for sources that explicitly define these terms, consistent with
 our snowballing approach. This uncovers new approaches, both in and out of
 scope (such as \acf{emsec} testing, HTML testing, and aspects of loop testing and
-orthogonal array testing\seeSectionPar{scope}).
+orthogonal array testing\ifnotpaper; see \Cref{scope}\fi).
 
 The following terms (and their respective related terms) were explored%
 \ifnotpaper in the following sources\fi, bringing the number of testing
