@@ -119,7 +119,7 @@ terminology instead of prematurely applying any classifications to reduce bias.
 Therefore, the notions of \nameref{categories-observ} and \nameref{chd-par-rels}
 arose naturally from the literature. Even though these are ``results'' of this
 research, they are defined here for clarity since they are used throughout this
-thesis.
+thesis. We also define the notion of \nameref{rigidity}.
 
 \subsubsection{Categories of Testing Approaches}
 \label{categories-observ}
@@ -148,17 +148,6 @@ a classification for different kinds of tests (see \refIEEETestTerms{}).
     (see \refOtherTestTerms{}) which may be beneficial to investigate to
     determine if this categorization is sufficient.
 
-    \newgeometry{margin=1.5cm, top=2.5cm}
-    \begin{landscape}
-        \ieeeTestTermsTable{}
-    \end{landscape}
-
-    \begin{landscape}
-        \otherTestTermsTable{}
-    \end{landscape}
-    \restoregeometry
-    % These were moved earlier to display nicely in paper
-
     A ``metric'' categorization was considered at one point, but was decided
     to be out of the scope of this project\seeSectionPar{scope}
     {, \thesisissueref{21}, and \thesisissueref{22}}.
@@ -176,6 +165,18 @@ a classification for different kinds of tests (see \refIEEETestTerms{}).
     implied for security testing, a test type that consists of ``a number of
     techniques\footnote{This may or may not be \distinctIEEE{technique}}''
     \cite[p.~40]{IEEE2021}.
+
+    \newgeometry{margin=1.5cm, top=2.5cm}
+    \begin{landscape}
+        \ieeeTestTermsTable{}
+    \end{landscape}
+
+    \begin{landscape}
+        \otherTestTermsTable{}
+    \end{landscape}
+    \restoregeometry
+    % These were moved earlier to display nicely in paper
+
 \fi
 
 It also seems that these categories are orthogonal. For example, ``a test type
@@ -199,6 +200,30 @@ such as \nameref{perf-test-rec}. These ``specializations'' will be referred to
 as ``children'' or ``sub-approaches'' of the multi-faceted ``parent''. This
 nomenclature also extends to other \nameref{categories-observ} from
 \Cref{tab:ieeeTestTerms}, such as ``sub-type''.
+
+\subsubsection{Rigidity}
+\label{rigidity}
+
+Since there is a considerable degree of nuance introduced by the use of natural
+language, not all discrepancies are equal! To capture this nuance and provide a
+more complete picture, we make a distinction between explicit and implicit
+discrepancies, such as in \Cref{tab:discreps}. A piece of information is
+``implicit'' if:
+\begin{itemize}
+    \item it is not directly given by a source but seems to be implied, and/or
+    \item it is only true some of the time (e.g., under certain conditions).
+\end{itemize}
+Discrepancies based on implicit information are themselves implicit. These are
+automatically detected when \hyperref[graph-gen]{generating graphs} and
+\hyperref[discrep-analysis]{analyzing discrepancies} by looking for indicators
+of uncertainty, such as question marks, ``~(Testing)'' (which indicates
+that a test approach isn't explicitly denoted as such), and the keywords
+``implied'', ``inferred'', ``can be'', ``ideally'', ``usually'', ``most'',
+``likely'', ``often'', ``if'', and ``although''
+\seeSrcCode{50380a3}{csvToGraph}{124}{140}. These words were used when creating
+the glossaries to capture varying degrees of nuance, such as when a test
+approach ``can be'' a child of another or is a synonym of another ``most of the
+time'', but isn't always.
 
 \subsection{Procedure}
 
