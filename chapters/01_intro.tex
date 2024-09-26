@@ -1,0 +1,82 @@
+\section{Introduction}
+
+% TODO: tighten up, add sources
+
+Testing software is complicated, expensive, and often overlooked.
+Improving the productivity of testing and testing research requires a standard
+language for communication. For example, ``complete testing'' could mean that
+the tester has ``completed the discovery of every bug in the product\dots[,] the
+agreed-upon tests\dots[, or] the time period assigned to testing'', which can
+lead to miscommunication and, ultimately, the tester getting ``blamed for not
+doing \dots{} [their] job'' \citep[p.~7]{KanerEtAl2011}. Unfortunately, a search
+for a systematic, rigorous, and ``complete'' taxonomy for software testing
+revealed that the existing ones are inadequate:
+
+\begin{itemize}
+    \item \ifnotpaper\else Tebes et al. \fi\citet{TebesEtAl2020a} focus on
+          \emph{parts} of the testing process (e.g., test goal, testable entity),
+    \item \ifnotpaper\else Souza et al. \fi\citet{SouzaEtAl2017} prioritize
+          organizing testing approaches over defining them, and
+    \item \ifnotpaper\else Unterkalmsteiner et al. \fi\citet{UnterkalmsteinerEtAl2014}
+          provide a foundation for classification but not how it applies to software
+          testing terminology.
+\end{itemize}
+
+\ifnotpaper
+    Some existing collections of software testing terminology were found, but
+    in addition to being incomplete, they also contained many oversights. For
+    example, \citep{IEEE2017} provides the following incomplete/nonsensical
+    definitions for the following terms:
+    \begin{enumerate}
+        \item \textbf{Event Sequence Analysis:} ``per'' \citetext{p.~170}
+        \item \textbf{Operable:} ``state of'' \citetext{p.~301}
+              % This may be a bad example, since the cf. provides some more context
+              % \item \textbf{Software Element:} a ``system element that is software''
+              %       \citetext{p.~421}
+    \end{enumerate}
+    Additionally, it also defines ``device'' as a ``mechanism or piece of
+    equipment designed to serve a purpose or perform a function''
+    \citetext{p.~136}, but does not define ``equipment'' and only defines
+    ``mechanism'' in the software sense as how ``a function \dots{} transform[s]
+    input into output'' \citetext{p.~270}.
+\fi
+
+Thus we set about closing this gap in the literature. We first define the scope
+of what kinds of
+``software testing'' are of interest (\Cref{scope}) and examine the existing
+literature (\Cref{methodology})\ifnotpaper, partially through the use of tools
+created for analysis (\Cref{tools})\fi. Despite the amount of well understood
+and organized knowledge, there are still many discrepancies and
+ambiguities in the literature, either within the same source or between various
+sources (\Cref{discrep}). This reinforces the need for a proper taxonomy! We
+also provide some potential solutions covering some of these discrepancies
+(\Cref{recs}).
+\ifnotpaper
+    The following three research questions guide this process:
+    \begin{enumerate}
+        \item What testing approaches are described in the literature?
+        \item What discrepancies exist between descriptions of these testing
+              approaches?
+        \item Can any of these discrepancies be resolved/reduced systematically?
+    \end{enumerate}
+    This research and analysis (including the development of tools for analysis
+    outlined in \Cref{tools}) was performed by Samuel Crawford under the
+    guidance, supervision, and recommendations of Drs.~Spencer Smith and
+    Jacques Carette. The resulting contributions are three glossaries of test
+    approaches, software qualities (which may imply \nameref{qual-test}), and
+    supplementary terms, as well as tools for automated analysis and
+    visualization of these data. These are all available online at
+    \url{https://github.com/samm82/TestGen-Thesis} for independent analysis and,
+    ideally, extension as more test approaches are discovered and documented.
+
+    In our own project Drasil~\citep{Drasil}, which is aimed at ``generating
+    all of the software artifacts for (well understood) research software'', we
+    wanted to automate the generation of tests. We did not want to do this
+    in an ad hoc manner, so we sought to fully understand the target domain:
+    testing. The goal was to uncover the various approaches towards testing, as
+    well as which prerequisites (e.g., input files, oracles) are needed for
+    each. Then we could evaluate which prerequisites are already ``known'' by
+    Drasil, as well as which were possible to ``teach'', and generate test
+    cases from them. The lack of a consistent, comprehensive source of this
+    information caused the focus of this project to shift drastically.
+\fi
