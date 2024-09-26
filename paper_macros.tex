@@ -23,24 +23,12 @@
 %------------------------------------------------------------------------------
 
 \newif\ifnotpaper
-\newcommand{\seeSection}[1]{%
-    \ifnotpaper
-        \seeSectionAlways{#1}%
-    \fi
-}
-\newcommand{\seeSectionPar}[2][]{%
-    \ifnotpaper
-        \seeSectionParAlways{#2}{#1}%
-    \fi
-}
+
 \newcommand{\seeSectionFoot}[1]{%
     \ifnotpaper
-        \seeSectionFootAlways{#1}%
+        \seeFootAlways{#1}%
     \fi
 }
-\NewDocumentCommand{\seeSectionAlways}{ m }{\seeAlways{#1}}
-\NewDocumentCommand{\seeSectionParAlways}{ m O{} }{\seeParAlways{#1}[#2]}
-\NewDocumentCommand{\seeSectionFootAlways}{ m }{\seeFootAlways{#1}}
 
 \NewDocumentCommand{\seeThesisIssue}{ m }{\ifnotpaper\seeAlways[\thesisissueref]{#1}\fi}
 \NewDocumentCommand{\seeThesisIssuePar}{ m o }
