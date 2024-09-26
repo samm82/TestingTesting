@@ -121,61 +121,62 @@ and to the code. For example:
     done by \citet[p.~17]{IEEE2022}, \citet[pp.~8-9]{Gerrard2000a}, and even a
     source that explicitly excluded static testing \citep[p.~440]{IEEE2017}!
 
-    \citeauthor{Patton2006} introduces ``specification testing''
-    \citeyearpar[pp.~56-62]{Patton2006}, which is static black-box testing.
-    Most of this section is irrelevant to generating test cases, due to
-    requiring human involvement and verifying the specification, not the code.
-    However, it provides a ``Specification Terminology Checklist''
-    \citep[p.~61]{Patton2006} that includes some keywords that, if found, could
-    trigger an applicable warning to the user (similar to the idea behind the
-    correctness/consistency checks project), indicating that a requirement is
-    ambiguous or incomplete \citep[see][p.~1-8]{SWEBOK2024}:
+    % TODO: can this be formalized at all and included in a glossary or section?
+    % \citeauthor{Patton2006} introduces ``specification testing''
+    % \citeyearpar[pp.~56-62]{Patton2006}, which is static black-box testing.
+    % Most of this section is irrelevant to generating test cases, due to
+    % requiring human involvement and verifying the specification, not the code.
+    % However, it provides a ``Specification Terminology Checklist''
+    % \citep[p.~61]{Patton2006} that includes some keywords that, if found, could
+    % trigger an applicable warning to the user (similar to the idea behind the
+    % correctness/consistency checks project), indicating that a requirement is
+    % ambiguous or incomplete \citep[see][p.~1-8]{SWEBOK2024}:
 
-    \begin{itemize}
-        \item \textbf{Potentially unrealistic:} always, every, all, none, every,
-              certainly, therefore, clearly, obviously, evidently
-        \item \textbf{Potentially vague:} some, sometimes, often, usually,
-              ordinarily, customarily, most, mostly, good, high-quality, fast,
-              quickly, cheap, inexpensive, efficient, small, stable
-        \item \textbf{Potentially incomplete:} etc., and so forth, and so on,
-              such as, handled, processed, rejected, skipped, eliminated,
-              if \dots\ then \dots\ (without ``else'' or ``otherwise''),
-              to be determined \citep[p.~408]{vanVliet2000}
-    \end{itemize}
+    % \begin{itemize}
+    %     \item \textbf{Potentially unrealistic:} always, every, all, none, every,
+    %           certainly, therefore, clearly, obviously, evidently
+    %     \item \textbf{Potentially vague:} some, sometimes, often, usually,
+    %           ordinarily, customarily, most, mostly, good, high-quality, fast,
+    %           quickly, cheap, inexpensive, efficient, small, stable
+    %     \item \textbf{Potentially incomplete:} etc., and so forth, and so on,
+    %           such as, handled, processed, rejected, skipped, eliminated,
+    %           if \dots\ then \dots\ (without ``else'' or ``otherwise''),
+    %           to be determined \citep[p.~408]{vanVliet2000}
+    % \end{itemize}
 
-    \citeauthor{Patton2006} also provides a ``Generic Code Review Checklist''
-    \citeyearpar[pp.~99-103]{Patton2006} in the context of static testing.
-    Some of the following issues \emph{may} be able to be detected
-    automatically (e.g., by linters), but this checklist is primarily used
-    by human reviewers:
+    % \citeauthor{Patton2006} also provides a ``Generic Code Review Checklist''
+    % \citeyearpar[pp.~99-103]{Patton2006} in the context of static testing.
+    % Some of the following issues \emph{may} be able to be detected
+    % automatically (e.g., by linters), but this checklist is primarily used
+    % by human reviewers:
 
-    \begin{itemize}
-        \item \phantomsection
-              \label{data-ref-errors}
-              Data reference errors: ``bugs caused by using a variable,
-              constant, \dots\ [etc.] that hasn't been properly declared
-              or initialized'' for its context \citetext{p.~99}
-        \item Data declaration errors: bugs ``caused by improperly
-              declaring or using variables or constants'' \citetext{p.~100}
-        \item Computation errors: ``essentially bad math''; e.g., type
-              mismatches, over/underflow, zero division, out of meaningful
-              range \citetext{p.~101}
-              \label{comp-errors}
-        \item Comparison errors: ``very susceptible to boundary condition
-              problems''; e.g., correct inclusion, floating point
-              comparisons \citetext{p.~101}
-        \item Control flow errors: bugs caused by ``loops and other control
-              constructs in the language not behaving as expected''
-              \citetext{p.~102}
-        \item Subroutine parameter errors: bugs ``due to incorrect passing
-              of data to and from software subroutines'' \citetext{p.~102}
-              (could also be called ``interface errors''
-              \citep[p.~416]{vanVliet2000})
-        \item Input/output errors: e.g., how are errors handled?
-              \citetext{pp.~102-103}
-        \item ASCII character handling, portability, compilation warnings
-              \citetext{p.~103}
-    \end{itemize}
+    % \begin{itemize}
+    %     \item \phantomsection
+    %           \label{data-ref-errors}
+    %           Data reference errors: ``bugs caused by using a variable,
+    %           constant, \dots\ [etc.] that hasn't been properly declared
+    %           or initialized'' for its context \citetext{p.~99}
+    %     \item Data declaration errors: bugs ``caused by improperly
+    %           declaring or using variables or constants'' \citetext{p.~100}
+    %     \item Computation errors: ``essentially bad math''; e.g., type
+    %           mismatches, over/underflow, zero division, out of meaningful
+    %           range \citetext{p.~101}
+    %           \label{comp-errors}
+    %     \item Comparison errors: ``very susceptible to boundary condition
+    %           problems''; e.g., correct inclusion, floating point
+    %           comparisons \citetext{p.~101}
+    %     \item Control flow errors: bugs caused by ``loops and other control
+    %           constructs in the language not behaving as expected''
+    %           \citetext{p.~102}
+    %     \item Subroutine parameter errors: bugs ``due to incorrect passing
+    %           of data to and from software subroutines'' \citetext{p.~102}
+    %           (could also be called ``interface errors''
+    %           \citep[p.~416]{vanVliet2000})
+    %     \item Input/output errors: e.g., how are errors handled?
+    %           \citetext{pp.~102-103}
+    %     \item ASCII character handling, portability, compilation warnings
+    %           \citetext{p.~103}
+    % \end{itemize}
 
     Static testing generally seems more ad hoc and less relevant for our
     original goal (the automatic generation of tests). In particular,
