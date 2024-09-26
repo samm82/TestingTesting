@@ -23,7 +23,7 @@ products'' \citep[p.~28]{Gerrard2000b} are not.
 \ifnotpaper While \acf{orthat}
     can be used when testing software \citep{Mandl1985}, it can also be used for
     hardware \citep[pp.~471-472]{Valcheva2013}, such as ``processors \dots\ made
-    from pre-built and pre-tested hardware components'' (p.~471). A subset of
+    from pre-built and pre-tested hardware components'' \citetext{p.~471}. A subset of
     \acs{orthat} called ``\acf{toat}'' is used for ``experimental design problems in
     manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product and manufacturing
     process design'' \cite[p.~44]{Tsui2007} and is thus out of scope.
@@ -33,7 +33,7 @@ products'' \citep[p.~28]{Gerrard2000b} are not.
     testing given by \citet[p.~26]{Firesmith2015} are focused on hardware, this
     might not be representative of all types (e.g., \acf{ml} model testing seems
     domain-specific). Conversely, the examples of environmental tolerance testing
-    (p.~56) do not seem to apply to software. For example, radiation tolerance
+    \citetext{p.~56} do not seem to apply to software. For example, radiation tolerance
     testing seems to focus on hardware, such as motors \citep{MukhinEtAl2022},
     robots \citep{ZhangEtAl2020}, or ``nanolayered carbide and nitride materials''
     \citep[p.~1]{TunesEtAl2022}. Acceleration tolerance testing seems to focus on
@@ -194,7 +194,8 @@ and to the code. For example:
     developments, as well as being able to talk about and understand them, is
     crucial. In addition to methods of categorizing test approaches, the literature
     also provides the following methods of deriving new ones. For completeness,
-    these are also considered in scope, except for \nameref{lang-test}.
+    these are also considered in scope, except for \nameref{lang-test} and
+    \nameref{orthogonal-tests}.
 
     \subsubsection{Coverage-driven Techniques}
     \label{tech-cov}
@@ -310,5 +311,55 @@ and to the code. For example:
               cross-browser compatibility testing, performance testing, and
               content checking \citep[p.~3]{Gerrard2000b}
     \end{itemize}
+
+    \subsubsection{Orthogonally Derived Approaches}
+    \label{orthogonal-tests}
+    Some test approaches appear to be combinations of other (seemingly
+    orthogonal) approaches. We indicate the combination for the first item,
+    but omit them (for space) otherwise as the name makes it clear what the
+    combination is. Some examples:
+    \begin{itemize}
+        \item Black box conformance testing \citep[p.~25]{JardEtAl1999}
+              (combining black box and conformance testing)
+        \item Black-box integration testing \citep[p.~345-346]{SakamotoEtAl2013}
+        \item Checklist-based reviews \citepISTQB{}
+        \item Closed-loop HiL verification \citep[p.~6]{PreußeEtAl2012}
+        \item Closed-loop protection system testing \citep[p.~331]{ForsythEtAl2004}
+        \item Endurance stability testing \citep[p.~55]{Firesmith2015}
+        \item End-to-end functionality testing (\citealp[p.~20]{IEEE2021};
+              \citealp[Tab.~2]{Gerrard2000a})
+        \item Formal reviews \citepISTQB{}
+        \item Gray-box integration testing \citep[p.~344]{SakamotoEtAl2013}
+        \item Incremental integration testing \citep[p.~601]{SharmaEtAl2021}
+              \todo{OG [19]}
+        \item Informal reviews \citepISTQB{}
+        \item Infrastructure compatibility testing \citep[p.~53]{Firesmith2015}
+        \item Invariant-based automatic testing
+              \citep[pp.~184-185,~Tab.~21]{DoğanEtAl2014}, including for
+              ``AJAX user interfaces'' \citetext{p.~191}
+        \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000a}
+        \item Machine learning-assisted performance testing? \citep{Moghadam2019}
+        \item Manual procedure testing \citep[p.~47]{Firesmith2015}
+        \item Manual security audits \citep[p.~28]{Gerrard2000b}
+        \item Model-based GUI testing (\citealp[Tab.~1]{DoğanEtAl2014}; implied
+              by \citealp[p.~356]{SakamotoEtAl2013})
+        \item Model-based web application testing (implied by
+              \citealp[p.~356]{SakamotoEtAl2013})
+        \item Non-functional search-based testing \citep[Tab.~1]{DoğanEtAl2014}
+        \item Offline MBT \citepISTQB{}
+        \item Online MBT \citepISTQB{}
+        \item Role-based reviews \citepISTQB{}
+        \item Scenario walkthroughs \citep[Fig.~4]{Gerrard2000a}
+        \item Scenario-based reviews \citepISTQB{}
+        \item Security attacks \citepISTQB{}
+        \item Statistical web testing \citep[p.~185]{DoğanEtAl2014}
+        \item Usability test script(ing) \citepISTQB{}
+        \item Web application regression testing \cite[Tab.~21]{DoğanEtAl2014}
+        \item White-box unit testing \citep[pp.~345-346]{SakamotoEtAl2013}
+    \end{itemize}
+
+    Some classes seem to be closely associated, such as remote testing
+    with asynchronous testing, and local with synchronous \citep{JardEtAl1999},
+    possibly implying a parent-child relation rather than a combination.
 
 \fi
