@@ -77,6 +77,48 @@ Thus, synonyms do not inherently signify a discrepancy. Unfortunately, there
 are many instances of incorrect or ambiguous synonyms, such as the following:
 
 \begin{enumerate}
+    \item % Discrep count (SYNS): {ISO_IEC2023b} {IEEE2017} | implied by {BaresiAndPezzè2006}
+          A component is an ``entity with discrete structure \dots\ within a
+          system considered at a particular level of analysis''
+          \citep{ISO_IEC2023b} and ``the terms module, component, and unit
+              [sic] are often used interchangeably or defined to be subelements
+          of one another in different ways depending upon the context'' with
+          no standardized relationship \citep[p.~82]{IEEE2017}. This means
+          unit/component/module testing can refer to the testing of both a
+          module and a specific function in a module\seeThesisIssuePar{14}.
+          However, ``component'' is sometimes defined differently than
+          ``module'': ``components differ from classical modules for being
+          re-used in different contexts independently of their development''
+          \citep[p.~107]{BaresiAndPezzè2006}, so distinguishing the two
+          may be necessary.
+    \item % Discrep count (SYNS): {IEEE2017} {IEEE2013} | {IEEE2022} {IEEE2017} {Perry2006}
+          \citeauthor*{IEEE2017} say that ``test level'' and ``test phase''
+          are synonyms, both meaning a ``specific instantiation of [a] test
+          sub-process'' (\citeyear[pp.~469,~470]{IEEE2017}; \citeyear[p.~9]{IEEE2013}),
+          but there are also alternative definitions for them.
+          \procLevel{\citeyearpar}, while ``test phase'' \phaseDef{}
+    \item % Discrep count (SYNS): {PetersAndPedrycz2000}
+          \citeauthor{PetersAndPedrycz2000} claim that ``structural testing
+          subsumes white box testing'', but they seem to describe the same
+          thing: they say ``structure tests are aimed at exercising the
+          internal logic of a software system'' and ``in white box testing
+          \dots, using detailed knowledge of code, one creates a battery of
+          tests in such a way that they exercise all components of the code
+          (say, statements, branches, paths)'' on the same page
+          \citeyearpar[p.~447]{PetersAndPedrycz2000}!
+    \item % Discrep count (SYNS): ISTQB | {Patton2006}
+          % TODO: NEAR SYNS?
+          \citeauthor{ISTQB_author} claim that code inspections are
+          related to peer reviews \citeyearpar{ISTQB}, but
+          \citet[pp.~94-95]{Patton2006} makes them quite distinct.
+    \item % Discrep count (SYNS): ISTQB | {PetersAndPedrycz2000}
+          \phantomsection{} \label{walkthrough-syns}
+          Likewise, ``walkthroughs'' and ``structured walkthroughs''
+          are given as synonyms by \citetISTQB{} but
+          \citeauthor{PetersAndPedrycz2000} imply that they are
+          different by saying a more structured walkthrough may have
+          specific roles \citeyearpar[p.~484]{PetersAndPedrycz2000}.
+          % TODO: Formalize; are the following legit discrepancies? Are they inferred?
     \item \ifnotpaper\citeauthor{SneedAndGöschl2000} give \else Reference
               \cite{SneedAndGöschl2000} gives \fi ``white-'', ``grey-'', and
           ``black-box testing'' as synonyms for ``module'', ``integration'',
