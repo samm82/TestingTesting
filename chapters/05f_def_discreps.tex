@@ -1,0 +1,159 @@
+\begin{enumerate}
+    \item % Discrep count: {IEEE2022} {IEEE2021}
+          % TODO: NO DEFS?
+          Integration, system, and system integration testing are all listed
+          as ``common test levels'' \ifnotpaper
+              \citetext{\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021}}%
+          \else
+              \cite[p.~12]{IEEE2022}, \cite[p.~6]{IEEE2021}%
+          \fi, but no
+          definitions are given for the latter two, making it unclear what
+          ``system integration testing'' is; it is a combination of the two?
+          somewhere on the spectrum between them? It is listed as a child
+          % Discrep count (PARS): ISTQB | {Firesmith2015}
+          of integration testing by \citetISTQB{}
+          and of system testing by \citet[p.~23]{Firesmith2015}.
+    \item % Discrep count: {IEEE2017}
+          % TODO: NO DEFS?
+          Similarly, component, integration, and component integration
+          testing are all listed in \citep{IEEE2017}, but ``component
+          integration testing'' is only defined as ``testing of groups of
+          related components'' \citep[p.~82]{IEEE2017}; it is a combination of
+          the two? somewhere on the spectrum between them? As above, it is
+          listed as a child of integration testing by \citetISTQB{}.
+    \item % Discrep count: {SWEBOK2024} | {IEEE2022}
+          The \acs{swebok} V4 defines ``privacy testing'' as testing that
+          ``assess[es] the security and privacy of users' personal data to
+          prevent local attacks'' \citep[p.~5-10]{SWEBOK2024}; this seems to
+          overlap (both in scope and name) with the definition of ``security
+          testing'' in \citep[p.~7]{IEEE2022}: testing
+          ``conducted to evaluate the degree to which a test item, and
+          associated data and information, [sic] are protected so that'' only
+          ``authorized persons or systems'' can use them as intended.
+          \ifnotpaper
+    \item % Discrep count: {IEEE2021} | {IEEE2017}
+          % TODO: SUPP DEFS?
+          \citeauthor{IEEE2021} define an ``extended entry (decision) table''
+          both as a decision table where the ``conditions consist of multiple
+          values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021}
+          and one where ``the conditions and actions are generally described
+          but are incomplete'' \citeyearpar[p.~175]{IEEE2017}\todo{OG ISO1984}.
+    \item % Discrep count: {IEEE2017}
+          % TODO: SUPP DEFS?
+          \citeauthor{IEEE2017} use the same definition for ``partial correctness''
+          \citeyearpar[p.~314]{IEEE2017} and ``total correctness'' (p.~480).
+    \item % Discrep count: ISTQB
+          While ergonomics testing is out of scope (as it tests hardware, not
+          software), its definition of ``testing to determine whether a
+          component or system and its input devices are being used properly
+          with correct posture'' \citepISTQB{} seems to focus on how the
+          system is \emph{used} as opposed to the system \emph{itself}.
+    \item % Discrep count: ISTQB
+          % {SPICE2022} not included as part of this discrepancy since it
+          % is used as the ground truth
+          \citetISTQB{} describe the term ``software in the loop'' as a
+          kind of testing, while the source \ifnotpaper they reference \else
+              it references \fi seems to describe
+          ``Software-in-the-Loop-Simulation'' as a ``simulation environment''
+          that may support software integration testing
+          \citep[p.~153]{SPICE2022}; is this a testing approach or a tool
+          that supports testing?
+    \item % Discrep count: {Firesmith2015}
+          While model testing is said to test the object under test,
+          it seems to describe testing the models themselves
+          \citet[p.~20]{Firesmith2015}; using the models to test the object
+          under test seems to be called ``driver-based testing''
+          \citetext{p.~33}.
+    \item % Discrep count: {Firesmith2015}
+          Similarly, it is ambiguous whether ``tool/environment testing'' refers
+          to testing the tools/environment \emph{themselves} or \emph{using}
+          them to test the object under test; the latter is implied, but the
+          wording of its subtypes \citep[p.~25]{Firesmith2015} seems to imply
+          the former.\fi
+    \item % Discrep count: {IEEE2017} | {SWEBOK2024} | ISTQB
+          Various sources say that alpha testing is performed by different
+          people, including ``only by users within the organization
+          developing the software'' \citep[p.~17]{IEEE2017}, by ``a small,
+          selected group of potential users'' \citep[p.~5-8]{SWEBOK2024}, or
+          ``in the developer's test environment by roles outside the
+          development organization'' \citepISTQB{}.
+    \item % Discrep count: ISTQB
+          % TODO: SUPP DEFS?
+          \refHelper \citetISTQB{} \ifnotpaper define \else defines \fi
+          ``\acf{ml} model testing'' and ``\acs{ml} functional performance''
+          in terms of ``\acs{ml} functional performance criteria'',
+          which is defined in terms of ``\acs{ml} functional performance
+          metrics'', which is defined as ``a set of measures that relate to the
+          functional correctness of an \acs{ml} system''. The use
+          of ``performance'' (or ``correctness'') in these definitions is at
+          best ambiguous and at worst incorrect.
+          \ifnotpaper
+    \item % Discrep count: ISTQB
+          \phantomsection{} \label{specificISTQB}
+          The definition of ``math testing'' given by \citetISTQB{} is
+          too specific to be useful, likely taken from an example instead of
+          a general definition: ``testing to determine the correctness of the
+          pay table implementation, the random number generator results, and
+          the return to player computations''.
+    \item % Discrep count: ISTQB
+          A similar issue exists with multiplayer testing, where its
+          definition specifies ``the casino game world'' \citepISTQB{}.\fi
+    \item % Discrep count: {IEEE2022} | ISTQB
+          There is disagreement on the structure of tours; they can either be
+          quite general \citep[p.~34]{IEEE2022} or ``organized around a
+          special focus'' \citepISTQB{}.
+          \ifnotpaper
+    \item % Discrep count: ISTQB
+          % TODO: BAD DEFS?
+          While correct, ISTQB's definition of ``specification-based testing''
+          is not helpful: ``testing based on an analysis of the specification
+          of the component or system'' \citepISTQB{}.
+    \item % Discrep count: {Firesmith2015}
+          % TODO: NO DEFS?
+          The acronym ``SoS'' is used but not defined by
+          \citet[p.~23]{Firesmith2015}.\fi
+    \item % Discrep count: {IEEE2021} | {Patton2006}
+          State testing requires that ``all states in the state model
+          \dots\ [are] `visited'\,'' in \citep[p.~19]{IEEE2021} which
+          is only one of its possible criteria in \citep[pp.~82-83]{Patton2006}.
+    \item % Discrep count: {IEEE2022} | {Patton2006}
+          ``Load testing'' is performed either using loads that are ``between
+          anticipated conditions of low, typical, and peak usage''
+          \citep[p.~5]{IEEE2022} or that are as large as possible
+          \citep[p.~86]{Patton2006}.
+    \item % Discrep count: implied by {Patton2006} | {vanVliet2000}
+          \refHelper \citet[p.~92\ifnotpaper, emphasis added\fi]{Patton2006}
+          says that reviews are ``\emph{the} process[es] under which static
+          white-box testing is performed'' but correctness proofs are given
+          as another example by \citet[pp.~418-419]{vanVliet2000}.
+    \item % Discrep count: {Kam2008} | ISTQB
+          \refHelper \citet[p.~46]{Kam2008}\todo{OG Beizer} says that the goal
+          of negative testing is ``showing that a component or system does not
+          work'' which is not true; if robustness is an important quality for
+          the system, then testing the system ``in a way for which it was not
+          intended to be used'' \citepISTQB{} (i.e., negative testing) is one
+          way to help test this! \ifnotpaper
+    \item % Discrep count: {Gerrard2000a}
+          % TODO: NO DEFS?
+          \refHelper \citet[Tab.~2]{Gerrard2000a} makes a distinction between
+          ``transaction verification'' and ``transaction testing'' and
+          uses the phrase ``transaction flows'' \citetext{Fig.~5} but doesn't
+          explain them.
+    \item % Discrep count: {Bas2024}
+          % TODO: NO DEFS?
+          \refHelper \citet[p.~16]{Bas2024} lists ``three [backup] location
+          categories: local, offsite and cloud based [sic]'' but does not
+          define or discuss ``offsite backups'' \citetext{pp.~16-17}.
+    \item % Discrep count: {Gerrard2000a}
+          % TODO: NO SUPP DEFS?
+          Availability testing isn't assigned to a test priority
+          \citep[Tab.~2]{Gerrard2000a}, despite the claim that ``the test
+          types\gerrardDistinctIEEE{type} have been allocated a slot against
+          the four test priorities'' \citetext{p.~13}; I think usability and/or
+          performance would have made sense.\fi
+    \item % Discrep count: {Kam2008}
+          % TODO: NO DEFS?
+          \refHelper \citet[p.~42]{Kam2008} says ``See \emph{boundary value
+              analysis},'' for the glossary entry of ``boundary value testing''
+          but does not provide this definition.
+\end{enumerate}

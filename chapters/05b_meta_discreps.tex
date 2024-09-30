@@ -1,40 +1,6 @@
 \ifnotpaper\paragraph{High Severity}\fi
 \begin{itemize}
-      \item % Discrep count (DEFS): {SWEBOK2024} | {IEEE2022}
-            The \acs{swebok} V4 defines ``privacy testing'' as testing that
-            ``assess[es] the security and privacy of users' personal data to
-            prevent local attacks'' \citep[p.~5-10]{SWEBOK2024}; this seems to
-            overlap (both in scope and name) with
-            the definition of ``security testing'' in \citep{IEEE2022}: testing
-            ``conducted to evaluate the degree to which a test item, [sic] and
-            associated data and information, are protected so that'' only
-            ``authorized persons or systems'' can use them as intended.
-            \ifnotpaper
-      \item % Discrep count (DEFS): ISTQB
-            While ergonomics testing is out of scope (as it tests hardware, not
-            software), its definition of ``testing to determine whether a
-            component or system and its input devices are being used properly
-            with correct posture'' \citepISTQB{} seems to focus on how the
-            system is \emph{used} as opposed to the system \emph{itself}.
-      \item % Discrep count (DEFS): ISTQB | {SPICE2022}
-            \citetISTQB{} describe the term ``software in the loop'' as a
-            kind of testing, while the source it references seems to describe
-            ``Software-in-the-Loop-Simulation'' as a ``simulation environment''
-            that may support software integration testing
-            \citep[p.~153]{SPICE2022}; is this a testing approach or a tool
-            that supports testing?
-      \item % Discrep count (DEFS): {Firesmith2015}
-            While model testing is said to test the object under test,
-            it seems to describe testing the models themselves
-            \citet[p.~20]{Firesmith2015}; using the models to test the object
-            under test seems to be called ``driver-based testing'' (p.~33).\fi
-      \item % Discrep count (DEFS): {Firesmith2015}
-            It is ambiguous whether ``tool/environment testing'' refers to
-            testing the tools/environment \emph{themselves} or \emph{using}
-            them to test the object under test; the latter is implied, but the
-            wording of its subtypes \citep[p.~25]{Firesmith2015} seems to imply
-            the former.
-            \ifnotpaper
+      \ifnotpaper
       \item % Discrep count (TERMS): {Firesmith2015}
             % Other sources not included as part of this discrepancy since they
             % are used as the ground truth
@@ -56,71 +22,32 @@
 \end{itemize}
 
 \paragraph{Medium Severity}
-\begin{itemize}\fi
-      \item % Discrep count (DEFS): {IEEE2017} | {SWEBOK2024} | ISTQB
-            Various sources say that alpha testing is performed by different
-            people, including ``only by users within the organization
-            developing the software'' \citep[p.~17]{IEEE2017}, by ``a small,
-            selected group of potential users'' \citep[p.~5-8]{SWEBOK2024}, or
-            ``in the developer's test environment by roles outside the
-            development organization'' \citepISTQB{}.
-      \item % Discrep count (DEFS): ISTQB
-            % TODO: SUPP DEFS?
-            ``\acf{ml} model testing'' and ``\acs{ml} functional performance''
-            are defined in terms of ``\acs{ml} functional performance criteria'',
-            which is defined in terms of ``\acs{ml} functional performance
-            metrics'', which is defined as ``a set of measures that relate to the
-            functional correctness of an \acs{ml} system'' \citepISTQB{}. The use
-            of ``performance'' (or ``correctness'') in these definitions is at
-            best ambiguous and at worst incorrect.
-            \ifnotpaper
-      \item % Discrep count (DEFS): ISTQB
-            The definition of ``math testing'' given by \citetISTQB{} is
-            too specific to be useful, likely taken from an example instead of
-            a general definition: ``testing to determine the correctness of the
-            pay table implementation, the random number generator results, and
-            the return to player computations''.
-      \item % Discrep count (DEFS): ISTQB
-            A similar issue exists with multiplayer testing, where its
-            definition specifies ``the casino game world'' \citepISTQB{}.
+\begin{itemize}
       \item % Discrep count (TERMS): ISTQB
             % TODO: Is TERMS correct?
             % {Bluejay2024} not included as part of this discrepancy since it
             % is used as the ground truth
-            Thirdly, ``par sheet testing'' from \citepISTQB{} seems to
-            refer to this specific example and does not seem more widely
+            ``Par sheet testing'' from \citepISTQB{} seems to refer to the
+            specific example brought up in \hyperref[specificISTQB]
+            {this definition discrepancy} and does not seem more widely
             applicable, since a ``PAR sheet'' is ``a list of all the symbols
-            on each reel of a slot machine'' \citep{Bluejay2024}.\fi
-      \item % Discrep count (DEFS): {IEEE2022} | ISTQB
-            There is disagreement on the structure of tours; they can either be
-            quite general \citep[p.~34]{IEEE2022} or ``organized around a
-            special focus'' \citepISTQB{}.
+            on each reel of a slot machine'' \citep{Bluejay2024}.
 \end{itemize}
 
-\ifnotpaper
-      \paragraph{Low Severity}
-      \begin{itemize}
-            \item % Discrep count (DEFS): ISTQB
-                  % TODO: BAD DEFS?
-                  While correct, ISTQB's definition of ``specification-based testing''
-                  is not helpful: ``testing based on an analysis of the specification
-                  of the component or system'' \citepISTQB{}.
-            \item % Discrep count (SRCS): ISTQB
-                  The source cited for the definition of ``test type'' from
-                  \citepISTQB{} does not seem to provide a definition itself.
-            \item % Discrep count (SRCS): ISTQB
-                  The same is true for ``visual testing'' \citepISTQB{}.
-            \item % Discrep count (SRCS): ISTQB
-                  The same is true for ``security attack'' \citepISTQB{}.
-            \item % Discrep count (TERMS): {Firesmith2015} | {Firesmith2015} {PreußeEtAl2012}
-                  ``Hardware-'' and ``human-in-the-loop testing'' have the same
-                  acronym: ``HIL''\footnote{``HiL'' is used for the former by
-                        \citet[p.~2]{PreußeEtAl2012}.} \citep[p.~23]{Firesmith2015}.
-            \item % Discrep count (TERMS): {Firesmith2015}
-                  The same is true for ``customer'' and ``contract(ual) acceptance
-                  testing'' (``CAT'') \citep[p.~30]{Firesmith2015}.
-            \item % Discrep count (DEFS): {Firesmith2015}
-                  % TODO: NO DEFS?
-                  The acronym ``SoS'' is used but not defined by
-                  \citet[p.~23]{Firesmith2015}.
-      \end{itemize}\fi
+\paragraph{Low Severity}
+\begin{itemize}
+      \item % Discrep count (SRCS): ISTQB
+            The source cited for the definition of ``test type'' from
+            \citepISTQB{} does not seem to provide a definition itself.
+      \item % Discrep count (SRCS): ISTQB
+            The same is true for ``visual testing'' \citepISTQB{}.
+      \item % Discrep count (SRCS): ISTQB
+            The same is true for ``security attack'' \citepISTQB{}.
+      \item % Discrep count (TERMS): {Firesmith2015} | {Firesmith2015} {PreußeEtAl2012}
+            ``Hardware-'' and ``human-in-the-loop testing'' have the same
+            acronym: ``HIL''\footnote{``HiL'' is used for the former by
+                  \citet[p.~2]{PreußeEtAl2012}.} \citep[p.~23]{Firesmith2015}.
+      \item % Discrep count (TERMS): {Firesmith2015}
+            The same is true for ``customer'' and ``contract(ual) acceptance
+            testing'' (``CAT'') \citep[p.~30]{Firesmith2015}.
+\end{itemize}\fi

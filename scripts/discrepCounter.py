@@ -106,9 +106,9 @@ texFileDiscreps = {
     "chapters/05_discrepancies.tex": DiscrepCat.MISC,
     "chapters/05a_std_discreps.tex": DiscrepCat.MISC,
     "chapters/05b_meta_discreps.tex": DiscrepCat.MISC,
-    "chapters/05c_text_discreps.tex": DiscrepCat.MISC,
     "chapters/05d_paper_discreps.tex": DiscrepCat.MISC,
     "chapters/05e_cat_discreps.tex": DiscrepCat.CATS,
+    "chapters/05f_def_discreps.tex": DiscrepCat.DEFS,
 }
 
 class DiscrepSourceCounter:
