@@ -91,39 +91,44 @@ are many instances of incorrect or ambiguous synonyms, such as the following:
           re-used in different contexts independently of their development''
           \citep[p.~107]{BaresiAndPezzè2006}, so distinguishing the two
           may be necessary.
+          \ifnotpaper
     \item % Discrep count (SYNS): {IEEE2017} {IEEE2013} | {IEEE2022} {IEEE2017} {Perry2006}
           \citeauthor*{IEEE2017} say that ``test level'' and ``test phase''
           are synonyms, both meaning a ``specific instantiation of [a] test
           sub-process'' (\citeyear[pp.~469,~470]{IEEE2017}; \citeyear[p.~9]{IEEE2013}),
           but there are also alternative definitions for them.
           \procLevel{\citeyearpar}, while ``test phase'' \phaseDef{}
+          \fi
     \item % Discrep count (SYNS): {PetersAndPedrycz2000}
-          \citeauthor{PetersAndPedrycz2000} claim that ``structural testing
-          subsumes white box testing'', but they seem to describe the same
-          thing: they say ``structure tests are aimed at exercising the
-          internal logic of a software system'' and ``in white box testing
-          \dots, using detailed knowledge of code, one creates a battery of
+          \ifnotpaper \citeauthor{PetersAndPedrycz2000} claim \else Reference
+              \cite{PetersAndPedrycz2000} claims \fi that ``structural testing
+          subsumes white box testing'' but they seem to describe the same thing:
+          \ifnotpaper they say \else it says \fi ``structure tests are aimed at
+          exercising the internal logic of a software system'' and ``in white box
+          testing \dots, using detailed knowledge of code, one creates a battery of
           tests in such a way that they exercise all components of the code
           (say, statements, branches, paths)'' on the same page
           \citeyearpar[p.~447]{PetersAndPedrycz2000}!
     \item % Discrep count (SYNS): ISTQB | {Patton2006}
           % TODO: NEAR SYNS?
-          \citeauthor{ISTQB_author} claim that code inspections are
-          related to peer reviews \citeyearpar{ISTQB}, but
-          \citet[pp.~94-95]{Patton2006} makes them quite distinct.
+          \ifnotpaper \citetISTQB{} claim \else Reference \cite{ISTQB}
+              claims \fi that code inspections are related to peer reviews but
+          \ifnotpaper\else reference \fi \citet[pp.~94-95]{Patton2006} makes
+          them quite distinct.
     \item % Discrep count (SYNS): ISTQB | {PetersAndPedrycz2000}
           \phantomsection{} \label{walkthrough-syns}
-          Likewise, ``walkthroughs'' and ``structured walkthroughs''
-          are given as synonyms by \citetISTQB{} but
-          \citeauthor{PetersAndPedrycz2000} imply that they are
-          different by saying a more structured walkthrough may have
-          specific roles \citeyearpar[p.~484]{PetersAndPedrycz2000}.
+          Likewise, ``walkthroughs'' and ``structured walkthroughs'' are given
+          as synonyms by \ifnotpaper\else reference \fi \citetISTQB{} but
+          \ifnotpaper \citet[p.~484]{PetersAndPedrycz2000} imply
+          \else reference \cite[p.~484]{PetersAndPedrycz2000} implies \fi that
+          they are different, saying a more structured walkthrough may have
+          specific roles.
           % TODO: Formalize; are the following legit discrepancies? Are they inferred?
-    \item \ifnotpaper\citeauthor{SneedAndGöschl2000} give \else Reference
-              \cite{SneedAndGöschl2000} gives \fi ``white-'', ``grey-'', and
-          ``black-box testing'' as synonyms for ``module'', ``integration'',
-          and ``system testing'', respectively%
-          \ifnotpaper\ \citeyearpar[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88}\fi, but
+          \ifnotpaper
+    \item \ifnotpaper\citet[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88} give
+          \else Reference \cite[p.~18]{SneedAndGöschl2000} gives \fi ``white-'',
+          ``grey-'', and ``black-box testing'' as synonyms for ``module'',
+          ``integration'', and ``system testing'', respectively, but
           this mapping is incorrect; black-box testing can be performed on a
           module, for example\todo{find source}. This makes the claim that
           ``red-box testing'' is a synonym for ``acceptance testing''
@@ -142,6 +147,7 @@ are many instances of incorrect or ambiguous synonyms, such as the following:
           of the vague definition of ``compliance testing'': ``testing to
           determine the compliance of the component or system''
           \ifnotpaper\citeyearpar[p.~43]{Kam2008}\else\citetext{p.~43}\fi.
+          \fi
 \end{enumerate}
 
 \phantomsection{}
@@ -308,7 +314,7 @@ describe something different.
 \subsubsection{Functional Suitability Testing}
 Procedure testing is
 called a ``type of functional suitability testing''
-\citep[p.~7]{IEEE2022}, but no definition of that term is given.
+\citep[p.~7]{IEEE2022} but no definition of that term is given.
 ``Functional suitability'' is the
 ``capability of a product to provide functions that meet stated and
 implied needs of intended users when it is used under specified
