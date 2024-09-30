@@ -1,15 +1,18 @@
-\ifnotpaper\paragraph{High Severity}\fi
-\begin{itemize}
+\begin{enumerate}
       \ifnotpaper
-      \item % Discrep count (TERMS): {Firesmith2015}
+      \item % Discrep count: {IEEE2021}
+            A typo in \citep[Fig.~2]{IEEE2021} means that ``specification-based
+            techniques'' is listed twice, when the latter should be
+            ``structure-based techniques''. \fi
+      \item % Discrep count: {Firesmith2015}
             % Other sources not included as part of this discrepancy since they
             % are used as the ground truth
             The terms ``acceleration'' and ``acoustic tolerance testing'' seem
             to only refer to software testing in \citep[p.~56]{Firesmith2015};
             elsewhere, they seem to refer to testing the acoustic tolerance of
             rats \citep{HolleyEtAl1996} or the acceleration tolerance of
-            \accelTolTest{}, which don't exactly seem relevant\dots\fi
-      \item % Discrep count (TERMS): {Firesmith2015} | {IEEE2017} | {Gerrard2000a}
+            \accelTolTest{}, which don't exactly seem relevant\dots
+      \item % Discrep count: {Firesmith2015} | {IEEE2017} | {Gerrard2000a}
             The distinctions between development testing \citep[p.~136]{IEEE2017},
             developmental testing \citep[p.~30]{Firesmith2015}, and developer
             testing
@@ -17,14 +20,9 @@
                   (\citealp[p.~39]{Firesmith2015}; \citealp[p.~11]{Gerrard2000a})
             \else
                   \cite[p.~39]{Firesmith2015}, \cite[p.~11]{Gerrard2000a}
-            \fi are unclear and seem miniscule.
-            \ifnotpaper
-\end{itemize}
-
-\paragraph{Medium Severity}
-\begin{itemize}
-      \item % Discrep count (TERMS): ISTQB
-            % TODO: Is TERMS correct?
+            \fi are unclear and seem miniscule. \ifnotpaper
+      \item % Discrep count: ISTQB
+            % TODO: Is this a terminology discrepancy?
             % {Bluejay2024} not included as part of this discrepancy since it
             % is used as the ground truth
             ``Par sheet testing'' from \citepISTQB{} seems to refer to the
@@ -32,22 +30,20 @@
             {this definition discrepancy} and does not seem more widely
             applicable, since a ``PAR sheet'' is ``a list of all the symbols
             on each reel of a slot machine'' \citep{Bluejay2024}.
-\end{itemize}
-
-\paragraph{Low Severity}
-\begin{itemize}
-      \item % Discrep count (SRCS): ISTQB
-            The source cited for the definition of ``test type'' from
-            \citepISTQB{} does not seem to provide a definition itself.
-      \item % Discrep count (SRCS): ISTQB
-            The same is true for ``visual testing'' \citepISTQB{}.
-      \item % Discrep count (SRCS): ISTQB
-            The same is true for ``security attack'' \citepISTQB{}.
-      \item % Discrep count (TERMS): {Firesmith2015} | {Firesmith2015} {PreußeEtAl2012}
+      \item % Discrep count: {Firesmith2015} | {Firesmith2015} {PreußeEtAl2012}
             ``Hardware-'' and ``human-in-the-loop testing'' have the same
             acronym: ``HIL''\footnote{``HiL'' is used for the former by
                   \citet[p.~2]{PreußeEtAl2012}.} \citep[p.~23]{Firesmith2015}.
-      \item % Discrep count (TERMS): {Firesmith2015}
+      \item % Discrep count: {Firesmith2015}
             The same is true for ``customer'' and ``contract(ual) acceptance
             testing'' (``CAT'') \citep[p.~30]{Firesmith2015}.
-\end{itemize}\fi
+      \item % Discrep count: {Kam2008}
+            \refHelper \citet{Kam2008} misspells ``state-based'' as ``state-base''
+            \citetext{pp.~13,~15} and ``stated-base'' \citetext{Tab.~1}.
+      \item % Discrep count: {Gerrard2000a} | {IEEE2022} ISTQB
+            % TODO: BAD TERMS?
+            The phrase ``continuous automated testing'' \citep[p.~11]{Gerrard2000a}
+            is redundant since continuous testing is a sub-category of automated
+            testing (\citealp[p.~35]{IEEE2022}; \citealpISTQB{}).
+            \fi
+\end{enumerate}

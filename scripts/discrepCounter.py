@@ -105,10 +105,12 @@ texFileDiscreps = {
     "build/multiSyns.tex": DiscrepCat.SYNS,
     "chapters/05_discrepancies.tex": DiscrepCat.MISC,
     "chapters/05a_std_discreps.tex": DiscrepCat.MISC,
-    "chapters/05b_meta_discreps.tex": DiscrepCat.MISC,
-    "chapters/05d_paper_discreps.tex": DiscrepCat.MISC,
-    "chapters/05e_cat_discreps.tex": DiscrepCat.CATS,
-    "chapters/05f_def_discreps.tex": DiscrepCat.DEFS,
+    "chapters/05a_syn_discreps.tex": DiscrepCat.SYNS,
+    "chapters/05b_par_discreps.tex": DiscrepCat.PARS,
+    "chapters/05c_cat_discreps.tex": DiscrepCat.CATS,
+    "chapters/05d_def_discreps.tex": DiscrepCat.DEFS,
+    "chapters/05e_term_discreps.tex": DiscrepCat.TERMS,
+    "chapters/05f_src_discreps.tex": DiscrepCat.SRCS,
 }
 
 class DiscrepSourceCounter:

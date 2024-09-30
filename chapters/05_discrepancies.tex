@@ -76,74 +76,7 @@ prefer the terms ``black-box'' and ``white-box testing'' for consistency.
 Thus, synonyms do not inherently signify a discrepancy. Unfortunately, there
 are many instances of incorrect or ambiguous synonyms, such as the following:
 
-\begin{enumerate}
-    \item % Discrep count (SYNS): {ISO_IEC2023b} {IEEE2017} | implied by {BaresiAndPezzè2006}
-          A component is an ``entity with discrete structure \dots\ within a
-          system considered at a particular level of analysis''
-          \citep{ISO_IEC2023b} and ``the terms module, component, and unit
-              [sic] are often used interchangeably or defined to be subelements
-          of one another in different ways depending upon the context'' with
-          no standardized relationship \citep[p.~82]{IEEE2017}. This means
-          unit/component/module testing can refer to the testing of both a
-          module and a specific function in a module\seeThesisIssuePar{14}.
-          However, ``component'' is sometimes defined differently than
-          ``module'': ``components differ from classical modules for being
-          re-used in different contexts independently of their development''
-          \citep[p.~107]{BaresiAndPezzè2006}, so distinguishing the two
-          may be necessary.
-          \ifnotpaper
-    \item % Discrep count (SYNS): {IEEE2017} {IEEE2013} | {IEEE2022} {IEEE2017} {Perry2006}
-          \citeauthor*{IEEE2017} say that ``test level'' and ``test phase''
-          are synonyms, both meaning a ``specific instantiation of [a] test
-          sub-process'' (\citeyear[pp.~469,~470]{IEEE2017}; \citeyear[p.~9]{IEEE2013}),
-          but there are also alternative definitions for them.
-          \procLevel{\citeyearpar}, while ``test phase'' \phaseDef{}
-          \fi
-    \item % Discrep count (SYNS): {PetersAndPedrycz2000}
-          \refHelper \citeauthor{PetersAndPedrycz2000} \ifnotpaper claim \else
-              claims \fi that ``structural testing
-          subsumes white box testing'' but they seem to describe the same thing:
-          \ifnotpaper they say \else it says \fi ``structure tests are aimed at
-          exercising the internal logic of a software system'' and ``in white box
-          testing \dots, using detailed knowledge of code, one creates a battery of
-          tests in such a way that they exercise all components of the code
-          (say, statements, branches, paths)'' on the same page
-          \citeyearpar[p.~447]{PetersAndPedrycz2000}!
-    \item % Discrep count (SYNS): ISTQB | {Patton2006}
-          % TODO: NEAR SYNS?
-          \refHelper \ifnotpaper \citetISTQB{} claim \else claims \fi that code
-          inspections are related to peer reviews but
-          \citet[pp.~94-95]{Patton2006} makes them quite distinct.
-    \item % Discrep count (SYNS): ISTQB | {PetersAndPedrycz2000}
-          \phantomsection{} \label{walkthrough-syns}
-          Likewise, ``walkthroughs'' and ``structured walkthroughs'' are given
-          as synonyms by \citetISTQB{} but \citet[p.~484]{PetersAndPedrycz2000}
-          \ifnotpaper imply \else implies \fi that they are different, saying a
-          more structured walkthrough may have specific roles.
-          % TODO: Formalize; are the following legit discrepancies? Are they inferred?
-          \ifnotpaper
-    \item \refHelper \citet[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88}
-          \ifnotpaper give \else gives \fi ``white-'',
-          ``grey-'', and ``black-box testing'' as synonyms for ``module'',
-          ``integration'', and ``system testing'', respectively, but
-          this mapping is incorrect; black-box testing can be performed on a
-          module, for example\todo{find source}. This makes the claim that
-          ``red-box testing'' is a synonym for ``acceptance testing''
-          \citetext{p.~18} lose credibility.
-    \item ``Program testing'' is given as a synonym of ``component testing''
-          \citep[p.~46]{Kam2008}, although it probably should be a synonym of
-          ``system testing'' instead.
-    \item \refHelper \citet[p.~46]{Kam2008} seems to imply that ``mutation
-          testing'' is a synonym of ``back-to-back testing''
-          but these are two quite distinct techniques.
-    \item ``Conformance testing'' is implied to be a synonym of ``compliance
-          testing'' by \ifnotpaper\citeauthor{Kam2008}\else\cite{Kam2008}\fi,
-          which only makes sense because
-          of the vague definition of ``compliance testing'': ``testing to
-          determine the compliance of the component or system''
-          \ifnotpaper\citeyearpar[p.~43]{Kam2008}\else\citetext{p.~43}\fi.
-          \fi
-\end{enumerate}
+\input{chapters/05a_syn_discreps}
 
 \phantomsection{}
 \label{multiSyns}
@@ -163,21 +96,8 @@ most prominent examples\fi:
 \subsection{Parent-Child Relation Discrepancies}
 \label{par-rels}
 
-Parent relations are also not immune to difficulties\ifnotpaper, as shown by
-the following discrepancies:
-\begin{enumerate}
-    \item % Discrep count (PARS): {ISO_IEC2023a} | {Firesmith2015}
-          Performance \else; for example, performance \fi and security testing
-          are given as subtypes of reliability testing by \citep{ISO_IEC2023a},
-          but these are all listed
-          separately by \citep[p.~53]{Firesmith2015}. \ifnotpaper
-    \item % Discrep count (PARS): {IEEE2017}
-          \citeauthor*{IEEE2017} provide a definition for ``inspections and
-          audits'' \citeyearpar[p.~228]{IEEE2017}, despite also giving
-          definitions for ``inspection'' \citetext{p.~227} and ``audit''
-          \citetext{p.~36}; while the first term \emph{could} be considered a
-          superset of the latter two, this distinction doesn't seem useful.
-\end{enumerate}\fi\phantomsection{}\label{selfPars}
+\input{chapters/05b_par_discreps}
+\phantomsection{}\label{selfPars}
 Additionally, some self-referential definitions imply that a test
 approach is a parent of itself. Since these are by nature self-contained within
 a given source, these are counted \emph{once} as explicit discrepancies within
@@ -219,7 +139,7 @@ differently by different sources:
 % ; these differences are tracked so
 % they can be analyzed more systematically\seeThesisIssuePar{21}.
 
-\input{chapters/05e_cat_discreps}
+\input{chapters/05c_cat_discreps}
 
 There are also instances of inconsistencies between parent and child
 test approach categorizations. This may indicate they aren't necessarily the
@@ -230,7 +150,15 @@ Perhaps the most interesting category for those seeking to understand how to
 apply a given test approach, there are many discrepancies between how test
 approaches, as well as supporting terms, are defined:
 
-\input{chapters/05f_def_discreps}
+\input{chapters/05d_def_discreps}
+
+\subsection{Terminology Discrepancies}
+TODO
+
+\input{chapters/05e_term_discreps}
+
+\subsection{Source Discrepancies}
+\input{chapters/05f_src_discreps}
 
 \subsection{Functional Testing}
 \label{func-test-discrep}
@@ -591,12 +519,6 @@ sources outlined in \Cref{sources}.
         \item User Acceptance Testing
     \end{itemize}
 \fi
-
-\subsubsection{Other Discrepancies from \metas{}}
-\input{chapters/05b_meta_discreps}
-
-\subsubsection{Other Discrepancies from \papers{}}
-\input{chapters/05d_paper_discreps}
 
 \ifnotpaper
     \subsection{Inferred Discrepancies}
