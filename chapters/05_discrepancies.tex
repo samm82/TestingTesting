@@ -162,18 +162,24 @@ most prominent examples\fi:
 \subsection{Parent Relations}
 \label{par-rels}
 
-Parent relations are not immune to difficulties, including self-referential
-definitions\footnote{Since these are by nature self-contained within a given
-    source, these are counted \emph{once} as explicit discrepancies within
-    their sources in \Cref{tab:discreps}.}, which were identified
-through automatic analysis of the generated graphs.
-\ifnotpaper \input{build/selfCycles} Performance
-\else Performance and usability testing are both given as sub-approaches of
-    themselves \cite[Tab.~1]{Gerrard2000b}, \cite[Tab.~2]{Gerrard2000a},
-    while performance \fi
-testing is \emph{not} described as a sub-approach of usability testing%
-\ifnotpaper\ by \citep{Gerrard2000a, Gerrard2000b}, which \else. This
-\fi would have been more meaningful information to capture.
+Parent relations are not immune to difficulties, such as the following discrepancies:
+\begin{enumerate}
+    \item
+\end{enumerate}
+
+\phantomsection{}
+\label{selfPars}
+Additionally, some self-referential definitions imply that a test
+approach is a parent of itself. Since these are by nature self-contained within
+a given source, these are counted \emph{once} as explicit discrepancies within
+their sources in \Cref{tab:discreps}. \ifnotpaper The following examples were
+    identified through automatic analysis of the generated graphs:
+    \input{build/selfCycles} Interestingly, performance testing is \emph{not}
+    described as a sub-approach of usability testing by \citep{Gerrard2000a,
+        Gerrard2000b}, which would have been more meaningful information to
+    capture. \else For example, performance and usability testing are both
+    given as sub-approaches of themselves \cite[Tab.~2]{Gerrard2000a},
+    \cite[Tab.~1]{Gerrard2000b}.\fi
 
 There are also pairs of synonyms where one is described as a
 sub-approach of the other, abusing the meaning of ``synonym'' and
