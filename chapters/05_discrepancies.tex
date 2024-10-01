@@ -40,9 +40,9 @@ These discrepancies still count towards one or more of the categories of
 discrepancies listed above\ifnotpaper; \Cref{aug-discrep-analysis} outlines how
 this is done\fi. The ``problem'' subsets of testing include
 \nameref{func-test-discrep}, \ifnotpaper\nameref{oat-discrep}, \fi
-\nameref{recov-discrep}, and \nameref{scal-discrep}. \ifnotpaper Finally,
-    \nameref{infer-discreps} are also given for completeness, despite being
-    less certain and thus not contributing to any counts.
+\nameref{recov-discrep}, \nameref{scal-discrep}, and \nameref{compat-discrep}.
+\ifnotpaper Finally, \nameref{infer-discreps} are also given for completeness,
+    despite being less certain and thus not contributing to any counts.
 
     \input{assets/graphs/pieCharts} \fi
 
@@ -472,69 +472,39 @@ are shown in \Cref{fig:scal-graph-current}.
 % difference of ``relative to the amount of resources used'' or ``be efficient in
 % the use of resources'' between the two is meaningful.
 
-\subsection{Other Discrepancies}
-\label{other-discrep}
+\subsection{Compatibility Testing}
+\label{compat-discrep}
 
-We now outline discrepancies/ambiguities found in the literature that were not
-``large'' enough to merit their own sections, grouped by the ``categories'' of
-sources outlined in \Cref{sources}.
-
-% These lists were itemized for paper; might want a custom label in future
-
-\subsubsection{Other Discrepancies from \stds{}}
-\input{chapters/05a_std_discreps}
-
-% TODO: re-investigate this after going through the rest of ISO/IEC/IEEE 29119
-\ifnotpaper
-    Also of note: \citep{IEEE2022, IEEE2021}, from the
-    ISO/IEC/IEEE 29119 family of standards, mention the following 23 test
-    approaches without defining them. This means that out of the 114 test
-    approaches they mention, about 20\% have no associated definition!
-
-    However, the previous version of this standard, \citeyearpar{IEEE2013},
-    generally explained two, provided references for two, and explicitly defined
-    one of these terms, for a total of five definitions that could (should) have
-    been included in \citeyearpar{IEEE2022}! These terms have been
-    \underline{underlined}\ifnotpaper%
-        , \emph{italicized}, and \textbf{bolded}, respectively%
-    \fi. Additionally, entries marked with an asterisk* were defined (at least
-    partially) in \citeyearpar{IEEE2017}, which would have been available when
-    creating this family of standards. These terms bring the total count of terms
-    that could (should) have been defined to nine; almost 40\% of undefined test
-    approaches could have been defined!
-
-    \begin{itemize}
-        \item \underline{Acceptance Testing*}
-        \item Alpha Testing*
-        \item Beta Testing*
-        \item Capture-Replay Driven Testing
-        \item Data-driven Testing
-        \item Error-based Testing
-        \item Factory Acceptance Testing
-        \item Fault Injection Testing
-        \item Functional Suitability Testing (also mentioned but not defined in
-              \citep{IEEE2017})
-        \item \underline{Integration Testing}*
-        \item Model Verification
-        \item Operational Acceptance Testing
-        \item Orthogonal Array Testing
-        \item Production Verification Testing
-        \item Recovery Testing* (Failover/Recovery Testing, Back-up/Recovery
-              Testing, \formatPaper{\textbf}{Backup and Recovery Testing*},
-              Recovery*;\seeAlways{recov-discrep})
-        \item Response-Time Testing
-        \item \formatPaper{\emph}{Reviews} (ISO/IEC 20246) (Code Reviews*)
-        \item Scalability Testing (defined as a synonym of ``capacity
-              testing'';\seeAlways{scal-discrep})
-        \item Statistical Testing
-        \item System Integration Testing (System Integration*)
-        \item System Testing* (also mentioned but not defined in \citep{IEEE2013})
-        \item \formatPaper{\emph}{Unit Testing*}
-              (IEEE Std 1008-1987, IEEE Standard for
-              Software Unit Testing implicitly listed in the bibliography!)
-        \item User Acceptance Testing
-    \end{itemize}
-\fi
+% Discrep count (DEFS): {IEEE2022} | {IEEE2017} ISTQB {ISO_IEC2023a}
+``Compatibility testing'' is defined as ``testing that measures the
+degree to which a test item can function satisfactorily alongside
+other independent products in a shared environment (co-existence),
+and where necessary, exchanges information with other systems or
+components (interoperability)'' \citep[p.~3]{IEEE2022}. This
+definition is nonatomic as it combines the ideas of ``co-existence''
+and ``interoperability''. The term ``interoperability testing'' is
+not defined, but is used three times \citep[pp.~22,~43]{IEEE2022}
+% Discrep count (TERMS): {IEEE2022}
+(although the third usage seems like it should be ``portability
+testing''). This implies that ``co-existence testing'' and
+``interoperability testing'' should be defined as their own terms,
+which is supported by definitions of ``co-existence'' and
+``interoperability'' often being separate \ifnotpaper
+    \citetext{\citealpISTQB{}; \citealp[pp.~73,~237]{IEEE2017}}%
+\else
+    \cite[pp.~73,~237]{IEEE2017}, \cite{ISTQB}%
+\fi, the definition of
+``interoperability testing'' from \citet[p.~238]{IEEE2017},
+and the decomposition of ``compatibility'' into ``co-existence''
+and ``interoperability'' by \citet{ISO_IEC2023a}!
+% Discrep count (SYNS): implied by {IEEE2021} | {IEEE2022}
+The ``interoperability'' element of ``compatibility testing'' is explicitly
+excluded by \citet[p.~37]{IEEE2021}, (incorrectly) implying that ``compatibility
+testing'' and ``co-existence testing'' are synonyms.
+% Discrep count (SYNS): {Kam2008} | {IEEE2022}
+Furthermore, the definition of ``compatibility testing'' in
+\citep[p.~43]{Kam2008} unhelpfully says ``See \emph{interoperability testing}'',
+adding another layer of confusion to the direction of their relationship.
 
 \ifnotpaper
     \subsection{Inferred Discrepancies}
