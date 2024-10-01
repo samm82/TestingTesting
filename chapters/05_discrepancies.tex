@@ -55,13 +55,12 @@ The same approach often has many names. For example,
           \ifnotpaper
               (\citealp[p.~9]{IEEE2022}; \citeyear[p.~8]{IEEE2021};
               \citeyear[p.~431]{IEEE2017}; \citealp[p.~5-10]{SWEBOK2024};
-              \citealpISTQB{}; \citealp[p.~46]{Firesmith2015} (without hyphen);
+              \citealpISTQB{}; \citealp[p.~46 (without hyphen)]{Firesmith2015};
               \citealp[p.~344]{SakamotoEtAl2013}; \citealp[p.~399]{vanVliet2000})
           \else
               \cite[p.~431]{IEEE2017}, \cite{ISTQB}, \cite[p.~5-10]{SWEBOK2024},
               \cite[p.~9]{IEEE2022}, \cite[p.~399]{vanVliet2000},
-              \cite[p.~8]{IEEE2021},
-              % \cite[p.~46]{Firesmith2015} (without hyphen),
+              \cite[p.~8]{IEEE2021}, % \cite[p.~46 (without hyphen)]{Firesmith2015},
               \cite[p.~344]{SakamotoEtAl2013}
           \fi
     \item Closed-Box Testing
@@ -73,8 +72,8 @@ The same approach often has many names. For example,
     \item Functional Testing\footnote{This may be an outlier; see
               \Cref{spec-func-test}.}
           \ifnotpaper
-              (\citeyear[p.~196]{IEEE2017}; \citealp[p.~44]{Kam2008};
-              \citealp[p.~399]{vanVliet2000}; implied by \citeyear[p.~129]{IEEE2021};
+              (\citealp[p.~196]{IEEE2017}; \citealp[p.~44]{Kam2008};
+              \citealp[p.~399]{vanVliet2000}; implied by \citealp[p.~129]{IEEE2021};
               \citeyear[p.~431]{IEEE2017})
           \else
               \cite[p.~196]{IEEE2017}, \cite[p.~399]{vanVliet2000},
@@ -82,7 +81,8 @@ The same approach often has many names. For example,
           \fi
     \item Domain Testing \citep[p.~5-10]{SWEBOK2024}
           \ifnotpaper
-    \item Input Domain-Based Testing (implied by \citep[p.~4-8]{SWEBOK2014})
+    \item Input Domain-Based Testing \citetext{implied by
+              \citealp[p.~4-8]{SWEBOK2014}}
           \fi
 \end{enumerate}
 
