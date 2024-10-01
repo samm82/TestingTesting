@@ -121,7 +121,7 @@ class DiscrepSourceCounter:
 
     def output(self):
         for filename, origType in texFileDiscreps.items():
-            with open(filename, "r") as file:
+            with open(filename, "r", encoding="utf-8") as file:
                 content = [line for line in file.readlines()
                         if "% Discrep count" in line]
                 
