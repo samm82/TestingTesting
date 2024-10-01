@@ -64,7 +64,7 @@ update_diffs: gen_csv_diffs
 		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
 	done
 
-LATEX_SCRIPTS = csvToGraph undefTermSources otherDiscrepCounts sourceCounts
+LATEX_SCRIPTS = csvToGraph undefTermSources sourceCounts
 
 $(LATEX_SCRIPTS):
 	-mkdir build || true

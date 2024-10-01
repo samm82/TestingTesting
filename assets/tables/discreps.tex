@@ -3,24 +3,24 @@
     \caption{Breakdown of identified discrepancies by source and type.}
     \label{tab:discreps}
     % \begin{minipage}{\linewidth}
-    \begin{spreadtab}[\STsavecell\kSeven{k7}]{{tabular}{|r|cc|cc|cc|ccc|c|}}
+    \begin{spreadtab}[\STsavecell\nSeven{n7}]{{tabular}{|r|cc|cc|cc|cc|cc|cc|c|}}
         \hline
         \ifnotpaper\rowcolor{McMasterMediumGrey}\fi
-        @ & @ \multicolumn{2}{c|}{\thead{Synonyms}} & @ \multicolumn{2}{c|}{\thead{Parents}} & @ \multicolumn{2}{c|}{\thead{Categories}} & @ \multicolumn{3}{c|}{\thead{Other}} & @ \\
+        @ & @ \multicolumn{2}{c|}{\thead{\syns{}}} & @ \multicolumn{2}{c|}{\thead{\pars{}}} & @ \multicolumn{2}{c|}{\thead{\cats{}}} & @ \multicolumn{2}{c|}{\thead{\defs{}}} & @ \multicolumn{2}{c|}{\thead{\terms{}}} & @ \multicolumn{2}{c|}{\thead{\srcs{}}} & @ \\
         % \cline{2-10}
         \ifnotpaper\rowcolor{McMasterMediumGrey}\fi
-        @ \thead{Source Category} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{High} & @ \thead{Med} & @ \thead{Low} & @ \thead{Total} \\
+        @ \thead{Source Category} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Total} \\
         \hline
-        @ \stds{}   & \stdDiscBrkdwn{2}   & \stdDiscBrkdwn{3}   & \stdDiscBrkdwn{4}   & \stdDiscBrkdwn{5}   & \stdDiscBrkdwn{6}   & \stdDiscBrkdwn{7}   & \otherDiscrepCounts{1}  & \otherDiscrepCounts{2}  & \otherDiscrepCounts{3}  & sum([-9,0]:[-1,0]) \\
-        @ \metas{}  & \metaDiscBrkdwn{2}  & \metaDiscBrkdwn{3}  & \metaDiscBrkdwn{4}  & \metaDiscBrkdwn{5}  & \metaDiscBrkdwn{6}  & \metaDiscBrkdwn{7}  & \otherDiscrepCounts{4}  & \otherDiscrepCounts{5}  & \otherDiscrepCounts{6}  & sum([-9,0]:[-1,0]) \\
-        @ \texts{}  & \textDiscBrkdwn{2}  & \textDiscBrkdwn{3}  & \textDiscBrkdwn{4}  & \textDiscBrkdwn{5}  & \textDiscBrkdwn{6}  & \textDiscBrkdwn{7}  & \otherDiscrepCounts{7}  & \otherDiscrepCounts{8}  & \otherDiscrepCounts{9}  & sum([-9,0]:[-1,0]) \\
-        @ \papers{} & \paperDiscBrkdwn{2} & \paperDiscBrkdwn{3} & \paperDiscBrkdwn{4} & \paperDiscBrkdwn{5} & \paperDiscBrkdwn{6} & \paperDiscBrkdwn{7} & \otherDiscrepCounts{10} & \otherDiscrepCounts{11} & \otherDiscrepCounts{12} & sum([-9,0]:[-1,0]) \\
+        @ \stds{}   & \stdDiscBrkdwn{2}   & \stdDiscBrkdwn{3}   & \stdDiscBrkdwn{4}   & \stdDiscBrkdwn{5}   & \stdDiscBrkdwn{6}   & \stdDiscBrkdwn{7}   & \stdDiscBrkdwn{8}   & \stdDiscBrkdwn{9}   & \stdDiscBrkdwn{10}   & \stdDiscBrkdwn{11}   & \stdDiscBrkdwn{12}   & \stdDiscBrkdwn{13}   & sum([-12,0]:[-1,0]) \\
+        @ \metas{}  & \metaDiscBrkdwn{2}  & \metaDiscBrkdwn{3}  & \metaDiscBrkdwn{4}  & \metaDiscBrkdwn{5}  & \metaDiscBrkdwn{6}  & \metaDiscBrkdwn{7}  & \metaDiscBrkdwn{8}  & \metaDiscBrkdwn{9}  & \metaDiscBrkdwn{10}  & \metaDiscBrkdwn{11}  & \metaDiscBrkdwn{12}  & \metaDiscBrkdwn{13}  & sum([-12,0]:[-1,0]) \\
+        @ \texts{}  & \textDiscBrkdwn{2}  & \textDiscBrkdwn{3}  & \textDiscBrkdwn{4}  & \textDiscBrkdwn{5}  & \textDiscBrkdwn{6}  & \textDiscBrkdwn{7}  & \textDiscBrkdwn{8}  & \textDiscBrkdwn{9}  & \textDiscBrkdwn{10}  & \textDiscBrkdwn{11}  & \textDiscBrkdwn{12}  & \textDiscBrkdwn{13}  & sum([-12,0]:[-1,0]) \\
+        @ \papers{} & \paperDiscBrkdwn{2} & \paperDiscBrkdwn{3} & \paperDiscBrkdwn{4} & \paperDiscBrkdwn{5} & \paperDiscBrkdwn{6} & \paperDiscBrkdwn{7} & \paperDiscBrkdwn{8} & \paperDiscBrkdwn{9} & \paperDiscBrkdwn{10} & \paperDiscBrkdwn{11} & \paperDiscBrkdwn{12} & \paperDiscBrkdwn{13} & sum([-12,0]:[-1,0]) \\
         \hline
-        @ Total & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([-9,0]:[-1,0]) \\
+        @ Total & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) \\
         \hline
     \end{spreadtab}
     % \end{minipage}
 \end{paperTable}
 
 % From https://tex.stackexchange.com/a/248135/192195
-\laterdef{totalDiscreps}{\kSeven{}}
+\laterdef{totalDiscreps}{\nSeven{}}

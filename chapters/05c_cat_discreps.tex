@@ -49,23 +49,14 @@
                         % Discrep count: {IEEE2022} {IEEE2021} | {SWEBOK2024}
                         This also causes confusion about its children, such as
                         error guessing and exploratory testing; again, on the
-                        same page,
+                        same page, \citet[p.~34]{IEEE2022} \multAuthHelper{say}
+                        error guessing is an ``experience-based test design
+                        technique'' and ``experience-based test practices
+                        include \dots\ exploratory testing, tours, attacks, and
+                        checklist-based testing.'' Other sources also do not
+                        agree whether error guessing is a technique
                         \ifnotpaper
-                            \citeauthor{IEEE2022} say
-                        \else
-                            \cite[p.~34]{IEEE2022} says
-                        \fi error guessing is
-                        an ``experience-based test design technique'' and
-                        ``experience-based test practices include \dots\
-                        exploratory testing, tours, attacks, and
-                        checklist-based testing''%
-                        \ifnotpaper{ \citeyearpar[p.~34]{IEEE2022}.}
-                        \else{.}
-                        \fi
-                        Other sources also do not agree whether error guessing
-                        is a technique
-                        \ifnotpaper
-                            (pp.~20,~22; \citeyear[p.~viii]{IEEE2021})
+                            \citetext{pp.~20,~22; \citeyear[p.~viii]{IEEE2021}}
                         \else
                             \cite[pp.~20,~22]{IEEE2022}, \cite[p.~viii]{IEEE2021}
                         \fi
@@ -148,8 +139,20 @@
           Data-driven testing is categorized as both a test practice
           \citep[p.~22]{IEEE2022} and a test technique
           \citep[p.~43]{Kam2008}\todo{OG Fewster and Graham}.
+          \ifnotpaper
+    \item % Discrep count: {IEEE2022} | {BarbosaEtAl2006}
+          Retesting and regression testing seem to be separated from the rest
+          of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
+          clearly detailed why; \citet[p.~3]{BarbosaEtAl2006}
+          \multAuthHelper{consider} regression testing to be a test level.
     \item % Discrep count: {SWEBOK2024} | {Kam2008}
           Although ad hoc testing is sometimes classified as a ``technique''
           \citep[p.~5-14]{SWEBOK2024}, it is one in which ``no recognized test
           design technique is used'' \citep[p.~42]{Kam2008}.
+    \item % Discrep count: {Gerrard2000a}
+          ``Visual browser validation'' is described as both static \emph{and}
+          dynamic in the same table \citep[Tab.~2]{Gerrard2000a}, even though
+          they are implied to be orthogonal classifications: ``test types can
+          be static \emph{or} dynamic'' \citetext{p.~12,~emphasis added}.
+          \fi
 \end{enumerate}

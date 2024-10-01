@@ -48,6 +48,9 @@
     \fi
 }
 
+\def\refHelper{\ifnotpaper\else Reference \fi}
+\newcommand\multAuthHelper[1]{\ifnotpaper #1\else #1s\fi}
+
 \newcommand\ifblind[2]{\IfEndWith*{\jobname}{_blind}{#1}{#2}}
 
 %------------------------------------------------------------------------------
@@ -160,7 +163,7 @@ of a test process; for example, ``across the whole organization'' or only
         found to generate the graph as desired. The list found in \Cref{multiSyns}
         is automatically generated based on glossary entries such as those found
         in \Cref{tab:synExampleGlossary}. The self-referential definitions in
-        \Cref{par-rels} were also trivial, found by simply looking for lines
+        \Cref{selfPars} were also trivial, found by simply looking for lines
         the generated .tex files starting with \texttt{I -> I} which would
         result in the graph in \Cref{fig:selfExampleGraph}. A similar process
         is used to detect instances where two approaches have a synonym
@@ -274,8 +277,6 @@ of a test process; for example, ``across the whole organization'' or only
 \ReadFile{\textDiscBrkdwn}{build/textDiscBrkdwn}
 \ReadFile{\paperDiscBrkdwn}{build/paperDiscBrkdwn}
 
-\ReadFile{\otherDiscrepCounts}{build/otherDiscrepCounts}
-
 \def\stds{\nameref{stds}}
 \def\metas{\nameref{metas}}
 \def\texts{\nameref{texts}}
@@ -287,6 +288,13 @@ of a test process; for example, ``across the whole organization'' or only
     \renewcommand\thelaterdef{#2}%
     \refstepcounter{laterdef}\label{#1}%
 }
+
+\def\syns{\hyperref[syns]{Synonyms}}
+\def\pars{\hyperref[pars]{Parents}}
+\def\cats{\hyperref[cats]{Categories}}
+\def\defs{\hyperref[defs]{Definitions}}
+\def\terms{\hyperref[terms]{Terminology}}
+\def\srcs{\hyperref[srcs]{Sources}}
 
 %------------------------------------------------------------------------------
 % TODOs
