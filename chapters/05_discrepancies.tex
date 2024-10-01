@@ -4,29 +4,47 @@
 % Moved earlier to display nicely in paper
 % \discrepsTable{}
 
-After gathering all this data\footnote{Available in \texttt{ApproachGlossary.csv}
+After gathering all these data\footnote{Available in \texttt{ApproachGlossary.csv}
     and \texttt{QualityGlossary.csv} at \ifblind{[Repository link suppressed]}
-    {\url{https://github.com/samm82/TestGen-Thesis}}.}, we found many discrepancies
-and ambiguities. A summary of these is shown in
-\refDiscrepsTable{}, where a given row corresponds to the number of
-discrepancies either within that category and/or with a ``more trusted''
-\hyperref[sources]{source category} (i.e., a previous row in the table). Issues
-with \nameref{syns}, \nameref{par-rels}, and \nameref{categories-discrep} are
-(Exp)licit or (Imp)licit. Issues with \nameref{func-test-discrep},
-\ifnotpaper\nameref{oat-discrep}\else\acf{operat}\footnote{Section omitted for
-        brevity.}\fi, \nameref{recov-discrep}, and \nameref{scal-discrep} are
-also given, although not listed separately in \refDiscrepsTable{}; these
-are counted alongside \nameref{other-discrep}, all grouped into
-degrees of severity as follows\ifnotpaper:\else.
-(Note that only select discrepancies are listed for brevity.) \fi
+    {\url{https://github.com/samm82/TestGen-Thesis}}.}, we found many
+discrepancies and ambiguities. A summary of these is shown in \refDiscrepsTable{},
+where a given row corresponds to the number of discrepancies either within that
+category and/or with a ``more trusted'' \hyperref[sources]{source category}
+(i.e., a previous row in the table). The numbers of (Exp)licit and (Imp)licit
+(see \Cref{rigidity}) discrepancies are also presented in this table.
+Discrepancies are grouped into the following categories to give a better sense
+of how and how frequently they tend to appear. Based on the observed
+discrepancies, the following categories arose:
 
 \begin{itemize}
-    \item High: Semantic differences between test approaches
-    \item (Med)ium: Differences in supporting information about test approaches
-    \item Low: Typos, redundancy, or issues with referencing
+    \item \textbf{Synonyms:} discrepancies with synonym relations of test
+          approaches,
+    \item \textbf{Parents:} discrepancies with \nameref{par-chd-rels} of
+          test approaches,
+    \item \textbf{Categories:} discrepancies with \nameref{categories-observ},
+    \item \textbf{Definitions:} discrepancies with definitions of test
+          approaches and related supplementary terminology,
+    \item \textbf{Terminology:} discrepancies with the terms used for test
+          approaches and related supplementary terminology (these are different
+          from ``definition discrepancies'' since they focus on the labels
+          used for terms, such as when one name is used when another should
+          have been), and
+    \item \textbf{Sources:} discrepancies with the citations given for
+          referenced information (such as when a source is claimed to explain
+          something but does not).
 \end{itemize}
 
-\ifnotpaper \input{assets/graphs/pieCharts} \fi
+Additionally, specific subsets of testing presented significant issues. These
+are given in their specific sections to keep related information together.
+These discrepancies still count towards one or more of the categories of
+discrepancies listed above\ifnotpaper; \Cref{aug-discrep-analysis} outlines how
+this is done\fi. The ``problem'' subsets of testing include
+\nameref{func-test-discrep}, \ifnotpaper\nameref{oat-discrep}, \fi
+\nameref{recov-discrep}, and \nameref{scal-discrep}. \ifnotpaper Finally,
+    \nameref{infer-discreps} are also given for completeness, despite being
+    less certain and thus not contributing to any counts.
+
+    \input{assets/graphs/pieCharts} \fi
 
 \subsection{Synonym Relation Discrepancies}
 \label{syns}
