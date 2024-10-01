@@ -1,9 +1,6 @@
 \section{Tools}
 \label{tools}
 
-\newcommand{\autoDiscreps}[1][,]{discrepancies in \Cref{syns,par-rels},
-    including \Cref{tab:parSyns}#1}
-
 To better understand our findings, we build tools to visualize the
 relations between test approaches more intuitively (\Cref{graph-gen}) and track
 discrepancies surrounding them automatically (\Cref{discrep-analysis}).
@@ -20,8 +17,7 @@ In addition to analyzing specific discrepancies (or classes of discrepancies),
 an overview of the amounts, sources, \hyperref[rigidity]{rigidities}, and
 severities of these discrepancies is also
 useful. Subsets of this task can be automated (\Cref{auto-discrep-analysis})
-and the remaining manual portion (such as finding and categorizing
-\nameref{other-discrep}) can be augmented with automated
+and the remaining manual portion can be augmented with automated
 tools (\Cref{aug-discrep-analysis}).
 
 To understand where discrepancies exist in the literature, they are
@@ -80,9 +76,9 @@ discrepancies is trivial, tracking the source(s) of these discrepancies is more
 involved. Since the appropriate citations for each piece of information is
 tracked (see \Cref{tab:exampleGlossary,tab:synExampleGlossary} for examples of
 how these citations are formatted in the glossaries), they can be used to find
-the offending source categories. This comes with the added benefit of being
-available to format these citations to use \LaTeX{}'s citation commands for use
-in the lists of \autoDiscreps[.]{}
+the offending source categories. This comes with the added benefit of these
+citations being available to be formatted for use with \LaTeX{}'s citation
+commands for inclusion in this document.
 
 Comparing the authors and years of each source related to a given discrepancy
 can determine if it manifests within a single document and/or between documents
@@ -110,9 +106,9 @@ its most ``rigid'' manifestation (i.e., it will only increment a value in the
 
 \subsubsection{Augmented Discrepancy Analysis}
 \label{aug-discrep-analysis}
-While the \autoDiscreps{} could be deduced automatically from analyzing the
-testing approach glossary, other types of discrepancies (namely
-\nameref{other-discrep}) needed to be tracked manually. This is done by adding
+While some subsets of discrepancies can be deduced automatically from analyzing
+the testing approach glossary, other types of discrepancies need to be tracked
+manually. This is done by adding
 comments to the relevant \LaTeX{} files (generated or not) of the form
 \begin{displayquote}
     \texttt{\% Discrep count: \{A1\} \{A2\} \dots{} | \{B1\} \{B2\} \dots{} |
