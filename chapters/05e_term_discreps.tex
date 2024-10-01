@@ -26,14 +26,22 @@
           {this definition discrepancy} and does not seem more widely
           applicable, since a ``PAR sheet'' is ``a list of all the symbols
           on each reel of a slot machine'' \citep{Bluejay2024}.%
-          \todo{Does this belong here?}
-    \item % Discrep count: {Firesmith2015} | {Firesmith2015} {PreußeEtAl2012}
-          ``Hardware-'' and ``human-in-the-loop testing'' have the same
-          acronym: ``HIL''\footnote{``HiL'' is used for the former by
-              \citet[p.~2]{PreußeEtAl2012}.} \citep[p.~23]{Firesmith2015}.
+          \todo{Does this belong here?} \fi
+    \item % Discrep count: {SWEBOK2024} implied by {Valcheva2013} {YuEtAl2011} | {Firesmith2015}
+          ``Orthogonal array'' \ifnotpaper \citetext{%
+                  \citealp[pp.~5-1,~5-11]{SWEBOK2024};
+                  implied by \citealp[pp.~467,~473]{Valcheva2013};
+                  \citealp[pp.~1573-1577,~1580]{YuEtAl2011}} \else
+              \cite[pp.~5-1,~5-11]{SWEBOK2024} \fi and ``operational
+          acceptance testing'' \citep[p.~30]{Firesmith2015} have the same
+          acronym (``OAT''). \ifnotpaper
     \item % Discrep count: {Firesmith2015}
           The same is true for ``customer'' and ``contract(ual) acceptance
           testing'' (``CAT'') \citep[p.~30]{Firesmith2015}.
+    \item % Discrep count: {Firesmith2015} | {Firesmith2015} {PreußeEtAl2012}
+          The same is true for ``hardware-'' and ``human-in-the-loop testing''
+          (``HIL'') \citep[p.~23]{Firesmith2015}, although \citet[p.~2]
+          {PreußeEtAl2012} \multAuthHelper{use} ``HiL'' for the former.
     \item % Discrep count: {IEEE2021}
           A typo in \citep[Fig.~2]{IEEE2021} means that ``specification-based
           techniques'' is listed twice, when the latter should be
