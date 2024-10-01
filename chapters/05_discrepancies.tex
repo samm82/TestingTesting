@@ -108,7 +108,7 @@ most prominent examples\fi:
 \ifnotpaper\else\input{assets/misc/parSyns}\fi
 
 \begin{enumerate}
-    \ifnotpaper \input{build/multiSyns} \else \input{assets/misc/multiSyns} \fi
+    \input{\ifnotpaper build\else assets/misc\fi/multiSyns}
 \end{enumerate}
 
 \subsection{Parent-Child Relation Discrepancies}
@@ -414,10 +414,8 @@ between them can be found in \Cref{fig:recovery-graph-current}.
           ``backup operational mode in which [these responsibilities] \dots\
           are assumed by a secondary system'' \citepISTQB{}. While not
           \emph{explicitly} related to recovery, ``failover/recovery testing''
-          also describes the idea of ``failover'', and \ifnotpaper
-              \citeauthor{Firesmith2015} \else \cite[p.~56]{Firesmith2015} \fi
-          uses the term ``failover and recovery testing''\ifnotpaper
-              \ \citeyearpar[p.~56]{Firesmith2015}\fi, which could be a
+          also describes the idea of ``failover'', and \citet[p.~56]{Firesmith2015}
+          uses the term ``failover and recovery testing'', which could be a
           synonym of both of these terms.
           % Discrep count (SYNS): {IEEE2021} | implied by {Firesmith2015}
 \end{itemize}

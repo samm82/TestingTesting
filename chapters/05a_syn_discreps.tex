@@ -22,8 +22,8 @@
           \procLevel{\citeyearpar}, while ``test phase'' \phaseDef{}
           \fi
     \item % Discrep count (SYNS): {PetersAndPedrycz2000}
-          \refHelper \citeauthor{PetersAndPedrycz2000} \ifnotpaper claim \else
-              claims \fi that ``structural testing
+          \refHelper \citeauthor{PetersAndPedrycz2000} \multAuthHelper{claim}
+          that ``structural testing
           subsumes white box testing'' but they seem to describe the same thing:
           \ifnotpaper they say \else it says \fi ``structure tests are aimed at
           exercising the internal logic of a software system'' and ``in white box
@@ -33,9 +33,9 @@
           \citeyearpar[p.~447]{PetersAndPedrycz2000}!
     \item % Discrep count (SYNS): ISTQB | {Patton2006}
           % TODO: NEAR SYNS?
-          \refHelper \citetISTQB{} \ifnotpaper claim \else claims \fi that code
-          inspections are related to peer reviews but
-          \citet[pp.~94-95]{Patton2006} makes them quite distinct.
+          \refHelper \citetISTQB{} \multAuthHelper{claim} that code inspections
+          are related to peer reviews but \citet[pp.~94-95]{Patton2006} makes
+          them quite distinct.
     \item % Discrep count (SYNS): ISTQB | {PetersAndPedrycz2000}
           \phantomsection{} \label{walkthrough-syns}
           Likewise, ``walkthroughs'' and ``structured walkthroughs'' are given
@@ -45,7 +45,7 @@
           % TODO: Formalize; are the following legit discrepancies? Are they inferred?
           \ifnotpaper
     \item \refHelper \citet[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88}
-          \ifnotpaper give \else gives \fi ``white-'',
+          \multAuthHelper{give} ``white-'',
           ``grey-'', and ``black-box testing'' as synonyms for ``module'',
           ``integration'', and ``system testing'', respectively, but
           this mapping is incorrect; black-box testing can be performed on a
@@ -53,16 +53,14 @@
           ``red-box testing'' is a synonym for ``acceptance testing''
           \citetext{p.~18} lose credibility.
     \item ``Program testing'' is given as a synonym of ``component testing''
-          \citep[p.~46]{Kam2008}, although it probably should be a synonym of
+          \citep[p.~46]{Kam2008} but it probably should be a synonym of
           ``system testing'' instead.
     \item \refHelper \citet[p.~46]{Kam2008} seems to imply that ``mutation
           testing'' is a synonym of ``back-to-back testing''
           but these are two quite distinct techniques.
     \item ``Conformance testing'' is implied to be a synonym of ``compliance
-          testing'' by \ifnotpaper\citeauthor{Kam2008}\else\cite{Kam2008}\fi,
-          which only makes sense because
+          testing'' by \citeauthor{Kam2008}, which only makes sense because
           of the vague definition of ``compliance testing'': ``testing to
           determine the compliance of the component or system''
-          \ifnotpaper\citeyearpar[p.~43]{Kam2008}\else\citetext{p.~43}\fi.
-          \fi
+          \citeyearpar[p.~43]{Kam2008}. \fi
 \end{enumerate}
