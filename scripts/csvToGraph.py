@@ -444,7 +444,6 @@ parSynNotes = {
 parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
     set(), set(), set(), set()
 def makeParSynLine(chd, par, parSource, synSource):
-    discrepsSrcCounter.countDiscreps([parSource, synSource], DiscrepCat.PARS)
     parSource = formatLineWithSources(parSource, False)
     synSource = formatLineWithSources(synSource, False)
 
@@ -462,10 +461,9 @@ def makeParSynLine(chd, par, parSource, synSource):
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return
 
-    parSyns.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
-        # f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "
-        # f"a sub-approach of \\textbf{{``{par.lower()}''}}{parSource}, but the "
-        # f"two {synCallImply} synonyms{synSource}."))
+    parSyns.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\" +
+                getDiscrepCount([parSource, synSource], 'PARS',
+                                newlineAfter=False))
 
 splitAtEmpty = splitListAtEmpty(categoryDict["Approach"][1])
 # Don't look for parent/synonym discrepancies unless both are present

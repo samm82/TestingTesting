@@ -103,6 +103,7 @@ class DiscrepCat(Enum):
 
 texFileDiscreps = {
     "build/multiSyns.tex": DiscrepCat.MISC,
+    "build/parSyns.tex": DiscrepCat.MISC,
     "build/selfCycles.tex": DiscrepCat.MISC,
     "chapters/05_discrepancies.tex": DiscrepCat.MISC,
     "chapters/05a_syn_discreps.tex": DiscrepCat.SYNS,
