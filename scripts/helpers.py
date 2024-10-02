@@ -102,6 +102,17 @@ def formatLineWithSources(line, todo=True):
 
     return line
 
+IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
+                     "most", "likely", "often", "if", "although"]
+
+def getSourcesFromLine(line, todo=True):
+    NO_BRACE_SRCS = {"ISTQB"}
+    if any(implied in line for implied in IMPLICIT_KEYWORDS):
+        NO_BRACE_SRCS.add("implied by")
+    return " ".join(re.findall(fr'(\{{[^}}]+?\}}|{"|".join([
+                f"(?:{term})" for term in NO_BRACE_SRCS])})',
+                formatLineWithSources(line, todo)))
+
 # I/O
 def readFileAsStr(filename) -> str:
     with open(filename, "r") as file:

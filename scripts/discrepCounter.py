@@ -102,7 +102,7 @@ class DiscrepCat(Enum):
     MISC = auto()
 
 texFileDiscreps = {
-    "build/multiSyns.tex": DiscrepCat.SYNS,
+    "build/multiSyns.tex": DiscrepCat.MISC,
     "chapters/05_discrepancies.tex": DiscrepCat.MISC,
     "chapters/05a_syn_discreps.tex": DiscrepCat.SYNS,
     "chapters/05b_par_discreps.tex": DiscrepCat.PARS,
@@ -126,8 +126,10 @@ class DiscrepSourceCounter:
                         if "% Discrep count" in line]
                 
             for discrep in content:
-                discType = (re.search(r"% Discrep count \(([A-Z]+)\):", discrep)[1]
-                            if origType == DiscrepCat.MISC else origType)
+                try:
+                    discType = re.search(r"% Discrep count \(([A-Z]+)\):", discrep)[1]
+                except TypeError:
+                    discType = origType
                 self.countDiscreps(discrep.split("|"), discType)
 
         pieCharts = []
