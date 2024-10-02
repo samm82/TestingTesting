@@ -101,174 +101,166 @@ class DiscrepCat(Enum):
     SRCS = "Sources"
     MISC = auto()
 
-texFileDiscreps = {
-    "build/multiSyns.tex": DiscrepCat.MISC,
-    "build/parSyns.tex": DiscrepCat.MISC,
-    "build/selfCycles.tex": DiscrepCat.MISC,
-    "chapters/05_discrepancies.tex": DiscrepCat.MISC,
-    "chapters/05a_syn_discreps.tex": DiscrepCat.SYNS,
-    "chapters/05b_par_discreps.tex": DiscrepCat.PARS,
-    "chapters/05c_cat_discreps.tex": DiscrepCat.CATS,
-    "chapters/05d_def_discreps.tex": DiscrepCat.DEFS,
-    "chapters/05e_term_discreps.tex": DiscrepCat.TERMS,
-    "chapters/05f_src_discreps.tex": DiscrepCat.SRCS,
+TEX_FILES = {
+    "build/multiSyns.tex",
+    "build/parSyns.tex",
+    "build/selfCycles.tex",
+    "chapters/05_discrepancies.tex",
+    "chapters/05a_syn_discreps.tex",
+    "chapters/05b_par_discreps.tex",
+    "chapters/05c_cat_discreps.tex",
+    "chapters/05d_def_discreps.tex",
+    "chapters/05e_term_discreps.tex",
+    "chapters/05f_src_discreps.tex",
 }
 
-class DiscrepSourceCounter:
-    def __init__(self):
-        self.dict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
+def outputDiscreps():
+    discrepDict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
 
-    def __str__(self):
-        return "\n".join(f"{k.name}: {v}" for k, v in self.dict.items())
+    def printDiscreps():
+        print("\n".join(f"{k.name}: {v}" for k, v in discrepDict.items()))
+        print()
 
-    def output(self):
-        for filename, origType in texFileDiscreps.items():
-            with open(filename, "r", encoding="utf-8") as file:
-                content = [line for line in file.readlines()
-                        if "% Discrep count" in line]
-                
-            for discrep in content:
-                try:
-                    discType = re.search(r"% Discrep count \(([A-Z]+)\):", discrep)[1]
-                except TypeError:
-                    discType = origType
-                self.countDiscreps(discrep.split("|"), discType)
-
-        pieCharts = []
-        for k, v in self.dict.items():
-            writeFile([formatOutput(
-                ["% " + k.longname] + [v.discrepCats[dc].output() for dc in DiscrepCat
-                                       if dc is not DiscrepCat.MISC]
-                )], f"{k.name.lower()}DiscBrkdwn", True)
-
-            totalDiscreps = sum({v.withinDoc, v.withinAuth,
-                                 sum(v.betweenCats.values())})
-
-            slices = ([(v.withinDoc, "Within a single document"),
-                       (v.withinAuth, "Between documents by the same author(s) or standards organization(s)")] +
-                      [(catCount, "Between a document from this category and a " +
-                                  cat.shortname.lower()[:-1])  # Strip plural "s"
-                        for cat, catCount in v.betweenCats.items()])
-
-            # Default color palette for pgf-pie
-            # https://github.com/pgf-tikz/pgf-pie/blob/ede5ceea348b0b1c1bbe8ccd0d75167ee3cc53bf/tex/latex/pgf-pie/tikzlibrarypie.code.tex#L239-L241
-            DEFAULT_COLORS = ["blue!60", "cyan!60", "yellow!60", "orange!60", "red!60",
-                              "blue!60!cyan!60", "cyan!60!yellow!60", "red!60!cyan!60",
-                              "red!60!blue!60", "orange!60!cyan!60"]
-
-            colors = [DEFAULT_COLORS[i] for i, slice in enumerate(slices) if slice[0]]
-
-            # LaTeX from https://tex.stackexchange.com/a/196483/192195
-            pieCharts.append(["\\begin{subfigure}[t]{0.475\\textwidth}",
-                              "\\begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]",
-                             f"   \\pie[text=legend, sum=auto, hide number, color={{{", ".join(colors)}}}]{{",
-                              ",\n".join(
-                                  [f"      {val}/{str(round(val/totalDiscreps*100, 1)).strip("0").strip(".")}\\%"
-                                   for val, _ in slices if val]),
-                              "}", "\\end{tikzpicture}",
-                             f"\\caption{{Discrepancies found in \\{k.name.lower()}s{{}}.}}",
-                             f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
-                              "\\end{subfigure}"
-                              ])
-        
-        pieCharts.append(["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
-                          "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",
-                          "\\node[label=center:Legend] {{}}; \\\\"] +
-                         [f"\\node[thick, shape=rectangle, draw=black, fill={DEFAULT_COLORS[i]}, label=right:{{{slice[1]}}}]({i}) {{}}; \\\\"
-                          for i, slice in enumerate(slices)] +
-                          ["};", "\\end{tikzpicture}", "\\end{subfigure}", "\\end{center}"])
-
-        # From ChatGPT
-        sepPieCharts: list[str] = []
-        for i, item in enumerate(pieCharts):
-            sepPieCharts += item
-            if i % 2:
-                sepPieCharts.append("\\vskip\\baselineskip")
-            else:
-                sepPieCharts.append("\\hfill")
-
-        writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
-                  ["\\caption{Sources of discrepancies based on \\hyperref[sources]{source category}.}",
-                   "\\label{fig:discrepSources}", "\\end{figure*}"], "pieCharts")
-
-    def countDiscreps(self, sources, discCat: str | DiscrepCat,
-                      debug: bool = False):
-        sourceDicts = [categorizeSources(formatLineWithSources(s, False)) for s in sources]
-        if type(discCat) is str:
+    for filename in TEX_FILES:
+        with open(filename, "r", encoding="utf-8") as file:
+            content = [line for line in file.readlines()
+                    if "% Discrep count" in line]
+            
+        for discrep in content:
+            sources = discrep.split("|")
+            discCat = re.search(r"% Discrep count \(([A-Z]+)\):", discrep).groups()[0]
             discCat = DiscrepCat[discCat.upper()]
+            DEBUG = False
 
-        if debug:
-            print(sourceDicts, discCat.name)
+            sourceDicts = [categorizeSources(formatLineWithSources(s, False)) for s in sources]
+            if DEBUG:
+                print(sourceDicts, discCat.name)
 
-        def inPairs(s, *, sFunc = None):
-            if sFunc:
-                s = [{sFunc(x) for x in si} for si in s]
-            return set.union(*(a & b for a, b in itertools.combinations(s, 2)))
+            def inPairs(s, *, sFunc = None):
+                if sFunc:
+                    s = [{sFunc(x) for x in si} for si in s]
+                return set.union(*(a & b for a, b in itertools.combinations(s, 2)))
 
-        # These ensure that sources aren't double counted
-        pieAdded, tableAdded = set(), set()
-        def updateCounters(source, pieSec: str, r):
-            nonlocal discCat
+            # These ensure that sources aren't double counted
+            pieAdded, tableAdded = set(), set()
+            def updateCounters(source, pieSec: str, r):
+                nonlocal discCat
 
-            if type(source) is tuple:
-                srcTuple = tuple(map(getSrcCat, source))
-                source = " ".join(map(lambda x: x.name.capitalize(), srcTuple))
-            else:
-                srcTuple = tuple(map(getSrcCat, [source] * 2))
-            sourceCat = srcTuple[0]
-
-            # Don't bother counting discrepancies for examples
-            if "Author" in source:
-                return
-
-            if debug:
-                print(source, sourceCat, pieSec, r)
-
-            if srcTuple not in tableAdded:                           
-                if type(self.dict[sourceCat].discrepCats[discCat]) is int:
-                    self.dict[sourceCat].discrepCats[discCat] += 1
+                if type(source) is tuple:
+                    srcTuple = tuple(map(getSrcCat, source))
+                    source = " ".join(map(lambda x: x.name.capitalize(), srcTuple))
                 else:
-                    self.dict[sourceCat].discrepCats[discCat].addDiscrep(r)
-                tableAdded.add(srcTuple)
-            if source not in pieAdded:
-                try:
-                    getattr(self.dict[sourceCat], pieSec)[srcTuple[1]] += 1
-                except TypeError:
-                    setattr(self.dict[sourceCat], pieSec,
-                            getattr(self.dict[sourceCat], pieSec) + 1)
-                pieAdded.add(source)
-                if debug:
-                    print(f"{pieSec}:", source)
-                return True
-            return False
+                    srcTuple = tuple(map(getSrcCat, [source] * 2))
+                sourceCat = srcTuple[0]
 
-        GROUP_SIZE = 2
-        if len(sourceDicts) == 1:
-            for r, sources in sourceDicts[0].items():
-                if sources and isinstance(r, Rigidity):
-                    updateCounters(str(list(map("".join, sources))), "withinDoc", r)
-        else:
-            for dicts in itertools.combinations(sourceDicts, r=GROUP_SIZE):
-                for r in itertools.product(list(Rigidity), repeat=GROUP_SIZE):
+                # Don't bother counting discrepancies for examples
+                if "Author" in source:
+                    return
+
+                if DEBUG:
+                    print(source, sourceCat, pieSec, r)
+
+                if srcTuple not in tableAdded:                           
+                    if type(discrepDict[sourceCat].discrepCats[discCat]) is int:
+                        discrepDict[sourceCat].discrepCats[discCat] += 1
+                    else:
+                        discrepDict[sourceCat].discrepCats[discCat].addDiscrep(r)
+                    tableAdded.add(srcTuple)
+                if source not in pieAdded:
                     try:
-                        sets = [set(s[xi]) for s, xi in zip(dicts, r)]
-                    except KeyError:
-                        continue
+                        getattr(discrepDict[sourceCat], pieSec)[srcTuple[1]] += 1
+                    except TypeError:
+                        setattr(discrepDict[sourceCat], pieSec,
+                                getattr(discrepDict[sourceCat], pieSec) + 1)
+                    pieAdded.add(source)
+                    if DEBUG:
+                        print(f"{pieSec}:", source)
+                    return True
+                return False
 
-                    for source in inPairs(sets, sFunc="".join):
-                        updateCounters(source, "withinDoc", r)
+            GROUP_SIZE = 2
+            if len(sourceDicts) == 1:
+                for r, sources in sourceDicts[0].items():
+                    if sources and isinstance(r, Rigidity):
+                        updateCounters(str(list(map("".join, sources))), "withinDoc", r)
+            else:
+                for dicts in itertools.combinations(sourceDicts, r=GROUP_SIZE):
+                    for r in itertools.product(list(Rigidity), repeat=GROUP_SIZE):
+                        try:
+                            sets = [set(s[xi]) for s, xi in zip(dicts, r)]
+                        except KeyError:
+                            continue
 
-                    for author in inPairs(sets, sFunc=lambda x: x[0]):
-                        yearSets = [{y for a, y in s if a == author} for s in sets]
-                        # Don't double count discrepancies within a single document
-                        if (reduce(operator.mul, map(len, yearSets)) >
-                                len(inPairs(yearSets))):
-                            updateCounters(author, "withinAuth", r)
+                        for source in inPairs(sets, sFunc="".join):
+                            updateCounters(source, "withinDoc", r)
 
-                    for tup in {tuple(sorted([ai[0], bi[0]], key=getSrcCat))
-                            for a, b in itertools.combinations(sets, 2)
-                            for ai in a for bi in b if ai[0] != bi[0]}:
-                        updateCounters(tup, "betweenCats", r)
-        if debug:
-            print(self)
-            print()
+                        for author in inPairs(sets, sFunc=lambda x: x[0]):
+                            yearSets = [{y for a, y in s if a == author} for s in sets]
+                            # Don't double count discrepancies within a single document
+                            if (reduce(operator.mul, map(len, yearSets)) >
+                                    len(inPairs(yearSets))):
+                                updateCounters(author, "withinAuth", r)
+
+                        for tup in {tuple(sorted([ai[0], bi[0]], key=getSrcCat))
+                                for a, b in itertools.combinations(sets, 2)
+                                for ai in a for bi in b if ai[0] != bi[0]}:
+                            updateCounters(tup, "betweenCats", r)
+            if DEBUG:
+                printDiscreps()
+
+    pieCharts = []
+    for k, v in discrepDict.items():
+        writeFile([formatOutput(
+            ["% " + k.longname] + [v.discrepCats[dc].output() for dc in DiscrepCat
+                                    if dc is not DiscrepCat.MISC]
+            )], f"{k.name.lower()}DiscBrkdwn", True)
+
+        totalDiscreps = sum({v.withinDoc, v.withinAuth,
+                                sum(v.betweenCats.values())})
+
+        slices = ([(v.withinDoc, "Within a single document"),
+                    (v.withinAuth, "Between documents by the same author(s) or standards organization(s)")] +
+                    [(catCount, "Between a document from this category and a " +
+                                cat.shortname.lower()[:-1])  # Strip plural "s"
+                    for cat, catCount in v.betweenCats.items()])
+
+        # Default color palette for pgf-pie
+        # https://github.com/pgf-tikz/pgf-pie/blob/ede5ceea348b0b1c1bbe8ccd0d75167ee3cc53bf/tex/latex/pgf-pie/tikzlibrarypie.code.tex#L239-L241
+        DEFAULT_COLORS = ["blue!60", "cyan!60", "yellow!60", "orange!60", "red!60",
+                            "blue!60!cyan!60", "cyan!60!yellow!60", "red!60!cyan!60",
+                            "red!60!blue!60", "orange!60!cyan!60"]
+
+        colors = [DEFAULT_COLORS[i] for i, slice in enumerate(slices) if slice[0]]
+
+        # LaTeX from https://tex.stackexchange.com/a/196483/192195
+        pieCharts.append(["\\begin{subfigure}[t]{0.475\\textwidth}",
+                            "\\begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]",
+                            f"   \\pie[text=legend, sum=auto, hide number, color={{{", ".join(colors)}}}]{{",
+                            ",\n".join(
+                                [f"      {val}/{str(round(val/totalDiscreps*100, 1)).strip("0").strip(".")}\\%"
+                                for val, _ in slices if val]),
+                            "}", "\\end{tikzpicture}",
+                            f"\\caption{{Discrepancies found in \\{k.name.lower()}s{{}}.}}",
+                            f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
+                            "\\end{subfigure}"
+                            ])
+    
+    pieCharts.append(["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
+                        "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",
+                        "\\node[label=center:Legend] {{}}; \\\\"] +
+                        [f"\\node[thick, shape=rectangle, draw=black, fill={DEFAULT_COLORS[i]}, label=right:{{{slice[1]}}}]({i}) {{}}; \\\\"
+                        for i, slice in enumerate(slices)] +
+                        ["};", "\\end{tikzpicture}", "\\end{subfigure}", "\\end{center}"])
+
+    # From ChatGPT
+    sepPieCharts: list[str] = []
+    for i, item in enumerate(pieCharts):
+        sepPieCharts += item
+        if i % 2:
+            sepPieCharts.append("\\vskip\\baselineskip")
+        else:
+            sepPieCharts.append("\\hfill")
+
+    writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
+                ["\\caption{Sources of discrepancies based on \\hyperref[sources]{source category}.}",
+                "\\label{fig:discrepSources}", "\\end{figure*}"], "pieCharts")

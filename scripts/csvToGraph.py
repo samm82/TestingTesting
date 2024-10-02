@@ -540,7 +540,7 @@ def inLine(flag, style, line):
         return re.search(fr"label=.+,{flag.name.lower()}=.+" + style, line)
 
 if "Example" not in csvFilename:
-    DiscrepSourceCounter.output()
+    outputDiscreps()
 
 def writeDotFile(lines, filename):
     CUSTOM_LEGEND = {"recovery", "scalability", "Example"}
