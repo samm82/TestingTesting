@@ -105,13 +105,15 @@ def formatLineWithSources(line, todo=True):
 IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
                      "most", "likely", "often", "if", "although"]
 
-def getSourcesFromLine(line, todo=True):
-    NO_BRACE_SRCS = {"ISTQB"}
-    if any(implied in line for implied in IMPLICIT_KEYWORDS):
-        NO_BRACE_SRCS.add("implied by")
-    return " ".join(re.findall(fr'(\{{[^}}]+?\}}|{"|".join([
-                f"(?:{term})" for term in NO_BRACE_SRCS])})',
-                formatLineWithSources(line, todo)))
+def getDiscrepCount(line, cat, todo=True):
+    # TODO: "implied by" isn't stable
+    NO_BRACES = {"implied by", "ISTQB"}
+    sources = " | ".join(" ".join(
+                re.findall(fr'(\{{[^}}]+?\}}|{"|".join([
+                    f"(?:{noBrace})" for noBrace in NO_BRACES])})',
+                    formatLineWithSources(term, todo)))
+                for term in line if term)
+    return f"% Discrep count ({cat}): {sources}\n" if sources else ""
 
 # I/O
 def readFileAsStr(filename) -> str:
