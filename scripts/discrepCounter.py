@@ -132,7 +132,7 @@ def outputDiscreps():
             discCat = DiscrepCat[discCat.upper()]
             DEBUG = False
 
-            sourceDicts = [categorizeSources(formatLineWithSources(s, False)) for s in sources]
+            sourceDicts = [categorizeSources(s) for s in sources]
             if DEBUG:
                 print(sourceDicts, discCat.name)
 

@@ -1,5 +1,3 @@
-MAKEFLAGS += -j3
-
 .PHONY: help system_requirements gloss gen_csv_diffs gen_latex compile_graphs compile_doc clean
 
 STUBS = Supp Quality Approach
