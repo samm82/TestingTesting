@@ -119,8 +119,6 @@ categoryDict = {
     "Type": ([], []),
 }
 
-discrepsSrcCounter = DiscrepSourceCounter()
-
 warned_multi_unsure = set()
 # only == True returns a string iff the passed `name` is not explicit
 def isUnsure(name: str, only: bool = False) -> Optional[str]:
@@ -542,7 +540,7 @@ def inLine(flag, style, line):
         return re.search(fr"label=.+,{flag.name.lower()}=.+" + style, line)
 
 if "Example" not in csvFilename:
-    discrepsSrcCounter.output()
+    DiscrepSourceCounter.output()
 
 def writeDotFile(lines, filename):
     CUSTOM_LEGEND = {"recovery", "scalability", "Example"}
