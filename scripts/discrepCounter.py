@@ -101,18 +101,21 @@ class DiscrepCat(Enum):
     SRCS = "Sources"
     MISC = auto()
 
-TEX_FILES = {
+COMPLEX_TEX_FILES = [
     "build/multiSyns.tex",
     "build/parSyns.tex",
     "build/selfCycles.tex",
     "chapters/05_discrepancies.tex",
+]
+
+SIMPLE_TEX_FILES = [
     "chapters/05a_syn_discreps.tex",
     "chapters/05b_par_discreps.tex",
     "chapters/05c_cat_discreps.tex",
     "chapters/05d_def_discreps.tex",
     "chapters/05e_term_discreps.tex",
     "chapters/05f_src_discreps.tex",
-}
+]
 
 def outputDiscreps():
     discrepDict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
@@ -121,14 +124,25 @@ def outputDiscreps():
         print("\n".join(f"{k.name}: {v}" for k, v in discrepDict.items()))
         print()
 
-    for filename in TEX_FILES:
+    def getDiscGroups(s):
+        return re.search(r"% Discrep count \(([A-Z]+), ([A-Z]+)\):", s).groups()
+
+    for filename in COMPLEX_TEX_FILES + SIMPLE_TEX_FILES:
         with open(filename, "r", encoding="utf-8") as file:
-            content = [line for line in file.readlines()
-                    if "% Discrep count" in line]
-            
-        for discrep in content:
+            content = file.readlines()
+        discrepCounts = [line for line in content if "% Discrep count" in line]
+        # Don't process content before the first \\item
+        discreps = [f"\\item % Discrep count {item}" for item in
+                    "".join(content).split("\\item % Discrep count ")[1:]]
+
+        if filename in SIMPLE_TEX_FILES:
+            for d in discreps:
+                print(d)
+            print()
+
+        for discrep in discrepCounts:
             sources = discrep.split("|")
-            discCat, discClass = re.search(r"% Discrep count \(([A-Z]+), ([A-Z]+)\):", discrep).groups()
+            discCat, discClass = getDiscGroups(discrep)
             # WRONG (mistakes), MISS (omissions), CONTRA (contradictions)
             # AMBI (ambiguities), OVER (overlaps), REDUN (redunancies)
             if discClass not in {"WRONG", "MISS", "CONTRA", "AMBI", "OVER", "REDUN"}:
