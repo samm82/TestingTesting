@@ -126,6 +126,7 @@ SIMPLE_TEX_FILES = [
 
 TEX_FILES = COMPLEX_TEX_FILES + SIMPLE_TEX_FILES
 
+simpleDiscrepCats = OrderedDict([(k, ["\\begin{enumerate}"]) for k in DiscrepCat])
 simpleDiscrepClss = OrderedDict([(k, ["\\begin{enumerate}"]) for k in DiscrepCls])
 
 def outputDiscreps():
@@ -152,7 +153,8 @@ def outputDiscreps():
 
         if filename in SIMPLE_TEX_FILES:
             for discrep in discreps:
-                _, discCls = getDiscGroups(discrep)
+                discCat, discCls = getDiscGroups(discrep)
+                simpleDiscrepCats[discCat].append(discrep)
                 simpleDiscrepClss[discCls].append(discrep)
 
         for discrep in discrepCounts:
@@ -236,19 +238,25 @@ def outputDiscreps():
             if DEBUG:
                 printDiscreps()
 
-    simpleDiscreps = [f"\\nameref{{{s}}}" for s in map(
-        lambda s: s.name.lower(), simpleDiscrepClss.keys())] 
-    simpleDiscreps[-1] = f"and {simpleDiscreps[-1]}.\n"
-    simpleDiscreps = [", ".join(simpleDiscreps)]
+    for shortname, longname, discrepGroup in [
+            ("Cat", "Categories", simpleDiscrepCats),
+            ("Cls", "Classes",    simpleDiscrepClss)]:
+        simpleDiscreps = [f"\\nameref{{{s}}}" if shortname == "Cls" else
+                          f"\\{s}{{}}" for s in map(
+                              lambda s: s.name.lower(), discrepGroup.keys())]
+        simpleDiscreps[-1] = f"and {simpleDiscreps[-1]}.\n"
+        simpleDiscreps = [", ".join(simpleDiscreps)]
 
-    for k in simpleDiscrepClss.keys():
-        simpleDiscrepClss[k].append("\\end{enumerate}")
-        writeFile(simpleDiscrepClss[k], f"DiscrepCls{k.name.title()}", True)
-        simpleDiscreps += [f"\\subsubsection{{{k.value}}}",
-                           f"\\label{{{k.name.lower()}}}",
-                           f"\\input{{build/DiscrepCls{k.name.title()}}}\n"]
-    
-    writeFile(simpleDiscreps, f"DiscrepClasses", True)
+        for k in discrepGroup.keys():
+            discrepGroup[k].append("\\end{enumerate}")
+            writeFile(discrepGroup[k], f"Discrep{shortname}{k.name.title()}", True)
+            simpleDiscreps += [
+                f"\\subsubsection{{{(k.value if shortname == 'Cls' else
+                                     f'{k.value.strip("s")} Discrepancies')}}}",
+                f"\\label{{{k.name.lower()}}}",
+                f"\\input{{build/Discrep{shortname}{k.name.title()}}}\n"]
+        
+        writeFile(simpleDiscreps, f"Discrep{longname}", True)
 
     pieCharts = []
     for k, v in discrepDict.items():

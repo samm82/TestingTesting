@@ -13,8 +13,8 @@ category and/or with a ``more trusted'' \hyperref[sources]{source category}
 (i.e., a previous row in the table). The numbers of (Exp)licit and (Imp)licit
 (see \Cref{rigidity}) discrepancies are also presented in this table.
 Discrepancies are grouped into the following categories to give a better sense
-of how and how frequently they tend to appear: \syns{}, \pars{}, \cats{},
-\defs{}, \terms{}, or \srcs{}.
+of how and how frequently they tend to appear: \nameref{syns}, \nameref{pars},
+\nameref{cats}, \nameref{defs}, \nameref{terms}, or \nameref{srcs}.
 
 Additionally, specific subsets of testing presented significant issues. These
 are given in their specific sections to keep related information together.
@@ -35,8 +35,14 @@ The following sections list observed discrepancies grouped by \emph{how} the
 discrepancy manifests. These include
 \input{build/DiscrepClasses}
 
+\subsection{Discrepancy Categories}
+\label{discrepCategories}
+
+The following sections list observed discrepancies grouped by \emph{what area}
+the discrepancy manifests in. These include discrepancies with
+\input{build/DiscrepCategories}
+
 \subsection{Synonym Relation Discrepancies}
-\label{syns}
 The same approach often has many names. For example,
 \emph{specification-based testing} is also called\todo{more in Umar2000}:
 \begin{enumerate}
@@ -101,7 +107,6 @@ most prominent examples\fi:
 \end{enumerate}
 
 \subsection{Parent-Child Relation Discrepancies}
-\label{pars}
 
 \input{chapters/05b_par_discreps}
 \phantomsection{}\label{selfPars}
@@ -132,7 +137,6 @@ analysis of the generated graphs, \ifnotpaper which are \else with the most
 \fi
 
 \subsection{Test Approach Category Discrepancies}
-\label{cats}
 While the IEEE categorization of testing approaches described in
 \refIEEETestTerms{} is useful, it
 is not without its faults. The boundaries between items within a category may
@@ -154,7 +158,6 @@ test approach categorizations. This may indicate they aren't necessarily the
 same, or that more thought must be given to this method of classification.
 
 \subsection{Definition Discrepancies}
-\label{defs}
 Perhaps the most interesting category for those seeking to understand how to
 apply a given test approach, there are many discrepancies between how test
 approaches, as well as supporting terms, are defined:
@@ -214,7 +217,6 @@ approaches, as well as supporting terms, are defined:
 \fi
 
 \subsection{Terminology Discrepancies}
-\label{terms}
 While some discrepancies exist because the definition of a term is wrong,
 others exist because term's \emph{name} or \emph{label} is wrong! This could be
 considered a ``sister'' category of \nameref{defs}, but these
@@ -228,7 +230,6 @@ discrepancies seemed different enough to merit their own category. \ifnotpaper
 \input{chapters/05e_term_discreps}
 
 \subsection{Source Discrepancies}
-\label{srcs}
 \input{chapters/05f_src_discreps}
 
 \subsection{Functional Testing}
