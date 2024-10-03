@@ -128,8 +128,12 @@ def outputDiscreps():
             
         for discrep in content:
             sources = discrep.split("|")
-            discCat = re.search(r"% Discrep count \(([A-Z]+)\):", discrep).groups()[0]
-            discCat = DiscrepCat[discCat.upper()]
+            discCat, discClass = re.search(r"% Discrep count \(([A-Z]+), ([A-Z]+)\):", discrep).groups()
+            # WRONG (mistakes), MISS (omissions), CONTRA (contradictions)
+            # AMBI (ambiguities), OVER (overlaps), REDUN (redunancies)
+            if discClass not in {"WRONG", "MISS", "CONTRA", "AMBI", "OVER", "REDUN"}:
+                raise ValueError(discClass)
+            discCat = DiscrepCat[discCat]
             DEBUG = False
 
             sourceDicts = [categorizeSources(s) for s in sources]

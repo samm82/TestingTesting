@@ -195,7 +195,7 @@ specification of the component or system'' \ifnotpaper (and gives ``black-box
     testing'' as a synonym) \fi and ``functional testing'' as ``testing
 performed to evaluate if a component or system satisfies functional
 requirements'' \ifnotpaper (specifying no synonyms) \citepISTQB{};
-    % Discrep count (SYNS): {IEEE2022} {IEEE2017} | ISTQB
+    % Discrep count (SYNS, CONTRA): {IEEE2022} {IEEE2017} | ISTQB
     the latter references \citet[p.~196]{IEEE2017}
     (``testing conducted to evaluate the compliance of a system or
     component with specified functional requirements'') which
@@ -228,10 +228,10 @@ what defines a ``test type'' \citep[p.~15]{IEEE2022}\ifnotpaper\
 it seems consistent to label ``functional testing'' as a ``test type''
 \citep[pp.~15,~20,~22]{IEEE2022}; this conflicts with its categorization
 as a ``technique'' if considered a synonym of \nameref{spec-func-test}.
-% Discrep count (CATS): implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
+% Discrep count (CATS, CONTRA): implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
 ``Correctness testing'' is listed separately from ``functionality testing'' by
 \citet[p.~53]{Firesmith2015}.
-% Discrep count (SYNS): {SWEBOK2024} | {Firesmith2015}
+% Discrep count (SYNS, CONTRA): {SWEBOK2024} | {Firesmith2015}
 
 \subsubsection{Conformance Testing}
 Testing that ensures ``that the functional specifications are correctly
@@ -244,7 +244,7 @@ specifications, requirements, design, processes, or practices''
 of testing methods mentioned earlier as the latter includes ``standards,
 rules, requirements, design, processes, \dots\ [and]'' practices in
 \emph{addition} to specifications!
-% Discrep count (SYNS): {SWEBOK2024} | implied by {SWEBOK2024}
+% Discrep count (SYNS, OVER): {SWEBOK2024} | implied by {SWEBOK2024}
 
 A complicating factor is that ``compliance testing'' is also
 (plausibly) given as a synonym of ``conformance testing''
@@ -254,7 +254,7 @@ to which ``results \dots\ fall within the limits that define
 acceptable variation for a quality requirement''
 \citep[p.~93]{IEEE2017}\todo{OG PMBOK 5th ed.}, which seems to
 describe something different.
-% Discrep count (SYNS): {Kam2008} | implied by {IEEE2017}
+% Discrep count (SYNS, AMBI): {Kam2008} | implied by {IEEE2017}
 
 % TODO: pull out into Recommendations
 % Perhaps this second definition of
@@ -297,7 +297,7 @@ the quality/ies that would be tested by ``correctness'' testing.
 ``functional suitability'' \citepISTQB{}, although it seems
 like it should really be a synonym of ``functional completeness'' based on
 \citep{ISO_IEC2023a}, which would make ``functional suitability'' a
-% Discrep count (SYNS): ISTQB | implied by {ISO_IEC2023a}
+% Discrep count (SYNS, CONTRA): ISTQB | implied by {ISO_IEC2023a}
 sub-approach. Its associated test type
 is implied to be a sub-approach of build verification testing
 \citepISTQB{} and made distinct from ``functional testing''%
@@ -309,8 +309,8 @@ non-functional and functionality testing\fi\ \citep[Tab.~2]{Gerrard2000a}.
 \ifnotpaper
     \subsection[Operational (Acceptance) Testing (OAT)]{\acf{operat}}
     \label{oat-discrep}
-    % Discrep count (TERMS): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}
-    % Discrep count (SYNS): {LambdaTest2024} {BocchinoAndHamilton1996} | {Firesmith2015}
+    % Discrep count (TERMS, CONTRA): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}
+    % Discrep count (SYNS, CONTRA): {LambdaTest2024} {BocchinoAndHamilton1996} | {Firesmith2015}
     Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE2022};
     \citealpISTQB{}) while some refer to ``operational testing''
     (\citealp[p.~6-9,~in the context of software engineering operations]{SWEBOK2024};
@@ -351,7 +351,7 @@ and re-establish[ing] the desired state of the system''
 so that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
 It is also called ``recoverability testing'' \cite[p.~47]{Kam2008} and
 potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}.
-% Discrep count (SYNS): {Gerrard2000a}
+% Discrep count (SYNS, AMBI): {Gerrard2000a}
 The following terms, along with ``recovery testing'' itself
 \citep[p.~22]{IEEE2022} are all classified as test types, and the relations
 between them can be found in \Cref{fig:recovery-graph-current}.
@@ -375,7 +375,7 @@ between them can be found in \Cref{fig:recovery-graph-current}.
           resolved'' \citeyearpar[p.~37]{IEEE2021}. These two definitions seem to
           describe different aspects of the system, where the first is
           intrinsic to the hardware/software and the second might not be.
-          % Discrep count (DEFS): {IEEE2017} | {IEEE2021}
+          % Discrep count (DEFS, OVER): {IEEE2017} | {IEEE2021}
     \item \textbf{Backup and Recovery Testing} ``measures the
           degree to which system state can be restored from backup within
           specified parameters of time, cost, completeness, and accuracy in
@@ -391,17 +391,17 @@ between them can be found in \Cref{fig:recovery-graph-current}.
           \citeyearpar[p.~37]{IEEE2021}. It is also given as a sub-type of
           ``disaster/recovery testing'', even though that tests if ``operation
           of the test item can be transferred to a different operating site''
-          \citetext{p.~37}. % Discrep count (PARS): {IEEE2021} | {IEEE2021}
+          \citetext{p.~37}. % Discrep count (PARS, CONTRA): {IEEE2021} | {IEEE2021}
           It also seems to overlap with ``backup and
           recovery testing'', which adds confusion.
-          % Discrep count (DEFS): {IEEE2021} | {IEEE2013}
+          % Discrep count (DEFS, OVER): {IEEE2021} | {IEEE2013}
     \item \textbf{Failover/Recovery Testing:} Testing that determines the
           ability ``to mov[e] to a back-up system in the event of failure,
           without transfer[ing] to a different operating site''
           \citep[p.~37]{IEEE2021}. This is given as a sub-type of
           ``disaster/recovery testing'', even though that tests if ``operation
           of the test item can be transferred to a different operating site''
-          \citetext{p.~37}. % Discrep count (PARS): {IEEE2021} | {IEEE2021}
+          \citetext{p.~37}. % Discrep count (PARS, CONTRA): {IEEE2021} | {IEEE2021}
     \item \textbf{Failover Testing:} Testing that ``validates the SUT's
           ability to manage heavy loads or unexpected failure to continue
           typical operations'' \citep[p.~5-9]{SWEBOK2024} by entering a
@@ -411,7 +411,8 @@ between them can be found in \Cref{fig:recovery-graph-current}.
           also describes the idea of ``failover'', and \citet[p.~56]{Firesmith2015}
           uses the term ``failover and recovery testing'', which could be a
           synonym of both of these terms.
-          % Discrep count (SYNS): {IEEE2021} | implied by {Firesmith2015}
+          % Discrep count (SYNS, AMBI): {IEEE2021} | implied by {Firesmith2015}
+          % Discrep TODO count (SYNS, AMBI): {SWEBOK2024} ISTQB | implied by {Firesmith2015}
 \end{itemize}
 
 \subsection{Scalability Testing}
@@ -422,7 +423,7 @@ below. The relations between these test approaches (and other relevant ones)
 are shown in \Cref{fig:scal-graph-current}.
 
 \begin{enumerate}
-    \item % Discrep count (SYNS): {IEEE2021} | {Firesmith2015} {Bas2024}
+    \item % Discrep count (SYNS, CONTRA): {IEEE2021} | {Firesmith2015} {Bas2024}
           \ifnotpaper \citeauthor{IEEE2021} \else ISO/IEC and IEEE \fi give
           ``scalability testing'' as a synonym of ``capacity testing''
           \ifnotpaper \citeyearpar[p.~39]{IEEE2021} \else \cite[p.~39]{IEEE2021}
@@ -431,14 +432,13 @@ are shown in \Cref{fig:scal-graph-current}.
                   \citealp[pp.~22-23]{Bas2024}}
           \else \citep[p.~53]{Firesmith2015}, \citep[pp.~22-23]{Bas2024}
           \fi
-    \item % Discrep count (DEFS): {IEEE2021} | implied by {ISO_IEC2023a}
+    \item % Discrep count (DEFS, CONTRA): {IEEE2021} | implied by {ISO_IEC2023a}
           \ifnotpaper \citeauthor{IEEE2021} \else ISO/IEC and IEEE \fi give
           the external modification of the system as part of ``scalability''
           \ifnotpaper \citeyearpar[p.~39]{IEEE2021}\else
-              \cite[p.~39]{IEEE2021}\fi, while \ifnotpaper \citeauthor{ISO_IEC2023a}
-          \else \cite{ISO_IEC2023a} \fi implies that it is limited to the
-          system itself \ifnotpaper \citeyearpar{ISO_IEC2023a} \fi
-    \item % Discrep count (TERMS): {SWEBOK2024}
+              \cite[p.~39]{IEEE2021}\fi, while \citet{ISO_IEC2023a} \ifnotpaper
+              imply \else implies \fi that it is limited to the system itself
+    \item % Discrep count (TERMS, WRONG): {SWEBOK2024}
           The \acs{swebok} V4's definition of ``scalability testing''
           \citep[p.~5-9]{SWEBOK2024} is really a definition of usability
           testing!
@@ -469,7 +469,7 @@ are shown in \Cref{fig:scal-graph-current}.
 \subsection{Compatibility Testing}
 \label{compat-discrep}
 
-% Discrep count (DEFS): {IEEE2022} | {IEEE2017} ISTQB {ISO_IEC2023a}
+% Discrep count (DEFS, OVER): {IEEE2022} | {IEEE2017} ISTQB {ISO_IEC2023a}
 ``Compatibility testing'' is defined as ``testing that measures the
 degree to which a test item can function satisfactorily alongside
 other independent products in a shared environment (co-existence),
@@ -478,7 +478,7 @@ components (interoperability)'' \citep[p.~3]{IEEE2022}. This
 definition is nonatomic as it combines the ideas of ``co-existence''
 and ``interoperability''. The term ``interoperability testing'' is
 not defined, but is used three times \citep[pp.~22,~43]{IEEE2022}
-% Discrep count (TERMS): {IEEE2022}
+% Discrep count (TERMS, WRONG): {IEEE2022}
 (although the third usage seems like it should be ``portability
 testing''). This implies that ``co-existence testing'' and
 ``interoperability testing'' should be defined as their own terms,
@@ -491,11 +491,11 @@ which is supported by definitions of ``co-existence'' and
 ``interoperability testing'' from \citet[p.~238]{IEEE2017},
 and the decomposition of ``compatibility'' into ``co-existence''
 and ``interoperability'' by \citet{ISO_IEC2023a}!
-% Discrep count (SYNS): implied by {IEEE2021} | {IEEE2022}
+% Discrep count (SYNS, WRONG): implied by {IEEE2021} | {IEEE2022}
 The ``interoperability'' element of ``compatibility testing'' is explicitly
 excluded by \citet[p.~37]{IEEE2021}, (incorrectly) implying that ``compatibility
 testing'' and ``co-existence testing'' are synonyms.
-% Discrep count (SYNS): {Kam2008} | {IEEE2022}
+% Discrep count (SYNS, AMBI): {Kam2008} | {IEEE2022}
 Furthermore, the definition of ``compatibility testing'' in
 \citep[p.~43]{Kam2008} unhelpfully says ``See \emph{interoperability testing}'',
 adding another layer of confusion to the direction of their relationship.

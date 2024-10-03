@@ -285,7 +285,7 @@ multiSynNotes = {
         "\\citet[p.~55]{Firesmith2015}, although the terms are not synonyms."
     ),
     "Use Case Testing": (
-        "% Discrep count (SYNS): ISTQB {Kam2008} | {IEEE2022} {IEEE2021} \n\t\t"
+        "% Discrep count (SYNS, CONTRA): ISTQB {Kam2008} | {IEEE2022} {IEEE2021} \n\t\t"
         "``Scenario testing'' and ``use case testing'' are given as synonyms "
         "by \\citetISTQB{} and \\citet[pp.~47-49]{Kam2008} but listed "
         "separately by \\citet[p.~22]{IEEE2022}, \\ifnotpaper who also give "
@@ -295,7 +295,7 @@ multiSynNotes = {
         "\\seeParAlways{tab:parSyns}."
     ),
     "Static Assertion Checking": (
-        "% Discrep count (SYNS): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
+        "% Discrep count (SYNS, WRONG): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
         "\\citet[p.~343]{ChalinEtAl2006} \\multAuthHelper{list} "
         "\\ifnotpaper \\acf{rac} and \\acf{sv} \\else Runtime Assertion Checking "
         "\\acf{rac} and Software Verification \\acf{sv} \\fi "
@@ -305,7 +305,7 @@ multiSynNotes = {
         "complement to \\acs{rac} instead."
     ),
     "Operational Testing": (
-        "% Discrep count (SYNS): ISTQB | {Firesmith2015} \n\t\t"
+        "% Discrep count (SYNS, CONTRA): ISTQB | {Firesmith2015} \n\t\t"
         "``Operational'' and ``production acceptance testing'' are treated as "
         "synonyms by \\citetISTQB{} but listed separately by \\citet[p.~30]{Firesmith2015}."
     ),
@@ -335,7 +335,7 @@ def makeMultiSynLine(valid, syn, terms):
         return f"\t\t\\item {term}"
 
     line = "\n".join([f"\\item \\textbf{{{syn}:}}",
-                      f"{getDiscrepCount(terms, 'SYNS')}\t\\begin{{itemize}}"] +
+                      f"{getDiscrepCount(terms, "SYNS", "CONTRA")}\t\\begin{{itemize}}"] +
                       list(map(processTerm, terms)) + ["\t\\end{itemize}"])
     if syn not in paperExamples:
         line = "\n".join(["\\ifnotpaper", line, "\\fi"])
@@ -418,7 +418,7 @@ print()
 selfCycleCount = len(selfCycles)
 
 if "Example" not in csvFilename:
-    selfCycles = [f"\\item {getDiscrepCount([cycle], "PARS")}\t{formatLineWithSources(cycle)}"
+    selfCycles = [f"\\item {getDiscrepCount([cycle], "PARS", "WRONG")}\t{formatLineWithSources(cycle)}"
                   for cycle in selfCycles]
     writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
               "selfCycles", True)
@@ -460,7 +460,7 @@ def makeParSynLine(chd, par, parSource, synSource):
         return
 
     parSyns.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\" +
-                getDiscrepCount([parSource, synSource], 'PARS',
+                getDiscrepCount([parSource, synSource], "PARS", "CONTRA",
                                 newlineAfter=False))
 
 splitAtEmpty = splitListAtEmpty(categoryDict["Approach"][1])
