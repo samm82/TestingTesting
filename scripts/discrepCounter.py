@@ -1,5 +1,7 @@
 import re
+
 from aenum import AutoNumberEnum, Enum, OrderedEnum
+from collections import OrderedDict
 from functools import reduce, total_ordering
 import itertools
 import operator
@@ -100,7 +102,7 @@ class DiscrepCat(Enum):
 
 class DiscrepCls(Enum):
     WRONG  = "Mistakes"
-    MISS   = "Omission"
+    MISS   = "Omissions"
     CONTRA = "Contradictions"
     AMBI   = "Ambiguities"
     OVER   = "Overlaps"
@@ -124,7 +126,7 @@ SIMPLE_TEX_FILES = [
 
 TEX_FILES = COMPLEX_TEX_FILES + SIMPLE_TEX_FILES
 
-simpleDiscrepClss = {k : ["\\begin{enumerate}"] for k in DiscrepCls}
+simpleDiscrepClss = OrderedDict([(k, ["\\begin{enumerate}"]) for k in DiscrepCls])
 
 def outputDiscreps():
     discrepDict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
@@ -234,9 +236,19 @@ def outputDiscreps():
             if DEBUG:
                 printDiscreps()
 
+    simpleDiscreps = [f"\\nameref{{{s}}}" for s in map(
+        lambda s: s.name.lower(), simpleDiscrepClss.keys())] 
+    simpleDiscreps[-1] = f"and {simpleDiscreps[-1]}.\n"
+    simpleDiscreps = [", ".join(simpleDiscreps)]
+
     for k in simpleDiscrepClss.keys():
         simpleDiscrepClss[k].append("\\end{enumerate}")
         writeFile(simpleDiscrepClss[k], f"DiscrepCls{k.name.title()}", True)
+        simpleDiscreps += [f"\\subsubsection{{{k.value}}}",
+                           f"\\label{{{k.name.lower()}}}",
+                           f"\\input{{build/DiscrepCls{k.name.title()}}}\n"]
+    
+    writeFile(simpleDiscreps, f"DiscrepClasses", True)
 
     pieCharts = []
     for k, v in discrepDict.items():
