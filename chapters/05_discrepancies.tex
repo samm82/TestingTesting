@@ -33,7 +33,8 @@ this is done\fi. The ``problem'' subsets of testing include
 
 The following sections list observed discrepancies grouped by \emph{how} the
 discrepancy manifests. These include \nameref{wrong}, \nameref{miss},
-\nameref{contra}, \nameref{ambi}, \nameref{over}, and \nameref{redun}.
+\nameref{contra}, \nameref{ambi}, \ifnotpaper \nameref{over}, and
+    \nameref{redun}\else and \nameref{over}\fi.
 
 \subsubsection{Mistakes}
 \label{wrong}
@@ -55,9 +56,11 @@ discrepancy manifests. These include \nameref{wrong}, \nameref{miss},
 \label{over}
 \input{build/DiscrepClsOver}
 
-\subsubsection{Redunancies}
-\label{redun}
-\input{build/DiscrepClsRedun}
+\ifnotpaper
+    \subsubsection{Redunancies}
+    \label{redun}
+    \input{build/DiscrepClsRedun}
+\fi
 
 \subsection{Discrepancy Categories}
 \label{discrepCategories}
@@ -134,9 +137,14 @@ most prominent examples\fi:
 
 \subsubsection{Parent-Child Relation Discrepancies}
 \label{pars}
-% \input{build/DiscrepCatPars}
 
-\input{chapters/05b_par_discreps}
+\nameref{par-chd-rels} are also not immune to difficulties\ifnotpaper, as shown
+by the following discrepancies:
+\input{build/DiscrepCatPars} \else; for example, performance \fi testing and
+security testing are given as subtypes of reliability testing by
+\citep{ISO_IEC2023a}, but these are all listed separately by
+\citep[p.~53]{Firesmith2015}.
+
 \phantomsection{}\label{selfPars}
 Additionally, some self-referential definitions imply that a test
 approach is a parent of itself. Since these are by nature self-contained within
@@ -266,8 +274,16 @@ discrepancies seemed different enough to merit their own category. \ifnotpaper
 \subsubsection{Source Discrepancies}
 \label{srcs}
 
-% \input{build/DiscrepCatSrcs}
-\input{chapters/05f_src_discreps}
+Sometimes a source cites another for a piece of information that does not
+appear! \ifnotpaper
+    The following discrepancies are examples of this:
+    \input{build/DiscrepCatSrcs}
+\else
+    For example, \citet[p.~184]{DoğanEtAl2014} \multAuthHelper{claim} that
+    \citet{SakamotoEtAl2013} \multAuthHelper{define} ``prime path coverage'',
+    but it does not.
+\fi
+
 
 \subsection{Functional Testing}
 \label{func-test-discrep}

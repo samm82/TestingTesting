@@ -1,0 +1,166 @@
+\begin{enumerate}
+    \item % Discrep count (SYNS, OVER): {IEEE2017} {IEEE2013} | {IEEE2022} {IEEE2017} {Perry2006}
+          \citeauthor*{IEEE2017} say that ``test level'' and ``test phase''
+          are synonyms, both meaning a ``specific instantiation of [a] test
+          sub-process'' (\citeyear[pp.~469,~470]{IEEE2017}; \citeyear[p.~9]{IEEE2013}),
+          but there are also alternative definitions for them.
+          \procLevel{\citeyearpar}, while ``test phase'' \phaseDef{}
+    \item % Discrep count (DEFS, CONTRA): {IEEE2021} | {IEEE2017}
+          % TODO: SUPP DEFS?
+          \citeauthor{IEEE2021} define an ``extended entry (decision) table''
+          both as a decision table where the ``conditions consist of multiple
+          values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021}
+          and one where ``the conditions and actions are generally described
+          but are incomplete'' \citeyearpar[p.~175]{IEEE2017}\todo{OG ISO1984}.
+    \item % Discrep count (TERMS, WRONG): {IEEE2021}
+          A typo in \citep[Fig.~2]{IEEE2021} means that ``specification-based
+          techniques'' is listed twice, when the latter should be
+          ``structure-based techniques''.
+    \item % Discrep count (PARS, OVER): {IEEE2017}
+          \citeauthor*{IEEE2017} provide a definition for ``inspections and
+          audits'' \citeyearpar[p.~228]{IEEE2017}, despite also giving
+          definitions for ``inspection'' \citetext{p.~227} and ``audit''
+          \citetext{p.~36}; while the first term \emph{could} be considered a
+          superset of the latter two, this distinction doesn't seem useful.
+    \item % Discrep count (DEFS, WRONG): {IEEE2017}
+          % TODO: SUPP DEFS?
+          \citeauthor{IEEE2017} use the same definition for ``partial correctness''
+          \citeyearpar[p.~314]{IEEE2017} and ``total correctness'' (p.~480).
+
+          % STD | META
+    \item % Discrep count (DEFS, AMBI): ISTQB
+          While ergonomics testing is out of scope (as it tests hardware, not
+          software), its definition of ``testing to determine whether a
+          component or system and its input devices are being used properly
+          with correct posture'' \citepISTQB{} seems to focus on how the
+          system is \emph{used} as opposed to the system \emph{itself}.
+    \item % Discrep count (DEFS, AMBI): ISTQB
+          % TODO: SRC? 
+          % {SPICE2022} not included as part of this discrepancy since it
+          % is used as the ground truth
+          \citetISTQB{} describe the term ``software in the loop'' as a
+          kind of testing, while the source they reference
+          % \ifnotpaper they reference \else it references \fi
+          seems to describe
+          ``Software-in-the-Loop-Simulation'' as a ``simulation environment''
+          that may support software integration testing
+          \citep[p.~153]{SPICE2022}; is this a testing approach or a tool
+          that supports testing?
+    \item % Discrep count (DEFS, WRONG): ISTQB
+          \phantomsection{} \label{specificISTQB}
+          The definition of ``math testing'' given by \citetISTQB{} is
+          too specific to be useful, likely taken from an example instead of
+          a general definition: ``testing to determine the correctness of the
+          pay table implementation, the random number generator results, and
+          the return to player computations''.
+    \item % Discrep count (DEFS, WRONG): ISTQB
+          A similar issue exists with multiplayer testing, where its
+          definition specifies ``the casino game world'' \citepISTQB{}.
+    \item % Discrep count (DEFS, REDUN): ISTQB
+          While correct, ISTQB's definition of ``specification-based testing''
+          is not helpful: ``testing based on an analysis of the specification
+          of the component or system'' \citepISTQB{}.
+    \item % Discrep count (TERMS, WRONG): ISTQB
+          % {Bluejay2024} not included as part of this discrepancy since it
+          % is used as the ground truth
+          ``Par sheet testing'' from \citepISTQB{} seems to refer to the
+          specific example brought up in \hyperref[specificISTQB]
+          {this definition discrepancy} and does not seem more widely
+          applicable, since a ``PAR sheet'' is ``a list of all the symbols
+          on each reel of a slot machine'' \citep{Bluejay2024}.%
+          \todo{Does this belong here?}
+    \item % Discrep count (SRCS, WRONG): ISTQB
+          The source that \citetISTQB{} cite for the definition of ``test
+          type'' does not seem to actually provide a definition.
+    \item % Discrep count (SRCS, WRONG): ISTQB
+          The same is true for ``visual testing'' \citepISTQB{}.
+    \item % Discrep count (SRCS, WRONG): ISTQB
+          The same is true for ``security attack'' \citepISTQB{}.
+    \item % Discrep count (DEFS, AMBI): {Firesmith2015}
+          While model testing is said to test the object under test,
+          it seems to describe testing the models themselves
+          \citep[p.~20]{Firesmith2015}; using the models to test the object
+          under test seems to be called ``driver-based testing''
+          \citetext{p.~33}.
+    \item % Discrep count (DEFS, AMBI): {Firesmith2015}
+          Similarly, it is ambiguous whether ``tool/environment testing'' refers
+          to testing the tools/environment \emph{themselves} or \emph{using}
+          them to test the object under test; the latter is implied, but the
+          wording of its subtypes \citep[p.~25]{Firesmith2015} seems to imply
+          the former.
+    \item % Discrep count (DEFS, MISS): {Firesmith2015}
+          The acronym ``SoS'' is used but not defined by
+          \citet[p.~23]{Firesmith2015}.
+    \item % Discrep count (TERMS, OVER): {Firesmith2015}
+          ``Customer acceptance testing'' and ``contract(ual) acceptance
+          testing'' have the same acronym (``CAT'') \citep[p.~30]{Firesmith2015}.
+    \item % Discrep count (TERMS, OVER): {Firesmith2015} | {Firesmith2015} {PreußeEtAl2012}
+          The same is true for ``hardware-in-the-loop testing'' and
+          ``human-in-the-loop testing'' (``HIL'') \citep[p.~23]{Firesmith2015},
+          although \citet[p.~2] {PreußeEtAl2012} \multAuthHelper{use} ``HiL''
+          for the former.
+    \item % Discrep count (SRCS, WRONG): {DoğanEtAl2014}
+          \citet[p.~184]{DoğanEtAl2014} \multAuthHelper{claim} that
+          \citet{SakamotoEtAl2013} \multAuthHelper{define} ``prime path
+          coverage'', but they do not.
+
+          % META | TEXT
+
+          % TEXT | OTHER
+    \item % Discrep count (TERMS, REDUN): {Gerrard2000a} | {IEEE2022} ISTQB
+          The phrase ``continuous automated testing'' \citep[p.~11]{Gerrard2000a}
+          is redundant since continuous testing is a sub-category of automated
+          testing (\citealp[p.~35]{IEEE2022}; \citealpISTQB{}).
+    \item % Discrep count (CATS, AMBI): {IEEE2022} | {BarbosaEtAl2006}
+          Retesting and regression testing seem to be separated from the rest
+          of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
+          clearly detailed why; \citet[p.~3]{BarbosaEtAl2006}
+          \multAuthHelper{consider} regression testing to be a test level.
+    \item % Discrep count (CATS, CONTRA): {SWEBOK2024} | {Kam2008}
+          Although ad hoc testing is sometimes classified as a ``technique''
+          \citep[p.~5-14]{SWEBOK2024}, it is one in which ``no recognized test
+          design technique is used'' \citep[p.~42]{Kam2008}.
+    \item % Discrep count (DEFS, MISS): {Bas2024}
+          \refHelper \citet[p.~16]{Bas2024} lists ``three [backup] location
+          categories: local, offsite and cloud based [sic]'' but does not
+          define or discuss ``offsite backups'' \citetext{pp.~16-17}.
+    \item % Discrep count (TERMS, WRONG): {Kam2008}
+          \refHelper \citet{Kam2008} misspells ``state-based'' as ``state-base''
+          \citetext{pp.~13,~15} and ``stated-base'' \citetext{Tab.~1}.
+    \item % Discrep count (CATS, OVER): {Gerrard2000a}
+          ``Visual browser validation'' is described as both static \emph{and}
+          dynamic in the same table \citep[Tab.~2]{Gerrard2000a}, even though
+          they are implied to be orthogonal classifications: ``test types can
+          be static \emph{or} dynamic'' \citetext{p.~12,~emphasis added}.
+    \item % Discrep count (DEFS, MISS): {Gerrard2000a}
+          \refHelper \citet[Tab.~2]{Gerrard2000a} makes a distinction between
+          ``transaction verification'' and ``transaction testing'' and
+          uses the phrase ``transaction flows'' \citetext{Fig.~5} but doesn't
+          explain them.
+    \item % Discrep count (DEFS, MISS): {Gerrard2000a}
+          Availability testing isn't assigned to a test priority
+          \citep[Tab.~2]{Gerrard2000a}, despite the claim that ``the test
+          types\gerrardDistinctIEEE{type} have been allocated a slot against
+          the four test priorities'' \citetext{p.~13}; I think usability and/or
+          performance would have made sense.
+    \item % Discrep count (SYNS, WRONG): {SneedAndGöschl2000}
+          \refHelper \citet[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88}
+          \multAuthHelper{give} ``white-box testing'', ``grey-box testing'',
+          and ``black-box testing'' as synonyms for ``module testing'',
+          ``integration testing'', and ``system testing'', respectively, but
+          this mapping is incorrect; black-box testing can be performed on a
+          module, for example\todo{find source}.
+    \item % Discrep count (SYNS, WRONG): {SneedAndGöschl2000}
+          The previous discrepancy makes the claim that
+          ``red-box testing'' is a synonym for ``acceptance testing''
+          \citep[p.~18]{SneedAndGöschl2000} lose credibility.
+    \item % Discrep count (SYNS, WRONG): implied by {Kam2008}
+          \refHelper \citet[p.~46]{Kam2008} seems to imply that ``mutation
+          testing'' is a synonym of ``back-to-back testing''
+          but these are two quite distinct techniques.
+    \item % Discrep count (SYNS, AMBI): implied by {Kam2008}
+          ``Conformance testing'' is implied to be a synonym of ``compliance
+          testing'' by \citet[p.~43]{Kam2008} which only makes sense because
+          of the vague definition of the latter: ``testing to
+          determine the compliance of the component or system''.
+\end{enumerate}

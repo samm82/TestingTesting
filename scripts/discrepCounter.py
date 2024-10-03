@@ -116,18 +116,15 @@ COMPLEX_TEX_FILES = [
 ]
 
 SIMPLE_TEX_FILES = [
-    "chapters/05a_syn_discreps.tex",
-    "chapters/05b_par_discreps.tex",
-    "chapters/05c_cat_discreps.tex",
-    "chapters/05d_def_discreps.tex",
-    "chapters/05e_term_discreps.tex",
-    "chapters/05f_src_discreps.tex",
+    "chapters/05a_main_discreps.tex",
+    "chapters/05b_extra_discreps.tex",
 ]
 
 TEX_FILES = COMPLEX_TEX_FILES + SIMPLE_TEX_FILES
 
-simpleDiscrepCats = OrderedDict([(k, ["\\begin{enumerate}"]) for k in DiscrepCat])
-simpleDiscrepClss = OrderedDict([(k, ["\\begin{enumerate}"]) for k in DiscrepCls])
+enumOrItem = ["\\ifnotpaper", "\\begin{enumerate}", "\\else", "\\begin{itemize}", "\\fi"]
+simpleDiscrepCats = OrderedDict([(k, enumOrItem.copy()) for k in DiscrepCat])
+simpleDiscrepClss = OrderedDict([(k, enumOrItem.copy()) for k in DiscrepCls])
 
 def outputDiscreps():
     discrepDict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
@@ -151,11 +148,23 @@ def outputDiscreps():
                         "\\end{enumerate}", 1)[0].split(
                             "\\item % Discrep count ")[1:]]
 
+        if "extra" in filename:
+            for catKey in simpleDiscrepCats.keys():
+                simpleDiscrepCats[catKey].append("\\ifnotpaper")
+            for clsKey in simpleDiscrepClss.keys():
+                simpleDiscrepClss[clsKey].append("\\ifnotpaper")
+
         if filename in SIMPLE_TEX_FILES:
             for discrep in discreps:
                 discCat, discCls = getDiscGroups(discrep)
                 simpleDiscrepCats[discCat].append(discrep)
                 simpleDiscrepClss[discCls].append(discrep)
+            
+        if "extra" in filename:
+            for catKey in simpleDiscrepCats.keys():
+                simpleDiscrepCats[catKey].append("\\fi")
+            for clsKey in simpleDiscrepClss.keys():
+                simpleDiscrepClss[clsKey].append("\\fi")
 
         for discrep in discrepCounts:
             sources = discrep.split("|")
@@ -241,7 +250,8 @@ def outputDiscreps():
     for shortname, discrepGroup in [("Cat", simpleDiscrepCats),
                                     ("Cls", simpleDiscrepClss)]:
         for k in discrepGroup.keys():
-            discrepGroup[k].append("\\end{enumerate}")
+            discrepGroup[k] += ["\\ifnotpaper", "\\end{enumerate}", "\\else",
+                                "\\end{itemize}", "\\fi"]
             writeFile(discrepGroup[k], f"Discrep{shortname}{k.name.title()}", True)
 
     pieCharts = []
