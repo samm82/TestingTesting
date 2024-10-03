@@ -81,9 +81,7 @@ class DiscrepCounter:
         self.withinDoc, self.withinAuth = 0, 0
         # Differences between two categories; may be within the same category
         self.betweenCats = {k : 0 for k in SrcCat if k.value <= value}
-
-        self.discrepCats = {dc : ExpImpCounter() for dc in DiscrepCat
-                            if dc is not DiscrepCat.MISC}
+        self.discrepCats = {dc : ExpImpCounter() for dc in DiscrepCat}
 
     def __str__(self):
         return "\n".join(filter(None, [
@@ -93,13 +91,20 @@ class DiscrepCounter:
             ])) + "\n"
 
 class DiscrepCat(Enum):
-    SYNS = "Synonyms"
-    PARS = "Parents"
-    CATS = "Categories"
-    DEFS = "Definitions"
+    SYNS  = "Synonyms"
+    PARS  = "Parents"
+    CATS  = "Categories"
+    DEFS  = "Definitions"
     TERMS = "Terminology"
-    SRCS = "Sources"
-    MISC = auto()
+    SRCS  = "Sources"
+
+class DiscrepCls(Enum):
+    WRONG  = "Mistakes"
+    MISS   = "Omission"
+    CONTRA = "Contradictions"
+    AMBI   = "Ambiguities"
+    OVER   = "Overlaps"
+    REDUN  = "Redunancies"
 
 COMPLEX_TEX_FILES = [
     "build/multiSyns.tex",
@@ -117,6 +122,8 @@ SIMPLE_TEX_FILES = [
     "chapters/05f_src_discreps.tex",
 ]
 
+TEX_FILES = COMPLEX_TEX_FILES + SIMPLE_TEX_FILES
+
 def outputDiscreps():
     discrepDict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
 
@@ -125,9 +132,11 @@ def outputDiscreps():
         print()
 
     def getDiscGroups(s):
-        return re.search(r"% Discrep count \(([A-Z]+), ([A-Z]+)\):", s).groups()
+        discCat, discCls = re.search(
+            r"% Discrep count \(([A-Z]+), ([A-Z]+)\):", s).groups()
+        return DiscrepCat[discCat], DiscrepCls[discCls]
 
-    for filename in COMPLEX_TEX_FILES + SIMPLE_TEX_FILES:
+    for filename in TEX_FILES:
         with open(filename, "r", encoding="utf-8") as file:
             content = file.readlines()
         discrepCounts = [line for line in content if "% Discrep count" in line]
@@ -142,12 +151,7 @@ def outputDiscreps():
 
         for discrep in discrepCounts:
             sources = discrep.split("|")
-            discCat, discClass = getDiscGroups(discrep)
-            # WRONG (mistakes), MISS (omissions), CONTRA (contradictions)
-            # AMBI (ambiguities), OVER (overlaps), REDUN (redunancies)
-            if discClass not in {"WRONG", "MISS", "CONTRA", "AMBI", "OVER", "REDUN"}:
-                raise ValueError(discClass)
-            discCat = DiscrepCat[discCat]
+            discCat, _ = getDiscGroups(discrep)
             DEBUG = False
 
             sourceDicts = [categorizeSources(s) for s in sources]
@@ -229,8 +233,7 @@ def outputDiscreps():
     pieCharts = []
     for k, v in discrepDict.items():
         writeFile([formatOutput(
-            ["% " + k.longname] + [v.discrepCats[dc].output() for dc in DiscrepCat
-                                    if dc is not DiscrepCat.MISC]
+            ["% " + k.longname] + [v.discrepCats[dc].output() for dc in DiscrepCat]
             )], f"{k.name.lower()}DiscBrkdwn", True)
 
         totalDiscreps = sum({v.withinDoc, v.withinAuth,
