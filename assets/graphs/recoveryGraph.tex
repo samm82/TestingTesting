@@ -30,7 +30,9 @@ PerformanceTesting -> PerformancerelatedTesting[dir=none];
 RecoverabilityTesting -> RecoveryTesting[dir=none];
 
 AvailabilityTesting -> ReliabilityTesting[color="green"];
+AvailabilityTesting -> DisasterRecoveryTesting;
 BackupandRecoveryTesting -> ReliabilityTesting[color="green"];
+BackupandRecoveryTesting -> PerformanceTesting[style="dashed"];
 BackupRecoveryTesting -> DisasterRecoveryTesting[color="green"];
 DisasterRecoveryTesting -> FaultToleranceTesting[color="green"];
 DisasterRecoveryTesting -> RecoverabilityTesting[color="green"];
