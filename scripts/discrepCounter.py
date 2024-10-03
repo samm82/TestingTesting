@@ -124,7 +124,7 @@ SIMPLE_TEX_FILES = [
 
 TEX_FILES = COMPLEX_TEX_FILES + SIMPLE_TEX_FILES
 
-simpleDiscrepClss = {k : [] for k in DiscrepCls}
+simpleDiscrepClss = {k : ["\\begin{enumerate}"] for k in DiscrepCls}
 
 def outputDiscreps():
     discrepDict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
@@ -234,8 +234,9 @@ def outputDiscreps():
             if DEBUG:
                 printDiscreps()
 
-    for k, v in simpleDiscrepClss.items():
-        writeFile(v, f"DiscrepCls{k.name.title()}", True)
+    for k in simpleDiscrepClss.keys():
+        simpleDiscrepClss[k].append("\\end{enumerate}")
+        writeFile(simpleDiscrepClss[k], f"DiscrepCls{k.name.title()}", True)
 
     pieCharts = []
     for k, v in discrepDict.items():
