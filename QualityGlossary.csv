@@ -49,6 +49,7 @@ Precision,"The ""degree of exactness or discrimination with which a quantity is 
 Presentability,"The ability to ""be retrieved and viewed"" (IEEE, 2017, p. 333; OG IEEE, 2015)",,
 (Product) Quality,"The ""degree to which the product satisfies stated and implied needs when used under specified conditions"" (IEEE, 2017, p. 345; OG ISO/IEC, 2012)",,
 Readability,"The ""ease with which a system's source code can be read and understood, especially at the detailed, statement level"" (IEEE, 2017, p. 367)",,
+"Redundancy (implied by Bas, 2024, p. 26)",,"May be a part of disaster/recovery testing (implied by Bas, 2024, p. 26)",
 Replaceability,"The ""capability of a product to replace another specified product for the same purpose in the same environment"" (ISO/IEC, 2023a; similar in IEEE, 2017, p. 377)","Sub-quality of flexibility (ISO/IEC, 2023a; IEEE, 2021, Tab. A.1), which has an associated test type","Can reduce lock-in risk (ISO/IEC, 2023a)"
 "Resilience (Gerrard, 2000b, p. 22)",,"Related to performance (Gerrard, 2000b, p. 22), which has an associated test type",Can be improved through stress testing (p. 23)
 Resistance,"The ""capability of a product to sustain operations while under attack from a malicious actor"" (ISO/IEC, 2023a)","Sub-quality of security (ISO/IEC, 2023a), which has an associated test type",

@@ -51,7 +51,9 @@ PerformanceTesting -> PerformancerelatedTesting[dir=none];
 RecoverabilityTesting -> RecoveryTesting[dir=none];
 
 AvailabilityTesting -> ReliabilityTesting[color="green"];
+AvailabilityTesting -> DisasterRecoveryTesting;
 BackupandRecoveryTesting -> ReliabilityTesting[color="green"];
+BackupandRecoveryTesting -> PerformanceTesting[style="dashed"];
 BackupRecoveryTesting -> DisasterRecoveryTesting[color="green"];
 CapacityTesting -> PerformanceEfficiencyTesting[color="green"];
 CapacityTesting -> PerformancerelatedTesting[color="green"];
