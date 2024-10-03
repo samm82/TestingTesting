@@ -63,34 +63,12 @@ discrepancy manifests. These include \nameref{wrong}, \nameref{miss},
 \label{discrepCategories}
 
 The following sections list observed discrepancies grouped by \emph{what area}
-the discrepancy manifests in. These include discrepancies with \syns{},
-\pars{}, \cats{}, \defs{}, \terms{}, and \srcs{}.
+the discrepancy manifests in. These include \nameref{syns}, \nameref{pars},
+\nameref{cats}, \nameref{defs}, \nameref{terms}, and \nameref{srcs}.
 
-\subsubsection{Synonym Discrepancies}
+\subsubsection{Synonym Relation Discrepancies}
 \label{syns}
-\input{build/DiscrepCatSyns}
 
-\subsubsection{Parent Discrepancies}
-\label{pars}
-\input{build/DiscrepCatPars}
-
-\subsubsection{Categorie Discrepancies}
-\label{cats}
-\input{build/DiscrepCatCats}
-
-\subsubsection{Definition Discrepancies}
-\label{defs}
-\input{build/DiscrepCatDefs}
-
-\subsubsection{Terminology Discrepancies}
-\label{terms}
-\input{build/DiscrepCatTerms}
-
-\subsubsection{Source Discrepancies}
-\label{srcs}
-\input{build/DiscrepCatSrcs}
-
-\subsection{Synonym Relation Discrepancies}
 The same approach often has many names. For example,
 \emph{specification-based testing} is also called\todo{more in Umar2000}:
 \begin{enumerate}
@@ -137,7 +115,7 @@ prefer the terms ``black-box'' and ``white-box testing'' for consistency.
 Thus, synonyms do not inherently signify a discrepancy. Unfortunately, there
 are many instances of incorrect or ambiguous synonyms, such as the following:
 
-\input{chapters/05a_syn_discreps}
+\input{build/DiscrepCatSyns}
 
 \phantomsection{}
 \label{multiSyns}
@@ -154,7 +132,9 @@ most prominent examples\fi:
     \input{\ifnotpaper build\else assets/misc\fi/multiSyns}
 \end{enumerate}
 
-\subsection{Parent-Child Relation Discrepancies}
+\subsubsection{Parent-Child Relation Discrepancies}
+\label{pars}
+% \input{build/DiscrepCatPars}
 
 \input{chapters/05b_par_discreps}
 \phantomsection{}\label{selfPars}
@@ -184,7 +164,9 @@ analysis of the generated graphs, \ifnotpaper which are \else with the most
 \else % Moved earlier to display nicely in paper
 \fi
 
-\subsection{Test Approach Category Discrepancies}
+\subsubsection{Test Approach Category Discrepancies}
+\label{cats}
+
 While the IEEE categorization of testing approaches described in
 \refIEEETestTerms{} is useful, it
 is not without its faults. The boundaries between items within a category may
@@ -199,18 +181,20 @@ differently by different sources:
 % ; these differences are tracked so
 % they can be analyzed more systematically\seeThesisIssuePar{21}.
 
-\input{chapters/05c_cat_discreps}
+\input{build/DiscrepCatCats}
 
 There are also instances of inconsistencies between parent and child
 test approach categorizations. This may indicate they aren't necessarily the
 same, or that more thought must be given to this method of classification.
 
-\subsection{Definition Discrepancies}
+\subsubsection{Definition Discrepancies}
+\label{defs}
+
 Perhaps the most interesting category for those seeking to understand how to
 apply a given test approach, there are many discrepancies between how test
 approaches, as well as supporting terms, are defined:
 
-\input{chapters/05d_def_discreps}
+\input{build/DiscrepCatDefs}
 
 % TODO: re-investigate this after going through the rest of ISO/IEC/IEEE 29119
 \ifnotpaper
@@ -264,7 +248,9 @@ approaches, as well as supporting terms, are defined:
     \end{itemize}
 \fi
 
-\subsection{Terminology Discrepancies}
+\subsubsection{Terminology Discrepancies}
+\label{terms}
+
 While some discrepancies exist because the definition of a term is wrong,
 others exist because term's \emph{name} or \emph{label} is wrong! This could be
 considered a ``sister'' category of \nameref{defs}, but these
@@ -275,9 +261,12 @@ discrepancies seemed different enough to merit their own category. \ifnotpaper
     discrepancies are presented in that order\else are examples of these
     discrepancies\fi:
 
-\input{chapters/05e_term_discreps}
+\input{build/DiscrepCatTerms}
 
-\subsection{Source Discrepancies}
+\subsubsection{Source Discrepancies}
+\label{srcs}
+
+% \input{build/DiscrepCatSrcs}
 \input{chapters/05f_src_discreps}
 
 \subsection{Functional Testing}
