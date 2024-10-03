@@ -124,6 +124,8 @@ SIMPLE_TEX_FILES = [
 
 TEX_FILES = COMPLEX_TEX_FILES + SIMPLE_TEX_FILES
 
+simpleDiscrepClss = {k : [] for k in DiscrepCls}
+
 def outputDiscreps():
     discrepDict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
 
@@ -145,9 +147,9 @@ def outputDiscreps():
                     "".join(content).split("\\item % Discrep count ")[1:]]
 
         if filename in SIMPLE_TEX_FILES:
-            for d in discreps:
-                print(d)
-            print()
+            for discrep in discreps:
+                _, discCls = getDiscGroups(discrep)
+                simpleDiscrepClss[discCls].append(discrep)
 
         for discrep in discrepCounts:
             sources = discrep.split("|")
@@ -229,6 +231,9 @@ def outputDiscreps():
                             updateCounters(tup, "betweenCats", r)
             if DEBUG:
                 printDiscreps()
+
+    for k, v in simpleDiscrepClss.items():
+        writeFile(v, f"DiscrepCls{k.name.title()}", True)
 
     pieCharts = []
     for k, v in discrepDict.items():
