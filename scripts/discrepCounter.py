@@ -238,25 +238,11 @@ def outputDiscreps():
             if DEBUG:
                 printDiscreps()
 
-    for shortname, longname, discrepGroup in [
-            ("Cat", "Categories", simpleDiscrepCats),
-            ("Cls", "Classes",    simpleDiscrepClss)]:
-        simpleDiscreps = [f"\\nameref{{{s}}}" if shortname == "Cls" else
-                          f"\\{s}{{}}" for s in map(
-                              lambda s: s.name.lower(), discrepGroup.keys())]
-        simpleDiscreps[-1] = f"and {simpleDiscreps[-1]}.\n"
-        simpleDiscreps = [", ".join(simpleDiscreps)]
-
+    for shortname, discrepGroup in [("Cat", simpleDiscrepCats),
+                                    ("Cls", simpleDiscrepClss)]:
         for k in discrepGroup.keys():
             discrepGroup[k].append("\\end{enumerate}")
             writeFile(discrepGroup[k], f"Discrep{shortname}{k.name.title()}", True)
-            simpleDiscreps += [
-                f"\\subsubsection{{{(k.value if shortname == 'Cls' else
-                                     f'{k.value.strip("s")} Discrepancies')}}}",
-                f"\\label{{{k.name.lower()}}}",
-                f"\\input{{build/Discrep{shortname}{k.name.title()}}}\n"]
-        
-        writeFile(simpleDiscreps, f"Discrep{longname}", True)
 
     pieCharts = []
     for k, v in discrepDict.items():
