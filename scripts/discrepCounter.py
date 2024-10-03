@@ -142,9 +142,11 @@ def outputDiscreps():
         with open(filename, "r", encoding="utf-8") as file:
             content = file.readlines()
         discrepCounts = [line for line in content if "% Discrep count" in line]
-        # Don't process content before the first \\item
-        discreps = [f"\\item % Discrep count {item}" for item in
-                    "".join(content).split("\\item % Discrep count ")[1:]]
+        # Don't process content before the first \item or after final \end{enumerate}
+        discreps = [f"\\item % Discrep count {item}"
+                    for item in "".join(content).rsplit(
+                        "\\end{enumerate}", 1)[0].split(
+                            "\\item % Discrep count ")[1:]]
 
         if filename in SIMPLE_TEX_FILES:
             for discrep in discreps:
