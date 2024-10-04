@@ -1,0 +1,26 @@
+\begin{paperTable}
+    \centering
+    \caption{Breakdown of identified \nameref{discrepCategories} by \hyperref[sources]{source category}.}
+    \label{tab:discrepCats}
+    % \begin{minipage}{\linewidth}
+    \begin{spreadtab}[\STsavecell\nSeven{n7}]{{tabular}{|r|cc|cc|cc|cc|cc|cc|c|}}
+        \hline
+        \ifnotpaper\rowcolor{McMasterMediumGrey}\fi
+        @ & @ \multicolumn{2}{c|}{\thead{\syns{}}} & @ \multicolumn{2}{c|}{\thead{\pars{}}} & @ \multicolumn{2}{c|}{\thead{\cats{}}} & @ \multicolumn{2}{c|}{\thead{\defs{}}} & @ \multicolumn{2}{c|}{\thead{\terms{}}} & @ \multicolumn{2}{c|}{\thead{\srcs{}}} & @ \\
+        % \cline{2-10}
+        \ifnotpaper\rowcolor{McMasterMediumGrey}\fi
+        @ \thead{\hyperref[sources]{Source Category}} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Exp} & @ \thead{Imp} & @ \thead{Total} \\
+        \hline
+        @ \stds{}   & \stdDiscCatBrkdwn{2}   & \stdDiscCatBrkdwn{3}   & \stdDiscCatBrkdwn{4}   & \stdDiscCatBrkdwn{5}   & \stdDiscCatBrkdwn{6}   & \stdDiscCatBrkdwn{7}   & \stdDiscCatBrkdwn{8}   & \stdDiscCatBrkdwn{9}   & \stdDiscCatBrkdwn{10}   & \stdDiscCatBrkdwn{11}   & \stdDiscCatBrkdwn{12}   & \stdDiscCatBrkdwn{13}   & sum([-12,0]:[-1,0]) \\
+        @ \metas{}  & \metaDiscCatBrkdwn{2}  & \metaDiscCatBrkdwn{3}  & \metaDiscCatBrkdwn{4}  & \metaDiscCatBrkdwn{5}  & \metaDiscCatBrkdwn{6}  & \metaDiscCatBrkdwn{7}  & \metaDiscCatBrkdwn{8}  & \metaDiscCatBrkdwn{9}  & \metaDiscCatBrkdwn{10}  & \metaDiscCatBrkdwn{11}  & \metaDiscCatBrkdwn{12}  & \metaDiscCatBrkdwn{13}  & sum([-12,0]:[-1,0]) \\
+        @ \texts{}  & \textDiscCatBrkdwn{2}  & \textDiscCatBrkdwn{3}  & \textDiscCatBrkdwn{4}  & \textDiscCatBrkdwn{5}  & \textDiscCatBrkdwn{6}  & \textDiscCatBrkdwn{7}  & \textDiscCatBrkdwn{8}  & \textDiscCatBrkdwn{9}  & \textDiscCatBrkdwn{10}  & \textDiscCatBrkdwn{11}  & \textDiscCatBrkdwn{12}  & \textDiscCatBrkdwn{13}  & sum([-12,0]:[-1,0]) \\
+        @ \papers{} & \paperDiscCatBrkdwn{2} & \paperDiscCatBrkdwn{3} & \paperDiscCatBrkdwn{4} & \paperDiscCatBrkdwn{5} & \paperDiscCatBrkdwn{6} & \paperDiscCatBrkdwn{7} & \paperDiscCatBrkdwn{8} & \paperDiscCatBrkdwn{9} & \paperDiscCatBrkdwn{10} & \paperDiscCatBrkdwn{11} & \paperDiscCatBrkdwn{12} & \paperDiscCatBrkdwn{13} & sum([-12,0]:[-1,0]) \\
+        \hline
+        @ Total & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) & sum([0,-4]:[0,-1]) \\
+        \hline
+    \end{spreadtab}
+    % \end{minipage}
+\end{paperTable}
+
+% From https://tex.stackexchange.com/a/248135/192195
+\laterdef{totalDiscreps}{\nSeven{}}

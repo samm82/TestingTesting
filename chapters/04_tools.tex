@@ -43,7 +43,7 @@ As an example of this process, consider a discrepancy \emph{within} an IEEE
 document (e.g., two different definitions are given for a term within the same
 IEEE document) \emph{and} between another IEEE document, the \acs{istqb}
 glossary \emph{and} two papers. This would add one to the
-following rows of \refDiscrepsTable{} in the relevant column:
+following rows of \Cref{tab:discrepCats} in the relevant column:
 
 \begin{itemize}
     \item \textbf{\stds{}}: this discrepancy occurs:
@@ -87,7 +87,7 @@ relevant sources can be sorted into their categories based on their citations,
 done by the function in \Cref{lst:getSrcCat}, since each source category
 outlined in \Cref{sources} is comprised of a small number of authors (with the
 exception of \papers{}).
-This determines the appropriate row of \refDiscrepsTable{} and the appropriate
+This determines the appropriate row of \Cref{tab:discrepCats} and the appropriate
 graph and slice in \Cref{fig:discrepSources}. These lists of sources can then
 be distilled down to sets of categories which are compared against
 each other to determine how many times a given discrepancy manifests between
@@ -152,10 +152,10 @@ same rules as \nameref{auto-discrep-analysis-rigidity}. For example, the line
 \end{displayquote}
 
 indicates that the following discrepancies are present. These all increment
-counts in both \Cref{fig:discrepSources} and \refDiscrepsTable{} by only one,
+counts in both \Cref{fig:discrepSources} and \Cref{tab:discrepCats} by only one,
 except for the second, which only affects \Cref{fig:discrepSources}. This is
 because it is less ``rigid'' than another discrepancy within \stds{} (i.e., the
-first one) and as such is not double counted in \refDiscrepsTable{}:
+first one) and as such is not double counted in \Cref{tab:discrepCats}:
 
 \begin{itemize}
     \item an explicit discrepancy between documents by

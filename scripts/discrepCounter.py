@@ -84,12 +84,14 @@ class DiscrepCounter:
         # Differences between two categories; may be within the same category
         self.betweenCats = {k : 0 for k in SrcCat if k.value <= value}
         self.discrepCats = {dc : ExpImpCounter() for dc in DiscrepCat}
+        self.discrepClss = {dc : ExpImpCounter() for dc in DiscrepCls}
 
     def __str__(self):
         return "\n".join(filter(None, [
             ", ".join(map(str, [self.withinDoc, self.withinAuth])),
             "Diffs: " + ", ".join([f"{k.name} {v}" for k, v in self.betweenCats.items()]),
             " | ".join(map(str, self.discrepCats.values())),
+            " | ".join(map(str, self.discrepClss.values())),
             ])) + "\n"
 
 class DiscrepCat(Enum):
@@ -168,12 +170,12 @@ def outputDiscreps():
 
         for discrep in discrepCounts:
             sources = discrep.split("|")
-            discCat, _ = getDiscGroups(discrep)
+            discCat, discCls = getDiscGroups(discrep)
             DEBUG = False
 
             sourceDicts = [categorizeSources(s) for s in sources]
             if DEBUG:
-                print(sourceDicts, discCat.name)
+                print(sourceDicts, discCat.name, discCls.name)
 
             def inPairs(s, *, sFunc = None):
                 if sFunc:
@@ -183,7 +185,7 @@ def outputDiscreps():
             # These ensure that sources aren't double counted
             pieAdded, tableAdded = set(), set()
             def updateCounters(source, pieSec: str, r):
-                nonlocal discCat
+                nonlocal discCat, discCls
 
                 if type(source) is tuple:
                     srcTuple = tuple(map(getSrcCat, source))
@@ -199,11 +201,13 @@ def outputDiscreps():
                 if DEBUG:
                     print(source, sourceCat, pieSec, r)
 
-                if srcTuple not in tableAdded:                           
+                if srcTuple not in tableAdded:
                     if type(discrepDict[sourceCat].discrepCats[discCat]) is int:
                         discrepDict[sourceCat].discrepCats[discCat] += 1
+                        discrepDict[sourceCat].discrepClss[discCls] += 1
                     else:
                         discrepDict[sourceCat].discrepCats[discCat].addDiscrep(r)
+                        discrepDict[sourceCat].discrepClss[discCls].addDiscrep(r)
                     tableAdded.add(srcTuple)
                 if source not in pieAdded:
                     try:
@@ -258,7 +262,10 @@ def outputDiscreps():
     for k, v in discrepDict.items():
         writeFile([formatOutput(
             ["% " + k.longname] + [v.discrepCats[dc].output() for dc in DiscrepCat]
-            )], f"{k.name.lower()}DiscBrkdwn", True)
+            )], f"{k.name.lower()}DiscCatBrkdwn", True)
+        writeFile([formatOutput(
+            ["% " + k.longname] + [v.discrepClss[dc].output() for dc in DiscrepCls]
+            )], f"{k.name.lower()}DiscClsBrkdwn", True)
 
         totalDiscreps = sum({v.withinDoc, v.withinAuth,
                                 sum(v.betweenCats.values())})
