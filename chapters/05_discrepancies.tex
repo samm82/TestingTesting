@@ -38,27 +38,47 @@ discrepancy manifests. These include \nameref{wrong}, \nameref{miss},
 
 \subsubsection{Mistakes}
 \label{wrong}
+The following are cases where information is incorrect; this includes cases
+\terms{} included that should \emph{not} have been, untrue claims about
+\srcs{}, and simple typos:
+
 \input{build/DiscrepClsWrong}
 
 \subsubsection{Omissions}
 \label{miss}
+The following are cases where information (usually \defs{}) \emph{should have}
+been included but was not:
+
 \input{build/DiscrepClsMiss}
 
 \subsubsection{Contradictions}
 \label{contra}
+The following are cases where multiple sources of information (sometimes within
+the same document!) disagree; note that cases where all sources of information
+are incorrect are considered contradictions and not \nameref{wrong}, since this
+would require analysis that has not been performed yet:
+
 \input{build/DiscrepClsContra}
 
 \subsubsection{Ambiguities}
 \label{ambi}
+The following are cases where information (usually \defs{} or distinctions
+between \terms{}) is unclear:
+
 \input{build/DiscrepClsAmbi}
 
 \subsubsection{Overlaps}
 \label{over}
+The following are cases where information overlaps, such as nonatomic \defs{}
+and \terms{}:
+
 \input{build/DiscrepClsOver}
 
 \ifnotpaper
     \subsubsection{Redunancies}
     \label{redun}
+    The following are cases of redundant information:
+
     \input{build/DiscrepClsRedun}
 \fi
 
