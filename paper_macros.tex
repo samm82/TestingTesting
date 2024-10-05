@@ -66,6 +66,9 @@
     \newpage
 }
 
+\newcolumntype{C}{>{\centering}X}
+\newcolumntype{b}[1]{>{\hsize=#1\hsize}C>{\hsize=#1\hsize}C}
+
 \DeclareDocumentCommand\seeSrcCode{ m m m g }{%
     (see the \href
     {https://github.com/samm82/TestGen-Thesis/blob/#1/scripts/#2.py\#L#3%
