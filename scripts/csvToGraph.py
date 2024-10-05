@@ -506,11 +506,11 @@ def sortByImplied(ls):
 
 if "Example" not in csvFilename:
     writeFile(["\\begin{longtblr}[",
-            "   caption = {Pairs of test approaches with both parent-child and synonym relations.},",
+            "   caption = {Pairs of test approaches described both as \\hyperref[par-chd-rels]{parent-child} and as synonyms.},",
             "   label = {tab:parSyns}",
             "   ]{",
             "   colspec = {|c|X|X|}, width = \\linewidth,",
-            "   rowhead = 1, row{1} = {McMasterMediumGrey}",
+            "   rowhead = 1",
             "   }",
             "  \\hline",
             "  \\thead{``Child'' $\\to$ ``Parent''}  & \\thead{Parent-Child Source(s)} & \\thead{Synonym Source(s)} \\\\",

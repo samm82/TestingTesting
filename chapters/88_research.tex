@@ -13,7 +13,7 @@ of this research, as well as some information on why and how it was performed.
 Software testing approaches can be divided into the following
 categories. Note that ``there is a lot of overlap between different classes of
 testing'' \citep[p.~8]{Firesmith2015}, meaning that ``one category [of test
-            techniques] might deal with combining two or more techniques''
+        techniques] might deal with combining two or more techniques''
 \citep[p.~5-10]{SWEBOK2024}. For example, ``performance, load and stress
 testing might considerably overlap in many areas'' \citep[p.~1187]{Moghadam2019}.
 A side effect of this is that it is difficult to
@@ -31,61 +31,61 @@ that make one approach more effective than the other''
 \citep[p.~5-16]{SWEBOK2024}.
 
 \begin{itemize}
-      \item Visibility of code: black-, white-, or grey-box
-            (specificational/functional, structural, or a mix of the two)
-            (\citealp[p.~8]{IEEE2021}; \citealp[pp.~5-10,~5-16]{SWEBOK2024};
-            \citealp[p.~601, called ``testing approaches'' and (stepwise) code
-                  reading replaced ``grey-box testing'']{SharmaEtAl2021};
-            \todo{OG [3, 4, 5, 8]}
-            \citealp[pp.~57-58]{AmmannAndOffutt2017};
-            \citealp[p.~213]{KuļešovsEtAl2013};
-            \citealp[pp.~53,~218]{Patton2006}; \citealp[p.~69]{Perry2006};
-            \citealp[pp.~4-5, called ``testing methods'']{Kam2008})
-      \item Level/stage\seeSectionFoot{tab:ieeeTestTerms} of testing:
-            unit, integration, system, or acceptance
-            (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citealpISTQB{};
-            \citealp[p.~218]{KuļešovsEtAl2013} \todo{OG Black, 2009};
-            \citealp{Patton2006}; \citealp{Perry2006};
-            \citealp{PetersAndPedrycz2000}; \citealp[pp.~9,~13]{Gerrard2000a})
-            (sometimes includes installation \citep[p.~439]{vanVliet2000} or
-            regression \citep[p.~3]{BarbosaEtAl2006})
-      \item Source of information for design: specification, structure, or
-            experience \citep[p.~8]{IEEE2021}
-            \begin{itemize}
-                  \item Source of test data: specification-, implementation-,
-                        or error-oriented \citep[p.~440]{PetersAndPedrycz2000}
-            \end{itemize}
-      \item Test case selection process: deterministic or random
-            \citep[p.~5-16]{SWEBOK2024}
-      \item Coverage criteria: input space partitioning, graph coverage, logic
-            coverage, or syntax-based testing \citep[pp.~18-19]{AmmannAndOffutt2017}
-      \item Question: what-, when-, where-, who-, why-, how-, and how-well-based
-            testing; these are then divided into a total of ``16 categories of
-            testing types''\notDefDistinctIEEE{type}
-            \citep[p.~17]{Firesmith2015}
-      \item Execution of code: static or dynamic
-            (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
-            \citealp[p.~53]{Patton2006})
-      \item Goal of testing: verification or validation
-            (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[pp.~69-70]{Perry2006})
-      \item Property of code \citep[p.~213]{KuļešovsEtAl2013} or test target
-            \citep[pp.~4-5]{Kam2008}: functional or non-functional
-      \item Human involvement: manual or automated
-            \citep[p.~214]{KuļešovsEtAl2013}
-      \item Structuredness: scripted or exploratory
-            \citep[p.~214]{KuļešovsEtAl2013}
-      \item Coverage requirement: data or control flow \citep[pp.~4-5]{Kam2008}
-      \item Adequacy criterion: coverage-, fault-, or error-based
-            (``based on knowledge of the typical errors that people make'')
-            \citep[pp.~398-399]{vanVliet2000}
-      \item Priority\footnote{In the context of testing e-business projects.}:
-            smoke, usability, performance, or functionality testing
-            \citep[p.~12]{Gerrard2000a}
-      \item Category of test ``type''\gerrardDistinctIEEE{type}: static testing,
-            test browsing, functional testing, non-functional testing, or large
-            scale integration (testing) \citep[p.~12]{Gerrard2000a}
-      \item Purpose: correctness, performance, reliability, or security
-            \citep{Pan1999}
+    \item Visibility of code: black-, white-, or grey-box
+          (specificational/functional, structural, or a mix of the two)
+          (\citealp[p.~8]{IEEE2021}; \citealp[pp.~5-10,~5-16]{SWEBOK2024};
+          \citealp[p.~601, called ``testing approaches'' and (stepwise) code
+              reading replaced ``grey-box testing'']{SharmaEtAl2021};
+          \todo{OG [3, 4, 5, 8]}
+          \citealp[pp.~57-58]{AmmannAndOffutt2017};
+          \citealp[p.~213]{KuļešovsEtAl2013};
+          \citealp[pp.~53,~218]{Patton2006}; \citealp[p.~69]{Perry2006};
+          \citealp[pp.~4-5, called ``testing methods'']{Kam2008})
+    \item Level/stage\seeSectionFoot{tab:ieeeTestTerms} of testing:
+          unit, integration, system, or acceptance
+          (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citealpISTQB{};
+          \citealp[p.~218]{KuļešovsEtAl2013} \todo{OG Black, 2009};
+          \citealp{Patton2006}; \citealp{Perry2006};
+          \citealp{PetersAndPedrycz2000}; \citealp[pp.~9,~13]{Gerrard2000a})
+          (sometimes includes installation \citep[p.~439]{vanVliet2000} or
+          regression \citep[p.~3]{BarbosaEtAl2006})
+    \item Source of information for design: specification, structure, or
+          experience \citep[p.~8]{IEEE2021}
+          \begin{itemize}
+              \item Source of test data: specification-, implementation-,
+                    or error-oriented \citep[p.~440]{PetersAndPedrycz2000}
+          \end{itemize}
+    \item Test case selection process: deterministic or random
+          \citep[p.~5-16]{SWEBOK2024}
+    \item Coverage criteria: input space partitioning, graph coverage, logic
+          coverage, or syntax-based testing \citep[pp.~18-19]{AmmannAndOffutt2017}
+    \item Question: what-, when-, where-, who-, why-, how-, and how-well-based
+          testing; these are then divided into a total of ``16 categories of
+          testing types''\notDefDistinctIEEE{type}
+          \citep[p.~17]{Firesmith2015}
+    \item Execution of code: static or dynamic
+          (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
+          \citealp[p.~53]{Patton2006})
+    \item Goal of testing: verification or validation
+          (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[pp.~69-70]{Perry2006})
+    \item Property of code \citep[p.~213]{KuļešovsEtAl2013} or test target
+          \citep[pp.~4-5]{Kam2008}: functional or non-functional
+    \item Human involvement: manual or automated
+          \citep[p.~214]{KuļešovsEtAl2013}
+    \item Structuredness: scripted or exploratory
+          \citep[p.~214]{KuļešovsEtAl2013}
+    \item Coverage requirement: data or control flow \citep[pp.~4-5]{Kam2008}
+    \item Adequacy criterion: coverage-, fault-, or error-based
+          (``based on knowledge of the typical errors that people make'')
+          \citep[pp.~398-399]{vanVliet2000}
+    \item Priority\footnote{In the context of testing e-business projects.}:
+          smoke, usability, performance, or functionality testing
+          \citep[p.~12]{Gerrard2000a}
+    \item Category of test ``type''\gerrardDistinctIEEE{type}: static testing,
+          test browsing, functional testing, non-functional testing, or large
+          scale integration (testing) \citep[p.~12]{Gerrard2000a}
+    \item Purpose: correctness, performance, reliability, or security
+          \citep{Pan1999}
 \end{itemize}
 
 Tests can also be tailored to ``test factors'' (also called ``quality factors''
@@ -97,27 +97,27 @@ authorization, audit trail, continuity of processing, service levels
 maintainability, portability, coupling (e.g., with other applications in a
 given environment), performance, and ease of operation (e.g., documentation,
 training) \citep[pp.~40-41]{Perry2006}. \emph{These may overlap with
-      \nameref{derived-tests} and/or
-      the ``Results of Testing (Area of Confidence)'' column in the summary
-      spreadsheet.}
+    \nameref{derived-tests} and/or
+    the ``Results of Testing (Area of Confidence)'' column in the summary
+    spreadsheet.}
 
 Engström ``investigated classifications of research''
 \citep[p.~1]{engström_mapping_2015} on the following four testing techniques.
 \emph{These four categories seem like comparing apples to oranges to me.}
 
 \begin{itemize}
-      \item \textbf{Combinatorial testing:} how the system under test is
-            modelled, ``which combination strategies are used to generate test
-            suites and how test cases are prioritized''
-            \citep[pp.~1-2]{engström_mapping_2015}
-      \item \textbf{Model-based testing:} the information represented and
-            described by the test model \citep[p.~2]{engström_mapping_2015}
-      \item \textbf{Search-based testing:} ``how techniques
-            \notDefDistinctIEEE{technique} had been empirically evaluated
-            (i.e. objective and context)'' \citep[p.~2]{engström_mapping_2015}
-      \item \textbf{Unit testing:} ``source of information (e.g. code,
-            specifications or testers intuition)''
-            \citep[p.~2]{engström_mapping_2015}
+    \item \textbf{Combinatorial testing:} how the system under test is
+          modelled, ``which combination strategies are used to generate test
+          suites and how test cases are prioritized''
+          \citep[pp.~1-2]{engström_mapping_2015}
+    \item \textbf{Model-based testing:} the information represented and
+          described by the test model \citep[p.~2]{engström_mapping_2015}
+    \item \textbf{Search-based testing:} ``how techniques
+          \notDefDistinctIEEE{technique} had been empirically evaluated
+          (i.e. objective and context)'' \citep[p.~2]{engström_mapping_2015}
+    \item \textbf{Unit testing:} ``source of information (e.g. code,
+          specifications or testers intuition)''
+          \citep[p.~2]{engström_mapping_2015}
 \end{itemize}
 
 \section{Existing Taxonomies, Ontologies, and the State of Practice}
@@ -145,7 +145,7 @@ The question ``How do testing artifacts relate to each other?''
 such as ``What are the test case inputs of a given test case?'' and ``What are
 the expected results of a given test case?'' \citep[p.~21]{SouzaEtAl2017}.
 \emph{These questions seem to overlap with the questions we were trying to ask
-      about different testing techniques.}
+    about different testing techniques.}
 
 Most ontologies I can find seem to focus on the high-level testing process
 rather than the testing approaches themselves. For example, the terms and
@@ -171,7 +171,7 @@ competency (``skill sets needed to test software in a test environment'')
 classify and characterize alignment research and solutions that focus on the
 boundary between [requirements engineering and software testing]'' but ``do[]
 not aim at providing a systematic and exhaustive state-of-the-art survey of
-      [either domain]'' \citetext{p.~A:2}.
+    [either domain]'' \citetext{p.~A:2}.
 
 Another source
 introduced the notion of an ``intervention'': ``an act performed (e.g. use of a
@@ -189,206 +189,206 @@ approaches \citep[Fig.~5]{engström_mapping_2015}.
 \section{Definitions}
 
 \begin{itemize}
-      \item Software testing: ``the process of executing a program with the
-            intent of finding errors'' \citep[p.~438]{PetersAndPedrycz2000}
-            \todo{OG Myers 1976}. ``Testing can reveal
-            failures, but the faults causing them are what can and must be
-            removed'' \citep[p.~5-3]{SWEBOK2024}; it can also include
-            certification, quality assurance, and quality improvement
-            \citep[p.~5-4]{SWEBOK2024}. Involves ``specific preconditions
-                  [and] \dots\ stimuli so that its actual behavior can be
-            compared with its expected or required behavior'', including
-            control flows, data flows, and postconditions
-            \citep[p.~11]{Firesmith2015}, and ``an evaluation \dots\ of some
-            aspect of the system or component'' based on ``results [that]
-            are observed or recorded'' (\citealp[p.~10]{IEEE2022};
-            \citeyear[p.~6]{IEEE2021}; \citeyear[p.~465]{IEEE2017}
-            \todo{OG ISO/IEC 2014})
-      \item Test case: ``the specification of all the entities
-            that are essential for the execution, such as input values,
-            execution and timing conditions, testing procedure, and the
-            expected outcomes'' \citep[pp.~5-1 to 5-2]{SWEBOK2024}
-      \item Defect: ``an observable difference between what the software is
-            intended to do and what it does'' \citep[p.~1-1]{SWEBOK2024}; ``can
-            be used to refer to either a fault or a failure, [sic] when the
-            distinction is not important'' \citep[p.~4-3]{SWEBOK2014}
-            \todo{OG?}
-      \item Error: ``a human action that produces an incorrect result''
-            \citep[p.~399]{vanVliet2000}
-      \item Fault: ``the manifestation of an error'' in the software itself
-            \citep[p.~400]{vanVliet2000}; ``the \emph{cause} of a malfunction''
-            \citep[p.~5-3]{SWEBOK2024}
-      \item Failure: incorrect output or behaviour resulting from encountering
-            a fault; can be defined as not meeting specifications or
-            expectations and ``is a relative notion''
-            \citep[p.~400]{vanVliet2000}; ``an undesired effect observed in the
-            system's delivered service'' \citep[p.~5-3]{SWEBOK2024}
-      \item Verification: ``the process of evaluating a system or component
-            to determine whether the products of a given development phase
-            satisfy the conditions imposed at the start of that phase''
-            \citep[p.~400]{vanVliet2000}
-      \item Validation: ``the process of evaluating a system or component
-            during or at the end of the development process to determine
-            whether it satisfies specified requirements''
-            \citep[p.~400]{vanVliet2000}
-      \item Test Suite Reduction: the process of reducing the size of a test
-            suite while maintaining the same coverage
-            \citep[p.~519]{BarrEtAl2015}; can be accomplished through
-            \nameref{chap:testing:sec:mutation-testing}
-      \item Test Case Reduction: the process of ``removing side-effect free
-            functions'' from an individual test case to ``reduc[e] test oracle
-            costs'' \citep[p.~519]{BarrEtAl2015}
-      \item Probe: ``a statement inserted into a program'' for the purpose of
-            dynamic testing \citep[p.~438]{PetersAndPedrycz2000}
+    \item Software testing: ``the process of executing a program with the
+          intent of finding errors'' \citep[p.~438]{PetersAndPedrycz2000}
+          \todo{OG Myers 1976}. ``Testing can reveal
+          failures, but the faults causing them are what can and must be
+          removed'' \citep[p.~5-3]{SWEBOK2024}; it can also include
+          certification, quality assurance, and quality improvement
+          \citep[p.~5-4]{SWEBOK2024}. Involves ``specific preconditions
+              [and] \dots\ stimuli so that its actual behavior can be
+          compared with its expected or required behavior'', including
+          control flows, data flows, and postconditions
+          \citep[p.~11]{Firesmith2015}, and ``an evaluation \dots\ of some
+          aspect of the system or component'' based on ``results [that]
+          are observed or recorded'' (\citealp[p.~10]{IEEE2022};
+          \citeyear[p.~6]{IEEE2021}; \citeyear[p.~465]{IEEE2017}
+          \todo{OG ISO/IEC 2014})
+    \item Test case: ``the specification of all the entities
+          that are essential for the execution, such as input values,
+          execution and timing conditions, testing procedure, and the
+          expected outcomes'' \citep[pp.~5-1 to 5-2]{SWEBOK2024}
+    \item Defect: ``an observable difference between what the software is
+          intended to do and what it does'' \citep[p.~1-1]{SWEBOK2024}; ``can
+          be used to refer to either a fault or a failure, [sic] when the
+          distinction is not important'' \citep[p.~4-3]{SWEBOK2014}
+          \todo{OG?}
+    \item Error: ``a human action that produces an incorrect result''
+          \citep[p.~399]{vanVliet2000}
+    \item Fault: ``the manifestation of an error'' in the software itself
+          \citep[p.~400]{vanVliet2000}; ``the \emph{cause} of a malfunction''
+          \citep[p.~5-3]{SWEBOK2024}
+    \item Failure: incorrect output or behaviour resulting from encountering
+          a fault; can be defined as not meeting specifications or
+          expectations and ``is a relative notion''
+          \citep[p.~400]{vanVliet2000}; ``an undesired effect observed in the
+          system's delivered service'' \citep[p.~5-3]{SWEBOK2024}
+    \item Verification: ``the process of evaluating a system or component
+          to determine whether the products of a given development phase
+          satisfy the conditions imposed at the start of that phase''
+          \citep[p.~400]{vanVliet2000}
+    \item Validation: ``the process of evaluating a system or component
+          during or at the end of the development process to determine
+          whether it satisfies specified requirements''
+          \citep[p.~400]{vanVliet2000}
+    \item Test Suite Reduction: the process of reducing the size of a test
+          suite while maintaining the same coverage
+          \citep[p.~519]{BarrEtAl2015}; can be accomplished through
+          \nameref{chap:testing:sec:mutation-testing}
+    \item Test Case Reduction: the process of ``removing side-effect free
+          functions'' from an individual test case to ``reduc[e] test oracle
+          costs'' \citep[p.~519]{BarrEtAl2015}
+    \item Probe: ``a statement inserted into a program'' for the purpose of
+          dynamic testing \citep[p.~438]{PetersAndPedrycz2000}
 \end{itemize}
 
 \subsection{Documentation}
 
 \begin{itemize}
-      \item \acf{vnv} Plan: a document for the ``planning of test activities''
-            described by IEEE Standard 1012 \citep[p.~411]{vanVliet2000}
-      \item Test Plan: ``a document describing the scope, approach, resources,
-            and schedule of intended test activities'' in more detail that the
-            \acs{vnv} Plan \citep[pp.~412-413]{vanVliet2000};
-            should also outline entry and exit conditions for the testing
-            activities as well as any risk sources and levels
-            \citep[p.~445]{PetersAndPedrycz2000}
-      \item Test Design documentation: ``specifies \dots\ the details of the
-            test approach and identifies the associated tests''
-            \citep[p.~413]{vanVliet2000}
-      \item Test Case documentation: ``specifies inputs, predicted outputs and
-            execution conditions for each test item''
-            \citep[p.~413]{vanVliet2000}
-      \item Test Procedure documentation: ``specifies the sequence of actions
-            for the execution of each test'' \citep[p.~413]{vanVliet2000}
-      \item Test Report documentation: ``provides information on the results of
-            testing tasks'', addressing software verification and validation
-            reporting \citep[p.~413]{vanVliet2000}
+    \item \acf{vnv} Plan: a document for the ``planning of test activities''
+          described by IEEE Standard 1012 \citep[p.~411]{vanVliet2000}
+    \item Test Plan: ``a document describing the scope, approach, resources,
+          and schedule of intended test activities'' in more detail that the
+          \acs{vnv} Plan \citep[pp.~412-413]{vanVliet2000};
+          should also outline entry and exit conditions for the testing
+          activities as well as any risk sources and levels
+          \citep[p.~445]{PetersAndPedrycz2000}
+    \item Test Design documentation: ``specifies \dots\ the details of the
+          test approach and identifies the associated tests''
+          \citep[p.~413]{vanVliet2000}
+    \item Test Case documentation: ``specifies inputs, predicted outputs and
+          execution conditions for each test item''
+          \citep[p.~413]{vanVliet2000}
+    \item Test Procedure documentation: ``specifies the sequence of actions
+          for the execution of each test'' \citep[p.~413]{vanVliet2000}
+    \item Test Report documentation: ``provides information on the results of
+          testing tasks'', addressing software verification and validation
+          reporting \citep[p.~413]{vanVliet2000}
 \end{itemize}
 
 \section{General Testing Notes}
 
 \begin{itemize}
-      \item The scope of testing is very dependent on what type of software
-            is being tested, as this informs what information/artifacts are
-            available, which approaches are relevant, and which tacit knowledge
-            is present (see \thesisissueref{54}). For example, a method table
-            is a tool for tracking the ``test approaches, testing techniques
-            and test types that are required depending \dots\ on the context of
-            the test object'' \citepISTQB{} \todo{OG ISO 26262}, although
-            this is more specific to the automotive domain
-      \item ``Proving the correctness of software \dots\ applies only in
-            circumstances where software requirements are stated formally'' and
-            assumes ``these formal requirements are themselves correct''
-            \citep[p.~398]{vanVliet2000}
-      \item If faults exist in programs, they ``must be considered faulty, even
-            if we cannot devise test cases that reveal the faults''
-            \citep[p.~401]{vanVliet2000}
-      \item Black-box test cases should be created based on the specification
-            \emph{before} creating white-box test cases to avoid being ``biased
-            into creating test cases based on how the module works''
-            \citep[p.~113]{Patton2006}
-      \item Simple, normal test cases (test-to-pass) should always be developed
-            and run before more complicated, unusual test cases (test-to-fail)
-            \citep[p.~66]{Patton2006}
-      \item ``There is no established consensus on which techniques \dots\ are
-            the most effective. The only consensus is that the selection will
-            vary as it should be dependent on a number of factors''
-            (\citealp[p.~128]{IEEE2021}; similar in
-            \citealp[p.~440]{vanVliet2000}), and it is advised to
-            use many techniques when testing (p.~440).
-            % \citep[p.~440]{vanVliet2000}.
-            This supports the principle of \emph{independence of testing}: the
-            ``separation of responsibilities, which encourages the
-            accomplishment of objective testing'' \citepISTQB{}
-      \item When comparing adequacy criteria, ``criterion X is stronger than
-            criterion Y if, for all programs P and all test sets T, X-adequacy
-            implies Y-adequacy'' (the ``stronger than'' relation is also called
-            the ``subsumes'' relation) \citep[p.~432]{vanVliet2000};
-            this relation only ``compares the thoroughness of test techniques,
-            not their ability to detect faults'' \citep[p.~434]{vanVliet2000}
-            \todo{This should probably be explained after ``test adequacy
-                  criterion'' is defined}
+    \item The scope of testing is very dependent on what type of software
+          is being tested, as this informs what information/artifacts are
+          available, which approaches are relevant, and which tacit knowledge
+          is present (see \thesisissueref{54}). For example, a method table
+          is a tool for tracking the ``test approaches, testing techniques
+          and test types that are required depending \dots\ on the context of
+          the test object'' \citepISTQB{} \todo{OG ISO 26262}, although
+          this is more specific to the automotive domain
+    \item ``Proving the correctness of software \dots\ applies only in
+          circumstances where software requirements are stated formally'' and
+          assumes ``these formal requirements are themselves correct''
+          \citep[p.~398]{vanVliet2000}
+    \item If faults exist in programs, they ``must be considered faulty, even
+          if we cannot devise test cases that reveal the faults''
+          \citep[p.~401]{vanVliet2000}
+    \item Black-box test cases should be created based on the specification
+          \emph{before} creating white-box test cases to avoid being ``biased
+          into creating test cases based on how the module works''
+          \citep[p.~113]{Patton2006}
+    \item Simple, normal test cases (test-to-pass) should always be developed
+          and run before more complicated, unusual test cases (test-to-fail)
+          \citep[p.~66]{Patton2006}
+    \item ``There is no established consensus on which techniques \dots\ are
+          the most effective. The only consensus is that the selection will
+          vary as it should be dependent on a number of factors''
+          (\citealp[p.~128]{IEEE2021}; similar in
+          \citealp[p.~440]{vanVliet2000}), and it is advised to
+          use many techniques when testing (p.~440).
+          % \citep[p.~440]{vanVliet2000}.
+          This supports the principle of \emph{independence of testing}: the
+          ``separation of responsibilities, which encourages the
+          accomplishment of objective testing'' \citepISTQB{}
+    \item When comparing adequacy criteria, ``criterion X is stronger than
+          criterion Y if, for all programs P and all test sets T, X-adequacy
+          implies Y-adequacy'' (the ``stronger than'' relation is also called
+          the ``subsumes'' relation) \citep[p.~432]{vanVliet2000};
+          this relation only ``compares the thoroughness of test techniques,
+          not their ability to detect faults'' \citep[p.~434]{vanVliet2000}
+          \todo{This should probably be explained after ``test adequacy
+              criterion'' is defined}
 \end{itemize}
 
 \subsection[Steps to Testing]{Steps to Testing
-      \citep[p.~443]{PetersAndPedrycz2000}}
+    \citep[p.~443]{PetersAndPedrycz2000}}
 \begin{enumerate}
-      \item Identify the goal(s) of the test
-      \item Decide on an approach
-      \item Develop the tests
-      \item Determine the expected results
-      \item Run the tests
-      \item Compare the expected results to the actual results
+    \item Identify the goal(s) of the test
+    \item Decide on an approach
+    \item Develop the tests
+    \item Determine the expected results
+    \item Run the tests
+    \item Compare the expected results to the actual results
 \end{enumerate}
 
 \subsection{Testing Stages}
 \begin{itemize}
-      \item Unit testing: ``testing the individual modules [of a program]''
-            \citep[p.~438]{vanVliet2000}; also called ``module testing''
-            \citep[p.~109]{Patton2006} or ``component testing''
-            \citep[p.~444]{PetersAndPedrycz2000}, although
-            \citet[p.~107]{BaresiAndPezzè2006} say ``components differ from
-            classical modules for being re-used in different contexts
-            independently of their development.'' Note that since a
-            \emph{component} is ``a part of a system that can be tested in
-            isolation'' \citepISTQB{}, this seems like it could apply
-            to the testing of both modules \emph{and} specific functions
-      \item Integration testing: ``testing the composition of modules'';
-            done incrementally using \emph{bottom-up} and/or
-            \emph{top-down} testing \citep[pp.~438-439]{vanVliet2000},
-            although other paradigms for design, such as \emph{big bang} and
-            \emph{sandwich} exist \citep[p.~489]{PetersAndPedrycz2000}.
-            See also \citep[p.~109]{Patton2006}.
-            \begin{itemize}
-                  \item Bottom-up testing: uses \emph{test drivers}: ``tool[s]
-                        that  e[] the test environment for a component to
-                        be tested'' \citep[p.~410]{vanVliet2000} by
-                        ``sending test-case data to the modules under test,
-                        read[ing] back the results, and verify[ing] that
-                        they're correct'' \citep[p.~109]{Patton2006}
-                  \item Top-down testing: uses \emph{test stubs}: tools that
-                        ``simulate[] the function of a component not yet
-                        available'' \citep[p.~410]{vanVliet2000} by
-                        providing ``fake'' values to a given module to be
-                        tested \citep[p.~110]{Patton2006}
-                  \item Big bang testing: the process of ``integrat[ing] all
-                        modules in a single step and test[ing] the resulting
-                        system[]'' \citep[p.~489]{PetersAndPedrycz2000}.
-                        \emph{Although this is ``quite challenging and risky''
-                              \citep[p.~489]{PetersAndPedrycz2000}, it may be
-                              made less so through the ease of generation,
-                              and may be more practical as a testing process
-                              for Drasil, although the introduction of the
-                              test cases themselves may be introduced, at least
-                              initially, in a more structured manner; also of
-                              note is its relative ease ``to test paths'' and
-                              ``to plan and control''
-                              \citep[p.~490]{PetersAndPedrycz2000}
-                              \qtodo{Bring up!}}
-                  \item Sandwich testing: ``combines the ideas of bottom-up and
-                        top-down testing by defining a certain target layer in
-                        the hierarchy of the modules'' and working towards it
-                        from either end using the relevant testing approach
-                        \citep[p.~491]{PetersAndPedrycz2000}
-            \end{itemize}
-      \item System testing: ``test[ing] the whole system against the user
-            documentation and requirements specification after integration
-            testing has finished'' \citep[p.~439]{vanVliet2000}
-            (\citep[p.~109]{Patton2006} says this can also be done on
-            ``at least a major portion'' of the product); often uses random,
-            but representative, input to test reliability
-            \todo{Expand on reliability testing (make own section?)}
-            \citep[p.~439]{vanVliet2000}
-      \item Acceptance testing: Similar to system testing that is ``often
-            performed under supervision of the user organization'',
-            focusing on usability \citep[p.~439]{vanVliet2000} and
-            the needs of the customer(s) \citep[p.~492]{PetersAndPedrycz2000}
-      \item Installation testing: Focuses on the portability of the product,
-            especially ``in an environment different from the one in which is
-            has been developed'' \citep[p.~439]{vanVliet2000}; not
-            one of the four levels of testing identified by the IEEE standard
-            \citep[p.~445]{PetersAndPedrycz2000}
+    \item Unit testing: ``testing the individual modules [of a program]''
+          \citep[p.~438]{vanVliet2000}; also called ``module testing''
+          \citep[p.~109]{Patton2006} or ``component testing''
+          \citep[p.~444]{PetersAndPedrycz2000}, although
+          \citet[p.~107]{BaresiAndPezzè2006} say ``components differ from
+          classical modules for being re-used in different contexts
+          independently of their development.'' Note that since a
+          \emph{component} is ``a part of a system that can be tested in
+          isolation'' \citepISTQB{}, this seems like it could apply
+          to the testing of both modules \emph{and} specific functions
+    \item Integration testing: ``testing the composition of modules'';
+          done incrementally using \emph{bottom-up} and/or
+          \emph{top-down} testing \citep[pp.~438-439]{vanVliet2000},
+          although other paradigms for design, such as \emph{big bang} and
+          \emph{sandwich} exist \citep[p.~489]{PetersAndPedrycz2000}.
+          See also \citep[p.~109]{Patton2006}.
+          \begin{itemize}
+              \item Bottom-up testing: uses \emph{test drivers}: ``tool[s]
+                    that  e[] the test environment for a component to
+                    be tested'' \citep[p.~410]{vanVliet2000} by
+                    ``sending test-case data to the modules under test,
+                    read[ing] back the results, and verify[ing] that
+                    they're correct'' \citep[p.~109]{Patton2006}
+              \item Top-down testing: uses \emph{test stubs}: tools that
+                    ``simulate[] the function of a component not yet
+                    available'' \citep[p.~410]{vanVliet2000} by
+                    providing ``fake'' values to a given module to be
+                    tested \citep[p.~110]{Patton2006}
+              \item Big bang testing: the process of ``integrat[ing] all
+                    modules in a single step and test[ing] the resulting
+                    system[]'' \citep[p.~489]{PetersAndPedrycz2000}.
+                    \emph{Although this is ``quite challenging and risky''
+                        \citep[p.~489]{PetersAndPedrycz2000}, it may be
+                        made less so through the ease of generation,
+                        and may be more practical as a testing process
+                        for Drasil, although the introduction of the
+                        test cases themselves may be introduced, at least
+                        initially, in a more structured manner; also of
+                        note is its relative ease ``to test paths'' and
+                        ``to plan and control''
+                        \citep[p.~490]{PetersAndPedrycz2000}
+                        \qtodo{Bring up!}}
+              \item Sandwich testing: ``combines the ideas of bottom-up and
+                    top-down testing by defining a certain target layer in
+                    the hierarchy of the modules'' and working towards it
+                    from either end using the relevant testing approach
+                    \citep[p.~491]{PetersAndPedrycz2000}
+          \end{itemize}
+    \item System testing: ``test[ing] the whole system against the user
+          documentation and requirements specification after integration
+          testing has finished'' \citep[p.~439]{vanVliet2000}
+          (\citep[p.~109]{Patton2006} says this can also be done on
+          ``at least a major portion'' of the product); often uses random,
+          but representative, input to test reliability
+          \todo{Expand on reliability testing (make own section?)}
+          \citep[p.~439]{vanVliet2000}
+    \item Acceptance testing: Similar to system testing that is ``often
+          performed under supervision of the user organization'',
+          focusing on usability \citep[p.~439]{vanVliet2000} and
+          the needs of the customer(s) \citep[p.~492]{PetersAndPedrycz2000}
+    \item Installation testing: Focuses on the portability of the product,
+          especially ``in an environment different from the one in which is
+          has been developed'' \citep[p.~439]{vanVliet2000}; not
+          one of the four levels of testing identified by the IEEE standard
+          \citep[p.~445]{PetersAndPedrycz2000}
 \end{itemize}
 
 \subsection{Test Oracles}
@@ -410,102 +410,102 @@ specifications, behavioral models, and code annotations'' as examples
 categories \citeyearpar[p.~510]{BarrEtAl2015}:
 
 \begin{itemize}
-      \item Specified test oracle: ``judge[s] all behavioural aspects of a
-            system with respect to a given formal specification''
-            \citep[p.~510]{BarrEtAl2015}
-      \item Derived test oracle: any ``artefact[] from which a
-            test oracle may be derived---for instance, a previous version of
-            the system'' or ``program documentation''; this includes
-            \nameref{chap:testing:sec:regression-testing},
-            \nameref{chap:testing:sec:metamorphic-testing}
-            \citep[p.~510]{BarrEtAl2015}, and invariant detection (either
-            known in advance or ``learned from the program'')
-            \citep[p.~516]{BarrEtAl2015}
-            \begin{itemize}
-                  \item This seems to prove ``relative correctness'' as
-                        opposed to ``absolute correctness''
-                        \citep[p.~345]{LahiriEtAl2013} since this derived
-                        oracle may be wrong!
-                  \item ``Two versions can be checked for semantic equivalence
-                        to ensure the correctness of [a] transformation'' in a
-                        process that can be done ``incrementally''
-                        \citep[p.~345]{LahiriEtAl2013}
-                  \item Note that the term ``invariant'' may be used in
-                        different ways (see \citep[p.~348]{ChalinEtAl2006})
-            \end{itemize}
-      \item Pseudo-oracle: a type of derived test oracle that is ``an
-            alternative version of the program produced independently'' (by a
-            different team, in a different language, etc.)
-            \citep[p.~515]{BarrEtAl2015} \todo{see ISO 29119-11}.
-            \emph{We could potentially use the
-                  programs generated in other languages as pseudo-oracles!}
-      \item Implicit test oracles: detect ```obvious' faults such as a program
-            crash'' (potentially due to a null pointer, deadlock, memory leak,
-            etc.) \citep[p.~510]{BarrEtAl2015}
-      \item ``Lack of an automated test oracle'': for example; a human oracle
-            generating sample data that is ``realistic'' and ``valid'',
-            \citep[pp.~510-511]{BarrEtAl2015}, crowdsourcing
-            \citep[p.~520]{BarrEtAl2015}, or a ``Wideband Delphi'': ``an
-            expert-based test estimation technique that \dots\ uses the
-            collective wisdom of the team members'' \citepISTQB{}
+    \item Specified test oracle: ``judge[s] all behavioural aspects of a
+          system with respect to a given formal specification''
+          \citep[p.~510]{BarrEtAl2015}
+    \item Derived test oracle: any ``artefact[] from which a
+          test oracle may be derived---for instance, a previous version of
+          the system'' or ``program documentation''; this includes
+          \nameref{chap:testing:sec:regression-testing},
+          \nameref{chap:testing:sec:metamorphic-testing}
+          \citep[p.~510]{BarrEtAl2015}, and invariant detection (either
+          known in advance or ``learned from the program'')
+          \citep[p.~516]{BarrEtAl2015}
+          \begin{itemize}
+              \item This seems to prove ``relative correctness'' as
+                    opposed to ``absolute correctness''
+                    \citep[p.~345]{LahiriEtAl2013} since this derived
+                    oracle may be wrong!
+              \item ``Two versions can be checked for semantic equivalence
+                    to ensure the correctness of [a] transformation'' in a
+                    process that can be done ``incrementally''
+                    \citep[p.~345]{LahiriEtAl2013}
+              \item Note that the term ``invariant'' may be used in
+                    different ways (see \citep[p.~348]{ChalinEtAl2006})
+          \end{itemize}
+    \item Pseudo-oracle: a type of derived test oracle that is ``an
+          alternative version of the program produced independently'' (by a
+          different team, in a different language, etc.)
+          \citep[p.~515]{BarrEtAl2015} \todo{see ISO 29119-11}.
+          \emph{We could potentially use the
+              programs generated in other languages as pseudo-oracles!}
+    \item Implicit test oracles: detect ```obvious' faults such as a program
+          crash'' (potentially due to a null pointer, deadlock, memory leak,
+          etc.) \citep[p.~510]{BarrEtAl2015}
+    \item ``Lack of an automated test oracle'': for example; a human oracle
+          generating sample data that is ``realistic'' and ``valid'',
+          \citep[pp.~510-511]{BarrEtAl2015}, crowdsourcing
+          \citep[p.~520]{BarrEtAl2015}, or a ``Wideband Delphi'': ``an
+          expert-based test estimation technique that \dots\ uses the
+          collective wisdom of the team members'' \citepISTQB{}
 \end{itemize}
 
 \subsection{Generating Test Cases}
 
 \begin{itemize}
-      \item ``Impl[ies] a reduction in human effort and cost, with the
-            potential to impact the test coverage positively'', and a given
-            ``policy could be reused in analogous situations which leads to
-            even more efficiency in terms of required efforts''
-            \citep[p.~1187]{Moghadam2019}
-      \item ``A \textbf{test adequacy criterion} \dots\ specifies requirements
-            for testing \dots\ and can be used \dots\ as a test case generator. \dots\
-            [For example, i]f a 100\% statement coverage has not been achieved
-            yet, an additional test case is selected that covers one or more
-            statements yet untested'' \citep[p.~402]{vanVliet2000}
-      \item ``Test data generators'' are mentioned on
-            \citep[p.~410]{vanVliet2000} but not described
-            \todo{Investigate}
-      \item ``Dynamic test generation consists of running a program while
-            simultaneously executing the program symbolically in order to
-            gather constrains on inputs from conditional statements encountered
-            along the execution \citep[p.~23]{GodefroidAndLuchaup2011}
-            \todo{OG [11, 6]}
-      \item ``Generating tests to detect [loop inefficiencies]'' is difficult
-            due to ``virtual call resolution'', reachability conditions, and
-            order-sensitivity \citep[p.~896]{DhokAndRamanathan2016}
-      \item Can be facilitated by ``testing frameworks such as JUnit [that]
-            automate the testing process by writing test code''
-            \citep[p.~344]{SakamotoEtAl2013}
-      \item Assertion checking requires ``auxiliary invariants'', and while
-            ``many \dots\ can be synthesized automatically by invariant
-            generation methods, the undecidable nature (or the high practical
-            complexity) of assertion checking precludes complete automation for
-            a general class of user-supplied assertions''
-            \citep[p.~345]{LahiriEtAl2013}
-            \begin{itemize}
-                  \item \acf{dac} can be supported by ``automatic invariant
-                        generation'' \citep[p.~345]{LahiriEtAl2013}
-            \end{itemize}
-      \item \emph{Automated interface discovery} can be used ``for test-case
-            generation for web applications'' \citep[p.~184]{DoğanEtAl2014}
-            \todo{OG Halfond and Orso, 2007}
-      \item ``Concrete and symbolic execution'' can be used in ``a dynamic test
-            generation technique \dots\ for PHP applications''
-            \citep[p.~192]{DoğanEtAl2014} \todo{OG Artzi et al., 2008}
-      \item COBRA is a tool that ``generates test cases automatically and
-            applies them to the simulated industrial control system in a SiL
-            Test'' \citep[p.~2]{PreußeEtAl2012}
-      \item Test case generation is useful for instances where one kind of
-            testing is difficult, but can be generated from a different,
-            simpler kind (e.g., asynchronous testing from synchronous testing
-            \citep{JardEtAl1999})
-      \item Since some values may not always be applicable to a given scenario
-            (e.g., a test case for zero doesn't make sense if there is a
-            constraint that the value in question cannot be zero), the user
-            should likely be able to select categories of tests to generate
-            instead of Drasil just generating all possible test cases based on
-            the inputs \citep{june_11_meeting}.
+    \item ``Impl[ies] a reduction in human effort and cost, with the
+          potential to impact the test coverage positively'', and a given
+          ``policy could be reused in analogous situations which leads to
+          even more efficiency in terms of required efforts''
+          \citep[p.~1187]{Moghadam2019}
+    \item ``A \textbf{test adequacy criterion} \dots\ specifies requirements
+          for testing \dots\ and can be used \dots\ as a test case generator. \dots\
+          [For example, i]f a 100\% statement coverage has not been achieved
+          yet, an additional test case is selected that covers one or more
+          statements yet untested'' \citep[p.~402]{vanVliet2000}
+    \item ``Test data generators'' are mentioned on
+          \citep[p.~410]{vanVliet2000} but not described
+          \todo{Investigate}
+    \item ``Dynamic test generation consists of running a program while
+          simultaneously executing the program symbolically in order to
+          gather constrains on inputs from conditional statements encountered
+          along the execution \citep[p.~23]{GodefroidAndLuchaup2011}
+          \todo{OG [11, 6]}
+    \item ``Generating tests to detect [loop inefficiencies]'' is difficult
+          due to ``virtual call resolution'', reachability conditions, and
+          order-sensitivity \citep[p.~896]{DhokAndRamanathan2016}
+    \item Can be facilitated by ``testing frameworks such as JUnit [that]
+          automate the testing process by writing test code''
+          \citep[p.~344]{SakamotoEtAl2013}
+    \item Assertion checking requires ``auxiliary invariants'', and while
+          ``many \dots\ can be synthesized automatically by invariant
+          generation methods, the undecidable nature (or the high practical
+          complexity) of assertion checking precludes complete automation for
+          a general class of user-supplied assertions''
+          \citep[p.~345]{LahiriEtAl2013}
+          \begin{itemize}
+              \item \acf{dac} can be supported by ``automatic invariant
+                    generation'' \citep[p.~345]{LahiriEtAl2013}
+          \end{itemize}
+    \item \emph{Automated interface discovery} can be used ``for test-case
+          generation for web applications'' \citep[p.~184]{DoğanEtAl2014}
+          \todo{OG Halfond and Orso, 2007}
+    \item ``Concrete and symbolic execution'' can be used in ``a dynamic test
+          generation technique \dots\ for PHP applications''
+          \citep[p.~192]{DoğanEtAl2014} \todo{OG Artzi et al., 2008}
+    \item COBRA is a tool that ``generates test cases automatically and
+          applies them to the simulated industrial control system in a SiL
+          Test'' \citep[p.~2]{PreußeEtAl2012}
+    \item Test case generation is useful for instances where one kind of
+          testing is difficult, but can be generated from a different,
+          simpler kind (e.g., asynchronous testing from synchronous testing
+          \citep{JardEtAl1999})
+    \item Since some values may not always be applicable to a given scenario
+          (e.g., a test case for zero doesn't make sense if there is a
+          constraint that the value in question cannot be zero), the user
+          should likely be able to select categories of tests to generate
+          instead of Drasil just generating all possible test cases based on
+          the inputs \citep{june_11_meeting}.
 \end{itemize}
 
 \section[Dynamic Black-Box (Behavioural) Testing]{Dynamic Black-Box
@@ -530,30 +530,30 @@ and capacity) ``when accomplishing its designated functions''
 % system and quantify its shortcomings'' \citep[p.~447]{PetersAndPedrycz2000}.
 
 \todo{Originally used a \emph{very} vague definition from
-      \citep[p.~447]{PetersAndPedrycz2000}; re-investigate!}
+    \citep[p.~447]{PetersAndPedrycz2000}; re-investigate!}
 
 \subsection[Other Black-Box Testing]{Other Black-Box Testing
-      \citep[pp.~87-89]{Patton2006}}
+    \citep[pp.~87-89]{Patton2006}}
 \begin{itemize}
-      \item Act like an inexperienced user (\emph{likely out of scope})
-      \item Look for bugs where they've already been found (\emph{keep track of
-                  previous failed test cases? This could pair well with
-                  \nameref{chap:testing:sec:metamorphic-testing}!})
+    \item Act like an inexperienced user (\emph{likely out of scope})
+    \item Look for bugs where they've already been found (\emph{keep track of
+              previous failed test cases? This could pair well with
+              \nameref{chap:testing:sec:metamorphic-testing}!})
 \end{itemize}
 
 \section[Static White-Box Testing (Structural Analysis)]{Static White-Box
   Testing (Structural Analysis) \citep[pp.~91-104]{Patton2006}}
 
 \subsection[Correctness Proofs]{Correctness Proofs
-      \citep[pp.~418-419]{vanVliet2000}}
+    \citep[pp.~418-419]{vanVliet2000}}
 Requires a formal specification \citep[p.~418]{vanVliet2000} and uses
 ``highly formal methods of logic'' \citep[p.~438]{PetersAndPedrycz2000} to prove
 the existence of ``an equivalence between the program and its specification''
 \citetext{p.~485}. It is not often used and its value is
 ``sometimes disputed'' \citep[p.~418]{vanVliet2000}.
 \emph{Could be useful for Drasil down
-      the road if we can specify requirements formally, and may overlap with
-      others' interests in the areas of logic and proof-checking.}
+    the road if we can specify requirements formally, and may overlap with
+    others' interests in the areas of logic and proof-checking.}
 \todo{Does symbolic execution belong here? Investigate from textbooks}
 
 \section[Dynamic White-Box (Structural) Testing]{Dynamic White-Box (Structural)
@@ -564,8 +564,8 @@ determine what to test, what not to test, and how to approach the testing''
 \citep[p.~106]{Patton2006}.
 
 \subsection[Code Coverage or Control-Flow Coverage]{Code Coverage
-      \citep[pp.~117-121]{Patton2006} or Control-Flow Coverage
-      \citep[pp.~421-424]{vanVliet2000}}
+    \citep[pp.~117-121]{Patton2006} or Control-Flow Coverage
+    \citep[pp.~421-424]{vanVliet2000}}
 
 ``[T]est[ing] the program's states and the program's flow among them''
 \citep[p.~117]{Patton2006}; allows for redundant and/or missing test
@@ -576,7 +576,7 @@ subsequent actions (in time) \dots\ [and a] path is a sequence of nodes
 connected by edges. The graph may contain cycles \dots\ [which] correspond
 to loops \dots'' \citep[pp.~420-421]{vanVliet2000}. ``A cycle is
 called \emph{simple} if its inner nodes are distinct and do not include
-      [the node at the beginning/end of the cycle]''
+    [the node at the beginning/end of the cycle]''
 \citep[p.~421,~emphasis added]{vanVliet2000}. If there are
 multiple actions represented as nodes that occur one after another, they may
 be collapsed into a single node \citep[p.~421]{vanVliet2000}.
@@ -589,101 +589,101 @@ not sure if all of these are feasible/worthwhile to get to 100\% (e.g., path
 coverage \citep[p.~421]{vanVliet2000}).
 
 \begin{itemize}
-      \item Statement/line coverage: attempting to ``execute every statement in
-            the program at least once'' \citep[p.~119]{Patton2006}
-            \begin{itemize}
-                  \item Weaker than \citep[p.~421]{vanVliet2000} and
-                        ``only about 50\% as effective as branch coverage''
-                        \citep[p.~481]{PetersAndPedrycz2000}
-                        \todo{OG Miller et al., 1994}
-                  \item Requires 100\% coverage to be effective
-                        \citep[p.~481]{PetersAndPedrycz2000}
-                        \todo{OG Miller et al., 1994}
-                  \item ``[C]an be used at the module level with less than 5000
-                        lines of code''\footnote{The US Software Engineering
-                              Institute has a checklist for determining which
-                              types of lines of code are included when counting
-                              \citep[pp.~30-31]{FentonAndPfleeger1997}.
-                        } \citep[p.~481]{PetersAndPedrycz2000}
-                        \todo{OG Miller et al., 1994}
-                  \item Doesn't guarantee correctness
-                        \citep[p.~421]{vanVliet2000}
-            \end{itemize}
-      \item Branch coverage: attempting to, ``at each branching node in the
-            control graph, \dots\ [choose] all possible branches \dots\ at least
-            once'' \citep[p.~421]{vanVliet2000}
-            \begin{itemize}
-                  \item Weaker than path coverage
-                        \citep[p.~433]{vanVliet2000}, although
-                        \citep[p.~119]{Patton2006} says it is
-                        ``the simplest form of path testing''
-                        (\emph{I don't think this is true})
-                  \item Requires at least 85\% coverage to be effective and is
-                        ``most effective \dots\ at the module level''
-                        \citep[p.~481]{PetersAndPedrycz2000}
-                        \todo{OG Miller et al., 1994}
-                  \item Cyclomatic-number criterion: an adequacy criterion that
-                        requires that ``all linearly-independent paths are
-                        covered'' \citep[p.~423]{vanVliet2000};
-                        results in complete branch coverage
-                  \item Doesn't guarantee correctness
-                        \citep[p.~421]{vanVliet2000}
-            \end{itemize}
-      \item Path coverage: ``[a]ttempting to cover all the paths in the
-            software'' \citep[p.~119]{Patton2006};
-            I always thought the ``path'' in ``path coverage'' was
-            a path from program start to program end, but van
-            Vliet seems to use the more general definition (which
-            is, albeit, sometimes valid, like in ``du-path'') of
-            being any subset of a program's execution (see
-            \citep[p.~420]{vanVliet2000})
-            \qtodo{How do we decide on our definition?}
-            \begin{itemize}
-                  \item The number of paths to test can be bounded based on its
-                        structure and can be approached by dividing the system
-                        into subgraphs and computing the bounds of each
-                        individually \citep[pp.~471-473]{PetersAndPedrycz2000};
-                        this is less feasible if a loop is present
-                        \citep[pp.~473-476]{PetersAndPedrycz2000} since ``a loop
-                        often results in an infinite number of possible paths''
-                        \citep[p.~421]{vanVliet2000}
-                  \item van Vliet claims that if this is done completely, it
-                        ``is equivalent to exhaustively testing the program''
-                        \citep[p.~421]{vanVliet2000};
-                        however, this overlooks the effect of inputs on
-                        behaviour as pointed out in
-                        \citep[pp.~466-467]{PetersAndPedrycz2000}. Exhaustive
-                        testing requires both full path coverage \emph{and}
-                        every input to be checked
-                  \item Generally ``not possible'' to achieve completely due to
-                        the complexity of
-                        loops, branches, and potentially unreachable code
-                        \citep[p.~421]{vanVliet2000}; even infeasible
-                        paths (``control flow paths that cannot be exercised by
-                        any input data'' \citep[p.~5-5]{SWEBOK2024}) must be
-                        checked for full path coverage to be achieved
-                        \citep[p.~439]{PetersAndPedrycz2000}, presenting ``a
-                        ``significant problem in path-based testing''
-                        \citep[p.~5-5]{SWEBOK2024}!
-                  \item Usually ``limited to a few functions with life
-                        criticality features (medical systems, real-time
-                        controllers)'' \citep[p.~481]{PetersAndPedrycz2000}
-                        \todo{OG Miller et al., 1994}
-            \end{itemize}
-      \item (Multiple) condition coverage: ``takes the extra conditions on the
-            branch statements into account'' (e.g., all possible inputs to a
-            Boolean expression) \citep[p.~120]{Patton2006}
-            \begin{itemize}
-                  \item ``Also known as \textbf{extended branch coverage}''
-                        \citep[p.~422]{vanVliet2000}
-                  \item Does not subsume and is not subsumed by path coverage
-                        \citep[p.~433]{vanVliet2000}
-                  \item ``May be quite challenging'' since ``if each
-                        subcondition is viewed as a single input, then this
-                        \dots\ is analogous to exhaustive testing''; however,
-                        there is usually a manageable number of subconditions
-                        \citep[p.~464]{PetersAndPedrycz2000}
-            \end{itemize}
+    \item Statement/line coverage: attempting to ``execute every statement in
+          the program at least once'' \citep[p.~119]{Patton2006}
+          \begin{itemize}
+              \item Weaker than \citep[p.~421]{vanVliet2000} and
+                    ``only about 50\% as effective as branch coverage''
+                    \citep[p.~481]{PetersAndPedrycz2000}
+                    \todo{OG Miller et al., 1994}
+              \item Requires 100\% coverage to be effective
+                    \citep[p.~481]{PetersAndPedrycz2000}
+                    \todo{OG Miller et al., 1994}
+              \item ``[C]an be used at the module level with less than 5000
+                    lines of code''\footnote{The US Software Engineering
+                        Institute has a checklist for determining which
+                        types of lines of code are included when counting
+                        \citep[pp.~30-31]{FentonAndPfleeger1997}.
+                    } \citep[p.~481]{PetersAndPedrycz2000}
+                    \todo{OG Miller et al., 1994}
+              \item Doesn't guarantee correctness
+                    \citep[p.~421]{vanVliet2000}
+          \end{itemize}
+    \item Branch coverage: attempting to, ``at each branching node in the
+          control graph, \dots\ [choose] all possible branches \dots\ at least
+          once'' \citep[p.~421]{vanVliet2000}
+          \begin{itemize}
+              \item Weaker than path coverage
+                    \citep[p.~433]{vanVliet2000}, although
+                    \citep[p.~119]{Patton2006} says it is
+                    ``the simplest form of path testing''
+                    (\emph{I don't think this is true})
+              \item Requires at least 85\% coverage to be effective and is
+                    ``most effective \dots\ at the module level''
+                    \citep[p.~481]{PetersAndPedrycz2000}
+                    \todo{OG Miller et al., 1994}
+              \item Cyclomatic-number criterion: an adequacy criterion that
+                    requires that ``all linearly-independent paths are
+                    covered'' \citep[p.~423]{vanVliet2000};
+                    results in complete branch coverage
+              \item Doesn't guarantee correctness
+                    \citep[p.~421]{vanVliet2000}
+          \end{itemize}
+    \item Path coverage: ``[a]ttempting to cover all the paths in the
+          software'' \citep[p.~119]{Patton2006};
+          I always thought the ``path'' in ``path coverage'' was
+          a path from program start to program end, but van
+          Vliet seems to use the more general definition (which
+          is, albeit, sometimes valid, like in ``du-path'') of
+          being any subset of a program's execution (see
+          \citep[p.~420]{vanVliet2000})
+          \qtodo{How do we decide on our definition?}
+          \begin{itemize}
+              \item The number of paths to test can be bounded based on its
+                    structure and can be approached by dividing the system
+                    into subgraphs and computing the bounds of each
+                    individually \citep[pp.~471-473]{PetersAndPedrycz2000};
+                    this is less feasible if a loop is present
+                    \citep[pp.~473-476]{PetersAndPedrycz2000} since ``a loop
+                    often results in an infinite number of possible paths''
+                    \citep[p.~421]{vanVliet2000}
+              \item van Vliet claims that if this is done completely, it
+                    ``is equivalent to exhaustively testing the program''
+                    \citep[p.~421]{vanVliet2000};
+                    however, this overlooks the effect of inputs on
+                    behaviour as pointed out in
+                    \citep[pp.~466-467]{PetersAndPedrycz2000}. Exhaustive
+                    testing requires both full path coverage \emph{and}
+                    every input to be checked
+              \item Generally ``not possible'' to achieve completely due to
+                    the complexity of
+                    loops, branches, and potentially unreachable code
+                    \citep[p.~421]{vanVliet2000}; even infeasible
+                    paths (``control flow paths that cannot be exercised by
+                    any input data'' \citep[p.~5-5]{SWEBOK2024}) must be
+                    checked for full path coverage to be achieved
+                    \citep[p.~439]{PetersAndPedrycz2000}, presenting ``a
+                    ``significant problem in path-based testing''
+                    \citep[p.~5-5]{SWEBOK2024}!
+              \item Usually ``limited to a few functions with life
+                    criticality features (medical systems, real-time
+                    controllers)'' \citep[p.~481]{PetersAndPedrycz2000}
+                    \todo{OG Miller et al., 1994}
+          \end{itemize}
+    \item (Multiple) condition coverage: ``takes the extra conditions on the
+          branch statements into account'' (e.g., all possible inputs to a
+          Boolean expression) \citep[p.~120]{Patton2006}
+          \begin{itemize}
+              \item ``Also known as \textbf{extended branch coverage}''
+                    \citep[p.~422]{vanVliet2000}
+              \item Does not subsume and is not subsumed by path coverage
+                    \citep[p.~433]{vanVliet2000}
+              \item ``May be quite challenging'' since ``if each
+                    subcondition is viewed as a single input, then this
+                    \dots\ is analogous to exhaustive testing''; however,
+                    there is usually a manageable number of subconditions
+                    \citep[p.~464]{PetersAndPedrycz2000}
+          \end{itemize}
 \end{itemize}
 
 \subsection[Data Coverage]{Data Coverage \citep[pp.~114-116]{Patton2006}}
@@ -692,19 +692,19 @@ In addition to \nameref{data-flow-coverage}, there are also some minor forms of
 data coverage:
 
 \begin{itemize}
-      \item Sub-boundaries: mentioned previously in notes that were moved to
-            glossary
-      \item Formulas and equations: related to
-            \hyperref[comp-errors]{computation errors}
-      \item Error forcing: setting variables to specific values to see how
-            errors are handled; any error forced must have a chance of
-            occurring in the real world, even if it is unlikely, and as such,
-            must be double-checked for validity
-            \citep[p.~116]{Patton2006}
+    \item Sub-boundaries: mentioned previously in notes that were moved to
+          glossary
+    \item Formulas and equations: related to
+          \hyperref[comp-errors]{computation errors}
+    \item Error forcing: setting variables to specific values to see how
+          errors are handled; any error forced must have a chance of
+          occurring in the real world, even if it is unlikely, and as such,
+          must be double-checked for validity
+          \citep[p.~116]{Patton2006}
 \end{itemize}
 
 \subsubsection[Data Flow Coverage]{Data Flow Coverage \citep[p.~114]{Patton2006},
-      \citep[pp.~424-425]{vanVliet2000}}
+    \citep[pp.~424-425]{vanVliet2000}}
 \label{data-flow-coverage}
 
 ``[T]racking a piece of data completely through the software'' (or a part of
@@ -712,32 +712,32 @@ it), usually using debugger tools to check the values of variables
 \citep[p.~114]{Patton2006}.
 
 \begin{itemize}
-      \item ``A variable is \emph{defined} in a certain statement if it is
-            assigned a (new) value because of the execution of that
-            statement'' \citep[p.~424]{vanVliet2000}
-      \item ``A definition in statement X is \emph{alive} in statement Y if
-            there exists a path from X to Y in which that variable does not
-            get assigned a new value at some intermediate node''
-            \citep[p.~424]{vanVliet2000}
-      \item A path from a variable's definition to a statement where it is
-            still alive is called \textbf{definition-clear} (with respect to
-            this variable) \citep[p.~424]{vanVliet2000}
-      \item Basic block: ``[a] consecutive part[] of code that execute[s]
-            together without any branching'' \citep[p.~477]{PetersAndPedrycz2000}
-      \item \acf{p-use}: e.g., the use of a variable in a conditional
-            \citep[p.~424]{vanVliet2000}
-      \item \acf{c-use}: e.g., the use of a variable in a computation or I/O
-            statement \citep[p.~424]{vanVliet2000}
-      \item All-use: either a \acs{p-use} or a \acs{c-use}~
-            \citep[p.~478]{PetersAndPedrycz2000}
-      \item DU-path: ``a path from a variable definition to [one of] its use[s]
-            that contains no redefinition of the variable''
-            \citep[pp.~478-479]{PetersAndPedrycz2000}
-      \item The three possible actions on data are defining, killing, and using;
-            ``there are a number of anomalies associated with these actions''
-            \citep[pp.~478,~480]{PetersAndPedrycz2000}
-            \todo{OG Beizer, 1990}
-            (see \hyperref[data-ref-errors]{Data reference errors})
+    \item ``A variable is \emph{defined} in a certain statement if it is
+          assigned a (new) value because of the execution of that
+          statement'' \citep[p.~424]{vanVliet2000}
+    \item ``A definition in statement X is \emph{alive} in statement Y if
+          there exists a path from X to Y in which that variable does not
+          get assigned a new value at some intermediate node''
+          \citep[p.~424]{vanVliet2000}
+    \item A path from a variable's definition to a statement where it is
+          still alive is called \textbf{definition-clear} (with respect to
+          this variable) \citep[p.~424]{vanVliet2000}
+    \item Basic block: ``[a] consecutive part[] of code that execute[s]
+          together without any branching'' \citep[p.~477]{PetersAndPedrycz2000}
+    \item \acf{p-use}: e.g., the use of a variable in a conditional
+          \citep[p.~424]{vanVliet2000}
+    \item \acf{c-use}: e.g., the use of a variable in a computation or I/O
+          statement \citep[p.~424]{vanVliet2000}
+    \item All-use: either a \acs{p-use} or a \acs{c-use}~
+          \citep[p.~478]{PetersAndPedrycz2000}
+    \item DU-path: ``a path from a variable definition to [one of] its use[s]
+          that contains no redefinition of the variable''
+          \citep[pp.~478-479]{PetersAndPedrycz2000}
+    \item The three possible actions on data are defining, killing, and using;
+          ``there are a number of anomalies associated with these actions''
+          \citep[pp.~478,~480]{PetersAndPedrycz2000}
+          \todo{OG Beizer, 1990}
+          (see \hyperref[data-ref-errors]{Data reference errors})
 \end{itemize}
 
 Table~\ref{table:data-flow-coverage-types} contains different types of data
@@ -746,38 +746,37 @@ their requirements; all information is adapted from
 \citep[pp.~424-425]{vanVliet2000} \todo{Is this sufficient?}.
 
 \begin{table}[hbtp!]
-      \centering
-      \caption{Types of Data Flow Coverage}
-      \label{table:data-flow-coverage-types}
-      \begin{tabularx}{\textwidth}{|>{\hsize=0.65\hsize}X|>{\hsize=1.35\hsize}X|}
-            \hline
-            \rowcolor{McMasterMediumGrey}
-            \thead{Criteria}          & \thead{Requirements}                 \\
-            \hline
-            All-defs coverage         & Each definition to be used at least
-            once                                                             \\
-            All-\acsp{p-use} coverage & A definition-clear path from each
-            definition to each \acs{p-use}                                   \\
-            All-\acsp{p-use}/Some-\acsp{c-use}
-            coverage                  & Same as All-\acsp{p-use} coverage,
-            but if a definition is only used in computations, at least one
-            definition-clear path to a \acs{c-use} must be included          \\
-            All-\acsp{c-use}/Some-\acsp{p-use}
-            coverage                  & A definition-clear path from each
-            definition to each \acs{c-use}; if a definition is only used
-            in predicates, at least one definition-clear path to a
-            \acs{p-use} must be included                                     \\
-            All-Uses coverage         & A definition-clear path between each
-            variable definition to each of its uses and each of these uses'
-            successors                                                       \\
-            All-DU-Paths coverage     & Same as All-Uses coverage, but each
-            path must be cycle-free or a simple cycle                        \\
-            \hline
-      \end{tabularx}
+    \centering
+    \caption{Types of Data Flow Coverage}
+    \label{table:data-flow-coverage-types}
+    \begin{tabularx}{\textwidth}{|>{\hsize=0.65\hsize}X|>{\hsize=1.35\hsize}X|}
+        \hline
+        \thead{Criteria}          & \thead{Requirements}                 \\
+        \hline
+        All-defs coverage         & Each definition to be used at least
+        once                                                             \\
+        All-\acsp{p-use} coverage & A definition-clear path from each
+        definition to each \acs{p-use}                                   \\
+        All-\acsp{p-use}/Some-\acsp{c-use}
+        coverage                  & Same as All-\acsp{p-use} coverage,
+        but if a definition is only used in computations, at least one
+        definition-clear path to a \acs{c-use} must be included          \\
+        All-\acsp{c-use}/Some-\acsp{p-use}
+        coverage                  & A definition-clear path from each
+        definition to each \acs{c-use}; if a definition is only used
+        in predicates, at least one definition-clear path to a
+        \acs{p-use} must be included                                     \\
+        All-Uses coverage         & A definition-clear path between each
+        variable definition to each of its uses and each of these uses'
+        successors                                                       \\
+        All-DU-Paths coverage     & Same as All-Uses coverage, but each
+        path must be cycle-free or a simple cycle                        \\
+        \hline
+    \end{tabularx}
 \end{table}
 
 \qtodo{How is All-DU-Paths coverage stronger than All-Uses coverage according to
-      \citep[p.~433]{vanVliet2000}?}
+    \citep[p.~433]{vanVliet2000}?}
 
 \subsection[Fault Seeding]{Fault Seeding \citep[pp.~427-428]{vanVliet2000}}
 
@@ -829,33 +828,33 @@ allowing ``some unwanted differences to pass through'' is sometimes desired, if
 tedious \citetext{p.~482}). See also \citep[p.~232]{Patton2006}.
 
 \begin{itemize}
-      \item Should be done automatically \citep[p.~481]{PetersAndPedrycz2000};
-            ``[t]est suite augmentation techniques specialise in
-            identifying and generating'' new tests based on changes ``that add
-            new features'' \todo{Investigate!}, but they could be extended to
-            also augment ``the expected output'' and ``the existing
-            \emph{oracles}'' \citep[p.~516]{BarrEtAl2015}
-      \item Its ``effectiveness \dots\ is expressed in terms of'':
-            \begin{enumerate}
-                  \item difficulty of test suite construction and maintenance
-                  \item reliability of the testing system
-                        \citep[pp.~481-482]{PetersAndPedrycz2000}
-            \end{enumerate}
-      \item Various levels:
-            \begin{itemize}
-                  \item Retest-all: ``all tests are rerun''; ``this may consume
-                        a lot of time and effort''
-                        \citep[p.~411]{vanVliet2000} (\emph{shouldn't
-                              take too much effort, since it will be automated,
-                              but may lead to longer CI runtimes depending on
-                              the scope of generated tests})
-                  \item Selective retest: ``only some of the tests are rerun''
-                        after being selected by a \emph{regression test
-                              selection technique}; ``[v]arious strategies have
-                        been proposed for doing so; few of them have been
-                        implemented yet'' \citep[p.~411]{vanVliet2000}
-                        \todo{Investigate these}
-            \end{itemize}
+    \item Should be done automatically \citep[p.~481]{PetersAndPedrycz2000};
+          ``[t]est suite augmentation techniques specialise in
+          identifying and generating'' new tests based on changes ``that add
+          new features'' \todo{Investigate!}, but they could be extended to
+          also augment ``the expected output'' and ``the existing
+          \emph{oracles}'' \citep[p.~516]{BarrEtAl2015}
+    \item Its ``effectiveness \dots\ is expressed in terms of'':
+          \begin{enumerate}
+              \item difficulty of test suite construction and maintenance
+              \item reliability of the testing system
+                    \citep[pp.~481-482]{PetersAndPedrycz2000}
+          \end{enumerate}
+    \item Various levels:
+          \begin{itemize}
+              \item Retest-all: ``all tests are rerun''; ``this may consume
+                    a lot of time and effort''
+                    \citep[p.~411]{vanVliet2000} (\emph{shouldn't
+                        take too much effort, since it will be automated,
+                        but may lead to longer CI runtimes depending on
+                        the scope of generated tests})
+              \item Selective retest: ``only some of the tests are rerun''
+                    after being selected by a \emph{regression test
+                        selection technique}; ``[v]arious strategies have
+                    been proposed for doing so; few of them have been
+                    implemented yet'' \citep[p.~411]{vanVliet2000}
+                    \todo{Investigate these}
+          \end{itemize}
 \end{itemize}
 
 % Hard-coded acronym to show up in navigation sidebar
@@ -874,96 +873,96 @@ engineers'' \citep[p.~72]{KanewalaAndYuehChen2019}.
 % Hard-coded acronym to show up in navigation sidebar
 \subsection[Benefits of MT]{Benefits of \acs{mt}}
 \begin{itemize}
-      \item Easier for domain experts; not only do they understand the domain
-            (and its relevant \acp{mr}) \citep[p.~70]{KanewalaAndYuehChen2019},
-            they also may not have an understanding of testing principles
-            \citep[p.~69]{KanewalaAndYuehChen2019}. \emph{This majorly
-                  overlaps with Drasil!}
-      \item Easy to implement via scripts \citep[p.~69]{KanewalaAndYuehChen2019}.
-            \emph{Again, Drasil}
-      \item Helps negate the test oracle \citep[p.~69]{KanewalaAndYuehChen2019}
-            and output validation \citep[p.~70]{KanewalaAndYuehChen2019} problems
-            from \nameref{chap:testing:sec:sci-testing-roadblocks} (\emph{i.e.,
-                  the two that are relevant for Drasil})
-      \item Can extend a limited number of test cases (e.g., from an
-            experiment that was only able to be conducted a few times)
-            \citep[pp.~70-72]{KanewalaAndYuehChen2019}
-      \item Domain experts are sometimes unable to identify faults in a program
-            based on its output \citep[p.~71]{KanewalaAndYuehChen2019}
+    \item Easier for domain experts; not only do they understand the domain
+          (and its relevant \acp{mr}) \citep[p.~70]{KanewalaAndYuehChen2019},
+          they also may not have an understanding of testing principles
+          \citep[p.~69]{KanewalaAndYuehChen2019}. \emph{This majorly
+              overlaps with Drasil!}
+    \item Easy to implement via scripts \citep[p.~69]{KanewalaAndYuehChen2019}.
+          \emph{Again, Drasil}
+    \item Helps negate the test oracle \citep[p.~69]{KanewalaAndYuehChen2019}
+          and output validation \citep[p.~70]{KanewalaAndYuehChen2019} problems
+          from \nameref{chap:testing:sec:sci-testing-roadblocks} (\emph{i.e.,
+              the two that are relevant for Drasil})
+    \item Can extend a limited number of test cases (e.g., from an
+          experiment that was only able to be conducted a few times)
+          \citep[pp.~70-72]{KanewalaAndYuehChen2019}
+    \item Domain experts are sometimes unable to identify faults in a program
+          based on its output \citep[p.~71]{KanewalaAndYuehChen2019}
 \end{itemize}
 
 % Hard-coded acronym to show up in navigation sidebar
 \subsection[Examples of MT]{Examples of \acs{mt}}
 \begin{itemize}
-      \item The distance between two points should be the same regardless of
-            which one is the ``start'' point \citep[p.~22]{IEEE2021}
-      \item ``If a person smokes more cigarettes, then their expected age of
-            death will probably decrease (and not increase)''
-            \citep[p.~22]{IEEE2021}
-      \item ``For a function that translates speech into text[,] \dots\ the
-            same speech at different input volume levels \dots\ [should result
-            in] the same text'' \citep[p.~22]{IEEE2021}
-      \item The average of a list of numbers should be equal (within
-            floating-point errors) regardless of the list's order
-            \citep[p.~67]{KanewalaAndYuehChen2019}
-      \item For matrices, if $B = B_1 + B_2$, then $A \times B = A \times B_1
-                  + A \times B_2$ \citep[pp.~68-69]{KanewalaAndYuehChen2019}
-      \item Symmetry of trigonometric functions; for example, $\sin(x) = \sin(-x)$
-            and $\sin(x) = \sin(x + 360^{\circ})$ \citep[p.~70]{KanewalaAndYuehChen2019}
-      \item Modifying input parameters to observe expected changes to a model's
-            output (e.g., testing epidemiological models calibrated with
-            ``data from the 1918 Influenza outbreak''); by ``making changes to
-            various model parameters \dots\ authors identified an error in the
-            output method of the agent based epidemiological model''
-            \citep[p.~70]{KanewalaAndYuehChen2019}
-      \item Using machine learning to predict likely \acsp{mr} to identify
-            faults in mutated versions of a program (about 90\% in this case)
-            \citep[p.~71]{KanewalaAndYuehChen2019}
+    \item The distance between two points should be the same regardless of
+          which one is the ``start'' point \citep[p.~22]{IEEE2021}
+    \item ``If a person smokes more cigarettes, then their expected age of
+          death will probably decrease (and not increase)''
+          \citep[p.~22]{IEEE2021}
+    \item ``For a function that translates speech into text[,] \dots\ the
+          same speech at different input volume levels \dots\ [should result
+          in] the same text'' \citep[p.~22]{IEEE2021}
+    \item The average of a list of numbers should be equal (within
+          floating-point errors) regardless of the list's order
+          \citep[p.~67]{KanewalaAndYuehChen2019}
+    \item For matrices, if $B = B_1 + B_2$, then $A \times B = A \times B_1
+              + A \times B_2$ \citep[pp.~68-69]{KanewalaAndYuehChen2019}
+    \item Symmetry of trigonometric functions; for example, $\sin(x) = \sin(-x)$
+          and $\sin(x) = \sin(x + 360^{\circ})$ \citep[p.~70]{KanewalaAndYuehChen2019}
+    \item Modifying input parameters to observe expected changes to a model's
+          output (e.g., testing epidemiological models calibrated with
+          ``data from the 1918 Influenza outbreak''); by ``making changes to
+          various model parameters \dots\ authors identified an error in the
+          output method of the agent based epidemiological model''
+          \citep[p.~70]{KanewalaAndYuehChen2019}
+    \item Using machine learning to predict likely \acsp{mr} to identify
+          faults in mutated versions of a program (about 90\% in this case)
+          \citep[p.~71]{KanewalaAndYuehChen2019}
 \end{itemize}
 
 \section{Roadblocks to Testing}
 
 \begin{itemize}
-      \item Intractability: it is generally impossible to test a program
-            exhaustively \exhInfCite{}
-      \item Adequacy: to counter the issue of intractability, it is desirable
-            ``to reduce the cardinality of the test suites while keeping the
-            same effectiveness in terms of coverage or fault detection rate''
-            \citep[p.~5-4]{SWEBOK2024} which is difficult to do objectively;
-            see also ``minimization'', the process of ``removing redundant test
-            cases'' \citep[p.~5-4]{SWEBOK2024}
-      \item Undecidability \citep[p.~439]{PetersAndPedrycz2000}: it is
-            impossible to know certain properties about a program, such as if
-            it will halt (i.e., the Halting Problem
-            \citep[p.~4]{gurfinkel_testing_2017}), so ``automatic testing
-            can't be guaranteed to always work'' for all properties
-            \citep{nelson_formal_1999} \todo{Add paragraph/section number?}
+    \item Intractability: it is generally impossible to test a program
+          exhaustively \exhInfCite{}
+    \item Adequacy: to counter the issue of intractability, it is desirable
+          ``to reduce the cardinality of the test suites while keeping the
+          same effectiveness in terms of coverage or fault detection rate''
+          \citep[p.~5-4]{SWEBOK2024} which is difficult to do objectively;
+          see also ``minimization'', the process of ``removing redundant test
+          cases'' \citep[p.~5-4]{SWEBOK2024}
+    \item Undecidability \citep[p.~439]{PetersAndPedrycz2000}: it is
+          impossible to know certain properties about a program, such as if
+          it will halt (i.e., the Halting Problem
+          \citep[p.~4]{gurfinkel_testing_2017}), so ``automatic testing
+          can't be guaranteed to always work'' for all properties
+          \citep{nelson_formal_1999} \todo{Add paragraph/section number?}
 \end{itemize}
 
 \subsection[Roadblocks to Testing Scientific Software]
 {Roadblocks to Testing Scientific Software
-      \citep[p.~67]{KanewalaAndYuehChen2019}}
+    \citep[p.~67]{KanewalaAndYuehChen2019}}
 \label{chap:testing:sec:sci-testing-roadblocks}
 \begin{itemize}
-      \item ``Correct answers are often unknown'': if the results were already
-            known, there would be no need to develop software to model them
-            \citep[p.~67]{KanewalaAndYuehChen2019}; in other words, complete
-            test oracles don't exist ``in all but the most trivial cases''
-            \citep[p.~510]{BarrEtAl2015}, and even if they are, the
-            ``automation of mechanized oracles can be difficult and expensive''
-            \citep[p.~5.5]{SWEBOK2024}
-      \item ``Practically difficult to validate the computed output'': complex
-            calculations and outputs are difficult to verify
-            \citep[p.~67]{KanewalaAndYuehChen2019}
-      \item ``Inherent uncertainties'': since scientific software models
-            scenarios that occur in a chaotic and imperfect world, not every
-            factor can be accounted for \citep[p.~67]{KanewalaAndYuehChen2019}
-      \item ``Choosing suitable tolerances'': difficult to decide what
-            tolerance(s) to use when dealing with floating-point numbers
-            \citep[p.~67]{KanewalaAndYuehChen2019}
-      \item ``Incompatible testing tools'': while scientific software is often
-            written in languages like FORTRAN, testing tools are often written
-            in languages like Java or C++ \citep[p.~67]{KanewalaAndYuehChen2019}
+    \item ``Correct answers are often unknown'': if the results were already
+          known, there would be no need to develop software to model them
+          \citep[p.~67]{KanewalaAndYuehChen2019}; in other words, complete
+          test oracles don't exist ``in all but the most trivial cases''
+          \citep[p.~510]{BarrEtAl2015}, and even if they are, the
+          ``automation of mechanized oracles can be difficult and expensive''
+          \citep[p.~5.5]{SWEBOK2024}
+    \item ``Practically difficult to validate the computed output'': complex
+          calculations and outputs are difficult to verify
+          \citep[p.~67]{KanewalaAndYuehChen2019}
+    \item ``Inherent uncertainties'': since scientific software models
+          scenarios that occur in a chaotic and imperfect world, not every
+          factor can be accounted for \citep[p.~67]{KanewalaAndYuehChen2019}
+    \item ``Choosing suitable tolerances'': difficult to decide what
+          tolerance(s) to use when dealing with floating-point numbers
+          \citep[p.~67]{KanewalaAndYuehChen2019}
+    \item ``Incompatible testing tools'': while scientific software is often
+          written in languages like FORTRAN, testing tools are often written
+          in languages like Java or C++ \citep[p.~67]{KanewalaAndYuehChen2019}
 \end{itemize}
 
 Out of this list, only the first two apply. The scenarios modelled by Drasil

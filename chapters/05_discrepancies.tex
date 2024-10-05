@@ -200,13 +200,12 @@ analysis of the generated graphs, \ifnotpaper which are \else with the most
     prominent \fi given in \Cref{tab:parSyns}.
 \ifnotpaper Finally, it is worth pointing out that \ftrnote{f}
 
-    \newgeometry{margin=1.5cm, top=2.5cm}
-    \begin{landscape}
+    \begin{bigLandscape}
         \discrepClssTable{}
         \discrepCatsTable{}
+        \newpage
         \input{build/parSyns}
-    \end{landscape}
-    \restoregeometry
+    \end{bigLandscape}
 \else % Moved earlier to display nicely in paper
 \fi
 
