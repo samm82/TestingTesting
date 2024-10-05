@@ -66,8 +66,9 @@
     \newpage
 }
 
+\newcolumntype{s}{>{\raggedleft}p{\sWidth{}}}
+\newcolumntype{t}{>{\centering\arraybackslash}p{\tWidth{}}}
 \newcolumntype{C}{>{\centering}X}
-\newcolumntype{b}[1]{>{\hsize=#1\hsize}C>{\hsize=#1\hsize}C}
 
 \DeclareDocumentCommand\seeSrcCode{ m m m g }{%
     (see the \href
