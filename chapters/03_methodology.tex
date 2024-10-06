@@ -112,6 +112,9 @@ of how many sources comprise each category is given in \Cref{fig:sourceSummary}.
     \label{fig:sourceSummary}
 \end{figure}
 
+% Moved here to display nicely in paper
+\ifnotpaper\else\ieeeTestTermsTable{}\fi
+
 \subsection{Terminology}
 
 This research was intended to describe the current state of testing
@@ -185,9 +188,6 @@ can be performed at a single test level or across several test levels''
 test approach can be derived by combining test approaches from different
 categories\ifnotpaper; see \Cref{orthogonal-tests} for some examples
 of this\fi.
-
-% Moved here to display nicely in paper
-\ifnotpaper\else\discrepClssTable{}\discrepCatsTable{}\fi
 
 \subsubsection{Parent-Child Relations}
 \label{par-chd-rels}
@@ -321,7 +321,9 @@ included a definition):
 \input{build/undefTerms}
 
 \ifnotpaper\else
-    \ieeeTestTermsTable{}  % Moved here to display nicely in paper
     \subsection{Tools}  % Part of separate chapter in thesis 
     \graphGenDesc{}
+    % Moved here to display nicely in paper
+    \discrepClssTable{}
+    \discrepCatsTable{}
 \fi
