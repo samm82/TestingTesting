@@ -113,7 +113,7 @@ class DiscrepCat(Enum):
     CATS  = "Categories"
     DEFS  = "Definitions"
     TERMS = "Terminology"
-    SRCS  = "Sources"
+    CITES = "Citations"
 
 class DiscrepCls(Enum):
     WRONG  = "Mistakes"
