@@ -272,9 +272,17 @@ def outputDiscreps():
             writeFile(discrepGroup[k], f"Discrep{shortname}{k.name.title()}", True)
 
     pieCharts = []
+    totalCats, totalClss = [], []
+    def totalHelper(total, new):
+        return [a + b for a, b in itertools.zip_longest(
+            total, [int(d.strip()) for d in new.split("%")], fillvalue=0)]
+
     for k, v in discrepDict.items():
         discrepCats, discrepClss = v.getCatCounts(), v.getClsCounts()
         assert discrepCats.split("%")[-1] == discrepClss.split("%")[-1]
+
+        totalCats = totalHelper(totalCats, discrepCats)
+        totalClss = totalHelper(totalClss, discrepClss)
 
         writeFile([discrepCats], f"{k.name.lower()}DiscCatBrkdwn", True)
         writeFile([discrepClss], f"{k.name.lower()}DiscClsBrkdwn", True)
@@ -309,6 +317,9 @@ def outputDiscreps():
                             "\\end{subfigure}"
                             ])
     
+    writeFile([formatOutput(totalCats)], f"totalDiscCatBrkdwn", True)
+    writeFile([formatOutput(totalClss)], f"totalDiscClsBrkdwn", True)
+
     pieCharts.append(["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
                         "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",
                         "\\node[label=center:Legend] {{}}; \\\\"] +
