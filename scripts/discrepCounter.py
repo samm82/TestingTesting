@@ -86,8 +86,8 @@ class DiscrepCounter:
         self.withinDoc, self.withinAuth = 0, 0
         # Differences between two categories; may be within the same category
         self.betweenCats = {k : 0 for k in SrcCat if k.value <= value}
-        self.discrepCats = {dc : ExpImpCounter() for dc in DiscrepCat}
-        self.discrepClss = {dc : ExpImpCounter() for dc in DiscrepCls}
+        self.discrepCats = OrderedDict({dc : ExpImpCounter() for dc in DiscrepCat})
+        self.discrepClss = OrderedDict({dc : ExpImpCounter() for dc in DiscrepCls})
 
     def __str__(self):
         return "\n".join(filter(None, [
@@ -98,12 +98,13 @@ class DiscrepCounter:
             ])) + "\n"
 
     def _countHelper(d: dict) -> str:
-        return f"{sum(v.count() for v in d.values())}%"
+        return formatOutput([v.output() for v in d.values()] +
+                            [sum(v.count() for v in d.values())])
 
-    def catCount(self):
+    def getCatCounts(self):
         return DiscrepCounter._countHelper(self.discrepCats)
 
-    def clsCount(self):
+    def getClsCounts(self):
         return DiscrepCounter._countHelper(self.discrepClss)
 
 class DiscrepCat(Enum):
@@ -272,12 +273,9 @@ def outputDiscreps():
 
     pieCharts = []
     for k, v in discrepDict.items():
-        writeFile([formatOutput(
-            [v.discrepCats[dc].output() for dc in DiscrepCat] + [v.clsCount()]
-            )], f"{k.name.lower()}DiscCatBrkdwn", True)
-        writeFile([formatOutput(
-            [v.discrepClss[dc].output() for dc in DiscrepCls] + [v.clsCount()]
-            )], f"{k.name.lower()}DiscClsBrkdwn", True)
+        discrepCats, discrepClss = v.getCatCounts(), v.getClsCounts()
+        writeFile([discrepCats], f"{k.name.lower()}DiscCatBrkdwn", True)
+        writeFile([discrepClss], f"{k.name.lower()}DiscClsBrkdwn", True)
 
         totalDiscreps = sum({v.withinDoc, v.withinAuth,
                                 sum(v.betweenCats.values())})
