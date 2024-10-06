@@ -274,6 +274,8 @@ def outputDiscreps():
     pieCharts = []
     for k, v in discrepDict.items():
         discrepCats, discrepClss = v.getCatCounts(), v.getClsCounts()
+        assert discrepCats.split("%")[-1] == discrepClss.split("%")[-1]
+
         writeFile([discrepCats], f"{k.name.lower()}DiscCatBrkdwn", True)
         writeFile([discrepClss], f"{k.name.lower()}DiscClsBrkdwn", True)
 
