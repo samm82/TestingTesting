@@ -111,10 +111,16 @@ the testing approach glossary, other types of discrepancies need to be tracked
 manually. This is done by adding
 comments to the relevant \LaTeX{} files (generated or not) of the form
 \begin{displayquote}
-    \texttt{\% Discrep count: \{A1\} \{A2\} \dots{} | \{B1\} \{B2\} \dots{} |
-        \{C1\} \{C2\} \dots}
+    \texttt{\% Discrep count (CAT, CLS): \{A1\} \{A2\} \dots{} | \{B1\}
+        %\{B2\}
+        \dots{} | \{C1\} %\{C2\}
+        \dots}
 \end{displayquote}
-which can then be parsed to detemine where discrepancies occur. Each group of
+which can then be parsed to detemine where discrepancies occur. \texttt{CAT} is
+a placeholder for the discrepancy's \hyperref[discrepCategories]{category}
+identifier and \texttt{CLS} is a placeholder for its
+\hyperref[discrepClasses]{class} identifier. These designations are ommitted
+from the following examples of these comments. Each group of
 sources is separated with a pipe symbol to be compared with the others, so any
 number of groups are permitted. If only one group is present, it is compared
 with itself. For example, the first line below means that source X has a
