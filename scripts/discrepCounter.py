@@ -273,10 +273,10 @@ def outputDiscreps():
     pieCharts = []
     for k, v in discrepDict.items():
         writeFile([formatOutput(
-            ["% " + k.longname] + [v.discrepCats[dc].output() for dc in DiscrepCat] + [v.clsCount()]
+            [v.discrepCats[dc].output() for dc in DiscrepCat] + [v.clsCount()]
             )], f"{k.name.lower()}DiscCatBrkdwn", True)
         writeFile([formatOutput(
-            ["% " + k.longname] + [v.discrepClss[dc].output() for dc in DiscrepCls] + [v.clsCount()]
+            [v.discrepClss[dc].output() for dc in DiscrepCls] + [v.clsCount()]
             )], f"{k.name.lower()}DiscClsBrkdwn", True)
 
         totalDiscreps = sum({v.withinDoc, v.withinAuth,
