@@ -300,12 +300,9 @@ of a test process; for example, ``across the whole organization'' or only
 \def\texts{\nameref{texts}}
 \def\papers{\nameref{papers}}
 
-% From https://tex.stackexchange.com/a/248135/192195
-\newcounter{laterdef} % just a dummy counter
-\newcommand{\laterdef}[2]{%
-    \renewcommand\thelaterdef{#2}%
-    \refstepcounter{laterdef}\label{#1}%
-}
+\def\srcCat{\hyperref[sources]{Source Category}}
+
+\def\totalDiscreps{\totalDiscCatBrkdwn{13}}
 
 \def\syns{\hyperref[syns]{Synonyms}}
 \def\pars{\hyperref[pars]{Parents}}
