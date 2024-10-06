@@ -72,6 +72,9 @@ class ExpImpCounter:
     def __str__(self):
         return str(tuple(self.dict.values()))
 
+    def count(self):
+        return sum(self.dict.values())
+
     def output(self):
         return formatOutput(self.dict.values())
 
@@ -93,6 +96,15 @@ class DiscrepCounter:
             " | ".join(map(str, self.discrepCats.values())),
             " | ".join(map(str, self.discrepClss.values())),
             ])) + "\n"
+
+    def _countHelper(d: dict) -> str:
+        return f"{sum(v.count() for v in d.values())}%"
+
+    def catCount(self):
+        return DiscrepCounter._countHelper(self.discrepCats)
+
+    def clsCount(self):
+        return DiscrepCounter._countHelper(self.discrepClss)
 
 class DiscrepCat(Enum):
     SYNS  = "Synonyms"
@@ -261,10 +273,10 @@ def outputDiscreps():
     pieCharts = []
     for k, v in discrepDict.items():
         writeFile([formatOutput(
-            ["% " + k.longname] + [v.discrepCats[dc].output() for dc in DiscrepCat]
+            ["% " + k.longname] + [v.discrepCats[dc].output() for dc in DiscrepCat] + [v.clsCount()]
             )], f"{k.name.lower()}DiscCatBrkdwn", True)
         writeFile([formatOutput(
-            ["% " + k.longname] + [v.discrepClss[dc].output() for dc in DiscrepCls]
+            ["% " + k.longname] + [v.discrepClss[dc].output() for dc in DiscrepCls] + [v.clsCount()]
             )], f"{k.name.lower()}DiscClsBrkdwn", True)
 
         totalDiscreps = sum({v.withinDoc, v.withinAuth,
