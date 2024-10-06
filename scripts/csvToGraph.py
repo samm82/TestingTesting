@@ -119,10 +119,6 @@ categoryDict = {
     "Type": ([], []),
 }
 
-discrepsSrcCounter = DiscrepSourceCounter()
-
-IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
-                     "most", "likely", "often", "if", "although"]
 warned_multi_unsure = set()
 # only == True returns a string iff the passed `name` is not explicit
 def isUnsure(name: str, only: bool = False) -> Optional[str]:
@@ -289,7 +285,7 @@ multiSynNotes = {
         "\\citet[p.~55]{Firesmith2015}, although the terms are not synonyms."
     ),
     "Use Case Testing": (
-        "% Discrep count: ISTQB {Kam2008} | {IEEE2022} {IEEE2021} \n"
+        "% Discrep count (SYNS, CONTRA): ISTQB {Kam2008} | {IEEE2022} {IEEE2021} \n\t\t"
         "``Scenario testing'' and ``use case testing'' are given as synonyms "
         "by \\citetISTQB{} and \\citet[pp.~47-49]{Kam2008} but listed "
         "separately by \\citet[p.~22]{IEEE2022}, \\ifnotpaper who also give "
@@ -299,18 +295,17 @@ multiSynNotes = {
         "\\seeParAlways{tab:parSyns}."
     ),
     "Static Assertion Checking": (
-        "% Discrep count: {ChalinEtAl2006} | {LahiriEtAl2013} \n"
-        "\\ifnotpaper \\citeauthor{ChalinEtAl2006}~list \\acf{rac} and \\acf{sv} "
-        "as ``two complementary forms of assertion checking'' "
-        "\\citeyearpar[p.~343]{ChalinEtAl2006}\\else \\cite[p.~343]{ChalinEtAl2006} "
-        "lists Runtime Assertion Checking \\acf{rac} and Software Verification "
-        "\\acf{sv} as ``two complementary forms of assertion checking''\\fi; "
+        "% Discrep count (SYNS, WRONG): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
+        "\\citet[p.~343]{ChalinEtAl2006} \\multAuthHelper{list} "
+        "\\ifnotpaper \\acf{rac} and \\acf{sv} \\else Runtime Assertion Checking "
+        "\\acf{rac} and Software Verification \\acf{sv} \\fi "
+        "as ``two complementary forms of assertion checking''; "
         "based on how the term ``static assertion checking'' is used by "
         "\\citet[p.~345]{LahiriEtAl2013}, it seems like this should be the "
         "complement to \\acs{rac} instead."
     ),
     "Operational Testing": (
-        "% Discrep count: ISTQB | {Firesmith2015} \n"
+        "% Discrep count (SYNS, CONTRA): ISTQB | {Firesmith2015} \n\t\t"
         "``Operational'' and ``production acceptance testing'' are treated as "
         "synonyms by \\citetISTQB{} but listed separately by \\citet[p.~30]{Firesmith2015}."
     ),
@@ -331,7 +326,6 @@ def makeMultiSynLine(valid, syn, terms):
         multiSynsList = (impMultiSyns if not all(
             synSets[f"{fsyn} -> {formatApproach(term)}"][0]
             for term in valid) else expMultiSyns)
-        discrepsSrcCounter.countDiscreps(terms, DiscrepCat.SYNS)
 
     def processTerm(term):
         term = term.split(" (")
@@ -340,10 +334,11 @@ def makeMultiSynLine(valid, syn, terms):
         term = " (".join(term)
         return f"\t\t\\item {term}"
 
-    line = f"\\item \\textbf{{{syn}:}}\n\t\\begin{{itemize}}\n{'\n'.join(
-            map(processTerm, terms))}\n\t\\end{{itemize}}"
+    line = "\n".join([f"\\item \\textbf{{{syn}:}}",
+                      f"{getDiscrepCount(terms, "SYNS", "CONTRA")}\t\\begin{{itemize}}"] +
+                      list(map(processTerm, terms)) + ["\t\\end{itemize}"])
     if syn not in paperExamples:
-        line = f"\\ifnotpaper\n{line}\n\\fi"
+        line = "\n".join(["\\ifnotpaper", line, "\\fi"])
 
     multiSynsList.append(formatLineWithSources(line))
 
@@ -423,12 +418,10 @@ print()
 selfCycleCount = len(selfCycles)
 
 if "Example" not in csvFilename:
-    selfCycles = [formatLineWithSources(f"\\item {cycle}") for cycle in selfCycles]
+    selfCycles = [f"\\item {getDiscrepCount([cycle], "PARS", "WRONG")}\t{formatLineWithSources(cycle)}"
+                  for cycle in selfCycles]
     writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
-            "selfCycles", True)
-
-    for cycle in selfCycles:
-        discrepsSrcCounter.countDiscreps([cycle], DiscrepCat.PARS)
+              "selfCycles", True)
 
 def splitListAtEmpty(listToSplit):
     recArr = np.array(listToSplit)
@@ -449,7 +442,6 @@ parSynNotes = {
 parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
     set(), set(), set(), set()
 def makeParSynLine(chd, par, parSource, synSource):
-    discrepsSrcCounter.countDiscreps([parSource, synSource], DiscrepCat.PARS)
     parSource = formatLineWithSources(parSource, False)
     synSource = formatLineWithSources(synSource, False)
 
@@ -467,10 +459,9 @@ def makeParSynLine(chd, par, parSource, synSource):
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return
 
-    parSyns.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
-        # f"\\item \\textbf{{``{chd.capitalize()}''}} {parCallImply} "
-        # f"a sub-approach of \\textbf{{``{par.lower()}''}}{parSource}, but the "
-        # f"two {synCallImply} synonyms{synSource}."))
+    parSyns.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\" +
+                getDiscrepCount([parSource, synSource], "PARS", "CONTRA",
+                                newlineAfter=False))
 
 splitAtEmpty = splitListAtEmpty(categoryDict["Approach"][1])
 # Don't look for parent/synonym discrepancies unless both are present
@@ -515,11 +506,11 @@ def sortByImplied(ls):
 
 if "Example" not in csvFilename:
     writeFile(["\\begin{longtblr}[",
-            "   caption = {Pairs of test approaches with both parent-child and synonym relations.},",
+            "   caption = {Pairs of test approaches described both as \\hyperref[par-chd-rels]{parent-child} and as synonyms.},",
             "   label = {tab:parSyns}",
             "   ]{",
             "   colspec = {|c|X|X|}, width = \\linewidth,",
-            "   rowhead = 1, row{1} = {McMasterMediumGrey}",
+            "   rowhead = 1",
             "   }",
             "  \\hline",
             "  \\thead{``Child'' $\\to$ ``Parent''}  & \\thead{Parent-Child Source(s)} & \\thead{Synonym Source(s)} \\\\",
@@ -549,7 +540,7 @@ def inLine(flag, style, line):
         return re.search(fr"label=.+,{flag.name.lower()}=.+" + style, line)
 
 if "Example" not in csvFilename:
-    discrepsSrcCounter.output()
+    outputDiscreps()
 
 def writeDotFile(lines, filename):
     CUSTOM_LEGEND = {"recovery", "scalability", "Example"}

@@ -2,19 +2,34 @@
 \label{discrep}
 
 % Moved earlier to display nicely in paper
-% \discrepsTable{}
+% \discrepClssTable{}
+% \discrepCatsTable{}
 
 After gathering all these data\footnote{Available in \texttt{ApproachGlossary.csv}
     and \texttt{QualityGlossary.csv} at \ifblind{[Repository link suppressed]}
     {\url{https://github.com/samm82/TestGen-Thesis}}.}, we found many
-discrepancies and ambiguities. A summary of these is shown in \refDiscrepsTable{},
-where a given row corresponds to the number of discrepancies either within that
-category and/or with a ``more trusted'' \hyperref[sources]{source category}
+discrepancies. To better understand and analyze these discrepancies, each one
+is given a ``class'' and a ``category''. \nameref{discrepClasses} describe
+\emph{how} a discrepancy manifests syntactically; examples include \nameref{wrong}
+and \nameref{miss}. On the other hand, \nameref{discrepCategories} describe the
+knowledge domain in which a discrepancy manifests semantically; examples include
+\nameref{syns} and \nameref{pars}. Within these sections, \ifnotpaper ``more
+    significant'' discrepancies are listed first, followed by ``less significant''
+    ones omitted from the paper version of this thesis for brevity. They are
+    then \else discrepancies are \fi sorted based on their
+\hyperref[sources]{source category}.
+
+A summary of how many discrepancies there are by class and by category is shown
+in \Cref{tab:discrepClss,tab:discrepCats}, respectively, where a given row
+corresponds to the number of discrepancies either within that
+\hyperref[sources]{source category} and/or with a ``more trusted'' one
 (i.e., a previous row in the table). The numbers of (Exp)licit and (Imp)licit
-(see \Cref{rigidity}) discrepancies are also presented in this table.
-Discrepancies are grouped into the following categories to give a better sense
-of how and how frequently they tend to appear: \syns{}, \pars{}, \cats{},
-\defs{}, \terms{}, or \srcs{}.
+(see \Cref{rigidity}) discrepancies are also presented in these tables. Note
+that all manually tracked discrepancies appear in \emph{both}
+\Cref{discrepClasses,discrepCategories}, while those
+\hyperref[auto-discrep-analysis]{automatically} uncovered based on semantics
+are only listed in their appropriate \hyperref[discrepCategories]{category} for
+clarity (but still contribute to the counts in \Cref{tab:discrepClss}).
 
 Additionally, specific subsets of testing presented significant issues. These
 are given in their specific sections to keep related information together.
@@ -26,10 +41,76 @@ this is done\fi. The ``problem'' subsets of testing include
 \ifnotpaper Finally, \nameref{infer-discreps} are also given for completeness,
     despite being less certain and thus not contributing to any counts.
 
+    \begin{bigLandscape}
+        \discrepClssTable{}
+        \discrepCatsTable{}
+    \end{bigLandscape}
+
     \input{assets/graphs/pieCharts} \fi
 
-\subsection{Synonym Relation Discrepancies}
+\subsection{Discrepancy Classes}
+\label{discrepClasses}
+
+The following sections list observed discrepancies grouped by \emph{how} the
+discrepancy manifests. These include \nameref{wrong}, \nameref{miss},
+\nameref{contra}, \nameref{ambi}, \nameref{over}, and \reduns{}.
+
+\subsubsection{Mistakes}
+\label{wrong}
+The following are cases where information is incorrect; this includes cases
+\terms{} included that should \emph{not} have been, untrue claims about
+\cites{}, and simple typos:
+
+\input{build/DiscrepClsWrong}
+
+\subsubsection{Omissions}
+\label{miss}
+The following are cases where information (usually \defs{}) \emph{should have}
+been included but was not:
+
+\input{build/DiscrepClsMiss}
+
+\subsubsection{Contradictions}
+\label{contra}
+The following are cases where multiple sources of information (sometimes within
+the same document!) disagree; note that cases where all sources of information
+are incorrect are considered contradictions and not \nameref{wrong}, since this
+would require analysis that has not been performed yet:
+
+\input{build/DiscrepClsContra}
+
+\subsubsection{Ambiguities}
+\label{ambi}
+The following are cases where information (usually \defs{} or distinctions
+between \terms{}) is unclear:
+
+\input{build/DiscrepClsAmbi}
+
+\subsubsection{Overlaps}
+\label{over}
+The following are cases where information overlaps, such as nonatomic \defs{}
+and \terms{}:
+
+\input{build/DiscrepClsOver}
+
+\ifnotpaper
+    \subsubsection{Redunancies}
+    \label{redun}
+    The following are cases of redundant information:
+
+    \input{build/DiscrepClsRedun}
+\fi
+
+\subsection{Discrepancy Categories}
+\label{discrepCategories}
+
+The following sections list observed discrepancies grouped by \emph{what area}
+the discrepancy manifests in. These include \nameref{syns}, \nameref{pars},
+\nameref{cats}, \nameref{defs}, \nameref{terms}, and \nameref{cites}.
+
+\subsubsection{Synonym Relation Discrepancies}
 \label{syns}
+
 The same approach often has many names. For example,
 \emph{specification-based testing} is also called\todo{more in Umar2000}:
 \begin{enumerate}
@@ -76,7 +157,7 @@ prefer the terms ``black-box'' and ``white-box testing'' for consistency.
 Thus, synonyms do not inherently signify a discrepancy. Unfortunately, there
 are many instances of incorrect or ambiguous synonyms, such as the following:
 
-\input{chapters/05a_syn_discreps}
+\input{build/DiscrepCatSyns}
 
 \phantomsection{}
 \label{multiSyns}
@@ -93,10 +174,16 @@ most prominent examples\fi:
     \input{\ifnotpaper build\else assets/misc\fi/multiSyns}
 \end{enumerate}
 
-\subsection{Parent-Child Relation Discrepancies}
+\subsubsection{Parent-Child Relation Discrepancies}
 \label{pars}
 
-\input{chapters/05b_par_discreps}
+\nameref{par-chd-rels} are also not immune to difficulties\ifnotpaper, as shown
+by the following discrepancies:
+\input{build/DiscrepCatPars} \else; for example, performance \fi testing and
+security testing are given as subtypes of reliability testing by
+\citep{ISO_IEC2023a}, but these are all listed separately by
+\citep[p.~53]{Firesmith2015}.
+
 \phantomsection{}\label{selfPars}
 Additionally, some self-referential definitions imply that a test
 approach is a parent of itself. Since these are by nature self-contained within
@@ -117,15 +204,15 @@ analysis of the generated graphs, \ifnotpaper which are \else with the most
     prominent \fi given in \Cref{tab:parSyns}.
 \ifnotpaper Finally, it is worth pointing out that \ftrnote{f}
 
-    \begin{landscape}
-        \discrepsTable{}
+    \begin{bigLandscape}
         \input{build/parSyns}
-    \end{landscape}
+    \end{bigLandscape}
 \else % Moved earlier to display nicely in paper
 \fi
 
-\subsection{Test Approach Category Discrepancies}
+\subsubsection{Test Approach Category Discrepancies}
 \label{cats}
+
 While the IEEE categorization of testing approaches described in
 \refIEEETestTerms{} is useful, it
 is not without its faults. The boundaries between items within a category may
@@ -140,22 +227,76 @@ differently by different sources:
 % ; these differences are tracked so
 % they can be analyzed more systematically\seeThesisIssuePar{21}.
 
-\input{chapters/05c_cat_discreps}
+\input{build/DiscrepCatCats}
 
 There are also instances of inconsistencies between parent and child
 test approach categorizations. This may indicate they aren't necessarily the
 same, or that more thought must be given to this method of classification.
 
-\subsection{Definition Discrepancies}
+\subsubsection{Definition Discrepancies}
 \label{defs}
+
 Perhaps the most interesting category for those seeking to understand how to
 apply a given test approach, there are many discrepancies between how test
 approaches, as well as supporting terms, are defined:
 
-\input{chapters/05d_def_discreps}
+\input{build/DiscrepCatDefs}
 
-\subsection{Terminology Discrepancies}
+% TODO: re-investigate this after going through the rest of ISO/IEC/IEEE 29119
+\ifnotpaper
+    Also of note: \citep{IEEE2022, IEEE2021}, from the
+    ISO/IEC/IEEE 29119 family of standards, mention the following 23 test
+    approaches without defining them. This means that out of the 114 test
+    approaches they mention, about 20\% have no associated definition!
+
+    However, the previous version of this standard, \citeyearpar{IEEE2013},
+    generally explained two, provided references for two, and explicitly defined
+    one of these terms, for a total of five definitions that could (should) have
+    been included in \citeyearpar{IEEE2022}! These terms have been
+    \underline{underlined}\ifnotpaper%
+        , \emph{italicized}, and \textbf{bolded}, respectively%
+    \fi. Additionally, entries marked with an asterisk* were defined (at least
+    partially) in \citeyearpar{IEEE2017}, which would have been available when
+    creating this family of standards. These terms bring the total count of terms
+    that could (should) have been defined to nine; almost 40\% of undefined test
+    approaches could have been defined!
+
+    \begin{itemize}
+        \item \underline{Acceptance Testing*}
+        \item Alpha Testing*
+        \item Beta Testing*
+        \item Capture-Replay Driven Testing
+        \item Data-driven Testing
+        \item Error-based Testing
+        \item Factory Acceptance Testing
+        \item Fault Injection Testing
+        \item Functional Suitability Testing (also mentioned but not defined in
+              \citep{IEEE2017})
+        \item \underline{Integration Testing}*
+        \item Model Verification
+        \item Operational Acceptance Testing
+        \item Orthogonal Array Testing
+        \item Production Verification Testing
+        \item Recovery Testing* (Failover/Recovery Testing, Back-up/Recovery
+              Testing, \formatPaper{\textbf}{Backup and Recovery Testing*},
+              Recovery*;\seeAlways{recov-discrep})
+        \item Response-Time Testing
+        \item \formatPaper{\emph}{Reviews} (ISO/IEC 20246) (Code Reviews*)
+        \item Scalability Testing (defined as a synonym of ``capacity
+              testing'';\seeAlways{scal-discrep})
+        \item Statistical Testing
+        \item System Integration Testing (System Integration*)
+        \item System Testing* (also mentioned but not defined in \citep{IEEE2013})
+        \item \formatPaper{\emph}{Unit Testing*}
+              (IEEE Std 1008-1987, IEEE Standard for
+              Software Unit Testing implicitly listed in the bibliography!)
+        \item User Acceptance Testing
+    \end{itemize}
+\fi
+
+\subsubsection{Terminology Discrepancies}
 \label{terms}
+
 While some discrepancies exist because the definition of a term is wrong,
 others exist because term's \emph{name} or \emph{label} is wrong! This could be
 considered a ``sister'' category of \nameref{defs}, but these
@@ -166,11 +307,21 @@ discrepancies seemed different enough to merit their own category. \ifnotpaper
     discrepancies are presented in that order\else are examples of these
     discrepancies\fi:
 
-\input{chapters/05e_term_discreps}
+\input{build/DiscrepCatTerms}
 
-\subsection{Source Discrepancies}
-\label{srcs}
-\input{chapters/05f_src_discreps}
+\subsubsection{Citation Discrepancies}
+\label{cites}
+
+Sometimes a document cites another for a piece of information that does not
+appear! \ifnotpaper
+    The following discrepancies are examples of this:
+    \input{build/DiscrepCatSrcs}
+\else
+    For example, \citet[p.~184]{DoğanEtAl2014} \multAuthHelper{claim} that
+    \citet{SakamotoEtAl2013} \multAuthHelper{define} ``prime path coverage'',
+    but it does not.
+\fi
+
 
 \subsection{Functional Testing}
 \label{func-test-discrep}
@@ -195,7 +346,7 @@ specification of the component or system'' \ifnotpaper (and gives ``black-box
     testing'' as a synonym) \fi and ``functional testing'' as ``testing
 performed to evaluate if a component or system satisfies functional
 requirements'' \ifnotpaper (specifying no synonyms) \citepISTQB{};
-    % Discrep count (SYNS): {IEEE2022} {IEEE2017} | ISTQB
+    % Discrep count (SYNS, CONTRA): {IEEE2022} {IEEE2017} | ISTQB
     the latter references \citet[p.~196]{IEEE2017}
     (``testing conducted to evaluate the compliance of a system or
     component with specified functional requirements'') which
@@ -228,10 +379,10 @@ what defines a ``test type'' \citep[p.~15]{IEEE2022}\ifnotpaper\
 it seems consistent to label ``functional testing'' as a ``test type''
 \citep[pp.~15,~20,~22]{IEEE2022}; this conflicts with its categorization
 as a ``technique'' if considered a synonym of \nameref{spec-func-test}.
-% Discrep count (CATS): implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
+% Discrep count (CATS, CONTRA): implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
 ``Correctness testing'' is listed separately from ``functionality testing'' by
 \citet[p.~53]{Firesmith2015}.
-% Discrep count (SYNS): {SWEBOK2024} | {Firesmith2015}
+% Discrep count (SYNS, CONTRA): {SWEBOK2024} | {Firesmith2015}
 
 \subsubsection{Conformance Testing}
 Testing that ensures ``that the functional specifications are correctly
@@ -244,7 +395,7 @@ specifications, requirements, design, processes, or practices''
 of testing methods mentioned earlier as the latter includes ``standards,
 rules, requirements, design, processes, \dots\ [and]'' practices in
 \emph{addition} to specifications!
-% Discrep count (SYNS): {SWEBOK2024} | implied by {SWEBOK2024}
+% Discrep count (SYNS, OVER): {SWEBOK2024} | implied by {SWEBOK2024}
 
 A complicating factor is that ``compliance testing'' is also
 (plausibly) given as a synonym of ``conformance testing''
@@ -254,7 +405,7 @@ to which ``results \dots\ fall within the limits that define
 acceptable variation for a quality requirement''
 \citep[p.~93]{IEEE2017}\todo{OG PMBOK 5th ed.}, which seems to
 describe something different.
-% Discrep count (SYNS): {Kam2008} | implied by {IEEE2017}
+% Discrep count (SYNS, AMBI): {Kam2008} | implied by {IEEE2017}
 
 % TODO: pull out into Recommendations
 % Perhaps this second definition of
@@ -297,7 +448,7 @@ the quality/ies that would be tested by ``correctness'' testing.
 ``functional suitability'' \citepISTQB{}, although it seems
 like it should really be a synonym of ``functional completeness'' based on
 \citep{ISO_IEC2023a}, which would make ``functional suitability'' a
-% Discrep count (SYNS): ISTQB | implied by {ISO_IEC2023a}
+% Discrep count (SYNS, CONTRA): ISTQB | implied by {ISO_IEC2023a}
 sub-approach. Its associated test type
 is implied to be a sub-approach of build verification testing
 \citepISTQB{} and made distinct from ``functional testing''%
@@ -309,8 +460,8 @@ non-functional and functionality testing\fi\ \citep[Tab.~2]{Gerrard2000a}.
 \ifnotpaper
     \subsection[Operational (Acceptance) Testing (OAT)]{\acf{operat}}
     \label{oat-discrep}
-    % Discrep count (TERMS): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}
-    % Discrep count (SYNS): {LambdaTest2024} {BocchinoAndHamilton1996} | {Firesmith2015}
+    % Discrep count (TERMS, CONTRA): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}
+    % Discrep count (SYNS, CONTRA): {LambdaTest2024} {BocchinoAndHamilton1996} | {Firesmith2015}
     Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE2022};
     \citealpISTQB{}) while some refer to ``operational testing''
     (\citealp[p.~6-9,~in the context of software engineering operations]{SWEBOK2024};
@@ -351,7 +502,7 @@ and re-establish[ing] the desired state of the system''
 so that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
 It is also called ``recoverability testing'' \cite[p.~47]{Kam2008} and
 potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}.
-% Discrep count (SYNS): {Gerrard2000a}
+% Discrep count (SYNS, AMBI): {Gerrard2000a}
 The following terms, along with ``recovery testing'' itself
 \citep[p.~22]{IEEE2022} are all classified as test types, and the relations
 between them can be found in \Cref{fig:recovery-graph-current}.
@@ -375,7 +526,7 @@ between them can be found in \Cref{fig:recovery-graph-current}.
           resolved'' \citeyearpar[p.~37]{IEEE2021}. These two definitions seem to
           describe different aspects of the system, where the first is
           intrinsic to the hardware/software and the second might not be.
-          % Discrep count (DEFS): {IEEE2017} | {IEEE2021}
+          % Discrep count (DEFS, OVER): {IEEE2017} | {IEEE2021}
     \item \textbf{Backup and Recovery Testing} ``measures the
           degree to which system state can be restored from backup within
           specified parameters of time, cost, completeness, and accuracy in
@@ -391,17 +542,17 @@ between them can be found in \Cref{fig:recovery-graph-current}.
           \citeyearpar[p.~37]{IEEE2021}. It is also given as a sub-type of
           ``disaster/recovery testing'', even though that tests if ``operation
           of the test item can be transferred to a different operating site''
-          \citetext{p.~37}. % Discrep count (PARS): {IEEE2021} | {IEEE2021}
+          \citetext{p.~37}. % Discrep count (PARS, CONTRA): {IEEE2021} | {IEEE2021}
           It also seems to overlap with ``backup and
           recovery testing'', which adds confusion.
-          % Discrep count (DEFS): {IEEE2021} | {IEEE2013}
+          % Discrep count (DEFS, OVER): {IEEE2021} | {IEEE2013}
     \item \textbf{Failover/Recovery Testing:} Testing that determines the
           ability ``to mov[e] to a back-up system in the event of failure,
           without transfer[ing] to a different operating site''
           \citep[p.~37]{IEEE2021}. This is given as a sub-type of
           ``disaster/recovery testing'', even though that tests if ``operation
           of the test item can be transferred to a different operating site''
-          \citetext{p.~37}. % Discrep count (PARS): {IEEE2021} | {IEEE2021}
+          \citetext{p.~37}. % Discrep count (PARS, CONTRA): {IEEE2021} | {IEEE2021}
     \item \textbf{Failover Testing:} Testing that ``validates the SUT's
           ability to manage heavy loads or unexpected failure to continue
           typical operations'' \citep[p.~5-9]{SWEBOK2024} by entering a
@@ -411,7 +562,7 @@ between them can be found in \Cref{fig:recovery-graph-current}.
           also describes the idea of ``failover'', and \citet[p.~56]{Firesmith2015}
           uses the term ``failover and recovery testing'', which could be a
           synonym of both of these terms.
-          % Discrep count (SYNS): {IEEE2021} | implied by {Firesmith2015}
+          % Discrep count (SYNS, AMBI): {SWEBOK2024} ISTQB | implied by {Firesmith2015}
 \end{itemize}
 
 \subsection{Scalability Testing}
@@ -422,7 +573,7 @@ below. The relations between these test approaches (and other relevant ones)
 are shown in \Cref{fig:scal-graph-current}.
 
 \begin{enumerate}
-    \item % Discrep count (SYNS): {IEEE2021} | {Firesmith2015} {Bas2024}
+    \item % Discrep count (SYNS, CONTRA): {IEEE2021} | {Firesmith2015} {Bas2024}
           \ifnotpaper \citeauthor{IEEE2021} \else ISO/IEC and IEEE \fi give
           ``scalability testing'' as a synonym of ``capacity testing''
           \ifnotpaper \citeyearpar[p.~39]{IEEE2021} \else \cite[p.~39]{IEEE2021}
@@ -431,14 +582,13 @@ are shown in \Cref{fig:scal-graph-current}.
                   \citealp[pp.~22-23]{Bas2024}}
           \else \citep[p.~53]{Firesmith2015}, \citep[pp.~22-23]{Bas2024}
           \fi
-    \item % Discrep count (DEFS): {IEEE2021} | implied by {ISO_IEC2023a}
+    \item % Discrep count (DEFS, CONTRA): {IEEE2021} | implied by {ISO_IEC2023a}
           \ifnotpaper \citeauthor{IEEE2021} \else ISO/IEC and IEEE \fi give
           the external modification of the system as part of ``scalability''
           \ifnotpaper \citeyearpar[p.~39]{IEEE2021}\else
-              \cite[p.~39]{IEEE2021}\fi, while \ifnotpaper \citeauthor{ISO_IEC2023a}
-          \else \cite{ISO_IEC2023a} \fi implies that it is limited to the
-          system itself \ifnotpaper \citeyearpar{ISO_IEC2023a} \fi
-    \item % Discrep count (TERMS): {SWEBOK2024}
+              \cite[p.~39]{IEEE2021}\fi, while \citet{ISO_IEC2023a} \ifnotpaper
+              imply \else implies \fi that it is limited to the system itself
+    \item % Discrep count (TERMS, WRONG): {SWEBOK2024}
           The \acs{swebok} V4's definition of ``scalability testing''
           \citep[p.~5-9]{SWEBOK2024} is really a definition of usability
           testing!
@@ -469,7 +619,7 @@ are shown in \Cref{fig:scal-graph-current}.
 \subsection{Compatibility Testing}
 \label{compat-discrep}
 
-% Discrep count (DEFS): {IEEE2022} | {IEEE2017} ISTQB {ISO_IEC2023a}
+% Discrep count (DEFS, OVER): {IEEE2022} | {IEEE2017} ISTQB {ISO_IEC2023a}
 ``Compatibility testing'' is defined as ``testing that measures the
 degree to which a test item can function satisfactorily alongside
 other independent products in a shared environment (co-existence),
@@ -478,7 +628,7 @@ components (interoperability)'' \citep[p.~3]{IEEE2022}. This
 definition is nonatomic as it combines the ideas of ``co-existence''
 and ``interoperability''. The term ``interoperability testing'' is
 not defined, but is used three times \citep[pp.~22,~43]{IEEE2022}
-% Discrep count (TERMS): {IEEE2022}
+% Discrep count (TERMS, WRONG): {IEEE2022}
 (although the third usage seems like it should be ``portability
 testing''). This implies that ``co-existence testing'' and
 ``interoperability testing'' should be defined as their own terms,
@@ -491,11 +641,11 @@ which is supported by definitions of ``co-existence'' and
 ``interoperability testing'' from \citet[p.~238]{IEEE2017},
 and the decomposition of ``compatibility'' into ``co-existence''
 and ``interoperability'' by \citet{ISO_IEC2023a}!
-% Discrep count (SYNS): implied by {IEEE2021} | {IEEE2022}
+% Discrep count (SYNS, WRONG): implied by {IEEE2021} | {IEEE2022}
 The ``interoperability'' element of ``compatibility testing'' is explicitly
 excluded by \citet[p.~37]{IEEE2021}, (incorrectly) implying that ``compatibility
 testing'' and ``co-existence testing'' are synonyms.
-% Discrep count (SYNS): {Kam2008} | {IEEE2022}
+% Discrep count (SYNS, AMBI): {Kam2008} | {IEEE2022}
 Furthermore, the definition of ``compatibility testing'' in
 \citep[p.~43]{Kam2008} unhelpfully says ``See \emph{interoperability testing}'',
 adding another layer of confusion to the direction of their relationship.

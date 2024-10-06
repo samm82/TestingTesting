@@ -112,6 +112,9 @@ of how many sources comprise each category is given in \Cref{fig:sourceSummary}.
     \label{fig:sourceSummary}
 \end{figure}
 
+% Moved here to display nicely in paper
+\ifnotpaper\else\ieeeTestTermsTable{}\fi
+
 \subsection{Terminology}
 
 This research was intended to describe the current state of testing
@@ -166,15 +169,11 @@ a classification for different kinds of tests (see \refIEEETestTerms{}).
     techniques\footnote{This may or may not be \distinctIEEE{technique}}''
     \cite[p.~40]{IEEE2021}.
 
-    \newgeometry{margin=1.5cm, top=2.5cm}
-    \begin{landscape}
+    \begin{bigLandscape}
         \ieeeTestTermsTable{}
-    \end{landscape}
-
-    \begin{landscape}
+        \newpage
         \otherTestTermsTable{}
-    \end{landscape}
-    \restoregeometry
+    \end{bigLandscape}
     % These were moved earlier to display nicely in paper
 
 \fi
@@ -190,9 +189,6 @@ test approach can be derived by combining test approaches from different
 categories\ifnotpaper; see \Cref{orthogonal-tests} for some examples
 of this\fi.
 
-% Moved here to display nicely in paper
-\ifnotpaper\else\discrepsTable{}\fi
-
 \subsubsection{Parent-Child Relations}
 \label{par-chd-rels}
 Many test approaches are multi-faceted and can be ``specialized'' into others,
@@ -207,8 +203,8 @@ nomenclature also extends to other \nameref{categories-observ} from
 Since there is a considerable degree of nuance introduced by the use of natural
 language, not all discrepancies are equal! To capture this nuance and provide a
 more complete picture, we make a distinction between explicit and implicit
-discrepancies, such as in \Cref{tab:discreps}. A piece of information is
-``implicit'' if:
+discrepancies, such as in \Cref{tab:discrepClss,tab:discrepCats}. A piece of
+information is ``implicit'' if:
 \begin{itemize}
     \item it is not directly given by a source but seems to be implied, and/or
     \item it is only true some of the time (e.g., under certain conditions).
@@ -325,7 +321,9 @@ included a definition):
 \input{build/undefTerms}
 
 \ifnotpaper\else
-    \ieeeTestTermsTable{}  % Moved here to display nicely in paper
     \subsection{Tools}  % Part of separate chapter in thesis 
     \graphGenDesc{}
+    % Moved here to display nicely in paper
+    \discrepClssTable{}
+    \discrepCatsTable{}
 \fi

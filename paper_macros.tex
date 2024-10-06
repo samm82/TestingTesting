@@ -57,6 +57,15 @@
 % Generic "chunks" that get reused
 %------------------------------------------------------------------------------
 
+\newenvironment{bigLandscape}{
+    \newgeometry{hmargin=1cm, vmargin=2.5cm}
+    \begin{landscape}
+        }{
+    \end{landscape}
+    \restoregeometry
+    \newpage
+}
+
 \DeclareDocumentCommand\seeSrcCode{ m m m g }{%
     (see the \href
     {https://github.com/samm82/TestGen-Thesis/blob/#1/scripts/#2.py\#L#3%
@@ -263,8 +272,6 @@ of a test process; for example, ``across the whole organization'' or only
 \ReadFile{\parSynCounts}{build/parSynCounts}
 
 \def\parSynCount{\parSynCounts{1}}
-% \def\parSynOne{\parSynCounts{2}}
-% \def\parSynBoth{\parSynCounts{3}}
 \def\selfCycleCount{\parSynCounts{2}}
 
 \ReadFile{\stdSources}{build/stdSources}
@@ -272,29 +279,34 @@ of a test process; for example, ``across the whole organization'' or only
 \ReadFile{\textSources}{build/textSources}
 \ReadFile{\paperSources}{build/paperSources}
 
-\ReadFile{\stdDiscBrkdwn}{build/stdDiscBrkdwn}
-\ReadFile{\metaDiscBrkdwn}{build/metaDiscBrkdwn}
-\ReadFile{\textDiscBrkdwn}{build/textDiscBrkdwn}
-\ReadFile{\paperDiscBrkdwn}{build/paperDiscBrkdwn}
+\ReadFile{\stdDiscCatBrkdwn}{build/stdDiscCatBrkdwn}
+\ReadFile{\metaDiscCatBrkdwn}{build/metaDiscCatBrkdwn}
+\ReadFile{\textDiscCatBrkdwn}{build/textDiscCatBrkdwn}
+\ReadFile{\paperDiscCatBrkdwn}{build/paperDiscCatBrkdwn}
+\ReadFile{\totalDiscCatBrkdwn}{build/totalDiscCatBrkdwn}
+
+\ReadFile{\stdDiscClsBrkdwn}{build/stdDiscClsBrkdwn}
+\ReadFile{\metaDiscClsBrkdwn}{build/metaDiscClsBrkdwn}
+\ReadFile{\textDiscClsBrkdwn}{build/textDiscClsBrkdwn}
+\ReadFile{\paperDiscClsBrkdwn}{build/paperDiscClsBrkdwn}
+\ReadFile{\totalDiscClsBrkdwn}{build/totalDiscClsBrkdwn}
 
 \def\stds{\nameref{stds}}
 \def\metas{\nameref{metas}}
 \def\texts{\nameref{texts}}
 \def\papers{\nameref{papers}}
 
-% From https://tex.stackexchange.com/a/248135/192195
-\newcounter{laterdef} % just a dummy counter
-\newcommand{\laterdef}[2]{%
-    \renewcommand\thelaterdef{#2}%
-    \refstepcounter{laterdef}\label{#1}%
-}
+\def\srcCat{\hyperref[sources]{Source Category}}
+\def\reduns{\ifnotpaper\nameref{redun}\else Redundancies\footnote{Section omitted for brevity.}\fi}
+
+\def\totalDiscreps{\totalDiscCatBrkdwn{13}}
 
 \def\syns{\hyperref[syns]{Synonyms}}
 \def\pars{\hyperref[pars]{Parents}}
 \def\cats{\hyperref[cats]{Categories}}
 \def\defs{\hyperref[defs]{Definitions}}
 \def\terms{\hyperref[terms]{Terminology}}
-\def\srcs{\hyperref[srcs]{Sources}}
+\def\cites{\hyperref[cites]{Citations}}
 
 %------------------------------------------------------------------------------
 % TODOs

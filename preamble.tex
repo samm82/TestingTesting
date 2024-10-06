@@ -146,6 +146,8 @@
 \MFUhyphentrue % tell mfirstuc to capitalize hyphenated words
 
 % General Utility Functions
+\def\sWidth{5.4cm}
+\def\tWidth{1.1cm}
 \input{macros}
 \notpapertrue
 
@@ -200,7 +202,7 @@
 \newenvironment{paperTable}{
     \begingroup
     \renewcommand*{\thefootnote}{\alph{footnote}}
-    \begin{table}[hbtp!]
+    \begin{table}[p]
         }{
     \end{table}
     \endgroup
