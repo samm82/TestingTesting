@@ -29,8 +29,7 @@ testing revealed that the existing ones are inadequate:
 \ifnotpaper
     Some existing collections of software testing terminology were found, but
     in addition to being incomplete, they also contained many oversights. For
-    example, \citep{IEEE2017} provides the following incomplete/nonsensical
-    definitions for the following terms:
+    example, \citep{IEEE2017} provides the following term-definition pairs:
     \begin{enumerate}
         \item \textbf{Event Sequence Analysis:} ``per'' \citetext{p.~170}
         \item \textbf{Operable:} ``state of'' \citetext{p.~301}
@@ -38,11 +37,18 @@ testing revealed that the existing ones are inadequate:
               % \item \textbf{Software Element:} a ``system element that is software''
               %       \citetext{p.~421}
     \end{enumerate}
-    Additionally, it also defines ``device'' as a ``mechanism or piece of
-    equipment designed to serve a purpose or perform a function''
-    \citetext{p.~136}, but does not define ``equipment'' and only defines
-    ``mechanism'' in the software sense as how ``a function \dots{} transform[s]
-    input into output'' \citetext{p.~270}.
+    These definitions are nonsensical and do not define the terms they claim
+    to! To be sure, they \emph{cannot} correspond to the terms given since the
+    parts of speech are mismatched: the first defines a noun phrase as a
+    preposition, and the second an adjective as a noun phrase fragment.
+    \citet{IEEE2017} also \multAuthHelper{define} ``device'' as a ``mechanism
+    or piece of equipment designed to serve a purpose or perform a function''
+    \citetext{p.~136}, but do\ifnotpaper\else{es}\fi\ not define ``equipment''
+    and only \multAuthHelper{define} ``mechanism'' in the software sense as
+    ``the means used by a function to transform input into output''
+    \citetext{p.~270\todo{OG IEEE 1998}}. This is an example of an incomplete
+    definition; while the definition of ``device'' seems logical at first
+    glance, it actually leaves much undefined.
 \fi
 
 Thus we set about closing this gap in the literature. We first define the scope
