@@ -12,9 +12,14 @@ the testing phase, or simply implement every test previously agreed upon.
 Having a clear  definition for ``complete testing'' reduces the chance for
 miscommunication and, ultimately, the tester getting ``blamed for not
 doing \dots{} [their] job'' \citep[p.~7]{KanerEtAl2011}. These benefits can be
-extrapolated to software testing terminology as a whole. Unfortunately, a
-search for a systematic, rigorous, and ``complete'' taxonomy for software
-testing revealed that the existing ones are inadequate:
+extrapolated to software testing terminology as a whole and are even more
+pronounced when seeking to automatically generate test cases.
+\ifnotpaper Our own project Drasil~\citep{Drasil} is aimed at ``generating all
+    of the software artifacts for (well understood) research software''. Before
+    test cases can be included as a generated artifact, the domain of testing,
+    including known testing approaches, needs to be ``well understood''. \fi
+Unfortunately, a search for a systematic, rigorous, and ``complete'' taxonomy
+for software testing revealed that the existing ones are inadequate:
 
 \begin{itemize}
     \item \ifnotpaper\else Tebes et al. \fi\citet{TebesEtAl2020a} focus on
@@ -69,15 +74,4 @@ also provide some potential solutions covering some of these discrepancies
               approaches?
         \item Can any of these discrepancies be resolved/reduced systematically?
     \end{enumerate}
-
-    In our own project Drasil~\citep{Drasil}, which is aimed at ``generating
-    all of the software artifacts for (well understood) research software'', we
-    wanted to automate the generation of tests. We did not want to do this
-    in an ad hoc manner, so we sought to fully understand the target domain:
-    testing. The goal was to uncover the various approaches towards testing, as
-    well as which prerequisites (e.g., input files, oracles) are needed for
-    each. Then we could evaluate which prerequisites are already ``known'' by
-    Drasil, as well as which were possible to ``teach'', and generate test
-    cases from them. The lack of a consistent, comprehensive source of this
-    information caused the focus of this project to shift drastically.
 \fi
