@@ -279,6 +279,8 @@ of a test process; for example, ``across the whole organization'' or only
 \ReadFile{\textSources}{build/textSources}
 \ReadFile{\paperSources}{build/paperSources}
 
+\def\srcCount{\the\numexpr\stdSources{3} + \metaSources{3} + \textSources{3} + \paperSources{3}}
+
 \ReadFile{\stdDiscCatBrkdwn}{build/stdDiscCatBrkdwn}
 \ReadFile{\metaDiscCatBrkdwn}{build/metaDiscCatBrkdwn}
 \ReadFile{\textDiscCatBrkdwn}{build/textDiscCatBrkdwn}

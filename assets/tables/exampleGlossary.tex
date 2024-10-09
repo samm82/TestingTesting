@@ -1,0 +1,17 @@
+% makecell with new lines so VS Code doesn't freak out
+\def\app{\makecell{Approach\\Category}}
+
+\begin{table}[hbtp!]
+    \centering
+    \caption{Selected entries from glossary of test approaches.}
+    \label{tab:exampleGlossary}
+    \begin{tabularx}{\linewidth}{|m{1.7cm}|m{3cm}|X|m{3.2cm}|m{2.4cm}|X|}
+        \hline
+        \thead{Name}             & \thead{\app}                                                                                                 & \thead{Definition}                                                                                                                                   & \thead{Parent(s)}                                                                                                                                  & \thead{Synonym(s)}                            & \thead{Notes}                                                                                                                                                                                                             \\
+        \hline
+        A/B Testing              & Practice \citep[p.~22]{IEEE2022}, Type (implied by \citealp[p.~58]{Firesmith2015})                           & Testing ``that allows testers to determine which of two systems or components performs better'' \citep[p.~1]{IEEE2022}"                              & Statistical Testing \citep[pp.~1,~35]{IEEE2022}, Usability Testing \citep[p.~58]{Firesmith2015}                                                    & Split-Run Testing \citep[pp.~1,~35]{IEEE2022} & ``Not a test case generation technique as test inputs are not generated''; ``us[es] the existing system as a partial oracle'' \citep[p.~36]{IEEE2022}                                                                     \\
+        All Combinations Testing & Technique \citetext{\citealp[p.~22]{IEEE2022}; \citeyear[p.~2,~16]{IEEE2021}; \citealp[p.~5-11]{SWEBOK2024}} & Testing that covers ``all unique combinations of P-V pairs'' \citep[p.~16]{IEEE2021}                                                                 & Combinatorial Testing \citetext{\citealp[p.~22]{IEEE2022}; \citeyear[p.~2,~16,~Fig.~2]{IEEE2021}; \citealp[p.~5-11]{SWEBOK2024}}                   &                                               & ``The minimum number of test cases required to achieve 100\% \dots{} coverage corresponds to the product of the number of P-V pairs for each test item parameter'' \citep[p.~16]{IEEE2021}. See also Grindal et al., 2005 \\
+        Big-Bang Testing         & Level (inferred from integration testing)                                                                    & ``Testing in which \dots{} [components of a system] are combined all at once into an overall system, rather than in stages'' \citep[p.~45]{IEEE2017} & Integration Testing \citetext{\citealp[p.~45]{IEEE2017}; \citealp[p.~5-7]{SWEBOK2024}; \citealp[p.~603]{SharmaEtAl2021}; \citealp[p.~42]{Kam2008}} &                                               &                                                                                                                                                                                                                           \\
+        \hline
+    \end{tabularx}
+\end{table}
