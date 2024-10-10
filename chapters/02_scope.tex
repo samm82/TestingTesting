@@ -2,7 +2,7 @@
 \label{scope}
 
 Since our motivation is restricted to testing of code, only the ``testing''
-component of \acf{vnv} is considered\seeThesisIssuePar{22}.
+component of \acf{vnv} is considered\thesisissueref{22}.
 For example, design reviews and documentation reviews
 \ifnotpaper \citep[see][pp.~132, 144, respectively]{IEEE2017}
 \else (see \cite[pp.~132, 144]{IEEE2017}, respectively) \fi
@@ -227,8 +227,8 @@ and to the code. For example:
     coverage metric implies a test approach aimed to maximize it; for example,
     ``path testing'' is testing that ``aims to execute all entry-to-exit
     control flow paths in a SUT's control flow graph'' \citep[p.~5013]{SWEBOK2024},
-    thus maximizing the path coverage (see also
-    \ifnotpaper\thesisissueref{63}, \fi \citep[Fig.~1]{SharmaEtAl2021}).
+    thus maximizing the path coverage (see also \citep[Fig.~1]{SharmaEtAl2021}%
+    \thesisissueref{63}).
 
     \subsubsection{Quality-driven Types}
     \label{qual-test}
@@ -255,7 +255,7 @@ and to the code. For example:
 
     Given the importance of software qualities to defining test types, the
     definitions of 75 software qualities are also tracked in this current work%
-    \seeThesisIssuePar{21}[, \thesisissueref{23}, and \thesisissueref{27}].
+    \thesisissueref{21,23,27}.
     This was done by capturing their definitions, any precedent for the existence
     of an associated test type, and any additional notes in a glossary. Over time,
     software qualities were ``upgraded''
@@ -267,7 +267,7 @@ and to the code. For example:
     that categories of requirements \emph{also} imply related testing approaches
     (such as ``technical testing''). \ifnotpaper Even assuming this is the case, some types of
         requirements do not apply to the code itself, and as such are out of scope%
-        \seeThesisIssuePar{43}, such as:
+        \thesisissueref{43}, such as:
         \begin{itemize}
             \item \textbf{Nontechnical Requirement:} a ``requirement affecting product
                   and service acquisition or development that is not a property of
@@ -289,7 +289,7 @@ and to the code. For example:
     Specific programming languages are sometimes used to define test approaches.
     If the reliance on a specific programming language is intentional, then
     this really implies an underlying test approach that may be generalized to
-    other languages. These are therefore considered out-of-scope\seeThesisIssuePar{63},
+    other languages. These are therefore considered out-of-scope\thesisissueref{63},
     including the following examples:
 
     \begin{itemize}

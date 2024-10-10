@@ -30,12 +30,6 @@
     \fi
 }
 
-\NewDocumentCommand{\seeThesisIssue}{ m }{\ifnotpaper\seeAlways[\thesisissueref]{#1}\fi}
-\NewDocumentCommand{\seeThesisIssuePar}{ m o }
-{\ifnotpaper\seeParAlways[\thesisissueref]{#1}[#2]\fi}
-\NewDocumentCommand{\seeThesisIssueFoot}{ m }
-{\ifnotpaper\seeFootAlways[\thesisissueref]{#1}\fi}
-
 \NewDocumentCommand{\seeAlways}{ O{\Cref} m }{{ see #1{#2}}}
 \NewDocumentCommand{\seeParAlways}{ O{\Cref} m O{} }{{ (see #1{#2}#3)}}
 \NewDocumentCommand{\seeFootAlways}{ O{\Cref} m }{\footnote{See #1{#2}.}}
@@ -348,5 +342,25 @@ of a test process; for example, ``across the whole organization'' or only
 
 \newcommand{\issueref}[1]{\href{https://github.com/JacquesCarette/Drasil/issues/#1}{\##1}}
 \newcommand{\pullref}[1]{\href{https://github.com/JacquesCarette/Drasil/pull/#1}{\##1}}
-\newcommand{\thesisissueref}[1]{\href{https://github.com/samm82/TestGen-Thesis/issues/#1}{\##1}}
+\newcommand{\thesisissuerefhelper}[1]{\href{https://github.com/samm82/TestGen-Thesis/issues/#1}{\##1}}
 
+\ExplSyntaxOn
+
+% Based on output from ChatGPT
+\NewDocumentCommand{\mapthesisissueref}{m}
+{
+    % Clear temporary sequences to store transformed items
+    \seq_clear:N \l_tmpa_seq
+    \seq_clear:N \l_tmpb_seq
+
+    \seq_set_split:Nnn \l_tmpa_seq { , } { #1 } % Split the input by commas
+    \seq_map_inline:Nn \l_tmpa_seq
+    {
+        \seq_put_right:Nn \l_tmpb_seq {\thesisissuerefhelper{##1}}
+    }
+    \seq_use:Nnnn \l_tmpb_seq { ~and~ } { ,~ } { ,~and~ }
+}
+
+\ExplSyntaxOff
+
+\newcommand{\thesisissueref}[1]{\todo[backgroundcolor=lightgray]{See \mapthesisissueref{#1}}}

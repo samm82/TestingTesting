@@ -5,15 +5,15 @@ We provide different recommendations for resolving various
 discrepancies\seeParAlways{discrep}. This was done with the goal of
 organizing them more logically and making them:
 \begin{enumerate}
-      \item Atomic (e.g., disaster/recovery testing seems to have two
-            disjoint definitions)
-      \item Straightforward (e.g., backup and recovery testing's definition
-            implies the idea of performance, but its name does not
-            \ifnotpaper; failover/recovery testing, failover and recovery
-            testing, and failover testing are all given separately\fi)
-      \item Consistent (e.g., backup/recovery testing and failover/recovery
-            testing explicitly exclude an aspect included in its parent
-            disaster/recovery testing)
+    \item Atomic (e.g., disaster/recovery testing seems to have two
+          disjoint definitions)
+    \item Straightforward (e.g., backup and recovery testing's definition
+          implies the idea of performance, but its name does not
+          \ifnotpaper; failover/recovery testing, failover and recovery
+          testing, and failover testing are all given separately\fi)
+    \item Consistent (e.g., backup/recovery testing and failover/recovery
+          testing explicitly exclude an aspect included in its parent
+          disaster/recovery testing)
 \end{enumerate}
 The following are our recommendations for the areas of
 \hyperref[rec-test-rec]{Recovery}, \hyperref[scal-test-rec]{Scalability}, and
@@ -28,83 +28,83 @@ demonstrated in \Cref{fig:recovery-graph-current,fig:recovery-graph-proposed}.
 
 % Only top or bottom to comply with IEEE guidelines
 \begin{figure}[bt!]
-      \centering
-      \begin{minipage}{.575\linewidth}
-            \centering
-            \recoveryGraphCurrent{}
-            \caption{Current relations between ``recovery
-                  testing'' terms.}
-            \label{fig:recovery-graph-current}
-      \end{minipage}%
-      \begin{minipage}{.425\linewidth}
-            \centering
-            \recoveryGraphProposed{}
-            \caption{Proposed relations between
-                  rationalized ``recovery testing'' terms.}
-            \label{fig:recovery-graph-proposed}
-      \end{minipage}
+    \centering
+    \begin{minipage}{.575\linewidth}
+        \centering
+        \recoveryGraphCurrent{}
+        \caption{Current relations between ``recovery
+            testing'' terms.}
+        \label{fig:recovery-graph-current}
+    \end{minipage}%
+    \begin{minipage}{.425\linewidth}
+        \centering
+        \recoveryGraphProposed{}
+        \caption{Proposed relations between
+            rationalized ``recovery testing'' terms.}
+        \label{fig:recovery-graph-proposed}
+    \end{minipage}
 \end{figure}
 
 \begin{itemize}
-      \item \textbf{Recoverability Testing:} ``Testing \dots\ aimed at
-            verifying software restart capabilities after a system crash or
-            other disaster'' \citep[p.~5-9]{SWEBOK2024} including ``recover[ing]
-            the data directly affected and re-establish[ing] the desired state
-            of the system''
-            \ifnotpaper
-                  (\citealp{ISO_IEC2023a}; similar in \citealp[p.~7-10]{SWEBOK2024})
-            \else
-                  \cite{ISO_IEC2023a} (similar in \cite[p.~7-10]{SWEBOK2024})
-            \fi so that the system ``can perform
-            required functions'' \citep[p.~370]{IEEE2017}. ``Recovery testing''
-            will be a synonym, as in \citep[p.~47]{Kam2008}, since it is the
-            more prevalent term throughout various sources, although
-            ``recoverability testing'' is preferred to indicate that this
-            explicitly focuses on the \emph{ability} to
-            recover, not the \emph{performance} of recovering.
-      \item \textbf{Failover Testing:} Testing that ``validates the SUT's
-            ability to manage heavy loads or unexpected failure to continue
-            typical operations'' \cite[p.~5-9]{SWEBOK2024} by entering a
-            ``backup operational mode in which [these responsibilities] \dots\
-            are assumed by a secondary system'' \citepISTQB{}. This will
-            replace ``failover/recovery testing'', since it is more clear, and
-            since this is one way that a system can recover from failure, it
-            will be a subset of ``recovery testing''.
-      \item \textbf{Transfer Recovery Testing:} Testing to evaluate if,
-            in the case of a failure, ``operation of the test item can be
-            transferred to a different operating site and \dots\ be transferred
-            back again once the failure has been resolved''
-            \citeyearpar[p.~37]{IEEE2021}. This replaces the second definition
-            of ``disaster/recovery testing'', since the first is just a
-            description of ``recovery testing'', and could potentially be
-            considered as a kind of failover testing. This may not be
-            intrinsic to the hardware/software (e.g., may be the responsibility
-            of humans/processes).
-      \item \textbf{Backup Recovery Testing:} Testing that determines the
-            ability ``to restor[e] from back-up memory in the event of failure''
-            \citep[p.~37]{IEEE2021}. The qualification that this occurs
-            ``without transfer[ing] to a different operating site or back-up
-            system'' \citetext{p.~37} \emph{could} be made explicit, but this is
-            implied since it is separate from transfer recovery testing and
-            failover testing, respectively.
-      \item \textbf{Recovery Performance Testing:} Testing ``how well a system or
-            software can recover \dots\ [from] an interruption or failure''
-            \ifnotpaper
-                  (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
-            \else
-                  \cite[p.~7-10]{SWEBOK2024} (similar in \cite{ISO_IEC2023a})
-            \fi ``within specified parameters of time, cost, completeness, and
-            accuracy'' \citep[p.~2]{IEEE2013}. The distinction between the
-            performance-related elements of recovery testing seemed to be
-            meaningful\seeThesisIssuePar{40}, but was not captured consistently
-            by the literature. This will be a subset of ``performance-related
-            testing'' \ifnotpaper (see \Cref{perf-test-rec}) \fi
-            as ``recovery testing'' is in \citep[p.~22]{IEEE2022}. This could
-            also be extended into testing the performance of specific elements
-            of recovery (e.g., failover performance testing), but this be too
-            fine-grained and may better be captured as an
-            \hyperref[orthogonal-tests]
-            {orthogonally derived test approach}.
+    \item \textbf{Recoverability Testing:} ``Testing \dots\ aimed at
+          verifying software restart capabilities after a system crash or
+          other disaster'' \citep[p.~5-9]{SWEBOK2024} including ``recover[ing]
+          the data directly affected and re-establish[ing] the desired state
+          of the system''
+          \ifnotpaper
+              (\citealp{ISO_IEC2023a}; similar in \citealp[p.~7-10]{SWEBOK2024})
+          \else
+              \cite{ISO_IEC2023a} (similar in \cite[p.~7-10]{SWEBOK2024})
+          \fi so that the system ``can perform
+          required functions'' \citep[p.~370]{IEEE2017}. ``Recovery testing''
+          will be a synonym, as in \citep[p.~47]{Kam2008}, since it is the
+          more prevalent term throughout various sources, although
+          ``recoverability testing'' is preferred to indicate that this
+          explicitly focuses on the \emph{ability} to
+          recover, not the \emph{performance} of recovering.
+    \item \textbf{Failover Testing:} Testing that ``validates the SUT's
+          ability to manage heavy loads or unexpected failure to continue
+          typical operations'' \cite[p.~5-9]{SWEBOK2024} by entering a
+          ``backup operational mode in which [these responsibilities] \dots\
+          are assumed by a secondary system'' \citepISTQB{}. This will
+          replace ``failover/recovery testing'', since it is more clear, and
+          since this is one way that a system can recover from failure, it
+          will be a subset of ``recovery testing''.
+    \item \textbf{Transfer Recovery Testing:} Testing to evaluate if,
+          in the case of a failure, ``operation of the test item can be
+          transferred to a different operating site and \dots\ be transferred
+          back again once the failure has been resolved''
+          \citeyearpar[p.~37]{IEEE2021}. This replaces the second definition
+          of ``disaster/recovery testing'', since the first is just a
+          description of ``recovery testing'', and could potentially be
+          considered as a kind of failover testing. This may not be
+          intrinsic to the hardware/software (e.g., may be the responsibility
+          of humans/processes).
+    \item \textbf{Backup Recovery Testing:} Testing that determines the
+          ability ``to restor[e] from back-up memory in the event of failure''
+          \citep[p.~37]{IEEE2021}. The qualification that this occurs
+          ``without transfer[ing] to a different operating site or back-up
+          system'' \citetext{p.~37} \emph{could} be made explicit, but this is
+          implied since it is separate from transfer recovery testing and
+          failover testing, respectively.
+    \item \textbf{Recovery Performance Testing:} Testing ``how well a system or
+          software can recover \dots\ [from] an interruption or failure''
+          \ifnotpaper
+              (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
+          \else
+              \cite[p.~7-10]{SWEBOK2024} (similar in \cite{ISO_IEC2023a})
+          \fi ``within specified parameters of time, cost, completeness, and
+          accuracy'' \citep[p.~2]{IEEE2013}. The distinction between the
+          performance-related elements of recovery testing seemed to be
+          meaningful\thesisissueref{40}, but was not captured consistently
+          by the literature. This will be a subset of ``performance-related
+          testing'' \ifnotpaper (see \Cref{perf-test-rec}) \fi
+          as ``recovery testing'' is in \citep[p.~22]{IEEE2022}. This could
+          also be extended into testing the performance of specific elements
+          of recovery (e.g., failover performance testing), but this be too
+          fine-grained and may better be captured as an
+          \hyperref[orthogonal-tests]
+          {orthogonally derived test approach}.
 \end{itemize}
 
 \subsection{Scalability Testing}
@@ -125,8 +125,8 @@ be required to support anticipated future loads''%
 \fi ``scalability'' as ``the degree to which a component or system can be
 adjusted for changing capacity''%
 \ifnotpaper \ \citeyearpar{ISTQB}; the original source
-      they reference agrees, defining it as ``the measure of a system's ability to be
-      upgraded to accommodate increased loads'' \citep[p.~381]{GerrardAndThompson2002}%
+    they reference agrees, defining it as ``the measure of a system's ability to be
+    upgraded to accommodate increased loads'' \citep[p.~381]{GerrardAndThompson2002}%
 \fi. In contrast, capacity testing focuses on the system's present state, evaluating
 the ``capability of a product to meet requirements for the maximum limits of a
 product parameter'', such as the number of concurrent users, transaction
@@ -151,54 +151,54 @@ claim that one objective of elasticity testing is ``to evaluate scalability''
 likely refers more accurately to ``elasticity''! This also makes sense in the
 context of other definitions provided by the \acs{swebok} V4:
 \begin{itemize}
-      \item \textbf{Scalability:} ``the software's ability to increase and
-            scale up on its nonfunctional requirements, such as load, number of
-            transactions, and volume of data'' \citep[p.~5-5]{SWEBOK2024}.
-            Based on this
-            definition, scalability testing is then a subtype of load testing
-            and volume testing, as well as potentially transaction flow testing.
-      \item \textbf{Elasticity Testing\footnote{While this definition seems
-                        correct, it \swebokElasRef{}}:} testing that ``assesses
-            the ability of the \acs{sut} \dots\ to rapidly expand or shrink
-            compute, memory, and storage resources without compromising the
-            capacity to meet peak utilization'' \citep[p.~5-9]{SWEBOK2024}.
-            Based on this
-            definition, elasticity testing is then a subtype of memory
-            management testing (with both being a subtype of resource
-            utilization testing) and stress testing.
+    \item \textbf{Scalability:} ``the software's ability to increase and
+          scale up on its nonfunctional requirements, such as load, number of
+          transactions, and volume of data'' \citep[p.~5-5]{SWEBOK2024}.
+          Based on this
+          definition, scalability testing is then a subtype of load testing
+          and volume testing, as well as potentially transaction flow testing.
+    \item \textbf{Elasticity Testing\footnote{While this definition seems
+                  correct, it \swebokElasRef{}}:} testing that ``assesses
+          the ability of the \acs{sut} \dots\ to rapidly expand or shrink
+          compute, memory, and storage resources without compromising the
+          capacity to meet peak utilization'' \citep[p.~5-9]{SWEBOK2024}.
+          Based on this
+          definition, elasticity testing is then a subtype of memory
+          management testing (with both being a subtype of resource
+          utilization testing) and stress testing.
 \end{itemize}
 This distinction is also consistent with how the terms are used in industry:
 \ifnotpaper \citeauthor{Pandey2023} \else \cite{Pandey2023} \fi says
 that scalability is the ability to ``increase
 \dots\ performance or efficiency as demand increases over time'', while
 elasticity allows a system to ``tackle changes in the workload [that] occur for
-a short period''\ifnotpaper\ (\citeyear{Pandey2023};\seeThesisIssue{35})\fi.
+a short period''\ifnotpaper\ (\citeyear{Pandey2023}\thesisissueref{35})\fi.
 
 % Only top or bottom to comply with IEEE guidelines
 \begin{figure}[bt!]
-      \centering
-      \begin{minipage}{.5\linewidth}
-            \centering
-            \scalabilityGraphCurrent{}
-            \caption{Current relations between ``scalability
-                  testing'' terms.}
-            \label{fig:scal-graph-current}
-      \end{minipage}%
-      \begin{minipage}{.5\linewidth}
-            \centering
-            \scalabilityGraphProposed{}
-            \caption{Proposed relations\\
-                  between rationalized\\
-                  ``scalability testing'' terms.}
-            \label{fig:scal-graph-proposed}
-      \end{minipage}
+    \centering
+    \begin{minipage}{.5\linewidth}
+        \centering
+        \scalabilityGraphCurrent{}
+        \caption{Current relations between ``scalability
+            testing'' terms.}
+        \label{fig:scal-graph-current}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+        \centering
+        \scalabilityGraphProposed{}
+        \caption{Proposed relations\\
+            between rationalized\\
+            ``scalability testing'' terms.}
+        \label{fig:scal-graph-proposed}
+    \end{minipage}
 \end{figure}
 
 \begin{paperFigure}
-      \centering
-      \performanceGraph{}
-      \caption{Proposed relations between rationalized ``performance-related testing'' terms.}
-      \label{fig:perf-graph}
+    \centering
+    \performanceGraph{}
+    \caption{Proposed relations between rationalized ``performance-related testing'' terms.}
+    \label{fig:perf-graph}
 \end{paperFigure}
 
 To make things even more confusing, the \acs{swebok} V4 says ``scalability
@@ -217,36 +217,36 @@ in \Cref{fig:scal-graph-current,fig:scal-graph-proposed}.
 ``Performance testing'' is defined as testing ``conducted to evaluate the
 degree to which a test item accomplishes its designated functions''
 \ifnotpaper
-      (\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017}; similar in
-      \citeyear[pp.~38-39]{IEEE2021}; \citealp[p.~1187]{Moghadam2019})%
+    (\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017}; similar in
+    \citeyear[pp.~38-39]{IEEE2021}; \citealp[p.~1187]{Moghadam2019})%
 \else
-      \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022} (similar in
-      \cite[pp.~38-39]{IEEE2021}, \cite[p.~1187]{Moghadam2019})%
+    \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022} (similar in
+    \cite[pp.~38-39]{IEEE2021}, \cite[p.~1187]{Moghadam2019})%
 \fi. It does this
 by ``measuring the performance metrics''
 \ifnotpaper
-      (\citealp[p.~1187]{Moghadam2019}; similar in \citealpISTQB{})
+    (\citealp[p.~1187]{Moghadam2019}; similar in \citealpISTQB{})
 \else
-      \cite[p.~1187]{Moghadam2019} (similar in \cite{ISTQB})
+    \cite[p.~1187]{Moghadam2019} (similar in \cite{ISTQB})
 \fi (such as the ``system's capacity for growth''
 \citep[p.~23]{Gerrard2000b}), ``detecting the functional problems appearing
 under certain execution conditions'' \citep[p.~1187]{Moghadam2019}, and
 ``detecting violations of non-functional requirements under expected and
 stress conditions'' \ifnotpaper
-      (\citealp[p.~1187]{Moghadam2019}; similar in \citep[p.~5-9]{SWEBOK2024})%
+    (\citealp[p.~1187]{Moghadam2019}; similar in \citep[p.~5-9]{SWEBOK2024})%
 \else
-      \cite[p.~1187]{Moghadam2019} (similar in \cite[p.~5-9]{SWEBOK2024})%
+    \cite[p.~1187]{Moghadam2019} (similar in \cite[p.~5-9]{SWEBOK2024})%
 \fi. It is performed either \dots\
 \begin{enumerate}
-      \item \dots\ ``within given constraints of time and other resources''
-            \ifnotpaper
-                  (\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017};
-                  similar in \citealp[p.~1187]{Moghadam2019})%
-            \else
-                  \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022} (similar
-                  in \cite[p.~1187]{Moghadam2019})%
-            \fi, or
-      \item \dots\ ``under a `typical' load'' \citep[p.~39]{IEEE2021}.
+    \item \dots\ ``within given constraints of time and other resources''
+          \ifnotpaper
+              (\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017};
+              similar in \citealp[p.~1187]{Moghadam2019})%
+          \else
+              \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022} (similar
+              in \cite[p.~1187]{Moghadam2019})%
+          \fi, or
+    \item \dots\ ``under a `typical' load'' \citep[p.~39]{IEEE2021}.
 \end{enumerate}
 
 It is listed as a subset of performance-related testing, which is defined as
@@ -259,7 +259,7 @@ characteristics'' that performance testing would seek to ``assess'', which
 seems to imply that these are sub-approaches to performance testing instead.
 This is consistent with how some sources treat ``performance testing'' and
 ``performance-related testing'' as synonyms \ifnotpaper
-      (\citealp[p.~5-9]{SWEBOK2024}; \citealp[p.~1187]{Moghadam2019})%
+    (\citealp[p.~5-9]{SWEBOK2024}; \citealp[p.~1187]{Moghadam2019})%
 \else \cite[p.~5-9]{SWEBOK2024}, \cite[p.~1187]{Moghadam2019}%
 \fi, as noted in \Cref{syns}. This makes sense because of how general the
 concept of ``performance'' is; most definitions of ``performance testing'' seem
@@ -269,17 +269,17 @@ However, it seems more consistent to infer
 that the definition of ``performance-related testing'' is the more general one
 often assigned to ``performance testing'' performed ``within given constraints
 of time and other resources'' \ifnotpaper (\citealp[p.~7]{IEEE2022};
-      \citeyear[p.~320]{IEEE2017}; similar in \citealp[p.~1187]{Moghadam2019})%
+    \citeyear[p.~320]{IEEE2017}; similar in \citealp[p.~1187]{Moghadam2019})%
 \else \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022}
-      (similar in \cite[p.~1187]{Moghadam2019})\fi, and
+    (similar in \cite[p.~1187]{Moghadam2019})\fi, and
 ``performance testing'' is a sub-approach of this performed ``under a `typical'
 load'' \citep[p.~39]{IEEE2021}. This has other implications for relations
 between these types of testing; for example, ``load testing'' usually occurs
 ``between anticipated conditions of low, typical, and peak usage''
 \ifnotpaper (\citealp[p.~5]{IEEE2022}; \citeyear[p.~39]{IEEE2021};
-      \citeyear[p.~253]{IEEE2017}\todo{OG IEEE 2013}; \citealpISTQB{})%
+    \citeyear[p.~253]{IEEE2017}\todo{OG IEEE 2013}; \citealpISTQB{})%
 \else \cite[p.~253]{IEEE2017}, \cite{ISTQB}, \cite[p.~5]{IEEE2022},
-      \cite[p.~39]{IEEE2021}\fi, so it is a child of ``performance-related
+    \cite[p.~39]{IEEE2021}\fi, so it is a child of ``performance-related
 testing'' and a parent of ``performance testing''.
 
 Finally, the ``self-loops'' mentioned in \Cref{selfPars} provide no new

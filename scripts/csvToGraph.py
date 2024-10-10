@@ -431,12 +431,12 @@ def splitListAtEmpty(listToSplit):
 
 parSynNotes = {
     ("Organization-based Testing", "Role-based Testing") :
-        "The distinction between organization- and "
+        ("The distinction between organization- and "
         "role-based testing in \\citep[pp.~17,~37,~39]{Firesmith2015} "
         "seems arbitrary, but further investigation may prove it to be "
-        "meaningful\\seeThesisIssuePar{59}.",
+        "meaningful.", "\\thesisissueref{59}"), 
     ("Structured Walkthroughs", "Walkthroughs") :
-        "See \\Cref{walkthrough-syns}."
+        ("See \\Cref{walkthrough-syns}.", "")
 }
 
 parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
@@ -454,7 +454,9 @@ def makeParSynLine(chd, par, parSource, synSource):
             parSynSet = infParSynsNoSrc
         for terms, note in parSynNotes.items():
             if chd == terms[0] and par == terms[1]:
-                par += (f"\\footnote{{{note}}}")
+                # note[0] is footnote content 
+                # note[1] is "TODO" item
+                par += (f"{note[1]}\\footnote{{{note[0]}}}")
                 break
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return

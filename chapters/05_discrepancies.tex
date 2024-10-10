@@ -225,7 +225,7 @@ themselves are not consistently defined, and some approaches are categorized
 differently by different sources:
 
 % ; these differences are tracked so
-% they can be analyzed more systematically\seeThesisIssuePar{21}.
+% they can be analyzed more systematically\thesisissueref{21}.
 
 \input{build/DiscrepCatCats}
 
@@ -315,7 +315,7 @@ discrepancies seemed different enough to merit their own category. \ifnotpaper
 Sometimes a document cites another for a piece of information that does not
 appear! \ifnotpaper
     The following discrepancies are examples of this:
-    \input{build/DiscrepCatSrcs}
+    \input{build/DiscrepCatCites}
 \else
     For example, \citet[p.~184]{DoğanEtAl2014} \multAuthHelper{claim} that
     \citet{SakamotoEtAl2013} \multAuthHelper{define} ``prime path coverage'',
@@ -616,7 +616,7 @@ are shown in \Cref{fig:scal-graph-current}.
 % and used by \ifnotpaper\citeauthor{IEEE2017}\else\cite{IEEE2017}\fi\ and the term
 % ``performance efficiency testing'' is \emph{also} used by
 % \ifnotpaper\citeauthor{IEEE2017}\else\cite{IEEE2017}\fi\ (but not defined
-% explicitly). \ifnotpaper Further discussion\seeThesisIssuePar{43} brought us to
+% explicitly). \ifnotpaper Further discussion\thesisissueref{43} brought us to
 %       the conclusion \else It can then be concluded \fi that ``performance
 % efficiency testing'' is a subset of ``performance testing'', and the
 % difference of ``relative to the amount of resources used'' or ``be efficient in
