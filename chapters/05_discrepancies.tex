@@ -188,8 +188,8 @@ security testing are given as subtypes of reliability testing by
 Additionally, some self-referential definitions imply that a test
 approach is a parent of itself. Since these are by nature self-contained within
 a given source, these are counted \emph{once} as explicit discrepancies within
-their sources in \Cref{tab:discreps}. \ifnotpaper The following examples were
-    identified through automatic analysis of the generated graphs:
+their sources in \Cref{tab:discrepClss,tab:discrepCats}. \ifnotpaper The following
+    examples were identified through automatic analysis of the generated graphs:
     \input{build/selfCycles} Interestingly, performance testing is \emph{not}
     described as a sub-approach of usability testing by \citep{Gerrard2000a,
         Gerrard2000b}, which would have been more meaningful information to
@@ -279,11 +279,11 @@ approaches, as well as supporting terms, are defined:
         \item Production Verification Testing
         \item Recovery Testing* (Failover/Recovery Testing, Back-up/Recovery
               Testing, \formatPaper{\textbf}{Backup and Recovery Testing*},
-              Recovery*;\seeAlways{recov-discrep})
+              Recovery*; see \Cref{recov-discrep})
         \item Response-Time Testing
         \item \formatPaper{\emph}{Reviews} (ISO/IEC 20246) (Code Reviews*)
         \item Scalability Testing (defined as a synonym of ``capacity
-              testing'';\seeAlways{scal-discrep})
+              testing''; see \Cref{scal-discrep})
         \item Statistical Testing
         \item System Integration Testing (System Integration*)
         \item System Testing* (also mentioned but not defined in \citep{IEEE2013})

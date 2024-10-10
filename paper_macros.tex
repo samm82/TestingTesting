@@ -24,16 +24,6 @@
 
 \newif\ifnotpaper
 
-\newcommand{\seeSectionFoot}[1]{%
-    \ifnotpaper
-        \seeFootAlways{#1}%
-    \fi
-}
-
-\NewDocumentCommand{\seeAlways}{ O{\Cref} m }{{ see #1{#2}}}
-\NewDocumentCommand{\seeParAlways}{ O{\Cref} m O{} }{{ (see #1{#2}#3)}}
-\NewDocumentCommand{\seeFootAlways}{ O{\Cref} m }{\footnote{See #1{#2}.}}
-
 \newcommand{\formatPaper}[2]{%
     \ifnotpaper
         #1{#2}%

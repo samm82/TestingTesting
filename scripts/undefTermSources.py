@@ -6,14 +6,11 @@ indented = False
 paperOut, notPaperOut = [], []
 
 class UndefinedTerm:
-    def __init__(self, name, sources, indent=False, seeSectionFoot= "",
-                 footnote=""):
+    def __init__(self, name, sources, indent=False, footnote=""):
         self.name = name
         self.sources = sources
         self.indent = indent
-        self.seeSectionFoot = seeSectionFoot
-        if not self.seeSectionFoot:
-            self.footnote = footnote
+        self.footnote = footnote
 
     def render(self):
         global indented
@@ -27,9 +24,7 @@ class UndefinedTerm:
             paperOut.append(change)
             notPaperOut.append(change)
         paperOut.append(f"\\item {self.name}")
-        footnote = (f"\\seeSectionFoot{{{self.seeSectionFoot}}}"
-                    if self.seeSectionFoot else f"\\footnote{{{self.footnote}}}"
-                    if self.footnote else "")
+        footnote = f"\\footnote{{{self.footnote}}}" if self.footnote else ""
         notPaperOut.append(
             f"\\item \\textbf{{{self.name}{footnote}:}} \\citet{{{self.sources}}}")
 
@@ -59,7 +54,7 @@ undefTerms = [
                   footnote="\\ifnotpaper \\else References \\fi"
                   "\\citep{YuEtAl2011} and \\citep{Tsui2007} were added as "
                   "out-of-scope examples."),
-    UndefinedTerm("Backup Testing", "Bas2024", seeSectionFoot="recov-discrep"),
+    UndefinedTerm("Backup Testing", "Bas2024", footnote="See \\Cref{recov-discrep}."),
 ]
 
 for term in undefTerms:

@@ -291,8 +291,8 @@ multiSynNotes = {
         "separately by \\citet[p.~22]{IEEE2022}, \\ifnotpaper who also give "
         "\\else which also gives \\fi ``use case testing'' as a ``common form "
         "of scenario testing'' \\citeyearpar[p.~20]{IEEE2021}. This implies that "
-        "``use case testing'' may instead be a child of ``user scenario testing''"
-        "\\seeParAlways{tab:parSyns}."
+        "``use case testing'' may instead be a child of ``user scenario testing'' "
+        "(see \\Cref{tab:parSyns})."
     ),
     "Static Assertion Checking": (
         "% Discrep count (SYNS, WRONG): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
