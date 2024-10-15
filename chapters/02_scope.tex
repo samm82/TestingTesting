@@ -13,12 +13,13 @@ following examples:
 
 \begin{itemize}
     \item Ergonomics testing and proximity-based testing (see \citealpISTQB{})
-          are out of scope.
+          are out of scope, since they are used for testing hardware.
+    \item Similarly, \acf{emsec} testing \ifnotpaper
+              (\citealp{ISO2021}; \citealp[p.~95]{ZhouEtAl2012})\else
+              \cite{ISO2021}, \cite[p.~95]{ZhouEtAl2012}\fi, which deals with
+          the ``security risk'' of ``information leakage via electromagnetic
+          emanation'' \citep[p.~95]{ZhouEtAl2012}, is also out of scope.
           \ifnotpaper
-    \item Similarly, \acf{emsec} testing (\citealp{ISO2021};
-          \citealp[p.~95]{ZhouEtAl2012}), which deals with the ``security risk''
-          of ``information leakage via electromagnetic emanation''
-          \citep[p.~95]{ZhouEtAl2012}, is also out of scope.
     \item All the examples of domain-specific testing given by
           \citet[p.~26]{Firesmith2015} are focused on hardware, so these
           examples are out of scope. However, this might not be representative
@@ -34,8 +35,7 @@ following examples:
           \citep{HolleyEtAl1996}, which are even less related! Since these all
           focus on environment-specific factors that would not impact the code,
           this category of testing is also out of scope.
-          \fi
-    \item \ifnotpaper Similarly, \fi \citet{SPICE2022} uses the terms ``software
+    \item Similarly, \citet{SPICE2022} uses the terms ``software
           qualification testing'' and ``system qualification testing'' in the
           context of the automotive industry. While these may be in scope, the
           more general idea of ``qualification testing'' seems to refer to the
@@ -44,7 +44,7 @@ following examples:
           or photovoltaic device, ``into a reliable and marketable product''
           \citep[p.~1]{SuhirEtAl2013}. Therefore, it is currently unclear if
           this is in scope\todo{Investigate further}.
-          \ifnotpaper
+          \fi
     \item \acf{orthat} can be used when testing software \citep{Mandl1985} (in
           scope) but can also be used for hardware \citep[pp.~471-472]{Valcheva2013},
           such as ``processors \dots{} made from pre-built and pre-tested
@@ -53,6 +53,7 @@ following examples:
           problems in manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product
           and manufacturing process design'' \citep[p.~44]{Tsui2007} and is thus
           also out of scope.
+          \ifnotpaper
     \item Since control systems often have a software \emph{and} hardware
           component \citep{ISO2015, PreußeEtAl2012,ForsythEtAl2004},
           only the software component is in scope. In some cases, it is
