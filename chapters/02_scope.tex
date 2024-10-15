@@ -2,33 +2,85 @@
 \label{scope}
 
 Since our motivation is restricted to testing of code, only the ``testing''
-component of \acf{vnv} is considered\thesisissueref{22}.
-For example, design reviews and documentation reviews
-\ifnotpaper \citep[see][pp.~132, 144, respectively]{IEEE2017}
-\else (see \cite[pp.~132, 144]{IEEE2017}, respectively) \fi
-are out of scope, as they focus on the \acs{vnv} of design and documentation,
-respectively. Likewise, ergonomics testing
-and proximity-based testing (see \citealpISTQB{}) are out of scope as they
-fundamentally involve hardware.
-\ifnotpaper
-    Similarly removed is \acf{emsec} testing
-    (\citealp{ISO2021}; \citealp[p.~95]{ZhouEtAl2012}), which deals with the
-    ``security risk'' of ``information leakage via electromagnetic emanation''
-    \citep[p.~95]{ZhouEtAl2012}.
-    Sometimes, wider decisions must be made on whether a whole category of
-    testing is in scope or not. For example, while all the examples of domain-specific
-    testing given by \citet[p.~26]{Firesmith2015} are focused on hardware, this
-    might not be representative of all types (e.g., \acf{ml} model testing seems
-    domain-specific). Conversely, the examples of environmental tolerance testing
-    \citetext{p.~56} do not seem to apply to software. For example, radiation tolerance
-    testing seems to focus on hardware, such as motors \citep{MukhinEtAl2022},
-    robots \citep{ZhangEtAl2020}, or ``nanolayered carbide and nitride materials''
-    \citep[p.~1]{TunesEtAl2022}. Acceleration tolerance testing seems to focus on
-    \accelTolTest{} and acoustic tolerance testing on rats \citep{HolleyEtAl1996},
-    which are even less related! Since these all seem to focus on
-    environment-specific factors that would not impact the code, this category of
-    testing is also out of scope.
+component of \acf{vnv} is considered\thesisissueref{22}. This excludes some
+practices from consideration, even though they may be included in the
+overall software development process:
 
+\subsection{Hardware Testing}
+While testing the software run on or in control of hardware is in scope,
+testing performed on the hardware itself is out of scope, as illustrated by the
+following examples:
+
+\begin{itemize}
+    \item Ergonomics testing and proximity-based testing (see \citealpISTQB{})
+          are out of scope.
+          \ifnotpaper
+    \item Similarly, \acf{emsec} testing (\citealp{ISO2021};
+          \citealp[p.~95]{ZhouEtAl2012}), which deals with the ``security risk''
+          of ``information leakage via electromagnetic emanation''
+          \citep[p.~95]{ZhouEtAl2012}, is also out of scope.
+    \item All the examples of domain-specific testing given by
+          \citet[p.~26]{Firesmith2015} are focused on hardware, so these
+          examples are out of scope. However, this might not be representative
+          of all types (e.g., \acf{ml} model testing seems domain-specific), so
+          some subset of domain-specific testing may be in scope.
+    \item Conversely, the examples of environmental tolerance testing given by
+          \citet[p.~56]{Firesmith2015} do \emph{not} seem to apply to software.
+          For example, radiation tolerance testing seems to focus on hardware,
+          such as motors \citep{MukhinEtAl2022}, robots \citep{ZhangEtAl2020},
+          or ``nanolayered carbide and nitride materials''
+          \citep[p.~1]{TunesEtAl2022}. Acceleration tolerance testing seems to
+          focus on \accelTolTest{} and acoustic tolerance testing on rats
+          \citep{HolleyEtAl1996}, which are even less related! Since these all
+          focus on environment-specific factors that would not impact the code,
+          this category of testing is also out of scope.
+    \item \acf{orthat} can be used when testing software \citep{Mandl1985} (in
+          scope) but can also be used for hardware \citep[pp.~471-472]{Valcheva2013},
+          such as ``processors \dots{} made from pre-built and pre-tested
+          hardware components'' \citetext{p.~471} (out of scope). A subset of
+          \acs{orthat} called ``\acf{toat}'' is used for ``experimental design
+          problems in manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product
+          and manufacturing process design'' \citep[p.~44]{Tsui2007} and is thus
+          also out of scope.
+    \item Since control systems often have a software \emph{and} hardware
+          component \citep{ISO2015, PreußeEtAl2012,ForsythEtAl2004},
+          only the software component is in scope. In some cases, it is
+          unclear whether the ``loops''\footnote{Humorously, the testing of
+              loops in chemical systems \citep{Dominguez-PumarEtAl2020} and
+              copper loops \citep{Goralski1999} are out of scope.} being
+          tested are implemented by software or hardware, such as those in
+          wide-area damping controllers \citep{PierreEtAl2017, TrudnowskiEtAl2017}.
+          \begin{itemize}
+              \item A related note: ``path coverage'' or ``path testing''
+                    seems to be able to refer to either paths through code
+                    (as a subset of control-flow testing)
+                    \citep[p.~5-13]{SWEBOK2024} or through a model, such as
+                    a finite-state machine (as a subset of model-based
+                    testing) \citep[p.~184]{DoğanEtAl2014}.
+          \end{itemize}
+          \fi
+\end{itemize}
+
+\subsection[V\&V of Other Artifacts]{\acs{vnv} of Other Artifacts}
+The only testing of a software artifact produced by the software life cycle
+that is in scope is testing of the software itself, as demonstrated by the
+following examples:
+
+\begin{itemize}
+    \item Design reviews and documentation reviews are out of scope, as they
+          focus on the \acs{vnv} of design \citep[pp.~132]{IEEE2017} and
+          documentation \ifnotpaper \citetext{p.~144}\else
+              \cite[pp.~144]{IEEE2017}\fi, respectively.
+          \ifnotpaper
+    \item Security audits can focus on ``an organization's \dots{} processes
+          and infrastructure'' \citepISTQB{} (out of scope) or
+          ``aim to ensure that all of the products installed on a site are
+          secure when checked against the known vulnerabilities for those
+          products'' \citep[p.~28]{Gerrard2000b} (in scope).
+          \fi
+\end{itemize}
+
+\ifnotpaper
     It is also interesting to note that different test approaches seem to be more
     specific to certain domains. For example, the terms ``software qualification
     testing'' and ``system qualification testing'' show up throughout
@@ -66,40 +118,11 @@ and to the code. For example:
           technique'' and can be used to assist fuzz and metamorphic testing
           \citep[p.~5-15]{SWEBOK2024} (in scope).
           \ifnotpaper
-    \item Security audits can focus on ``an organization's \dots{} processes
-          and infrastructure'' \citepISTQB{} (out of scope) or
-          ``aim to ensure that all of the products installed on a site are
-          secure when checked against the known vulnerabilities for those
-          products'' \citep[p.~28]{Gerrard2000b} (in scope).
-    \item \acf{orthat} can be used when testing software \citep{Mandl1985} (in
-          scope) but can also be used for hardware \citep[pp.~471-472]{Valcheva2013},
-          such as ``processors \dots{} made from pre-built and pre-tested
-          hardware components'' \citetext{p.~471} (out of scope). A subset of
-          \acs{orthat} called ``\acf{toat}'' is used for ``experimental design
-          problems in manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product
-          and manufacturing process design'' \cite[p.~44]{Tsui2007} and is thus
-          also out of scope.
     \item Even though \emph{reliability testing} and \emph{maintainability
               testing} can start \emph{without} code by ``measur[ing]
           structural attributes of representations of the software''
           \citep[p.~18]{FentonAndPfleeger1997}, only reliability and
           maintainability testing done \emph{on} code is in scope.
-    \item Since control systems often have a software \emph{and} hardware
-          component \citep{ISO2015, PreußeEtAl2012,ForsythEtAl2004},
-          only the software component is in scope. In some cases, it is
-          unclear whether the ``loops''\footnote{Humorously, the testing of
-              loops in chemical systems \citep{Dominguez-PumarEtAl2020} and
-              copper loops \citep{Goralski1999} are out of scope.} being
-          tested are implemented by software or hardware, such as those in
-          wide-area damping controllers \citep{PierreEtAl2017, TrudnowskiEtAl2017}.
-          \begin{itemize}
-              \item A related note: ``path coverage'' or ``path testing''
-                    seems to be able to refer to either paths through code
-                    (as a subset of control-flow testing)
-                    \citep[p.~5-13]{SWEBOK2024} or through a model, such as
-                    a finite-state machine (as a subset of model-based
-                    testing) \citep[p.~184]{DoğanEtAl2014}.
-          \end{itemize}
           \fi
 \end{enumerate}
 
