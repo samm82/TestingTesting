@@ -1,12 +1,26 @@
 \section{Scope}
 \label{scope}
 
-Since our motivation is restricted to testing of code, only the ``testing''
-component of \acf{vnv} is considered\thesisissueref{22}. This excludes some
-practices from consideration, even though they may be included in the
-overall software development process:
+Since our motivation is restricted to testing code, only this component of
+\acf{vnv} is considered\thesisissueref{22}. However, some test approaches
+are used for testing things other than code, and some approaches can be used
+for both! In these cases, only the subsections of these approaches focused on
+code are considered. For example, reliability testing and maintainability
+testing can start \emph{without} code by ``measur[ing] structural attributes
+of representations of the software'' \citep[p.~18]{FentonAndPfleeger1997}, but
+only reliability and maintainability testing performed on code \emph{itself} is
+in scope of this research. Therefore, some practices are excluded from
+consideration either in part or in full; \nameref{hard-test} and \nameref{other-vnv}
+are completely out of scope, as well as relevant areas of other testing
+approaches that are otherwise in scope. \nameref{static-test} can be performed
+on code, so while it isn't relevant to the original motivation of this work, it
+is a useful component of software testing and is therefore included at this level
+of analysis. \ifnotpaper Finally, some \nameref{derived-tests} were identified;
+    of these, \nameref{lang-test} and \nameref{orthogonal-tests} are out of
+    scope as the information they provide is captured by other approaches. \fi
 
 \subsection{Hardware Testing}
+\label{hard-test}
 While testing the software run on or in control of hardware is in scope,
 testing performed on the hardware itself is out of scope, as illustrated by the
 following examples:
@@ -74,6 +88,7 @@ following examples:
 \end{itemize}
 
 \subsection[V\&V of Other Artifacts]{\acs{vnv} of Other Artifacts}
+\label{other-vnv}
 The only testing of a software artifact produced by the software life cycle
 that is in scope is testing of the software itself, as demonstrated by the
 following examples:
@@ -90,20 +105,13 @@ following examples:
           secure when checked against the known vulnerabilities for those
           products'' \citep[p.~28]{Gerrard2000b} (in scope).
           \fi
-\end{itemize}
-
-Furthermore, only some aspects of some testing approaches are relevant. This
-mainly manifests as a testing approach that applies to both the \acs{vnv} itself
-and to the code. For example:
-
-\begin{enumerate}
-    \item \emph{Error seeding} is the ``process of intentionally adding
+    \item Error seeding is the ``process of intentionally adding
           known faults to those already in a computer program'',
           done to both ``monitor[] the rate of detection and removal'',
           which is a part of \acs{vnv} of the \acs{vnv} itself (out of scope),
           ``and estimat[e] the number of faults remaining''
           \citep[p.~165]{IEEE2017}, which helps verify the actual code (in scope).
-    \item \emph{Fault injection testing}, where ``faults are artificially
+    \item Fault injection testing, where ``faults are artificially
           introduced into the \acs{sut} [System Under Test]'', can be used to
           evaluate the effectiveness of a test suite \citep[p.~5-18]{SWEBOK2024},
           which is a part of \acs{vnv} of the \acs{vnv} itself (out of scope),
@@ -111,39 +119,34 @@ and to the code. For example:
           the robustness of the system in the event of internal and
           external failures'' \citep[p.~42]{IEEE2022}, which helps verify
           the actual code (in scope).
-    \item ``\emph{Mutation [t]esting} was originally conceived as a
+    \item ``Mutation [t]esting was originally conceived as a
           technique to evaluate test suites in which a mutant is a slightly
           modified version of the \acs{sut}'' \citep[p.~5-15]{SWEBOK2024},
           which is in the realm of \acs{vnv} of the \acs{vnv} itself (out of
           scope). However, it ``can also be categorized as a structure-based
           technique'' and can be used to assist fuzz and metamorphic testing
           \citep[p.~5-15]{SWEBOK2024} (in scope).
-          \ifnotpaper
-    \item Even though \emph{reliability testing} and \emph{maintainability
-              testing} can start \emph{without} code by ``measur[ing]
-          structural attributes of representations of the software''
-          \citep[p.~18]{FentonAndPfleeger1997}, only reliability and
-          maintainability testing done \emph{on} code is in scope.
-          \fi
-\end{enumerate}
+\end{itemize}
+
+
+\subsection{Static Testing}
+\label{static-test}
+Sometimes, the term ``testing'' excludes static testing
+\ifnotpaper
+    (\citealp[p.~222]{AmmannAndOffutt2017}; \citealp[p.~13]{Firesmith2015})%
+\else
+    \cite[p.~222]{AmmannAndOffutt2017}, \cite[p.~13]{Firesmith2015}%
+\fi, restricting it to ``dynamic validation'' \citep[p.~5-1]{SWEBOK2024} or
+``dynamic verification'' ``in which a system or component is
+executed'' \citep[p.~427]{IEEE2017}. Since ``terminology is not uniform
+among different communities, and some use the term \emph{testing} to refer to
+static techniques\notDefDistinctIEEE{technique} as well''
+\citep[p.~5-2]{SWEBOK2024}, the scope of ``testing'' for the purpose of this
+project will include both ``static testing'' and ``dynamic testing'', as
+done by \citet[p.~17]{IEEE2022}, \citet[pp.~8-9]{Gerrard2000a}, and even a
+source that explicitly excluded static testing \citep[p.~440]{IEEE2017}!
 
 \ifnotpaper
-    \subsection{Static Testing}
-    \label{static-test}
-    Sometimes, the term ``testing'' excludes static testing
-    \ifnotpaper
-        (\citealp[p.~222]{AmmannAndOffutt2017}; \citealp[p.~13]{Firesmith2015})%
-    \else
-        \cite[p.~222]{AmmannAndOffutt2017}, \cite[p.~13]{Firesmith2015}%
-    \fi, restricting it to ``dynamic validation'' \citep[p.~5-1]{SWEBOK2024} or
-    ``dynamic verification'' ``in which a system or component is
-    executed'' \citep[p.~427]{IEEE2017}. Since ``terminology is not uniform
-    among different communities, and some use the term \emph{testing} to refer to
-    static techniques\notDefDistinctIEEE{technique} as well''
-    \citep[p.~5-2]{SWEBOK2024}, the scope of ``testing'' for the purpose of this
-    project will include both ``static testing'' and ``dynamic testing'', as
-    done by \citet[p.~17]{IEEE2022}, \citet[pp.~8-9]{Gerrard2000a}, and even a
-    source that explicitly excluded static testing \citep[p.~440]{IEEE2017}!
 
     % TODO: can this be formalized at all and included in a glossary or section?
     % \citeauthor{Patton2006} introduces ``specification testing''
