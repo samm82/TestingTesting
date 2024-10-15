@@ -34,6 +34,17 @@ following examples:
           \citep{HolleyEtAl1996}, which are even less related! Since these all
           focus on environment-specific factors that would not impact the code,
           this category of testing is also out of scope.
+          \fi
+    \item \ifnotpaper Similarly, \fi \citet{SPICE2022} uses the terms ``software
+          qualification testing'' and ``system qualification testing'' in the
+          context of the automotive industry. While these may be in scope, the
+          more general idea of ``qualification testing'' seems to refer to the
+          process of making a hardware component, such as an electronic
+          component \citep{AhsanEtAl2020}, gas generator \citep{ParateEtAl2021}
+          or photovoltaic device, ``into a reliable and marketable product''
+          \citep[p.~1]{SuhirEtAl2013}. Therefore, it is currently unclear if
+          this is in scope\todo{Investigate further}.
+          \ifnotpaper
     \item \acf{orthat} can be used when testing software \citep{Mandl1985} (in
           scope) but can also be used for hardware \citep[pp.~471-472]{Valcheva2013},
           such as ``processors \dots{} made from pre-built and pre-tested
@@ -79,17 +90,6 @@ following examples:
           products'' \citep[p.~28]{Gerrard2000b} (in scope).
           \fi
 \end{itemize}
-
-\ifnotpaper
-    It is also interesting to note that different test approaches seem to be more
-    specific to certain domains. For example, \citet{SPICE2022} uses the terms
-    ``software qualification testing'' and ``system qualification testing'' in
-    the context of the automotive industry. The more general idea of
-    ``qualification testing'' seems to refer to the process of
-    making a hardware component, such as an electronic component
-    \citep{AhsanEtAl2020}, gas generator \citep{ParateEtAl2021} or photovoltaic
-    device, ``into a reliable and marketable product'' \citep[p.~1]{SuhirEtAl2013}.
-\fi
 
 Furthermore, only some aspects of some testing approaches are relevant. This
 mainly manifests as a testing approach that applies to both the \acs{vnv} itself
