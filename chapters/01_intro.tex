@@ -17,9 +17,12 @@ pronounced when seeking to automatically generate test cases.
 \ifnotpaper Our own project Drasil~\citep{Drasil} is aimed at ``generating all
     of the software artifacts for (well understood) research software''. Before
     test cases can be included as a generated artifact, the domain of testing,
-    including known testing approaches, needs to be ``well understood''. \fi
-Unfortunately, a search for a systematic, rigorous, and ``complete'' taxonomy
-for software testing revealed that the existing ones are inadequate:
+    including known testing approaches, needs to be ``well understood''. Even
+    aside from this, \else Ultimately, \fi if the field of software engineering
+holds code to a high standard in terms of clarity, consistency, and robustness,
+then the literature that supports code development should be held to this same
+standard! Unfortunately, a search for a systematic, rigorous, and ``complete''
+taxonomy for software testing revealed that the existing ones are inadequate:
 
 \begin{itemize}
     \item \ifnotpaper\else Tebes et al. \fi\citet{TebesEtAl2020a} focus on
@@ -36,13 +39,13 @@ in addition to being incomplete, they also contained many oversights.
 \ifnotpaper
     For example, \citet{IEEE2017} \multAuthHelper{provide} the following
     term-definition pairs:
-    \begin{enumerate}
+    \begin{itemize}
         \item \textbf{Event Sequence Analysis:} ``per'' \citetext{p.~170}
         \item \textbf{Operable:} ``state of'' \citetext{p.~301}
               % This may be a bad example, since the cf. provides some more context
               % \item \textbf{Software Element:} a ``system element that is software''
               %       \citetext{p.~421}
-    \end{enumerate}
+    \end{itemize}
     These definitions are nonsensical and do not define the terms they claim
     to! To be sure, they \emph{cannot} correspond to the terms given since the
     parts of speech are mismatched: the first defines a noun phrase as a
