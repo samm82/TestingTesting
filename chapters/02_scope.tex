@@ -16,7 +16,7 @@ approaches that are otherwise in scope. \nameref{static-test} can be performed
 on code, so while it isn't relevant to the original motivation of this work, it
 is a useful component of software testing and is therefore included at this level
 of analysis. \ifnotpaper Finally, some \nameref{derived-tests} were identified;
-    of these, \nameref{lang-test} and \nameref{orthogonal-tests} are out of
+    of these, \nameref{lang-test} and \nameref{orth-test} are out of
     scope as the information they provide is captured by other approaches. \fi
 
 \subsection{Hardware Testing}
@@ -218,15 +218,21 @@ source that explicitly excluded static testing \citep[p.~440]{IEEE2017}!
     \subsection{Derived Test Approaches}
     \label{derived-tests}
 
-    Since the field of software is ever-evolving, being able to adapt to new
-    developments, as well as being able to talk about and understand them, is
-    crucial. In addition to methods of categorizing test approaches, the literature
-    also provides the following methods of deriving new ones. For completeness,
-    these are also considered in scope, except for \nameref{lang-test} and
-    \nameref{orthogonal-tests}.
+    Since the field of software is ever-evolving, being able to adapt to,
+    talk about, and understand new developments in software testing is
+    crucial. In addition to methods of categorizing test approaches, the
+    literature also suggests that other categories of testing-related
+    terminology can be used to define new test approaches. These include
+    coverage metrics (\Cref{cov-test}), software qualities (\Cref{qual-test}),
+    requirements (\Cref{req-test}), and attacks (\Cref{attacks}), which are
+    meaningful enough to merit analysis and are therefore in scope. Some
+    approaches given in the literature are derived from programming languages
+    (\Cref{lang-test}) or other orthogonal test approaches
+    (\Cref{orth-test}), but these do not capture new information and are
+    therefore out of scope.
 
     \subsubsection{Coverage-driven Techniques}
-    \label{tech-cov}
+    \label{cov-test}
 
     Test techniques are able to ``identify test coverage items \dots{} and
     derive corresponding test cases''
@@ -289,6 +295,7 @@ source that explicitly excluded static testing \citep[p.~440]{IEEE2017}!
     to test types when mentioned (or implied) by a source\todo{Find examples?}.
 
     \subsubsection{Requirements-driven Approaches}
+    \label{req-test}
     While not as universally applicable, some types of requirements have associated
     types of testing (e.g., functional, non-functional, security). This may mean
     that categories of requirements \emph{also} imply related testing approaches
@@ -341,7 +348,7 @@ source that explicitly excluded static testing \citep[p.~440]{IEEE2017}!
     \end{itemize}
 
     \subsubsection{Orthogonally Derived Approaches}
-    \label{orthogonal-tests}
+    \label{orth-test}
     Some test approaches appear to be combinations of other (seemingly
     orthogonal) approaches. These are considered out of scope, since they are
     just trivial specializations of documented test approaches that are in
