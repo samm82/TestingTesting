@@ -10,14 +10,17 @@ testing can start \emph{without} code by ``measur[ing] structural attributes
 of representations of the software'' \citep[p.~18]{FentonAndPfleeger1997}, but
 only reliability and maintainability testing performed on code \emph{itself} is
 in scope of this research. Therefore, some practices are excluded from
-consideration either in part or in full; \nameref{hard-test} and \nameref{other-vnv}
+consideration either in part or in full; hardware testing (\Cref{hard-test})
+and the \acs{vnv} of other artifacts (\Cref{other-vnv})
 are completely out of scope, as well as relevant areas of other testing
-approaches that are otherwise in scope. \nameref{static-test} can be performed
+approaches that are otherwise in scope. Static testing can be performed
 on code, so while it isn't relevant to the original motivation of this work, it
 is a useful component of software testing and is therefore included at this level
-of analysis. \ifnotpaper Finally, some \nameref{derived-tests} were identified;
-    of these, \nameref{lang-test} and \nameref{orth-test} are out of
-    scope as the information they provide is captured by other approaches. \fi
+of analysis (\Cref{static-test}). \ifnotpaper Finally, some test approaches can
+    be derived from other categories of testing-related terminology
+    (\Cref{derived-tests}); of these, approaches derived from programming
+    languages (\Cref{lang-test}) or other orthogonal test approaches
+    (\Cref{orth-test}) are out of scope. \fi
 
 \subsection{Hardware Testing}
 \label{hard-test}
@@ -237,9 +240,9 @@ another document \citeyearpar[p.~440]{IEEE2017}%
     requirements (\Cref{req-test}), and attacks (\Cref{attacks}), which are
     meaningful enough to merit analysis and are therefore in scope. Some
     approaches given in the literature are derived from programming languages
-    (\Cref{lang-test}) or other orthogonal test approaches
-    (\Cref{orth-test}), but these do not capture new information and are
-    therefore out of scope.
+    (\Cref{lang-test}) or other orthogonal test approaches (\Cref{orth-test}),
+    but these are out of scope as the information they provide is captured by
+    other approaches.
 
     \subsubsection{Coverage-driven Techniques}
     \label{cov-test}
