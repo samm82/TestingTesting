@@ -369,11 +369,18 @@ another document \citeyearpar[p.~440]{IEEE2017}%
     \subsubsection{Orthogonally Derived Approaches}
     \label{orth-test}
     Some test approaches appear to be combinations of other (seemingly
-    orthogonal) approaches. These are considered out of scope, since they are
-    just trivial specializations of documented test approaches that are in
-    scope. For the following examples; we indicate the combination for the
-    first item, but omit the rest for brevity as the name makes it clear
-    what the combination is:
+    orthogonal) approaches. While the use of a combination term can sometimes
+    make sense, such as when writing a paper or performing testing that focuses
+    on the intersection between two test approaches, they are sometimes given
+    the same ``weight'' as their atomic counterparts. For example, \citetISTQB{}
+    \multAuthHelper{include} ``formal reviews'' and ``informal reviews'' in
+    \ifnotpaper their \else its \fi glossary as separate terms, despite their
+    definitions essentially boiling down to ``reviews that follow (or do not
+    follow) a formal process'', which do not provide any new information.
+    Regardless, these are considered out of scope since their details are
+    captured as the in-scope test approaches that comprise them. For the
+    following examples, we indicate the combination for the first item but
+    omit the rest for brevity as the name makes it clear what the combination is:
     \begin{enumerate}
         \item Black box conformance testing \citep[p.~25]{JardEtAl1999}
               (combining black box and conformance testing)
