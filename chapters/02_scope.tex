@@ -363,7 +363,7 @@ another document \citeyearpar[p.~440]{IEEE2017}%
     scope. For the following examples; we indicate the combination for the
     first item, but omit the rest for brevity as the name makes it clear
     what the combination is:
-    \begin{itemize}
+    \begin{enumerate}
         \item Black box conformance testing \citep[p.~25]{JardEtAl1999}
               (combining black box and conformance testing)
         \item Black-box integration testing \citep[p.~345-346]{SakamotoEtAl2013}
@@ -383,7 +383,6 @@ another document \citeyearpar[p.~440]{IEEE2017}%
               \citep[pp.~184-185,~Tab.~21]{DoğanEtAl2014}, including for
               ``AJAX user interfaces'' \citetext{p.~191}
         \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000a}
-        \item Machine learning-assisted performance testing? \citep{Moghadam2019}
         \item Manual procedure testing \citep[p.~47]{Firesmith2015}
         \item Manual security audits \citep[p.~28]{Gerrard2000b}
         \item Model-based GUI testing (\citealp[Tab.~1]{DoğanEtAl2014}; implied
@@ -401,11 +400,17 @@ another document \citeyearpar[p.~440]{IEEE2017}%
         \item Usability test script(ing) \citepISTQB{}
         \item Web application regression testing \cite[Tab.~21]{DoğanEtAl2014}
         \item White-box unit testing \citep[pp.~345-346]{SakamotoEtAl2013}
-    \end{itemize}
+    \end{enumerate}
 
-    While some approaches are closely associated, such as remote testing
-    with asynchronous testing, and local with synchronous \citep{JardEtAl1999},
-    these seem to imply a \hyperref[par-chd-rels]{parent-child relation}
-    rather than a combination.
+    The existence of orthogonal combinations could allow for other test
+    approaches to be extrapolated from them. For example, \citet{Moghadam2019}
+    uses the phrase ``machine learning-assisted performance testing''; since
+    performance testing is a known test approach, this may imply the existence
+    of the test approach ``machine learning-assisted testing''. Likewise,
+    \citet{JardEtAl1999} \multAuthHelper{use} the phrases ``local synchronous
+    testing'' and ``remote asynchronous testing''. While these can be
+    decomposed, for example, into local testing and synchronous testing,
+    the two resulting approaches may not be orthogonal, potentially even having
+    a parent-child relation (defined in \Cref{par-chd-rels}).
 
 \fi
