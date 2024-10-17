@@ -31,10 +31,10 @@ for software testing revealed that the existing ones are inadequate:
           between requirements engineering and software testing.
 \end{itemize}
 
+Some existing collections of software testing terminology were found, but
+in addition to being incomplete, they also contained many oversights.
 \ifnotpaper
-    Some existing collections of software testing terminology were found, but
-    in addition to being incomplete, they also contained many oversights. For
-    example, \citet{IEEE2017} \multAuthHelper{provide} the following
+    For example, \citet{IEEE2017} \multAuthHelper{provide} the following
     term-definition pairs:
     \begin{enumerate}
         \item \textbf{Event Sequence Analysis:} ``per'' \citetext{p.~170}
@@ -55,9 +55,17 @@ for software testing revealed that the existing ones are inadequate:
     \citetext{p.~270\todo{OG IEEE 1998}}. This is an example of an incomplete
     definition; while the definition of ``device'' seems logical at first
     glance, it actually leaves much undefined.
-\fi
 
-We set about closing this gap in the literature.
+    This problem also extends to test approaches, and
+\else
+    In particular,
+\fi
+discrepancies between how test approaches are defined can lead to the
+miscommunication mentioned by \citet[p.~7]{KanerEtAl2011}. \tourDiscrep{}
+\alphaDiscrep{} \loadDiscrep{} With inconsistencies such as these, it is clear
+that there is a notable gap in the literature, one which we attempt to describe
+and fill.
+
 \ifnotpaper
     The following three research questions guide this process:
     \begin{enumerate}
@@ -74,8 +82,8 @@ We set about closing this gap in the literature.
     excerpt of some of these approaches, along with their recorded information
     (excluding other notes for brevity), is given in
     \Cref{tab:approachGlossaryExcerpt}.
-
 \fi
+
 This document describes this process, as well as its results, in more detail.
 We first define the scope of
 what kinds of software testing are of interest (\Cref{scope}) and examine the
