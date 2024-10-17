@@ -57,5 +57,5 @@ else:
             catSourceLine = ("\\ifnotpaper \\citetext{\\citealpISTQB{}; \\citealp{" +
                                 ','.join([s for s in catSources if not s.startswith("ISTQB")]) +
                                 "}} \\else " + catSourceLine + " \\fi")
-        writeFile([cat.longname, catSourceLine,
-                    str(len(catSources))], f"{cat.name.lower()}Sources", True)
+        writeFile([cat.longname, catSourceLine, len(catSources)],
+                  f"{cat.name.lower()}Sources", True)

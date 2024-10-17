@@ -124,7 +124,7 @@ def readFileAsStr(filename) -> str:
         return "\n".join(file.readlines())
 
 def writeFile(lines, filename, helper: bool = False, dir: str = "graphs"):
-    lines = [line + '\n' for line in lines]
+    lines = [str(line) + '\n' for line in lines]
     filename += ".tex"
     if helper:
         filename = f"build/{filename}"

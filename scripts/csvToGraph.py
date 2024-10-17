@@ -36,6 +36,10 @@ categories = approaches["Approach Category"].to_list()
 synonyms = approaches["Synonym(s)"].to_list()
 parents = approaches["Parent(s)"].to_list()
 
+# Write number of qualities to a file
+writeFile([len(read_csv("QualityGlossary.csv")["Name"].to_list())],
+          "qualityCount", True)
+
 # Terms in parentheses we want to keep
 PAREN_EXC = {"Acceptance"}
 

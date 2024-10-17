@@ -274,27 +274,33 @@ another document \citeyearpar[p.~440]{IEEE2017}%
         \citeyear[p.~473]{IEEE2017}\todo{OG IEEE 2013})%
     \else
         \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}, \cite[p.~473]{IEEE2017}%
-    \fi, they can derived from software qualities: ``capabilit[ies] of
+    \fi, they can be derived from software qualities: ``capabilit[ies] of
     software product[s] to satisfy stated and implied needs when used under
     specified conditions'' \citep[p.~424]{IEEE2017}\todo{OG ISO/IEC 2014}. This
     is supported by reliability and performance testing, which are both examples of
     test types \citep{IEEE2022, IEEE2021} that are based on their underlying
     qualities \citep[p.~18]{FentonAndPfleeger1997}.
-    \ifnotpaper
-        For quantifying quality-driven testing, measurements should include
-        an entity to be measured, a specific attribute to measure, and the actual
-        measure (i.e., units, starting state, ending state, what to include)
-        \citeyearpar[p.~36]{FentonAndPfleeger1997} where attributes must be
-        defined before they can be measured \citetext{p.~38}.
-    \fi
-
+    % \ifnotpaper
+    %     For quantifying quality-driven testing, measurements should include
+    %     an entity to be measured, a specific attribute to measure, and the actual
+    %     measure (i.e., units, starting state, ending state, what to include)
+    %     \citetext{p.~36} where attributes must be
+    %     defined before they can be measured \citetext{p.~38}.
+    %
+    % \fi
     Given the importance of software qualities to defining test types, the
-    definitions of 75 software qualities are also tracked in this current work%
-    \thesisissueref{21,23,27}.
-    This was done by capturing their definitions, any precedent for the existence
-    of an associated test type, and any additional notes in a glossary. Over time,
-    software qualities were ``upgraded''
-    to test types when mentioned (or implied) by a source\todo{Find examples?}.
+    definitions of \qualityCount{} software qualities are also tracked in this
+    current work\thesisissueref{21,23,27}. This was done by capturing their
+    definitions, any precedent for the existence of an associated test type,
+    and any additional notes in a glossary. Over time, software qualities were
+    ``upgraded'' to test types when mentioned (or implied) by a source.
+    Examples of this include conformance testing
+    \ifnotpaper
+        (\citealp[p.~5-7]{SWEBOK2024}; \citealp[p.~25]{JardEtAl1999}; implied
+        by \citealp[p.~93]{IEEE2017})
+    \else
+        \cite[p.~5-7]{SWEBOK2024}, \cite[p.~25]{JardEtAl1999}
+    \fi and efficiency testing \citep[p.~44]{Kam2008}.
 
     \subsubsection{Requirements-driven Approaches}
     \label{req-test}

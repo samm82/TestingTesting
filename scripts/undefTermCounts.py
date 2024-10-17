@@ -32,5 +32,5 @@ totalAfter = newTotalAfter
 undefAfter = newUndefAfter
 
 # Populate values for Undefined Terms section
-writeFile(map(str, [totalBefore, undefBefore, totalAfter, undefAfter]),
+writeFile([totalBefore, undefBefore, totalAfter, undefAfter],
           "undefTermCounts", dir="misc")
