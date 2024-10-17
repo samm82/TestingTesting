@@ -106,16 +106,24 @@ following examples:
           products'' \citep[p.~28]{Gerrard2000b} (in scope).
           \fi
     \item Error seeding is the ``process of intentionally adding
-          known faults to those already in a computer program'',
+          known faults\footnote{
+          \label{add-fault}While error seeding and fault injection testing
+          both introduce faults as part of testing, they do so with different
+          goals: to ``estimat[e] the number of faults remaining''
+          \citep[p.~165]{IEEE2017} and ``test the robustness of the system''
+          \citeyearpar[p.~42]{IEEE2022}, respectively. Therefore, these
+          approaches are not considered synonyms, and the lack of this relation
+          in the literature is not included in \Cref{syns} as a synonym
+          discrepancy.} to those already in a computer program'',
           done to both ``monitor[] the rate of detection and removal'',
           which is a part of \acs{vnv} of the \acs{vnv} itself (out of scope),
           ``and estimat[e] the number of faults remaining''
           \citep[p.~165]{IEEE2017}, which helps verify the actual code (in scope).
     \item Fault injection testing, where ``faults are artificially
-          introduced into the \acs{sut} [System Under Test]'', can be used to
-          evaluate the effectiveness of a test suite \citep[p.~5-18]{SWEBOK2024},
-          which is a part of \acs{vnv} of the \acs{vnv} itself (out of scope),
-          or ``to test
+          introduced\textsuperscript{\ref{add-fault}} into the \acs{sut}
+          [System Under Test]'', can be used to evaluate the effectiveness of a
+          test suite \citep[p.~5-18]{SWEBOK2024}, which is a part of \acs{vnv}
+          of the \acs{vnv} itself (out of scope), or ``to test
           the robustness of the system in the event of internal and
           external failures'' \citep[p.~42]{IEEE2022}, which helps verify
           the actual code (in scope).
