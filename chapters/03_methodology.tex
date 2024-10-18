@@ -130,10 +130,11 @@ graphs. A summary of how many sources comprise each category is given in
 
 This research was intended to describe the current state of testing
 terminology instead of prematurely applying any classifications to reduce bias.
-Therefore, the notions of \nameref{categories-observ} and \nameref{par-chd-rels}
+Therefore, the notions of test approach categories (\Cref{categories-observ})
+and parent-child relations (\Cref{par-chd-rels})
 arose naturally from the literature. Even though these are ``results'' of this
 research, they are defined here for clarity since they are used throughout this
-thesis. We also define the notion of \nameref{rigidity}.
+thesis. We also define the notion of ``rigidity'' in \Cref{rigidity}.
 
 \subsubsection{Categories of Testing Approaches}
 \label{categories-observ}
@@ -202,10 +203,11 @@ of this\fi.
 \subsubsection{Parent-Child Relations}
 \label{par-chd-rels}
 Many test approaches are multi-faceted and can be ``specialized'' into others,
-such as \nameref{perf-test-rec}. These ``specializations'' will be referred to
-as ``children'' or ``sub-approaches'' of the multi-faceted ``parent''. This
-nomenclature also extends to other \nameref{categories-observ} from
-\Cref{tab:ieeeTestTerms}, such as ``sub-type''.
+such as performance-related testing (see \Cref{perf-test-rec}). These
+``specializations'' will be referred to as ``children'' or ``sub-approaches''
+of the multi-faceted ``parent''. This nomenclature also extends to other
+categories given in \Cref{categories-observ,tab:ieeeTestTerms}, such as
+``sub-type''.
 
 \subsubsection{Rigidity}
 \label{rigidity}
@@ -220,12 +222,12 @@ information is ``implicit'' if:
     \item it is only true some of the time (e.g., under certain conditions).
 \end{itemize}
 Discrepancies based on implicit information are themselves implicit. These are
-automatically detected when \hyperref[graph-gen]{generating graphs} and
-\hyperref[discrep-analysis]{analyzing discrepancies} by looking for indicators
-of uncertainty, such as question marks, ``~(Testing)'' (which indicates
-that a test approach isn't explicitly denoted as such), and the keywords
-``implied'', ``inferred'', ``can be'', ``ideally'', ``usually'', ``most'',
-``likely'', ``often'', ``if'', and ``although''
+automatically detected when generating graphs and analyzing discrepancies
+(see \Cref{graph-gen,discrep-analysis}, respectively) by looking for indicators
+of uncertainty, such as question marks, ``~(Testing)'' (which indicates that a
+test approach isn't explicitly denoted as such; note the inclusion of the
+space), and the keywords ``implied'', ``inferred'', ``can be'', ``ideally'',
+``usually'', ``most'', ``likely'', ``often'', ``if'', and ``although''
 \seeSrcCode{50380a3}{csvToGraph}{124}{140}. These words were used when creating
 the glossaries to capture varying degrees of nuance, such as when a test
 approach ``can be'' a child of another or is a synonym of another ``most of the
@@ -281,9 +283,9 @@ document\ifnotpaper\ (see \Cref{qual-test})\fi.
 
 During the first pass of data collection, all software-testing-focused terms
 are included. Some of them are less applicable to test case automation
-\ifnotpaper(such as \Cref{static-test}\thesisissueref{39}) \fi or too
-broad\ifnotpaper (such as \Cref{attacks}\thesisissueref{55})\fi, so they
-will be omitted over the course of analysis.
+\ifnotpaper (such as static testing; see \Cref{static-test}\thesisissueref{39})
+\fi or too broad\ifnotpaper\ (such as attacks; see \Cref{attacks}%
+    \thesisissueref{55})\fi, so they will be omitted during future analysis.
 
 \ifnotpaper
     During this investigation, some terms came up that seemed to be relevant to
@@ -313,7 +315,7 @@ will be omitted over the course of analysis.
 The search process led to some testing approaches being
 mentioned without definition;
 \citep{IEEE2022} and \citep{Firesmith2015} in particular introduced many.
-Once \stds{} had been exhausted, we devised a strategy to
+Once the standards in \Cref{stds} had been exhausted, we devised a strategy to
 look for sources that explicitly define these terms, consistent with
 our snowballing approach. This uncovers new approaches, both in and out of
 scope (such as \acf{emsec} testing\ifnotpaper, HTML testing,\fi\ and aspects
