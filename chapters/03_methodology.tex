@@ -223,7 +223,8 @@ information is ``implicit'' if:
 \end{itemize}
 Discrepancies based on implicit information are themselves implicit. These are
 automatically detected when generating graphs and analyzing discrepancies
-(see \Cref{graph-gen,discrep-analysis}, respectively) by looking for indicators
+(see \ifnotpaper \Cref{graph-gen,discrep-analysis}, respectively\else
+    \Cref{tools}\fi) by looking for indicators
 of uncertainty, such as question marks, ``~(Testing)'' (which indicates that a
 test approach isn't explicitly denoted as such; note the inclusion of the
 space), and the keywords ``implied'', ``inferred'', ``can be'', ``ideally'',
@@ -332,7 +333,8 @@ included a definition):
 \input{build/undefTerms}
 
 \ifnotpaper\else
-    \subsection{Tools}  % Part of separate chapter in thesis 
+    \subsection{Tools}  % Part of separate chapter in thesis
+    \label{tools}
     \graphGenDesc{}
     % Moved here to display nicely in paper
     \discrepClssTable{}
