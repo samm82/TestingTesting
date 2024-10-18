@@ -7,8 +7,8 @@ As there is no single authoritative source on software testing terminology,
 we need to look at many to see how various terms are used in practice.
 % Unfortunately, this brings to light a variety of discrepancies.
 Starting from some set of sources, we then use
-``snowball sampling'' (a ``method of \dots\ sample selection \dots\ used to
-locate hidden populations'' \citep{Johnson2014}) to gather further sources
+``snowball sampling'', a ``method of \dots{} sample selection \dots{} used to
+locate hidden populations'' \citep{Johnson2014}, to gather further sources
 (see \Cref{undef-terms}). Sources with a similar degree of
 ``trustworthiness'' are grouped into categories; sources that are more
 ``trustworthy'':
@@ -20,12 +20,16 @@ locate hidden populations'' \citep{Johnson2014}) to gather further sources
 \end{enumerate}
 
 We therefore create the following categories, given in order of descending
-trustworthiness: \stds{}, \metas{}, \texts{}, and \papers{}. \ifnotpaper
-    Additionally, some information comes from \nameref{infers}. \fi Each category is
-given a unique colour to better track how their information appears in relevant
-graphs (see \Cref{fig:recovery-graph-current,fig:recovery-graph-proposed,%
-    fig:scal-graph-current,fig:scal-graph-proposed,fig:perf-graph}). A summary
-of how many sources comprise each category is given in \Cref{fig:sourceSummary}.
+trustworthiness: established standards (\Cref{stds}), ``meta-level''
+collections (\Cref{metas}), textbooks (\Cref{texts}), and papers and other
+documents (\Cref{papers}). \ifnotpaper
+    Additionally, some information is inferred; although these data do not come
+    from the literature, they are given in \Cref{infers} for completeness.
+\fi Each category is given a unique colour in \Cref{fig:recovery-graph-current,%
+    fig:recovery-graph-proposed,fig:scal-graph-current,fig:scal-graph-proposed,%
+    fig:perf-graph} to better visualize the source of information in these
+graphs. A summary of how many sources comprise each category is given in
+\Cref{fig:sourceSummary}.
 
 \subsubsection{\stdSources{1}}
 \label{stds}
@@ -47,10 +51,12 @@ of how many sources comprise each category is given in \Cref{fig:sourceSummary}.
 \metaSources{2}
 \begin{itemize}
     \item Colored \textcolor{blue}{blue}
-    \item Collections of relevant terminology (such as \acs{istqb}'s glossary,
-          the \acs{swebok}, and \ifnotpaper \citeauthor{DoğanEtAl2014}\else
-              Doğan et al.\fi's literature review \citeyearpar{DoğanEtAl2014})
-    \item Built up from various sources, including \stds{}, and often written
+    \item Collections of relevant terminology, such as \acs{istqb}'s glossary
+          \citepISTQB{}, the \acs{swebok} \citep{SWEBOK2024,SWEBOK2014}, and
+          \ifnotpaper \citeauthor{DoğanEtAl2014}\else Doğan et al.\fi's
+          literature review \citeyearpar{DoğanEtAl2014}
+    \item Built up from various sources, including established standards
+          (see \Cref{stds}), and often written
           by a large organization (such as \acs{istqb}); the \acs{swebok} is
           ``proposed as a suitable foundation for government licensing, for the
           regulation of software engineers, and for the development of
