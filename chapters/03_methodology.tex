@@ -19,6 +19,24 @@ locate hidden populations'' \citep{Johnson2014}, to gather further sources
     \item are accepted and used in the field of software.
 \end{enumerate}
 
+\ifnotpaper\else
+    % Moved here to display nicely; duplicated to display in one column
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \pie[sum=auto, after number=, text=legend, thick,
+                scale=\ifnotpaper0.7\else0.5\fi,
+                every label/.style={align=left, scale=0.7}]
+            {\stdSources{3}/\stds{},
+                \metaSources{3}/\metas{},
+                \textSources{3}/\texts{},
+                \paperSources{3}/\papers{}}
+        \end{tikzpicture}
+        \caption{Summary of how many sources comprise each source category.}
+        \label{fig:sourceSummary}
+    \end{figure}
+\fi
+
 We therefore create the following categories, given in order of descending
 trustworthiness: established standards (\Cref{stds}), ``meta-level''
 collections (\Cref{metas}), textbooks (\Cref{texts}), and papers and other
@@ -99,6 +117,22 @@ graphs. A summary of how many sources comprise each category is given in
 \end{itemize}
 
 \ifnotpaper
+    % Moved earlier in paper to display nicely
+    \begin{figure}[hbtp!]
+        \centering
+        \begin{tikzpicture}
+            \pie[sum=auto, after number=, text=legend, thick,
+                scale=\ifnotpaper0.7\else0.5\fi,
+                every label/.style={align=left, scale=0.7}]
+            {\stdSources{3}/\stds{},
+                \metaSources{3}/\metas{},
+                \textSources{3}/\texts{},
+                \paperSources{3}/\papers{}}
+        \end{tikzpicture}
+        \caption{Summary of how many sources comprise each source category.}
+        \label{fig:sourceSummary}
+    \end{figure}
+
     \subsubsection{Inferences}
     \label{infers}
     While not as clear-cut as the other source categories, some information is
@@ -107,21 +141,6 @@ graphs. A summary of how many sources comprise each category is given in
     Inferred relations are colored \textcolor{gray}{gray} and
     inferred discrepancies are given in \Cref{infer-discreps}.
 \fi
-
-\begin{figure}
-    \centering
-    \begin{tikzpicture}
-        \pie[sum=auto, after number=, text=legend, thick,
-            scale=\ifnotpaper0.7\else0.5\fi,
-            every label/.style={align=left, scale=0.7}]
-        {\stdSources{3}/\stds{},
-            \metaSources{3}/\metas{},
-            \textSources{3}/\texts{},
-            \paperSources{3}/\papers{}}
-    \end{tikzpicture}
-    \caption{Summary of how many sources comprise each source category.}
-    \label{fig:sourceSummary}
-\end{figure}
 
 % Moved here to display nicely in paper
 \ifnotpaper\else\ieeeTestTermsTable{}\fi
@@ -322,8 +341,8 @@ our snowballing approach. This uncovers new approaches, both in and out of
 scope (such as \acf{emsec} testing\ifnotpaper, HTML testing,\fi\ and aspects
 of orthogonal array testing\ifnotpaper\ and loop testing\fi; see \Cref{scope}).
 
-The following terms (and their respective related terms) were explored%
-\ifnotpaper\ in the following sources\fi, bringing the number of testing
+The following terms (and their respective related terms) were explored
+in the following sources, bringing the number of testing
 approaches from \the\TotalBefore{} to \the\TotalAfter{} and the number of
 \emph{undefined} terms from \the\UndefBefore{} to \the\UndefAfter{} (the
 assumption can be made that about \the\numexpr 100 - 100 * (\UndefAfter -
