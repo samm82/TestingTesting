@@ -164,30 +164,25 @@ thesis. We also define the notion of ``rigidity'' in \Cref{rigidity}.
 \subsubsection{Categories of Testing Approaches}
 \label{categories-observ}
 
-Different sources categorize software testing approaches in different ways%
-\ifnotpaper
-    ; while it is useful to record and think about these
-    categorizations (see \Cref{testing-categories}), following one (or more)
-    during the research
-    stage could lead to bias and a prescriptive categorization, instead of letting
-    one emerge descriptively during the analysis stage. Since these categorizations
-    are not mutually exclusive, it also means that more than one could be useful
-    (both in general and to this specific project).\newline \else.\fi\
-\ifnotpaper \citet{IEEE2022} \else ISO/IEC and IEEE \cite{IEEE2022} \fi provide
-a classification for different kinds of tests (see \Cref{tab:ieeeTestTerms}).
-\ifnotpaper A deeper rationale for a proposed classification will be given
-    during the analysis stage. \else Since
-    this seems to be widely used (``test level'' and ``test type'' in particular)
-    and is useful when focusing on a particular subset of testing, this terminology
-    is used for now. \fi
+Different sources categorize software testing approaches differently\ifnotpaper;
+while it is useful to record and think about these categorizations (see
+\Cref{testing-categories}), following one (or more) during the research
+stage could lead to bias and a prescriptive categorization instead of letting
+one emerge descriptively during the analysis stage. Since these categorizations
+are not mutually exclusive, it also means that more than one could be useful
+(both in general and for this research).\par \citet{IEEE2022} \else. For
+example, ISO/IEC and IEEE \cite{IEEE2022} \fi provide the classification of test
+approaches in \Cref{tab:ieeeTestTerms}\ifnotpaper, while other sources
+\citep{BarbosaEtAl2006, SouzaEtAl2017} use alternative categories (see
+\Cref{tab:otherTestTerms}). These will provide other perspectives when
+determining if the categorization in \Cref{tab:ieeeTestTerms} is sufficient.
+Nevertheless, since \else. Since \fi it seems to be widely used (``test level''
+and ``test type'' in particular) and is useful when focusing on a particular
+subset of testing, this categorization is used for now. \ifnotpaper A ``metric''
+category was considered in addition to this categorization, but was decided to
+be out of the scope of this project, instead being captured by coverage-driven
+testing (see \Cref{cov-test}\thesisissueref{21,22}).
 
-\ifnotpaper
-However, other sources \citep{BarbosaEtAl2006, SouzaEtAl2017} provide alternate
-categories (see \Cref{tab:otherTestTerms}) which may be beneficial to
-investigate to determine if this categorization is sufficient.
-
-A ``metric'' categorization was considered at one point, but was decided
-to be out of the scope of this project (see \Cref{scope}\thesisissueref{21,22}).
 Related testing approaches may be grouped into a ``class'' or ``family'' to
 group those with ``commonalities and well-identified variabilities that can be
 instantiated'', where ``the commonalities are large and the variabilities
