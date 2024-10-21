@@ -20,7 +20,7 @@
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 
 \title[Testing Terminology]{Putting Software Testing Terminology to the Test}
-\subtitle{MASc Seminar}
+\subtitle{M.A.Sc. Seminar}
 \author[Samuel Crawford]{Samuel Crawford, B.Eng.}
 
 \institute[McMaster University]{McMaster University\\Department of Computing and Software}
@@ -36,7 +36,7 @@
 
 \begin{document}
 
-% from https://tex.stackexchange.com/a/42826/192195
+% From https://tex.stackexchange.com/a/42826/192195
 \NewDocumentCommand{\ShowListingForLineNumber}{s O{1.0} m m}{
     \IfBooleanTF{#1}{\vspace{-#2\baselineskip}}{}
     \lstinputlisting[
@@ -66,12 +66,64 @@
 \section{Introduction}
 
 \begin{frame}
-    \frametitle{About Me}
+    \frametitle{Drasil}
+    \framesubtitle{What is Drasil?}
+    My project was originally focused on Drasil, "a framework for generating
+    all of the software artifacts from a stable knowledge base, focusing
+    currently on scientific software" \cite{HuntEtAl2021}
+    \vspace{-2mm}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}{.6\textwidth}
+            \vspace{2mm}
+            \begin{minipage}{\textwidth}
+                \begin{itemize}
+                    \item<2-> I worked on Drasil as an Undergraduate Summer
+                          Research Assistant during the summers of 2018 and 2019
+                          % \item<2-> Knowledge is introduced either at a global level
+                          %     or at an example-specific level
+                    \item<3-> ``Recipes'' specify how information from the
+                          knowledge based is used to generate
+                          software artifacts, including:
+                          \begin{itemize}
+                              \item SRS (HTML, PDF, Markdown)
+                              \item Code (Python, Java, C\#, C++, Swift, Julia)
+                              \item READMEs and Makefiles
+                              \item Drasil's own website\footnotemark[1]!
+                          \end{itemize}
+                \end{itemize}
+            \end{minipage}
+        \end{column}
+        \begin{column}{.35\textwidth}
+            % \vspace{-4mm}
+            \begin{figure}
+                \includegraphics[width=.8\textwidth]{assets/images/drasil_logo.png}
+                \vspace{-2mm}
+                \caption{Drasil's Logo \tiny\cite{Drasil}}
+                \label{fig:drasil-logo}
+            \end{figure}
+        \end{column}
+    \end{columns}
+    \footnotetext[1]{\tiny \url{https://jacquescarette.github.io/Drasil/}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Visualizing Drasil's Traceability}
+    \begin{figure}
+        \center
+        \includegraphics[width=0.8\textwidth]{assets/images/drasil_trace}
+        \vspace{-2mm}
+        \caption{Knowledge flow from knowledge base to artifacts; by Dr.~Spencer Smith}
+        \label{fig:knowledge-flow}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Drasil}
     \begin{columns}[T,onlytextwidth]
         \begin{column}{.675\textwidth}
             \begin{minipage}{\textwidth}
                 \begin{itemize}
-                    \item I am \textbf{Samuel "Sam" Crawford}
+                    \item My project was originally focused on Drasil
                     \item<2-> Graduated from McMaster University (2022)
                           \begin{itemize}
                               \item Bachelor of Engineering (B.Eng.) in Software Engineering
@@ -148,54 +200,6 @@
 
 \section{Project}
 \subsection{Drasil}
-
-\begin{frame}
-    \frametitle{Preface}
-    \framesubtitle{What is Drasil?}
-    Drasil is "a framework for generating all of the software
-    artifacts from a stable knowledge base, focusing
-    currently on scientific software" \cite{HuntEtAl2021}
-    \vspace{-2mm}
-    \begin{columns}[T,onlytextwidth]
-        \begin{column}{.5\textwidth}
-            \vspace{2mm}
-            \begin{minipage}{\textwidth}
-                \begin{itemize}
-                    % \item<2-> Knowledge is introduced either at a global level
-                    %     or at an example-specific level
-                    \item<2-> This knowledge, using recipes, is used to generate
-                          software artifacts, including:
-                          \begin{itemize}
-                              \item SRS (HTML, PDF, Jupyter)
-                              \item Code (Python, Java, C\#, C++, Swift)
-                              \item READMEs
-                              \item Makefiles
-                              \item Its own website\footnotemark[1]!
-                          \end{itemize}
-                \end{itemize}
-            \end{minipage}
-        \end{column}
-        \begin{column}{.45\textwidth}
-            \vspace{-4mm}
-            % \begin{figure}
-            %     \includegraphics[width=.8\textwidth]{assets/drasil-logo.png}
-            %     \caption{Drasil's Logo \tiny\cite{Drasil}}
-            % \end{figure}
-        \end{column}
-    \end{columns}
-    \footnotetext[1]{\tiny \url{https://jacquescarette.github.io/Drasil/}}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Visualizing Drasil's Traceability}
-    % \begin{figure}
-    %     \center
-    %     \includegraphics[width=0.8\textwidth]{assets/DrasilSupportsChange.png}
-    %     \vspace{-2mm}
-    %     \caption{Knowledge flow from knowledge base to artifacts; by Dr.~Spencer Smith}
-    %     \label{fig:knowledge-flow}
-    % \end{figure}
-\end{frame}
 
 % \begin{frame}
 %     \frametitle{Drasil}
