@@ -9,19 +9,30 @@
 \usepackage{tikz}
 \usepackage{anyfontsize}
 
+% For directory trees
+\usepackage{dirtree}
+
 \lstset{
     language=[latex]tex,
     breaklines=true}
 
 \usetheme{Madrid}
 
-\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+\setbeamertemplate{caption}{\centering\insertcaption\par}
 
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 
 \title[Testing Terminology]{Putting Software Testing Terminology to the Test}
 \subtitle{M.A.Sc. Seminar}
 \author[Samuel Crawford]{Samuel Crawford, B.Eng.}
+
+% Committee
+% \begin{itemize}
+%     \item \emph{Supervisor}: Dr.~Jacques Carette
+%     \item \emph{Supervisor}: Dr.~Spencer Smith
+%     \item Dr.~Ned Nedialkov
+%     \item Dr.~Richard Paige
+% \end{itemize}
 
 \institute[McMaster University]{McMaster University\\Department of Computing and Software}
 \date{Fall 2024}
@@ -69,9 +80,9 @@
 \begin{frame}
     \frametitle{Drasil}
     \framesubtitle{What is Drasil?}
-    My project was originally focused on Drasil, "a framework for generating
+    My project was originally focused on Drasil, ``a framework for generating
     all of the software artifacts from a stable knowledge base, focusing
-    currently on scientific software" \cite{HuntEtAl2021}
+    currently on scientific software'' \cite{HuntEtAl2021}
     \vspace{-2mm}
     \begin{columns}[T,onlytextwidth]
         \begin{column}{.6\textwidth}
@@ -143,58 +154,73 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Overview of Progression Towards M.A.Sc.}
-    \framesubtitle{Course-related progression}
+    \frametitle{The Need for a Knowledge Base}
     \begin{itemize}
-        \item I'm required to complete:
-              \begin{itemize}
-                  \item Two "Software" courses ~\only<3->{\checkmark} \only<5->{\checkmark}
-                  \item One "Theory" course ~\only<4->{\checkmark}
-                  \item One "Systems" course ~\only<6->{\checkmark}
-              \end{itemize}
-        \item<2-> I've completed:
-              \begin{itemize}
-                  \item<3-> CAS 735: (Micro)service-oriented architectures - Fall 2022
-                  \item<4-> CAS 761: Logic for Practical Use - Fall 2022
-                  \item<5-> CAS 741: Development of Scientific Computing Software - Winter 2023
-                  \item<6-> CAS 781: Advanced Topics in Computing and Software\\
-                        \quad (High-Performance Scientific Computing) - Winter 2023
-              \end{itemize}
-              % \item<7-> These satisfy the "Course Requirements" from the academic calendar\footnotemark[1] and the "Regulations for the Software Engineering M.A.Sc. Program"\footnotemark[2]
+        \item Drasil is built for ``(well understood) research software'' \cite{Drasil}
+              based on knowledge of:
+              \begin{enumerate}
+                  \item<2-> Concepts used by the software,
+                  \item<3-> Math used by the software or its derivation, and
+                  \item<4-> Information used by Drasil used for generating artifacts
+              \end{enumerate}
     \end{itemize}
-
-    % \only<7->{\footnotetext[1]{\tiny\url{https://academiccalendars.romcmaster.ca/preview_program.php?catoid=46&poid=23752}}}
-    % \only<7->{\footnotetext[2]{\tiny\url{https://www.cas.mcmaster.ca/cas/0files/reg_master_se_2019a.pdf}}}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Overview of Progression Towards M.A.Sc.}
-    \framesubtitle{Thesis/research-related Progression}
-    \begin{itemize}
-        \item<1-> Conducted "part-time research" while taking courses (Fall 2022/Winter 2023)
-              % \begin{itemize}
-              %     \item<2-> Investigating our current "chunk lattice"
-              %     \item<3-> The specification of "ChemCode" in CAS 741, a program for balancing chemical equations
-              % \end{itemize}
-        \item<2-> Pivoted to "full-time research" for Spring 2023 (and beyond)
-              % \begin{itemize}
-              %     \item<5-> Mentoring summer students, including providing feedback and guidance on their projects
-              %     \item<6-> Starting the actual research for my project (to be detailed later...)
-              % \end{itemize}
-              % \item<7-> Attended a thesis seminar and a thesis defense to learn about what to expect from a thesis defense (and their research!)
-        \item<3-> Formed my supervisory committee; we are currently having our first supervisory committee meeting!
-              % \begin{itemize}
-              %     \item \emph{Supervisor}: Dr.~Jacques Carette
-              %     \item \emph{Supervisor}: Dr.~Spencer Smith
-              %     \item Dr.~Ned Nedialkov
-              %     \item Dr.~Richard Paige
-              % \end{itemize}
-    \end{itemize}
+    \renewcommand*\DTstyle{\ttfamily\tiny}
+    \setlength{\DTbaselineskip}{5pt}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}<2->{.32\textwidth}
+            \dirtree{%
+                .1 (drasil-data package\footnotemark[2] part \#1).
+                .2 Concepts.
+                .3 Thermodynamics.hs.
+                .3 Computation.hs.
+                .3 Math.hs.
+                .3 PhysicalProperties.hs.
+                .3 Physics.hs.
+                .3 SolidMechanics.hs.
+            }
+        \end{column}
+        \begin{column}<3->{.32\textwidth}
+            \dirtree{%
+                .1 (drasil-data package\footnotemark[2] part \#2).
+                .2 Equations/Defining.
+                .3 Derivations.hs.
+                .3 Physics.hs.
+                .2 Theories.
+                .3 Physics.hs.
+                .2 Units.
+                .3 PhysicalProperties.hs.
+                .3 Physics.hs.
+                .3 SolidMechanics.hs.
+                .3 Thermodynamics.hs.
+                .2 Constraints.hs.
+                .2 SI\_Units.hs.
+            }
+        \end{column}
+        \begin{column}<4->{.32\textwidth}
+            \dirtree{%
+                .1 (drasil-data package\footnotemark[2] part \#3).
+                .2 Concepts.
+                .3 Documentation.hs.
+                .3 Education.hs.
+                .3 Software.hs.
+                .2 Software.
+                .3 Products.hs.
+                .2 Citations.hs.
+                .2 People.hs.
+            }
+        \end{column}
+    \end{columns}
+    \footnotetext[2]{\tiny READMEs excluded for brevity; see \url{https://github.com/JacquesCarette/Drasil/tree/main/code/drasil-data/lib/Data/Drasil}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PROJECT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+    \frametitle{The Problem with Testing Literature}
+    \framesubtitle{Unstandardized Standards}
+\end{frame}
 
 \section{Project}
 \subsection{Drasil}
