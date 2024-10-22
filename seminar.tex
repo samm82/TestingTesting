@@ -9,6 +9,30 @@
 \usepackage{tikz}
 \usepackage{anyfontsize}
 
+% Required for biblatex, but also adds functionality for quotation
+\usepackage{csquotes}
+
+% Jason's bibliography format
+% % Credit to Gabriel Devenyi for this bibliography cfg:
+% % github.com/gdevenyi/mcmaster.latex
+% \usepackage[
+%   style=numeric-comp,
+%   backend=biber,
+%   sorting=none,
+%   backref=true,
+%   maxnames=99,
+%   alldates=iso,
+%   seconds=true
+% ]{biblatex} % bibliography
+% \addbibresource{references.bib}
+\usepackage[round]{natbib}
+\bibliographystyle{plainnat}
+\setcitestyle{yysep={;}}
+\defcitealias{ISTQB}{Hamburg and Mogyorodi}
+\newcommand{\citetISTQB}{\citetalias{ISTQB} (\citeyear{ISTQB})}
+\newcommand{\citepISTQB}{\citepalias[\citeyear{ISTQB}]{ISTQB}}
+\newcommand{\citealpISTQB}{\citetalias{ISTQB}, \citeyear{ISTQB}}
+
 % For directory trees
 \usepackage{dirtree}
 
@@ -23,6 +47,7 @@
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 
 \input{seminar_helpers}
+\notpapertrue
 
 \title[Testing Terminology]{Putting Software Testing Terminology to the Test}
 \subtitle{M.A.Sc. Seminar}
@@ -84,7 +109,7 @@
     \framesubtitle{What is Drasil?}
     My project was originally focused on Drasil, ``a framework for generating
     all of the software artifacts from a stable knowledge base, focusing
-    currently on scientific software'' \cite{HuntEtAl2021}
+    currently on scientific software'' \citep{HuntEtAl2021}
     \vspace{-2mm}
     \begin{columns}[T,onlytextwidth]
         \begin{column}{.6\textwidth}
@@ -112,7 +137,7 @@
             \begin{figure}
                 \includegraphics[width=.8\textwidth]{assets/images/drasil_logo.png}
                 \vspace{-2mm}
-                \caption{Drasil's Logo \tiny\cite{Drasil}}
+                \caption{Drasil's Logo \tiny\citep{Drasil}}
                 \label{fig:drasil-logo}
             \end{figure}
         \end{column}
@@ -130,8 +155,6 @@
         \label{fig:knowledge-flow}
     \end{figure}
 \end{frame}
-
-\subsection{Generating Test Cases}
 
 \begin{frame}
     \frametitle{Generating Test Cases}
@@ -155,10 +178,12 @@
     \end{itemize}
 \end{frame}
 
+\subsection{The Need for a Knowledge Base}
+
 \begin{frame}
     \frametitle{The Need for a Knowledge Base}
     \begin{itemize}
-        \item Drasil is built for ``(well understood) research software'' \cite{Drasil}
+        \item Drasil is built for ``(well understood) research software'' \citep{Drasil}
               based on knowledge of:
               \begin{enumerate}
                   \item<2-> Concepts used by the software,
@@ -212,7 +237,7 @@
             }
         \end{column}
     \end{columns}
-    \footnotetext[2]{\tiny READMEs excluded for brevity; see \url{https://github.com/JacquesCarette/Drasil/tree/main/code/drasil-data/lib/Data/Drasil}}
+    \only<2->{\footnotetext[2]{\tiny READMEs excluded for brevity; see \url{https://github.com/JacquesCarette/Drasil/tree/main/code/drasil-data/lib/Data/Drasil}}}
 \end{frame}
 
 \begin{frame}
@@ -226,16 +251,27 @@
     \end{itemize}
 \end{frame}
 
+\subsection{The Lack of a Knowledge Base}
+
+\begin{frame}
+    \frametitle{The Lack of a Knowledge Base}
+    \framesubtitle{``The Problem''}
+    \begin{itemize}
+        \item \badTaxonomies{}
+    \end{itemize}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PROJECT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Project}
 
 \begin{frame}
     \frametitle{The Problem with Testing Literature}
     \framesubtitle{Unstandardized Standards}
 \end{frame}
 
-\section{Project}
 \subsection{Drasil}
 
 % \begin{frame}
@@ -246,7 +282,7 @@
 %     %                  1. What are "Things"? One may only think of "Things" as far as their knowledge and understanding allows them! You wouldn't be able to think of things without some sort of basis/constructive understanding/methodology to _get_ there, you can't _think of random phenomena_ (that's why they're phenomena).
 
 %     \begin{itemize}
-%         \item<2-> An exploration in software-related artifact generation for "well understood" domains \cite{KnowledgeCapture2021} through strong knowledge capture.
+%         \item<2-> An exploration in software-related artifact generation for "well understood" domains \citep{KnowledgeCapture2021} through strong knowledge capture.
 %             \begin{itemize}
 %                 \item<3-> By unifying knowledge into a single framework with reusable composable units of knowledge, we eliminate code duplication, formally impose traceability and maintainability of knowledge (and software), and allow for easy knowledge transference.
 %                 \item<4-> Knowledge organization and capture is of utmost importance, as it is the pathway for interpreters and Domain-Specific Languages (DSLs) to make appropriate usage of the knowledge captured.
@@ -362,7 +398,7 @@
                   \item Other variabilities of Projectile's Python implementation
                   \item Projectile's implementation in other languages
                   \item Other examples where code is generated: GlassBR, NoPCM,
-                        DblPendulum, PD Controller \cite{HuntEtAl2021}
+                        DblPendulum, PD Controller \citep{HuntEtAl2021}
               \end{itemize}
         \item<3-> These test cases will also be added to Drasil's CI/CD
               to ensure that future changes preserve the code's functionality
@@ -414,7 +450,6 @@
     \frametitle{References}
 
     \bibliography{references}
-    \bibliographystyle{apalike}
 \end{frame}
 
 \end{document}
