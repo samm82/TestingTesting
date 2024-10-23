@@ -1,0 +1,19 @@
+\newif\ifnotpaper
+
+\def\litStd{If the field of software engineering holds code to a high standard
+    in terms of clarity, consistency, and robustness, then the literature that
+    supports code development should be held to this same standard!}
+
+\def\badTaxonomies{Unfortunately, a search for a systematic, rigorous, and
+    complete taxonomy for software testing revealed that the existing ones are
+    inadequate and incomplete:
+
+    \begin{itemize}
+        \item \ifnotpaper\else Tebes et al. \fi\citet{TebesEtAl2020a} focus on
+              \emph{parts} of the testing process (e.g., test goal, testable entity),
+        \item \ifnotpaper\else Souza et al. \fi\citet{SouzaEtAl2017} prioritize
+              organizing testing approaches over defining them, and
+        \item \ifnotpaper\else Unterkalmsteiner et al. \fi\citet{UnterkalmsteinerEtAl2014}
+              focus on the ``information linkage or transfer'' \citetext{p.~A:6}
+              between requirements engineering and software testing.
+    \end{itemize}}
