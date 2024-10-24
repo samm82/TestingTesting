@@ -307,6 +307,23 @@
                 \metaSources{3}/\metas{},
                 \textSources{3}/\texts{},
                 \paperSources{3}/\papers{}}
+
+            \only<2->{
+                \node[anchor=west, align=left] at (-1.9, 3) {
+                    Textbooks trusted at McMaster were our ad hoc starting points\\
+                    \quad\quad \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
+                };
+                \draw[->, very thick] (-1.5, 2.85) -- (-1.25, 1.4);
+            }
+
+            \only<3->{
+                \node[anchor=west, align=left] at (2.4, -2) {
+                    Includes websites \citetext{\citealp{LambdaTest2024}; \\
+                        \quad\quad\citealp{Pandey2023}} and a booklet\\
+                    \quad\quad\citep{SPICE2022}};
+                \draw[->, very thick] (2.25, -1.5) -- (1.25, -1.1);
+            }
+
         \end{tikzpicture}
         \caption{Summary of how many sources comprise each source category.}
         \label{fig:sourceSummary}
