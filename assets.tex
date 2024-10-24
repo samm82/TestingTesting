@@ -1,40 +1,28 @@
 %------------------------------------------------------------------------------
-% Folders
-%------------------------------------------------------------------------------
-
-\newcommand{\assets}{assets}
-\newcommand{\figureAssets}{\assets/figures}
-\newcommand{\graphAssets}{\assets/graphs}
-\newcommand{\imageAssets}{\assets/images}
-\newcommand{\tableAssets}{\assets/tables}
-\newcommand{\codeAssets}{\assets/code}
-\newcommand{\miscAssets}{\assets/misc}
-
-%------------------------------------------------------------------------------
 % Code
 %------------------------------------------------------------------------------
 
-\input{\codeAssets/names}
-\input{\miscAssets/posterHelpers}
+\input{assets/code/names}
+\input{assets/misc/posterHelpers}
 
 % for assets/code/example.tex...
-\newcommand{\exampleCode}{\input{\codeAssets/example}}
+\newcommand{\exampleCode}{\input{assets/code/example}}
 \newcommand{\refExampleCode}{\Cref{lst:exampleCode}}
 
 % for assets/code/examplePseudocode.tex...
-\newcommand{\examplePseudocode}{\input{\codeAssets/examplePseudocode}}
+\newcommand{\examplePseudocode}{\input{assets/code/examplePseudocode}}
 \newcommand{\refExamplePseudocode}{\Cref{lst:examplePseudocode}}
 
 % for assets/code/mainInvalidInputTest.tex...
-\newcommand{\mainInvalidInputTest}{\input{\codeAssets/mainInvalidInputTest}}
+\newcommand{\mainInvalidInputTest}{\input{assets/code/mainInvalidInputTest}}
 \newcommand{\refMainInvalidInputTest}{\Cref{lst:mainInvalidInputTest}}
 
 % for assets/code/projManualViolationReq.tex...
-\newcommand{\projManualViolationReq}{\input{\codeAssets/projManualViolationReq}}
+\newcommand{\projManualViolationReq}{\input{assets/code/projManualViolationReq}}
 \newcommand{\refProjManualViolationReq}{\Cref{lst:projManualViolationReq}}
 
 % for assets/code/projViolationChoice.tex...
-\newcommand{\projViolationChoice}{\input{\codeAssets/projViolationChoice}}
+\newcommand{\projViolationChoice}{\input{assets/code/projViolationChoice}}
 \newcommand{\refProjViolationChoice}{\Cref{lst:projViolationChoice}}
 
 %------------------------------------------------------------------------------
@@ -45,20 +33,20 @@
 \newcommand{\ExampleGraph}{
     \begin{figure*}
         \begin{subfigure}[b]{0.4\linewidth}
-            \includegraphics[width=\linewidth]{\graphAssets/ExampleGlossaryGraph.pdf}
+            \includegraphics[width=\linewidth]{assets/graphs/ExampleGlossaryGraph.pdf}
             \caption{Graph from \Cref{tab:exampleGlossary}.}
             \label{fig:exampleGraph}
         \end{subfigure}
         \begin{subfigure}[b]{0.575\linewidth}
             \centering
-            \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegendNonSolidTerms.pdf}
-            \includegraphics[width=0.85\linewidth]{\graphAssets/SynExampleGlossaryGraph.pdf}
+            \includegraphics[width=\linewidth]{assets/graphs/manual/manualLegendNonSolidTerms.pdf}
+            \includegraphics[width=0.85\linewidth]{assets/graphs/SynExampleGlossaryGraph.pdf}
             \caption{Graph from \Cref{tab:synExampleGlossary}.}
             \label{fig:synExampleGraph}
         \end{subfigure}
         \begin{subfigure}[b]{0.45\linewidth}
             \centering
-            \includegraphics[width=0.875\linewidth]{\graphAssets/SelfExampleGlossaryGraph.pdf}
+            \includegraphics[width=0.875\linewidth]{assets/graphs/SelfExampleGlossaryGraph.pdf}
             \vspace{5mm}
             \caption{Graph generated from a .tex file containing a line starting with
                 \texttt{I -> I}.}
@@ -67,7 +55,7 @@
         \hfill
         \begin{subfigure}[b]{0.45\linewidth}
             \centering
-            \includegraphics[width=0.75\linewidth]{\graphAssets/ParSynExampleGlossaryGraph.pdf}
+            \includegraphics[width=0.75\linewidth]{assets/graphs/ParSynExampleGlossaryGraph.pdf}
             \caption{Graph generated from a .tex file containing a line starting with
                 \texttt{J -> K} if J and K are synonyms.}
             \label{fig:parSynExampleGraph}
@@ -77,25 +65,25 @@
     \end{figure*}
 }
 
-\newcommand{\performanceGraph}{\includegraphics[width=0.8\linewidth]{\graphAssets/manual/performanceProposedGraph.pdf}}
-\newcommand{\recoveryGraphCurrent}{\includegraphics[width=\linewidth]{\graphAssets/recoveryGraph.pdf}}
+\newcommand{\performanceGraph}{\includegraphics[width=0.8\linewidth]{assets/graphs/manual/performanceProposedGraph.pdf}}
+\newcommand{\recoveryGraphCurrent}{\includegraphics[width=\linewidth]{assets/graphs/recoveryGraph.pdf}}
 \newcommand{\recoveryGraphProposed}{
-    \includegraphics[width=\linewidth]{\graphAssets/recoveryProposedGraph.pdf}
-    \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegendGreenBlue.pdf}
+    \includegraphics[width=\linewidth]{assets/graphs/recoveryProposedGraph.pdf}
+    \includegraphics[width=\linewidth]{assets/graphs/manual/manualLegendGreenBlue.pdf}
 }
 
-\newcommand{\scalabilityGraphCurrent}{\includegraphics[width=\linewidth]{\graphAssets/scalabilityGraph.pdf}}
+\newcommand{\scalabilityGraphCurrent}{\includegraphics[width=\linewidth]{assets/graphs/scalabilityGraph.pdf}}
 \newcommand{\scalabilityGraphProposed}{
-    \includegraphics[width=\linewidth]{\graphAssets/scalabilityProposedGraph.pdf}
-    \includegraphics[width=\linewidth]{\graphAssets/manual/manualLegendGreenBlue.pdf}
+    \includegraphics[width=\linewidth]{assets/graphs/scalabilityProposedGraph.pdf}
+    \includegraphics[width=\linewidth]{assets/graphs/manual/manualLegendGreenBlue.pdf}
 }
 
 %------------------------------------------------------------------------------
 % Images & Figures
 %------------------------------------------------------------------------------
 
-\newcommand{\drasilLogo}{\imageAssets/drasil_logo.png}
-\newcommand{\drasilLogoImg}{\input{\imageAssets/drasil_logo}}
+\newcommand{\drasilLogo}{assets/images/drasil_logo.png}
+\newcommand{\drasilLogoImg}{\input{assets/images/drasil_logo}}
 \newcommand{\refDrasilLogoImg}{\Cref{fig:drasilLogo}}
 
 %------------------------------------------------------------------------------
@@ -103,12 +91,12 @@
 %------------------------------------------------------------------------------
 
 % Organization of files
-\newcommand{\organizationTable}{\input{\tableAssets/organization}}
+\newcommand{\organizationTable}{\input{assets/tables/organization}}
 
-\newcommand{\ieeeTestTermsTable}{\input{\tableAssets/ieeeTestTerms}}
-\newcommand{\otherTestTermsTable}{\input{\tableAssets/otherTestTerms}}
+\newcommand{\ieeeTestTermsTable}{\input{assets/tables/ieeeTestTerms}}
+\newcommand{\otherTestTermsTable}{\input{assets/tables/otherTestTerms}}
 
-\newcommand{\discrepClssTable}{\input{\tableAssets/discrepClss}}
-\newcommand{\discrepCatsTable}{\input{\tableAssets/discrepCats}}
+\newcommand{\discrepClssTable}{\input{assets/tables/discrepClss}}
+\newcommand{\discrepCatsTable}{\input{assets/tables/discrepCats}}
 
-\newcommand{\testReqsTable}{\input{\tableAssets/testReqs}}
+\newcommand{\testReqsTable}{\input{assets/tables/testReqs}}

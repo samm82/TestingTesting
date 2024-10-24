@@ -1,3 +1,34 @@
+% Extra functionality for command parsing
+\usepackage{xparse}
+
+\newif\ifnotpaper
+
+%------------------------------------------------------------------------------
+% Reused in seminar slides
+%------------------------------------------------------------------------------
+
+\def\litStd{If software engineering holds code to high standards of clarity,
+    consistency, and robustness, the same should apply to its supporting literature!}
+
+\def\badTaxonomies{Unfortunately, a search for a systematic, rigorous, and
+    complete taxonomy for software testing revealed that the existing ones are
+    inadequate\todo{ProWritingAid suggests that including ``and incomplete'' is
+        redundant}: % and incomplete
+
+    \begin{itemize}
+        \item \ifnotpaper\else Tebes et al. \fi\citet{TebesEtAl2020a} focus on
+              \emph{parts} of the testing process (e.g., test goal, testable entity),
+        \item \ifnotpaper\else Souza et al. \fi\citet{SouzaEtAl2017} prioritize
+              organizing testing approaches over defining them, and
+        \item \ifnotpaper\else Unterkalmsteiner et al. \fi\citet{UnterkalmsteinerEtAl2014}
+              focus on the ``information linkage or transfer'' \citetext{p.~A:6}
+              between requirements engineering and software testing.
+    \end{itemize}}
+
+\def\rqatext{What testing approaches does the literature describe?}
+\def\rqbtext{What discrepancies exist between descriptions of these testing approaches?}
+\def\rqctext{Is it possible to resolve/reduce any of these discrepancies systematically?}
+
 %------------------------------------------------------------------------------
 % Spacing Options
 %------------------------------------------------------------------------------
@@ -249,7 +280,7 @@ of a test process; for example, ``across the whole organization'' or only
 \ExplSyntaxOff
 
 % Define/read values for Undefined Terms methodology for reuse and calculation!
-\ReadFile{\undefTermCounts}{\miscAssets/undefTermCounts}
+\ReadFile{\undefTermCounts}{assets/misc/undefTermCounts}
 
 \newcount\TotalBefore
 \newcount\UndefBefore

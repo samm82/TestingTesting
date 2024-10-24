@@ -2,16 +2,16 @@
 % Macros used for paper
 %------------------------------------------------------------------------------
 
-\input{paper_macros}
+\input{common_macros}
 
 %------------------------------------------------------------------------------
 % Question-directed Writing
 %------------------------------------------------------------------------------
 
 \ifshowwritingdirectives
-  \newenvironment{writingdirectives}{\begin{mdwritingdirectives}\centering\textbf{Writing Directives}\begin{itemize}}{\end{itemize}\end{mdwritingdirectives}}
+    \newenvironment{writingdirectives}{\begin{mdwritingdirectives}\centering\textbf{Writing Directives}\begin{itemize}}{\end{itemize}\end{mdwritingdirectives}}
 \else
-  \excludecomment{writingdirectives}
+    \excludecomment{writingdirectives}
 \fi
 
 %------------------------------------------------------------------------------
@@ -19,13 +19,13 @@
 %------------------------------------------------------------------------------
 
 \ifcompilingforprinting
-  \newcommand{\printOnlyFootnote}[1]{\footnote{#1}}
-  \newcommand{\printOnlyFootnoteText}[1]{\footnotetext{#1}}
-  \newcommand{\printOnlyFootnoteMark}{\footnotemark}
+    \newcommand{\printOnlyFootnote}[1]{\footnote{#1}}
+    \newcommand{\printOnlyFootnoteText}[1]{\footnotetext{#1}}
+    \newcommand{\printOnlyFootnoteMark}{\footnotemark}
 \else
-  \newcommand{\printOnlyFootnote}[1]{}
-  \newcommand{\printOnlyFootnoteText}[1]{}
-  \newcommand{\printOnlyFootnoteMark}{}
+    \newcommand{\printOnlyFootnote}[1]{}
+    \newcommand{\printOnlyFootnoteText}[1]{}
+    \newcommand{\printOnlyFootnoteMark}{}
 \fi
 
 %------------------------------------------------------------------------------
