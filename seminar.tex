@@ -46,6 +46,18 @@
 
 \setbeamertemplate{caption}{\centering\insertcaption\par}
 
+% Change block width
+\addtobeamertemplate{block begin}{%
+    \centering\large%
+    \setlength{\textwidth}{0.9\textwidth}
+}{}
+
+% From https://tex.stackexchange.com/a/489625/192195
+\BeforeBeginEnvironment{block}{\begin{adjustbox}{minipage={\linewidth}, center}}
+    \AfterEndEnvironment{block}{\end{adjustbox}}
+
+\usepackage{adjustbox}
+
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 
 \input{seminar_helpers}
@@ -121,11 +133,10 @@
                   \item Phalange
               \end{itemize}
     \end{itemize}
-    \begin{exampleblock}<3->{}
-        {\large \litStd{}}
+    \begin{block}<3->{}{\litStd{}}
         % \vspace{3mm}
         % \hspace\fill{\small--- Dr.~Jacques Carette}
-    \end{exampleblock}
+    \end{block}
 \end{frame}
 
 \begin{frame}
@@ -204,17 +215,57 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Unstandardized Standards}
+    \begin{itemize}
+        \item The structure of tours is:
+              \begin{itemize}
+                  \item quite general \citep[p.~34]{IEEE2022}
+                  \item<2-> ``organized around a special focus'' \citepISTQB{}
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Unstandardized Standards}
+    \begin{itemize}
+        \item Load testing is performed with:
+              \begin{itemize}
+                  \item loads
+                        ``between anticipated conditions of low, typical, and
+                        peak usage'' \citep[p.~5]{IEEE2022}
+                  \item<2-> loads that are as large as possible \citep[p.~86]{Patton2006}
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Unstandardized Standards}
+    \begin{itemize}
+        \item Alpha testing is performed by:
+              \begin{itemize}
+                  \item ``users within the organization developing
+                        the software'' \citep[p.~17]{IEEE2017}
+                  \item<2-> ``a small, selected group of
+                        potential users'' \citep[p.~5-8]{SWEBOK2024}
+                  \item<3-> ``roles outside the development organization'' conducted
+                        ``in the developer's test environment'' \citepISTQB{}
+              \end{itemize}
+    \end{itemize}
+
+    \begin{block}<4->{}
+        {``Okay testing team, we want to conduct alpha testing on our
+            product. What's our timeline? Budget? Sample size?''}
+        % \vspace{3mm}
+        % \hspace\fill{\small--- Dr.~Jacques Carette}
+    \end{block}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PROJECT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Project}
-
-\begin{frame}
-    \frametitle{The Problem with Testing Literature}
-    \framesubtitle{Unstandardized Standards}
-\end{frame}
-
 \subsection{Drasil}
 
 % \begin{frame}
@@ -324,12 +375,12 @@
                         more types of testing?
               \end{itemize}
     \end{itemize}
-    \onslide<7-|handout:1>\begin{exampleblock}{}
-        {\large "The information you have should be just as useful for generating
+    \onslide<7-|handout:1>\begin{block}{}
+        {"The information you have should be just as useful for generating
             tests as it should be for manually running them."}
         \vspace{3mm}
         \hspace\fill{\small--- Dr.~Jacques Carette}
-    \end{exampleblock}
+    \end{block}
 \end{frame}
 
 \begin{frame}
