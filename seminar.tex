@@ -9,6 +9,8 @@
 \usepackage{tikz}
 \usepackage{anyfontsize}
 
+\usepackage[disable]{todonotes}
+
 % Required for biblatex, but also adds functionality for quotation
 \usepackage{csquotes}
 
@@ -180,12 +182,13 @@
                 \huge Intraorganizational \normalsize
             \end{center}
 
-            ``Complete testing'' could require the tester to:
+            \citet[p.~7]{KanerEtAl2011} say ``complete testing'' could require
+            the tester to:
             \begin{itemize}
-                \item discover ``every bug in the product'',
-                \item exhaust the time allocated to the testing phase,
-                \item implement every test previously agreed upon,
-                \item \dots{} \citep[p.~7]{KanerEtAl2011}
+                \item discover ``every bug'',
+                \item exhaust the time allocated,
+                \item implement every planned test,
+                \item \dots{}
             \end{itemize}
         \end{column}
     \end{columns}
