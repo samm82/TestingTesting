@@ -266,138 +266,31 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Project}
-\subsection{Drasil}
 
-% \begin{frame}
-%     \frametitle{Drasil}
-%     \framesubtitle{"Generate All The Things!"}
-%     % TODO: "Generate All The Things!" is a beautifully appropriate tagline for Drasil
-%     %       for a few reasons:
-%     %                  1. What are "Things"? One may only think of "Things" as far as their knowledge and understanding allows them! You wouldn't be able to think of things without some sort of basis/constructive understanding/methodology to _get_ there, you can't _think of random phenomena_ (that's why they're phenomena).
+%   \begin{figure}
+%       %   \vspace{-1mm}
+%       \includegraphics[width=.8\textwidth]{assets/stable.png}
+%       %   \vspace{-3mm}
+%       \caption{Contents of \texttt{stable}}
+%       \vspace{-1mm}
+%   \end{figure}
 
-%     \begin{itemize}
-%         \item<2-> An exploration in software-related artifact generation for "well understood" domains \citep{KnowledgeCapture2021} through strong knowledge capture.
-%             \begin{itemize}
-%                 \item<3-> By unifying knowledge into a single framework with reusable composable units of knowledge, we eliminate code duplication, formally impose traceability and maintainability of knowledge (and software), and allow for easy knowledge transference.
-%                 \item<4-> Knowledge organization and capture is of utmost importance, as it is the pathway for interpreters and Domain-Specific Languages (DSLs) to make appropriate usage of the knowledge captured.
-%                 \item<5-> By creating different kinds of "printers", we can use a stable knowledge-base to generate software that solves "well understood" problems.
-%             \end{itemize}
-%         \item<6-> Drasil currently focuses on building research software, generating Software Requirement Specification documents (SRS) in both LaTeX and HTML (with MathJaX), code to solve a problem, README files, Makefiles, graphs, etc.
-%     \end{itemize}
-% \end{frame}
+%   \lstinputlisting[
+%       title=An example log,
+%       captionpos=b,
+%       language={},
+%       basicstyle=\tiny, % TODO: reduce font size?
+%       breakatwhitespace=true,
+%       showstringspaces=false
+%   ]{assets/log.txt}
 
-\begin{frame}
-    \frametitle{Problem Statement}
-    \begin{itemize}
-        \item Currently, there is no way to verify Drasil's output
-        \item <2-> Drasil is "tested" by comparing generated
-              artifacts to \texttt{stable}
-              \begin{columns}[T,onlytextwidth]
-                  \begin{column}{.4\textwidth}
-                      %   \begin{figure}
-                      %       %   \vspace{-1mm}
-                      %       \includegraphics[width=.8\textwidth]{assets/stable.png}
-                      %       %   \vspace{-3mm}
-                      %       \caption{Contents of \texttt{stable}}
-                      %       \vspace{-1mm}
-                      %   \end{figure}
-                  \end{column}
-                  \begin{column}{.6\textwidth}
-                      %   \lstinputlisting[
-                      %       title=An example log,
-                      %       captionpos=b,
-                      %       language={},
-                      %       basicstyle=\tiny, % TODO: reduce font size?
-                      %       breakatwhitespace=true,
-                      %       showstringspaces=false
-                      %   ]{assets/log.txt}
-                      \vspace{-2mm}
-                  \end{column}
-              \end{columns}
-        \item <3-> This does not actually say anything about Drasil's output!
-    \end{itemize}
-\end{frame}
+% \onslide<7-|handout:1>\begin{block}{}
+%     {"The information you have should be just as useful for generating
+%         tests as it should be for manually running them."}
+%     \vspace{3mm}
+%     \hspace\fill{\small--- Dr.~Jacques Carette}
+% \end{block}
 
-\begin{frame}
-    \frametitle{Purpose Statement}
-    \begin{itemize}
-        \item The purpose of this research is to implement test case generation
-              to verify generated code
-        \item These test cases will be generated from information within Drasil
-        \item<2-> Why use test cases for verification as opposed to, say,
-              consistency/correctness checks?
-              \begin{enumerate}
-                  \item<3-> A more well-defined, Master's level scope
-                  \item<4-> Targets a more complex artifact that is harder to verify
-                  \item<5-> Gives Drasil another "bragging point"!
-              \end{enumerate}
-    \end{itemize}
-\end{frame}
-
-\subsection{Why Test Generated Code?}
-
-\begin{frame}
-    \frametitle{Why Test Generated Code?}
-    If the code is being generated from a stable knowledge base,
-    then it should be correct. Why waste effort testing it?
-    \begin{enumerate}
-        \item<2-> The knowledge base is not actually "stable" yet
-        \item<3-> There are plenty of places for a mistake to be introduced
-              %, both by Drasil's developers and "end users"
-        \item<4-> Testing provides a greater degree of confidence in
-              Drasil's capabilities
-        \item<5-> Generating code for testing allows for it to be done
-              "properly" instead of taking shortcuts commonly taken by humans
-    \end{enumerate}
-\end{frame}
-
-\subsection{Next Steps}
-
-\begin{frame}
-    \frametitle{Next Steps}
-    2. Understand the manual artifact (and its components) well
-    \begin{itemize}
-        \item<2-> Understanding the problem domain lets one develop
-              a solution that:
-              \begin{itemize}
-                  \item Makes use of all areas of the domain
-                  \item Follows domain standards, including quality and terminology
-              \end{itemize}
-        \item<3-> There are specific areas of testing that need to be understood:
-              \begin{itemize}
-                  \item<4-> \textbf{Research Question \#1:}
-                        What information is necessary for different types of testing?
-                  \item<5-> \textbf{Research Question \#2:}
-                        How can test cases be generated from information that currently
-                        exists within Drasil?
-                  \item<6-> \textbf{Research Question \#3:}
-                        How can new information be added to facilitate the generation of
-                        more types of testing?
-              \end{itemize}
-    \end{itemize}
-    \onslide<7-|handout:1>\begin{block}{}
-        {"The information you have should be just as useful for generating
-            tests as it should be for manually running them."}
-        \vspace{3mm}
-        \hspace\fill{\small--- Dr.~Jacques Carette}
-    \end{block}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Next Steps}
-    3. Generate it!
-    \begin{itemize}
-        \item<2-> Test cases will then be written for:
-              \begin{itemize}
-                  \item Other variabilities of Projectile's Python implementation
-                  \item Projectile's implementation in other languages
-                  \item Other examples where code is generated: GlassBR, NoPCM,
-                        DblPendulum, PD Controller \citep{HuntEtAl2021}
-              \end{itemize}
-        \item<3-> These test cases will also be added to Drasil's CI/CD
-              to ensure that future changes preserve the code's functionality
-    \end{itemize}
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ACKNOWLEDGEMENTS
@@ -418,7 +311,6 @@
         \item<2-> The format of this presentation was \emph{heavily} based on
               a previous presentation by Jason Balaci, who also provided a
               great thesis template
-              % \item<2-> Dr.~Smith created the knowledge flow figure shown earlier
         \item<3-> The past and current Drasil team have created a truly amazing
               framework!
     \end{itemize}
@@ -438,9 +330,7 @@
 %% REFERENCES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{References}
-
-\begin{frame}%[allowframebreaks]
+\begin{frame}[allowframebreaks]
     \frametitle{References}
 
     \bibliography{references}
