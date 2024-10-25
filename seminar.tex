@@ -9,6 +9,10 @@
 \usepackage{tikz}
 \usepackage{anyfontsize}
 
+\usepackage{makecell, tabularx}
+\newcolumntype{M}{>{\raggedright\arraybackslash}m}
+\renewcommand\tabularxcolumn[1]{M{#1}}
+\renewcommand\arraystretch{1.2}
 \usetikzlibrary{shapes,shapes.geometric,arrows,fit,calc,positioning,automata,}
 \usepackage{pgf-pie}
 
@@ -336,7 +340,7 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}[t]{Categorization Terminology}
+\begin{frame}[t]{Methodology: Categories}
     \vspace{-0.75cm}
     \centering
     \only<1>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels1.pdf}}
@@ -369,7 +373,7 @@
     \end{minipage}
 \end{frame}
 
-\begin{frame}[t]{Graph Notation}
+\begin{frame}[t]{Methodology: Graph Notation}
     \vspace{-0.75cm}
     \centering
     \only<1>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels5.pdf}}
@@ -386,6 +390,33 @@
         \only<2>{Lines without arrowheads connect \emph{synonyms}.}
         \only<3>{Dashed lines indicate the relationship is \emph{implied}.}
     \end{minipage}
+\end{frame}
+
+\begin{frame}{Methodology: Procedure}
+    \framesubtitle{Approaches}
+    \begin{itemize}
+        \item A row is created for each test approach, such as the following which is based on \citep{IEEE2022}
+    \end{itemize}
+    \begin{center}
+        \small
+        \begin{tabularx}{\linewidth}{|M{1.1cm}|M{1.4cm}|X|M{1.7cm}|M{1.8cm}|}
+            \hline
+            \thead{\textbf{Name}} & \thead{\textbf{Category}} & \thead{\textbf{Definition}}                                                                            & \thead{\textbf{Parent(s)}}               & \thead{\textbf{Synonym(s)}}   \\
+            \hline
+            A/B Testing           & Practice (p.~22)          & Testing ``that allows testers to determine which of two systems or components performs better'' (p.~1) & Statistical Testing (pp.~1,~35), \dots{} & Split-Run Testing (pp.~1,~35) \\
+            \hline
+        \end{tabularx}
+    \end{center}
+    \pause
+    \begin{itemize}
+        \item This information is gathered from sources by looking for \dots{}
+              \begin{itemize}
+                  \item Glossaries
+                  \item Testing-related terms
+                  \item Terms described \emph{by} other approaches
+                  \item Terms that \emph{imply} other approaches
+              \end{itemize}
+    \end{itemize}
 \end{frame}
 
 %   \begin{figure}
