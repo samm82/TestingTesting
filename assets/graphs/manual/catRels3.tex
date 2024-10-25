@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{catRels3}{
+    rankdir=BT;
+
+    Approach;
+
+    Level;
+    Practice;
+    Technique [style=invis];
+    Type [style=invis];
+
+    Level -> Approach;
+    Practice -> Approach;
+    Technique -> Approach [style=invis];
+    Type -> Approach [style=invis];
+}
+\end{document}

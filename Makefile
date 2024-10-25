@@ -89,6 +89,7 @@ compile_graphs: csvToGraph
 	done
 	rm *Graph*
 	rm *Legend* || true
+	rm *catRels* || true
 
 custom_graphs: GRAPHS="$(CUSTOM_GRAPHS)"
 custom_graphs: compile_graphs
