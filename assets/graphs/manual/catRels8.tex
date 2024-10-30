@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{catRels8}{
+    rankdir=BT;
+
+    ImpliedTerm [label=<Implied<br/>Term>, style=dashed];
+
+    Term1 [label=Term];
+    Term2 [label=Term];
+    SynToBoth [label=<Synonym<br/>to Both>, style=dotted];
+    SynToBoth -> ImpliedTerm [style=invis]
+
+        {rank=same Term1 Term2}
+    Term1 -> SynToBoth [dir=none];
+    Term2 -> SynToBoth [dir=none, style=dashed];
+}
+\end{document}
