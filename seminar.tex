@@ -509,6 +509,55 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Methodology: Procedure}
+    \framesubtitle{}
+    \begin{itemize}
+        \item Recording these data in a consistent format allows for graphs to
+              be generated according to a certain logic \pause
+        \item It also allows for subsets of discrepancies to be identified \pause
+              \vspace{1cm}\rqb{}
+    \end{itemize}
+\end{frame}
+
+\section{Discrepancies}
+\begin{frame}{Automated Discrepancies}
+    \begin{itemize}
+        \item Some terms are given as a synonym to two (or more) disjoint,
+              unrelated terms, making the relation between the given synonyms
+              ambiguous \pause
+        \item These are included in generated graphs automatically
+    \end{itemize}
+    \vspace{-0.5cm}
+    \begin{columns}[c]
+        \begin{column}{.55\textwidth}
+            \small
+            \begin{table}[hbtp!]
+                \centering
+                \begin{tabular}{ll} \hline
+                    Name & Synonym(s)                            \\ \hline
+                    E    & F (Author, 0000; implied by 0001)     \\
+                    G    & F (Author, 0002), H (implied by 0000) \\
+                    H    & X                                     \\ \hline
+                \end{tabular}
+            \end{table}
+        \end{column}
+        \begin{column}{.4\textwidth}
+            \includegraphics[width=\textwidth]{assets/graphs/SynExampleGlossaryGraph.pdf}
+        \end{column}
+    \end{columns} \pause
+    \vspace{-0.25cm}
+    \begin{itemize}
+        \item The following four are the most prominent examples of the ten
+              identified automatically:
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Automated Discrepancies}
+    \begin{enumerate}
+        \input{assets/misc/multiSyns}
+    \end{enumerate}
+\end{frame}
+
 %   \begin{figure}
 %       %   \vspace{-1mm}
 %       \includegraphics[width=.8\textwidth]{assets/stable.png}

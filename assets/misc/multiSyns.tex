@@ -1,32 +1,37 @@
 \item \textbf{Invalid Testing:}
 \begin{itemize}
-    \item Error Tolerance Testing \cite[p.~45]{Kam2008}
-    \item Negative Testing \cite{ISTQB} (implied by \cite[p.~10]{IEEE2021})
+    \item Error Tolerance Testing \citep[p.~45]{Kam2008}
+    \item Negative Testing \ifnotpaper
+              (\citealpISTQB{}; implied by \citealp[p.~10]{IEEE2021}) \else
+              \citep{ISTQB} (implied by \citep[p.~10]{IEEE2021}) \fi
 \end{itemize}
 \item \textbf{Soak Testing:}
 \begin{itemize}
-    \item Endurance Testing \cite[p.~39]{IEEE2021}
-    \item Reliability Testing\footnote{Endurance testing is given as a kind of
-              reliability testing by \cite[p.~55]{Firesmith2015}, although the
-              terms are not synonyms.} \cite[Tab.~1,~p.~26]{Gerrard2000b},
-          \cite[Tab.~2]{Gerrard2000a}
+    \item Endurance Testing \citep[p.~39]{IEEE2021}
+    \item Reliability Testing\ifnotpaper\
+              (\citealp[Tab.~2]{Gerrard2000a}; \citeyear[Tab.~1,~p.~26]{Gerrard2000b})
+          \else\footnote{Endurance testing is given as a kind of reliability
+                  testing by \citet[p.~55]{Firesmith2015}, although the terms
+                  are not synonyms.} \citep[Tab.~1,~p.~26]{Gerrard2000b},
+              \citep[Tab.~2]{Gerrard2000a}\fi
 \end{itemize}
 \item \textbf{User Scenario Testing:}
 \begin{itemize}
-    \item Scenario Testing \cite{ISTQB}
-    \item Use Case Testing\footnote{``Scenario testing'' and ``use case testing''
-              are given as synonyms by \cite{ISTQB} and \cite[pp.~47-49]{Kam2008}
-              but listed separately by \cite[p.~22]{IEEE2022}, \ifnotpaper who
-                  also give \else which also gives \fi ``use case testing'' as a
-              ``common form of scenario testing'' \cite[p.~20]{IEEE2021}.
-              This implies that ``use case testing'' may instead be a child of
-              ``user scenario testing'' (see \Cref{tab:parSyns}).}
-          \cite[p.~48]{Kam2008} (although ``an actor can be a user or another
-          system'' \cite[p.~20]{IEEE2021})
+    \item Scenario Testing \citepISTQB{}
+    \item Use Case Testing\ifnotpaper\ \else\footnote{``Scenario testing'' and
+                  ``use case testing'' are given as synonyms by \citepISTQB{}
+                  and \citep[pp.~47-49]{Kam2008}
+                  but listed separately by \citep[p.~22]{IEEE2022}, \ifnotpaper who
+                      also give \else which also gives \fi ``use case testing'' as a
+                  ``common form of scenario testing'' \citep[p.~20]{IEEE2021}.
+                  This implies that ``use case testing'' may instead be a child of
+                  ``user scenario testing'' (see \Cref{tab:parSyns}).}\fi
+          \citep[p.~48]{Kam2008} (although ``an actor can be a user or another
+          system'' \citep[p.~20]{IEEE2021})
 \end{itemize}
 \item \textbf{Link Testing:}
 \begin{itemize}
-    \item Branch Testing (implied by \cite[p.~24]{IEEE2021})
-    \item Component Integration Testing \cite[p.~45]{Kam2008}
-    \item Integration Testing (implied by \cite[p.~13]{Gerrard2000a})
+    \item Branch Testing (implied by \citealp[p.~24]{IEEE2021})
+    \item Component Integration Testing \citep[p.~45]{Kam2008}
+    \item Integration Testing (implied by \citealp[p.~13]{Gerrard2000a})
 \end{itemize}
