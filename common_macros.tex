@@ -227,12 +227,13 @@ of a test process; for example, ``across the whole organization'' or only
     Since these graphs tend to be large, it is useful to focus on specific
     subsets of them. \ifnotpaper Graphs limited to approaches from a given
         \hyperref[categories-observ]{approach category} are generated, as well
-        as a graph of static approaches; interestingly, static testing seems to
-        be considered a separate approach category in \citep[Fig.~2]{IEEE2022}%
-        \todo{Better place to include this, if at all?}. Since static testing is
-        \hyperref[static-test]{out of scope}, it is also helpful to see how it
-        overlaps with the in-scope dynamic testing, so these ``connecting''
-        relations are also graphed. Additionally, more specific subsets of
+        as a graph of static approaches. This is done both because
+        \citet[Fig.~2]{IEEE2022} \multAuthHelper{consider} static testing a
+        separate approach category and since it is quite different from dynamic
+        testing (see \Cref{static-test}). Generated graphs of static testing
+        approaches include any relations with dynamic approaches (since they
+        are our primary focus) which are colored gray, as shown in
+        \Cref{fig:staticExampleGraph}. Additionally, more specific subsets of
         these graphs \else These \fi can be generated based on a given subset
     of approaches to include, such as those pertaining to
     \hyperref[recov-discrep]{recovery} or \hyperref[scal-discrep]{scability},

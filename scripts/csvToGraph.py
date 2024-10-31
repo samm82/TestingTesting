@@ -691,7 +691,8 @@ def writeDotFile(lines, filename):
     writeFile(lines, filename)
 
 if "Example" in csvFilename:
-    writeDotFile(categoryDict["Approach"][1], f"{csvFilename.split("/")[-1][:-4]}Graph")
+    writeDotFile(categoryDict["Static" if "Static" in csvFilename else "Approach"][1],
+                 f"{csvFilename.split("/")[-1][:-4]}Graph")
 else:
     for key, value in categoryDict.items():
         lines = value[1]
