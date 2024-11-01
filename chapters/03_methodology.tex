@@ -219,6 +219,116 @@ of this\fi.
     \otherTestTermsTable{}
 \end{bigLandscape}
 % These were moved earlier to display nicely in paper
+
+The literature provides many other ways to categorize test approaches. While
+these are less-defined and as such are not used, they are given here for
+completeness. Note that ``there is a lot of overlap between different classes
+of testing'' \citep[p.~8]{Firesmith2015}, meaning that ``one category [of test
+        techniques] might deal with combining two or more techniques''
+\citep[p.~5-10]{SWEBOK2024}. For example, ``performance, load and stress
+testing might considerably overlap in many areas'' \citep[p.~1187]{Moghadam2019}.
+A side effect of this is that it is difficult to ``untangle'' these classes;
+for example, take the following sentence: ``whitebox fuzzing extends dynamic
+test generation based on symbolic execution and constraint solving from unit
+testing to whole-application security testing''
+\citep[p.~23]{GodefroidAndLuchaup2011}!
+
+Despite these challenges, it is useful to understand the differences between
+testing classes because tests from multiple subsets within the same category,
+such as functional and structural, ``use different sources of information and
+have been shown to highlight different problems'' \citep[p.~5-16]{SWEBOK2024}.
+However, some subsets, such as deterministic and random, may have ``conditions
+that make one approach more effective than the other''
+\citep[p.~5-16]{SWEBOK2024}. The following categories may also be more relevant
+in specific situations or to specific teams than the ones given by ISO/IEC and
+IEEE in \Cref{tab:ieeeTestTerms}.
+
+\begin{itemize}
+    \item Visibility of code: black-, white-, or grey-box
+          (specificational/functional, structural, or a mix of the two)
+          (\citealp[p.~8]{IEEE2021}; \citealp[pp.~5-10,~5-16]{SWEBOK2024};
+          \citealp[p.~601, called ``testing approaches'' and (stepwise) code
+              reading replaced ``grey-box testing'']{SharmaEtAl2021};
+          \todo{OG [3, 4, 5, 8]}
+          \citealp[pp.~57-58]{AmmannAndOffutt2017};
+          \citealp[p.~213]{KuļešovsEtAl2013};
+          \citealp[pp.~53,~218]{Patton2006}; \citealp[p.~69]{Perry2006};
+          \citealp[pp.~4-5, called ``testing methods'']{Kam2008})
+    \item Level/stage\footnote{See \Cref{tab:ieeeTestTerms}.} of testing:
+          unit, integration, system, or acceptance
+          (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citealpISTQB{};
+          \citealp[p.~218]{KuļešovsEtAl2013} \todo{OG Black, 2009};
+          \citealp{Patton2006}; \citealp{Perry2006};
+          \citealp{PetersAndPedrycz2000}; \citealp[pp.~9,~13]{Gerrard2000a})
+          (sometimes includes installation \citep[p.~439]{vanVliet2000} or
+          regression \citep[p.~3]{BarbosaEtAl2006})
+    \item Source of information for design: specification, structure, or
+          experience \citep[p.~8]{IEEE2021}
+          \begin{itemize}
+              \item Source of test data: specification-, implementation-,
+                    or error-oriented \citep[p.~440]{PetersAndPedrycz2000}
+          \end{itemize}
+    \item Test case selection process: deterministic or random
+          \citep[p.~5-16]{SWEBOK2024}
+    \item Coverage criteria: input space partitioning, graph coverage, logic
+          coverage, or syntax-based testing \citep[pp.~18-19]{AmmannAndOffutt2017}
+    \item Question: what-, when-, where-, who-, why-, how-, and how-well-based
+          testing; these are then divided into a total of ``16 categories of
+          testing types''\notDefDistinctIEEE{type}
+          \citep[p.~17]{Firesmith2015}
+    \item Execution of code: static or dynamic
+          (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
+          \citealp[p.~53]{Patton2006}); we also consider this categorization
+          meaningful (see \Cref{static-test})
+    \item Goal of testing: verification or validation
+          (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[pp.~69-70]{Perry2006})
+    \item Property of code \citep[p.~213]{KuļešovsEtAl2013} or test target
+          \citep[pp.~4-5]{Kam2008}: functional or non-functional
+    \item Human involvement: manual or automated
+          \citep[p.~214]{KuļešovsEtAl2013}
+    \item Structuredness: scripted or exploratory
+          \citep[p.~214]{KuļešovsEtAl2013}
+    \item Coverage requirement: data or control flow \citep[pp.~4-5]{Kam2008}
+    \item Test factor: (``attributes of the software that, if they are wanted,
+          pose a risk to the success of the software''; also called ``quality
+          factor'' or ``quality attribute'' \citep[p.~40]{Perry2006}):
+          correctness, file integrity, authorization, audit trail, continuity
+          of processing, service levels (e.g., response time), access control,
+          compliance, reliability, ease of use, maintainability, portability,
+          coupling (e.g., with other applications in a given environment),
+          performance, and ease of operation (e.g., documentation, training)
+          \citep[pp.~40-41]{Perry2006}
+    \item Adequacy criterion: coverage-, fault-, or error-based
+          (``based on knowledge of the typical errors that people make'')
+          \citep[pp.~398-399]{vanVliet2000}
+    \item Priority\footnote{In the context of testing e-business projects.}:
+          smoke, usability, performance, or functionality testing
+          \citep[p.~12]{Gerrard2000a}
+    \item Category of test ``type''\gerrardDistinctIEEE{type}: static testing,
+          test browsing, functional testing, non-functional testing, or large
+          scale integration (testing) \citep[p.~12]{Gerrard2000a}
+    \item Purpose: correctness, performance, reliability, or security
+          \citep{Pan1999}
+\end{itemize}
+
+Additionally, Engström ``investigated classifications of research''
+\citep[p.~1]{engström_mapping_2015} on the following four testing techniques.
+``They are neither orthogonal nor necessarily useful for the purpose of
+identifying relevant evaluation points from a problem perspective'' (p.~1), so
+it is unclear why they were included at all:
+
+\begin{itemize}
+    \item \textbf{Combinatorial testing:} how the system under test is
+          modelled, ``which combination strategies are used to generate test
+          suites and how test cases are prioritized'' (pp.~1-2)
+    \item \textbf{Model-based testing:} the information represented and
+          described by the test model (p.~2)
+    \item \textbf{Search-based testing:} ``how techniques%
+          \notDefDistinctIEEE{technique} had been empirically evaluated
+          (i.e. objective and context)'' (p.~2)
+    \item \textbf{Unit testing:} ``source of information (e.g. code,
+          specifications or testers intuition)'' (p.~2)
+\end{itemize}
 \fi
 
 \subsubsection{Parent-Child Relations}
