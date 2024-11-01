@@ -232,12 +232,12 @@ by ``measuring the performance metrics''
 under certain execution conditions'' \citep[p.~1187]{Moghadam2019}, and
 ``detecting violations of non-functional requirements under expected and
 stress conditions'' \ifnotpaper
-    (\citealp[p.~1187]{Moghadam2019}; similar in \citep[p.~5-9]{SWEBOK2024})%
+    (\citealp[p.~1187]{Moghadam2019}; similar in \citealp[p.~5-9]{SWEBOK2024})%
 \else
     \cite[p.~1187]{Moghadam2019} (similar in \cite[p.~5-9]{SWEBOK2024})%
 \fi. It is performed either \dots\
 \begin{enumerate}
-    \item \dots\ ``within given constraints of time and other resources''
+    \item ``within given constraints of time and other resources''
           \ifnotpaper
               (\citealp[p.~7]{IEEE2022}; \citeyear[p.~320]{IEEE2017};
               similar in \citealp[p.~1187]{Moghadam2019})%
@@ -245,14 +245,16 @@ stress conditions'' \ifnotpaper
               \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022} (similar
               in \cite[p.~1187]{Moghadam2019})%
           \fi, or
-    \item \dots\ ``under a `typical' load'' \citep[p.~39]{IEEE2021}.
+    \item ``under a `typical' load'' \citep[p.~39]{IEEE2021}.
 \end{enumerate}
 
 It is listed as a subset of performance-related testing, which is defined as
 testing ``to determine whether a test item performs as required when it is
 placed under various types and sizes of `load'\,'' \citeyearpar[p.~38]{IEEE2021},
 along with other approaches like load and capacity testing
-\citep[p.~22]{IEEE2022}. In contrast, \citet[p.~5-9]{SWEBOK2024}
+\citep[p.~22]{IEEE2022}. Note that ``performance, load and stress testing might
+considerably overlap in many areas'' \citep[p.~1187]{Moghadam2019}.
+In contrast, \citet[p.~5-9]{SWEBOK2024}
 gives ``capacity and response time'' as examples of ``performance
 characteristics'' that performance testing would seek to ``assess'', which
 seems to imply that these are sub-approaches to performance testing instead.
