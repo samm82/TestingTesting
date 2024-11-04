@@ -199,44 +199,7 @@ approaches \citep[Fig.~5]{engström_mapping_2015}.
 \subsection{Testing Stages}
 \begin{itemize}
     \item Unit testing
-    \item Integration testing: ``testing the composition of modules'';
-          done incrementally using \emph{bottom-up} and/or
-          \emph{top-down} testing \citep[pp.~438-439]{vanVliet2000},
-          although other paradigms for design, such as \emph{big bang} and
-          \emph{sandwich} exist \citep[p.~489]{PetersAndPedrycz2000}.
-          See also \citep[p.~109]{Patton2006}.
-          \begin{itemize}
-              \item Bottom-up testing: uses \emph{test drivers}: ``tool[s]
-                    that  e[] the test environment for a component to
-                    be tested'' \citep[p.~410]{vanVliet2000} by
-                    ``sending test-case data to the modules under test,
-                    read[ing] back the results, and verify[ing] that
-                    they're correct'' \citep[p.~109]{Patton2006}
-              \item Top-down testing: uses \emph{test stubs}: tools that
-                    ``simulate[] the function of a component not yet
-                    available'' \citep[p.~410]{vanVliet2000} by
-                    providing ``fake'' values to a given module to be
-                    tested \citep[p.~110]{Patton2006}
-              \item Big bang testing: the process of ``integrat[ing] all
-                    modules in a single step and test[ing] the resulting
-                    system[]'' \citep[p.~489]{PetersAndPedrycz2000}.
-                    \emph{Although this is ``quite challenging and risky''
-                        \citep[p.~489]{PetersAndPedrycz2000}, it may be
-                        made less so through the ease of generation,
-                        and may be more practical as a testing process
-                        for Drasil, although the introduction of the
-                        test cases themselves may be introduced, at least
-                        initially, in a more structured manner; also of
-                        note is its relative ease ``to test paths'' and
-                        ``to plan and control''
-                        \citep[p.~490]{PetersAndPedrycz2000}
-                        \qtodo{Bring up!}}
-              \item Sandwich testing: ``combines the ideas of bottom-up and
-                    top-down testing by defining a certain target layer in
-                    the hierarchy of the modules'' and working towards it
-                    from either end using the relevant testing approach
-                    \citep[p.~491]{PetersAndPedrycz2000}
-          \end{itemize}
+    \item Integration testing
     \item System testing: ``test[ing] the whole system against the user
           documentation and requirements specification after integration
           testing has finished'' \citep[p.~439]{vanVliet2000}
