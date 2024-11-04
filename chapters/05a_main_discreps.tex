@@ -133,20 +133,23 @@
           related components'' \citep[p.~82]{IEEE2017}; it is a combination of
           the two? somewhere on the spectrum between them? As above, it is
           listed as a child of integration testing by \citetISTQB{}.
-    \item % Discrep count (SYNS, CONTRA): {ISO_IEC2023b} {IEEE2017} | implied by {BaresiAndPezzè2006}
+    \item % Discrep count (SYNS, CONTRA): {IEEE2017} ISTQB | {IEEE2017} {BaresiAndPezzè2006}
           A component is an ``entity with discrete structure \dots\ within a
           system considered at a particular level of analysis''
           \citep{ISO_IEC2023b} and ``the terms module, component, and unit
               [sic] are often used interchangeably or defined to be subelements
           of one another in different ways depending upon the context'' with
-          no standardized relationship \citep[p.~82]{IEEE2017}. This means
-          unit/component/module testing can refer to the testing of both a
-          module and a specific function in a module\thesisissueref{14}.
-          However, ``component'' is sometimes defined differently than
-          ``module'': ``components differ from classical modules for being
-          re-used in different contexts independently of their development''
-          \citep[p.~107]{BaresiAndPezzè2006}, so distinguishing the two
-          may be necessary.
+          no standardized relationship \citep[p.~82]{IEEE2017}. For example,
+          \citetISTQB{} \multAuthHelper{define} them as synonyms while
+          \citet[p.~107]{BaresiAndPezzè2006} \multAuthHelper{say} ``components
+          differ from classical modules for being re-used in different contexts
+          independently of their development''. Additionally, since components
+          are structurally, functionally, or logically discrete
+          \citep[p.~419]{IEEE2017} and ``can be tested in isolation''
+          \citepISTQB{}, ``unit/component/module testing'' could refer to the
+          testing of both a module \emph{and} a specific function in a module%
+          \thesisissueref{14}, introducing a further level of ambiguity.
+          % Discrep count (SYNS, AMBI): {IEEE2017} ISTQB
     \item % Discrep count (CATS, WRONG): {IEEE2016}
           Since keyword-driven testing can be used for automated \emph{or}
           manual testing \citep[pp.~4,~6]{IEEE2016}, the claim that ``test
