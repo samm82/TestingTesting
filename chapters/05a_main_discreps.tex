@@ -227,6 +227,13 @@
           State testing requires that ``all states in the state model
           \dots\ [are] `visited'\,'' in \citep[p.~19]{IEEE2021} which
           is only one of its possible criteria in \citep[pp.~82-83]{Patton2006}.
+    \item % Discrep count (DEFS, CONTRA): {IEEE2017} {PetersAndPedrycz2000} {vanVliet2000} | {Patton2006}
+          \refHelper \citet[p.~456]{IEEE2017} \multAuthHelper{say} system
+          testing is ``conducted on a complete, integrated system'' (which
+          \citet[Tab.~12.3]{PetersAndPedrycz2000} and
+          \citet[p.~439]{vanVliet2000} agree with), while
+          \citet[p.~109]{Patton2006} says it can also be done on ``at least a
+          major portion'' of the product.
     \item % Discrep count (SYNS, AMBI): ISTQB | {Patton2006}
           % TODO: NEAR SYNS?
           \refHelper \citetISTQB{} \multAuthHelper{claim} that code inspections
@@ -234,7 +241,7 @@
           them quite distinct.
     \item % Discrep count (SYNS, CONTRA): ISTQB | {PetersAndPedrycz2000}
           \phantomsection{} \label{walkthrough-syns}
-          Likewise, ``walkthroughs'' and ``structured walkthroughs'' are given
+          ``Walkthroughs'' and ``structured walkthroughs'' are given
           as synonyms by \citetISTQB{} but \citet[p.~484]{PetersAndPedrycz2000}
           \ifnotpaper imply \else implies \fi that they are different, saying a
           more structured walkthrough may have specific roles.
@@ -248,7 +255,7 @@
           tests in such a way that they exercise all components of the code
           (say, statements, branches, paths)'' on the same page
           \citeyearpar[p.~447]{PetersAndPedrycz2000}!
-    \item % Discrep count (DEFS, CONTRA): implied by {Patton2006} | {vanVliet2000}
+    \item % Discrep count (DEFS, CONTRA): {vanVliet2000} | implied by {Patton2006}
           \refHelper \citet[p.~92\ifnotpaper, emphasis added\fi]{Patton2006}
           says that reviews are ``\emph{the} process[es] under which static
           white-box testing is performed'' but correctness proofs are given
