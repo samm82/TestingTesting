@@ -213,14 +213,21 @@
           acronym (``OAT'').
 
           % META | TEXT
-    \item % Discrep count (CATS, CONTRA): {IEEE2022} {IEEE2021} | {PetersAndPedrycz2000}
+    \item % Discrep count (TERMS, AMBI): {IEEE2022} {IEEE2021} | {vanVliet2000} implied by {SWEBOK2024}
           ``Installability testing'' is given as a test type
           \ifnotpaper
-              (\citealp[p.~22]{IEEE2022}; \citeyear[p.~38]{IEEE2021})
+              (\citealp[p.~22]{IEEE2022}; \citeyear[p.~38]{IEEE2021})%
           \else
-              \cite[p.~22]{IEEE2022}, \cite[p.~38]{IEEE2021}
-          \fi but is sometimes called a test level as
-          ``installation testing'' \citep[p.~445]{PetersAndPedrycz2000}.
+              \cite[p.~22]{IEEE2022}, \cite[p.~38]{IEEE2021}%
+          \fi, while ``installation testing'' is given as a test level
+          \ifnotpaper
+              (\citealp[p.~439]{vanVliet2000}; implied by
+              \citealp[p.~5-8]{SWEBOK2024})%
+          \else
+              \cite[p.~439]{vanVliet2000}%
+          \fi; are these distinct approaches or not?%
+          \todo{How should this discrepancy be classified?}
+          % Previous: Discrep count (CATS, CONTRA): {IEEE2022} {IEEE2021} | {vanVliet2000} implied by {SWEBOK2024}
     \item % Discrep count (DEFS, CONTRA): {IEEE2022} | {Patton2006}
           \loadDiscrep{}
     \item % Discrep count (DEFS, CONTRA): {IEEE2021} | {Patton2006}
