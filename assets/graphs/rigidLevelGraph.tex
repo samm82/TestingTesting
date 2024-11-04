@@ -71,7 +71,6 @@ UserAcceptanceTesting [label=<User<br/>Acceptance<br/>Testing>];
 AcceptanceTesting -> QualificationTesting[dir=none,color="blue"];
 OperationalTesting -> ProductionAcceptanceTesting[dir=none,color="blue"];
 
-AcceptanceTesting -> SystemTesting[color="maroon"];
 AlphaTesting -> AcceptanceTesting[color="green"];
 AlphaTesting -> OperationalTesting;
 BetaTesting -> AcceptanceTesting[color="green"];
@@ -145,19 +144,11 @@ src3 [style=invis];
 src4 [style=invis];
 src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
 }
-{
-rank=same
-src5 [style=invis];
-src6 [style=invis];
-src5 -> src6 [color=maroon, label=<From Textbooks>]
-}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par
     imp3 -> syn1
     imp4 -> syn2
-src5 -> src2
-src6 -> src3
 }
 
 // Connect the dummy node to the first node of the legend
