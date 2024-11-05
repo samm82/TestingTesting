@@ -327,14 +327,29 @@
 }
 
 \begin{frame}{Research Questions}
-    \onslide<1-4>\rqa{}
-    \onslide<2-3>\rqb{}
-    \onslide<3>\rqc{}
-    \onslide<4>
-    \vspace{-2.5cm}
-    \begin{center}
-        \huge{Literature Review Time!}
-    \end{center}
+    \onslide<1->\rqa{} \vspace*{\fill}
+    \onslide<1>\rqb{} \vspace*{\fill}
+    \onslide<1>\rqc{} \vspace*{\fill}
+    \onslide<2>
+    \vspace{-4cm}
+    \begin{columns}
+        \begin{column}{0.4\textwidth}
+            \vspace{-1cm}
+            \begin{itemize}
+                \item \approachCount{} test approaches $\rightarrow$
+                \item \qualityCount{} software qualities
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \pie[sum=100, text=legend, thick, scale=0.5,
+                every label/.style={align=left, scale=0.7}]
+                {{\the\numexpr 100 - 100 * \UndefAfter/\TotalAfter}/Defined,
+                {\the\numexpr 100 * \UndefAfter/\TotalAfter}/{Not defined}}
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \subsection{Methodology}
