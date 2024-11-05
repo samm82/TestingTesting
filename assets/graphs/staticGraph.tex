@@ -76,6 +76,8 @@ GrayBoxTesting [label=<Gray-Box<br/>Testing>,style="dashed,filled"];
 ContentChecking -> GrayBoxTesting[style="dashed",color="maroon"];
 ControlFlowAnalysis [label=<Control<br/>Flow<br/>Analysis>,style="filled"];
 ControlFlowAnalysis -> StaticAnalysis[color="blue"];
+CorrectnessProofs [label=<Correctness<br/>Proofs>,style="filled"];
+CorrectnessProofs -> StaticAnalysis[color="maroon"];
 DataFlowAnalysis [label=<Data<br/>Flow<br/>Analysis>,style="filled"];
 DataFlowAnalysis -> StaticAnalysis[color="blue"];
 InformalTesting [label=<Informal<br/>Testing>,style="filled"];

@@ -209,6 +209,7 @@ ReliabilityMechanismTesting -> ReliabilityTesting[color="blue"];
 ReliabilityTesting -> SecurityTesting[style="dashed",color="green"];
 ReliabilityTesting -> PerformanceTesting;
 ResourceUtilizationTesting -> PerformanceEfficiencyTesting[color="green"];
+ResourceUtilizationTesting -> PerformanceTesting[color="maroon"];
 ResourceUtilizationTesting -> EfficiencyTesting[style="dashed"];
 RobustnessTesting -> StressTesting[style="dashed"];
 ScalabilityTesting -> PortabilityTesting[color="green"];
@@ -279,7 +280,10 @@ src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
 rank=same
 src5 [style=invis];
 src6 [style=invis];
-src5 -> src6 [color=gray, label=<From Inferences>]
+src5 -> src6 [color=maroon, label=<From Textbooks>]
+src7 [style=invis];
+src8 [style=invis];
+src7 -> src8 [color=gray, label=<From Inferences>]
 }
     edge [style="invis"]
     imp1 -> chd
@@ -294,8 +298,10 @@ src1 -> imp5
 src2 -> syn3
 src3 -> syn4
 src4 -> syn5
-src5 -> src2
-src6 -> src3
+src5 -> src1
+src6 -> src2
+src7 -> src3
+src8 -> src4
 }
 
 // Connect the dummy node to the first node of the legend
