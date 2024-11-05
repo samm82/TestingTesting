@@ -130,22 +130,55 @@
 
 \begin{frame}
     \frametitle{The Need for Standardized Terminology}
-    \begin{itemize}
-        \item Engineering is applied science
-        \item Scientific fields use precise terminology
-        \item Therefore, the same should be true of software engineering!
-        \item <2-> Imagine if other fields used unclear, inconsistent, and
-              incorrect terminology:
-              \begin{itemize}
-                  \item Force
-                  \item Isotope
-                  \item Phalange
-              \end{itemize}
-    \end{itemize}
-    \begin{block}<3->{}{\litStd{}}
-        % \vspace{3mm}
-        % \hspace\fill{\small--- Dr.~Jacques Carette}
-    \end{block}
+    \begin{columns}[T]
+        \begin{column}{.6\textwidth}
+            \begin{itemize}
+                \item Engineering is applied science
+                \item Scientific fields use precise terminology
+            \end{itemize}
+        \end{column}
+        \begin{column}{.4\textwidth}
+            \begin{column}{.3\textwidth}
+                \begin{center}
+                    \vspace*{\fill}
+                    \vspace{2mm}
+                    \huge \textbf{$\Rightarrow$}
+                    \vspace*{\fill}
+                \end{center}
+            \end{column}
+            \begin{column}{.7\textwidth}
+                \vspace{-1mm}
+                \begin{block}{}{
+                        \begin{center}
+                            SOFTWARE ENGINEERING
+                        \end{center}
+                    }
+                \end{block}
+            \end{column}
+        \end{column}
+    \end{columns}
+    \pause
+    \vspace{5mm}
+    \begin{columns}[b]
+        \begin{column}{.3\textwidth}
+            \begin{figure}
+                \includegraphics[width=\linewidth]{assets/images/force}
+                \caption{\tiny \cite{force}}
+            \end{figure}
+        \end{column}
+        \begin{column}{.3\textwidth}
+            \begin{figure}
+                \includegraphics[width=\linewidth]{assets/images/isotope}
+                \caption{\tiny \cite{isotope}}
+            \end{figure}
+        \end{column}
+        \begin{column}{.3\textwidth}
+            \begin{figure}
+                \includegraphics[width=\linewidth]{assets/images/protein}
+                \caption{\tiny \cite{protein}}
+            \end{figure}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -626,7 +659,7 @@
 \begin{frame}[allowframebreaks,noframenumbering]
     \frametitle{References}
 
-    \bibliography{references}
+    \bibliography{references,seminar_images}
 \end{frame}
 
 \end{document}
