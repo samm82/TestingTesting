@@ -7,6 +7,7 @@
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
 \usepackage{tikz}
+\usepackage{tikzsymbols}
 \usepackage{anyfontsize}
 
 \usepackage{makecell, tabularx}
@@ -225,29 +226,51 @@
     \end{figure}
 \end{frame}
 
+\newcommand{\stick}[3][black]{
+    \node at (#2, 1) {\textcolor{#1}{\Strichmaxerl[3]}};
+    \node[above] at (#2, 1.5) {#3};
+}
+\newcommand{\tester}[1]{\stick[red]{#1}{Tester}}
+\newcommand{\boss}[1]{\stick{#1}{Boss}}
+\newcommand{\dev}[1]{\stick{#1}{Dev}}
+\newcommand{\user}[1]{\stick{#1}{User}}
+
 \begin{frame}
     \frametitle{The Lack of Standardized Terminology}
     \framesubtitle{``The Problem'' (cont.)}
-    \begin{itemize}
-        \item Alpha testing is the ``first stage of testing before a product is
-              considered ready for commercial or operational use''
-              \citep[p.~17]{IEEE2017} performed by:
-              \begin{itemize}
-                  \item ``users within the organization developing
-                        the software'' (p.~17)
-                  \item<2-> ``a small, selected group of
-                        potential users'' \citep[p.~5-8]{SWEBOK2024}
-                  \item<3-> ``roles outside the development organization'' conducted
-                        ``in the developer's test environment'' \citepISTQB{}
-              \end{itemize}
-    \end{itemize}
-
-    \begin{block}<4->{}
-        {``Okay testing team, we want to conduct alpha testing on our
-            product. What's our timeline? Budget? Sample size?''}
-        % \vspace{3mm}
-        % \hspace\fill{\small--- Dr.~Jacques Carette}
+    \begin{block}{}
+        {``Okay Tester, let's conduct alpha testing on our product!''}
     \end{block}
+
+    \vspace{1cm}
+
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+
+        % Draw the rectangle
+        \draw[ultra thick] (0, 0) rectangle (4, 2.5);
+
+        \dev{0.5}
+        \boss{2.75}
+        \tester{3.5}
+        \user{5.25}
+        \user{6}
+
+    \end{tikzpicture}
+
+    % \begin{itemize}
+    %     \item Alpha testing is the ``first stage of testing before a product is
+    %           considered ready for commercial or operational use''
+    %           \citep[p.~17]{IEEE2017} performed by:
+    %           \begin{itemize}
+    %               \item ``users within the organization developing
+    %                     the software'' (p.~17)
+    %               \item<2-> ``a small, selected group of
+    %                     potential users'' \citep[p.~5-8]{SWEBOK2024}
+    %               \item<3-> ``roles outside the development organization'' conducted
+    %                     ``in the developer's test environment'' \citepISTQB{}
+    %           \end{itemize}
+    % \end{itemize}
 \end{frame}
 
 \begin{frame}
