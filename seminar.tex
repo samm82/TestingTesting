@@ -238,11 +238,6 @@
 \begin{frame}
     \frametitle{The Lack of Standardized Terminology}
     \framesubtitle{``The Problem'' (cont.)}
-    \begin{block}{}
-        {``Okay Tester, let's conduct alpha testing on our product!''}
-    \end{block}
-
-    \vspace{1cm}
 
     \centering
     \begin{tikzpicture}[scale=1.5]
@@ -251,10 +246,49 @@
         \draw[ultra thick] (0, 0) rectangle (4, 2.5);
 
         \dev{0.5}
-        \boss{2.75}
-        \tester{3.5}
+        \boss{3.5}
         \user{5.25}
         \user{6}
+
+        \onslide<1>{
+            \tester{2.75}
+            \node[draw, ellipse callout, align=center, anchor=south,
+                inner xsep=-0.75em, fill=white, text width=4.5cm, font=\small,
+                callout absolute pointer={(3.5, 2)}] at (3, 2.5)
+            {``Tester, let's conduct alpha testing on our product!''};
+        }
+
+        \onslide<2>{
+            \tester{2}
+            \node[draw, ellipse callout, align=center, anchor=south,
+                inner xsep=-3.5em, fill=white, text width=8cm, font=\small,
+                callout absolute pointer={(2, 2)}] at (1.75, 2.25)
+            {``Alpha testing is done by `users within the organization developing
+                the \mbox{software}' \citep[p.~17]{IEEE2017}.''};
+        }
+
+        \onslide<3-4>{\tester{1.25}}
+
+        \onslide<3>{
+            \node[draw, ellipse callout, align=center, anchor=south,
+                inner xsep=-1em, fill=white, text width=4cm, font=\small,
+                callout absolute pointer={(1.25, 2)}] at (1.5, 2.5)
+            {``Dev, can you do some alpha testing?''};
+        }
+
+        \onslide<4>{
+            \node[draw, ellipse callout, align=center, anchor=south,
+                inner xsep=-0.5em, fill=white, text width=5cm, font=\small,
+                callout absolute pointer={(0.75, 2)}] at (1.25, 2.25)
+            {``No?! Alpha testing is done by `a small, selected group of
+                potential users' \citep[p.~5-8]{SWEBOK2024}!''};
+        }
+
+        % \onslide<4>{
+        %     \node[draw, cloud, cloud puffs=10, cloud puff arc=120, aspect=1.5, align=center,
+        %         anchor=south, fill=white, text width=3cm, font=\footnotesize] at (3.5, 2.25)
+        %     {``Okay Tester, let's conduct alpha testing on our product!''};
+        % }
 
     \end{tikzpicture}
 
