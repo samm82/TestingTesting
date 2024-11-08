@@ -266,12 +266,12 @@
         \onslide<2>{
             \tester{2}
             \node[draw, ellipse callout, align=center, anchor=south,
-                inner xsep=-3.5em, fill=white, text width=8cm, font=\small,
+                inner xsep=-3em, fill=white, text width=7.5cm, font=\small,
                 callout absolute pointer={(2, 2)}] at (1.75, 2.25)
             % \node[draw, cloud, cloud puffs=10, cloud puff arc=120, aspect=1.5, align=center,
             %     anchor=south, fill=white, text width=3cm, font=\footnotesize] at (3.5, 2.25)
             {``Alpha testing is done by `users within the organization developing
-                the \mbox{software}' \citep[p.~17]{IEEE2017}.''};
+                the software'.''\\ \tiny \citep[p.~17]{IEEE2017}};
         }
 
         \onslide<3-4>{\tester{1.25}}
@@ -285,10 +285,10 @@
 
         \onslide<4>{
             \node[draw, ellipse callout, align=center, anchor=south,
-                inner xsep=-0.5em, fill=white, text width=5cm, font=\small,
-                callout absolute pointer={(0.75, 2)}] at (1.25, 2.25)
+                inner xsep=-2em, fill=white, text width=5cm, font=\small,
+                callout absolute pointer={(0.75, 2)}] at (1.75, 2.25)
             {``No?! Alpha testing is done by `a small, selected group of
-                potential users' \citep[p.~5-8]{SWEBOK2024}!''};
+                potential users'!''\\ \tiny \citep[p.~5-8]{SWEBOK2024}};
         }
 
         \onslide<5>{
@@ -310,12 +310,12 @@
 
         \onslide<7>{
             \node[draw, ellipse callout, align=center, anchor=south,
-                inner xsep=-2.5em, fill=white, text width=7cm, font=\small,
+                inner xsep=-1.75em, fill=white, text width=6cm, font=\small,
                 callout absolute pointer={(3.5, 2)}] at (3, 2.25)
             {``How? Alpha testing is performed
                 % by `roles outside the development organization' and done
-                `in the developer's test
-                environment' \citepISTQB{}, but you didn't bring anyone in.''};
+                `in the developer's test environment', but you didn't bring
+                anyone in.''\\ \tiny \citepISTQB{}};
         }
 
     \end{tikzpicture}
@@ -470,19 +470,22 @@
 \begin{frame}{Methodology}
     \framesubtitle{Procedure}
     \begin{itemize}
-        \item A row is created for each test approach, such as the following which is based on \citep{IEEE2022}
+        \item A row is created for each test approach
     \end{itemize}
     \begin{center}
-        \small
-        \begin{tabularx}{\linewidth}{|M{1.1cm}|M{1.4cm}|X|M{1.7cm}|M{1.8cm}|}
-            \hline
-            \thead{\textbf{Name}} & \thead{\textbf{Category}} & \thead{\textbf{Definition}}                                                                            & \thead{\textbf{Parent(s)}}               & \thead{\textbf{Synonym(s)}}   \\
-            \hline
-            A/B Testing           & Practice (p.~22)          & Testing ``that allows testers to determine which of two systems or components performs better'' (p.~1) & Statistical Testing (pp.~1,~35), \dots{} & Split-Run Testing (pp.~1,~35) \\
-            \hline
-        \end{tabularx}
+        \begin{table}
+            \small
+            \begin{tabularx}{\linewidth}{|M{1.1cm}|M{1.3cm}|X|M{1.5cm}|M{1.6cm}|}
+                \hline
+                \thead{\textbf{Name}} & \thead{\textbf{Category}} & \thead{\textbf{Definition}}                                                                                    & \thead{\textbf{Parent(s)}}                       & \thead{\textbf{Synonym(s)}}           \\
+                \hline
+                A/B Testing           & Practice {\tiny (p.~22)}  & Testing ``that allows testers to determine which of two systems or components performs better'' {\tiny (p.~1)} & Statistical Testing {\tiny (pp.~1,~35)}, \dots{} & Split-Run Testing {\tiny (pp.~1,~35)} \\
+                \hline
+            \end{tabularx}
+            \caption{\tiny Information from \citep{IEEE2022}}
+        \end{table}
     \end{center}
-    \pause
+    \pause \vspace{-0.5cm}
     \begin{itemize}
         \item This information is gathered from sources by looking for
               \begin{itemize}
@@ -534,9 +537,9 @@
                 \paperSources{3}/\papers{}}
 
             \onslide<2>{
-                \node[anchor=west, align=left] at (-1.9, 3) {
+                \node[anchor=west, align=center] at (-1.9, 3) {
                     Textbooks trusted at McMaster were our ad hoc starting points\\
-                    \quad\quad \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
+                    \tiny \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
                 };
                 \draw[->, very thick] (-1.5, 2.85) -- (-1.25, 1.4);
             }
