@@ -33,12 +33,21 @@
           % TODO: SUPP DEFS?
           \citeauthor{IEEE2017} use the same definition for ``partial correctness''
           \citeyearpar[p.~314]{IEEE2017} and ``total correctness'' (p.~480).
+    \item % Discrep count (DEFS, CONTRA): {IEEE2017} | {IEEE2021} {vanVliet2000} {PetersAndPedrycz2000}
+          \citeauthor{IEEE2017}'s definition of ``all-c-uses testing''---testing
+          that aims to execute all data ``use[s] of the value of a variable in
+          any type of statement'' \citeyearpar[p.~83]{IEEE2017}\todo{OG 2015}---%
+          is \emph{much} more vague than the definition given in
+          \citeyearpar[p.~27]{IEEE2021}: testing that exercises ``control flow
+          sub-paths from each variable definition to each c-use of that
+          definition (with no intervening definitions)'' (similar in
+          \citealp[p.~425]{vanVliet2000}; \citealp[p.~479]{PetersAndPedrycz2000}).
     \item % Discrep count (SYNS, CONTRA): implied by {IEEE2016} | {IEEE2022} {IEEE2016}
           The claim that ``test cases can be either manual test cases or
           keyword test cases'' \citep[p.~6]{IEEE2016} implies that ``keyword-driven
           testing'' could be a synonym of ``automated testing'' instead of its
           child, which seems more reasonable \ifnotpaper
-              \citetext{\citeyear[p.~4]{IEEE2016}; \citeyear[p.~35]{IEEE2022}}
+              \citetext{\citeyear[p.~4]{IEEE2016}; \citeyear[p.~35]{IEEE2022}}%
           \else\cite[p.~35]{IEEE2022}, \cite[p.~4]{IEEE2016}\fi.
 
           % STD | META
