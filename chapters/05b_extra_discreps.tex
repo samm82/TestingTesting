@@ -156,6 +156,15 @@
           is only stronger than all-uses testing if there are infeasible paths
           \citeyearpar[pp.~432-433]{vanVliet2000}, but \citeauthor{SWEBOK2024}
           does not specify this caveat \citeyearpar[p.~5-13]{SWEBOK2024}.
+    \item % Discrep count (PARS, WRONG): {PetersAndPedrycz2000}
+          % Other sources not included as part of this discrepancy since they
+          % are used as the ground truth
+          \refHelper \citeauthor{PetersAndPedrycz2000} \ifnotpaper imply \else
+              implies \fi that decision coverage is a child of both c-use
+          coverage \emph{and} p-use coverage \citeyearpar[Fig.~12.31]{
+              PetersAndPedrycz2000}; this seems incorrect, since decisions are
+          the result of p-uses, \emph{not} c-uses, and only the p-use relation
+          is implied by \citep[Fig.~F.1\todo{OG Reid 1996}]{IEEE2021}.
     \item % Discrep count (DEFS, CONTRA): {IEEE2017} | {SWEBOK2014} | {vanVliet2000}
           Acceptance testing is ``usually performed by the purchaser \dots{}
           with the \dots{} vendor'' \citep[p.~5]{IEEE2017}, ``may or may not
