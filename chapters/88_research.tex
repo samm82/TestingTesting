@@ -468,32 +468,19 @@ coverage \citep[p.~421]{vanVliet2000}).
     \citep[pp.~424-425]{vanVliet2000}}
 \label{data-flow-coverage}
 
-``[T]racking a piece of data completely through the software'' (or a part of
-it), usually using debugger tools to check the values of variables
-\citep[p.~114]{Patton2006}.
-
 \begin{itemize}
     \item ``A variable is \emph{defined} in a certain statement if it is
           assigned a (new) value because of the execution of that
-          statement'' \citep[p.~424]{vanVliet2000}
+          statement'' \citep[p.~424]{vanVliet2000}\qtodo{Is this a meaningful
+              definition to record or is it common knowledge?}
     \item ``A definition in statement X is \emph{alive} in statement Y if
           there exists a path from X to Y in which that variable does not
           get assigned a new value at some intermediate node''
-          \citep[p.~424]{vanVliet2000}
+          \citep[p.~424]{vanVliet2000}\qtodo{I don't use the term ``alive''
+              in my supplementary glossary; should I?}
     \item A path from a variable's definition to a statement where it is
           still alive is called \textbf{definition-clear} (with respect to
           this variable) \citep[p.~424]{vanVliet2000}
-    \item Basic block: ``[a] consecutive part[] of code that execute[s]
-          together without any branching'' \citep[p.~477]{PetersAndPedrycz2000}
-    \item \acf{p-use}: e.g., the use of a variable in a conditional
-          \citep[p.~424]{vanVliet2000}
-    \item \acf{c-use}: e.g., the use of a variable in a computation or I/O
-          statement \citep[p.~424]{vanVliet2000}
-    \item All-use: either a \acs{p-use} or a \acs{c-use}~
-          \citep[p.~478]{PetersAndPedrycz2000}
-    \item DU-path: ``a path from a variable definition to [one of] its use[s]
-          that contains no redefinition of the variable''
-          \citep[pp.~478-479]{PetersAndPedrycz2000}
     \item The three possible actions on data are defining, killing, and using;
           ``there are a number of anomalies associated with these actions''
           \citep[pp.~478,~480]{PetersAndPedrycz2000}
