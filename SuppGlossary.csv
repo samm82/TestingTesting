@@ -46,6 +46,7 @@ Requirement,"A ""condition or capability that must be met or possessed by a syst
 Requirements Analysis,"The ""process of studying and refining system, hardware, or software requirements"" (IEEE, 2017, p. 381)",,
 Risk Analysis,"""The process of finding, recognizing and describing risks"" (Hamburg and Mogyorodi, 2024), including ""examining … [them] for probability of occurrence, potential loss, and potential risk-handling strategies"" (IEEE, 2017, p. 390)",,"Hamburg and Mogyorodi (2024) break this down into ""identification"" and ""assessment"". See ISO 31000"
 Separation Logic Specification,"The specification of ""dynamically-allocated linked data structures"" that only ""concentrates on the resources relevant to its correct operation"" (Berdine et al., 2006, p. 115)","Assertion (Lahiri et al., 2013, p. 345), Specification, with context (Berdine et al., 2006; likely Chalin et al., 2006)",
+Simple Cycle,"A cycle with disctinct inner nodes that is not at the beginning or end of a path (van Vliet, 2000, p. 421)",,
 Single-hit Decision Table,"A ""decision table where any set of conditions will be satisfied by one, and only one, rule"" (IEEE, 2017, p. 415; OG ISO, 1984)",,
 "Software Life Cycle Process (SLCP) (IEEE, 2017, p. 416)",,,
 State (Transition) Diagram,"A diagram that maps out the logic flow from the user's perspective by showing every possible unique state, the conditions that take the program between states, and the conditions and outputs when a state is entered or exited (Patton, 2006, p. 81-82)",,

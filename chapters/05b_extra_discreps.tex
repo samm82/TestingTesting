@@ -151,6 +151,14 @@
           testing \citeyearpar[pp.~424-425]{vanVliet2000}, but this condition
           is not included elsewhere (\citealp[pp.~28-29]{IEEE2021};
           \citeyear[p.~120]{IEEE2017}; \citealp[pp.~478-479]{PetersAndPedrycz2000}).
+    \item % Discrep count (DEFS, CONTRA): {vanVliet2000} | {IEEE2021} {IEEE2017} {SWEBOK2024} {PetersAndPedrycz2000}
+          All-DU-path testing is usually defined as exercising all
+          ``loop-free control flow sub-paths from each variable definition to
+          every use (both p-use and c-use) of that definition (with no
+          intervening definitions)'' (\citealp[p.~29]{IEEE2021}; similar in
+          \citeyear[p.~125]{IEEE2017}; \citealp[p.~5-13]{SWEBOK2024};
+          \citealp[p.~479]{PetersAndPedrycz2000}); however, paths containing
+          simple cycles may also be required \citep[p.~425]{vanVliet2000}.
     \item % Discrep count (DEFS, CONTRA): {vanVliet2000} | {SWEBOK2024}
           \refHelper \Citeauthor{vanVliet2000} says that all-DU-paths testing
           is only stronger than all-uses testing if there are infeasible paths
