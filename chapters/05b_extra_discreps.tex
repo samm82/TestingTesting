@@ -177,11 +177,18 @@
           \citeyear[p.~125]{IEEE2017}; \citealp[p.~5-13]{SWEBOK2024};
           \citealp[p.~479]{PetersAndPedrycz2000}); however, paths containing
           simple cycles may also be required \citep[p.~425]{vanVliet2000}.
+    \item % Discrep count (DEFS, CONTRA): {vanVliet2000} | {IEEE2021}
+          \refHelper \Citeauthor{vanVliet2000} says that all-\acsp{p-use}
+          testing is only stronger than all-edges (branch) testing if there are
+          infeasible paths \citeyearpar[pp.~432-433]{vanVliet2000}, but
+          \citeauthor{IEEE2021} \ifnotpaper do \else \does \fi not specify this
+          caveat \citeyearpar[Fig.~F.1\todo{OG Reid, 1996}]{IEEE2021}.
     \item % Discrep count (DEFS, CONTRA): {vanVliet2000} | {SWEBOK2024}
-          \refHelper \Citeauthor{vanVliet2000} says that all-\acsp{du-path} testing
-          is only stronger than all-uses testing if there are infeasible paths
-          \citeyearpar[pp.~432-433]{vanVliet2000}, but \citeauthor{SWEBOK2024}
-          does not specify this caveat \citeyearpar[p.~5-13]{SWEBOK2024}.
+          Similarly, \citeauthor{vanVliet2000} says that all-\acsp{du-path}
+          testing is only stronger than all-uses testing if there are
+          infeasible paths \citeyearpar[pp.~432-433]{vanVliet2000}, but
+          \citeauthor{SWEBOK2024} does not specify this caveat
+          \citeyearpar[p.~5-13]{SWEBOK2024}.
     \item % Discrep count (PARS, WRONG): {PetersAndPedrycz2000}
           % Other sources not included as part of this discrepancy since they
           % are used as the ground truth
