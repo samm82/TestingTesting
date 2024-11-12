@@ -483,48 +483,9 @@ coverage \citep[p.~421]{vanVliet2000}).
           this variable) \citep[p.~424]{vanVliet2000}
     \item The three possible actions on data are defining, killing, and using;
           ``there are a number of anomalies associated with these actions''
-          \citep[pp.~478,~480]{PetersAndPedrycz2000}
-          \todo{OG Beizer, 1990}
-          (see \hyperref[data-ref-errors]{Data reference errors})
+          \citep[pp.~478,~480]{PetersAndPedrycz2000}\todo{OG Beizer, 1990}
+          (related to data reference errors)
 \end{itemize}
-
-Table~\ref{table:data-flow-coverage-types} contains different types of data
-flow coverage criteria, approximately from weakest to strongest, as well as
-their requirements; all information is adapted from
-\citep[pp.~424-425]{vanVliet2000} \todo{Is this sufficient?}.
-
-\begin{table}[hbtp!]
-    \centering
-    \caption{Types of Data Flow Coverage}
-    \label{table:data-flow-coverage-types}
-    \begin{tabularx}{\textwidth}{|>{\hsize=0.65\hsize}X|>{\hsize=1.35\hsize}X|}
-        \hline
-        \thead{Criteria}            & \thead{Requirements}                 \\
-        \hline
-        All-defs coverage           & Each definition to be used at least
-        once                                                               \\
-        All-\acsp{p-use} coverage   & A definition-clear path from each
-        definition to each \acs{p-use}                                     \\
-        All-\acsp{p-use}/Some-\acsp{c-use}
-        coverage                    & Same as all-\acsp{p-use} coverage,
-        but if a definition is only used in computations, at least one
-        definition-clear path to a \acs{c-use} must be included            \\
-        all-\acsp{c-use}/some-\acsp{p-use}
-        coverage                    & A definition-clear path from each
-        definition to each \acs{c-use}; if a definition is only used
-        in predicates, at least one definition-clear path to a
-        \acs{p-use} must be included                                       \\
-        All-uses coverage           & A definition-clear path between each
-        variable definition to each of its uses and each of these uses'
-        successors                                                         \\
-        All-\acsp{du-path} coverage & Same as all-uses coverage, but each
-        path must be cycle-free or a simple cycle                          \\
-        \hline
-    \end{tabularx}
-\end{table}
-
-\qtodo{How is All-du-Paths coverage stronger than All-Uses coverage according to
-    \citep[p.~433]{vanVliet2000}?}
 
 \subsection[Fault Seeding]{Fault Seeding \citep[pp.~427-428]{vanVliet2000}}
 
