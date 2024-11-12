@@ -42,6 +42,17 @@
           sub-paths from each variable definition to each \acs{c-use} of that
           definition (with no intervening definitions)'' (similar in
           \citealp[p.~425]{vanVliet2000}; \citealp[p.~479]{PetersAndPedrycz2000}).
+    \item % Discrep count (DEFS, AMBI): {IEEE2016} {IEEE2017} {IEEE2012} {vanVliet2000}
+          % TODO: SUPP DEFS?
+          % WikiHaskell2023 is not included as part of this discrepancy since
+          % it is used as the ground truth
+          ``Data definition'' is defined as a ``statement where a variable is
+          assigned a value'' (\citealp[p.~3]{IEEE2021}; \citeyear[p.~115]{IEEE2017}%
+          \todo{OG 2015}; similar in \citeyear[p.~27]{IEEE2012};
+          \citealp[p.~424]{vanVliet2000}), but for functional programming
+          languages such as Haskell with immutable variables
+          \citep{WikiHaskell2023}, this could cause confusion and/or be
+          imprecise.
     \item % Discrep count (SYNS, CONTRA): implied by {IEEE2016} | {IEEE2022} {IEEE2016}
           The claim that ``test cases can be either manual test cases or
           keyword test cases'' \citep[p.~6]{IEEE2016} implies that ``keyword-driven
