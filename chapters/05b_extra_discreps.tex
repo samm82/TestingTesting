@@ -34,12 +34,12 @@
           \citeauthor{IEEE2017} use the same definition for ``partial correctness''
           \citeyearpar[p.~314]{IEEE2017} and ``total correctness'' (p.~480).
     \item % Discrep count (DEFS, CONTRA): {IEEE2017} | {IEEE2021} {vanVliet2000} {PetersAndPedrycz2000}
-          \citeauthor{IEEE2017}'s definition of ``all-c-uses testing''---testing
+          \citeauthor{IEEE2017}'s definition of ``all-\acsp{c-use} testing''---testing
           that aims to execute all data ``use[s] of the value of a variable in
           any type of statement'' \citeyearpar[p.~83]{IEEE2017}\todo{OG 2015}---%
           is \emph{much} more vague than the definition given in
           \citeyearpar[p.~27]{IEEE2021}: testing that exercises ``control flow
-          sub-paths from each variable definition to each c-use of that
+          sub-paths from each variable definition to each \acs{c-use} of that
           definition (with no intervening definitions)'' (similar in
           \citealp[p.~425]{vanVliet2000}; \citealp[p.~479]{PetersAndPedrycz2000}).
     \item % Discrep count (SYNS, CONTRA): implied by {IEEE2016} | {IEEE2022} {IEEE2016}
@@ -131,9 +131,9 @@
     \item % Discrep count (TERMS, CONTRA): {IEEE2021} {IEEE2017} {PetersAndPedrycz2000} | {vanVliet2000}
           % TODO: SUPP TERMS?
           Different capitalizations of the abbreviations of ``computation data
-          use'' and ``predicate data use'' are used: the lowercase ``c-use''
-          and ``p-use'' (\citealp[pp.~3, 27-29, 35-36, 114-155, 117-118, 129]{
-              IEEE2021}; \citeyear[p.~124]{IEEE2017};
+          use'' and ``predicate data use'' are used: the lowercase ``\acs{c-use}''
+          and ``\acs{p-use}'' (\citealp[pp.~3, 27-29, 35-36, 114-155, 117-118,
+              129]{IEEE2021}; \citeyear[p.~124]{IEEE2017};
           \citealp[p.~477, Tab.~12.6]{PetersAndPedrycz2000}) and the uppercase
           ``C-use'' and ``P-use'' \citep[pp.~424-425]{vanVliet2000}.
     \item % Discrep count (TERMS, CONTRA): {IEEE2021} {PetersAndPedrycz2000} | {vanVliet2000}
@@ -147,9 +147,9 @@
           % Other sources not included as part of this discrepancy since they
           % are used as the ground truth
           \refHelper \Citeauthor{vanVliet2000} defines many types of data flow
-          coverage, including All-P-Uses, All-P-Uses/Some-C-Uses, and
-          All-C-Uses/Some-P-Uses \citeyearpar[p.~425]{vanVliet2000}, but
-          excludes All-C-Uses, which is implied by these definitions and
+          coverage, including all-\acsp{p-use}, all-\acsp{p-use}/some-\acsp{c-use}, and
+          all-\acsp{c-use}/some-\acsp{p-use} \citeyearpar[p.~425]{vanVliet2000}, but
+          excludes all-\acsp{c-use}, which is implied by these definitions and
           defined elsewhere (\citealp[p.~27]{IEEE2021};
           \citeyear[p.~83]{IEEE2017}; \citealp[p.~479]{PetersAndPedrycz2000}).
     \item % Discrep count (DEFS, CONTRA): {vanVliet2000} | {IEEE2021} {IEEE2017} {PetersAndPedrycz2000}
@@ -159,15 +159,15 @@
           is not included elsewhere (\citealp[pp.~28-29]{IEEE2021};
           \citeyear[p.~120]{IEEE2017}; \citealp[pp.~478-479]{PetersAndPedrycz2000}).
     \item % Discrep count (DEFS, CONTRA): {vanVliet2000} | {IEEE2021} {IEEE2017} {SWEBOK2024} {PetersAndPedrycz2000}
-          All-DU-path testing is usually defined as exercising all
+          All-\acsp{du-path} testing is usually defined as exercising all
           ``loop-free control flow sub-paths from each variable definition to
-          every use (both p-use and c-use) of that definition (with no
+          every use (both \acs{p-use} and \acs{c-use}) of that definition (with no
           intervening definitions)'' (\citealp[p.~29]{IEEE2021}; similar in
           \citeyear[p.~125]{IEEE2017}; \citealp[p.~5-13]{SWEBOK2024};
           \citealp[p.~479]{PetersAndPedrycz2000}); however, paths containing
           simple cycles may also be required \citep[p.~425]{vanVliet2000}.
     \item % Discrep count (DEFS, CONTRA): {vanVliet2000} | {SWEBOK2024}
-          \refHelper \Citeauthor{vanVliet2000} says that all-DU-paths testing
+          \refHelper \Citeauthor{vanVliet2000} says that all-\acsp{du-path} testing
           is only stronger than all-uses testing if there are infeasible paths
           \citeyearpar[pp.~432-433]{vanVliet2000}, but \citeauthor{SWEBOK2024}
           does not specify this caveat \citeyearpar[p.~5-13]{SWEBOK2024}.
@@ -175,11 +175,12 @@
           % Other sources not included as part of this discrepancy since they
           % are used as the ground truth
           \refHelper \citeauthor{PetersAndPedrycz2000} \ifnotpaper imply \else
-              implies \fi that decision coverage is a child of both c-use
-          coverage \emph{and} p-use coverage \citeyearpar[Fig.~12.31]{
+              implies \fi that decision coverage is a child of both \acs{c-use}
+          coverage \emph{and} \acs{p-use} coverage \citeyearpar[Fig.~12.31]{
               PetersAndPedrycz2000}; this seems incorrect, since decisions are
-          the result of p-uses, \emph{not} c-uses, and only the p-use relation
-          is implied by \citep[Fig.~F.1\todo{OG Reid 1996}]{IEEE2021}.
+          the result of \acsp{p-use}, \emph{not} \acsp{c-use}, and only the
+          \acs{p-use} relation is implied by \citep[Fig.~F.1%
+              \todo{OG Reid 1996}]{IEEE2021}.
     \item % Discrep count (DEFS, CONTRA): {IEEE2017} | {SWEBOK2014} | {vanVliet2000}
           Acceptance testing is ``usually performed by the purchaser \dots{}
           with the \dots{} vendor'' \citep[p.~5]{IEEE2017}, ``may or may not

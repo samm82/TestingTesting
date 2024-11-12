@@ -412,7 +412,7 @@ coverage \citep[p.~421]{vanVliet2000}).
           I always thought the ``path'' in ``path coverage'' was
           a path from program start to program end, but van
           Vliet seems to use the more general definition (which
-          is, albeit, sometimes valid, like in ``du-path'') of
+          is, albeit, sometimes valid, like in ``\acs{du-path}'') of
           being any subset of a program's execution (see
           \citep[p.~420]{vanVliet2000})
           \qtodo{How do we decide on our definition?}
@@ -499,31 +499,31 @@ their requirements; all information is adapted from
     \label{table:data-flow-coverage-types}
     \begin{tabularx}{\textwidth}{|>{\hsize=0.65\hsize}X|>{\hsize=1.35\hsize}X|}
         \hline
-        \thead{Criteria}          & \thead{Requirements}                 \\
+        \thead{Criteria}            & \thead{Requirements}                 \\
         \hline
-        All-defs coverage         & Each definition to be used at least
-        once                                                             \\
-        All-\acsp{p-use} coverage & A definition-clear path from each
-        definition to each \acs{p-use}                                   \\
+        All-defs coverage           & Each definition to be used at least
+        once                                                               \\
+        All-\acsp{p-use} coverage   & A definition-clear path from each
+        definition to each \acs{p-use}                                     \\
         All-\acsp{p-use}/Some-\acsp{c-use}
-        coverage                  & Same as All-\acsp{p-use} coverage,
+        coverage                    & Same as all-\acsp{p-use} coverage,
         but if a definition is only used in computations, at least one
-        definition-clear path to a \acs{c-use} must be included          \\
-        All-\acsp{c-use}/Some-\acsp{p-use}
-        coverage                  & A definition-clear path from each
+        definition-clear path to a \acs{c-use} must be included            \\
+        all-\acsp{c-use}/some-\acsp{p-use}
+        coverage                    & A definition-clear path from each
         definition to each \acs{c-use}; if a definition is only used
         in predicates, at least one definition-clear path to a
-        \acs{p-use} must be included                                     \\
-        All-Uses coverage         & A definition-clear path between each
+        \acs{p-use} must be included                                       \\
+        All-uses coverage           & A definition-clear path between each
         variable definition to each of its uses and each of these uses'
-        successors                                                       \\
-        All-DU-Paths coverage     & Same as All-Uses coverage, but each
-        path must be cycle-free or a simple cycle                        \\
+        successors                                                         \\
+        All-\acsp{du-path} coverage & Same as all-uses coverage, but each
+        path must be cycle-free or a simple cycle                          \\
         \hline
     \end{tabularx}
 \end{table}
 
-\qtodo{How is All-DU-Paths coverage stronger than All-Uses coverage according to
+\qtodo{How is All-du-Paths coverage stronger than All-Uses coverage according to
     \citep[p.~433]{vanVliet2000}?}
 
 \subsection[Fault Seeding]{Fault Seeding \citep[pp.~427-428]{vanVliet2000}}

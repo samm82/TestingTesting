@@ -8,7 +8,7 @@
 \newacr{aop}{Aspect-Oriented Programming}
 \newacr{api}{Application Programming Interface}
 \newacr{ast}{Abstract Syntax Tree}
-\newacrs{c-use}{C-use}{Computational Use}
+\newacrs{c-use}{c-use}{Computation Data Use}
 \newacr{cms}{Content Management System}
 \newacr{cpu}{Central Processing Unit}
 \newacr{csp}{Cross-Stage Persistence}
@@ -17,6 +17,7 @@
 \newacr{dac}{Differential Assertion Checking}
 \newacr{dom}{Document Object Model}
 \newacr{dsl}{Domain-Specific Language}
+\newacrs{du-path}{du-path}{Definition-Use Path}
 \newacr{emsec}{EManations SECurity}
 \newacr{ffi}{Foreign Function Interface}
 \newacr{gool}{Generic Object-Oriented Language}
@@ -38,7 +39,7 @@
 \DeclareAcronym{operat}{short=OAT,long=Operational (Acceptance) Testing,list=Operational (Acceptance)/Orthogonal Array Testing}
 \DeclareAcronym{orthat}{short=OAT,long=Orthogonal Array Testing,tag=dupe}
 \newacr{nasa}{National Aeronautics and Space Administration}
-\newacrs{p-use}{P-use}{Predicate Use}
+\newacrs{p-use}{p-use}{Predicate Data Use}
 \newacr{pdf}{Portable Document Format}
 \newacr{pptmp}{PreProcessing-Time MetaProgramming}
 \newacr{qai}{Quality Assurance Institute}
@@ -76,29 +77,29 @@
 % Defining \ACL - to capitalize all words in an acronym
 % Credits to: https://tex.stackexchange.com/a/257896
 \NewDocumentCommand\ACF{sm}{%
-  \begingroup
-  \acsetup{uppercase/cmd=\ecapitalisewords}%
-  \IfBooleanTF{#1}{\Acf*{#2}}{\Acf{#2}}%
-  \endgroup
+    \begingroup
+    \acsetup{uppercase/cmd=\ecapitalisewords}%
+    \IfBooleanTF{#1}{\Acf*{#2}}{\Acf{#2}}%
+    \endgroup
 }
 
 \NewDocumentCommand\ACFP{sm}{%
-  \begingroup
-  \acsetup{uppercase/cmd=\ecapitalisewords}%
-  \IfBooleanTF{#1}{\Acfp*{#2}}{\Acfp{#2}}%
-  \endgroup
+    \begingroup
+    \acsetup{uppercase/cmd=\ecapitalisewords}%
+    \IfBooleanTF{#1}{\Acfp*{#2}}{\Acfp{#2}}%
+    \endgroup
 }
 
 \NewDocumentCommand\ACL{sm}{%
-  \begingroup
-  \acsetup{uppercase/cmd=\ecapitalisewords}%
-  \IfBooleanTF{#1}{\Acl*{#2}}{\Acl{#2}}%
-  \endgroup
+    \begingroup
+    \acsetup{uppercase/cmd=\ecapitalisewords}%
+    \IfBooleanTF{#1}{\Acl*{#2}}{\Acl{#2}}%
+    \endgroup
 }
 
 \NewDocumentCommand\ACLP{sm}{%
-  \begingroup
-  \acsetup{uppercase/cmd=\ecapitalisewords}%
-  \IfBooleanTF{#1}{\Aclp*{#2}}{\Aclp{#2}}%
-  \endgroup
+    \begingroup
+    \acsetup{uppercase/cmd=\ecapitalisewords}%
+    \IfBooleanTF{#1}{\Aclp*{#2}}{\Aclp{#2}}%
+    \endgroup
 }
