@@ -1,72 +1,62 @@
-% For one-offs,
-% \DeclareAcronym{acronym}{short=short-version,long=long-version}
-
-\newcommand{\newacr}[2]{\DeclareAcronym{#1}{short=\uppercase{#1},long=#2}}
-\newcommand{\newacrs}[3]{\DeclareAcronym{#1}{short=#2,long=#3}}
-
 % Alphabetically sorted list of acronyms
-\newacr{aop}{Aspect-Oriented Programming}
-\newacr{api}{Application Programming Interface}
-\newacr{ast}{Abstract Syntax Tree}
-\newacrs{c-use}{c-use}{Computation Data Use}
-\newacr{cms}{Content Management System}
-\newacr{cpu}{Central Processing Unit}
-\newacr{csp}{Cross-Stage Persistence}
-\newacr{csv}{Comma-Separated Values}
-\newacr{ctmp}{Compile-Time MetaProgramming}
-\newacr{dac}{Differential Assertion Checking}
-\newacr{dom}{Document Object Model}
-\newacr{dsl}{Domain-Specific Language}
-\newacrs{du-path}{du-path}{Definition-Use Path}
-\newacr{emsec}{EManations SECurity}
-\newacr{ffi}{Foreign Function Interface}
-\newacr{gool}{Generic Object-Oriented Language}
-\newacr{gui}{Graphical User Interface}
-\newacr{html}{HyperText Markup Language}
-\newacr{href}{Hypertext REFerence}
-\newacr{ide}{Integrated Development Environment}
-\newacr{istqb}{International Software Testing Qualifications Board}
-\newacr{json}{JavaScript Object Notation}
-\newacr{jvm}{Java Virtual Machine}
-\newacr{mdd}{Model-Driven Development}
-\newacr{ml}{Machine Learning}
-\newacr{mop}{MetaObject Protocol}
-\newacr{mr}{Metamorphic Relation}
-\newacr{msl}{MultiStage Language}
-\newacr{msp}{MultiStage Programming}
-\newacr{mt}{Metamorphic Testing}
+\DeclareAcronym{aop}{short=AOP,long=Aspect-Oriented Programming}
+\DeclareAcronym{api}{short=API,long=Application Programming Interface}
+\DeclareAcronym{ast}{short=AST,long=Abstract Syntax Tree}
+\DeclareAcronym{c-use}{short=c-use,long=Computation Data Use,alt=C-use}
+\DeclareAcronym{cms}{short=CMS,long=Content Management System}
+\DeclareAcronym{cpu}{short=CPU,long=Central Processing Unit}
+\DeclareAcronym{csp}{short=CSP,long=Cross-Stage Persistence}
+\DeclareAcronym{csv}{short=CSV,long=Comma-Separated Values}
+\DeclareAcronym{ctmp}{short=CTMP,long=Compile-Time MetaProgramming}
+\DeclareAcronym{dac}{short=DAC,long=Differential Assertion Checking}
+\DeclareAcronym{dom}{short=DOM,long=Document Object Model}
+\DeclareAcronym{dsl}{short=DSL,long=Domain-Specific Language}
+\DeclareAcronym{du-path}{short=du-path,long=Definition-Use Path,alt=DU-path}
+\DeclareAcronym{emsec}{short=EMSEC,long=EManations SECurity}
+\DeclareAcronym{ffi}{short=FFI,long=Foreign Function Interface}
+\DeclareAcronym{gool}{short=GOOL,long=Generic Object-Oriented Language}
+\DeclareAcronym{gui}{short=GUI,long=Graphical User Interface}
+\DeclareAcronym{html}{short=HTML,long=HyperText Markup Language}
+\DeclareAcronym{href}{short=HREF,long=Hypertext REFerence}
+\DeclareAcronym{ide}{short=IDE,long=Integrated Development Environment}
+\DeclareAcronym{istqb}{short=ISTQB,long=International Software Testing Qualifications Board}
+\DeclareAcronym{json}{short=JSON,long=JavaScript Object Notation}
+\DeclareAcronym{jvm}{short=JVM,long=Java Virtual Machine}
+\DeclareAcronym{mdd}{short=MDD,long=Model-Driven Development}
+\DeclareAcronym{ml}{short=ML,long=Machine Learning}
+\DeclareAcronym{mop}{short=MOP,long=MetaObject Protocol}
+\DeclareAcronym{mr}{short=MR,long=Metamorphic Relation}
+\DeclareAcronym{msl}{short=MSL,long=MultiStage Language}
+\DeclareAcronym{msp}{short=MSP,long=MultiStage Programming}
+\DeclareAcronym{mt}{short=MT,long=Metamorphic Testing}
 % From https://tex.stackexchange.com/a/583838/192195
 \DeclareAcronym{operat}{short=OAT,long=Operational (Acceptance) Testing,list=Operational (Acceptance)/Orthogonal Array Testing}
 \DeclareAcronym{orthat}{short=OAT,long=Orthogonal Array Testing,tag=dupe}
-\newacr{nasa}{National Aeronautics and Space Administration}
-\newacrs{p-use}{p-use}{Predicate Data Use}
-\newacr{pdf}{Portable Document Format}
-\newacr{pptmp}{PreProcessing-Time MetaProgramming}
-\newacr{qai}{Quality Assurance Institute}
-\newacr{rac}{Runtime Assertion Checking}
-\newacr{rtmp}{RunTime MetaProgramming}
-\newacr{sst}{Skeleton Syntax Tree}
-\newacr{sut}{System Under Test}
-\newacr{sv}{Software Verification}
-\newacrs{swebok}{SWEBOK Guide}{Guide to the SoftWare Engineering Body Of Knowledge}
-\newacr{toat}{Taguchi's Orthogonal Array Testing}
-\newacrs{vnv}{V\&V}{Verification and Validation}
-\newacr{wysiwyg}{What You See Is What You Get}
+\DeclareAcronym{nasa}{short=NASA,long=National Aeronautics and Space Administration}
+\DeclareAcronym{p-use}{short=p-use,long=Predicate Data Use,alt=P-use}
+\DeclareAcronym{pdf}{short=PDF,long=Portable Document Format}
+\DeclareAcronym{pptmp}{short=PPTMP,long=PreProcessing-Time MetaProgramming}
+\DeclareAcronym{qai}{short=QAI,long=Quality Assurance Institute}
+\DeclareAcronym{rac}{short=RAC,long=Runtime Assertion Checking}
+\DeclareAcronym{rtmp}{short=RTMP,long=RunTime MetaProgramming}
+\DeclareAcronym{sst}{short=SST,long=Skeleton Syntax Tree}
+\DeclareAcronym{sut}{short=SUT,long=System Under Test}
+\DeclareAcronym{sv}{short=SV,long=Software Verification}
+\DeclareAcronym{swebok}{short=SWEBOK Guide,long=Guide to the SoftWare Engineering Body Of Knowledge}
+\DeclareAcronym{toat}{short=TOAT,long=Taguchi's Orthogonal Array Testing}
+\DeclareAcronym{vnv}{short=V\&V,long=Verification and Validation}
+\DeclareAcronym{wysiwyg}{short=WYSIWYG,long=What You See Is What You Get}
 
 % Case Studies 
-%   (note: I'm grouping these together and forcing "newacrs" usage, even when
-%    seemingly unneeded because, otherwise, they won't group together at the 
-%    bottom of the complete "acronyms" list.)
-\newacrs{glassbr}{GlassBR}{Glass Breaking}
-\newacrs{projectile}{Projectile}{Projectile}
-\newacrs{sglpend}{SglPend}{Single Pendulum}
-\newacrs{dblpend}{DblPend}{Double Pendulum}
-\newacrs{gamephysics}{GamePhysics}{Game Physics}
-\newacrs{hghc}{HGHC}{Heat Transfer Coefficients between Fuel and Cladding in Fuel Rods}
-\newacrs{pdcontroller}{PDController}{Proportional Derivative Controller}
-\newacrs{swhs}{SWHS}{Solar Water Heating System}
-\newacrs{nopcm}{SWHSNoPCM}{Solar Water Heating System Without PCM}
-\newacrs{ssp}{SSP}{Slope Stability analysis Program}
+\DeclareAcronym{glassbr}{short=GlassBR,long=Glass Breaking}
+% \DeclareAcronym{projectile}{short=Projectile,long=Projectile}
+\DeclareAcronym{sglpend}{short=SglPend,long=Single Pendulum}
+\DeclareAcronym{dblpend}{short=DblPend,long=Double Pendulum}
+% \DeclareAcronym{gamephysics}{short=GamePhysics,long=Game Physics}
+\DeclareAcronym{hghc}{short=HGHC,long=Heat Transfer Coefficients between Fuel and Cladding in Fuel Rods}
+\DeclareAcronym{swhs}{short=SWHS,long=Solar Water Heating System}
+\DeclareAcronym{swhsnopcm}{short=SWHSNoPCM,long=Solar Water Heating System with No Phase Change Material}
+\DeclareAcronym{ssp}{short=SSP,long=Slope Stability analysis Program}
 
 
 %------------------------------------------------------------------------------
