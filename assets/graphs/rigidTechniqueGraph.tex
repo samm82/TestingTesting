@@ -143,6 +143,7 @@ StatementTesting [label=<Statement<br/>Testing>];
 StatisticalTesting [label=<Statistical<br/>Testing>];
 StepwiseAbstraction [label=<Stepwise<br/>Abstraction>];
 StressTesting [label=<Stress<br/>Testing>];
+StrongMutationTesting [label=<Strong<br/>Mutation<br/>Testing>];
 StructuralAnalysis [label=<Structural<br/>Analysis>];
 StructurebasedTesting [label=<Structure-based<br/>Testing>];
 StructuredScripting [label=<Structured<br/>Scripting>];
@@ -164,6 +165,7 @@ UseCaseTesting [label=<Use<br/>Case<br/>Testing>];
 VolumeTesting [label=<Volume<br/>Testing>];
 VulnerabilityScanning [label=<Vulnerability<br/>Scanning>];
 Walkthroughs [label=<Walkthroughs>];
+WeakMutationTesting [label=<Weak<br/>Mutation<br/>Testing>];
 
 MultipleConditionTesting [label=<(Multiple)<br/>Condition<br/>Testing>,style="dotted"];
 BranchConditionCombinationTesting -> MultipleConditionTesting[dir=none,color="blue"];
@@ -350,6 +352,8 @@ StressTesting -> ModelbasedTesting[color="green"];
 StressTesting -> PerformanceTesting[color="blue"];
 StressTesting -> CapacityTesting[color="blue"];
 StressTesting -> NegativeTesting[color="maroon"];
+StrongMutationTesting -> MutationTesting[color="maroon"];
+StrongMutationTesting -> FaultbasedTesting[color="maroon"];
 StructuralAnalysis -> StructurebasedTesting[color="maroon"];
 StructurebasedTesting -> ModelbasedTesting[color="green"];
 StructurebasedTesting -> ControlFlowTesting[color="green"];
@@ -372,6 +376,8 @@ UseCaseTesting -> ScenarioTesting[color="green"];
 UseCaseTesting -> SpecificationbasedTesting;
 VolumeTesting -> ModelbasedTesting[color="green"];
 VolumeTesting -> CapacityTesting[color="blue"];
+WeakMutationTesting -> MutationTesting[color="maroon"];
+WeakMutationTesting -> FaultbasedTesting[color="maroon"];
 
 subgraph cluster_legend {
     label="Legend";

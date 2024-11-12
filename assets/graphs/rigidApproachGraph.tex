@@ -428,6 +428,7 @@ StaticTesting [label=<Static<br/>Testing>];
 StatisticalTesting [label=<Statistical<br/>Testing>];
 StepwiseAbstraction [label=<Stepwise<br/>Abstraction>];
 StressTesting [label=<Stress<br/>Testing>];
+StrongMutationTesting [label=<Strong<br/>Mutation<br/>Testing>];
 StructuralAnalysis [label=<Structural<br/>Analysis>];
 StructurebasedTesting [label=<Structure-based<br/>Testing>];
 StructuredScripting [label=<Structured<br/>Scripting>];
@@ -498,6 +499,7 @@ VolumeTesting [label=<Volume<br/>Testing>];
 VulnerabilityScanning [label=<Vulnerability<br/>Scanning>];
 Walkthroughs [label=<Walkthroughs>];
 WaterfallTesting [label=<Waterfall<br/>Testing>];
+WeakMutationTesting [label=<Weak<br/>Mutation<br/>Testing>];
 WebApplicationTesting [label=<Web<br/>Application<br/>Testing>];
 WModelTesting [label=<W-Model<br/>Testing>];
 
@@ -1163,6 +1165,8 @@ StressTesting -> BoundaryConditionTesting[color="maroon"];
 StressTesting -> NegativeTesting[color="maroon"];
 StressTesting -> DynamicTesting;
 StressTesting -> WModelTesting;
+StrongMutationTesting -> MutationTesting[color="maroon"];
+StrongMutationTesting -> FaultbasedTesting[color="maroon"];
 StructuralAnalysis -> StaticTesting[color="maroon"];
 StructuralAnalysis -> StructurebasedTesting[color="maroon"];
 StructurebasedTesting -> ModelbasedTesting[color="green"];
@@ -1279,6 +1283,8 @@ Walkthroughs -> StaticAnalysis[color="green"];
 Walkthroughs -> FormalReviews[color="blue"];
 Walkthroughs -> Reviews[color="blue"];
 WaterfallTesting -> LifecyclebasedTesting[color="blue"];
+WeakMutationTesting -> MutationTesting[color="maroon"];
+WeakMutationTesting -> FaultbasedTesting[color="maroon"];
 
 subgraph cluster_legend {
     label="Legend";
