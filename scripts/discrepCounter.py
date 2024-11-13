@@ -137,9 +137,13 @@ SIMPLE_TEX_FILES = [
 
 TEX_FILES = COMPLEX_TEX_FILES + SIMPLE_TEX_FILES
 
-enumOrItem = ["\\ifnotpaper", "\\begin{enumerate}", "\\else", "\\begin{itemize}", "\\fi"]
-simpleDiscrepCats = OrderedDict([(k, enumOrItem.copy()) for k in DiscrepCat])
-simpleDiscrepClss = OrderedDict([(k, enumOrItem.copy()) for k in DiscrepCls])
+def enumOrItem(k):
+    # Based on https://tex.stackexchange.com/a/156061/192195
+    # and https://tex.stackexchange.com/a/338027/192195
+    return (k, ["\\ifnotpaper", f"\\begin{{enumerate}}[ref={k.value}~Discrepancy~\\arabic*]",
+                      "\\else", f"\\begin{{itemize}}", "\\fi"])
+simpleDiscrepCats = OrderedDict([enumOrItem(k) for k in DiscrepCat])
+simpleDiscrepClss = OrderedDict([enumOrItem(k) for k in DiscrepCls])
 
 def outputDiscreps():
     discrepDict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}

@@ -371,47 +371,6 @@ coverage \citep[p.~421]{vanVliet2000}).
           requires that ``all linearly-independent paths are
           covered'' \citep[p.~423]{vanVliet2000};
           results in complete branch coverage
-    \item Path coverage: ``[a]ttempting to cover all the paths in the
-          software'' \citep[p.~119]{Patton2006};
-          I always thought the ``path'' in ``path coverage'' was
-          a path from program start to program end, but van
-          Vliet seems to use the more general definition (which
-          is, albeit, sometimes valid, like in ``\acs{du-path}'') of
-          being any subset of a program's execution (see
-          \citep[p.~420]{vanVliet2000})
-          \qtodo{How do we decide on our definition?}
-          \begin{itemize}
-              \item The number of paths to test can be bounded based on its
-                    structure and can be approached by dividing the system
-                    into subgraphs and computing the bounds of each
-                    individually \citep[pp.~471-473]{PetersAndPedrycz2000};
-                    this is less feasible if a loop is present
-                    \citep[pp.~473-476]{PetersAndPedrycz2000} since ``a loop
-                    often results in an infinite number of possible paths''
-                    \citep[p.~421]{vanVliet2000}
-              \item van Vliet claims that if this is done completely, it
-                    ``is equivalent to exhaustively testing the program''
-                    \citep[p.~421]{vanVliet2000};
-                    however, this overlooks the effect of inputs on
-                    behaviour as pointed out in
-                    \citep[pp.~466-467]{PetersAndPedrycz2000}. Exhaustive
-                    testing requires both full path coverage \emph{and}
-                    every input to be checked
-              \item Generally ``not possible'' to achieve completely due to
-                    the complexity of
-                    loops, branches, and potentially unreachable code
-                    \citep[p.~421]{vanVliet2000}; even infeasible
-                    paths (``control flow paths that cannot be exercised by
-                    any input data'' \citep[p.~5-5]{SWEBOK2024}) must be
-                    checked for full path coverage to be achieved
-                    \citep[p.~439]{PetersAndPedrycz2000}, presenting ``a
-                    ``significant problem in path-based testing''
-                    \citep[p.~5-5]{SWEBOK2024}!
-              \item Usually ``limited to a few functions with life
-                    criticality features (medical systems, real-time
-                    controllers)'' \citep[p.~481]{PetersAndPedrycz2000}
-                    \todo{OG Miller et al., 1994}
-          \end{itemize}
     \item (Multiple) condition coverage: ``takes the extra conditions on the
           branch statements into account'' (e.g., all possible inputs to a
           Boolean expression) \citep[p.~120]{Patton2006}

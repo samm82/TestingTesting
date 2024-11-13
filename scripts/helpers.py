@@ -84,6 +84,7 @@ def formatLineWithSources(line, todo=True):
                   r"\\citealp{\1\2}", line)
 
     line = line.replace(" et al.", "EtAl")
+    line = line.replace(" and ", "And")
     line = line.replace("van V", "vanV")
 
     # if "17, 25" in line: input(line)

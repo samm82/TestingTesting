@@ -202,7 +202,18 @@ There are also pairs of synonyms where one is described as a
 sub-approach of the other, abusing the meaning of ``synonym'' and
 causing confusion. We identified \parSynCount{} of these pairs through automatic
 analysis of the generated graphs, \ifnotpaper which are \else with the most
-    prominent \fi given in \Cref{tab:parSyns}.
+    prominent \fi given in \Cref{tab:parSyns}. Of particular note is the
+relation between path testing and exhaustive testing. While
+\citet[p.~421]{vanVliet2000} claims that path testing done completely ``is
+equivalent to exhaustively testing the program''\footnote{The contradictory
+    definitions of path testing given in \discrepref{path-test-discrep} add
+    another layer of complexity to this claim.}, this overlooks the effect of
+input data and implementation issues on the the code's behaviour
+\citep[pp.~467, 476, respectively]{PetersAndPedrycz2000}. Exhaustive
+testing requires ``all combinations of input values \emph{and} preconditions
+\dots{} [to be] tested'' \ifnotpaper
+    (\citealp[p.~4, emphasis added]{IEEE2022}; similar in \citealpISTQB{})\else
+    \cite[p.~4]{IEEE2022} (similar in \citealpISTQB{})\fi.
 \ifnotpaper Finally, it is worth pointing out that \ftrnote{f}
 
     \begin{bigLandscape}

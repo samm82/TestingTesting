@@ -104,7 +104,7 @@ def processCol(col):
 
     return [copySources(x) for x in col]
 
-names = [n for n in names if isinstance(n, str)]
+names = [n.strip() for n in names if isinstance(n, str)]
 parents = processCol(parents)
 synonyms = processCol(synonyms)
 
