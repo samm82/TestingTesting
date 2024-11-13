@@ -367,46 +367,10 @@ not sure if all of these are feasible/worthwhile to get to 100\% (e.g., path
 coverage \citep[p.~421]{vanVliet2000}).
 
 \begin{itemize}
-    \item Statement/line coverage: attempting to ``execute every statement in
-          the program at least once'' \citep[p.~119]{Patton2006}
-          \begin{itemize}
-              \item Weaker than \citep[p.~421]{vanVliet2000} and
-                    ``only about 50\% as effective as branch coverage''
-                    \citep[p.~481]{PetersAndPedrycz2000}
-                    \todo{OG Miller et al., 1994}
-              \item Requires 100\% coverage to be effective
-                    \citep[p.~481]{PetersAndPedrycz2000}
-                    \todo{OG Miller et al., 1994}
-              \item ``[C]an be used at the module level with less than 5000
-                    lines of code''\footnote{The US Software Engineering
-                        Institute has a checklist for determining which
-                        types of lines of code are included when counting
-                        \citep[pp.~30-31]{FentonAndPfleeger1997}.
-                    } \citep[p.~481]{PetersAndPedrycz2000}
-                    \todo{OG Miller et al., 1994}
-              \item Doesn't guarantee correctness
-                    \citep[p.~421]{vanVliet2000}
-          \end{itemize}
-    \item Branch coverage: attempting to, ``at each branching node in the
-          control graph, \dots\ [choose] all possible branches \dots\ at least
-          once'' \citep[p.~421]{vanVliet2000}
-          \begin{itemize}
-              \item Weaker than path coverage
-                    \citep[p.~433]{vanVliet2000}, although
-                    \citep[p.~119]{Patton2006} says it is
-                    ``the simplest form of path testing''
-                    (\emph{I don't think this is true})
-              \item Requires at least 85\% coverage to be effective and is
-                    ``most effective \dots\ at the module level''
-                    \citep[p.~481]{PetersAndPedrycz2000}
-                    \todo{OG Miller et al., 1994}
-              \item Cyclomatic-number criterion: an adequacy criterion that
-                    requires that ``all linearly-independent paths are
-                    covered'' \citep[p.~423]{vanVliet2000};
-                    results in complete branch coverage
-              \item Doesn't guarantee correctness
-                    \citep[p.~421]{vanVliet2000}
-          \end{itemize}
+    \item Cyclomatic-number criterion: an adequacy criterion that
+          requires that ``all linearly-independent paths are
+          covered'' \citep[p.~423]{vanVliet2000};
+          results in complete branch coverage
     \item Path coverage: ``[a]ttempting to cover all the paths in the
           software'' \citep[p.~119]{Patton2006};
           I always thought the ``path'' in ``path coverage'' was
