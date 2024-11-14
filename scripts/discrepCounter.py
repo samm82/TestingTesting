@@ -184,8 +184,10 @@ def outputDiscreps():
                     for cls, dict in [(DiscrepCat, simpleDiscrepCats),
                                       (DiscrepCls, simpleDiscrepClss)]:
                         try:
-                            dict[cls[cat]] += ["\\phantomsection{}",
-                                               f"\\label{{{label}-discrep}}"]
+                            dict[cls[cat]] = [re.sub(
+                                r"% Label [A-Z]+ [a-z\-]+",
+                                f"\\\\phantomsection{{}}\\\\label{{{label}-discrep}}",
+                                line) for line in dict[cls[cat]]]
                         except KeyError:
                             continue
                 except AttributeError:
