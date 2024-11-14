@@ -37,7 +37,7 @@ class Rigidity(Enum):
 
     # Sources for discrepancies
 
-def getSources(s):
+def getSources(s) -> list[tuple[str, str]]:
     sources = re.findall(fr"\{{({AUTHOR_REGEX})({YEAR_REGEX})\}}", s)
     if "ISTQB" in s:
         sources.append(("ISTQB", "2024"))
@@ -84,8 +84,10 @@ def formatLineWithSources(line, todo=True):
                   r"\\citealp{\1\2}", line)
 
     line = line.replace(" et al.", "EtAl")
-    line = line.replace(" and ", "And")
     line = line.replace("van V", "vanV")
+
+    for source in getSources(line):
+        line = line.replace(source[0], source[0].replace(" and ", "And"))
 
     # if "17, 25" in line: input(line)
 

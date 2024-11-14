@@ -10,7 +10,7 @@ if __name__ == "__main__":
         print("Usage: python sourceCounts.py <filenames>")
         sys.exit(1)
 
-sources = set()
+sources: set[str] = set()
 for filename in sys.argv[1:]:
     for _, row in read_csv(filename).iterrows():
         for cell in row.to_list():
@@ -18,13 +18,14 @@ for filename in sys.argv[1:]:
             for word in {"FIND", "OG"}:
                 cell = re.sub(fr"{word} [^;]*?\)", ")", cell)
                 cell = re.sub(fr"{word} [^\)]*?;", ";", cell)
-            sources.update(s[1:-1].replace(" and ", "And") for s in re.findall(
-                r"\{.*?\}", formatLineWithSources(cell, False)))
+            sources.update(re.findall(r"\{(.*?)\}", formatLineWithSources(cell, False)))
 for filename in TEX_FILES:
     with open(filename, "r", encoding="utf-8") as file:
-        sources.update(s[1:-1].replace(" and ", "And") for s in re.findall(
-            r"\{.*?\}", " ".join([line.split(":")[1] for line in file.readlines()
+        sources.update(re.findall(
+            r"\{(.*?)\}", " ".join([line.split(":")[1]
+                                  for line in file.readlines()
                                   if "% Discrep count" in line])))
+
 # Omit private communication as a source; used for notes
 sources.discard("SmithAndCarette2023")
 # Reintroduce ISTQB because of how it is formatted for citations
