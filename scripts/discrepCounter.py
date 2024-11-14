@@ -178,18 +178,18 @@ def outputDiscreps():
                 discCat, discCls = getDiscGroups(discrep)
                 simpleDiscrepCats[discCat].append(discrep)
                 simpleDiscrepClss[discCls].append(discrep)
+
                 try:
-                    cat, label = re.search(
+                    labelGroup, label = re.search(
                         r"% Label ([A-Z]+) ([a-z\-]+)", discrep).groups()
-                    for cls, dict in [(DiscrepCat, simpleDiscrepCats),
-                                      (DiscrepCls, simpleDiscrepClss)]:
-                        try:
-                            dict[cls[cat]] = [re.sub(
-                                r"% Label [A-Z]+ [a-z\-]+",
-                                f"\\\\phantomsection{{}}\\\\label{{{label}-discrep}}",
-                                line) for line in dict[cls[cat]]]
-                        except KeyError:
-                            continue
+                    for discGroup, dict in [(discCat, simpleDiscrepCats),
+                                            (discCls, simpleDiscrepClss)]:
+                        dict[discGroup] = [re.sub(
+                            r"\s+% Label [A-Z]+ [a-z\-]+\s+",
+                            "\n          ".join(
+                                ["", "\\\\phantomsection{}", f"\\\\label{{{label}-discrep}}", ""]
+                                if labelGroup == discGroup.name else ["", ""]),
+                            line) for line in dict[discGroup]]
                 except AttributeError:
                     continue
             
