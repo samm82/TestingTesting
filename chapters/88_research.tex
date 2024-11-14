@@ -345,46 +345,19 @@ determine what to test, what not to test, and how to approach the testing''
     \citep[pp.~117-121]{Patton2006} or Control-Flow Coverage
     \citep[pp.~421-424]{vanVliet2000}}
 
-``[T]est[ing] the program's states and the program's flow among them''
-\citep[p.~117]{Patton2006}; allows for redundant and/or missing test
-cases to be identified \citep[p.~118]{Patton2006}. Coverage-based
-testing is often based ``on the notion of a control graph \dots\ [where]
-nodes denote actions, \dots\ (directed) edges connect actions with
-subsequent actions (in time) \dots\ [and a] path is a sequence of nodes
-connected by edges. The graph may contain cycles \dots\ [which] correspond
-to loops \dots'' \citep[pp.~420-421]{vanVliet2000}. ``A cycle is
-called \emph{simple} if its inner nodes are distinct and do not include
-    [the node at the beginning/end of the cycle]''
-\citep[p.~421,~emphasis added]{vanVliet2000}. If there are
-multiple actions represented as nodes that occur one after another, they may
-be collapsed into a single node \citep[p.~421]{vanVliet2000}.
-
-We discussed that
-generating infrastructure for reporting coverage may be a worthwhile goal, and
-that it can be known how to increase certain types of coverage (since we know
-the structure of the generated code, to some extent, beforehand), but I'm
-not sure if all of these are feasible/worthwhile to get to 100\% (e.g., path
-coverage \citep[p.~421]{vanVliet2000}).
-
+(Multiple) condition coverage ``takes the extra conditions on the
+branch statements into account'' (e.g., all possible inputs to a
+Boolean expression) \citep[p.~120]{Patton2006}.
 \begin{itemize}
-    \item Cyclomatic-number criterion: an adequacy criterion that
-          requires that ``all linearly-independent paths are
-          covered'' \citep[p.~423]{vanVliet2000};
-          results in complete branch coverage
-    \item (Multiple) condition coverage: ``takes the extra conditions on the
-          branch statements into account'' (e.g., all possible inputs to a
-          Boolean expression) \citep[p.~120]{Patton2006}
-          \begin{itemize}
-              \item ``Also known as \textbf{extended branch coverage}''
-                    \citep[p.~422]{vanVliet2000}
-              \item Does not subsume and is not subsumed by path coverage
-                    \citep[p.~433]{vanVliet2000}
-              \item ``May be quite challenging'' since ``if each
-                    subcondition is viewed as a single input, then this
-                    \dots\ is analogous to exhaustive testing''; however,
-                    there is usually a manageable number of subconditions
-                    \citep[p.~464]{PetersAndPedrycz2000}
-          \end{itemize}
+    \item ``Also known as \textbf{extended branch coverage}''
+          \citep[p.~422]{vanVliet2000}
+    \item Does not subsume and is not subsumed by path coverage
+          \citep[p.~433]{vanVliet2000}
+    \item ``May be quite challenging'' since ``if each
+          subcondition is viewed as a single input, then this
+          \dots\ is analogous to exhaustive testing''; however,
+          there is usually a manageable number of subconditions
+          \citep[p.~464]{PetersAndPedrycz2000}
 \end{itemize}
 
 \section[Gray-Box Testing]{Gray-Box Testing \citep[pp.~218-220]{Patton2006}}
