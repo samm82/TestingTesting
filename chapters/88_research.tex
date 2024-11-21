@@ -221,10 +221,9 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
     \item Derived test oracle: any ``artefact[] from which a
           test oracle may be derived---for instance, a previous version of
           the system'' or ``program documentation''; this includes regression
-          testing, \nameref{chap:testing:sec:metamorphic-testing}
-          \citep[p.~510]{BarrEtAl2015}, and invariant detection (either
-          known in advance or ``learned from the program'')
-          \citep[p.~516]{BarrEtAl2015}
+          testing, metamorphic testing \citep[p.~510]{BarrEtAl2015}, and
+          invariant detection (either known in advance or ``learned from the
+          program'') \citep[p.~516]{BarrEtAl2015}
           \begin{itemize}
               \item This seems to prove ``relative correctness'' as
                     opposed to ``absolute correctness''
@@ -334,46 +333,12 @@ point'' for the domain on the \emph{same} side of the boundary
 \begin{itemize}
     \item Act like an inexperienced user (\emph{likely out of scope})
     \item Look for bugs where they've already been found (\emph{keep track of
-              previous failed test cases? This could pair well with
-              \nameref{chap:testing:sec:metamorphic-testing}!})
+              previous failed test cases? This could pair well with metamorphic
+              testing!})
 \end{itemize}
 
 % Hard-coded acronym to show up in navigation sidebar
-\section[Metamorphic Testing (MT)]{\acf{mt}}
-\label{chap:testing:sec:metamorphic-testing}
-The use of \acfp{mr} ``to determine whether a test case has passed or failed''
-\citep[p.~67]{KanewalaAndYuehChen2019}. ``A[n] \acs{mr} specifies how the
-output of the program is expected to change when a specified change is made to
-the input'' \citep[p.~67]{KanewalaAndYuehChen2019}; this is commonly done by
-creating an initial test case, then transforming it into a new one by applying
-the \acs{mr} (both the initial and the resultant test cases are executed and
-should both pass) \citep[p.~68]{KanewalaAndYuehChen2019}. ``\acs{mt} is one of
-the most appropriate and cost-effective testing techniques for scientists and
-engineers'' \citep[p.~72]{KanewalaAndYuehChen2019}.
-
-% Hard-coded acronym to show up in navigation sidebar
-\subsection[Benefits of MT]{Benefits of \acs{mt}}
-\begin{itemize}
-    \item Easier for domain experts; not only do they understand the domain
-          (and its relevant \acp{mr}) \citep[p.~70]{KanewalaAndYuehChen2019},
-          they also may not have an understanding of testing principles
-          \citep[p.~69]{KanewalaAndYuehChen2019}. \emph{This majorly
-              overlaps with Drasil!}
-    \item Easy to implement via scripts \citep[p.~69]{KanewalaAndYuehChen2019}.
-          \emph{Again, Drasil}
-    \item Helps negate the test oracle \citep[p.~69]{KanewalaAndYuehChen2019}
-          and output validation \citep[p.~70]{KanewalaAndYuehChen2019} problems
-          from \nameref{chap:testing:sec:sci-testing-roadblocks} (\emph{i.e.,
-              the two that are relevant for Drasil})
-    \item Can extend a limited number of test cases (e.g., from an
-          experiment that was only able to be conducted a few times)
-          \citep[pp.~70-72]{KanewalaAndYuehChen2019}
-    \item Domain experts are sometimes unable to identify faults in a program
-          based on its output \citep[p.~71]{KanewalaAndYuehChen2019}
-\end{itemize}
-
-% Hard-coded acronym to show up in navigation sidebar
-\subsection[Examples of MT]{Examples of \acs{mt}}
+\section[Examples of Metamorphic Relations]{Examples of \acfp{mr}}
 \begin{itemize}
     \item The distance between two points should be the same regardless of
           which one is the ``start'' point \citep[p.~22]{IEEE2021}
