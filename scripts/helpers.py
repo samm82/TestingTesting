@@ -13,14 +13,14 @@ PREFIX_REGEX = r"\(|[a-z;] "
 SPLIT_REGEX = r',(?!(?:[^()]*\([^()]*\))*[^()]*\)) '
 
 # Used in multiple files
-UNSURE_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
-                   "most", "often", "if", "although"]
+IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "should be", "ideally",
+                     "usually", "most", "likely", "often", "if", "although"]
 warned_multi_unsure = set()
 # only == True returns a string iff the passed `name` is not explicit
 def isUnsure(name: str, only: bool = False) -> Optional[str]:
-    unsureTerms = {"?", " (Testing)"}.union(f"({term}" for term in UNSURE_KEYWORDS)
+    unsureTerms = {"?", " (Testing)"}.union(f"({term}" for term in IMPLICIT_KEYWORDS)
     if not only:
-        unsureTerms.update(f" {term}" for term in UNSURE_KEYWORDS)
+        unsureTerms.update(f" {term}" for term in IMPLICIT_KEYWORDS)
 
     outTerms = {unsure for unsure in unsureTerms if unsure in name}
     if (len(outTerms) > 1 and "?" not in outTerms and
@@ -104,9 +104,6 @@ def formatLineWithSources(line, todo=True):
     line = re.sub(r"\"([\w\s]*)\"", r"``\1''", line)
 
     return line
-
-IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "should be", "ideally",
-                     "usually", "most", "likely", "often", "if", "although"]
 
 def getDiscrepCount(line, cat, cls, todo=True, newlineAfter=True):
     # TODO: "implied by" isn't stable
