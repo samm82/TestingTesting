@@ -220,9 +220,8 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
           \citep[p.~510]{BarrEtAl2015}
     \item Derived test oracle: any ``artefact[] from which a
           test oracle may be derived---for instance, a previous version of
-          the system'' or ``program documentation''; this includes
-          \nameref{chap:testing:sec:regression-testing},
-          \nameref{chap:testing:sec:metamorphic-testing}
+          the system'' or ``program documentation''; this includes regression
+          testing, \nameref{chap:testing:sec:metamorphic-testing}
           \citep[p.~510]{BarrEtAl2015}, and invariant detection (either
           known in advance or ``learned from the program'')
           \citep[p.~516]{BarrEtAl2015}
@@ -337,27 +336,6 @@ point'' for the domain on the \emph{same} side of the boundary
     \item Look for bugs where they've already been found (\emph{keep track of
               previous failed test cases? This could pair well with
               \nameref{chap:testing:sec:metamorphic-testing}!})
-\end{itemize}
-
-\section{Regression Testing}
-\label{chap:testing:sec:regression-testing}
-
-\begin{itemize}
-    \item Various levels:
-          \begin{itemize}
-              \item Retest-all: ``all tests are rerun''; ``this may consume
-                    a lot of time and effort''
-                    \citep[p.~411]{vanVliet2000} (\emph{shouldn't
-                        take too much effort, since it will be automated,
-                        but may lead to longer CI runtimes depending on
-                        the scope of generated tests})
-              \item Selective retest: ``only some of the tests are rerun''
-                    after being selected by a \emph{regression test
-                        selection technique}; ``[v]arious strategies have
-                    been proposed for doing so; few of them have been
-                    implemented yet'' \citep[p.~411]{vanVliet2000}
-                    \todo{Investigate these}
-          \end{itemize}
 \end{itemize}
 
 % Hard-coded acronym to show up in navigation sidebar
