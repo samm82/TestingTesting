@@ -310,7 +310,12 @@ categories \citeyearpar[p.~510]{BarrEtAl2015}:
           constraint that the value in question cannot be zero), the user
           should likely be able to select categories of tests to generate
           instead of Drasil just generating all possible test cases based on
-          the inputs \citep{june_11_meeting}.
+          the inputs \citep{june_11_meeting}
+    \item ``Test suite augmentation techniques specialise in
+          identifying and generating'' new tests based on changes ``that add
+          new features'' \todo{Investigate!}, but they could be extended to
+          also augment ``the expected output'' and ``the existing
+          \emph{oracles}'' \citep[p.~516]{BarrEtAl2015}
 \end{itemize}
 
 \section[Dynamic Black-Box (Behavioural) Testing]{Dynamic Black-Box
@@ -337,25 +342,7 @@ point'' for the domain on the \emph{same} side of the boundary
 \section{Regression Testing}
 \label{chap:testing:sec:regression-testing}
 
-Repeating ``tests previously executed \dots\ at a later point in development and
-maintenance'' \citep[p.~446]{PetersAndPedrycz2000} ``to make sure there are no
-unwanted changes [to the software's behaviour]'' \citetext{p.~481} (although
-allowing ``some unwanted differences to pass through'' is sometimes desired, if
-tedious \citetext{p.~482}). See also \citep[p.~232]{Patton2006}.
-
 \begin{itemize}
-    \item Should be done automatically \citep[p.~481]{PetersAndPedrycz2000};
-          ``[t]est suite augmentation techniques specialise in
-          identifying and generating'' new tests based on changes ``that add
-          new features'' \todo{Investigate!}, but they could be extended to
-          also augment ``the expected output'' and ``the existing
-          \emph{oracles}'' \citep[p.~516]{BarrEtAl2015}
-    \item Its ``effectiveness \dots\ is expressed in terms of'':
-          \begin{enumerate}
-              \item difficulty of test suite construction and maintenance
-              \item reliability of the testing system
-                    \citep[pp.~481-482]{PetersAndPedrycz2000}
-          \end{enumerate}
     \item Various levels:
           \begin{itemize}
               \item Retest-all: ``all tests are rerun''; ``this may consume

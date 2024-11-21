@@ -105,8 +105,8 @@ def formatLineWithSources(line, todo=True):
 
     return line
 
-IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "ideally", "usually",
-                     "most", "likely", "often", "if", "although"]
+IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "should be", "ideally",
+                     "usually", "most", "likely", "often", "if", "although"]
 
 def getDiscrepCount(line, cat, cls, todo=True, newlineAfter=True):
     # TODO: "implied by" isn't stable
