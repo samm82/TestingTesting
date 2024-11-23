@@ -1,24 +1,3 @@
-\begin{codeSnippet}{python}{Code for determining a source's category based on its citation.}{getSrcCat}{https://github.com/samm82/TestGen-Thesis/blob/50db9e3/scripts/discrepCounter.py\#L37-L53}
-# rel == True if the SrcCat is used for coloring relations
-def getSrcCat(s, rel: bool = False) -> SrcCat:
-    if any(std in s for std in {"IEEE", "ISO", "IEC"}):
-        return SrcCat.STD
-    if any(metastd in s for metastd in
-        {"Washizaki", "Bourque and Fairley", "SWEBOK",
-            "Hamburg and Mogyorodi", "ISTQB", "Firesmith",
-            "Doğan et al", "DoğanEtAl"}):
-        return SrcCat.META
-    if any(textbook in s for textbook in
-        {"van Vliet", "vanVliet", "Patton", "Peters and Pedrycz",
-            "PetersAndPedrycz", "Gerrard and Thompson",
-            "GerrardAndThompson", "Dennis et al", "DennisEtAl",
-            "Perry", "Ammann and Offutt", "AmmannAndOffutt",
-            "Fenton and Pfleeger", "FentonAndPfleeger",
-            "Kaner et al", "KanerEtAl"}):
-        return SrcCat.TEXT
-    return SrcCat.INFER if rel and not any(par in s for par in "()") else SrcCat.PAPER
-\end{codeSnippet}
-
 \mainInvalidInputTest{}
 
 \projViolationChoice{}

@@ -89,10 +89,12 @@ commands for inclusion in this document.
 Comparing the authors and years of each source related to a given discrepancy
 can determine if it manifests within a single document and/or between documents
 by the same author(s) when creating \Cref{fig:discrepSources}. Then, the
-relevant sources can be sorted into their categories based on their citations,
-done by the function in \Cref{lst:getSrcCat}, since each source category
-outlined in \Cref{sources} is comprised of a small number of authors (with the
-exception of papers and other documents; see \Cref{papers}). This determines
+relevant sources can be sorted into their categories based on their citations
+\seeSrcCode{e709acf}{discrepCounter}{39}{56}.
+% done by the function in \Cref{lst:getSrcCat}, since each source category
+% outlined in \Cref{sources} is comprised of a small number of authors (with the
+% exception of papers and other documents; see \Cref{papers}).
+This determines
 the appropriate row of \Cref{tab:discrepClss,tab:discrepCats} and the appropriate
 graph and slice in \Cref{fig:discrepSources}. These lists of sources can then
 be distilled down to sets of categories which are compared against
