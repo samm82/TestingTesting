@@ -3,7 +3,18 @@
 
 To better understand our findings, we build tools to visualize the
 relations between test approaches more intuitively (\Cref{graph-gen}) and track
-discrepancies surrounding them automatically (\Cref{discrep-analysis}).
+discrepancies surrounding them automatically (\Cref{discrep-analysis}). While
+this \emph{could} be done manually, it would be prone to error due to the
+amount of data involved (for example, \approachCount{} test approaches were
+identified). Additionally, there are many situations where the underlying data
+would change, such as performing more detailed analysis, correcting errors, and
+adding data from new or updated documents; these would all require the
+corresponding graphs to be updated, which would be tedious. Automating these
+processes also allows the impacts of smaller changes to be observed. This both
+provides more context when analyzing data, such as revealing an unexpected
+discrepancy that arises from a new relation between two approaches, and helps
+verify the tools themselves, such as ensuring that an added discrepancy affects
+counts as expected.
 
 \subsection{Approach Graph Generation}
 \label{graph-gen}
