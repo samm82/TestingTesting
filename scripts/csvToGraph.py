@@ -512,7 +512,7 @@ def sortByImplied(ls):
 
 if "Example" not in csvFilename:
     writeFile(["\\begin{longtblr}[",
-            "   caption = {Pairs of test approaches described both as \\hyperref[par-chd-rels]{parent-child} and as synonyms.},",
+            "   caption = {Pairs of test approaches with a \\hyperref[par-chd-rels]{parent-child} \\emph{and} synonym relation.},",
             "   label = {tab:parSyns}",
             "   ]{",
             "   colspec = {|c|X|X|}, width = \\linewidth,",
@@ -693,16 +693,24 @@ def writeDotFile(lines, filename):
 if "Example" in csvFilename:
     writeDotFile(categoryDict["Static" if "Static" in csvFilename else "Approach"][1],
                  f"{csvFilename.split("/")[-1][:-4]}Graph")
+    
+    rigidDict = ({"ExampleGlossary": categoryDict["Approach"]}
+                  if csvFilename.split("/")[-1] == "ExampleGlossary.csv"
+                  else dict())
 else:
-    for key, value in categoryDict.items():
-        lines = value[1]
+    rigidDict = categoryDict
+
+for key, value in rigidDict.items():
+    lines = value[1]
+    if key != "ExampleGlossary":
         writeDotFile(lines, f"{key.lower()}Graph")
-        unsure = reduce(operator.add,
-                        [[val] + [c.split()[0] for c in lines if inLine(flag, val, c)]
-                        for flag, val in {(Flag.STYLE, "dashed"), (Flag.COLOR, "gray")}])
-        
-        writeDotFile([c for c in lines if all(x not in c for x in unsure)],
-                    f"rigid{key}Graph")
+
+    unsure = reduce(operator.add,
+                    [[val] + [c.split()[0] for c in lines if inLine(flag, val, c)]
+                    for flag, val in {(Flag.STYLE, "dashed"), (Flag.COLOR, "gray")}])
+    
+    writeDotFile([c for c in lines if all(x not in c for x in unsure)],
+                f"rigid{key}Graph")
 
 SYN = "syn"
 class CustomGraph:

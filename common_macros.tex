@@ -142,8 +142,8 @@ of a test process; for example, ``across the whole organization'' or only
         information was present in two documents by ``Author'': one written in
         the year 0000, and one in 0001. The following citation, ``(0000)'',
         contains no author, which means it was written by the same one as the
-        previous citationg. These citations are processed according to this
-        logic \seeSrcCode{f0b92ad}{csvToGraph}{49}{90} so they can be
+        previous citation. These citations are processed according to this
+        logic \seeSrcCode{30d8c96}{csvToGraph}{53}{94} so they can be
         consistently tracked throughout the analysis.
 
         \begin{table}[hbtp!]
@@ -161,7 +161,7 @@ of a test process; for example, ``across the whole organization'' or only
 
         \ExampleGraph{}
 
-    \fi
+        \newpage\fi
     All parent-child relations are graphed, as well as synonym relations where either:
     \begin{enumerate}
         \item both synonyms have their own rows in the glossary, or
@@ -191,7 +191,7 @@ of a test process; for example, ``across the whole organization'' or only
         found to generate the graph as desired. The list found in \Cref{multiSyns}
         is automatically generated based on glossary entries such as those found
         in \Cref{tab:synExampleGlossary}. The self-referential definitions in
-        \Cref{selfPars} were also trivial, found by simply looking for lines
+        \Cref{selfPars} were also trivial, found by simply looking for lines in
         the generated .tex files starting with \texttt{I -> I} which would
         result in the graph in \Cref{fig:selfExampleGraph}. A similar process
         is used to detect instances where two approaches have a synonym
@@ -204,18 +204,18 @@ of a test process; for example, ``across the whole organization'' or only
         in \Cref{fig:parSynExampleGraph}.
 
         The visual nature of these graphs makes it possible to represent both
-        explicit and implicit relations without double counting them during
-        \hyperref[discrep-analysis]{analysis}.
-        If a relation is both explicit \emph{and} implicit, the implicit relation
-        is only shown in the graph if it is from a more ``trusted''
-        \hyperref[sources]{source category}; note that only the explicit
-        synonym relation between E and F
+        explicit and implicit relations without double counting them during the
+        analysis in \Cref{discrep-analysis}. If a relation is both explicit
+        \emph{and} implicit, the implicit relation is only shown in the graph
+        if it is from a more ``trusted'' source category (see \Cref{sources});
+        note that only the explicit synonym relation between E and F
         from \Cref{tab:exampleGlossary} is shown in \Cref{fig:synExampleGraph}.
         Implicit approaches and relations are denoted by dashed lines, as shown
         in \Cref{fig:exampleGraph,fig:synExampleGraph}; explicit approaches are
         \emph{always} denoted by solid lines, even if they are also implicit.
-        ``Rigid'' versions, which exclude implicit approaches and relations,
-        can also be generated for each graph\todo{Should I add an example?}.
+        ``Rigid'' versions of these graphs that exclude implicit approaches and
+        relations can also be generated; the rigid version of
+        \Cref{fig:exampleGraph} is given in \Cref{fig:rigidExampleGraph}.
 
     \fi
     Since these graphs tend to be large, it is useful to focus on specific
@@ -234,7 +234,7 @@ of a test process; for example, ``across the whole organization'' or only
     as shown in \Cref{fig:recovery-graph-current,fig:scal-graph-current},
     respectively (albeit with manually created legends). By specifying sets of
     approaches and relations to add or remove, these generated graphs can be
-    updated in accordance with our \nameref{recs}, as shown in
+    updated in accordance with our recommendations in \Cref{recs}, as shown in
     \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed}, respectively.
     These modifications can also be inherited, as in \Cref{fig:perf-graph},
     which was generated based on the modifications from

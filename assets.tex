@@ -32,36 +32,44 @@
 % Organization of files
 \newcommand{\ExampleGraph}{
     \begin{figure*}
-        \begin{subfigure}[b]{0.4\linewidth}
+        \begin{subfigure}[b]{0.3\linewidth}
             \includegraphics[width=\linewidth]{assets/graphs/ExampleGlossaryGraph.pdf}
             \caption{Graph from \Cref{tab:exampleGlossary}.}
             \label{fig:exampleGraph}
         \end{subfigure}
-        \begin{subfigure}[b]{0.575\linewidth}
+        \centering
+        \begin{subfigure}[b]{0.675\linewidth}
             \centering
-            \includegraphics[width=\linewidth]{assets/graphs/manual/manualLegendNonSolidTerms.pdf}
-            \includegraphics[width=0.85\linewidth]{assets/graphs/SynExampleGlossaryGraph.pdf}
-            \caption{Graph from \Cref{tab:synExampleGlossary}.}
-            \label{fig:synExampleGraph}
+            \includegraphics[width=0.8\linewidth]{assets/graphs/manual/manualLegendNonSolidTerms.pdf}
+            \hspace{5cm}\begin{subfigure}[t]{0.475\linewidth}
+                \includegraphics[width=1.1\linewidth]{assets/graphs/rigidExampleGlossaryGraph.pdf}
+                \caption{Rigid graph from\\\Cref{tab:exampleGlossary}.}
+                \label{fig:rigidExampleGraph}
+            \end{subfigure}
+            \begin{subfigure}[t]{0.475\linewidth}
+                \includegraphics[width=1.1\linewidth]{assets/graphs/SynExampleGlossaryGraph.pdf}
+                \caption{Graph from \Cref{tab:synExampleGlossary}.}
+                \label{fig:synExampleGraph}
+            \end{subfigure}
         \end{subfigure}
-        \begin{subfigure}[b]{0.3\linewidth}
-            \hspace{-1.35cm}\includegraphics[width=1.3\linewidth]{assets/graphs/SelfExampleGlossaryGraph.pdf}
-            \vspace{5mm}
-            \caption{Graph generated from a .tex file containing a line starting with
-                \texttt{I -> I}.}
+        \begin{subfigure}[t]{0.25\linewidth}
+            \centering
+            \includegraphics[width=1.2\linewidth]{assets/graphs/SelfExampleGlossaryGraph.pdf}
+            \caption{Self-loop graph.}
             \label{fig:selfExampleGraph}
         \end{subfigure}
         \hfill
-        \begin{subfigure}[b]{0.325\linewidth}
-            \includegraphics[width=1.1\linewidth]{assets/graphs/ParSynExampleGlossaryGraph.pdf}
-            \caption{Graph generated from a .tex file containing a line starting with
-                \texttt{J -> K} if J and K are synonyms.}
+        \begin{subfigure}[t]{0.425\linewidth}
+            \centering
+            \includegraphics[width=0.6\linewidth]{assets/graphs/ParSynExampleGlossaryGraph.pdf}
+            \caption{Graph of a pair of terms with a \hyperref[par-chd-rels]{parent-child} \emph{and} synonym relation.}
             \label{fig:parSynExampleGraph}
         \end{subfigure}
         \hfill
-        \begin{subfigure}[b]{0.28\linewidth}
-            \hspace{-2.05cm}\includegraphics[width=1.5\linewidth]{assets/graphs/StaticExampleGlossaryGraph.pdf}
-            \caption{Graph of static approaches showing that related dynamic approaches are colored gray.}
+        \begin{subfigure}[t]{0.25\linewidth}
+            \centering
+            \includegraphics[width=1.4\linewidth]{assets/graphs/StaticExampleGlossaryGraph.pdf}
+            \caption{Static graph.}
             \label{fig:staticExampleGraph}
         \end{subfigure}
         \caption{Example generated graphs.}
