@@ -27,13 +27,21 @@ category if it appears within it \emph{and/or} between it and a more
 given category\thesisissueref{83}, which would result in the number of
 \emph{occurrences} of all discrepancies, instead of the number of discrepancies
 \emph{themselves}, which is more useful. An exception to this is
-\Cref{fig:discrepSources}, which counts discrepancies within a single document
-and those between documents by the same author(s) or standards organization(s)
-separately from those within a source category. As before, these are not double
-counted, meaning that the maximum number of counted discrepancies possible
-within a source category in \Cref{fig:discrepSources} is three (once for each
-type). This only occurs if there is an example of each type of discrepancy
-source where a ``stricter'' type does not apply\todo{Explain this better!}.
+\Cref{fig:discrepSources}, which counts the following sources of discrepancies
+separately:
+\begin{enumerate}
+    \item those within a single document,
+    \item those between documents by the same author(s) or standards
+          organization(s), and
+    \item those within a source category.
+\end{enumerate}
+As before, these are not double counted, meaning that the maximum number of
+counted discrepancies possible within a \emph{single} source category in
+\Cref{fig:discrepSources} is three (one for each type). This only occurs if
+there is an example of each discrepancy source that is \emph{not} ignored to
+avoid double counting; for example, while a single discrepancy within a single
+document would technically fulfill all three criteria, it would only be counted
+once.
 
 \phantomsection{}
 \label{discrep-analysis-example}
