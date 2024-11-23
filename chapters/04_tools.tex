@@ -13,10 +13,9 @@ discrepancies surrounding them automatically (\Cref{discrep-analysis}).
 \subsection{Discrepancy Analysis}
 \label{discrep-analysis}
 
-In addition to analyzing specific discrepancies (or classes of discrepancies),
-an overview of the amounts, sources, \hyperref[rigidity]{rigidities}, and
-severities of these discrepancies is also
-useful. Subsets of this task can be automated (\Cref{auto-discrep-analysis})
+In addition to analyzing specific discrepancies, an overview of their amounts,
+sources, rigidities (see \Cref{rigidity}), classes, and categories is
+also useful. Subsets of this task can be automated (\Cref{auto-discrep-analysis})
 and the remaining manual portion can be augmented with automated
 tools (\Cref{aug-discrep-analysis}).
 
@@ -24,9 +23,8 @@ To understand where discrepancies exist in the literature, they are
 grouped based on the source categories (as described in \Cref{sources})
 responsible for them. Each discrepancy is then counted \emph{once} per source
 category if it appears within it \emph{and/or} between it and a more
-``trusted'' category.
-This avoids counting the same discrepancy twice for a given category%
-\thesisissueref{83}, which would result in the number of
+``trusted'' category. This avoids counting the same discrepancy twice for a
+given category\thesisissueref{83}, which would result in the number of
 \emph{occurrences} of all discrepancies, instead of the number of discrepancies
 \emph{themselves}, which is more useful. An exception to this is
 \Cref{fig:discrepSources}, which counts discrepancies within a single document
@@ -42,8 +40,8 @@ source where a ``stricter'' type does not apply\todo{Explain this better!}.
 As an example of this process, consider a discrepancy \emph{within} an IEEE
 document (e.g., two different definitions are given for a term within the same
 IEEE document) \emph{and} between another IEEE document, the \acs{istqb}
-glossary \emph{and} two papers. This would add one to the
-following rows of \Cref{tab:discrepCats} in the relevant column:
+glossary \emph{and} two papers. This would add one to the following rows of
+\Cref{tab:discrepClss,tab:discrepCats} in the relevant column:
 
 \begin{itemize}
     \item \textbf{\stds{}}: this discrepancy occurs:
@@ -86,8 +84,8 @@ by the same author(s) when creating \Cref{fig:discrepSources}. Then, the
 relevant sources can be sorted into their categories based on their citations,
 done by the function in \Cref{lst:getSrcCat}, since each source category
 outlined in \Cref{sources} is comprised of a small number of authors (with the
-exception of \papers{}).
-This determines the appropriate row of \Cref{tab:discrepCats} and the appropriate
+exception of papers and other documents; see \Cref{papers}). This determines
+the appropriate row of \Cref{tab:discrepClss,tab:discrepCats} and the appropriate
 graph and slice in \Cref{fig:discrepSources}. These lists of sources can then
 be distilled down to sets of categories which are compared against
 each other to determine how many times a given discrepancy manifests between
@@ -97,9 +95,9 @@ source categories. Examples of this process are described in more detail in
 \phantomsection{}
 \label{auto-discrep-analysis-rigidity}
 Alongside this citation information are the keywords relevant for assessing a
-piece of information's \nameref{rigidity}. This is useful when counting
-discrepancies, since a discrepancy can be both explicit and implicit, but
-should not be double counted as both\thesisissueref{83}! When counting
+piece of information's rigidity (see \Cref{rigidity}). This is useful when
+counting discrepancies, since a discrepancy can be both explicit and implicit,
+but should not be double counted as both\thesisissueref{83}! When counting
 discrepancies in \Cref{tab:discrepClss,tab:discrepCats}, a given discrepancy is
 counted only for its most ``rigid'' manifestation (i.e., it will only increment
 a value in the ``Implicit'' column if it is \emph{not} also explicit).
@@ -117,9 +115,9 @@ comments to the relevant \LaTeX{} files (generated or not) of the form
         \dots}
 \end{displayquote}
 which can then be parsed to detemine where discrepancies occur. \texttt{CAT} is
-a placeholder for the discrepancy's \hyperref[discrepCategories]{category}
-identifier and \texttt{CLS} is a placeholder for its
-\hyperref[discrepClasses]{class} identifier. These designations are ommitted
+a placeholder for the discrepancy's category (see \Cref{discrepCategories})
+identifier and \texttt{CLS} is a placeholder for its class (see
+\Cref{discrepClasses}) identifier. These designations are ommitted
 from the following examples of these comments. Each group of
 sources is separated with a pipe symbol to be compared with the others, so any
 number of groups are permitted. If only one group is present, it is compared
@@ -147,21 +145,22 @@ the IEEE documents are written by the same standards organizations
 (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), they are counted as a
 discrepancy between documents by the same author(s) in \Cref{fig:discrepSources}.
 
-The \nameref{rigidity} of discrepancies can also be manually specified by
-inserting the phrase ``implied by'' after the sources of explicit information
-and before those of implicit information. Parsing this information follows the
-same rules as \nameref{auto-discrep-analysis-rigidity}. For example, the line
+The rigidity (see \Cref{rigidity}) of discrepancies can also be manually
+specified by inserting the phrase ``implied by'' after the sources of explicit
+information and before those of implicit information. Parsing this information
+follows the same rules as the automatic discrepancy analysis
+(see \Cref{auto-discrep-analysis-rigidity}). For example, the line
 
 \begin{displayquote}
     \texttt{\% Discrep count: \{IEEE2022\} implied by \{Kam2008\} |\\
         $\,\hookrightarrow\,$\quad \{IEEE2017\} implied by \{IEEE2022\}}
 \end{displayquote}
 
-indicates that the following discrepancies are present. These all increment
-counts in both \Cref{fig:discrepSources} and \Cref{tab:discrepCats} by only one,
-except for the second, which only affects \Cref{fig:discrepSources}. This is
-because it is less ``rigid'' than another discrepancy within \stds{} (i.e., the
-first one) and as such is not double counted in \Cref{tab:discrepCats}:
+indicates that the following discrepancies are present. The second discrepancy
+only affects \Cref{fig:discrepSources} since it is less ``rigid'' than the
+first discrepancy within standards (see \Cref{stds}). The rest increment their
+corresponding count in \Cref{fig:discrepSources,tab:discrepClss,tab:discrepCats}
+by only one:
 
 \begin{itemize}
     \item an explicit discrepancy between documents by
