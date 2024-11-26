@@ -42,7 +42,7 @@ def sort_key(s, cat):
 
 unknownSpaces = {s for s in sources if " " in s and s not in
                 # List of sources with spaces that can be parsed by just removing them
-                {"Mackert GmbH2022", "Kuan Tan2008"}}
+                {"Mackert GmbH2022", "Kuan Tan2008", "KanewalaAndYueh Chen2019"}}
 if unknownSpaces:
     print("Sources with spaces to double check: ")
     for s in unknownSpaces:
