@@ -106,8 +106,10 @@ of a test process; for example, ``across the whole organization'' or only
         \distinctIEEE{#1}}}
 
 % Examples of discrepancies
-\def\tourDiscrep{The structure of tours is quite general
-    \citep[p.~34]{IEEE2022} or ``organized around a special focus'' \citepISTQB{}.}
+\NewDocumentCommand\tourDiscrep{s}{%
+    \IfBooleanTF#1{t}{T}he structure of tours can be defined as either quite
+    general \citep[p.~34]{IEEE2022} or ``organized around a special focus''
+    \citepISTQB{}\IfBooleanTF#1{}{.}}
 \def\alphaDiscrep{Alpha testing is performed by ``users within the organization
     developing the software'' \citep[p.~17]{IEEE2017}, ``a small, selected
     group of potential users'' \citep[p.~5-8]{SWEBOK2024}, or ``roles outside
