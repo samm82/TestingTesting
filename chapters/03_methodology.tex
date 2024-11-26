@@ -182,11 +182,16 @@ Nevertheless, these \else. These \fi categories (``test level'' and ``test
 type'' in particular) seem to be widely used. For example, in addition to the
 IEEE sources (given in \Cref{tab:ieeeTestTerms}), six additional sources give
 unit testing, integration testing, system testing, and acceptance testing as
-examples of test levels (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citealpISTQB{};
-\citealp[p.~218]{KuļešovsEtAl2013} \todo{OG Black, 2009};
-\citealp[p.~807-808]{Perry2006}; \citealp[pp.~443-445]{PetersAndPedrycz2000};
-\citealp[pp.~9,~13]{Gerrard2000a}), although they may use a different term for
-``test level'' (see \Cref{tab:ieeeTestTerms}). Because of their widespread use
+examples of test levels \ifnotpaper
+    (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citealpISTQB{};
+    \citealp[p.~218]{KuļešovsEtAl2013}\todo{OG Black, 2009};
+    \citealp[p.~807-808]{Perry2006}; \citealp[pp.~443-445]{PetersAndPedrycz2000};
+    \citealp[pp.~9,~13]{Gerrard2000a})\else
+    \cite{ISTQB}, \cite[pp.~5-6 to 5-7]{SWEBOK2024},
+    \cite[pp.~9,~13]{Gerrard2000a}, \cite[p.~807-808]{Perry2006},
+    \cite[pp.~443-445]{PetersAndPedrycz2000}, \citealp[p.~218]{KuļešovsEtAl2013}%
+    \todo{OG Black, 2009}\fi, although they may use a different term for ``test
+level'' (see \Cref{tab:ieeeTestTerms}). Because of their widespread use
 and their usefulness when focusing on a particular
 subset of testing, these categories are used for now. \ifnotpaper A ``metric''
 category was considered in addition to this categorization, but was decided to
