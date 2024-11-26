@@ -90,11 +90,11 @@ VolumeTesting [label=<Volume<br/>Testing>];
 
 CapacityTesting -> ScalabilityTesting[dir=none,color="green"];
 CompatibilityTesting -> CoexistenceTesting[dir=none,color="green"];
+FunctionalTesting -> ConformanceTesting[dir=none,color="blue"];
 SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
 EnduranceTesting -> SoakTesting[dir=none,color="green"];
 ReliabilityTesting -> SoakTesting[dir=none];
 FaultToleranceTesting -> RobustnessTesting[dir=none,color="blue"];
-FunctionalTesting -> ConformanceTesting[dir=none,color="blue"];
 PerformanceTesting -> PerformancerelatedTesting[dir=none];
 PortabilityTesting -> FlexibilityTesting[dir=none,color="green"];
 RecoverabilityTesting -> RecoveryTesting[dir=none];
