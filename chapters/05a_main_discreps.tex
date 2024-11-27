@@ -11,64 +11,6 @@
               approaches?}, which is possibly the source
           of the above misconception; these two in tandem create a cyclic
           relation between regression testing and selective retesting.
-    \item % Discrep count (CATS, CONTRA): {IEEE2022}
-          \expBasedCatMain{}
-          \ifnotpaper
-              \begin{itemize}
-                  \item These authors previously say ``experience-based testing
-                        % Discrep count (CATS, AMBI): {IEEE2021} | {IEEE2022} {IEEE2021} {SWEBOK2024} ISTQB
-                        practices like exploratory testing \dots\ are not
-                        \dots\ techniques for designing test cases'', although
-                        they ``can use \dots\ test techniques''
-                        \citeyearpar[p.~viii]{IEEE2021}. This implies that
-                        ``experience-based test design techniques'' are
-                        techniques used by the \emph{practice} of experience-based
-                        testing, not that experience-based testing is
-                        \emph{itself} a test technique. If this is the case, it
-                        is not always clearly articulated
-                        \ifnotpaper
-                            (\citealp[pp.~4,~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021};
-                            \citealp[p.~5-13]{SWEBOK2024}; \citealpISTQB{})
-                        \else
-                            \cite[pp.~4,~22]{IEEE2022}, \cite[p.~4]{IEEE2021},
-                            \cite[p.~5-13]{SWEBOK2024}, \cite{ISTQB}
-                        \fi and is sometimes contradicted \citep[p.~46]{Firesmith2015}.
-                        % Discrep count (CATS, CONTRA): {IEEE2021} | {Firesmith2015}
-                        However, this conflates the distinction between
-                        ``practice'' and ``technique'', making these terms less
-                        useful, so this may just be a mistake\thesisissueref{64}.
-
-                        % Furthermore, if a ``class of \dots\ techniques''
-                        % is a practice, then other ``techniques'', such as combinatorial testing
-                        % (\citealp[pp.~3,~22]{IEEE2022}; \citeyear[p.~2]{IEEE2021};
-                        % \citealp[p.~5-11]{SWEBOK2024}; \citealpISTQB{}), data flow testing
-                        % (\citealp[p.~22]{IEEE2022}; \citeyear[p.~3]{IEEE2021};
-                        % \citealp[p.~5-13]{SWEBOK2024}; \citealp[p.~43]{Kam2008}), performance(-related)
-                        % testing (\citealp[p.~38]{IEEE2021}; \citealp[p.~1187]{Moghadam2019}), and
-                        % security testing \citep[p.~40]{IEEE2021} may \emph{also}
-                        % actually be practices, since they are also described as classes or families of
-                        % techniques. The same could be said of the more
-                        % general specification- and structure-based testing, especially since these,
-                        % plus experience-based testing, are described as ``complementary'' \citetext{p.~8,~Fig.~2}.
-                        % % \citeyearpar[p.~8, Fig.~2]{IEEE2021}
-
-                  \item This also causes confusion about its children, such as
-                        % Discrep count (CATS, CONTRA): {IEEE2022}
-                        % Discrep count (CATS, CONTRA): {IEEE2022} {IEEE2021} | {SWEBOK2024}
-                        error guessing and exploratory testing. Also on the
-                        same page, \citet[p.~34]{IEEE2022} \multAuthHelper{say}
-                        error guessing is an ``experience-based test design
-                        technique'' and ``experience-based test practices
-                        include \dots\ exploratory testing, tours, attacks, and
-                        checklist-based testing.'' Other sources also do not
-                        agree whether error guessing is a technique
-                        \ifnotpaper
-                            \citetext{pp.~20,~22,~34; \citeyear[p.~viii]{IEEE2021}}
-                        \else
-                            \cite[pp.~20,~22,~34]{IEEE2022}, \cite[p.~viii]{IEEE2021}
-                        \fi or a practice \citep[p.~5-14]{SWEBOK2024}.
-              \end{itemize}
-          \fi
     \item % Discrep count (DEFS, MISS): {IEEE2022} {IEEE2021}
           Integration testing, system testing, and system integration testing
           are all listed as ``common test levels'' \ifnotpaper
@@ -244,23 +186,6 @@
           as another example by \citet[pp.~418-419]{vanVliet2000}.
 
           % TEXT | OTHER
-    \item % Discrep count (CATS, CONTRA): {IEEE2022} {IEEE2021} | {Kam2008} implied by {IEEE2021} {IEEE2017}
-          Model-based testing is categorized as both a test practice
-          \ifnotpaper
-              (\citealp[p.~22]{IEEE2022}; \citeyear[p.~viii]{IEEE2021})
-          \else
-              \cite[p.~22]{IEEE2022}, \cite[p.~viii]{IEEE2021}
-          \fi and a test technique
-          \ifnotpaper
-              (\citealp[p.~4]{Kam2008}; implied by
-              \citealp[p.~7]{IEEE2021}; \citeyear[p.~469]{IEEE2017})%
-          \else
-              \cite[p.~4]{Kam2008}%
-          \fi.
-    \item % Discrep count (CATS, CONTRA): {IEEE2022} | {Kam2008}
-          Data-driven testing is categorized as both a test practice
-          \citep[p.~22]{IEEE2022} and a test technique
-          \citep[p.~43]{Kam2008}\todo{OG Fewster and Graham}.
     \item % Discrep count (DEFS, WRONG): {Kam2008} | ISTQB
           \refHelper \citet[p.~46]{Kam2008}\todo{OG Beizer} says that the goal
           of negative testing is ``showing that a component or system does not

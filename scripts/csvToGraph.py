@@ -203,8 +203,9 @@ def addNode(name, style = "", key = "Approach"):
     addLineToCategory(key, nameLine)
 
 multiCats = []
-countAutomated = {"Capacity Testing", "Endurance Testing", "Load Testing",
-                  "Performance Testing", "Stress Testing"}
+countAutomated = {"Capacity Testing", "Data-driven Testing", "Error Guessing",
+                  "Endurance Testing", "Exploratory Testing", "Load Testing",
+                  "Model-based Testing", "Performance Testing", "Stress Testing"}
 for name, category in zip(names, categories):
     catCount = len([c for c in category if "Approach" not in c])
     if catCount > 1:
