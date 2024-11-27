@@ -134,7 +134,7 @@ def isUnsure(name: str, only: bool = False) -> Optional[str]:
     outTerms = {unsure for unsure in unsureTerms if unsure in name}
     if (len(outTerms) > 1 and "?" not in outTerms and
             name not in warned_multi_unsure):
-        print(f"Multiple 'unsure' cutoffs in {name}.")
+        print(f"Multiple implied keywords in {name}.")
         warned_multi_unsure.add(name)
 
     return (sorted(outTerms, key=name.index, reverse=True)[0]
@@ -202,12 +202,32 @@ def addNode(name, style = "", key = "Approach"):
         addLineToCategory("Static", nameLine)
     addLineToCategory(key, nameLine)
 
+multCats = []
 for name, category in zip(names, categories):
+    catCount = len([c for c in category if "Approach" not in c])
+    if catCount > 1:
+        multCats.append(" & ".join([removeInParens(name)] +
+                                   [formatLineWithSources(c, False)
+                                    for c in category]) + "\\\\")
     for cat in category:
         for key in categoryDict.keys():
             if key in cat or key == "Approach":
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key)
+
+if "Example" not in csvFilename:
+    writeFile(["\\begin{longtblr}[",
+               "   caption = {Test approaches with more than one \\hyperref[categories-observ]{category}.},",
+               "   label = {tab:multCats}",
+               "   ]{",
+               "   colspec = {|c|X|X|}, width = \\linewidth,",
+               "   rowhead = 1",
+               "   }",
+               "  \\hline",
+               "  \\thead{Test Approach} & \\thead{Category 1} & \\thead{Category 2} \\\\",
+               "  \\hline"] + sortByImplied(sortIgnoringParens(multCats)) +
+               ["  \\hline", "\\end{longtblr}"],
+               "multCats", True)
 
 for key in categoryDict.keys():
     categoryDict[key][1].append("")
@@ -502,14 +522,8 @@ for chd, syns in nameDict.items():
             synSource = "(" + synSource[-1] if len(synSource) > 1 else ""
             makeParSynLine(chd, par, parSource, synSource)
 
-def sortIgnoringParens(ls):
-    return sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", x))
-
 # Pairs with sources for both
 parSynCount = "".join(parSyns).count("\\to")
-
-def sortByImplied(ls):
-    return sorted(ls, key=lambda x: x.count("(implied"))
 
 if "Example" not in csvFilename:
     writeFile(["\\begin{longtblr}[",
