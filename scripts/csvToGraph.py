@@ -33,8 +33,8 @@ if __name__ == "__main__":
 approaches = read_csv(csvFilename)
 names = approaches["Name"].to_list()
 categories = approaches["Approach Category"].to_list()
-synonyms = approaches["Synonym(s)"].to_list()
 parents = approaches["Parent(s)"].to_list()
+synonyms = approaches["Synonym(s)"].to_list()
 
 # Write number of qualities to a file
 writeFile([len(read_csv("QualityGlossary.csv")["Name"].to_list())],
@@ -105,6 +105,7 @@ def processCol(col):
     return [copySources(x) for x in col]
 
 names = [n.strip() for n in names if isinstance(n, str)]
+categories = processCol(categories)
 parents = processCol(parents)
 synonyms = processCol(synonyms)
 
@@ -202,9 +203,9 @@ def addNode(name, style = "", key = "Approach"):
     addLineToCategory(key, nameLine)
 
 for name, category in zip(names, categories):
-    if isinstance(category, str):
+    for cat in category:
         for key in categoryDict.keys():
-            if key in category or key == "Approach":
+            if key in cat or key == "Approach":
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key)
 
