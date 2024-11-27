@@ -130,7 +130,7 @@ def readFileAsStr(filename) -> str:
     with open(filename, "r") as file:
         return "\n".join(file.readlines())
 
-def writeFile(lines, filename, helper: bool = False, dir: str = "graphs"):
+def writeFile(lines, filename: str, helper: bool = False, dir: str = "graphs"):
     lines = [str(line) + '\n' for line in lines]
     filename += ".tex"
     if helper:
@@ -139,9 +139,7 @@ def writeFile(lines, filename, helper: bool = False, dir: str = "graphs"):
         if not filename.startswith(f"assets/{dir}"):
             filename = f"assets/{dir}/{filename}"
         elif filename.startswith(f"assets/graphs/exampleGlossaries"):
-            filename = filename.split("/")
-            filename.remove("exampleGlossaries")
-            filename = "/".join(filename)
+            filename = "/".join(filename.split("/").remove("exampleGlossaries"))
 
     try:
         with open(filename, "r", encoding="utf-8") as readFile:
@@ -154,3 +152,22 @@ def writeFile(lines, filename, helper: bool = False, dir: str = "graphs"):
             outFile.writelines(lines)
     # else:
     #     print(f"No changes to {filename}")
+
+def writeLongtblr(filename: str, caption: str, headers: list[str],
+                  lines: list[str]):
+    # Used for ensuring correct number of columns after the first
+    colCount = len(headers) - 1
+    assert lines[0].count("&") == colCount
+
+    writeFile(["\\begin{longtblr}[",
+              f"   caption = {{{caption}}},",
+              f"   label = {{tab:{filename}}}",
+               "   ]{",
+              f"   colspec = {{|c|{"X|"*colCount}}}, width = \\linewidth,",
+               "   rowhead = 1",
+               "   }",
+               "  \\hline",
+              f"  {" & ".join([f"\\thead{{{h}}}" for h in headers])} \\\\",
+               "  \\hline"] + sortByImplied(sortIgnoringParens(lines)) +
+               ["  \\hline", "\\end{longtblr}"],
+               filename, True)

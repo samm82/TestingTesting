@@ -216,18 +216,12 @@ for name, category in zip(names, categories):
                 addNode(name, key=key)
 
 if "Example" not in csvFilename:
-    writeFile(["\\begin{longtblr}[",
-               "   caption = {Test approaches with more than one \\hyperref[categories-observ]{category}.},",
-               "   label = {tab:multCats}",
-               "   ]{",
-               "   colspec = {|c|X|X|}, width = \\linewidth,",
-               "   rowhead = 1",
-               "   }",
-               "  \\hline",
-               "  \\thead{Test Approach} & \\thead{Category 1} & \\thead{Category 2} \\\\",
-               "  \\hline"] + sortByImplied(sortIgnoringParens(multCats)) +
-               ["  \\hline", "\\end{longtblr}"],
-               "multCats", True)
+    writeLongtblr(
+        "multCats",
+        "Test approaches with more than one \\hyperref[categories-observ]{category}.",
+        ["Test Approach", "Category 1", "Category 2"],
+        multCats
+    )
 
 for key in categoryDict.keys():
     categoryDict[key][1].append("")
@@ -526,18 +520,12 @@ for chd, syns in nameDict.items():
 parSynCount = "".join(parSyns).count("\\to")
 
 if "Example" not in csvFilename:
-    writeFile(["\\begin{longtblr}[",
-            "   caption = {Pairs of test approaches with a \\hyperref[par-chd-rels]{parent-child} \\emph{and} synonym relation.},",
-            "   label = {tab:parSyns}",
-            "   ]{",
-            "   colspec = {|c|X|X|}, width = \\linewidth,",
-            "   rowhead = 1",
-            "   }",
-            "  \\hline",
-            "  \\thead{``Child'' $\\to$ ``Parent''}  & \\thead{Parent-Child Source(s)} & \\thead{Synonym Source(s)} \\\\",
-            "  \\hline"] + sortByImplied(sortIgnoringParens(parSyns)) +
-            ["  \\hline", "\\end{longtblr}"],
-            "parSyns", True)
+    writeLongtblr(
+        "parSyns",
+        "Pairs of test approaches with a \\hyperref[par-chd-rels]{parent-child} \\emph{and} synonym relation.",
+        ["``Child'' $\\to$ ``Parent''", "Parent-Child Source(s)", "Synonym Source(s)"],
+        list(parSyns)
+    )
 
     writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(
         map(lambda x: f"\\paragraph{{{x}}}",
