@@ -18,7 +18,9 @@ IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "should be", "ideally",
 warned_multi_unsure = set()
 def sortByImplied(ls: list[str]):
     return sorted(ls, key=lambda x: sum(
-        [x.count(imp) for imp in IMPLICIT_KEYWORDS + ["?"]]))
+        # Parenthesis present since explicit relations override implicit ones
+        [x.count(f"({imp}") for imp in IMPLICIT_KEYWORDS]) +
+        (x.count("?") + 10 if "?" in x else 0))
 
 def sortIgnoringParens(ls):
     return sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", x))
@@ -51,20 +53,22 @@ def getSources(s) -> list[tuple[str, str]]:
     return sources
 
 def categorizeSources(sources: str):
-    if sources.startswith(("(implied")):
+    if sources.startswith(tuple(f"({imp}" for imp in IMPLICIT_KEYWORDS)):
         return {Rigidity.IMP: getSources(sources)}
-    elif "implied" in sources:
-        parts = sources.split("implied by")
-        parsed = {Rigidity.EXP: getSources(parts[0])}
-        # Exclude implicit elements that are also explicit
-        parsed[Rigidity.IMP] = [t for t in getSources(parts[1])
-                                if t not in parsed[Rigidity.EXP]]
-        return parsed
     else:
+        imps = {imp: sources.find(imp) for imp in IMPLICIT_KEYWORDS
+                if sources.find(imp) > 0}
+        if imps:
+            parts = sources.split(max(imps))
+            parsed = {Rigidity.EXP: getSources(parts[0])}
+            # Exclude implicit elements that are also explicit
+            parsed[Rigidity.IMP] = [t for t in getSources(parts[1])
+                                    if t not in parsed[Rigidity.EXP]]
+            return parsed
+
         return {Rigidity.EXP: getSources(sources)}
 
-    # Sources for citations
-
+# Format sources for LaTeX citations
 def formatLineWithSources(line, todo=True):
     line = line.replace("(Hamburg and Mogyorodi, 2024)", "\\citepISTQB{}")
     line = line.replace("Hamburg and Mogyorodi, 2024", "\\citealpISTQB{}")
@@ -112,9 +116,19 @@ def formatLineWithSources(line, todo=True):
 
     return line
 
-def getDiscrepCount(line, cat, cls, todo=True, newlineAfter=True):
-    # TODO: "implied by" isn't stable
-    NO_BRACES = {"implied by", "ISTQB"}
+def getDiscrepCount(line: list[str], cat, cls, todo=True, newlineAfter=True):
+    # The following replacements should only apply when counting discrepancies
+    line = line.copy()
+
+    IMP_BY = "implied by"
+    # TODO: this should be made more robust as more cases come up
+    for i, part in enumerate(line):
+        if any(re.search(fr"\b{imp}\b", part) for imp in IMPLICIT_KEYWORDS[1:]):
+            line[i] = re.sub(r"if .+ in ", f"{IMP_BY} ", line[i])
+            line[i] = re.sub(r"although .+? \((.+?)\)", fr"{IMP_BY} \1", line[i])
+            line[i] = line[i].replace("inferred from", IMP_BY)
+
+    NO_BRACES = {IMP_BY, "ISTQB"}
     sources = " | ".join(" ".join(
                 re.findall(fr'(\{{(?!OG )[^}}]+?\}}|{"|".join([
                     f"(?:{noBrace})" for noBrace in NO_BRACES])})',
