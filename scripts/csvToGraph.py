@@ -207,8 +207,8 @@ for name, category in zip(names, categories):
     catCount = len([c for c in category if "Approach" not in c])
     if catCount > 1:
         multCats.append(" & ".join([removeInParens(name)] +
-                                   [formatLineWithSources(c, False)
-                                    for c in category]) + "\\\\")
+                                   sorted([formatLineWithSources(c, False)
+                                           for c in category])) + "\\\\")
     for cat in category:
         for key in categoryDict.keys():
             if key in cat or key == "Approach":
