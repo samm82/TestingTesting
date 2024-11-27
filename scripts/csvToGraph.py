@@ -205,7 +205,8 @@ def addNode(name, style = "", key = "Approach"):
 multiCats = []
 countAutomated = {"Capacity Testing", "Data-driven Testing", "Error Guessing",
                   "Endurance Testing", "Exploratory Testing", "Load Testing",
-                  "Model-based Testing", "Performance Testing", "Stress Testing"}
+                  "Model-based Testing", "Mutation Testing",
+                  "Performance Testing", "Stress Testing"}
 for name, category in zip(names, categories):
     catCount = len([c for c in category if "Approach" not in c])
     if catCount > 1:

@@ -237,18 +237,20 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
 \label{cats}
 
 While the IEEE categorization of testing approaches described in
-\Cref{tab:ieeeTestTerms} is useful, it
-is not without its faults. The boundaries between items within a category may
+\Cref{tab:ieeeTestTerms} is useful, it is not without its faults. One issue,
+which is not inherent to the categorization itself, is the fact that it is not
+used consistently (see \Cref{tab:otherTestTerms}). The most blatant example
+of this is that \citet[p.~286]{IEEE2017} describe mutation testing as a
+methodology, even though this is not one of the categories \emph{they} created!
+Additionally, the boundaries between approaches within a category may
 be unclear: ``although each technique is defined independently of all others,
 in practice [sic] some can be used in combination with other techniques''
 \citep[p.~8]{IEEE2021}. For example, ``the test coverage items derived by
 applying equivalence partitioning can be used to identify the input parameters
 of test cases derived for scenario testing'' \citetext{p.~8}. Even the categories
 themselves are not consistently defined, and some approaches are categorized
-differently by different sources:
-
-% ; these differences are tracked so
-% they can be analyzed more systematically\thesisissueref{21}.
+differently by different sources; these differences are tracked so
+they can be analyzed more systematically\thesisissueref{21}.
 
 \input{build/DiscrepCatCats}
 
@@ -283,7 +285,7 @@ Subapproaches of experience-based tesing, such as error guessing and
 exploratory testing, are also categorized ambiguously, causing confusion on how
 categories and parent-child relations (see \Cref{par-chd-rels}) interact.
 \citet[p.~34\ifnotpaper, emphasis added\fi]{IEEE2022} \multAuthHelper{say}
-``[another standard (\citep{IEEE2021})] describes the experience-based test
+``[another standard \citep{IEEE2021}] describes the experience-based test
 \emph{design technique} of error guessing. Other experience-based test
 \emph{practices} include (but are not limited to) exploratory testing \dots,
 tours, attacks, and checklist-based testing''; this seems to imply that error
