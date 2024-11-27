@@ -207,7 +207,8 @@ def addNode(name, style = "", key = "Approach"):
 
 multiCats = []
 countAutomated = {"Capacity Testing", "Data-driven Testing", "Error Guessing",
-                  "Endurance Testing", "Exploratory Testing", "Load Testing",
+                  "Endurance Testing", "Experience-based Testing",
+                  "Exploratory Testing", "Load Testing",
                   "Model-based Testing", "Mutation Testing",
                   "Performance Testing", "Stress Testing"}
 for name, category in zip(names, categories):
