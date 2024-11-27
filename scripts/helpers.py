@@ -17,13 +17,16 @@ IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "should be", "ideally",
                      "usually", "most", "likely", "often", "if", "although"]
 warned_multi_unsure = set()
 def sortByImplied(ls: list[str]):
+    ls = sortIgnoringParens(ls)
     return sorted(ls, key=lambda x: sum(
         # Parenthesis present since explicit relations override implicit ones
         [x.count(f"({imp}") for imp in IMPLICIT_KEYWORDS]) +
         (x.count("?") + 10 if "?" in x else 0))
 
+# Also ignores discrepancy count comments
 def sortIgnoringParens(ls):
-    return sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", x))
+    return sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", re.sub(
+        r"% Discrep count.+\n", "", x)))
 
 # only == True returns a string iff the passed `name` is not explicit
 def isUnsure(name: str, only: bool = False) -> Optional[str]:
@@ -136,7 +139,7 @@ def getDiscrepCount(line: list[str], cat, cls, todo=True, newlineAfter=True):
                 for term in line if term)
     if sources:
         discrepCount = f"% Discrep count ({cat}, {cls}): {sources}"
-        return f"{discrepCount}\n" if newlineAfter else f"\n{discrepCount}"
+        return f"{discrepCount}{"\n" if newlineAfter else ""}"
     return ""
 
 # I/O
@@ -182,6 +185,6 @@ def writeLongtblr(filename: str, caption: str, headers: list[str],
                "   }",
                "  \\hline",
               f"  {" & ".join([f"\\thead{{{h}}}" for h in headers])} \\\\",
-               "  \\hline"] + sortByImplied(sortIgnoringParens(lines)) +
+               "  \\hline"] + sortByImplied(lines) +
                ["  \\hline", "\\end{longtblr}"],
                filename, True)

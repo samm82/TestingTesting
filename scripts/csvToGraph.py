@@ -480,9 +480,9 @@ def makeParSynLine(chd, par, parSource, synSource):
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return
 
-    parSyns.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\" +
-                getDiscrepCount([parSource, synSource], "PARS", "CONTRA",
-                                newlineAfter=False))
+    parSyns.add(getDiscrepCount(
+        [parSource, synSource], "PARS", "CONTRA", newlineAfter=False) +
+        f"\n {chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
 
 splitAtEmpty = splitListAtEmpty(categoryDict["Approach"][1])
 # Don't look for parent/synonym discrepancies unless both are present
@@ -533,7 +533,7 @@ if "Example" not in csvFilename:
             "Pairs labelled as ``synonyms''",
             "Pairs that could be ``children/parents'' \\emph{or} ``synonyms''"]),
         map(lambda x: "\n".join(["\\begin{enumerate}"] + list(
-            map(lambda x: f"\t{x}", sortByImplied(sortIgnoringParens(x)))) +
+            map(lambda x: f"\t{x}", sortByImplied(x))) +
             ["\\end{enumerate}"]), [infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc])))],
             "infParSyns", True)
 
