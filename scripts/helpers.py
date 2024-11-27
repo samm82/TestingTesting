@@ -26,7 +26,7 @@ def sortByImplied(ls: list[str]):
 # Also ignores discrepancy count comments
 def sortIgnoringParens(ls):
     return sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", re.sub(
-        r"% Discrep count.+\n", "", x)))
+        r"% Discrep count.+\n\t", "", x)))
 
 # only == True returns a string iff the passed `name` is not explicit
 def isUnsure(name: str, only: bool = False) -> Optional[str]:
@@ -119,7 +119,7 @@ def formatLineWithSources(line, todo=True):
 
     return line
 
-def getDiscrepCount(line: list[str], cat, cls, todo=True, newlineAfter=True):
+def getDiscrepCount(line: list[str], cat, cls, todo=True):
     # The following replacements should only apply when counting discrepancies
     line = line.copy()
 
@@ -139,7 +139,7 @@ def getDiscrepCount(line: list[str], cat, cls, todo=True, newlineAfter=True):
                 for term in line if term)
     if sources:
         discrepCount = f"% Discrep count ({cat}, {cls}): {sources}"
-        return f"{discrepCount}{"\n" if newlineAfter else ""}"
+        return f"{discrepCount}\n\t"
     return ""
 
 # I/O

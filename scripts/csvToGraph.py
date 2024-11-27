@@ -202,13 +202,19 @@ def addNode(name, style = "", key = "Approach"):
         addLineToCategory("Static", nameLine)
     addLineToCategory(key, nameLine)
 
-multCats = []
+multiCats = []
+countAutomated = {"Capacity Testing", "Endurance Testing", "Load Testing",
+                  "Performance Testing", "Stress Testing"}
 for name, category in zip(names, categories):
     catCount = len([c for c in category if "Approach" not in c])
     if catCount > 1:
-        multCats.append(" & ".join([removeInParens(name)] +
-                                   sorted([formatLineWithSources(c, False)
-                                           for c in category])) + "\\\\")
+        multiCats.append(
+            (getDiscrepCount(category, "CATS", "CONTRA")
+             if name in countAutomated else "") +
+            (" & ".join(
+                [removeInParens(name)] + sorted(
+                    [formatLineWithSources(c, False) for c in category]))
+            ) + "\\\\")
     for cat in category:
         for key in categoryDict.keys():
             if key in cat or key == "Approach":
@@ -217,10 +223,10 @@ for name, category in zip(names, categories):
 
 if "Example" not in csvFilename:
     writeLongtblr(
-        "multCats",
+        "multiCats",
         "Test approaches with more than one \\hyperref[categories-observ]{category}.",
         ["Test Approach", "Category 1", "Category 2"],
-        multCats
+        multiCats
     )
 
 for key in categoryDict.keys():
@@ -354,7 +360,7 @@ def makeMultiSynLine(valid, syn, terms):
         return f"\t\t\\item {term}"
 
     line = "\n".join([f"\\item \\textbf{{{syn}:}}",
-                      f"{getDiscrepCount(terms, "SYNS", "CONTRA")}\t\\begin{{itemize}}"] +
+                      f"{getDiscrepCount(terms, "SYNS", "CONTRA")}\\begin{{itemize}}"] +
                       list(map(processTerm, terms)) + ["\t\\end{itemize}"])
     if syn not in paperExamples:
         line = "\n".join(["\\ifnotpaper", line, "\\fi"])
@@ -437,7 +443,7 @@ print()
 selfCycleCount = len(selfCycles)
 
 if "Example" not in csvFilename:
-    selfCycles = [f"\\item {getDiscrepCount([cycle], "PARS", "WRONG")}\t{formatLineWithSources(cycle)}"
+    selfCycles = [f"\\item {getDiscrepCount([cycle], "PARS", "WRONG")}{formatLineWithSources(cycle)}"
                   for cycle in selfCycles]
     writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
               "selfCycles", True)
@@ -480,9 +486,8 @@ def makeParSynLine(chd, par, parSource, synSource):
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return
 
-    parSyns.add(getDiscrepCount(
-        [parSource, synSource], "PARS", "CONTRA", newlineAfter=False) +
-        f"\n {chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
+    parSyns.add(getDiscrepCount([parSource, synSource], "PARS", "CONTRA") +
+                f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
 
 splitAtEmpty = splitListAtEmpty(categoryDict["Approach"][1])
 # Don't look for parent/synonym discrepancies unless both are present

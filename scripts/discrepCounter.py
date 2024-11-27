@@ -124,6 +124,7 @@ class DiscrepCls(Enum):
     REDUN  = "Redunancies"
 
 COMPLEX_TEX_FILES = [
+    "build/multiCats.tex",
     "build/multiSyns.tex",
     "build/parSyns.tex",
     "build/selfCycles.tex",
