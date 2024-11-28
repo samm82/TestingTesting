@@ -207,7 +207,7 @@ def addNode(name, style = "", key = "Approach"):
 
 multiCatDict = {"multiCats" : [], "infMultiCats" : []}
 countAutomated = {"Capacity Testing", "Data-driven Testing", "Error Guessing",
-                  "Endurance Testing", "Experience-based Testing",
+                  "Endurance Testing", "Experience-based Testing", "Attacks",
                   "Exploratory Testing", "Fuzz Testing", "Load Testing",
                   "Model-based Testing", "Mutation Testing",
                   "Performance Testing", "Stress Testing"}
