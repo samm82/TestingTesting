@@ -216,7 +216,10 @@ for name, category in zip(names, categories):
     if catCount > 1:
         multiCats.append(
             (getDiscrepCount(category, "CATS", "CONTRA")
-             if name in countAutomated else "") + (" & ".join(
+             if (name in countAutomated or any(
+                 re.match(r"Type \(implied by Firesmith, 2015, p\. 5[3-8].*\)", c)
+                 for c in category
+             )) else "") + (" & ".join(
                  [removeInParens(name),
                   *(formatLineWithSources(c, False) for c in category)])) + "\\\\")
     for cat in category:

@@ -129,18 +129,17 @@ def getDiscrepCount(line: list[str], cat, cls, todo=True):
         if any(re.search(fr"\b{imp}\b", part) for imp in IMPLICIT_KEYWORDS[1:]):
             line[i] = re.sub(r"if .+ in ", f"{IMP_BY} ", line[i])
             line[i] = re.sub(r"although .+? \((.+?)\)", fr"{IMP_BY} \1", line[i])
-            line[i] = line[i].replace("inferred from", IMP_BY)
+            line[i] = re.sub(fr"inferred from.+({AUTHOR_REGEX})", fr"{IMP_BY} \1", line[i])
 
     NO_BRACES = {IMP_BY, "ISTQB"}
-    sources = " | ".join(" ".join(
-                re.findall(fr'(\{{(?!OG )[^}}]+?\}}|{"|".join([
-                    f"(?:{noBrace})" for noBrace in NO_BRACES])})',
-                    formatLineWithSources(term, todo)))
-                for term in line if term)
-    if sources:
-        discrepCount = f"% Discrep count ({cat}, {cls}): {sources}"
-        return f"{discrepCount}\n\t"
-    return ""
+    sources = [" ".join(
+        re.findall(fr'(\{{(?!OG )[^}}]+?\}}|{"|".join([
+            f"(?:{noBrace})" for noBrace in NO_BRACES])})',
+            formatLineWithSources(term, todo))) for term in line if term]
+
+    if not all(sources):
+        return ""
+    return f"% Discrep count ({cat}, {cls}): {" | ".join(sources)}\n\t"
 
 # I/O
 def readFileAsStr(filename) -> str:
