@@ -235,6 +235,10 @@ for name, category in zip(names, categories):
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key)
 
+multiCatDict["infMultiCats"] = [re.sub(r"([\w\s]+) Testing &",
+                                       r"{\1\\\\Testing} &",
+                                       line)
+                                for line in multiCatDict["infMultiCats"]]
 if "Example" not in csvFilename:
     for k, v in multiCatDict.items():
         writeLongtblr(
