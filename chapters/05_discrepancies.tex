@@ -254,8 +254,12 @@ they can be analyzed more systematically\thesisissueref{21}.
 
 \input{build/DiscrepCatCats}
 
-Out of the automatically determined discrepancies given in \Cref{tab:multiCats},
-of particular note is experience-based testing. \expBasedCatMain{}
+\phantomsection{}
+\label{multiCats}
+
+Some category discrepancies can be detected automatically, given in
+\Cref{tab:multiCats}; of these, experience-based testing is of particular note.
+\expBasedCatMain{}
 These authors previously say ``experience-based testing practices like
 exploratory testing \dots\ are not \dots\ techniques for designing test cases'',
 although they ``can use \dots\ test techniques'' \citeyearpar[p.~viii]{IEEE2021}.
@@ -290,9 +294,13 @@ categories and parent-child relations (see \Cref{par-chd-rels}) interact.
 \emph{practices} include (but are not limited to) exploratory testing \dots,
 tours, attacks, and checklist-based testing''; this seems to imply that error
 guessing is both a technique \emph{and} a practice, which does not make sense
-if these categories are orthogonal. Inconsistencies between parent and child
-test approach categorizations such as these may indicate that categories are
-not transitive or that more thought must be given to them.
+if these categories are orthogonal. Similarly, the conflicting categorizations
+of beta testing in \Cref{tab:multiCats} may also propagate to closed beta
+testing and open beta testing; since this is an inferrence, it is omitted from
+that table and instead included in \Cref{tab:infMultiCats}. These kinds of
+inconsistencies between parent and child test approach categorizations may
+indicate that categories are not transitive or that more thought must be given
+to them.
 
 \ifnotpaper
     \begin{bigLandscape}
@@ -761,6 +769,11 @@ adding another layer of confusion to the direction of their relationship.
     ``functionality testing'' as a parent of ``end-to-end functionality testing''.
     % \item \refHelper \citep[Tab.~2]{Gerrard2000a} does \emph{not} give
     % ``functionality testing'' as a parent of ``end-to-end functionality testing''.
+
+    \subsubsection{Inferred Category Discrepancies}
+    See \Cref{multiCats}.
+
+    \input{build/infMultiCats}
 
     \subsubsection{Other Inferred Discrepancies}
     The following are discrepancies that, if were more concrete, would also be

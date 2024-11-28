@@ -205,23 +205,29 @@ def addNode(name, style = "", key = "Approach"):
         addLineToCategory("Static", nameLine)
     addLineToCategory(key, nameLine)
 
-multiCats = []
+multiCats, infMultiCats = [], []
 countAutomated = {"Capacity Testing", "Data-driven Testing", "Error Guessing",
                   "Endurance Testing", "Experience-based Testing",
-                  "Exploratory Testing", "Load Testing",
+                  "Exploratory Testing", "Fuzz Testing", "Load Testing",
                   "Model-based Testing", "Mutation Testing",
                   "Performance Testing", "Stress Testing"}
 for name, category in zip(names, categories):
     catCount = len([c for c in category if "Approach" not in c])
     if catCount > 1:
-        multiCats.append(
-            (getDiscrepCount(category, "CATS", "CONTRA")
-             if (name in countAutomated or any(
-                 re.match(r"Type \(implied by Firesmith, 2015, p\. 5[3-8].*\)", c)
-                 for c in category
-             )) else "") + (" & ".join(
-                 [removeInParens(name),
-                  *(formatLineWithSources(c, False) for c in category)])) + "\\\\")
+        discrepCount: Optional[str] = ""
+        if (name in countAutomated or any(
+                re.match(r"Type \(implied by Firesmith, 2015, p\. 5[3-8].*\)", c)
+                for c in category)):
+            discrepCount = getDiscrepCount(category, "CATS", "CONTRA")
+            if not discrepCount:
+                discrepCount = None
+
+        (infMultiCats if discrepCount is None else multiCats).append(
+            (discrepCount or "") + (" & ".join(
+                    [removeInParens(name),
+                     *(formatLineWithSources(c, False) for c in category)])
+                 ) + "\\\\")
+
     for cat in category:
         for key in categoryDict.keys():
             if key in cat or key == "Approach":
@@ -234,6 +240,12 @@ if "Example" not in csvFilename:
         "Test approaches with more than one \\hyperref[categories-observ]{category}.",
         ["Test Approach", "Category 1", "Category 2"],
         multiCats
+    )
+    writeLongtblr(
+        "infMultiCats",
+        "Test approaches inferred to have more than one \\hyperref[categories-observ]{category}.",
+        ["Test Approach", "Category 1", "Category 2"],
+        infMultiCats
     )
 
 for key in categoryDict.keys():
