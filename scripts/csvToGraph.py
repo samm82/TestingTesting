@@ -206,19 +206,23 @@ def addNode(name, style = "", key = "Approach"):
     addLineToCategory(key, nameLine)
 
 multiCatDict = {"multiCats" : [], "infMultiCats" : []}
-countAutomated = {"Capacity Testing", "Data-driven Testing", "Error Guessing",
-                  "Endurance Testing", "Experience-based Testing", "Attacks",
-                  "Exploratory Testing", "Fuzz Testing", "Load Testing",
-                  "Model-based Testing", "Mutation Testing",
-                  "Performance Testing", "Stress Testing"}
 for name, category in zip(names, categories):
     catCount = len([c for c in category if "Approach" not in c])
     if catCount > 1:
         discrepCount: Optional[str] = ""
         discrepKey = "multiCats"
-        if (name in countAutomated or any(
-                re.match(r"Type \(implied by Firesmith, 2015, p\. 5[3-8].*\)", c)
-                for c in category)):
+
+        # Old criteria
+        # if (name in {"Capacity Testing", "Data-driven Testing", "Error Guessing",
+        #           "Endurance Testing", "Experience-based Testing", "Attacks",
+        #           "Exploratory Testing", "Fuzz Testing", "Load Testing",
+        #           "Model-based Testing", "Mutation Testing",
+        #           "Performance Testing", "Stress Testing"} or any(
+        #         re.match(r"Type \(implied by Firesmith, 2015, p\. 5[3-8].*\)", c)
+        #         for c in category)):
+        
+        # Criteria for automatically tracking category discrepancies
+        if not any(t in "".join(category) for t in {"?", "Artifact"}):
             discrepCount = getDiscrepCount(category, "CATS", "CONTRA")
             if not discrepCount:
                 discrepKey = "infMultiCats"
