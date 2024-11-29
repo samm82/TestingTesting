@@ -57,8 +57,18 @@
           % STD | META
     \item % Discrep count (PARS, CONTRA): {ISO_IEC2023a} | {Firesmith2015}
           Performance testing and security testing are given as subtypes of
-          reliability testing by \citep{ISO_IEC2023a}, but these are all listed
-          separately by \citep[p.~53]{Firesmith2015}.
+          reliability testing by \citet{ISO_IEC2023a}, but these are all listed
+          separately by \citet[p.~53]{Firesmith2015}.
+    \item % Discrep count (PARS, CONTRA): {IEEE2022} {IEEE2021} {SWEBOK2024} ISTQB | {Firesmith2015}
+          Similarly, random testing is a subtechnique of specification-based
+          testing \ifnotpaper
+              \citetext{\citealp[pp.~7, 22]{IEEE2022};
+                  \citeyear[pp.~5, 20, Fig.~2]{IEEE2021};
+                  \citealp[p.~5\=/12]{SWEBOK2024}; \citealpISTQB{}} \else
+              \cite[pp.~7, 22]{IEEE2022}, \cite{ISTQB},
+              \cite[p.~5\=/12]{SWEBOK2024}, \cite[pp.~5, 20, Fig.~2]{IEEE2021}
+          \fi but is listed
+          separately by \citet[p.~46]{Firesmith2015}.
     \item % Discrep count (DEFS, OVER): {SWEBOK2024} | {IEEE2022}
           The \acs{swebok} V4 defines ``privacy testing'' as testing that
           ``assess[es] the security and privacy of users' personal data to
