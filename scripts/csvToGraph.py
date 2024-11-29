@@ -1,5 +1,4 @@
 from copy import deepcopy
-from functools import reduce
 import numpy as np
 import itertools
 from pandas import read_csv
@@ -239,24 +238,22 @@ for name, category in zip(names, categories):
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key)
 
-longEndings = {"Testing", "Management", "Scanning", "Audits",
+LONG_ENDINGS = {"Testing", "Management", "Scanning", "Audits",
                "Guessing", "Correctness"}
+LONG_ENDINGS_REGEX = re.compile(r' \b(' + '|'.join(LONG_ENDINGS) + r')\b')
 if "Example" not in csvFilename:
-    for k, v in multiCatDict.items():
+    for key, lines in multiCatDict.items():
         # Add line breaks to longer test approaches in inferred table
-        for i, line in enumerate(v):
-            discrep, row = line.split("\n\t")
+        for i, line in enumerate(lines):
+            *discrep, row = line.split("\n\t")
             row = row.split(" & ", 1)
-            row[0] = f"{{{
-                reduce(lambda x, y: x + ("\\\\" if y in longEndings else " ") + y,
-                    row[0].split())
-                }}}"
-            multiCatDict[k][i] = "\n\t".join([discrep, " & ".join(row)])
+            row[0] = f"{{{LONG_ENDINGS_REGEX.sub(r'\\\\\1', row[0])}}}"
+            lines[i] = "\n\t".join([*(d for d in discrep), " & ".join(row)])
         writeLongtblr(
-            k, " ".join(["Test approaches",
-                         "with" if k == "multiCats" else "inferred to have",
+            key, " ".join(["Test approaches",
+                         "with" if key == "multiCats" else "inferred to have",
                          "more than one \\hyperref[categories-observ]{{category}}."]),
-            ["Approach", "Category 1", "Category 2"], v
+            ["Approach", "Category 1", "Category 2"], lines
         )
 
 for key in categoryDict.keys():
