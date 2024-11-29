@@ -1,4 +1,5 @@
 from copy import deepcopy
+from functools import reduce
 import numpy as np
 import itertools
 from pandas import read_csv
@@ -205,30 +206,29 @@ def addNode(name, style = "", key = "Approach"):
         addLineToCategory("Static", nameLine)
     addLineToCategory(key, nameLine)
 
-multiCatDict = {"multiCats" : [], "infMultiCats" : []}
+multiCatDict: dict[str, list[str]] = {"multiCats"    : [],
+                                      "infMultiCats" : []}
 for name, category in zip(names, categories):
     catCount = len([c for c in category if "Approach" not in c])
     if catCount > 1:
-        discrepCount: Optional[str] = ""
-        discrepKey = "multiCats"
+        discrepCount: str = getDiscrepCount(category, "CATS", "CONTRA")
+        discrepKey = "multiCats" if discrepCount else "infMultiCats"
 
         # Old criteria
-        # if (name in {"Capacity Testing", "Data-driven Testing", "Error Guessing",
-        #           "Endurance Testing", "Experience-based Testing", "Attacks",
-        #           "Exploratory Testing", "Fuzz Testing", "Load Testing",
-        #           "Model-based Testing", "Mutation Testing",
-        #           "Performance Testing", "Stress Testing"} or any(
+        # criteria = (name in {
+        #     "Capacity Testing", "Data-driven Testing", "Error Guessing",
+        #     "Endurance Testing", "Experience-based Testing", "Attacks",
+        #     "Exploratory Testing", "Fuzz Testing", "Load Testing",
+        #     "Model-based Testing", "Mutation Testing",
+        #     "Performance Testing", "Stress Testing"} or any(
         #         re.match(r"Type \(implied by Firesmith, 2015, p\. 5[3-8].*\)", c)
-        #         for c in category)):
+        #         for c in category))
         
         # Criteria for automatically tracking category discrepancies
-        if not any(t in "".join(category) for t in {"?", "Artifact"}):
-            discrepCount = getDiscrepCount(category, "CATS", "CONTRA")
-            if not discrepCount:
-                discrepKey = "infMultiCats"
+        criteria = not any(t in "".join(category) for t in {"?", "Artifact"})
 
         multiCatDict[discrepKey].append(
-            (discrepCount or "") + (" & ".join(
+            (discrepCount if criteria else "") + (" & ".join(
                     [removeInParens(name),
                      *(formatLineWithSources(c, False) for c in category)])
                  ) + "\\\\")
@@ -239,10 +239,16 @@ for name, category in zip(names, categories):
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key)
 
-multiCatDict["infMultiCats"] = [re.sub(r"([\w\s]+) Testing &",
-                                       r"{\1\\\\Testing} &",
-                                       line)
-                                for line in multiCatDict["infMultiCats"]]
+# Add line breaks to longer test approaches in inferred table
+longEndings = {"Testing", "Management", "Scanning", "Audits"}
+for i, line in enumerate(multiCatDict["infMultiCats"]):
+    line = line.split(" & ", 1)
+    line[0] = f"{{{
+        reduce(lambda x, y: x + ("\\\\" if y in longEndings else " ") + y,
+               line[0].split())
+        }}}"
+    multiCatDict["infMultiCats"][i] = " & ".join(line)
+
 if "Example" not in csvFilename:
     for k, v in multiCatDict.items():
         writeLongtblr(
@@ -250,7 +256,8 @@ if "Example" not in csvFilename:
             " ".join(["Test approaches",
                       "with" if k == "multiCats" else "inferred to have",
                       "more than one \\hyperref[categories-observ]{{category}}."]),
-            ["Test Approach", "Category 1", "Category 2"],
+            [("Test " if k == "multiCats" else "") + "Approach",
+             "Category 1", "Category 2"],
             v
         )
 
