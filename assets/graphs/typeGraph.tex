@@ -59,6 +59,7 @@ InteroperabilityTesting [label=<Interoperability<br/>Testing>];
 LoadTesting [label=<Load<br/>Testing>];
 LocalizationTesting [label=<Localization<br/>Testing>];
 MaintainabilityTesting [label=<Maintainability<br/>Testing>];
+MemoryManagementTesting [label=<Memory<br/>Management<br/>Testing>];
 MigrationTesting [label=<Migration<br/>Testing>];
 FlashMobTesting [label=<(Flash)<br/>Mob<br/>Testing>];
 MobileTesting [label=<Mobile<br/>Testing>];
@@ -91,6 +92,7 @@ TailoredConformanceTesting [label=<Tailored<br/>Conformance<br/>Testing>,style="
 TimingTesting [label=<Timing<br/>Testing>,style="dashed"];
 UsabilityTesting [label=<Usability<br/>Testing>];
 VolumeTesting [label=<Volume<br/>Testing>];
+VulnerabilityScanning [label=<Vulnerability<br/>Scanning>];
 
 BackupandRecoveryTesting -> BackupRecoveryTesting[dir=none,style="dashed",color="green"];
 CorrectnessTesting -> FunctionalTesting[dir=none,style="dashed",color="blue"];
@@ -181,6 +183,9 @@ LoadTesting -> TimingTesting[style="dashed"];
 LocalizationTesting -> FunctionalSuitabilityTesting[color="green"];
 LocalizationTesting -> AccessibilityTesting[color="green"];
 LocalizationTesting -> PortabilityTesting[color="green"];
+MemoryManagementTesting -> PerformancerelatedTesting[color="green"];
+MemoryManagementTesting -> ConformanceTesting[color="green"];
+MemoryManagementTesting -> ResourceUtilizationTesting[color="gray"];
 FlashMobTesting -> UsabilityTesting[color="blue"];
 MobileTesting -> CompatibilityTesting[color="blue"];
 OpenBetaTesting -> BetaTesting[color="blue"];
@@ -220,6 +225,7 @@ ScalabilityTesting -> VolumeTesting[color="blue"];
 ScalabilityTesting -> PerformanceTesting;
 ScalabilityTesting -> EfficiencyTesting;
 ScalabilityTesting -> PerformanceEfficiencyTesting[style="dashed"];
+ScalabilityTesting -> MemoryManagementTesting[style="dashed",color="green"];
 SecurityTesting -> ReliabilityTesting[color="green"];
 SecurityTesting -> ConformanceTesting[color="green"];
 SecurityTesting -> FunctionalityTesting;
@@ -238,6 +244,7 @@ VolumeTesting -> ConformanceTesting[color="green"];
 VolumeTesting -> PerformanceEfficiencyTesting[color="green"];
 VolumeTesting -> CapacityTesting[color="blue"];
 VolumeTesting -> CapacityTesting[style="dashed",color="green"];
+VulnerabilityScanning -> SecurityTesting[color="green"];
 
 subgraph cluster_legend {
     label="Legend";

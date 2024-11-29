@@ -57,6 +57,7 @@ InteroperabilityTesting [label=<Interoperability<br/>Testing>];
 LoadTesting [label=<Load<br/>Testing>];
 LocalizationTesting [label=<Localization<br/>Testing>];
 MaintainabilityTesting [label=<Maintainability<br/>Testing>];
+MemoryManagementTesting [label=<Memory<br/>Management<br/>Testing>];
 MigrationTesting [label=<Migration<br/>Testing>];
 FlashMobTesting [label=<(Flash)<br/>Mob<br/>Testing>];
 MobileTesting [label=<Mobile<br/>Testing>];
@@ -87,6 +88,7 @@ StabilityTesting [label=<Stability<br/>Testing>];
 StressTesting [label=<Stress<br/>Testing>];
 UsabilityTesting [label=<Usability<br/>Testing>];
 VolumeTesting [label=<Volume<br/>Testing>];
+VulnerabilityScanning [label=<Vulnerability<br/>Scanning>];
 
 CapacityTesting -> ScalabilityTesting[dir=none,color="green"];
 CompatibilityTesting -> CoexistenceTesting[dir=none,color="green"];
@@ -161,6 +163,8 @@ LoadTesting -> CapacityTesting[color="blue"];
 LocalizationTesting -> FunctionalSuitabilityTesting[color="green"];
 LocalizationTesting -> AccessibilityTesting[color="green"];
 LocalizationTesting -> PortabilityTesting[color="green"];
+MemoryManagementTesting -> PerformancerelatedTesting[color="green"];
+MemoryManagementTesting -> ConformanceTesting[color="green"];
 FlashMobTesting -> UsabilityTesting[color="blue"];
 MobileTesting -> CompatibilityTesting[color="blue"];
 OpenBetaTesting -> BetaTesting[color="blue"];
@@ -205,6 +209,7 @@ VolumeTesting -> PerformancerelatedTesting[color="green"];
 VolumeTesting -> ConformanceTesting[color="green"];
 VolumeTesting -> PerformanceEfficiencyTesting[color="green"];
 VolumeTesting -> CapacityTesting[color="blue"];
+VulnerabilityScanning -> SecurityTesting[color="green"];
 
 subgraph cluster_legend {
     label="Legend";
