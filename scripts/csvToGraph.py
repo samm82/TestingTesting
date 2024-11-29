@@ -239,26 +239,24 @@ for name, category in zip(names, categories):
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key)
 
-# Add line breaks to longer test approaches in inferred table
-longEndings = {"Testing", "Management", "Scanning", "Audits"}
-for i, line in enumerate(multiCatDict["infMultiCats"]):
-    line = line.split(" & ", 1)
-    line[0] = f"{{{
-        reduce(lambda x, y: x + ("\\\\" if y in longEndings else " ") + y,
-               line[0].split())
-        }}}"
-    multiCatDict["infMultiCats"][i] = " & ".join(line)
-
+longEndings = {"Testing", "Management", "Scanning", "Audits",
+               "Guessing", "Correctness"}
 if "Example" not in csvFilename:
     for k, v in multiCatDict.items():
+        # Add line breaks to longer test approaches in inferred table
+        for i, line in enumerate(v):
+            discrep, row = line.split("\n\t")
+            row = row.split(" & ", 1)
+            row[0] = f"{{{
+                reduce(lambda x, y: x + ("\\\\" if y in longEndings else " ") + y,
+                    row[0].split())
+                }}}"
+            multiCatDict[k][i] = "\n\t".join([discrep, " & ".join(row)])
         writeLongtblr(
-            k,
-            " ".join(["Test approaches",
-                      "with" if k == "multiCats" else "inferred to have",
-                      "more than one \\hyperref[categories-observ]{{category}}."]),
-            [("Test " if k == "multiCats" else "") + "Approach",
-             "Category 1", "Category 2"],
-            v
+            k, " ".join(["Test approaches",
+                         "with" if k == "multiCats" else "inferred to have",
+                         "more than one \\hyperref[categories-observ]{{category}}."]),
+            ["Approach", "Category 1", "Category 2"], v
         )
 
 for key in categoryDict.keys():
