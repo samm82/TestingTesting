@@ -31,6 +31,8 @@ sources.discard("SmithAndCarette2023")
 # Reintroduce ISTQB because of how it is formatted for citations
 sources.discard("")
 sources.add("ISTQB2024")
+# Omit internal paper references
+sources = {s for s in sources if not s.startswith(tuple(INTERNAL_REFS))}
 
 # Based on ChatGPT
 def sort_key(s, cat):

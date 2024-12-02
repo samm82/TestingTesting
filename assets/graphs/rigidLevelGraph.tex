@@ -34,6 +34,7 @@ InstallationTesting [label=<Installation<br/>Testing>];
 IntegratedSystemTesting [label=<Integrated<br/>System<br/>Testing>];
 IntegrationTesting [label=<Integration<br/>Testing>];
 InterfaceTesting [label=<Interface<br/>Testing>];
+LargeScaleIntegrationTesting [label=<Large<br/>Scale<br/>Integration<br/>Testing>];
 MLModelTesting [label=<ML<br/>Model<br/>Testing>];
 NeighborhoodIntegrationTesting [label=<Neighborhood<br/>Integration<br/>Testing>];
 OpenBetaTesting [label=<Open<br/>Beta<br/>Testing>];
@@ -69,6 +70,7 @@ UserAcceptanceTesting [label=<User<br/>Acceptance<br/>Testing>];
 
 AcceptanceTesting -> QualificationTesting[dir=none,color="blue"];
 OperationalTesting -> ProductionAcceptanceTesting[dir=none,color="blue"];
+SystemsIntegrationTesting -> LargeScaleIntegrationTesting[dir=none];
 
 AlphaTesting -> AcceptanceTesting[color="green"];
 AlphaTesting -> OperationalTesting;
