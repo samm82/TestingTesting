@@ -191,13 +191,22 @@ examples of test levels \ifnotpaper
     \cite[pp.~9,~13]{Gerrard2000a}, \cite[p.~807-808]{Perry2006},
     \cite[pp.~443-445]{PetersAndPedrycz2000}, \citealp[p.~218]{KuļešovsEtAl2013}%
     \todo{OG Black, 2009}\fi, although they may use a different term for ``test
-level'' (see \Cref{tab:ieeeTestTerms}). Because of their widespread use
-and their usefulness when focusing on a particular
-subset of testing, these categories are used for now. \ifnotpaper A ``metric''
-category was considered in addition to this categorization, but was decided to
-be out of the scope of this project, instead being captured by coverage-driven
-testing (see \Cref{cov-test}\thesisissueref{21,22}).
+level'' (see \Cref{tab:ieeeTestTerms}). Because of their widespread use and
+their usefulness when focusing on a particular subset of testing, these
+categories are used for now.\ifnotpaper In addition to this categorization, a
+    ``metric'' category was considered\thesisissueref{21,22} but decided to be
+    out of scope for this project, instead being captured by coverage-driven
+    testing (see \Cref{cov-test}). \fi
 
+One important side effect of the particularity of
+these terms is that they can be ``overloaded''; for example, someone could
+reasonably yet imprecisely use any of these four categories as a synonym for
+``approach''. Even the prompt used in \citep[emphasis added]{ChatGPT2024} was
+imprecise, asking for the ``\emph{type} of software testing that focuses on
+looking for bugs where others have already been found.'' Interestingly, ChatGPT
+later ``corrected'' this by calling detect-based testing an ``approach''!
+
+\ifnotpaper
 Related testing approaches may be grouped into a ``class'' or ``family'' to
 group those with ``commonalities and well-identified variabilities that can be
 instantiated'', where ``the commonalities are large and the variabilities
