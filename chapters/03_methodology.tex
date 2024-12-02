@@ -198,15 +198,22 @@ categories are used for now.\ifnotpaper In addition to this categorization, a
     out of scope for this project, instead being captured by coverage-driven
     testing (see \Cref{cov-test}). \fi
 
-One important side effect of the particularity of
-these terms is that they can be ``overloaded''; for example, someone could
-reasonably yet imprecisely use any of these four categories as a synonym for
-``approach''. Even the prompt used in \citep[emphasis added]{ChatGPT2024} was
+One important side effect of the particularity of these terms is that they can
+be ``overloaded''; for example, someone could reasonably yet imprecisely use
+any of these four categories as a synonym for ``approach''. Even the prompt in
+\ifnotpaper \citep[emphasis added]{ChatGPT2024} \else \cite{ChatGPT2024} \fi was
 imprecise, asking for the ``\emph{type} of software testing that focuses on
 looking for bugs where others have already been found.'' Interestingly, ChatGPT
 later ``corrected'' this by calling detect-based testing an ``approach''!
+Because of this, careful consideration needs to be given to discrepancies of
+this nature. For example, \citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}'s
+definition of ``interface testing'' is ``an integration \emph{test type} that is
+concerned with testing \dots{} interfaces'', but since he does not define
+``test type'', it may not have special significance. \ifnotpaper For this
+reason, these ``categorizations'' are marked with a question mark (?)%
+\todo{What else is?}
+and included in \Cref{tab:infMultiCats} instead of in \Cref{tab:multiCats}.
 
-\ifnotpaper
 Related testing approaches may be grouped into a ``class'' or ``family'' to
 group those with ``commonalities and well-identified variabilities that can be
 instantiated'', where ``the commonalities are large and the variabilities

@@ -205,13 +205,14 @@ def addNode(name, style = "", key = "Approach"):
         addLineToCategory("Static", nameLine)
     addLineToCategory(key, nameLine)
 
-multiCatDict: dict[str, list[str]] = {"multiCats"    : [],
-                                      "infMultiCats" : []}
+multiCatKeys = ["infMultiCats", "multiCats"]
+multiCatDict: dict[str, list[str]] = {key: [] for key in multiCatKeys}
 for name, category in zip(names, categories):
     catCount = len([c for c in category if "Approach" not in c])
     if catCount > 1:
         discrepCount: str = getDiscrepCount(category, "CATS", "CONTRA")
-        discrepKey = "multiCats" if discrepCount else "infMultiCats"
+        discrepKey = multiCatKeys[bool(discrepCount) and
+                                  not any("?" in c for c in category)]
 
         # Old criteria
         # criteria = (name in {
@@ -223,8 +224,10 @@ for name, category in zip(names, categories):
         #         re.match(r"Type \(implied by Firesmith, 2015, p\. 5[3-8].*\)", c)
         #         for c in category))
         
+        # criteria = not any(t in "".join(category) for t in {"?", "Artifact"})
+
         # Criteria for automatically tracking category discrepancies
-        criteria = not any(t in "".join(category) for t in {"?", "Artifact"})
+        criteria = not "Artifact" in "".join(category)
 
         multiCatDict[discrepKey].append(
             (discrepCount if criteria else "") + (" & ".join(
