@@ -43,7 +43,7 @@ writeFile([len(read_csv("QualityGlossary.csv")["Name"].to_list())],
 # Terms in parentheses we want to keep
 PAREN_EXC = {"Acceptance"}
 
-def processCol(col, sort: bool=False):
+def processCol(col, sortByLen: bool=False):
     SOURCE_CHUNKS = [AUTHOR_REGEX, YEAR_REGEX, BEGIN_INFO_REGEX]
 
     # Adds a comma and a space to a RegEx within a non-capturing group
@@ -102,8 +102,8 @@ def processCol(col, sort: bool=False):
         else:
             col[i] = []
 
-    if sort:
-        return [sorted(copySources(x)) for x in col]
+    if sortByLen:
+        return [sorted(copySources(x), key=len) for x in col]
     return [copySources(x) for x in col]
 
 names = [n.strip() for n in names if isinstance(n, str)]
@@ -258,7 +258,7 @@ if "Example" not in csvFilename:
             key, " ".join(["Test approaches",
                          "with" if key == "multiCats" else "inferred to have",
                          "more than one \\hyperref[categories-observ]{{category}}."]),
-            ["Approach", "Category 1", "Category 2"], lines
+            ["Approach", "Category 1", "Category 2"], lines, [1, 2]
         )
 
 for key in categoryDict.keys():

@@ -174,16 +174,27 @@ def writeFile(lines, filename: str, helper: bool = False, dir: str = "graphs"):
     #     print(f"No changes to {filename}")
 
 def writeLongtblr(filename: str, caption: str, headers: list[str],
-                  lines: list[str]):
-    # Used for ensuring correct number of columns after the first
-    colCount = len(headers) - 1
-    assert lines[0].count("&") == colCount
+                  lines: list[str], widths: list[int] = []):
+    # Used for ensuring correct number of xcolumns
+    xcolCount = len(headers) - 1
+    assert lines[0].count("&") == xcolCount
+    colSpecList = ["Q[c,m]"]
+    # If all given widths are equal, don't change them
+    if len(set(widths)) > 1:
+        # Include first column
+        assert len(widths) == xcolCount
+        scale = sum(widths) / len(widths)
+        colSpecList += [f"X[{width/scale},m]" for width in widths]
+    else:
+        colSpecList += ["X[m]"] * xcolCount
+    
 
     writeFile(["\\begin{longtblr}[",
               f"   caption = {{{caption}}},",
               f"   label = {{tab:{filename}}}",
                "   ]{",
-              f"   colspec = {{|Q[c,m]|{"X[m]|"*colCount}}}, width = \\linewidth,",
+              f"   colspec = {{|{"|".join(colSpecList)}|}}, width = \\linewidth,",
+            #   f"   colspec = {{|{"|".join(colSpecList)}|}}, width = {width},",
                "   rowhead = 1",
                "   }",
                "  \\hline",
