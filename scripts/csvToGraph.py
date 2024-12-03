@@ -209,7 +209,7 @@ multiCatKeys = ["infMultiCats", "multiCats"]
 multiCatDict: dict[str, list[str]] = {key: [] for key in multiCatKeys}
 for name, category in zip(names, categories):
     catCount = len([c for c in category if "Approach" not in c])
-    if catCount > 1:
+    if catCount > 1 and "Artifact" not in "".join(category):
         discrepCount: str = getDiscrepCount(category, "CATS", "CONTRA")
         discrepKey = multiCatKeys[bool(discrepCount) and
                                   not any("?" in c for c in category)]
@@ -226,8 +226,10 @@ for name, category in zip(names, categories):
         
         # criteria = not any(t in "".join(category) for t in {"?", "Artifact"})
 
-        # Criteria for automatically tracking category discrepancies
-        criteria = not "Artifact" in "".join(category)
+        # criteria = not "Artifact" in "".join(category)
+
+        # Placeholder criteria for automatically tracking category discrepancies
+        criteria = True
 
         multiCatDict[discrepKey].append(
             (discrepCount if criteria else "") + (" & ".join(
