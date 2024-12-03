@@ -207,31 +207,31 @@ def addNode(name, style = "", key = "Approach"):
 
 multiCatKeys = ["infMultiCats", "multiCats"]
 multiCatDict: dict[str, list[str]] = {key: [] for key in multiCatKeys}
+
+# Old criteria
+# criteria = (name in {
+#     "Capacity Testing", "Data-driven Testing", "Error Guessing",
+#     "Endurance Testing", "Experience-based Testing", "Attacks",
+#     "Exploratory Testing", "Fuzz Testing", "Load Testing",
+#     "Model-based Testing", "Mutation Testing",
+#     "Performance Testing", "Stress Testing"} or any(
+#         re.match(r"Type \(implied by Firesmith, 2015, p\. 5[3-8].*\)", c)
+#         for c in category))
+
+# criteria = not any(t in "".join(category) for t in {"?", "Artifact"})
+
+# criteria = not "Artifact" in "".join(category)
+
+# Placeholder criteria for automatically tracking category discrepancies
+criteria = True
+
 for name, category in zip(names, categories):
-    catCount = len([c for c in category if "Approach" not in c])
-    if catCount > 1 and "Artifact" not in "".join(category):
-        discrepCount: str = getDiscrepCount(category, "CATS", "CONTRA")
-        discrepKey = multiCatKeys[bool(discrepCount) and
-                                  not any("?" in c for c in category)]
+    if len([c for c in category
+            if not any(t in c for t in {"Approach", "Artifact"})]) > 1:
+        discrepCount = (getDiscrepCount(category, "CATS", "CONTRA")
+                        if not any("?" in c for c in category) else "")
 
-        # Old criteria
-        # criteria = (name in {
-        #     "Capacity Testing", "Data-driven Testing", "Error Guessing",
-        #     "Endurance Testing", "Experience-based Testing", "Attacks",
-        #     "Exploratory Testing", "Fuzz Testing", "Load Testing",
-        #     "Model-based Testing", "Mutation Testing",
-        #     "Performance Testing", "Stress Testing"} or any(
-        #         re.match(r"Type \(implied by Firesmith, 2015, p\. 5[3-8].*\)", c)
-        #         for c in category))
-        
-        # criteria = not any(t in "".join(category) for t in {"?", "Artifact"})
-
-        # criteria = not "Artifact" in "".join(category)
-
-        # Placeholder criteria for automatically tracking category discrepancies
-        criteria = True
-
-        multiCatDict[discrepKey].append(
+        multiCatDict[multiCatKeys[bool(discrepCount)]].append(
             (discrepCount if criteria else "") + (" & ".join(
                     [removeInParens(name),
                      *(formatLineWithSources(c, False) for c in category)])
