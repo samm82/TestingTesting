@@ -1,4 +1,5 @@
 from copy import deepcopy
+from math import ceil
 import numpy as np
 import itertools
 from pandas import read_csv
@@ -205,9 +206,6 @@ def addNode(name, style = "", key = "Approach"):
         addLineToCategory("Static", nameLine)
     addLineToCategory(key, nameLine)
 
-multiCatKeys = ["infMultiCats", "multiCats"]
-multiCatDict: dict[str, list[str]] = {key: [] for key in multiCatKeys}
-
 # Old criteria
 # criteria = (name in {
 #     "Capacity Testing", "Data-driven Testing", "Error Guessing",
@@ -225,17 +223,39 @@ multiCatDict: dict[str, list[str]] = {key: [] for key in multiCatKeys}
 # Placeholder criteria for automatically tracking category discrepancies
 criteria = True
 
+class MultiCatInfo():
+    def __init__(self, name) -> None:
+        self.name = name
+        self.lines: list[str] = []
+        self.lenTotals: list[tuple[int, int]] = []
+
+    def addMultiCatLine(self, discrep: str, name: str, catCells: list[str]):
+        self.lenTotals.append(tuple(map(len, catCells)))
+        self.lines.append(discrep + (" & ".join([removeInParens(name)] +
+                                                catCells)) + "\\\\")
+
+    def getColWidths(self) -> list[int]:
+        return list(map(lambda n: ceil(n/len(self.lines)),
+                        [sum(x) for x in zip(*self.lenTotals)]))
+
+multiCatDict = {0 : MultiCatInfo("infMultiCats"),
+                1 : MultiCatInfo("multiCats")}
+
+LONG_ENDINGS = {"Testing", "Management", "Scanning", "Audits",
+               "Guessing", "Correctness"}
+LONG_ENDINGS_REGEX = re.compile(r' \b(' + '|'.join(LONG_ENDINGS) + r')\b')
+
 for name, category in zip(names, categories):
     if len([c for c in category
             if not any(t in c for t in {"Approach", "Artifact"})]) > 1:
         discrepCount = (getDiscrepCount(category, "CATS", "CONTRA")
                         if not any("?" in c for c in category) else "")
-
-        multiCatDict[multiCatKeys[bool(discrepCount)]].append(
-            (discrepCount if criteria else "") + (" & ".join(
-                    [removeInParens(name),
-                     *(formatLineWithSources(c, False) for c in category)])
-                 ) + "\\\\")
+        multiCatDict[bool(discrepCount)].addMultiCatLine(
+            discrepCount if criteria else "",
+            # Add line breaks to longer test approaches
+            f"{{{LONG_ENDINGS_REGEX.sub(r'\\\\\1', name)}}}",
+            [formatLineWithSources(c, False) for c in category]
+        )
 
     for cat in category:
         for key in categoryDict.keys():
@@ -243,22 +263,14 @@ for name, category in zip(names, categories):
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key)
 
-LONG_ENDINGS = {"Testing", "Management", "Scanning", "Audits",
-               "Guessing", "Correctness"}
-LONG_ENDINGS_REGEX = re.compile(r' \b(' + '|'.join(LONG_ENDINGS) + r')\b')
 if "Example" not in csvFilename:
-    for key, lines in multiCatDict.items():
-        # Add line breaks to longer test approaches in inferred table
-        for i, line in enumerate(lines):
-            *discrep, row = line.split("\n\t")
-            row = row.split(" & ", 1)
-            row[0] = f"{{{LONG_ENDINGS_REGEX.sub(r'\\\\\1', row[0])}}}"
-            lines[i] = "\n\t".join([*(d for d in discrep), " & ".join(row)])
+    for multiCat in multiCatDict.values():
         writeLongtblr(
-            key, " ".join(["Test approaches",
-                         "with" if key == "multiCats" else "inferred to have",
-                         "more than one \\hyperref[categories-observ]{{category}}."]),
-            ["Approach", "Category 1", "Category 2"], lines, [1, 2]
+            multiCat.name, " ".join(["Test approaches",
+                                     "with" if multiCat.name == "multiCats" else "inferred to have",
+                                     "more than one \\hyperref[categories-observ]{{category}}."]),
+            ["Approach", "Category 1", "Category 2"], multiCat.lines,
+            multiCat.getColWidths()
         )
 
 for key in categoryDict.keys():
