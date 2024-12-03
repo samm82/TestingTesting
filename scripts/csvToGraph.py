@@ -224,8 +224,10 @@ def addNode(name, style = "", key = "Approach"):
 criteria = True
 
 class MultiCatInfo():
-    def __init__(self, name) -> None:
+    def __init__(self, name, capHelper) -> None:
         self.name = name
+        self.caption = (f"Test approaches {capHelper} more than one " +
+                         "\\hyperref[categories-observ]{category}.")
         self.lines: list[str] = []
         self.lenTotals: list[tuple[int, int]] = []
 
@@ -235,11 +237,18 @@ class MultiCatInfo():
                                                 catCells)) + "\\\\")
 
     def getColWidths(self) -> list[int]:
-        return list(map(lambda n: ceil(n/len(self.lines)),
-                        [sum(x) for x in zip(*self.lenTotals)]))
+        avgLens = [ceil(n / len(self.lines))
+                   for n in map(sum, zip(*self.lenTotals))]
+        return [round(n * len(avgLens) / sum(avgLens), 2) for n in avgLens]
 
-multiCatDict = {0 : MultiCatInfo("infMultiCats"),
-                1 : MultiCatInfo("multiCats")}
+    def output(self):
+        writeLongtblr(multiCat.name, multiCat.caption,
+                      ["Approach", "Category 1", "Category 2"],
+                      multiCat.lines, multiCat.getColWidths()
+        )
+
+multiCatDict = {0 : MultiCatInfo("infMultiCats", "inferred to have"),
+                1 : MultiCatInfo("multiCats",    "with")}
 
 LONG_ENDINGS = {"Testing", "Management", "Scanning", "Audits",
                "Guessing", "Correctness"}
@@ -265,13 +274,7 @@ for name, category in zip(names, categories):
 
 if "Example" not in csvFilename:
     for multiCat in multiCatDict.values():
-        writeLongtblr(
-            multiCat.name, " ".join(["Test approaches",
-                                     "with" if multiCat.name == "multiCats" else "inferred to have",
-                                     "more than one \\hyperref[categories-observ]{{category}}."]),
-            ["Approach", "Category 1", "Category 2"], multiCat.lines,
-            multiCat.getColWidths()
-        )
+        multiCat.output()
 
 for key in categoryDict.keys():
     categoryDict[key][1].append("")

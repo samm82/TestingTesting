@@ -179,7 +179,7 @@ def writeLongtblr(filename: str, caption: str, headers: list[str],
     xcolCount = len(headers) - 1
     assert lines[0].count("&") == xcolCount
     colSpecList = ["Q[c,m]"]
-    print(widths)
+
     # If all given widths are equal, don't change them
     if len(set(widths)) > 1:
         # Include first column
