@@ -177,7 +177,7 @@ def writeLongtblr(filename: str, caption: str, headers: list[str],
                   lines: list[str], widths: list[int] = []):
     # Used for ensuring correct number of xcolumns
     xcolCount = len(headers) - 1
-    assert lines[0].count("&") == xcolCount
+    assert all(line.count("&") == xcolCount for line in lines)
     colSpecList = ["Q[c,m]"]
 
     # If all given widths are equal, don't change them
