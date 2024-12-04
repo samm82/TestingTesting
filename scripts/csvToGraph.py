@@ -255,22 +255,23 @@ LONG_ENDINGS = {"Testing", "Management", "Scanning", "Audits",
 LONG_ENDINGS_REGEX = re.compile(r' \b(' + '|'.join(LONG_ENDINGS) + r')\b')
 
 for name, category in zip(names, categories):
-    if len([c for c in category
-            if not any(t in c for t in {"Approach", "Artifact"})]) > 1:
-        discrepCount = (getDiscrepCount(category, "CATS", "CONTRA")
-                        if not any("?" in c for c in category) else "")
-        multiCatDict[bool(discrepCount)].addMultiCatLine(
-            discrepCount if criteria else "",
-            # Add line breaks to longer test approaches
-            f"{{{LONG_ENDINGS_REGEX.sub(r'\\\\\1', name)}}}",
-            [formatLineWithSources(c, False) for c in category]
-        )
-
     for cat in category:
         for key in categoryDict.keys():
             if key in cat or key == "Approach":
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key)
+
+    category = [c for c in category
+                if not any(t in c for t in {"Approach", "Artifact"})]
+    if len(category) > 1:
+        discrepCount = (getDiscrepCount(category, "CATS", "CONTRA")
+                        if not any("?" in c for c in category) else "")
+        multiCatDict[bool(discrepCount)].addMultiCatLine(
+            discrepCount, # if criteria else "",
+            # Add line breaks to longer test approaches
+            f"{{{LONG_ENDINGS_REGEX.sub(r'\\\\\1', name)}}}",
+            [formatLineWithSources(c, False) for c in category]
+        )
 
 if "Example" not in csvFilename:
     for multiCat in multiCatDict.values():
