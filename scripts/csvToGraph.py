@@ -136,9 +136,10 @@ def isUnsure(name: str, only: bool = False) -> Optional[str]:
         unsureTerms.update(f" {term}" for term in IMPLICIT_KEYWORDS)
 
     outTerms = {unsure for unsure in unsureTerms if unsure in name}
-    if (len(outTerms) > 1 and "?" not in outTerms and
+    # Ignore the terms with distinct meanings when checking for multiple implicit keywords
+    if (len(outTerms.difference({"?", " inferred"})) > 1 and
             name not in warned_multi_unsure):
-        print(f"Multiple implied keywords in {name}.")
+        print(f"Multiple implicit keywords in {name}.")
         warned_multi_unsure.add(name)
 
     return (sorted(outTerms, key=name.index, reverse=True)[0]
@@ -174,8 +175,14 @@ def formatApproach(s: str, stripInit=False):
     s = s.replace("1", "One")
     return s.strip(",")
 
-def addNode(name, style = "", key = "Approach"):
+def addNode(name, style = "", key = "Approach", cat = ""):
     dashed = isUnsure(name, only=True)
+    infer = False
+    if key in cat:
+        infer = ("Example" not in csvFilename and
+                 ("(inferred" in cat or "(" not in cat))
+        if not infer:
+            dashed = dashed or isUnsure(cat, only=True)
     if dashed:
         name = name.replace("?", "")
 
@@ -190,6 +197,8 @@ def addNode(name, style = "", key = "Approach"):
     styles = [s for s in ["dashed" if dashed else "", style] if s]
     if styles:
         extras.append(f'style="{",".join(styles)}"')
+    if infer:
+        extras.append("color=gray")
     nameLine = f"{formatApproach(name)} [{",".join(extras)}];"
 
     for k in staticKeywords:
@@ -259,7 +268,7 @@ for name, category in zip(names, categories):
         for key in categoryDict.keys():
             if key in cat or key == "Approach":
                 categoryDict[key][0].append(removeInParens(name))
-                addNode(name, key=key)
+                addNode(name, key=key, cat=cat)
 
     category = [c for c in category
                 if not any(t in c for t in {"Approach", "Artifact"})]
@@ -599,7 +608,7 @@ class Flag(Enum):
     STYLE = auto()
 
 def inLine(flag, style, line):
-        return re.search(fr"label=.+,{flag.name.lower()}=.+" + style, line)
+    return re.search(fr"label=.+,{flag.name.lower()}=.*{style}", line)
 
 if "Example" not in csvFilename:
     outputDiscreps()
@@ -764,7 +773,7 @@ for key, value in rigidDict.items():
     unsure = reduce(operator.add,
                     [[val] + [c.split()[0] for c in lines if inLine(flag, val, c)]
                     for flag, val in {(Flag.STYLE, "dashed"), (Flag.COLOR, "gray")}])
-    
+
     writeDotFile([c for c in lines if all(x not in c for x in unsure)],
                 f"rigid{key}Graph")
 
