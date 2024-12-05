@@ -259,17 +259,15 @@ they can be analyzed more systematically\thesisissueref{21}.
 
 Some category discrepancies can be detected automatically, given in
 \Cref{tab:multiCats}; of these, experience-based testing is of particular note.
-\expBasedCatMain{}
-These authors previously say ``experience-based testing practices like
-exploratory testing \dots\ are not \dots\ techniques for designing test cases'',
-although they ``can use \dots\ test techniques'' \citeyearpar[p.~viii]{IEEE2021}.
-In addition to contradicting other authors (including themselves in
-\citeyearpar[p.~34]{IEEE2022}!), it also implies that ``experience-based test
-design techniques'' are techniques used by the \emph{practice} of
-experience-based testing, not that experience-based testing is \emph{itself} a
-test technique. If this is the case, it makes the distinction between
-``practice'' and ``technique'' less useful, which may explain why experience-based
-testing is categorized inconsistently in the literature\thesisissueref{64}.
+\expBasedCatMain{} These authors previously say ``experience-based testing
+practices like exploratory testing \dots\ are not \dots\ techniques for
+designing test cases'', although they ``can use \dots\ test techniques''
+\citeyearpar[p.~viii]{IEEE2021}. This implies that ``experience-based test
+design techniques'' are used \emph{by} the practice of experience-based
+testing which is not \emph{itself} a test technique. If this is the case, it
+makes the distinction between ``practice'' and ``technique'' less useful, which
+may explain why experience-based testing is categorized inconsistently in the
+literature\thesisissueref{64} (see \Cref{tab:multiCats}).
 
 % Furthermore, if a ``class of \dots\ techniques''
 % is a practice, then other ``techniques'', such as combinatorial testing
@@ -288,19 +286,20 @@ testing is categorized inconsistently in the literature\thesisissueref{64}.
 Subapproaches of experience-based tesing, such as error guessing and
 exploratory testing, are also categorized ambiguously, causing confusion on how
 categories and parent-child relations (see \Cref{par-chd-rels}) interact.
-\citet[p.~34\ifnotpaper, emphasis added\fi]{IEEE2022} \multAuthHelper{say}
-``[another standard \citep{IEEE2021}] describes the experience-based test
-\emph{design technique} of error guessing. Other experience-based test
-\emph{practices} include (but are not limited to) exploratory testing \dots,
-tours, attacks, and checklist-based testing''; this seems to imply that error
-guessing is both a technique \emph{and} a practice, which does not make sense
-if these categories are orthogonal. Similarly, the conflicting categorizations
-of beta testing in \Cref{tab:multiCats} may also propagate to closed beta
-testing and open beta testing; since this is an inferrence, it is omitted from
-that table and instead included in \Cref{tab:infMultiCats}. These kinds of
-inconsistencies between parent and child test approach categorizations may
-indicate that categories are not transitive or that more thought must be given
-to them.
+\refHelper \citet[p.~34\ifnotpaper, emphasis added\fi]{IEEE2022}
+\multAuthHelper{say} that a previous standard \citeyearpar{IEEE2021}
+``describes the experience-based test \emph{design technique} of error
+guessing. Other experience-based test \emph{practices} include (but are not
+limited to) exploratory testing \dots, tours, attacks, and checklist-based
+testing''. This seems to imply that error guessing is both a technique
+\emph{and} a practice, which does not make sense if these categories are
+orthogonal. \ifnotpaper Similarly, the conflicting categorizations of beta
+    testing in \Cref{tab:multiCats} may propagate to its children closed beta
+    testing and open beta testing; since this is an inferrence, it is omitted
+    from that table and instead included in \Cref{tab:infMultiCats}. \fi These
+kinds of inconsistencies between parent and child test approach categorizations
+may indicate that categories are not transitive or that more thought must be
+given to them.
 
 \ifnotpaper
     \begin{bigLandscape}
