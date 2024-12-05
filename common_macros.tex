@@ -14,7 +14,16 @@
 \def\expBasedCatMain{\ifnotpaper \citeauthor{IEEE2022} \else ISO/IEC and IEEE
     \fi categorize experience-based testing as both a test design
     technique and a test practice on the same page---twice
-    \citeyearpar[Fig.~2,~p.~34]{IEEE2022}!}
+    \citeyearpar[Fig.~2, p.~34]{IEEE2022}!}
+
+\NewDocumentCommand{\perfAsFamily}{s}{%
+    \IfBooleanTF#1{\citealp}{\citep}[p.~1187]{Moghadam2019}\footnote{
+        The original source describes ``performance testing \dots\ as a family
+        of performance-related testing techniques'', but it makes more sense to
+        consider ``performance-related testing'' as the ``family'' with
+        ``performance testing'' being one of the variabilities
+        (see \Cref{perf-test-rec}).}%
+}
 
 %------------------------------------------------------------------------------
 % Spacing Options

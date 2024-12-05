@@ -265,24 +265,42 @@ although they ``can use \dots\ test techniques'' \citeyearpar[p.~viii]{IEEE2021}
 which they support in \citeyearpar[p.~33]{IEEE2022} along with scripted testing.
 This implies that ``experience-based test design techniques'' are used \emph{by}
 the practice of experience-based testing which is not \emph{itself} a test
-technique (and similarly with scripted testing). If this is the case, it
-makes the distinction between ``practice'' and ``technique'' less useful, which
-may explain why experience-based testing is categorized inconsistently in the
-literature\thesisissueref{64} (see \Cref{tab:multiCats}).
+technique (and similarly with scripted testing). If this is the case, it blurs
+the line between ``practice'' and ``technique'', which may explain why
+experience-based testing is categorized inconsistently in the literature%
+\thesisissueref{64} (see \Cref{tab:multiCats}).
 
-% Furthermore, if a ``class of \dots\ techniques''
-% is a practice, then other ``techniques'', such as combinatorial testing
-% (\citealp[pp.~3,~22]{IEEE2022}; \citeyear[p.~2]{IEEE2021};
-% \citealp[p.~5-11]{SWEBOK2024}; \citealpISTQB{}), data flow testing
-% (\citealp[p.~22]{IEEE2022}; \citeyear[p.~3]{IEEE2021};
-% \citealp[p.~5-13]{SWEBOK2024}; \citealp[p.~43]{Kam2008}), performance(-related)
-% testing (\citealp[p.~38]{IEEE2021}; \citealp[p.~1187]{Moghadam2019}), and
-% security testing \citep[p.~40]{IEEE2021} may \emph{also}
-% actually be practices, since they are also described as classes or families of
-% techniques. The same could be said of the more
-% general specification- and structure-based testing, especially since these,
-% plus experience-based testing, are described as ``complementary'' \citetext{p.~8,~Fig.~2}.
-% % \citeyearpar[p.~8, Fig.~2]{IEEE2021}
+\ifnotpaper
+    \phantomsection
+    \label{classFamilyDiscrep}
+    However, this might mean that a practice such as experience-based testing
+    can be viewed as a ``class of test case design techniques''
+    \citep[p.~4]{IEEE2022}. If \emph{this} is the case, then test approaches
+    that are a collection of specific subtechniques may be considered
+    practices. The following test approaches are each described as a ``class''
+    or ``family'' of techniques by the sources given, which seems to support
+    this:
+    \begin{itemize}
+        \item Combinatorial testing (\citealp[p.~3]{IEEE2022};
+              \citeyear[p.~2]{IEEE2021}; \citealp[p.~5-11]{SWEBOK2024})
+        \item Data flow testing (\citeyear[p.~3]{IEEE2021};
+              implied by \citealp[p.~5-13]{SWEBOK2024})
+        \item Performance(-related) testing (\citealp[p.~38]{IEEE2021};
+              \perfAsFamily*{})
+        \item Security testing \citep[implied by][p.~40]{IEEE2021}
+    \end{itemize}
+    Of the above, security testing is an outlier, since it is consistently
+    categorized as a test type (\citealp[pp.~9, 22, 26--27]{IEEE2022};
+    \citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021}; \citeyear[p.~405]{IEEE2017}%
+    \todo{OG 2013}; implied by its quality (\citealp{ISO_IEC2023a};
+    \citealp[p.~13-4]{SWEBOK2024}); \citealp[p.~53]{Firesmith2015}) despite
+    consisting of ``a number of techniques'' \cite[p.~40]{IEEE2021}, although
+    this may be \distinctIEEE{technique} In addition, specification-based
+    testing and structure-based testing may also be considered ``families''
+    since they are quite broad with many subtechniques and are described as
+    ``complementary'' alongside experience-based testing
+    \citep[p.~8, Fig.~2]{IEEE2021}.
+\fi
 
 Subapproaches of experience-based tesing, such as error guessing and
 exploratory testing, are also categorized ambiguously, causing confusion on how
