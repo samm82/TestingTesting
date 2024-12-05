@@ -53,6 +53,7 @@ IndependentTesterTesting [label=<Independent<br/>Tester<br/>Testing>,color=gray]
 InsourcedTesting [label=<Insourced<br/>Testing>,color=gray];
 InterruptdrivenBuiltInTesting [label=<Interrupt-driven<br/>Built-In<br/>Testing>,color=gray];
 IsolationTesting [label=<Isolation<br/>Testing>,color=gray];
+LandmarkTours [label=<Landmark<br/>Tours>,color=gray];
 LicenseComplianceAudits [label=<License<br/>Compliance<br/>Audits>,color=gray];
 LifecyclebasedTesting [label=<Lifecycle-based<br/>Testing>,color=gray];
 LinearScripting [label=<Linear<br/>Scripting>,style="dashed"];
@@ -165,6 +166,8 @@ IndependentTestOrganizationTesting -> OrganizationbasedTesting[color="blue"];
 IndependentTestOrganizationTesting -> IndependentTesterTesting[color="gray"];
 IndependentTesterTesting -> TesterTesting[color="blue"];
 InterruptdrivenBuiltInTesting -> BuiltInTesting[color="blue"];
+LandmarkTours -> Tours[color="green"];
+LandmarkTours -> ExploratoryTesting[color="green"];
 LicenseComplianceAudits -> Audits[color="green"];
 LinearScripting -> ScriptedTesting[color="blue"];
 LocalTesting -> SynchronousTesting[style="dashed"];
