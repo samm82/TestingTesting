@@ -1,15 +1,22 @@
 \begin{enumerate}
-    \item % Discrep count (PARS, CONTRA): {IEEE2022} {Firesmith2015} | {IEEE2017} {SWEBOK2024} | {vanVliet2000}
-          While \ifnotpaper \else ISO/IEC and IEEE \fi \citet[p.~8]{IEEE2022}
-          say regression testing and retesting are two distinct approaches
-          (as does \citet[p.~34]{Firesmith2015}), they define regression
-          testing as a form of ``selective retesting'' in
-          \citeyearpar[p.~372]{IEEE2017} (as does \citet[pp.~5-8, 6-5,
-              7-5~to~7-6]{SWEBOK2024}). Moreover, the two possible variations
-          of regression testing given by \cite[p.~411]{vanVliet2000} are
+    \item % Discrep count (PARS, CONTRA): {IEEE2022} {Firesmith2015} | {IEEE2017} {SWEBOK2024} {BarbosaEtAl2006} | {vanVliet2000}
+          Regression testing and retesting are sometimes given as two distinct
+          approaches \ifnotpaper
+              (\citealp[p.~8]{IEEE2022}; \citealp[p.~34]{Firesmith2015})%
+          \else
+              \cite[p.~8]{IEEE2022}, \cite[p.~34]{Firesmith2015}%
+          \fi, but sometimes regression testing is defined as a form of
+          ``selective retesting'' \ifnotpaper (\citealp[p.~372]{IEEE2017};
+              \citealp[pp.~5-8, 6-5, 7-5 to 7-6]{SWEBOK2024};
+              \citealp[p.~3]{BarbosaEtAl2006})%
+          \else \cite[p.~372]{IEEE2017},
+              \cite[pp.~5-8, 6-5, 7-5 to 7-6]{SWEBOK2024},
+              \cite[p.~3]{BarbosaEtAl2006}%
+          \fi. Moreover, the two possible variations
+          of regression testing given by \citet[p.~411]{vanVliet2000} are
           ``retest-all'' and ``selective retest''\todo{Are these separate
               approaches?}, which is possibly the source
-          of the above misconception; these two in tandem create a cyclic
+          of the above misconception. This discrepancy creates a cyclic
           relation between regression testing and selective retesting.
     \item % Discrep count (DEFS, OVER): {IEEE2022}
           \refHelper \citet[p.~34]{IEEE2022} \multAuthHelper{give} the
