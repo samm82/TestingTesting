@@ -1,0 +1,145 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{performanceProposedGraph}{
+rankdir=BT;
+
+AvailabilityTesting [label=<Availability<br/>Testing>];
+CapacityTesting [label=<Capacity<br/>Testing>];
+ConcurrencyTesting [label=<Concurrency<br/>Testing>];
+EfficiencyTesting [label=<Efficiency<br/>Testing>];
+ElasticityTesting [label=<Elasticity<br/>Testing>];
+EnduranceTesting [label=<Endurance<br/>Testing>];
+FailoverTesting [label=<Failover<br/>Testing>];
+FailureToleranceTesting [label=<Failure<br/>Tolerance<br/>Testing>];
+FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
+LoadTesting [label=<Load<br/>Testing>];
+MemoryManagementTesting [label=<Memory<br/>Management<br/>Testing>];
+PerformanceEfficiencyTesting [label=<Performance<br/>Efficiency<br/>Testing>];
+PerformanceTesting [label=<Performance<br/>Testing>];
+PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
+PowerTesting [label=<Power<br/>Testing>];
+RecoverabilityTesting [label=<Recoverability<br/>Testing>];
+RecoveryPerformanceTesting [label=<Recovery<br/>Performance<br/>Testing>];
+ReliabilityTesting [label=<Reliability<br/>Testing>];
+ResourceUtilizationTesting [label=<Resource<br/>Utilization<br/>Testing>];
+ResponseTimeTesting [label=<Response-Time<br/>Testing>];
+ScalabilityTesting [label=<Scalability<br/>Testing>];
+StressTesting [label=<Stress<br/>Testing>];
+TransactionFlowTesting [label=<Transaction<br/>Flow<br/>Testing>];
+UsabilityTesting [label=<Usability<br/>Testing>];
+VolumeTesting [label=<Volume<br/>Testing>];
+
+SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
+
+EnduranceTesting -> SoakTesting[dir=none,color="green"];
+SoakTesting -> ReliabilityTesting[dir=none];
+
+AvailabilityTesting -> ReliabilityTesting[color="green"];
+CapacityTesting -> PerformanceEfficiencyTesting[color="green"];
+CapacityTesting -> PerformancerelatedTesting[color="green"];
+CapacityTesting -> PerformanceTesting[color="blue"];
+ElasticityTesting -> MemoryManagementTesting[color="blue"];
+ElasticityTesting -> ResourceUtilizationTesting[color="blue"];
+ElasticityTesting -> StressTesting;
+EnduranceTesting -> PerformancerelatedTesting[color="green"];
+EnduranceTesting -> PerformanceEfficiencyTesting[color="green"];
+EnduranceTesting -> ReliabilityTesting[color="blue"];
+FailoverTesting -> FailureToleranceTesting[style="dashed",color="blue"];
+FaultToleranceTesting -> ReliabilityTesting[color="green"];
+FaultToleranceTesting -> AvailabilityTesting[color="green"];
+LoadTesting -> PerformancerelatedTesting[color="green"];
+LoadTesting -> ReliabilityTesting[color="green"];
+LoadTesting -> PerformanceEfficiencyTesting[color="green"];
+MemoryManagementTesting -> PerformancerelatedTesting[color="green"];
+MemoryManagementTesting -> ResourceUtilizationTesting;
+PerformanceEfficiencyTesting -> ReliabilityTesting[color="green"];
+PerformanceEfficiencyTesting -> PerformancerelatedTesting[color="green"];
+PerformanceEfficiencyTesting -> EfficiencyTesting[style="dashed",color="green"];
+PerformanceTesting -> PerformancerelatedTesting[color="green"];
+RecoverabilityTesting -> ReliabilityTesting[color="green"];
+RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
+ResourceUtilizationTesting -> PerformanceEfficiencyTesting[color="green"];
+ResourceUtilizationTesting -> EfficiencyTesting[style="dashed"];
+ResponseTimeTesting -> PerformancerelatedTesting[color="green"];
+ScalabilityTesting -> LoadTesting[color="blue"];
+ScalabilityTesting -> VolumeTesting[color="blue"];
+ScalabilityTesting -> TransactionFlowTesting[style="dashed",color="blue"];
+ScalabilityTesting -> ElasticityTesting[style="dashed",color="blue"];
+ScalabilityTesting -> PerformanceTesting;
+ScalabilityTesting -> EfficiencyTesting;
+ScalabilityTesting -> PerformanceEfficiencyTesting[style="dashed"];
+ScalabilityTesting -> MemoryManagementTesting[style="dashed",color="green"];
+StressTesting -> PerformancerelatedTesting[color="green"];
+StressTesting -> PerformanceEfficiencyTesting[color="green"];
+StressTesting -> CapacityTesting[color="blue"];
+VolumeTesting -> PerformancerelatedTesting[color="green"];
+VolumeTesting -> PerformanceEfficiencyTesting[color="green"];
+VolumeTesting -> CapacityTesting[color="blue"];
+VolumeTesting -> CapacityTesting[style="dashed",color="green"];
+
+CapacityTesting -> LoadTesting;
+ConcurrencyTesting -> PerformancerelatedTesting;
+PerformanceTesting -> LoadTesting;
+PowerTesting -> PerformancerelatedTesting;
+ReliabilityTesting -> PerformancerelatedTesting;
+RecoverabilityTesting -> AvailabilityTesting;
+RecoverabilityTesting -> FailureToleranceTesting;
+RecoverabilityTesting -> FaultToleranceTesting;
+RecoveryPerformanceTesting -> PerformancerelatedTesting;
+RecoveryPerformanceTesting -> RecoverabilityTesting;
+
+subgraph cluster_legend {
+label="Legend";
+labelloc="b";
+fontsize="48pt"
+rankdir=BT
+{
+rank=same
+chd [label="Child"];
+par [label="Parent"];
+chd -> par [label="                "];
+syn1 [label="Synonym"];
+syn2 [label="Synonym"];
+syn1 -> syn2 [dir=none label="                "];
+syn3 [label=<Term>]
+syn4 [label=<Synonym<br/>to Both> style="dotted"]
+syn5 [label=<Term>]
+syn3 -> syn4 -> syn5 [dir=none]
+}
+{
+rank=same
+imp1 [label="Child"];
+imp2 [label=<Implied<br/>Parent>];
+imp1 -> imp2 [style="dashed" label="                "]
+imp3 [label=<Implied<br/>Synonym>];
+imp4 [label=<Implied<br/>Synonym>];
+imp3 -> imp4 [style="dashed" dir=none label="                "]
+src1 [shape="plaintext" label=<From Standards<br/>Organization>];
+src2 [style="invis"];
+src3 [shape="plaintext" label=<From Collection<br/>or Taxonomy>];
+src1 -> src2 [color="green" label="                "]
+src2 -> src3 [color="blue"  label="                "]
+}
+edge [style="invis"]
+imp1 -> chd
+imp2 -> par
+imp3 -> syn1
+imp4 -> syn2
+% syn3 -> imp2
+% syn4 -> imp3
+% syn5 -> imp4
+% syn3 -> imp1
+% syn4 -> imp2
+% syn5 -> imp3
+src1 -> syn3
+src2 -> syn4
+src3 -> syn5
+}
+
+}
+\end{document}

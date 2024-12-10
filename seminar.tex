@@ -1,0 +1,811 @@
+\documentclass{beamer}
+
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{tikzsymbols}
+\usepackage{anyfontsize}
+
+\usepackage{makecell, tabularx}
+\newcolumntype{M}{>{\raggedright\arraybackslash}m}
+\renewcommand\tabularxcolumn[1]{M{#1}}
+\renewcommand\arraystretch{1.2}
+\usetikzlibrary{shapes,shapes.geometric,arrows,fit,calc,positioning,automata,}
+\usepackage{pgf-pie}
+
+\usepackage[disable]{todonotes}
+
+% Required for biblatex, but also adds functionality for quotation
+\usepackage{csquotes}
+
+% Jason's bibliography format
+% % Credit to Gabriel Devenyi for this bibliography cfg:
+% % github.com/gdevenyi/mcmaster.latex
+% \usepackage[
+%   style=numeric-comp,
+%   backend=biber,
+%   sorting=none,
+%   backref=true,
+%   maxnames=99,
+%   alldates=iso,
+%   seconds=true
+% ]{biblatex} % bibliography
+% \addbibresource{references.bib}
+\usepackage[round]{natbib}
+\bibliographystyle{plainnat}
+\setcitestyle{yysep={;}}
+\defcitealias{ISTQB}{Hamburg and Mogyorodi}
+\newcommand{\citetISTQB}{\citetalias{ISTQB} (\citeyear{ISTQB})}
+\newcommand{\citepISTQB}{\citepalias[\citeyear{ISTQB}]{ISTQB}}
+\newcommand{\citealpISTQB}{\citetalias{ISTQB}, \citeyear{ISTQB}}
+
+\lstset{
+    language=[latex]tex,
+    breaklines=true}
+
+\usetheme{Madrid}
+
+\setbeamertemplate{caption}{\centering\insertcaption\par}
+
+% Change block width
+\addtobeamertemplate{block begin}{%
+    \centering\large%
+    \setlength{\textwidth}{0.9\textwidth}
+}{}
+
+% From https://tex.stackexchange.com/a/489625/192195
+\BeforeBeginEnvironment{block}{\begin{adjustbox}{minipage={\linewidth}, center}}
+    \AfterEndEnvironment{block}{\end{adjustbox}}
+
+\usepackage{adjustbox}
+
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+\input{common_macros}
+\notpapertrue
+
+\renewcommand\stds{\stdSources{1}}
+\renewcommand\metas{\metaSources{1}}
+\renewcommand\texts{\textSources{1}}
+\renewcommand\papers{\paperSources{1}}
+
+\title[Testing Terminology]{Putting Software Testing Terminology to the Test}
+\subtitle{M.A.Sc. Seminar}
+\author[Samuel Crawford]{Samuel Crawford, B.Eng.}
+
+% Committee
+% \begin{itemize}
+%     \item \emph{Supervisor}: Dr.~Jacques Carette
+%     \item \emph{Supervisor}: Dr.~Spencer Smith
+%     \item Dr.~Ned Nedialkov
+%     \item Dr.~Richard Paige
+% \end{itemize}
+
+\institute[McMaster University]{McMaster University\\Department of Computing and Software}
+\date{Fall 2024}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+% From https://tex.stackexchange.com/a/42826/192195
+\NewDocumentCommand{\ShowListingForLineNumber}{s O{1.0} m m}{
+    \IfBooleanTF{#1}{\vspace{-#2\baselineskip}}{}
+    \lstinputlisting[
+        style=MyListStyle,
+        linerange={#3-#3},
+        firstnumber=#3,
+    ]{#4}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TITLE PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TABLE OF CONTENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% INTRODUCTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+\subsection{The Need for Standardized Terminology}
+
+\begin{frame}
+    \frametitle{The Need for Standardized Terminology}
+    \begin{columns}[T]
+        \begin{column}{.6\textwidth}
+            \begin{itemize}
+                \item Engineering is applied science
+                \item Scientific fields use precise terminology
+            \end{itemize}
+        \end{column}
+        \begin{column}{.4\textwidth}
+            \begin{column}{.3\textwidth}
+                \begin{center}
+                    \vspace*{\fill}
+                    \vspace{2mm}
+                    \huge \textbf{$\Rightarrow$}
+                    \vspace*{\fill}
+                \end{center}
+            \end{column}
+            \begin{column}{.7\textwidth}
+                \vspace{-1mm}
+                \begin{block}{}{
+                        \begin{center}
+                            SOFTWARE ENGINEERING
+                        \end{center}
+                    }
+                \end{block}
+            \end{column}
+        \end{column}
+    \end{columns}
+    \pause
+    \vspace{5mm}
+    \begin{columns}[b]
+        \begin{column}{.3\textwidth}
+            \begin{figure}
+                \includegraphics[width=\linewidth]{assets/images/force}
+                \caption{\tiny \cite{force}}
+            \end{figure}
+        \end{column}
+        \begin{column}{.3\textwidth}
+            \begin{figure}
+                \includegraphics[width=\linewidth]{assets/images/isotope}
+                \caption{\tiny \cite{isotope}}
+            \end{figure}
+        \end{column}
+        \begin{column}{.3\textwidth}
+            \begin{figure}
+                \includegraphics[width=\linewidth]{assets/images/protein}
+                \caption{\tiny \cite{protein}}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\subsection{The Lack of Standardized Terminology}
+
+\begin{frame}[c]{The Lack of Standardized Terminology}
+    \framesubtitle{``The Problem''}
+    \begin{figure}
+        \centering
+        \only{\includegraphics[height=0.65\textheight]{assets/images/test approach choices}
+            \caption{\tiny \citep[Fig.~2]{IEEE2022}}}<1>
+        \only{\includegraphics[height=0.65\textheight]{assets/images/test approach exp based}
+            \caption{\tiny Adapted from \citep[Fig.~2]{IEEE2022}}}<2>
+        \only{\includegraphics[width=\textwidth]{assets/images/exp based 2}
+            \caption{\tiny Adapted from \citep[p.~34]{IEEE2022}}}<3>
+    \end{figure}
+\end{frame}
+
+\begin{frame}[c]{The Lack of Standardized Terminology}
+    \framesubtitle{``The Problem'' (cont.)}
+    \begin{figure}
+        \begin{center}
+            \only{\includegraphics[height=0.65\textheight]{assets/images/system testing}
+                \caption{\tiny \citep[p.~23]{Firesmith2015}}}<1>
+            \only{\includegraphics[height=0.65\textheight]{assets/images/system testing hil}
+                \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}}<2>
+            \only{\includegraphics[height=0.65\textheight]{assets/images/system testing sos}
+                \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}}<3>
+            \only{\includegraphics[height=0.65\textheight]{assets/images/system testing self}
+                \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}}<4>
+            \only{\includegraphics[height=0.65\textheight]{assets/images/system testing int}
+                \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}}<5>
+            \only{\includegraphics[height=0.65\textheight]{assets/images/system testing int 2}
+                \begin{columns}
+                    \centering
+                    \begin{column}{0.4\textwidth}
+                        \caption{\tiny Adapted from \citepISTQB{}}
+                    \end{column}
+                    \begin{column}{0.4\textwidth}
+                        \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}
+                    \end{column}
+                \end{columns}
+            }<6>
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\newcommand{\stick}[3][black]{
+    \node at (#2, 1) {\textcolor{#1}{\Strichmaxerl[3]}};
+    \node[above] at (#2, 1.5) {#3};
+}
+\newcommand{\tester}[1]{\stick[red]{#1}{Tester}}
+\newcommand{\boss}[1]{\stick{#1}{Boss}}
+\newcommand{\dev}[1]{\stick{#1}{Dev}}
+\newcommand{\user}[1]{\stick{#1}{User}}
+
+\begin{frame}
+    \frametitle{The Lack of Standardized Terminology}
+    \framesubtitle{``The Problem'' (cont.)}
+
+    \vspace{-0.5cm}
+
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+
+        % Draw the rectangle
+        \draw[ultra thick] (0, 0) rectangle (4, 2.5);
+
+        \dev{0.5}
+        \boss{3.5}
+        \user{5.75}
+        \user{6.5}
+
+        \onslide<1>{
+            \tester{2.75}
+            \node[draw, ellipse callout, align=center, anchor=south,
+                inner xsep=-0.75em, fill=white, text width=4.5cm, font=\small,
+                callout absolute pointer={(3.5, 2)}] at (3, 2.5)
+            {``Tester, let's conduct alpha testing on our product!''};
+            % The ``first stage of testing before a product is
+            % considered ready for commercial or operational use''
+            % \citep[p.~17]{IEEE2017}.
+        }
+
+        \onslide<2>{
+            \tester{2}
+            \node[draw, ellipse callout, align=center, anchor=south,
+                inner xsep=-3em, fill=white, text width=7.5cm, font=\small,
+                callout absolute pointer={(2, 2)}] at (1.75, 2.25)
+            % \node[draw, cloud, cloud puffs=10, cloud puff arc=120, aspect=1.5, align=center,
+            %     anchor=south, fill=white, text width=3cm, font=\footnotesize] at (3.5, 2.25)
+            {``Alpha testing is done by `users within the organization developing
+                the software'.''\\ \tiny \citep[p.~17]{IEEE2017}};
+        }
+
+        \onslide<3-4>{\tester{1.25}}
+
+        \onslide<3>{
+            \node[draw, ellipse callout, align=center, anchor=south,
+                inner xsep=-1em, fill=white, text width=4cm, font=\small,
+                callout absolute pointer={(1.25, 2)}] at (1.5, 2.5)
+            {``Dev, can you do some alpha testing?''};
+        }
+
+        \onslide<4>{
+            \node[draw, ellipse callout, align=center, anchor=south,
+                inner xsep=-2em, fill=white, text width=5cm, font=\small,
+                callout absolute pointer={(0.75, 2)}] at (1.75, 2.25)
+            {``No?! Alpha testing is done by `a small, selected group of
+                potential users'!''\\ \tiny \citep[p.~5-8]{SWEBOK2024}};
+        }
+
+        \onslide<5>{
+            \tester{5}
+            \node[draw, ellipse callout, align=center, anchor=south,
+                inner xsep=-1.75em, fill=white, text width=4cm, font=\small,
+                callout absolute pointer={(5.25, 2)}] at (5.75, 2.25)
+            {``Alpha testing time!''};
+        }
+
+        \onslide<6-7>{\tester{2.75}}
+
+        \onslide<6>{
+            \node[draw, ellipse callout, align=center, anchor=south,
+                inner xsep=-2em, fill=white, text width=3cm, font=\small,
+                callout absolute pointer={(2.75, 2)}] at (3, 2.25)
+            {``All done!''};
+        }
+
+        \onslide<7>{
+            \node[draw, ellipse callout, align=center, anchor=south,
+                inner xsep=-1.75em, fill=white, text width=6cm, font=\small,
+                callout absolute pointer={(3.5, 2)}] at (3, 2.25)
+            {``How? Alpha testing is performed
+                % by `roles outside the development organization' and done
+                `in the developer's test environment', but you didn't bring
+                anyone in.''\\ \tiny \citepISTQB{}};
+        }
+
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Barriers to Effective Communication}
+    \framesubtitle{``The Problem'' (cont.)}
+    \vspace{-1cm}
+    \begin{columns}[T]
+        \begin{column}{.5\textwidth}
+            \begin{center}
+                \huge Interorganizational
+
+                \normalsize Schools, companies, etc.
+
+                \vspace{5mm}
+
+                % Based on code frustratingly generated by ChatGPT
+                \begin{tikzpicture}
+
+                    % Define coordinates of the triangle's vertices
+                    \coordinate (A) at (0, 0);
+                    \coordinate (B) at (3, 0);
+                    \coordinate (C) at (1.5, 2.6);
+                    \coordinate (D) at (1.5, 0.86667);
+
+                    % Draw circles at each vertex without labels
+                    \draw[fill=blue!20] (A) circle [radius=0.5];
+                    \draw[fill=blue!20] (B) circle [radius=0.5];
+                    \draw[fill=blue!20] (C) circle [radius=0.5];
+
+                    % Draw arrows as arcs
+                    \draw[->, thick, shorten <= 20pt] (B) arc (0:48:3cm);
+                    \draw[->, thick, shorten <= 20pt] (C) arc (120:168:3cm);
+                    \draw[->, thick, shorten <= 20pt] (A) arc (240:288:3cm);
+
+                    % Small diagrams inside each circle
+                    \only<2->{
+                        \foreach \x in {A,B,C} {
+                                \begin{scope}[shift={(\x)}, scale=0.2] % Scaling down and shifting to position A
+                                    \coordinate (D) at (-1.25, -0.75);
+                                    \coordinate (E) at (1.25, -0.75);
+                                    \coordinate (F) at (0, 1.5);
+                                    \draw[fill=blue!20] (D) circle [radius=0.5];
+                                    \draw[fill=blue!20] (E) circle [radius=0.5];
+                                    \draw[fill=blue!20] (F) circle [radius=0.5];
+                                    \draw[->, shorten <= 4pt] (E) arc (0:45:2.5cm);
+                                    \draw[->, shorten <= 4pt] (F) arc (120:165:2.5cm);
+                                    \draw[->, shorten <= 4pt] (D) arc (240:285:2.5cm);
+                                \end{scope}
+                            }
+                    }
+                \end{tikzpicture}
+            \end{center}
+        \end{column}
+        \begin{column}<2->{.5\textwidth}
+            \begin{center}
+                \huge Intraorganizational \normalsize
+            \end{center}
+
+            ``Complete testing'' could require the tester to:
+            \begin{itemize}
+                \item discover every bug,
+                \item exhaust the time allocated,
+                \item implement every planned test,
+                \item \dots{} \tiny \citep[p.~7]{KanerEtAl2011}
+                      \normalsize \hspace{0pt} % For bullet spacing
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Taxonomies to the Rescue?}
+    \framesubtitle{``The Problem'' (cont.)}
+    \begin{columns}[T]
+        \begin{column}{.6\textwidth}
+            \begin{itemize}
+                \item Existing software testing taxonomies:
+                      \begin{itemize}
+                          \item \citet{TebesEtAl2020a}
+                          \item \citet{SouzaEtAl2017}
+                          \item \citet{UnterkalmsteinerEtAl2014}
+                      \end{itemize}
+            \end{itemize}
+        \end{column}
+        \begin{column}<2->{.4\textwidth}
+            \centering
+            \vspace{1.5mm}
+            Focus on:
+            \vspace{0.5mm}
+
+            \small The Testing Process
+
+            Organizing Terminology
+
+            Traceability between Stages
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PROJECT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Project}
+\subsection{Research Questions}
+
+\def\rqa{\begin{alertblock}{Research Question 1}
+        \rqatext{}
+    \end{alertblock}
+}
+
+\def\rqb{\begin{alertblock}{Research Question 2}
+        \rqbtext{}
+    \end{alertblock}
+}
+
+\def\rqc{\begin{alertblock}{Research Question 3}
+        \rqctext{}
+    \end{alertblock}
+}
+
+\begin{frame}{Research Questions}
+    \onslide<1->\rqa{} \vspace*{\fill}
+    \onslide<1>\rqb{} \vspace*{\fill}
+    \onslide<1>\rqc{} \vspace*{\fill}
+    \onslide<2>
+    \vspace{-4cm}
+    \begin{columns}
+        \begin{column}{0.45\textwidth}
+            \vspace{-1cm}
+            \begin{itemize}
+                \item \approachCount{} test approaches $\rightarrow$
+                \item \qualityCount{} software qualities \\ \small (may imply test approaches)
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.55\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \pie[sum=100, text=legend, thick, scale=0.5,
+                every label/.style={align=left, scale=0.7}]
+                {{\the\numexpr 100 - 100 * \UndefAfter/\TotalAfter}/Defined,
+                {\the\numexpr 100 * \UndefAfter/\TotalAfter}/{Not defined}}
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\subsection{Methodology}
+
+\begin{frame}{Methodology}
+    \framesubtitle{Procedure}
+    \begin{itemize}
+        \item A row is created for each test approach
+    \end{itemize}
+    \begin{center}
+        \begin{table}
+            \small
+            \begin{tabularx}{\linewidth}{|M{1.1cm}|M{1.3cm}|X|M{1.5cm}|M{1.6cm}|}
+                \hline
+                \thead{\textbf{Name}} & \thead{\textbf{Category}} & \thead{\textbf{Definition}}                                                                                    & \thead{\textbf{Parent(s)}}                       & \thead{\textbf{Synonym(s)}}           \\
+                \hline
+                A/B Testing           & Practice {\tiny (p.~22)}  & Testing ``that allows testers to determine which of two systems or components performs better'' {\tiny (p.~1)} & Statistical Testing {\tiny (pp.~1,~35)}, \dots{} & Split-Run Testing {\tiny (pp.~1,~35)} \\
+                \hline
+            \end{tabularx}
+            \caption{\tiny Information from \citep{IEEE2022}}
+        \end{table}
+    \end{center}
+    \pause \vspace{-0.5cm}
+    \begin{itemize}
+        \item This information is gathered from sources by looking for
+              \begin{itemize}
+                  \item Glossaries
+                  \item Testing-related terms
+                  \item Terms described \emph{by} other approaches
+                  \item Terms that \emph{imply} other approaches
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+% \begin{frame}{Methodology}
+%     \framesubtitle{Procedure}
+%     \begin{itemize}
+%         \item It seems that the existence of a software quality implies the
+%               existence of a test type associated with it \pause
+%         \item Some test approaches use shared or complicated terminology \pause
+%         \item For each of these, we record its
+%               \begin{itemize}
+%                   \item Name
+%                   \item Definition
+%                   \item Precedence for a related test type (only for qualities)
+%                   \item Synonym(s)
+%               \end{itemize}
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Methodology}
+%     \framesubtitle{Procedure}
+%     \begin{itemize}
+%         \item Recording these data in a consistent format allows for graphs to
+%               be generated according to a certain logic \pause
+%         \item It also allows for subsets of discrepancies to be identified \pause
+%               \vspace{1cm}\rqb{}
+%     \end{itemize}
+% \end{frame}
+
+\begin{frame}{Methodology}
+    \framesubtitle{Sources}
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \pie[sum=auto, after number=, text=legend, thick,
+                scale=\ifnotpaper0.7\else0.5\fi,
+                every label/.style={align=left, scale=0.7}]
+            {\stdSources{3}/\stds{},
+                \metaSources{3}/\metas{},
+                \textSources{3}/\texts{},
+                \paperSources{3}/\papers{}}
+
+            \onslide<2>{
+                \node[anchor=west, align=center] at (-1.9, 3) {
+                    Textbooks trusted at McMaster were our ad hoc starting points\\
+                    \tiny \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
+                };
+                \draw[->, very thick] (-1.5, 2.85) -- (-1.25, 1.4);
+            }
+
+            % \onslide<3>{
+            %     \node[anchor=west, align=left] at (2.4, -2) {
+            %         Includes websites \citetext{\citealp{LambdaTest2024}; \\
+            %             \quad\quad\citealp{Pandey2023}} and a booklet\\
+            %         \quad\quad\citep{SPICE2022}};
+            %     \draw[->, very thick] (2.25, -1.5) -- (1.25, -1.1);
+            % }
+
+        \end{tikzpicture}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]{Methodology}
+    \framesubtitle{Categories}
+    \vspace{-0.925cm}
+    \centering
+    \only<1>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels1.pdf}}
+    \only<2>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels2.pdf}}
+    \only<3>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels3.pdf}}
+    \only<4>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels4.pdf}}
+    \only<5>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels5.pdf}}
+
+    \begin{minipage}{0.98\textwidth}
+        % For weird spacing issue
+        \only<1-3>{\vspace{-0.8cm}}
+        \only<4>{\vspace{-0.475cm}}
+        \only<5>{\vspace{0.02cm}}
+        \only<1>{\textbf{Approach:} a ``high-level test implementation choice''
+            \citep[p.~10]{IEEE2022} used to ``pick the particular test case
+            values'' \citeyearpar[p.~465]{IEEE2017}}
+        \only<2>{\textbf{Level:} a stage of testing with ``particular
+            objectives and \dots{} risks'', each performed in sequence
+            (\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021})}
+        \only<3>{\textbf{Practice:} a ``conceptual framework that can be applied
+            to \dots{} [a] test process to facilitate testing''
+            (\citealp[p.~14]{IEEE2022}; \citeyear[p.~471]{IEEE2017})}
+        \only<4>{\textbf{Technique:} a ``defined'' and ``systematic''
+            \citep[p.~464]{IEEE2017} ``procedure used to create or select a test
+            model, identify test coverage items, and derive corresponding test cases''
+            \citeyearpar[p.~11]{IEEE2022}}
+        \only<5>{\textbf{Type:} ``Testing that is focused on specific quality
+            characteristics'' (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021};
+            \citeyear[p.~473]{IEEE2017})}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}[t]{Methodology}
+    \framesubtitle{Graph Notation}
+    \vspace{-0.925cm}
+    \centering
+    \only<1>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels5.pdf}}
+    \only<2>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels6.pdf}}
+    \only<3>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels7.pdf}}
+
+    \begin{minipage}{0.98\textwidth}
+        \centering
+        % For spacing issues
+        \only<1>{\vspace{1.6cm}}
+        \only<2>{\vspace{-2.2cm}}
+        \only<3>{\vspace{-1.2cm}}
+        \only<1>{Arrows point from a \emph{child} node to a \emph{parent} node.}
+        \only<2>{Lines without arrowheads connect \emph{synonyms}.}
+        \only<3>{Dashed lines indicate a relationship is \emph{implicit}.}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}[t]{Methodology}
+    \framesubtitle{Graph Notation}
+    \begin{columns}[T]
+        \begin{column}{.5\textwidth}
+            \vspace{-0.75cm}
+            \centering
+            \includegraphics[width=\linewidth]{assets/graphs/manual/catRels8.pdf}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \vspace{0.75cm}
+            Dashed outlines indicate a term is \emph{implied}.\\
+            \vspace{2.5cm}
+            Dotted outlines indicate a term is a \emph{synonym} to more than one term.
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Graph of Test Approaches}
+    \pause \large \centering \texttt{! Dimension too large.}
+    % \includegraphics[width=0.75\textwidth, height=0.75\textheight,
+    %     keepaspectratio]{assets/graphs/approachGraph.pdf}
+\end{frame}
+
+\begin{frame}{Graph of Test Levels}
+    \includegraphics[width=\textwidth]{assets/graphs/levelGraph.pdf}
+\end{frame}
+
+\begin{frame}{Graph of Test Practices}
+    \includegraphics[width=\textwidth]{assets/graphs/practiceGraph.pdf}
+\end{frame}
+
+\begin{frame}{Graph of Test Techniques}
+    \includegraphics[width=\textwidth]{assets/graphs/techniqueGraph.pdf}
+\end{frame}
+
+\begin{frame}{Graph of Test Types}
+    \includegraphics[width=\textwidth]{assets/graphs/typeGraph.pdf}
+\end{frame}
+
+\begin{frame}[t]{Methodology}
+    \framesubtitle{Graph Notation}
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.65\textheight]{assets/images/test approach choices}
+        \caption{\tiny \citep[Fig.~2]{IEEE2022}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Methodology}
+    \framesubtitle{Graph Notation}
+    \begin{columns}[c]
+        \begin{column}{.4\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{assets/images/test approach static testing}
+                \caption{\tiny Adapted from \citep[Fig.~2]{IEEE2022}}
+            \end{figure}
+        \end{column}
+        \begin{column}{.6\textwidth}
+            \begin{itemize}
+                \item \pause Quite distinct but not necessarily orthogonal
+                \item \pause When considering static testing in isolation,
+                      related \emph{dynamic approaches} have gray backgrounds
+
+                      \vspace{-0.5cm}
+                      \includegraphics[width=\linewidth]{assets/graphs/manual/catRels9.pdf}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Graph of \emph{Static} Test Approaches}
+    \includegraphics[width=\textwidth]{assets/graphs/staticGraph.pdf}
+\end{frame}
+
+\section{Discrepancies}
+\begin{frame}{Automated Discrepancies}
+    \begin{itemize}
+        \item Some terms are given as a synonym to two (or more) disjoint,
+              unrelated terms, making the relation between the given synonyms
+              ambiguous \pause
+        \item These are included in generated graphs automatically
+    \end{itemize}
+    \vspace{-0.5cm}
+    \begin{columns}[c]
+        \begin{column}{.55\textwidth}
+            \small
+            \begin{table}[hbtp!]
+                \centering
+                \begin{tabular}{ll} \hline
+                    Name & Synonym(s)                            \\ \hline
+                    E    & F (Author, 0000; implied by 0001)     \\
+                    G    & F (Author, 0002), H (implied by 0000) \\
+                    H    & X                                     \\ \hline
+                \end{tabular}
+            \end{table}
+        \end{column}
+        \begin{column}{.4\textwidth}
+            \includegraphics[width=\textwidth]{assets/graphs/SynExampleGlossaryGraph.pdf}
+        \end{column}
+    \end{columns} \pause
+    \vspace{-0.25cm}
+\end{frame}
+
+\begin{frame}{Automated Discrepancies}
+    Prominent examples of these ``multi-synonyms'': \vspace{0.25cm}
+    \begin{enumerate}
+        \item \textbf{Invalid Testing:} \hfill \textbf{Source(s)}
+              \begin{itemize}
+                  \item Error Tolerance Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
+                  \item Negative Testing {\hfill \tiny \citepISTQB{}}
+              \end{itemize} \pause
+        \item \textbf{Soak Testing:}
+              \begin{itemize}
+                  \item Endurance Testing {\hfill \tiny \citep[p.~39]{IEEE2021}}
+                  \item Reliability Testing {\hfill \tiny (\citealp[Tab.~2]{Gerrard2000a};
+                                \citeyear[Tab.~1,~p.~26]{Gerrard2000b})}
+              \end{itemize} \pause
+        \item \textbf{Link Testing:}
+              \begin{itemize}
+                  \item Branch Testing {\hfill \tiny (implied by \citealp[p.~24]{IEEE2021})}
+                  \item Component Integration Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
+                  \item Integration Testing {\hfill \tiny (implied by \citealp[p.~13]{Gerrard2000a})}
+              \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+%   \begin{figure}
+%       %   \vspace{-1mm}
+%       \includegraphics[width=.8\textwidth]{assets/stable.png}
+%       %   \vspace{-3mm}
+%       \caption{Contents of \texttt{stable}}
+%       \vspace{-1mm}
+%   \end{figure}
+
+%   \lstinputlisting[
+%       title=An example log,
+%       captionpos=b,
+%       language={},
+%       basicstyle=\tiny, % TODO: reduce font size?
+%       breakatwhitespace=true,
+%       showstringspaces=false
+%   ]{assets/log.txt}
+
+% \onslide<7-|handout:1>\begin{block}{}
+%     {"The information you have should be just as useful for generating
+%         tests as it should be for manually running them."}
+%     \vspace{3mm}
+%     \hspace\fill{\small--- Dr.~Jacques Carette}
+% \end{block}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ACKNOWLEDGEMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+    \frametitle{Acknowledgment}
+
+    \begin{itemize}
+        \item Dr.~Smith and Dr.~Carette have been great supervisors in the
+              past and have, both then and now, provided me with valuable guidance
+              and feedback
+              \begin{itemize}
+                  \item They have helped me refine the scope of this project
+                  \item Dr.~Smith first suggested generating test cases back in 2020!
+              \end{itemize}
+        \item<2-> The format of this presentation was \emph{heavily} based on
+              a previous presentation by Jason Balaci, who also provided a
+              great thesis template
+        \item<3-> The past and current Drasil team have created a truly amazing
+              framework!
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A FINAL THANK YOU
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+    \center
+    \huge{Thank you!}\\
+    \normalsize{Questions?}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% From https://tex.stackexchange.com/a/457255/192195
+\setbeamertemplate{page number in head/foot}{}
+
+\begin{frame}[allowframebreaks,noframenumbering]
+    \frametitle{References}
+
+    \bibliography{references,seminar_images}
+\end{frame}
+
+\end{document}

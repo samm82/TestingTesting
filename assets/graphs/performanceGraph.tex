@@ -12,58 +12,87 @@ rankdir=BT;
 start [style="invis"];
 
 AvailabilityTesting [label=<Availability<br/>Testing>];
+BackupandRecoveryTesting [label=<Backup<br/>and<br/>Recovery<br/>Testing>];
+BackupRecoveryTesting [label=<Backup/Recovery<br/>Testing>];
 CapacityTesting [label=<Capacity<br/>Testing>];
-ConcurrencyTesting [label=<Concurrency<br/>Testing>];
+ConcurrencyTesting [label=<Concurrency<br/>Testing>,color=gray];
+DisasterRecoveryTesting [label=<Disaster/Recovery<br/>Testing>];
 EfficiencyTesting [label=<Efficiency<br/>Testing>];
-ElasticityTesting [label=<Elasticity<br/>Testing>];
+ElasticityTesting [label=<Elasticity<br/>Testing>,color=gray];
 EnduranceTesting [label=<Endurance<br/>Testing>];
+FailoverTesting [label=<Failover<br/>Testing>,color=gray];
+FailoverRecoveryTesting [label=<Failover/Recovery<br/>Testing>];
+FailureToleranceTesting [label=<Failure<br/>Tolerance<br/>Testing>];
+FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
 LoadTesting [label=<Load<br/>Testing>];
 MemoryManagementTesting [label=<Memory<br/>Management<br/>Testing>];
 PerformanceEfficiencyTesting [label=<Performance<br/>Efficiency<br/>Testing>];
 PerformanceTesting [label=<Performance<br/>Testing>];
 PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
 RecoverabilityTesting [label=<Recoverability<br/>Testing>];
+RecoveryTesting [label=<Recovery<br/>Testing>];
 ReliabilityTesting [label=<Reliability<br/>Testing>];
 ResourceUtilizationTesting [label=<Resource<br/>Utilization<br/>Testing>];
-ResponseTimeTesting [label=<Response-Time<br/>Testing>];
+ResponseTimeTesting [label=<Response-Time<br/>Testing>,color=gray];
 ScalabilityTesting [label=<Scalability<br/>Testing>];
 StressTesting [label=<Stress<br/>Testing>];
 TransactionFlowTesting [label=<Transaction<br/>Flow<br/>Testing>];
+UsabilityTesting [label=<Usability<br/>Testing>];
 VolumeTesting [label=<Volume<br/>Testing>];
 
 SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
 
+BackupandRecoveryTesting -> BackupRecoveryTesting[dir=none,style="dashed",color="green"];
 CapacityTesting -> ScalabilityTesting[dir=none,color="green"];
 EnduranceTesting -> SoakTesting[dir=none,color="green"];
 ReliabilityTesting -> SoakTesting[dir=none];
+FailoverTesting -> FailoverRecoveryTesting[dir=none,style="dashed",color="blue"];
 PerformanceTesting -> PerformancerelatedTesting[dir=none];
+RecoverabilityTesting -> RecoveryTesting[dir=none];
 
 AvailabilityTesting -> ReliabilityTesting[color="green"];
+AvailabilityTesting -> DisasterRecoveryTesting;
+BackupandRecoveryTesting -> ReliabilityTesting[color="green"];
+BackupandRecoveryTesting -> PerformanceTesting[style="dashed"];
+BackupRecoveryTesting -> DisasterRecoveryTesting[color="green"];
 CapacityTesting -> PerformanceEfficiencyTesting[color="green"];
 CapacityTesting -> PerformancerelatedTesting[color="green"];
 CapacityTesting -> PerformanceTesting[color="blue"];
 ConcurrencyTesting -> PerformanceTesting;
+DisasterRecoveryTesting -> FaultToleranceTesting[color="green"];
+DisasterRecoveryTesting -> RecoverabilityTesting[color="green"];
 ElasticityTesting -> MemoryManagementTesting[color="blue"];
 ElasticityTesting -> ResourceUtilizationTesting[color="blue"];
-ElasticityTesting -> StressTesting;
+ElasticityTesting -> StressTesting[color="gray"];
 EnduranceTesting -> PerformancerelatedTesting[color="green"];
 EnduranceTesting -> PerformanceEfficiencyTesting[color="green"];
 EnduranceTesting -> ReliabilityTesting[color="blue"];
+FailoverTesting -> FailureToleranceTesting[style="dashed",color="blue"];
+FailoverRecoveryTesting -> DisasterRecoveryTesting[color="green"];
+FaultToleranceTesting -> ReliabilityTesting[color="green"];
+FaultToleranceTesting -> AvailabilityTesting[color="green"];
 LoadTesting -> PerformancerelatedTesting[color="green"];
 LoadTesting -> PerformanceTesting[color="green"];
 LoadTesting -> ReliabilityTesting[color="green"];
 LoadTesting -> PerformanceEfficiencyTesting[color="green"];
 LoadTesting -> CapacityTesting[color="blue"];
 MemoryManagementTesting -> PerformancerelatedTesting[color="green"];
-MemoryManagementTesting -> ResourceUtilizationTesting;
+MemoryManagementTesting -> ResourceUtilizationTesting[color="gray"];
 PerformanceEfficiencyTesting -> ReliabilityTesting[color="green"];
 PerformanceEfficiencyTesting -> PerformancerelatedTesting[color="green"];
 PerformanceEfficiencyTesting -> PerformanceTesting[style="dashed",color="green"];
 PerformanceEfficiencyTesting -> EfficiencyTesting[style="dashed",color="green"];
 PerformanceTesting -> PerformancerelatedTesting[color="green"];
+PerformanceTesting -> PerformanceTesting;
 RecoverabilityTesting -> ReliabilityTesting[color="green"];
+RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
+RecoveryTesting -> PerformancerelatedTesting[color="green"];
+RecoveryTesting -> ReliabilityTesting[color="green"];
+RecoveryTesting -> AvailabilityTesting[color="green"];
+RecoveryTesting -> FaultToleranceTesting[color="blue"];
 ReliabilityTesting -> PerformanceTesting;
 ResourceUtilizationTesting -> PerformanceEfficiencyTesting[color="green"];
+ResourceUtilizationTesting -> PerformanceTesting[color="maroon"];
 ResourceUtilizationTesting -> EfficiencyTesting[style="dashed"];
 ResponseTimeTesting -> PerformancerelatedTesting[color="green"];
 ResponseTimeTesting -> PerformanceTesting[color="blue"];
@@ -79,10 +108,16 @@ StressTesting -> PerformancerelatedTesting[color="green"];
 StressTesting -> PerformanceEfficiencyTesting[color="green"];
 StressTesting -> PerformanceTesting[color="blue"];
 StressTesting -> CapacityTesting[color="blue"];
+UsabilityTesting -> UsabilityTesting;
 VolumeTesting -> PerformancerelatedTesting[color="green"];
 VolumeTesting -> PerformanceEfficiencyTesting[color="green"];
 VolumeTesting -> CapacityTesting[color="blue"];
 VolumeTesting -> CapacityTesting[style="dashed",color="green"];
+{
+rank=same
+BackupandRecoveryTesting
+BackupRecoveryTesting
+}
 {
 rank=same
 CapacityTesting
@@ -98,13 +133,22 @@ rank=same
 ReliabilityTesting
 SoakTesting
 }
+{
+rank=same
+FailoverTesting
+FailoverRecoveryTesting
+}
+{
+rank=same
+RecoverabilityTesting
+RecoveryTesting
+}
 
 
 subgraph cluster_legend {
     label="Legend";
     labelloc="b";
     fontsize="48pt"
-    rankdir=BT
     {
         rank=same
         chd [label="Child"];
@@ -130,6 +174,24 @@ subgraph cluster_legend {
         syn5 [label=<Term>]
         syn3 -> syn4 -> syn5 [dir=none]
     }
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
+}
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=maroon, label=<From Textbooks>]
+src7 [style=invis];
+src8 [style=invis];
+src7 -> src8 [color=gray, label=<From Inferences>]
+}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par
@@ -141,6 +203,13 @@ syn5 -> imp4
 syn3 -> imp1
 syn4 -> imp2
 syn5 -> imp3
+src1 -> syn3
+src2 -> syn4
+src3 -> syn5
+src5 -> src1
+src6 -> src2
+src7 -> src3
+src8 -> src4
 }
 
 // Connect the dummy node to the first node of the legend

@@ -1,0 +1,82 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+%Template version as of 6/27/2024
+
+\input{paper_preamble}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{\thesisTitle{}\\
+    % Sub-titles should not be used!
+    \ifblind{\thanks{Funding information suppressed.\vspace{4mm}}}
+    {\thanks{Funding for this work was provided by the Ontario Graduate
+            Scholarship and McMaster University.}
+    }
+}
+
+\author{
+    \ifblind{Author details suppressed\vspace{18mm}}
+    {\IEEEauthorblockN{Samuel J. Crawford\IEEEauthorrefmark{1},
+            Spencer Smith\IEEEauthorrefmark{1}, Jacques Carette\IEEEauthorrefmark{1}}
+        \IEEEauthorblockA{\IEEEauthorrefmark{1}Department of Computing and Software \\
+            McMaster University\\
+            Hamilton, Canada \\
+            \{crawfs1, smiths, carette\}@mcmaster.ca}}}
+
+% % Previous version (weird formatting)
+% \newcommand{\deptCAS}[1]{
+%     \IEEEauthorblockA{\textit{Department of Computing and Software} \\
+%         \textit{McMaster University}\\
+%         Hamilton, Canada \\
+%         #1@mcmaster.ca}}
+
+% \author{\IEEEauthorblockN{Samuel~J.~Crawford}
+%     \deptCAS{crawfs1}
+%     \and
+%     \IEEEauthorblockN{Spencer~Smith}
+%     \deptCAS{smiths}
+%     \and
+%     \IEEEauthorblockN{Jacques~Carette}
+%     \deptCAS{carette}
+% }
+
+\maketitle
+
+\begin{abstract}%
+    \input{front/abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+    Software testing, terminology, taxonomy, literature review, test approaches
+\end{IEEEkeywords}
+
+\input{chapters/01_intro}
+\input{chapters/02_scope}
+\input{chapters/03_methodology}
+\input{chapters/05_discrepancies}
+\input{chapters/06_recommendations}
+
+\section{Conclusion}
+
+While a good starting point, the current literature on software testing has
+much room to grow. The many discrepancies create unnecessary barriers to
+software testing. While there is merit to allowing the state-of-the-practice
+terminology to descriptively guide how terminology is used, there
+may be a need to prescriptively structure terminology to intentionally
+differentiate between and organize various test approaches. Future work in this
+area will continue to investigate the current use of terminology, in
+particular \nameref{undef-terms}, determine if IEEE's current
+\nameref{categories-observ} are sufficient, and rationalize the definitions of
+and relations between terms.
+
+\section*{Acknowledgment}
+\input{front/acknowledgements}
+
+\newpage
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,references}
+
+\end{document}

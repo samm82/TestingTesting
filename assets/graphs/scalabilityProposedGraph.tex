@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{scalabilityProposedGraph}{
+rankdir=BT;
+
+CapacityTesting [label=<Capacity<br/>Testing>];
+EfficiencyTesting [label=<Efficiency<br/>Testing>];
+ElasticityTesting [label=<Elasticity<br/>Testing>,color=gray];
+LoadTesting [label=<Load<br/>Testing>];
+MemoryManagementTesting [label=<Memory<br/>Management<br/>Testing>];
+PerformanceEfficiencyTesting [label=<Performance<br/>Efficiency<br/>Testing>];
+PerformanceTesting [label=<Performance<br/>Testing>];
+ResourceUtilizationTesting [label=<Resource<br/>Utilization<br/>Testing>];
+ScalabilityTesting [label=<Scalability<br/>Testing>];
+StressTesting [label=<Stress<br/>Testing>];
+TransactionFlowTesting [label=<Transaction<br/>Flow<br/>Testing>];
+VolumeTesting [label=<Volume<br/>Testing>];
+
+
+
+CapacityTesting -> PerformanceEfficiencyTesting[color="green"];
+CapacityTesting -> PerformanceTesting[color="blue"];
+ElasticityTesting -> MemoryManagementTesting[color="blue"];
+ElasticityTesting -> ResourceUtilizationTesting[color="blue"];
+ElasticityTesting -> StressTesting[color="gray"];
+LoadTesting -> PerformanceTesting[color="green"];
+LoadTesting -> PerformanceEfficiencyTesting[color="green"];
+LoadTesting -> CapacityTesting[color="blue"];
+MemoryManagementTesting -> ResourceUtilizationTesting[color="gray"];
+PerformanceEfficiencyTesting -> PerformanceTesting[style="dashed",color="green"];
+PerformanceEfficiencyTesting -> EfficiencyTesting[style="dashed",color="green"];
+PerformanceTesting -> PerformanceTesting;
+ResourceUtilizationTesting -> PerformanceEfficiencyTesting[color="green"];
+ResourceUtilizationTesting -> PerformanceTesting[color="maroon"];
+ResourceUtilizationTesting -> EfficiencyTesting[style="dashed"];
+ScalabilityTesting -> LoadTesting[color="blue"];
+ScalabilityTesting -> VolumeTesting[color="blue"];
+ScalabilityTesting -> TransactionFlowTesting[style="dashed",color="blue"];
+ScalabilityTesting -> ElasticityTesting[style="dashed",color="blue"];
+ScalabilityTesting -> PerformanceTesting;
+ScalabilityTesting -> EfficiencyTesting;
+ScalabilityTesting -> PerformanceEfficiencyTesting[style="dashed"];
+ScalabilityTesting -> MemoryManagementTesting[style="dashed",color="green"];
+StressTesting -> PerformanceEfficiencyTesting[color="green"];
+StressTesting -> PerformanceTesting[color="blue"];
+StressTesting -> CapacityTesting[color="blue"];
+VolumeTesting -> PerformanceEfficiencyTesting[color="green"];
+VolumeTesting -> CapacityTesting[color="blue"];
+VolumeTesting -> CapacityTesting[style="dashed",color="green"];
+}
+\end{document}

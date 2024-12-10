@@ -1,71 +1,32 @@
 %------------------------------------------------------------------------------
+% Macros used for paper
+%------------------------------------------------------------------------------
+
+\input{common_macros}
+
+%------------------------------------------------------------------------------
 % Question-directed Writing
 %------------------------------------------------------------------------------
 
 \ifshowwritingdirectives
-  \newenvironment{writingdirectives}{\begin{mdwritingdirectives}\centering\textbf{Writing Directives}\begin{itemize}}{\end{itemize}\end{mdwritingdirectives}}
+    \newenvironment{writingdirectives}{\begin{mdwritingdirectives}\centering\textbf{Writing Directives}\begin{itemize}}{\end{itemize}\end{mdwritingdirectives}}
 \else
-  \excludecomment{writingdirectives}
+    \excludecomment{writingdirectives}
 \fi
-
-%------------------------------------------------------------------------------
-% Spacing Options
-%------------------------------------------------------------------------------
-
-\newcommand{\thesisForceSingleSpacing}{\singlespacing}
-\newcommand{\thesisForceDoubleSpacing}{\doublespacing}
 
 %------------------------------------------------------------------------------
 % Footnotes that only show when "compiling for printing."
 %------------------------------------------------------------------------------
 
 \ifcompilingforprinting
-  \newcommand{\printOnlyFootnote}[1]{\footnote{#1}}
-  \newcommand{\printOnlyFootnoteText}[1]{\footnotetext{#1}}
-  \newcommand{\printOnlyFootnoteMark}{\footnotemark}
+    \newcommand{\printOnlyFootnote}[1]{\footnote{#1}}
+    \newcommand{\printOnlyFootnoteText}[1]{\footnotetext{#1}}
+    \newcommand{\printOnlyFootnoteMark}{\footnotemark}
 \else
-  \newcommand{\printOnlyFootnote}[1]{}
-  \newcommand{\printOnlyFootnoteText}[1]{}
-  \newcommand{\printOnlyFootnoteMark}{}
+    \newcommand{\printOnlyFootnote}[1]{}
+    \newcommand{\printOnlyFootnoteText}[1]{}
+    \newcommand{\printOnlyFootnoteMark}{}
 \fi
-
-%------------------------------------------------------------------------------
-% Portable HREFs
-%------------------------------------------------------------------------------
-
-% Common variant
-\newcommand{\porthref}[2]{\href{#2}{#1}\printOnlyFootnote{\url{#2}}}
-
-% Custom URLs
-\newcommand{\porthreft}[3]{\href{#3}{#1}\printOnlyFootnote{\href{#3}{#2}}}
-% Inside of some environments, footnote marks aren't registered properly, so we
-% need to manually write the "text" part
-\newcommand{\porthreftm}[2]{\href{#2}{#1\printOnlyFootnoteMark}}
-
-%------------------------------------------------------------------------------
-% TODOs
-%------------------------------------------------------------------------------
-
-% Generic Inlined TODOs
-\newcommand{\intodo}[1]{\todo[inline]{#1}}
-
-% Unimportant TODOs for "later" (i.e., finishing touches or changes immediately before submission)
-\newcommand{\latertodo}[1]{\todo[backgroundcolor=Cyan]{\textit{Later}: #1}}
-
-% "Important" TODOs
-\newcommand{\imptodo}[1]{\todo[inline,backgroundcolor=Red]{\textbf{Important}: #1}}
-
-% "Easy" TODOs
-\newcommand{\easytodo}[1]{\todo[inline,backgroundcolor=SeaGreen]{\textit{Easy}: #1}}
-\newcommand{\eztodo}[1]{\easytodo{#1}}
-
-% "Tedious" TODOs
-\newcommand{\tedioustodo}[1]{\todo[inline,backgroundcolor=PineGreen]{\textit{Needs time}: #1}}
-
-% "Question" TODO Notes
-\newcounter{todonoteQuestionsCtr}
-\newcommand{\questiontodo}[1]{\stepcounter{todonoteQuestionsCtr}\todo[backgroundcolor=Lavender]{\textbf{Q \#\thetodonoteQuestionsCtr{}}: #1}}
-\newcommand{\qtodo}[1]{\questiontodo{#1}}
 
 %------------------------------------------------------------------------------
 % Code Snippets
@@ -94,19 +55,3 @@
 
 \newcommand{\inlineHs}[1]{\mintinline{haskell}|#1|}
 \newcommand{\inlineCode}[2]{\mintinline{#1}|#2|}
-
-%------------------------------------------------------------------------------
-% Citations
-%------------------------------------------------------------------------------
-
-\newcommand{\exhInfCite}{(\citealp[p.~5-5]{SWEBOK2024}; \citealp[p.~4]{IEEE2022};
-  \citealp[p.~421]{vanVliet2000}; \citealp[pp.~439, 461]{PetersAndPedrycz2000})}
-
-%------------------------------------------------------------------------------
-% Link to Drasil issue
-%------------------------------------------------------------------------------
-
-\newcommand{\issueref}[1]{\href{https://github.com/JacquesCarette/Drasil/issues/#1}{\##1}}
-\newcommand{\pullref}[1]{\href{https://github.com/JacquesCarette/Drasil/pull/#1}{\##1}}
-\newcommand{\thesisissueref}[1]{\href{https://github.com/samm82/TestGen-Thesis/issues/#1}{\##1}}
-

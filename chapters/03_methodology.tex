@@ -1,0 +1,509 @@
+\section{Methodology}
+\label{methodology}
+
+\subsection{Sources}
+\label{sources}
+As there is no single authoritative source on software testing terminology,
+we need to look at many to see how various terms are used in practice.
+% Unfortunately, this brings to light a variety of discrepancies.
+Starting from some set of sources, we then use
+``snowball sampling'', a ``method of \dots{} sample selection \dots{} used to
+locate hidden populations'' \citep{Johnson2014}, to gather further sources
+(see \Cref{undef-terms}). Sources with a similar degree of
+``trustworthiness'' are grouped into categories; sources that are more
+``trustworthy'':
+\begin{enumerate}
+    \item have gone through a peer-review process,
+    \item are written by numerous, well-respected authors,
+    \item are informed by many sources, and
+    \item are accepted and used in the field of software.
+\end{enumerate}
+
+\ifnotpaper\else
+    % Moved here to display nicely; duplicated to display in one column
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \pie[sum=auto, after number=, text=legend, thick,
+                scale=\ifnotpaper0.7\else0.5\fi,
+                every label/.style={align=left, scale=0.7}]
+            {\stdSources{3}/\stds{},
+                \metaSources{3}/\metas{},
+                \textSources{3}/\texts{},
+                \paperSources{3}/\papers{}}
+        \end{tikzpicture}
+        \caption{Summary of how many sources comprise each source category.}
+        \label{fig:sourceSummary}
+    \end{figure}
+\fi
+
+We therefore create the following categories, given in order of descending
+trustworthiness: established standards (\Cref{stds}), ``meta-level''
+collections (\Cref{metas}), textbooks (\Cref{texts}), and papers and other
+documents (\Cref{papers}). \ifnotpaper
+    Additionally, some information is inferred; although these data do not come
+    from the literature, they are given in \Cref{infers} for completeness.
+\fi Each category is given a unique colour in \Cref{fig:recovery-graph-current,%
+    fig:recovery-graph-proposed,fig:scal-graph-current,fig:scal-graph-proposed,%
+    fig:perf-graph} to better visualize the source of information in these
+graphs. A summary of how many sources comprise each category is given in
+\Cref{fig:sourceSummary}.
+
+\subsubsection{\stdSources{1}}
+\label{stds}
+\stdSources{2}
+\begin{itemize}
+    \item Colored \textcolor{green}{green}
+    \item Information on software development and testing from
+          standards bodies \ifnotpaper\else (such as IEEE and ISO)\fi
+    \item Written by reputable organizations for use in software engineering;
+          for example, ``the purpose of the ISO/IEC/IEEE 29119 series is to
+          define an internationally agreed set of standards for software
+          testing that can be used by any organization when performing any form
+          of software testing'' \ifnotpaper(\fi\citealp[p.~vii]{IEEE2022}%
+          \ifnotpaper; similar in \citeyear[p.~ix]{IEEE2016})\fi
+\end{itemize}
+
+\subsubsection{\metaSources{1}}
+\label{metas}
+\metaSources{2}
+\begin{itemize}
+    \item Colored \textcolor{blue}{blue}
+    \item Collections of relevant terminology, such as \acs{istqb}'s glossary
+          \citepISTQB{}, the \acs{swebok} \citep{SWEBOK2024,SWEBOK2014}, and
+          \ifnotpaper \citeauthor{DoğanEtAl2014}\else Doğan et al.\fi's
+          literature review \citeyearpar{DoğanEtAl2014}
+    \item Built up from various sources, including established standards
+          (see \Cref{stds}), and often written
+          by a large organization (such as \acs{istqb}); the \acs{swebok} is
+          ``proposed as a suitable foundation for government licensing, for the
+          regulation of software engineers, and for the development of
+          university curricula in software engineering''
+          \citep[p.~xix]{KanerEtAl2011}
+\end{itemize}
+
+\subsubsection{\textSources{1}}
+\label{texts}
+\textSources{2}
+\begin{itemize}
+    \item Colored \textcolor{Maroon}{maroon}
+    \item Textbooks trusted at McMaster \citep{Patton2006, PetersAndPedrycz2000,
+              vanVliet2000} were the original (albeit ad hoc and arbitrary)
+          starting point
+    \item Written by smaller sets of authors, but with a formal review process
+          before publication
+    \item Used as resources for teaching software engineering and may be used
+          as guides in industry
+\end{itemize}
+
+\subsubsection{\paperSources{1}}
+\label{papers}
+\paperSources{2}
+\begin{itemize}
+    \item Colored black
+    \item Mainly consists of academic papers: journal articles, conference
+          papers, reports \citep{Kam2008,Gerrard2000a,Gerrard2000b}, and a
+          thesis \citep{Bas2024}
+          % \item Includes less-formal classifications (such as
+          %       \citep{KuļešovsEtAl2013})
+    \item Written by much smaller sets of authors with unknown peer review
+          processes
+    \item Much less widespread than other categories of sources
+    \item Many of these sources were investigated to ``fill in''
+          missing definitions (see \Cref{undef-terms})
+    \item Also included (for brevity) are some less-than-academic sources to
+          investigate how terms are used in practice, such as websites
+          \citep{LambdaTest2024,Pandey2023}, a booklet \citep{SPICE2022},
+          and \ifnotpaper \else ChatGPT \fi \citet{ChatGPT2024} (with claims
+          supported by \citet{RusEtAl2008})
+\end{itemize}
+
+\ifnotpaper
+    % Moved earlier in paper to display nicely
+    \begin{figure}[hbtp!]
+        \centering
+        \begin{tikzpicture}
+            \pie[sum=auto, after number=, text=legend, thick,
+                scale=\ifnotpaper0.7\else0.5\fi,
+                every label/.style={align=left, scale=0.7}]
+            {\stdSources{3}/\stds{},
+                \metaSources{3}/\metas{},
+                \textSources{3}/\texts{},
+                \paperSources{3}/\papers{}}
+        \end{tikzpicture}
+        \caption{Summary of how many sources comprise each source category.}
+        \label{fig:sourceSummary}
+    \end{figure}
+
+    \subsubsection{Inferences}
+    \label{infers}
+    While not as clear-cut as the other source categories, some information is
+    inferred from the content of other sources. This includes ``surface-level''
+    analysis that follows straightforwardly but isn't explicitly stated.
+    Examples of this are large scale integration testing and legacy system
+    integration testing, described by \citeauthor{Gerrard2000a} in
+    \citeyearpar[p.~30]{Gerrard2000b} and (\citeyear[Tab.~2]{Gerrard2000a};
+    \citeyear[Tab.~1]{Gerrard2000b}), respectively. While he never explicitly
+    says so, it can be inferred that these approaches are children of
+    integration testing and system integration testing, respectively. Inferred
+    relations such as these are colored \textcolor{gray}{gray} and inferred
+    discrepancies are given in \Cref{infer-discreps}.
+\fi
+
+% Moved here to display nicely in paper
+\ifnotpaper\else\ieeeTestTermsTable{}\fi
+
+\subsection{Terminology}
+
+This research was intended to describe the current state of testing
+terminology instead of prematurely applying any classifications to reduce bias.
+Therefore, the notions of test approach categories (\Cref{categories-observ})
+and parent-child relations (\Cref{par-chd-rels})
+arose naturally from the literature. Even though these are ``results'' of this
+research, they are defined here for clarity since they are used throughout this
+thesis. We also define the notion of ``rigidity'' in \Cref{rigidity}.
+
+\subsubsection{Categories of Testing Approaches}
+\label{categories-observ}
+
+Different sources categorize software testing approaches differently\ifnotpaper;
+while it is useful to record and think about these categorizations, following
+one (or more) during the research
+stage could lead to bias and a prescriptive categorization instead of letting
+one emerge descriptively during the analysis stage. Since these categorizations
+are not mutually exclusive, it also means that more than one could be useful
+(both in general and for this research).\par \citet{IEEE2022} \else. For
+example, ISO/IEC and IEEE \cite{IEEE2022} \fi provide the classification of test
+approaches in \Cref{tab:ieeeTestTerms}\ifnotpaper, while other sources
+\citep{BarbosaEtAl2006, SouzaEtAl2017} use alternative categories (see
+\Cref{tab:otherTestTerms}). These will provide other perspectives when
+determining if the categorization in \Cref{tab:ieeeTestTerms} is sufficient.
+Nevertheless, these \else. These \fi categories (``test level'' and ``test
+type'' in particular) seem to be widely used. For example, in addition to the
+IEEE sources (given in \Cref{tab:ieeeTestTerms}), six additional sources give
+unit testing, integration testing, system testing, and acceptance testing as
+examples of test levels \ifnotpaper
+    (\citealp[pp.~5-6 to 5-7]{SWEBOK2024}; \citealpISTQB{};
+    \citealp[p.~218]{KuļešovsEtAl2013}\todo{OG Black, 2009};
+    \citealp[p.~807-808]{Perry2006}; \citealp[pp.~443-445]{PetersAndPedrycz2000};
+    \citealp[pp.~9,~13]{Gerrard2000a})\else
+    \cite{ISTQB}, \cite[pp.~5-6 to 5-7]{SWEBOK2024},
+    \cite[pp.~9,~13]{Gerrard2000a}, \cite[p.~807-808]{Perry2006},
+    \cite[pp.~443-445]{PetersAndPedrycz2000}, \citealp[p.~218]{KuļešovsEtAl2013}%
+    \todo{OG Black, 2009}\fi, although they may use a different term for ``test
+level'' (see \Cref{tab:ieeeTestTerms}). Because of their widespread use and
+their usefulness when focusing on a particular subset of testing, these
+categories are used for now. \ifnotpaper In addition to this categorization, a
+    ``metric'' category was considered\thesisissueref{21,22} but decided to be
+    out of scope for this project, instead being captured by coverage-driven
+    testing (see \Cref{cov-test}) and experience-based testing
+    \citep[p.~34]{IEEE2022}. \fi We did, however, note the potential
+significance of an ``artifact'' category\thesisissueref{44,119,39}, since some
+terms could refer to the application of a test approach and/or the resulting
+document(s). Because of this, a test approach being categorized as a category
+from \Cref{tab:ieeeTestTerms} \emph{and} an artifact is \emph{not} a
+discrepancy\thesisissueref{119}\ifnotpaper\ (and is therefore omitted from
+    \Cref{tab:multiCats})\fi.
+
+One important side effect of the particularity of these terms is that they can
+be ``overloaded''; for example, someone could reasonably yet imprecisely use
+any of these four categories as a synonym for ``approach''. Even the prompt in
+\ifnotpaper \citep[emphasis added]{ChatGPT2024} \else \cite{ChatGPT2024} \fi was
+imprecise, asking for the ``\emph{type} of software testing that focuses on
+looking for bugs where others have already been found.'' Interestingly, ChatGPT
+later ``corrected'' this by calling detect-based testing an ``approach''!
+Because of this, careful consideration needs to be given to discrepancies of
+this nature. For example, \citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}'s
+definition of ``interface testing'' is ``an integration \emph{test type} that is
+concerned with testing \dots{} interfaces'', but since he does not define
+``test type'', it may not have special significance. \ifnotpaper For this
+reason, these ``categorizations'' are marked with a question mark (?)
+and included in \Cref{tab:infMultiCats} instead of in \Cref{tab:multiCats}.
+
+Related testing approaches may be grouped into a ``class'' or ``family'' to
+group those with ``commonalities and well-identified variabilities that can be
+instantiated'', where ``the commonalities are large and the variabilities
+smaller'' \citep{classFamilyDisc}. Examples of these are the classes of
+combinatorial \citep[p.~15]{IEEE2021} and data flow testing \citetext{p.~3} and
+the family of performance-related testing \perfAsFamily{}, and is implied for
+security testing, a test type that consists of ``a number of
+techniques\footnote{This may or may not be \distinctIEEE{technique}}''
+\cite[p.~40]{IEEE2021}. This is explored in more detail in
+\Cref{classFamilyDiscrep}.
+
+It also seems that the categories given in \Cref{tab:ieeeTestTerms} are
+orthogonal. For example, ``a test type can be performed at a single test level
+or across several test levels''
+\ifnotpaper
+    (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021})%
+\else
+    \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}%
+\fi, and ``Keyword-Driven Testing [sic] can be applied at all testing levels
+(e.g. [sic] component testing, system testing) and for various types of testing
+(e.g. [sic] functional testing\footnote{See \Cref{corr-func-test}.}, reliability
+testing)'' \citeyearpar[p.~4]{IEEE2016}. Due to this, a specific
+test approach can be derived by combining test approaches from different
+categories\ifnotpaper; see \Cref{orth-test} for some examples
+of this\fi.
+
+\begin{bigLandscape}
+    \ieeeTestTermsTable{}
+    \newpage
+    \otherTestTermsTable{}
+\end{bigLandscape}
+% These were moved earlier to display nicely in paper
+
+The literature provides many other ways to categorize test approaches. While
+these are less-defined and as such are not used, they are given here for
+completeness. Note that ``there is a lot of overlap between different classes
+of testing'' \citep[p.~8]{Firesmith2015}, meaning that ``one category [of test
+        techniques] might deal with combining two or more techniques''
+\citep[p.~5-10]{SWEBOK2024}. For example, ``performance, load and stress
+testing might considerably overlap in many areas'' \citep[p.~1187]{Moghadam2019}.
+A side effect of this is that it is difficult to ``untangle'' these classes;
+for example, take the following sentence: ``whitebox fuzzing extends dynamic
+test generation based on symbolic execution and constraint solving from unit
+testing to whole-application security testing''
+\citep[p.~23]{GodefroidAndLuchaup2011}!
+
+Despite these challenges, it is useful to understand the differences between
+testing classes because tests from multiple subsets within the same category,
+such as functional and structural, ``use different sources of information and
+have been shown to highlight different problems'' \citep[p.~5-16]{SWEBOK2024}.
+However, some subsets, such as deterministic and random, may have ``conditions
+that make one approach more effective than the other''
+\citep[p.~5-16]{SWEBOK2024}. The following categories may also be more relevant
+in specific situations or to specific teams than the ones given by ISO/IEC and
+IEEE in \Cref{tab:ieeeTestTerms}.
+
+\begin{itemize}
+    \item Visibility of code: black-, white-, or grey-box
+          (specificational/functional, structural, or a mix of the two)
+          (\citealp[p.~8]{IEEE2021}; \citealp[pp.~5-10,~5-16]{SWEBOK2024};
+          \citealp[p.~601, called ``testing approaches'' and (stepwise) code
+              reading replaced ``grey-box testing'']{SharmaEtAl2021};
+          \todo{OG [3, 4, 5, 8]}
+          \citealp[pp.~57-58]{AmmannAndOffutt2017};
+          \citealp[p.~213]{KuļešovsEtAl2013};
+          \citealp[pp.~53,~218]{Patton2006}; \citealp[p.~69]{Perry2006};
+          \citealp[pp.~4-5, called ``testing methods'']{Kam2008})
+    \item Source of information for design: specification, structure, or
+          experience \citep[p.~8]{IEEE2021}
+          \begin{itemize}
+              \item Source of test data: specification-, implementation-,
+                    or error-oriented \citep[p.~440]{PetersAndPedrycz2000}
+          \end{itemize}
+    \item Test case selection process: deterministic or random
+          \citep[p.~5-16]{SWEBOK2024}
+    \item Coverage criteria: input space partitioning, graph coverage, logic
+          coverage, or syntax-based testing \citep[pp.~18-19]{AmmannAndOffutt2017}
+    \item Question: what-, when-, where-, who-, why-, how-, and how-well-based
+          testing; these are then divided into a total of ``16 categories of
+          testing types''\notDefDistinctIEEE{type}
+          \citep[p.~17]{Firesmith2015}
+    \item Execution of code: static or dynamic
+          (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
+          \citealp[p.~53]{Patton2006}); we also consider this categorization
+          meaningful (see \Cref{static-test})
+    \item Goal of testing: verification or validation
+          (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[pp.~69-70]{Perry2006})
+    \item Property of code \citep[p.~213]{KuļešovsEtAl2013} or test target
+          \citep[pp.~4-5]{Kam2008}: functional or non-functional
+    \item Human involvement: manual or automated
+          \citep[p.~214]{KuļešovsEtAl2013}
+    \item Structuredness: scripted or exploratory
+          \citep[p.~214]{KuļešovsEtAl2013}
+    \item Coverage requirement: data or control flow \citep[pp.~4-5]{Kam2008}
+    \item Test factor: (``attributes of the software that, if they are wanted,
+          pose a risk to the success of the software''; also called ``quality
+          factor'' or ``quality attribute'' \citep[p.~40]{Perry2006}):
+          correctness, file integrity, authorization, audit trail, continuity
+          of processing, service levels (e.g., response time), access control,
+          compliance, reliability, ease of use, maintainability, portability,
+          coupling (e.g., with other applications in a given environment),
+          performance, and ease of operation (e.g., documentation, training)
+          \citep[pp.~40-41]{Perry2006}
+    \item Adequacy criterion: coverage-, fault-, or error-based
+          (``based on knowledge of the typical errors that people make'')
+          \citep[pp.~398-399]{vanVliet2000}
+    \item Priority\footnote{In the context of testing e-business projects.}:
+          smoke, usability, performance, or functionality testing
+          \citep[p.~12]{Gerrard2000a}
+    \item Category of test ``type''\gerrardDistinctIEEE{type}: static testing,
+          test browsing, functional testing, non-functional testing, or large
+          scale integration (testing) \citep[p.~12]{Gerrard2000a}
+    \item Purpose: correctness, performance, reliability, or security
+          \citep{Pan1999}
+\end{itemize}
+
+Additionally, Engström ``investigated classifications of research''
+\citep[p.~1]{engström_mapping_2015} on the following four testing techniques.
+``They are neither orthogonal nor necessarily useful for the purpose of
+identifying relevant evaluation points from a problem perspective'' (p.~1), so
+it is unclear why they were included at all:
+
+\begin{itemize}
+    \item \textbf{Combinatorial testing:} how the system under test is
+          modelled, ``which combination strategies are used to generate test
+          suites and how test cases are prioritized'' (pp.~1-2)
+    \item \textbf{Model-based testing:} the information represented and
+          described by the test model (p.~2)
+    \item \textbf{Search-based testing:} ``how techniques%
+          \notDefDistinctIEEE{technique} had been empirically evaluated
+          (i.e. objective and context)'' (p.~2)
+    \item \textbf{Unit testing:} ``source of information (e.g. code,
+          specifications or testers intuition)'' (p.~2)
+\end{itemize}
+\fi
+
+\subsubsection{Parent-Child Relations}
+\label{par-chd-rels}
+Many test approaches are multi-faceted and can be ``specialized'' into others,
+such as performance-related testing (see \Cref{perf-test-rec}). These
+``specializations'' will be referred to as ``children'' or ``sub-approaches''
+of the multi-faceted ``parent''. This nomenclature also extends to other
+categories given in \Cref{categories-observ,tab:ieeeTestTerms}, such as
+``sub-type''. One example of these specializations is the ``stronger than''
+relation (also called the ``subsumes'' relation) described by
+\citet[p.~432]{vanVliet2000}: when comparing adequacy criteria (which
+``specif[y] requirements for testing'' \citetext{p.~402}), ``criterion X
+is stronger than criterion Y if, for all programs P and all test sets T,
+X-adequacy implies Y-adequacy''. While this relation only ``compares the
+thoroughness of test techniques, not their ability to detect faults''
+\citetext{p.~434}, it is sufficient to consider one a child of the other.
+
+\subsubsection{Rigidity}
+\label{rigidity}
+
+Since there is a considerable degree of nuance introduced by the use of natural
+language, not all discrepancies are equal! To capture this nuance and provide a
+more complete picture, we make a distinction between explicit and implicit
+discrepancies, such as in \Cref{tab:discrepClss,tab:discrepCats}. A piece of
+information is ``implicit'' if:
+\begin{itemize}
+    \item it is not directly given by a source but seems to be implied, and/or
+    \item it is only true some of the time (e.g., under certain conditions).
+\end{itemize}
+Discrepancies based on implicit information are themselves implicit. These are
+automatically detected when generating graphs and analyzing discrepancies
+(see \ifnotpaper \Cref{graph-gen,discrep-analysis}, respectively\else
+    \Cref{tools}\fi) by looking for indicators
+of uncertainty, such as question marks, ``~(Testing)'' (which indicates that a
+test approach isn't explicitly denoted as such; note the inclusion of the
+space), and the keywords ``implied'', ``inferred'', ``can be'', ``should be'',
+``ideally'', ``usually'', ``most'', ``likely'', ``often'', ``if'', and ``although''
+\seeSrcCode{55f4bf2}{helpers}{16}{32}. These words were used when creating
+the glossaries to capture varying degrees of nuance, such as when a test
+approach ``can be'' a child of another or is a synonym of another ``most of the
+time'', but isn't always. As an example, \Cref{tab:parSyns} contains relations
+that are explicit, implicit, and both; implicit relations are marked by the
+phrase ``implied by''.
+
+\subsection{Procedure}
+
+To track terminology used in the literature, we build a glossary of test
+approaches, including the term itself, its definition, and
+any synonyms or parents (see \Cref{par-chd-rels}). Any other notes, such as
+uncertainties, prerequisites, and other resources to investigate, are also
+recorded. If an approach is assigned a category, such as those found in
+\Cref{tab:ieeeTestTerms} and some outliers (e.g., ``artifact''%
+\thesisissueref{39,44}), this is also tracked for future investigation.
+
+Most sources are analyzed in their entirety to systematically extract
+terminology, especially established standards (see \Cref{stds}). Sources that
+were only partially investigated include those chosen for a specific area of
+interest or based on a test approach that was determined to be out-of-scope,
+such as some sources given in \Cref{undef-terms}.
+Heuristics are used to guide this process, by investigating:
+
+\begin{itemize}
+    \item glossaries and lists of terms,
+    \item testing-related terms (e.g., terms containing ``test(ing)'',
+          \ifnotpaper ``review(s)'', ``audit(s)'', \fi
+          ``validation'', or ``verification''),
+    \item terms that had emerged as part of already-discovered
+          testing approaches, \emph{especially} those that were ambiguous
+          or prompted further discussion (e.g., terms containing
+          ``performance'', ``recovery'', ``component'', ``bottom-up'',
+          \ifnotpaper ``boundary'', \fi or ``configuration''), and
+    \item terms that implied testing approaches%
+          \ifnotpaper\footnote{
+                  Since these methods for deriving test approaches only arose
+                  as research progressed, some examples would have been missed
+                  during the first pass(es) of resources investigated earlier
+                  in the process. While reiterating over them would be ideal,
+                  this may not be possible due to time constraints.
+              } (see \Cref{derived-tests})\fi.
+\end{itemize}
+
+When terms are given similar definitions by multiple sources, the clearest and
+most concise version is kept. If definitions from different sources overlap,
+provide different information, or contradict, they are merged to paint a more
+complete picture. When contradictions or other discrepancies (see
+\Cref{discrep}) arise, they are investigated and documented. Any test
+approaches that are mentioned but not defined are added to the glossary to
+indicate they should be investigated further (see \Cref{undef-terms}).
+Similar methodologies are used for tracking software qualities \ifnotpaper (see
+    \Cref{qual-test}) \fi and supplementary terminology that is shared by
+multiple approaches or is too complicated to explain inline; these are tracked
+in separate documents. The name, definition, and synonym(s) of all terms are
+tracked, as well as any precedence for a related test type for a given software
+quality.
+
+During the first pass of data collection, all software-testing-focused terms
+are included. Some of them are less applicable to test case automation
+\ifnotpaper (such as static testing; see \Cref{static-test}\thesisissueref{39})
+\fi or too broad\ifnotpaper\ (such as attacks; see \Cref{attacks}%
+    \thesisissueref{55})\fi, so they will be omitted during future analysis.
+\ifnotpaper
+    However, some terms came up that seemed to be relevant to
+    testing but were so vague, they didn't provide any new information. These were
+    decided to be not worth tracking\thesisissueref{39,44,28} and are listed below:
+
+    \begin{itemize}
+        \item \textbf{Evaluation:} the ``systematic determination of the extent
+              to which an entity meets its specified criteria''
+              \citep[p.~167]{IEEE2017}
+        \item \textbf{Product Analysis:} the ``process of evaluating a product by
+              manual or automated means to determine if the product has certain
+              characteristics'' \citep[p.~343]{IEEE2017}
+        \item \textbf{Quality Audit:} ``a structured, independent process to
+              determine if project activities comply with organizational and
+              project policies, processes, and procedures'' \citep[p.~361]{IEEE2017}
+              \todo{OG PMBOK}
+        \item \textbf{Software Product Evaluation:} a ``technical operation that
+              consists of producing an assessment of one or more characteristics
+              of a software product according to a specified procedure''
+              \citep[p.~424]{IEEE2017}
+    \end{itemize}
+\fi
+\subsection{Undefined Terms}
+\label{undef-terms}
+
+The search process led to some testing approaches being
+mentioned without definition;
+\citep{IEEE2022} and \citep{Firesmith2015} in particular introduced many.
+Once the standards in \Cref{stds} had been exhausted, we devised a strategy to
+look for sources that explicitly define these terms, consistent with
+our snowballing approach. This uncovers new approaches, both in and out of
+scope (such as \acf{emsec} testing\ifnotpaper, HTML testing,\fi\ and aspects
+of orthogonal array testing\ifnotpaper\ and loop testing\fi; see \Cref{scope}).
+
+The following terms (and their respective related terms) were explored
+in the following sources, bringing the number of testing
+approaches from \the\TotalBefore{} to \the\TotalAfter{} and the number of
+\emph{undefined} terms from \the\UndefBefore{} to \the\UndefAfter{} (the
+assumption can be made that about \the\numexpr 100 - 100 * (\UndefAfter -
+\UndefBefore) / (\TotalAfter - \TotalBefore)\relax\% of added terms also
+included a definition):
+
+\input{build/undefTerms}
+
+\ifnotpaper\else
+    \subsection{Tools}  % Part of separate chapter in thesis
+    \label{tools}
+    \graphGenDesc{}
+    % Moved here to display nicely in paper
+    \discrepClssTable{}
+    \discrepCatsTable{}
+\fi

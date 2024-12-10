@@ -1,0 +1,440 @@
+\section{Scope}
+\label{scope}
+
+Since our motivation is restricted to testing code, only this component of
+\acf{vnv} is considered\thesisissueref{22}. However, some test approaches
+are used for testing things other than code, and some approaches can be used
+for both! In these cases, only the subsections of these approaches focused on
+code are considered. For example, reliability testing and maintainability
+testing can start \emph{without} code by ``measur[ing] structural attributes
+of representations of the software'' \citep[p.~18]{FentonAndPfleeger1997}, but
+only reliability and maintainability testing performed on code \emph{itself} is
+in scope of this research. Therefore, some practices are excluded from
+consideration either in part or in full; hardware testing (\Cref{hard-test})
+and the \acs{vnv} of other artifacts (\Cref{other-vnv})
+are completely out of scope, as well as relevant areas of other testing
+approaches that are otherwise in scope. Static testing can be performed
+on code, so while it isn't relevant to the original motivation of this work, it
+is a useful component of software testing and is therefore included at this level
+of analysis (\Cref{static-test}). \ifnotpaper Finally, some test approaches can
+    be derived from other categories of testing-related terminology
+    (\Cref{derived-tests}); of these, approaches derived from programming
+    languages (\Cref{lang-test}) or other orthogonal test approaches
+    (\Cref{orth-test}) are out of scope. \fi
+
+\subsection{Hardware Testing}
+\label{hard-test}
+While testing the software run \emph{on} or in control \emph{of} hardware is in
+scope, testing performed on the hardware itself is out of scope. The following
+are some examples of hardware testing approaches:
+
+\begin{itemize}
+    \item Ergonomics testing and proximity-based testing (see \citealpISTQB{})
+          are out of scope, since they are used for testing hardware.
+    \item Similarly, \acf{emsec} testing \ifnotpaper
+              (\citealp{ISO2021}; \citealp[p.~95]{ZhouEtAl2012})\else
+              \cite{ISO2021}, \cite[p.~95]{ZhouEtAl2012}\fi, which deals with
+          the ``security risk'' of ``information leakage via electromagnetic
+          emanation'' \citep[p.~95]{ZhouEtAl2012}, is also out of scope.
+          \ifnotpaper
+    \item All the examples of domain-specific testing given by
+          \citet[p.~26]{Firesmith2015} are focused on hardware, so these
+          examples are out of scope. However, this might not be representative
+          of all types (e.g., \acf{ml} model testing seems domain-specific), so
+          some subset of domain-specific testing may be in scope.
+    \item Conversely, the examples of environmental tolerance testing given by
+          \citet[p.~56]{Firesmith2015} do \emph{not} seem to apply to software.
+          For example, radiation tolerance testing seems to focus on hardware,
+          such as motors \citep{MukhinEtAl2022}, robots \citep{ZhangEtAl2020},
+          or ``nanolayered carbide and nitride materials''
+          \citep[p.~1]{TunesEtAl2022}. Acceleration tolerance testing seems to
+          focus on \accelTolTest{} and acoustic tolerance testing on rats
+          \citep{HolleyEtAl1996}, which are even less related! Since these all
+          focus on environment-specific factors that would not impact the code,
+          this category of testing is also out of scope.
+    \item Similarly, \citet{SPICE2022} uses the terms ``software
+          qualification testing'' and ``system qualification testing'' in the
+          context of the automotive industry. While these may be in scope, the
+          more general idea of ``qualification testing'' seems to refer to the
+          process of making a hardware component, such as an electronic
+          component \citep{AhsanEtAl2020}, gas generator \citep{ParateEtAl2021}
+          or photovoltaic device, ``into a reliable and marketable product''
+          \citep[p.~1]{SuhirEtAl2013}. Therefore, it is currently unclear if
+          this is in scope\todo{Investigate further}.
+          \fi
+    \item \acf{orthat} can be used when testing software \citep{Mandl1985} (in
+          scope) but can also be used for hardware \citep[pp.~471-472]{Valcheva2013},
+          such as ``processors \dots{} made from pre-built and pre-tested
+          hardware components'' \citetext{p.~471} (out of scope). A subset of
+          \acs{orthat} called ``\acf{toat}'' is used for ``experimental design
+          problems in manufacturing'' \citep[p.~1573]{YuEtAl2011} or ``product
+          and manufacturing process design'' \citep[p.~44]{Tsui2007} and is thus
+          also out of scope.
+          \ifnotpaper
+    \item Since control systems often have a software \emph{and} hardware
+          component \citep{ISO2015, PreußeEtAl2012,ForsythEtAl2004},
+          only the software component is in scope. In some cases, it is
+          unclear whether the ``loops''\footnote{Humorously, the testing of
+              loops in chemical systems \citep{Dominguez-PumarEtAl2020} and
+              copper loops \citep{Goralski1999} are out of scope.} being
+          tested are implemented by software or hardware, such as those in
+          wide-area damping controllers \citep{PierreEtAl2017, TrudnowskiEtAl2017}.
+          \begin{itemize}
+              \item A related note: ``path coverage'' or ``path testing''
+                    seems to be able to refer to either paths through code
+                    (as a subset of control-flow testing)
+                    \citep[p.~5-13]{SWEBOK2024} or through a model, such as
+                    a finite-state machine (as a subset of model-based
+                    testing) \citep[p.~184]{DoğanEtAl2014}.
+          \end{itemize}
+          \fi
+\end{itemize}
+
+\subsection[V\&V of Other Artifacts]{\acs{vnv} of Other Artifacts}
+\label{other-vnv}
+The only testing of a software artifact produced by the software life cycle
+that is in scope is testing of the software itself, as demonstrated by the
+following examples:
+
+\begin{itemize}
+    \item Design reviews and documentation reviews are out of scope, as they
+          focus on the \acs{vnv} of design \citep[pp.~132]{IEEE2017} and
+          documentation \ifnotpaper \citetext{p.~144}\else
+              \cite[pp.~144]{IEEE2017}\fi, respectively.
+          \ifnotpaper
+    \item Security audits can focus on ``an organization's \dots{} processes
+          and infrastructure'' \citepISTQB{} (out of scope) or
+          ``aim to ensure that all of the products installed on a site are
+          secure when checked against the known vulnerabilities for those
+          products'' \citep[p.~28]{Gerrard2000b} (in scope).
+          \fi
+    \item Error seeding is the ``process of intentionally adding
+          known faults\footnote{
+          \label{add-fault}While error seeding and fault injection testing
+          both introduce faults as part of testing, they do so with different
+          goals: to ``estimat[e] the number of faults remaining''
+          \citep[p.~165]{IEEE2017} and ``test the robustness of the system''
+          \citeyearpar[p.~42]{IEEE2022}, respectively. Therefore, these
+          approaches are not considered synonyms, and the lack of this relation
+          in the literature is not included in \Cref{syns} as a synonym
+          discrepancy.} to those already in a computer program'',
+          done to both ``monitor[] the rate of detection and removal'',
+          which is a part of \acs{vnv} of the \acs{vnv} itself (out of scope),
+          ``and estimat[e] the number of faults remaining''
+          \citep[p.~165]{IEEE2017}, which helps verify the actual code (in scope).
+    \item Fault injection testing, where ``faults are artificially
+          introduced\textsuperscript{\ref{add-fault}} into the \acs{sut}
+          [System Under Test]'', can be used to evaluate the effectiveness of a
+          test suite \citep[p.~5-18]{SWEBOK2024}, which is a part of \acs{vnv}
+          of the \acs{vnv} itself (out of scope), or ``to test
+          the robustness of the system in the event of internal and
+          external failures'' \citep[p.~42]{IEEE2022}, which helps verify
+          the actual code (in scope).
+    \item ``Mutation [t]esting was originally conceived as a
+          technique to evaluate test suites in which a mutant is a slightly
+          modified version of the \acs{sut}'' \citep[p.~5-15]{SWEBOK2024},
+          which is in the realm of \acs{vnv} of the \acs{vnv} itself (out of
+          scope). However, it ``can also be categorized as a structure-based
+          technique'' and can be used to assist fuzz and metamorphic testing
+          \citep[p.~5-15]{SWEBOK2024} (in scope).
+\end{itemize}
+
+
+\subsection{Static Testing}
+\label{static-test}
+Sometimes, static testing is excluded from software testing
+\ifnotpaper
+    (\citealp[p.~222]{AmmannAndOffutt2017}; \citealp[p.~13]{Firesmith2015})%
+\else
+    \cite[p.~222]{AmmannAndOffutt2017}, \cite[p.~13]{Firesmith2015}%
+\fi, restricting ``testing'' to mean dynamic validation \citep[p.~5-1]{SWEBOK2024}
+or verification ``in which a system or component is
+executed'' \citep[p.~427]{IEEE2017}. However, ``terminology is not uniform
+among different communities, and some use the term `testing' to refer to
+static techniques\notDefDistinctIEEE{technique} as well''
+\citep[p.~5-2]{SWEBOK2024}. This is done by \citet[pp.~8-9]{Gerrard2000a} and
+\citet[p.~17]{IEEE2022}; the latter even explicitly exclude static testing in
+another document \citeyearpar[p.~440]{IEEE2017}%
+\todo{Could this be added as a scope discrepancy?}!
+
+\ifnotpaper
+
+    % TODO: can this be formalized at all and included in a glossary or section?
+    % \citeauthor{Patton2006} introduces ``specification testing''
+    % \citeyearpar[pp.~56-62]{Patton2006}, which is static black-box testing.
+    % Most of this section is irrelevant to generating test cases, due to
+    % requiring human involvement and verifying the specification, not the code.
+    % However, it provides a ``Specification Terminology Checklist''
+    % \citep[p.~61]{Patton2006} that includes some keywords that, if found, could
+    % trigger an applicable warning to the user (similar to the idea behind the
+    % correctness/consistency checks project), indicating that a requirement is
+    % ambiguous or incomplete \citep[see][p.~1-8]{SWEBOK2024}:
+
+    % \begin{itemize}
+    %     \item \textbf{Potentially unrealistic:} always, every, all, none, every,
+    %           certainly, therefore, clearly, obviously, evidently
+    %     \item \textbf{Potentially vague:} some, sometimes, often, usually,
+    %           ordinarily, customarily, most, mostly, good, high-quality, fast,
+    %           quickly, cheap, inexpensive, efficient, small, stable
+    %     \item \textbf{Potentially incomplete:} etc., and so forth, and so on,
+    %           such as, handled, processed, rejected, skipped, eliminated,
+    %           if \dots{} then \dots{} (without ``else'' or ``otherwise''),
+    %           to be determined \citep[p.~408]{vanVliet2000}
+    % \end{itemize}
+
+    % \citeauthor{Patton2006} also provides a ``Generic Code Review Checklist''
+    % \citeyearpar[pp.~99-103]{Patton2006} in the context of static testing.
+    % Some of the following issues \emph{may} be able to be detected
+    % automatically (e.g., by linters), but this checklist is primarily used
+    % by human reviewers:
+
+    % \begin{itemize}
+    %     \item \phantomsection
+    %           \label{data-ref-errors}
+    %           Data reference errors: ``bugs caused by using a variable,
+    %           constant, \dots{} [etc.] that hasn't been properly declared
+    %           or initialized'' for its context \citetext{p.~99}
+    %     \item Data declaration errors: bugs ``caused by improperly
+    %           declaring or using variables or constants'' \citetext{p.~100}
+    %     \item Computation errors: ``essentially bad math''; e.g., type
+    %           mismatches, over/underflow, zero division, out of meaningful
+    %           range \citetext{p.~101}
+    %           \label{comp-errors}
+    %     \item Comparison errors: ``very susceptible to boundary condition
+    %           problems''; e.g., correct inclusion, floating point
+    %           comparisons \citetext{p.~101}
+    %     \item Control flow errors: bugs caused by ``loops and other control
+    %           constructs in the language not behaving as expected''
+    %           \citetext{p.~102}
+    %     \item Subroutine parameter errors: bugs ``due to incorrect passing
+    %           of data to and from software subroutines'' \citetext{p.~102}
+    %           (could also be called ``interface errors''
+    %           \citep[p.~416]{vanVliet2000})
+    %     \item Input/output errors: e.g., how are errors handled?
+    %           \citetext{pp.~102-103}
+    %     \item ASCII character handling, portability, compilation warnings
+    %           \citetext{p.~103}
+    % \end{itemize}
+
+    Static testing generally seems more ad hoc and less relevant for our
+    original goal (the automatic generation of tests). In particular, many
+    techniques require human intervention, either by design (such as code
+    inspections) or to identify and resolve false positives (such as
+    intentional exceptions to linting rules). Nevertheless, understanding
+    the breadth of testing approaches requires a ``complete'' picture of how
+    software can be tested and how the various approaches relate to one another.
+    Parts of these static approaches may even be generated in the
+    future! For these reasons, we keep static testing in scope for this stage
+    of our work, even though static testing will likely be removed at a later
+    step of analysis\thesisissueref{41,44} based on our original motivation.
+
+    \subsection{Derived Test Approaches}
+    \label{derived-tests}
+
+    Since the field of software is ever-evolving, being able to adapt to,
+    talk about, and understand new developments in software testing is
+    crucial. In addition to methods of categorizing test approaches, the
+    literature also suggests that other categories of testing-related
+    terminology can be used to define new test approaches. These include
+    coverage metrics (\Cref{cov-test}), software qualities (\Cref{qual-test}),
+    requirements (\Cref{req-test}), and attacks (\Cref{attacks}), which are
+    meaningful enough to merit analysis and are therefore in scope. Some
+    approaches given in the literature are derived from programming languages
+    (\Cref{lang-test}) or other orthogonal test approaches (\Cref{orth-test}),
+    but these are out of scope as the information they provide is captured by
+    other approaches.
+
+    \subsubsection{Coverage-driven Techniques}
+    \label{cov-test}
+
+    Test techniques are able to ``identify test coverage items \dots{} and
+    derive corresponding test cases''
+    \ifnotpaper
+        (\citealp[p.~11]{IEEE2022}; similar in \citeyear[p.~467]{IEEE2017})
+    \else
+        \cite[p.~11]{IEEE2022} (similar in \cite[p.~467]{IEEE2017})
+    \fi
+    in a ``systematic'' way
+    \citeyearpar[p.~464]{IEEE2017}.
+    \ifnotpaper
+        This allows for ``the coverage achieved by a specific test design
+        technique'' to be calculated as a percentage of ``the number of test
+        coverage items covered by executed test cases'' \citeyearpar[p.~30]{IEEE2021}.
+        %     ``Coverage levels can range
+        %     from 0\% to 100\%'' and may or may not include ``infeasible'' test coverage
+        %     items, which are ``not \dots{} executable or [are] impossible to be covered by a
+        %     test case'' \citetext{p.~30}. Perhaps more interestingly, the further
+        %     implication is
+        % \else
+        %     This means
+    \fi % that
+    Therefore, a given coverage metric implies a test approach aimed to
+    maximize it. For example, path testing ``aims to execute all entry-to-exit
+    control flow paths in a \acs{sut}'s control flow graph'' \citep[p.~5-13]{SWEBOK2024},
+    thus maximizing the path coverage
+    \ifnotpaper
+        \citep[see][Fig.~1\thesisissueref{63}]{SharmaEtAl2021}\else
+        (see \cite[Fig.~1]{SharmaEtAl2021}\thesisissueref{63})\fi.
+
+    \subsubsection{Quality-driven Types}
+    \label{qual-test}
+
+    Since test types are ``focused on specific quality characteristics''
+    \ifnotpaper
+        (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021};
+        \citeyear[p.~473]{IEEE2017}\todo{OG IEEE 2013})%
+    \else
+        \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}, \cite[p.~473]{IEEE2017}%
+    \fi, they can be derived from software qualities: ``capabilit[ies] of
+    software product[s] to satisfy stated and implied needs when used under
+    specified conditions'' \citep[p.~424]{IEEE2017}\todo{OG ISO/IEC 2014}. This
+    is supported by reliability and performance testing, which are both examples of
+    test types \citep{IEEE2022, IEEE2021} that are based on their underlying
+    qualities \citep[p.~18]{FentonAndPfleeger1997}.
+    % \ifnotpaper
+    %     For quantifying quality-driven testing, measurements should include
+    %     an entity to be measured, a specific attribute to measure, and the actual
+    %     measure (i.e., units, starting state, ending state, what to include)
+    %     \citetext{p.~36} where attributes must be
+    %     defined before they can be measured \citetext{p.~38}.
+    %
+    % \fi
+    Given the importance of software qualities to defining test types, the
+    definitions of \qualityCount{} software qualities are also tracked in this
+    current work\thesisissueref{21,23,27}. This was done by capturing their
+    definitions, any precedent for the existence of an associated test type,
+    and any additional notes in a glossary. Over time, software qualities were
+    ``upgraded'' to test types when mentioned (or implied) by a source.
+    Examples of this include conformance testing
+    \ifnotpaper
+        (\citealp[p.~5-7]{SWEBOK2024}; \citealp[p.~25]{JardEtAl1999}; implied
+        by \citealp[p.~93]{IEEE2017})
+    \else
+        \cite[p.~5-7]{SWEBOK2024}, \cite[p.~25]{JardEtAl1999}
+    \fi and efficiency testing \citep[p.~44]{Kam2008}.
+
+    \subsubsection{Requirements-driven Approaches}
+    \label{req-test}
+    While not as universally applicable, some types of requirements have associated
+    types of testing (e.g., functional, non-functional, security). This may mean
+    that categories of requirements \emph{also} imply related testing approaches
+    (such as ``technical testing''). \ifnotpaper Even assuming this is the case, some types of
+        requirements do not apply to the code itself, and as such are out of scope%
+        \thesisissueref{43}, such as:
+        \begin{itemize}
+            \item \textbf{Nontechnical Requirement:} a ``requirement affecting product
+                  and service acquisition or development that is not a property of
+                  the product or service'' \citep[p.~293]{IEEE2017}
+            \item \textbf{Physical Requirement:} a ``requirement that specifies a
+                  physical characteristic that a system or system component must
+                  possess'' \citep[p.~322]{IEEE2017}
+        \end{itemize}
+    \fi
+
+    \subsubsection{Attacks}
+    \label{attacks}
+    While attacks can be ``malicious'' \citep[p.~7]{IEEE2017}, they are also
+    given as a test practice (\citeyear[p.~34]{IEEE2022}; see \Cref{tab:multiCats}).
+    This means that software attacks, such as code injection and password
+    cracking \citepISTQB{}, can also be used for testing software, and only
+    this kind of software attack is in scope. This is supported by the fact
+    that penetration testing is also called ``ethical hacking testing''
+    \citep[p.~13-4]{SWEBOK2024} or just ``ethical hacking''
+    \citep[p.~28]{Gerrard2000b}; while hacking in general is not a test
+    approach, doing so systematically to test and improve the software is.
+
+    \subsubsection{Language-specific Approaches}
+    \label{lang-test}
+    Specific programming languages are sometimes used to define test approaches.
+    If the reliance on a specific programming language is intentional, then
+    this really implies an underlying test approach that may be generalized to
+    other languages. These are therefore considered out-of-scope\thesisissueref{63},
+    including the following examples:
+
+    \begin{itemize}
+        \item ``They implemented an approach \dots{} for JavaScript testing
+              (referred to as Randomized)'' \citep[p.~192]{DoğanEtAl2014};
+              this really refers to random testing used within JavaScript
+        \item ``SQL statement coverage'' is really just statement coverage
+              used specifically for SQL statements \citep[Tab.~13]{DoğanEtAl2014}
+              \todo{OG Alalfi et al., 2010}
+        \item ``Faults specific to PHP'' is just a subcategory of fault-based
+              testing, since ``execution failures \dots{} caused by missing an
+              included file, wrong MySQL quer[ies] and uncaught exceptions''
+              are not exclusive to PHP \citep[Tab.~27]{DoğanEtAl2014}
+              \todo{OG Artzi et al., 2008}
+        \item While ``HTML testing'' is listed or implied by
+              \citeauthor{Gerrard2000a} (\citeyear[Tab.~2]{Gerrard2000a};
+              \citeyear[Tab.~1, p.~3]{Gerrard2000b}) and
+              \citet[p.~220]{Patton2006}, it seems to be a combination of syntax
+              testing, functionality testing, hyperlink testing/link checking,
+              cross-browser compatibility testing, performance testing, and
+              content checking \citep[p.~3]{Gerrard2000b}
+    \end{itemize}
+
+    \subsubsection{Orthogonally Derived Approaches}
+    \label{orth-test}
+    Some test approaches appear to be combinations of other (seemingly
+    orthogonal) approaches. While the use of a combination term can sometimes
+    make sense, such as when writing a paper or performing testing that focuses
+    on the intersection between two test approaches, they are sometimes given
+    the same ``weight'' as their atomic counterparts. For example, \citetISTQB{}
+    \multAuthHelper{include} ``formal reviews'' and ``informal reviews'' in
+    \ifnotpaper their \else its \fi glossary as separate terms, despite their
+    definitions essentially boiling down to ``reviews that follow (or do not
+    follow) a formal process'', which do not provide any new information.
+    Regardless, these are considered out of scope since their details are
+    captured as the in-scope test approaches that comprise them. For the
+    following examples, we indicate the combination for the first item but
+    omit the rest for brevity as the name makes it clear what the combination is:
+    \begin{enumerate}
+        \item Black box conformance testing \citep[p.~25]{JardEtAl1999}
+              (combining black box and conformance testing)
+        \item Black-box integration testing \citep[p.~345-346]{SakamotoEtAl2013}
+        \item Checklist-based reviews \citepISTQB{}
+        \item Closed-loop HiL verification \citep[p.~6]{PreußeEtAl2012}
+        \item Closed-loop protection system testing \citep[p.~331]{ForsythEtAl2004}
+        \item Endurance stability testing \citep[p.~55]{Firesmith2015}
+        \item End-to-end functionality testing (\citealp[p.~20]{IEEE2021};
+              \citealp[Tab.~2]{Gerrard2000a})
+        \item Formal reviews \citepISTQB{}
+        \item Gray-box integration testing \citep[p.~344]{SakamotoEtAl2013}
+        \item Incremental integration testing \citep[p.~601, 603, 605-606]{SharmaEtAl2021}
+              \todo{OG [19]}
+        \item Informal reviews \citepISTQB{}
+        \item Infrastructure compatibility testing \citep[p.~53]{Firesmith2015}
+        \item Invariant-based automatic testing
+              \citep[pp.~184-185,~Tab.~21]{DoğanEtAl2014}, including for
+              ``AJAX user interfaces'' \citetext{p.~191}
+        \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000a}
+        \item Manual procedure testing \citep[p.~47]{Firesmith2015}
+        \item Manual security audits \citep[p.~28]{Gerrard2000b}
+        \item Model-based GUI testing (\citealp[Tab.~1]{DoğanEtAl2014}; implied
+              by \citealp[p.~356]{SakamotoEtAl2013})
+        \item Model-based web application testing (implied by
+              \citealp[p.~356]{SakamotoEtAl2013})
+        \item Non-functional search-based testing \citep[Tab.~1]{DoğanEtAl2014}
+        \item Offline MBT \citepISTQB{}
+        \item Online MBT \citepISTQB{}
+        \item Role-based reviews \citepISTQB{}
+        \item Scenario walkthroughs \citep[Fig.~4]{Gerrard2000a}
+        \item Scenario-based reviews \citepISTQB{}
+        \item Security attacks \citepISTQB{}
+        \item Statistical web testing \citep[p.~185]{DoğanEtAl2014}
+        \item Usability test script(ing) \citepISTQB{}
+        \item Web application regression testing \cite[Tab.~21]{DoğanEtAl2014}
+        \item White-box unit testing \citep[pp.~345-346]{SakamotoEtAl2013}
+    \end{enumerate}
+
+    The existence of orthogonal combinations could allow for other test
+    approaches to be extrapolated from them. For example, \citet{Moghadam2019}
+    uses the phrase ``machine learning-assisted performance testing''; since
+    performance testing is a known test approach, this may imply the existence
+    of the test approach ``machine learning-assisted testing''. Likewise,
+    \citet{JardEtAl1999} \multAuthHelper{use} the phrases ``local synchronous
+    testing'' and ``remote asynchronous testing''. While these can be
+    decomposed, for example, into local testing and synchronous testing,
+    the two resulting approaches may not be orthogonal, potentially even having
+    a parent-child relation (defined in \Cref{par-chd-rels}).
+
+\fi

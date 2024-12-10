@@ -1,0 +1,239 @@
+\begin{enumerate}
+    \item % Discrep count (PARS, CONTRA): {IEEE2022} {Firesmith2015} | {IEEE2017} {SWEBOK2024} {BarbosaEtAl2006} | {vanVliet2000}
+          Regression testing and retesting are sometimes given as two distinct
+          approaches \ifnotpaper
+              (\citealp[p.~8]{IEEE2022}; \citealp[p.~34]{Firesmith2015})%
+          \else
+              \cite[p.~8]{IEEE2022}, \cite[p.~34]{Firesmith2015}%
+          \fi, but sometimes regression testing is defined as a form of
+          ``selective retesting'' \ifnotpaper (\citealp[p.~372]{IEEE2017};
+              \citealp[pp.~5-8, 6-5, 7-5 to 7-6]{SWEBOK2024};
+              \citealp[p.~3]{BarbosaEtAl2006})%
+          \else \cite[p.~372]{IEEE2017},
+              \cite[pp.~5-8, 6-5, 7-5 to 7-6]{SWEBOK2024},
+              \cite[p.~3]{BarbosaEtAl2006}%
+          \fi. Moreover, the two possible variations
+          of regression testing given by \citet[p.~411]{vanVliet2000} are
+          ``retest-all'' and ``selective retest''\todo{Are these separate
+              approaches?}, which is possibly the source
+          of the above misconception. This discrepancy creates a cyclic
+          relation between regression testing and selective retesting.
+    \item % Discrep count (DEFS, OVER): {IEEE2022}
+          \refHelper \citet[p.~34]{IEEE2022} \multAuthHelper{give} the
+          ``landmark tour'' as an example of ``a tour used for exploratory
+          testing'', but they also use the analogy of ``a tour guide lead[ing]
+          a tourist through the landmarks of a big city'' to describe tours in
+          general. Is the distinction between them the fact that landmark tours
+          are pre-planned and follow a decided-upon sequence \citetext{p.~34}?
+    \item % Discrep count (DEFS, MISS): {IEEE2022} {IEEE2021}
+          Integration testing, system testing, and system integration testing
+          are all listed as ``common test levels'' \ifnotpaper
+              \citetext{\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021}}%
+          \else
+              \cite[p.~12]{IEEE2022}, \cite[p.~6]{IEEE2021}%
+          \fi, but no
+          definitions are given for the latter two, making it unclear what
+          ``system integration testing'' is; it is a combination of the two?
+          somewhere on the spectrum between them? It is listed as a child
+          % Discrep count (PARS, CONTRA): ISTQB | {Firesmith2015}
+          of integration testing by \citetISTQB{}
+          and of system testing by \citet[p.~23]{Firesmith2015}.
+    \item % Discrep count (DEFS, MISS): {IEEE2017}
+          Similarly, component testing, integration testing, and component
+          integration testing are all listed in \citep{IEEE2017}, but ``component
+          integration testing'' is only defined as ``testing of groups of
+          related components'' \citep[p.~82]{IEEE2017}; it is a combination of
+          the two? somewhere on the spectrum between them? As above, it is
+          listed as a child of integration testing by \citetISTQB{}.
+    \item % Discrep count (SYNS, CONTRA): {IEEE2017} ISTQB | {IEEE2017} {BaresiAndPezzè2006}
+          A component is an ``entity with discrete structure \dots\ within a
+          system considered at a particular level of analysis''
+          \citep{ISO_IEC2023b} and ``the terms module, component, and unit
+              [sic] are often used interchangeably or defined to be subelements
+          of one another in different ways depending upon the context'' with
+          no standardized relationship \citep[p.~82]{IEEE2017}. For example,
+          \citetISTQB{} \multAuthHelper{define} them as synonyms while
+          \citet[p.~107]{BaresiAndPezzè2006} \multAuthHelper{say} ``components
+          differ from classical modules for being re-used in different contexts
+          independently of their development''. Additionally, since components
+          are structurally, functionally, or logically discrete
+          \citep[p.~419]{IEEE2017} and ``can be tested in isolation''
+          \citepISTQB{}, ``unit/component/module testing'' could refer to the
+          testing of both a module \emph{and} a specific function in a module%
+          \thesisissueref{14}, introducing a further level of ambiguity.
+          % Discrep count (SYNS, AMBI): {IEEE2017} ISTQB
+    \item % Discrep count (CATS, WRONG): {IEEE2016}
+          Since keyword-driven testing can be used for automated \emph{or}
+          manual testing \citep[pp.~4,~6]{IEEE2016}, the claim that ``test
+          cases can be either manual test cases or keyword test cases''
+          \citetext{p.~6} is incorrect.\todo{This discrepancy is based on the
+              manual/automated categories; should this be moved?}
+
+          % STD | META
+    \item % Discrep count (CATS, WRONG): ISTQB
+          \refHelper \citetISTQB{} \ifnotpaper classify \else classifies \fi
+          \acs{ml} model testing as a test level, which \ifnotpaper they \else
+              it \fi \multAuthHelper{define} as ``a specific instantiation of a
+          test process'': a vague definition that does not match the one in
+          \Cref{tab:ieeeTestTerms}.
+    \item % Discrep count (PARS, CONTRA): {ISO_IEC2023a} | {Firesmith2015}
+          Performance testing and security testing are given as subtypes of
+          reliability testing by \citet{ISO_IEC2023a}, but these are all listed
+          separately by \citet[p.~53]{Firesmith2015}.
+    \item % Discrep count (PARS, CONTRA): {IEEE2022} {IEEE2021} {SWEBOK2024} ISTQB | {Firesmith2015}
+          Similarly, random testing is a subtechnique of specification-based
+          testing \ifnotpaper
+              \citetext{\citealp[pp.~7, 22]{IEEE2022};
+                  \citeyear[pp.~5, 20, Fig.~2]{IEEE2021};
+                  \citealp[p.~5\=/12]{SWEBOK2024}; \citealpISTQB{}} \else
+              \cite[pp.~7, 22]{IEEE2022}, \cite{ISTQB},
+              \cite[p.~5\=/12]{SWEBOK2024}, \cite[pp.~5, 20, Fig.~2]{IEEE2021}
+          \fi but is listed
+          separately by \citet[p.~46]{Firesmith2015}.
+    \item % Discrep count (DEFS, OVER): {SWEBOK2024} | {IEEE2022}
+          The \acs{swebok} V4 defines ``privacy testing'' as testing that
+          ``assess[es] the security and privacy of users' personal data to
+          prevent local attacks'' \citep[p.~5-10]{SWEBOK2024}; this seems to
+          overlap (both in scope and name) with the definition of ``security
+          testing'' in \citep[p.~7]{IEEE2022}: testing
+          ``conducted to evaluate the degree to which a test item, and
+          associated data and information, [sic] are protected so that'' only
+          ``authorized persons or systems'' can use them as intended.
+    \item % Discrep count (DEFS, CONTRA): {SWEBOK2024} | {IEEE2017} {Patton2006}
+          % Label DEFS path-test
+          Path testing can ``aim[] to execute all entry-to-exit control flow
+          paths in a SUT's control flow graph'' \citep[p.~5-13]{SWEBOK2024} or
+          ``all or selected paths through a computer program''
+          \ifnotpaper (\else \fi \citealp[p.~316]{IEEE2017}\ifnotpaper;\ \else\ (\fi%
+          similar in \citealp[p.~119]{Patton2006}).
+    \item % Discrep count (DEFS, CONTRA): {IEEE2022} | ISTQB
+          \tourDiscrep{}
+    \item % Discrep count (DEFS, CONTRA): {IEEE2017} | {SWEBOK2024} | ISTQB
+          \alphaDiscrep{}
+    \item % Discrep count (TERMS, AMBI): {IEEE2017} | {Firesmith2015} | {Firesmith2015} {Gerrard2000a}
+          The distinctions between development testing \citep[p.~136]{IEEE2017},
+          developmental testing \citep[p.~30]{Firesmith2015}, and developer
+          testing
+          \ifnotpaper
+              (\citealp[p.~39]{Firesmith2015}; \citealp[p.~11]{Gerrard2000a})
+          \else
+              \cite[p.~39]{Firesmith2015}, \cite[p.~11]{Gerrard2000a}
+          \fi are unclear and seem miniscule.\todo{Is this a def discrep?}
+    \item % Discrep count (DEFS, AMBI): ISTQB
+          % TODO: SUPP DEFS?
+          \refHelper \citetISTQB{} \multAuthHelper{define}
+          ``\acf{ml} model testing'' and ``\acs{ml} functional performance''
+          in terms of ``\acs{ml} functional performance criteria'',
+          which is defined in terms of ``\acs{ml} functional performance
+          metrics'', which is defined as ``a set of measures that relate to the
+          functional correctness of an \acs{ml} system''. The use
+          of ``performance'' (or ``correctness'') in these definitions is at
+          best ambiguous and at worst incorrect.
+    \item % Discrep count (TERMS, WRONG): {Firesmith2015}
+          % Other sources not included as part of this discrepancy since they
+          % are used as the ground truth
+          The terms ``acceleration tolerance testing'' and ``acoustic tolerance
+          testing'' seem to only refer to software testing in
+          \citep[p.~56]{Firesmith2015};
+          elsewhere, they seem to refer to testing the acoustic tolerance of
+          rats \citep{HolleyEtAl1996} or the acceleration tolerance of
+          \accelTolTest{}, which don't exactly seem relevant\dots%
+          \todo{Is this a scope discrep?}
+    \item % Discrep count (TERMS, OVER): {SWEBOK2024} implied by {Valcheva2013} {YuEtAl2011} | {Firesmith2015}
+          ``Orthogonal array testing'' \ifnotpaper \citetext{%
+                  \citealp[pp.~5-1,~5-11]{SWEBOK2024};
+                  implied by \citealp[pp.~467,~473]{Valcheva2013};
+                  \citealp[pp.~1573-1577,~1580]{YuEtAl2011}} \else
+              \cite[pp.~5-1,~5-11]{SWEBOK2024} \fi and ``operational
+          acceptance testing'' \citep[p.~30]{Firesmith2015} have the same
+          acronym (``OAT'').
+
+          % META | TEXT
+    \item % Discrep count (PARS, WRONG): {Patton2006}
+          \refHelper \citet[p.~119]{Patton2006} says that branch testing is
+          ``the simplest form of path testing'' which seems incorrect.
+    \item % Discrep count (TERMS, AMBI): {IEEE2022} {IEEE2021} {IEEE2017} {SWEBOK2024} ISTQB {KuļešovsEtAl2013} {Perry2006} {PetersAndPedrycz2000} {Gerrard2000a} | {vanVliet2000} implied by {SWEBOK2024}
+          ``Installability testing'' is given as a test type
+          \ifnotpaper
+              (\citealp[p.~22]{IEEE2022}; \citeyear[p.~38]{IEEE2021};
+              \citeyear[p.~228]{IEEE2017})%
+          \else
+              \cite[p.~22]{IEEE2022}, \cite[p.~38]{IEEE2021}, \cite[p.~228]{IEEE2017}%
+          \fi, while ``installation testing'' is given as a test level
+          \ifnotpaper
+              (\citealp[p.~439]{vanVliet2000}; implied by
+              \citealp[p.~5-8]{SWEBOK2024})%
+          \else
+              \cite[p.~439]{vanVliet2000}%
+          \fi. Since ``installation testing'' is not given as an example of a
+          test level throughout the sources that describe them (see
+          \Cref{categories-observ}), it is likely that the term ``installability
+          testing'' with all its related information should be used instead.
+          % Previous: Discrep count (CATS, CONTRA): {IEEE2022} {IEEE2021} | {vanVliet2000} implied by {SWEBOK2024}
+    \item % Discrep count (PARS, CONTRA): implied by {Patton2006} | {vanVliet2000}
+          While \citet[p.~120]{Patton2006} implies that condition testing is a
+          sub-technique of path testing, \citet[Fig.~13.17]{vanVliet2000} says
+          that multiple condition coverage (which seems to be a synonym of
+          condition coverage \citetext{p.~422}) does not subsume and is not
+          subsumed by path coverage.
+    \item % Discrep count (DEFS, CONTRA): {IEEE2022} | {Patton2006}
+          \loadDiscrep{}
+    \item % Discrep count (DEFS, CONTRA): {IEEE2021} | {Patton2006}
+          State testing requires that ``all states in the state model
+          \dots\ [are] `visited'\,'' in \citep[p.~19]{IEEE2021} which
+          is only one of its possible criteria in \citep[pp.~82-83]{Patton2006}.
+    \item % Discrep count (DEFS, CONTRA): {IEEE2017} {PetersAndPedrycz2000} {vanVliet2000} | {Patton2006}
+          \refHelper \citet[p.~456]{IEEE2017} \multAuthHelper{say} system
+          testing is ``conducted on a complete, integrated system'' (which
+          \citet[Tab.~12.3]{PetersAndPedrycz2000} and
+          \citet[p.~439]{vanVliet2000} agree with), while
+          \citet[p.~109]{Patton2006} says it can also be done on ``at least a
+          major portion'' of the product.
+    \item % Discrep count (SYNS, AMBI): ISTQB | {Patton2006}
+          % TODO: NEAR SYNS?
+          \refHelper \citetISTQB{} \multAuthHelper{claim} that code inspections
+          are related to peer reviews but \citet[pp.~94-95]{Patton2006} makes
+          them quite distinct.
+    \item % Discrep count (SYNS, CONTRA): ISTQB | {PetersAndPedrycz2000}
+          \phantomsection{} \label{walkthrough-syns}
+          ``Walkthroughs'' and ``structured walkthroughs'' are given
+          as synonyms by \citetISTQB{} but \citet[p.~484]{PetersAndPedrycz2000}
+          \ifnotpaper imply \else implies \fi that they are different, saying a
+          more structured walkthrough may have specific roles.
+    \item % Discrep count (SYNS, WRONG): {PetersAndPedrycz2000}
+          \refHelper \citeauthor{PetersAndPedrycz2000} \multAuthHelper{claim}
+          that ``structural testing
+          subsumes white box testing'' but they seem to describe the same thing:
+          \ifnotpaper they say \else it says \fi ``structure tests are aimed at
+          exercising the internal logic of a software system'' and ``in white box
+          testing \dots, using detailed knowledge of code, one creates a battery of
+          tests in such a way that they exercise all components of the code
+          (say, statements, branches, paths)'' on the same page
+          \citeyearpar[p.~447]{PetersAndPedrycz2000}!
+    \item % Discrep count (DEFS, CONTRA): {vanVliet2000} | implied by {Patton2006}
+          \refHelper \citet[p.~92\ifnotpaper, emphasis added\fi]{Patton2006}
+          says that reviews are ``\emph{the} process[es] under which static
+          white-box testing is performed'' but correctness proofs are given
+          as another example by \citet[pp.~418-419]{vanVliet2000}.
+
+          % TEXT | PAPER
+    \item % Discrep count (DEFS, WRONG): {Kam2008} | ISTQB
+          \refHelper \citet[p.~46]{Kam2008}\todo{OG Beizer} says that the goal
+          of negative testing is ``showing that a component or system does not
+          work'' which is not true; if robustness is an important quality for
+          the system, then testing the system ``in a way for which it was not
+          intended to be used'' \citepISTQB{} (i.e., negative testing) is one
+          way to help test this!
+    \item % Discrep count (DEFS, MISS): {Kam2008}
+          \refHelper \citet[p.~42]{Kam2008} says ``See \emph{boundary value
+              analysis},'' for the glossary entry of ``boundary value testing''
+          but does not provide this definition.
+    \item % Discrep count (CATS, CONTRA): {Kam2008} | implied by {IEEE2021}
+          \refHelper \citet[p.~46]{Kam2008}\todo{OG Beizer} says ``negative
+          testing is related to the testers' attitude rather than a specific
+          test approach or test design technique''; while \citet{IEEE2021}
+          \multAuthHelper{seem} to support this idea of negative testing being
+          at a ``higher'' level than other approaches, \ifnotpaper they also
+              imply \else it also implies \fi that it is a test technique
+          \citetext{pp.~10, 14}.
+\end{enumerate}

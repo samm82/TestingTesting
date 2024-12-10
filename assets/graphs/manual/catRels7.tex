@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{catRels7}{
+rankdir=BT;
+
+Approach;
+
+Level -> Approach;
+Practice -> Approach;
+Technique -> Approach;
+Type -> Approach;
+
+DesignTechnique [label=<Design<br/>Technique>];
+DesignTechnique -> Technique [dir=none];
+
+{Phase Stage} -> Level [dir=none, style=dashed];
+Stage -> {Practice Technique} [style=invis];
+Phase -> Practice [style=invis];
+}
+\end{document}

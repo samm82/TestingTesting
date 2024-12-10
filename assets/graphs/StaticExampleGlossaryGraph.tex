@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{StaticExampleGlossaryGraph}{
+rankdir=BT;
+
+Static [label=<Static>];
+
+Dynamic [label=<Dynamic>,style="filled"];
+Static -> Dynamic;
+}
+\end{document}

@@ -1,4 +1,4 @@
-.PHONY: help system_requirements build debug clean open
+.PHONY: help system_requirements gloss gen_csv_diffs gen_latex compile_graphs compile_doc clean
 
 STUBS = Supp Quality Approach
 GLOSSARIES = $(addsuffix Glossary, $(STUBS))
@@ -6,19 +6,28 @@ CSV_GLOSSARIES = $(addsuffix .csv, $(GLOSSARIES))
 TXT_GLOSSARIES = $(addsuffix .txt, $(GLOSSARIES))
 DIFF_GLOSSARIES = $(addprefix Diff, $(TXT_GLOSSARIES))
 
-GRAPHS = assets/graphs/*.tex assets/graphs/manual/*.tex
-CUSTOM_STUBS = recovery performance
+GRAPH_GLOSSARIES = ApproachGlossary.csv assets/graphs/exampleGlossaries/*Glossary.csv
+
+GRAPHS = assets/graphs/*Graph.tex assets/graphs/manual/*.tex
+CUSTOM_STUBS = recovery scalability performance
 ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
 CUSTOM_GRAPHS = $(addprefix assets/graphs/, $(addsuffix Graph, $(ALL_CUSTOM_STUBS)))
 
+DOC_NAME =
+TEX_NAME ?= $(DOC_NAME)
+TEX_FLAGS = -interaction=nonstopmode
+
+# Whether or not to update "before" counts
+UNDEF =
+
 help:
 	@echo "Build:"
-	@echo "  - build : Build a fresh copy of the thesis."
-	@echo "  - notes : Build a fresh copy of just the notes section."
-	@echo "  - debug : Same as 'build', but pauses build on errors for easier debugging."
+	@echo "  - build : Build a fresh copy of relevant artifacts."
+	@echo "  - paper : Build a fresh copy of just the ICSE paper."
+	@echo "  - thesis: Build a fresh copy of just the thesis."
+	@echo "  - debug : Same as 'thesis', but pauses build on errors for easier debugging."
 	@echo "  - poster: Build a fresh copy of the testing terminology poster."
 	@echo "  - clean : Clean working TeX build artifacts."
-	@echo "  - open  : Open up the current thesis PDF."
 	@echo ""
 	@echo "Supplementary Information:"
 	@echo "  - help               : View this help guide."
@@ -36,6 +45,7 @@ gloss:
 	$(foreach gloss, $(CSV_GLOSSARIES),EXCEL.EXE $(gloss) &)
 
 gen_csv_diffs:
+	py scripts/undefTermCounts.py $(UNDEF)
 	for gloss in $(GLOSSARIES) ; do \
 		py scripts/diffCSV.py $$gloss; \
 	done
@@ -52,53 +62,60 @@ update_diffs: gen_csv_diffs
 		if [ -f $$gloss ]; then mv $$gloss scripts/$$gloss; fi; \
 	done
 
-csv_process:
-	py scripts/csvToGraph.py
+LATEX_SCRIPTS = csvToGraph undefTermSources sourceCounts
 
-compile_graphs: csv_process
+$(LATEX_SCRIPTS):
+	-mkdir build || true
+	py scripts/$@.py
+
+sourceCounts:
+	-mkdir build || true
+	py scripts/$@.py $(CSV_GLOSSARIES)
+
+csvToGraph:
+	-mkdir build || true
+	for filename in $(GRAPH_GLOSSARIES) ; do \
+		py scripts/$@.py $${filename} ; \
+	done
+
+compile_graphs: csvToGraph
 	for filename in $(GRAPHS) ; do \
 			filename=$${filename%.tex} ; \
-			-rm filename.pdf ; \
+			# -rm filename.pdf ; \
 			latex -interaction=nonstopmode -shell-escape $${filename}.tex || true ; \
 			latex -interaction=nonstopmode -shell-escape $${filename}.tex || true ; \
 			basefilename=$$(basename $$filename) ; \
 			cp $${basefilename}.pdf $${filename}.pdf ; \
 	done
 	rm *Graph*
+	rm *Legend* || true
+	rm *catRels* || true
 
-custom_graphs:
-	make compile_graphs GRAPHS="$(CUSTOM_GRAPHS)"
+custom_graphs: GRAPHS="$(CUSTOM_GRAPHS)"
+custom_graphs: compile_graphs
 
-graphs:
-	make compile_graphs
+graphs: compile_graphs
 
-notes: csv_process # standard build of just notes -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
+compile_doc: # '-output-directory=build' is a special name and is referenced from '\usepackage{minted}' region in some .tex files
+	-latexmk -output-directory=build -jobname=$(DOC_NAME) -pdflatex=lualatex -pdf $(TEX_FLAGS) -shell-escape $(TEX_NAME).tex
+	cp build/$(DOC_NAME).pdf $(DOC_NAME).pdf
+	-rm lualatex*.fls || true
+
+paper thesis poster seminar: $(LATEX_SCRIPTS) # standard build of documents
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
 # grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
-	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape notes.tex
-	cp build/notes.pdf notes.pdf
+	make compile_doc DOC_NAME=$@
 
-thesis: notes # standard build -- '-output-directory=build' is a special name and is referenced from '\usepackage{minted}'region in 'thesis.tex'
-# Attempted to convert the following find and replace working in VS Code:
-# ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
-# To a Makefile rule unsuccessfully (grep not finding tildes):
-# grep -Irwl "([^p])p.[\s~]+(\d+)([-,])(\d+)" --include='*.tex' . | xargs sed -ri "s/([^p])p.[\s~]+(\d+)([-,])(\d+)/\1pp.~\2\3\4/g"
-	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape thesis.tex
-	cp build/thesis.pdf thesis.pdf
+paper_blind: paper # double-blind build of ICSE paper for review submission
+	make compile_doc DOC_NAME=$@ TEX_NAME=$<
 
-build: thesis graphs update_diffs 
+build: csv_diff paper graphs thesis
 
-debug: # for finding hard issues, this is an interactive version of 'build'
-	latexmk -output-directory=build -pdflatex=lualatex -pdf -shell-escape thesis.tex
-
-poster:
-	-latexmk -output-directory=build -pdflatex=lualatex -pdf -interaction=nonstopmode -shell-escape poster.tex
-	cp build/poster.pdf poster.pdf
+debug: DOC_NAME=thesis
+debug: TEX_FLAGS=
+debug: $(LATEX_SCRIPTS) compile_doc # for finding hard issues, this is an interactive version of 'thesis'
 
 clean:
 	rm -rf build/
-
-open:
-	xdg-open build/thesis.pdf

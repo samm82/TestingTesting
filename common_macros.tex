@@ -1,0 +1,405 @@
+% Extra functionality for command parsing
+\usepackage{xparse}
+
+\newif\ifnotpaper
+
+%------------------------------------------------------------------------------
+% Reused in seminar slides
+%------------------------------------------------------------------------------
+
+\def\rqatext{What testing approaches do the literature describe?}
+\def\rqbtext{Are these descriptions consistent?}
+\def\rqctext{Can we systematically resolve any of these inconsistencies?}
+
+\def\expBasedCatMain{\ifnotpaper \citeauthor{IEEE2022} \else ISO/IEC and IEEE
+    \fi categorize experience-based testing as both a test design
+    technique and a test practice on the same page---twice
+    \citeyearpar[Fig.~2, p.~34]{IEEE2022}!}
+
+\NewDocumentCommand{\perfAsFamily}{s}{%
+    \IfBooleanTF#1{\citealp}{\citep}[p.~1187]{Moghadam2019}\footnote{
+        The original source describes ``performance testing \dots\ as a family
+        of performance-related testing techniques'', but it makes more sense to
+        consider ``performance-related testing'' as the ``family'' with
+        ``performance testing'' being one of the variabilities
+        (see \Cref{perf-test-rec}).}%
+}
+
+%------------------------------------------------------------------------------
+% Spacing Options
+%------------------------------------------------------------------------------
+
+\newcommand{\thesisForceSingleSpacing}{\singlespacing}
+\newcommand{\thesisForceDoubleSpacing}{\doublespacing}
+
+%------------------------------------------------------------------------------
+% Portable HREFs
+%------------------------------------------------------------------------------
+
+% Common variant
+\newcommand{\porthref}[2]{\href{#2}{#1}\printOnlyFootnote{\url{#2}}}
+
+% Custom URLs
+\newcommand{\porthreft}[3]{\href{#3}{#1}\printOnlyFootnote{\href{#3}{#2}}}
+% Inside of some environments, footnote marks aren't registered properly, so we
+% need to manually write the "text" part
+\newcommand{\porthreftm}[2]{\href{#2}{#1\printOnlyFootnoteMark}}
+
+%------------------------------------------------------------------------------
+% Optional refs in format of (see <ref>)
+%------------------------------------------------------------------------------
+
+\newcommand{\formatPaper}[2]{%
+    \ifnotpaper
+        #1{#2}%
+    \else
+        \underline{#2}%
+    \fi
+}
+
+\def\refHelper{\ifnotpaper\else Reference \fi}
+\newcommand\multAuthHelper[1]{\ifnotpaper #1\else #1s\fi}
+
+\newcommand\discrepref[1]{%
+    \ifnotpaper
+        \labelcref{#1}%
+    \else
+        \Cref{#1}%
+    \fi}
+
+\newcommand\ifblind[2]{\IfEndWith*{\jobname}{_blind}{#1}{#2}}
+
+%------------------------------------------------------------------------------
+% Generic "chunks" that get reused
+%------------------------------------------------------------------------------
+
+\newenvironment{bigLandscape}{
+    \newgeometry{hmargin=1cm, vmargin=2.5cm}
+    \begin{landscape}
+        }{
+    \end{landscape}
+    \restoregeometry
+    \newpage
+}
+
+\DeclareDocumentCommand\seeSrcCode{ m m m g }{%
+    (see the \href
+    {https://github.com/samm82/TestGen-Thesis/blob/#1/scripts/#2.py\#L#3%
+        \IfNoValueF {#4} {-L#4}}
+    {relevant source code})%
+}
+
+\newcommand{\accelTolTest}{astronauts \citep[p.~11]{MorgunEtAl1999}, aviators
+    \citep[pp.~27,~42]{HoweAndJohnson1995}, or catalysts
+    \citep[p.~1463]{LiuEtAl2023}}
+
+\newcommand{\procLevel}[1]{``Test level'' can also refer to the scope
+of a test process; for example, ``across the whole organization'' or only
+``to specific projects'' #1[p.~24]{IEEE2022}}
+\newcommand{\phaseDef}{can also refer to the ``period of time in the software
+    life cycle'' when testing occurs \citeyearpar[p.~470]{IEEE2017}, usually
+    after the implementation phase
+    \ifnotpaper
+        (\citeyear[pp.~420,~509]{IEEE2017}; \citealp[p.~56]{Perry2006}).
+    \else
+        \cite[pp.~420,~509]{IEEE2017}, \cite[p.~56]{Perry2006}.
+    \fi}
+
+% Define common footnotes about IEEE testing terms for reuse
+\newcommand{\distinctIEEE}[1]{distinct from the notion of ``test #1'' described
+    in \Cref{tab:ieeeTestTerms}.}
+\newcommand{\notDefDistinctIEEE}[1]{\footnote{Not formally defined, but
+        \distinctIEEE{#1}}}
+\newcommand{\gerrardDistinctIEEE}[1]{\footnote{``Each type of test addresses a
+        different risk area'' \citep[p.~12]{Gerrard2000a}, which is
+        \distinctIEEE{#1}}}
+
+% Examples of discrepancies
+\NewDocumentCommand\tourDiscrep{s}{%
+    \IfBooleanTF#1{t}{T}he structure of tours can be defined as either quite
+    general \citep[p.~34]{IEEE2022} or ``organized around a special focus''
+    \citepISTQB{}\IfBooleanTF#1{}{.}}
+\def\alphaDiscrep{Alpha testing is performed by ``users within the organization
+    developing the software'' \citep[p.~17]{IEEE2017}, ``a small, selected
+    group of potential users'' \citep[p.~5-8]{SWEBOK2024}, or ``roles outside
+    the development organization'' conducted ``in the developer's test
+    environment'' \citepISTQB{}.}
+\def\loadDiscrep{Load testing is performed with loads ``between anticipated
+    conditions of low, typical, and peak usage'' \citep[p.~5]{IEEE2022} or
+    loads that are as large as possible \citep[p.~86]{Patton2006}.}
+
+% Capitalization can change
+\newcommand{\ftrnote}[1]{#1ault tolerance testing may also be a sub-approach of
+    reliability testing \ifnotpaper
+        \citetext{\citealp[p.~375]{IEEE2017}; \citealp[p.~7-10]{SWEBOK2024}}%
+    \else \cite[p.~375]{IEEE2017}, \cite[p.~7-10]{SWEBOK2024}%
+    \fi, which is distinct from robustness testing \citep[p.~53]{Firesmith2015}.}
+
+\def\graphGenDesc{
+    To better visualize how test approaches relate to each other, we
+    \ifnotpaper\else then \fi developed a tool to automatically
+    generate graphs of these relations.
+    \ifnotpaper Since parent-child and synonym relations between approaches are
+        tracked in \ifblind{our approach glossary}{\href{
+                https://github.com/samm82/TestGen-Thesis/blob/main/ApproachGlossary.csv
+            }{our approach glossary}} in a consistent format, they can be parsed
+        systematically. For example, if the entries in \Cref{tab:exampleGlossary}
+        appear in the glossary, then their parent relations are displayed as
+        \Cref{fig:exampleGraph} in the generated graph. Relevant citation
+        information is also captured in our glossary following the author-year
+        citation format, including ``reusing'' information from previous
+        citations. For example, the first row of \Cref{tab:exampleGlossary}
+        contains the citation ``(Author, 0000; 0001)'', which means that this
+        information was present in two documents by ``Author'': one written in
+        the year 0000, and one in 0001. The following citation, ``(0000)'',
+        contains no author, which means it was written by the same one as the
+        previous citation. These citations are processed according to this
+        logic \seeSrcCode{30d8c96}{csvToGraph}{53}{94} so they can be
+        consistently tracked throughout the analysis.
+
+        \begin{table}[hbtp!]
+            \centering
+            \begin{tabular}{ll} \hline
+                Name                        & Parent(s)                        \\ \hline
+                A                           & B (Author, 0000; 0001), C (0000) \\
+                B                           & C (implied by Author, 0000)      \\
+                C                           & D (Author, 0002)                 \\
+                D (implied by Author, 0002) &                                  \\ \hline
+            \end{tabular}
+            \caption{Example glossary entries demonstrating how parent relations are tracked.}
+            \label{tab:exampleGlossary}
+        \end{table}
+
+        \ExampleGraph{}
+
+        \newpage\fi
+    All parent-child relations are graphed, as well as synonym relations where either:
+    \begin{enumerate}
+        \item both synonyms have their own rows in the glossary, or
+        \item a term is a synonym to more than one term with its own row in the
+              glossary.
+    \end{enumerate}
+    \ifnotpaper These conditions are also deduced from the information parsed
+        from the glossary. For example, if the entries in \Cref{tab:synExampleGlossary}
+        appear in the glossary, then they are displayed as \Cref{fig:synExampleGraph}
+        in the generated graph (note that X does not appear since it does not
+        meet the criteria given above).
+
+        \begin{table}[hbtp!]
+            \centering
+            \begin{tabular}{ll} \hline
+                Name & Synonym(s)                            \\ \hline
+                E    & F (Author, 0000; implied by 0001)     \\
+                G    & F (Author, 0002), H (implied by 0000) \\
+                H    & X                                     \\ \hline
+            \end{tabular}
+            \caption{Example glossary entries demonstrating how synonym relations are tracked.}
+            \label{tab:synExampleGlossary}
+        \end{table}
+
+        This allows for automatic detection of some classes of discrepancies. The
+        most trivial to automate is ``multi-synonym'' relations, which are already
+        found to generate the graph as desired. The list found in \Cref{multiSyns}
+        is automatically generated based on glossary entries such as those found
+        in \Cref{tab:synExampleGlossary}. The self-referential definitions in
+        \Cref{selfPars} were also trivial, found by simply looking for lines in
+        the generated .tex files starting with \texttt{I -> I} which would
+        result in the graph in \Cref{fig:selfExampleGraph}. A similar process
+        is used to detect instances where two approaches have a synonym
+        \emph{and} a parent-child relation. A dictionary of each term's
+        synonyms is built to evaluate which synonym relations are notable
+        enough to include in the graph, and these mappings are then checked to
+        see if one appears as a parent of the other. For example, if J and K
+        are synonyms, a generated .tex file with a parent line starting with
+        \texttt{J -> K} would result in these approaches being graphed as shown
+        in \Cref{fig:parSynExampleGraph}.
+
+        The visual nature of these graphs makes it possible to represent both
+        explicit and implicit relations without double counting them during the
+        analysis in \Cref{discrep-analysis}. If a relation is both explicit
+        \emph{and} implicit, the implicit relation is only shown in the graph
+        if it is from a more ``trusted'' source category (see \Cref{sources});
+        note that only the explicit synonym relation between E and F
+        from \Cref{tab:exampleGlossary} is shown in \Cref{fig:synExampleGraph}.
+        Implicit approaches and relations are denoted by dashed lines, as shown
+        in \Cref{fig:exampleGraph,fig:synExampleGraph}; explicit approaches are
+        \emph{always} denoted by solid lines, even if they are also implicit.
+        ``Rigid'' versions of these graphs that exclude implicit approaches and
+        relations can also be generated; the rigid version of
+        \Cref{fig:exampleGraph} is given in \Cref{fig:rigidExampleGraph}.
+
+    \fi
+    Since these graphs tend to be large, it is useful to focus on specific
+    subsets of them. \ifnotpaper Graphs limited to approaches from a given
+        approach category (see \Cref{categories-observ}) are generated, as well
+        as a graph of static approaches. This is done both because
+        \citet[Fig.~2]{IEEE2022} \multAuthHelper{consider} static testing a
+        separate approach category and since it is quite different from dynamic
+        testing (see \Cref{static-test}). Generated graphs of static testing
+        approaches include any relations with dynamic approaches (since they
+        are our primary focus) which are colored gray, as shown in
+        \Cref{fig:staticExampleGraph}. Additionally, more specific subsets of
+        these graphs \else These \fi can be generated based on a given subset
+    of approaches to include, such as those pertaining to recovery or scability
+    (see \Cref{recov-discrep,scal-discrep}, respectively),
+    as shown in \Cref{fig:recovery-graph-current,fig:scal-graph-current},
+    respectively (albeit with manually created legends). By specifying sets of
+    approaches and relations to add or remove, these generated graphs can be
+    updated in accordance with our recommendations in \Cref{recs}, as shown in
+    \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed}, respectively.
+    These modifications can also be inherited, as in \Cref{fig:perf-graph},
+    which was generated based on the modifications from
+    \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed} and then
+    manually tweaked\todo{Ensure these tweaks are on an up-to-date version!}.}
+
+%------------------------------------------------------------------------------
+% For populating values from files
+%------------------------------------------------------------------------------
+
+\ExplSyntaxOn
+\ior_new:N \g_hringriin_file_stream
+
+\NewDocumentCommand{\ReadFile}{mm}
+{
+    \hringriin_read_file:nn { #1 } { #2 }
+    \cs_new:Npn #1 ##1
+    {
+        \str_if_eq:nnTF { ##1 } { * }
+        { \seq_count:c { g_hringriin_file_ \cs_to_str:N #1 _seq } }
+        { \seq_item:cn { g_hringriin_file_ \cs_to_str:N #1 _seq } { ##1 } }
+    }
+}
+
+\cs_new_protected:Nn \hringriin_read_file:nn
+{
+    \ior_open:Nn \g_hringriin_file_stream { #2 }
+    \seq_gclear_new:c { g_hringriin_file_ \cs_to_str:N #1 _seq }
+    \ior_map_inline:Nn \g_hringriin_file_stream
+    {
+        \seq_gput_right:cx
+        { g_hringriin_file_ \cs_to_str:N #1 _seq }
+        { \tl_trim_spaces:n { ##1 } }
+    }
+    \ior_close:N \g_hringriin_file_stream
+}
+
+\ExplSyntaxOff
+
+% Define/read values for Undefined Terms methodology for reuse and calculation!
+\ReadFile{\undefTermCounts}{assets/misc/undefTermCounts}
+
+\newcount\TotalBefore
+\newcount\UndefBefore
+\newcount\TotalAfter
+\newcount\UndefAfter
+
+\TotalBefore=\undefTermCounts{1}
+\UndefBefore=\undefTermCounts{2}
+\TotalAfter=\undefTermCounts{3}
+\UndefAfter=\undefTermCounts{4}
+
+\def\approachCount{\undefTermCounts{3}}
+
+\ReadFile{\qualityCounts}{build/qualityCount}
+\def\qualityCount{\qualityCounts{1}}
+
+\ReadFile{\parSynCounts}{build/parSynCounts}
+\def\parSynCount{\parSynCounts{1}}
+\def\selfCycleCount{\parSynCounts{2}}
+
+\ReadFile{\stdSources}{build/stdSources}
+\ReadFile{\metaSources}{build/metaSources}
+\ReadFile{\textSources}{build/textSources}
+\ReadFile{\paperSources}{build/paperSources}
+
+\def\srcCount{\the\numexpr\stdSources{3} + \metaSources{3} + \textSources{3} + \paperSources{3}}
+
+\ReadFile{\stdDiscCatBrkdwn}{build/stdDiscCatBrkdwn}
+\ReadFile{\metaDiscCatBrkdwn}{build/metaDiscCatBrkdwn}
+\ReadFile{\textDiscCatBrkdwn}{build/textDiscCatBrkdwn}
+\ReadFile{\paperDiscCatBrkdwn}{build/paperDiscCatBrkdwn}
+\ReadFile{\totalDiscCatBrkdwn}{build/totalDiscCatBrkdwn}
+
+\ReadFile{\stdDiscClsBrkdwn}{build/stdDiscClsBrkdwn}
+\ReadFile{\metaDiscClsBrkdwn}{build/metaDiscClsBrkdwn}
+\ReadFile{\textDiscClsBrkdwn}{build/textDiscClsBrkdwn}
+\ReadFile{\paperDiscClsBrkdwn}{build/paperDiscClsBrkdwn}
+\ReadFile{\totalDiscClsBrkdwn}{build/totalDiscClsBrkdwn}
+
+\def\stds{\nameref{stds}}
+\def\metas{\nameref{metas}}
+\def\texts{\nameref{texts}}
+\def\papers{\nameref{papers}}
+
+\def\srcCat{\hyperref[sources]{Source Category}}
+\def\reduns{\ifnotpaper\nameref{redun}\else Redundancies\footnote{Section omitted for brevity.}\fi}
+
+\def\totalDiscreps{\totalDiscCatBrkdwn{13}}
+
+\def\syns{\hyperref[syns]{Synonyms}}
+\def\pars{\hyperref[pars]{Parents}}
+\def\cats{\hyperref[cats]{Categories}}
+\def\defs{\hyperref[defs]{Definitions}}
+\def\terms{\hyperref[terms]{Terminology}}
+\def\cites{\hyperref[cites]{Citations}}
+
+%------------------------------------------------------------------------------
+% TODOs
+%------------------------------------------------------------------------------
+
+% Generic Inlined TODOs
+\newcommand{\intodo}[1]{\todo[inline]{#1}}
+
+% Unimportant TODOs for "later" (i.e., finishing touches or changes immediately before submission)
+\newcommand{\latertodo}[1]{\todo[backgroundcolor=Cyan]{\textit{Later}: #1}}
+
+% "Important" TODOs
+\newcommand{\imptodo}[1]{\todo[inline,backgroundcolor=Red]{\textbf{Important}: #1}}
+
+% "Easy" TODOs
+\newcommand{\easytodo}[1]{\todo[inline,backgroundcolor=SeaGreen]{\textit{Easy}: #1}}
+\newcommand{\eztodo}[1]{\easytodo{#1}}
+
+% "Tedious" TODOs
+\newcommand{\tedioustodo}[1]{\todo[inline,backgroundcolor=PineGreen]{\textit{Needs time}: #1}}
+
+% "Question" TODO Notes
+\newcounter{todonoteQuestionsCtr}
+\newcommand{\questiontodo}[1]{\stepcounter{todonoteQuestionsCtr}\todo[backgroundcolor=Lavender]{\textbf{Q \#\thetodonoteQuestionsCtr{}}: #1}}
+\newcommand{\qtodo}[1]{\questiontodo{#1}}
+
+%------------------------------------------------------------------------------
+% Citations
+%------------------------------------------------------------------------------
+
+\newcommand{\exhInfCite}{(\citealp[p.~5-5]{SWEBOK2024}; \citealp[p.~4]{IEEE2022};
+    \citealp[p.~421]{vanVliet2000}; \citealp[pp.~439, 461]{PetersAndPedrycz2000})}
+
+%------------------------------------------------------------------------------
+% Link to Drasil issue
+%------------------------------------------------------------------------------
+
+\newcommand{\issueref}[1]{\href{https://github.com/JacquesCarette/Drasil/issues/#1}{\##1}}
+\newcommand{\pullref}[1]{\href{https://github.com/JacquesCarette/Drasil/pull/#1}{\##1}}
+\newcommand{\thesisissuerefhelper}[1]{\href{https://github.com/samm82/TestGen-Thesis/issues/#1}{\##1}}
+
+\ExplSyntaxOn
+
+% Based on output from ChatGPT
+\NewDocumentCommand{\mapthesisissueref}{m}
+{
+    % Clear temporary sequences to store transformed items
+    \seq_clear:N \l_tmpa_seq
+    \seq_clear:N \l_tmpb_seq
+
+    \seq_set_split:Nnn \l_tmpa_seq { , } { #1 } % Split the input by commas
+    \seq_map_inline:Nn \l_tmpa_seq
+    {
+        \seq_put_right:Nn \l_tmpb_seq {\thesisissuerefhelper{##1}}
+    }
+    \seq_use:Nnnn \l_tmpb_seq { ~and~ } { ,~ } { ,~and~ }
+}
+
+\ExplSyntaxOff
+
+\newcommand{\thesisissueref}[1]{\todo[backgroundcolor=lightgray]{See \mapthesisissueref{#1}}}

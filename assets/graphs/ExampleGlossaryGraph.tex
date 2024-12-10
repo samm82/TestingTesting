@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{ExampleGlossaryGraph}{
+rankdir=BT;
+
+A [label=<A>];
+B [label=<B>];
+C [label=<C>];
+D [label=<D>,style="dashed"];
+
+A -> B;
+A -> C;
+B -> C[style="dashed"];
+C -> D;
+}
+\end{document}

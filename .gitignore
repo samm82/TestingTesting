@@ -4,5 +4,9 @@ build/
 *.aux
 *.fls
 *.fdb\_latexmk
+*.out
+
+*/__pycache__/*
 
 ~$*
+*.swp

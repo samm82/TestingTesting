@@ -1,0 +1,381 @@
+\chapter{Research}
+\label{chap:testing}
+
+It was realized early on in the process that it would be beneficial to
+understand the different kinds of testing (including what they test, what
+artifacts are needed to perform them, etc.). This section provides some results
+of this research, as well as some information on why and how it was performed.
+\todo{A justification for why we decided to do this should be added}
+
+\section{Existing Taxonomies, Ontologies, and the State of Practice}
+
+One thing we may want to consider when building a taxonomy/ontology is the
+semantic difference between related terms. For example, one ontology found
+that the term ``\,`IntegrationTest' is a kind of Context (with
+semantic of stage, but not a kind of Activity)'' while ``\,`IntegrationTesting'
+has semantic of Level-based Testing that is a kind of Testing Activity [or]
+\dots\ of Test strategy'' \citep[p.~157]{TebesEtAl2019}.
+
+A note on testing artifacts is that they are ``produced and used throughout
+the testing process'' and include test plans, test procedures, test cases, and
+test results \citep[p.~3]{SouzaEtAl2017}. The role of testing
+artifacts is not specified in \citep{BarbosaEtAl2006};
+requirements, drivers, and source code are all treated the same
+with no distinction \citep[p.~3]{BarbosaEtAl2006}.
+
+In \citep{SouzaEtAl2017}, the ontology (ROoST) \todo{add acronym?} is made to
+answer a series of questions, including ``What is the test level of a testing
+activity?'' and ``What are the artifacts used by a testing activity?''
+\citep[pp.~8-9]{SouzaEtAl2017}.\todo{is this punctuation right?}
+The question ``How do testing artifacts relate to each other?''
+\citep[p.~8]{SouzaEtAl2017} is later broken down into multiple questions,
+such as ``What are the test case inputs of a given test case?'' and ``What are
+the expected results of a given test case?'' \citep[p.~21]{SouzaEtAl2017}.
+\emph{These questions seem to overlap with the questions we were trying to ask
+    about different testing techniques.} \citet[pp.~152-153]{TebesEtAl2019} may
+provide some sources for software testing terminology and definitions
+(this seems to include
+\href{https://github.com/samm82/TestGen-Thesis/issues/14#issuecomment-1839922715}
+{the ones suggested by Dr.~Carette}) in addition to a list of ontologies
+(some of which have been investigated).
+
+One software testing model developed by the \acf{qai} includes the test
+environment (``conditions \dots
+that both enable and constrain how testing is performed'', including mission,
+goals, strategy, ``management support, resources, work processes, tools,
+motivation''), test process (testing ``standards and procedures''), and tester
+competency (``skill sets needed to test software in a test environment'')
+\citep[pp.~5-6]{Perry2006}.
+
+Another source
+introduced the notion of an ``intervention'': ``an act performed (e.g. use of a
+technique\notDefDistinctIEEE{technique} or a process change) to adapt testing
+to a specific context, to solve
+a test issue, to diagnose testing or to improve testing''
+\citep[p.~1]{engström_mapping_2015} and noted that ``academia tend[s] to focus on
+characteristics of the intervention [while] industrial standards categorize the
+area from a process perspective'' \citep[p.~2]{engström_mapping_2015}.
+It provides a structure to ``capture both a problem perspective and a solution
+perspective with respect to software testing'' \citep[pp.~3-4]{engström_mapping_2015},
+but this seems to focus more on test interventions and challenges rather than
+approaches \citep[Fig.~5]{engström_mapping_2015}.
+
+\section{Definitions}
+
+\begin{itemize}
+    \item Software testing: ``the process of executing a program with the
+          intent of finding errors'' \citep[p.~438]{PetersAndPedrycz2000}
+          \todo{OG Myers 1976}. ``Testing can reveal
+          failures, but the faults causing them are what can and must be
+          removed'' \citep[p.~5-3]{SWEBOK2024}; it can also include
+          certification, quality assurance, and quality improvement
+          \citep[p.~5-4]{SWEBOK2024}. Involves ``specific preconditions
+              [and] \dots\ stimuli so that its actual behavior can be
+          compared with its expected or required behavior'', including
+          control flows, data flows, and postconditions
+          \citep[p.~11]{Firesmith2015}, and ``an evaluation \dots\ of some
+          aspect of the system or component'' based on ``results [that]
+          are observed or recorded'' (\citealp[p.~10]{IEEE2022};
+          \citeyear[p.~6]{IEEE2021}; \citeyear[p.~465]{IEEE2017}
+          \todo{OG ISO/IEC 2014})
+    \item Test case: ``the specification of all the entities
+          that are essential for the execution, such as input values,
+          execution and timing conditions, testing procedure, and the
+          expected outcomes'' \citep[pp.~5-1 to 5-2]{SWEBOK2024}
+    \item Defect: ``an observable difference between what the software is
+          intended to do and what it does'' \citep[p.~1-1]{SWEBOK2024}; ``can
+          be used to refer to either a fault or a failure, [sic] when the
+          distinction is not important'' \citep[p.~4-3]{SWEBOK2014}
+          \todo{OG?}
+    \item Error: ``a human action that produces an incorrect result''
+          \citep[p.~399]{vanVliet2000}
+    \item Fault: ``the manifestation of an error'' in the software itself
+          \citep[p.~400]{vanVliet2000}; ``the \emph{cause} of a malfunction''
+          \citep[p.~5-3]{SWEBOK2024}
+    \item Failure: incorrect output or behaviour resulting from encountering
+          a fault; can be defined as not meeting specifications or
+          expectations and ``is a relative notion''
+          \citep[p.~400]{vanVliet2000}; ``an undesired effect observed in the
+          system's delivered service'' \citep[p.~5-3]{SWEBOK2024}
+    \item Verification: ``the process of evaluating a system or component
+          to determine whether the products of a given development phase
+          satisfy the conditions imposed at the start of that phase''
+          \citep[p.~400]{vanVliet2000}
+    \item Validation: ``the process of evaluating a system or component
+          during or at the end of the development process to determine
+          whether it satisfies specified requirements''
+          \citep[p.~400]{vanVliet2000}
+    \item Test Suite Reduction: the process of reducing the size of a test
+          suite while maintaining the same coverage
+          \citep[p.~519]{BarrEtAl2015}; can be accomplished through
+          mutation testing
+    \item Test Case Reduction: the process of ``removing side-effect free
+          functions'' from an individual test case to ``reduc[e] test oracle
+          costs'' \citep[p.~519]{BarrEtAl2015}
+    \item Probe: ``a statement inserted into a program'' for the purpose of
+          dynamic testing \citep[p.~438]{PetersAndPedrycz2000}
+\end{itemize}
+
+\subsection{Documentation}
+
+\begin{itemize}
+    \item \acf{vnv} Plan: a document for the ``planning of test activities''
+          described by IEEE Standard 1012 \citep[p.~411]{vanVliet2000}
+    \item Test Plan: ``a document describing the scope, approach, resources,
+          and schedule of intended test activities'' in more detail that the
+          \acs{vnv} Plan \citep[pp.~412-413]{vanVliet2000};
+          should also outline entry and exit conditions for the testing
+          activities as well as any risk sources and levels
+          \citep[p.~445]{PetersAndPedrycz2000}
+    \item Test Design documentation: ``specifies \dots\ the details of the
+          test approach and identifies the associated tests''
+          \citep[p.~413]{vanVliet2000}
+    \item Test Case documentation: ``specifies inputs, predicted outputs and
+          execution conditions for each test item''
+          \citep[p.~413]{vanVliet2000}
+    \item Test Procedure documentation: ``specifies the sequence of actions
+          for the execution of each test'' \citep[p.~413]{vanVliet2000}
+    \item Test Report documentation: ``provides information on the results of
+          testing tasks'', addressing software verification and validation
+          reporting \citep[p.~413]{vanVliet2000}
+\end{itemize}
+
+\section{General Testing Notes}
+
+\begin{itemize}
+    \item The scope of testing is very dependent on what type of software
+          is being tested, as this informs what information/artifacts are
+          available, which approaches are relevant, and which tacit knowledge
+          is present\thesisissueref{54}. For example, a method table
+          is a tool for tracking the ``test approaches, testing techniques
+          and test types that are required depending \dots\ on the context of
+          the test object'' \citepISTQB{} \todo{OG ISO 26262}, although
+          this is more specific to the automotive domain
+    \item If faults exist in programs, they ``must be considered faulty, even
+          if we cannot devise test cases that reveal the faults''
+          \citep[p.~401]{vanVliet2000}
+    \item ``There is no established consensus on which techniques \dots\ are
+          the most effective. The only consensus is that the selection will
+          vary as it should be dependent on a number of factors''
+          (\citealp[p.~128]{IEEE2021}; similar in
+          \citealp[p.~440]{vanVliet2000}), and it is advised to
+          use many techniques when testing (p.~440).
+          % \citep[p.~440]{vanVliet2000}.
+          This supports the principle of \emph{independence of testing}: the
+          ``separation of responsibilities, which encourages the
+          accomplishment of objective testing'' \citepISTQB{}
+\end{itemize}
+
+\subsection[Steps to Testing]{Steps to Testing
+    \citep[p.~443]{PetersAndPedrycz2000}}
+\begin{enumerate}
+    \item Identify the goal(s) of the test
+    \item Decide on an approach
+    \item Develop the tests
+    \item Determine the expected results
+    \item Run the tests
+    \item Compare the expected results to the actual results
+\end{enumerate}
+
+\subsection{Test Oracles}
+A test oracle is a ``source of information for determining whether a test has
+passed or failed'' \citep[p.~13]{IEEE2022} or that ``the \acs{sut} behaved
+correctly \dots\ and according to the expected outcomes'' and can be ``human or
+mechanical'' \citep[p.~5-5]{SWEBOK2024}. Oracles provide either ``a
+`pass' or `fail' verdict''; otherwise, ``the test output is classified as
+inconclusive'' \citep[p.~5-5]{SWEBOK2024}. This process can be ``deterministic''
+(returning a Boolean value) or ``probabilistic'' (returning ``a real number in
+the closed interval $[0, 1]$'') \citep[p.~509]{BarrEtAl2015}. Probabilistic
+test oracles can be used to reduce the computation cost (since test oracles
+are ``typically computationally expensive'') \citep[p.~509]{BarrEtAl2015}
+or in ``situations where some degree of imprecision can be tolerated'' since
+they ``offer a probability that [a given] test case is acceptable''
+\citep[p.~510]{BarrEtAl2015}. The \acs{swebok} V4 lists ``unambiguous requirements
+specifications, behavioral models, and code annotations'' as examples
+\citep[p.~5-5]{SWEBOK2024}, and \citeauthor{BarrEtAl2015} provides four
+categories \citeyearpar[p.~510]{BarrEtAl2015}:
+
+\begin{itemize}
+    \item Specified test oracle: ``judge[s] all behavioural aspects of a
+          system with respect to a given formal specification''
+          \citep[p.~510]{BarrEtAl2015}
+    \item Derived test oracle: any ``artefact[] from which a
+          test oracle may be derived---for instance, a previous version of
+          the system'' or ``program documentation''; this includes regression
+          testing, metamorphic testing \citep[p.~510]{BarrEtAl2015}, and
+          invariant detection (either known in advance or ``learned from the
+          program'') \citep[p.~516]{BarrEtAl2015}
+          \begin{itemize}
+              \item This seems to prove ``relative correctness'' as
+                    opposed to ``absolute correctness''
+                    \citep[p.~345]{LahiriEtAl2013} since this derived
+                    oracle may be wrong!
+              \item ``Two versions can be checked for semantic equivalence
+                    to ensure the correctness of [a] transformation'' in a
+                    process that can be done ``incrementally''
+                    \citep[p.~345]{LahiriEtAl2013}
+              \item Note that the term ``invariant'' may be used in
+                    different ways (see \citep[p.~348]{ChalinEtAl2006})
+          \end{itemize}
+    \item Pseudo-oracle: a type of derived test oracle that is ``an
+          alternative version of the program produced independently'' (by a
+          different team, in a different language, etc.)
+          \citep[p.~515]{BarrEtAl2015} \todo{see ISO 29119-11}.
+          \emph{We could potentially use the
+              programs generated in other languages as pseudo-oracles!}
+    \item Implicit test oracles: detect ```obvious' faults such as a program
+          crash'' (potentially due to a null pointer, deadlock, memory leak,
+          etc.) \citep[p.~510]{BarrEtAl2015}
+    \item ``Lack of an automated test oracle'': for example; a human oracle
+          generating sample data that is ``realistic'' and ``valid'',
+          \citep[pp.~510-511]{BarrEtAl2015}, crowdsourcing
+          \citep[p.~520]{BarrEtAl2015}, or a ``Wideband Delphi'': ``an
+          expert-based test estimation technique that \dots\ uses the
+          collective wisdom of the team members'' \citepISTQB{}
+\end{itemize}
+
+\subsection{Generating Test Cases}
+
+\begin{itemize}
+    \item ``Impl[ies] a reduction in human effort and cost, with the
+          potential to impact the test coverage positively'', and a given
+          ``policy could be reused in analogous situations which leads to
+          even more efficiency in terms of required efforts''
+          \citep[p.~1187]{Moghadam2019}
+    \item ``A \textbf{test adequacy criterion} \dots\ specifies requirements
+          for testing \dots\ and can be used \dots\ as a test case generator. \dots\
+          [For example, i]f a 100\% statement coverage has not been achieved
+          yet, an additional test case is selected that covers one or more
+          statements yet untested'' \citep[p.~402]{vanVliet2000}
+    \item ``Test data generators'' are mentioned on
+          \citep[p.~410]{vanVliet2000} but not described
+          \todo{Investigate}
+    \item ``Dynamic test generation consists of running a program while
+          simultaneously executing the program symbolically in order to
+          gather constrains on inputs from conditional statements encountered
+          along the execution \citep[p.~23]{GodefroidAndLuchaup2011}
+          \todo{OG [11, 6]}
+    \item ``Generating tests to detect [loop inefficiencies]'' is difficult
+          due to ``virtual call resolution'', reachability conditions, and
+          order-sensitivity \citep[p.~896]{DhokAndRamanathan2016}
+    \item Can be facilitated by ``testing frameworks such as JUnit [that]
+          automate the testing process by writing test code''
+          \citep[p.~344]{SakamotoEtAl2013}
+    \item Assertion checking requires ``auxiliary invariants'', and while
+          ``many \dots\ can be synthesized automatically by invariant
+          generation methods, the undecidable nature (or the high practical
+          complexity) of assertion checking precludes complete automation for
+          a general class of user-supplied assertions''
+          \citep[p.~345]{LahiriEtAl2013}
+          \begin{itemize}
+              \item \acf{dac} can be supported by ``automatic invariant
+                    generation'' \citep[p.~345]{LahiriEtAl2013}
+          \end{itemize}
+    \item \emph{Automated interface discovery} can be used ``for test-case
+          generation for web applications'' \citep[p.~184]{DoğanEtAl2014}
+          \todo{OG Halfond and Orso, 2007}
+    \item ``Concrete and symbolic execution'' can be used in ``a dynamic test
+          generation technique \dots\ for PHP applications''
+          \citep[p.~192]{DoğanEtAl2014} \todo{OG Artzi et al., 2008}
+    \item COBRA is a tool that ``generates test cases automatically and
+          applies them to the simulated industrial control system in a SiL
+          Test'' \citep[p.~2]{PreußeEtAl2012}
+    \item Test case generation is useful for instances where one kind of
+          testing is difficult, but can be generated from a different,
+          simpler kind (e.g., asynchronous testing from synchronous testing
+          \citep{JardEtAl1999})
+    \item Since some values may not always be applicable to a given scenario
+          (e.g., a test case for zero doesn't make sense if there is a
+          constraint that the value in question cannot be zero), the user
+          should likely be able to select categories of tests to generate
+          instead of Drasil just generating all possible test cases based on
+          the inputs \citep{june_11_meeting}
+    \item ``Test suite augmentation techniques specialise in
+          identifying and generating'' new tests based on changes ``that add
+          new features'' \todo{Investigate!}, but they could be extended to
+          also augment ``the expected output'' and ``the existing
+          \emph{oracles}'' \citep[p.~516]{BarrEtAl2015}
+\end{itemize}
+
+% Hard-coded acronym to show up in navigation sidebar
+\section[Examples of Metamorphic Relations]{Examples of \acfp{mr}}
+\begin{itemize}
+    \item The distance between two points should be the same regardless of
+          which one is the ``start'' point \citep[p.~22]{IEEE2021}
+    \item ``If a person smokes more cigarettes, then their expected age of
+          death will probably decrease (and not increase)''
+          \citep[p.~22]{IEEE2021}
+    \item ``For a function that translates speech into text[,] \dots\ the
+          same speech at different input volume levels \dots\ [should result
+          in] the same text'' \citep[p.~22]{IEEE2021}
+    \item The average of a list of numbers should be equal (within
+          floating-point errors) regardless of the list's order
+          \citep[p.~67]{KanewalaAndYuehChen2019}
+    \item For matrices, if $B = B_1 + B_2$, then $A \times B = A \times B_1
+              + A \times B_2$ \citep[pp.~68-69]{KanewalaAndYuehChen2019}
+    \item Symmetry of trigonometric functions; for example, $\sin(x) = \sin(-x)$
+          and $\sin(x) = \sin(x + 360^{\circ})$ \citep[p.~70]{KanewalaAndYuehChen2019}
+    \item Modifying input parameters to observe expected changes to a model's
+          output (e.g., testing epidemiological models calibrated with
+          ``data from the 1918 Influenza outbreak''); by ``making changes to
+          various model parameters \dots\ authors identified an error in the
+          output method of the agent based epidemiological model''
+          \citep[p.~70]{KanewalaAndYuehChen2019}
+    \item Using machine learning to predict likely \acsp{mr} to identify
+          faults in mutated versions of a program (about 90\% in this case)
+          \citep[p.~71]{KanewalaAndYuehChen2019}
+\end{itemize}
+
+\section{Roadblocks to Testing}
+
+\begin{itemize}
+    \item Intractability: it is generally impossible to test a program
+          exhaustively \exhInfCite{}
+    \item Adequacy: to counter the issue of intractability, it is desirable
+          ``to reduce the cardinality of the test suites while keeping the
+          same effectiveness in terms of coverage or fault detection rate''
+          \citep[p.~5-4]{SWEBOK2024} which is difficult to do objectively;
+          see also ``minimization'', the process of ``removing redundant test
+          cases'' \citep[p.~5-4]{SWEBOK2024}
+    \item Undecidability \citep[p.~439]{PetersAndPedrycz2000}: it is
+          impossible to know certain properties about a program, such as if
+          it will halt (i.e., the Halting Problem
+          \citep[p.~4]{gurfinkel_testing_2017}), so ``automatic testing
+          can't be guaranteed to always work'' for all properties
+          \citep{nelson_formal_1999} \todo{Add paragraph/section number?}
+\end{itemize}
+
+\subsection[Roadblocks to Testing Scientific Software]
+{Roadblocks to Testing Scientific Software
+    \citep[p.~67]{KanewalaAndYuehChen2019}}
+\label{chap:testing:sec:sci-testing-roadblocks}
+\begin{itemize}
+    \item ``Correct answers are often unknown'': if the results were already
+          known, there would be no need to develop software to model them
+          \citep[p.~67]{KanewalaAndYuehChen2019}; in other words, complete
+          test oracles don't exist ``in all but the most trivial cases''
+          \citep[p.~510]{BarrEtAl2015}, and even if they are, the
+          ``automation of mechanized oracles can be difficult and expensive''
+          \citep[p.~5.5]{SWEBOK2024}
+    \item ``Practically difficult to validate the computed output'': complex
+          calculations and outputs are difficult to verify
+          \citep[p.~67]{KanewalaAndYuehChen2019}
+    \item ``Inherent uncertainties'': since scientific software models
+          scenarios that occur in a chaotic and imperfect world, not every
+          factor can be accounted for \citep[p.~67]{KanewalaAndYuehChen2019}
+    \item ``Choosing suitable tolerances'': difficult to decide what
+          tolerance(s) to use when dealing with floating-point numbers
+          \citep[p.~67]{KanewalaAndYuehChen2019}
+    \item ``Incompatible testing tools'': while scientific software is often
+          written in languages like FORTRAN, testing tools are often written
+          in languages like Java or C++ \citep[p.~67]{KanewalaAndYuehChen2019}
+\end{itemize}
+
+Out of this list, only the first two apply. The scenarios modelled by Drasil
+are idealized and ignore uncertainties like air resistance, wind direction,
+and gravitational fluctuations. There are not any instances where special
+consideration for floating-point arithmetic must be taken; the default
+tolerance used for relevant testing frameworks has been used
+\todo{Add example} and is likely sufficient for future testing. On a related
+note, the scientific software we are trying to test is already generated in
+languages with widely-used testing frameworks. \todo{Add source(s)?}

@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{catRels9}{
+rankdir=BT;
+
+Dynamic [style=filled];
+
+{rank=same Static Dynamic}
+Static -> Dynamic [label="     "];
+}
+\end{document}

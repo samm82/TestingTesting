@@ -1,0 +1,114 @@
+\section{Introduction}
+
+% TODO: tighten up, add sources
+
+Testing software is complicated, expensive, and often overlooked. The
+productivity of testing and testing research would benefit from a standard
+language for communication. For example, \citet[p.~7]{KanerEtAl2011}
+\multAuthHelper{give} the example of complete testing, which could require the
+tester to discover ``every bug in the product'', exhaust the time allocated to
+the testing phase, or simply implement every test previously agreed upon.
+% They go on to say that
+Having a clear definition of ``complete testing'' reduces the chance for
+miscommunication and, ultimately, the tester getting ``blamed for not
+doing \dots{} [their] job'' \citetext{p.~7}. These benefits permeate software
+testing terminology. If software engineering holds code to high standards of
+clarity, consistency, and robustness, the same should apply to its supporting
+literature! \ifnotpaper
+    This is even more important when seeking to generate test cases
+    automatically. Our own project Drasil~\citep{Drasil} has the goal of
+    ``generating all of the software artifacts for (well understood)
+    research software''. Before we can include test cases as a generated
+    artifact, the domain of testing, including known testing approaches, needs
+    to be ``well understood'', which requires a ``stable knowledge base''
+    \citep{HuntEtAl2021}. \fi Unfortunately, a search for a systematic,
+rigorous, and complete taxonomy for software testing revealed that the existing
+ones are inadequate\todo{ProWritingAid suggests that including ``and
+    incomplete'' is redundant} and mostly focus on the high-level testing
+process rather than the testing approaches themselves: % and incomplete
+
+\begin{itemize}
+    \item \ifnotpaper\else Tebes et al. \fi\citet{TebesEtAl2020a} focus on
+          \emph{parts} of the testing process (e.g., test goal, test plan,
+          testing role, testable entity) and how they relate to one another,
+    \item \ifnotpaper\else Souza et al. \fi\citet{SouzaEtAl2017} prioritize
+          organizing testing approaches over defining them, and
+    \item \ifnotpaper\else Unterkalmsteiner et al. \fi\citet{UnterkalmsteinerEtAl2014}
+          focus on the ``information linkage or transfer'' \citetext{p.~A:6}
+          between requirements engineering and software testing and ``do[]
+          not aim at providing a systematic and exhaustive state-of-the-art
+          survey of [either domain]'' \citetext{p.~A:2}.
+\end{itemize}
+
+Some existing collections of software testing terminology were found, but
+in addition to being incomplete, they also contained many oversights.
+\ifnotpaper
+    For example, \citet{IEEE2017} \multAuthHelper{provide} the following
+    term-definition pairs:
+    \begin{itemize}
+        \item \textbf{Event Sequence Analysis:} ``per'' \citetext{p.~170}
+        \item \textbf{Operable:} ``state of'' \citetext{p.~301}
+              % This may be a bad example, since the cf. provides some more context
+              % \item \textbf{Software Element:} a ``system element that is software''
+              %       \citetext{p.~421}
+    \end{itemize}
+    These definitions are nonsensical and do not define the terms they claim
+    to! To be sure, they \emph{cannot} correspond to the terms given since the
+    parts of speech are mismatched: the first defines a noun phrase as a
+    preposition, and the second an adjective as a noun phrase fragment.
+    \citet{IEEE2017} also \multAuthHelper{define} ``device'' as a ``mechanism
+    or piece of equipment designed to serve a purpose or perform a function''
+    \citetext{p.~136}, but do\ifnotpaper\else{es}\fi\ not define ``equipment''
+    and only \multAuthHelper{define} ``mechanism'' in the software sense as
+    ``the means used by a function to transform input into output''
+    \citetext{p.~270\todo{OG IEEE 1998}}. This is an example of an incomplete
+    definition; while the definition of ``device'' seems logical at first
+    glance, it actually leaves much undefined.
+
+    This problem also extends to test approaches, and
+\else
+    In particular,
+\fi
+discrepancies between the definitions of test approaches can lead to the
+miscommunication mentioned by \citet[p.~7]{KanerEtAl2011}. \expBasedCatMain{}
+\tourDiscrep{}
+\loadDiscrep{} \alphaDiscrep{} With inconsistencies such as these, it is clear
+that there is a notable gap in the literature, one which we attempt to describe
+and fill. While the creation of a complete taxonomy is unreasonable, especially
+considering the pace at which the field of software changes, we can make
+progress towards this goal that others can extend and update as new test
+approaches emerge.
+
+\ifnotpaper
+    The following three research questions guide this process:
+    \begin{enumerate}
+        \item \rqatext{}
+        \item \rqbtext{}
+        \item \rqctext{}
+    \end{enumerate}
+    We start by recording the \approachCount{} test approaches mentioned by
+    \srcCount{} sources (described in \Cref{sources}), recording their name,
+    category (see \Cref{categories-observ}), definition, parent(s)
+    (see \Cref{par-chd-rels}) and synonym(s), if any. We also keep a
+    record of any other notes, such as uncertainties, prerequisites, and other
+    resources to investigate. An excerpt of some of these approaches, along
+    with their recorded information (excluding other notes for brevity), is
+    given in \Cref{tab:approachGlossaryExcerpt}.
+\fi
+
+This document describes this process, as well as its results, in more detail.
+We first define the scope of
+what kinds of software testing are of interest (\Cref{scope}) and examine the
+existing literature (\Cref{methodology})\ifnotpaper, partially through the use
+of tools created for analysis (\Cref{tools})\fi. Despite the amount of well
+understood and organized knowledge, there are still many discrepancies in the
+literature, either within the same source or between various
+sources (\Cref{discrep}). This reinforces the need for a proper taxonomy! We
+provide some potential solutions covering some of these discrepancies
+(\Cref{recs}).
+
+\ifnotpaper
+    \begin{bigLandscape}
+        \input{assets/tables/exampleGlossary}
+    \end{bigLandscape}
+\fi

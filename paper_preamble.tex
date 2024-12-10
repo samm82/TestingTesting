@@ -1,0 +1,53 @@
+\input{common_preamble}
+
+% Enable links within the document
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    urlcolor=red,
+    breaklinks=true,
+    pdftitle={\thesisTitle{}},
+}
+\urlstyle{rm} % Make URL styled fonts match hyperref's hrefs
+\usepackage[capitalize]{cleveref} % Fixes capitalization of internal references
+
+% General Utility Functions
+\def\sWidth{3.4cm}
+\def\tWidth{0.7cm}
+\input{common_macros}
+
+\usepackage{cite}
+\newcommand{\citetISTQB}{\cite{ISTQB}}
+\newcommand{\citepISTQB}{\cite{ISTQB}}
+\newcommand{\citealpISTQB}{\cite{ISTQB}}
+\newcommand{\citeauthor}{\cite}
+\newcommand{\citeauthorpar}{\cite}
+\newcommand{\citeyearpar}{\cite}
+\newcommand{\citeyear}{\cite}
+\newcommand{\citet}{\cite}
+\newcommand{\citep}{\cite}
+\newcommand{\citealp}{\cite}
+\newcommand{\citetext}[1]{[#1]}
+
+\usepackage{algorithmic}
+\usepackage{textcomp}
+
+\usepackage[disable]{todonotes}
+
+\usepackage{xstring}
+
+\newenvironment{paperTable}{
+    \begingroup
+    \renewcommand*{\thefootnote}{\alph{footnote}}
+    \begin{table*}[t!]
+        }{
+    \end{table*}
+    \endgroup
+}
+
+\newenvironment{paperFigure}{
+    \begin{figure*}[t!]
+        }{
+    \end{figure*}
+}

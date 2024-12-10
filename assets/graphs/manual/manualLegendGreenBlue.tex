@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+
+\digraph{manualLegendGreenBlue}{
+margin=0
+subgraph cluster_legend {
+margin=8
+label="Legend";
+labelloc="t";
+fontsize="48pt"
+rankdir=BT
+{
+rank=same
+chd [label="Child"];
+par [label="Parent"];
+chd -> par [label="                "];
+syn1 [label="Synonym"];
+syn2 [label="Synonym"];
+syn1 -> syn2 [dir=none label="                "];
+}
+{
+rank=same
+imp1 [label="Child"];
+imp2 [label=<Implied<br/>Parent>];
+imp1 -> imp2 [style="dashed" label="                "]
+imp3 [label=<Implied<br/>Synonym>];
+imp4 [label=<Implied<br/>Synonym>];
+imp3 -> imp4 [style="dashed" dir=none label="                "]
+}
+{
+rank=same
+src1 [style="invis"];
+src2 [style="invis"];
+src3 [style="invis"];
+src4 [style="invis"];
+src1 -> src2 [color="green" label=<From Standards<br/>Organization>]
+src3 -> src4 [color="blue"  label=<From Collection<br/>or Taxonomy>]
+}
+edge [style="invis"]
+chd  -> imp1 -> src1
+par  -> imp2 -> src2
+syn1 -> imp3 -> src3
+syn2 -> imp4 -> src4
+}
+}
+
+\end{document}
