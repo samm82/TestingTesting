@@ -11,200 +11,70 @@ rankdir=BT;
 // Dummy node to push the legend to the top left
 start [style="invis"];
 
-ABTesting [label=<A/B<br/>Testing>];
-AccessControlTesting [label=<Access<br/>Control<br/>Testing>];
 AccessibilityTesting [label=<Accessibility<br/>Testing>];
-AlphaTesting [label=<Alpha<br/>Testing>];
-AntiSpoofingTesting [label=<Anti-Spoofing<br/>Testing>];
-AntiTamperTesting [label=<Anti-Tamper<br/>Testing>];
-AvailabilityTesting [label=<Availability<br/>Testing>];
 BackupandRecoveryTesting [label=<Backup<br/>and<br/>Recovery<br/>Testing>];
 BackupRecoveryTesting [label=<Backup/Recovery<br/>Testing>];
-BackwardsCompatibilityTesting [label=<Backwards<br/>Compatibility<br/>Testing>];
-BetaTesting [label=<Beta<br/>Testing>];
-BlueTeamTesting [label=<Blue<br/>Team<br/>Testing>];
 CapacityTesting [label=<Capacity<br/>Testing>];
-ClosedBetaTesting [label=<Closed<br/>Beta<br/>Testing>];
-CoexistenceTesting [label=<Co-existence<br/>Testing>];
 CompatibilityTesting [label=<Compatibility<br/>Testing>];
-ComplianceTesting [label=<Compliance<br/>Testing>];
-ConfigurationTesting [label=<Configuration<br/>Testing>];
-ConformanceTesting [label=<Conformance<br/>Testing>];
-ConsistencyTesting [label=<Consistency<br/>Testing>];
-ContentUsageTesting [label=<Content<br/>Usage<br/>Testing>];
 ConversionTesting [label=<Conversion<br/>Testing>];
-CorrectnessTesting [label=<Correctness<br/>Testing>];
-DataMigrationTesting [label=<Data<br/>Migration<br/>Testing>];
 DisasterRecoveryTesting [label=<Disaster/Recovery<br/>Testing>];
-EfficiencyTesting [label=<Efficiency<br/>Testing>];
-EncryptionTesting [label=<Encryption<br/>Testing>];
 EndtoendTesting [label=<End-to-end<br/>Testing>];
 EnduranceTesting [label=<Endurance<br/>Testing>];
-ErrorToleranceTesting [label=<Error<br/>Tolerance<br/>Testing>];
 FailoverRecoveryTesting [label=<Failover/Recovery<br/>Testing>];
-FailureToleranceTesting [label=<Failure<br/>Tolerance<br/>Testing>];
-FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
-FlexibilityTesting [label=<Flexibility<br/>Testing>];
 FunctionalSuitabilityTesting [label=<Functional<br/>Suitability<br/>Testing>];
 FunctionalTesting [label=<Functional<br/>Testing>];
-FunctionalityTesting [label=<Functionality<br/>Testing>];
-InfrastructureCompatibilityTesting [label=<Infrastructure<br/>Compatibility<br/>Testing>];
-InfrastructureTesting [label=<Infrastructure<br/>Testing>];
 InstallabilityTesting [label=<Installability<br/>Testing>];
-InterfaceTesting [label=<Interface<br/>Testing>];
-InternationalizationTesting [label=<Internationalization<br/>Testing>];
 InteroperabilityTesting [label=<Interoperability<br/>Testing>];
 LoadTesting [label=<Load<br/>Testing>];
 LocalizationTesting [label=<Localization<br/>Testing>];
 MaintainabilityTesting [label=<Maintainability<br/>Testing>];
-MigrationTesting [label=<Migration<br/>Testing>];
-FlashMobTesting [label=<(Flash)<br/>Mob<br/>Testing>];
-MobileTesting [label=<Mobile<br/>Testing>];
-OpenBetaTesting [label=<Open<br/>Beta<br/>Testing>];
-PenetrationTesting [label=<Penetration<br/>Testing>];
-PerformanceEfficiencyTesting [label=<Performance<br/>Efficiency<br/>Testing>];
 PerformanceTesting [label=<Performance<br/>Testing>];
 PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
-PersonalizationTesting [label=<Personalization<br/>Testing>];
 PortabilityTesting [label=<Portability<br/>Testing>];
 PostReleaseTesting [label=<Post-Release<br/>Testing>];
-PrivacyTesting [label=<Privacy<br/>Testing>];
 ProcedureTesting [label=<Procedure<br/>Testing>];
-RecoverabilityTesting [label=<Recoverability<br/>Testing>];
 RecoveryTesting [label=<Recovery<br/>Testing>];
-RedTeamTesting [label=<Red<br/>Team<br/>Testing>];
-ReliabilityEnhancementTesting [label=<Reliability<br/>Enhancement<br/>Testing>];
-ReliabilityGrowthTesting [label=<Reliability<br/>Growth<br/>Testing>];
-ReliabilityMechanismTesting [label=<Reliability<br/>Mechanism<br/>Testing>];
 ReliabilityTesting [label=<Reliability<br/>Testing>];
-RepetitionTesting [label=<Repetition<br/>Testing>];
-ResourceUtilizationTesting [label=<Resource<br/>Utilization<br/>Testing>];
-RobustnessTesting [label=<Robustness<br/>Testing>];
-SafetyTesting [label=<Safety<br/>Testing>];
-ScalabilityTesting [label=<Scalability<br/>Testing>];
 SecurityTesting [label=<Security<br/>Testing>];
-StabilityTesting [label=<Stability<br/>Testing>];
 StressTesting [label=<Stress<br/>Testing>];
 UsabilityTesting [label=<Usability<br/>Testing>];
-VolumeTesting [label=<Volume<br/>Testing>];
 
-CapacityTesting -> ScalabilityTesting[dir=none,color="green"];
-CompatibilityTesting -> CoexistenceTesting[dir=none,color="green"];
-FunctionalTesting -> ConformanceTesting[dir=none,color="blue"];
 SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
 EnduranceTesting -> SoakTesting[dir=none,color="green"];
 ReliabilityTesting -> SoakTesting[dir=none];
-FaultToleranceTesting -> RobustnessTesting[dir=none,color="blue"];
 PerformanceTesting -> PerformancerelatedTesting[dir=none];
-PortabilityTesting -> FlexibilityTesting[dir=none,color="green"];
-RecoverabilityTesting -> RecoveryTesting[dir=none];
 
-ABTesting -> UsabilityTesting[color="blue"];
-AccessControlTesting -> SecurityTesting[color="blue"];
 AccessibilityTesting -> UsabilityTesting[color="green"];
-AccessibilityTesting -> ConformanceTesting[color="green"];
-AlphaTesting -> SecurityTesting[color="blue"];
-AntiSpoofingTesting -> SecurityTesting[color="blue"];
-AntiTamperTesting -> SecurityTesting[color="blue"];
-AvailabilityTesting -> ReliabilityTesting[color="green"];
-AvailabilityTesting -> SecurityTesting[color="green"];
-AvailabilityTesting -> DisasterRecoveryTesting;
 BackupandRecoveryTesting -> ReliabilityTesting[color="green"];
 BackupRecoveryTesting -> DisasterRecoveryTesting[color="green"];
-BackwardsCompatibilityTesting -> CompatibilityTesting[color="blue"];
-BetaTesting -> SecurityTesting[color="blue"];
-BlueTeamTesting -> PenetrationTesting[color="blue"];
-CapacityTesting -> PerformanceEfficiencyTesting[color="green"];
 CapacityTesting -> PerformancerelatedTesting[color="green"];
-CapacityTesting -> ConformanceTesting[color="green"];
 CapacityTesting -> PerformanceTesting[color="blue"];
-ClosedBetaTesting -> BetaTesting[color="blue"];
-CoexistenceTesting -> CompatibilityTesting[color="green"];
-ComplianceTesting -> SecurityTesting;
-ContentUsageTesting -> UsabilityTesting[color="blue"];
-ConversionTesting -> ConformanceTesting[color="green"];
 ConversionTesting -> FunctionalSuitabilityTesting[color="green"];
-CorrectnessTesting -> FunctionalSuitabilityTesting[color="green"];
-DataMigrationTesting -> ConversionTesting[color="green"];
-DataMigrationTesting -> CorrectnessTesting[color="blue"];
-DisasterRecoveryTesting -> ConformanceTesting[color="green"];
-DisasterRecoveryTesting -> FaultToleranceTesting[color="green"];
-DisasterRecoveryTesting -> RecoverabilityTesting[color="green"];
-EncryptionTesting -> SecurityTesting[color="blue"];
 EnduranceTesting -> PerformancerelatedTesting[color="green"];
-EnduranceTesting -> ConformanceTesting[color="green"];
-EnduranceTesting -> PerformanceEfficiencyTesting[color="green"];
 EnduranceTesting -> ReliabilityTesting[color="blue"];
-ErrorToleranceTesting -> RobustnessTesting[color="blue"];
 FailoverRecoveryTesting -> DisasterRecoveryTesting[color="green"];
-FailureToleranceTesting -> RobustnessTesting[color="blue"];
-FaultToleranceTesting -> ReliabilityTesting[color="green"];
-FaultToleranceTesting -> AvailabilityTesting[color="green"];
-FaultToleranceTesting -> RobustnessTesting[color="blue"];
 FunctionalTesting -> FunctionalSuitabilityTesting[color="green"];
-InfrastructureCompatibilityTesting -> CompatibilityTesting[color="blue"];
-InfrastructureTesting -> SecurityTesting[color="blue"];
 InstallabilityTesting -> PortabilityTesting[color="green"];
 InstallabilityTesting -> CompatibilityTesting[color="green"];
-InternationalizationTesting -> FlexibilityTesting[color="blue"];
-InternationalizationTesting -> UsabilityTesting;
-InternationalizationTesting -> FunctionalTesting;
 InteroperabilityTesting -> CompatibilityTesting[color="green"];
 LoadTesting -> PerformancerelatedTesting[color="green"];
 LoadTesting -> PerformanceTesting[color="green"];
 LoadTesting -> ReliabilityTesting[color="green"];
-LoadTesting -> ConformanceTesting[color="green"];
-LoadTesting -> PerformanceEfficiencyTesting[color="green"];
-LoadTesting -> StabilityTesting[color="blue"];
-LoadTesting -> RobustnessTesting[color="blue"];
 LoadTesting -> CapacityTesting[color="blue"];
 LocalizationTesting -> FunctionalSuitabilityTesting[color="green"];
 LocalizationTesting -> AccessibilityTesting[color="green"];
 LocalizationTesting -> PortabilityTesting[color="green"];
-FlashMobTesting -> UsabilityTesting[color="blue"];
-MobileTesting -> CompatibilityTesting[color="blue"];
-OpenBetaTesting -> BetaTesting[color="blue"];
-PenetrationTesting -> SecurityTesting[color="green"];
-PenetrationTesting -> PrivacyTesting[color="green"];
-PerformanceEfficiencyTesting -> ReliabilityTesting[color="green"];
-PerformanceEfficiencyTesting -> PerformancerelatedTesting[color="green"];
 PerformanceTesting -> PerformancerelatedTesting[color="green"];
-PerformanceTesting -> ConformanceTesting[color="green"];
 PerformanceTesting -> PerformanceTesting;
-PersonalizationTesting -> FlexibilityTesting[color="blue"];
-PrivacyTesting -> SecurityTesting[color="green"];
 ProcedureTesting -> FunctionalSuitabilityTesting[color="green"];
-RecoverabilityTesting -> ReliabilityTesting[color="green"];
 RecoveryTesting -> PerformancerelatedTesting[color="green"];
 RecoveryTesting -> ReliabilityTesting[color="green"];
-RecoveryTesting -> AvailabilityTesting[color="green"];
-RecoveryTesting -> FaultToleranceTesting[color="blue"];
-RedTeamTesting -> PenetrationTesting[color="blue"];
-ReliabilityEnhancementTesting -> ReliabilityTesting[color="blue"];
-ReliabilityGrowthTesting -> ReliabilityTesting[color="blue"];
-ReliabilityMechanismTesting -> ReliabilityTesting[color="blue"];
 ReliabilityTesting -> PerformanceTesting;
-ResourceUtilizationTesting -> PerformanceEfficiencyTesting[color="green"];
-ResourceUtilizationTesting -> PerformanceTesting[color="maroon"];
-ScalabilityTesting -> PortabilityTesting[color="green"];
-ScalabilityTesting -> LoadTesting[color="blue"];
-ScalabilityTesting -> VolumeTesting[color="blue"];
-ScalabilityTesting -> PerformanceTesting;
-ScalabilityTesting -> EfficiencyTesting;
 SecurityTesting -> ReliabilityTesting[color="green"];
-SecurityTesting -> ConformanceTesting[color="green"];
-SecurityTesting -> FunctionalityTesting;
 StressTesting -> PerformancerelatedTesting[color="green"];
-StressTesting -> PerformanceEfficiencyTesting[color="green"];
-StressTesting -> ConformanceTesting[color="green"];
 StressTesting -> PerformanceTesting[color="blue"];
 StressTesting -> CapacityTesting[color="blue"];
-UsabilityTesting -> ConformanceTesting[color="green"];
 UsabilityTesting -> UsabilityTesting;
-VolumeTesting -> PerformancerelatedTesting[color="green"];
-VolumeTesting -> ConformanceTesting[color="green"];
-VolumeTesting -> PerformanceEfficiencyTesting[color="green"];
-VolumeTesting -> CapacityTesting[color="blue"];
 
 subgraph cluster_legend {
     label="Legend";
@@ -244,12 +114,6 @@ src3 [style=invis];
 src4 [style=invis];
 src3 -> src4 [color=blue, label=<From ``Meta-level''<br/>Collections>]
 }
-{
-rank=same
-src5 [style=invis];
-src6 [style=invis];
-src5 -> src6 [color=maroon, label=<From Textbooks>]
-}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par
@@ -264,8 +128,6 @@ syn5 -> imp3
 src1 -> syn3
 src2 -> syn4
 src3 -> syn5
-src5 -> src2
-src6 -> src3
 }
 
 // Connect the dummy node to the first node of the legend

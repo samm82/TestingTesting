@@ -1,4 +1,5 @@
 from copy import deepcopy
+from math import ceil
 import numpy as np
 import itertools
 from pandas import read_csv
@@ -33,8 +34,8 @@ if __name__ == "__main__":
 approaches = read_csv(csvFilename)
 names = approaches["Name"].to_list()
 categories = approaches["Approach Category"].to_list()
-synonyms = approaches["Synonym(s)"].to_list()
 parents = approaches["Parent(s)"].to_list()
+synonyms = approaches["Synonym(s)"].to_list()
 
 # Write number of qualities to a file
 writeFile([len(read_csv("QualityGlossary.csv")["Name"].to_list())],
@@ -43,7 +44,7 @@ writeFile([len(read_csv("QualityGlossary.csv")["Name"].to_list())],
 # Terms in parentheses we want to keep
 PAREN_EXC = {"Acceptance"}
 
-def processCol(col):
+def processCol(col, sortByLen: bool=False):
     SOURCE_CHUNKS = [AUTHOR_REGEX, YEAR_REGEX, BEGIN_INFO_REGEX]
 
     # Adds a comma and a space to a RegEx within a non-capturing group
@@ -102,9 +103,13 @@ def processCol(col):
         else:
             col[i] = []
 
+    if sortByLen:
+        return [sorted(copySources(x), key=len) for x in col]
     return [copySources(x) for x in col]
 
 names = [n.strip() for n in names if isinstance(n, str)]
+# Sort entries for alphabetical order in multiCats rable
+categories = processCol(categories, True)
 parents = processCol(parents)
 synonyms = processCol(synonyms)
 
@@ -131,9 +136,10 @@ def isUnsure(name: str, only: bool = False) -> Optional[str]:
         unsureTerms.update(f" {term}" for term in IMPLICIT_KEYWORDS)
 
     outTerms = {unsure for unsure in unsureTerms if unsure in name}
-    if (len(outTerms) > 1 and "?" not in outTerms and
+    # Ignore the terms with distinct meanings when checking for multiple implicit keywords
+    if (len(outTerms.difference({"?", " inferred"})) > 1 and
             name not in warned_multi_unsure):
-        print(f"Multiple 'unsure' cutoffs in {name}.")
+        print(f"Multiple implicit keywords in {name}.")
         warned_multi_unsure.add(name)
 
     return (sorted(outTerms, key=name.index, reverse=True)[0]
@@ -169,8 +175,14 @@ def formatApproach(s: str, stripInit=False):
     s = s.replace("1", "One")
     return s.strip(",")
 
-def addNode(name, style = "", key = "Approach"):
+def addNode(name, style = "", key = "Approach", cat = ""):
     dashed = isUnsure(name, only=True)
+    infer = False
+    if key in cat:
+        infer = ("Example" not in csvFilename and
+                 ("(inferred" in cat or "(" not in cat))
+        if not infer:
+            dashed = dashed or isUnsure(cat, only=True)
     if dashed:
         name = name.replace("?", "")
 
@@ -185,6 +197,8 @@ def addNode(name, style = "", key = "Approach"):
     styles = [s for s in ["dashed" if dashed else "", style] if s]
     if styles:
         extras.append(f'style="{",".join(styles)}"')
+    if infer:
+        extras.append("color=gray")
     nameLine = f"{formatApproach(name)} [{",".join(extras)}];"
 
     for k in staticKeywords:
@@ -201,12 +215,76 @@ def addNode(name, style = "", key = "Approach"):
         addLineToCategory("Static", nameLine)
     addLineToCategory(key, nameLine)
 
+# Old criteria
+# criteria = (name in {
+#     "Capacity Testing", "Data-driven Testing", "Error Guessing",
+#     "Endurance Testing", "Experience-based Testing", "Attacks",
+#     "Exploratory Testing", "Fuzz Testing", "Load Testing",
+#     "Model-based Testing", "Mutation Testing",
+#     "Performance Testing", "Stress Testing"} or any(
+#         re.match(r"Type \(implied by Firesmith, 2015, p\. 5[3-8].*\)", c)
+#         for c in category))
+
+# criteria = not any(t in "".join(category) for t in {"?", "Artifact"})
+
+# criteria = not "Artifact" in "".join(category)
+
+# Placeholder criteria for automatically tracking category discrepancies
+criteria = True
+
+class MultiCatInfo():
+    def __init__(self, name, capHelper) -> None:
+        self.name = name
+        self.caption = (f"Test approaches {capHelper} more than one " +
+                         "\\hyperref[categories-observ]{category}.")
+        self.lines: list[str] = []
+        self.lenTotals: list[tuple[int, int]] = []
+
+    def addMultiCatLine(self, discrep: str, name: str, catCells: list[str]):
+        self.lenTotals.append(tuple(map(len, catCells)))
+        self.lines.append(discrep + (" & ".join([removeInParens(name)] +
+                                                catCells)) + "\\\\")
+
+    def getColWidths(self) -> list[int]:
+        avgLens = [ceil(n / len(self.lines))
+                   for n in map(sum, zip(*self.lenTotals))]
+        return [round(n * len(avgLens) / sum(avgLens), 2) for n in avgLens]
+
+    def output(self):
+        writeLongtblr(multiCat.name, multiCat.caption,
+                      ["Approach", "Category 1", "Category 2"],
+                      multiCat.lines, multiCat.getColWidths()
+        )
+
+multiCatDict = {0 : MultiCatInfo("infMultiCats", "inferred to have"),
+                1 : MultiCatInfo("multiCats",    "with")}
+
+LONG_ENDINGS = {"Testing", "Management", "Scanning", "Audits",
+               "Guessing", "Correctness"}
+LONG_ENDINGS_REGEX = re.compile(r' \b(' + '|'.join(LONG_ENDINGS) + r')\b')
+
 for name, category in zip(names, categories):
-    if isinstance(category, str):
+    for cat in category:
         for key in categoryDict.keys():
-            if key in category or key == "Approach":
+            if key in cat or key == "Approach":
                 categoryDict[key][0].append(removeInParens(name))
-                addNode(name, key=key)
+                addNode(name, key=key, cat=cat)
+
+    category = [c for c in category
+                if not any(t in c for t in {"Approach", "Artifact"})]
+    if len(category) > 1:
+        discrepCount = (getDiscrepCount(category, "CATS", "CONTRA")
+                        if not any("?" in c for c in category) else "")
+        multiCatDict[bool(discrepCount)].addMultiCatLine(
+            discrepCount, # if criteria else "",
+            # Add line breaks to longer test approaches
+            f"{{{LONG_ENDINGS_REGEX.sub(r'\\\\\1', name)}}}",
+            [formatLineWithSources(c, False) for c in category]
+        )
+
+if "Example" not in csvFilename:
+    for multiCat in multiCatDict.values():
+        multiCat.output()
 
 for key in categoryDict.keys():
     categoryDict[key][1].append("")
@@ -339,7 +417,7 @@ def makeMultiSynLine(valid, syn, terms):
         return f"\t\t\\item {term}"
 
     line = "\n".join([f"\\item \\textbf{{{syn}:}}",
-                      f"{getDiscrepCount(terms, "SYNS", "CONTRA")}\t\\begin{{itemize}}"] +
+                      f"{getDiscrepCount(terms, "SYNS", "CONTRA")}\\begin{{itemize}}"] +
                       list(map(processTerm, terms)) + ["\t\\end{itemize}"])
     if syn not in paperExamples:
         line = "\n".join(["\\ifnotpaper", line, "\\fi"])
@@ -422,7 +500,7 @@ print()
 selfCycleCount = len(selfCycles)
 
 if "Example" not in csvFilename:
-    selfCycles = [f"\\item {getDiscrepCount([cycle], "PARS", "WRONG")}\t{formatLineWithSources(cycle)}"
+    selfCycles = [f"\\item {getDiscrepCount([cycle], "PARS", "WRONG")}{formatLineWithSources(cycle)}"
                   for cycle in selfCycles]
     writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
               "selfCycles", True)
@@ -465,9 +543,8 @@ def makeParSynLine(chd, par, parSource, synSource):
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return
 
-    parSyns.add(f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\" +
-                getDiscrepCount([parSource, synSource], "PARS", "CONTRA",
-                                newlineAfter=False))
+    parSyns.add(getDiscrepCount([parSource, synSource], "PARS", "CONTRA") +
+                f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
 
 splitAtEmpty = splitListAtEmpty(categoryDict["Approach"][1])
 # Don't look for parent/synonym discrepancies unless both are present
@@ -501,28 +578,16 @@ for chd, syns in nameDict.items():
             synSource = "(" + synSource[-1] if len(synSource) > 1 else ""
             makeParSynLine(chd, par, parSource, synSource)
 
-def sortIgnoringParens(ls):
-    return sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", x))
-
 # Pairs with sources for both
 parSynCount = "".join(parSyns).count("\\to")
 
-def sortByImplied(ls):
-    return sorted(ls, key=lambda x: x.count("(implied"))
-
 if "Example" not in csvFilename:
-    writeFile(["\\begin{longtblr}[",
-            "   caption = {Pairs of test approaches with a \\hyperref[par-chd-rels]{parent-child} \\emph{and} synonym relation.},",
-            "   label = {tab:parSyns}",
-            "   ]{",
-            "   colspec = {|c|X|X|}, width = \\linewidth,",
-            "   rowhead = 1",
-            "   }",
-            "  \\hline",
-            "  \\thead{``Child'' $\\to$ ``Parent''}  & \\thead{Parent-Child Source(s)} & \\thead{Synonym Source(s)} \\\\",
-            "  \\hline"] + sortByImplied(sortIgnoringParens(parSyns)) +
-            ["  \\hline", "\\end{longtblr}"],
-            "parSyns", True)
+    writeLongtblr(
+        "parSyns",
+        "Pairs of test approaches with a \\hyperref[par-chd-rels]{parent-child} \\emph{and} synonym relation.",
+        ["``Child'' $\\to$ ``Parent''", "Parent-Child Source(s)", "Synonym Source(s)"],
+        list(parSyns)
+    )
 
     writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(
         map(lambda x: f"\\paragraph{{{x}}}",
@@ -530,7 +595,7 @@ if "Example" not in csvFilename:
             "Pairs labelled as ``synonyms''",
             "Pairs that could be ``children/parents'' \\emph{or} ``synonyms''"]),
         map(lambda x: "\n".join(["\\begin{enumerate}"] + list(
-            map(lambda x: f"\t{x}", sortByImplied(sortIgnoringParens(x)))) +
+            map(lambda x: f"\t{x}", sortByImplied(x))) +
             ["\\end{enumerate}"]), [infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc])))],
             "infParSyns", True)
 
@@ -543,7 +608,7 @@ class Flag(Enum):
     STYLE = auto()
 
 def inLine(flag, style, line):
-        return re.search(fr"label=.+,{flag.name.lower()}=.+" + style, line)
+    return re.search(fr"label=.+,{flag.name.lower()}=.*{style}", line)
 
 if "Example" not in csvFilename:
     outputDiscreps()
@@ -708,7 +773,7 @@ for key, value in rigidDict.items():
     unsure = reduce(operator.add,
                     [[val] + [c.split()[0] for c in lines if inLine(flag, val, c)]
                     for flag, val in {(Flag.STYLE, "dashed"), (Flag.COLOR, "gray")}])
-    
+
     writeDotFile([c for c in lines if all(x not in c for x in unsure)],
                 f"rigid{key}Graph")
 

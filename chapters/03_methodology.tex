@@ -191,27 +191,45 @@ examples of test levels \ifnotpaper
     \cite[pp.~9,~13]{Gerrard2000a}, \cite[p.~807-808]{Perry2006},
     \cite[pp.~443-445]{PetersAndPedrycz2000}, \citealp[p.~218]{KuļešovsEtAl2013}%
     \todo{OG Black, 2009}\fi, although they may use a different term for ``test
-level'' (see \Cref{tab:ieeeTestTerms}). Because of their widespread use
-and their usefulness when focusing on a particular
-subset of testing, these categories are used for now. \ifnotpaper A ``metric''
-category was considered in addition to this categorization, but was decided to
-be out of the scope of this project, instead being captured by coverage-driven
-testing (see \Cref{cov-test}\thesisissueref{21,22}).
+level'' (see \Cref{tab:ieeeTestTerms}). Because of their widespread use and
+their usefulness when focusing on a particular subset of testing, these
+categories are used for now. \ifnotpaper In addition to this categorization, a
+    ``metric'' category was considered\thesisissueref{21,22} but decided to be
+    out of scope for this project, instead being captured by coverage-driven
+    testing (see \Cref{cov-test}) and experience-based testing
+    \citep[p.~34]{IEEE2022}. \fi We did, however, note the potential
+significance of an ``artifact'' category\thesisissueref{44,119,39}, since some
+terms could refer to the application of a test approach and/or the resulting
+document(s). Because of this, a test approach being categorized as a category
+from \Cref{tab:ieeeTestTerms} \emph{and} an artifact is \emph{not} a
+discrepancy\thesisissueref{119}\ifnotpaper\ (and is therefore omitted from
+    \Cref{tab:multiCats})\fi.
+
+One important side effect of the particularity of these terms is that they can
+be ``overloaded''; for example, someone could reasonably yet imprecisely use
+any of these four categories as a synonym for ``approach''. Even the prompt in
+\ifnotpaper \citep[emphasis added]{ChatGPT2024} \else \cite{ChatGPT2024} \fi was
+imprecise, asking for the ``\emph{type} of software testing that focuses on
+looking for bugs where others have already been found.'' Interestingly, ChatGPT
+later ``corrected'' this by calling detect-based testing an ``approach''!
+Because of this, careful consideration needs to be given to discrepancies of
+this nature. For example, \citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}'s
+definition of ``interface testing'' is ``an integration \emph{test type} that is
+concerned with testing \dots{} interfaces'', but since he does not define
+``test type'', it may not have special significance. \ifnotpaper For this
+reason, these ``categorizations'' are marked with a question mark (?)
+and included in \Cref{tab:infMultiCats} instead of in \Cref{tab:multiCats}.
 
 Related testing approaches may be grouped into a ``class'' or ``family'' to
 group those with ``commonalities and well-identified variabilities that can be
 instantiated'', where ``the commonalities are large and the variabilities
 smaller'' \citep{classFamilyDisc}. Examples of these are the classes of
-combinatorial \citep[p.~15]{IEEE2021} and data flow testing \citetext{p.~3} and the
-family of performance-related testing \cite[p.~1187]{Moghadam2019}\footnote{The
-    original source describes ``performance testing \dots\ as a family of
-    performance-related testing techniques'', but it makes more sense to
-    consider ``performance-related testing'' as the ``family'' with
-    ``performance testing'' being one of the
-    variabilities (see \Cref{perf-test-rec}).}, and may also be
-implied for security testing, a test type that consists of ``a number of
+combinatorial \citep[p.~15]{IEEE2021} and data flow testing \citetext{p.~3} and
+the family of performance-related testing \perfAsFamily{}, and is implied for
+security testing, a test type that consists of ``a number of
 techniques\footnote{This may or may not be \distinctIEEE{technique}}''
-\cite[p.~40]{IEEE2021}.
+\cite[p.~40]{IEEE2021}. This is explored in more detail in
+\Cref{classFamilyDiscrep}.
 
 It also seems that the categories given in \Cref{tab:ieeeTestTerms} are
 orthogonal. For example, ``a test type can be performed at a single test level

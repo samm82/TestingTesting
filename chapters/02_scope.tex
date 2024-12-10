@@ -333,9 +333,15 @@ another document \citeyearpar[p.~440]{IEEE2017}%
 
     \subsubsection{Attacks}
     \label{attacks}
-    Since attacks are given as a test practice \citep[p.~34]{IEEE2022}, different
-    kinds of software attacks, such as code injection and password cracking, can
-    also be used as test approaches.
+    While attacks can be ``malicious'' \citep[p.~7]{IEEE2017}, they are also
+    given as a test practice (\citeyear[p.~34]{IEEE2022}; see \Cref{tab:multiCats}).
+    This means that software attacks, such as code injection and password
+    cracking \citepISTQB{}, can also be used for testing software, and only
+    this kind of software attack is in scope. This is supported by the fact
+    that penetration testing is also called ``ethical hacking testing''
+    \citep[p.~13-4]{SWEBOK2024} or just ``ethical hacking''
+    \citep[p.~28]{Gerrard2000b}; while hacking in general is not a test
+    approach, doing so systematically to test and improve the software is.
 
     \subsubsection{Language-specific Approaches}
     \label{lang-test}
@@ -393,7 +399,7 @@ another document \citeyearpar[p.~440]{IEEE2017}%
               \citealp[Tab.~2]{Gerrard2000a})
         \item Formal reviews \citepISTQB{}
         \item Gray-box integration testing \citep[p.~344]{SakamotoEtAl2013}
-        \item Incremental integration testing \citep[p.~601]{SharmaEtAl2021}
+        \item Incremental integration testing \citep[p.~601, 603, 605-606]{SharmaEtAl2021}
               \todo{OG [19]}
         \item Informal reviews \citepISTQB{}
         \item Infrastructure compatibility testing \citep[p.~53]{Firesmith2015}

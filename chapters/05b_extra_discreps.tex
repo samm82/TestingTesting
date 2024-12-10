@@ -53,6 +53,15 @@
           languages such as Haskell with immutable variables
           \citep{WikiHaskell2023}, this could cause confusion and/or be
           imprecise.
+    \item % Discrep count (CATS, CONTRA): implied by {IEEE2022}
+          \refHelper \citet[p.~36]{IEEE2022} say ``A/B testing is not a test
+          case generation technique as test inputs are not generated'', where
+          ``test case generation technique'' may be a synonym of ``test design
+          technique''. However, the inclusion of A/B testing under the heading
+          ``Test design and execution'' in the same document implies that it
+          may be considered a test technique.\footnote{For simplicity, this
+              implied categorization as ``technique'' is omitted from
+              \Cref{tab:multiCats}.}
     \item % Discrep count (SYNS, CONTRA): implied by {IEEE2016} | {IEEE2022} {IEEE2016}
           The claim that ``test cases can be either manual test cases or
           keyword test cases'' \citep[p.~6]{IEEE2016} implies that ``keyword-driven
@@ -62,12 +71,25 @@
           \else\cite[p.~35]{IEEE2022}, \cite[p.~4]{IEEE2016}\fi.
 
           % STD | META
+    \item % Discrep count (TERMS, REDUN): {SWEBOK2024}
+          % {Gerrard2000b} not included as part of this discrepancy since it
+          % is used as the ground truth
+          ``Ethical hacking testing'' is given as a synonym of penetration
+          testing by \citet[p.~13-4]{SWEBOK2024}, which seems redundant;
+          \citet[p.~28]{Gerrard2000b} uses the term ``ethical hacking'' which
+          is clearer.
     \item % Discrep count (DEFS, AMBI): ISTQB
           While ergonomics testing is out of scope (as it tests hardware, not
           software), its definition of ``testing to determine whether a
           component or system and its input devices are being used properly
           with correct posture'' \citepISTQB{} seems to focus on how the
           system is \emph{used} as opposed to the system \emph{itself}.
+    \item % Discrep count (DEFS, AMBI): ISTQB
+          Similarly, end-to-end testing is defined as testing ``in which
+          business processes are tested from start to finish under
+          production-like circumstances'' \citepISTQB{}; it is unclear
+          whether this tests the business processes themselves or the system's
+          role in performing them.
     \item % Discrep count (DEFS, AMBI): ISTQB
           % TODO: SRC? 
           % {SPICE2022} not included as part of this discrepancy since it
@@ -210,7 +232,7 @@
               as well as a Contradiction?}
           (``usually'', ``may or may not'', and ``often'', respectively).
 
-          % TEXT | OTHER
+          % TEXT | PAPER
     \item % Discrep count (TERMS, REDUN): {Gerrard2000a} | {IEEE2022} ISTQB
           The phrase ``continuous automated testing'' \citep[p.~11]{Gerrard2000a}
           is redundant since continuous testing is a sub-category of automated
@@ -224,7 +246,7 @@
           (see \Cref{categories-observ}), it is likely that it is at best not
           universal and at worst incorrect.
     \item % Discrep count (CATS, CONTRA): {SWEBOK2024} | {Kam2008}
-          Although ad hoc testing is sometimes classified as a ``technique''
+          Although ad hoc testing is classified as a ``technique''
           \citep[p.~5-14]{SWEBOK2024}, it is one in which ``no recognized test
           design technique is used'' \citep[p.~42]{Kam2008}.
     \item % Discrep count (DEFS, MISS): {Bas2024}
@@ -238,7 +260,9 @@
           ``Visual browser validation'' is described as both static \emph{and}
           dynamic in the same table \citep[Tab.~2]{Gerrard2000a}, even though
           they are implied to be orthogonal classifications: ``test types can
-          be static \emph{or} dynamic'' \citetext{p.~12,~emphasis added}.
+          be static \emph{or} dynamic'' \citetext{p.~12,~emphasis added}.%
+          \todo{This discrepancy is based on the static/dynamic categories;
+              should this be moved?}
     \item % Discrep count (DEFS, MISS): {Gerrard2000a}
           \refHelper \citet[Tab.~2]{Gerrard2000a} makes a distinction between
           ``transaction verification'' and ``transaction testing'' and

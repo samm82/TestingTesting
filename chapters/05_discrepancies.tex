@@ -237,24 +237,99 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
 \label{cats}
 
 While the IEEE categorization of testing approaches described in
-\Cref{tab:ieeeTestTerms} is useful, it
-is not without its faults. The boundaries between items within a category may
+\Cref{tab:ieeeTestTerms} is useful, it is not without its faults. One issue,
+which is not inherent to the categorization itself, is the fact that it is not
+used consistently\ifnotpaper\ (see \Cref{tab:otherTestTerms})\fi. The most
+blatant example of this is that \ifnotpaper \else ISO/IEC and IEEE \fi
+\citet[p.~286]{IEEE2017} describe mutation testing as a
+methodology, even though this is not one of the categories \emph{they} created!
+Additionally, the boundaries between approaches within a category may
 be unclear: ``although each technique is defined independently of all others,
 in practice [sic] some can be used in combination with other techniques''
 \citep[p.~8]{IEEE2021}. For example, ``the test coverage items derived by
 applying equivalence partitioning can be used to identify the input parameters
 of test cases derived for scenario testing'' \citetext{p.~8}. Even the categories
 themselves are not consistently defined, and some approaches are categorized
-differently by different sources:
-
-% ; these differences are tracked so
-% they can be analyzed more systematically\thesisissueref{21}.
+differently by different sources; these differences are tracked so
+they can be analyzed more systematically\thesisissueref{21}.
 
 \input{build/DiscrepCatCats}
 
-There are also instances of inconsistencies between parent and child
-test approach categorizations. This may indicate they aren't necessarily the
-same, or that more thought must be given to this method of classification.
+% Moved here to display nicely in paper
+\ifnotpaper\else\input{assets/misc/multiCats}\fi
+
+\phantomsection{}
+\label{multiCats}
+
+Some category discrepancies can be detected automatically, given in
+\Cref{tab:multiCats}; of these, experience-based testing is of particular note.
+\expBasedCatMain{} These authors say ``experience-based testing practices like
+exploratory testing \dots\ are not \dots\ techniques for designing test cases'',
+although they ``can use \dots\ test techniques'' \citeyearpar[p.~viii]{IEEE2021},
+which they support in \citeyearpar[p.~33]{IEEE2022} along with scripted testing.
+This implies that ``experience-based test design techniques'' are used \emph{by}
+the practice of experience-based testing which is not \emph{itself} a test
+technique (and similarly with scripted testing). If this is the case, it blurs
+the line between ``practice'' and ``technique'', which may explain why
+experience-based testing is categorized inconsistently in the literature%
+\thesisissueref{64}.
+
+\ifnotpaper
+    \phantomsection
+    \label{classFamilyDiscrep}
+    However, this might mean that a practice such as experience-based testing
+    can be viewed as a ``class of test case design techniques''
+    \citep[p.~4]{IEEE2022}. If \emph{this} is the case, then test approaches
+    that are a collection of specific subtechniques may be considered
+    practices. The following test approaches are each described as a ``class''
+    or ``family'' of techniques by the sources given, which seems to support
+    this:
+    \begin{itemize}
+        \item Combinatorial testing (\citealp[p.~3]{IEEE2022};
+              \citeyear[p.~2]{IEEE2021}; \citealp[p.~5-11]{SWEBOK2024})
+        \item Data flow testing (\citeyear[p.~3]{IEEE2021};
+              implied by \citealp[p.~5-13]{SWEBOK2024})
+        \item Performance(-related) testing (\citealp[p.~38]{IEEE2021};
+              \perfAsFamily*{})
+        \item Security testing \citep[implied by][p.~40]{IEEE2021}
+    \end{itemize}
+    Of the above, security testing is an outlier, since it is consistently
+    categorized as a test type (\citealp[pp.~9, 22, 26--27]{IEEE2022};
+    \citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021}; \citeyear[p.~405]{IEEE2017}%
+    \todo{OG 2013}; implied by its quality (\citealp{ISO_IEC2023a};
+    \citealp[p.~13-4]{SWEBOK2024}); \citealp[p.~53]{Firesmith2015}) despite
+    consisting of ``a number of techniques'' \cite[p.~40]{IEEE2021}, although
+    this may be \distinctIEEE{technique} In addition, specification-based
+    testing and structure-based testing may also be considered ``families''
+    since they are quite broad with many subtechniques and are described as
+    ``complementary'' alongside experience-based testing
+    \citep[p.~8, Fig.~2]{IEEE2021}.
+\fi
+
+Subapproaches of experience-based tesing, such as error guessing and
+exploratory testing, are also categorized ambiguously, causing confusion on how
+categories and parent-child relations (see \Cref{par-chd-rels}) interact.
+\refHelper \citet[p.~34\ifnotpaper, emphasis added\fi]{IEEE2022}
+\multAuthHelper{say} that a previous standard \citeyearpar{IEEE2021}
+``describes the experience-based test \emph{design technique} of error
+guessing. Other experience-based test \emph{practices} include (but are not
+limited to) exploratory testing \dots, tours, attacks, and checklist-based
+testing''. This seems to imply that error guessing is both a technique
+\emph{and} a practice, which does not make sense if these categories are
+orthogonal. \ifnotpaper Similarly, the conflicting categorizations of beta
+    testing in \Cref{tab:multiCats} may propagate to its children closed beta
+    testing and open beta testing; since this is an inferrence, it is omitted
+    from that table and instead included in \Cref{tab:infMultiCats}. \fi These
+kinds of inconsistencies between parent and child test approach categorizations
+may indicate that categories are not transitive or that more thought must be
+given to them.
+
+\ifnotpaper
+    \begin{bigLandscape}
+        \input{build/multiCats}
+    \end{bigLandscape}
+\else % Not yet present in paper
+\fi
 
 \subsubsection{Definition Discrepancies}
 \label{defs}
@@ -716,6 +791,11 @@ adding another layer of confusion to the direction of their relationship.
     ``functionality testing'' as a parent of ``end-to-end functionality testing''.
     % \item \refHelper \citep[Tab.~2]{Gerrard2000a} does \emph{not} give
     % ``functionality testing'' as a parent of ``end-to-end functionality testing''.
+
+    \subsubsection{Inferred Category Discrepancies}
+    See \Cref{multiCats}.
+
+    \input{build/infMultiCats}
 
     \subsubsection{Other Inferred Discrepancies}
     The following are discrepancies that, if were more concrete, would also be
