@@ -105,14 +105,14 @@ def formatLineWithSources(line, todo=True):
     for source in getSources(line):
         line = line.replace(source[0], source[0].replace(" and ", "And"))
 
-    # if "17, 25" in line: input(line)
-
     line = re.sub(fr"\[([\w\d~.]+)\]{{(\w+)}}, ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
                   r"[\1,~\3~\4]{\2}", line)
 
     while True:
+        newLine = re.sub(fr"\\citeyear(.*){{({AUTHOR_REGEX})({YEAR_REGEX})}}; ({YEAR_REGEX}), ({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
+                         r"\\citeyear\1{\2\3}; \\citeyear[\5~\6]{\2\4}", line)
         newLine = re.sub(fr"({BEGIN_INFO_REGEX}(?:~[\d\.]+-?,)*) ({NUM_INFO_REGEX})",
-                                r"\1~\2", line)
+                         r"\1~\2", newLine)
         if newLine == line:
             break
         line = newLine
