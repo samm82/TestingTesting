@@ -1,20 +1,19 @@
 \section{Tools}
 \label{tools}
 
-To better understand our findings, we build tools to visualize the
-relations between test approaches more intuitively (\Cref{graph-gen}) and track
-discrepancies surrounding them automatically (\Cref{discrep-analysis}). While
-this \emph{could} be done manually, it would be prone to error due to the
-amount of data involved (for example, \approachCount{} test approaches were
-identified). Additionally, there are many situations where the underlying data
-would change, such as performing more detailed analysis, correcting errors, and
-adding data from new or updated documents; these would all require the
-corresponding graphs to be updated, which would be tedious. Automating these
-processes also allows the impacts of smaller changes to be observed. This both
-provides more context when analyzing data, such as revealing an unexpected
-discrepancy that arises from a new relation between two approaches, and helps
-verify the tools themselves, such as ensuring that an added discrepancy affects
-counts as expected.
+To better understand our findings, we build tools to more intuitively visualize
+relations between test approaches (\Cref{graph-gen}) and automatically track
+their discrepancies (\Cref{discrep-analysis}). Doing this manually would be
+error-prone due to the amount of data involved (for example, we identify
+\approachCount{} test approaches) and the number of situations where the
+underlying data would change, including more detailed analysis, error
+corrections, and the addition of data. These all require tedious updates to the
+corresponding graphs that may be overlooked or done incorrectly. Besides being
+more systematic, automating these processes also allows us to observe the
+impacts of smaller changes, such as unexpected discrepancies that arise from a
+new relation between two approaches. It also helps verify the tools themselves;
+for example, adding a manual discrepancy should affect relevant discrepancy
+counts, and we can double-check this.
 
 \subsection{Approach Graph Generation}
 \label{graph-gen}
