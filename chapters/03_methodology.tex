@@ -410,6 +410,26 @@ which are \emph{not} mutually exclusive:
           functional and non-functional testing, such as reliability,
           accessibility, usability, maintainability, conversion, migration, and
           compatibility testing.'' \fi
+    \item \textbf{The information is conditional.}
+          As a more specific case of information not being universal, sometimes
+          prerequisities must be satisfied for information to apply. For
+          example, branch condition combination testing is equivalent
+          to (and is therefore a synonym of) exhaustive testing \emph{if} ``each
+          subcondition is viewed as a single input'' \citep[p.~464]{PetersAndPedrycz2000}.
+          Likewise, statement testing can be used for (and is therefore a child
+          of) unit testing \emph{if} there are ``less than 5000 lines of code''
+          \citetext{p.~481\todo{OG Miller et al., 1994}}. \ifnotpaper
+              \par This can also apply more abstractly at the taxonomy level,
+              where a parent-child relation only makes sense if the parent test
+              approach exists. This occurs when a source gives a relation
+              between qualities but at least one of them does not have an
+              explicit approach associated with it (although it may be derived;
+              see \Cref{cov-test}). For example, \citet{ISO_IEC2023a} provides
+              relations involving dependability and modifiability; these are
+              tracked as qualities, not approaches, since only the qualities
+              are described. Since the prerequisite of the relevant approach
+              existing is \emph{not} satisfied, these relations are omitted
+              from any generated graphs. \fi
 \end{enumerate}
 
 Discrepancies based on implicit information are themselves implicit. These are
