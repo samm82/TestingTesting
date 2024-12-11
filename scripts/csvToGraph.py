@@ -378,7 +378,7 @@ multiSynNotes = {
     ),
     "Static Assertion Checking": (
         "% Discrep count (SYNS, WRONG): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
-        "\\citet[p.~343]{ChalinEtAl2006} \\multAuthHelper{list} "
+        "\\citet[p.~343]{ChalinEtAl2006} \\multiAuthHelper{list} "
         "\\ifnotpaper \\acf{rac} and \\acf{sv} \\else Runtime Assertion Checking "
         "\\acf{rac} and Software Verification \\acf{sv} \\fi "
         "as ``two complementary forms of assertion checking''; "

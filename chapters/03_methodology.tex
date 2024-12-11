@@ -379,11 +379,39 @@ Since there is a considerable degree of nuance introduced by the use of natural
 language, not all discrepancies are equal! To capture this nuance and provide a
 more complete picture, we make a distinction between explicit and implicit
 discrepancies, such as in \Cref{tab:discrepClss,tab:discrepCats}. A piece of
-information is ``implicit'' if:
-\begin{itemize}
-    \item it is not directly given by a source but seems to be implied, and/or
-    \item it is only true some of the time (e.g., under certain conditions).
-\end{itemize}
+information may be considered ``implicit'' for any of the following reasons
+which are \emph{not} mutually exclusive:
+
+%% Maybe convert to \paragraph ?
+\begin{enumerate}
+    \item \textbf{The information is implied.} The implicit categorizations
+          of ``test type'' by \citet[pp.~53--58]{Firesmith2015} (see
+          \Cref{tab:multiCats\ifnotpaper,tab:infMultiCats\fi}) are an example
+          of this. The given test approaches are not explicitly called ``test
+          types'', as the term is used more loosely to refer to different kinds
+          of testing---what should be called ``test approaches'' as per
+          \Cref{tab:ieeeTestTerms}. However, this set of test approaches are
+          ``based on the associated quality characteristic and its associated
+          quality attributes'' \citetext{p.~53}, implying that they are
+          test types.
+    \item \textbf{The information is not universal.}
+          \refHelper \citet[p.~372\ifnotpaper, emphasis added\fi]{IEEE2017}%
+          \todo{OG ISO/IEC, 2014} \multiAuthHelper{define} ``regression
+          testing'' as ``testing required to determine that a change to a
+          system component has not adversely affected \emph{functionality,
+              reliability or performance} and has not introduced additional
+          defects''. While reliability testing, for example, is not
+          \emph{always} a subset of regression testing (since it may be
+          performed in other ways), it \emph{can be} accomplished by regression
+          testing, so there is sometimes a parent-child relation (defined in
+          \Cref{par-chd-rels}) between them. \ifnotpaper
+          \citet[p.~5-8\ifnotpaper, emphasis added\fi]{SWEBOK2024} provides a
+          similar list: ``regression testing \dots{} \emph{may} involve
+          functional and non-functional testing, such as reliability,
+          accessibility, usability, maintainability, conversion, migration, and
+          compatibility testing.'' \fi
+\end{enumerate}
+
 Discrepancies based on implicit information are themselves implicit. These are
 automatically detected when generating graphs and analyzing discrepancies
 (see \ifnotpaper \Cref{graph-gen,discrep-analysis}, respectively\else

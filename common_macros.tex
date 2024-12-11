@@ -58,7 +58,7 @@
 }
 
 \def\refHelper{\ifnotpaper\else Reference \fi}
-\newcommand\multAuthHelper[1]{\ifnotpaper #1\else #1s\fi}
+\newcommand\multiAuthHelper[1]{\ifnotpaper #1\else #1s\fi}
 
 \newcommand\discrepref[1]{%
     \ifnotpaper
@@ -233,7 +233,7 @@ of a test process; for example, ``across the whole organization'' or only
     subsets of them. \ifnotpaper Graphs limited to approaches from a given
         approach category (see \Cref{categories-observ}) are generated, as well
         as a graph of static approaches. This is done both because
-        \citet[Fig.~2]{IEEE2022} \multAuthHelper{consider} static testing a
+        \citet[Fig.~2]{IEEE2022} \multiAuthHelper{consider} static testing a
         separate approach category and since it is quite different from dynamic
         testing (see \Cref{static-test}). Generated graphs of static testing
         approaches include any relations with dynamic approaches (since they
