@@ -514,11 +514,11 @@ def splitListAtEmpty(listToSplit):
 parSynNotes = {
     ("Organization-based Testing", "Role-based Testing") :
         ("The distinction between organization- and "
-        "role-based testing in \\citep[pp.~17,~37,~39]{Firesmith2015} "
+        "role-based testing in \\citep[pp.~17, 37, 39]{Firesmith2015} "
         "seems arbitrary, but further investigation may prove it to be "
         "meaningful.", "\\thesisissueref{59}"), 
     ("Structured Walkthroughs", "Walkthroughs") :
-        ("See \\Cref{walkthrough-syns}.", "")
+        ("See \\discrepref{walkthrough-syns}.", "")
 }
 
 parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
