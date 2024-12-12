@@ -214,11 +214,15 @@ relation between path testing and exhaustive testing. While
 \citet[p.~421]{vanVliet2000} claims that path testing done completely ``is
 equivalent to exhaustively testing the program''\footnote{The contradictory
     definitions of path testing given in \discrepref{path-test} add
-    another layer of complexity to this claim.}, this overlooks the effect of
-implementation issues \citep[p.~476]{PetersAndPedrycz2000} and input data
-\ifnotpaper (\citeyear[p.~467]{PetersAndPedrycz2000};
-    \citealp[p.~121]{Patton2006}) \else \cite[p.~467]{PetersAndPedrycz2000},
-    \cite[p.~121]{Patton2006} \fi on the code's behaviour. Exhaustive testing
+    another layer of complexity to this claim.}, this overlooks the effects of
+input data \ifnotpaper
+    (\citealp[pp.~129--130]{IEEE2021}; \citealp[p.~121]{Patton2006};
+    \citealp[p.~467]{PetersAndPedrycz2000})
+\else
+    \cite[p.~121]{Patton2006}, \cite[p.~129]{IEEE2021},
+    \cite[p.~467]{PetersAndPedrycz2000}
+\fi and implementation issues \citetext{p.~476} % \citep[p.~476]{PetersAndPedrycz2000}
+on the code's behaviour. Exhaustive testing
 requires ``all combinations of input values \emph{and} preconditions \dots{}
 [to be] tested'' \ifnotpaper (\citealp[p.~4, emphasis added]{IEEE2022};
     similar in \citealpISTQB{}; \citealp[p.~121]{Patton2006})\else
