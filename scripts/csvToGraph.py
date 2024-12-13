@@ -435,7 +435,16 @@ for key in categoryDict.keys():
                           and knownTerm(term)]
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
-                    makeMultiSynLine(validTerms, syn, list(filter(knownTerm, terms)))
+                    print()
+                    print(", ".join(validTerms))
+                    alsoSyns = []
+                    for x, y in itertools.combinations(validTerms, 2):
+                        fx, fy = formatApproach(x), formatApproach(y)
+                        if any(rel in synSets.keys() for rel in {
+                                f"{fx} -> {fy}", f"{fy} -> {fx}"}):
+                            alsoSyns.append((x, y))
+                    if len(alsoSyns) < len(validTerms) - 1:
+                        makeMultiSynLine(validTerms, syn, list(filter(knownTerm, terms)))
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)

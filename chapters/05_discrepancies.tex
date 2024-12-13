@@ -170,10 +170,30 @@ are many instances of incorrect or ambiguous synonyms, such as the following:
 \phantomsection{}
 \label{multiSyns}
 There are also cases in which a term is given as a synonym to two (or more)
-disjoint, unrelated terms, making the relation between the given synonyms
-ambiguous. Ten of these cases were identified through automatic analysis of
-the generated graphs\ifnotpaper, listed below\else. The following four are the
-most prominent examples\fi:
+terms that are not synonyms themselves. \ifnotpaper Sometimes, these terms
+    \emph{are} synonyms; for example, use case testing, user scenario testing,
+    and scenario testing are synonyms of each other, as shown in
+    \Cref{fig:threeWaySyns}.
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+
+            \node[ellipse, draw, align=center] (ust) at (10, 0) {User Scenario\\Testing};
+            \node[ellipse, draw, align=center] (st)  at (0, 0)  {Scenario\\Testing};
+            \node[ellipse, draw, align=center] (uct) at (5, 4)  {Use Case\\Testing};
+
+            \draw[thick] (ust) -- (st)  node [midway, below, align=center] {\citealpISTQB{}};
+            \draw[thick] (st)  -- (uct) node [midway, left,  align=center] {\citealpISTQB{};\\ \citealp[pp.~47--49]{Kam2008}};
+            \draw[thick] (uct) -- (ust) node [midway, right, align=center] {\citealp[p.~48]{Kam2008}\\};
+
+        \end{tikzpicture}
+        \caption{Visual representation of a three-way synonym relation.}
+        \label{fig:threeWaySyns}
+    \end{figure}
+    However, this \else This would imply that they should be synonyms as
+    well, which \fi does not always make sense. We identify nine
+such cases through automatic analysis of the generated graphs\ifnotpaper,
+listed below\else. The following four are the most prominent examples\fi:
 
 % Moved here to display nicely in paper
 \ifnotpaper\else\input{assets/misc/parSyns}\fi
