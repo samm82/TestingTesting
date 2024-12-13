@@ -230,27 +230,38 @@ of a test process; for example, ``across the whole organization'' or only
 
     \fi
     Since these graphs tend to be large, it is useful to focus on specific
-    subsets of them. \ifnotpaper Graphs limited to approaches from a given
-        approach category (see \Cref{categories-observ}) are generated, as well
-        as a graph of static approaches. This is done both because
-        \citet[Fig.~2]{IEEE2022} \multiAuthHelper{consider} static testing a
-        separate approach category and since it is quite different from dynamic
-        testing (see \Cref{static-test}). Generated graphs of static testing
-        approaches include any relations with dynamic approaches (since they
-        are our primary focus) which are colored gray, as shown in
-        \Cref{fig:staticExampleGraph}. Additionally, more specific subsets of
-        these graphs \else These \fi can be generated based on a given subset
-    of approaches to include, such as those pertaining to recovery or scability
-    (see \Cref{recov-discrep,scal-discrep}, respectively),
-    as shown in \Cref{fig:recovery-graph-current,fig:scal-graph-current},
-    respectively (albeit with manually created legends). By specifying sets of
-    approaches and relations to add or remove, these generated graphs can be
-    updated in accordance with our recommendations in \Cref{recs}, as shown in
-    \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed}, respectively.
-    These modifications can also be inherited, as in \Cref{fig:perf-graph},
-    which was generated based on the modifications from
-    \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed} and then
-    manually tweaked\todo{Ensure these tweaks are on an up-to-date version!}.}
+    subsets of them. \ifnotpaper To do this, we generated graphs limited to
+        approaches in a selected approach category (see \Cref{categories-observ})
+        as well as a graph of static approaches. The latter is done both
+        because \citet[Fig.~2]{IEEE2022} \multiAuthHelper{consider} static
+        testing a separate approach category and since it is quite different
+        from dynamic testing (see \Cref{static-test}). Generated graphs focused
+        on static testing include any relations with dynamic approaches (since
+        they are our primary focus), and these dynamic approach nodes are
+        colored gray, as shown in \Cref{fig:staticExampleGraph}.
+
+        Additionally, more specific subsets of these graphs \else These \fi
+    can be generated from a given subset of approaches, such as
+    \ifnotpaper\else those in a selected approach category (see
+        \Cref{categories-observ}) or \fi those pertaining to recovery or
+    scability\ifnotpaper. These areas are of particular note, with their own
+    sections for discussing discrepancies (\Cref{recov-discrep,scal-discrep},
+    respectively). Graphs of just these subsets help visualize relations
+    between relevant test approaches, so these are generated and given
+    \else; the latter are shown \fi in \Cref{fig:recovery-graph-current,%
+        fig:scal-graph-current}, respectively (albeit with manually created
+    legends). By specifying sets of approaches and relations to add or remove,
+    these generated graphs can then be updated in accordance with our
+    recommendations; applying those given in \Cref{rec-test-rec,scal-test-rec}
+    results in the updated graphs in \Cref{fig:recovery-graph-proposed,%
+        fig:scal-graph-proposed}, respectively.
+    \ifnotpaper
+        Recommendations can also be inherited; for example,
+        \Cref{fig:perf-graph} was generated based on the modifications from
+        \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed} and then
+        manually tweaked\todo{Ensure these tweaks are on an up-to-date version!}.
+    \fi
+}
 
 %------------------------------------------------------------------------------
 % For populating values from files
