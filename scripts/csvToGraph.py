@@ -401,18 +401,21 @@ multiSynNotes = {
 noteOnSource = {"Operational Testing"}
 
 expMultiSyns, impMultiSyns, infMultiSyns = [], [], []
-def makeMultiSynLine(valid, syn, terms):
+def makeMultiSynLine(valid, syn, terms, alsoSyns):
     if any("(" not in term for term in terms):
         multiSynsList = infMultiSyns
     else:
         multiSynsList = (impMultiSyns if not all(
-            synSets[f"{fsyn} -> {formatApproach(term)}"][0]
-            for term in valid) else expMultiSyns)
+            synSets[f"{fsyn} -> {term}"][0] for term in valid)
+            else expMultiSyns)
 
     def processTerm(term):
+        emph = term in alsoSyns
         term = term.split(" (")
         if term[0] in multiSynNotes.keys():
             term[term[0] in noteOnSource] += f"\\footnote{{{multiSynNotes[term[0]]}}}"
+        if emph:
+            term[0] = f"\\emph{{{term[0]}}}"
         term = " (".join(term)
         return f"\t\t\\item {term}"
 
@@ -435,8 +438,6 @@ for key in categoryDict.keys():
                           and knownTerm(term)]
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
-                    print()
-                    print(", ".join(validTerms))
                     alsoSyns = []
                     for x, y in itertools.combinations(validTerms, 2):
                         fx, fy = formatApproach(x), formatApproach(y)
@@ -444,7 +445,11 @@ for key in categoryDict.keys():
                                 f"{fx} -> {fy}", f"{fy} -> {fx}"}):
                             alsoSyns.append((x, y))
                     if len(alsoSyns) < len(validTerms) - 1:
-                        makeMultiSynLine(validTerms, syn, list(filter(knownTerm, terms)))
+                        if len(alsoSyns) > 1:
+                            raise NotImplementedError
+                        makeMultiSynLine(map(formatApproach, validTerms),
+                                         syn, list(filter(knownTerm, terms)),
+                                         list(sum(alsoSyns, ())))
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
