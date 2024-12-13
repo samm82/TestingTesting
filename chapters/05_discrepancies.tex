@@ -174,7 +174,7 @@ terms that are not synonyms themselves. \ifnotpaper Sometimes, these terms
     \emph{are} synonyms; for example, use case testing, user scenario testing,
     and scenario testing are synonyms of each other, as shown in
     \Cref{fig:threeWaySyns}.
-    \begin{figure}
+    \begin{figure}[hbtp!]
         \centering
         \begin{tikzpicture}
 
@@ -182,9 +182,9 @@ terms that are not synonyms themselves. \ifnotpaper Sometimes, these terms
             \node[ellipse, draw, align=center] (st)  at (0, 0)  {Scenario\\Testing};
             \node[ellipse, draw, align=center] (uct) at (5, 4)  {Use Case\\Testing};
 
-            \draw[thick] (ust) -- (st)  node [midway, below, align=center] {\citealpISTQB{}};
-            \draw[thick] (st)  -- (uct) node [midway, left,  align=center] {\citealpISTQB{};\\ \citealp[pp.~47--49]{Kam2008}};
-            \draw[thick] (uct) -- (ust) node [midway, right, align=center] {\citealp[p.~48]{Kam2008}\\};
+            \draw[thick] (ust) -- (st)  node [midway, align=center, below]     {\citealpISTQB{}};
+            \draw[thick] (st)  -- (uct) node [midway, align=center, left=12pt] {\citealpISTQB{};\\ \citealp[pp.~47--49]{Kam2008}\\ (see \discrepref{use-case-scenario})\\};
+            \draw[thick] (uct) -- (ust) node [midway, align=center, right=4pt] {\citealp[p.~48]{Kam2008}\\};
 
         \end{tikzpicture}
         \caption{Visual representation of a three-way synonym relation.}
@@ -195,7 +195,7 @@ terms that are not synonyms themselves. \ifnotpaper Sometimes, these terms
 such cases through automatic analysis of the generated graphs\ifnotpaper,
 listed below (test approaches in \emph{italics} are synonyms with each other,
 but not with other terms not in italics\todo{Better way to handle/display
-    this?})\else. The following four are the most prominent examples\fi:
+    this?})\else. The following three are the most prominent examples\fi:
 
 % Moved here to display nicely in paper
 \ifnotpaper\else\input{assets/misc/parSyns}\fi

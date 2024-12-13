@@ -363,18 +363,8 @@ paperExamples = {"Invalid Testing", "Soak Testing", "User Scenario Testing",
 
 multiSynNotes = {
     "Reliability Testing": (
-        "Endurance testing is given as a kind of reliability testing by "
+        "Endurance testing is given as a child of reliability testing by "
         "\\citet[p.~55]{Firesmith2015}, although the terms are not synonyms."
-    ),
-    "Use Case Testing": (
-        "% Discrep count (SYNS, CONTRA): ISTQB {Kam2008} | {IEEE2022} {IEEE2021} \n\t\t"
-        "``Scenario testing'' and ``use case testing'' are given as synonyms "
-        "by \\citetISTQB{} and \\citet[pp.~47-49]{Kam2008} but listed "
-        "separately by \\citet[p.~22]{IEEE2022}, \\ifnotpaper who also give "
-        "\\else which also gives \\fi ``use case testing'' as a ``common form "
-        "of scenario testing'' \\citeyearpar[p.~20]{IEEE2021}. This implies that "
-        "``use case testing'' may instead be a child of ``user scenario testing'' "
-        "(see \\Cref{tab:parSyns})."
     ),
     "Static Assertion Checking": (
         "% Discrep count (SYNS, WRONG): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
