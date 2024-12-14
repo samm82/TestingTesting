@@ -696,11 +696,8 @@ def writeDotFile(lines, filename):
             # From https://stackoverflow.com/a/4664889/10002168
             srcCatSpaces = [m.start() for m in re.finditer(" ", srcCatLabel)]
             if srcCatSpaces:
-                try:
-                    # From comment on https://stackoverflow.com/a/38131003/10002168
-                    _idx = srcCatSpaces[len(srcCatSpaces)//2]
-                except IndexError:
-                    _idx = srcCatSpaces[0]
+                # From comment on https://stackoverflow.com/a/38131003/10002168
+                _idx = srcCatSpaces[len(srcCatSpaces)//2]
                 # From https://stackoverflow.com/a/41753038/10002168
                 srcCatLabel = srcCatLabel[:_idx] + "<br/>" + srcCatLabel[_idx + 1:]
                                 
