@@ -37,10 +37,7 @@ TransactionFlowTesting [label=<Transaction<br/>Flow<br/>Testing>];
 UsabilityTesting [label=<Usability<br/>Testing>];
 VolumeTesting [label=<Volume<br/>Testing>];
 
-SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
 
-EnduranceTesting -> SoakTesting[dir=none,color="green"];
-ReliabilityTesting -> SoakTesting[dir=none];
 
 AvailabilityTesting -> ReliabilityTesting[color="green"];
 CapacityTesting -> PerformanceEfficiencyTesting[color="green"];
@@ -119,13 +116,6 @@ subgraph cluster_legend {
         imp4 [label=<Implied<br/>Synonym>];
         imp3 -> imp4 [style="dashed" dir=none label="                "]
     }
-    {
-        rank=same
-        syn3 [label=<Term>]
-        syn4 [label=<Synonym<br/>to Both> style="dotted"]
-        syn5 [label=<Term>]
-        syn3 -> syn4 -> syn5 [dir=none]
-    }
 {
 rank=same
 src1 [style=invis];
@@ -149,15 +139,10 @@ src7 -> src8 [color=gray, label=<From Inferences>]
     imp2 -> par
     imp3 -> syn1
     imp4 -> syn2
-syn3 -> imp2
-syn4 -> imp3
-syn5 -> imp4
-syn3 -> imp1
-syn4 -> imp2
-syn5 -> imp3
-src1 -> syn3
-src2 -> syn4
-src3 -> syn5
+src1 -> imp1
+src2 -> imp2
+src3 -> imp3
+src4 -> imp4
 src5 -> src1
 src6 -> src2
 src7 -> src3

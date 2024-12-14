@@ -252,14 +252,15 @@ of a test process; for example, ``across the whole organization'' or only
         fig:scal-graph-current}, respectively (albeit with manually created
     legends). By specifying sets of approaches and relations to add or remove,
     these generated graphs can then be updated in accordance with our
-    recommendations; applying those given in \Cref{rec-test-rec,scal-test-rec}
-    results in the updated graphs in \Cref{fig:recovery-graph-proposed,%
-        fig:scal-graph-proposed}, respectively.
+    recommendations; applying those given in \Cref{rec-test-rec,,scal-test-rec,,%
+        \ifnotpaper\else perf-test-rec\fi} results in the updated graphs in
+    \Cref{fig:recovery-graph-proposed,,fig:scal-graph-proposed,,\ifnotpaper\else
+            fig:perf-graph\fi}, respectively.
     \ifnotpaper
         Recommendations can also be inherited; for example,
         \Cref{fig:perf-graph} was generated based on the modifications from
-        \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed} and then
-        manually tweaked\todo{Ensure these tweaks are on an up-to-date version!}.
+        \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed} along with
+        other changes mentioned in \Cref{perf-test-rec}.
     \fi
 }
 

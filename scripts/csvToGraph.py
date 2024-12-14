@@ -683,7 +683,11 @@ def writeDotFile(lines, filename):
                   if any(srcCat.color.name.lower() in line for line in lines)]
 
         colors, colorRow = [], []
-        prevAlignNodes = sorted(set(a.split(" -> ")[0] for a in align))
+        prevAlignNodes = (sorted(set(a.split(" -> ")[0] for a in align)) or
+                          [f"imp{i}" for i in range(1, 5)])
+        if len(srcCats) < 2:
+            prevAlignNodes = prevAlignNodes[1:-1]
+
         for i in range(0, len(srcCats) * 2, 2):
             colorRow += [f"src{i+1} [style=invis];", f"src{i+2} [style=invis];",
                  f"src{i+1} -> src{i+2} [color={srcCats[i//2].color.name.lower()}, "
@@ -988,6 +992,7 @@ performanceGraph = CustomGraph(
         "Reliability Testing" : ["Performance Testing"],
         "Response-Time Testing" : ["Performance Testing"],
         "Scalability Testing" : ["Elasticity Testing"],
+        "Soak Testing" : True,
         "Stress Testing" : ["Performance Testing"],
         "Usability Testing" : ["Usability Testing"],
     }
