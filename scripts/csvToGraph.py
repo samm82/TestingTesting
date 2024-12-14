@@ -681,6 +681,8 @@ def writeDotFile(lines, filename):
 
         srcCats = [srcCat for srcCat in SrcCat
                   if any(srcCat.color.name.lower() in line for line in lines)]
+        srcCats.append(SrcCat.PAPER)
+        srcCats.sort(reverse=True)  # Sort in decreasing "trustworthiness"
 
         colors, colorRow = [], []
         prevAlignNodes = (sorted(set(a.split(" -> ")[0] for a in align)) or
@@ -689,13 +691,22 @@ def writeDotFile(lines, filename):
             prevAlignNodes = prevAlignNodes[1:-1]
 
         for i in range(0, len(srcCats) * 2, 2):
+            srcCatLabel = (srcCats[i//2].longname.replace("``", "&quot;")
+                           .replace("''", "&quot;"))
+            # From https://stackoverflow.com/a/4664889/10002168
+            srcCatSpaces = [m.start() for m in re.finditer(" ", srcCatLabel)]
+            if srcCatSpaces:
+                try:
+                    # From comment on https://stackoverflow.com/a/38131003/10002168
+                    _idx = srcCatSpaces[len(srcCatSpaces)//2]
+                except IndexError:
+                    _idx = srcCatSpaces[0]
+                # From https://stackoverflow.com/a/41753038/10002168
+                srcCatLabel = srcCatLabel[:_idx] + "<br/>" + srcCatLabel[_idx + 1:]
+                                
             colorRow += [f"src{i+1} [style=invis];", f"src{i+2} [style=invis];",
                  f"src{i+1} -> src{i+2} [color={srcCats[i//2].color.name.lower()}, "
-                 f"label=<From {srcCats[i//2].longname
-                                .replace(" ", "<br/>")
-                                .replace("``", "&quot;")
-                                .replace("''", "&quot;")
-                                }>]"]
+                 f"label=<From {srcCatLabel}>]"]
             if i % 4:
                 colors += sameRank(colorRow)
                 colorRow = []

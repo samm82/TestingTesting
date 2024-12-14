@@ -89,6 +89,12 @@ src3 [style=invis];
 src4 [style=invis];
 src3 -> src4 [color=blue, label=<From &quot;Meta-level&quot;<br/>Collections>]
 }
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=black, label=<From Papers and<br/>Other Documents>]
+}
     edge [style="invis"]
     imp1 -> chd
     imp2 -> par
@@ -98,6 +104,8 @@ src1 -> imp1
 src2 -> imp2
 src3 -> imp3
 src4 -> imp4
+src5 -> src2
+src6 -> src3
 }
 
 // Connect the dummy node to the first node of the legend

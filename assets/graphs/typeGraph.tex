@@ -295,7 +295,13 @@ src6 [style=invis];
 src5 -> src6 [color=maroon, label=<From Textbooks>]
 src7 [style=invis];
 src8 [style=invis];
-src7 -> src8 [color=gray, label=<From Inferences>]
+src7 -> src8 [color=black, label=<From Papers and<br/>Other Documents>]
+}
+{
+rank=same
+src9 [style=invis];
+src10 [style=invis];
+src9 -> src10 [color=gray, label=<From Inferences>]
 }
     edge [style="invis"]
     imp1 -> chd
@@ -314,6 +320,8 @@ src5 -> src1
 src6 -> src2
 src7 -> src3
 src8 -> src4
+src9 -> src6
+src10 -> src7
 }
 
 // Connect the dummy node to the first node of the legend
