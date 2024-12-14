@@ -691,7 +691,11 @@ def writeDotFile(lines, filename):
         for i in range(0, len(srcCats) * 2, 2):
             colorRow += [f"src{i+1} [style=invis];", f"src{i+2} [style=invis];",
                  f"src{i+1} -> src{i+2} [color={srcCats[i//2].color.name.lower()}, "
-                 f"label=<From {srcCats[i//2].longname.replace(" ", "<br/>")}>]"]
+                 f"label=<From {srcCats[i//2].longname
+                                .replace(" ", "<br/>")
+                                .replace("``", "&quot;")
+                                .replace("''", "&quot;")
+                                }>]"]
             if i % 4:
                 colors += sameRank(colorRow)
                 colorRow = []
