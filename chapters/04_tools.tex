@@ -82,7 +82,8 @@ the glossary at all), so the following cases are possible:
           incorrect, since separate rows in the glossary define separate
           approaches (with their own definitions, nuances, etc.).
 
-    \item[3. (Included)] \ifnotpaper\else \hfill\break \fi
+    \item[3. (Included)] \ifnotpaper\phantomsection{}\label{case-three}
+          \else\hfill\break\fi
           \textbf{Two synonym pairs share a synonym without its own row.}
           This is a transitive extension to the previous case. If
           two distinct approaches share a synonym, that implies that they are
@@ -108,8 +109,10 @@ the glossary at all), so the following cases are possible:
     \end{table}
 
     This allows for automatic detection of some classes of discrepancies. The
-    most trivial to automate is ``multi-synonym'' relations, which are already
-    found to generate the graph as desired. The list found in \Cref{multiSyns}
+    most trivial to automate is ``multi-synonym'' relations, given in
+    % TODO: pretty hacky
+    \hyperref[case-three]{Case 3} above, since these are already found in order
+    to generate the graph as desired. The list found in \Cref{multiSyns}
     is automatically generated based on glossary entries such as those found
     in \Cref{tab:synExampleGlossary}. The self-referential definitions in
     \Cref{selfPars} were also trivial, found by simply looking for lines in
