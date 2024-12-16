@@ -108,9 +108,9 @@ class DiscrepCounter:
         return DiscrepCounter._countHelper(self.discrepClss)
 
 class DiscrepCat(Enum):
+    CATS  = "Categories"
     SYNS  = "Synonyms"
     PARS  = "Parents"
-    CATS  = "Categories"
     DEFS  = "Definitions"
     TERMS = "Terminology"
     CITES = "Citations"
