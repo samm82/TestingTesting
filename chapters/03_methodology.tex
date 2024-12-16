@@ -9,9 +9,9 @@ we need to look at many to see how various terms are used in practice.
 Starting from some set of sources, we then use
 ``snowball sampling'', a ``method of \dots{} sample selection \dots{} used to
 locate hidden populations'' \citep{Johnson2014}, to gather further sources
-(see \Cref{undef-terms}). Sources with a similar degree of
-``trustworthiness'' are grouped into categories; sources that are more
-``trustworthy'':
+(see \Cref{undef-terms}). Sources are then grouped into tiers based on their
+format, method of publication, and ``trustworthiness'', where more trustworthy
+sources:
 \begin{enumerate}
     \item have gone through a peer-review process,
     \item are written by numerous, well-respected authors,
@@ -19,35 +19,34 @@ locate hidden populations'' \citep{Johnson2014}, to gather further sources
     \item are accepted and used in the field of software.
 \end{enumerate}
 
-\ifnotpaper\else
-    % Moved here to display nicely; duplicated to display in one column
-    \begin{figure}
-        \centering
-        \begin{tikzpicture}
-            \pie[sum=auto, after number=, text=legend, thick,
-                scale=\ifnotpaper0.7\else0.5\fi,
-                every label/.style={align=left, scale=0.7}]
-            {\stdSources{3}/\stds{},
-                \metaSources{3}/\metas{},
-                \textSources{3}/\texts{},
-                \paperSources{3}/\papers{}}
-        \end{tikzpicture}
-        \caption{Summary of how many sources comprise each source category.}
-        \label{fig:sourceSummary}
-    \end{figure}
-\fi
-
-We therefore create the following categories, given in order of descending
+We therefore create the following tiers, given in order of descending
 trustworthiness: established standards (\Cref{stds}), ``meta-level''
 collections (\Cref{metas}), textbooks (\Cref{texts}), and papers and other
 documents (\Cref{papers}). \ifnotpaper
     Additionally, some information is inferred; although these data do not come
     from the literature, they are given in \Cref{infers} for completeness.
-\fi Each category is given a unique colour in \Cref{fig:recovery-graph-current,%
+\fi Each tier is given a unique colour in \Cref{fig:recovery-graph-current,%
     fig:recovery-graph-proposed,fig:scal-graph-current,fig:scal-graph-proposed,%
     fig:perf-graph} to better visualize the source of information in these
-graphs. A summary of how many sources comprise each category is given in
+graphs. A summary of how many sources comprise each tier is given in
 \Cref{fig:sourceSummary}.
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \pie[sum=auto, after number=, text=legend, thick,
+            scale=\ifnotpaper0.7\else0.5\fi,
+            every label/.style={align=left, scale=0.7}]
+        {\stdSources{3}/\stds{},
+            \metaSources{3}/\metas{},
+            \textSources{3}/\texts{},
+            \paperSources{3}/\papers{}}
+    \end{tikzpicture}
+    \caption{Summary of how many sources comprise each source tier.}
+    \label{fig:sourceSummary}
+\end{figure}
+
+\ifnotpaper\newpage\fi
 
 \subsubsection{\stdSources{1}}
 \label{stds}
@@ -108,7 +107,7 @@ graphs. A summary of how many sources comprise each category is given in
           %       \citep{KuļešovsEtAl2013})
     \item Written by much smaller sets of authors with unknown peer review
           processes
-    \item Much less widespread than other categories of sources
+    \item Much less widespread than other tiers of sources
     \item Many of these sources were investigated to ``fill in''
           missing definitions (see \Cref{undef-terms})
     \item Also included (for brevity) are some less-than-academic sources to
@@ -119,25 +118,9 @@ graphs. A summary of how many sources comprise each category is given in
 \end{itemize}
 
 \ifnotpaper
-    % Moved earlier in paper to display nicely
-    \begin{figure}[hbtp!]
-        \centering
-        \begin{tikzpicture}
-            \pie[sum=auto, after number=, text=legend, thick,
-                scale=\ifnotpaper0.7\else0.5\fi,
-                every label/.style={align=left, scale=0.7}]
-            {\stdSources{3}/\stds{},
-                \metaSources{3}/\metas{},
-                \textSources{3}/\texts{},
-                \paperSources{3}/\papers{}}
-        \end{tikzpicture}
-        \caption{Summary of how many sources comprise each source category.}
-        \label{fig:sourceSummary}
-    \end{figure}
-
     \subsubsection{Inferences}
     \label{infers}
-    While not as clear-cut as the other source categories, some information is
+    While not as clear-cut as the other source tiers, some information is
     inferred from the content of other sources. This includes ``surface-level''
     analysis that follows straightforwardly but isn't explicitly stated.
     Examples of this are large scale integration testing and legacy system

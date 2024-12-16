@@ -356,5 +356,5 @@ def outputDiscreps():
             sepPieCharts.append("\\hfill")
 
     writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
-                ["\\caption{Sources of discrepancies based on \\hyperref[sources]{source category}.}",
+                ["\\caption{Sources of discrepancies based on \\hyperref[sources]{source tier}.}",
                 "\\label{fig:discrepSources}", "\\end{figure*}"], "pieCharts")
