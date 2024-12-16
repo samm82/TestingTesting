@@ -356,6 +356,56 @@ it is unclear why they were included at all:
 \end{itemize}
 \fi
 
+
+\subsubsection{Synonym Relations}
+\label{syn-rels}
+
+The same approach often has many names. For example,
+\emph{specification-based testing} is also called\todo{more in Umar2000}:
+\begin{enumerate}
+    \item Black-Box Testing
+          \ifnotpaper
+              (\citealp[p.~9]{IEEE2022}; \citeyear[p.~8]{IEEE2021};
+              \citeyear[p.~431]{IEEE2017}; \citealp[p.~5-10]{SWEBOK2024};
+              \citealpISTQB{}; \citealp[p.~46 (without hyphen)]{Firesmith2015};
+              \citealp[p.~344]{SakamotoEtAl2013}; \citealp[p.~399]{vanVliet2000})
+          \else
+              \cite[p.~9]{IEEE2022}, \cite{ISTQB}, \cite[p.~431]{IEEE2017},
+              \cite[p.~5-10]{SWEBOK2024}, \cite[p.~8]{IEEE2021},
+              % \cite[p.~46 (without hyphen)]{Firesmith2015},
+              \cite[p.~399]{vanVliet2000},
+              \cite[p.~344]{SakamotoEtAl2013}
+          \fi
+    \item Closed-Box Testing
+          \ifnotpaper
+              (\citealp[p.~9]{IEEE2022}; \citeyear[p.~431]{IEEE2017})
+          \else
+              \cite[p.~9]{IEEE2022}, \cite[p.~431]{IEEE2017}
+          \fi
+    \item Functional Testing\footnote{This may be an outlier; see
+              \Cref{spec-func-test}.}
+          \ifnotpaper
+              (\citealp[p.~196]{IEEE2017}; \citealp[p.~44]{Kam2008};
+              \citealp[p.~399]{vanVliet2000}; implied by
+              \citealp[p.~129]{IEEE2021}; \citeyear[p.~431]{IEEE2017})
+          \else
+              \cite[p.~196]{IEEE2017}, \cite[p.~399]{vanVliet2000},
+              \cite[p.~44]{Kam2008} (implied by \cite[p.~431]{IEEE2017},
+              \cite[p.~129]{IEEE2021})
+          \fi
+    \item Domain Testing \citep[p.~5-10]{SWEBOK2024}
+    \item Input Domain-Based Testing (implied by \citealp[p.~4-8]{SWEBOK2014})
+\end{enumerate}
+
+These synonyms are the same as synonyms in natural language; while they may
+emphasize different aspects or express mild variations, their core meaning
+is nevertheless the same. Throughout our work, we use the terms
+``specification-based testing'' and ``structure-based testing'' to articulate
+the source of the information for designing test cases, but a team or project
+also using gray-box testing may prefer the terms ``black-box'' and ``white-box
+testing'' for consistency. Thus, synonyms are not inherently problematic,
+although they can be (see \Cref{syns}).
+
 \subsubsection{Parent-Child Relations}
 \label{par-chd-rels}
 Many test approaches are multi-faceted and can be ``specialized'' into others,
