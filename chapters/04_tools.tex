@@ -27,8 +27,9 @@
 
 To better visualize how test approaches relate to each other, we
 develop a tool to automatically generate graphs of these relations.
-\ifnotpaper Since parent-child and synonym relations between approaches are
-    tracked in \ifblind{our approach glossary}{\href{
+\ifnotpaper Since synonym (see \Cref{syn-rels}) and parent-child relations
+    (see \Cref{par-chd-rels}) between approaches are tracked in
+    \ifblind{our approach glossary}{\href{
             https://github.com/samm82/TestGen-Thesis/blob/main/ApproachGlossary.csv
         }{our approach glossary}} in a consistent format, they can be parsed
     systematically. For example, if the entries in \Cref{tab:exampleGlossary}
@@ -42,7 +43,7 @@ develop a tool to automatically generate graphs of these relations.
     the year 0000, and one in 0001. The following citation, ``(0000)'',
     contains no author, which means it was written by the same one as the
     previous citation. These citations are processed according to this
-    logic \seeSrcCode{30d8c96}{csvToGraph}{53}{94} so they can be
+    logic \seeSrcCode{897d048}{csvToGraph}{54}{95} so they can be
     consistently tracked throughout the analysis.
 
     \begin{table}[hbtp!]
@@ -61,13 +62,34 @@ develop a tool to automatically generate graphs of these relations.
     \ExampleGraph{}
 
     \newpage\fi
-All parent-child relations are graphed, as well as synonym relations where either:
-\begin{enumerate}
-    \item both synonyms have their own rows in the glossary, or
-    \item a term is a synonym to more than one term with its own row in the
-          glossary.
-\end{enumerate}
-\ifnotpaper These conditions are also deduced from the information parsed
+All parent-child relations are graphed, since they are guaranteed to be
+visually meaningful. Synonym relations, however, are either excluded from or
+included in graphs as follows.\todo{Is this correct grammar?} For each synonym
+pair, at least one term will have its own row (or else it would not appear in
+the glossary at all), so the following cases are possible:
+\begin{description}
+    \item[1. (Excluded)] \ifnotpaper\else \hfill\break \fi
+          \textbf{Only one synonym has its own row.}
+          This is a ``typical'' synonym relation (see \Cref{syn-rels}) where
+          the terms are interchangeable. The synonym \emph{could} be included
+          as an alternate name inside the node of its partner, but this would
+          unnecessarily clutter the graphs.
+
+          % Reference for singular 'row': https://ell.stackexchange.com/q/105868/169502
+    \item[2. (Included)] \ifnotpaper\else \hfill\break \fi
+          \textbf{Both synonyms have their own row in the glossary.}
+          This may indicate that the synonym relation is
+          incorrect, since separate rows in the glossary define separate
+          approaches (with their own definitions, nuances, etc.).
+
+    \item[3. (Included)] \ifnotpaper\else \hfill\break \fi
+          \textbf{Two synonym pairs share a synonym without its own row.}
+          This is a transitive extension to the previous case. If
+          two distinct approaches share a synonym, that implies that they are
+          synonyms themselves, resulting in the same possibility of the
+          relation being incorrect.
+\end{description}
+\ifnotpaper These conditions are deduced from the information parsed
     from the glossary. For example, if the entries in \Cref{tab:synExampleGlossary}
     appear in the glossary, then they are displayed as \Cref{fig:synExampleGraph}
     in the generated graph (note that X does not appear since it does not
