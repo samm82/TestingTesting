@@ -394,7 +394,8 @@ The same approach often has many names. For example,
               \cite[p.~129]{IEEE2021})
           \fi
     \item Domain Testing \citep[p.~5-10]{SWEBOK2024}
-    \item Input Domain-Based Testing (implied by \citealp[p.~4-8]{SWEBOK2014})
+    \item Input Domain-Based Testing (implied by \citealp[pp.~4-7 to
+              4-8]{SWEBOK2014})
 \end{enumerate}
 
 These synonyms are the same as synonyms in natural language; while they may
@@ -418,6 +419,36 @@ However, these relations can also be less ``rigid'' (see \Cref{rigidity});
 for ``specification-based testing'' \citeyearpar[p.~431]{IEEE2017}, which
 supports the previous claim but would not necessarily indicate a synonym
 relation on its own.
+
+Similarly, \citet[p.~5-10]{SWEBOK2024} says ``\emph{specification-based
+    techniques} \dots{} [are] sometimes also called domain
+testing techniques'' in the \acs{swebok} V4, from which the synonym of
+``domain testing'' follows logically. However, its predecessor V3 only
+\emph{implies} the more specific ``input domain-based testing'' as a synonym.
+The section on test techniques says ``the classification of testing techniques
+presented here is based on how tests are generated: from the software
+engineer's intuition and experience, the specifications, the code structure
+\dots'' \citep[p.~4\=/7]{SWEBOK2014}, and the first three subsections on the
+following page are ``Based on the Software Engineer's Intuition and
+Experience'', ``Input Domain-Based Techniques'', and ``Code-Based Techniques''
+\citetext{p.~4\=/8}. The order of the introductory list lines up with these
+sections, implying that ``input domain-based techniques'' are ``generated[]
+from \dots{} the specifications'' (i.e., that input domain-based testing is the
+same as specification-based testing). Furthermore, the examples of input
+domain-based techniques given---equivalence partitioning, pairwise testing,
+boundary-value analysis, and random testing---are all given as children%
+\footnote{
+    Pairwise testing is given as a child of combinatorial testing, which is
+    itself a child of specification-based testing, by \ifnotpaper
+        \citep[Fig.~2]{IEEE2021} and \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}%
+    \else
+        \cite[pp.~5\=/11 to 5\=/12]{SWEBOK2024} and \cite[Fig.~2]{IEEE2021}%
+    \fi, making it a ``grandchild'' of specification-based testing according to
+    these sources.
+} of specification-based testing \ifnotpaper
+    (\citealp{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealpISTQB{})\else
+    \cite{IEEE2022,ISTQB}, \cite[Fig.~2]{IEEE2021}\fi; even V4 agrees with
+this \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}!
 
 \subsubsection{Parent-Child Relations}
 \label{par-chd-rels}
