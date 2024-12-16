@@ -1,0 +1,168 @@
+\subsection{Discrepancy Analysis}
+\label{discrep-analysis}
+
+In addition to analyzing specific discrepancies, an overview of their amounts,
+sources, rigidities (see \Cref{rigidity}), classes, and categories is
+also useful. Subsets of this task can be automated (\Cref{auto-discrep-analysis})
+and the remaining manual portion can be augmented with automated
+tools (\Cref{aug-discrep-analysis}).
+
+To understand where discrepancies exist in the literature, they are
+grouped based on the source categories (as described in \Cref{sources})
+responsible for them. Each discrepancy is then counted \emph{once} per source
+category if it appears within it \emph{and/or} between it and a more
+``trusted'' category. This avoids counting the same discrepancy twice for a
+given category\thesisissueref{83}, which would result in the number of
+\emph{occurrences} of all discrepancies, instead of the number of discrepancies
+\emph{themselves}, which is more useful. An exception to this is
+\Cref{fig:discrepSources}, which counts the following sources of discrepancies
+separately:
+\begin{enumerate}
+    \item those within a single document,
+    \item those between documents by the same author(s) or standards
+          organization(s), and
+    \item those within a source category.
+\end{enumerate}
+As before, these are not double counted, meaning that the maximum number of
+counted discrepancies possible within a \emph{single} source category in
+\Cref{fig:discrepSources} is three (one for each type). This only occurs if
+there is an example of each discrepancy source that is \emph{not} ignored to
+avoid double counting; for example, while a single discrepancy within a single
+document would technically fulfill all three criteria, it would only be counted
+once.
+
+\phantomsection{}
+\label{discrep-analysis-example}
+As an example of this process, consider a discrepancy \emph{within} an IEEE
+document (e.g., two different definitions are given for a term within the same
+IEEE document) \emph{and} between another IEEE document, the \acs{istqb}
+glossary \emph{and} two papers. This would add one to the following rows of
+\Cref{tab:sntxDiscreps,tab:smntcDiscreps} in the relevant column:
+
+\begin{itemize}
+    \item \textbf{\stds{}}: this discrepancy occurs:
+          \begin{enumerate}
+              \item within one standard and
+              \item between two standards.
+          \end{enumerate}
+          This increments the count by just one to avoid double counting and
+          would do so even if only one of the above conditions was true. A more
+          nuanced breakdown of discrepancies that identifies those within a
+          singular document and those between documents by the same author is
+          given in \Cref{fig:discrepSources} and explained in more detail in
+          \Cref{aug-discrep-analysis}.
+    \item \textbf{\metas{}}: this discrepancy occurs between a
+          source in this category and a ``more trusted'' one
+          (the IEEE standards).
+    \item \textbf{\papers{}}: this discrepancy occurs between a
+          source in this category and a ``more trusted'' one. Even though there
+          are two sources in this category \emph{and} two ``more trusted''
+          categories involved, this increments the count by just one to avoid
+          double counting.
+\end{itemize}
+
+\subsubsection{Automated Discrepancy Analysis}
+\label{auto-discrep-analysis}
+
+As outlined in \Cref{graph-gen}, some types of discrepancies can be detected
+automatically. While just counting the total number of these types of
+discrepancies is trivial, tracking the source(s) of these discrepancies is more
+involved. Since the appropriate citations for each piece of information is
+tracked (see \Cref{tab:exampleGlossary,tab:synExampleGlossary} for examples of
+how these citations are formatted in the glossaries), they can be used to find
+the offending source categories. This comes with the added benefit of these
+citations being available to be formatted for use with \LaTeX{}'s citation
+commands for inclusion in this document.
+
+Comparing the authors and years of each source related to a given discrepancy
+can determine if it manifests within a single document and/or between documents
+by the same author(s) when creating \Cref{fig:discrepSources}. Then, the
+relevant sources can be sorted into their categories based on their citations
+\seeSrcCode{e709acf}{discrepCounter}{39}{56}.
+% done by the function in \Cref{lst:getSrcCat}, since each source category
+% outlined in \Cref{sources} is comprised of a small number of authors (with the
+% exception of papers and other documents; see \Cref{papers}).
+This determines
+the appropriate row of \Cref{tab:sntxDiscreps,tab:smntcDiscreps} and the appropriate
+graph and slice in \Cref{fig:discrepSources}. These lists of sources can then
+be distilled down to sets of categories which are compared against
+each other to determine how many times a given discrepancy manifests between
+source categories. Examples of this process are described in more detail in
+\Cref{aug-discrep-analysis}.
+
+\phantomsection{}
+\label{auto-discrep-analysis-rigidity}
+Alongside this citation information are the keywords relevant for assessing a
+piece of information's rigidity (see \Cref{rigidity}). This is useful when
+counting discrepancies, since a discrepancy can be both explicit and implicit,
+but should not be double counted as both\thesisissueref{83}! When counting
+discrepancies in \Cref{tab:sntxDiscreps,tab:smntcDiscreps}, a given discrepancy is
+counted only for its most ``rigid'' manifestation (i.e., it will only increment
+a value in the ``Implicit'' column if it is \emph{not} also explicit).
+
+\subsubsection{Augmented Discrepancy Analysis}
+\label{aug-discrep-analysis}
+While some subsets of discrepancies can be deduced automatically from analyzing
+the testing approach glossary, other types of discrepancies need to be tracked
+manually. This is done by adding
+comments to the relevant \LaTeX{} files (generated or not) of the form
+\begin{displayquote}
+    \texttt{\% Discrep count (CAT, CLS): \{A1\} \{A2\} \dots{} | \{B1\}
+        %\{B2\}
+        \dots{} | \{C1\} %\{C2\}
+        \dots}
+\end{displayquote}
+which can then be parsed to detemine where discrepancies occur. \texttt{CAT} is
+a placeholder for the discrepancy's category (see \Cref{smntcDiscreps})
+identifier and \texttt{CLS} is a placeholder for its class (see
+\Cref{sntxDiscreps}) identifier. These designations are ommitted
+from the following examples of these comments. Each group of
+sources is separated with a pipe symbol to be compared with the others, so any
+number of groups are permitted. If only one group is present, it is compared
+with itself. For example, the first line below means that source X has a
+discrepancy with itself, while the second line adds a discrepancy between X and Y.
+\begin{displayquote}
+    \texttt{\% Discrep count: \{X\}\\\% Discrep count: \{X\} | \{X\} \{Y\}}
+\end{displayquote}
+Discrepancies between groups are not double counted; this means the following
+line adds discrepancies between X and Z \emph{and} between Y and Z, without
+counting the discrepancy between X and Z twice.
+\begin{displayquote}
+    \texttt{\% Discrep count: \{X\} | \{X\} \{Y\} | \{Z\}}
+\end{displayquote}
+Each source is given using its BibTeX key wrapped in curly braces to mimic
+\LaTeX{}'s citation commands for ease of parsing, with the exception of the
+\acs{istqb} glossary, due to its use of custom commands via
+\texttt{\textbackslash citealias}. For example, the line
+\begin{displayquote}
+    \texttt{\% Discrep count: \{IEEE2022\} | \{IEEE2022\} \{IEEE2017\}\\
+        $\,\hookrightarrow\,$\quad ISTQB \{Kam2008\} \{Bas2024\}}
+\end{displayquote}
+would be parsed as the example given in \Cref{discrep-analysis-example}. Since
+the IEEE documents are written by the same standards organizations
+(\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), they are counted as a
+discrepancy between documents by the same author(s) in \Cref{fig:discrepSources}.
+
+The rigidity (see \Cref{rigidity}) of discrepancies can also be manually
+specified by inserting the phrase ``implied by'' after the sources of explicit
+information and before those of implicit information. Parsing this information
+follows the same rules as the automatic discrepancy analysis
+(see \Cref{auto-discrep-analysis-rigidity}). For example, the line
+
+\begin{displayquote}
+    \texttt{\% Discrep count: \{IEEE2022\} implied by \{Kam2008\} |\\
+        $\,\hookrightarrow\,$\quad \{IEEE2017\} implied by \{IEEE2022\}}
+\end{displayquote}
+
+indicates that the following discrepancies are present. The second discrepancy
+only affects \Cref{fig:discrepSources} since it is less ``rigid'' than the
+first discrepancy within standards (see \Cref{stds}). The rest increment their
+corresponding count in \Cref{fig:discrepSources,tab:sntxDiscreps,tab:smntcDiscreps}
+by only one:
+
+\begin{itemize}
+    \item an explicit discrepancy between documents by
+          \begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper},
+    \item an implicit discrepancy within a single document, and
+    \item an implicit discrepancy between a paper and a standard.
+\end{itemize}
