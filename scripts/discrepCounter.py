@@ -86,15 +86,15 @@ class DiscrepCounter:
         self.withinDoc, self.withinAuth = 0, 0
         # Differences between two categories; may be within the same category
         self.betweenCats = {k : 0 for k in SrcCat if k.value <= value}
-        self.discrepCats = OrderedDict({dc : ExpImpCounter() for dc in DiscrepCat})
-        self.discrepClss = OrderedDict({dc : ExpImpCounter() for dc in DiscrepCls})
+        self.smntcDiscreps = OrderedDict({dc : ExpImpCounter() for dc in DiscrepSmntc})
+        self.sntxDiscreps = OrderedDict({dc : ExpImpCounter() for dc in DiscrepSntx})
 
     def __str__(self):
         return "\n".join(filter(None, [
             ", ".join(map(str, [self.withinDoc, self.withinAuth])),
             "Diffs: " + ", ".join([f"{k.name} {v}" for k, v in self.betweenCats.items()]),
-            " | ".join(map(str, self.discrepCats.values())),
-            " | ".join(map(str, self.discrepClss.values())),
+            " | ".join(map(str, self.smntcDiscreps.values())),
+            " | ".join(map(str, self.sntxDiscreps.values())),
             ])) + "\n"
 
     def _countHelper(d: dict) -> str:
@@ -102,12 +102,12 @@ class DiscrepCounter:
                             [sum(v.count() for v in d.values())])
 
     def getCatCounts(self):
-        return DiscrepCounter._countHelper(self.discrepCats)
+        return DiscrepCounter._countHelper(self.smntcDiscreps)
 
     def getClsCounts(self):
-        return DiscrepCounter._countHelper(self.discrepClss)
+        return DiscrepCounter._countHelper(self.sntxDiscreps)
 
-class DiscrepCat(Enum):
+class DiscrepSmntc(Enum):
     CATS  = "Categories"
     SYNS  = "Synonyms"
     PARS  = "Parents"
@@ -115,7 +115,7 @@ class DiscrepCat(Enum):
     TERMS = "Terminology"
     CITES = "Citations"
 
-class DiscrepCls(Enum):
+class DiscrepSntx(Enum):
     WRONG  = "Mistakes"
     MISS   = "Omissions"
     CONTRA = "Contradictions"
@@ -143,8 +143,8 @@ def enumOrItem(k):
     # and https://tex.stackexchange.com/a/338027/192195
     return (k, ["\\ifnotpaper", f"\\begin{{enumerate}}[ref={k.value}~Discrepancy~\\arabic*]",
                       "\\else", f"\\begin{{itemize}}", "\\fi"])
-simpleDiscrepCats = OrderedDict([enumOrItem(k) for k in DiscrepCat])
-simpleDiscrepClss = OrderedDict([enumOrItem(k) for k in DiscrepCls])
+simpleDiscrepSmntc = OrderedDict([enumOrItem(k) for k in DiscrepSmntc])
+simpleDiscrepSntx  = OrderedDict([enumOrItem(k) for k in DiscrepSntx])
 
 def outputDiscreps():
     discrepDict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
@@ -154,9 +154,9 @@ def outputDiscreps():
         print()
 
     def getDiscGroups(s):
-        discCat, discCls = re.search(
+        smntcDisc, sntxDisc = re.search(
             r"% Discrep count \(([A-Z]+), ([A-Z]+)\):", s).groups()
-        return DiscrepCat[discCat], DiscrepCls[discCls]
+        return DiscrepSmntc[smntcDisc], DiscrepSntx[sntxDisc]
 
     for filename in TEX_FILES:
         with open(filename, "r", encoding="utf-8") as file:
@@ -169,22 +169,22 @@ def outputDiscreps():
                             "\\item % Discrep count ")[1:]]
 
         if "extra" in filename:
-            for catKey in simpleDiscrepCats.keys():
-                simpleDiscrepCats[catKey].append("\\ifnotpaper")
-            for clsKey in simpleDiscrepClss.keys():
-                simpleDiscrepClss[clsKey].append("\\ifnotpaper")
+            for smntcKey in simpleDiscrepSmntc.keys():
+                simpleDiscrepSmntc[smntcKey].append("\\ifnotpaper")
+            for sntxKey in simpleDiscrepSntx.keys():
+                simpleDiscrepSntx[sntxKey].append("\\ifnotpaper")
 
         if filename in SIMPLE_TEX_FILES:
             for discrep in discreps:
-                discCat, discCls = getDiscGroups(discrep)
-                simpleDiscrepCats[discCat].append(discrep)
-                simpleDiscrepClss[discCls].append(discrep)
+                smntcDisc, sntxDisc = getDiscGroups(discrep)
+                simpleDiscrepSmntc[smntcDisc].append(discrep)
+                simpleDiscrepSntx[sntxDisc].append(discrep)
 
                 try:
                     labelGroup, label = re.search(
                         r"% Label ([A-Z]+) ([a-z\-]+)", discrep).groups()
-                    for discGroup, dict in [(discCat, simpleDiscrepCats),
-                                            (discCls, simpleDiscrepClss)]:
+                    for discGroup, dict in [(smntcDisc, simpleDiscrepSmntc),
+                                            (sntxDisc,  simpleDiscrepSntx)]:
                         dict[discGroup] = [re.sub(
                             r"\s+% Label [A-Z]+ [a-z\-]+\s+",
                             "\n          ".join(
@@ -195,19 +195,19 @@ def outputDiscreps():
                     continue
             
         if "extra" in filename:
-            for catKey in simpleDiscrepCats.keys():
-                simpleDiscrepCats[catKey].append("\\fi")
-            for clsKey in simpleDiscrepClss.keys():
-                simpleDiscrepClss[clsKey].append("\\fi")
+            for smntcKey in simpleDiscrepSmntc.keys():
+                simpleDiscrepSmntc[smntcKey].append("\\fi")
+            for sntxKey in simpleDiscrepSntx.keys():
+                simpleDiscrepSntx[sntxKey].append("\\fi")
 
         for discrep in discrepCounts:
             sources = discrep.split("|")
-            discCat, discCls = getDiscGroups(discrep)
+            smntcDisc, sntxDisc = getDiscGroups(discrep)
             DEBUG = False
 
             sourceDicts = [categorizeSources(s) for s in sources]
             if DEBUG:
-                print(sourceDicts, discCat.name, discCls.name)
+                print(sourceDicts, smntcDisc.name, sntxDisc.name)
 
             def inPairs(s, *, sFunc = None):
                 if sFunc:
@@ -217,7 +217,7 @@ def outputDiscreps():
             # These ensure that sources aren't double counted
             pieAdded, tableAdded = set(), set()
             def updateCounters(source, pieSec: str, r):
-                nonlocal discCat, discCls
+                nonlocal smntcDisc, sntxDisc
 
                 if type(source) is tuple:
                     srcTuple = tuple(map(getSrcCat, source))
@@ -234,12 +234,12 @@ def outputDiscreps():
                     print(source, sourceCat, pieSec, r)
 
                 if srcTuple not in tableAdded:
-                    if type(discrepDict[sourceCat].discrepCats[discCat]) is int:
-                        discrepDict[sourceCat].discrepCats[discCat] += 1
-                        discrepDict[sourceCat].discrepClss[discCls] += 1
+                    if type(discrepDict[sourceCat].smntcDiscreps[smntcDisc]) is int:
+                        discrepDict[sourceCat].smntcDiscreps[smntcDisc] += 1
+                        discrepDict[sourceCat].sntxDiscreps[sntxDisc] += 1
                     else:
-                        discrepDict[sourceCat].discrepCats[discCat].addDiscrep(r)
-                        discrepDict[sourceCat].discrepClss[discCls].addDiscrep(r)
+                        discrepDict[sourceCat].smntcDiscreps[smntcDisc].addDiscrep(r)
+                        discrepDict[sourceCat].sntxDiscreps[sntxDisc].addDiscrep(r)
                     tableAdded.add(srcTuple)
                 if source not in pieAdded:
                     try:
@@ -283,61 +283,61 @@ def outputDiscreps():
             if DEBUG:
                 printDiscreps()
 
-    for shortname, discrepGroup in [("Cat", simpleDiscrepCats),
-                                    ("Cls", simpleDiscrepClss)]:
+    for shortname, discrepGroup in [("Smntc", simpleDiscrepSmntc),
+                                    ("Sntx",  simpleDiscrepSntx)]:
         for k in discrepGroup.keys():
             discrepGroup[k] += ["\\ifnotpaper", "\\end{enumerate}", "\\else",
                                 "\\end{itemize}", "\\fi"]
-            writeFile(discrepGroup[k], f"Discrep{shortname}{k.name.title()}", True)
+            writeFile(discrepGroup[k], f"{shortname}Discrep{k.name.title()}", True)
 
     pieCharts = []
-    totalCats, totalClss = [], []
+    smntcTotal, sntxTotal = [], []
     def totalHelper(total, new):
         return [a + b for a, b in itertools.zip_longest(
             total, [int(d.strip()) for d in new.split("%")], fillvalue=0)]
 
     for k, v in discrepDict.items():
-        discrepCats, discrepClss = v.getCatCounts(), v.getClsCounts()
-        assert discrepCats.split("%")[-1] == discrepClss.split("%")[-1]
+        smntcDiscreps, sntxDiscreps = v.getCatCounts(), v.getClsCounts()
+        assert smntcDiscreps.split("%")[-1] == sntxDiscreps.split("%")[-1]
 
-        totalCats = totalHelper(totalCats, discrepCats)
-        totalClss = totalHelper(totalClss, discrepClss)
+        smntcTotal = totalHelper(smntcTotal, smntcDiscreps)
+        sntxTotal  = totalHelper(sntxTotal, sntxDiscreps)
 
-        writeFile([discrepCats], f"{k.name.lower()}DiscCatBrkdwn", True)
-        writeFile([discrepClss], f"{k.name.lower()}DiscClsBrkdwn", True)
+        writeFile([smntcDiscreps], f"{k.name.lower()}SmntcDiscBrkdwn", True)
+        writeFile([sntxDiscreps],  f"{k.name.lower()}SntxDiscBrkdwn", True)
 
         totalDiscreps = sum({v.withinDoc, v.withinAuth,
-                                sum(v.betweenCats.values())})
+                             sum(v.betweenCats.values())})
 
         slices = ([(v.withinDoc, "Within a single document"),
-                    (v.withinAuth, "Between documents by the same author(s) or standards organization(s)")] +
-                    [(catCount, "Between a document from this category and a " +
-                                cat.shortname.lower()[:-1])  # Strip plural "s"
-                    for cat, catCount in v.betweenCats.items()])
+                   (v.withinAuth, "Between documents by the same author(s) or standards organization(s)")] +
+                   [(catCount, "Between a document from this category and a " +
+                     cat.shortname.lower()[:-1])  # Strip plural "s"
+                     for cat, catCount in v.betweenCats.items()])
 
         # Default color palette for pgf-pie
         # https://github.com/pgf-tikz/pgf-pie/blob/ede5ceea348b0b1c1bbe8ccd0d75167ee3cc53bf/tex/latex/pgf-pie/tikzlibrarypie.code.tex#L239-L241
         DEFAULT_COLORS = ["blue!60", "cyan!60", "yellow!60", "orange!60", "red!60",
-                            "blue!60!cyan!60", "cyan!60!yellow!60", "red!60!cyan!60",
-                            "red!60!blue!60", "orange!60!cyan!60"]
+                          "blue!60!cyan!60", "cyan!60!yellow!60", "red!60!cyan!60",
+                          "red!60!blue!60", "orange!60!cyan!60"]
 
         colors = [DEFAULT_COLORS[i] for i, slice in enumerate(slices) if slice[0]]
 
         # LaTeX from https://tex.stackexchange.com/a/196483/192195
         pieCharts.append(["\\begin{subfigure}[t]{0.475\\textwidth}",
-                            "\\begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]",
-                            f"   \\pie[text=legend, sum=auto, hide number, color={{{", ".join(colors)}}}]{{",
-                            ",\n".join(
-                                [f"      {val}/{str(round(val/totalDiscreps*100, 1)).strip("0").strip(".")}\\%"
-                                for val, _ in slices if val]),
-                            "}", "\\end{tikzpicture}",
-                            f"\\caption{{Discrepancies found in \\{k.name.lower()}s{{}}.}}",
-                            f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
-                            "\\end{subfigure}"
-                            ])
+                          "\\begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]",
+                          f"   \\pie[text=legend, sum=auto, hide number, color={{{", ".join(colors)}}}]{{",
+                          ",\n".join(
+                              [f"      {val}/{str(round(val/totalDiscreps*100, 1)).strip("0").strip(".")}\\%"
+                              for val, _ in slices if val]),
+                          "}", "\\end{tikzpicture}",
+                          f"\\caption{{Discrepancies found in \\{k.name.lower()}s{{}}.}}",
+                          f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
+                          "\\end{subfigure}"
+                          ])
     
-    writeFile([formatOutput(totalCats)], f"totalDiscCatBrkdwn", True)
-    writeFile([formatOutput(totalClss)], f"totalDiscClsBrkdwn", True)
+    writeFile([formatOutput(smntcTotal)], f"totalSmntcDiscBrkdwn", True)
+    writeFile([formatOutput(sntxTotal)],  f"totalSntxDiscBrkdwn", True)
 
     pieCharts.append(["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
                         "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",

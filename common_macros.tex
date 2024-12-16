@@ -326,17 +326,17 @@ of a test process; for example, ``across the whole organization'' or only
 
 \def\srcCount{\the\numexpr\stdSources{3} + \metaSources{3} + \textSources{3} + \paperSources{3}}
 
-\ReadFile{\stdDiscCatBrkdwn}{build/stdDiscCatBrkdwn}
-\ReadFile{\metaDiscCatBrkdwn}{build/metaDiscCatBrkdwn}
-\ReadFile{\textDiscCatBrkdwn}{build/textDiscCatBrkdwn}
-\ReadFile{\paperDiscCatBrkdwn}{build/paperDiscCatBrkdwn}
-\ReadFile{\totalDiscCatBrkdwn}{build/totalDiscCatBrkdwn}
+\ReadFile{\stdSmntcDiscBrkdwn}{build/stdSmntcDiscBrkdwn}
+\ReadFile{\metaSmntcDiscBrkdwn}{build/metaSmntcDiscBrkdwn}
+\ReadFile{\textSmntcDiscBrkdwn}{build/textSmntcDiscBrkdwn}
+\ReadFile{\paperSmntcDiscBrkdwn}{build/paperSmntcDiscBrkdwn}
+\ReadFile{\totalSmntcDiscBrkdwn}{build/totalSmntcDiscBrkdwn}
 
-\ReadFile{\stdDiscClsBrkdwn}{build/stdDiscClsBrkdwn}
-\ReadFile{\metaDiscClsBrkdwn}{build/metaDiscClsBrkdwn}
-\ReadFile{\textDiscClsBrkdwn}{build/textDiscClsBrkdwn}
-\ReadFile{\paperDiscClsBrkdwn}{build/paperDiscClsBrkdwn}
-\ReadFile{\totalDiscClsBrkdwn}{build/totalDiscClsBrkdwn}
+\ReadFile{\stdSntxDiscBrkdwn}{build/stdSntxDiscBrkdwn}
+\ReadFile{\metaSntxDiscBrkdwn}{build/metaSntxDiscBrkdwn}
+\ReadFile{\textSntxDiscBrkdwn}{build/textSntxDiscBrkdwn}
+\ReadFile{\paperSntxDiscBrkdwn}{build/paperSntxDiscBrkdwn}
+\ReadFile{\totalSntxDiscBrkdwn}{build/totalSntxDiscBrkdwn}
 
 \def\stds{\nameref{stds}}
 \def\metas{\nameref{metas}}
@@ -346,7 +346,7 @@ of a test process; for example, ``across the whole organization'' or only
 \def\srcCat{\hyperref[sources]{Source Category}}
 \def\reduns{\ifnotpaper\nameref{redun}\else Redundancies\footnote{Section omitted for brevity.}\fi}
 
-\def\totalDiscreps{\totalDiscCatBrkdwn{13}}
+\def\totalDiscreps{\totalSmntcDiscBrkdwn{13}}
 
 \def\cats{\hyperref[cats]{Categories}}
 \def\syns{\hyperref[syns]{Synonyms}}
