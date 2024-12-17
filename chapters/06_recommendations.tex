@@ -110,23 +110,18 @@ demonstrated in \Cref{fig:recovery-graph-current,fig:recovery-graph-proposed}.
 \label{scal-test-rec}
 
 The ambiguity around scalability testing found in the literature is resolved
-and/or explained by other sources! \ifnotpaper \citeauthor{IEEE2021} give
-\else \cite[p.~39]{IEEE2021} gives \fi ``scalability testing'' as a synonym
-of ``capacity testing'', defined
+and/or explained by other sources! \citet[p.~39]{IEEE2021} \multiAuthHelper{give}
+``scalability testing'' as a synonym of ``capacity testing'', defined
 as the testing of a system's ability to ``perform under conditions that may
 need to be supported in the future'', which ``may include assessing what level
 of additional resources (e.g. memory, disk capacity, network bandwidth) will
-be required to support anticipated future loads''%
-\ifnotpaper \ \citeyearpar[p.~39]{IEEE2021}%
-\fi. This focus on ``the future'' is supported by
-\ifnotpaper \citeauthor{ISTQB_author}, who define
-\else \cite{ISTQB}, which defines
-\fi ``scalability'' as ``the degree to which a component or system can be
-adjusted for changing capacity''%
-\ifnotpaper \ \citeyearpar{ISTQB}; the original source
-    they reference agrees, defining it as ``the measure of a system's ability to be
-    upgraded to accommodate increased loads'' \citep[p.~381]{GerrardAndThompson2002}%
-\fi. In contrast, capacity testing focuses on the system's present state, evaluating
+be required to support anticipated future loads''. This focus on ``the future''
+is supported by \citetISTQB{}, \ifnotpaper who define \else which defines \fi
+``scalability'' as ``the degree to which a component or system can be adjusted
+for changing capacity''\ifnotpaper; the original source they reference agrees,
+defining it as ``the measure of a system's ability to be upgraded to
+accommodate increased loads'' \citep[p.~381]{GerrardAndThompson2002}\fi. In
+contrast, capacity testing focuses on the system's present state, evaluating
 the ``capability of a product to meet requirements for the maximum limits of a
 product parameter'', such as the number of concurrent users, transaction
 throughput, or database size \citep{ISO_IEC2023a}. Because of this nuance, it
@@ -138,21 +133,19 @@ done by
 
 Unfortunately, only focusing on future capacity requirements still leaves room
 for ambiguity. While the previous definition of ``scalability testing'' includes
-the external modification of the system, \ifnotpaper \citeauthor{ISO_IEC2023a}
-\else \cite{ISO_IEC2023a} \fi describes it as
-testing the ``capability of a product to handle growing or shrinking
-workloads or to adapt its capacity to handle variability''%
-\ifnotpaper\ \citeyearpar{ISO_IEC2023a}\fi, implying that this is done by the
-system itself. The potential reason for this is implied by the \acs{swebok} V4's
-claim that one objective of elasticity testing is ``to evaluate scalability''
-\citep[p.~5-9]{SWEBOK2024}: \ifnotpaper \citeauthor{ISO_IEC2023a}%
-\else \cite{ISO_IEC2023a}\fi's notion of ``scalability''
+the external modification of the system, \citet{ISO_IEC2023a}
+\multiAuthHelper{describe} it as testing the ``capability of a product to
+handle growing or shrinking workloads or to adapt its capacity to handle
+variability'', implying that this is done by the system itself. The potential
+reason for this is implied by \citet[p.~5-9]{SWEBOK2024}'s claim that one
+objective of elasticity testing is ``to evaluate scalability'':
+\citep{ISO_IEC2023a}'s notion of ``scalability''
 likely refers more accurately to ``elasticity''! This also makes sense in the
-context of other definitions provided by the \acs{swebok} V4:
+context of other definitions provided by \citet{SWEBOK2024}:
 \begin{itemize}
     \item \textbf{Scalability:} ``the software's ability to increase and
           scale up on its nonfunctional requirements, such as load, number of
-          transactions, and volume of data'' \citep[p.~5-5]{SWEBOK2024}.
+          transactions, and volume of data'' \citetext{p.~5-5}.
           Based on this
           definition, scalability testing is then a subtype of load testing
           and volume testing, as well as potentially transaction flow testing.
@@ -160,18 +153,16 @@ context of other definitions provided by the \acs{swebok} V4:
                   correct, it \swebokElasRef{}}:} testing that ``assesses
           the ability of the \acs{sut} \dots\ to rapidly expand or shrink
           compute, memory, and storage resources without compromising the
-          capacity to meet peak utilization'' \citep[p.~5-9]{SWEBOK2024}.
-          Based on this
+          capacity to meet peak utilization'' \citetext{p.~5-9}. Based on this
           definition, elasticity testing is then a subtype of memory
           management testing (with both being a subtype of resource
           utilization testing) and stress testing.
 \end{itemize}
 This distinction is also consistent with how the terms are used in industry:
-\ifnotpaper \citeauthor{Pandey2023} \else \cite{Pandey2023} \fi says
-that scalability is the ability to ``increase
-\dots\ performance or efficiency as demand increases over time'', while
-elasticity allows a system to ``tackle changes in the workload [that] occur for
-a short period''\ifnotpaper\ (\citeyear{Pandey2023}\thesisissueref{35})\fi.
+\citet{Pandey2023}\thesisissueref{35} says that scalability is the ability to
+``increase \dots\ performance or efficiency as demand increases over time'',
+while elasticity allows a system to ``tackle changes in the workload [that]
+occur for a short period''.
 
 % Only top or bottom to comply with IEEE guidelines
 \begin{figure}[bt!]

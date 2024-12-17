@@ -22,7 +22,31 @@
 \newcommand{\citetISTQB}{\cite{ISTQB}}
 \newcommand{\citepISTQB}{\cite{ISTQB}}
 \newcommand{\citealpISTQB}{\cite{ISTQB}}
-\newcommand{\citeauthor}{\cite}
+
+% From ChatGPT
+% Define authors for each citation key
+\newcommand{\authorfor}[2]{\expandafter\newcommand\csname citeauthor@#1\endcsname{#2}}
+
+% Hardcode author mappings
+\authorfor{IEEE2022}{ISO/IEC and IEEE}
+\authorfor{ISO_IEC2023a}{ISO/IEC}
+\authorfor{ISTQB}{\acs{istqb}'s glossary}
+\authorfor{SWEBOK2024}{\acs{swebok} V4}
+\authorfor{SWEBOK2014}{\acs{swebok} V3}
+\authorfor{Firesmith2015}{Firesmith}
+\authorfor{Patton2006}{Patton}
+\authorfor{PetersAndPedrycz2000}{Peters and Pedrycz}
+\authorfor{Gerrard2000a}{Gerrard}
+\authorfor{Gerrard2000b}{Gerrard}
+\authorfor{DoğanEtAl2014}{Doğan et al.}
+
+% Define the \citeauthor command
+\newcommand{\citeauthor}[1]{%
+    \ifcsname citeauthor@#1\endcsname
+        \csname citeauthor@#1\endcsname
+    \else[Unknown Author: #1]\fi
+}
+
 \newcommand{\citeauthorpar}{\cite}
 \newcommand{\citeyearpar}{\cite}
 \newcommand{\citeyear}{\cite}
