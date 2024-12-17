@@ -691,8 +691,7 @@ def writeDotFile(lines, filename):
             prevAlignNodes = prevAlignNodes[1:-1]
 
         for i in range(0, len(srcCats) * 2, 2):
-            srcCatLabel = (srcCats[i//2].longname.replace("``", "&quot;")
-                           .replace("''", "&quot;"))
+            srcCatLabel = (srcCats[i//2].longname)
             # From https://stackoverflow.com/a/4664889/10002168
             srcCatSpaces = [m.start() for m in re.finditer(" ", srcCatLabel)]
             if srcCatSpaces:

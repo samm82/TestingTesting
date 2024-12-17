@@ -21,7 +21,7 @@ class Color(OrderedEnum):
 @total_ordering
 class SrcCat(AutoNumberEnum):
     STD    = "Established Standards", "Standards", Color.GREEN
-    META   = "Meta-level Collections", "Meta-level Collections", Color.BLUE
+    META   = "Terminology Collections", "Collections", Color.BLUE
     TEXT   = "Textbooks", "Textbooks", Color.MAROON
     PAPER  = "Papers and Other Documents", "Papers", Color.BLACK
     INFER  = "Inferences", "Inferences", Color.GRAY
