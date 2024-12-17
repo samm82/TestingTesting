@@ -50,72 +50,75 @@ graphs. A summary of how many sources comprise each tier is given in
 
 \subsubsection{\stdSources{1}}
 \label{stds}
-\stdSources{2}
-\begin{itemize}
-    \item Colored \textcolor{green}{green}
-    \item Information on software development and testing from
-          standards bodies \ifnotpaper\else (such as IEEE and ISO)\fi
-    \item Written by reputable organizations for use in software engineering;
-          for example, ``the purpose of the ISO/IEC/IEEE 29119 series is to
-          define an internationally agreed set of standards for software
-          testing that can be used by any organization when performing any form
-          of software testing'' \ifnotpaper(\fi\citealp[p.~vii]{IEEE2022}%
-          \ifnotpaper; similar in \citeyear[p.~ix]{IEEE2016})\fi
-\end{itemize}
+% Colored \textcolor{green}{green}
+
+These are documents written for the field of software engineering by reputable
+standards bodies, namely ISO, the \acf{iec}, and IEEE. We only consider those
+about software development and testing for the purposes of this research (see
+\Cref{scope}). For example, ``the purpose of the ISO/IEC/IEEE 29119 series is
+to define an internationally agreed set of standards for software testing that
+can be used by any organization when performing any form of software testing''
+\ifnotpaper(\fi\citealp[p.~vii]{IEEE2022}\ifnotpaper; similar in
+\citeyear[p.~ix]{IEEE2016})\fi. This tier is composed of \stdSources{2}.
 
 \subsubsection{\metaSources{1}}
 \label{metas}
-\metaSources{2}
-\begin{itemize}
-    \item Colored \textcolor{blue}{blue}
-    \item Collections of relevant terminology, such as \acs{istqb}'s glossary
-          \citepISTQB{}, the \acs{swebok} \citep{SWEBOK2024,SWEBOK2014}, and
-          \ifnotpaper \citeauthor{DoğanEtAl2014}\else Doğan et al.\fi's
-          literature review \citeyearpar{DoğanEtAl2014}
-    \item Built up from various sources, including established standards
-          (see \Cref{stds}), and often written
-          by a large organization (such as \acs{istqb}); the \acs{swebok} is
-          ``proposed as a suitable foundation for government licensing, for the
-          regulation of software engineers, and for the development of
-          university curricula in software engineering''
-          \citep[p.~xix]{KanerEtAl2011}
-\end{itemize}
+% Colored \textcolor{blue}{blue}
+
+These are collections of software testing terminology built up from multiple
+sources, including established standards (see \Cref{stds}). These documents are
+made to be widely applicable; the \acf{swebok} is ``proposed as a suitable
+foundation for government licensing, for the regulation of software engineers,
+and for the development of university curricula in software engineering''
+\citep[p.~xix]{KanerEtAl2011}. They are often written by a large organization,
+such as the \acf{istqb}, but not always: we include \ifnotpaper
+    \citeauthor{Firesmith2015}\else Firesmith\fi's taxonomy
+\citeyearpar{Firesmith2015} and \ifnotpaper \citeauthor{DoğanEtAl2014}\else
+    Doğan et al.\fi's literature review \citeyearpar{DoğanEtAl2014} because of
+their broad scope and applicability\todo{I should probably expand on this}.
+This tier is composed of \metaSources{2}.
 
 \subsubsection{\textSources{1}}
 \label{texts}
-\textSources{2}
-\begin{itemize}
-    \item Colored \textcolor{Maroon}{maroon}
-    \item Textbooks trusted at McMaster \citep{Patton2006, PetersAndPedrycz2000,
-              vanVliet2000} were the original (albeit ad hoc and arbitrary)
-          starting point
-    \item Written by smaller sets of authors, but with a formal review process
-          before publication
-    \item Used as resources for teaching software engineering and may be used
-          as guides in industry
-\end{itemize}
+% Colored \textcolor{Maroon}{maroon}
+
+We consider textbooks to be more trustworthy than papers (see \Cref{papers})
+because they are widely used as resources for teaching software engineering and
+may be used as guides in industry. Although textbooks have smaller sets of
+authors, they follow a formal review process before publication. Textbooks that
+are trusted at McMaster \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
+served as the original (albeit ad hoc and arbitrary) starting point of this
+research; we investigate other books as they arise. For example, \citetISTQB{}
+\multiAuthHelper{cite} \citep{GerrardAndThompson2002} as the original source
+for \ifnotpaper their \else its \fi definition of ``scalability'' (see
+\Cref{scal-test-rec}); we verified\todo{Present tense?} this by
+looking at this original source. This tier is composed of \textSources{2}.
 
 \subsubsection{\paperSources{1}}
 \label{papers}
-\paperSources{2}
+% Colored black
+
+Documents in this source tier are written by much smaller sets of authors
+% with unknown peer review processes % TODO: investigate
+and are much less widespread than higher source tiers. We investigated%
+\todo{Present tense?} many of
+these sources to ``fill in'' missing definitions (see \Cref{undef-terms}).
+While most documents are journal articles and conference papers, the following
+document types are also present; some less-than-academic sources show how terms
+are used in practice and are included in this source tier for brevity%
+\thesisissueref{89}:
+
 \begin{itemize}
-    \item Colored black
-    \item Mainly consists of academic papers: journal articles, conference
-          papers, reports \citep{Kam2008,Gerrard2000a,Gerrard2000b}, and a
-          thesis \citep{Bas2024}
-          % \item Includes less-formal classifications (such as
-          %       \citep{KuļešovsEtAl2013})
-    \item Written by much smaller sets of authors with unknown peer review
-          processes
-    \item Much less widespread than other tiers of sources
-    \item Many of these sources were investigated to ``fill in''
-          missing definitions (see \Cref{undef-terms})
-    \item Also included (for brevity) are some less-than-academic sources to
-          investigate how terms are used in practice, such as websites
-          \citep{LambdaTest2024,Pandey2023}, a booklet \citep{SPICE2022},
-          and \ifnotpaper \else ChatGPT \fi \citet{ChatGPT2024} (with claims
+    \item Report \citep{Kam2008,Gerrard2000a,Gerrard2000b}
+    \item Thesis \citep{Bas2024}
+          % \item A less-formal classification \citep{KuļešovsEtAl2013}
+    \item Website \citep{LambdaTest2024,Pandey2023}
+    \item Booklet \citep{SPICE2022}
+    \item \ifnotpaper \else ChatGPT \fi \citet{ChatGPT2024} (with its claims
           supported by \citet{RusEtAl2008})
 \end{itemize}
+
+The full set of sources that comprise this tier is \paperSources{2}.
 
 \ifnotpaper
     \subsubsection{Inferences}

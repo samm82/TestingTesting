@@ -57,8 +57,8 @@ else:
         catSourceLine = f"\\citep{{{','.join(catSources).replace("ISTQB2024", "ISTQB")}}}"
         if cat == SrcCat.META:
             # Handle edge case of ISTQB; this might not be stable
-            catSourceLine = ("\\ifnotpaper \\citetext{\\citealpISTQB{}; \\citealp{" +
+            catSourceLine = ("\\ifnotpaper (\\citealpISTQB{}; \\citealp{" +
                                 ','.join([s for s in catSources if not s.startswith("ISTQB")]) +
-                                "}} \\else " + catSourceLine + " \\fi")
+                                "})\\else " + catSourceLine + "\\fi")
         writeFile([cat.longname, catSourceLine, len(catSources)],
                   f"{cat.name.lower()}Sources", True)
