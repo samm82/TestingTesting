@@ -1,10 +1,12 @@
 \documentclass{beamer}
 
+% Manifest data
+\input{manifest}
+
 \usepackage{amsmath}
 \usepackage{textcomp}
 \usepackage{listings}
 \usepackage{lmodern}
-\usepackage{hyperref}
 \usepackage[T1]{fontenc}
 \usepackage{tikz}
 \usepackage{tikzsymbols}
@@ -73,9 +75,11 @@
 \renewcommand\texts{\textSources{1}}
 \renewcommand\papers{\paperSources{1}}
 
-\title[Testing Terminology]{Putting Software Testing Terminology to the Test}
-\subtitle{M.A.Sc. Seminar}
-\author[Samuel Crawford]{Samuel Crawford, B.Eng.}
+\newcounter{methodCounter}
+
+\title[Testing Terminology]{\thesisTitle{}}
+\subtitle{\thesisTargetDegreeNameShort{} Seminar}
+\author[\thesisAuthorName{}]{\thesisAuthorName{}, \thesisAuthorCredentials{}}
 
 % Committee
 % \begin{itemize}
@@ -469,6 +473,9 @@
 \end{frame}
 
 \subsection{Methodology}
+
+\input{build/methodOverviewSem}
+% \input{assets/misc/manualmethodOverviewSem}
 
 \begin{frame}{Methodology}
     \framesubtitle{Procedure}

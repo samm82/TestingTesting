@@ -152,6 +152,20 @@ def readFileAsStr(filename) -> str:
     with open(filename, "r") as file:
         return "\n".join(file.readlines())
 
+def wrapEnv(env: str, lines: list[str] | str,
+            param: str = "", arg: str = "") -> list[str]:
+    begin = f"\\begin{{{env}}}"
+    if param:
+        begin += f"{{{param}}}"
+    if arg:
+        begin += f"[{arg}]"
+
+    end = f"\\end{{{env}}}"
+
+    if isinstance(lines, str):
+        return "\n".join([begin, lines, end])
+    return [begin, *lines, end]
+
 def writeFile(lines, filename: str, helper: bool = False, dir: str = "graphs"):
     lines = [str(line) + '\n' for line in lines]
     filename += ".tex"

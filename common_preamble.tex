@@ -24,6 +24,20 @@
 % From https://tex.stackexchange.com/a/283202/192195
 \usepackage[shortcuts]{extdash}
 
+% Not used in paper (yet), but useful to parse TeX shared with thesis
+% Allow labelling enum items: Credits to: https://texblog.org/2012/03/21/cross-referencing-list-items/
+\usepackage{enumitem}
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+    \textbf{#2}%
+    \def\@currentlabel{#2}%
+    \phantomsection\label{#1}\endgroup
+}
+\makeatother
+
+% Manifest data
+\input{manifest}
+
 % McMaster Colours
 \input{mcmaster_colours}
 
@@ -33,5 +47,3 @@
 
 % General Assets
 \input{assets}
-
-\newcommand{\thesisTitle}{Putting Software Testing Terminology to the Test}
