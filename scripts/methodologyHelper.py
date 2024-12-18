@@ -6,6 +6,10 @@ toRecord: list[str] = ["name", "category (\\Cref{categories-observ})",
                        "definition", "synonyms (\\Cref{syn-rels})",
                        "parents (\\Cref{par-chd-rels})"]
 
+OTHER_NOTES = "other relevant notes"
+OTHER_NOTES_EXS = ["prerequisites", "uncertainties",
+                   "other sources to investigate"]
+
 otherNotes = "other relevant notes (e.g., supplementary information, " + \
     "further sources to investigate)"
 
@@ -64,3 +68,16 @@ for i, m in enumerate([methodology_a, methodology_b]):
 
 # Seminar methodology overview
 writeFile(methodOverviewSem, "methodOverviewSem", helper=True)
+
+OTHER_NOTES_EXS[-1] = "and " + OTHER_NOTES_EXS[-1]
+toRecord[-1]        = "and " + toRecord[-1]
+
+methodOverviewIntro = [
+    "We start by documenting the \\approachCount{} test approaches mentioned ",
+    "by \\srcCount{} sources (described in \\Cref{sources}), recording their ",
+    ", ".join([record.replace("(\\Cref", "(see \\Cref") for record in toRecord]),
+    f"as applicable. We also record any {OTHER_NOTES}, such as ",
+    ", ".join(OTHER_NOTES_EXS) + ".%"]
+
+# Intro methodology overview
+writeFile(methodOverviewIntro, "methodOverviewIntro", helper=True)
