@@ -1,20 +1,21 @@
 import re
     
 from helpers import wrapEnv, writeFile
-    
+
+toRecord: list[str] = ["name", "category (\\Cref{categories-observ})",
+                       "definition", "synonyms (\\Cref{syn-rels})",
+                       "parents (\\Cref{par-chd-rels})"]
+
+otherNotes = "other relevant notes (e.g., supplementary information, " + \
+    "further sources to investigate)"
+
 methodology_a = """    \\item Identify authoritative sources (\\Cref{sources})
     \\item Identify software testing terminology from each source, focusing
           on test approaches and software qualities
-    \\item For each test approach, record its:
-          \\begin{enumerate}
-              \\item Name
-              \\item Category (\\Cref{categories-observ})
-              \\item Definition
-              \\item Synonyms (\\Cref{syn-rels})
-              \\item Parents (\\Cref{par-chd-rels})
-              \\item Other relevant notes (e.g., supplementary information,
-                    further sources to investigate)
-          \\end{enumerate}"""
+    \\item For each test approach, record its:\n""" + "\n".join([
+        f"\t\t  {line}" for line in wrapEnv(
+            "enumerate", [f"\t\\item {i[0].upper()}{i[1:]}"
+                          for i in toRecord + [otherNotes]])])
     
 methodology_b = """    \\item Analyze these data for discrepancies
           \\begin{enumerate}
