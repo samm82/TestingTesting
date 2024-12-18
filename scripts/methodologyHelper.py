@@ -2,9 +2,15 @@ import re
     
 from helpers import wrapEnv, writeFile
 
-toRecord: list[str] = ["name", "category (\\Cref{categories-observ})",
-                       "definition", "synonyms (\\Cref{syn-rels})",
-                       "parents (\\Cref{par-chd-rels})"]
+CAT_FOOTNOTE = "\n\t".join([
+    "\\footnote{",
+    "There may be more than one category given for a single test approach ",
+    "\\ifnotpaper (for example, A/B Testing in \\Cref{tab:approachGlossaryExcerpt}) \\fi ",
+    "which is indicative of a discrepancy (see \\Cref{multiCats}).} \n"])
+toRecord: list[str] = [
+    "name", f"category{CAT_FOOTNOTE}(\\Cref{{categories-observ}})",
+    "definition", "synonyms (\\Cref{syn-rels})",
+    "parents (\\Cref{par-chd-rels})"]
 
 OTHER_NOTES = "other relevant notes"
 OTHER_NOTES_EXS = ["prerequisites", "uncertainties",
@@ -48,9 +54,9 @@ for i, m in enumerate([methodology_a, methodology_b]):
     while old_m != m:
         old_m = m
         # From https://stackoverflow.com/a/640016/10002168
-        m = re.sub(r" \([^)]*\)", "", m)
+        m = re.sub(r"\s+\([^)]*\)", "", m)
     
-    # From https://tex.stackexchange.com/a/1702/192195! LaTeX Error: No counter '\c@enumi ' defined.
+    # From https://tex.stackexchange.com/a/1702/192195!
     if not i:
         m += "\n\\setcounter{methodCounter}{\\value{enumi}}"
     else:
