@@ -13,11 +13,8 @@ toRecord: list[str] = [
     "parents (\\Cref{par-chd-rels})"]
 
 OTHER_NOTES = "other relevant notes"
-OTHER_NOTES_EXS = ["prerequisites", "uncertainties",
-                   "other sources to investigate"]
-
-otherNotes = "other relevant notes (e.g., supplementary information, " + \
-    "further sources to investigate)"
+OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
+                             "and other sources to investigate"])
 
 methodology_a = """    \\item Identify authoritative sources (\\Cref{sources})
     \\item Identify software testing terminology from each source, focusing
@@ -25,7 +22,8 @@ methodology_a = """    \\item Identify authoritative sources (\\Cref{sources})
     \\item For each test approach, record its:\n""" + "\n".join([
         f"\t\t  {line}" for line in wrapEnv(
             "enumerate", [f"\t\\item {i[0].upper()}{i[1:]}"
-                          for i in toRecord + [otherNotes]])])
+                          for i in toRecord + [OTHER_NOTES +
+                                               f" (e.g., {OTHER_NOTES_EXS})"]])])
     
 methodology_b = """    \\item Analyze these data for discrepancies
           \\begin{enumerate}
@@ -75,15 +73,12 @@ for i, m in enumerate([methodology_a, methodology_b]):
 # Seminar methodology overview
 writeFile(methodOverviewSem, "methodOverviewSem", helper=True)
 
-OTHER_NOTES_EXS[-1] = "and " + OTHER_NOTES_EXS[-1]
-toRecord[-1]        = "and " + toRecord[-1]
-
+toRecord[-1] = "and " + toRecord[-1]
 methodOverviewIntro = [
     "We start by documenting the \\approachCount{} test approaches mentioned ",
     "by \\srcCount{} sources (described in \\Cref{sources}), recording their ",
     ", ".join([record.replace("(\\Cref", "(see \\Cref") for record in toRecord]),
-    f"as applicable. We also record any {OTHER_NOTES}, such as ",
-    ", ".join(OTHER_NOTES_EXS) + ".%"]
+    f"as applicable. We also record any {OTHER_NOTES}, such as {OTHER_NOTES_EXS}.%"]
 
 # Intro methodology overview
 writeFile(methodOverviewIntro, "methodOverviewIntro", helper=True)
