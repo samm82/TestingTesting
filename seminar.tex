@@ -452,32 +452,12 @@
     \onslide<1->\rqa{} \vspace*{\fill}
     \onslide<1>\rqb{} \vspace*{\fill}
     \onslide<1>\rqc{} \vspace*{\fill}
-    \onslide<2>
-    \vspace{-4cm}
-    \begin{columns}
-        \begin{column}{0.45\textwidth}
-            \vspace{-1cm}
-            \begin{itemize}
-                \item \approachCount{} test approaches $\rightarrow$
-                \item \qualityCount{} software qualities \\ \small (may imply test approaches)
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.55\textwidth}
-            \centering
-            \begin{tikzpicture}
-                \pie[sum=100, text=legend, thick, scale=0.5,
-                every label/.style={align=left, scale=0.7}]
-                {{\the\numexpr 100 - 100 * \UndefAfter/\TotalAfter}/Defined,
-                {\the\numexpr 100 * \UndefAfter/\TotalAfter}/{Not defined}}
-            \end{tikzpicture}
-        \end{column}
-    \end{columns}
+    \vspace{0.2cm}
 \end{frame}
 
 \subsection{Methodology}
 
 \input{build/methodOverviewSem}
-% \input{assets/misc/manualmethodOverviewSem}
 
 \begin{frame}{Methodology}
     \framesubtitle{Procedure}
@@ -724,6 +704,32 @@
         \end{column}
     \end{columns} \pause
     \vspace{-0.25cm}
+\end{frame}
+
+\begin{frame}{Results}
+    % \onslide<1->\rqa{} \vspace*{\fill}
+    % \onslide<1>\rqb{} \vspace*{\fill}
+    % \onslide<1>\rqc{} \vspace*{\fill}
+    % \onslide<2>
+    % \vspace{-4cm}
+    \begin{columns}
+        \begin{column}{0.45\textwidth}
+            \vspace{-1cm}
+            \begin{itemize}
+                \item \approachCount{} test approaches $\rightarrow$
+                \item \qualityCount{} software qualities \\ \small (may imply test approaches)
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.55\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \pie[sum=100, text=legend, thick, scale=0.5,
+                every label/.style={align=left, scale=0.7}]
+                {{\the\numexpr 100 - 100 * \UndefAfter/\TotalAfter}/Defined,
+                {\the\numexpr 100 * \UndefAfter/\TotalAfter}/{Not defined}}
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Automated Discrepancies}

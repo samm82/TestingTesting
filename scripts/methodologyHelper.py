@@ -57,24 +57,27 @@ for i, m in enumerate([methodology_a, methodology_b]):
         old_m = m
         # From https://stackoverflow.com/a/640016/10002168
         m = re.sub(r"\s+\([^)]*\)", "", m)
-    
-    # From https://tex.stackexchange.com/a/1702/192195!
-    if not i:
-        m += "\n\\setcounter{methodCounter}{\\value{enumi}}"
-    else:
-        m = "\\setcounter{enumi}{\\value{methodCounter}}\n" + m
 
     # Hack because enumitem conflicts with beamer :(
-    m = "\\framesubtitle{Overview}\n" + wrapEnv(
-            "enumerate", re.sub(
-                "\\\\ref{manual-discreps}",
-                "\\\\arabic{enumi}.\\\\ref{manual-discreps}", m)
-            )
-    methodOverviewSem += wrapEnv("frame", [f"\t{line}" for line in m.split("\n")],
-                                 param="Methodology") + [""]
+    m = m.replace("\\\\ref{manual-discreps}",
+                  "\\\\arabic{enumi}.\\\\ref{manual-discreps}")
+
+    mList = m.split("\n")
+    # From https://tex.stackexchange.com/a/1702/192195!
+    if not i:
+        mList.append("\\setcounter{methodCounter}{\\value{enumi}}")
+    else:
+        mList = (["\\setcounter{enumi}{\\value{methodCounter}}"] + mList[:-1] +
+                 ["    \\vspace{0.43cm}", "    \\rqc{}", mList[-1]])
+
+    mList = (["\\framesubtitle{Overview}",
+              f"\\rq{"b" if i else "a"}{{}}"] +
+             wrapEnv("enumerate", mList))
+    methodOverviewSem.append(wrapEnv("frame", "\n\t".join(mList),
+                                     param="Methodology"))
 
 # Seminar methodology overview
-writeFile(methodOverviewSem, "methodOverviewSem", helper=True)
+writeFile(["\n\n".join(methodOverviewSem)], "methodOverviewSem", helper=True)
 
 toRecord[-1] = "and " + toRecord[-1]
 methodOverviewIntro = [
