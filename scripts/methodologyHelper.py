@@ -16,14 +16,19 @@ OTHER_NOTES = "other relevant notes"
 OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
                              "and other sources to investigate"])
 
-methodology_a = """    \\item Identify authoritative sources (\\Cref{sources})
-    \\item Identify software testing terminology from each source, focusing
+methodology_a = """    \\item \\phantomsection{}\\label{identify-sources}
+          Identify authoritative sources (\\Cref{sources})
+    \\item \\phantomsection{}\\label{identify-terms}
+          Identify software testing terminology from each source, focusing
           on test approaches and software qualities
-    \\item For each test approach, record its:\n""" + "\n".join([
+    \\item \\phantomsection{}\\label{record-terms}
+          For each test approach, record its: (\\Cref{procedure})\n""" + "\n".join([
         f"\t\t  {line}" for line in wrapEnv(
             "enumerate", [f"\t\\item {i[0].upper()}{i[1:]}"
                           for i in toRecord + [OTHER_NOTES +
-                                               f" (e.g., {OTHER_NOTES_EXS})"]])])
+                                               f" (e.g., {OTHER_NOTES_EXS})"]])
+        ]) + """\n    \\item Repeat steps~\\ref{identify-sources} to
+          \\ref{record-terms} for any missing or unclear terminology (\\Cref{undef-terms})"""
     
 methodology_b = """    \\item Analyze these data for discrepancies
           \\begin{enumerate}
@@ -34,15 +39,14 @@ methodology_b = """    \\item Analyze these data for discrepancies
               \\item Automatically detect certain classes of discrepancies
                     (\\Cref{auto-discrep-analysis})
               \\item Automatically analyze manually recorded discrepancies from
-                    \\labelcref{manual-discreps} (\\Cref{aug-discrep-analysis})
+                    step~\\ref{manual-discreps} (\\Cref{aug-discrep-analysis})
               \\fi
           \\end{enumerate}
     \\item Report results of discrepancy analysis (\\Cref{discreps})
     \\item Seek to resolve these discrepancies (\\Cref{recs})"""
     
 # Base methodology overview
-writeFile(wrapEnv("enumerate", [methodology_a, methodology_b],
-                  arg="ref=Step~\\arabic*"),
+writeFile(wrapEnv("enumerate", [methodology_a, methodology_b]),
           "methodOverview", helper=True)
 
 methodOverviewSem = []
@@ -63,9 +67,8 @@ for i, m in enumerate([methodology_a, methodology_b]):
     # Hack because enumitem conflicts with beamer :(
     m = "\\framesubtitle{Overview}\n" + wrapEnv(
             "enumerate", re.sub(
-                "\\\\labelcref{manual-discreps}",
-                "Step~\\\\arabic{enumi}.\\\\ref{manual-discreps}", m)
-              #, arg="ref=Step~\\arabic*"
+                "\\\\ref{manual-discreps}",
+                "\\\\arabic{enumi}.\\\\ref{manual-discreps}", m)
             )
     methodOverviewSem += wrapEnv("frame", [f"\t{line}" for line in m.split("\n")],
                                  param="Methodology") + [""]
