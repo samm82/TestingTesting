@@ -286,17 +286,19 @@ their sources in \Cref{tab:sntxDiscreps,tab:smntcDiscreps}. \ifnotpaper The foll
     given as sub-approaches of themselves \cite[Tab.~2]{Gerrard2000a},
     \cite[Tab.~1]{Gerrard2000b}.\fi
 
-There are also pairs of synonyms where one is described as a
-sub-approach of the other, abusing the meaning of ``synonym'' and
-causing confusion. We identified \parSynCount{} of these pairs through automatic
-analysis of the generated graphs, \ifnotpaper which are \else with the most
-    prominent \fi given in \Cref{tab:parSyns}. Of particular note is the
-relation between path testing and exhaustive testing. While
-\citet[p.~421]{vanVliet2000} claims that path testing done completely ``is
-equivalent to exhaustively testing the program''\footnote{The contradictory
-    definitions of path testing given in \discrepref{path-test} add
-    another layer of complexity to this claim.}, this overlooks the effects of
-input data \ifnotpaper
+\phantomsection{}\label{parSyns}
+There are also pairs of synonyms where one is described as a sub-approach
+of the other, abusing the meaning of ``synonym'' and causing confusion.
+We identify \parSynCount{} of these pairs through automatic analysis of the
+generated graphs, \ifnotpaper which are \else with the most prominent \fi
+given in \Cref{tab:parSyns}\ifnotpaper\ (additional pairs where a discrepancy
+    is inferred are given in \Cref{infParSyns} for completeness)\fi. Of
+particular note is the relation between path testing and exhaustive testing.
+While \citet[p.~421]{vanVliet2000} claims that path testing done completely
+``is equivalent to exhaustively testing the program''\footnote{The
+    contradictory definitions of path testing given in \discrepref{path-test}
+    add another layer of complexity to this claim.}, this overlooks the effects
+of input data \ifnotpaper
     (\citealp[pp.~129--130]{IEEE2021}; \citealp[p.~121]{Patton2006};
     \citealp[p.~467]{PetersAndPedrycz2000})
 \else
@@ -764,13 +766,22 @@ adding another layer of confusion to the direction of their relationship.
     % ``system testing'' instead.
 
     \subsubsection{Inferred Parent Discrepancies}
-    As in \Cref{tab:parSyns}, some discrepancies occur when test approaches
-    are classified as both children/parents \emph{and} synonyms. The first two
-    lists below give approaches that are given one of these relations by at
-    least one source when it may make more sense for them to have the other
-    relation. The third list gives approaches that could be inferred to have
-    either relation, so more thought would have to be given before a
-    recommendation can be made.
+    \label{infParSyns}
+    As discussed in \Cref{parSyns}, some pairs of synonyms also have a
+    parent-child relation, abusing the meaning of ``synonym'' and causing
+    confusion. While \Cref{tab:parSyns} gives the cases where both relations
+    are supported by the literature, some are less explicit. For example, while
+    ``\emph{dynamic testing} is sometimes called \dots{} dynamic analysis''
+    (\citealp[p.~438]{PetersAndPedrycz2000}; implied by \citealp[p.~149]{IEEE2017}),
+    it could be inferred from their static counterparts that dynamic analysis
+    is a \emph{child} of dynamic testing (see
+    \citealp[pp.~9, 17, 25, 28]{IEEE2022}; \citealpISTQB{}). Additionally, the
+    following automatically generated lists contain examples where at least
+    one of these conflicting relations is \emph{not} supported by the
+    literature but may, nonetheless, be correct. The relations in the first two
+    lists are explicitly given in the literature but may be incorrect, while
+    those in the third list are unsubtantiated by the literature and require
+    more thought before a recommendation can be made.
 
     \input{build/infParSyns}
 

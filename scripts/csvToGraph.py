@@ -525,9 +525,14 @@ parSynNotes = {
         ("See \\discrepref{walkthrough-syns}.", "")
 }
 
+manualInfParSyns = {("Dynamic Analysis", "Dynamic Testing")}
+
 parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
     set(), set(), set(), set()
-def makeParSynLine(chd, par, parSource, synSource):
+def makeParSynLine(chd, par, parSource, synSource) -> None:
+    # Don't add manually tracked parSyns to table
+    if any(tup in manualInfParSyns for tup in {(chd, par), (par, chd)}):
+        return
     parSource = formatLineWithSources(parSource, False)
     synSource = formatLineWithSources(synSource, False)
 
@@ -595,9 +600,9 @@ if "Example" not in csvFilename:
 
     writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(
         map(lambda x: f"\\paragraph{{{x}}}",
-            ["Pairs labelled as ``children/parents''",
-            "Pairs labelled as ``synonyms''",
-            "Pairs that could be ``children/parents'' \\emph{or} ``synonyms''"]),
+            ["Pairs given a parent-child relation",
+            "Pairs given a synonym relation",
+            "Pairs that could have a parent/child \\emph{or} synonym relation"]),
         map(lambda x: "\n".join(["\\begin{enumerate}"] + list(
             map(lambda x: f"\t{x}", sortByImplied(x))) +
             ["\\end{enumerate}"]), [infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc])))],
