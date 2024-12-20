@@ -1,7 +1,5 @@
 \section{Introduction}
 
-% TODO: tighten up, add sources
-
 As with all fields of science and technology, software development should
 be approached systematically and rigorously. \refHelper
 \citet[p.~3]{PetersAndPedrycz2000} \multiAuthHelper{claim} that ``to be
@@ -27,19 +25,29 @@ disagreement have been left wide open, and \dots{} no attempt \dots{} [was]
 made to arrive at a consensus or majority view'' \citetext{p.~11}!
 
 % Testing software is complicated, expensive, and often overlooked. 
-The
-productivity of testing and testing research would benefit from a standard
-language for communication. For example, \citet[p.~7]{KanerEtAl2011}
-\multiAuthHelper{give} the example of complete testing, which could require the
-tester to discover ``every bug in the product'', exhaust the time allocated to
-the testing phase, or simply implement every test previously agreed upon.
+
+% The productivity of testing and testing research would benefit from a standard
+% language for communication. 
+
+% These benefits permeate software testing terminology. 
+
+Unfortunately, this lack of consensus in the field of software engineering
+persists to this day, including in the subdomain of software testing.
+\refHelper \ifnotpaper \citeauthor{KanerEtAl2011} \else \cite{KanerEtAl2011}
+\fi \multiAuthHelper{give} the example of complete testing, which may require
+the tester to discover ``every bug in the product'', exhaust the time allocated
+to the testing phase, or simply implement every test previously agreed upon
+\ifnotpaper \citeyearpar[p.~7]{KanerEtAl2011}\else \citetext{p.~7}\fi.
 % They go on to say that
-Having a clear definition of ``complete testing'' reduces the chance for
+Having a clear definition of ``complete testing'' would reduce the chance for
 miscommunication and, ultimately, the tester getting ``blamed for not
-doing \dots{} [their] job'' \citetext{p.~7}. These benefits permeate software
-testing terminology. If software engineering holds code to high standards of
-clarity, consistency, and robustness, the same should apply to its supporting
-literature! \ifnotpaper
+doing \dots{} [their] job'' \citetext{p.~7}. Because software testing uses ``a
+subtantial percentage of a software development budget (in the range of 30 to
+50\%)'', which is increasingly true ``with the growing complexity of software
+systems'' \citep[p.~438]{PetersAndPedrycz2000}, this is crucial to the
+efficiency of software development. Even more foundationally, if software
+engineering holds code to high standards of clarity, consistency, and
+robustness, the same should apply to its supporting literature! \ifnotpaper
     This is even more important when seeking to generate test cases
     automatically. Our own project Drasil~\citep{Drasil} has the goal of
     ``generating all of the software artifacts for (well understood)

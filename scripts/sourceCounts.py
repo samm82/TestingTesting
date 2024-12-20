@@ -18,7 +18,9 @@ for filename in sys.argv[1:]:
             for word in {"FIND", "OG"}:
                 cell = re.sub(fr"{word} [^;]*?\)", ")", cell)
                 cell = re.sub(fr"{word} [^\)]*?;", ";", cell)
-            sources.update(re.findall(r"\{(.*?)\}", formatLineWithSources(cell, False)))
+            # Ignore manual references; e.g., \Cref{label}
+            sources.update(re.findall(r"(?<!ref)\{(.*?)\}",
+                                      formatLineWithSources(cell, False)))
 for filename in TEX_FILES:
     with open(filename, "r", encoding="utf-8") as file:
         sources.update(re.findall(
@@ -35,7 +37,7 @@ sources.add("ISTQB2024")
 sources = {s for s in sources if not s.startswith(tuple(INTERNAL_REFS))}
 
 # Based on ChatGPT
-def sort_key(s, cat):
+def sort_key(s: str, cat: SrcCat):
     match = re.search(r'(\d+)', s)
     year = -int(match.group())
     end = s[match.end():]
