@@ -1,12 +1,14 @@
 \section{Introduction}
 
 As with all fields of science and technology, software development should
-be approached systematically and rigorously. \refHelper
-\citet[p.~3]{PetersAndPedrycz2000} \multiAuthHelper{claim} that ``to be
-successful, development of software systems requires an engineering approach''
-that is ``characterized by a practical, orderly, and
-measured development of software''. When a NATO study group decided to hold a
-conference to discuss ``the problems of software'' in 1968, they chose the
+be approached systematically and rigorously. \refHelper \ifnotpaper
+    \citeauthor{PetersAndPedrycz2000} \else \cite{PetersAndPedrycz2000} \fi
+\multiAuthHelper{claim} that ``to be successful, development of software
+systems requires an engineering approach'' that is ``characterized by a
+practical, orderly, and measured development of software'' \ifnotpaper
+    \citeyearpar[p.~3]{PetersAndPedrycz2000}\else \citetext{p.~3}\fi. When a
+NATO study group decided to hold a conference to discuss ``the problems of
+software'' in 1968, they chose the
 phrase ``software engineering'' to ``imply[] the need for
 software manufacture to be based on the types of theoretical foundations and
 practical disciplines, [sic] that are traditional in the established branches
