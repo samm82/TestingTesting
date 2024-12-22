@@ -229,28 +229,33 @@ synonyms, such as the following:
 \phantomsection{}
 \label{multiSyns}
 There are also cases in which a term is given as a synonym to two (or more)
-terms that are not synonyms themselves. \ifnotpaper Sometimes, these terms
-    \emph{are} synonyms; for example, use case testing, user scenario testing,
-    and scenario testing are synonyms of each other, as shown in
-    \Cref{fig:threeWaySyns}.
-    \begin{figure}[hbtp!]
-        \centering
-        \begin{tikzpicture}
-
-            \node[ellipse, draw, align=center] (ust) at (10, 0) {User Scenario\\Testing};
-            \node[ellipse, draw, align=center] (st)  at (0, 0)  {Scenario\\Testing};
-            \node[ellipse, draw, align=center] (uct) at (5, 4)  {Use Case\\Testing};
-
-            \draw[thick] (ust) -- (st)  node [midway, align=center, below]     {\citealpISTQB{}};
-            \draw[thick] (st)  -- (uct) node [midway, align=center, left=12pt] {\citealpISTQB{};\\ \citealp[pp.~47--49]{Kam2008}\\ (see \discrepref{use-case-scenario})\\};
-            \draw[thick] (uct) -- (ust) node [midway, align=center, right=4pt] {\citealp[p.~48]{Kam2008}\\};
-
-        \end{tikzpicture}
-        \caption{Visual representation of a three-way synonym relation.}
-        \label{fig:threeWaySyns}
-    \end{figure}
-    However, this \else This would imply that they should be synonyms as
-    well, which \fi does not always make sense. We identify nine
+terms that are not synonyms themselves. Sometimes, these terms
+\emph{are} synonyms; for example, \citetISTQB{} \multiAuthHelper{say}
+``use case testing'', ``user scenario testing'', and ``scenario testing'' are
+all synonyms (although there may be a slight distinction; see
+\Cref{tab:parSyns} and \discrepref{use-case-scenario}).
+% Old explanation based on inconsistent citations from Kam2008/ISTQB
+%
+% use case testing, user scenario testing,
+% and scenario testing are synonyms of each other, as shown in
+% \Cref{fig:threeWaySyns}.
+% \begin{figure}[hbtp!]
+%     \centering
+%     \begin{tikzpicture}
+%
+%         \node[ellipse, draw, align=center] (ust) at (10, 0) {User Scenario\\Testing};
+%         \node[ellipse, draw, align=center] (st)  at (0, 0)  {Scenario\\Testing};
+%         \node[ellipse, draw, align=center] (uct) at (5, 4)  {Use Case\\Testing};
+%
+%         \draw[thick] (ust) -- (st)  node [midway, align=center, below]     {\citealpISTQB{}};
+%         \draw[thick] (st)  -- (uct) node [midway, align=center, left=12pt] {\citealpISTQB{};\\ \citealp[pp.~47--49]{Kam2008}\\ (see \discrepref{use-case-scenario})\\};
+%         \draw[thick] (uct) -- (ust) node [midway, align=center, right=4pt] {\citealp[p.~48]{Kam2008}\\};
+%
+%     \end{tikzpicture}
+%     \caption{Visual representation of a three-way synonym relation.}
+%     \label{fig:threeWaySyns}
+% \end{figure}
+However, this does not always make sense. We identify nine
 such cases through automatic analysis of the generated graphs\ifnotpaper,
 listed below (test approaches in \emph{italics} are synonyms with each other,
 but not with other terms not in italics\todo{Better way to handle/display
