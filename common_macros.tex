@@ -44,10 +44,6 @@
 % need to manually write the "text" part
 \newcommand{\porthreftm}[2]{\href{#2}{#1\printOnlyFootnoteMark}}
 
-%------------------------------------------------------------------------------
-% Optional refs in format of (see <ref>)
-%------------------------------------------------------------------------------
-
 \newcommand{\formatPaper}[2]{%
     \ifnotpaper
         #1{#2}%
@@ -103,6 +99,9 @@ of a test process; for example, ``across the whole organization'' or only
     \else
         \cite[pp.~420,~509]{IEEE2017}, \cite[p.~56]{Perry2006}.
     \fi}
+
+\def\recFigs{\Cref{fig:recovery-graph-current,fig:recovery-graph-proposed,%
+        fig:scal-graph-current,fig:scal-graph-proposed,fig:perf-graph}}
 
 % Define common footnotes about IEEE testing terms for reuse
 \newcommand{\distinctIEEE}[1]{distinct from the notion of ``test #1'' described

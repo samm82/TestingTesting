@@ -26,12 +26,9 @@ sources:
 \end{enumerate}
 
 We therefore create the following tiers, given in order of descending
-trustworthiness: established standards (\Cref{stds}), terminology
-collections (\Cref{metas}), textbooks (\Cref{texts}), and papers and other
-documents (\Cref{papers}). \ifnotpaper
-    Additionally, some information is inferred; although these data do not come
-    from the literature, they are given in \Cref{infers} for completeness.
-\fi A summary of how many sources comprise each tier is given in
+trustworthiness: established standards (\Cref{stds}), terminology collections
+(\Cref{metas}), textbooks (\Cref{texts}), and papers and other documents
+(\Cref{papers}). A summary of how many sources comprise each tier is given in
 \Cref{fig:sourceSummary}.
 
 \begin{figure}
@@ -121,22 +118,6 @@ are used in practice and are included in this source tier for brevity%
 \end{itemize}
 
 The full set of sources that comprise this tier is \paperSources{2}.
-
-\ifnotpaper
-    \subsubsection{Inferences}
-    \label{infers}
-    While not as clear-cut as the other source tiers, some information is
-    inferred from the content of other sources. This includes ``surface-level''
-    analysis that follows straightforwardly but isn't explicitly stated.
-    Examples of this are large scale integration testing and legacy system
-    integration testing, described by \citeauthor{Gerrard2000a} in
-    \citeyearpar[p.~30]{Gerrard2000b} and (\citeyear[Tab.~2]{Gerrard2000a};
-    \citeyear[Tab.~1]{Gerrard2000b}), respectively. While he never explicitly
-    says so, it can be inferred that these approaches are children of
-    integration testing and system integration testing, respectively. Inferred
-    relations such as these are colored \textcolor{gray}{gray} and inferred
-    discrepancies are given in \Cref{infer-discreps}.
-\fi
 
 % Moved here to display nicely in paper
 \ifnotpaper\else\ieeeTestTermsTable{}\fi
@@ -626,7 +607,21 @@ are included. Some of them are less applicable to test case automation
               of a software product according to a specified procedure''
               \citep[p.~424]{IEEE2017}
     \end{itemize}
+
+    \phantomsection{}\label{infers}
+    Throughout this process, information can be inferred from ``surface-level''
+    analysis that follows straightforwardly but isn't explicitly stated by any
+    source. Examples of this are large scale integration testing and legacy
+    system integration testing, described by \citeauthor{Gerrard2000a} in
+    \citeyearpar[p.~30]{Gerrard2000b} and (\citeyear[Tab.~2]{Gerrard2000a};
+    \citeyear[Tab.~1]{Gerrard2000b}), respectively. While he never explicitly
+    says so, it can be inferred that these approaches are children of
+    integration testing and system integration testing, respectively.
+    Although these data do not come from the literature, they are documented
+    for completeness; inferred discrepancies are given in \Cref{infer-discreps}
+    and inferred relations, if any, are included in \recFigs{}.
 \fi
+
 \subsection{Undefined Terms}
 \label{undef-terms}
 
