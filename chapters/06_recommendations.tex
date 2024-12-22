@@ -15,9 +15,14 @@ organizing them more logically and making them:
           testing explicitly exclude an aspect included in its parent
           disaster/recovery testing)
 \end{enumerate}
-The following are our recommendations for the areas of
-\hyperref[rec-test-rec]{Recovery}, \hyperref[scal-test-rec]{Scalability}, and
-\nameref{perf-test-rec}, along with graphs of these subsets.
+We give recommendations for the areas of recovery testing (\Cref{rec-test-rec}),
+scalability testing (\Cref{scal-test-rec}), and performance-related testing
+(\Cref{perf-test-rec}). Graphical representations (described in
+\Cref{\ifnotpaper graph-gen\else tools\fi}) of these subsets are given in
+\Cref{fig:recovery-graph-current,fig:recovery-graph-proposed,%
+    fig:scal-graph-current,fig:scal-graph-proposed,fig:perf-graph}, in which
+arrows representing relations between approaches are coloured based on the
+source tier (see \Cref{sources}) that defines them.
 
 \subsection{Recovery Testing}
 \label{rec-test-rec}
