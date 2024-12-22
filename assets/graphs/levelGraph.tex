@@ -72,7 +72,7 @@ UserAcceptanceTesting [label=<User<br/>Acceptance<br/>Testing>];
 
 AcceptanceTesting -> QualificationTesting[dir=none,color="blue"];
 LinkTesting [label=<Link<br/>Testing>,style="dotted"];
-ComponentIntegrationTesting -> LinkTesting[dir=none,style="dashed"];
+ComponentIntegrationTesting -> LinkTesting[dir=none];
 IntegrationTesting -> LinkTesting[dir=none,style="dashed"];
 QualificationTesting -> OperationalTesting[dir=none,style="dashed",color="gray"];
 IntegratedSystemTesting -> SystemsIntegrationTesting[dir=none,style="dashed",color="gray"];

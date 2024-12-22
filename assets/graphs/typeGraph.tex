@@ -99,9 +99,9 @@ BackupandRecoveryTesting -> BackupRecoveryTesting[dir=none,style="dashed",color=
 CorrectnessTesting -> FunctionalTesting[dir=none,style="dashed",color="blue"];
 CapacityTesting -> ScalabilityTesting[dir=none,color="green"];
 CompatibilityTesting -> CoexistenceTesting[dir=none,color="green"];
-ConfigurationTesting -> PortabilityTesting[dir=none,style="dashed"];
+ConfigurationTesting -> PortabilityTesting[dir=none];
 ConformanceTesting -> CorrectnessTesting[dir=none,style="dashed",color="gray"];
-ConversionTesting -> MigrationTesting[dir=none,style="dashed"];
+ConversionTesting -> MigrationTesting[dir=none];
 FunctionalTesting -> ConformanceTesting[dir=none,color="blue"];
 SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
 EnduranceTesting -> SoakTesting[dir=none,color="green"];

@@ -125,7 +125,7 @@ FunctionalTesting -> SpecificationbasedTesting[dir=none,color="green"];
 ScenarioTesting -> UseCaseTesting[dir=none,color="blue"];
 UserScenarioTesting [label=<User<br/>Scenario<br/>Testing>,style="dotted"];
 ScenarioTesting -> UserScenarioTesting[dir=none,color="blue"];
-UseCaseTesting -> UserScenarioTesting[dir=none];
+UseCaseTesting -> UserScenarioTesting[dir=none,color="blue"];
 StructurebasedTesting -> StructuralTesting[dir=none,color="green"];
 
 AdHocTesting -> ExperiencebasedTesting[color="blue"];
@@ -208,6 +208,7 @@ ExploratoryTesting -> ExperiencebasedTesting[color="green"];
 ExploratoryTesting -> SpecificationbasedTesting[color="maroon"];
 FunctionalTesting -> SpecificationbasedTesting[color="green"];
 FunctionalTesting -> StructurebasedTesting[color="green"];
+FunctionalTesting -> SpecificationbasedTesting;
 FuzzTesting -> RandomTesting[color="blue"];
 Galumphing -> ExploratoryTesting[color="blue"];
 GrayBoxTesting -> StructurebasedTesting[color="green"];
