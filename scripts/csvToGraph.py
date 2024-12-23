@@ -4,6 +4,7 @@ import numpy as np
 import itertools
 from pandas import read_csv
 import re
+from string import ascii_lowercase
 import sys
 from typing import Optional
 
@@ -515,7 +516,14 @@ def splitListAtEmpty(listToSplit):
             np.split(recArr, np.where(recArr == "")[0]+1)
             if len(subarray) > 0]
 
+# Not stable; MUST be in correct order for table footnotes
 parSynNotes = {
+    ("Functional Testing", "Specification-based Testing") :
+        ("See \\Cref{spec-func-test}.", ""),
+    # ("Performance Testing", "Performance-related Testing") :
+    #     ("See \\Cref{perf-test-ambiguity}.", ""),
+    ("Use Case Testing", "Scenario Testing") :
+        ("See \\discrepref{use-case-scenario}.", ""),
     ("Organization-based Testing", "Role-based Testing") :
         ("The distinction between organization- and "
         "role-based testing in \\citep[pp.~17, 37, 39]{Firesmith2015} "
@@ -525,14 +533,23 @@ parSynNotes = {
         ("See \\discrepref{walkthrough-syns}.", "")
 }
 
-manualInfParSyns = {("Dynamic Analysis", "Dynamic Testing")}
-
 parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
     set(), set(), set(), set()
+
+# Iterator to get next letter for footnotes
+letters = iter(ascii_lowercase)
+tableFootnotes: list[str] = []
+
+manualInfParSyns = {("Dynamic Analysis", "Dynamic Testing")}
+# Since TblrNote uses unique footnotes, this is needed to avoid duplicates
+addedParSyns: set[tuple[str, str]] = set()
+
 def makeParSynLine(chd, par, parSource, synSource) -> None:
-    # Don't add manually tracked parSyns to table
-    if any(tup in manualInfParSyns for tup in {(chd, par), (par, chd)}):
+    # Don't add manually tracked or already-tracked parSyns to table
+    if any((chd, par) in s for s in [manualInfParSyns, addedParSyns]):
         return
+    addedParSyns.add((chd, par))
+
     parSource = formatLineWithSources(parSource, False)
     synSource = formatLineWithSources(synSource, False)
 
@@ -552,6 +569,13 @@ def makeParSynLine(chd, par, parSource, synSource) -> None:
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return
 
+    for terms, note in parSynNotes.items():
+        if chd == terms[0] and par == terms[1]:
+            # note[0] is footnote content 
+            # note[1] is "TODO" item
+            par += f"\\TblrNote{{{next(letters)}}}"
+            tableFootnotes.append(note[0])
+            break
     parSyns.add(getDiscrepCount([parSource, synSource], "PARS", "CONTRA") +
                 f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
 
@@ -595,7 +619,8 @@ if "Example" not in csvFilename:
         "parSyns",
         "Pairs of test approaches with a \\hyperref[par-chd-rels]{parent-child} \\emph{and} synonym relation.",
         ["``Child'' $\\to$ ``Parent''", "Parent-Child Source(s)", "Synonym Source(s)"],
-        list(parSyns)
+        list(parSyns),
+        footnotes=tableFootnotes
     )
 
     writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(

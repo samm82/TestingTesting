@@ -1,5 +1,6 @@
 from enum import Enum, auto
 import re
+from string import ascii_lowercase
 from typing import Optional
 
 # RegEx patterns
@@ -190,7 +191,8 @@ def writeFile(lines, filename: str, helper: bool = False, dir: str = "graphs"):
     #     print(f"No changes to {filename}")
 
 def writeLongtblr(filename: str, caption: str, headers: list[str],
-                  lines: list[str], widths: list[int] = []):
+                  lines: list[str], widths: list[int] = [],
+                  footnotes: list[str] = []):
     # Used for ensuring correct number of xcolumns
     xcolCount = len(headers) - 1
     assert all(line.count("&") == xcolCount for line in lines)
@@ -204,9 +206,10 @@ def writeLongtblr(filename: str, caption: str, headers: list[str],
         colSpecList += [f"X[{width/scale},m]" for width in widths]
     else:
         colSpecList += ["X[m]"] * xcolCount
-    
 
     writeFile(["\\begin{longtblr}[",
+            *(f"   note{{{x}}} = {{{footnote}}},"
+                for x, footnote in zip(ascii_lowercase, footnotes)),
               f"   caption = {{{caption}}},",
               f"   label = {{tab:{filename}}}",
                "   ]{",
