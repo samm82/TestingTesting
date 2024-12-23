@@ -7,15 +7,22 @@ methodology follows the following steps:
 
 \input{build/methodOverview}
 
+\def\addTextEx{For example, \citetISTQB{} \multiAuthHelper{cite}
+    \citep{GerrardAndThompson2002} as the original source
+    for \ifnotpaper their \else its \fi definition of ``scalability'' (see
+    \Cref{scal-test-rec}); we verified\todo{Present tense?} this by
+    looking at this original source.}
+
 \subsection{Sources}
 \label{sources}
 As there is no single authoritative source on software testing terminology,
 we need to look at many to see how various terms are used in practice.
-% Unfortunately, this brings to light a variety of discrepancies.
-Starting from some set of sources, we then use ``snowball sampling'', a
-``method of \dots{} sample selection \dots{} used to locate hidden
-populations'' \citep{Johnson2014}, to gather further sources. When a term
-arises that requires more investigation (e.g., it is undefined or unclear),
+Starting from some widely used\todo{Justified in their respective sections;
+    should I put pointers here?} sources (some IEEE standards and the
+\acf{swebok}, \suggSrcs{}), we then use ``snowball sampling'', a ``method of
+\dots{} sample selection \dots{} used to locate hidden populations''
+\citep{Johnson2014}, to gather further sources. \addTextEx{} When a term arises
+that requires more investigation (e.g., it is undefined or unclear),
 a miniature literature review is performed in this subset to ``fill in'' this
 missing information (see \Cref{undef-terms}). These additional sources may then
 be investigated in their entirety (as opposed to just the original subset of
@@ -73,7 +80,7 @@ can be used by any organization when performing any form of software testing''
 
 These are collections of software testing terminology built up from multiple
 sources, including established standards (see \Cref{stds}). These documents are
-made to be widely applicable; the \acf{swebok} is ``proposed as a suitable
+made to be widely applicable; the \acs{swebok} is ``proposed as a suitable
 foundation for government licensing, for the regulation of software engineers,
 and for the development of university curricula in software engineering''
 \citep[p.~xix]{KanerEtAl2011}. They are often written by a large organization,
@@ -93,11 +100,8 @@ may be used as guides in industry. Although textbooks have smaller sets of
 authors, they follow a formal review process before publication. Textbooks that
 are trusted at McMaster \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
 served as the original (albeit ad hoc and arbitrary) starting point of this
-research; we investigate other books as they arise. For example, \citetISTQB{}
-\multiAuthHelper{cite} \citep{GerrardAndThompson2002} as the original source
-for \ifnotpaper their \else its \fi definition of ``scalability'' (see
-\Cref{scal-test-rec}); we verified\todo{Present tense?} this by
-looking at this original source. This tier is composed of \textSources{2}.
+research; we investigate other books as they arise. \addTextEx{}
+This tier is composed of \textSources{2}.
 
 \subsubsection{\paperSources{1}}
 \label{papers}
