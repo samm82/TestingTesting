@@ -220,5 +220,5 @@ def writeLongtblr(filename: str, caption: str, headers: list[str],
                "  \\hline",
               f"  {" & ".join([f"\\thead{{{h}}}" for h in headers])} \\\\",
                "  \\hline"] + sortByImplied(lines) +
-               ["  \\hline", "\\end{longtblr}"],
+              ["  \\hline", "\\end{longtblr}"],
                filename, True)

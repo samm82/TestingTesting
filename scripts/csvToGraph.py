@@ -575,7 +575,7 @@ def makeParSynLine(chd, par, parSource, synSource) -> None:
         if chd == terms[0] and par == terms[1]:
             # note[0] is footnote content 
             # note[1] is "TODO" item
-            par += f"\\TblrNote{{{next(letters)}}}"
+            par += f"\\TblrNote{{\\textrm{{{next(letters)}}}}}"
             tableFootnotes.append(note[0])
             break
     parSyns.add(getDiscrepCount([parSource, synSource], "PARS", "CONTRA") +

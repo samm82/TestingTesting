@@ -124,6 +124,10 @@
 
 \usepackage{array}
 \usepackage{tabularray}
+\DefTblrTemplate{note-tag}{default}{\textsuperscript{\InsertTblrNoteTag}}
+\SetTblrTemplate{note-tag}{default}
+\DefTblrTemplate{note-sep}{none}{}
+\SetTblrTemplate{note-sep}{none}
 
 % For abbreviations, we use "acro" package, and mfirstuc to help capitalize long
 % versions normally
