@@ -12,12 +12,15 @@ methodology follows the following steps:
 As there is no single authoritative source on software testing terminology,
 we need to look at many to see how various terms are used in practice.
 % Unfortunately, this brings to light a variety of discrepancies.
-Starting from some set of sources, we then use
-``snowball sampling'', a ``method of \dots{} sample selection \dots{} used to
-locate hidden populations'' \citep{Johnson2014}, to gather further sources
-(see \Cref{undef-terms}). Sources are then grouped into tiers based on their
-format, method of publication, and ``trustworthiness'', where more trustworthy
-sources:
+Starting from some set of sources, we then use ``snowball sampling'', a
+``method of \dots{} sample selection \dots{} used to locate hidden
+populations'' \citep{Johnson2014}, to gather further sources. When a term
+arises that requires more investigation (e.g., it is undefined or unclear),
+a miniature literature review is performed in this subset to ``fill in'' this
+missing information (see \Cref{undef-terms}). These additional sources may then
+be investigated in their entirety (as opposed to just the original subset of
+interest) if they provide more information and are ``trustworthy'', where
+more trustworthy sources:
 \begin{enumerate}
     \item have gone through a peer-review process,
     \item are written by numerous, well-respected authors,
@@ -25,11 +28,14 @@ sources:
     \item are accepted and used in the field of software.
 \end{enumerate}
 
-We therefore create the following tiers, given in order of descending
-trustworthiness: established standards (\Cref{stds}), terminology collections
-(\Cref{metas}), textbooks (\Cref{texts}), and papers and other documents
-(\Cref{papers}). A summary of how many sources comprise each tier is given in
-\Cref{fig:sourceSummary}.
+For ease of discussion and analysis, the complete set of sources can be grouped
+based on their format, method of publication, and this metric of
+``trustworthiness''. We therefore create the following tiers, given in order of
+descending trustworthiness: established standards (\Cref{stds}), terminology
+collections (\Cref{metas}), textbooks (\Cref{texts}), and papers and other
+documents (\Cref{papers}). Note that most sources used to ``fill in'' missing
+information are papers. A summary of how many sources comprise each tier is
+given in \Cref{fig:sourceSummary}.
 
 \begin{figure}
     \centering
@@ -99,9 +105,7 @@ looking at this original source. This tier is composed of \textSources{2}.
 
 Documents in this source tier are written by much smaller sets of authors
 % with unknown peer review processes % TODO: investigate
-and are much less widespread than higher source tiers. We investigated%
-\todo{Present tense?} many of
-these sources to ``fill in'' missing definitions (see \Cref{undef-terms}).
+and are much less widespread than higher source tiers.
 While most documents are journal articles and conference papers, the following
 document types are also present; some less-than-academic sources show how terms
 are used in practice and are included in this source tier for brevity%
