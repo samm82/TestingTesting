@@ -518,12 +518,14 @@ def splitListAtEmpty(listToSplit):
 
 # Not stable; MUST be in correct order for table footnotes
 parSynNotes = {
+    ("Fault Tolerance Testing", "Robustness Testing") :
+        ("\\ftrnote{}", ""),
     ("Functional Testing", "Specification-based Testing") :
-        ("See \\Cref{spec-func-test}.", ""),
+        ("\\specfn{}", ""),
     # ("Performance Testing", "Performance-related Testing") :
     #     ("See \\Cref{perf-test-ambiguity}.", ""),
     ("Use Case Testing", "Scenario Testing") :
-        ("See \\discrepref{use-case-scenario}.", ""),
+        ("\\ucstn{}", ""),
     ("Organization-based Testing", "Role-based Testing") :
         ("The distinction between organization- and "
         "role-based testing in \\citep[pp.~17, 37, 39]{Firesmith2015} "
