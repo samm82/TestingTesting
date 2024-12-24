@@ -29,6 +29,7 @@ MemoryManagementTesting [label=<Memory<br/>Management<br/>Testing>];
 PerformanceEfficiencyTesting [label=<Performance<br/>Efficiency<br/>Testing>];
 PerformanceTesting [label=<Performance<br/>Testing>];
 PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
+PowerTesting [label=<Power<br/>Testing>,style="dashed",color=gray];
 RecoverabilityTesting [label=<Recoverability<br/>Testing>];
 RecoveryTesting [label=<Recovery<br/>Testing>];
 ReliabilityTesting [label=<Reliability<br/>Testing>];
@@ -84,6 +85,7 @@ PerformanceEfficiencyTesting -> PerformanceTesting[style="dashed",color="green"]
 PerformanceEfficiencyTesting -> EfficiencyTesting[style="dashed",color="green"];
 PerformanceTesting -> PerformancerelatedTesting[color="green"];
 PerformanceTesting -> PerformanceTesting;
+PowerTesting -> PerformancerelatedTesting[color="gray"];
 RecoverabilityTesting -> ReliabilityTesting[color="green"];
 RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
 RecoveryTesting -> PerformancerelatedTesting[color="green"];
@@ -138,6 +140,7 @@ subgraph cluster_legend {
     }
     {
         rank=same
+        imp5 [label=<Implied<br/>Term> style="dashed"]
         syn3 [label=<Term>]
         syn4 [label=<Synonym<br/>to Both> style="dotted"]
         syn5 [label=<Term>]
@@ -172,15 +175,14 @@ src9 -> src10 [color=gray, label=<From Inferences>]
     imp2 -> par
     imp3 -> syn1
     imp4 -> syn2
+imp5 -> imp1
 syn3 -> imp2
 syn4 -> imp3
 syn5 -> imp4
-syn3 -> imp1
-syn4 -> imp2
-syn5 -> imp3
-src1 -> syn3
-src2 -> syn4
-src3 -> syn5
+src1 -> imp5
+src2 -> syn3
+src3 -> syn4
+src4 -> syn5
 src5 -> src1
 src6 -> src2
 src7 -> src3

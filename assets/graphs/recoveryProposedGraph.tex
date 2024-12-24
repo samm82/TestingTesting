@@ -15,7 +15,7 @@ FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
 PerformanceTesting [label=<Performance<br/>Testing>];
 PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
 RecoverabilityTesting [label=<Recoverability<br/>Testing>];
-RecoveryPerformanceTesting [label=<Recovery<br/>Performance<br/>Testing>];
+RecoveryPerformanceTesting [label=<Recovery<br/>Performance<br/>Testing>,color=orange];
 ReliabilityTesting [label=<Reliability<br/>Testing>];
 UsabilityTesting [label=<Usability<br/>Testing>];
 
@@ -33,10 +33,10 @@ RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
 ReliabilityTesting -> PerformanceTesting;
 UsabilityTesting -> UsabilityTesting;
 
-RecoverabilityTesting -> AvailabilityTesting;
-RecoverabilityTesting -> FailureToleranceTesting;
-RecoverabilityTesting -> FaultToleranceTesting;
-RecoveryPerformanceTesting -> PerformancerelatedTesting;
-RecoveryPerformanceTesting -> RecoverabilityTesting;
+RecoverabilityTesting -> AvailabilityTesting[color=orange];
+RecoverabilityTesting -> FailureToleranceTesting[color=orange];
+RecoverabilityTesting -> FaultToleranceTesting[color=orange];
+RecoveryPerformanceTesting -> PerformancerelatedTesting[color=orange];
+RecoveryPerformanceTesting -> RecoverabilityTesting[color=orange];
 }
 \end{document}

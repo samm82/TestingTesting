@@ -830,6 +830,8 @@ for key, value in rigidDict.items():
 
 SYN = "syn"
 class CustomGraph:
+    PROPOSED_COLOR_TAG = "color=orange"
+
     def __init__(self, name, terms:set, add:dict=dict(),
                  remove:dict=dict()):
         self.name = name
@@ -899,14 +901,13 @@ class CustomGraph:
             alreadyAdded = dict()
             for child, parents in self.add.items():
                 for parent in parents:
-                    relLine = f"{formatApproach(child)} -> {formatApproach(parent)};"
-                    # Ignore ending in case a more-specified version is present
-                    linesAlready = [rel for rel in rels if rel.startswith(relLine[:-1])]
+                    relLine = f"{formatApproach(child)} -> {formatApproach(parent)}"
+                    linesAlready = [rel for rel in rels if rel.startswith(relLine)]
                     if linesAlready:
                         alreadyAdded[f"{child} -> {parent}"] = linesAlready
                         continue
                     if child in self.terms and parent in self.terms:
-                        rels.append(relLine)
+                        rels.append(f"{relLine}[{self.PROPOSED_COLOR_TAG}];")
             if alreadyAdded:
                 print("WARNING: the following lines already exist in the custom "
                       f"{self.name} graph but were attempted to be added:")
@@ -939,10 +940,9 @@ class CustomGraph:
         if self.add or self.remove:
             nodes = set(nodes)
             for term in self.terms:
-                termLine = f"{formatApproach(term)} [label={lineBreak(term)}];"
-                # Ignore ending in case a more-specified version is present
-                if not {node for node in nodes if node.startswith(termLine[:-2])}:
-                    nodes.add(termLine)
+                termLine = f"{formatApproach(term)} [label={lineBreak(term)}"
+                if not {node for node in nodes if node.startswith(termLine)}:
+                    nodes.add(f"{termLine},{self.PROPOSED_COLOR_TAG}];")
             nodes.discard("")
 
             # Filter out nodes with no relations
@@ -1021,7 +1021,6 @@ performanceGraph = CustomGraph(
         "Capacity Testing" : ["Load Testing"],
         "Concurrency Testing" : ["Performance-related Testing"],
         "Performance Testing" : ["Load Testing"],
-        "Power Testing" : ["Performance-related Testing"],
         "Reliability Testing" : ["Performance-related Testing"],
     },
     remove = {
