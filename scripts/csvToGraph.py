@@ -649,142 +649,146 @@ def inLine(flag, style, line):
 if "Example" not in csvFilename:
     outputDiscreps()
 
+# Returns modified lines and generated legend
+def makeLegend(lines) -> tuple[list[str], list[str]]:
+    LONG_EDGE_LABEL = 'label="                "'
+
+    # Only include meaningful synonyms
+    syns = [line.split(" ")[0] for line in lines if inLine(Flag.STYLE, "dotted", line)]
+    synsToRemove = [syn for syn in syns if sum(1 for line in lines if syn in line) < 3]
+    lines = [line for line in lines if not any(syn in line for syn in synsToRemove)]
+
+    impTerm, dynTerm = '', ''
+    if any(inLine(Flag.STYLE, "dashed", line) for line in lines):
+        impTerm = 'imp5 [label=<Implied<br/>Term> style="dashed"]'
+
+    if any(inLine(Flag.STYLE, "filled", line) for line in lines):
+        dynTerm = 'dyn [label=<Dynamic<br/>Approach> style="filled"]'
+
+    twoSyn = [
+        'syn3 [label=<Term>]',
+        'syn4 [label=<Synonym<br/>to Both> style="dotted"]',
+        'syn5 [label=<Term>]',
+        'syn3 -> syn4 -> syn5 [dir=none]',
+    ] if len(syns) > len(synsToRemove) else []
+    
+    def sameRank(lines):
+        return ['{', 'rank=same'] + lines + ['}']
+
+    def impOrDynWithSyn(nodes, forceDyn=False):
+        if len(nodes) == 1:
+            nodes = nodes[0]
+        else:
+            nodes = f'{{ {" ".join(nodes)} }}'
+        return f'{'imp5' if impTerm and not forceDyn else 'dyn'} -> {nodes}'
+
+    def twoSynAlign(nodes):
+        synNodes = [f'syn{i}' for i in range(3, 6, 2 if len(nodes) == 2 else 1)]
+        return [f'{synNode} -> {nodes[i]}' for i, synNode in enumerate(synNodes)]
+
+    extras, align = [], []
+    if impTerm and dynTerm:
+        extras = sameRank([impTerm, dynTerm])
+        align = [impOrDynWithSyn(["imp1", "imp2"]),
+                impOrDynWithSyn(["imp3", "imp4"], forceDyn=True)]
+        if twoSyn:
+            extras += sameRank(twoSyn)
+            align = twoSynAlign(align)
+    elif twoSyn:
+        align = twoSynAlign([f'imp{i}' for i in range(2, 5)])
+        if not (impTerm or dynTerm):
+            extras = sameRank(twoSyn)
+            align += twoSynAlign([f'imp{i}' for i in range(1, 4)])
+        else:
+            extras = sameRank([impTerm if impTerm else dynTerm] + twoSyn)
+            align = [impOrDynWithSyn(["imp1"])] + align
+    elif impTerm or dynTerm:
+        extras = [impTerm if impTerm else dynTerm]
+        align = [impOrDynWithSyn(["imp2", "imp3"])]
+
+    INDENT = "    "
+    extras = [f'{INDENT if line in "}{" else 2*INDENT}{line}' for line in extras]
+
+    srcCats = [srcCat for srcCat in SrcCat
+                if any(srcCat.color.name.lower() in line for line in lines)]
+    srcCats.append(SrcCat.PAPER)
+    srcCats.sort(reverse=True)  # Sort in decreasing "trustworthiness"
+
+    colors, colorRow = [], []
+    prevAlignNodes = (sorted(set(a.split(" -> ")[0] for a in align)) or
+                        [f"imp{i}" for i in range(1, 5)])
+    if len(srcCats) < 2:
+        prevAlignNodes = prevAlignNodes[1:-1]
+
+    for i in range(0, len(srcCats) * 2, 2):
+        srcCatLabel = (srcCats[i//2].longname)
+        # From https://stackoverflow.com/a/4664889/10002168
+        srcCatSpaces = [m.start() for m in re.finditer(" ", srcCatLabel)]
+        if srcCatSpaces:
+            # From comment on https://stackoverflow.com/a/38131003/10002168
+            _idx = srcCatSpaces[len(srcCatSpaces)//2]
+            # From https://stackoverflow.com/a/41753038/10002168
+            srcCatLabel = srcCatLabel[:_idx] + "<br/>" + srcCatLabel[_idx + 1:]
+                            
+        colorRow += [f"src{i+1} [style=invis];", f"src{i+2} [style=invis];",
+                f"src{i+1} -> src{i+2} [color={srcCats[i//2].color.name.lower()}, "
+                f"label=<From {srcCatLabel}>]"]
+        if i % 4:
+            colors += sameRank(colorRow)
+            colorRow = []
+            newAlignNodes = [f"src{j}" for j in range(i-1, i+3)]
+            align += [f"{a} -> {b}" for a, b in zip(newAlignNodes, prevAlignNodes)]
+            prevAlignNodes = newAlignNodes
+    if colorRow:
+        colors += sameRank(colorRow)
+        align += [f"{a} -> {b}" for a, b in
+                    zip([f"src{j}" for j in range(i+1, i+3)], prevAlignNodes[1:])]
+
+    # From https://stackoverflow.com/a/65443720/10002168
+    return lines, [
+        '',
+        'subgraph cluster_legend {',
+        '    label="Legend";',
+        # This puts the label at the top, not the bottom, because of the rankdir
+        '    labelloc="b";',
+        '    fontsize="48pt"',
+        '    {',
+        '        rank=same',
+        '        chd [label="Child"];',
+        '        par [label="Parent"];',
+        f'        chd -> par [{LONG_EDGE_LABEL}];',
+        '        syn1 [label="Synonym"];',
+        '        syn2 [label="Synonym"];',
+        f'        syn1 -> syn2 [dir=none {LONG_EDGE_LABEL}];',
+        '    }',
+        '    {',
+        '        rank=same',
+        '        imp1 [label="Child"];',
+        '        imp2 [label=<Implied<br/>Parent>];',
+        f'        imp1 -> imp2 [style="dashed" {LONG_EDGE_LABEL}]',
+        '        imp3 [label=<Implied<br/>Synonym>];',
+        '        imp4 [label=<Implied<br/>Synonym>];',
+        f'        imp3 -> imp4 [style="dashed" dir=none {LONG_EDGE_LABEL}]',
+        '    }',
+    ] + extras + colors + [
+        # For alignment
+        '    edge [style="invis"]',
+        '    imp1 -> chd',
+        '    imp2 -> par',
+        '    imp3 -> syn1',
+        '    imp4 -> syn2',
+    ] + align + [
+        '}',
+        '',
+        '// Connect the dummy node to the first node of the legend',
+        'start -> chd [style="invis"];',
+    ]
+
 def writeDotFile(lines, filename):
     CUSTOM_LEGEND = {"recovery", "scalability", "Example"}
     legend = []
     if all(name not in filename for name in CUSTOM_LEGEND):
-        LONG_EDGE_LABEL = 'label="                "'
-
-        # Only include meaningful synonyms
-        syns = [line.split(" ")[0] for line in lines if inLine(Flag.STYLE, "dotted", line)]
-        synsToRemove = [syn for syn in syns if sum(1 for line in lines if syn in line) < 3]
-        lines = [line for line in lines if not any(syn in line for syn in synsToRemove)]
-
-        impTerm, dynTerm = '', ''
-        if any(inLine(Flag.STYLE, "dashed", line) for line in lines):
-            impTerm = 'imp5 [label=<Implied<br/>Term> style="dashed"]'
-
-        if any(inLine(Flag.STYLE, "filled", line) for line in lines):
-            dynTerm = 'dyn [label=<Dynamic<br/>Approach> style="filled"]'
-
-        twoSyn = [
-            'syn3 [label=<Term>]',
-            'syn4 [label=<Synonym<br/>to Both> style="dotted"]',
-            'syn5 [label=<Term>]',
-            'syn3 -> syn4 -> syn5 [dir=none]',
-        ] if len(syns) > len(synsToRemove) else []
-        
-        def sameRank(lines):
-            return ['{', 'rank=same'] + lines + ['}']
-
-        def impOrDynWithSyn(nodes, forceDyn=False):
-            if len(nodes) == 1:
-                nodes = nodes[0]
-            else:
-                nodes = f'{{ {" ".join(nodes)} }}'
-            return f'{'imp5' if impTerm and not forceDyn else 'dyn'} -> {nodes}'
-
-        def twoSynAlign(nodes):
-            synNodes = [f'syn{i}' for i in range(3, 6, 2 if len(nodes) == 2 else 1)]
-            return [f'{synNode} -> {nodes[i]}' for i, synNode in enumerate(synNodes)]
-
-        extras, align = [], []
-        if impTerm and dynTerm:
-            extras = sameRank([impTerm, dynTerm])
-            align = [impOrDynWithSyn(["imp1", "imp2"]),
-                    impOrDynWithSyn(["imp3", "imp4"], forceDyn=True)]
-            if twoSyn:
-                extras += sameRank(twoSyn)
-                align = twoSynAlign(align)
-        elif twoSyn:
-            align = twoSynAlign([f'imp{i}' for i in range(2, 5)])
-            if not (impTerm or dynTerm):
-                extras = sameRank(twoSyn)
-                align += twoSynAlign([f'imp{i}' for i in range(1, 4)])
-            else:
-                extras = sameRank([impTerm if impTerm else dynTerm] + twoSyn)
-                align = [impOrDynWithSyn(["imp1"])] + align
-        elif impTerm or dynTerm:
-            extras = [impTerm if impTerm else dynTerm]
-            align = [impOrDynWithSyn(["imp2", "imp3"])]
-
-        INDENT = "    "
-        extras = [f'{INDENT if line in "}{" else 2*INDENT}{line}' for line in extras]
-
-        srcCats = [srcCat for srcCat in SrcCat
-                  if any(srcCat.color.name.lower() in line for line in lines)]
-        srcCats.append(SrcCat.PAPER)
-        srcCats.sort(reverse=True)  # Sort in decreasing "trustworthiness"
-
-        colors, colorRow = [], []
-        prevAlignNodes = (sorted(set(a.split(" -> ")[0] for a in align)) or
-                          [f"imp{i}" for i in range(1, 5)])
-        if len(srcCats) < 2:
-            prevAlignNodes = prevAlignNodes[1:-1]
-
-        for i in range(0, len(srcCats) * 2, 2):
-            srcCatLabel = (srcCats[i//2].longname)
-            # From https://stackoverflow.com/a/4664889/10002168
-            srcCatSpaces = [m.start() for m in re.finditer(" ", srcCatLabel)]
-            if srcCatSpaces:
-                # From comment on https://stackoverflow.com/a/38131003/10002168
-                _idx = srcCatSpaces[len(srcCatSpaces)//2]
-                # From https://stackoverflow.com/a/41753038/10002168
-                srcCatLabel = srcCatLabel[:_idx] + "<br/>" + srcCatLabel[_idx + 1:]
-                                
-            colorRow += [f"src{i+1} [style=invis];", f"src{i+2} [style=invis];",
-                 f"src{i+1} -> src{i+2} [color={srcCats[i//2].color.name.lower()}, "
-                 f"label=<From {srcCatLabel}>]"]
-            if i % 4:
-                colors += sameRank(colorRow)
-                colorRow = []
-                newAlignNodes = [f"src{j}" for j in range(i-1, i+3)]
-                align += [f"{a} -> {b}" for a, b in zip(newAlignNodes, prevAlignNodes)]
-                prevAlignNodes = newAlignNodes
-        if colorRow:
-            colors += sameRank(colorRow)
-            align += [f"{a} -> {b}" for a, b in
-                      zip([f"src{j}" for j in range(i+1, i+3)], prevAlignNodes[1:])]
-
-        # From https://stackoverflow.com/a/65443720/10002168
-        legend = [
-            '',
-            'subgraph cluster_legend {',
-            '    label="Legend";',
-            # This puts the label at the top, not the bottom, because of the rankdir
-            '    labelloc="b";',
-            '    fontsize="48pt"',
-            '    {',
-            '        rank=same',
-            '        chd [label="Child"];',
-            '        par [label="Parent"];',
-            f'        chd -> par [{LONG_EDGE_LABEL}];',
-            '        syn1 [label="Synonym"];',
-            '        syn2 [label="Synonym"];',
-            f'        syn1 -> syn2 [dir=none {LONG_EDGE_LABEL}];',
-            '    }',
-            '    {',
-            '        rank=same',
-            '        imp1 [label="Child"];',
-            '        imp2 [label=<Implied<br/>Parent>];',
-            f'        imp1 -> imp2 [style="dashed" {LONG_EDGE_LABEL}]',
-            '        imp3 [label=<Implied<br/>Synonym>];',
-            '        imp4 [label=<Implied<br/>Synonym>];',
-            f'        imp3 -> imp4 [style="dashed" dir=none {LONG_EDGE_LABEL}]',
-            '    }',
-        ] + extras + colors + [
-            # For alignment
-            '    edge [style="invis"]',
-            '    imp1 -> chd',
-            '    imp2 -> par',
-            '    imp3 -> syn1',
-            '    imp4 -> syn2',
-        ] + align + [
-            '}',
-            '',
-            '// Connect the dummy node to the first node of the legend',
-            'start -> chd [style="invis"];',
-        ]
+        lines, legend = makeLegend(lines)
 
     lines = [
         "\\documentclass{article}",
@@ -894,7 +898,9 @@ class CustomGraph:
         nodes = [node for node in nodes if "->" not in node and
                 any(node.split(" ")[0] in line for line in rels)]
 
-        writeDotFile(nodes+rels, f"{self.name}Graph")
+        # Will be used to build legend
+        allLines = nodes + rels
+        writeDotFile(allLines, f"{self.name}Graph")
 
         if self.add:
             rels.append("")
@@ -957,6 +963,9 @@ class CustomGraph:
                 node for node in nodes if node not in nodesList)) + [""]
 
             writeDotFile(nodesList+rels, f"{self.name}ProposedGraph")
+            allLines += nodesList+rels
+
+        allLines
 
 recoveryGraph = CustomGraph(
     "recovery",
