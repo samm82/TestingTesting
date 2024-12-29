@@ -650,7 +650,7 @@ if "Example" not in csvFilename:
     outputDiscreps()
 
 # Returns modified lines and generated legend
-def makeLegend(lines) -> tuple[list[str], list[str]]:
+def makeLegend(lines, separate: bool=False) -> tuple[list[str], list[str]]:
     LONG_EDGE_LABEL = 'label="                "'
 
     # Only include meaningful synonyms
@@ -746,12 +746,15 @@ def makeLegend(lines) -> tuple[list[str], list[str]]:
 
     # From https://stackoverflow.com/a/65443720/10002168
     return lines, [
-        '',
+        'margin=0' if separate else '',
         'subgraph cluster_legend {',
+        '    margin=8' if separate else '',
         '    label="Legend";',
         # This puts the label at the top, not the bottom, because of the rankdir
-        '    labelloc="b";',
+        # Behaviour depends on if the legend is separate from the graph or not
+       f'    labelloc="{"t" if separate else "b"}";',
         '    fontsize="48pt"',
+        '    rankdir=BT' if separate else '',
         '    {',
         '        rank=same',
         '        chd [label="Child"];',
@@ -777,15 +780,13 @@ def makeLegend(lines) -> tuple[list[str], list[str]]:
         '    imp2 -> par',
         '    imp3 -> syn1',
         '    imp4 -> syn2',
-    ] + align + [
-        '}',
-        '',
+    ] + align + ['}', ''] + ([] if separate else [
         '// Connect the dummy node to the first node of the legend',
-        'start -> chd [style="invis"];',
-    ]
+        'start -> chd [style="invis"];'])
+
+CUSTOM_LEGEND = {"recovery", "scalability", "Example"}
 
 def writeDotFile(lines, filename):
-    CUSTOM_LEGEND = {"recovery", "scalability", "Example"}
     legend = []
     if all(name not in filename for name in CUSTOM_LEGEND):
         lines, legend = makeLegend(lines)
@@ -799,11 +800,10 @@ def writeDotFile(lines, filename):
         "",
         "\\begin{document}",
         f"\\digraph{{{filename}}}{{",
-        "rankdir=BT;",
-        "",
-    ] + (["// Dummy node to push the legend to the top left",
-          'start [style="invis"];', ""] if legend else []
-        ) + lines + legend + [
+    ] + (["rankdir=BT;", ""] if "rankdir" not in "\n".join(lines) else []) + ([
+        "// Dummy node to push the legend to the top left",
+        'start [style="invis"];', ""] if legend else []
+    ) + lines + legend + [
         "}",
         "\\end{document}",
     ]
@@ -965,7 +965,9 @@ class CustomGraph:
             writeDotFile(nodesList+rels, f"{self.name}ProposedGraph")
             allLines += nodesList+rels
 
-        allLines
+        if self.name in CUSTOM_LEGEND:
+            _, legend = makeLegend(allLines, separate=True)
+            writeDotFile(legend, f"{self.name}Legend")
 
 recoveryGraph = CustomGraph(
     "recovery",

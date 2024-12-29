@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{recoveryLegend}{
+margin=0
+subgraph cluster_legend {
+    margin=8
+    label="Legend";
+    labelloc="t";
+    fontsize="48pt"
+    rankdir=BT
+    {
+        rank=same
+        chd [label="Child"];
+        par [label="Parent"];
+        chd -> par [label="                "];
+        syn1 [label="Synonym"];
+        syn2 [label="Synonym"];
+        syn1 -> syn2 [dir=none label="                "];
+    }
+    {
+        rank=same
+        imp1 [label="Child"];
+        imp2 [label=<Implied<br/>Parent>];
+        imp1 -> imp2 [style="dashed" label="                "]
+        imp3 [label=<Implied<br/>Synonym>];
+        imp4 [label=<Implied<br/>Synonym>];
+        imp3 -> imp4 [style="dashed" dir=none label="                "]
+    }
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [color=blue, label=<From Terminology<br/>Collections>]
+}
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=black, label=<From Papers and<br/>Other Documents>]
+src7 [style=invis];
+src8 [style=invis];
+src7 -> src8 [color=gray, label=<From Inferences>]
+}
+    edge [style="invis"]
+    imp1 -> chd
+    imp2 -> par
+    imp3 -> syn1
+    imp4 -> syn2
+src1 -> imp1
+src2 -> imp2
+src3 -> imp3
+src4 -> imp4
+src5 -> src1
+src6 -> src2
+src7 -> src3
+src8 -> src4
+}
+
+}
+\end{document}

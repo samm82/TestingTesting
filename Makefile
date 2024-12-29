@@ -8,7 +8,8 @@ DIFF_GLOSSARIES = $(addprefix Diff, $(TXT_GLOSSARIES))
 
 GRAPH_GLOSSARIES = ApproachGlossary.csv assets/graphs/exampleGlossaries/*Glossary.csv
 
-GRAPHS = assets/graphs/*Graph.tex assets/graphs/manual/*.tex
+LEGENDS = assets/graphs/*Legend.tex
+GRAPHS = $(LEGENDS) assets/graphs/*Graph.tex assets/graphs/manual/*.tex
 CUSTOM_STUBS = recovery scalability performance
 ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
 CUSTOM_GRAPHS = $(addprefix assets/graphs/, $(addsuffix Graph, $(ALL_CUSTOM_STUBS)))
@@ -87,12 +88,15 @@ compile_graphs: csvToGraph
 			basefilename=$$(basename $$filename) ; \
 			cp $${basefilename}.pdf $${filename}.pdf ; \
 	done
-	rm *Graph*
+	rm *Graph* || true
 	rm *Legend* || true
 	rm *catRels* || true
 
-custom_graphs: GRAPHS="$(CUSTOM_GRAPHS)"
+custom_graphs: GRAPHS=$(CUSTOM_GRAPHS)
 custom_graphs: compile_graphs
+
+legends: GRAPHS=$(LEGENDS)
+legends: compile_graphs
 
 graphs: compile_graphs
 
