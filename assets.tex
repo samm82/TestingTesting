@@ -77,12 +77,29 @@
     \end{figure*}
 }
 
-\newcommand{\performanceGraph}{\includegraphics[width=\linewidth]{assets/graphs/performanceProposedGraph.pdf}}
-\newcommand{\recoveryGraphCurrent}{\includegraphics[width=\linewidth]{assets/graphs/recoveryGraph.pdf}}
-\newcommand{\recoveryGraphProposed}{
-    \includegraphics[width=\linewidth]{assets/graphs/recoveryProposedGraph.pdf}
-    \includegraphics[width=\linewidth]{assets/graphs/manual/manualLegendGreenBlue.pdf}
+\newcommand{\recoveryGraphs}{
+    % Only top or bottom to comply with IEEE guidelines
+    \begin{figure}[bt!]
+        \centering
+        \includegraphics[width=\linewidth]{assets/graphs/recoveryLegend.pdf}
+        \begin{subfigure}[b]{.55\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{assets/graphs/recoveryGraph.pdf}
+            \caption{Graph of current relations.}
+            \label{fig:recovery-graph-current}
+        \end{subfigure}
+        \begin{subfigure}[b]{.4\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{assets/graphs/recoveryProposedGraph.pdf}
+            \caption{Graph of proposed relations.}
+            \label{fig:recovery-graph-proposed}
+        \end{subfigure}
+        \caption{Graphs of relations between terms related to recovery testing.}
+        \label{fig:recoveryGraphs}
+    \end{figure}
 }
+
+\newcommand{\performanceGraph}{\includegraphics[width=\linewidth]{assets/graphs/performanceProposedGraph.pdf}}
 
 \newcommand{\scalabilityGraphCurrent}{\includegraphics[width=\linewidth]{assets/graphs/scalabilityGraph.pdf}}
 \newcommand{\scalabilityGraphProposed}{
