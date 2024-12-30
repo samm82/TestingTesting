@@ -1,6 +1,7 @@
 % Defined here so VS Code doesn't freak out
 \def\ieeeEquiv{\makecell{IEEE\\Equivalent}}
-\def\swebokLevelEquiv{\makecell{Target: Level\\Obj.: Type?}}
+\def\swebokLevel{\makecell{Level\\(objective-\\based)\footnote{
+            See \discrepref{stage-level-syns}.}}}
 
 \begin{paperTable}
     \centering
@@ -8,25 +9,20 @@
     \label{tab:otherTestTerms}
     \begin{minipage}{\linewidth}
         % Converted from tabularx with help from ChatGPT
-        \begin{tabular}{|>{\centering}m{0.08\linewidth}|m{0.35\linewidth}|m{0.35\linewidth}|c|}
+        \begin{tabular}{|>{\centering}m{0.08\linewidth}|m{0.4\linewidth}|m{0.3\linewidth}|c|}
             \hline
             \thead{Term}                           & \thead{Definition}           & \thead{Examples} & \thead{\ieeeEquiv{}} \\
             \hline
             % Guidance                               & none given
             % \citep[p.~3]{BarbosaEtAl2006}          & none given         & Technique?                              \\
-            Level                                  & ``Distinguished
-            based on the object of testing, the \emph{target},
-            or on the purpose or \emph{objective}''
-            \citep[p.~5\=/6]{SWEBOK2024}; these are ``orthogonal''
-            and ``determine how the test suite is identified \dots\ regarding its consistency
-            \dots\ and its composition''
-            \citetext{p.~5\=/2}                    & Target: unit testing,
-            integration testing, system testing (\citealp[pp.~5\=/6 to 5\=/7]{SWEBOK2024}; \citealp[p.~3]{SouzaEtAl2017})
-            % , acceptance testing \citep[p.~5\=/7]{SWEBOK2024}
-            \newline Objective:
-            % conformance testing, installation testing, reliability testing,
+            \swebokLevel{}                         & Test levels based on the
+            purpose of testing \citep[p.~5\=/6]{SWEBOK2024} that ``determine how the test suite is
+            identified \dots\ regarding its consistency \dots\ and its composition''
+            \citetext{p.~5\=/2}                    &
+            conformance testing, installation testing,
+            % reliability testing,
             regression testing, performance testing, security testing
-            \citep[pp.~5\=/7 to 5\=/9]{SWEBOK2024} & \swebokLevelEquiv{}                                                    \\
+            \citep[pp.~5\=/7 to 5\=/9]{SWEBOK2024} & Type?                                                                  \\
             % Method                                 & none given
             % \citep[p.~3]{BarbosaEtAl2006}          & none given         & Practice?                               \\
             Phase                                  & none given
