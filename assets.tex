@@ -99,13 +99,29 @@
     \end{figure}
 }
 
-\newcommand{\performanceGraph}{\includegraphics[width=\linewidth]{assets/graphs/performanceProposedGraph.pdf}}
-
-\newcommand{\scalabilityGraphCurrent}{\includegraphics[width=\linewidth]{assets/graphs/scalabilityGraph.pdf}}
-\newcommand{\scalabilityGraphProposed}{
-    \includegraphics[width=\linewidth]{assets/graphs/scalabilityProposedGraph.pdf}
-    \includegraphics[width=\linewidth]{assets/graphs/manual/manualLegendGreenBlue.pdf}
+\newcommand{\scalGraphs}{
+    % Only top or bottom to comply with IEEE guidelines
+    \begin{figure}[bt!]
+        \centering
+        \includegraphics[width=\linewidth]{assets/graphs/scalabilityLegend.pdf}
+        \begin{subfigure}[b]{.475\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{assets/graphs/scalabilityGraph.pdf}
+            \caption{Graph of current relations.}
+            \label{fig:scal-graph-current}
+        \end{subfigure}
+        \begin{subfigure}[b]{.475\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{assets/graphs/scalabilityProposedGraph.pdf}
+            \caption{Graph of proposed \ifnotpaper \else \\ \fi relations.}
+            \label{fig:scal-graph-proposed}
+        \end{subfigure}
+        \caption{Graphs of relations between terms related to scalability testing.}
+        \label{fig:scalGraphs}
+    \end{figure}
 }
+
+\newcommand{\performanceGraph}{\includegraphics[width=\linewidth]{assets/graphs/performanceProposedGraph.pdf}}
 
 %------------------------------------------------------------------------------
 % Images & Figures
