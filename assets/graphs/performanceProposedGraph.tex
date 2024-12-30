@@ -142,6 +142,9 @@ rank=same
 src9 [style=invis];
 src10 [style=invis];
 src9 -> src10 [color=gray, label=<Inference>]
+src11 [style=invis];
+src12 [style=invis];
+src11 -> src12 [color=orange, label=<Proposal>]
 }
 edge [style="invis"]
 imp1 -> chd
@@ -154,8 +157,10 @@ src5 -> src1
 src6 -> src2
 src7 -> src3
 src8 -> src4
-src9 -> src6
-src10 -> src7
+src9 -> src5
+src10 -> src6
+src11 -> src7
+src12 -> src8
 }
 
 // Connect the dummy node to the first node of the legend

@@ -14,6 +14,7 @@ class Color(OrderedEnum):
     MAROON = 1
     BLACK  = 0
     GRAY   = -1
+    ORANGE = -2
 
     def __str__(self):
         return self.name.lower()
@@ -30,6 +31,7 @@ class SrcCat(AutoNumberEnum):
     TEXT   = "Textbooks", "Textbooks", Color.MAROON, LabelType.FROM
     PAPER  = "Papers and Other Documents", "Papers", Color.BLACK, LabelType.FROM
     INFER  = "Inferences", "Inferences", Color.GRAY, LabelType.SINGLE
+    PROP   = "Proposals", "Proposals", Color.ORANGE, LabelType.SINGLE
 
     def __init__(self, longname, shortname, color, labelType):
         self.longname  = longname

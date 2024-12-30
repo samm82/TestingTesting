@@ -49,6 +49,12 @@ src7 [style=invis];
 src8 [style=invis];
 src7 -> src8 [color=gray, label=<Inference>]
 }
+{
+rank=same
+src9 [style=invis];
+src10 [style=invis];
+src9 -> src10 [color=orange, label=<Proposal>]
+}
 edge [style="invis"]
 {
 rank=same
@@ -68,6 +74,8 @@ src1 -> src5
 src2 -> src6
 src3 -> src7
 src4 -> src8
+src6 -> src9
+src7 -> src10
 }
 
 }
