@@ -62,6 +62,22 @@
           testing of both a module \emph{and} a specific function in a module%
           \thesisissueref{14}, introducing a further level of ambiguity.
           % Discrep count (SYNS, AMBI): {IEEE2017} ISTQB
+    \item % Discrep count (SYNS, OVER): {IEEE2017} {IEEE2013} | {IEEE2022} {IEEE2017} {Perry2006}
+          % Label SYNS level-phase-syns
+          \citeauthor*{IEEE2017} say that ``test level'' and ``test phase''
+          are synonyms, both meaning a ``specific instantiation of [a] test
+          sub-process'' (\citeyear[pp.~469,~470]{IEEE2017}; \citeyear[p.~9]{IEEE2013}),
+          but they have other definitions as well. ``Test level'' can also
+          refer to the scope of a test process; for example, ``across the whole
+          organization'' or only ``to specific projects''
+          \citeyearpar[p.~24]{IEEE2022} and ``test phase'' can also refer to
+          the ``period of time in the software life cycle'' when testing occurs
+          \citeyearpar[p.~470]{IEEE2017}, usually after the implementation phase
+          \ifnotpaper
+              (\citeyear[pp.~420,~509]{IEEE2017}; \citealp[p.~56]{Perry2006})%
+          \else
+              \cite[pp.~420,~509]{IEEE2017}, \cite[p.~56]{Perry2006}%
+          \fi.
     \item % Discrep count (CATS, WRONG): {IEEE2016}
           Since keyword-driven testing can be used for automated \emph{or}
           manual testing \citep[pp.~4,~6]{IEEE2016}, the claim that ``test
@@ -145,6 +161,18 @@
           functional correctness of an \acs{ml} system''. The use
           of ``performance'' (or ``correctness'') in these definitions is at
           best ambiguous and at worst incorrect.
+    \item % Discrep count (SYNS, CONTRA): ISTQB implied by {Gerrard2000a} | {SWEBOK2024}
+          % Label SYNS stage-level-syns
+          The terms ``test level'' and ``test stage'' are given as synonyms
+          (\citealpISTQB{}; implied by \citealp[p.~9]{Gerrard2000a}), but
+          \citet[p.~5\=/6]{SWEBOK2024} says ``[test] levels can be distinguished
+          based on the object of testing, the \emph{target}, or on the purpose
+          or \emph{objective}'' and calls the former ``test stages'', giving
+          the term a child relation (see \Cref{par-chd-rels}) to ``test level''
+          instead. However, the examples listed---unit testing, integration
+          testing, system testing, and acceptance testing
+          \citep[pp.~5\=/6 to 5\=/7]{SWEBOK2024}---are commonly categorized as
+          ``test levels'' (see \Cref{categories-observ}).
     \item % Discrep count (TERMS, WRONG): {Firesmith2015}
           % Other sources not included as part of this discrepancy since they
           % are used as the ground truth

@@ -1,62 +1,24 @@
-% makecell with new lines so VS Code doesn't freak out
-\newcommand{\techniqueCell}{\makecell{(Design)\footnote{``Test design
-            technique'' is sometimes abbreviated to ``test technique''
-            \ifnotpaper
-                (\citealp[p.~11]{IEEE2022}; \citealpISTQB{})\else
-                \cite{ISTQB}, \cite[p.~11]{IEEE2022}\fi; both terms refer to
-            the technique used to design the test case(s).
-        }\\Technique}}
-\newcommand{\levelCell}{\makecell{Level\footnote{\procLevel{\citep}.}\\
-        (sometimes\\``Phase''\footnote{``Test phase'' can be a synonym for
-            ``test level''
-            \ifnotpaper
-                (\citealp[p.~469]{IEEE2017}; \citeyear[p.~9]{IEEE2013})
-            \else
-                \cite[p.~469]{IEEE2017}, \cite[p.~9]{IEEE2013}
-            \fi
-            but \phaseDef{}}\\
-        or ``Stage''\footnote{Used by \ifnotpaper
-                (\citealpISTQB{}; \citealp[pp.~438-440]{vanVliet2000};
-                implied by \citealp[p.~9]{Gerrard2000a}) and inconsistently
-                by \citep[pp.~5\=/6 to 5\=/7]{SWEBOK2024}
-                (see \discrepref{stage-level-syns})%
-            \else
-                \cite{ISTQB}, \cite[pp.~438-440]{vanVliet2000}%
-            \fi.
-        })}}
-
 \begin{paperTable}
     \centering
     \caption{IEEE Testing Terminology}
     \label{tab:ieeeTestTerms}
     % m{0.145\linewidth}
     \begin{minipage}{\linewidth}
-        \begin{tabular}{|>{\centering}m{0.08\linewidth}m{0.6\linewidth}m{0.27\linewidth}|}
+        \begin{tabular}{|>{\centering}m{0.09\linewidth}m{0.59\linewidth}m{0.27\linewidth}|}
             \hline
             \thead{Term}                   & \thead{Definition}                          & \thead{Examples} \\
             \hline
-            Approach                       & A ``high-level test implementation choice''
+            Test Approach                  & A ``high-level test implementation choice''
             % , typically made as part of the test strategy design activity''
             that includes ``test level, test type, test technique, test practice and \dots{} static
             testing'' \citep[p.~10]{IEEE2022} and is used to ``pick the particular test case values''
             \citeyearpar[p.~465]{IEEE2017} &
             black or white box, minimum and maximum boundary value testing \citep[p.~465]{IEEE2017}         \\
             \hline
-            \techniqueCell{}               & A ``defined'' and ``systematic''
-            \citep[p.~464]{IEEE2017} ``procedure used to create or select a test model,
-            identify test coverage items, and derive corresponding test cases'' \ifnotpaper
-            (\citeyear[p.~11]{IEEE2022}; similar in \citeyear[p.~467]{IEEE2017}) \else
-            \cite[p.~11]{IEEE2022} (similar in \cite[p.~467]{IEEE2017}) \fi that ``generate evidence
-            that test item requirements have been met or that defects are present in a test item''
-            \citeyearpar[p.~vii]{IEEE2021} &
-            % ; ``a variety \dots\ is typically
-            % required to suitably cover any system'' \citeyearpar[p.~33]{IEEE2022} and is
-            % ``often selected based on team skills and familiarity,
-            % on the format of the test basis'', and on expectations
-            % \citeyearpar[p.~23]{IEEE2022}  
-            equivalence partitioning, boundary value analysis, branch testing \citep[p.~11]{IEEE2022}       \\
-            \hline
-            \levelCell{}                   & A stage of testing
+            Test Level\footnote{Also called ``test phase'' \ifnotpaper (see \discrepref{level-phase-syns}) \fi
+                or ``test stage'' \ifnotpaper (see \discrepref{stage-level-syns})\else
+                (see relevant synonym discrepancies in \Cref{syns})\fi.
+            }                              & A stage of testing
             ``typically associated with the achievement of particular objectives
             and used to treat particular risks'', each performed in sequence
             \ifnotpaper (\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021})
@@ -70,7 +32,7 @@
             \citeyear[p.~467]{IEEE2017}) \else \cite[p.~12]{IEEE2022}, \cite[p.~467]{IEEE2017},
             \cite[p.~6]{IEEE2021} \fi                                                                       \\
             \hline
-            Practice                       & A ``conceptual framework
+            Test Practice                  & A ``conceptual framework
             that can be applied to \dots{} [a] test process to facilitate testing''
             \ifnotpaper (\citealp[p.~14]{IEEE2022}; \citeyear[p.~471]{IEEE2017}; OG IEEE 2013)
             \else \cite[p.~14]{IEEE2022}, \cite[p.~471]{IEEE2017}
@@ -80,7 +42,23 @@
             % \citeyearpar[p.~331]{IEEE2017} 
             exploratory testing, automated testing \citep[p.~20]{IEEE2022}                                  \\
             \hline
-            Type                           & ``Testing that is focused on specific
+            Test Technique\footnote{Also called ``test design technique'' \ifnotpaper
+                (\citealp[p.~11]{IEEE2022}; \citealpISTQB{})\else
+                \cite[p.~11]{IEEE2022}, \cite{ISTQB}\fi.
+            }                              & A ``procedure used to create or
+            select a test model, identify test coverage items, and derive corresponding test cases''
+            \ifnotpaper (\citeyear[p.~11]{IEEE2022}; similar in \citeyear[p.~467]{IEEE2017}) \else
+            \cite[p.~11]{IEEE2022} (similar in \cite[p.~467]{IEEE2017}) \fi that ``generate evidence
+            that test item requirements have been met or that defects are present in a test item''
+            \citeyearpar[p.~vii]{IEEE2021} &
+            % ; ``a variety \dots\ is typically
+            % required to suitably cover any system'' \citeyearpar[p.~33]{IEEE2022} and is
+            % ``often selected based on team skills and familiarity,
+            % on the format of the test basis'', and on expectations
+            % \citeyearpar[p.~23]{IEEE2022}
+            equivalence partitioning, boundary value analysis, branch testing \citep[p.~11]{IEEE2022}       \\
+            \hline
+            Test Type                      & ``Testing that is focused on specific
             quality characteristics'' \ifnotpaper (\citealp[p.~15]{IEEE2022};
             \citeyear[p.~7]{IEEE2021}; \citeyear[p.~473]{IEEE2017}; OG IEEE 2013)
             \else \cite[p.~15]{IEEE2022}, \cite[p.~473]{IEEE2017}, \cite[p.~7]{IEEE2021}
