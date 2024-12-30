@@ -723,18 +723,9 @@ def makeLegend(lines, separate: bool=False) -> tuple[list[str], list[str]]:
         prevAlignNodes = prevAlignNodes[1:-1]
 
     for i in range(0, len(srcCats) * 2, 2):
-        srcCatLabel = (srcCats[i//2].longname)
-        # From https://stackoverflow.com/a/4664889/10002168
-        srcCatSpaces = [m.start() for m in re.finditer(" ", srcCatLabel)]
-        if srcCatSpaces:
-            # From comment on https://stackoverflow.com/a/38131003/10002168
-            _idx = srcCatSpaces[len(srcCatSpaces)//2]
-            # From https://stackoverflow.com/a/41753038/10002168
-            srcCatLabel = srcCatLabel[:_idx] + "<br/>" + srcCatLabel[_idx + 1:]
-                            
         colorRow += [f"src{i+1} [style=invis];", f"src{i+2} [style=invis];",
                 f"src{i+1} -> src{i+2} [color={srcCats[i//2].color.name.lower()}, "
-                f"label=<From {srcCatLabel}>]"]
+                f"label=<{srcCats[i//2].label}>]"]
         if i % 4:
             colors += sameRank(colorRow)
             colorRow = []

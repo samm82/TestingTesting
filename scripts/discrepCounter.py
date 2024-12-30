@@ -20,16 +20,38 @@ class Color(OrderedEnum):
 
 @total_ordering
 class SrcCat(AutoNumberEnum):
-    STD    = "Established Standards", "Standards", Color.GREEN
-    META   = "Terminology Collections", "Collections", Color.BLUE
-    TEXT   = "Textbooks", "Textbooks", Color.MAROON
-    PAPER  = "Papers and Other Documents", "Papers", Color.BLACK
-    INFER  = "Inferences", "Inferences", Color.GRAY
 
-    def __init__(self, longname, shortname, color):
+    class LabelType(Enum):
+        FROM   = auto()
+        SINGLE = auto()
+
+    STD    = "Established Standards", "Standards", Color.GREEN, LabelType.FROM
+    META   = "Terminology Collections", "Collections", Color.BLUE, LabelType.FROM
+    TEXT   = "Textbooks", "Textbooks", Color.MAROON, LabelType.FROM
+    PAPER  = "Papers and Other Documents", "Papers", Color.BLACK, LabelType.FROM
+    INFER  = "Inferences", "Inferences", Color.GRAY, LabelType.SINGLE
+
+    def __init__(self, longname, shortname, color, labelType):
         self.longname  = longname
         self.shortname = shortname
         self.color     = color
+
+        # Label for use in legends
+        self.label = longname
+        # From https://stackoverflow.com/a/4664889/10002168
+        srcCatSpaces = [m.start() for m in re.finditer(" ", self.label)]
+        if srcCatSpaces:
+            # From comment on https://stackoverflow.com/a/38131003/10002168
+            _idx = srcCatSpaces[len(srcCatSpaces)//2]
+            # From https://stackoverflow.com/a/41753038/10002168
+            self.label = self.label[:_idx] + "<br/>" + self.label[_idx + 1:]
+
+        if labelType == self.LabelType.FROM:
+            self.label = f"From {self.label}"
+        elif labelType == self.LabelType.SINGLE:
+            self.label = self.label[:-1]
+        else:
+            raise NotImplementedError("Unknown value of LabelType")
 
     def __lt__(self, other):
         if self.__class__ is other.__class__:
