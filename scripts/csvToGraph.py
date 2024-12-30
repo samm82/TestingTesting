@@ -649,6 +649,8 @@ def inLine(flag, style, line):
 if "Example" not in csvFilename:
     outputDiscreps()
 
+INVIS_EDGE_LINE = 'edge [style="invis"]'
+
 # Returns modified lines and generated legend
 def makeLegend(lines, separate: bool=False) -> tuple[list[str], list[str]]:
     LONG_EDGE_LABEL = 'label="                "'
@@ -759,27 +761,27 @@ def makeLegend(lines, separate: bool=False) -> tuple[list[str], list[str]]:
         '        rank=same',
         '        chd [label="Child"];',
         '        par [label="Parent"];',
-        f'        chd -> par [{LONG_EDGE_LABEL}];',
+       f'        chd -> par [{LONG_EDGE_LABEL}];',
         '        syn1 [label="Synonym"];',
         '        syn2 [label="Synonym"];',
-        f'        syn1 -> syn2 [dir=none {LONG_EDGE_LABEL}];',
+       f'        syn1 -> syn2 [dir=none {LONG_EDGE_LABEL}];',
         '    }',
         '    {',
         '        rank=same',
         '        imp1 [label="Child"];',
         '        imp2 [label=<Implied<br/>Parent>];',
-        f'        imp1 -> imp2 [style="dashed" {LONG_EDGE_LABEL}]',
+       f'        imp1 -> imp2 [style="dashed" {LONG_EDGE_LABEL}]',
         '        imp3 [label=<Implied<br/>Synonym>];',
         '        imp4 [label=<Implied<br/>Synonym>];',
-        f'        imp3 -> imp4 [style="dashed" dir=none {LONG_EDGE_LABEL}]',
+       f'        imp3 -> imp4 [style="dashed" dir=none {LONG_EDGE_LABEL}]',
         '    }',
     ] + extras + colors + [
         # For alignment
-        '    edge [style="invis"]',
-        '    imp1 -> chd',
-        '    imp2 -> par',
-        '    imp3 -> syn1',
-        '    imp4 -> syn2',
+        INVIS_EDGE_LINE,
+        'imp1 -> chd',
+        'imp2 -> par',
+        'imp3 -> syn1',
+        'imp4 -> syn2',
     ] + align + ['}', ''] + ([] if separate else [
         '// Connect the dummy node to the first node of the legend',
         'start -> chd [style="invis"];'])
@@ -967,7 +969,13 @@ class CustomGraph:
 
         if self.name in CUSTOM_LEGEND:
             _, legend = makeLegend(allLines, separate=True)
-            writeDotFile(legend, f"{self.name}Legend")
+            # From https://www.geeksforgeeks.org/python-split-list-into-lists-by-particular-value/
+            splitLegend = [list(v) for k, v in itertools.groupby(
+                               legend, lambda x: x != INVIS_EDGE_LINE)
+                               if k]
+            
+            writeDotFile(splitLegend[0] + [INVIS_EDGE_LINE] + splitLegend[1],
+                         f"{self.name}Legend")
 
 recoveryGraph = CustomGraph(
     "recovery",
