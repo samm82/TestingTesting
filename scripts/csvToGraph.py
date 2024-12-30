@@ -973,7 +973,10 @@ class CustomGraph:
             splitLegend = [list(v) for k, v in itertools.groupby(
                                legend, lambda x: x != INVIS_EDGE_LINE)
                                if k]
-            
+
+            splitLegend[-1] = [" -> ".join(reversed(line.split(" -> ")))
+                               for line in splitLegend[-1]]
+
             writeDotFile(splitLegend[0] + [INVIS_EDGE_LINE] + splitLegend[1],
                          f"{self.name}Legend")
 

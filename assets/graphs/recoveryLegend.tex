@@ -50,18 +50,18 @@ src8 [style=invis];
 src7 -> src8 [color=gray, label=<From Inferences>]
 }
 edge [style="invis"]
-imp1 -> chd
-imp2 -> par
-imp3 -> syn1
-imp4 -> syn2
-src1 -> imp1
-src2 -> imp2
-src3 -> imp3
-src4 -> imp4
-src5 -> src1
-src6 -> src2
-src7 -> src3
-src8 -> src4
+chd -> imp1
+par -> imp2
+syn1 -> imp3
+syn2 -> imp4
+imp1 -> src1
+imp2 -> src2
+imp3 -> src3
+imp4 -> src4
+src1 -> src5
+src2 -> src6
+src3 -> src7
+src4 -> src8
 }
 
 }
