@@ -651,6 +651,9 @@ if "Example" not in csvFilename:
 
 INVIS_EDGE_LINE = 'edge [style="invis"]'
 
+def sameRank(lines):
+    return ['{', 'rank=same'] + lines + ['}']
+
 # Returns modified lines and generated legend
 def makeLegend(lines, separate: bool=False) -> tuple[list[str], list[str]]:
     LONG_EDGE_LABEL = 'label="                "'
@@ -673,9 +676,6 @@ def makeLegend(lines, separate: bool=False) -> tuple[list[str], list[str]]:
         'syn5 [label=<Term>]',
         'syn3 -> syn4 -> syn5 [dir=none]',
     ] if len(syns) > len(synsToRemove) else []
-    
-    def sameRank(lines):
-        return ['{', 'rank=same'] + lines + ['}']
 
     def impOrDynWithSyn(nodes, forceDyn=False):
         if len(nodes) == 1:
@@ -975,9 +975,11 @@ class CustomGraph:
                                if k]
 
             splitLegend[-1] = [" -> ".join(reversed(line.split(" -> ")))
-                               for line in splitLegend[-1]]
+                               for line in splitLegend[-1]
+                               if not all(node in line for node in {"imp", "src"})]
 
-            writeDotFile(splitLegend[0] + [INVIS_EDGE_LINE] + splitLegend[1],
+            writeDotFile(splitLegend[0] + [INVIS_EDGE_LINE] + sameRank(["chd", "src1"]) +
+                         sameRank(["imp1", "src5"]) + splitLegend[-1],
                          f"{self.name}Legend")
 
 recoveryGraph = CustomGraph(
