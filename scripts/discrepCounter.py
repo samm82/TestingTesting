@@ -13,7 +13,7 @@ class Color(OrderedEnum):
     BLUE   = 2
     MAROON = 1
     BLACK  = 0
-    GRAY   = -1
+    GREY   = -1
     ORANGE = -2
 
     def __str__(self):
@@ -30,7 +30,7 @@ class SrcCat(AutoNumberEnum):
     META   = "Terminology Collections", "Collections", Color.BLUE, LabelType.FROM
     TEXT   = "Textbooks", "Textbooks", Color.MAROON, LabelType.FROM
     PAPER  = "Papers and Other Documents", "Papers", Color.BLACK, LabelType.FROM
-    INFER  = "Inferences", "Inferences", Color.GRAY, LabelType.SINGLE
+    INFER  = "Inferences", "Inferences", Color.GREY, LabelType.SINGLE
     PROP   = "Proposals", "Proposals", Color.ORANGE, LabelType.SINGLE
 
     def __init__(self, longname, shortname, color, labelType):

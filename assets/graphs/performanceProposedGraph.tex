@@ -13,11 +13,11 @@ start [style="invis"];
 
 AvailabilityTesting [label=<Availability<br/>Testing>];
 CapacityTesting [label=<Capacity<br/>Testing>];
-ConcurrencyTesting [label=<Concurrency<br/>Testing>,color=gray];
+ConcurrencyTesting [label=<Concurrency<br/>Testing>,color=grey];
 EfficiencyTesting [label=<Efficiency<br/>Testing>];
-ElasticityTesting [label=<Elasticity<br/>Testing>,color=gray];
+ElasticityTesting [label=<Elasticity<br/>Testing>,color=grey];
 EnduranceTesting [label=<Endurance<br/>Testing>];
-FailoverTesting [label=<Failover<br/>Testing>,color=gray];
+FailoverTesting [label=<Failover<br/>Testing>,color=grey];
 FailureToleranceTesting [label=<Failure<br/>Tolerance<br/>Testing>];
 FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
 LoadTesting [label=<Load<br/>Testing>];
@@ -25,12 +25,12 @@ MemoryManagementTesting [label=<Memory<br/>Management<br/>Testing>];
 PerformanceEfficiencyTesting [label=<Performance<br/>Efficiency<br/>Testing>];
 PerformanceTesting [label=<Performance<br/>Testing>];
 PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
-PowerTesting [label=<Power<br/>Testing>,style="dashed",color=gray];
+PowerTesting [label=<Power<br/>Testing>,style="dashed",color=grey];
 RecoverabilityTesting [label=<Recoverability<br/>Testing>];
 RecoveryPerformanceTesting [label=<Recovery<br/>Performance<br/>Testing>,color=orange];
 ReliabilityTesting [label=<Reliability<br/>Testing>];
 ResourceUtilizationTesting [label=<Resource<br/>Utilization<br/>Testing>];
-ResponseTimeTesting [label=<Response-Time<br/>Testing>,color=gray];
+ResponseTimeTesting [label=<Response-Time<br/>Testing>,color=grey];
 ScalabilityTesting [label=<Scalability<br/>Testing>];
 StressTesting [label=<Stress<br/>Testing>];
 TransactionFlowTesting [label=<Transaction<br/>Flow<br/>Testing>];
@@ -45,7 +45,7 @@ CapacityTesting -> PerformancerelatedTesting[color="green"];
 CapacityTesting -> PerformanceTesting[color="blue"];
 ElasticityTesting -> MemoryManagementTesting[color="blue"];
 ElasticityTesting -> ResourceUtilizationTesting[color="blue"];
-ElasticityTesting -> StressTesting[color="gray"];
+ElasticityTesting -> StressTesting[color="grey"];
 EnduranceTesting -> PerformancerelatedTesting[color="green"];
 EnduranceTesting -> PerformanceEfficiencyTesting[color="green"];
 EnduranceTesting -> ReliabilityTesting[color="blue"];
@@ -56,12 +56,12 @@ LoadTesting -> PerformancerelatedTesting[color="green"];
 LoadTesting -> ReliabilityTesting[color="green"];
 LoadTesting -> PerformanceEfficiencyTesting[color="green"];
 MemoryManagementTesting -> PerformancerelatedTesting[color="green"];
-MemoryManagementTesting -> ResourceUtilizationTesting[color="gray"];
+MemoryManagementTesting -> ResourceUtilizationTesting[color="grey"];
 PerformanceEfficiencyTesting -> ReliabilityTesting[color="green"];
 PerformanceEfficiencyTesting -> PerformancerelatedTesting[color="green"];
 PerformanceEfficiencyTesting -> EfficiencyTesting[style="dashed",color="green"];
 PerformanceTesting -> PerformancerelatedTesting[color="green"];
-PowerTesting -> PerformancerelatedTesting[color="gray"];
+PowerTesting -> PerformancerelatedTesting[color="grey"];
 RecoverabilityTesting -> ReliabilityTesting[color="green"];
 RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
 ResourceUtilizationTesting -> PerformanceEfficiencyTesting[color="green"];
@@ -141,7 +141,7 @@ src7 -> src8 [color=black, label=<From Papers and<br/>Other Documents>]
 rank=same
 src9 [style=invis];
 src10 [style=invis];
-src9 -> src10 [color=gray, label=<Inference>]
+src9 -> src10 [color=grey, label=<Inference>]
 src11 [style=invis];
 src12 [style=invis];
 src11 -> src12 [color=orange, label=<Proposal>]

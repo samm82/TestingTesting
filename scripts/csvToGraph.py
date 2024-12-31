@@ -199,7 +199,7 @@ def addNode(name, style = "", key = "Approach", cat = ""):
     if styles:
         extras.append(f'style="{",".join(styles)}"')
     if infer:
-        extras.append("color=gray")
+        extras.append("color=grey")
     nameLine = f"{formatApproach(name)} [{",".join(extras)}];"
 
     for k in staticKeywords:
@@ -820,7 +820,7 @@ for key, value in rigidDict.items():
 
     unsure = reduce(operator.add,
                     [[val] + [c.split()[0] for c in lines if inLine(flag, val, c)]
-                    for flag, val in {(Flag.STYLE, "dashed"), (Flag.COLOR, "gray")}])
+                    for flag, val in {(Flag.STYLE, "dashed"), (Flag.COLOR, "grey")}])
 
     writeDotFile([c for c in lines if all(x not in c for x in unsure)],
                 f"rigid{key}Graph")
