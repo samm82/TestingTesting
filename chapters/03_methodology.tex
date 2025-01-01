@@ -19,15 +19,17 @@ As there is no single authoritative source on software testing terminology,
 we need to look at many to see how various terms are used in practice.
 Starting from some widely used\todo{Justified in their respective sections;
     should I put pointers here?} sources (some IEEE standards and the
-\acf{swebok}, \suggSrcs{}), we then use ``snowball sampling'', a ``method of
-\dots{} sample selection \dots{} used to locate hidden populations''
-\citep{Johnson2014}, to gather further sources. \addTextEx{} When a term arises
-that requires more investigation (e.g., it is undefined or unclear),
-a miniature literature review is performed in this subset to ``fill in'' this
-missing information (see \Cref{undef-terms}). These additional sources may then
-be investigated in their entirety (as opposed to just the original subset of
-interest) if they provide more information and are ``trustworthy'', where
-more trustworthy sources:
+\acf{swebok}, \suggSrcs{}), we then use a version of ``snowball sampling'' to
+gather further sources. Snowball sampling ``is commonly used to locate hidden
+populations \dots{} [via] referrals from initially sampled respondents to other
+persons'' \citep{Johnson2014}. We apply this concept to ``referrals'' between
+sources. \addTextEx{} We also ``snowball'' on terminology itself in a similar
+manner; when a term arises that requires more investigation (e.g., it is
+undefined or unclear), a miniature literature review is performed in this
+subset to ``fill in'' this missing information (see \Cref{undef-terms}). These
+additional sources may then be investigated in their entirety (as opposed to
+just the original subset of interest) if they provide more information and are
+``trustworthy'', where more trustworthy sources:
 \begin{enumerate}
     \item have gone through a peer-review process,
     \item are written by numerous, well-respected authors,
@@ -44,7 +46,8 @@ documents (\Cref{papers}). Note that most sources used to ``fill in'' missing
 information are papers. A summary of how many sources comprise each tier is
 given in \Cref{fig:sourceSummary}.
 
-\begin{figure}
+% Only top or bottom to comply with IEEE guidelines
+\begin{figure}[bt!]
     \centering
     \begin{tikzpicture}
         \pie[sum=auto, after number=, text=legend, thick,
