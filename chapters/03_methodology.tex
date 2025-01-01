@@ -230,11 +230,12 @@ categories\ifnotpaper; see \Cref{orth-test} for some examples
 of this\fi.
 
 \begin{landscape}
+    % Moved earlier to display nicely in paper
     \ieeeTestTermsTable{}
     \newpage
+    % Omitted from paper for brevity
     \otherTestTermsTable{}
 \end{landscape}
-% These were moved earlier to display nicely in paper
 
 The literature provides many other ways to categorize test approaches. While
 these are less-defined and as such are not used in this \ifnotpaper thesis\else
@@ -250,13 +251,12 @@ test generation based on symbolic execution and constraint solving from unit
 testing to whole-application security testing''
 \citep[p.~23]{GodefroidAndLuchaup2011}!
 
-Despite these challenges, it is useful to understand the differences between
-testing classes because tests from multiple subsets within the same category,
+It is still useful to understand these differences because some subsets,
 such as functional and structural, ``use different sources of information and
 have been shown to highlight different problems'' \citep[p.~5-16]{SWEBOK2024}.
-However, some subsets, such as deterministic and random, may have ``conditions
-that make one approach more effective than the other''
-\citep[p.~5-16]{SWEBOK2024}. The following categories may also be more relevant
+However, other subsets may have ``conditions that make one approach more
+effective than the other'', such as deterministic and random
+\citep[p.~5-16]{SWEBOK2024}. The following categories may be more relevant
 in specific situations or to specific teams than the ones given by ISO/IEC and
 IEEE in \Cref{tab:ieeeTestTerms}.
 
@@ -277,27 +277,15 @@ IEEE in \Cref{tab:ieeeTestTerms}.
               \item Source of test data: specification-, implementation-,
                     or error-oriented \citep[p.~440]{PetersAndPedrycz2000}
           \end{itemize}
-    \item Test case selection process: deterministic or random
-          \citep[p.~5-16]{SWEBOK2024}
-    \item Coverage criteria: input space partitioning, graph coverage, logic
-          coverage, or syntax-based testing \citep[pp.~18-19]{AmmannAndOffutt2017}
     \item Question: what-, when-, where-, who-, why-, how-, and how-well-based
           testing; these are then divided into a total of ``16 categories of
           testing types''\notDefDistinctIEEE{type}
           \citep[p.~17]{Firesmith2015}
-    \item Execution of code: static or dynamic
-          (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
-          \citealp[p.~53]{Patton2006}); we also consider this categorization
-          meaningful (see \Cref{static-test})
-    \item Goal of testing: verification or validation
-          (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[pp.~69-70]{Perry2006})
-    \item Property of code \citep[p.~213]{KuļešovsEtAl2013} or test target
-          \citep[pp.~4-5]{Kam2008}: functional or non-functional
     \item Human involvement: manual or automated
           \citep[p.~214]{KuļešovsEtAl2013}
     \item Structuredness: scripted or exploratory
           \citep[p.~214]{KuļešovsEtAl2013}
-    \item Coverage requirement: data or control flow \citep[pp.~4-5]{Kam2008}
+    \item Coverage requirement: data or control flow \citep[pp.~4--5]{Kam2008}
     \item Test factor: (``attributes of the software that, if they are wanted,
           pose a risk to the success of the software''; also called ``quality
           factor'' or ``quality attribute'' \citep[p.~40]{Perry2006}):
@@ -306,10 +294,10 @@ IEEE in \Cref{tab:ieeeTestTerms}.
           compliance, reliability, ease of use, maintainability, portability,
           coupling (e.g., with other applications in a given environment),
           performance, and ease of operation (e.g., documentation, training)
-          \citep[pp.~40-41]{Perry2006}
+          \citep[pp.~40--41]{Perry2006}
     \item Adequacy criterion: coverage-, fault-, or error-based
           (``based on knowledge of the typical errors that people make'')
-          \citep[pp.~398-399]{vanVliet2000}
+          \citep[pp.~398--399]{vanVliet2000}
     \item Priority\footnote{In the context of testing e-business projects.}:
           smoke, usability, performance, or functionality testing
           \citep[p.~12]{Gerrard2000a}
@@ -338,6 +326,10 @@ it is unclear why they were included at all:
     \item \textbf{Unit testing:} ``source of information (e.g. code,
           specifications or testers intuition)'' (p.~2)
 \end{itemize}
+
+\begin{landscape}
+    \otherCategorizationsTable{}
+\end{landscape}
 \fi
 
 \subsubsection{Synonym Relations}

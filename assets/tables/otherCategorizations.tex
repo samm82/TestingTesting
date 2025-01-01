@@ -1,0 +1,37 @@
+\def\selecExs{Deterministic Testing\\ Random Testing}
+\def\covExs{Input Space Partitioning\\ Graph Coverage\\ Logic Coverage\\ Syntax-based Testing}
+\def\execExs{Static Testing\\ Dynamic Testing}
+\def\goalExs{Verification Testing\\ Validation Testing}
+\def\propExs{Functional Testing\\ Non-functional Testing}
+
+\begin{paperTable}
+    \centering
+    \begin{minipage}{\linewidth}
+        \begin{longtblr}[
+            note{\textrm{a}} = {We also consider this categorization meaningful (see \Cref{static-test}).},
+            note{\textrm{b}} = {Functional testing is categorized ambiguously (see \Cref{func-test-discrep}) and non-functional testing is uncategorized.},
+            caption = {Alternate categorizations given by the literature.},
+            label = {tab:otherCategorizations}
+            ]{
+            colspec = {|X[0.35,c,m]X[0.2,c,m]X[0.35,c,m]|}, width = \linewidth,
+            rowhead = 1
+            }
+            \hline
+            \thead{Test Basis}                                        & \thead{Example Approaches} & \thead{Subset of}                                                                                                                      \\
+            \hline
+            Selection Process \citep[p.~5-16]{SWEBOK2024}             & \selecExs{}                & Technique \citep[pp.~5-12, 5-16]{SWEBOK2024}                                                                                           \\
+            \hline
+            Coverage Criteria \citep[pp.~18--19]{AmmannAndOffutt2017} & \covExs{}                  & Technique (\citealp[p.~22]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealp[p.~5-11]{SWEBOK2024}; \citealp[pp.~47--48]{Firesmith2015}) \\
+            \hline
+            Execution of Code{\MidTblrNote{\textrm{a}}} (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
+            \citealp[p.~53]{Patton2006})                              & \execExs{}                 & Approach                                                                                                                               \\
+            \hline
+            Goal of Testing (\citealp[p.~214]{KuļešovsEtAl2013};
+            \citealp[pp.~69--70]{Perry2006})                          & \goalExs{}                 & Approach                                                                                                                               \\
+            \hline
+            Property of Code \citep[p.~213]{KuļešovsEtAl2013}
+            or Test Target \citep[pp.~4--5]{Kam2008}                  & \propExs{}                 & Approach\TblrNote{\textrm{b}}                                                                                                          \\
+            \hline
+        \end{longtblr}
+    \end{minipage}
+\end{paperTable}

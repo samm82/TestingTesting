@@ -64,6 +64,19 @@
 
 \newcommand\ifblind[2]{\IfEndWith*{\jobname}{_blind}{#1}{#2}}
 
+% For `TblrNote`s in the middle of a cell (i.e., with following content)
+% From https://topanswers.xyz/tex?q=4758
+\ExplSyntaxOn
+\NewDocumentCommand \MidTblrNote { m }
+{
+    \cs_if_exist:NT \hypersetup { \ExpTblrTemplate { note-border }{ default } }
+    {
+        \__tblr_hyper_link:nn {#1}
+        { \textsuperscript { \UseTblrFont { note-tag } #1 } }
+    }
+}
+\ExplSyntaxOff
+
 %------------------------------------------------------------------------------
 % Generic "chunks" that get reused
 %------------------------------------------------------------------------------
