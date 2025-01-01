@@ -72,13 +72,13 @@
 % From https://topanswers.xyz/tex?q=4758
 \ExplSyntaxOn
 \NewDocumentCommand \MidTblrNote { m }
-{
-    \cs_if_exist:NT \hypersetup { \ExpTblrTemplate { note-border }{ default } }
-    {
-        \__tblr_hyper_link:nn {#1}
-        { \textsuperscript { \UseTblrFont { note-tag } #1 } }
-    }
-}
+{{
+            \cs_if_exist:NT \hypersetup { \ExpTblrTemplate { note-border }{ default } }
+            {
+                \__tblr_hyper_link:nn {#1}
+                { \textsuperscript { \UseTblrFont { note-tag } #1 } }
+            }
+        }}
 \ExplSyntaxOff
 
 %------------------------------------------------------------------------------

@@ -1,15 +1,21 @@
 \def\selecExs{Deterministic Testing\\ Random Testing}
-\def\covExs{Input Space Partitioning\\ Graph Coverage\\ Logic Coverage\\ Syntax-based Testing}
+\def\covCritExs{Input Space Partitioning\\ Graph Coverage\\ Logic Coverage\\ Syntax-based Testing}
 \def\execExs{Static Testing\\ Dynamic Testing}
 \def\goalExs{Verification Testing\\ Validation Testing}
 \def\propExs{Functional Testing\\ Non-functional Testing}
+\def\humInvExs{Manual Testing\\ Automated Testing}
+\def\strExs{Scripted Testing\\ Exploratory Testing}
+\def\covReqExs{Data Flow Testing\\ Control Flow Testing}
 
 \begin{paperTable}
     \centering
     \begin{minipage}{\linewidth}
         \begin{longtblr}[
-            note{\textrm{a}} = {We also consider this categorization meaningful (see \Cref{static-test}).},
-            note{\textrm{b}} = {Functional testing is categorized ambiguously (see \Cref{func-test-discrep}) and non-functional testing is uncategorized.},
+            note{\textrm{a}} = {See \Cref{par-chd-rels}.},
+            note{\textrm{b}} = {We also consider this categorization meaningful (see \Cref{static-test}).},
+            note{\textrm{c}} = {Functional testing is categorized ambiguously (see \Cref{func-test-discrep}) and non-functional testing is uncategorized.},
+            note{\textrm{d}} = {May instead be a subset of the ``technique'' category \citep[implied by][p.~35; see \Cref{tab:multiCats}]{IEEE2022}.},
+            note{\textrm{e}} = {Exploratory testing may instead be a ``technique'' (see \Cref{tab:multiCats}).},
             caption = {Alternate categorizations given by the literature.},
             label = {tab:otherCategorizations}
             ]{
@@ -17,20 +23,26 @@
             rowhead = 1
             }
             \hline
-            \thead{Test Basis}                                        & \thead{Example Approaches} & \thead{Subset of}                                                                                                                      \\
+            \thead{Test Basis}                                        & \thead{Example Approaches} & \thead{Parent\MidTblrNote{\textrm{a}} IEEE Category}                                                                                   \\
             \hline
             Selection Process \citep[p.~5-16]{SWEBOK2024}             & \selecExs{}                & Technique \citep[pp.~5-12, 5-16]{SWEBOK2024}                                                                                           \\
             \hline
-            Coverage Criteria \citep[pp.~18--19]{AmmannAndOffutt2017} & \covExs{}                  & Technique (\citealp[p.~22]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealp[p.~5-11]{SWEBOK2024}; \citealp[pp.~47--48]{Firesmith2015}) \\
+            Coverage Criteria \citep[pp.~18--19]{AmmannAndOffutt2017} & \covCritExs{}              & Technique (\citealp[p.~22]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealp[p.~5-11]{SWEBOK2024}; \citealp[pp.~47--48]{Firesmith2015}) \\
             \hline
-            Execution of Code{\MidTblrNote{\textrm{a}}} (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
+            Execution of Code\MidTblrNote{\textrm{b}} (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
             \citealp[p.~53]{Patton2006})                              & \execExs{}                 & Approach                                                                                                                               \\
             \hline
             Goal of Testing (\citealp[p.~214]{KuļešovsEtAl2013};
             \citealp[pp.~69--70]{Perry2006})                          & \goalExs{}                 & Approach                                                                                                                               \\
             \hline
             Property of Code \citep[p.~213]{KuļešovsEtAl2013}
-            or Test Target \citep[pp.~4--5]{Kam2008}                  & \propExs{}                 & Approach\TblrNote{\textrm{b}}                                                                                                          \\
+            or Test Target \citep[pp.~4--5]{Kam2008}                  & \propExs{}                 & Approach\TblrNote{\textrm{c}}                                                                                                          \\
+            \hline
+            Human Involvement \citep[p.~214]{KuļešovsEtAl2013}        & \humInvExs{}               & Practice\MidTblrNote{\textrm{d}} \citep[p.~22]{IEEE2022}                                                                               \\
+            \hline
+            Structuredness \citep[p.~214]{KuļešovsEtAl2013}           & \strExs{}                  & Practice\MidTblrNote{\textrm{e}} \citep[pp.~20, 22]{IEEE2022}                                                                          \\
+            \hline
+            Coverage Requirement \citep[pp.~4--5]{Kam2008}            & \covReqExs{}               & Technique \citep[p.~5\=/13]{SWEBOK2024}                                                                                                \\
             \hline
         \end{longtblr}
     \end{minipage}
