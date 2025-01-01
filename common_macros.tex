@@ -81,15 +81,6 @@
 % Generic "chunks" that get reused
 %------------------------------------------------------------------------------
 
-\newenvironment{bigLandscape}{
-    \newgeometry{hmargin=1cm, vmargin=2.5cm}
-    \begin{landscape}
-        }{
-    \end{landscape}
-    \restoregeometry
-    \newpage
-}
-
 \DeclareDocumentCommand\seeSrcCode{ m m m g }{%
     (see the \href
     {https://github.com/samm82/TestGen-Thesis/blob/#1/scripts/#2.py\#L#3%
@@ -217,6 +208,7 @@
 \def\metas{\nameref{metas}}
 \def\texts{\nameref{texts}}
 \def\papers{\nameref{papers}}
+\def\papersTbl{\hyperref[papers]{Papers and Others}}
 
 \def\srcCat{\hyperref[sources]{Source Tier}}
 \def\reduns{\ifnotpaper\nameref{redun}\else Redundancies\footnote{Section omitted for brevity.}\fi}
