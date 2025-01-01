@@ -237,12 +237,14 @@ even explicitly \emph{exclude} static testing in another document
     adapt to, talk about, and understand new developments in software testing.
     Bases for defining new test approaches suggested by the
     literature include coverage metrics (\Cref{cov-test}), software qualities
-    (\Cref{qual-test}), requirements (\Cref{req-test}), and attacks
-    (\Cref{attacks}). These are meaningful enough to merit analysis and are
-    therefore in scope. Other test approaches given in the literature are
-    derived from programming languages (\Cref{lang-test}) or other orthogonal
-    test approaches (\Cref{orth-test}); these are out of scope as the
-    information they provide is captured by other approaches.
+    (\Cref{qual-test}), and attacks (\Cref{attacks}). These are meaningful
+    enough to merit analysis and are therefore in scope. Requirements
+    (\Cref{req-test}) may also imply related test approaches, but this mainly
+    results in test approaches that would be out of scope. Other out-of-scope
+    test approaches given in the literature are those derived from programming
+    languages (\Cref{lang-test}) or other orthogonal test approaches
+    (\Cref{orth-test}), since their information is better captured by other
+    approaches.
 
     \subsubsection{Coverage-driven Techniques}
     \label{cov-test}
@@ -315,6 +317,18 @@ even explicitly \emph{exclude} static testing in another document
         \cite[p.~5-7]{SWEBOK2024}, \cite[p.~25]{JardEtAl1999}
     \fi and efficiency testing \citep[p.~44]{Kam2008}.
 
+    \subsubsection{Attacks}
+    \label{attacks}
+    While attacks can be ``malicious'' \citep[p.~7]{IEEE2017}, they are also
+    given as a test practice (\citeyear[p.~34]{IEEE2022}; see \Cref{tab:multiCats}).
+    This means that software attacks, such as code injection and password
+    cracking \citepISTQB{}, can also be used for testing software, and only
+    this kind of software attack is in scope. This is supported by the fact
+    that penetration testing is also called ``ethical hacking testing''
+    \citep[p.~13-4]{SWEBOK2024} or just ``ethical hacking''
+    \citep[p.~28]{Gerrard2000b}; while hacking in general is not a test
+    approach, doing so systematically to test and improve the software is.
+
     \subsubsection{Requirements-driven Approaches}
     \label{req-test}
     While not as universally applicable, some types of requirements have associated
@@ -332,18 +346,6 @@ even explicitly \emph{exclude} static testing in another document
                   possess'' \citep[p.~322]{IEEE2017}
         \end{itemize}
     \fi
-
-    \subsubsection{Attacks}
-    \label{attacks}
-    While attacks can be ``malicious'' \citep[p.~7]{IEEE2017}, they are also
-    given as a test practice (\citeyear[p.~34]{IEEE2022}; see \Cref{tab:multiCats}).
-    This means that software attacks, such as code injection and password
-    cracking \citepISTQB{}, can also be used for testing software, and only
-    this kind of software attack is in scope. This is supported by the fact
-    that penetration testing is also called ``ethical hacking testing''
-    \citep[p.~13-4]{SWEBOK2024} or just ``ethical hacking''
-    \citep[p.~28]{Gerrard2000b}; while hacking in general is not a test
-    approach, doing so systematically to test and improve the software is.
 
     \subsubsection{Language-specific Approaches}
     \label{lang-test}
