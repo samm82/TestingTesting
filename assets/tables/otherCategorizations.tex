@@ -10,21 +10,21 @@
 \def\purpExs{Correctness Testing\\ Performance Testing\\ Reliability Testing\\ Security Testing}
 \def\factExs{Correctness Testing\\ Response-Time Testing\\ Access Control Testing\\
     Compliance Testing\\ Reliability Testing\\ Maintainability Testing\\ Portability Testing\\
-    Performance Testing\TblrNote{\textrm{f}}}
+    Performance Testing\TblrNote{f}}
 
 \begin{longtblr}[
-    note{\textrm{a}} = {See \Cref{par-chd-rels}.},
-    note{\textrm{b}} = {We also consider this categorization meaningful (see \Cref{static-test}).},
-    note{\textrm{c}} = {Functional testing is categorized ambiguously (see \Cref{func-test-discrep})
+    note{a} = {See \Cref{par-chd-rels}.},
+    note{b} = {We also consider this categorization meaningful (see \Cref{static-test}).},
+    note{c} = {Functional testing is categorized ambiguously (see \Cref{func-test-discrep})
             and non-functional testing is uncategorized.},
-    note{\textrm{d}} = {May instead be a subset of the ``technique'' category
+    note{d} = {May instead be a subset of the ``technique'' category
             \citep[implied by][p.~35; see \Cref{tab:multiCats}]{IEEE2022}.},
-    note{\textrm{e}} = {Exploratory testing may instead be a ``technique'' (see \Cref{tab:multiCats}).},
-    note{\textrm{f}} = {Other test factors are given that do not unambiguously map to corresponding
+    note{e} = {Exploratory testing may instead be a ``technique'' (see \Cref{tab:multiCats}).},
+    note{f} = {Other test factors are given that do not unambiguously map to corresponding
             test approaches: file integrity, authorization, audit trail, continuity of processing,
             service levels, ease of use, coupling (e.g., with other applications in a given environment),
             and ease of operation (e.g., documentation, training) \citep[pp.~40--41]{Perry2006}.},
-    note{\textrm{g}} = {With the exception of smoke testing, which is categorized as a technique
+    note{g} = {With the exception of smoke testing, which is categorized as a technique
             (\citealp[p.~5\=/14]{SWEBOK2024}; \citealp[pp.~601, 603, 605--606]{SharmaEtAl2021});
             performance testing is also sometimes categorized as a technique \citep[p.~38]{IEEE2021}.},
     caption = {Alternate categorizations given by the literature.},
@@ -34,34 +34,34 @@
     rowhead = 1
     }
     \hline
-    \thead{Test Basis}                                        & \thead{Example Approaches} & \thead{Parent\MidTblrNote{\textrm{a}} IEEE Category}                                                                                     \\
+    \thead{Test Basis}                                        & \thead{Example Approaches} & \thead{Parent\TblrNote{a} IEEE Category}                                                                                               \\
     \hline
-    Selection Process \citep[p.~5-16]{SWEBOK2024}             & \selecExs{}                & Technique \citep[pp.~5-12, 5-16]{SWEBOK2024}                                                                                             \\
+    Selection Process \citep[p.~5-16]{SWEBOK2024}             & \selecExs{}                & Technique \citep[pp.~5-12, 5-16]{SWEBOK2024}                                                                                           \\
     \hline
-    Coverage Criteria \citep[pp.~18--19]{AmmannAndOffutt2017} & \covCritExs{}              & Technique (\citealp[p.~22]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealp[p.~5-11]{SWEBOK2024}; \citealp[pp.~47--48]{Firesmith2015})   \\
+    Coverage Criteria \citep[pp.~18--19]{AmmannAndOffutt2017} & \covCritExs{}              & Technique (\citealp[p.~22]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealp[p.~5-11]{SWEBOK2024}; \citealp[pp.~47--48]{Firesmith2015}) \\
     \hline
-    Execution of Code\MidTblrNote{\textrm{b}} (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
-    \citealp[p.~53]{Patton2006})                              & \execExs{}                 & Approach                                                                                                                                 \\
+    Execution of Code\TblrNote{b} (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
+    \citealp[p.~53]{Patton2006})                              & \execExs{}                 & Approach                                                                                                                               \\
     \hline
     Goal of Testing (\citealp[p.~214]{KuļešovsEtAl2013};
-    \citealp[pp.~69--70]{Perry2006})                          & \goalExs{}                 & Approach                                                                                                                                 \\
+    \citealp[pp.~69--70]{Perry2006})                          & \goalExs{}                 & Approach                                                                                                                               \\
     \hline
     Property of Code \citep[p.~213]{KuļešovsEtAl2013}
-    or Test Target \citep[pp.~4--5]{Kam2008}                  & \propExs{}                 & Approach\TblrNote{\textrm{c}}                                                                                                            \\
+    or Test Target \citep[pp.~4--5]{Kam2008}                  & \propExs{}                 & Approach\TblrNote{c}                                                                                                                   \\
     \hline
-    Human Involvement \citep[p.~214]{KuļešovsEtAl2013}        & \humInvExs{}               & Practice\MidTblrNote{\textrm{d}} \citep[p.~22]{IEEE2022}                                                                                 \\
+    Human Involvement \citep[p.~214]{KuļešovsEtAl2013}        & \humInvExs{}               & Practice\TblrNote{d} \citep[p.~22]{IEEE2022}                                                                                           \\
     \hline
-    Structuredness \citep[p.~214]{KuļešovsEtAl2013}           & \strExs{}                  & Practice\MidTblrNote{\textrm{e}} \citep[pp.~20, 22]{IEEE2022}                                                                            \\
+    Structuredness \citep[p.~214]{KuļešovsEtAl2013}           & \strExs{}                  & Practice\TblrNote{e} \citep[pp.~20, 22]{IEEE2022}                                                                                      \\
     \hline
-    Coverage Requirement \citep[pp.~4--5]{Kam2008}            & \covReqExs{}               & Technique \citep[p.~5\=/13]{SWEBOK2024}                                                                                                  \\
+    Coverage Requirement \citep[pp.~4--5]{Kam2008}            & \covReqExs{}               & Technique \citep[p.~5\=/13]{SWEBOK2024}                                                                                                \\
     \hline
     Test Factor (also called Quality Factor or Quality Attribute)
-    \citep[pp.~40--41]{Perry2006}                             & \factExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by its quality and/or \citealp{Firesmith2015})                                           \\
+    \citep[pp.~40--41]{Perry2006}                             & \factExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by its quality and/or \citealp{Firesmith2015})                                         \\
     \hline
     Priority (in the context of testing e-business projects)
-    \citep[p.~12]{Gerrard2000a}                               & \priorExs{}                & Type\MidTblrNote{\textrm{g}} (\citealp[p.~22]{IEEE2022}; \citealp[Tab.~A.1]{IEEE2021}; and/or implied by \citealp[p.~53]{Firesmith2015}) \\
+    \citep[p.~12]{Gerrard2000a}                               & \priorExs{}                & Type\TblrNote{g} (\citealp[p.~22]{IEEE2022}; \citealp[Tab.~A.1]{IEEE2021}; and/or implied by \citealp[p.~53]{Firesmith2015})           \\
     \hline
-    Purpose \citep{Pan1999}                                   & \purpExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by \citealp[p.~53]{Firesmith2015})                                                       \\
+    Purpose \citep{Pan1999}                                   & \purpExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by \citealp[p.~53]{Firesmith2015})                                                     \\
     \hline
     % print("\\\\ ".join([x[0].upper() + x[1:] + " Testing" for x in "correctness,response-Time,access Control,compliance,reliability,maintainability,portability,performance".split(",")]))
 \end{longtblr}

@@ -208,7 +208,7 @@ def writeLongtblr(filename: str, caption: str, headers: list[str],
         colSpecList += ["X[m]"] * xcolCount
 
     writeFile(["\\begin{longtblr}[",
-            *(f"   note{{\\textrm{{{x}}}}} = {{{footnote}}},"
+            *(f"   note{{{x}}} = {{{footnote}}},"
                 for x, footnote in zip(ascii_lowercase, footnotes)),
               f"   caption = {{{caption}}},",
               f"   label = {{tab:{filename}}}",

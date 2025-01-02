@@ -74,6 +74,10 @@
     \usepackage{footnpag}
 \fi
 
+% Temporarily disable footnoterules, since I can't get them working with longtblr
+% From https://latex.org/forum/viewtopic.php?t=22375
+\usepackage[norule]{footmisc}
+
 % Set spacing according to manifest
 \usepackage{setspace}
 \thesisSpacing{}
@@ -124,6 +128,29 @@
 
 \usepackage{array}
 \usepackage{tabularray}
+
+\DefTblrTemplate{note-tag}{standard}{\quad \textit{\textrm{\textsuperscript{\InsertTblrNoteTag}}}}
+\SetTblrTemplate{note-tag}{standard}
+\DefTblrTemplate{note-sep}{standard}{}
+\SetTblrTemplate{note-sep}{standard}
+\DefTblrTemplate{note-text}{standard}{\quad \footnotesize \InsertTblrNoteText}
+\SetTblrTemplate{note-text}{standard}
+\SetTblrTemplate{note-border}{normal}
+
+% \renewcommand\TblrNote[1]{\textit{\textrm{\textsuperscript{#1}}}}
+
+% For `TblrNote`s in the middle of a cell (i.e., with following content)
+% From https://topanswers.xyz/tex?q=4758
+\ExplSyntaxOn
+\RenewDocumentCommand \TblrNote { m }
+{{
+            \cs_if_exist:NT \hypersetup { \ExpTblrTemplate { note-border }{ default } }
+            {
+                \__tblr_hyper_link:nn {#1}
+                { \textit { \textrm { \textsuperscript { \UseTblrFont { note-tag } #1 } } } }
+            }
+        }}
+\ExplSyntaxOff
 
 % For abbreviations, we use "acro" package, and mfirstuc to help capitalize long
 % versions normally
