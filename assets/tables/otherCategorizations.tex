@@ -6,11 +6,12 @@
 \def\humInvExs{Manual Testing\\ Automated Testing}
 \def\strExs{Scripted Testing\\ Exploratory Testing}
 \def\covReqExs{Data Flow Testing\\ Control Flow Testing}
-\def\priorExs{Smoke Testing\\ Usability Testing\\ Performance Testing\\ Functionality Testing}
-\def\purpExs{Correctness Testing\\ Performance Testing\\ Reliability Testing\\ Security Testing}
 \def\factExs{Correctness Testing\\ Response-Time Testing\\ Access Control Testing\\
     Compliance Testing\\ Reliability Testing\\ Maintainability Testing\\ Portability Testing\\
     Performance Testing\TblrNote{f}}
+\def\adqCritExs{Coverage-based Testing\\ Fault-based Testing\\ Error-based Testing}
+\def\priorExs{Smoke Testing\\ Usability Testing\\ Performance Testing\\ Functionality Testing}
+\def\purpExs{Correctness Testing\\ Performance Testing\\ Reliability Testing\\ Security Testing}
 
 \begin{longtblr}[
     note{a} = {See \Cref{par-chd-rels}.},
@@ -58,10 +59,12 @@
     Test Factor (also called Quality Factor or Quality Attribute)
     \citep[pp.~40--41]{Perry2006}                             & \factExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by its quality and/or \citealp{Firesmith2015})                                         \\
     \hline
+    Adequacy Criterion \citep[pp.~398--399]{vanVliet2000}     & \adqCritExs{}              & Technique \citep[pp.~398--399]{vanVliet2000}                                                                                           \\
+    \hline
     Priority (in the context of testing e-business projects)
     \citep[p.~12]{Gerrard2000a}                               & \priorExs{}                & Type\TblrNote{g} (\citealp[p.~22]{IEEE2022}; \citealp[Tab.~A.1]{IEEE2021}; and/or implied by \citealp[p.~53]{Firesmith2015})           \\
     \hline
     Purpose \citep{Pan1999}                                   & \purpExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by \citealp[p.~53]{Firesmith2015})                                                     \\
     \hline
-    % print("\\\\ ".join([x[0].upper() + x[1:] + " Testing" for x in "correctness,response-Time,access Control,compliance,reliability,maintainability,portability,performance".split(",")]))
+    % print("\\\\ ".join([x[0].upper() + x[1:] + " Testing" for x in "Coverage-based fault-based error-based".split(" ")]))
 \end{longtblr}
