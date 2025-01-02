@@ -82,6 +82,7 @@ ReliabilityMechanismTesting [label=<Reliability<br/>Mechanism<br/>Testing>,style
 ReliabilityTesting [label=<Reliability<br/>Testing>];
 RepetitionTesting [label=<Repetition<br/>Testing>,color=grey];
 ResourceUtilizationTesting [label=<Resource<br/>Utilization<br/>Testing>,style="dashed"];
+ResponseTimeTesting [label=<Response-Time<br/>Testing>,style="dashed"];
 RobustnessTesting [label=<Robustness<br/>Testing>,style="dashed"];
 SafetyTesting [label=<Safety<br/>Testing>,style="dashed"];
 ScalabilityTesting [label=<Scalability<br/>Testing>,style="dashed"];
@@ -220,6 +221,9 @@ ReliabilityTesting -> PerformanceTesting;
 ResourceUtilizationTesting -> PerformanceEfficiencyTesting[color="green"];
 ResourceUtilizationTesting -> PerformanceTesting[color="maroon"];
 ResourceUtilizationTesting -> EfficiencyTesting[style="dashed"];
+ResponseTimeTesting -> PerformancerelatedTesting[color="green"];
+ResponseTimeTesting -> PerformanceTesting[color="blue"];
+ResponseTimeTesting -> TimingTesting[style="dashed"];
 RobustnessTesting -> StressTesting[style="dashed"];
 ScalabilityTesting -> PortabilityTesting[color="green"];
 ScalabilityTesting -> LoadTesting[color="blue"];
