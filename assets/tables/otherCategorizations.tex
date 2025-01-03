@@ -1,5 +1,8 @@
 \def\selecExs{Deterministic Testing\\ Random Testing}
 \def\covCritExs{Input Space Partitioning\\ Graph Coverage\\ Logic Coverage\\ Syntax-based Testing}
+\def\questBase{Question Answered: What? When? Where? Who? Why? How? How Well? \citep[p.~17]{Firesmith2015}}
+\def\questExs{System Testing\\ Smoke Testing\\ Regression Testing\\ Pair Testing\\ Manual Testing\\
+    Model-based Testing\\ Unscripted Testing\\ Scenario Testing\\ Data Flow Testing\TblrNote{b}}
 \def\execExs{Static Testing\\ Dynamic Testing}
 \def\goalExs{Verification Testing\\ Validation Testing}
 \def\propExs{Functional Testing\\ Non-functional Testing}
@@ -9,7 +12,7 @@
 \def\covReqExs{Data Flow Testing\\ Control Flow Testing}
 \def\factExs{Correctness Testing\\ Response-Time Testing\\ Access Control Testing\\
     Compliance Testing\\ Reliability Testing\\ Maintainability Testing\\ Portability Testing\\
-    Performance Testing\TblrNote{d}}
+    Performance Testing\TblrNote{e}}
 \def\adqCritExs{Coverage-based Testing\\ Fault-based Testing\\ Error-based Testing}
 \def\typeCatExs{Static Testing\\ Test Browsing\\ Functional Testing\\
     Non-functional Testing\\ Large Scale Integration (Testing)}
@@ -18,14 +21,15 @@
 
 \begin{longtblr}[
     note{a} = {See \Cref{par-chd-rels}.},
-    note{b} = {We also consider this categorization meaningful (see \Cref{static-test}).},
-    note{c} = {Exploratory testing may instead be a ``technique'' (see \Cref{tab:multiCats}).},
-    note{d} = {Other test factors are given that do not unambiguously map to corresponding
+    note{b} = {This list is \emph{quite} nonexhaustive.},
+    note{c} = {We also consider this categorization meaningful (see \Cref{static-test}).},
+    note{d} = {Exploratory testing may instead be a ``technique'' (see \Cref{tab:multiCats}).},
+    note{e} = {Other test factors are given that do not unambiguously map to corresponding
             test approaches: file integrity, authorization, audit trail, continuity of processing,
             service levels, ease of use, coupling (e.g., with other applications in a given environment),
             and ease of operation (e.g., documentation, training) \citep[pp.~40--41]{Perry2006}.},
-    note{e} = \gerrardDistinctIEEE*{type},
-    note{f} = {With the exception of smoke testing, which is categorized as a technique
+    note{f} = \gerrardDistinctIEEE*{type},
+    note{g} = {With the exception of smoke testing, which is categorized as a technique
             (\citealp[p.~5\=/14]{SWEBOK2024}; \citealp[pp.~601, 603, 605--606]{SharmaEtAl2021});
             performance testing is also sometimes categorized as a technique \citep[p.~38]{IEEE2021}.},
     caption = {Alternate categorizations given by the literature.},
@@ -41,7 +45,9 @@
     \hline
     Coverage Criteria \citep[pp.~18--19]{AmmannAndOffutt2017}     & \covCritExs{}              & Technique (\citealp[p.~22]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealp[p.~5-11]{SWEBOK2024}; \citealp[pp.~47--48]{Firesmith2015}) \\
     \hline
-    Execution of Code\TblrNote{b} (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
+    \questBase{}                                                  & \questExs{}                & Approach                                                                                                                               \\
+    \hline
+    Execution of Code\TblrNote{c} (\citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a};
     \citealp[p.~53]{Patton2006})                                  & \execExs{}                 & Approach                                                                                                                               \\
     \hline
     Goal of Testing (\citealp[p.~214]{KuļešovsEtAl2013};
@@ -52,7 +58,7 @@
     \hline
     Human Involvement \citep[p.~214]{KuļešovsEtAl2013}            & \humInvExs{}               & \humInvCats{}                                                                                                                          \\
     \hline
-    Structuredness \citep[p.~214]{KuļešovsEtAl2013}               & \strExs{}                  & Practice\TblrNote{c} \citep[pp.~20, 22]{IEEE2022}                                                                                      \\
+    Structuredness \citep[p.~214]{KuļešovsEtAl2013}               & \strExs{}                  & Practice\TblrNote{d} \citep[pp.~20, 22]{IEEE2022}                                                                                      \\
     \hline
     Coverage Requirement \citep[pp.~4--5]{Kam2008}                & \covReqExs{}               & Technique \citep[p.~5\=/13]{SWEBOK2024}                                                                                                \\
     \hline
@@ -61,12 +67,12 @@
     \hline
     Adequacy Criterion \citep[pp.~398--399]{vanVliet2000}         & \adqCritExs{}              & Technique \citep[pp.~398--399]{vanVliet2000}                                                                                           \\
     \hline
-    Category of Test Type\TblrNote{e} \citep[p.~12]{Gerrard2000a} & \typeCatExs{}              & Ambiguous                                                                                                                              \\
+    Category of Test Type\TblrNote{f} \citep[p.~12]{Gerrard2000a} & \typeCatExs{}              & Ambiguous                                                                                                                              \\
     \hline
     Priority (in the context of testing e-business projects)
-    \citep[p.~13]{Gerrard2000a}                                   & \priorExs{}                & Type\TblrNote{f} (\citealp[p.~22]{IEEE2022}; \citealp[Tab.~A.1]{IEEE2021}; and/or implied by \citealp[p.~53]{Firesmith2015})           \\
+    \citep[p.~13]{Gerrard2000a}                                   & \priorExs{}                & Type\TblrNote{g} (\citealp[p.~22]{IEEE2022}; \citealp[Tab.~A.1]{IEEE2021}; and/or implied by \citealp[p.~53]{Firesmith2015})           \\
     \hline
     Purpose \citep{Pan1999}                                       & \purpExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by \citealp[p.~53]{Firesmith2015})                                                     \\
     \hline
-    % print("\\\\ ".join([x[0].upper() + x[1:] + " Testing" for x in "Coverage-based fault-based error-based".split(" ")]))
+    % print("\\\\ ".join([x[0].upper() + x[1:] + " Testing" for x in "system smoke regression pair manual model-based unscripted scenario dataFlow".split(" ")]))
 \end{longtblr}
