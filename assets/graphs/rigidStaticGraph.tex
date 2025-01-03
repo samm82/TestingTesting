@@ -16,6 +16,7 @@ SymbolicExecution [label=<Symbolic<br/>Execution>];
 Walkthroughs [label=<Walkthroughs>];
 
 
+AnomalyTesting [label=<Anomaly<br/>Testing>,style="filled"];
 ChecklistbasedTesting [label=<Checklist-based<br/>Testing>,style="filled"];
 UsabilityTesting [label=<Usability<br/>Testing>,style="filled"];
 DesktopDevelopmentTesting [label=<Desktop<br/>Development<br/>Testing>,style="filled"];
@@ -42,6 +43,7 @@ ScenarioTesting [label=<Scenario<br/>Testing>,style="filled"];
 SecurityTesting [label=<Security<br/>Testing>,style="filled"];
 Inspections [label=<Inspections>,style="filled"];
 StructurebasedTesting [label=<Structure-based<br/>Testing>,style="filled"];
+SymbolicExecution -> StructurebasedTesting[color="maroon"];
 SyntaxTesting [label=<Syntax<br/>Testing>,style="filled"];
 TransactionVerification [label=<Transaction<br/>Verification>,style="filled"];
 VisualBrowserValidation [label=<Visual<br/>Browser<br/>Validation>,style="filled"];
@@ -78,7 +80,13 @@ src2 [style=invis];
 src1 -> src2 [color=green, label=<From Established<br/>Standards>]
 src3 [style=invis];
 src4 [style=invis];
-src3 -> src4 [color=black, label=<From Papers and<br/>Other Documents>]
+src3 -> src4 [color=maroon, label=<From Textbooks>]
+}
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=black, label=<From Papers and<br/>Other Documents>]
 }
 edge [style="invis"]
 imp1 -> chd
@@ -87,6 +95,8 @@ imp3 -> syn1
 imp4 -> syn2
 dyn -> { imp2 imp3 }
 src1 -> dyn
+src5 -> src2
+src6 -> src3
 }
 
 // Connect the dummy node to the first node of the legend

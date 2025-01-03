@@ -56,6 +56,8 @@ StaticTesting -> StaticAnalysis[dir=none,color="maroon"];
 Walkthroughs -> StructuredWalkthroughs[dir=none,color="blue"];
 
 AdHocReviews -> Reviews[color="grey"];
+AnomalyTesting [label=<Anomaly<br/>Testing>,style="filled"];
+AnomalyTesting -> StaticTesting[color="maroon"];
 AttheBeginningTesting [label=<At-the-Beginning<br/>Testing>,style="dashed,filled"];
 AttheBeginningTesting -> StaticTesting[style="dashed"];
 Audits -> StaticAnalysis[style="dashed",color="blue"];
@@ -123,7 +125,7 @@ PerformanceTesting [label=<Performance<br/>Testing>,style="filled"];
 PerformanceTesting -> StaticAnalysis;
 PhysicalConfigurationAudits -> Audits[color="green"];
 ProofsofCorrectness -> StaticAnalysis[color="maroon"];
-ProofsofCorrectness -> StaticTesting[style="dashed",color="grey"];
+ProofsofCorrectness -> StaticTesting[style="dashed",color="maroon"];
 ProofsofPartialCorrectness [label=<Proofs<br/>of<br/>Partial<br/>Correctness>,style="dashed,filled"];
 ProofsofPartialCorrectness -> StaticTesting[style="dashed",color="grey"];
 ProofsofTotalCorrectness [label=<Proofs<br/>of<br/>Total<br/>Correctness>,style="dashed,filled"];
@@ -186,7 +188,8 @@ StructurebasedTesting -> StaticTesting[style="dashed",color="green"];
 StructuredWalkthroughs -> Walkthroughs[color="grey"];
 StructuredWalkthroughs -> StructuredTesting[color="grey"];
 StructuredWalkthroughs -> StaticTesting[color="grey"];
-SymbolicExecution -> StaticTesting[color="grey"];
+SymbolicExecution -> StructurebasedTesting[color="maroon"];
+SymbolicExecution -> StaticTesting[color="maroon"];
 SymbolicExecution -> StaticAnalysis[style="dashed",color="grey"];
 CorrectnessTesting [label=<Correctness<br/>Testing>,style="dashed,filled"];
 SymbolicExecution -> CorrectnessTesting[style="dashed",color="grey"];
@@ -206,6 +209,8 @@ Walkthroughs -> StaticAnalysis[color="green"];
 Walkthroughs -> FormalReviews[color="blue"];
 Walkthroughs -> Reviews[color="blue"];
 Walkthroughs -> RolebasedTesting[style="dashed",color="maroon"];
+Walkthroughs -> StructurebasedTesting[style="dashed",color="maroon"];
+Walkthroughs -> StaticTesting[style="dashed",color="maroon"];
 
 subgraph cluster_legend {
 
