@@ -132,7 +132,14 @@ are used in practice and are included in this source tier for brevity%
 The full set of sources that comprise this tier is \paperSources{2}.
 
 % Moved here to display nicely in paper
-\ifnotpaper\else\ieeeTestTermsTable{}\fi
+\ifnotpaper\else
+    % Only top or bottom to comply with IEEE guidelines
+    \begin{table*}[t!]
+        %     \begin{minipage}{\linewidth}
+        \ieeeCatsTable{}
+        %     \end{minipage}
+    \end{table*}
+\fi
 
 \subsection{Terminology}
 
@@ -157,7 +164,7 @@ in \Cref{rigidity}.
 While there are many ways to categorize software testing approaches, perhaps
 the most widely used is the one given by \ifnotpaper\else \citeauthor{IEEE2022}
 \fi \citet{IEEE2022}, where a test approach can be categorized as a test level,
-test type, test technique, or test practice (see \Cref{tab:ieeeTestTerms}).
+test type, test technique, or test practice (see \Cref{tab:ieeeCats}).
 The categories of ``level'' and ``type'' are particularly common; for example,
 six non-IEEE sources also give unit testing, integration testing,
 system testing, and acceptance testing as examples of test levels \ifnotpaper
@@ -169,7 +176,7 @@ system testing, and acceptance testing as examples of test levels \ifnotpaper
     \cite[pp.~5\=/6 to 5\=/7]{SWEBOK2024}, \cite[pp.~9, 13]{Gerrard2000a},
     \cite[pp.~807--808]{Perry2006}, \cite[p.~218]{KuļešovsEtAl2013}%
     \todo{OG Black, 2009}\fi, although they may use a different term for ``test
-level'' (see \Cref{tab:ieeeTestTerms}). Because of their widespread use and
+level'' (see \Cref{tab:ieeeCats}). Because of their widespread use and
 their usefulness in dividing the domain of software testing into more
 manageable subsets, these categories are used for now. These four subcategories
 of test approaches can be loosely described by what they specify as
@@ -198,7 +205,7 @@ in this way, \ifnotpaper there seem to be some outliers. For example, \fi
 we also note the potential significance of an ``artifact'' category%
 \thesisissueref{44,119,39}, since some terms could refer to the application of
 a test approach and/or the resulting document(s). Because of this, a test
-approach being categorized as a category from \Cref{tab:ieeeTestTerms}
+approach being categorized as a category from \Cref{tab:ieeeCats}
 \emph{and} an artifact is \emph{not} a discrepancy\thesisissueref{119}
 (see \Cref{multiCats}). \ifnotpaper
     Additionally, ``test metrics'' were also identified\thesisissueref{21,22},
@@ -208,7 +215,7 @@ approach being categorized as a category from \Cref{tab:ieeeTestTerms}
     captured as kinds of coverage-driven testing (see \Cref{cov-test}) and
     experience-based testing \citep[p.~34]{IEEE2022}. \par \fi
 Excluding \ifnotpaper our proposed \else this \fi ``artifact'' category, the
-categories given in \Cref{tab:ieeeTestTerms} seem to be orthogonal. For
+categories given in \Cref{tab:ieeeCats} seem to be orthogonal. For
 example, ``a test type can be performed at a single test level or across
 several test levels''
 \ifnotpaper
@@ -245,7 +252,7 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
 
     \begin{landscape}
         % Moved earlier to display nicely in paper
-        \ieeeTestTermsTable{}
+        \ieeeCatsTable{}
         \newpage
         % Omitted from paper for brevity
         \otherTestTermsTable{}
@@ -253,7 +260,7 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
 
     There are many other ways to categorize test approaches given in the literature.
     These are less-defined and seem to focus on specific categories from
-    \Cref{tab:ieeeTestTerms}, but are given in \Cref{tab:otherCategorizations} for
+    \Cref{tab:ieeeCats}, but are given in \Cref{tab:otherCategorizations} for
     completeness. Specific teams or situations may make these methods of
     categorization relevant, so these categorizations may be used in tandem with
     or in place of those given by ISO/IEC and IEEE. For example, some of these
@@ -268,7 +275,7 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     column. When multiple names for a test basis are present, the union of their
     sources all list the examples given. By looking at a test basis and its
     corresponding examples, we can infer its ``Parent IEEE Category'', or the IEEE
-    category from \Cref{tab:ieeeTestTerms} it seems to subdivide. The sources
+    category from \Cref{tab:ieeeCats} it seems to subdivide. The sources
     provided in this column classify the example approaches given accordingly.
     For example, in the first row, \citet[pp.~4, 8]{IEEE2021} and
     \citet[p.~46]{Firesmith2015} both classify specification-based testing,
@@ -404,7 +411,7 @@ Many test approaches are multi-faceted and can be ``specialized'' into others,
 such as performance-related testing (see \Cref{perf-test-rec}). These
 ``specializations'' will be referred to as ``children'' or ``sub-approaches''
 of the multi-faceted ``parent''. This nomenclature also extends to other
-categories given in \Cref{categories-observ,tab:ieeeTestTerms}, such as
+categories given in \Cref{categories-observ,tab:ieeeCats}, such as
 ``sub-type''. One example of these specializations is the ``stronger than''
 relation (also called the ``subsumes'' relation) described by
 \citet[p.~432]{vanVliet2000}: when comparing adequacy criteria (which
@@ -434,7 +441,7 @@ considered ``implicit'' emerged:
           of this. The given test approaches are not explicitly called ``test
           types'', as the term is used more loosely to refer to different kinds
           of testing---what should be called ``test approaches'' as per
-          \Cref{tab:ieeeTestTerms}. However, this set of test approaches are
+          \Cref{tab:ieeeCats}. However, this set of test approaches are
           ``based on the associated quality characteristic and its associated
           quality attributes'' \citetext{p.~53}, implying that they are
           test types.
@@ -518,7 +525,7 @@ approaches, including the term itself, its definition, and
 any synonyms or parents (see \Cref{par-chd-rels}). Any other notes, such as
 uncertainties, prerequisites, and other resources to investigate, are also
 recorded. If an approach is assigned a category, such as those found in
-\Cref{tab:ieeeTestTerms} and some outliers (e.g., ``artifact''%
+\Cref{tab:ieeeCats} and some outliers (e.g., ``artifact''%
 \thesisissueref{39,44}), this is also tracked for future investigation.
 
 Most sources are analyzed in their entirety to systematically extract
