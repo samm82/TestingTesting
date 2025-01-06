@@ -236,40 +236,114 @@ reviews. \ifnotpaper The following examples
     \begin{enumerate}
         \item Black box conformance testing \citep[p.~25]{JardEtAl1999}
               %   (combining black box and conformance testing)
-        \item Black-box integration testing \citep[p.~345-346]{SakamotoEtAl2013}
+              % Specification-based: Technique (IEEE, 2022, p. 22; 2021, p. 8; Washizaki, 2024, p. 5-10; Hamburg and Mogyorodi, 2024; Souza et al., 2017, p. 3; Firesmith, 2015, pp. 46-47; Sakamoto et al., 2013, p. 344; implied by IEEE, 2022, pp. 2-4, 6-9)
+              % Conformance: Type (implied by its quality (IEEE, 2017, p. 92; OG PMBOK 5th ed.))
+        \item Black-box integration testing \citep[p.~345--346]{SakamotoEtAl2013}
+              % Specification-based: Technique (IEEE, 2022, p. 22; 2021, p. 8; Washizaki, 2024, p. 5-10; Hamburg and Mogyorodi, 2024; Souza et al., 2017, p. 3; Firesmith, 2015, pp. 46-47; Sakamoto et al., 2013, p. 344; implied by IEEE, 2022, pp. 2-4, 6-9)
+              % Integration: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
+              %           OR Technique (implied by Sharma et al., 2021, pp. 601, 603, 605-606)
         \item Checklist-based reviews \citepISTQB{}
+              % Checklist-based: Practice (IEEE, 2022, p. 34), Technique (Hamburg and Mogyorodi, 2024)
+              % Reviews: Approach
         \item Closed-loop HiL verification \citep[p.~6]{PreußeEtAl2012}
+              % Closed Loop: Technique?
+              % HiL: Out of Scope (hardware)
         \item Closed-loop protection system testing \citep[p.~331]{ForsythEtAl2004}
+              % Closed Loop: Technique?
+              % System: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; 2017, p. 467; 2016, p. 4; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 439; implied by Barbosa et al., 2006, p. 3; Gerrard, 2000a, p. 13)
         \item Endurance stability testing \citep[p.~55]{Firesmith2015}
-        \item End-to-end functionality testing (\citealp[p.~20]{IEEE2021};
-              \citealp[Tab.~2]{Gerrard2000a})
+              % Endurance: Type (IEEE, 2013, p. 2; implied by Firesmith, 2015, p. 55)
+              %         OR Technique (IEEE, 2021, p. 38)
+              % Stability: Type (implied by its quality (IEEE, 2017, p. 434; OG ISO/IEC, 2009) and Firesmith, 2015, p. 55)
+        \item End-to-end functionality testing (\citealp[p.~20]{IEEE2021}; \citealp[Tab.~2]{Gerrard2000a})
+              % End-to-end: Type (Hamburg and Mogyorodi, 2024)
+              %          OR Technique (Firesmith, 2015, p. 47; Sharma et al., 2021, pp. 601, 603, 605-606)
+              % Functionality: Type (implied by its quality (IEEE, 2017, p. 196); Firesmith, 2015, p. 53)
         \item Formal reviews \citepISTQB{}
+              % Formal: Technique (inferred from informal testing)
+              % Reviews: Approach
         \item Grey-box integration testing \citep[p.~344]{SakamotoEtAl2013}
-        \item Incremental integration testing \citep[p.~601, 603, 605-606]{SharmaEtAl2021}
-              \todo{OG [19]}
+              % Grey-Box: Technique (IEEE, 2021, p. 8; Firesmith, 2015, pp. 46, 48; Sakamoto et al., 2013, p. 344)
+              % Integration: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
+              %           OR Technique (implied by Sharma et al., 2021, pp. 601, 603, 605-606)
+        \item Incremental integration testing \citep[p.~601, 603, 605--606]{SharmaEtAl2021}\todo{OG [19]}
+              % Incremental: Practice?
+              % Integration: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
+              %           OR Technique (implied by Sharma et al., 2021, pp. 601, 603, 605-606)
         \item Informal reviews \citepISTQB{}
+              % Informal: Technique (implied by Kam, 2008, p. 6)
+              % Reviews: Approach
         \item Infrastructure compatibility testing \citep[p.~53]{Firesmith2015}
-        \item Invariant-based automatic testing
-              \citep[pp.~184-185,~Tab.~21]{DoğanEtAl2014}, including for
-              ``AJAX user interfaces'' \citetext{p.~191}
+              % Infrastructure: Type (implied by Firesmith, 2015, p. 57)
+              %              OR Level (implied by Gerrard, 2000a, p. 13; see \Cref{tab:ieeeCats})
+              % Compatibility: Type (IEEE, 2022, pp. 3, 22; 2021, p. 37, Tab. A.1; 2013, p. 2; implied by its quality (ISO/IEC, 2023a); Firesmith, 2015, p. 53)
+        \item Invariant-based automatic testing \citep[pp.~184--185, Tab.~21]{DoğanEtAl2014},
+              including for ``AJAX user interfaces'' \citetext{p.~191}
+              % Assertion Checking: Practice?
+              % Automated: Practice (IEEE, 2022, pp. 20, 22)
+              %         OR Technique (implied by p. 35)
         \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000a}
+              % Legacy: Approach
+              % System Integration: Level (IEEE, 2022, pp. 12, 22; 2021, p. 6; Hamburg and Mogyorodi, 2024)
         \item Manual procedure testing \citep[p.~47]{Firesmith2015}
+              % Manual: Practice (IEEE, 2022, p. 22)
+              %      OR Technique (implied by p. 35)
+              % Procedure: Type (IEEE, 2022, pp. 7, 22; 2021, p. 39, Tab. A.1; 2017, p. 337; OG IEEE, 2013)
+              %         OR Technique (implied by Firesmith, 2015, p. 47)
         \item Manual security audits \citep[p.~28]{Gerrard2000b}
-        \item Model-based GUI testing (\citealp[Tab.~1]{DoğanEtAl2014}; implied
-              by \citealp[p.~356]{SakamotoEtAl2013})
-        \item Model-based web application testing (implied by
-              \citealp[p.~356]{SakamotoEtAl2013})
+              % Manual: Practice (IEEE, 2022, p. 22)
+              %      OR Technique (implied by p. 35)
+              % Security Audits: Technique (IEEE, 2021, p. 40)
+              %               OR Type (inferred from security testing)
+        \item Model-based GUI testing (\citealp[Tab.~1]{DoğanEtAl2014}; implied by \citealp[p.~356]{SakamotoEtAl2013})
+              % Model-based: Practice (IEEE, 2022, p. 22; 2021, p. viii)
+              %           OR Technique (Engström and Petersen, 2015, pp. 1-2; Kam, 2008, p. 4; implied by IEEE, 2022, p. 32; 2021, p. 7; 2017, p. 469)
+              % GUI: Approach
+        \item Model-based web application testing (implied by \citealp[p.~356]{SakamotoEtAl2013})
+              % Model-based: Practice (IEEE, 2022, p. 22; 2021, p. viii)
+              %           OR Technique (Engström and Petersen, 2015, pp. 1-2; Kam, 2008, p. 4; implied by IEEE, 2022, p. 32; 2021, p. 7; 2017, p. 469)
+              % Web Application: Approach
         \item Non-functional search-based testing \citep[Tab.~1]{DoğanEtAl2014}
+              % Non-functional: Approach
+              % Search-based: Technique (Engström and Petersen, 2015, pp. 1-2)
         \item Offline MBT \citepISTQB{}
+              % Offline: Practice?
+              % Model-based: Practice (IEEE, 2022, p. 22; 2021, p. viii)
+              %           OR Technique (Engström and Petersen, 2015, pp. 1-2; Kam, 2008, p. 4; implied by IEEE, 2022, p. 32; 2021, p. 7; 2017, p. 469)
         \item Online MBT \citepISTQB{}
+              % Online: Practice?
+              % Model-based: Practice (IEEE, 2022, p. 22; 2021, p. viii)
+              %           OR Technique (Engström and Petersen, 2015, pp. 1-2; Kam, 2008, p. 4; implied by IEEE, 2022, p. 32; 2021, p. 7; 2017, p. 469)
         \item Role-based reviews \citepISTQB{}
+              % Role-based: Practice?
+              % Reviews: Approach
         \item Scenario walkthroughs \citep[Fig.~4]{Gerrard2000a}
+              % Scenario: Technique (IEEE, 2022, pp. 9, 22; 2021, pp. 5, 8, 20, Fig. 2; 2017, p. 400; OG 2013; Washizaki, 2024, p. 5-12; Firesmith, 2015, p. 47; Sangwan and LaPlante, 2006, p. 26)
+              % Walkthroughs: Technique (IEEE, 2017, p. 508)
         \item Scenario-based reviews \citepISTQB{}
+              % Scenario-based: Approach
+              % Reviews: Approach
         \item Security attacks \citepISTQB{}
+              % Security: Type (IEEE, 2022, pp. 9, 22, 26-27; 2021, pp. 7, 40, Tab. A.1; 2017, p. 405; OG 2013; implied by its quality (ISO/IEC, 2023a; Washizaki, 2024, p. 13-4); Firesmith, 2015, p. 53)
+              % Attacks: Practice (IEEE, 2022, p. 34)
+              %       OR Technique (implied by Hamburg and Mogyorodi, 2024)
+        \item Security audits (\citealp[p.~40]{IEEE2021}; \citealp[p.~28]{Gerrard2000b})
+              % Security: Type (IEEE, 2022, pp. 9, 22, 26-27; 2021, pp. 7, 40, Tab. A.1; 2017, p. 405; OG 2013; implied by its quality (ISO/IEC, 2023a; Washizaki, 2024, p. 13-4); Firesmith, 2015, p. 53)
+              % Audits: Practice?
         \item Statistical web testing \citep[p.~185]{DoğanEtAl2014}
+              % Statistical: Technique (Kam, 2008, pp. 23, 48)      
+              % Web Application: Approach
         \item Usability test script(ing) \citepISTQB{}
+              % Usability: Type (IEEE, 2022, pp. 22, 26-27; 2021, pp. 7, 40, Tab. A.1; implied by its quality; Firesmith, 2015, p. 53)
+              % Scripted: Practice (IEEE, 2022, pp. 20, 22; implied by p. 33)
         \item Web application regression testing \cite[Tab.~21]{DoğanEtAl2014}
-        \item White-box unit testing \citep[pp.~345-346]{SakamotoEtAl2013}
+              % Web Application: Approach
+              % Regression: Technique (implied by IEEE, 2022, p. 35)
+              %          OR Level (implied by Barbosa et al., 2006, p. 3)
+        \item White-box unit testing \citep[pp.~345--346]{SakamotoEtAl2013}
+              % Structure-based: Technique (IEEE, 2022, p. 22; 2021, p. 8; Washizaki, 2024, pp. 5-10, 5-13; Hamburg and Mogyorodi, 2024; Firesmith, 2015, pp. 46, 49; Sakamoto et al., 2013, p. 344; implied by IEEE, 2022, pp. 2, 4, 6, 9; Barbosa et al., 2006, p. 3)
+              % Unit: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; 2017, p. 467; 2016, p. 4; Washizaki, 2024, p. 5-6; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
+              %    OR Technique (implied by Engström and Petersen, 2015, pp. 1-2)
     \end{enumerate}
 \fi
 
