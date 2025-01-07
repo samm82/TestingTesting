@@ -574,7 +574,8 @@ allows us to provide a more complete picture of the state of the literature;
 for example, we can view implicit discrepancies separately in
 \Cref{tab:sntxDiscreps,tab:smntcDiscreps}, since additional context may rectify
 them. The following non-mutually exclusive reasons for information to be
-considered ``implicit'' emerged:
+considered ``implicit'' emerged, and the given keywords are used to identify
+them \seeSrcCode{55f4bf2}{helpers}{16}{32}:
 
 %% Maybe convert to \paragraph ?
 \begin{enumerate}
@@ -587,7 +588,23 @@ considered ``implicit'' emerged:
           \Cref{tab:ieeeCats}. However, this set of test approaches are
           ``based on the associated quality characteristic and its associated
           quality attributes'' \citetext{p.~53}, implying that they are
-          test types.
+          test types. Cases such as this are indicated by a question mark or
+          one of the following keywords: ``implied'', ``inferred'', or
+          ``likely''. \ifnotpaper \par
+              Additionally, if a test approach in our glossary has a
+              name ending in ``~(Testing)'' with a space, the word ``Testing''
+              might not be part of its name \emph{or} it might not be a test
+              approach at all! For example, the term ``legacy system
+              integration'' is used \ifnotpaper by \citeauthor{Gerrard2000a}
+                  (\citeyear[pp.~12--13, Tab.~2]{Gerrard2000a};
+                  \citeyear[Tab.~1]{Gerrard2000b})\else in
+                  \cite[pp.~12--13, Tab.~2]{Gerrard2000a},
+                  \cite[Tab.~1]{Gerrard2000b}\fi, but the more accurate
+              ``legacy system integration testing'' is used in
+              \citeyearpar[pp.~30--31]{Gerrard2000b}. In other cases where a
+              term is \emph{not} explicitly labelled as ``testing'', we add the
+              suffix ``~(Testing)'' (when it makes sense to do so) and consider
+              the test approach to be implied. \fi
     \item \textbf{The information is not universal.}
           \refHelper \citet[p.~372\ifnotpaper, emphasis added\fi]{IEEE2017}%
           \todo{OG ISO/IEC, 2014} \multiAuthHelper{define} ``regression
@@ -603,7 +620,9 @@ considered ``implicit'' emerged:
           similar list: ``regression testing \dots{} \emph{may} involve
           functional and non-functional testing, such as reliability,
           accessibility, usability, maintainability, conversion, migration, and
-          compatibility testing.'' \fi
+          compatibility testing.'' \fi Cases such as this are indicated by one
+          of the following keywords: ``can be'', ``should be'', ``ideally'',
+          ``usually'', ``most'', ``likely'', ``often'', or ``if''.
     \item \textbf{The information is conditional.}
           As a more specific case of information not being universal, sometimes
           prerequisities must be satisfied for information to apply. For
@@ -612,7 +631,8 @@ considered ``implicit'' emerged:
           subcondition is viewed as a single input'' \citep[p.~464]{PetersAndPedrycz2000}.
           Likewise, statement testing can be used for (and is therefore a child
           of) unit testing \emph{if} there are ``less than 5000 lines of code''
-          \citetext{p.~481\todo{OG Miller et al., 1994}}. \ifnotpaper
+          \citetext{p.~481\todo{OG Miller et al., 1994}}. Cases such as this
+          are indicated by the keyword ``can be'' or ``if''. \ifnotpaper
               \par This can also apply more abstractly at the taxonomy level,
               where a parent-child relation only makes sense if the parent test
               approach exists. This occurs when a source gives a relation
@@ -642,21 +662,19 @@ considered ``implicit'' emerged:
           not fit as well with the label ``user scenario testing''. However,
           since a system can be seen as a ``user'' of the test item, this
           synonym relation is treated as implicit instead of as an outright
-          discrepancy.
+          discrepancy. Cases such as this are indicated by a question mark or
+          one of the following keywords: ``inferred'', ``should be'',
+          ``ideally'', ``likely'', ``if'', or ``although''.
 \end{enumerate}
 
 Discrepancies based on implicit information are themselves implicit. These are
 automatically detected when generating graphs and analyzing discrepancies
 (see \ifnotpaper \Cref{graph-gen,discrep-analysis}, respectively\else
-    \Cref{tools}\fi) by looking for indicators
-of uncertainty, such as question marks, ``~(Testing)'' (which indicates that a
-test approach isn't explicitly denoted as such; note the inclusion of the
-space), and the keywords ``implied'', ``inferred'', ``can be'', ``should be'',
-``ideally'', ``usually'', ``most'', ``likely'', ``often'', ``if'', and ``although''
-\seeSrcCode{55f4bf2}{helpers}{16}{32}. These words were used when creating
+    \Cref{tools}\fi) by looking for the indicators of uncertainty mentioned
+above \seeSrcCode{55f4bf2}{helpers}{16}{32}. These are used when creating
 the glossaries to capture varying degrees of nuance, such as when a test
 approach ``can be'' a child of another or is a synonym of another ``most of the
-time'', but isn't always. As an example, \Cref{tab:parSyns} contains relations
+time'' but not always. As an example, \Cref{tab:parSyns} contains relations
 that are explicit, implicit, and both; implicit relations are marked by the
 phrase ``implied by''.
 
