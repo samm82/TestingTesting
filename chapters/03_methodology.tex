@@ -555,14 +555,28 @@ such as load testing and stress testing (see \Cref{perf-test-rec}). These
 of the multi-faceted ``parent''. This nomenclature also extends to other
 categories (such as ``subtype''; see \Cref{categories-observ,tab:ieeeCats})
 and software qualities (``subquality''\ifnotpaper; see \Cref{qual-test}\fi).
-One example of these specializations is the ``stronger than''
-relation (also called the ``subsumes'' relation) described by
-\citet[p.~432]{vanVliet2000}: when comparing adequacy criteria (which
-``specif[y] requirements for testing'' \citetext{p.~402}), ``criterion X
-is stronger than criterion Y if, for all programs P and all test sets T,
-X-adequacy implies Y-adequacy''. While this relation only ``compares the
-thoroughness of test techniques, not their ability to detect faults''
-\citetext{p.~434}, it is sufficient to consider one a child of the other.
+There are many reasons two approaches may have a parent-child relation, such as:
+\begin{enumerate}
+    \item \textbf{The parent approach is part of a mutually exclusive set.}
+          It is often trivial to classify a test approach as a child of one of
+          a set of other, mutually exclusive test approaches. For example,
+          \citeauthor{IEEE2022} say that ``testing can take two forms: static
+          and dynamic'' \citeyearpar[p.~17]{IEEE2022} and provide examples of
+          subapproaches of static and dynamic testing \citetext{Fig.~1}.
+          Likewise, \citeauthor{Gerrard2000a} says ``tests can be automated or
+          manual'' \citeyearpar[p.~13]{Gerrard2000a} and gives subapproaches of
+          automated and manual testing \ifnotpaper
+              \citeyearpar[Tab.~2; ][Tab.~1]{Gerrard2000b}\else
+              \citetext{Tab.~2}, \cite[Tab.~1]{Gerrard2000b}\fi.
+    \item \textbf{One is ``stronger than'' or ``subsumes'' the other.} When
+          comparing adequacy criteria that ``specif[y] requirements for
+          testing'' \citep[p.~402]{vanVliet2000}, ``criterion X is stronger
+          than criterion Y if, for all programs P and all test sets T,
+          X-adequacy implies Y-adequacy'' \citetext{p.~432}. While this
+          relation only ``compares the thoroughness of test techniques, not
+          their ability to detect faults'' \citetext{p.~434}, it is sufficient
+          to consider one a child of the other.
+\end{enumerate}
 
 \subsubsection{Rigidity}
 \label{rigidity}
