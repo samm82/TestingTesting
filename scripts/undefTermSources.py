@@ -34,12 +34,12 @@ undefTerms = [
     UndefinedTerm("Loop Testing", "DhokAndRamanathan2016,"
                   "GodefroidAndLuchaup2011,PreußeEtAl2012,ForsythEtAl2004",
                   footnote="\\ifnotpaper \\else References \\fi"
-                  "\\citep{ISO2015} and \\citep{ISO2022} "
+                  "\\citep{ISO2022} and \\citep{ISO2015} "
                   "were used as reference for terms but not fully "
-                  "investigated, \\citep{TrudnowskiEtAl2017} and "
-                  "\\citep{PierreEtAl2017} were added as potentially in "
-                  "scope, and \\citep{Goralski1999} and "
-                  "\\citep{Dominguez-PumarEtAl2020} were added as "
+                  "investigated, \\citep{PierreEtAl2017} and "
+                  "\\citep{TrudnowskiEtAl2017} were added as potentially in "
+                  "scope, and \\citep{Dominguez-PumarEtAl2020} and "
+                  "\\citep{Goralski1999} were added as "
                   "out-of-scope examples."),
     UndefinedTerm("EMSEC Testing", "ZhouEtAl2012,ISO2021"),
     UndefinedTerm("Asynchronous Testing", "JardEtAl1999"),

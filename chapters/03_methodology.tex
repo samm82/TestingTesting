@@ -716,19 +716,14 @@ clearest and most concise version is kept, or they are merged to paint a more
 complete picture. Finally, we record any other notes, such as questions,
 prerequisites, and other resources to investigate.
 
-We use similar methodologies to track software qualities \ifnotpaper (see
+We use similar procedures to track software qualities \ifnotpaper (see
     \Cref{qual-test}) \fi and supplementary terminology (either shared by
-multiple approaches or too complicated to explain inline)
-in separate documents. The name, definition, and synonym(s) of all terms are
-tracked, as well as any precedence for a related test type for a given software
-quality.
-
-Most sources are analyzed in their entirety to systematically extract
-terminology, especially established standards (see \Cref{stds}). Sources that
-were only partially investigated include those chosen for a specific area of
-interest or based on a test approach that was determined to be out-of-scope,
-such as some sources given in \Cref{undef-terms}.
-Heuristics are used to guide this process, by investigating:
+multiple approaches or too complicated to explain inline) in separate
+glossaries with a similar format. The name, definition, and synonym(s) of all
+terms are tracked, as well as any precedence for a related test type for a
+given software quality. We use heuristics to guide this process for all three
+glossaries to increase confidence that all terms are identified, paying
+special attention to the following when investigating a new source:
 
 \begin{itemize}
     \item glossaries and lists of terms,
@@ -749,6 +744,14 @@ Heuristics are used to guide this process, by investigating:
                   this may not be possible due to time constraints.
               } (see \Cref{derived-tests})\fi.
 \end{itemize}
+
+Most sources are analyzed in their entirety to systematically extract
+terminology, especially established standards (see \Cref{stds}). Sources that
+were only partially investigated include those chosen for a specific area of
+interest or based on a test approach that was determined to be out-of-scope,
+including the following sources as described in \Cref{undef-terms}:
+\citep{ISO2022,ISO2015,Dominguez-PumarEtAl2020,PierreEtAl2017,
+    TrudnowskiEtAl2017,YuEtAl2011,Tsui2007,Goralski1999}.
 
 During the first pass of data collection, all software-testing-focused terms
 are included. Some of them are less applicable to test case automation
