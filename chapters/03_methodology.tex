@@ -695,13 +695,33 @@ phrase ``implied by''.
 \subsection{Procedure}
 \label{procedure}
 
-To track terminology used in the literature, we build a glossary of test
-approaches, including the term itself, its definition, and
-any synonyms or parents (see \Cref{par-chd-rels}). Any other notes, such as
-uncertainties, prerequisites, and other resources to investigate, are also
-recorded. If an approach is assigned a category, such as those found in
-\Cref{tab:ieeeCats} and some outliers (e.g., ``artifact''%
-\thesisissueref{39,44}), this is also tracked for future investigation.
+We track terminology used in the literature by building glossaries.
+Each test approach gets its own row in our test approach glossary where we
+record its name and any given categories (see \Cref{categories-observ}),
+synonyms (see \Cref{syn-rels}), parents (see \Cref{par-chd-rels}), and
+definitions. If no category is given, the ``approach'' category is assigned
+(with no accompanying citation) as a ``catch-all'' category. All other fields
+may be left blank, but a lack of definition indicates that the approach should
+be investigated further to see if its inclusion is meaningful (see
+\Cref{undef-terms}). Any additional information from other sources is added to
+or merged with the existing information in our glossary where appropriate.
+This includes the generic ``approach'' category being replaced with a more
+specific one, an additional synonym being mentioned, or another source
+describing an already-documented parent-child relation. If any new information
+contradicts existing information (or otherwise indicates something is wrong),
+this is investigated and documented (see \Cref{discreps}), which may be done
+in a separate document and/or in the glossary itself. Sometimes, new
+information does not conflict with existing information, in which case the
+clearest and most concise version is kept, or they are merged to paint a more
+complete picture. Finally, we record any other notes, such as questions,
+prerequisites, and other resources to investigate.
+
+We use similar methodologies to track software qualities \ifnotpaper (see
+    \Cref{qual-test}) \fi and supplementary terminology (either shared by
+multiple approaches or too complicated to explain inline)
+in separate documents. The name, definition, and synonym(s) of all terms are
+tracked, as well as any precedence for a related test type for a given software
+quality.
 
 Most sources are analyzed in their entirety to systematically extract
 terminology, especially established standards (see \Cref{stds}). Sources that
@@ -729,20 +749,6 @@ Heuristics are used to guide this process, by investigating:
                   this may not be possible due to time constraints.
               } (see \Cref{derived-tests})\fi.
 \end{itemize}
-
-When terms are given similar definitions by multiple sources, the clearest and
-most concise version is kept. If definitions from different sources overlap,
-provide different information, or contradict, they are merged to paint a more
-complete picture. When contradictions or other discrepancies (see
-\Cref{discreps}) arise, they are investigated and documented. Any test
-approaches that are mentioned but not defined are added to the glossary to
-indicate they should be investigated further (see \Cref{undef-terms}).
-Similar methodologies are used for tracking software qualities \ifnotpaper (see
-    \Cref{qual-test}) \fi and supplementary terminology that is shared by
-multiple approaches or is too complicated to explain inline; these are tracked
-in separate documents. The name, definition, and synonym(s) of all terms are
-tracked, as well as any precedence for a related test type for a given software
-quality.
 
 During the first pass of data collection, all software-testing-focused terms
 are included. Some of them are less applicable to test case automation
