@@ -123,3 +123,6 @@ debug: $(LATEX_SCRIPTS) compile_doc # for finding hard issues, this is an intera
 
 clean:
 	rm -rf build/
+	rm *Graph* || true
+	rm *Legend* || true
+	rm *catRels* || true
