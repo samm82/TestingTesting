@@ -65,6 +65,40 @@
           \else\cite[p.~35]{IEEE2022}, \cite[p.~4]{IEEE2016}\fi.
 
           % STD | META
+    \item % Discrep count (DEFS, AMBI): {SWEBOK2024}
+          % {vanVliet2000} not included as part of this discrepancy since it
+          % is used as the ground truth
+          While ``error'' is defined as ``a human action that produces an incorrect
+          result'' \ifnotpaper (\citealp[pp.~12\=/3]{SWEBOK2024}\todo{OG [14]};
+              \citealp[p.~399]{vanVliet2000})\else \cite[pp.~12\=/3]{SWEBOK2024},
+              \cite[p.~399]{vanVliet2000}\fi, \citeauthor{SWEBOK2024} does not
+          use this consistently, sometimes implying that errors can be instrinsic
+          to software itself \citeyearpar[pp.~4\=/9, 6\=/5, 7\=/3, 12\=/4,
+              12\=/9, 12\=/13]{SWEBOK2024}.\qtodo{I ignore ``syntax errors,
+              runtime errors, and logical errors'' \citep[p.~16\=/13, cf.
+                  p.~18\=/13]{SWEBOK2024} and numerical errors (in the context
+              of accuracy and precision) \citetext{pp.~17\=/18 to 17\=/19,
+                  18\=/7 to 18\=/8} since they seem to be in different domains.
+              Does that make sense? How should I document this?}
+    \item % Discrep count (TERMS, AMBI): {SWEBOK2024}
+          % {vanVliet2000} not included as part of this discrepancy since it
+          % is used as the ground truth
+          \refHelper{} \citet[p.~4\=/11]{SWEBOK2024} says ``fault tolerance is
+          a collection of techniques that increase software reliability by
+          detecting errors and then recovering from them or containing their
+          effects if recovery is not possible.'' This should either be called
+          ``\emph{error} tolerance'' or be described as ``detecting
+          \emph{faults} and then recovering from them'', since ``error'' and
+          ``fault'' have distinct meanings \ifnotpaper
+              (\citealp[p.~5\=/3]{SWEBOK2024};
+              \citealp[pp.~399--400]{vanVliet2000})\else
+              \cite[p.~5\=/3]{SWEBOK2024},
+              \cite[pp.~399--400]{vanVliet2000}\fi. The intent of this
+          term-definition pair is unclear, as the strategies given---``backing
+          up and retrying, using auxiliary code and voting algorithms, and
+          replacing an erroneous value with a phony value that will have a
+          benign effect'' \citep[p.~4\=/11]{SWEBOK2024}---could be used for
+          errors or faults.
     \item % Discrep count (TERMS, REDUN): {SWEBOK2024}
           % {Gerrard2000b} not included as part of this discrepancy since it
           % is used as the ground truth

@@ -86,6 +86,16 @@
               manual/automated categories; should this be moved?}
 
           % STD | META
+    \item % Discrep count (TERMS, WRONG): {SWEBOK2024}
+          % {vanVliet2000} not included as part of this discrepancy since it
+          % is used as the ground truth
+          Since ``error'' and ``fault'' have distinct meanings \ifnotpaper
+              (\citealp[pp.~5\=/3, 12\=/3]{SWEBOK2024};
+              \citealp[pp.~399--400]{vanVliet2000})\else
+              \cite[pp.~5\=/3, 12\=/3]{SWEBOK2024},
+              \cite[pp.~399--400]{vanVliet2000}\fi, error guessing should
+          instead be called ``fault guessing'' if it ``anticipate[s] the most
+          plausible faults in each \acs{sut}'' \citep[p.~5\=/13]{SWEBOK2024}.
     \item % Discrep count (CATS, WRONG): ISTQB
           \refHelper \citetISTQB{} \ifnotpaper classify \else classifies \fi
           \acs{ml} model testing as a test level, which \ifnotpaper they \else
