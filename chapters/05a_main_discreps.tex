@@ -84,6 +84,35 @@
           cases can be either manual test cases or keyword test cases''
           \citetext{p.~6} is incorrect.\todo{This discrepancy is based on the
               manual/automated categories; should this be moved?}
+    \item % Discrep count (DEFS, OVER): {IEEE2010}
+          \citeauthor{IEEE2010} define ``error'' as ``a human action that
+          produces an incorrect result'', but also as ``an incorrect result''
+          itself \citeyearpar[p.~128]{IEEE2010}. Since faults are inserted when
+          a developer makes an error \ifnotpaper
+              (\citeyear[pp.~128, 140]{IEEE2010};
+              \citealp[p.~12\=/3]{SWEBOK2024};
+              \citealp[pp.~399--400]{vanVliet2000})\else
+              \cite[p.~12\=/3]{SWEBOK2024}, \cite[pp.~128, 140]{IEEE2010},
+              \cite[pp.~399--400]{vanVliet2000}\fi, this means that they are
+          ``incorrect results'', making ``error'' and ``fault'' synonyms and
+          the distinction between them less useful.
+    \item % Discrep count (DEFS, OVER): {IEEE2010} {SWEBOK2024}
+          Additionally, ``error'' can also be defined as ``the
+          difference between a computed, observed, or measured value or
+          condition and the true, specified, or theoretically correct value
+          or condition'' \ifnotpaper (\citealp[p.~128]{IEEE2010}; similar in
+              \citealp[pp.~17\=/18 to 17\=/19, 18\=/7 to 18\=/8]{SWEBOK2024})%
+          \else \cite[p.~128]{IEEE2010} (similar in
+              \cite[pp.~17\=/18 to 17\=/19, 18\=/7 to 18\=/8]{SWEBOK2024})\fi.
+          While this is a widely used definition, particularly in mathematics,
+          it makes some test approaches ambiguous; for example, back-to-back
+          testing is ``testing in which two or more variants of a program are
+          executed with the same inputs, the outputs are compared, and errors
+          are analyzed in case of discrepancies'' \ifnotpaper
+              (\citealp[p.~30]{IEEE2010}; similar in \citealpISTQB{})\else
+              \cite[p.~30]{IEEE2010} (similar in \cite{ISTQB})\fi,
+          % Discrep count (DEFS, AMBI): {IEEE2010} {SWEBOK2024} | {IEEE2010} ISTQB
+          which seems to refer to this definition of ``error''.
 
           % STD | META
     \item % Discrep count (TERMS, WRONG): {SWEBOK2024}
