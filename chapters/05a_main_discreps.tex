@@ -80,7 +80,7 @@
           \fi.
     \item % Discrep count (CATS, WRONG): {IEEE2016}
           Since keyword-driven testing can be used for automated \emph{or}
-          manual testing \citep[pp.~4,~6]{IEEE2016}, the claim that ``test
+          manual testing \citep[pp.~4, 6]{IEEE2016}, the claim that ``test
           cases can be either manual test cases or keyword test cases''
           \citetext{p.~6} is incorrect.\todo{This discrepancy is based on the
               manual/automated categories; should this be moved?}
@@ -115,7 +115,8 @@
           which seems to refer to this definition of ``error''.
 
           % STD | META
-    \item % Discrep count (TERMS, WRONG): {SWEBOK2024} {vanVliet2000} | {SWEBOK2024}
+    \item % Discrep count (TERMS, WRONG): {SWEBOK2024}
+          % Ground truth: {SWEBOK2024} {vanVliet2000}
           Since ``error'' and ``fault'' have distinct meanings \ifnotpaper
               (\citealp[pp.~5\=/3, 12\=/3]{SWEBOK2024};
               \citealp[pp.~399--400]{vanVliet2000})\else
@@ -124,6 +125,7 @@
           instead be called ``fault guessing'' if it ``anticipate[s] the most
           plausible faults in each \acs{sut}'' \citep[p.~5\=/13]{SWEBOK2024}.
     \item % Discrep count (CATS, WRONG): ISTQB
+          % Ground truth: {IEEE2022} {IEEE2021} {IEEE2017}
           \refHelper \citetISTQB{} \ifnotpaper classify \else classifies \fi
           \acs{ml} model testing as a test level, which \ifnotpaper they \else
               it \fi \multiAuthHelper{define} as ``a specific instantiation of a
@@ -211,15 +213,13 @@
           \citep[pp.~5\=/6 to 5\=/7]{SWEBOK2024}---are commonly categorized as
           ``test levels'' (see \Cref{categories-observ}).
     \item % Discrep count (TERMS, WRONG): {Firesmith2015}
-          % Other sources not included as part of this discrepancy since they
-          % are used as the ground truth
+          % Ground truth: {LiuEtAl2023} {MorgunEtAl1999} {HolleyEtAl1996} {HoweAndJohnson1995}
           The terms ``acceleration tolerance testing'' and ``acoustic tolerance
           testing'' seem to only refer to software testing in
-          \citep[p.~56]{Firesmith2015};
-          elsewhere, they seem to refer to testing the acoustic tolerance of
-          rats \citep{HolleyEtAl1996} or the acceleration tolerance of
-          \accelTolTest{}, which don't exactly seem relevant\dots%
-          \todo{Is this a scope discrep?}
+          \citep[p.~56]{Firesmith2015}; elsewhere, they seem to refer to
+          testing the acoustic tolerance of rats \citep{HolleyEtAl1996} or the
+          acceleration tolerance of \accelTolTest{}, which don't exactly seem
+          relevant\dots\todo{Is this a scope discrep?}
     \item % Discrep count (TERMS, OVER): {SWEBOK2024} implied by {Valcheva2013} {YuEtAl2011} | {Firesmith2015}
           ``Orthogonal array testing'' \ifnotpaper \citetext{%
                   \citealp[pp.~5-1,~5-11]{SWEBOK2024};
@@ -294,7 +294,8 @@
           as another example by \citet[pp.~418-419]{vanVliet2000}.
 
           % TEXT | PAPER
-    \item % Discrep count (DEFS, WRONG): {Kam2008} | ISTQB
+    \item % Discrep count (DEFS, WRONG): {Kam2008}
+          % Ground truth: ISTQB
           \refHelper \citet[p.~46]{Kam2008}\todo{OG Beizer} says that the goal
           of negative testing is ``showing that a component or system does not
           work'' which is not true; if robustness is an important quality for

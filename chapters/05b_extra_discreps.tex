@@ -148,7 +148,7 @@
           a general definition: ``testing to determine the correctness of the
           pay table implementation, the random number generator results, and
           the return to player computations''.
-    \item % Discrep count (DEFS, WRONG): ISTQB
+    \item % Discrep count (DEFS, WRONG): ISTQB      
           A similar issue exists with multiplayer testing, where its
           definition specifies ``the casino game world'' \citepISTQB{}.
     \item % Discrep count (DEFS, REDUN): ISTQB
@@ -156,14 +156,12 @@
           is not helpful: ``testing based on an analysis of the specification
           of the component or system'' \citepISTQB{}.
     \item % Discrep count (TERMS, WRONG): ISTQB
-          % {Bluejay2024} not included as part of this discrepancy since it
-          % is used as the ground truth
+          % Ground truth: {Bluejay2024}
           ``Par sheet testing'' from \citepISTQB{} seems to refer to the
-          specific example brought up in \hyperref[specificISTQB]
-          {this definition discrepancy} and does not seem more widely
-          applicable, since a ``PAR sheet'' is ``a list of all the symbols
-          on each reel of a slot machine'' \citep{Bluejay2024}.%
-          \todo{Does this belong here?}
+          specific example mentioned in \discrepref{specific-istqb} and does
+          not seem more widely applicable, since a ``PAR sheet'' is ``a list of
+          all the symbols on each reel of a slot machine''
+          \citep{Bluejay2024}.\todo{Does this belong here?}
     \item % Discrep count (CITES, WRONG): ISTQB
           The source that \citetISTQB{} cite for the definition of ``test
           type'' does not seem to actually provide a definition.
@@ -251,13 +249,12 @@
           \citeauthor{SWEBOK2024} does not specify this caveat
           \citeyearpar[p.~5-13]{SWEBOK2024}.
     \item % Discrep count (PARS, WRONG): {PetersAndPedrycz2000}
-          % Other sources not included as part of this discrepancy since they
-          % are used as the ground truth
+          % Ground truth: implied by {IEEE2021}
           \refHelper \citeauthor{PetersAndPedrycz2000} \ifnotpaper imply \else
               implies \fi that decision coverage is a child of both \acs{c-use}
           coverage \emph{and} \acs{p-use} coverage \citeyearpar[Fig.~12.31]{
               PetersAndPedrycz2000}; this seems incorrect, since decisions are
-          the result of \acsp{p-use}, \emph{not} \acsp{c-use}, and only the
+          the result of \acsp{p-use} (\emph{not} \acsp{c-use}) and only the
           \acs{p-use} relation is implied by \citep[Fig.~F.1%
               \todo{OG Reid 1996}]{IEEE2021}.
     \item % Discrep count (DEFS, CONTRA): {IEEE2017} | {SWEBOK2014} | {vanVliet2000}
@@ -298,7 +295,7 @@
           interchangeably, which would incorrectly imply that they are synonyms.
     \item % Discrep count (TERMS, WRONG): {Kam2008}
           \refHelper \citet{Kam2008} misspells ``state-based'' as ``state-base''
-          \citetext{pp.~13,~15} and ``stated-base'' \citetext{Tab.~1}.
+          \citetext{pp.~13, 15} and ``stated-base'' \citetext{Tab.~1}.
     \item % Discrep count (CATS, OVER): {Gerrard2000a}
           ``Visual browser validation'' is described as both static \emph{and}
           dynamic in the same table \citep[Tab.~2]{Gerrard2000a}, even though
@@ -318,22 +315,30 @@
           the four test priorities'' \citetext{p.~13}; I think usability and/or
           performance would have made sense.
     \item % Discrep count (SYNS, WRONG): {SneedAndGöschl2000}
+          % Ground truth: {SakamotoEtAl2013}
           % Label WRONG dubious-syns
           \refHelper \citet[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88}
           \multiAuthHelper{give} ``white-box testing'', ``grey-box testing'',
           and ``black-box testing'' as synonyms for ``module testing'',
           ``integration testing'', and ``system testing'', respectively, but
-          this mapping is incorrect; black-box testing can be performed on a
-          module, for example\todo{find source}.
+          this mapping is incorrect; for example,
+          \citet[pp.~345--346]{SakamotoEtAl2013} \multiAuthHelper{describe}
+          ``black-box integration testing''\todo{find more examples}.
     \item % Discrep count (SYNS, WRONG): {SneedAndGöschl2000}
           % Label WRONG dubious-red-box-syn
           The previous discrepancy makes the claim that
           ``red-box testing'' is a synonym for ``acceptance testing''
           \citep[p.~18]{SneedAndGöschl2000} lose credibility.
-    \item % Discrep count (SYNS, WRONG): implied by {Kam2008}
-          \refHelper \citet[p.~46]{Kam2008} seems to imply that ``mutation
-          testing'' is a synonym of ``back-to-back testing''
-          but these are two quite distinct techniques.
+    \item % Discrep count (SYNS, WRONG): {Kam2008}
+          % Ground truth: {SWEBOK2024} {vanVliet2000}
+          \refHelper \citet[p.~46]{Kam2008} gives ``mutation testing'' as a
+          synonym of ``back-to-back testing''; while the two are related
+          \citep[p.~30]{IEEE2010}, the variants used in mutation testing are
+          generated or designed to be detected as incorrect by the test suite
+          \ifnotpaper (\citealp[p.~5\=/15]{SWEBOK2024};
+              similar in \citealp[pp.~428--429]{vanVliet2000}) \else
+              [TODO: format citation] \fi which is not a requirement of
+          back-to-back testing.
     \item % Discrep count (SYNS, AMBI): implied by {Kam2008}
           ``Conformance testing'' is implied to be a synonym of ``compliance
           testing'' by \citet[p.~43]{Kam2008} which only makes sense because
