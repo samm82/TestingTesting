@@ -78,10 +78,23 @@
               runtime errors, and logical errors'' \citep[p.~16\=/13, cf.
                   p.~18\=/13]{SWEBOK2024} since they seem to be in different
               domains. Does that make sense? How should I document this?}
+    \item % Discrep count (TERMS, AMBI): {IEEE2019} {IEEE2010} | {SWEBOK2024}
+          % {vanVliet2000} not included as part of this discrepancy since it
+          % is used as the ground truth
+          \refHelper{} \citet[p.~1\=/1]{SWEBOK2024} defines ``defect'' as ``an
+          observable difference between what the software is intended to do and
+          what it does'', but this seems to match the definition of
+          ``failure'': the inability of a system ``to perform a required
+          function or \dots{} within previously specified limits'' \ifnotpaper
+              (\citealp[p.~7]{IEEE2019}; \citeyear[p.~139]{IEEE2010}%
+              \todo{OG ISO/IEC, 2005}; similar in \citealp[p.~400]{vanVliet2000})
+          \else [TODO: format citation] \fi that is ``externally visible''
+          \ifnotpaper (\citealp[p.~7]{IEEE2019}; similar in
+              \citealp[p.~400]{vanVliet2000})\else [TODO: format citation]\fi.
     \item % Discrep count (TERMS, AMBI): {SWEBOK2024}
           % {vanVliet2000} not included as part of this discrepancy since it
           % is used as the ground truth
-          \refHelper{} \citet[p.~4\=/11]{SWEBOK2024} says ``fault tolerance is
+          Similarly, \citet[p.~4\=/11]{SWEBOK2024} says ``fault tolerance is
           a collection of techniques that increase software reliability by
           detecting errors and then recovering from them or containing their
           effects if recovery is not possible.'' This should either be called
