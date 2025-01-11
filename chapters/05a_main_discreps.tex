@@ -116,11 +116,11 @@
 
           % STD | META
     \item % Discrep count (TERMS, WRONG): {SWEBOK2024}
-          % Ground truth: {SWEBOK2024} {vanVliet2000}
+          % Ground truth: {IEEE2010} {SWEBOK2024} {vanVliet2000}
           Since ``error'' and ``fault'' have distinct meanings \ifnotpaper
-              (\citealp[pp.~5\=/3, 12\=/3]{SWEBOK2024};
+              (\citealp[pp.~128, 140]{IEEE2010}; \citealp[p.~12\=/3]{SWEBOK2024};
               \citealp[pp.~399--400]{vanVliet2000})\else
-              \cite[pp.~5\=/3, 12\=/3]{SWEBOK2024},
+              \cite[pp.~128, 140]{IEEE2010}, \cite[p.~12\=/3]{SWEBOK2024},
               \cite[pp.~399--400]{vanVliet2000}\fi, error guessing should
           instead be called ``fault guessing'' if it ``anticipate[s] the most
           plausible faults in each \acs{sut}'' \citep[p.~5\=/13]{SWEBOK2024}.
@@ -254,6 +254,21 @@
           that multiple condition coverage (which seems to be a synonym of
           condition coverage \citetext{p.~422}) does not subsume and is not
           subsumed by path coverage.
+    \item % Discrep count (SYNS, WRONG): {Patton2006}
+          % Ground truth: {IEEE2010} {SWEBOK2024} {vanVliet2000}
+          The differences between the terms ``error'', ``failure'' and
+          ``fault'' are significant and meaningful \ifnotpaper
+              (\citealp[pp.~128, 139--140]{IEEE2010};
+              \citealp[p.~12\=/3]{SWEBOK2024};
+              \citealp[pp.~399--400]{vanVliet2000})\else
+              \cite[p.~12\=/3]{SWEBOK2024}, \cite[pp.~128, 139--140]{IEEE2010},
+              \cite[pp.~399--400]{vanVliet2000}\fi, but \citet[p.~14]{Patton2006}
+          does away with them, saying ``there's no reason to dice words'' and
+          to ``just call it what it is and get on with it''. These terms, along
+          with ``defect'', ``problem'', ``incident'', ``anomaly'', ``variance'',
+          ``inconsistency'', ``feature'' (!), and ``a list of unmentionable
+          terms'' are abandoned in favour of the chosen term ``bug''
+          \citetext{pp.~13--14}.
     \item % Discrep count (DEFS, CONTRA): {IEEE2022} | {Patton2006}
           \loadDiscrep{}
     \item % Discrep count (DEFS, CONTRA): {IEEE2021} | {Patton2006}
@@ -270,7 +285,7 @@
     \item % Discrep count (SYNS, AMBI): ISTQB | {Patton2006}
           % TODO: NEAR SYNS?
           \refHelper \citetISTQB{} \multiAuthHelper{claim} that code inspections
-          are related to peer reviews but \citet[pp.~94-95]{Patton2006} makes
+          are related to peer reviews but \citet[pp.~94--95]{Patton2006} makes
           them quite distinct.
     \item % Discrep count (SYNS, CONTRA): ISTQB | {PetersAndPedrycz2000}
           % Label SYNS walkthrough-syns
@@ -291,7 +306,7 @@
           \refHelper \citet[p.~92\ifnotpaper, emphasis added\fi]{Patton2006}
           says that reviews are ``\emph{the} process[es] under which static
           white-box testing is performed'' but correctness proofs are given
-          as another example by \citet[pp.~418-419]{vanVliet2000}.
+          as another example by \citet[pp.~418--419]{vanVliet2000}.
 
           % TEXT | PAPER
     \item % Discrep count (DEFS, WRONG): {Kam2008}
