@@ -16,29 +16,36 @@ methodology follows the following steps:
 \subsection{Sources}
 \label{sources}
 As there is no single authoritative source on software testing terminology,
-we need to look at many to see how various terms are used in practice.
-Starting from some widely used\todo{Justified in their respective sections;
-    should I put pointers here?} sources (some IEEE standards and the
-\acf{swebok}, \suggSrcs{}), we then use a version of ``snowball sampling'' to
-gather further sources. Snowball sampling ``is commonly used to locate hidden
-populations \dots{} [via] referrals from initially sampled respondents to other
-persons'' \citep{Johnson2014}. We apply this concept to ``referrals'' between
-sources. \addTextEx{} We also ``snowball'' on terminology itself in a similar
-manner; when a term arises that requires more investigation (e.g., it is
-undefined or unclear), a miniature literature review is performed in this
-subset to ``fill in'' this missing information (see \Cref{undef-terms}). These
-additional sources may then be investigated in their entirety (as opposed to
-just the original subset of interest) if they provide more information and are
-``trustworthy'', where more trustworthy sources:
+we need to look at many sources to observe how this terminology is used in
+practice. Since we are particularly interested in software engineering, we
+start from the vocabulary document for systems and software engineering%
+\qtodo{Better name for this?}
+\citep{IEEE2017} and two versions of the \acf{swebok}---the newest
+one \citep{SWEBOK2014} and one submitted for public review\footnote{
+    \refHelper \citep{SWEBOK2024} has been published since we investigated
+    these sources; if time permits, we will revisit this published version.
+} \citep{SWEBOK2024}---as \suggSrcs{}\todo{
+    These are further justified later; should I put pointers here?
+}. To gather further sources, we then use a version of ``snowball sampling'',
+which ``is commonly used to locate hidden populations \dots{} [via] referrals
+from initially sampled respondents to other persons'' \citep{Johnson2014}. We
+apply this concept to ``referrals'' between sources. \addTextEx{} We similarly
+``snowball'' on terminology itself; when a term requires more investigation
+(e.g., its definition is missing or unclear), we perform a
+miniature literature review on this subset to ``fill in'' this missing
+information (see \Cref{undef-terms}). If these additional sources provide more
+information and are ``trustworthy'', we may then investigate them in their
+entirety (as opposed to just the original subset of interest). We define a
+source to be ``trustworthy'' if it:
 \begin{enumerate}
-    \item have gone through a peer-review process,
-    \item are written by numerous, well-respected authors,
-    \item are informed by many sources, and
-    \item are accepted and used in the field of software.
+    \item has gone through a peer-review process,
+    \item is written by numerous, well-respected authors,
+    \item is informed by many sources, and
+    \item is accepted and used in the field of software.
 \end{enumerate}
 
-For ease of discussion and analysis, the complete set of sources can be grouped
-based on their format, method of publication, and this metric of
+For ease of discussion and analysis, we group the complete set of sources into
+``tiers'' based on their format, method of publication, and this metric of
 ``trustworthiness''. We therefore create the following tiers, given in order of
 descending trustworthiness: established standards (\Cref{stds}), terminology
 collections (\Cref{metas}), textbooks (\Cref{texts}), and papers and other
