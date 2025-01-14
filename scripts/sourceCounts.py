@@ -36,13 +36,19 @@ sources.add("ISTQB2024")
 # Omit internal paper references
 sources = {s for s in sources if not s.startswith(tuple(INTERNAL_REFS))}
 
+ONLY_IEEE = {"2012"}
 # Based on ChatGPT
 def sort_key(s: str, cat: SrcCat):
     match = re.search(r'(\d+)', s)
     year = -int(match.group())
     end = s[match.end():]
     start = s[:match.start()]
-    return (start, year, end) if cat == SrcCat.STD else (year, end, start)
+    if cat == SrcCat.STD:
+        # Second IEEE for sources without ISO/IEC
+        start = ["IEEE", "IEEE", "ISO_IEC", "ISO"].index(start)
+        if not start and str(-year) in ONLY_IEEE:
+            start = 1
+    return (start, year, end)
 
 unknownSpaces = {s for s in sources if " " in s and s not in
                 # List of sources with spaces that can be parsed by just removing them
