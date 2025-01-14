@@ -38,6 +38,37 @@
           % Discrep count (PARS, CONTRA): ISTQB | {Firesmith2015}
           of integration testing by \citetISTQB{}
           and of system testing by \citet[p.~23]{Firesmith2015}.
+    \item % Discrep count (TERMS, WRONG): {IEEE2021} {SWEBOK2024} {SWEBOK2014}
+          % Ground truth: {IEEE2010} {SWEBOK2024} {vanVliet2000} implied by {SWEBOK2014} {vanVliet2000}
+          Since errors are distinct from defects/faults \ifnotpaper
+              (\citealp[pp.~128, 140]{IEEE2010}; \citealp[p.~12\=/3]{SWEBOK2024};
+              \citealp[pp.~399--400]{vanVliet2000})\else
+              \cite[p.~12\=/3]{SWEBOK2024}, \cite[pp.~128, 140]{IEEE2010},
+              \cite[pp.~399--400]{vanVliet2000}\fi, error guessing should
+          instead be called ``defect guessing'' if it is based on a ``checklist
+          of potential defects'' \citep[p.~29]{IEEE2021} or ``fault guessing''
+          if it is a ``fault-based technique'' \citep[p.~4\=/9]{SWEBOK2014}
+          that ``anticipate[s] the most plausible faults in each \acs{sut}''
+          \citep[p.~5\=/13]{SWEBOK2024}. One (or both) of these proposed terms
+          may be useful in tandem with ``error guessing'', which would focus on
+          errors as traditionally defined; this would be a subapproach of
+          error-based testing (implied by \citealp[p.~399]{vanVliet2000}).
+    \item % Discrep count (TERMS, WRONG): {IEEE2017} {Firesmith2015} {vanVliet2000}
+          % Discrep count (SYNS, WRONG): {IEEE2017} {vanVliet2000}
+          % Ground truth: {IEEE2010} {SWEBOK2024} {vanVliet2000}
+          Similarly, ``fault seeding'' is not a synonym of ``error seeding''
+          as claimed by \ifnotpaper (\citealp[p.~165]{IEEE2017};
+              \citealp[p.~427]{vanVliet2000})\else \cite[p.~165]{IEEE2017} and
+              \cite[p.~427]{vanVliet2000}\fi. The term ``error seeding'', used
+          by \ifnotpaper (\citealp[p.~165]{IEEE2017}; \citealp[p.~34]{Firesmith2015};
+              \citealp[p.~427]{vanVliet2000})\else \citealp[p.~34]{Firesmith2015},
+              \citealp[p.~165]{IEEE2017}, and \citealp[p.~427]{vanVliet2000}\fi,
+          should be abandoned in favour of ``fault seeding'', as it is defined
+          as the ``process of intentionally adding known faults to those
+          already in a computer program \dots{} [to] estimat[e] the number of
+          faults remaining'' \citep[p.~165]{IEEE2017} based on the ratio
+          between the number of new faults and the number of introduced faults
+          that were discovered \citep[p.~427]{vanVliet2000}.
     \item % Discrep count (DEFS, MISS): {IEEE2017}
           Similarly, component testing, integration testing, and component
           integration testing are all listed in \citep{IEEE2017}, but ``component
@@ -115,21 +146,6 @@
           which seems to refer to this definition of ``error''.
 
           % STD | META
-    \item % Discrep count (TERMS, WRONG): {IEEE2021} {SWEBOK2024} {SWEBOK2014}
-          % Ground truth: {IEEE2010} {SWEBOK2024} {vanVliet2000} implied by {SWEBOK2014} {vanVliet2000}
-          Since errors are distinct from defects/faults \ifnotpaper
-              (\citealp[pp.~128, 140]{IEEE2010}; \citealp[p.~12\=/3]{SWEBOK2024};
-              \citealp[pp.~399--400]{vanVliet2000})\else
-              \cite[p.~12\=/3]{SWEBOK2024}, \cite[pp.~128, 140]{IEEE2010},
-              \cite[pp.~399--400]{vanVliet2000}\fi, error guessing should
-          instead be called ``defect guessing'' if it is based on a ``checklist
-          of potential defects'' \citep[p.~29]{IEEE2021} or ``fault guessing''
-          if it is a ``fault-based technique'' \citep[p.~4\=/9]{SWEBOK2014}
-          that ``anticipate[s] the most plausible faults in each \acs{sut}''
-          \citep[p.~5\=/13]{SWEBOK2024}. One (or both) of these proposed terms
-          may be useful in tandem with ``error guessing'', which would focus on
-          errors as traditionally defined; this would be a subapproach of
-          error-based testing (implied by \citealp[p.~399]{vanVliet2000}).
     \item % Discrep count (CATS, WRONG): ISTQB
           % Ground truth: {IEEE2022} {IEEE2021} {IEEE2017}
           \refHelper \citetISTQB{} \ifnotpaper classify \else classifies \fi
