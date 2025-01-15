@@ -153,9 +153,7 @@ The full set of sources that comprise this tier is \paperSources{2}.
 \ifnotpaper\else
     % Only top or bottom to comply with IEEE guidelines
     \begin{table*}[t!]
-        %     \begin{minipage}{\linewidth}
         \ieeeCatsTable{}
-        %     \end{minipage}
     \end{table*}
 \fi
 
@@ -231,7 +229,18 @@ approach being categorized as a category from \Cref{tab:ieeeCats}
     \emph{evaluating} testing as opposed to methods for \emph{performing} it.
     The related test approaches that seek to maximize these metrics are instead
     captured as kinds of coverage-driven testing (see \Cref{cov-test}) and
-    experience-based testing \citep[p.~34]{IEEE2022}. \par \fi
+    experience-based testing \citep[p.~34]{IEEE2022}.
+
+    \afterpage{
+        \begin{landscape}
+            % Moved earlier to display nicely in paper
+            \ieeeCatsTable{}
+            \newpage
+            % Omitted from paper for brevity
+            \otherCatsTable{}
+        \end{landscape}
+    }
+\fi
 Excluding \ifnotpaper our proposed \else this \fi ``artifact'' category, the
 categories given in \Cref{tab:ieeeCats} seem to be orthogonal. For
 example, ``a test type can be performed at a single test level or across
@@ -406,14 +415,6 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     categories that clash or overlap with these categories. These are given in
     \Cref{tab:otherCats} and may provide other perspectives when determining
     if \citep{IEEE2022}'s categorization is sufficient.
-
-    \begin{landscape}
-        % Moved earlier to display nicely in paper
-        \ieeeCatsTable{}
-        \newpage
-        % Omitted from paper for brevity
-        \otherCatsTable{}
-    \end{landscape}
 
     There are many other ways to categorize test approaches given in the literature.
     These are less-defined and seem to focus on specific categories from
