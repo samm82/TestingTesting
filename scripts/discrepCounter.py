@@ -212,7 +212,7 @@ def outputDiscreps():
                         dict[discGroup] = [re.sub(
                             r"\s+% Label [A-Z]+ [a-z\-]+\s+",
                             "\n          ".join(
-                                ["", "\\\\phantomsection{}", f"\\\\label{{{label}-discrep}}", ""]
+                                ["", "\\\\phantomsection{}", f"\\\\label{{{label}}}", ""]
                                 if labelGroup == discGroup.name else ["", ""]),
                             line) for line in dict[discGroup]]
                 except AttributeError:
