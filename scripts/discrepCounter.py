@@ -314,7 +314,7 @@ def outputDiscreps():
                                 "\\end{itemize}", "\\fi"]
             writeFile(discrepGroup[k], f"{shortname}Discrep{k.name.title()}", True)
 
-    pieCharts = []
+    discrepPies = []
     smntcTotal, sntxTotal = [], []
     def totalHelper(total, new):
         return [a + b for a, b in itertools.zip_longest(
@@ -348,7 +348,7 @@ def outputDiscreps():
         colors = [DEFAULT_COLORS[i] for i, slice in enumerate(slices) if slice[0]]
 
         # LaTeX from https://tex.stackexchange.com/a/196483/192195
-        pieCharts.append(["\\begin{subfigure}[t]{0.475\\textwidth}",
+        discrepPies.append(["\\begin{subfigure}[t]{0.475\\textwidth}",
                           "\\begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]",
                           f"   \\pie[text=legend, sum=auto, hide number, color={{{", ".join(colors)}}}]{{",
                           ",\n".join(
@@ -363,7 +363,7 @@ def outputDiscreps():
     writeFile([formatOutput(smntcTotal)], f"totalSmntcDiscBrkdwn", True)
     writeFile([formatOutput(sntxTotal)],  f"totalSntxDiscBrkdwn", True)
 
-    pieCharts.append(["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
+    discrepPies.append(["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
                         "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",
                         "\\node[label=center:Legend] {{}}; \\\\"] +
                         [f"\\node[thick, shape=rectangle, draw=black, fill={DEFAULT_COLORS[i]}, label=right:{{{slice[1]}}}]({i}) {{}}; \\\\"
@@ -372,7 +372,7 @@ def outputDiscreps():
 
     # From ChatGPT
     sepPieCharts: list[str] = []
-    for i, item in enumerate(pieCharts):
+    for i, item in enumerate(discrepPies):
         sepPieCharts += item
         if i % 2:
             sepPieCharts.append("\\vskip\\baselineskip")
@@ -381,4 +381,4 @@ def outputDiscreps():
 
     writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
                 ["\\caption{Sources of discrepancies based on \\hyperref[sources]{source tier}.}",
-                "\\label{fig:discrepSources}", "\\end{figure*}"], "pieCharts")
+                "\\label{fig:discrepSources}", "\\end{figure*}"], "discrepPies")
