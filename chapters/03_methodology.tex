@@ -850,3 +850,45 @@ assumption can be made that about \the\numexpr 100 - 100 * (\UndefAfter -
 included a definition):
 
 \input{build/undefTerms}
+
+In addition to terms with missing definitions, some terms do not appear in
+the literature at all! While most test approaches arise as a result of our
+snowballing approach, we each have preexisting knowledge of what test
+approaches exist (a form of experience-based testing, if you will%
+\qtodo{Is this ``joke'' too distracting?}).
+As an example, we are surprised that property-based testing is not mentioned
+in any sources investigated, even using it as a target ``stopping point''
+throughout this process\thesisissueref{57,81,88,125}\qtodo{I think these issue
+    refs, along with some others may actually be worth keeping in our final
+    thesis/paper; thoughts?}. Test approaches such as these that arise
+independently of snowballing may serve as starting points for continuing
+research if they are not mentioned by the literature. The following terms come
+from previous knowledge, conversations with colleagues, research for other
+projects, or ad hoc cursory research to see what other test approaches exist:
+\ifnotpaper \begin{multicols}{2} \fi
+        \begin{enumerate}
+            \item Chaos engineering
+            \item Chosen-ciphertext attacks
+            \item Concolic testing
+            \item Concurrent testing
+            \item Destructive testing
+            \item Dogfooding
+            \item Implementation-based testing
+            \item Interaction-based testing
+            \item Lunchtime attacks\ifnotpaper%
+                      \footnote{In previous meetings, Dr.~Smith mentioned
+                          that with the number of test approaches that suggest
+                          that people just like to label everything as
+                          ``testing'', he would not be surprised if something
+                          like ``Monday morning testing'' existed. While
+                          independently researching chosen-ciphertext attacks
+                          out of curiosity, this prediction of a time-based
+                          test approach came true with ``lunchtime attacks''.}
+                  \fi
+            \item Parallel testing
+            \item Property-based testing
+            \item Pseudo-random bit testing
+            \item Rubber duck testing
+            \item Shadow testing
+        \end{enumerate}
+        \ifnotpaper \end{multicols} \fi

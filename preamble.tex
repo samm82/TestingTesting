@@ -18,10 +18,17 @@
 \usepackage{amsthm}
 \usepackage{mathrsfs}
 \usepackage[pdf]{graphviz}
-\usepackage{longtable}
 \usepackage{svg}
 \usepackage{mathpartir}
 \usepackage{braket}
+
+\usepackage{longtable}
+\usepackage{multicol}
+\usepackage{afterpage}
+
+% Temporarily disable footnoterules, since I can't get them working with longtblr
+% From https://latex.org/forum/viewtopic.php?t=22375
+\usepackage[norule]{footmisc}
 
 % Since LaTeX doesn't, and many fonts rarely, fully support unicode, we need to
 % manually create characters to replace missing glyphs.
@@ -67,16 +74,10 @@
     headheight=\thesisMarginHeadheight{},
 ]{geometry}
 
-\usepackage{afterpage}
-
 \ifresetfootnotecounter
     % Make footnote counter reset for each new page.
     \usepackage{footnpag}
 \fi
-
-% Temporarily disable footnoterules, since I can't get them working with longtblr
-% From https://latex.org/forum/viewtopic.php?t=22375
-\usepackage[norule]{footmisc}
 
 % Set spacing according to manifest
 \usepackage{setspace}
