@@ -842,17 +842,20 @@ missing definitions (along with any relations), essentially ``snowballing''
 on these terms. This process uncovers even more approaches, although some are
 out of scope, such as \acf{emsec} testing\ifnotpaper, \else\ and \fi
 aspects of \acf{orthat} \ifnotpaper and loop testing \fi (see \Cref{hard-test})%
-\ifnotpaper, and HTML testing (see \Cref{lang-test})\fi.
-
-The following terms (and their respective related terms) were explored
-in the following sources, bringing the number of testing
-approaches from \the\TotalBefore{} to \the\TotalAfter{} and the number of
-\emph{undefined} terms from \the\UndefBefore{} to \the\UndefAfter{} (the
-assumption can be made that about \the\numexpr 100 - 100 * (\UndefAfter -
-\UndefBefore) / (\TotalAfter - \TotalBefore)\relax\% of added terms also
-included a definition):
-
+\ifnotpaper, and HTML testing (see \Cref{lang-test})\fi. The following terms
+(and their respective related terms) were explored in the sources given:
 \input{build/undefTerms}
+Applying our procedure from \Cref{procedure} to these sources brings the number
+of testing approaches from \the\TotalBefore{} to \the\TotalAfter{} and the
+number of \emph{undefined} terms from \the\UndefBefore{} to \the\UndefAfter{}%
+\ifnotpaper\ (see \Cref{fig:undefPies})\fi. This implies that about
+\the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) / (\TotalAfter -
+\TotalBefore)\relax\% of added test approaches are defined, which helps verify
+that our procedure constructively uncovers new terminology.
+
+\ifnotpaper
+    \input{assets/graphs/undefPies}
+\fi
 
 In addition to terms with missing definitions, some terms do not appear in
 the literature at all! While most test approaches arise as a result of our

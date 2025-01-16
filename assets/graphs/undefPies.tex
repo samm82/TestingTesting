@@ -1,0 +1,38 @@
+\begin{figure*}
+    \begin{subfigure}[c]{0.35\linewidth}
+        \centering
+        \begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]
+            \pie[text=inside, sum=auto, color={blue!60, orange!60}]{
+                {\the\numexpr \TotalBefore - \UndefBefore\relax}/,
+                {\the\UndefBefore}/
+            }
+        \end{tikzpicture}
+        \caption{The \the\TotalBefore{} approaches before investigating undefined terms.}
+        \label{fig:undefPiesBefore}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.35\linewidth}
+        \centering
+        \begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]
+            \pie[text=inside, sum=auto, color={blue!60, orange!60}]{
+                {\the\numexpr \TotalAfter - \UndefAfter\relax}/,
+                {\the\UndefAfter}/
+            }
+        \end{tikzpicture}
+        \caption{The \the\TotalAfter{} approaches after investigating undefined terms.}
+        \label{fig:undefPiesAfter}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[c]{0.2\linewidth}
+        \centering
+        \begin{tikzpicture}
+            \matrix [thick, draw=black] {
+            \node[label=right:{Legend}] {}; \\
+            \node[thick, shape=rectangle, draw=black, fill=blue!60,   label=right:{Defined}](0) {}; \\
+            \node[thick, shape=rectangle, draw=black, fill=orange!60, label=right:{Undefined}](1) {}; \\
+            };
+        \end{tikzpicture}
+    \end{subfigure}
+    \caption{Breakdown of how many test approaches are undefined.}
+    \label{fig:undefPies}
+\end{figure*}
