@@ -531,7 +531,7 @@ Synonym relations are often given explicitly in the literature. For example,
 testing'', meaning they are synonyms. ``Black-box testing'' is likewise given
 under ``functional testing'' in \citeyearpar[p.~196]{IEEE2017}, meaning it is
 also a synonym for ``specification-based testing'' through transitivity%
-\todo{Is this clear/correct? Should I explain this more?}.
+\qtodo{Is this clear/correct? Should I explain this more?}.
 However, these relations can also be less ``rigid'' (see \Cref{rigidity});
 ``functional testing'' is listed in a \emph{cf.} footnote to the glossary entry
 for ``specification-based testing'' \citeyearpar[p.~431]{IEEE2017}, which
@@ -578,6 +578,10 @@ of the multi-faceted ``parent''. This nomenclature also extends to other
 categories (such as ``subtype''; see \Cref{categories-observ,tab:ieeeCats})
 and software qualities (``subquality''\ifnotpaper; see \Cref{qual-test}\fi).
 There are many reasons two approaches may have a parent-child relation, such as:
+\qtodo{Should I add more? This would require me to go through my glossary and
+    reverse engineer why I considered parent-child relations to be explicit. In
+    hindsight, I should have recorded this as I went, and I'm not sure how
+    worth it it would be to do now}
 \begin{enumerate}
     \item \textbf{The parent approach is part of a mutually exclusive set.}
           It is often trivial to classify a test approach as a child of one of
@@ -603,6 +607,8 @@ There are many reasons two approaches may have a parent-child relation, such as:
 \subsubsection{Rigidity}
 \label{rigidity}
 
+\def\impKeywordsCode{\seeSrcCode{55f4bf2}{helpers}{16}{32}}
+
 A consequence of the use of natural language and the lack of standardization
 is the considerable degree of nuance that can get lost when referring to
 information sources. \rigidBlurb{} and capture it when citing sources. This
@@ -611,7 +617,7 @@ for example, we can view implicit discrepancies separately in
 \Cref{tab:sntxDiscreps,tab:smntcDiscreps}, since additional context may rectify
 them. The following non-mutually exclusive reasons for information to be
 considered ``implicit'' emerged, and the given keywords are used to identify
-them \seeSrcCode{55f4bf2}{helpers}{16}{32}:
+them \impKeywordsCode{}:
 
 %% Maybe convert to \paragraph ?
 \begin{enumerate}
@@ -707,7 +713,7 @@ Discrepancies based on implicit information are themselves implicit. These are
 automatically detected when generating graphs and analyzing discrepancies
 (see \ifnotpaper \Cref{graph-gen,discrep-analysis}, respectively\else
     \Cref{tools}\fi) by looking for the indicators of uncertainty mentioned
-above \seeSrcCode{55f4bf2}{helpers}{16}{32}. These are used when creating
+above \impKeywordsCode{}. These are used when creating
 the glossaries to capture varying degrees of nuance, such as when a test
 approach ``can be'' a child of another or is a synonym of another ``most of the
 time'' but not always. \ifnotpaper As an example, \Cref{tab:parSyns} contains
