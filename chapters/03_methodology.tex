@@ -832,14 +832,17 @@ or quite broad\ifnotpaper\ (such as attacks; see \Cref{attacks}%
 \subsection{Undefined Terms}
 \label{undef-terms}
 
-The search process led to some testing approaches being
-mentioned without definition;
-\citep{IEEE2022} and \citep{Firesmith2015} in particular introduced many.
-Once the standards in \Cref{stds} had been exhausted, we devised a strategy to
-look for sources that explicitly define these terms, consistent with
-our snowballing approach. This uncovers new approaches, both in and out of
-scope (such as \acf{emsec} testing\ifnotpaper, HTML testing,\fi\ and aspects
-of orthogonal array testing\ifnotpaper\ and loop testing\fi; see \Cref{scope}).
+The literature mentions many software testing terms without defining them.
+While this includes test approaches, software qualities, and more general
+software terms, we focus on the former as the main focus of our research.
+In particular, many undefined test approaches are given by \citep{IEEE2022}
+and \citep{Firesmith2015}. Once we exhaust the standards in \Cref{stds}, we
+perform miniature literature reviews on these subsets to ``fill in'' the
+missing definitions (along with any relations), essentially ``snowballing''
+on these terms. This process uncovers even more approaches, although some are
+out of scope, such as \acf{emsec} testing\ifnotpaper, \else\ and \fi
+aspects of \acf{orthat} \ifnotpaper and loop testing \fi (see \Cref{hard-test})%
+\ifnotpaper, and HTML testing (see \Cref{lang-test})\fi.
 
 The following terms (and their respective related terms) were explored
 in the following sources, bringing the number of testing
