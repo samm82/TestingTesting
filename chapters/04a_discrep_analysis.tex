@@ -136,7 +136,7 @@ Each source is given using its BibTeX key wrapped in curly braces to mimic
 \texttt{\textbackslash citealias}. For example, the line
 \begin{displayquote}
     \texttt{\% Discrep count: \{IEEE2022\} | \{IEEE2022\} \{IEEE2017\}\\
-        $\,\hookrightarrow\,$\quad ISTQB \{Kam2008\} \{Bas2024\}}
+        \displayNL ISTQB \{Kam2008\} \{Bas2024\}}
 \end{displayquote}
 would be parsed as the example given in \Cref{discrep-analysis-example}. Since
 the IEEE documents are written by the same standards organizations
@@ -150,7 +150,7 @@ follows the same rules as the automatic discrepancy analysis
 (see \Cref{auto-discrep-analysis-rigidity}).
 \begin{displayquote}
     \texttt{\% Discrep count: \{IEEE2022\} implied by \{Kam2008\} |\\
-        $\,\hookrightarrow\,$\quad \{IEEE2017\} implied by \{IEEE2022\}}
+        \displayNL \{IEEE2017\} implied by \{IEEE2022\}}
 \end{displayquote}
 For example, the above line indicates that the discrepancies given below are
 present. The second discrepancy only affects \Cref{fig:discrepSources} since it
@@ -178,7 +178,7 @@ for other cases) as follows:
 \begin{displayquote}
     \texttt{\% Discrep count (TERMS, WRONG): \{Firesmith2015\}\\
         \% Ground truth: \{LiuEtAl2023\} \{MorgunEtAl1999\} \{HolleyEtAl1996\}
-        $\,\hookrightarrow\,$\quad \{HoweAndJohnson1995\}}
+        \displayNL \{HoweAndJohnson1995\}}
 \end{displayquote}
 
 \subsection{Macros}

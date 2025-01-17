@@ -97,26 +97,28 @@ the glossary at all), so the following cases are possible:
           synonyms themselves, resulting in the same possibility of the
           relation being incorrect.
 \end{description}
-\ifnotpaper These conditions are deduced from the information parsed
-    from the glossary. For example, if the entries in \Cref{tab:synExampleGlossary}
-    appear in the glossary, then they are displayed as \Cref{fig:synExampleGraph}
-    in the generated graph (note that X does not appear since it does not
-    meet the criteria given above).
-
-    \begin{table*}[hbtp!]
-        \centering
+\ifnotpaper
+    \todo{Is this multicolumn formatting OK?}
+    \begin{minipage}{0.55\textwidth}
         \begin{talltblr}[
                 note{a}={\exampleTableNote},
                 caption={\exampleTableCapHelper{synonym}{syn-rels}},
                 label={tab:synExampleGlossary}
             ]{colspec={|ll|}, rowhead = 1}
             \hline
-            \thead{Name\TblrNote{a}} & \thead{Synonym(s)}                    \\  \hline
-            E                        & F (Author, 0000; implied by 0001)     \\
-            G                        & F (Author, 0002), H (implied by 0000) \\
-            H                        & X                                     \\ \hline
+            \thead{Name\TblrNote{a}} & \thead{Synonym(s)}                \\  \hline
+            E                        & F (Author, 0000; implied by 0001) \\
+            G                        & {F (Author, 0002),                \\ \displayNL{} H (implied by 0000)} \\
+            H                        & X                                 \\ \hline
         \end{talltblr}
-    \end{table*}
+    \end{minipage} \hfill
+    \begin{minipage}{0.35\textwidth}
+        These conditions are deduced from the information parsed
+        from the glossary. For example, if the entries in \Cref{tab:synExampleGlossary}
+        appear in the glossary, then they are displayed as \Cref{fig:synExampleGraph}
+        in the generated graph (note that X does not appear since it does not
+        meet the criteria given above).
+    \end{minipage} \newpage
 
     This allows for automatic detection of some classes of discrepancies. The
     most trivial to automate is ``multi-synonym'' relations, given in
