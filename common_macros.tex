@@ -73,11 +73,15 @@
 %------------------------------------------------------------------------------
 
 \DeclareDocumentCommand\seeSrcCode{ m m m g }{%
-    (see the \href
-    {https://github.com/samm82/TestingTesting/blob/#1/scripts/#2.py\#L#3%
-        \IfNoValueF {#4} {-L#4}}
+    (see the \href{
+        https://github.com/samm82/TestingTesting/blob/#1/scripts/#2.py\#L#3%
+        \IfNoValueF{#4}{-L#4}}
     {relevant source code})%
 }
+
+\def\ourApproachGlossary{\ifblind{our test approach glossary}{\href{
+            https://github.com/samm82/TestingTesting/blob/main/ApproachGlossary.csv
+        }{our test approach glossary}}}
 
 \newcommand{\accelTolTest}{astronauts \citep[p.~11]{MorgunEtAl1999}, aviators
     \citep[pp.~27, 42]{HoweAndJohnson1995}, or catalysts
