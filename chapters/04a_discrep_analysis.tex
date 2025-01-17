@@ -147,22 +147,36 @@ The rigidity (see \Cref{rigidity}) of discrepancies can also be manually
 specified by inserting the phrase ``implied by'' after the sources of explicit
 information and before those of implicit information. Parsing this information
 follows the same rules as the automatic discrepancy analysis
-(see \Cref{auto-discrep-analysis-rigidity}). For example, the line
-
+(see \Cref{auto-discrep-analysis-rigidity}).
 \begin{displayquote}
     \texttt{\% Discrep count: \{IEEE2022\} implied by \{Kam2008\} |\\
         $\,\hookrightarrow\,$\quad \{IEEE2017\} implied by \{IEEE2022\}}
 \end{displayquote}
-
-indicates that the following discrepancies are present. The second discrepancy
-only affects \Cref{fig:discrepSources} since it is less ``rigid'' than the
-first discrepancy within standards (see \Cref{stds}). The rest increment their
-corresponding count in \Cref{fig:discrepSources,tab:sntxDiscreps,tab:smntcDiscreps}
-by only one:
-
+For example, the above line indicates that the discrepancies given below are
+present. The second discrepancy only affects \Cref{fig:discrepSources} since it
+is less ``rigid'' than the first discrepancy within standards (see \Cref{stds}).
+The rest increment their corresponding count in
+\Cref{fig:discrepSources,tab:sntxDiscreps,tab:smntcDiscreps} by only one:
 \begin{itemize}
     \item an explicit discrepancy between documents by
           \begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper},
     \item an implicit discrepancy within a single document, and
     \item an implicit discrepancy between a paper and a standard.
 \end{itemize}
+
+Occasionally, a source from a lower tier is used as the ``ground truth'' for a
+discrepancy. For example, \tolTestingDiscrep*{} This discrepancy is supported
+by additional papers found via a miniature literature review (described in
+\Cref{undef-terms}) from a lower source tier than \citep{Firesmith2015}
+(which is a terminology collection; see \Cref{sources}). However, this
+discrepancy is really based in \citep{Firesmith2015} and not in these
+additional papers, but if these sources where included as detailed above,
+this is the way it would be counted. Therefore, we document these ``ground
+truth'' sources separately to track them for traceability without incorrectly
+counting discrepancies. This is done for this specific example (and similarly
+for other cases) as follows:
+\begin{displayquote}
+    \texttt{\% Discrep count (TERMS, WRONG): \{Firesmith2015\}\\
+        \% Ground truth: \{LiuEtAl2023\} \{MorgunEtAl1999\} \{HolleyEtAl1996\}
+        $\,\hookrightarrow\,$\quad \{HoweAndJohnson1995\}}
+\end{displayquote}

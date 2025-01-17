@@ -115,6 +115,14 @@
 \def\loadDiscrep{Load testing is performed with loads ``between anticipated
     conditions of low, typical, and peak usage'' \citep[p.~5]{IEEE2022} or
     loads that are as large as possible \citep[p.~86]{Patton2006}.}
+\NewDocumentCommand{\tolTestingDiscrep}{s}{%
+    \IfBooleanTF#1{t}{T}he terms ``acceleration tolerance testing'' and
+    ``acoustic tolerance testing'' seem to only refer to software testing in
+    \citep[p.~56]{Firesmith2015}; elsewhere, they seem to refer to
+    testing the acoustic tolerance of rats \citep{HolleyEtAl1996} or the
+    acceleration tolerance of \accelTolTest{}, which don't exactly seem
+    relevant\dots\todo{Is this a scope discrep?}%
+}
 
 \def\suggSrcs{\href
     {https://github.com/samm82/TestingTesting/issues/14\#issuecomment-1839922715}
