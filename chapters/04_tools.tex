@@ -103,17 +103,20 @@ the glossary at all), so the following cases are possible:
     in the generated graph (note that X does not appear since it does not
     meet the criteria given above).
 
-    \begin{table}[hbtp!]
+    \begin{table*}[hbtp!]
         \centering
-        \begin{tabular}{ll} \hline
-            Name & Synonym(s)                            \\ \hline
-            E    & F (Author, 0000; implied by 0001)     \\
-            G    & F (Author, 0002), H (implied by 0000) \\
-            H    & X                                     \\ \hline
-        \end{tabular}
-        \caption{Example glossary entries demonstrating how synonym relations are tracked.}
-        \label{tab:synExampleGlossary}
-    \end{table}
+        \begin{talltblr}[
+                note{a}={\exampleTableNote},
+                caption={\exampleTableCapHelper{synonym}{syn-rels}},
+                label={tab:synExampleGlossary}
+            ]{colspec={|ll|}, rowhead = 1}
+            \hline
+            \thead{Name\TblrNote{a}} & \thead{Synonym(s)}                    \\  \hline
+            E                        & F (Author, 0000; implied by 0001)     \\
+            G                        & F (Author, 0002), H (implied by 0000) \\
+            H                        & X                                     \\ \hline
+        \end{talltblr}
+    \end{table*}
 
     This allows for automatic detection of some classes of discrepancies. The
     most trivial to automate is ``multi-synonym'' relations, given in
