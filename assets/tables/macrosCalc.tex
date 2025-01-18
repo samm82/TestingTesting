@@ -11,24 +11,24 @@
     width = \linewidth, rowhead = 1
     }
     \hline
-    \thead{Macro}                                   & \thead{What it Counts}         & \thead{Value}    \\
+    \thead{Macro}                                   & \thead{What it Counts}        & \thead{Value}    \\
     \hline
-    \macro{approachCount}                           & Test approaches identified     & \approachCount{} \\
-    \macro{qualityCount}                            & Software qualities identified  & \qualityCount{}  \\
+    \macro{approachCount}                           & Test approaches identified    & \approachCount{} \\
+    \macro{qualityCount}                            & Software qualities identified & \qualityCount{}  \\
     \hline
     \macro{TotalBefore}\TblrNote{a}                 & Test approaches identified
-    before process in \Cref{undef-terms}            & \the\TotalBefore{}                                \\
+    before process in \Cref{undef-terms}            & \the\TotalBefore{}                               \\
     \macro{UndefBefore}\TblrNote{a}                 & Undefined test approaches
-    identified before process in \Cref{undef-terms} & \the\UndefBefore{}                                \\
+    identified before process in \Cref{undef-terms} & \the\UndefBefore{}                               \\
     \macro{TotalAfter}\TblrNote{a}                  & Test approaches identified
-    after process in \Cref{undef-terms}             & \the\TotalAfter{}                                 \\
+    after process in \Cref{undef-terms}             & \the\TotalAfter{}                                \\
     \macro{UndefAfter}\TblrNote{a}                  & Undefined test approaches
-    identified after process in \Cref{undef-terms}  & \the\UndefAfter{}                                 \\
+    identified after process in \Cref{undef-terms}  & \the\UndefAfter{}                                \\
     \hline
-    \macro{parSynCount}                             & Number of pairs of test
-    approaches with a child-parent \emph{and} synonym
-    relation                                        & \parSynCount{}                                    \\
-    \macro{selfCycleCount}                          & Number of test approaches that
-    are a parent of themselves                      & \selfCycleCount{}                                 \\
+    \macro{parSynCount}                             & Pairs of test approaches
+    with a child-parent \emph{and} synonym
+    relation                                        & \parSynCount{}                                   \\
+    \macro{selfCycleCount}                          & Test approaches that are
+    a parent of themselves                          & \selfCycleCount{}                                \\
     \hline
 \end{longtblr}
