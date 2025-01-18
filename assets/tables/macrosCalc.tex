@@ -1,9 +1,7 @@
-% `macro` command assisted by GitHub Copilot
-\newcommand\macro[1]{\texttt{\textbackslash#1\{\}}}
-
 \begin{longtblr}[
-    note{a} = {Calculated in \LaTeX{} from values in TODO: ref source list table.},
-    note{b} = {These macros are defined as counters to allow them to be used in
+    note{a} = {Calculated in \LaTeX{} from source tier lists; see \Cref{text-macros}.},
+    note{b} = {Alias for \texttt{\textbackslash totalSmntcDiscBrkdwn\{13\}}; see TODO: ref discrep macro table.},
+    note{c} = {These macros are defined as counters to allow them to be used in
             calculations within \LaTeX{} (such as in \Cref{undef-terms,fig:undefPies}).},
     caption = {\LaTeX{} macros for calculated values.},
     label = {tab:macrosCalc}
@@ -14,17 +12,18 @@
     \hline
     \thead{Macro}                                   & \thead{What it Counts}        & \thead{Value}    \\
     \hline
-    \macro{approachCount}                           & Test approaches identified    & \approachCount{} \\
-    \macro{qualityCount}                            & Software qualities identified & \qualityCount{}  \\
+    \macro{approachCount}                           & Identified test approaches    & \approachCount{} \\
+    \macro{qualityCount}                            & Identified software qualities & \qualityCount{}  \\
     \macro{srcCount}\TblrNote{a}                    & Sources used in glossaries    & \srcCount{}      \\
+    \macro{discrepCount}\TblrNote{b}                & Identified discrepancies      & \discrepCount{}  \\
     \hline
-    \macro{TotalBefore}\TblrNote{b}                 & Test approaches identified
+    \macro{TotalBefore}\TblrNote{c}                 & Test approaches identified
     before process in \Cref{undef-terms}            & \the\TotalBefore{}                               \\
-    \macro{UndefBefore}\TblrNote{b}                 & Undefined test approaches
+    \macro{UndefBefore}\TblrNote{c}                 & Undefined test approaches
     identified before process in \Cref{undef-terms} & \the\UndefBefore{}                               \\
-    \macro{TotalAfter}\TblrNote{b}                  & Test approaches identified
+    \macro{TotalAfter}\TblrNote{c}                  & Test approaches identified
     after process in \Cref{undef-terms}             & \the\TotalAfter{}                                \\
-    \macro{UndefAfter}\TblrNote{b}                  & Undefined test approaches
+    \macro{UndefAfter}\TblrNote{c}                  & Undefined test approaches
     identified after process in \Cref{undef-terms}  & \the\UndefAfter{}                                \\
     \hline
     \macro{parSynCount}                             & Pairs of test approaches

@@ -226,7 +226,7 @@
 \def\srcCat{\hyperref[sources]{Source Tier}}
 \def\reduns{\ifnotpaper\nameref{redun}\else Redundancies\footnote{Section omitted for brevity.}\fi}
 
-\def\totalDiscreps{\totalSmntcDiscBrkdwn{13}}
+\def\discrepCount{\totalSmntcDiscBrkdwn{13}}
 
 \def\cats{\hyperref[cats]{Categories}}
 \def\syns{\hyperref[syns]{Synonyms}}
@@ -234,6 +234,9 @@
 \def\defs{\hyperref[defs]{Definitions}}
 \def\terms{\hyperref[terms]{Terminology}}
 \def\cites{\hyperref[cites]{Citations}}
+
+% `macro` command assisted by GitHub Copilot
+\newcommand\macro[1]{\texttt{\textbackslash#1\{\}}}
 
 %------------------------------------------------------------------------------
 % TODOs
