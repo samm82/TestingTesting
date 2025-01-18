@@ -2,25 +2,33 @@
 \newcommand\macro[1]{\texttt{\textbackslash#1\{\}}}
 
 \begin{longtblr}[
-    caption={\LaTeX{} macros for calculated values.},
-    label={tab:macrosCalc}
+    note{a} = {These macros are defined as counters to allow them to be used in
+            calculations within \LaTeX{} (such as in \Cref{undef-terms,fig:undefPies}).},
+    caption = {\LaTeX{} macros for calculated values.},
+    label = {tab:macrosCalc}
     ]{
     colspec={|X[0.3,l,m]X[0.5,c,m]X[0.2,c,m]|},
     width = \linewidth, rowhead = 1
     }
     \hline
-    \thead{Macro}          & \thead{Definition}   & \thead{Value} \\
+    \thead{Macro}                                   & \thead{What it Counts}         & \thead{Value}    \\
     \hline
-    \macro{approachCount}  & Number of identified
-    test approaches        & \approachCount{}                     \\
-    \macro{qualityCount}   & Number of identified
-    software qualities     & \qualityCount{}                      \\
+    \macro{approachCount}                           & Test approaches identified     & \approachCount{} \\
+    \macro{qualityCount}                            & Software qualities identified  & \qualityCount{}  \\
     \hline
-    \macro{parSynCount}    & Number of pairs of
-    test approaches with a child-parent \emph{and} synonym
-    relation               & \parSynCount{}                       \\
-    \macro{selfCycleCount} & Number of test
-    approaches that are a parent of
-    themselves             & \selfCycleCount{}                    \\
+    \macro{TotalBefore}\TblrNote{a}                 & Test approaches identified
+    before process in \Cref{undef-terms}            & \the\TotalBefore{}                                \\
+    \macro{UndefBefore}\TblrNote{a}                 & Undefined test approaches
+    identified before process in \Cref{undef-terms} & \the\UndefBefore{}                                \\
+    \macro{TotalAfter}\TblrNote{a}                  & Test approaches identified
+    after process in \Cref{undef-terms}             & \the\TotalAfter{}                                 \\
+    \macro{UndefAfter}\TblrNote{a}                  & Undefined test approaches
+    identified after process in \Cref{undef-terms}  & \the\UndefAfter{}                                 \\
+    \hline
+    \macro{parSynCount}                             & Number of pairs of test
+    approaches with a child-parent \emph{and} synonym
+    relation                                        & \parSynCount{}                                    \\
+    \macro{selfCycleCount}                          & Number of test approaches that
+    are a parent of themselves                      & \selfCycleCount{}                                 \\
     \hline
 \end{longtblr}
