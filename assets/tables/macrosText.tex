@@ -1,19 +1,34 @@
 \begin{longtblr}[
-        caption = {\LaTeX{} macros for reused text.},
-        label = {tab:macrosText}
+    caption = {\LaTeX{} macros for reused text.},
+    label = {tab:macrosText}
     ]{
-        colspec={|ll|},
-        width = \linewidth, rowhead = 1
+    colspec={|Q[l,m]X[l,m]|},
+    width = \textwidth, rowhead = 1
     }
     \hline
-    \thead{Macro}             & \thead{Used in}                                           \\
+    \thead{Macro}             & \thead{Used in}                                                                  \\
     \hline
-    \macro{bugPattonDiscrep}  & \Cref{intro} and \discrepref{bug-patton}                  \\
-    \macro{alphaDiscrep}      & \Cref{intro} and \discrepref{alpha-def}                   \\
-    \macro{loadDiscrep}       & \Cref{intro} and \discrepref{load-def}                    \\
-    \macro{expBasedCatMain}   & \Cref{intro,multiCats}                                    \\
-    \macro{tourDiscrep}       & \Cref{intro,discreps} and \discrepref{tour-def}           \\
-    \macro{perfAsFamily}      & \Cref{method-family,classFamilyDiscrep}                   \\
-    \macro{tolTestingDiscrep} & \Cref{aug-discrep-analysis} and \discrepref{ground-truth} \\
+    \macro{bugPattonDiscrep}  & \Cref{intro} and \discrepref{bug-patton}                                         \\
+    \macro{alphaDiscrep}      & \Cref{intro} and \discrepref{alpha-def}                                          \\
+    \macro{loadDiscrep}       & \Cref{intro} and \discrepref{load-def}                                           \\
+    \macro{expBasedCatMain}   & \Cref{intro,multiCats}                                                           \\
+    \macro{tourDiscrep}       & \Cref{intro,discreps} and \discrepref{tour-def}                                  \\
+    \macro{perfAsFamily}      & \Cref{method-family,classFamilyDiscrep}                                          \\
+    \macro{tolTestingDiscrep} & \Cref{aug-discrep-analysis} and \discrepref{ground-truth}                        \\
+    \macro{accelTolTest}      & \macro{tolTestingDiscrep} and \Cref{hard-test}                                   \\
+    \hline
+    \macro{ftrnote}           & \SetCell[r=3]{l} Thesis (automated) and paper (manual)
+    versions of \Cref{tab:parSyns}                                                                               \\
+    \macro{specfn}            &                                                                                  \\
+    \macro{ucstn}             &                                                                                  \\
+    \hline
+    \macro{stds}              &
+    \Cref{fig:stdDiscrepSources,fig:sourceSummary,discrep-analysis-example,tab:sntxDiscreps,tab:smntcDiscreps}   \\
+    \macro{metas}             &
+    \Cref{fig:metaDiscrepSources,fig:sourceSummary,discrep-analysis-example,tab:sntxDiscreps,tab:smntcDiscreps}  \\
+    \macro{texts}             &
+    \Cref{fig:textDiscrepSources,fig:sourceSummary,tab:sntxDiscreps,tab:smntcDiscreps}                           \\
+    \macro{papers}            &
+    \Cref{fig:paperDiscrepSources,fig:sourceSummary,discrep-analysis-example,tab:sntxDiscreps,tab:smntcDiscreps} \\
     \hline
 \end{longtblr}
