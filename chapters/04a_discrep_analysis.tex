@@ -181,12 +181,15 @@ for other cases) as follows:
         \displayNL \{HoweAndJohnson1995\}}
 \end{displayquote}
 
-\subsection{Macros}\label{macros}
-To improve maintainability, traceability, and reproducibility, many values are
-calculated by a Python script, saved to a file, and read in to be used as a
-\LaTeX{} macro. This lets us use this macro in place of manually replacing each
-value as it changes with our research. \Cref{tab:macrosCalc} lists these
-macros, along with descriptions of what they define and their current values.
+\subsection[LaTeX Commands]{\LaTeX{} Commands}\label{macros}
+To improve maintainability, traceability, and reproducibility, we define
+helper commands (also called ``macros'') for content that is prone to change
+or used in multiple places. For example, many values are calculated by a Python
+script and saved to a file. We then assign these values to a corresponding
+\LaTeX{} macro, which we can use instead of manually replacing the value
+throughout our documents every time it changes. \Cref{tab:macrosCalc} lists
+these macros, along with descriptions of what they define and their current
+values.
 
 \input{assets/tables/macrosCalc}
 
