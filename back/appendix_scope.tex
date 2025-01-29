@@ -127,22 +127,20 @@ the following test approaches either in full or in part:
 
 \section{Static Testing}
 \label{static-test}
-Sometimes, static testing is excluded from software testing
-\ifnotpaper
-    (\citealp[p.~222]{AmmannAndOffutt2017}; \citealp[p.~13]{Firesmith2015};
-    \citealp[p.~439]{PetersAndPedrycz2000})%
-\else
-    \cite[p.~439]{PetersAndPedrycz2000}, \cite[p.~13]{Firesmith2015},
-    \cite[p.~222]{AmmannAndOffutt2017}%
-\fi, restricting ``testing'' to mean dynamic validation \citep[p.~5\=/1]{SWEBOK2024}
-or verification ``in which a system or component is
-executed'' \citep[p.~427]{IEEE2017}. However, ``terminology is not uniform
-among different communities, and some use the term `testing' to refer to
-static techniques\notDefDistinctIEEE{technique} as well''
-\citep[p.~5\=/2]{SWEBOK2024}. This is done by \citet[p.~17]{IEEE2022} and
-\citet[pp.~8--9]{Gerrard2000a}; the \ifnotpaper \else authors of the \fi former
-even explicitly \emph{exclude} static testing in another document
-\citeyearpar[p.~440]{IEEE2017}\todo{Could this be added as a scope discrepancy?}!
+Throughout the literature, static testing is more ambiguous than dynamic
+testing, with more ad hoc processes and inconsistent in/exclusion from the
+scope of software testing in general (see \discrepref{static-test-discrep}).
+Furthermore, it seems less relevant to our
+original goal (the automatic generation of tests). In particular, many
+techniques require human intervention, either by design (such as code
+inspections) or to identify and resolve false positives (such as
+intentional exceptions to linting rules). Nevertheless, understanding
+the breadth of testing approaches requires a ``complete'' picture of how
+software can be tested and how the various approaches relate to one another.
+Parts of these static approaches may even be generated in the
+future! For these reasons, we keep static testing in scope for this stage
+of our work, even though static testing will likely be removed at a later
+stage of analysis\thesisissueref{41,44} based on our original motivation.
 
 % \ifnotpaper
 
@@ -202,15 +200,3 @@ even explicitly \emph{exclude} static testing in another document
 %     \item ASCII character handling, portability, compilation warnings
 %           \citetext{p.~103}
 % \end{itemize}
-
-Static testing generally seems more ad hoc and less relevant for our
-original goal (the automatic generation of tests). In particular, many
-techniques require human intervention, either by design (such as code
-inspections) or to identify and resolve false positives (such as
-intentional exceptions to linting rules). Nevertheless, understanding
-the breadth of testing approaches requires a ``complete'' picture of how
-software can be tested and how the various approaches relate to one another.
-Parts of these static approaches may even be generated in the
-future! For these reasons, we keep static testing in scope for this stage
-of our work, even though static testing will likely be removed at a later
-step of analysis\thesisissueref{41,44} based on our original motivation.
