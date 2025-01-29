@@ -192,20 +192,22 @@ def writeFile(lines, filename: str, helper: bool = False, dir: str = "graphs"):
 
 def writeLongtblr(filename: str, caption: str, headers: list[str],
                   lines: list[str], widths: list[int] = [],
-                  footnotes: list[str] = []):
+                  footnotes: list[str] = [], toSort: bool = True,
+                  rowHeadSpec: str = "c", rowDataSpec: str = "l"):
     # Used for ensuring correct number of xcolumns
     xcolCount = len(headers) - 1
     assert all(line.count("&") == xcolCount for line in lines)
-    colSpecList = ["Q[c,m]"]
+    colSpecList = [f"Q[{rowHeadSpec},m]"]
 
     # If all given widths are equal, don't change them
     if len(set(widths)) > 1:
         # Include first column
         assert len(widths) == xcolCount
         scale = sum(widths) / len(widths)
-        colSpecList += [f"X[{width/scale},m]" for width in widths]
+        colSpecList += [f"X[{width/scale},{rowDataSpec},m]"
+                        for width in widths]
     else:
-        colSpecList += ["X[m]"] * xcolCount
+        colSpecList += [f"X[{rowDataSpec},m]"] * xcolCount
 
     writeFile(["\\begin{longtblr}[",
             *(f"   note{{{x}}} = {{{footnote}}},"
@@ -215,10 +217,10 @@ def writeLongtblr(filename: str, caption: str, headers: list[str],
                "   ]{",
               f"   colspec = {{|{"|".join(colSpecList)}|}}, width = \\linewidth,",
             #   f"   colspec = {{|{"|".join(colSpecList)}|}}, width = {width},",
-               "   rowhead = 1",
+               "   row{1} = {halign=c}, rowhead = 1",
                "   }",
                "  \\hline",
               f"  {" & ".join([f"\\thead{{{h}}}" for h in headers])} \\\\",
-               "  \\hline"] + sortByImplied(lines) +
+               "  \\hline"] + (sortByImplied(lines) if toSort else lines) +
               ["  \\hline", "\\end{longtblr}"],
                filename, True)

@@ -239,6 +239,8 @@ def outputDiscreps():
                 return set.union(*(a & b for a, b in itertools.combinations(s, 2)))
 
             # These ensure that sources aren't double counted
+            # Note that pieAdded is used based on the previous presentation of discreps by source tier
+            # As of #138, this is now done as a table, but this naming convention is still used
             pieAdded, tableAdded = set(), set()
             def updateCounters(source, pieSec: str, r):
                 nonlocal smntcDisc, sntxDisc
@@ -314,7 +316,7 @@ def outputDiscreps():
                                 "\\end{itemize}", "\\fi"]
             writeFile(discrepGroup[k], f"{shortname}Discrep{k.name.title()}", True)
 
-    discrepPies = []
+    discrepPies, discrepTable = [], []
     smntcTotal, sntxTotal = [], []
     def totalHelper(total, new):
         return [a + b for a, b in itertools.zip_longest(
@@ -359,6 +361,7 @@ def outputDiscreps():
                           f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
                           "\\end{subfigure}"
                           ])
+        discrepTable.append([f"\\{k.name.lower()}s{{}}"] + [val for val, _ in slices])
     
     writeFile([formatOutput(smntcTotal)], f"totalSmntcDiscBrkdwn", True)
     writeFile([formatOutput(sntxTotal)],  f"totalSntxDiscBrkdwn", True)
@@ -379,6 +382,13 @@ def outputDiscreps():
         else:
             sepPieCharts.append("\\hfill")
 
+    discrepCaption = "Sources of discrepancies based on \\hyperref[sources]{source tier}."
     writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
-                ["\\caption{Sources of discrepancies based on \\hyperref[sources]{source tier}.}",
+                [f"\\caption{{{discrepCaption}}}",
                 "\\label{fig:discrepSources}", "\\end{figure*}"], "discrepPies")
+
+    writeLongtblr("discrepTable", discrepCaption, "abcdefg", 
+                  [" & ".join(map(str, x)) + " \\\\" for x in
+                   # From https://stackoverflow.com/a/63080837/10002168
+                   zip(*itertools.zip_longest(*discrepTable, fillvalue="---"))],
+                   toSort=False, rowHeadSpec="r", rowDataSpec="c")
