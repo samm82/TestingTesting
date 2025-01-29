@@ -23,7 +23,7 @@
           definitions for ``inspection'' \citetext{p.~227} and ``audit''
           \citetext{p.~36}; while the first term \emph{could} be considered a
           superset of the latter two, this distinction doesn't seem useful.
-    \item % Discrep count (DEFS, WRONG): {IEEE2017}
+    \item % Discrep count (DEFS, WRONG): {IEEE2017} | {IEEE2017}
           % TODO: SUPP DEFS?
           \citeauthor{IEEE2017} use the same definition for ``partial correctness''
           \citeyearpar[p.~314]{IEEE2017} and ``total correctness'' (p.~480).
@@ -36,7 +36,7 @@
           sub-paths from each variable definition to each \acs{c-use} of that
           definition (with no intervening definitions)'' (similar in
           \citealp[p.~425]{vanVliet2000}; \citealp[p.~479]{PetersAndPedrycz2000}).
-    \item % Discrep count (CATS, WRONG): {IEEE2016}
+    \item % Discrep count (CATS, WRONG): {IEEE2016} | {IEEE2016}
           % Label CATS manual-or-keyword
           Since keyword-driven testing can be used for automated \emph{or}
           manual testing \citep[pp.~4, 6]{IEEE2016}, the claim that ``test
@@ -52,7 +52,7 @@
           languages such as Haskell with immutable variables
           \citep{WikiHaskell2023}, this could cause confusion and/or be
           imprecise.
-    \item % Discrep count (CATS, CONTRA): implied by {IEEE2022}
+    \item % Discrep count (CATS, CONTRA): {IEEE2022} | implied by {IEEE2022}
           \refHelper \citet[p.~36]{IEEE2022} say ``A/B testing is not a test
           case generation technique as test inputs are not generated'', where
           ``test case generation technique'' may be a synonym of ``test design
@@ -70,7 +70,7 @@
           \else\cite[p.~35]{IEEE2022}, \cite[p.~4]{IEEE2016}\fi.
 
           % STD | META
-    \item % Discrep count (DEFS, AMBI): {SWEBOK2024}
+    \item % Discrep count (DEFS, AMBI): {SWEBOK2024} | {SWEBOK2024}
           % Ground truth: {vanVliet2000}
           While ``error'' is defined as ``a human action that produces an incorrect
           result'' \ifnotpaper (\citealp[pp.~12\=/3]{SWEBOK2024}\todo{OG [14]};
@@ -94,7 +94,7 @@
           \else [TODO: format citation] \fi that is ``externally visible''
           \ifnotpaper (\citealp[p.~7]{IEEE2019}; similar in
               \citealp[p.~400]{vanVliet2000})\else [TODO: format citation]\fi.
-    \item % Discrep count (TERMS, AMBI): {SWEBOK2024}
+    \item % Discrep count (TERMS, AMBI): {SWEBOK2024} | {SWEBOK2024}
           % Ground truth: {vanVliet2000}
           Similarly, \citet[p.~4\=/11]{SWEBOK2024} says ``fault tolerance is
           a collection of techniques that increase software reliability by
@@ -169,7 +169,7 @@
           The same is true for ``visual testing'' \citepISTQB{}.
     \item % Discrep count (CITES, WRONG): ISTQB
           The same is true for ``security attack'' \citepISTQB{}.
-    \item % Discrep count (DEFS, AMBI): {Firesmith2015}
+    \item % Discrep count (DEFS, AMBI): {Firesmith2015} | {Firesmith2015}
           While model testing is said to test the object under test,
           it seems to describe testing the models themselves
           \citep[p.~20]{Firesmith2015}; using the models to test the object
@@ -178,13 +178,12 @@
     \item % Discrep count (DEFS, AMBI): {Firesmith2015}
           Similarly, it is ambiguous whether ``tool/environment testing'' refers
           to testing the tools/environment \emph{themselves} or \emph{using}
-          them to test the object under test; the latter is implied, but the
-          wording of its subtypes \citep[p.~25]{Firesmith2015} seems to imply
-          the former.
+          them to test the object under test; the wording of its subtypes
+          \citep[p.~25]{Firesmith2015} seems to imply the former.
     \item % Discrep count (DEFS, MISS): {Firesmith2015}
           The acronym ``SoS'' is used but not defined by
           \citet[p.~23]{Firesmith2015}.
-    \item % Discrep count (TERMS, OVER): {Firesmith2015}
+    \item % Discrep count (TERMS, OVER): {Firesmith2015} | {Firesmith2015}
           ``Customer acceptance testing'' and ``contract(ual) acceptance
           testing'' have the same acronym (``CAT'') \citep[p.~30]{Firesmith2015}.
     \item % Discrep count (TERMS, OVER): {Firesmith2015} | {Firesmith2015} {PreußeEtAl2012}
@@ -289,11 +288,12 @@
     \item % Discrep count (SYNS, WRONG): implied by {SharmaEtAl2021}
           \refHelper \citet[p.~601]{SharmaEtAl2021} \multiAuthHelper{seem} to
           use the terms ``grey-box testing'' and ``(stepwise) code reading''
-          interchangeably, which would incorrectly imply that they are synonyms.
+          interchangeably, which would incorrectly imply that they are synonyms%
+          \todo{FIND SOURCES}.
     \item % Discrep count (TERMS, WRONG): {Kam2008}
           \refHelper \citet{Kam2008} misspells ``state-based'' as ``state-base''
           \citetext{pp.~13, 15} and ``stated-base'' \citetext{Tab.~1}.
-    \item % Discrep count (CATS, OVER): {Gerrard2000a}
+    \item % Discrep count (CATS, OVER): {Gerrard2000a} | {Gerrard2000a}
           % Label CATS browser-static-and-dynamic
           ``Visual browser validation'' is described as both static \emph{and}
           dynamic in the same table \citep[Tab.~2]{Gerrard2000a}, even though
@@ -304,7 +304,7 @@
           ``transaction verification'' and ``transaction testing'' and
           uses the phrase ``transaction flows'' \citetext{Fig.~5} but doesn't
           explain them.
-    \item % Discrep count (DEFS, MISS): {Gerrard2000a}
+    \item % Discrep count (DEFS, MISS): {Gerrard2000a} | {Gerrard2000a}
           % Label DEFS gerrard-distinct
           Availability testing isn't assigned to a test priority
           \citep[Tab.~2]{Gerrard2000a}, despite the claim that ``the test
@@ -334,7 +334,7 @@
               similar in \citealp[pp.~428--429]{vanVliet2000}) \else
               [TODO: format citation] \fi which is not a requirement of
           back-to-back testing.
-    \item % Discrep count (SYNS, AMBI): implied by {Kam2008}
+    \item % Discrep count (SYNS, AMBI): {Kam2008} | implied by {Kam2008}
           ``Conformance testing'' is implied to be a synonym of ``compliance
           testing'' by \citet[p.~43]{Kam2008} which only makes sense because
           of the vague definition of the latter: ``testing to
