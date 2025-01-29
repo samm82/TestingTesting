@@ -283,7 +283,7 @@ def outputDiscreps():
             if len(sourceDicts) == 1:
                 for r, sources in sourceDicts[0].items():
                     if sources and isinstance(r, Rigidity):
-                        updateCounters(str(list(map("".join, sources))), "withinDoc", r)
+                        updateCounters(str(list(map("".join, sources))), "groundTruth", r)
             else:
                 for dicts in itertools.combinations(sourceDicts, r=GROUP_SIZE):
                     for r in itertools.product(list(Rigidity), repeat=GROUP_SIZE):
@@ -392,7 +392,7 @@ def outputDiscreps():
                   ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and a \\dots{}"] + [
                       f"\\rotatebox[origin=c]{{90}}{{{x}}}" for x in
                         [f"\\parbox{{3.5cm}}{{\\centering {x}}}" for x in 
-                            ["source of ground truth", "part of the same document",
+                            ["source of \\\\ ground truth", "part of the same document",
                              "document with the same author"]] +
                         [cat.shortname.lower()[:-1] for cat in SrcCat  # Strip plural "s"
                             if cat.color.value >= 0]  # Exclude inferences and proposals
