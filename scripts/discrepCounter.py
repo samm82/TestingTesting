@@ -387,7 +387,14 @@ def outputDiscreps():
                 [f"\\caption{{{discrepCaption}}}",
                 "\\label{fig:discrepSources}", "\\end{figure*}"], "discrepPies")
 
-    writeLongtblr("discrepTable", discrepCaption, "abcdefg", 
+    writeLongtblr("discrepTable", discrepCaption,
+                  ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and \\dots{}"] + [
+                      f"\\rotatebox[origin=c]{{90}}{{{x}}}" for x in
+                        [f"\\parbox{{3.75cm}}{{\\centering {x}}}" for x in 
+                            ["the same document", "a document with the same author"]] +
+                        ["a " + cat.shortname.lower()[:-1] for cat in SrcCat  # Strip plural "s"
+                            if cat.color.value >= 0]  # Exclude inferences and proposals
+                  ], 
                   [" & ".join(map(str, x)) + " \\\\" for x in
                    # From https://stackoverflow.com/a/63080837/10002168
                    zip(*itertools.zip_longest(*discrepTable, fillvalue="---"))],
