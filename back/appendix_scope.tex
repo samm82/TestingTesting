@@ -1,14 +1,15 @@
 \label{app-scope}
 
 As outlined in \Cref{scope}, the scope of our research is limited to testing
-applied to code itself. Throughout this research, we identified many
+applied to code itself. Throughout our research, we identify many
 approaches that are out of scope based on this criteria.
 
 \section{Hardware Testing}
 \label{hard-test}
 While testing the software run \emph{on} or in control \emph{of} hardware is in
-scope, testing performed on the hardware itself is out of scope. The following
-are some examples of hardware testing approaches:
+scope, testing performed on the hardware \emph{itself} is out of scope. The
+following are some examples of hardware testing approaches we exclude from our
+research:
 
 \begin{itemize}
     \item Ergonomics testing and proximity-based testing \citepISTQB{}
@@ -77,9 +78,9 @@ are some examples of hardware testing approaches:
 
 \section[V\&V of Other Artifacts]{\acs{vnv} of Other Artifacts}
 \label{other-vnv}
-The only testing of a software artifact produced by the software life cycle
-that is in scope is testing of the software itself, as demonstrated by the
-following examples:
+While many artifacts produced by the software life cycle can be tested, only
+testing performed on the code \emph{itself} is in scope. Therefore, we exclude
+the following test approaches either in full or in part:
 
 \begin{itemize}
     \item Design reviews and documentation reviews are out of scope, as they
@@ -123,7 +124,6 @@ following examples:
           technique'' and can be used to assist fuzz and metamorphic testing
           \citep[p.~5-15]{SWEBOK2024} (in scope).
 \end{itemize}
-
 
 \section{Static Testing}
 \label{static-test}
