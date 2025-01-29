@@ -116,13 +116,29 @@ which can then be parsed to detemine where discrepancies occur. \texttt{CAT} is
 a placeholder for the discrepancy's category (see \Cref{smntcDiscreps})
 identifier and \texttt{CLS} is a placeholder for its class (see
 \Cref{sntxDiscreps}) identifier. These designations are ommitted
-from the following examples of these comments. Each group of
+from the following examples of these comments.
+
+Each group of
 sources is separated with a pipe symbol to be compared with the others, so any
-number of groups are permitted. If only one group is present, it is compared
-with itself. For example, the first line below means that source X has a
-discrepancy with itself, while the second line adds a discrepancy between X and Y.
+number of groups are permitted. We make a distinction between ``self-contained''
+flaws and ``internal'' flaws. Self-contained flaws are those that manifest by
+comparing a document to a source of ground truth. Sometimes, these do not
+require an explicit comparison; for example, \nameref{miss} often fall in this
+category, since the lack of information is contained within a single source and
+does not need to be cross-checked against a source of ground truth. If only one
+group of sources is present in a discrepancy comment, such as the first line
+below, it is considered to be a self-contained flaw. On the other hand,
+internal flaws arise when a document disagrees with itself by containing two
+conflicting pieces of information and include many \nameref{contra} and
+\nameref{over}. These can even occur on the same page, such as when an acronym
+is given to two distinct terms (see \discrepref{cat-acro,hil-acro})! If a
+source appears in multiple groups in a discrepancy comment, it is considered to
+be an internal flaw. The second line is a standard example of this, while the
+third is more complex; in this case, source Y agrees with only one of the
+conflicting sources of information in X.
 \begin{displayquote}
-    \texttt{\% Discrep count: \{X\}\\\% Discrep count: \{X\} | \{X\} \{Y\}}
+    \texttt{\% Discrep count: \{X\}\\\% Discrep count: \{X\} | \{X\}\\
+        \% Discrep count: \{X\} | \{X\} \{Y\}}
 \end{displayquote}
 Discrepancies between groups are not double counted; this means the following
 line adds discrepancies between X and Z \emph{and} between Y and Z, without
@@ -130,6 +146,7 @@ counting the discrepancy between X and Z twice.
 \begin{displayquote}
     \texttt{\% Discrep count: \{X\} | \{X\} \{Y\} | \{Z\}}
 \end{displayquote}
+
 Each source is given using its BibTeX key wrapped in curly braces to mimic
 \LaTeX{}'s citation commands for ease of parsing, with the exception of the
 \acs{istqb} glossary, due to its use of custom commands via
