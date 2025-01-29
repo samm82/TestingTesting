@@ -9,14 +9,14 @@ code are considered. For example, reliability testing and maintainability
 testing can start \emph{without} code by ``measur[ing] structural attributes
 of representations of the software'' \citep[p.~18]{FentonAndPfleeger1997}, but
 only reliability and maintainability testing performed on code \emph{itself} is
-in scope of this research. Therefore, some practices are excluded from
-consideration either in part or in full, such as hardware testing and the
-\acs{vnv} of other artifacts are completely out of scope (see \Cref{app-scope}
-for more detailed discussion), as well as relevant areas of other testing
-approaches that are otherwise in scope. Static testing can be performed
-on code, so while it isn't relevant to the original motivation of this work, it
-is a useful component of software testing and is therefore included at this level
-of analysis (\Cref{static-test}). \ifnotpaper Finally, some test approaches can
+in scope of this research. Therefore, we exclude some practices either in full,
+such as hardware testing and the \acs{vnv} of other artifacts, or in part, such
+as parts of error seeding, fault injection testing, and mutation testing that
+do not directly test code (see \Cref{app-scope} for more detailed discussion
+on what we exclude). Additionally, static testing is a useful component of
+software testing and is therefore included at this level of analysis, despite
+it not being relevant to our original motivation (see \Cref{static-test}).
+\ifnotpaper Finally, some test approaches can
     be derived from other categories of testing-related terminology
     (\Cref{derived-tests}); of these, approaches derived from programming
     languages (\Cref{lang-test}) or other orthogonal test approaches
