@@ -2,7 +2,7 @@
 \centering
 \begin{subfigure}[t]{0.475\textwidth}
 \begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]
-   \pie[text=legend, sum=auto, hide number, color={blue!60, cyan!60, yellow!60}]{
+   \pie[text=legend, sum=auto, hide number, color={cyan!60, yellow!60, orange!60}]{
       40/57.1\%,
       25/35.7\%,
       5/7.1\%
@@ -14,7 +14,7 @@
 \hfill
 \begin{subfigure}[t]{0.475\textwidth}
 \begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]
-   \pie[text=legend, sum=auto, hide number, color={blue!60, yellow!60, orange!60}]{
+   \pie[text=legend, sum=auto, hide number, color={cyan!60, orange!60, red!60}]{
       28/31.8\%,
       43/48.9\%,
       17/19.3\%
@@ -26,7 +26,7 @@
 \vskip\baselineskip
 \begin{subfigure}[t]{0.475\textwidth}
 \begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]
-   \pie[text=legend, sum=auto, hide number, color={blue!60, yellow!60, orange!60, red!60}]{
+   \pie[text=legend, sum=auto, hide number, color={cyan!60, orange!60, red!60, blue!60!cyan!60}]{
       4/6.9\%,
       26/44.8\%,
       14/24.1\%,
@@ -39,7 +39,7 @@
 \hfill
 \begin{subfigure}[t]{0.475\textwidth}
 \begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]
-   \pie[text=legend, sum=auto, hide number, color={blue!60, yellow!60, orange!60, red!60, blue!60!cyan!60}]{
+   \pie[text=legend, sum=auto, hide number, color={cyan!60, orange!60, red!60, blue!60!cyan!60, cyan!60!yellow!60}]{
       13/17.6\%,
       21/28.4\%,
       23/31.1\%,
@@ -56,12 +56,13 @@
 \begin{tikzpicture}
 \matrix [thick, draw=black] {
 \node[label=center:Legend] {{}}; \\
-\node[thick, shape=rectangle, draw=black, fill=blue!60, label=right:{Within a single document}](0) {}; \\
-\node[thick, shape=rectangle, draw=black, fill=cyan!60, label=right:{Between documents by the same author(s) or standards organization(s)}](1) {}; \\
-\node[thick, shape=rectangle, draw=black, fill=yellow!60, label=right:{Between a document from this category and a standard}](2) {}; \\
-\node[thick, shape=rectangle, draw=black, fill=orange!60, label=right:{Between a document from this category and a collection}](3) {}; \\
-\node[thick, shape=rectangle, draw=black, fill=red!60, label=right:{Between a document from this category and a textbook}](4) {}; \\
-\node[thick, shape=rectangle, draw=black, fill=blue!60!cyan!60, label=right:{Between a document from this category and a paper}](5) {}; \\
+\node[thick, shape=rectangle, draw=black, fill=blue!60, label=right:{With a source of ground truth}](0) {}; \\
+\node[thick, shape=rectangle, draw=black, fill=cyan!60, label=right:{Within a single document}](1) {}; \\
+\node[thick, shape=rectangle, draw=black, fill=yellow!60, label=right:{Between documents by the same author(s) or standards organization(s)}](2) {}; \\
+\node[thick, shape=rectangle, draw=black, fill=orange!60, label=right:{Between a document from this category and a standard}](3) {}; \\
+\node[thick, shape=rectangle, draw=black, fill=red!60, label=right:{Between a document from this category and a collection}](4) {}; \\
+\node[thick, shape=rectangle, draw=black, fill=blue!60!cyan!60, label=right:{Between a document from this category and a textbook}](5) {}; \\
+\node[thick, shape=rectangle, draw=black, fill=cyan!60!yellow!60, label=right:{Between a document from this category and a paper}](6) {}; \\
 };
 \end{tikzpicture}
 \end{subfigure}

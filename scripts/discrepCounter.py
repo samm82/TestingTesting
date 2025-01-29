@@ -107,7 +107,7 @@ class ExpImpCounter:
 
 class DiscrepCounter:
     def __init__(self, value):
-        self.withinDoc, self.withinAuth = 0, 0
+        self.groundTruth, self.withinDoc, self.withinAuth = 0, 0, 0
         # Differences between two categories; may be within the same category
         self.betweenCats = {k : 0 for k in SrcCat if k.value <= value}
         self.smntcDiscreps = OrderedDict({dc : ExpImpCounter() for dc in DiscrepSmntc})
@@ -115,7 +115,7 @@ class DiscrepCounter:
 
     def __str__(self):
         return "\n".join(filter(None, [
-            ", ".join(map(str, [self.withinDoc, self.withinAuth])),
+            ", ".join(map(str, [self.groundTruth, self.withinDoc, self.withinAuth])),
             "Diffs: " + ", ".join([f"{k.name} {v}" for k, v in self.betweenCats.items()]),
             " | ".join(map(str, self.smntcDiscreps.values())),
             " | ".join(map(str, self.sntxDiscreps.values())),
@@ -332,10 +332,11 @@ def outputDiscreps():
         writeFile([smntcDiscreps], f"{k.name.lower()}SmntcDiscBrkdwn", True)
         writeFile([sntxDiscreps],  f"{k.name.lower()}SntxDiscBrkdwn", True)
 
-        totalDiscreps = sum({v.withinDoc, v.withinAuth,
+        totalDiscreps = sum({v.groundTruth, v.withinDoc, v.withinAuth,
                              sum(v.betweenCats.values())})
 
-        slices = ([(v.withinDoc, "Within a single document"),
+        slices = ([(v.groundTruth, "With a source of ground truth"),
+                   (v.withinDoc, "Within a single document"),
                    (v.withinAuth, "Between documents by the same author(s) or standards organization(s)")] +
                    [(catCount, "Between a document from this category and a " +
                      cat.shortname.lower()[:-1])  # Strip plural "s"
@@ -388,11 +389,12 @@ def outputDiscreps():
                 "\\label{fig:discrepSources}", "\\end{figure*}"], "discrepPies")
 
     writeLongtblr("discrepTable", discrepCaption,
-                  ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and \\dots{}"] + [
+                  ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and a \\dots{}"] + [
                       f"\\rotatebox[origin=c]{{90}}{{{x}}}" for x in
-                        [f"\\parbox{{3.75cm}}{{\\centering {x}}}" for x in 
-                            ["the same document", "a document with the same author"]] +
-                        ["a " + cat.shortname.lower()[:-1] for cat in SrcCat  # Strip plural "s"
+                        [f"\\parbox{{3.5cm}}{{\\centering {x}}}" for x in 
+                            ["source of ground truth", "part of the same document",
+                             "document with the same author"]] +
+                        [cat.shortname.lower()[:-1] for cat in SrcCat  # Strip plural "s"
                             if cat.color.value >= 0]  # Exclude inferences and proposals
                   ], 
                   [" & ".join(map(str, x)) + " \\\\" for x in
