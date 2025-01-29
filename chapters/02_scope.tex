@@ -9,24 +9,23 @@ code are considered. For example, reliability testing and maintainability
 testing can start \emph{without} code by ``measur[ing] structural attributes
 of representations of the software'' \citep[p.~18]{FentonAndPfleeger1997}, but
 only reliability and maintainability testing performed on code \emph{itself} is
-in scope of this research. In this section, we provide a high-level overview
-of what is in scope. We exclude some practices either in full, such as hardware
-testing (\Cref{hard-test}), or in part, such as parts of error seeding, fault
-injection testing, and mutation testing that do not directly test code
-(\Cref{other-vnv}).
-% More specific refs are used for now, since the following label points to
-%   Section 9.4 instead of Appendix A for some reason
-% (see \Cref{app-scope} for more detailed discussion on what we exclude).
-Additionally, static testing is a useful component of
-software testing and is therefore included at this level of analysis, despite
-it not being relevant to our original motivation (\Cref{static-test}).
-\ifnotpaper Finally, some test approaches can
-    be derived from other categories of testing-related terminology
-    (\Cref{derived-tests}); of these, approaches derived from programming
-    languages (\Cref{lang-test}) or other orthogonal test approaches
-    (\Cref{orth-test}) are out of scope. \fi
-
+in scope of this research.
 \ifnotpaper
+    In this section, we provide a high-level overview of what is in scope. We
+    exclude some practices either in full, such as hardware testing
+    (\Cref{hard-test}), or in part, such as parts of error seeding, fault
+    injection testing, and mutation testing that do not directly test code
+    (\Cref{other-vnv}).
+    % More specific refs are used for now, since the following label points to
+    %   Section 9.4 instead of Appendix A for some reason
+    % (see \Cref{app-scope} for more detailed discussion on what we exclude).
+    Additionally, static testing is a useful component of software testing and
+    is therefore included at this level of analysis, despite it not being
+    relevant to our original motivation (\Cref{static-test}). Finally, some
+    test approaches can be derived from other categories of testing-related
+    terminology (\Cref{derived-tests}); of these, approaches derived from
+    programming languages (\Cref{lang-test}) or other orthogonal test
+    approaches (\Cref{orth-test}) are out of scope.
 
     \subsection{Derived Test Approaches}
     \label{derived-tests}
