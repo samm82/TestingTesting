@@ -213,35 +213,23 @@ unreasonable, especially considering the pace at which the field of software
 changes, we can make progress towards this goal that others can extend and
 update as new test approaches emerge.
 
-\ifnotpaper
-    The following three \acfp{rq} guide this process:
-    \begin{enumerate}
-        \item \rqatext{}
-        \item \rqbtext{}
-        \item \rqctext{}
-    \end{enumerate}
-    \input{build/methodOverviewIntro}
-    An excerpt of this recorded information (excluding other notes for brevity),
-    is given in \Cref{tab:approachGlossaryExcerpt}.
-\fi
-
 \phantomsection{}\label{scope}
-Since our motivation is restricted to testing code, only this component of
-\acf{vnv} is considered\thesisissueref{22}. However, some test approaches
-are used for testing things other than code, and some approaches can be
-used for both! In these cases, only the subsections of these approaches
-focused on code are considered. For example, reliability testing and
-maintainability testing can start \emph{without} code by ``measur[ing]
-structural attributes of representations of the software''
+Based on the observed gap in software testing specifically and our original
+motivation for this research, we only consider the component of \acf{vnv} that
+tests code itself\thesisissueref{22}. However, some test approaches are only
+used to testing \emph{other} artifacts, while others can be used for both! In
+these cases, we only consider the subsections that focus on code. For example,
+reliability testing and maintainability testing can start \emph{without} code
+by ``measur[ing] structural attributes of representations of the software''
 \citep[p.~18]{FentonAndPfleeger1997}, but only reliability and
 maintainability testing performed on code \emph{itself} is in scope of this
-research. This is a high-level overview of what is in scope.
+research.  % This is a high-level overview of what is in scope.
 \ifnotpaper
     % More specific refs are used for now, since the following label points to
     %   Section 9.4 instead of Appendix A for some reason
     % (see \Cref{app-scope} for more detailed discussion on what we exclude).
     We provide more detailed discussion on what is and is not in scope later in
-    this document; we exclude some practices either in full, such as hardware
+    this document, including practices we exclude in full, such as hardware
     testing (\Cref{hard-test}), or in part, such as the parts of error seeding,
     fault injection testing, and mutation testing that do not directly test
     code (\Cref{other-vnv}). Additionally, static testing is a useful component
@@ -255,15 +243,23 @@ research. This is a high-level overview of what is in scope.
     % approaches (\Cref{orth-test}) are out of scope.
 \fi
 
-This document describes this process, as well as its results, in more detail.
-We first examine the
-existing literature (\Cref{methodology})\ifnotpaper, partially through the use
-of tools created for analysis (\Cref{tools})\fi. Despite the amount of well
-understood and organized knowledge, there are still many discrepancies in the
-literature, either within the same source or between various
-sources (\Cref{discreps}). This reinforces the need for a proper taxonomy! We
-provide some potential solutions covering some of these discrepancies
-(\Cref{recs}).
+This document describes our process, as well as our results, in more detail.
+\input{build/methodOverviewIntro}
+We follow the procedure laid out in \Cref{procedure} and use these \acfp{rq}
+as a guide:
+\begin{enumerate}
+    \item \rqatext{}
+    \item \rqbtext{}
+    \item \rqctext{}
+\end{enumerate}
+\ifnotpaper An excerpt of this recorded information (excluding other notes for
+    brevity), is given in \Cref{tab:approachGlossaryExcerpt}. \fi We then
+create tools to support our analysis of our findings (\Cref{tools}).
+Despite the amount of well understood and organized knowledge, there are still
+many discrepancies in the literature, either within the same source or between
+various sources (\Cref{discreps}). This reinforces the need for a proper
+taxonomy! We then provide some potential solutions covering some of these
+discrepancies (\Cref{recs}).
 
 \ifnotpaper
     \begin{landscape}
