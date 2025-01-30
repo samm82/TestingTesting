@@ -833,7 +833,11 @@ or quite broad\ifnotpaper\ (such as attacks; see \Cref{attacks}%
 \subsubsection{Derived Test Approaches}
 \label{derived-tests}
 
-Since the field of software is ever-evolving, it is crucial to be able to
+Throughout this research, we noticed many groups of test approaches that arise
+from some underlying area of software (testing) knowledge. The legitimacy of
+extrapolating new test approaches from these knowledge domains is heavily
+implied by the literature, but not explicitly stated as a general rule. Regardless,
+since the field of software is ever-evolving, it is crucial to be able to
 adapt to, talk about, and understand new developments in software testing.
 Bases for defining new test approaches suggested by the literature include
 coverage metrics, software qualities, and attacks. These are meaningful
@@ -955,24 +959,25 @@ approaches.
     including the following examples:
 
     \begin{itemize}
-        \item ``They implemented an approach \dots{} for JavaScript testing
-              (referred to as Randomized)'' \citep[p.~192]{DoğanEtAl2014};
-              this really refers to random testing used within JavaScript
+        \item ``An approach \dots{} for JavaScript testing
+              (referred to as Randomized)'' \citep[p.~192]{DoğanEtAl2014} is
+              really just random testing used within JavaScript.
         \item ``SQL statement coverage'' is really just statement coverage
-              used specifically for SQL statements \citep[Tab.~13]{DoğanEtAl2014}
-              \todo{OG Alalfi et al., 2010}
-        \item ``Faults specific to PHP'' is just a subcategory of fault-based
-              testing, since ``execution failures \dots{} caused by missing an
-              included file, wrong MySQL quer[ies] and uncaught exceptions''
-              are not exclusive to PHP \citep[Tab.~27]{DoğanEtAl2014}
-              \todo{OG Artzi et al., 2008}
+              used specifically for SQL statements \citep[Tab.~13]{DoğanEtAl2014}%
+              \todo{OG Alalfi et al., 2010}.
+        \item Testing for ``faults specific to PHP'' is just a subcategory of
+              fault-based testing, since ``execution failures \dots{} caused by
+              missing an included file, wrong MySQL quer[ies] and uncaught
+              exceptions'' are not exclusive to PHP
+              \citep[Tab.~27]{DoğanEtAl2014}\todo{OG Artzi et al., 2008}.
         \item While ``HTML testing'' is listed or implied by
               \citeauthor{Gerrard2000a} (\citeyear[Tab.~2]{Gerrard2000a};
               \citeyear[Tab.~1, p.~3]{Gerrard2000b}) and
               \citet[p.~220]{Patton2006}, it seems to be a combination of syntax
               testing, functionality testing, hyperlink testing/link checking,
-              cross-browser compatibility testing, performance testing, and
-              content checking \citep[p.~3]{Gerrard2000b}
+              cross-browser compatibility testing, performance testing,
+              content checking \citep[p.~3]{Gerrard2000b}, and grey-box testing
+              \citep[pp.~218\==220]{Patton2006}.
     \end{itemize}
 
     \paragraph{Orthogonally Derived Approaches}
@@ -1011,8 +1016,10 @@ approaches.
 The literature mentions many software testing terms without defining them.
 While this includes test approaches, software qualities, and more general
 software terms, we focus on the former as the main focus of our research.
-In particular, many undefined test approaches are given by \citep{IEEE2022}
-and \citep{Firesmith2015}. Once we exhaust the standards in \Cref{stds}, we
+In particular, many undefined test approaches are given by \ifnotpaper
+    \citep{IEEE2022} and \citep{Firesmith2015}\else
+    \cite{Firesmith2015} and \cite{IEEE2022}\fi. Once we exhaust the standards
+in \Cref{stds}, we
 perform miniature literature reviews on these subsets to ``fill in'' the
 missing definitions (along with any relations), essentially ``snowballing''
 on these terms. This process uncovers even more approaches, although some are
