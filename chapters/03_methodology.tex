@@ -415,13 +415,14 @@ combination of formal testing and reviews. \ifnotpaper The following examples
 
 One important side effect of the particularity of these terms is that they can
 be ``overloaded''; for example, someone could reasonably yet imprecisely use
-any of these four categories as a synonym for ``approach''. Even the prompt in
+any of these four categories as a synonym for ``approach''. Even our prompt in
 \ifnotpaper \citep[emphasis added]{ChatGPT2024} \else \cite{ChatGPT2024} \fi was
 imprecise, asking for the ``\emph{type} of software testing that focuses on
 looking for bugs where others have already been found.'' Interestingly, ChatGPT
-later ``corrected'' this by calling defect-based testing an approach!
-Because of this, careful consideration needs to be given to discrepancies of
-this nature. For example, \citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}
+later ``corrected'' this by calling defect-based testing an approach (although
+this may have been biased by our previous usage of the term ``approach'')!
+Because of this nuance, we need to carefully investigate these kinds of
+discrepancies. For example, \citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}
 defines interface testing as ``an integration \emph{test type} that is
 concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
 \fi does not define ``test type'', this may not have special significance.
@@ -430,18 +431,33 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     \Cref{tab:multiCats}. In particular, other sources
     \citep[such as][]{SWEBOK2024,BarbosaEtAl2006} propose similar yet distinct
     categories that clash or overlap with these categories. These are given in
-    \Cref{tab:otherCats} and may provide other perspectives when determining
-    if \citep{IEEE2022}'s categorization is sufficient.
+    \Cref{tab:otherCats} and may be used to infer the category from its ``IEEE
+    Equivalent'' column. Further analysis may reveal that these other
+    categories provide new perspectives and may be useful in some contexts,
+    either in place of or in tandem with \citeauthor{IEEE2022}'s categorization
+    \citeyearpar{IEEE2022}\todo{Correct grammar?}.
 
-    The literature gives many other ways to categorize test approaches which
-    are less-defined and seem to focus on specific categories from
-    \Cref{tab:ieeeCats}. These are given in \Cref{tab:otherCategorizations} for
+    Similarly, the literature gives many other ways to categorize test
+    approaches that may be used in tandem with or in place of those given in
+    \Cref{tab:ieeeCats,tab:otherCats}. In general, these are defined less
+    systematically but are more fine-grained, seeming to ``specialize''
+    categories from \Cref{tab:ieeeCats}. The existence of these classifications
+    are not inherently wrong, as they may be useful for specific teams or in
+    certain contexts. For example, functional testing and structural testing
+    ``use different sources of information and have been shown to highlight
+    different problems'', and deterministic testing and random testing have
+    ``conditions that make one approach more effective than the other''
+    \citep[p.~5\=/16]{SWEBOK2024}. Unfortunately, even these alternate
+    categories are not used consistently (see \discrepref{manual-or-keyword,%
+        browser-static-and-dynamic})!
+
+    These categorizations are given in \Cref{tab:otherCategorizations} for
     completeness. The bases for these alternate categorizations, along with the
     example approaches listed, come from the source(s) indicated in the ``Test
-    Basis'' column. When multiple names for a test basis are present, the union
-    of their sources all list the examples given. By looking at a test basis
+    Basis'' column. When multiple sources are given for a test basis, the union
+    of these sources all list the examples given. By looking at a test basis
     and its corresponding examples, we can infer its ``Parent IEEE Category'':
-    or the IEEE category from \Cref{tab:ieeeCats} it seems to subdivide. The
+    the IEEE category from \Cref{tab:ieeeCats} it seems to subdivide. The
     sources provided in this column classify the example approaches given
     accordingly. For example, in the first row, \citet[pp.~4, 8]{IEEE2021} and
     \citet[p.~46]{Firesmith2015} both classify specification-based testing,
@@ -455,19 +471,6 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
             \otherCategorizationsTable{}
         \end{landscape}
     }
-
-    These categorizations may be used in tandem with or in place of those given
-    in \Cref{tab:ieeeCats}, as these are more fine-grained. For example, some of
-    these subsets, such as functional testing and structural testing, ``use
-    different sources of information and have been shown to highlight different
-    problems'' \citep[p.~5\=/16]{SWEBOK2024}. Likewise, some subsets may
-    have ``conditions that make one approach more effective than the other'',
-    such as deterministic testing and random testing \citetext{p.~5\=/16}.
-    %\citep[p.~5\=/16]{SWEBOK2024}.
-    Therefore, the existence of these classifications are not inherently wrong,
-    as they may be useful for specific teams or in certain contexts.
-    Unfortunately, even these categories are not used consistently (see
-    \discrepref{manual-or-keyword,browser-static-and-dynamic})!
 
     \phantomsection{}\label{method-family}
     Another way that the IEEE categories can be subdivided is by grouping related
