@@ -174,28 +174,44 @@ in \Cref{rigidity}.
 
 While there are many ways to categorize software testing approaches, perhaps
 the most widely used is the one given by \ifnotpaper\else \citeauthor{IEEE2022}
-\fi \citet{IEEE2022}, where a test approach can be categorized as a test level,
-test type, test technique, or test practice (see \Cref{tab:ieeeCats}).
-The categories of ``level'' and ``type'' are particularly common; for example,
+\fi \citet{IEEE2022}. This schema categorizes test approaches as levels, types,
+techniques, practices, or static testing \citeyearpar[Fig.~2; see
+    \Cref{tab:ieeeCats}]{IEEE2022}. However, we consider static testing to be a
+less prominent category, since these test approaches can often be grouped into
+one of the other four categories. For example, static assertion checking
+(mentioned by \ifnotpaper \citealp[p.~345]{LahiriEtAl2013};
+    \citealp[p.~343]{ChalinEtAl2006}\else \citealp[p.~343]{ChalinEtAl2006},
+    \citealp[p.~345]{LahiriEtAl2013}\fi) is a subapproach of assertion checking,
+which may also be performed dynamically. Therefore, static assertion checking
+may inherit assertion checking's inferred category of ``practice'', which is a
+more meaningful classification than one based solely on ``whether it is
+performed by running code or not''. We track static testing approaches at this
+level of analysis\ifnotpaper\ (see \Cref{static-test})\fi, but may fold them
+into other categories as appropriate, although some teams may wish to keep them
+separate based on their specific context.
+
+Of the five primary categories we use (see \Cref{tab:ieeeCats}), ``level''
+and ``type'' are particularly pervasive in the literature; for example,
 six non-IEEE sources also give unit testing, integration testing,
 system testing, and acceptance testing as examples of test levels \ifnotpaper
     (\citealp[pp.~5\=/6 to 5\=/7]{SWEBOK2024}; \citealpISTQB{};
     \citealp[pp.~807\==808]{Perry2006}; \citealp[pp.~443\==445]{PetersAndPedrycz2000};
     \citealp[p.~218]{KuļešovsEtAl2013}\todo{OG Black, 2009};
     \citealp[pp.~9, 13]{Gerrard2000a})\else
-    \cite[pp.~443\==445]{PetersAndPedrycz2000}, \cite{ISTQB},
-    \cite[pp.~5\=/6 to 5\=/7]{SWEBOK2024}, \cite[pp.~9, 13]{Gerrard2000a},
-    \cite[pp.~807\==808]{Perry2006}, \cite[p.~218]{KuļešovsEtAl2013}%
-    \todo{OG Black, 2009}\fi, although they may use a different term for ``test
+    \cite[pp.~443\==445]{PetersAndPedrycz2000},
+    \cite[pp.~5\=/6 to 5\=/7]{SWEBOK2024}, \cite{ISTQB},
+    \cite[pp.~807\==808]{Perry2006}, \cite[pp.~9, 13]{Gerrard2000a},
+    \cite[p.~218]{KuļešovsEtAl2013}\todo{OG Black, 2009}\fi,
+although they may use a different term for ``test
 level'' (see \Cref{tab:ieeeCats}). Because of their widespread use and
 their usefulness in dividing the domain of software testing into more
-manageable subsets, these categories are used for now. These four subcategories
+manageable subsets, we use these categories for now. These four subcategories
 of test approaches can be loosely described by what they specify as
 follows\thesisissueref{21}:
 \begin{itemize}
     \item \textbf{Level}: What code is tested
     \item \textbf{Practice}: How the test is structured and executed
-    \item \textbf{Technique}: How to derive inputs and/or outputs
+    \item \textbf{Technique}: How inputs and/or outputs are derived
     \item \textbf{Type}: Which software quality is evaluated
 \end{itemize}
 For example, boundary value analysis is a test technique since its inputs are
