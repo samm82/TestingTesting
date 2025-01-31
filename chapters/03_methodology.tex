@@ -157,18 +157,14 @@ The full set of sources that comprise this tier is \paperSources{2}.
 \fi
 
 \subsection{Terminology}
+\label{terminology}
 
-\def\rigidBlurb{While most information is presented explicitly in the sources
-    we investigate, some appears more implicitly. This is a useful distinction
-    to make, as implicit claims carry less weight than explicit ones. We call
-    this property ``rigidity''}
-
-This research is intended to describe the current state of software testing
+Our research aims to describe the current state of software testing
 literature. To reduce potential bias, we do not invent or add our own
 classifications or kinds of relations. Instead, the notions of test approach
 categories (\Cref{categories-observ}), synonyms (\Cref{syn-rels}), and
 parent-child relations (\Cref{par-chd-rels}) presented here
-arose\ptq{} naturally from the literature. We define them here for clarity
+follow logically from the literature. We define them here for clarity
 since we use them throughout this \ifnotpaper thesis\else paper\fi, even
 though they are ``results'' of our research. \rigidBlurb{} and define it
 in \Cref{rigidity}.
@@ -184,12 +180,12 @@ The categories of ``level'' and ``type'' are particularly common; for example,
 six non-IEEE sources also give unit testing, integration testing,
 system testing, and acceptance testing as examples of test levels \ifnotpaper
     (\citealp[pp.~5\=/6 to 5\=/7]{SWEBOK2024}; \citealpISTQB{};
-    \citealp[pp.~807--808]{Perry2006}; \citealp[pp.~443--445]{PetersAndPedrycz2000};
+    \citealp[pp.~807\==808]{Perry2006}; \citealp[pp.~443\==445]{PetersAndPedrycz2000};
     \citealp[p.~218]{KuļešovsEtAl2013}\todo{OG Black, 2009};
     \citealp[pp.~9, 13]{Gerrard2000a})\else
-    \cite[pp.~443--445]{PetersAndPedrycz2000}, \cite{ISTQB},
+    \cite[pp.~443\==445]{PetersAndPedrycz2000}, \cite{ISTQB},
     \cite[pp.~5\=/6 to 5\=/7]{SWEBOK2024}, \cite[pp.~9, 13]{Gerrard2000a},
-    \cite[pp.~807--808]{Perry2006}, \cite[p.~218]{KuļešovsEtAl2013}%
+    \cite[pp.~807\==808]{Perry2006}, \cite[p.~218]{KuļešovsEtAl2013}%
     \todo{OG Black, 2009}\fi, although they may use a different term for ``test
 level'' (see \Cref{tab:ieeeCats}). Because of their widespread use and
 their usefulness in dividing the domain of software testing into more
@@ -262,7 +258,7 @@ combination of formal testing and reviews. \ifnotpaper The following examples
               %   (combining black box and conformance testing)
               % Specification-based: Technique (IEEE, 2022, p. 22; 2021, p. 8; Washizaki, 2024, p. 5-10; Hamburg and Mogyorodi, 2024; Souza et al., 2017, p. 3; Firesmith, 2015, pp. 46-47; Sakamoto et al., 2013, p. 344; implied by IEEE, 2022, pp. 2-4, 6-9)
               % Conformance: Type (implied by its quality (IEEE, 2017, p. 92; OG PMBOK 5th ed.))
-        \item Black-box integration testing \citep[pp.~345--346]{SakamotoEtAl2013}
+        \item Black-box integration testing \citep[pp.~345\==346]{SakamotoEtAl2013}
               % Specification-based: Technique (IEEE, 2022, p. 22; 2021, p. 8; Washizaki, 2024, p. 5-10; Hamburg and Mogyorodi, 2024; Souza et al., 2017, p. 3; Firesmith, 2015, pp. 46-47; Sakamoto et al., 2013, p. 344; implied by IEEE, 2022, pp. 2-4, 6-9)
               % Integration: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
               %           OR Technique (implied by Sharma et al., 2021, pp. 601, 603, 605-606)
@@ -290,7 +286,7 @@ combination of formal testing and reviews. \ifnotpaper The following examples
               % Grey-Box: Technique (IEEE, 2021, p. 8; Firesmith, 2015, pp. 46, 48; Sakamoto et al., 2013, p. 344)
               % Integration: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
               %           OR Technique (implied by Sharma et al., 2021, pp. 601, 603, 605-606)
-        \item Incremental integration testing \citep[p.~601, 603, 605--606]{SharmaEtAl2021}\todo{OG [19]}
+        \item Incremental integration testing \citep[pp.~601, 603, 605\==606]{SharmaEtAl2021}\todo{OG [19]}
               % Incremental: Practice?
               % Integration: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
               %           OR Technique (implied by Sharma et al., 2021, pp. 601, 603, 605-606)
@@ -301,7 +297,7 @@ combination of formal testing and reviews. \ifnotpaper The following examples
               % Infrastructure: Type (implied by Firesmith, 2015, p. 57)
               %              OR Level (implied by Gerrard, 2000a, p. 13; see \Cref{tab:ieeeCats})
               % Compatibility: Type (IEEE, 2022, pp. 3, 22; 2021, p. 37, Tab. A.1; 2013, p. 2; implied by its quality (ISO/IEC, 2023a); Firesmith, 2015, p. 53)
-        \item Invariant-based automatic testing \citep[pp.~184--185, Tab.~21]{DoğanEtAl2014},
+        \item Invariant-based automatic testing \citep[pp.~184\==185, Tab.~21]{DoğanEtAl2014},
               including for ``AJAX user interfaces'' \citetext{p.~191}
               % Assertion Checking: Practice?
               % Automated: Practice (IEEE, 2022, pp. 20, 22)
@@ -364,7 +360,7 @@ combination of formal testing and reviews. \ifnotpaper The following examples
               % Web Application: Approach
               % Regression: Technique (implied by IEEE, 2022, p. 35)
               %          OR Level (implied by Barbosa et al., 2006, p. 3)
-        \item White-box unit testing \citep[pp.~345--346]{SakamotoEtAl2013}
+        \item White-box unit testing \citep[pp.~345\==346]{SakamotoEtAl2013}
               % Structure-based: Technique (IEEE, 2022, p. 22; 2021, p. 8; Washizaki, 2024, pp. 5-10, 5-13; Hamburg and Mogyorodi, 2024; Firesmith, 2015, pp. 46, 49; Sakamoto et al., 2013, p. 344; implied by IEEE, 2022, pp. 2, 4, 6, 9; Barbosa et al., 2006, p. 3)
               % Unit: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; 2017, p. 467; 2016, p. 4; Washizaki, 2024, p. 5-6; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
               %    OR Technique (implied by Engström and Petersen, 2015, pp. 1-2)
@@ -607,6 +603,7 @@ There are many reasons two approaches may have a parent-child relation, such as:
 \subsubsection{Rigidity}
 \label{rigidity}
 
+% Excluded from macro table since it is only used in this subsection
 \def\impKeywordsCode{\seeSrcCode{55f4bf2}{helpers}{16}{32}}
 
 A consequence of the use of natural language and the lack of standardization
@@ -622,7 +619,7 @@ them \impKeywordsCode{}:
 %% Maybe convert to \paragraph ?
 \begin{enumerate}
     \item \textbf{The information is implied.} The implicit categorizations
-          of ``test type'' by \citet[pp.~53--58]{Firesmith2015} (see
+          of ``test type'' by \citet[pp.~53\==58]{Firesmith2015} (see
           \Cref{tab:multiCats\ifnotpaper,tab:infMultiCats\fi}) are an example
           of this. The given test approaches are not explicitly called ``test
           types'', as the term is used more loosely to refer to different kinds
@@ -638,12 +635,12 @@ them \impKeywordsCode{}:
               might not be part of its name \emph{or} it might not be a test
               approach at all! For example, the term ``legacy system
               integration'' is used \ifnotpaper by \citeauthor{Gerrard2000a}
-                  (\citeyear[pp.~12--13, Tab.~2]{Gerrard2000a};
+                  (\citeyear[pp.~12\==13, Tab.~2]{Gerrard2000a};
                   \citeyear[Tab.~1]{Gerrard2000b})\else in
-                  \cite[pp.~12--13, Tab.~2]{Gerrard2000a},
+                  \cite[pp.~12\==13, Tab.~2]{Gerrard2000a},
                   \cite[Tab.~1]{Gerrard2000b}\fi, but the more accurate
               ``legacy system integration testing'' is used in
-              \citeyearpar[pp.~30--31]{Gerrard2000b}. In other cases where a
+              \citeyearpar[pp.~30\==31]{Gerrard2000b}. In other cases where a
               term is \emph{not} explicitly labelled as ``testing'', we add the
               suffix ``~(Testing)'' (when it makes sense to do so) and consider
               the test approach to be implied. \fi
