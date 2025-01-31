@@ -227,6 +227,18 @@ accept a system or component'' \ifnotpaper (\citealp[p.~5]{IEEE2017}; similar
     \cite[p.~5]{IEEE2017}\fi, which requires the system or component to be
 developed and ready for testing.
 
+\ifnotpaper
+    \afterpage{
+        \begin{landscape}
+            % Moved earlier to display nicely in paper
+            \ieeeCatsTable{}
+            \newpage
+            % Omitted from paper for brevity
+            \otherCatsTable{}
+        \end{landscape}
+    }
+\fi
+
 While the vast majority of identified test approaches can be categorized
 in this way, \ifnotpaper there seem to be some outliers. For example, \fi
 we also note the potential significance of an ``artifact'' category%
@@ -242,15 +254,6 @@ approach being categorized as a category from \Cref{tab:ieeeCats}
     captured as kinds of coverage-driven testing (see \Cref{cov-test}) and
     experience-based testing \citep[p.~34]{IEEE2022}.
 
-    \afterpage{
-        \begin{landscape}
-            % Moved earlier to display nicely in paper
-            \ieeeCatsTable{}
-            \newpage
-            % Omitted from paper for brevity
-            \otherCatsTable{}
-        \end{landscape}
-    }
 \fi
 Excluding \ifnotpaper our proposed \else this \fi ``artifact'' category, the
 categories given in \Cref{tab:ieeeCats} seem to be orthogonal. For
