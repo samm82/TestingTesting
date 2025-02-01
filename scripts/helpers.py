@@ -134,7 +134,7 @@ def getDiscrepCount(line: list[str], cat, cls, todo=True):
         if any(re.search(fr"\b{imp}\b", part) for imp in IMPLICIT_KEYWORDS[1:]):
             line[i] = re.sub(r"if .+ in ", f"{IMP_BY} ", line[i])
             line[i] = re.sub(r"although .+? \((.+?)\)", fr"{IMP_BY} \1", line[i])
-            line[i] = re.sub(fr"inferred from.+({AUTHOR_REGEX})", fr"{IMP_BY} \1", line[i])
+            line[i] = re.sub(fr"inferred from.+?({AUTHOR_REGEX})", fr"{IMP_BY} \1", line[i])
         for intRef in INTERNAL_REFS:
             line[i] = re.sub(fr"{{{intRef}\w+}}", "", line[i])
 
