@@ -979,7 +979,7 @@ recoveryGraph = CustomGraph(
      "Disaster/Recovery Testing", "Failover Testing", "Failover/Recovery Testing",
      "Failure Tolerance Testing", "Fault Tolerance Testing", "Performance Testing",
      "Performance-related Testing", "Recoverability Testing", "Recovery Testing",
-     "Reliability Testing", "Usability Testing"},
+     "Reliability Testing", "Survivability Testing", "Usability Testing"},
     add = {
         "Backup and Recovery Testing" : ["Recoverability Testing"],
         "Recoverability Testing" : ["Availability Testing",

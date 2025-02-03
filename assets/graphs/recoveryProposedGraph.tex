@@ -17,6 +17,7 @@ PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
 RecoverabilityTesting [label=<Recoverability<br/>Testing>];
 RecoveryPerformanceTesting [label=<Recovery<br/>Performance<br/>Testing>,color=orange];
 ReliabilityTesting [label=<Reliability<br/>Testing>];
+SurvivabilityTesting [label=<Survivability<br/>Testing>];
 UsabilityTesting [label=<Usability<br/>Testing>];
 
 
@@ -31,6 +32,7 @@ PerformanceTesting -> PerformanceTesting;
 RecoverabilityTesting -> ReliabilityTesting[color="green"];
 RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
 ReliabilityTesting -> PerformanceTesting;
+SurvivabilityTesting -> RecoverabilityTesting[color="green"];
 UsabilityTesting -> UsabilityTesting;
 
 RecoverabilityTesting -> AvailabilityTesting[color=orange];
