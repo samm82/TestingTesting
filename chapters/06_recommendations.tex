@@ -1,9 +1,17 @@
 \section{Recommendations}
 \label{recs}
 
-We provide different recommendations for resolving various
-discrepancies (see \Cref{discreps}). This was done with the goal of
-organizing them more logically and making them:
+As we have shown in \Cref{discreps}, ``testing is a mess'' \citetext{Mosser,
+    2023, priv.\ comm.}! It will take a lot of time, effort, expertise, and
+training to organize these terms (and their relations) logically. However, the
+hardest step is often the first one, so we attempt to give some examples of how
+this ``rationalization'' can occur. These changes often arise when we notice an
+issue with the current state of the terminology and think about what \emph{we}
+would do to make it better. We do not claim that these are correct, unbiased,
+or exclusive, just that they can be used as an inspiration for those wanting to
+pick up where we leave off.
+
+When redefining terms, we seek to make them:
 \begin{enumerate}
     \item Atomic (e.g., disaster/recovery testing seems to have two
           disjoint definitions)
@@ -15,6 +23,13 @@ organizing them more logically and making them:
           testing explicitly exclude an aspect included in its parent
           disaster/recovery testing)
 \end{enumerate}
+Likewise, we seek to eliminate classes of discrepancies that can be detected
+automatically, such as test approaches that are given as synonyms to multiple
+distinct approaches (\Cref{multiSyns}) or as parents of themselves
+(\Cref{selfPars}), or pairs of approaches with both a parent-child \emph{and}
+synonym relation (\Cref{parSyns}).\todo{Same label to different phantomsections;
+    is that OK?}
+
 We give recommendations for the areas of recovery testing (\Cref{rec-test-rec}),
 scalability testing (\Cref{scal-test-rec}), and performance-related testing
 (\Cref{perf-test-rec}). Graphical representations (described in
