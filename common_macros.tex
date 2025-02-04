@@ -59,21 +59,20 @@
 \newcommand{\porthreftm}[2]{\href{#2}{#1\printOnlyFootnoteMark}}
 
 \newcommand{\formatPaper}[2]{%
-    \ifnotpaper
-        #1{#2}%
-    \else
-        \underline{#2}%
+    \ifnotpaper #1{#2}%
+    \else \underline{#2}%
     \fi
 }
 
 \def\refHelper{\ifnotpaper\else Reference \fi}
 \newcommand\multiAuthHelper[1]{\ifnotpaper #1\else #1s\fi}
+\def\docType{\ifnotpaper thesis%
+    \else paper%
+    \fi}
 
 \newcommand\discrepref[1]{%
-    \ifnotpaper
-        \labelcref{#1}%
-    \else
-        \Cref{#1}%
+    \ifnotpaper \labelcref{#1}%
+    \else \Cref{#1}%
     \fi}
 
 \newcommand\ifblind[2]{\IfEndWith*{\jobname}{_blind}{#1}{#2}}
