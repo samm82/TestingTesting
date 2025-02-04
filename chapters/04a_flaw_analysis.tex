@@ -1,22 +1,22 @@
 \subsection{Flaw Analysis}
 \label{flaw-analysis}
 
-In addition to analyzing specific discrepancies, an overview of their amounts,
+In addition to analyzing specific flaws, an overview of their amounts,
 sources, rigidities (see \Cref{rigidity}), classes, and categories is
 also useful. Subsets of this task can be automated (\Cref{auto-flaw-analysis})
 and the remaining manual portion can be augmented with automated
 tools (\Cref{aug-flaw-analysis}).
 
-To understand where discrepancies exist in the literature, they are
+To understand where flaws exist in the literature, they are
 grouped based on the source tiers (as described in \Cref{sources})
-responsible for them. Each discrepancy is then counted \emph{once} per source
+responsible for them. Each flaw is then counted \emph{once} per source
 category if it appears within it \emph{and/or} between it and a more
-``trusted'' category. This avoids counting the same discrepancy more than once
+``trusted'' category. This avoids counting the same flaw more than once
 for a given category\thesisissueref{83}, which would result in the number of
-\emph{occurrences} of all discrepancies, instead of the number of discrepancies
+\emph{occurrences} of all flaws, instead of the number of flaws
 \emph{themselves}, which is more useful. The exception to this is
 \Cref{fig:discrepSources}, which counts the following sources
-of discrepancies separately:
+of flaws separately:
 \begin{enumerate}
     \item those that appear once in (or consistently throughout) a document
           (i.e., are ``self-contained'')\thesisissueref{137,138},
@@ -27,10 +27,10 @@ of discrepancies separately:
     \item those within a source tier.
 \end{enumerate}
 As before, these are not double counted, meaning that the maximum number of
-counted discrepancies possible within a \emph{single} source tier in
+counted flaws possible within a \emph{single} source tier in
 \Cref{fig:discrepSources} is four (one for each type). This only occurs if
-there is an example of each discrepancy source that is \emph{not} ignored to
-avoid double counting; for example, while a single discrepancy within a single
+there is an example of each flaw source that is \emph{not} ignored to
+avoid double counting; for example, while a single flaw within a single
 document would technically fulfill all four criteria, it would only be counted
 once. Note that while the different versions of the \acfp{swebok} have
 different editors \citep{SWEBOK2024,SWEBOK2014}, we consider them to be written
@@ -39,28 +39,28 @@ by the same organization: the IEEE Computer Society (\citealp{AboutSWEBOK}; see
 
 \phantomsection{}
 \label{flaw-analysis-example}
-As an example of this process, consider a discrepancy \emph{within} an IEEE
+As an example of this process, consider a flaw \emph{within} an IEEE
 document (e.g., two different definitions are given for a term within the same
 IEEE document) \emph{and} between another IEEE document, the \acs{istqb}
 glossary \emph{and} two papers. This would add one to the following rows of
 \Cref{tab:sntxDiscreps,tab:smntcDiscreps} in the relevant column:
 
 \begin{itemize}
-    \item \textbf{\stds{}}: this discrepancy occurs:
+    \item \textbf{\stds{}}: this flaw occurs:
           \begin{enumerate}
               \item within one standard and
               \item between two standards.
           \end{enumerate}
           This increments the count by just one to avoid double counting and
           would do so even if only one of the above conditions was true. A more
-          nuanced breakdown of discrepancies that identifies those within a
+          nuanced breakdown of flaws that identifies those within a
           singular document and those between documents by the same author is
           given in \Cref{fig:discrepSources} and explained in more detail in
           \Cref{aug-flaw-analysis}.
-    \item \textbf{\metas{}}: this discrepancy occurs between a
+    \item \textbf{\metas{}}: this flaw occurs between a
           source in this category and a ``more trusted'' one
           (the IEEE standards).
-    \item \textbf{\papers{}}: this discrepancy occurs between a
+    \item \textbf{\papers{}}: this flaw occurs between a
           source in this category and a ``more trusted'' one. Even though there
           are two sources in this category \emph{and} two ``more trusted''
           categories involved, this increments the count by just one to avoid
@@ -70,9 +70,9 @@ glossary \emph{and} two papers. This would add one to the following rows of
 \subsubsection{Automated Flaw Analysis}
 \label{auto-flaw-analysis}
 
-As outlined in \Cref{graph-gen}, some types of discrepancies can be detected
+As outlined in \Cref{graph-gen}, some types of flaws can be detected
 automatically. While just counting the total number of these types of
-discrepancies is trivial, tracking the source(s) of these discrepancies is more
+flaws is trivial, tracking the source(s) of these flaws is more
 involved. Since the appropriate citations for each piece of information is
 tracked (see \Cref{tab:exampleGlossary,tab:synExampleGlossary} for examples of
 how these citations are formatted in the glossaries), they can be used to find
@@ -80,7 +80,7 @@ the offending source tiers. This comes with the added benefit of these
 citations being available to be formatted for use with \LaTeX{}'s citation
 commands for inclusion in this document.
 
-Comparing the authors and years of each source related to a given discrepancy
+Comparing the authors and years of each source related to a given flaw
 can determine if it manifests within a single document and/or between documents
 by the same author(s) when creating \Cref{fig:discrepSources}. Then, the
 relevant sources can be sorted into their categories based on their citations
@@ -92,7 +92,7 @@ This determines
 the appropriate row of \Cref{tab:sntxDiscreps,tab:smntcDiscreps} and the appropriate
 graph and slice in \Cref{fig:discrepSources}. These lists of sources can then
 be distilled down to sets of categories which are compared against
-each other to determine how many times a given discrepancy manifests between
+each other to determine how many times a given flaw manifests between
 source tiers. Examples of this process are described in more detail in
 \Cref{aug-flaw-analysis}.
 
@@ -100,16 +100,16 @@ source tiers. Examples of this process are described in more detail in
 \label{auto-flaw-analysis-rigidity}
 Alongside this citation information are the keywords relevant for assessing a
 piece of information's rigidity (see \Cref{rigidity}). This is useful when
-counting discrepancies, since a discrepancy can be both explicit and implicit,
+counting flaws, since they can be both explicit and implicit,
 but should not be double counted as both\thesisissueref{83}! When counting
-discrepancies in \Cref{tab:sntxDiscreps,tab:smntcDiscreps}, a given discrepancy is
+flaws in \Cref{tab:sntxDiscreps,tab:smntcDiscreps}, each one is
 counted only for its most ``rigid'' manifestation (i.e., it will only increment
 a value in the ``Implicit'' column if it is \emph{not} also explicit).
 
 \subsubsection{Augmented Flaw Analysis}
 \label{aug-flaw-analysis}
-While some subsets of discrepancies can be deduced automatically from analyzing
-the testing approach glossary, other types of discrepancies need to be tracked
+While some subsets of flaws can be deduced automatically from analyzing
+the testing approach glossary, most need to be tracked
 manually. This is done by adding
 comments to the relevant \LaTeX{} files (generated or not) of the form
 \begin{displayquote}
@@ -118,8 +118,8 @@ comments to the relevant \LaTeX{} files (generated or not) of the form
         \dots{} | \{C1\} %\{C2\}
         \dots}
 \end{displayquote}
-which can then be parsed to detemine where discrepancies occur. \texttt{CAT} is
-a placeholder for the discrepancy's category (see \Cref{smntcDiscreps})
+which can then be parsed to detemine where flaws occur. \texttt{CAT} is
+a placeholder for the flaw's category (see \Cref{smntcDiscreps})
 identifier and \texttt{CLS} is a placeholder for its class (see
 \Cref{sntxDiscreps}) identifier. These designations are ommitted
 from the following examples of these comments.
@@ -132,13 +132,13 @@ comparing a document to a source of ground truth. Sometimes, these do not
 require an explicit comparison; for example, \nameref{miss} often fall in this
 category, since the lack of information is contained within a single source and
 does not need to be cross-checked against a source of ground truth. If only one
-group of sources is present in a discrepancy comment, such as the first line
+group of sources is present in a flaw's comment, such as the first line
 below, it is considered to be a self-contained flaw. On the other hand,
 internal flaws arise when a document disagrees with itself by containing two
 conflicting pieces of information and include many \nameref{contra} and
 \nameref{over}. These can even occur on the same page, such as when an acronym
 is given to two distinct terms (see \discrepref{cat-acro,hil-acro})! If a
-source appears in multiple groups in a discrepancy comment, it is considered to
+source appears in multiple groups in a flaw's comment, it is considered to
 be an internal flaw. The second line is a standard example of this, while the
 third is more complex; in this case, source Y agrees with only one of the
 conflicting sources of information in X.
@@ -166,18 +166,18 @@ the IEEE documents are written by the same standards organizations
 (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), they are counted as a
 discrepancy between documents by the same author(s) in \Cref{fig:discrepSources}.
 
-The rigidity (see \Cref{rigidity}) of discrepancies can also be manually
+The rigidity (see \Cref{rigidity}) of flaws can also be manually
 specified by inserting the phrase ``implied by'' after the sources of explicit
 information and before those of implicit information. Parsing this information
-follows the same rules as the automatic discrepancy analysis
+follows the same rules as the automatic flaw analysis
 (see \Cref{auto-flaw-analysis-rigidity}).
 \begin{displayquote}
     \texttt{\% Discrep count: \{IEEE2022\} implied by \{Kam2008\} |\\
         \displayNL \{IEEE2017\} implied by \{IEEE2022\}}
 \end{displayquote}
-For example, the above line indicates that the discrepancies given below are
-present. The second discrepancy only affects \Cref{fig:discrepSources} since it
-is less ``rigid'' than the first discrepancy within standards (see \Cref{stds}).
+For example, the above line indicates that the flaws given below are
+present. The second flaw only affects \Cref{fig:discrepSources} since it
+is less ``rigid'' than the first flaw within standards (see \Cref{stds}).
 The rest increment their corresponding count in
 \Cref{fig:discrepSources,tab:sntxDiscreps,tab:smntcDiscreps} by only one:
 \begin{itemize}
@@ -188,15 +188,15 @@ The rest increment their corresponding count in
 \end{itemize}
 
 Occasionally, a source from a lower tier is used as the ``ground truth'' for a
-discrepancy. For example, \tolTestingDiscrep*{} This discrepancy is supported
+flaw. For example, \tolTestingDiscrep*{} This flaw is supported
 by additional papers found via a miniature literature review (described in
 \Cref{undef-terms}) from a lower source tier than \citep{Firesmith2015}
-(which is a terminology collection; see \Cref{sources}). However, this
-discrepancy is really based in \citep{Firesmith2015} and not in these
+(which is a terminology collection; see \Cref{sources}). However, it
+is really based in \citep{Firesmith2015} and not in these
 additional papers, but if these sources where included as detailed above,
 this is the way it would be counted. Therefore, we document these ``ground
 truth'' sources separately to track them for traceability without incorrectly
-counting discrepancies. This is done for this specific example (and similarly
+counting flaws. This is done for this specific example (and similarly
 for other cases) as follows:
 \begin{displayquote}
     \texttt{\% Discrep count (TERMS, WRONG): \{Firesmith2015\}\\
@@ -216,12 +216,12 @@ values.
 
 \input{assets/tables/macrosCalc}
 
-Additionally, discrepancies are counted based on their rigidity, source tier,
+Additionally, flaws are counted based on their rigidity, source tier,
 and whether they are syntactic or semantic (see
 \Cref{rigidity,sources,auto-flaw-analysis,aug-flaw-analysis,discreps}).
 These counts are saved to files, a syntactic and semantic version for each
-source tier; for example, syntactic discrepancies in standards are saved to
-\texttt{build/stdSntxDiscBrkdwn.tex} and semantic discrepancies in standards to
+source tier; for example, syntactic flaws in standards are saved to
+\texttt{build/stdSntxDiscBrkdwn.tex} and semantic flaws in standards to
 \texttt{build/stdSmntcDiscBrkdwn.tex}. These data are then read in to macros
 (such as \macro{stdSmntcDiscBrkdwn}) that are then used to populate
 \Cref{tab:sntxDiscreps,tab:smntcDiscreps}. For example,
