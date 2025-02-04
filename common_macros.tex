@@ -214,17 +214,17 @@
 
 \def\srcCount{\the\numexpr\stdSources{3} + \metaSources{3} + \textSources{3} + \paperSources{3}}
 
-\ReadFile{\stdSmntcDiscBrkdwn}{build/stdSmntcDiscBrkdwn}
-\ReadFile{\metaSmntcDiscBrkdwn}{build/metaSmntcDiscBrkdwn}
-\ReadFile{\textSmntcDiscBrkdwn}{build/textSmntcDiscBrkdwn}
-\ReadFile{\paperSmntcDiscBrkdwn}{build/paperSmntcDiscBrkdwn}
-\ReadFile{\totalSmntcDiscBrkdwn}{build/totalSmntcDiscBrkdwn}
+\ReadFile{\stdSmntcFlawBrkdwn}{build/stdSmntcFlawBrkdwn}
+\ReadFile{\metaSmntcFlawBrkdwn}{build/metaSmntcFlawBrkdwn}
+\ReadFile{\textSmntcFlawBrkdwn}{build/textSmntcFlawBrkdwn}
+\ReadFile{\paperSmntcFlawBrkdwn}{build/paperSmntcFlawBrkdwn}
+\ReadFile{\totalSmntcFlawBrkdwn}{build/totalSmntcFlawBrkdwn}
 
-\ReadFile{\stdSntxDiscBrkdwn}{build/stdSntxDiscBrkdwn}
-\ReadFile{\metaSntxDiscBrkdwn}{build/metaSntxDiscBrkdwn}
-\ReadFile{\textSntxDiscBrkdwn}{build/textSntxDiscBrkdwn}
-\ReadFile{\paperSntxDiscBrkdwn}{build/paperSntxDiscBrkdwn}
-\ReadFile{\totalSntxDiscBrkdwn}{build/totalSntxDiscBrkdwn}
+\ReadFile{\stdSntxFlawBrkdwn}{build/stdSntxFlawBrkdwn}
+\ReadFile{\metaSntxFlawBrkdwn}{build/metaSntxFlawBrkdwn}
+\ReadFile{\textSntxFlawBrkdwn}{build/textSntxFlawBrkdwn}
+\ReadFile{\paperSntxFlawBrkdwn}{build/paperSntxFlawBrkdwn}
+\ReadFile{\totalSntxFlawBrkdwn}{build/totalSntxFlawBrkdwn}
 
 \def\stds{\nameref{stds}}
 \def\metas{\nameref{metas}}
@@ -235,7 +235,7 @@
 \def\srcCat{\hyperref[sources]{Source Tier}}
 \def\reduns{\ifnotpaper\nameref{redun}\else Redundancies\footnote{Section omitted for brevity.}\fi}
 
-\def\flawCount{\totalSmntcDiscBrkdwn{13}}
+\def\flawCount{\totalSmntcFlawBrkdwn{13}}
 
 \def\cats{\hyperref[cats]{Categories}}
 \def\syns{\hyperref[syns]{Synonyms}}

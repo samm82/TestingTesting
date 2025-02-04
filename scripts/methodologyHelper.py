@@ -6,7 +6,7 @@ CAT_FOOTNOTE = "\n\t".join([
     "\\footnote{",
     "There may be more than one category given for a single test approach ",
     "\\ifnotpaper (for example, A/B Testing in \\Cref{tab:approachGlossaryExcerpt}) \\fi ",
-    "which is indicative of a discrepancy (see \\Cref{multiCats}).} \n"])
+    "which is indicative of a flaw (see \\Cref{multiCats}).} \n"])
 toRecord: list[str] = [
     "name", f"category{CAT_FOOTNOTE}(\\Cref{{categories-observ}})",
     "definition", "synonyms (\\Cref{syn-rels})",
@@ -30,20 +30,20 @@ methodology_a = """    \\item \\phantomsection{}\\label{identify-sources}
         ]) + """\n    \\item Repeat steps~\\ref{identify-sources} to
           \\ref{record-terms} for any missing or unclear terminology (\\Cref{undef-terms})"""
     
-methodology_b = """    \\item Analyze these data for discrepancies
+methodology_b = """    \\item Analyze these data for flaws
           \\begin{enumerate}
-              \\item \\phantomsection{}\\label{manual-discreps}
-                    Record discrepancies as they arise during data collection
+              \\item \\phantomsection{}\\label{manual-flaws}
+                    Record flaws as they arise during data collection
               \\item Generate relation graphs (\\Cref{\\ifnotpaper graph-gen\\else tools\\fi})
               \\ifnotpaper
-              \\item Automatically detect certain classes of discrepancies
+              \\item Automatically detect certain classes of flaws
                     (\\Cref{auto-flaw-analysis})
-              \\item Automatically analyze manually recorded discrepancies from
-                    step~\\ref{manual-discreps} (\\Cref{aug-flaw-analysis})
+              \\item Automatically analyze manually recorded flaws from
+                    step~\\ref{manual-flaws} (\\Cref{aug-flaw-analysis})
               \\fi
           \\end{enumerate}
-    \\item Report results of discrepancy analysis (\\Cref{discreps})
-    \\item Seek to resolve these discrepancies (\\Cref{recs})"""
+    \\item Report results of flaw analysis (\\Cref{flaws})
+    \\item Seek to resolve these flaws (\\Cref{recs})"""
     
 # Base methodology overview
 writeFile(wrapEnv("enumerate", [methodology_a, methodology_b]),
@@ -59,8 +59,8 @@ for i, m in enumerate([methodology_a, methodology_b]):
         m = re.sub(r"\s+\([^)]*\)", "", m)
 
     # Hack because enumitem conflicts with beamer :(
-    m = m.replace("\\\\ref{manual-discreps}",
-                  "\\\\arabic{enumi}.\\\\ref{manual-discreps}")
+    m = m.replace("\\\\ref{manual-flaws}",
+                  "\\\\arabic{enumi}.\\\\ref{manual-flaws}")
 
     mList = m.split("\n")
     # From https://tex.stackexchange.com/a/1702/192195!

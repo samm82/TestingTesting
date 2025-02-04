@@ -26,7 +26,7 @@ for filename in TEX_FILES:
         sources.update(re.findall(
             r"\{(.*?)\}", " ".join([line.split(":")[1]
                                   for line in file.readlines()
-                                  if "% Discrep count" in line])))
+                                  if "% Flaw count" in line])))
 
 # Omit private communication as a source; used for notes
 sources.discard("SmithAndCarette2023")

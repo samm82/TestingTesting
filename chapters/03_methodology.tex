@@ -81,8 +81,8 @@ standards bodies, namely ISO, the \acf{iec}, and IEEE. Their purpose is to
 rigorous, uncomplicated, and understandable by all concerned''
 \citep[p.~viii]{IEEE2017}. For these reasons\todo{Is this clear enough?}, they
 are the most trustworthy sources. However, this does not imply perfection, as we
-identify \stdSmntcDiscBrkdwn{13} % is (should be!) equal to \stdSntxDiscBrkdwn{13}
-flaws within these standards (see \Cref{tab:sntxDiscreps,tab:smntcDiscreps})!
+identify \stdSmntcFlawBrkdwn{13} % is (should be!) equal to \stdSntxFlawBrkdwn{13}
+flaws within these standards (see \Cref{tab:sntxFlaws,tab:smntcFlaws})!
 Only standards for software development and testing are in scope for
 this research (see \Cref{scope}). For example, ``the purpose of the
 ISO/IEC/IEEE 29119 series is to define an internationally agreed set of
@@ -640,7 +640,7 @@ is the considerable degree of nuance that can get lost when referring to
 information sources. \rigidBlurb{} and capture it when citing sources. This
 allows us to provide a more complete picture of the state of the literature;
 for example, we can view implicit flaws separately in
-\Cref{tab:sntxDiscreps,tab:smntcDiscreps}, since additional context may rectify
+\Cref{tab:sntxFlaws,tab:smntcFlaws}, since additional context may rectify
 them. The following non-mutually exclusive reasons for information to be
 considered ``implicit'' emerged, and the given keywords are used to identify
 them \impKeywordsCode{}:
@@ -764,7 +764,7 @@ This includes the generic ``approach'' category being replaced with a more
 specific one, an additional synonym being mentioned, or another source
 describing an already-documented parent-child relation. If any new information
 contradicts existing information (or otherwise indicates something is wrong),
-this is investigated and documented (see \Cref{discreps}), which may be done
+this is investigated and documented (see \Cref{flaws}), which may be done
 in a separate document and/or in the glossary itself. Sometimes, new
 information does not conflict with existing information, in which case the
 clearest and most concise version is kept, or they are merged to paint a more
@@ -851,7 +851,7 @@ or quite broad\ifnotpaper\ (such as attacks; see \Cref{attacks}%
     says so, it can be inferred that these approaches are children of
     integration testing and system integration testing, respectively.
     Although these data do not come from the literature, they are documented
-    for completeness; inferred flaws are given in \Cref{infer-discreps}
+    for completeness; inferred flaws are given in \Cref{infer-flaws}
     and inferred relations, if any, are included in \recFigs{}.
 \fi
 

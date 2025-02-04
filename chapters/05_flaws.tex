@@ -1,0 +1,822 @@
+\section{Discrepancies}
+\label{flaws}
+
+% Moved earlier to display nicely in paper
+% \sntxFlawsTable{}
+% \smntcFlawsTable{}
+
+After gathering all these data\footnote{Available in \texttt{ApproachGlossary.csv},
+    \texttt{QualityGlossary.csv}, and \texttt{SuppGlossary.csv} at \ifblind{
+        [Repository link suppressed]}{
+        \url{https://github.com/samm82/TestingTesting}}.}, we find many
+discrepancies. To better understand and analyze them, we group them by their
+syntax and their semantics. Syntactic discrepancies (\Cref{sntxFlaws})
+describe \emph{how} a discrepancy manifests, such as information that is wrong
+(a ``mistake''; \Cref{wrong}) or missing (an ``omission''; \Cref{miss}). On the
+other hand, semantic discrepancies (\Cref{smntcFlaws}) describe the
+knowledge domain in which a discrepancy manifests, such as a discrepancy
+between synonyms (\Cref{syns}) or parent-child relations (\Cref{pars}).
+As an example, \tourFlaw*{}. This is a case of contradictory definitions, so
+it appears with both the contradictions (\Cref{contra}) \emph{and} the
+definition disrepancies (\Cref{defs}). Within these sections, \ifnotpaper
+    ``more significant'' discrepancies are
+    listed first, followed by ``less significant'' ones omitted from the paper
+    version of this thesis. They \else ``less significant'' discrepancies are
+    omitted for brevity, and those remaining \fi are then sorted based on their
+source tier (see \Cref{sources}).
+
+A summary of how many discrepancies there are by syntax and by semantics is
+shown in \Cref{tab:sntxFlaws,tab:smntcFlaws}, respectively, where a given
+row corresponds to the number of discrepancies either within that
+source tier (see \Cref{sources}) and/or with a ``more trusted'' one
+(i.e., a previous row in the table). The numbers of (Exp)licit and (Imp)licit
+(see \Cref{rigidity}) discrepancies are also presented in these tables. Since
+each discrepancy is grouped by syntax \emph{and} by semantics, the totals per
+source and grand totals in these tables are equal. However, the numbers of
+discrepancies listed in \Cref{sntxFlaws,smntcFlaws} are not equal,
+as those automatically uncovered based on semantics \ifnotpaper
+    (see \Cref{auto-flaw-analysis}) \fi are only listed in the corresponding
+category section for clarity; they still contribute to the counts in
+\Cref{tab:sntxFlaws}!
+
+Moreover, certain ``subsets'' of testing revealed many interconnected
+discrepancies. These are given in their respective sections as a ``third view''
+to keep related information together, but still count towards the syntaxes and
+semantics of discrepancies listed above\ifnotpaper\ (\Cref{aug-flaw-analysis}
+    outlines how this is done)\fi, causing a further mismatch between the counts
+in \Cref{tab:sntxFlaws,tab:smntcFlaws} and the counts in \Cref{sntxFlaws,%
+    smntcFlaws}. The ``problem'' subsets of testing include
+\nameref{func-test-flaw}, \ifnotpaper\nameref{oat-flaw}, \fi
+\nameref{recov-flaw}, \nameref{scal-flaw}, and \nameref{compat-flaw}.
+\ifnotpaper Finally, \nameref{infer-flaws} are also given for completeness,
+    despite being less certain and thus not contributing to any counts.
+
+    \begin{landscape}
+        \sntxFlawsTable{}
+        \smntcFlawsTable{}
+    \end{landscape}
+
+    \input{assets/graphs/flawPies}
+    \input{build/flawTable} \fi
+
+\subsection{Syntactic Discrepancies}
+\label{sntxFlaws}
+
+The following sections list observed discrepancies grouped by \emph{how} the
+discrepancy manifests. These include \nameref{wrong}, \nameref{miss},
+\nameref{contra}, \nameref{ambi}, \nameref{over}, and \reduns{}.
+
+\subsubsection{Mistakes}
+\label{wrong}
+The following are cases where information is incorrect; this includes cases
+\terms{} included that should \emph{not} have been, untrue claims about
+\cites{}, and simple typos:
+
+\input{build/SntxFlawWrong}
+
+\subsubsection{Omissions}
+\label{miss}
+The following are cases where information (usually \defs{}) \emph{should have}
+been included but was not:
+
+\input{build/SntxFlawMiss}
+
+\subsubsection{Contradictions}
+\label{contra}
+The following are cases where multiple sources of information (sometimes within
+the same document!) disagree; note that cases where all sources of information
+are incorrect are considered contradictions and not \nameref{wrong}, since this
+would require analysis that has not been performed yet:
+
+\input{build/SntxFlawContra}
+
+\subsubsection{Ambiguities}
+\label{ambi}
+The following are cases where information (usually \defs{} or distinctions
+between \terms{}) is unclear:
+
+\input{build/SntxFlawAmbi}
+
+\subsubsection{Overlaps}
+\label{over}
+The following are cases where information overlaps, such as nonatomic \defs{}
+and \terms{}:
+
+\input{build/SntxFlawOver}
+
+\ifnotpaper
+    \subsubsection{Redunancies}
+    \label{redun}
+    The following are cases of redundant information:
+
+    \input{build/SntxFlawRedun}
+\fi
+
+\subsection{Semantic Discrepancies}
+\label{smntcFlaws}
+
+The following sections list observed discrepancies grouped by \emph{what area}
+the discrepancy manifests in. These include \nameref{cats}, \nameref{syns},
+\nameref{pars}, \nameref{defs}, \nameref{terms}, and \nameref{cites}.
+
+\subsubsection{Approach Category Discrepancies}
+\label{cats}
+
+While the IEEE categorization of testing approaches described in
+\Cref{tab:ieeeCats} is useful, it is not without its faults. One issue,
+which is not inherent to the categorization itself, is the fact that it is not
+used consistently\ifnotpaper\ (see \Cref{tab:otherCats})\fi. The most
+blatant example of this is that \ifnotpaper \else ISO/IEC and IEEE \fi
+\citet[p.~286]{IEEE2017} describe mutation testing as a
+methodology, even though this is not one of the categories \emph{they} created!
+Additionally, the boundaries between approaches within a category may
+be unclear: ``although each technique is defined independently of all others,
+in practice [sic] some can be used in combination with other techniques''
+\citep[p.~8]{IEEE2021}. For example, ``the test coverage items derived by
+applying equivalence partitioning can be used to identify the input parameters
+of test cases derived for scenario testing'' \citetext{p.~8}. Even the categories
+themselves are not consistently defined, and some approaches are categorized
+differently by different sources; these differences are tracked so
+they can be analyzed more systematically\thesisissueref{21}.
+
+\input{build/SmntcFlawCats}
+
+% Moved here to display nicely in paper
+\ifnotpaper\else\input{assets/misc/multiCats}\fi
+
+\phantomsection{}
+\label{multiCats}
+
+Some category discrepancies can be detected automatically, such as test
+approaches with more than one category. These are given in \Cref{tab:multiCats}
+and include experience-based testing, which is of particular note.
+\expBasedCatMain{} These authors say ``experience-based testing practices like
+exploratory testing \dots\ are not \dots\ techniques for designing test cases'',
+although they ``can use \dots\ test techniques'' \citeyearpar[p.~viii]{IEEE2021},
+which they support in \citeyearpar[p.~33]{IEEE2022} along with scripted testing.
+This implies that ``experience-based test design techniques'' are used \emph{by}
+the practice of experience-based testing which is not \emph{itself} a test
+technique (and similarly with scripted testing). If this is the case, it blurs
+the line between ``practice'' and ``technique'', which may explain why
+experience-based testing is categorized inconsistently in the literature%
+\thesisissueref{64}.
+
+\ifnotpaper
+    \phantomsection
+    \label{classFamilyDiscrep}
+    However, this might mean that a practice such as experience-based testing
+    can be viewed as a ``class of test case design techniques''
+    \citep[p.~4]{IEEE2022}. If \emph{this} is the case, then test approaches
+    that are a collection of specific subtechniques may be considered
+    practices. The following test approaches are each described as a ``class'',
+    ``family'', or ``collection'' of techniques by the sources given, which
+    seems to support this:
+    \begin{itemize}
+        \item Combinatorial testing (\citealp[p.~3]{IEEE2022};
+              \citeyear[p.~2]{IEEE2021}; \citealp[p.~5-11]{SWEBOK2024})
+        \item Data flow testing (\citeyear[p.~3]{IEEE2021};
+              implied by \citealp[p.~5-13]{SWEBOK2024})
+        \item Performance(-related) testing (\citealp[p.~38]{IEEE2021};
+              \perfAsFamily*{})
+        \item Security testing \citep[implied by][p.~40]{IEEE2021}
+        \item Fault tolerance testing \citep[implied by][p.~4\=/11]{SWEBOK2024}
+    \end{itemize}
+    Of the above, security testing is an outlier, since it is consistently
+    categorized as a test type (\citealp[pp.~9, 22, 26--27]{IEEE2022};
+    \citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021}; \citeyear[p.~405]{IEEE2017}%
+    \todo{OG 2013}; implied by its quality (\citealp{ISO_IEC2023a};
+    \citealp[p.~13-4]{SWEBOK2024}); \citealp[p.~53]{Firesmith2015}) despite
+    consisting of ``a number of techniques'' \cite[p.~40]{IEEE2021}, although
+    this may be \distinctIEEE{technique} In addition, specification-based
+    testing and structure-based testing may also be considered ``families''
+    since they are quite broad with many subtechniques and are described as
+    ``complementary'' alongside experience-based testing
+    \citep[p.~8, Fig.~2]{IEEE2021}.
+\fi
+
+Subapproaches of experience-based tesing, such as error guessing and
+exploratory testing, are also categorized ambiguously, causing confusion on how
+categories and parent-child relations (see \Cref{par-chd-rels}) interact.
+\refHelper \citet[p.~34\ifnotpaper, emphasis added\fi]{IEEE2022}
+\multiAuthHelper{say} that a previous standard \citeyearpar{IEEE2021}
+``describes the experience-based test \emph{design technique} of error
+guessing. Other experience-based test \emph{practices} include (but are not
+limited to) exploratory testing \dots, tours, attacks, and checklist-based
+testing''. This seems to imply that error guessing is both a technique
+\emph{and} a practice, which does not make sense if these categories are
+orthogonal. \ifnotpaper Similarly, the conflicting categorizations of beta
+    testing in \Cref{tab:multiCats} may propagate to its children closed beta
+    testing and open beta testing; since this is an inferrence, it is omitted
+    from that table and instead included in \Cref{tab:infMultiCats}. \fi These
+kinds of inconsistencies between parent and child test approach categorizations
+may indicate that categories are not transitive or that more thought must be
+given to them.
+
+\ifnotpaper
+    \begin{landscape}
+        \input{build/multiCats}
+    \end{landscape}
+\else % Not yet present in paper
+\fi
+
+\subsubsection{Synonym Relation Discrepancies}
+\label{syns}
+
+As mentioned in \Cref{syn-rels}, synonyms do not inherently signify a
+discrepancy. Unfortunately, there are many instances of incorrect or ambiguous
+synonyms, such as the following:
+
+\input{build/SmntcFlawSyns}
+
+\phantomsection{}
+\label{multiSyns}
+There are also cases in which a term is given as a synonym to two (or more)
+terms that are not synonyms themselves. Sometimes, these terms
+\emph{are} synonyms; for example, \citetISTQB{} \multiAuthHelper{say}
+``use case testing'', ``user scenario testing'', and ``scenario testing'' are
+all synonyms (although there may be a slight distinction; see
+\Cref{tab:parSyns} and \flawref{use-case-scenario}).
+% Old explanation based on inconsistent citations from Kam2008/ISTQB
+%
+% use case testing, user scenario testing,
+% and scenario testing are synonyms of each other, as shown in
+% \Cref{fig:threeWaySyns}.
+% \begin{figure}[hbtp!]
+%     \centering
+%     \begin{tikzpicture}
+%
+%         \node[ellipse, draw, align=center] (ust) at (10, 0) {User Scenario\\Testing};
+%         \node[ellipse, draw, align=center] (st)  at (0, 0)  {Scenario\\Testing};
+%         \node[ellipse, draw, align=center] (uct) at (5, 4)  {Use Case\\Testing};
+%
+%         \draw[thick] (ust) -- (st)  node [midway, align=center, below]     {\citealpISTQB{}};
+%         \draw[thick] (st)  -- (uct) node [midway, align=center, left=12pt] {\citealpISTQB{};\\ \citealp[pp.~47--49]{Kam2008}\\ (see \flawref{use-case-scenario})\\};
+%         \draw[thick] (uct) -- (ust) node [midway, align=center, right=4pt] {\citealp[p.~48]{Kam2008}\\};
+%
+%     \end{tikzpicture}
+%     \caption{Visual representation of a three-way synonym relation.}
+%     \label{fig:threeWaySyns}
+% \end{figure}
+However, this does not always make sense. We identify nine
+such cases through automatic analysis of the generated graphs\ifnotpaper,
+listed below (test approaches in \emph{italics} are synonyms with each other,
+but not with other terms not in italics\todo{Better way to handle/display
+    this?})\else. The following three are the most prominent examples\fi:
+
+% Moved here to display nicely in paper
+\ifnotpaper\else\input{assets/misc/parSyns}\fi
+
+\begin{enumerate}
+    \input{\ifnotpaper build\else assets/misc\fi/multiSyns}
+\end{enumerate}
+
+\subsubsection{Parent-Child Relation Discrepancies}
+\label{pars}
+
+\nameref{par-chd-rels} are also not immune to difficulties\ifnotpaper, as shown
+by the following discrepancies:
+\input{build/SmntcFlawPars} \else; for example, performance \fi testing and
+security testing are given as subtypes of reliability testing by
+\citep{ISO_IEC2023a}, but these are all listed separately by
+\citep[p.~53]{Firesmith2015}.
+
+\phantomsection{}\label{selfPars}
+Additionally, some self-referential definitions imply that a test
+approach is a parent of itself. Since these are by nature self-contained within
+a given source, these are counted \emph{once} as explicit discrepancies within
+their sources in \Cref{tab:sntxFlaws,tab:smntcFlaws}. \ifnotpaper The following
+    examples were identified through automatic analysis of the generated graphs:
+    \input{build/selfCycles} Interestingly, performance testing is \emph{not}
+    described as a subapproach of usability testing by \citep{Gerrard2000a,
+        Gerrard2000b}, which would have been more meaningful information to
+    capture. \else For example, performance and usability testing are both
+    given as subapproaches of themselves \cite[Tab.~2]{Gerrard2000a},
+    \cite[Tab.~1]{Gerrard2000b}.\fi
+
+\phantomsection{}\label{parSyns}
+There are also pairs of synonyms where one is described as a subapproach
+of the other, abusing the meaning of ``synonym'' and causing confusion.
+We identify \parSynCount{} of these pairs through automatic analysis of the
+generated graphs, \ifnotpaper which are \else with the most prominent \fi
+given in \Cref{tab:parSyns}\ifnotpaper\ (additional pairs where a discrepancy
+    is inferred are given in \Cref{infParSyns} for completeness)\fi. Of
+particular note is the relation between path testing and exhaustive testing.
+While \citet[p.~421]{vanVliet2000} claims that path testing done completely
+``is equivalent to exhaustively testing the program''\footnote{The
+    contradictory definitions of path testing given in \flawref{path-test}
+    add another layer of complexity to this claim.}, this overlooks the effects
+of input data \ifnotpaper
+    (\citealp[pp.~129--130]{IEEE2021}; \citealp[p.~121]{Patton2006};
+    \citealp[p.~467]{PetersAndPedrycz2000})
+\else
+    \cite[p.~121]{Patton2006}, \cite[p.~129]{IEEE2021},
+    \cite[p.~467]{PetersAndPedrycz2000}
+\fi and implementation issues \citetext{p.~476} % \citep[p.~476]{PetersAndPedrycz2000}
+on the code's behaviour. Exhaustive testing
+requires ``all combinations of input values \emph{and} preconditions \dots{}
+[to be] tested'' \ifnotpaper (\citealp[p.~4, emphasis added]{IEEE2022};
+    similar in \citealpISTQB{}; \citealp[p.~121]{Patton2006})\else
+    \cite[p.~4]{IEEE2022} (similar in \citealpISTQB{},
+    \cite[p.~121]{Patton2006})\fi.
+% Flaw count (SYNS, WRONG): {vanVliet2000} | {IEEE2022} ISTQB {Patton2006}
+
+\ifnotpaper
+    \begin{landscape}
+        \input{build/parSyns}
+    \end{landscape}
+\else % Moved earlier to display nicely in paper
+\fi
+
+\subsubsection{Definition Discrepancies}
+\label{defs}
+
+Perhaps the most interesting category for those seeking to understand how to
+apply a given test approach, there are many discrepancies between how test
+approaches, as well as supporting terms, are defined:
+
+\input{build/SmntcFlawDefs}
+
+% TODO: re-investigate this after going through the rest of ISO/IEC/IEEE 29119
+\ifnotpaper
+    Also of note: \citep{IEEE2022, IEEE2021}, from the
+    ISO/IEC/IEEE 29119 family of standards, mention the following 23 test
+    approaches without defining them. This means that out of the 114 test
+    approaches they mention, about 20\% have no associated definition!
+
+    However, the previous version of this standard, \citeyearpar{IEEE2013},
+    generally explained two, provided references for two, and explicitly defined
+    one of these terms, for a total of five definitions that could (should) have
+    been included in \citeyearpar{IEEE2022}! These terms have been
+    \underline{underlined}\ifnotpaper%
+        , \emph{italicized}, and \textbf{bolded}, respectively%
+    \fi. Additionally, entries marked with an asterisk* were defined (at least
+    partially) in \citeyearpar{IEEE2017}, which would have been available when
+    creating this family of standards. These terms bring the total count of terms
+    that could (should) have been defined to nine; almost 40\% of undefined test
+    approaches could have been defined!
+
+    \begin{itemize}
+        \item \underline{Acceptance Testing*}
+        \item Alpha Testing*
+        \item Beta Testing*
+        \item Capture-Replay Driven Testing
+        \item Data-driven Testing
+        \item Error-based Testing
+        \item Factory Acceptance Testing
+        \item Fault Injection Testing
+        \item Functional Suitability Testing (also mentioned but not defined in
+              \citep{IEEE2017})
+        \item \underline{Integration Testing}*
+        \item Model Verification
+        \item Operational Acceptance Testing
+        \item Orthogonal Array Testing
+        \item Production Verification Testing
+        \item Recovery Testing* (Failover/Recovery Testing, Back-up/Recovery
+              Testing, \formatPaper{\textbf}{Backup and Recovery Testing*},
+              Recovery*; see \Cref{recov-flaw})
+        \item Response-Time Testing
+        \item \formatPaper{\emph}{Reviews} (ISO/IEC 20246) (Code Reviews*)
+        \item Scalability Testing (defined as a synonym of ``capacity
+              testing''; see \Cref{scal-flaw})
+        \item Statistical Testing
+        \item System Integration Testing (System Integration*)
+        \item System Testing* (also mentioned but not defined in \citep{IEEE2013})
+        \item \formatPaper{\emph}{Unit Testing*}
+              (IEEE Std 1008-1987, IEEE Standard for
+              Software Unit Testing implicitly listed in the bibliography!)
+        \item User Acceptance Testing
+    \end{itemize}
+\fi
+
+\subsubsection{Terminology Discrepancies}
+\label{terms}
+
+While some discrepancies exist because the definition of a term is wrong,
+others exist because term's \emph{name} or \emph{label} is wrong! This could be
+considered a ``sister'' category of \nameref{defs}, but these
+discrepancies seemed different enough to merit their own category. \ifnotpaper
+    This most often manifests as terms that are included in reference material
+    that should not have been, terms that share the same acronym, and terms
+    that have typos or are redundant. \fi The following \ifnotpaper
+    discrepancies are presented in that order\else are examples of these
+    discrepancies\fi:
+
+\input{build/SmntcFlawTerms}
+
+\subsubsection{Citation Discrepancies}
+\label{cites}
+
+Sometimes a document cites another for a piece of information that does not
+appear! \ifnotpaper
+    The following discrepancies are examples of this:
+    \input{build/SmntcFlawCites}
+\else
+    For example, \citet[p.~184]{DoğanEtAl2014} \multiAuthHelper{claim} that
+    \citet{SakamotoEtAl2013} \multiAuthHelper{define} ``prime path coverage'',
+    but it does not.
+\fi
+
+
+\subsection{Functional Testing}
+\label{func-test-flaw}
+
+``Functional testing'' is described alongside many other, likely related,
+terms. This leads to confusion about what distinguishes these terms, as shown
+by the following five:
+
+\subsubsection{Specification-based Testing}
+\label{spec-func-test}
+This is defined as ``testing in which the principal test basis is the external
+inputs and outputs of the test item'' \citep[p.~9]{IEEE2022}. This agrees
+with a definition of ``functional testing'': ``testing that
+\dots\ focuses solely on the outputs generated in response to
+selected inputs and execution conditions'' \citep[p.~196]{IEEE2017}.
+\todo{\citet[p.~399]{vanVliet2000} may list these as synonyms; investigate}
+Notably, \citet{IEEE2017} lists both as synonyms of
+``black-box testing'' \citetext{pp. 431, 196, respectively}, despite them
+sometimes being defined separately. For example, the \acf{istqb} defines
+``specification-based testing'' as ``testing based on an analysis of the
+specification of the component or system'' \ifnotpaper (and gives ``black-box
+    testing'' as a synonym) \fi and ``functional testing'' as ``testing
+performed to evaluate if a component or system satisfies functional
+requirements'' \ifnotpaper (specifying no synonyms) \citepISTQB{};
+    % Flaw count (SYNS, CONTRA): {IEEE2022} {IEEE2017} | ISTQB
+    the latter references \citet[p.~196]{IEEE2017}
+    (``testing conducted to evaluate the compliance of a system or
+    component with specified functional requirements'') which
+    \emph{has} ``black-box testing'' as a synonym, and mirrors
+    \citet[p.~21]{IEEE2022} (testing ``used to check the implementation
+    of functional requirements'')\else \cite{ISTQB}\fi. Overall,
+specification-based testing \citep[pp.~2-4,~6-9,~22]{IEEE2022} \ifnotpaper and
+    black-box testing (\citealp[p.~5-10]{SWEBOK2024};
+    \citealp[p.~3]{SouzaEtAl2017})
+    % \else \cite[p.~3]{SouzaEtAl2017}, \cite[p.~5-10]{SWEBOK2024}
+    are test design techniques \else is a test design technique \fi used to
+``derive corresponding test cases'' \citep[p.~11]{IEEE2022} from
+``selected inputs and execution conditions'' \citep[p.~196]{IEEE2017}.
+
+\subsubsection{Correctness Testing}
+\label{corr-func-test}
+\refHelper \citet[p.~5-7]{SWEBOK2024} says ``test cases can be designed to
+check that the functional specifications are correctly implemented, which is
+variously referred to in the literature as conformance testing, correctness
+testing or functional testing''; this mirrors previous definitions
+of ``functional testing'' \ifnotpaper
+    (\citealp[p.~21]{IEEE2022}; \citeyear[p.~196]{IEEE2017})
+\else
+    \cite[p.~21]{IEEE2022}, \cite[p.~196]{IEEE2017}
+\fi but groups it with ``correctness
+testing''. Since ``correctness'' is a software quality \ifnotpaper
+    (\citealp[p.~104]{IEEE2017}; \citealp[p.~3-13]{SWEBOK2024}) \else
+    \cite[p.~104]{IEEE2017}, \cite[p.~3-13]{SWEBOK2024} \fi which is
+what defines a ``test type'' \citep[p.~15]{IEEE2022}\ifnotpaper\
+    (see \Cref{qual-test})\fi,
+it seems consistent to label ``functional testing'' as a ``test type''
+\ifnotpaper
+    \citetext{\citealp[pp.~15,~20,~22]{IEEE2022};
+        \citeyear[pp.~7,~38,~Tab.~A.1]{IEEE2021}; \citeyear[p.~4]{IEEE2016}}%
+\else
+    \cite[pp.~15,~20,~22]{IEEE2022}, \cite[pp.~7,~38,~Tab.~A.1]{IEEE2021},
+    \cite[p.~4]{IEEE2016}\fi. However, this conflicts with its categorization
+as a ``technique'' if considered a synonym of \nameref{spec-func-test}.
+% Flaw count (CATS, CONTRA): {IEEE2022} {IEEE2021} {IEEE2016} implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
+Additionally, ``correctness testing'' is listed separately from ``functionality
+testing'' by \citet[p.~53]{Firesmith2015}.
+% Flaw count (SYNS, CONTRA): {SWEBOK2024} | {Firesmith2015}
+
+\subsubsection{Conformance Testing}
+Testing that ensures ``that the functional specifications are correctly
+implemented'', and can be called ``conformance testing'' or ``functional
+testing'' \citep[p.~5-7]{SWEBOK2024}.
+``Conformance testing'' is later defined as testing used ``to
+verify that the \acs{sut} conforms to standards, rules,
+specifications, requirements, design, processes, or practices''
+\citep[p.~5-7]{SWEBOK2024}. This definition seems to be a superset
+of testing methods mentioned earlier as the latter includes ``standards,
+rules, requirements, design, processes, \dots\ [and]'' practices in
+\emph{addition} to specifications!
+% Flaw count (SYNS, OVER): {SWEBOK2024} | implied by {SWEBOK2024}
+
+A complicating factor is that ``compliance testing'' is also
+(plausibly) given as a synonym of ``conformance testing''
+\citep[p.~43]{Kam2008}. However, ``conformance
+testing'' can also be defined as testing that evaluates the degree
+to which ``results \dots\ fall within the limits that define
+acceptable variation for a quality requirement''
+\citep[p.~93]{IEEE2017}\todo{OG PMBOK 5th ed.}, which seems to
+describe something different.
+% Flaw count (SYNS, AMBI): {Kam2008} | implied by {IEEE2017}
+
+% TODO: pull out into Recommendations
+% Perhaps this second definition of
+% ``conformance testing'' should be used, and the previous definition
+% of ``compliance testing'' should be used for describing compliance with
+% external standards, rules, etc.~to keep them distinct.
+
+\subsubsection{Functional Suitability Testing}
+Procedure testing is
+called a ``type of functional suitability testing''
+\citep[p.~7]{IEEE2022} but no definition of that term is given.
+``Functional suitability'' is the
+``capability of a product to provide functions that meet stated and
+implied needs of intended users when it is used under specified
+conditions'', including meeting ``the functional specification''
+\citep{ISO_IEC2023a}. This seems to align with the definition of
+``functional testing'' as related to ``black-box/%
+specification-based testing''.
+\ifnotpaper
+    ``Functional suitability'' has
+    three child terms: ``functional completeness'' (the ``capability of
+    a product to provide a set of functions that covers all the
+    specified tasks and intended users' objectives''), ``functional
+    correctness'' (the ``capability of a product to provide accurate
+    results when used by intended users''), and ``functional
+    appropriateness'' (the ``capability of a product to provide
+    functions that facilitate the accomplishment of specified tasks and
+    objectives'') \citep{ISO_IEC2023a}. Notably, ``functional
+    correctness'', which includes precision and accuracy
+    (\citealp{ISO_IEC2023a}; \citealpISTQB{}), \else ``Functional
+    correctness'', a child of ``functional suitability'', is the ``capability
+    of a product to provide accurate results when used by intended users''
+    \cite{ISO_IEC2023a} and \fi seems to align with
+the quality/ies that would be tested by ``correctness'' testing.
+
+\subsubsection{Functionality Testing}
+``Functionality'' is defined as the
+``capabilities of the various \dots\ features provided by a product''
+\citep[p.~196]{IEEE2017} and is said to be a synonym of
+``functional suitability'' \citepISTQB{}, although it seems
+like it should really be a synonym of ``functional completeness'' based on
+\citep{ISO_IEC2023a}, which would make ``functional suitability'' a
+% Flaw count (SYNS, CONTRA): ISTQB | implied by {ISO_IEC2023a}
+subapproach. Its associated test type
+is implied to be a subapproach of build verification testing
+\citepISTQB{} and made distinct from ``functional testing''%
+\ifnotpaper; interestingly, security is described as a subapproach of both
+non-functional and functionality testing\fi\ \citep[Tab.~2]{Gerrard2000a}.
+``Functionality testing'' is listed separately from ``correctness testing'' by
+\citet[p.~53]{Firesmith2015}.
+
+\ifnotpaper
+    \subsection[Operational (Acceptance) Testing (OAT)]{\acf{operat}}
+    \label{oat-flaw}
+    % Flaw count (TERMS, CONTRA): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}
+    % Flaw count (SYNS, CONTRA): {LambdaTest2024} {BocchinoAndHamilton1996} | {Firesmith2015}
+    Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE2022};
+    \citealpISTQB{}) while some refer to ``operational testing''
+    (\citealp[p.~6-9,~in the context of software engineering operations]{SWEBOK2024};
+    \citealp{ISO_IEC2018}; \citealp[p.~303]{IEEE2017};
+    \citealp[pp.~4-6,~4-9]{SWEBOK2014}). A distinction is sometimes made
+    \citep[p.~30]{Firesmith2015} but without accompanying definitions, it is hard
+    to evaluate its merit. Since this terminology is not standardized, I
+    propose that the two terms are treated as synonyms (as done by other sources
+    \citep{LambdaTest2024, BocchinoAndHamilton1996}) as a type of
+    acceptance testing (\citealp[p.~22]{IEEE2022}; \citealpISTQB{}) that focuses on
+    ``non-functional'' attributes of the system \citep{LambdaTest2024}%
+    \todo{find more academic sources}.
+    %% Recommendations in the above: should be split out
+
+    %% The following 'summary' appears out of place? I'm not quite understanding
+    % the point this is trying to make.
+    A summary of definitions of ``operational (acceptance) testing'' is that
+    it is ``test[ing] to determine the correct
+    installation, configuration and operation of a module and that it operates
+    securely in the operational environment'' \citep{ISO_IEC2018} or ``evaluate a
+    system or component in its operational environment'' \citep[p.~303]{IEEE2017},
+    particularly ``to determine if operations and/or systems administration staff
+    can accept [it]'' \citepISTQB{}.
+\fi
+
+\subsection{Recovery Testing}
+\label{recov-flaw}
+
+``Recovery testing'' is ``testing \dots\ aimed at verifying
+software restart capabilities after a system crash or other disaster''
+\citep[p.~5-9]{SWEBOK2024} including ``recover[ing] the data directly affected
+and re-establish[ing] the desired state of the system''
+\ifnotpaper
+    (\citealp{ISO_IEC2023a}; similar in \citealp[p.~7-10]{SWEBOK2024})
+\else
+    \cite{ISO_IEC2023a} (similar in \cite[p.~7-10]{SWEBOK2024})
+\fi
+so that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
+It is also called ``recoverability testing'' \cite[p.~47]{Kam2008} and
+potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}.
+% Flaw count (SYNS, AMBI): {Gerrard2000a}
+The following terms, along with ``recovery testing'' itself
+\citep[p.~22]{IEEE2022} are all classified as test types, and the relations
+between them can be found in \Cref{fig:recovery-graph-current}.
+
+%% again, maybe convert to \paragraph ?
+\begin{itemize}
+    \item \textbf{Recoverability Testing:} Testing ``how well a system or
+          software can recover data during an interruption or failure''
+          \ifnotpaper
+              (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
+          \else
+              \cite[p.~7-10]{SWEBOK2024} (similar in \cite{ISO_IEC2023a})
+          \fi
+          and ``re-establish the desired state of the system'' \citep{ISO_IEC2023a}.
+          Synonym for ``recovery testing'' in \citet[p.~47]{Kam2008}.
+    \item \textbf{Disaster/Recovery Testing} serves to evaluate if a system
+          can ``return to normal operation after a hardware
+          or software failure'' \citep[p.~140]{IEEE2017} or if ``operation of
+          the test item can be transferred to a different operating site and
+          \dots\ be transferred back again once the failure has been
+          resolved'' \citeyearpar[p.~37]{IEEE2021}. These two definitions seem to
+          describe different aspects of the system, where the first is
+          intrinsic to the hardware/software and the second might not be.
+          % Flaw count (DEFS, OVER): {IEEE2017} | {IEEE2021}
+    \item \textbf{Backup and Recovery Testing} ``measures the
+          degree to which system state can be restored from backup within
+          specified parameters of time, cost, completeness, and accuracy in
+          the event of failure'' \citep[p.~2]{IEEE2013}. This may be what is
+          meant by ``recovery testing'' in the context of performance-related
+          testing and seems to correspond to the definition of
+          ``disaster/recovery testing'' in \citeyearpar[p.~140]{IEEE2017}.
+    \item \textbf{Backup/Recovery Testing:} Testing that determines the
+          ability ``to restor[e] from back-up memory in the event of failure,
+          without transfer[ing] to a different operating site or back-up
+          system'' \citep[p.~37]{IEEE2021}. This seems to correspond to the
+          definition of ``disaster/recovery testing'' in
+          \citeyearpar[p.~37]{IEEE2021}. It is also given as a subtype of
+          ``disaster/recovery testing'', even though that tests if ``operation
+          of the test item can be transferred to a different operating site''
+          \citetext{p.~37}. % Flaw count (PARS, CONTRA): {IEEE2021} | {IEEE2021}
+          It also seems to overlap with ``backup and
+          recovery testing'', which adds confusion.
+          % Flaw count (DEFS, OVER): {IEEE2021} | {IEEE2013}
+    \item \textbf{Failover/Recovery Testing:} Testing that determines the
+          ability ``to mov[e] to a back-up system in the event of failure,
+          without transfer[ing] to a different operating site''
+          \citep[p.~37]{IEEE2021}. This is given as a subtype of
+          ``disaster/recovery testing'', even though that tests if ``operation
+          of the test item can be transferred to a different operating site''
+          \citetext{p.~37}. % Flaw count (PARS, CONTRA): {IEEE2021} | {IEEE2021}
+    \item \textbf{Failover Testing:} Testing that ``validates the SUT's
+          ability to manage heavy loads or unexpected failure to continue
+          typical operations'' \citep[p.~5-9]{SWEBOK2024} by entering a
+          ``backup operational mode in which [these responsibilities] \dots\
+          are assumed by a secondary system'' \citepISTQB{}. While not
+          \emph{explicitly} related to recovery, ``failover/recovery testing''
+          also describes the idea of ``failover'', and \citet[p.~56]{Firesmith2015}
+          uses the term ``failover and recovery testing'', which could be a
+          synonym of both of these terms.
+          % Flaw count (SYNS, AMBI): {SWEBOK2024} ISTQB | implied by {Firesmith2015}
+\end{itemize}
+
+\subsection{Scalability Testing}
+\label{scal-flaw}
+
+There were three ambiguities around the term ``scalability testing'', listed
+below. The relations between these test approaches (and other relevant ones)
+are shown in \Cref{fig:scal-graph-current}.
+
+\begin{enumerate}
+    \item % Flaw count (SYNS, CONTRA): {IEEE2021} | {Firesmith2015} {Bas2024}
+          \ifnotpaper \citeauthor{IEEE2021} \else ISO/IEC and IEEE \fi give
+          ``scalability testing'' as a synonym of ``capacity testing''
+          \ifnotpaper \citeyearpar[p.~39]{IEEE2021} \else \cite[p.~39]{IEEE2021}
+          \fi while other sources differentiate between the two
+          \ifnotpaper \citetext{\citealp[p.~53]{Firesmith2015};
+                  \citealp[pp.~22-23]{Bas2024}}
+          \else \citep[p.~53]{Firesmith2015}, \citep[pp.~22-23]{Bas2024}
+          \fi
+    \item % Flaw count (DEFS, CONTRA): {IEEE2021} | implied by {ISO_IEC2023a}
+          \ifnotpaper \citeauthor{IEEE2021} \else ISO/IEC and IEEE \fi give
+          the external modification of the system as part of ``scalability''
+          \ifnotpaper \citeyearpar[p.~39]{IEEE2021}\else
+              \cite[p.~39]{IEEE2021}\fi, while \citet{ISO_IEC2023a} \ifnotpaper
+              imply \else implies \fi that it is limited to the system itself
+    \item % Flaw count (TERMS, WRONG): {SWEBOK2024}
+          The \acs{swebok} V4's definition of ``scalability testing''
+          \citep[p.~5-9]{SWEBOK2024} is really a definition of usability
+          testing!
+\end{enumerate}
+
+% \subsection{Performance Testing}
+% \label{perf-test-ambiguity}
+
+% Similarly, ``performance'' and ``performance efficiency'' are both given as
+% software qualities by \ifnotpaper\citeauthor{IEEE2017}\else
+%       \cite[p.~319]{IEEE2017}\fi, with the latter defined as the ``performance
+% relative to the amount of resources used under stated conditions''
+% \ifnotpaper\citeyearpar[p.~319]{IEEE2017} \fi or the ``capability of a product
+% to perform its functions within specified time and throughput parameters and be
+% efficient in the use of resources under specified conditions'' \citep{ISO_IEC2023a}.
+% Initially, there didn't seem to be any meaningful distinction between the two,
+% although the term ``performance testing'' is defined
+% \ifnotpaper\citeyearpar[p.~320]{IEEE2017}\else\citetext{p.~320}\fi\
+% and used by \ifnotpaper\citeauthor{IEEE2017}\else\cite{IEEE2017}\fi\ and the term
+% ``performance efficiency testing'' is \emph{also} used by
+% \ifnotpaper\citeauthor{IEEE2017}\else\cite{IEEE2017}\fi\ (but not defined
+% explicitly). \ifnotpaper Further discussion\thesisissueref{43} brought us to
+%       the conclusion \else It can then be concluded \fi that ``performance
+% efficiency testing'' is a subset of ``performance testing'', and the
+% difference of ``relative to the amount of resources used'' or ``be efficient in
+% the use of resources'' between the two is meaningful.
+
+\subsection{Compatibility Testing}
+\label{compat-flaw}
+
+% Flaw count (DEFS, OVER): {IEEE2022} | {IEEE2017} ISTQB {ISO_IEC2023a}
+``Compatibility testing'' is defined as ``testing that measures the
+degree to which a test item can function satisfactorily alongside
+other independent products in a shared environment (co-existence),
+and where necessary, exchanges information with other systems or
+components (interoperability)'' \citep[p.~3]{IEEE2022}. This
+definition is nonatomic as it combines the ideas of ``co-existence''
+and ``interoperability''. The term ``interoperability testing'' is
+not defined, but is used three times \citep[pp.~22,~43]{IEEE2022}
+% Flaw count (TERMS, WRONG): {IEEE2022}
+(although the third usage seems like it should be ``portability
+testing''). This implies that ``co-existence testing'' and
+``interoperability testing'' should be defined as their own terms,
+which is supported by definitions of ``co-existence'' and
+``interoperability'' often being separate \ifnotpaper
+    \citetext{\citealpISTQB{}; \citealp[pp.~73,~237]{IEEE2017}}%
+\else
+    \cite[pp.~73,~237]{IEEE2017}, \cite{ISTQB}%
+\fi, the definition of
+``interoperability testing'' from \citet[p.~238]{IEEE2017},
+and the decomposition of ``compatibility'' into ``co-existence''
+and ``interoperability'' by \citet{ISO_IEC2023a}!
+% Flaw count (SYNS, WRONG): implied by {IEEE2021} | {IEEE2022}
+The ``interoperability'' element of ``compatibility testing'' is explicitly
+excluded by \citet[p.~37]{IEEE2021}, (incorrectly) implying that ``compatibility
+testing'' and ``co-existence testing'' are synonyms.
+% Flaw count (SYNS, AMBI): {Kam2008} | {IEEE2022}
+Furthermore, the definition of ``compatibility testing'' in
+\citep[p.~43]{Kam2008} unhelpfully says ``See \emph{interoperability testing}'',
+adding another layer of confusion to the direction of their relationship.
+
+\ifnotpaper
+    \subsection{Inferred Discrepancies}
+    \label{infer-flaws}
+    Along the course of this analysis, we inferred many potential discrepancies.
+    Some of these have a conflicting source while others do not. These are
+    excluded from any counts of the numbers of discrepancies, since they are
+    more subjective, but are given below for completeness.
+
+    \subsubsection{Inferred Synonym Discrepancies}
+    See \Cref{multiSyns}.
+
+    \begin{enumerate}
+        \input{build/infMultiSyns}
+    \end{enumerate}
+
+    Additionally, \citet[p.~46]{Kam2008} gives ``program testing'' as a synonym
+    of ``component testing'' but it probably should be a synonym of ``system
+    testing'' instead.
+    % \item \refHelper \citet[p.~46]{Kam2008} gives ``program testing'' as a
+    % synonym of ``component testing'' but it probably should be a synonym of
+    % ``system testing'' instead.
+
+    \subsubsection{Inferred Parent Discrepancies}
+    \label{infParSyns}
+    As discussed in \Cref{parSyns}, some pairs of synonyms also have a
+    parent-child relation, abusing the meaning of ``synonym'' and causing
+    confusion. While \Cref{tab:parSyns} gives the cases where both relations
+    are supported by the literature, some are less explicit. For example, while
+    ``\emph{dynamic testing} is sometimes called \dots{} dynamic analysis''
+    (\citealp[p.~438]{PetersAndPedrycz2000}; implied by \citealp[p.~149]{IEEE2017}),
+    it could be inferred from their static counterparts that dynamic analysis
+    is a \emph{child} of dynamic testing (see
+    \citealp[pp.~9, 17, 25, 28]{IEEE2022}; \citealpISTQB{}). Additionally, the
+    following automatically generated lists contain examples where at least
+    one of these conflicting relations is \emph{not} supported by the
+    literature but may, nonetheless, be correct. The relations in the first two
+    lists are explicitly given in the literature but may be incorrect, while
+    those in the third list are unsubtantiated by the literature and require
+    more thought before a recommendation can be made.
+
+    \input{build/infParSyns}
+
+    In addition to this type of discrepancy, \citep[Tab.~2]{Gerrard2000a} does
+    \emph{not} give ``functionality testing'' as a parent of ``end-to-end
+    functionality testing''. Finally, \citet[p.~119]{Patton2006} says that
+    branch testing is ``the simplest form of path testing'' which is also
+    implied by \citet[Fig.~F.1]{IEEE2021}\todo{OG Reid, 1996} and
+    \citet[p.~433]{vanVliet2000}. This is true in the example
+    \citeauthor{Patton2006} gives, but is not necessarily generalizable; one
+    could test the behaviour at branches without testing even a \emph{subset}
+    of complete paths, which \citet[p.~316]{IEEE2017} give as a definition of
+    ``path testing'' (see \flawref{path-test})!
+
+    \subsubsection{Inferred Category Discrepancies}
+    See \Cref{multiCats}.
+
+    \input{build/infMultiCats}
+
+    \subsubsection{Other Inferred Discrepancies}
+    The following are discrepancies that, if were more concrete, would also be
+    included alongside the other discrepancies:
+    \begin{itemize}
+        \item ``Fuzz testing'' is ``tagged'' (?) as ``artificial
+              intelligence'' \citep[p.~5]{IEEE2022}.
+        \item \citeauthor{Gerrard2000b}'s definition for ``security
+              audits'' seems too specific, only applying to ``the products
+              installed on a site'' and ``the known vulnerabilities for
+              those products'' \citeyearpar[p.~28]{Gerrard2000b}.
+    \end{itemize}
+\fi

@@ -102,23 +102,23 @@ class ExpImpCounter:
     def output(self):
         return formatOutput(self.dict.values())
 
-    def addDiscrep(self, rigidity: Rigidity | list[Rigidity]):
+    def addFlaw(self, rigidity: Rigidity | list[Rigidity]):
         self.dict[getRigidity(rigidity)] += 1
 
-class DiscrepCounter:
+class FlawCounter:
     def __init__(self, value):
         self.groundTruth, self.withinDoc, self.withinAuth = 0, 0, 0
         # Differences between two categories; may be within the same category
         self.betweenCats = {k : 0 for k in SrcCat if k.value <= value}
-        self.smntcDiscreps = OrderedDict({dc : ExpImpCounter() for dc in DiscrepSmntc})
-        self.sntxDiscreps = OrderedDict({dc : ExpImpCounter() for dc in DiscrepSntx})
+        self.smntcFlaws = OrderedDict({dc : ExpImpCounter() for dc in FlawSmntc})
+        self.sntxFlaws = OrderedDict({dc : ExpImpCounter() for dc in FlawSntx})
 
     def __str__(self):
         return "\n".join(filter(None, [
             ", ".join(map(str, [self.groundTruth, self.withinDoc, self.withinAuth])),
             "Diffs: " + ", ".join([f"{k.name} {v}" for k, v in self.betweenCats.items()]),
-            " | ".join(map(str, self.smntcDiscreps.values())),
-            " | ".join(map(str, self.sntxDiscreps.values())),
+            " | ".join(map(str, self.smntcFlaws.values())),
+            " | ".join(map(str, self.sntxFlaws.values())),
             ])) + "\n"
 
     def _countHelper(d: dict) -> str:
@@ -126,12 +126,12 @@ class DiscrepCounter:
                             [sum(v.count() for v in d.values())])
 
     def getCatCounts(self):
-        return DiscrepCounter._countHelper(self.smntcDiscreps)
+        return FlawCounter._countHelper(self.smntcFlaws)
 
     def getClsCounts(self):
-        return DiscrepCounter._countHelper(self.sntxDiscreps)
+        return FlawCounter._countHelper(self.sntxFlaws)
 
-class DiscrepSmntc(Enum):
+class FlawSmntc(Enum):
     CATS  = "Categories"
     SYNS  = "Synonyms"
     PARS  = "Parents"
@@ -139,7 +139,7 @@ class DiscrepSmntc(Enum):
     TERMS = "Terminology"
     CITES = "Citations"
 
-class DiscrepSntx(Enum):
+class FlawSntx(Enum):
     WRONG  = "Mistakes"
     MISS   = "Omissions"
     CONTRA = "Contradictions"
@@ -152,12 +152,12 @@ COMPLEX_TEX_FILES = [
     "build/multiSyns.tex",
     "build/parSyns.tex",
     "build/selfCycles.tex",
-    "chapters/05_discrepancies.tex",
+    "chapters/05_flaws.tex",
 ]
 
 SIMPLE_TEX_FILES = [
-    "chapters/05a_main_discreps.tex",
-    "chapters/05b_extra_discreps.tex",
+    "chapters/05a_main_flaws.tex",
+    "chapters/05b_extra_flaws.tex",
 ]
 
 TEX_FILES = COMPLEX_TEX_FILES + SIMPLE_TEX_FILES
@@ -167,71 +167,71 @@ def enumOrItem(k):
     # and https://tex.stackexchange.com/a/338027/192195
     return (k, ["\\ifnotpaper", f"\\begin{{enumerate}}[ref={k.value}~Flaw~\\arabic*]",
                       "\\else", f"\\begin{{itemize}}", "\\fi"])
-simpleDiscrepSmntc = OrderedDict([enumOrItem(k) for k in DiscrepSmntc])
-simpleDiscrepSntx  = OrderedDict([enumOrItem(k) for k in DiscrepSntx])
+simpleFlawSmntc = OrderedDict([enumOrItem(k) for k in FlawSmntc])
+simpleFlawSntx  = OrderedDict([enumOrItem(k) for k in FlawSntx])
 
-def outputDiscreps():
-    discrepDict = {k : DiscrepCounter(k.value) for k in SrcCat if k.color.value >= 0}
+def outputFlaws():
+    flawDict = {k : FlawCounter(k.value) for k in SrcCat if k.color.value >= 0}
 
-    def printDiscreps():
-        print("\n".join(f"{k.name}: {v}" for k, v in discrepDict.items()))
+    def printFlaws():
+        print("\n".join(f"{k.name}: {v}" for k, v in flawDict.items()))
         print()
 
-    def getDiscGroups(s):
-        smntcDisc, sntxDisc = re.search(
-            r"% Discrep count \(([A-Z]+), ([A-Z]+)\):", s).groups()
-        return DiscrepSmntc[smntcDisc], DiscrepSntx[sntxDisc]
+    def getFlawGroups(s):
+        smntcFlaw, sntxFlaw = re.search(
+            r"% Flaw count \(([A-Z]+), ([A-Z]+)\):", s).groups()
+        return FlawSmntc[smntcFlaw], FlawSntx[sntxFlaw]
 
     for filename in TEX_FILES:
         with open(filename, "r", encoding="utf-8") as file:
             content = file.readlines()
-        flawCounts = [line for line in content if "% Discrep count" in line]
+        flawCounts = [line for line in content if "% Flaw count" in line]
         # Don't process content before the first \item or after final \end{enumerate}
-        discreps = [f"\\item % Discrep count {item}"
+        flaws = [f"\\item % Flaw count {item}"
                     for item in "".join(content).rsplit(
                         "\\end{enumerate}", 1)[0].split(
-                            "\\item % Discrep count ")[1:]]
+                            "\\item % Flaw count ")[1:]]
 
         if "extra" in filename:
-            for smntcKey in simpleDiscrepSmntc.keys():
-                simpleDiscrepSmntc[smntcKey].append("\\ifnotpaper")
-            for sntxKey in simpleDiscrepSntx.keys():
-                simpleDiscrepSntx[sntxKey].append("\\ifnotpaper")
+            for smntcKey in simpleFlawSmntc.keys():
+                simpleFlawSmntc[smntcKey].append("\\ifnotpaper")
+            for sntxKey in simpleFlawSntx.keys():
+                simpleFlawSntx[sntxKey].append("\\ifnotpaper")
 
         if filename in SIMPLE_TEX_FILES:
-            for discrep in discreps:
-                smntcDisc, sntxDisc = getDiscGroups(discrep)
-                simpleDiscrepSmntc[smntcDisc].append(discrep)
-                simpleDiscrepSntx[sntxDisc].append(discrep)
+            for flaw in flaws:
+                smntcFlaw, sntxFlaw = getFlawGroups(flaw)
+                simpleFlawSmntc[smntcFlaw].append(flaw)
+                simpleFlawSntx[sntxFlaw].append(flaw)
 
                 try:
                     labelGroup, label = re.search(
-                        r"% Label ([A-Z]+) ([a-z\-]+)", discrep).groups()
-                    for discGroup, dict in [(smntcDisc, simpleDiscrepSmntc),
-                                            (sntxDisc,  simpleDiscrepSntx)]:
-                        dict[discGroup] = [re.sub(
+                        r"% Label ([A-Z]+) ([a-z\-]+)", flaw).groups()
+                    for flawGroup, dict in [(smntcFlaw, simpleFlawSmntc),
+                                            (sntxFlaw,  simpleFlawSntx)]:
+                        dict[flawGroup] = [re.sub(
                             r"\s+% Label [A-Z]+ [a-z\-]+\s+",
                             "\n          ".join(
                                 ["", "\\\\phantomsection{}", f"\\\\label{{{label}}}", ""]
-                                if labelGroup == discGroup.name else ["", ""]),
-                            line) for line in dict[discGroup]]
+                                if labelGroup == flawGroup.name else ["", ""]),
+                            line) for line in dict[flawGroup]]
                 except AttributeError:
                     continue
             
         if "extra" in filename:
-            for smntcKey in simpleDiscrepSmntc.keys():
-                simpleDiscrepSmntc[smntcKey].append("\\fi")
-            for sntxKey in simpleDiscrepSntx.keys():
-                simpleDiscrepSntx[sntxKey].append("\\fi")
+            for smntcKey in simpleFlawSmntc.keys():
+                simpleFlawSmntc[smntcKey].append("\\fi")
+            for sntxKey in simpleFlawSntx.keys():
+                simpleFlawSntx[sntxKey].append("\\fi")
 
-        for discrep in flawCounts:
-            sources = discrep.split("|")
-            smntcDisc, sntxDisc = getDiscGroups(discrep)
+        for flaw in flawCounts:
+            sources = flaw.split("|")
+            smntcFlaw, sntxFlaw = getFlawGroups(flaw)
             DEBUG = False
 
             sourceDicts = [categorizeSources(s) for s in sources]
             if DEBUG:
-                print(sourceDicts, smntcDisc.name, sntxDisc.name)
+                print(sourceDicts, smntcFlaw.name, sntxFlaw.name)
 
             def inPairs(s, *, sFunc = None):
                 if sFunc:
@@ -239,11 +239,11 @@ def outputDiscreps():
                 return set.union(*(a & b for a, b in itertools.combinations(s, 2)))
 
             # These ensure that sources aren't double counted
-            # Note that pieAdded is used based on the previous presentation of discreps by source tier
+            # Note that pieAdded is used based on the previous presentation of flaws by source tier
             # As of #138, this is now done as a table, but this naming convention is still used
             pieAdded, tableAdded = set(), set()
             def updateCounters(source, pieSec: str, r):
-                nonlocal smntcDisc, sntxDisc
+                nonlocal smntcFlaw, sntxFlaw
 
                 if type(source) is tuple:
                     srcTuple = tuple(map(getSrcCat, source))
@@ -252,7 +252,7 @@ def outputDiscreps():
                     srcTuple = tuple(map(getSrcCat, [source] * 2))
                 sourceCat = srcTuple[0]
 
-                # Don't bother counting discrepancies for examples
+                # Don't bother counting flaws for examples
                 if "Author" in source:
                     return
 
@@ -260,19 +260,19 @@ def outputDiscreps():
                     print(source, sourceCat, pieSec, r)
 
                 if srcTuple not in tableAdded:
-                    if type(discrepDict[sourceCat].smntcDiscreps[smntcDisc]) is int:
-                        discrepDict[sourceCat].smntcDiscreps[smntcDisc] += 1
-                        discrepDict[sourceCat].sntxDiscreps[sntxDisc] += 1
+                    if type(flawDict[sourceCat].smntcFlaws[smntcFlaw]) is int:
+                        flawDict[sourceCat].smntcFlaws[smntcFlaw] += 1
+                        flawDict[sourceCat].sntxFlaws[sntxFlaw] += 1
                     else:
-                        discrepDict[sourceCat].smntcDiscreps[smntcDisc].addDiscrep(r)
-                        discrepDict[sourceCat].sntxDiscreps[sntxDisc].addDiscrep(r)
+                        flawDict[sourceCat].smntcFlaws[smntcFlaw].addFlaw(r)
+                        flawDict[sourceCat].sntxFlaws[sntxFlaw].addFlaw(r)
                     tableAdded.add(srcTuple)
                 if source not in pieAdded:
                     try:
-                        getattr(discrepDict[sourceCat], pieSec)[srcTuple[1]] += 1
+                        getattr(flawDict[sourceCat], pieSec)[srcTuple[1]] += 1
                     except TypeError:
-                        setattr(discrepDict[sourceCat], pieSec,
-                                getattr(discrepDict[sourceCat], pieSec) + 1)
+                        setattr(flawDict[sourceCat], pieSec,
+                                getattr(flawDict[sourceCat], pieSec) + 1)
                     pieAdded.add(source)
                     if DEBUG:
                         print(f"{pieSec}:", source)
@@ -297,7 +297,7 @@ def outputDiscreps():
 
                         for author in inPairs(sets, sFunc=lambda x: x[0]):
                             yearSets = [{y for a, y in s if a == author} for s in sets]
-                            # Don't double count discrepancies within a single document
+                            # Don't double count flaws within a single document
                             if (reduce(operator.mul, map(len, yearSets)) >
                                     len(inPairs(yearSets))):
                                 updateCounters(author, "withinAuth", r)
@@ -307,32 +307,32 @@ def outputDiscreps():
                                 for ai in a for bi in b if ai[0] != bi[0]}:
                             updateCounters(tup, "betweenCats", r)
             if DEBUG:
-                printDiscreps()
+                printFlaws()
 
-    for shortname, discrepGroup in [("Smntc", simpleDiscrepSmntc),
-                                    ("Sntx",  simpleDiscrepSntx)]:
-        for k in discrepGroup.keys():
-            discrepGroup[k] += ["\\ifnotpaper", "\\end{enumerate}", "\\else",
+    for shortname, flawGroup in [("Smntc", simpleFlawSmntc),
+                                    ("Sntx",  simpleFlawSntx)]:
+        for k in flawGroup.keys():
+            flawGroup[k] += ["\\ifnotpaper", "\\end{enumerate}", "\\else",
                                 "\\end{itemize}", "\\fi"]
-            writeFile(discrepGroup[k], f"{shortname}Discrep{k.name.title()}", True)
+            writeFile(flawGroup[k], f"{shortname}Flaw{k.name.title()}", True)
 
-    discrepPies, discrepTable = [], []
+    flawPies, flawTable = [], []
     smntcTotal, sntxTotal = [], []
     def totalHelper(total, new):
         return [a + b for a, b in itertools.zip_longest(
             total, [int(d.strip()) for d in new.split("%")], fillvalue=0)]
 
-    for k, v in discrepDict.items():
-        smntcDiscreps, sntxDiscreps = v.getCatCounts(), v.getClsCounts()
-        assert smntcDiscreps.split("%")[-1] == sntxDiscreps.split("%")[-1]
+    for k, v in flawDict.items():
+        smntcFlaws, sntxFlaws = v.getCatCounts(), v.getClsCounts()
+        assert smntcFlaws.split("%")[-1] == sntxFlaws.split("%")[-1]
 
-        smntcTotal = totalHelper(smntcTotal, smntcDiscreps)
-        sntxTotal  = totalHelper(sntxTotal, sntxDiscreps)
+        smntcTotal = totalHelper(smntcTotal, smntcFlaws)
+        sntxTotal  = totalHelper(sntxTotal, sntxFlaws)
 
-        writeFile([smntcDiscreps], f"{k.name.lower()}SmntcDiscBrkdwn", True)
-        writeFile([sntxDiscreps],  f"{k.name.lower()}SntxDiscBrkdwn", True)
+        writeFile([smntcFlaws], f"{k.name.lower()}SmntcFlawBrkdwn", True)
+        writeFile([sntxFlaws],  f"{k.name.lower()}SntxFlawBrkdwn", True)
 
-        totalDiscreps = sum({v.groundTruth, v.withinDoc, v.withinAuth,
+        totalFlaws = sum({v.groundTruth, v.withinDoc, v.withinAuth,
                              sum(v.betweenCats.values())})
 
         slices = ([(v.groundTruth, "With a source of ground truth"),
@@ -351,23 +351,23 @@ def outputDiscreps():
         colors = [DEFAULT_COLORS[i] for i, slice in enumerate(slices) if slice[0]]
 
         # LaTeX from https://tex.stackexchange.com/a/196483/192195
-        discrepPies.append(["\\begin{subfigure}[t]{0.475\\textwidth}",
+        flawPies.append(["\\begin{subfigure}[t]{0.475\\textwidth}",
                           "\\begin{tikzpicture}[thick, scale=0.7, every label/.style={align=left, scale=0.7}]",
                           f"   \\pie[text=legend, sum=auto, hide number, color={{{", ".join(colors)}}}]{{",
                           ",\n".join(
-                              [f"      {val}/{str(round(val/totalDiscreps*100, 1)).strip("0").strip(".")}\\%"
+                              [f"      {val}/{str(round(val/totalFlaws*100, 1)).strip("0").strip(".")}\\%"
                               for val, _ in slices if val]),
                           "}", "\\end{tikzpicture}",
-                          f"\\caption{{Discrepancies found in \\{k.name.lower()}s{{}}.}}",
-                          f"\\label{{fig:{k.name.lower()}DiscrepSources}}",
+                          f"\\caption{{Flaws found in \\{k.name.lower()}s{{}}.}}",
+                          f"\\label{{fig:{k.name.lower()}FlawSources}}",
                           "\\end{subfigure}"
                           ])
-        discrepTable.append([f"\\{k.name.lower()}s{{}}"] + [val for val, _ in slices])
+        flawTable.append([f"\\{k.name.lower()}s{{}}"] + [val for val, _ in slices])
     
-    writeFile([formatOutput(smntcTotal)], f"totalSmntcDiscBrkdwn", True)
-    writeFile([formatOutput(sntxTotal)],  f"totalSntxDiscBrkdwn", True)
+    writeFile([formatOutput(smntcTotal)], f"totalSmntcFlawBrkdwn", True)
+    writeFile([formatOutput(sntxTotal)],  f"totalSntxFlawBrkdwn", True)
 
-    discrepPies.append(["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
+    flawPies.append(["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
                         "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",
                         "\\node[label=center:Legend] {{}}; \\\\"] +
                         [f"\\node[thick, shape=rectangle, draw=black, fill={DEFAULT_COLORS[i]}, label=right:{{{slice[1]}}}]({i}) {{}}; \\\\"
@@ -376,19 +376,19 @@ def outputDiscreps():
 
     # From ChatGPT
     sepPieCharts: list[str] = []
-    for i, item in enumerate(discrepPies):
+    for i, item in enumerate(flawPies):
         sepPieCharts += item
         if i % 2:
             sepPieCharts.append("\\vskip\\baselineskip")
         else:
             sepPieCharts.append("\\hfill")
 
-    discrepCaption = "Sources of discrepancies based on \\hyperref[sources]{source tier}."
+    flawCaption = "Sources of flaws based on \\hyperref[sources]{source tier}."
     writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
-                [f"\\caption{{{discrepCaption}}}",
-                "\\label{fig:discrepSources}", "\\end{figure*}"], "discrepPies")
+                [f"\\caption{{{flawCaption}}}",
+                "\\label{fig:flawSources}", "\\end{figure*}"], "flawPies")
 
-    writeLongtblr("discrepTable", discrepCaption,
+    writeLongtblr("flawTable", flawCaption,
                   ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and a \\dots{}"] + [
                       f"\\rotatebox[origin=c]{{90}}{{{x}}}" for x in
                         [f"\\parbox{{3.5cm}}{{\\centering {x}}}" for x in 
@@ -399,5 +399,5 @@ def outputDiscreps():
                   ], 
                   [" & ".join(map(str, x)) + " \\\\" for x in
                    # From https://stackoverflow.com/a/63080837/10002168
-                   zip(*itertools.zip_longest(*discrepTable, fillvalue="---"))],
+                   zip(*itertools.zip_longest(*flawTable, fillvalue="---"))],
                    toSort=False, rowHeadSpec="r", rowDataSpec="c")

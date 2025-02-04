@@ -54,7 +54,7 @@ undefTerms = [
                   footnote="\\ifnotpaper \\else References \\fi"
                   "\\citep{YuEtAl2011} and \\citep{Tsui2007} were added as "
                   "out-of-scope examples."),
-    UndefinedTerm("Backup Testing", "Bas2024", footnote="See \\Cref{recov-discrep}."),
+    UndefinedTerm("Backup Testing", "Bas2024", footnote="See \\Cref{recov-flaw}."),
 ]
 
 for term in undefTerms:

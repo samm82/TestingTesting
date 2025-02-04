@@ -230,7 +230,7 @@ def addNode(name, style = "", key = "Approach", cat = ""):
 
 # criteria = not "Artifact" in "".join(category)
 
-# Placeholder criteria for automatically tracking category discrepancies
+# Placeholder criteria for automatically tracking category flaws
 criteria = True
 
 class MultiCatInfo():
@@ -241,9 +241,9 @@ class MultiCatInfo():
         self.lines: list[str] = []
         self.lenTotals: list[tuple[int, int]] = []
 
-    def addMultiCatLine(self, discrep: str, name: str, catCells: list[str]):
+    def addMultiCatLine(self, flaw: str, name: str, catCells: list[str]):
         self.lenTotals.append(tuple(map(len, catCells)))
-        self.lines.append(discrep + (" & ".join([removeInParens(name)] +
+        self.lines.append(flaw + (" & ".join([removeInParens(name)] +
                                                 catCells)) + "\\\\")
 
     def getColWidths(self) -> list[int]:
@@ -274,7 +274,7 @@ for name, category in zip(names, categories):
     category = [c for c in category
                 if not any(t in c for t in {"Approach", "Artifact"})]
     if len(category) > 1:
-        flawCount = (getDiscrepCount(category, "CATS", "CONTRA")
+        flawCount = (getFlawCount(category, "CATS", "CONTRA")
                         if not any("?" in c for c in category) else "")
         multiCatDict[bool(flawCount)].addMultiCatLine(
             flawCount, # if criteria else "",
@@ -368,7 +368,7 @@ multiSynNotes = {
         "\\citet[p.~55]{Firesmith2015}, although the terms are not synonyms."
     ),
     "Static Assertion Checking": (
-        "% Discrep count (SYNS, WRONG): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
+        "% Flaw count (SYNS, WRONG): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
         "\\citet[p.~343]{ChalinEtAl2006} \\multiAuthHelper{list} "
         "\\ifnotpaper \\acf{rac} and \\acf{sv} \\else Runtime Assertion Checking "
         "\\acf{rac} and Software Verification \\acf{sv} \\fi "
@@ -378,7 +378,7 @@ multiSynNotes = {
         "complement to \\acs{rac} instead."
     ),
     "Operational Testing": (
-        "% Discrep count (SYNS, CONTRA): ISTQB | {Firesmith2015} \n\t\t"
+        "% Flaw count (SYNS, CONTRA): ISTQB | {Firesmith2015} \n\t\t"
         "``Operational'' and ``production acceptance testing'' are treated as "
         "synonyms by \\citetISTQB{} but listed separately by \\citet[p.~30]{Firesmith2015}."
     ),
@@ -411,7 +411,7 @@ def makeMultiSynLine(valid, syn, terms, alsoSyns):
         return f"\t\t\\item {term}"
 
     line = "\n".join([f"\\item \\textbf{{{syn}:}}",
-                      f"{getDiscrepCount(terms, "SYNS", "CONTRA")}\\begin{{itemize}}"] +
+                      f"{getFlawCount(terms, "SYNS", "CONTRA")}\\begin{{itemize}}"] +
                       list(map(processTerm, terms)) + ["\t\\end{itemize}"])
     if syn not in paperExamples:
         line = "\n".join(["\\ifnotpaper", line, "\\fi"])
@@ -505,7 +505,7 @@ print()
 selfCycleCount = len(selfCycles)
 
 if "Example" not in csvFilename:
-    selfCycles = [f"\\item {getDiscrepCount([cycle], "PARS", "WRONG")}{formatLineWithSources(cycle)}"
+    selfCycles = [f"\\item {getFlawCount([cycle], "PARS", "WRONG")}{formatLineWithSources(cycle)}"
                   for cycle in selfCycles]
     writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
               "selfCycles", True)
@@ -578,11 +578,11 @@ def makeParSynLine(chd, par, parSource, synSource) -> None:
             par += f"\\TblrNote{{{next(letters)}}}"
             tableFootnotes.append(note[0])
             break
-    parSyns.add(getDiscrepCount([parSource, synSource], "PARS", "CONTRA") +
+    parSyns.add(getFlawCount([parSource, synSource], "PARS", "CONTRA") +
                 f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
 
 splitAtEmpty = splitListAtEmpty(categoryDict["Approach"][1])
-# Don't look for parent/synonym discrepancies unless both are present
+# Don't look for parent/synonym flaws unless both are present
 parentLines = splitAtEmpty[-1] if len(splitAtEmpty) > 2 else []
 for chd, syns in nameDict.items():
     par: str
@@ -647,7 +647,7 @@ def inLine(flag, style, line):
     return re.search(fr"label=.+,{flag.name.lower()}=.*{style}", line)
 
 if "Example" not in csvFilename:
-    outputDiscreps()
+    outputFlaws()
 
 INVIS_EDGE_LINE = 'edge [style="invis"]'
 

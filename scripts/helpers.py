@@ -28,10 +28,10 @@ def sortByImplied(ls: list[str]):
         [x.count(f"({imp}") for imp in IMPLICIT_KEYWORDS]) +
         (x.count("?") + 10 if "?" in x else 0))
 
-# Also ignores discrepancy count comments
+# Also ignores flaw count comments
 def sortIgnoringParens(ls):
     return sorted(ls, key=lambda x: re.sub(r"\(.+\) ", "", re.sub(
-        r"% Discrep count.+\n\t", "", x)))
+        r"% Flaw count.+\n\t", "", x)))
 
 # only == True returns a string iff the passed `name` is not explicit
 def isUnsure(name: str, only: bool = False) -> Optional[str]:
@@ -52,7 +52,7 @@ class Rigidity(Enum):
     EXP = auto()
     IMP = auto()
 
-    # Sources for discrepancies
+    # Sources for flaws
 
 def getSources(s) -> list[tuple[str, str]]:
     sources = re.findall(fr"\{{({AUTHOR_REGEX})({YEAR_REGEX})\}}", s)
@@ -124,8 +124,8 @@ def formatLineWithSources(line, todo=True):
 
     return line
 
-def getDiscrepCount(line: list[str], cat, cls, todo=True):
-    # The following replacements should only apply when counting discrepancies
+def getFlawCount(line: list[str], cat, cls, todo=True):
+    # The following replacements should only apply when counting flaws
     line = line.copy()
 
     IMP_BY = "implied by"
@@ -146,7 +146,7 @@ def getDiscrepCount(line: list[str], cat, cls, todo=True):
 
     if not all(sources):
         return ""
-    return f"% Discrep count ({cat}, {cls}): {" | ".join(sources)}\n\t"
+    return f"% Flaw count ({cat}, {cls}): {" | ".join(sources)}\n\t"
 
 # I/O
 def readFileAsStr(filename) -> str:
