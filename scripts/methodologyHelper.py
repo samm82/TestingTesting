@@ -10,17 +10,18 @@ CAT_FOOTNOTE = "\n\t".join([
 toRecord: list[str] = [
     "name", f"category{CAT_FOOTNOTE}(\\Cref{{categories-observ}})",
     "definition", "synonyms (\\Cref{syn-rels})",
-    "parents (\\Cref{par-chd-rels})"]
+    "parents (\\Cref{par-chd-rels})",
+    "flaws\\phantomsection{}\\label{manual-flaws} (in a separate document)"]
 
 OTHER_NOTES = "other relevant notes"
 OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
-                             "and other sources to investigate"])
+                             "and other resources"])
 
 methodology_a = """    \\item \\phantomsection{}\\label{identify-sources}
           Identify authoritative sources (\\Cref{sources})
     \\item \\phantomsection{}\\label{identify-terms}
-          Identify software testing terminology from each source, focusing
-          on test approaches and software qualities
+          Identify software testing terminology from each source, including
+          test approaches and terms that imply them (\\Cref{derived-tests})
     \\item \\phantomsection{}\\label{record-terms}
           For each test approach, record its: (\\Cref{procedure})\n""" + "\n".join([
         f"\t\t  {line}" for line in wrapEnv(
@@ -32,18 +33,14 @@ methodology_a = """    \\item \\phantomsection{}\\label{identify-sources}
     
 methodology_b = """    \\item Analyze these data for flaws
           \\begin{enumerate}
-              \\item \\phantomsection{}\\label{manual-flaws}
-                    Record flaws as they arise during data collection
               \\item Generate relation graphs (\\Cref{\\ifnotpaper graph-gen\\else tools\\fi})
-              \\ifnotpaper
               \\item Automatically detect certain classes of flaws
-                    (\\Cref{auto-flaw-analysis})
+                    \\ifnotpaper (\\Cref{auto-flaw-analysis}) \\fi
               \\item Automatically analyze manually recorded flaws from
-                    step~\\ref{manual-flaws} (\\Cref{aug-flaw-analysis})
-              \\fi
+                    step~\\ref{manual-flaws} \\ifnotpaper (\\Cref{aug-flaw-analysis}) \\fi
           \\end{enumerate}
     \\item Report results of flaw analysis (\\Cref{flaws})
-    \\item Seek to resolve these flaws (\\Cref{recs})"""
+    \\item Provide examples of how to resolve these flaws (\\Cref{recs})"""
     
 # Base methodology overview
 writeFile(wrapEnv("enumerate", [methodology_a, methodology_b]),
@@ -59,8 +56,8 @@ for i, m in enumerate([methodology_a, methodology_b]):
         m = re.sub(r"\s+\([^)]*\)", "", m)
 
     # Hack because enumitem conflicts with beamer :(
-    m = m.replace("\\\\ref{manual-flaws}",
-                  "\\\\arabic{enumi}.\\\\ref{manual-flaws}")
+    m = m.replace("\\ref{manual-flaws}",
+                  "\\ref{record-terms}.\\ref{manual-flaws}")
 
     mList = m.split("\n")
     # From https://tex.stackexchange.com/a/1702/192195!
