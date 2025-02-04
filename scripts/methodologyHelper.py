@@ -37,9 +37,9 @@ methodology_b = """    \\item Analyze these data for discrepancies
               \\item Generate relation graphs (\\Cref{\\ifnotpaper graph-gen\\else tools\\fi})
               \\ifnotpaper
               \\item Automatically detect certain classes of discrepancies
-                    (\\Cref{auto-discrep-analysis})
+                    (\\Cref{auto-flaw-analysis})
               \\item Automatically analyze manually recorded discrepancies from
-                    step~\\ref{manual-discreps} (\\Cref{aug-discrep-analysis})
+                    step~\\ref{manual-discreps} (\\Cref{aug-flaw-analysis})
               \\fi
           \\end{enumerate}
     \\item Report results of discrepancy analysis (\\Cref{discreps})

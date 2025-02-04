@@ -1,11 +1,11 @@
-\subsection{Discrepancy Analysis}
-\label{discrep-analysis}
+\subsection{Flaw Analysis}
+\label{flaw-analysis}
 
 In addition to analyzing specific discrepancies, an overview of their amounts,
 sources, rigidities (see \Cref{rigidity}), classes, and categories is
-also useful. Subsets of this task can be automated (\Cref{auto-discrep-analysis})
+also useful. Subsets of this task can be automated (\Cref{auto-flaw-analysis})
 and the remaining manual portion can be augmented with automated
-tools (\Cref{aug-discrep-analysis}).
+tools (\Cref{aug-flaw-analysis}).
 
 To understand where discrepancies exist in the literature, they are
 grouped based on the source tiers (as described in \Cref{sources})
@@ -38,7 +38,7 @@ by the same organization: the IEEE Computer Society (\citealp{AboutSWEBOK}; see
 \Cref{metas}).
 
 \phantomsection{}
-\label{discrep-analysis-example}
+\label{flaw-analysis-example}
 As an example of this process, consider a discrepancy \emph{within} an IEEE
 document (e.g., two different definitions are given for a term within the same
 IEEE document) \emph{and} between another IEEE document, the \acs{istqb}
@@ -56,7 +56,7 @@ glossary \emph{and} two papers. This would add one to the following rows of
           nuanced breakdown of discrepancies that identifies those within a
           singular document and those between documents by the same author is
           given in \Cref{fig:discrepSources} and explained in more detail in
-          \Cref{aug-discrep-analysis}.
+          \Cref{aug-flaw-analysis}.
     \item \textbf{\metas{}}: this discrepancy occurs between a
           source in this category and a ``more trusted'' one
           (the IEEE standards).
@@ -67,8 +67,8 @@ glossary \emph{and} two papers. This would add one to the following rows of
           double counting.
 \end{itemize}
 
-\subsubsection{Automated Discrepancy Analysis}
-\label{auto-discrep-analysis}
+\subsubsection{Automated Flaw Analysis}
+\label{auto-flaw-analysis}
 
 As outlined in \Cref{graph-gen}, some types of discrepancies can be detected
 automatically. While just counting the total number of these types of
@@ -94,10 +94,10 @@ graph and slice in \Cref{fig:discrepSources}. These lists of sources can then
 be distilled down to sets of categories which are compared against
 each other to determine how many times a given discrepancy manifests between
 source tiers. Examples of this process are described in more detail in
-\Cref{aug-discrep-analysis}.
+\Cref{aug-flaw-analysis}.
 
 \phantomsection{}
-\label{auto-discrep-analysis-rigidity}
+\label{auto-flaw-analysis-rigidity}
 Alongside this citation information are the keywords relevant for assessing a
 piece of information's rigidity (see \Cref{rigidity}). This is useful when
 counting discrepancies, since a discrepancy can be both explicit and implicit,
@@ -106,8 +106,8 @@ discrepancies in \Cref{tab:sntxDiscreps,tab:smntcDiscreps}, a given discrepancy 
 counted only for its most ``rigid'' manifestation (i.e., it will only increment
 a value in the ``Implicit'' column if it is \emph{not} also explicit).
 
-\subsubsection{Augmented Discrepancy Analysis}
-\label{aug-discrep-analysis}
+\subsubsection{Augmented Flaw Analysis}
+\label{aug-flaw-analysis}
 While some subsets of discrepancies can be deduced automatically from analyzing
 the testing approach glossary, other types of discrepancies need to be tracked
 manually. This is done by adding
@@ -161,7 +161,7 @@ Each source is given using its BibTeX key wrapped in curly braces to mimic
     \texttt{\% Discrep count: \{IEEE2022\} | \{IEEE2022\} \{IEEE2017\}\\
         \displayNL ISTQB \{Kam2008\} \{Bas2024\}}
 \end{displayquote}
-would be parsed as the example given in \Cref{discrep-analysis-example}. Since
+would be parsed as the example given in \Cref{flaw-analysis-example}. Since
 the IEEE documents are written by the same standards organizations
 (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), they are counted as a
 discrepancy between documents by the same author(s) in \Cref{fig:discrepSources}.
@@ -170,7 +170,7 @@ The rigidity (see \Cref{rigidity}) of discrepancies can also be manually
 specified by inserting the phrase ``implied by'' after the sources of explicit
 information and before those of implicit information. Parsing this information
 follows the same rules as the automatic discrepancy analysis
-(see \Cref{auto-discrep-analysis-rigidity}).
+(see \Cref{auto-flaw-analysis-rigidity}).
 \begin{displayquote}
     \texttt{\% Discrep count: \{IEEE2022\} implied by \{Kam2008\} |\\
         \displayNL \{IEEE2017\} implied by \{IEEE2022\}}
@@ -218,7 +218,7 @@ values.
 
 Additionally, discrepancies are counted based on their rigidity, source tier,
 and whether they are syntactic or semantic (see
-\Cref{rigidity,sources,auto-discrep-analysis,aug-discrep-analysis,discreps}).
+\Cref{rigidity,sources,auto-flaw-analysis,aug-flaw-analysis,discreps}).
 These counts are saved to files, a syntactic and semantic version for each
 source tier; for example, syntactic discrepancies in standards are saved to
 \texttt{build/stdSntxDiscBrkdwn.tex} and semantic discrepancies in standards to

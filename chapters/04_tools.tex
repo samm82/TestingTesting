@@ -8,7 +8,7 @@
 \ifnotpaper
     To better understand our findings, we build tools to more intuitively
     visualize relations between test approaches (\Cref{graph-gen}) and
-    automatically track their flaws (\Cref{discrep-analysis}). Doing
+    automatically track their flaws (\Cref{flaw-analysis}). Doing
     this manually would be error-prone due to the amount of data involved (for
     example, we identify \approachCount{} test approaches) and the number of
     situations where the underlying data would change, including more detailed
@@ -143,7 +143,7 @@ the glossary at all), so the following cases are possible:
 
     The visual nature of these graphs makes it possible to represent both
     explicit and implicit relations without double counting them during the
-    analysis in \Cref{discrep-analysis}. If a relation is both explicit
+    analysis in \Cref{flaw-analysis}. If a relation is both explicit
     \emph{and} implicit, the implicit relation is only shown in the graph
     if it is from a more ``trusted'' source tier (see \Cref{sources}).
     For example, note that only the explicit synonym relation between E and F
@@ -192,7 +192,7 @@ colored \textcolor{orange}{orange}.
 \fi
 
 \ifnotpaper
-    \input{chapters/04a_discrep_analysis}
+    \input{chapters/04a_flaw_analysis}
 \else
     % Moved here to display nicely in paper
     \sntxDiscrepsTable{}
