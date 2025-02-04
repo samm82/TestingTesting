@@ -11,25 +11,31 @@ To understand where discrepancies exist in the literature, they are
 grouped based on the source tiers (as described in \Cref{sources})
 responsible for them. Each discrepancy is then counted \emph{once} per source
 category if it appears within it \emph{and/or} between it and a more
-``trusted'' category. This avoids counting the same discrepancy twice for a
-given category\thesisissueref{83}, which would result in the number of
+``trusted'' category. This avoids counting the same discrepancy more than once
+for a given category\thesisissueref{83}, which would result in the number of
 \emph{occurrences} of all discrepancies, instead of the number of discrepancies
-\emph{themselves}, which is more useful. An exception to this is
-\Cref{fig:discrepSources}, which counts the following sources of discrepancies
-separately:
+\emph{themselves}, which is more useful. The exception to this is
+\Cref{fig:discrepSources}, which counts the following sources
+of discrepancies separately:
 \begin{enumerate}
-    \item those within a single document,
+    \item those that appear once in (or consistently throughout) a document
+          (i.e., are ``self-contained'')\thesisissueref{137,138},
+    \item those between two parts of a single document
+          (i.e., internal conflicts)\thesisissueref{137,138},
     \item those between documents by the same author(s) or standards
           organization(s), and
     \item those within a source tier.
 \end{enumerate}
 As before, these are not double counted, meaning that the maximum number of
 counted discrepancies possible within a \emph{single} source tier in
-\Cref{fig:discrepSources} is three (one for each type). This only occurs if
+\Cref{fig:discrepSources} is four (one for each type). This only occurs if
 there is an example of each discrepancy source that is \emph{not} ignored to
 avoid double counting; for example, while a single discrepancy within a single
-document would technically fulfill all three criteria, it would only be counted
-once.
+document would technically fulfill all four criteria, it would only be counted
+once. Note that while the different versions of the \acfp{swebok} have
+different editors \citep{SWEBOK2024,SWEBOK2014}, we consider them to be written
+by the same organization: the IEEE Computer Society (\citealp{AboutSWEBOK}; see
+\Cref{metas}).
 
 \phantomsection{}
 \label{discrep-analysis-example}
