@@ -216,17 +216,23 @@ values.
 
 \input{assets/tables/macrosCalc}
 
-Additionally, flaws are counted based on their rigidity, source tier,
+\phantomsection{}\label{flawCounts}
+Additionally, we count flaws based on their rigidity, source tier,
 and whether they are syntactic or semantic (see
 \Cref{rigidity,sources,auto-flaw-analysis,aug-flaw-analysis,discreps}).
-These counts are saved to files, a syntactic and semantic version for each
-source tier; for example, syntactic flaws in standards are saved to
-\texttt{build/stdSntxDiscBrkdwn.tex} and semantic flaws in standards to
-\texttt{build/stdSmntcDiscBrkdwn.tex}. These data are then read in to macros
-(such as \macro{stdSmntcDiscBrkdwn}) that are then used to populate
-\Cref{tab:sntxDiscreps,tab:smntcDiscreps}. For example,
-\macro[1]{stdSntxDiscBrkdwn} and \macro[2]{stdSntxDiscBrkdwn} correspond to
-explicit and implicit mistakes in standards documents, respectively.
+We save these counts to files, a syntactic and semantic version for each
+source tier%
+% ; for example, syntactic flaws in standards are saved to
+% \texttt{build/stdSntxDiscBrkdwn.tex} and semantic flaws in standards to
+% \texttt{build/stdSmntcDiscBrkdwn.tex}. These data
+, then read them in to macros
+% (such as \macro{stdSmntcDiscBrkdwn})
+to populate \Cref{tab:sntxDiscreps,tab:smntcDiscreps}. For example,
+\macro[1]{stdSntxDiscBrkdwn} corresponds to the number of explicit mistakes in
+standards documents, and \macro[2]{stdSntxDiscBrkdwn} to the number of implicit
+ones. These macros also include \macro[13]{totalSntxDiscBrkdwn} and \newline
+\macro[13]{totalSntxDiscBrkdwn}, which are identical and
+track the total number of identified flaws.
 
 \phantomsection{}\label{text-macros}
 Just as with calculated values, it is important that repeated text is updated
