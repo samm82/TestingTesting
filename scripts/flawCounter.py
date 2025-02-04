@@ -165,7 +165,7 @@ TEX_FILES = COMPLEX_TEX_FILES + SIMPLE_TEX_FILES
 def enumOrItem(k):
     # Based on https://tex.stackexchange.com/a/156061/192195
     # and https://tex.stackexchange.com/a/338027/192195
-    return (k, ["\\ifnotpaper", f"\\begin{{enumerate}}[ref={k.value}~Discrepancy~\\arabic*]",
+    return (k, ["\\ifnotpaper", f"\\begin{{enumerate}}[ref={k.value}~Flaw~\\arabic*]",
                       "\\else", f"\\begin{{itemize}}", "\\fi"])
 simpleDiscrepSmntc = OrderedDict([enumOrItem(k) for k in DiscrepSmntc])
 simpleDiscrepSntx  = OrderedDict([enumOrItem(k) for k in DiscrepSntx])
