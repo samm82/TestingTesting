@@ -82,7 +82,7 @@ rigorous, uncomplicated, and understandable by all concerned''
 \citep[p.~viii]{IEEE2017}. For these reasons\todo{Is this clear enough?}, they
 are the most trustworthy sources. However, this does not imply perfection, as we
 identify \stdSmntcDiscBrkdwn{13} % is (should be!) equal to \stdSntxDiscBrkdwn{13}
-discrepancies within these standards (see \Cref{tab:sntxDiscreps,tab:smntcDiscreps})!
+flaws within these standards (see \Cref{tab:sntxDiscreps,tab:smntcDiscreps})!
 Only standards for software development and testing are in scope for
 this research (see \Cref{scope}). For example, ``the purpose of the
 ISO/IEC/IEEE 29119 series is to define an internationally agreed set of
@@ -250,7 +250,7 @@ we also note the potential significance of an ``artifact'' category%
 \thesisissueref{44,119,39}, since some terms could refer to the application of
 a test approach and/or the resulting document(s). Because of this, a test
 approach being categorized as a category from \Cref{tab:ieeeCats}
-\emph{and} an artifact is \emph{not} a discrepancy\thesisissueref{119}
+\emph{and} an artifact is \emph{not} a flaw\thesisissueref{119}
 (see \Cref{multiCats}). \ifnotpaper
     Additionally, ``test metrics'' were also identified\thesisissueref{21,22},
     but tracking them is out-of-scope, since they describe methods for
@@ -427,7 +427,7 @@ looking for bugs where others have already been found.'' Interestingly, ChatGPT
 later ``corrected'' this by calling defect-based testing an approach (although
 this may have been biased by our previous usage of the term ``approach'')!
 Because of this nuance, we need to carefully investigate these kinds of
-discrepancies. For example, \citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}
+flaws. For example, \citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}
 defines interface testing as ``an integration \emph{test type} that is
 concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
 \fi does not define ``test type'', this may not have special significance.
@@ -639,7 +639,7 @@ A consequence of the use of natural language and the lack of standardization
 is the considerable degree of nuance that can get lost when referring to
 information sources. \rigidBlurb{} and capture it when citing sources. This
 allows us to provide a more complete picture of the state of the literature;
-for example, we can view implicit discrepancies separately in
+for example, we can view implicit flaws separately in
 \Cref{tab:sntxDiscreps,tab:smntcDiscreps}, since additional context may rectify
 them. The following non-mutually exclusive reasons for information to be
 considered ``implicit'' emerged, and the given keywords are used to identify
@@ -730,13 +730,13 @@ them \impKeywordsCode{}:
           not fit as well with the label ``user scenario testing''. However,
           since a system can be seen as a ``user'' of the test item, this
           synonym relation is treated as implicit instead of as an outright
-          discrepancy. Cases such as this are indicated by a question mark or
+          flaw. Cases such as this are indicated by a question mark or
           one of the following keywords: ``inferred'', ``should be'',
           ``ideally'', ``likely'', ``if'', or ``although''.
 \end{enumerate}
 
-Discrepancies based on implicit information are themselves implicit. These are
-automatically detected when generating graphs and analyzing discrepancies
+Flaws based on implicit information are themselves implicit. These are
+automatically detected when generating graphs and analyzing flaws
 (see \ifnotpaper \Cref{graph-gen,discrep-analysis}, respectively\else
     \Cref{tools}\fi) by looking for the indicators of uncertainty mentioned
 above \impKeywordsCode{}. These are used when creating
@@ -851,7 +851,7 @@ or quite broad\ifnotpaper\ (such as attacks; see \Cref{attacks}%
     says so, it can be inferred that these approaches are children of
     integration testing and system integration testing, respectively.
     Although these data do not come from the literature, they are documented
-    for completeness; inferred discrepancies are given in \Cref{infer-discreps}
+    for completeness; inferred flaws are given in \Cref{infer-discreps}
     and inferred relations, if any, are included in \recFigs{}.
 \fi
 

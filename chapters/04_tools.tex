@@ -8,7 +8,7 @@
 \ifnotpaper
     To better understand our findings, we build tools to more intuitively
     visualize relations between test approaches (\Cref{graph-gen}) and
-    automatically track their discrepancies (\Cref{discrep-analysis}). Doing
+    automatically track their flaws (\Cref{discrep-analysis}). Doing
     this manually would be error-prone due to the amount of data involved (for
     example, we identify \approachCount{} test approaches) and the number of
     situations where the underlying data would change, including more detailed
@@ -16,9 +16,9 @@
     tedious updates to the corresponding graphs that may be overlooked or done
     incorrectly. Besides being more systematic, automating these processes also
     allows us to observe the impacts of smaller changes, such as unexpected
-    discrepancies that arise from a new relation between two approaches. It
-    also helps verify the tools themselves; for example, adding a manual
-    discrepancy should affect relevant discrepancy counts, and we can
+    flaws that arise from a new relation between two approaches. It
+    also helps verify the tools themselves; for example, tracking a flaw
+    manually should affect relevant flaw counts, and we can
     double-check this. We also define macros to help achieve our goals of
     maintainability, traceability, and reproducibility (\Cref{macros}).
 
@@ -121,7 +121,7 @@ the glossary at all), so the following cases are possible:
         meet the criteria given above).
     \end{minipage} \newpage
 
-    This allows for automatic detection of some classes of discrepancies. The
+    This allows for automatic detection of some classes of flaws. The
     most trivial to automate is ``multi-synonym'' relations, given in
     % TODO: pretty hacky
     \hyperref[case-three]{Case 3} above, since these are already found in order
@@ -172,7 +172,7 @@ can be generated from a given subset of approaches, such as
 \ifnotpaper\else those in a selected approach category (see
     \Cref{categories-observ}) or \fi those pertaining to recovery or
 scability\ifnotpaper. These areas are of particular note, with their own
-sections for discussing discrepancies (\Cref{recov-discrep,scal-discrep},
+sections for discussing flaws (\Cref{recov-discrep,scal-discrep},
 respectively). Graphs of just these subsets help visualize relations
 between relevant test approaches, so these are generated and given
 \else; the latter are shown \fi in \Cref{fig:recovery-graph-current,%
