@@ -8,7 +8,7 @@ from string import ascii_lowercase
 import sys
 from typing import Optional
 
-from discrepCounter import *
+from flawCounter import *
 from helpers import *
 
 # Whether or not to display information for pulling source information
@@ -274,10 +274,10 @@ for name, category in zip(names, categories):
     category = [c for c in category
                 if not any(t in c for t in {"Approach", "Artifact"})]
     if len(category) > 1:
-        discrepCount = (getDiscrepCount(category, "CATS", "CONTRA")
+        flawCount = (getDiscrepCount(category, "CATS", "CONTRA")
                         if not any("?" in c for c in category) else "")
-        multiCatDict[bool(discrepCount)].addMultiCatLine(
-            discrepCount, # if criteria else "",
+        multiCatDict[bool(flawCount)].addMultiCatLine(
+            flawCount, # if criteria else "",
             # Add line breaks to longer test approaches
             f"{{{LONG_ENDINGS_REGEX.sub(r'\\\\\1', name)}}}",
             [formatLineWithSources(c, False) for c in category]
@@ -532,7 +532,7 @@ parSynNotes = {
         "seems arbitrary, but further investigation may prove it to be "
         "meaningful.", "\\thesisissueref{59}"), 
     ("Structured Walkthroughs", "Walkthroughs") :
-        ("See \\discrepref{walkthrough-syns}.", "")
+        ("See \\flawref{walkthrough-syns}.", "")
 }
 
 parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \

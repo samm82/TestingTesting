@@ -10,51 +10,51 @@
     width = \textwidth, rowhead = 1
     }
     \hline
-    \thead{Type}                 & \thead{Macro}               & \thead{Used in}                                          \\*
+    \thead{Type}             & \thead{Macro}               & \thead{Used in}                                          \\*
     \hline
-    \macroType{7}{Discrepancies} & \macro{bugPattonDiscrep}    & \Cref{intro} and \discrepref{bug-patton}                 \\*
-                                 & \macro{alphaDiscrep}        & \Cref{intro} and \discrepref{alpha-def}                  \\*
-                                 & \macro{loadDiscrep}         & \Cref{intro} and \discrepref{load-def}                   \\*
-                                 & \macro{expBasedCatMain}     & \Cref{intro,multiCats}                                   \\*
-                                 & \macro{tourDiscrep}         & \Cref{intro,discreps} and \discrepref{tour-def}          \\*
-                                 & \macro{perfAsFamily}        & \Cref{method-family,classFamilyDiscrep}                  \\*
-                                 & \macro{tolTestingDiscrep}   & \Cref{aug-flaw-analysis} and \discrepref{ground-truth}   \\
+    \macroType{7}{Flaws}     & \macro{bugPattonFlaw}       & \Cref{intro} and \flawref{bug-patton}                    \\*
+                             & \macro{alphaFlaw}           & \Cref{intro} and \flawref{alpha-def}                     \\*
+                             & \macro{loadFlaw}            & \Cref{intro} and \flawref{load-def}                      \\*
+                             & \macro{expBasedCatMain}     & \Cref{intro,multiCats}                                   \\*
+                             & \macro{tourFlaw}            & \Cref{intro,discreps} and \flawref{tour-def}             \\*
+                             & \macro{perfAsFamily}        & \Cref{method-family,classFamilyDiscrep}                  \\*
+                             & \macro{tolTestFlaw}         & \Cref{aug-flaw-analysis} and \flawref{ground-truth}      \\
     \hline
-    \macroType{6}{Footnotes}     & \macro{ftrnote}             & \SetCell[r=3]{l} Thesis (automated) and paper (manual)
-    versions of \Cref{tab:parSyns}                                                                                        \\*
-                                 & \macro{specfn}              &                                                          \\*
-                                 & \macro{ucstn}               &                                                          \\*
-    \cline{2-3}                  & \macro{notDefDistinctIEEE}  & \discrepref{static-test-discrep} and \Cref{exist-tax}    \\*
-                                 & \macro{gerrardDistinctIEEE} & \Cref{tab:otherCategorizations} and
-    \discrepref{gerrard-distinct}                                                                                         \\*
-                                 & \macro{distinctIEEE}        & \macro{gerrardDistinctIEEE}, \macro{notDefDistinctIEEE},
-    and \Cref{method-family,classFamilyDiscrep}                                                                           \\
+    \macroType{6}{Footnotes} & \macro{ftrnote}             & \SetCell[r=3]{l} Thesis (automated) and paper (manual)
+    versions of \Cref{tab:parSyns}                                                                                    \\*
+                             & \macro{specfn}              &                                                          \\*
+                             & \macro{ucstn}               &                                                          \\*
+    \cline{2-3}              & \macro{notDefDistinctIEEE}  & \flawref{static-test-discrep} and \Cref{exist-tax}       \\*
+                             & \macro{gerrardDistinctIEEE} & \Cref{tab:otherCategorizations} and
+    \flawref{gerrard-distinct}                                                                                        \\*
+                             & \macro{distinctIEEE}        & \macro{gerrardDistinctIEEE}, \macro{notDefDistinctIEEE},
+    and \Cref{method-family,classFamilyDiscrep}                                                                       \\
     \hline
-    \macroType{4}{Links}         & \macro{ourApproachGlossary} & \Cref{orth-test,procedure,graph-gen}                     \\*
-                                 & \macro{seeSrcCode}          & \Cref{rigidity,graph-gen,auto-flaw-analysis}             \\*
-                                 & \macro{suggSrcs}            & \Cref{sources,exist-tax}                                 \\*
-                                 & \macro{recFigs}             & \Cref{infers,recs}                                       \\
+    \macroType{4}{Links}     & \macro{ourApproachGlossary} & \Cref{orth-test,procedure,graph-gen}                     \\*
+                             & \macro{seeSrcCode}          & \Cref{rigidity,graph-gen,auto-flaw-analysis}             \\*
+                             & \macro{suggSrcs}            & \Cref{sources,exist-tax}                                 \\*
+                             & \macro{recFigs}             & \Cref{infers,recs}                                       \\
     \hline
     \macroType{5}{Source Tiers\TblrNote{a}}
-                                 & \macro{stds}                &
-    \Cref{fig:stdDiscrepSources,fig:sourceSummary,flaw-analysis-example,tab:sntxDiscreps,tab:smntcDiscreps}               \\*
-                                 & \macro{metas}               &
-    \Cref{fig:metaDiscrepSources,fig:sourceSummary,flaw-analysis-example,tab:sntxDiscreps,tab:smntcDiscreps}              \\*
-                                 & \macro{texts}               &
-    \Cref{fig:textDiscrepSources,fig:sourceSummary,tab:sntxDiscreps,tab:smntcDiscreps}                                    \\*
-                                 & \macro{papers}              &
-    \Cref{fig:paperDiscrepSources,fig:sourceSummary,flaw-analysis-example}                                                \\*
-                                 & \macro{papersTbl}           & \Cref{tab:sntxDiscreps,tab:smntcDiscreps}                \\
+                             & \macro{stds}                &
+    \Cref{fig:stdDiscrepSources,fig:sourceSummary,flaw-analysis-example,tab:sntxDiscreps,tab:smntcDiscreps}           \\*
+                             & \macro{metas}               &
+    \Cref{fig:metaDiscrepSources,fig:sourceSummary,flaw-analysis-example,tab:sntxDiscreps,tab:smntcDiscreps}          \\*
+                             & \macro{texts}               &
+    \Cref{fig:textDiscrepSources,fig:sourceSummary,tab:sntxDiscreps,tab:smntcDiscreps}                                \\*
+                             & \macro{papers}              &
+    \Cref{fig:paperDiscrepSources,fig:sourceSummary,flaw-analysis-example}                                            \\*
+                             & \macro{papersTbl}           & \Cref{tab:sntxDiscreps,tab:smntcDiscreps}                \\
     \hline
-    \macroType{3}{RQs}           & \macro{rqatext}             & \SetCell[r=3]{l} \Cref{intro} and seminar slides         \\*
-                                 & \macro{rqbtext}             &                                                          \\*
-                                 & \macro{rqctext}             &                                                          \\
+    \macroType{3}{RQs}       & \macro{rqatext}             & \SetCell[r=3]{l} \Cref{intro} and seminar slides         \\*
+                             & \macro{rqbtext}             &                                                          \\*
+                             & \macro{rqctext}             &                                                          \\
     \hline
-    \macroType{6}{Misc.}         & \macro{accelTolTest}        & \macro{tolTestingDiscrep} and \Cref{hard-test}           \\*
-                                 & \macro{addTextEx}           & \Cref{sources,texts}                                     \\*
-                                 & \macro{rigidBlurb}          & \Cref{terminology,rigidity}                              \\*
-                                 & \macro{supersAck}           & \nameref{acknowledgements} and seminar slides            \\*
-                                 & \macro{supers}              & \macro{supersAck} and \nameref{decl_aca_ach}             \\*
-                                 & \macro{displayNL}           & \Cref{graph-gen,aug-flaw-analysis}                       \\*
+    \macroType{6}{Misc.}     & \macro{accelTolTest}        & \macro{tolTestFlaw} and \Cref{hard-test}                 \\*
+                             & \macro{addTextEx}           & \Cref{sources,texts}                                     \\*
+                             & \macro{rigidBlurb}          & \Cref{terminology,rigidity}                              \\*
+                             & \macro{supersAck}           & \nameref{acknowledgements} and seminar slides            \\*
+                             & \macro{supers}              & \macro{supersAck} and \nameref{decl_aca_ach}             \\*
+                             & \macro{displayNL}           & \Cref{graph-gen,aug-flaw-analysis}                       \\*
     \hline
 \end{longtblr}

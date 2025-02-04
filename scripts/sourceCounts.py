@@ -2,7 +2,7 @@ from pandas import read_csv
 import re
 import sys
 
-from discrepCounter import SrcCat, getSrcCat, TEX_FILES
+from flawCounter import SrcCat, getSrcCat, TEX_FILES
 from helpers import *
 
 if __name__ == "__main__":

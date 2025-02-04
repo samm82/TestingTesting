@@ -70,7 +70,7 @@
     \else paper%
     \fi}
 
-\newcommand\discrepref[1]{%
+\newcommand\flawref[1]{%
     \ifnotpaper \labelcref{#1}%
     \else \Cref{#1}%
     \fi}
@@ -112,31 +112,31 @@
         \citep[p.~12]{Gerrard2000a}, which is \distinctIEEE{#2}}
 }
 
-% Examples of discrepancies
-\def\bugPattonDiscrep{\citet[pp.~13\==14]{Patton2006} ``just call[s] it what it
+% Examples of flaws
+\def\bugPattonFlaw{\citet[pp.~13\==14]{Patton2006} ``just call[s] it what it
     is and get[s] on with it'', abandoning these four terms, ``problem'',
     ``incident'', ``anomaly'', ``variance'', ``inconsistency'', ``feature'' (!),
     and ``a list of unmentionable terms'' in favour of ``bug''; after all,
     ``there's no reason to dice words''!}
-\NewDocumentCommand\tourDiscrep{s}{%
+\NewDocumentCommand\tourFlaw{s}{%
     \IfBooleanTF#1{t}{T}he structure of tours can be defined as either quite
     general \citep[p.~34]{IEEE2022} or ``organized around a special focus''
     \citepISTQB{}\IfBooleanTF#1{}{.}}
-\def\alphaDiscrep{Alpha testing is performed by ``users within the organization
+\def\alphaFlaw{Alpha testing is performed by ``users within the organization
     developing the software'' \citep[p.~17]{IEEE2017}, ``a small, selected
     group of potential users'' \citep[p.~5-8]{SWEBOK2024}, or ``roles outside
     the development organization'' conducted ``in the developer's test
     environment'' \citepISTQB{}.}
-\def\loadDiscrep{Load testing is performed with loads ``between anticipated
+\def\loadFlaw{Load testing is performed with loads ``between anticipated
     conditions of low, typical, and peak usage'' \citep[p.~5]{IEEE2022} or
     loads that are as large as possible \citep[p.~86]{Patton2006}.}
-\NewDocumentCommand{\tolTestingDiscrep}{s}{%
+\NewDocumentCommand{\tolTestFlaw}{s}{%
     \IfBooleanTF#1{t}{T}he terms ``acceleration tolerance testing'' and
     ``acoustic tolerance testing'' seem to only refer to software testing in
     \citep[p.~56]{Firesmith2015}; elsewhere, they seem to refer to
     testing the acoustic tolerance of rats \citep{HolleyEtAl1996} or the
     acceleration tolerance of \accelTolTest{}, which don't exactly seem
-    relevant\dots\todo{Is this a scope discrep?}%
+    relevant\dots\todo{Is this a scope flaw?}%
 }
 
 \def\suggSrcs{\href
@@ -150,7 +150,7 @@
     \else \cite[p.~375]{IEEE2017}, \cite[p.~7-10]{SWEBOK2024}%
     \fi, which is distinct from robustness testing \citep[p.~53]{Firesmith2015}.}
 \def\specfn{See \Cref{spec-func-test}.}
-\def\ucstn{See \discrepref{use-case-scenario}.}
+\def\ucstn{See \flawref{use-case-scenario}.}
 
 %------------------------------------------------------------------------------
 % For populating values from files
@@ -235,7 +235,7 @@
 \def\srcCat{\hyperref[sources]{Source Tier}}
 \def\reduns{\ifnotpaper\nameref{redun}\else Redundancies\footnote{Section omitted for brevity.}\fi}
 
-\def\discrepCount{\totalSmntcDiscBrkdwn{13}}
+\def\flawCount{\totalSmntcDiscBrkdwn{13}}
 
 \def\cats{\hyperref[cats]{Categories}}
 \def\syns{\hyperref[syns]{Synonyms}}

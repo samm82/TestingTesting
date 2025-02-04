@@ -1,6 +1,6 @@
 import re
 
-from discrepCounter import SrcCat
+from flawCounter import SrcCat
 from helpers import *
 
 SECTIONS = [k.name.capitalize() for k in SrcCat if k.color.value >= 0]

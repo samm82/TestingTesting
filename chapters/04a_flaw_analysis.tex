@@ -84,7 +84,7 @@ Comparing the authors and years of each source related to a given flaw
 can determine if it manifests within a single document and/or between documents
 by the same author(s) when creating \Cref{fig:discrepSources}. Then, the
 relevant sources can be sorted into their categories based on their citations
-\seeSrcCode{e709acf}{discrepCounter}{39}{56}.
+\seeSrcCode{e709acf}{flawCounter}{39}{56}.
 % done by the function in \Cref{lst:getSrcCat}, since each source tier
 % outlined in \Cref{sources} is comprised of a small number of authors (with the
 % exception of papers and other documents; see \Cref{papers}).
@@ -137,7 +137,7 @@ below, it is considered to be a self-contained flaw. On the other hand,
 internal flaws arise when a document disagrees with itself by containing two
 conflicting pieces of information and include many \nameref{contra} and
 \nameref{over}. These can even occur on the same page, such as when an acronym
-is given to two distinct terms (see \discrepref{cat-acro,hil-acro})! If a
+is given to two distinct terms (see \flawref{cat-acro,hil-acro})! If a
 source appears in multiple groups in a flaw's comment, it is considered to
 be an internal flaw. The second line is a standard example of this, while the
 third is more complex; in this case, source Y agrees with only one of the
@@ -188,7 +188,7 @@ The rest increment their corresponding count in
 \end{itemize}
 
 Occasionally, a source from a lower tier is used as the ``ground truth'' for a
-flaw. For example, \tolTestingDiscrep*{} This flaw is supported
+flaw. For example, \tolTestFlaw*{} This flaw is supported
 by additional papers found via a miniature literature review (described in
 \Cref{undef-terms}) from a lower source tier than \citep{Firesmith2015}
 (which is a terminology collection; see \Cref{sources}). However, it

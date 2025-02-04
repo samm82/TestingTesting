@@ -185,7 +185,7 @@ def outputDiscreps():
     for filename in TEX_FILES:
         with open(filename, "r", encoding="utf-8") as file:
             content = file.readlines()
-        discrepCounts = [line for line in content if "% Discrep count" in line]
+        flawCounts = [line for line in content if "% Discrep count" in line]
         # Don't process content before the first \item or after final \end{enumerate}
         discreps = [f"\\item % Discrep count {item}"
                     for item in "".join(content).rsplit(
@@ -224,7 +224,7 @@ def outputDiscreps():
             for sntxKey in simpleDiscrepSntx.keys():
                 simpleDiscrepSntx[sntxKey].append("\\fi")
 
-        for discrep in discrepCounts:
+        for discrep in flawCounts:
             sources = discrep.split("|")
             smntcDisc, sntxDisc = getDiscGroups(discrep)
             DEBUG = False
