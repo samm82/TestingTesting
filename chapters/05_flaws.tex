@@ -1,4 +1,4 @@
-\section{Discrepancies}
+\section{Flaws}
 \label{flaws}
 
 % Moved earlier to display nicely in paper
@@ -9,40 +9,40 @@ After gathering all these data\footnote{Available in \texttt{ApproachGlossary.cs
     \texttt{QualityGlossary.csv}, and \texttt{SuppGlossary.csv} at \ifblind{
         [Repository link suppressed]}{
         \url{https://github.com/samm82/TestingTesting}}.}, we find many
-discrepancies. To better understand and analyze them, we group them by their
-syntax and their semantics. Syntactic discrepancies (\Cref{sntxFlaws})
-describe \emph{how} a discrepancy manifests, such as information that is wrong
+flaws. To better understand and analyze them, we group them by their
+syntax and their semantics. Syntactic flaws (\Cref{sntxFlaws})
+describe \emph{how} a flaw manifests, such as information that is wrong
 (a ``mistake''; \Cref{wrong}) or missing (an ``omission''; \Cref{miss}). On the
-other hand, semantic discrepancies (\Cref{smntcFlaws}) describe the
-knowledge domain in which a discrepancy manifests, such as a discrepancy
+other hand, semantic flaws (\Cref{smntcFlaws}) describe the
+knowledge domain in which a flaw manifests, such as a flaw
 between synonyms (\Cref{syns}) or parent-child relations (\Cref{pars}).
 As an example, \tourFlaw*{}. This is a case of contradictory definitions, so
 it appears with both the contradictions (\Cref{contra}) \emph{and} the
-definition disrepancies (\Cref{defs}). Within these sections, \ifnotpaper
-    ``more significant'' discrepancies are
+definition flaws (\Cref{defs}). Within these sections, \ifnotpaper
+    ``more significant'' flaws are
     listed first, followed by ``less significant'' ones omitted from the paper
-    version of this thesis. They \else ``less significant'' discrepancies are
+    version of this thesis. They \else ``less significant'' flaws are
     omitted for brevity, and those remaining \fi are then sorted based on their
 source tier (see \Cref{sources}).
 
-A summary of how many discrepancies there are by syntax and by semantics is
+A summary of how many flaws there are by syntax and by semantics is
 shown in \Cref{tab:sntxFlaws,tab:smntcFlaws}, respectively, where a given
-row corresponds to the number of discrepancies either within that
+row corresponds to the number of flaws either within that
 source tier (see \Cref{sources}) and/or with a ``more trusted'' one
 (i.e., a previous row in the table). The numbers of (Exp)licit and (Imp)licit
-(see \Cref{rigidity}) discrepancies are also presented in these tables. Since
-each discrepancy is grouped by syntax \emph{and} by semantics, the totals per
+(see \Cref{rigidity}) flaws are also presented in these tables. Since
+each flaw is grouped by syntax \emph{and} by semantics, the totals per
 source and grand totals in these tables are equal. However, the numbers of
-discrepancies listed in \Cref{sntxFlaws,smntcFlaws} are not equal,
+flaws listed in \Cref{sntxFlaws,smntcFlaws} are not equal,
 as those automatically uncovered based on semantics \ifnotpaper
     (see \Cref{auto-flaw-analysis}) \fi are only listed in the corresponding
 category section for clarity; they still contribute to the counts in
 \Cref{tab:sntxFlaws}!
 
 Moreover, certain ``subsets'' of testing revealed many interconnected
-discrepancies. These are given in their respective sections as a ``third view''
+flaws. These are given in their respective sections as a ``third view''
 to keep related information together, but still count towards the syntaxes and
-semantics of discrepancies listed above\ifnotpaper\ (\Cref{aug-flaw-analysis}
+semantics of flaws listed above\ifnotpaper\ (\Cref{aug-flaw-analysis}
     outlines how this is done)\fi, causing a further mismatch between the counts
 in \Cref{tab:sntxFlaws,tab:smntcFlaws} and the counts in \Cref{sntxFlaws,%
     smntcFlaws}. The ``problem'' subsets of testing include
@@ -59,11 +59,11 @@ in \Cref{tab:sntxFlaws,tab:smntcFlaws} and the counts in \Cref{sntxFlaws,%
     \input{assets/graphs/flawPies}
     \input{build/flawTable} \fi
 
-\subsection{Syntactic Discrepancies}
+\subsection{Syntactic Flaws}
 \label{sntxFlaws}
 
-The following sections list observed discrepancies grouped by \emph{how} the
-discrepancy manifests. These include \nameref{wrong}, \nameref{miss},
+The following sections list observed flaws grouped by \emph{how} they manifest.
+These include \nameref{wrong}, \nameref{miss},
 \nameref{contra}, \nameref{ambi}, \nameref{over}, and \reduns{}.
 
 \subsubsection{Mistakes}
@@ -112,14 +112,14 @@ and \terms{}:
     \input{build/SntxFlawRedun}
 \fi
 
-\subsection{Semantic Discrepancies}
+\subsection{Semantic Flaws}
 \label{smntcFlaws}
 
-The following sections list observed discrepancies grouped by \emph{what area}
-the discrepancy manifests in. These include \nameref{cats}, \nameref{syns},
+The following sections list observed flaws grouped by \emph{what area}
+they manifest in. These include \nameref{cats}, \nameref{syns},
 \nameref{pars}, \nameref{defs}, \nameref{terms}, and \nameref{cites}.
 
-\subsubsection{Approach Category Discrepancies}
+\subsubsection{Approach Category Flaws}
 \label{cats}
 
 While the IEEE categorization of testing approaches described in
@@ -147,7 +147,7 @@ they can be analyzed more systematically\thesisissueref{21}.
 \phantomsection{}
 \label{multiCats}
 
-Some category discrepancies can be detected automatically, such as test
+Some category flaws can be detected automatically, such as test
 approaches with more than one category. These are given in \Cref{tab:multiCats}
 and include experience-based testing, which is of particular note.
 \expBasedCatMain{} These authors say ``experience-based testing practices like
@@ -219,11 +219,11 @@ given to them.
 \else % Not yet present in paper
 \fi
 
-\subsubsection{Synonym Relation Discrepancies}
+\subsubsection{Synonym Relation Flaws}
 \label{syns}
 
 As mentioned in \Cref{syn-rels}, synonyms do not inherently signify a
-discrepancy. Unfortunately, there are many instances of incorrect or ambiguous
+flaw. Unfortunately, there are many instances of incorrect or ambiguous
 synonyms, such as the following:
 
 \input{build/SmntcFlawSyns}
@@ -270,11 +270,11 @@ but not with other terms not in italics\todo{Better way to handle/display
     \input{\ifnotpaper build\else assets/misc\fi/multiSyns}
 \end{enumerate}
 
-\subsubsection{Parent-Child Relation Discrepancies}
+\subsubsection{Parent-Child Relation Flaws}
 \label{pars}
 
 \nameref{par-chd-rels} are also not immune to difficulties\ifnotpaper, as shown
-by the following discrepancies:
+by the following flaws:
 \input{build/SmntcFlawPars} \else; for example, performance \fi testing and
 security testing are given as subtypes of reliability testing by
 \citep{ISO_IEC2023a}, but these are all listed separately by
@@ -283,7 +283,7 @@ security testing are given as subtypes of reliability testing by
 \phantomsection{}\label{selfPars}
 Additionally, some self-referential definitions imply that a test
 approach is a parent of itself. Since these are by nature self-contained within
-a given source, these are counted \emph{once} as explicit discrepancies within
+a given source, these are counted \emph{once} as explicit flaws within
 their sources in \Cref{tab:sntxFlaws,tab:smntcFlaws}. \ifnotpaper The following
     examples were identified through automatic analysis of the generated graphs:
     \input{build/selfCycles} Interestingly, performance testing is \emph{not}
@@ -298,7 +298,7 @@ There are also pairs of synonyms where one is described as a subapproach
 of the other, abusing the meaning of ``synonym'' and causing confusion.
 We identify \parSynCount{} of these pairs through automatic analysis of the
 generated graphs, \ifnotpaper which are \else with the most prominent \fi
-given in \Cref{tab:parSyns}\ifnotpaper\ (additional pairs where a discrepancy
+given in \Cref{tab:parSyns}\ifnotpaper\ (additional pairs where a flaw
     is inferred are given in \Cref{infParSyns} for completeness)\fi. Of
 particular note is the relation between path testing and exhaustive testing.
 While \citet[p.~421]{vanVliet2000} claims that path testing done completely
@@ -327,11 +327,11 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
 \else % Moved earlier to display nicely in paper
 \fi
 
-\subsubsection{Definition Discrepancies}
+\subsubsection{Definition Flaws}
 \label{defs}
 
 Perhaps the most interesting category for those seeking to understand how to
-apply a given test approach, there are many discrepancies between how test
+apply a given test approach, there are many flaws with how test
 approaches, as well as supporting terms, are defined:
 
 \input{build/SmntcFlawDefs}
@@ -388,27 +388,27 @@ approaches, as well as supporting terms, are defined:
     \end{itemize}
 \fi
 
-\subsubsection{Terminology Discrepancies}
+\subsubsection{Terminology Flaws}
 \label{terms}
 
-While some discrepancies exist because the definition of a term is wrong,
+While some flaws exist because the definition of a term is wrong,
 others exist because term's \emph{name} or \emph{label} is wrong! This could be
 considered a ``sister'' category of \nameref{defs}, but these
-discrepancies seemed different enough to merit their own category. \ifnotpaper
+seem different enough to merit their own category. \ifnotpaper
     This most often manifests as terms that are included in reference material
     that should not have been, terms that share the same acronym, and terms
     that have typos or are redundant. \fi The following \ifnotpaper
-    discrepancies are presented in that order\else are examples of these
-    discrepancies\fi:
+    flaws are presented in that order\else are examples of these
+    flaws\fi:
 
 \input{build/SmntcFlawTerms}
 
-\subsubsection{Citation Discrepancies}
+\subsubsection{Citation Flaws}
 \label{cites}
 
 Sometimes a document cites another for a piece of information that does not
 appear! \ifnotpaper
-    The following discrepancies are examples of this:
+    The following flaws are examples of this:
     \input{build/SmntcFlawCites}
 \else
     For example, \citet[p.~184]{DoğanEtAl2014} \multiAuthHelper{claim} that
@@ -751,14 +751,14 @@ Furthermore, the definition of ``compatibility testing'' in
 adding another layer of confusion to the direction of their relationship.
 
 \ifnotpaper
-    \subsection{Inferred Discrepancies}
+    \subsection{Inferred Flaws}
     \label{infer-flaws}
-    Along the course of this analysis, we inferred many potential discrepancies.
+    Along the course of this analysis, we inferred many potential flaws.
     Some of these have a conflicting source while others do not. These are
-    excluded from any counts of the numbers of discrepancies, since they are
+    excluded from any counts of the numbers of flaws, since they are
     more subjective, but are given below for completeness.
 
-    \subsubsection{Inferred Synonym Discrepancies}
+    \subsubsection{Inferred Synonym Flaws}
     See \Cref{multiSyns}.
 
     \begin{enumerate}
@@ -772,7 +772,7 @@ adding another layer of confusion to the direction of their relationship.
     % synonym of ``component testing'' but it probably should be a synonym of
     % ``system testing'' instead.
 
-    \subsubsection{Inferred Parent Discrepancies}
+    \subsubsection{Inferred Parent Flaws}
     \label{infParSyns}
     As discussed in \Cref{parSyns}, some pairs of synonyms also have a
     parent-child relation, abusing the meaning of ``synonym'' and causing
@@ -792,7 +792,7 @@ adding another layer of confusion to the direction of their relationship.
 
     \input{build/infParSyns}
 
-    In addition to this type of discrepancy, \citep[Tab.~2]{Gerrard2000a} does
+    In addition to this type of flaw, \citep[Tab.~2]{Gerrard2000a} does
     \emph{not} give ``functionality testing'' as a parent of ``end-to-end
     functionality testing''. Finally, \citet[p.~119]{Patton2006} says that
     branch testing is ``the simplest form of path testing'' which is also
@@ -803,14 +803,14 @@ adding another layer of confusion to the direction of their relationship.
     of complete paths, which \citet[p.~316]{IEEE2017} give as a definition of
     ``path testing'' (see \flawref{path-test})!
 
-    \subsubsection{Inferred Category Discrepancies}
+    \subsubsection{Inferred Category Flaws}
     See \Cref{multiCats}.
 
     \input{build/infMultiCats}
 
-    \subsubsection{Other Inferred Discrepancies}
-    The following are discrepancies that, if were more concrete, would also be
-    included alongside the other discrepancies:
+    \subsubsection{Other Inferred Flaws}
+    The following are flaws that, if were more concrete, would also be
+    included alongside the other flaws:
     \begin{itemize}
         \item ``Fuzz testing'' is ``tagged'' (?) as ``artificial
               intelligence'' \citep[p.~5]{IEEE2022}.
