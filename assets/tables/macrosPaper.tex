@@ -1,14 +1,11 @@
-% \newcommand\multiAuthHelper[1]{\ifnotpaper #1\else #1s\fi}
-% \def\docType{\ifnotpaper thesis%
-%     \else paper%
-%     \fi}
-
 % \newcommand\flawref[1]{%
 %     \ifnotpaper \labelcref{#1}%
 %     \else \Cref{#1}%
 %     \fi}
 
-\def\refHelperEx{\refHelper \citep{IEEE2022}}
+\def\refHelperEx{\refHelper \ifnotpaper \citet{IEEE2022}
+    \else \defcitealias{IEEE2022}{1}[\citetalias{IEEE2022}]
+    \fi \multiAuthHelper{form} the basis of this \docType{}.}
 
 \begin{longtblr}[
     % note{a} = {See \Cref{sources}.},
@@ -20,10 +17,12 @@
     width = \textwidth, rowhead = 1
     }
     \hline
-    \thead{Context} & \thead{Displayed as}                               \\
+    \thead{Context} & \thead{Displayed as}                                \\
     \hline
-    Code            & \macro{refHelper}\texttt{ }\macro[IEEE2022]{citep} \\
-    Thesis          & \refHelperEx{}                                     \\
-    Paper           & {\notpaperfalse \refHelperEx{}}                    \\
+    Code            & {\texttt{\macro{refHelper} \macro[IEEE2022]{citet}\
+    \macro[form]{multiAuthHelper}}                                        \\
+    \displayNL\texttt{the basis of this \macro{docType}.}}                \\
+    Thesis          & \refHelperEx{}                                      \\
+    Paper           & {\notpaperfalse \refHelperEx{}}                     \\
     \hline
 \end{longtblr}
