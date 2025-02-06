@@ -1,0 +1,29 @@
+% \newcommand\multiAuthHelper[1]{\ifnotpaper #1\else #1s\fi}
+% \def\docType{\ifnotpaper thesis%
+%     \else paper%
+%     \fi}
+
+% \newcommand\flawref[1]{%
+%     \ifnotpaper \labelcref{#1}%
+%     \else \Cref{#1}%
+%     \fi}
+
+\def\refHelperEx{\refHelper \citep{IEEE2022}}
+% \edef\refHelperExp{\expandonce\refHelperEx{}}
+
+\begin{longtblr}[
+    % note{a} = {See \Cref{sources}.},
+    caption = {\LaTeX{} macros for handling formatting differences between thesis and paper.},
+    label = {tab:macrosPaper}
+    ]{
+    colspec={|Q[l,m]X[l,m]X[l,m]|},
+    row{1} = {halign=c},
+    width = \textwidth, rowhead = 1
+    }
+    \hline
+    \thead{Macro (Example Usage)}        & \thead{Display in Thesis} & \thead{Display in Paper}        \\*
+    \hline
+    {\macro{refHelper}                                                                                 \\
+    \displayNL{}\macro[IEEE2022]{citep}} & \refHelperEx{}            & {\notpaperfalse \refHelperEx{}} \\
+    \hline
+\end{longtblr}
