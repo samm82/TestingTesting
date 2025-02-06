@@ -9,21 +9,21 @@
 %     \fi}
 
 \def\refHelperEx{\refHelper \citep{IEEE2022}}
-% \edef\refHelperExp{\expandonce\refHelperEx{}}
 
 \begin{longtblr}[
     % note{a} = {See \Cref{sources}.},
     caption = {\LaTeX{} macros for handling formatting differences between thesis and paper.},
     label = {tab:macrosPaper}
     ]{
-    colspec={|Q[l,m]X[l,m]X[l,m]|},
-    row{1} = {halign=c},
+    colspec={|Q[c,m]|X[l,m]|},
+    column{1} = {font=\bfseries},
     width = \textwidth, rowhead = 1
     }
     \hline
-    \thead{Macro (Example Usage)}        & \thead{Display in Thesis} & \thead{Display in Paper}        \\*
+    \thead{Context} & \thead{Displayed as}                               \\
     \hline
-    {\macro{refHelper}                                                                                 \\
-    \displayNL{}\macro[IEEE2022]{citep}} & \refHelperEx{}            & {\notpaperfalse \refHelperEx{}} \\
+    Code            & \macro{refHelper}\texttt{ }\macro[IEEE2022]{citep} \\
+    Thesis          & \refHelperEx{}                                     \\
+    Paper           & {\notpaperfalse \refHelperEx{}}                    \\
     \hline
 \end{longtblr}
