@@ -1,9 +1,8 @@
 \section{Methodology}
 \label{methodology}
 
-At a high level\todo{Is this sufficient as a chapter ``roadmap'', or should I
-    include one explicitly? How would I do this without duplication?}, our
-methodology follows the following steps:
+At a high level, our methodology follows the following steps:
+\imptodo{Say what the methodology is for}
 
 \input{build/methodOverview}
 
@@ -18,9 +17,8 @@ start from the vocabulary document for systems and software engineering%
 one \citep{SWEBOK2014} and one submitted for public review\footnote{
     \refHelper \citep{SWEBOK2024} has been published since we investigated
     these sources; if time permits, we will revisit this published version.
-} \citep{SWEBOK2024}\ifblind{}{---as \suggSrcs{}\todo{
-        These are further justified later; should I put pointers here?
-    }}. To gather further sources, we then use a version of ``snowball sampling'',
+} \citep{SWEBOK2024}. To gather further sources, we then use a version of
+``snowball sampling'',
 which ``is commonly used to locate hidden populations \dots{} [via] referrals
 from initially sampled respondents to other persons'' \citep{Johnson2014}. We
 apply this concept to ``referrals'' between sources. \addTextEx{} We similarly
@@ -41,9 +39,14 @@ source to be ``trustworthy'' if it:
 For ease of discussion and analysis, we group the complete set of sources into
 ``tiers'' based on their format, method of publication, and this metric of
 ``trustworthiness''. We therefore create the following tiers, given in order of
-descending trustworthiness: established standards (\Cref{stds}), terminology
-collections (\Cref{metas}), textbooks (\Cref{texts}), and papers and other
-documents (\Cref{papers}). A summary of how many sources comprise each tier is
+descending trustworthiness:
+\begin{enumerate}
+    \item established standards (\Cref{stds}),
+    \item terminology collections (\Cref{metas}),
+    \item textbooks (\Cref{texts}), and
+    \item papers and other documents (\Cref{papers}).
+\end{enumerate}
+A summary of how many sources comprise each tier is
 given in \Cref{fig:sourceSummary}. We often use papers to ``fill in'' missing
 information in a more specific subdomain and do not always investigate them
 entirely (see \Cref{undef-terms}), which results in a large number of them. We
@@ -68,8 +71,6 @@ similar context from a source that is widely used and well-respected.
     \label{fig:sourceSummary}
 \end{figure}
 
-\ifnotpaper\newpage\fi
-
 \subsubsection{\stdSources{1}}
 \label{stds}
 % Colored \textcolor{green}{green}
@@ -79,7 +80,7 @@ standards bodies, namely ISO, the \acf{iec}, and IEEE. Their purpose is to
 ``encourage the use of systems and software engineering standards'' and
 ``collect and standardize terminology'' by ``provid[ing] definitions that are
 rigorous, uncomplicated, and understandable by all concerned''
-\citep[p.~viii]{IEEE2017}. For these reasons\todo{Is this clear enough?}, they
+\citep[p.~viii]{IEEE2017}. For these reasons, they
 are the most trustworthy sources. However, this does not imply perfection, as we
 identify \stdSmntcFlawBrkdwn{13} % is (should be!) equal to \stdSntxFlawBrkdwn{13}
 flaws within these standards (see \Cref{tab:sntxFlaws,tab:smntcFlaws})!
@@ -87,12 +88,10 @@ Only standards for software development and testing are in scope for
 this research (see \Cref{scope}). For example, ``the purpose of the
 ISO/IEC/IEEE 29119 series is to define an internationally agreed set of
 standards for software testing that can be used by any organization when
-performing any form of software testing''\todo{Does this add anything of value?}
+performing any form of software testing''
 \ifnotpaper(\fi\citeyear[p.~vii]{IEEE2022}\ifnotpaper; similar in
 \citeyear[p.~ix]{IEEE2016})\fi.
-This tier is composed of \stdSources{2}\todo{I sorted these so IEEE sources
-    came first, since they focus on engineering. Should I explain this minor
-    note? sort them another way?}.
+This tier is composed of \stdSources{2} .
 
 \subsubsection{\metaSources{1}}
 \label{metas}
@@ -111,7 +110,7 @@ combination of IEEE standards and state-of-the-practice observations, we
 designate it as a collection of terminology as opposed to an established
 standard. Collections such as this are often written by a large
 organization, such as the \acf{istqb}, but not always. We include
-\citeauthor{Firesmith2015}'s\todo{Correct grammar?} taxonomy
+\citeauthor{Firesmith2015}'s taxonomy
 \citeyearpar{Firesmith2015} because it presents relations between many test
 approaches and \citeauthor{DoğanEtAl2014}'s
 literature review \citeyearpar{DoğanEtAl2014} because it cites many
@@ -124,8 +123,7 @@ This tier is composed of \metaSources{2}.
 
 We consider textbooks to be more trustworthy than papers (see \Cref{papers})
 because they are widely used as resources for teaching software engineering and
-may be used as guides in industry.\todo{Ideas on how to remove passive voice?}
-Although textbooks have smaller sets of
+industry frequently uses them as guides. Although textbooks have smaller sets of
 authors, they follow a formal review process before publication. Textbooks used
 at McMaster University \citep{Patton2006,PetersAndPedrycz2000,vanVliet2000}
 served as the original (albeit ad hoc and arbitrary) starting point of this
@@ -139,8 +137,8 @@ This tier is composed of \textSources{2}.
 The remaining documents all have much smaller sets of authors and are much less
 widespread than those in higher source tiers. While most documents are
 journal articles and conference papers, the following document types are also
-present. Some of these are less than academic, but show how terms are used in
-practice; we include them in this source tier for brevity\thesisissueref{89}:
+present. Some of these are not peer-reviewed works, but they show how terms are
+used in practice\thesisissueref{89}:
 
 \begin{itemize}
     \item Report \citep{Kam2008,Gerrard2000a,Gerrard2000b}
@@ -246,9 +244,9 @@ developed and ready for testing.
 \fi
 
 While the vast majority of identified test approaches can be categorized
-in this way, \ifnotpaper there seem to be some outliers. For example, \fi
-we also note the potential significance of an ``artifact'' category%
-\thesisissueref{44,119,39}, since some terms could refer to the application of
+in this way, \ifnotpaper there are some outliers. For example, \fi
+an ``artifact'' category is an addition option\thesisissueref{44,119,39},
+since some terms can refer to the application of
 a test approach and/or the resulting document(s). Because of this, a test
 approach being categorized as a category from \Cref{tab:ieeeCats}
 \emph{and} an artifact is \emph{not} a flaw\thesisissueref{119}
@@ -261,10 +259,10 @@ approach being categorized as a category from \Cref{tab:ieeeCats}
     experience-based testing \citep[p.~34]{IEEE2022}.
 
 \fi
-Excluding \ifnotpaper our proposed \else this \fi ``artifact'' category, the
-categories given in \Cref{tab:ieeeCats} seem to be orthogonal. For
-example, ``a test type can be performed at a single test level or across
-several test levels''
+Excluding \ifnotpaper our proposed \else this \fi ``artifact'' category and the
+``approach'' supercategory, the categories given in \Cref{tab:ieeeCats} seem to
+be orthogonal. For example, ``a test type can be performed at a single test
+level or across several test levels''
 \ifnotpaper
     (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021})%
 \else
