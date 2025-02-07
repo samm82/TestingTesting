@@ -18,7 +18,7 @@ OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
                              "and other resources"])
 
 methodology_a = """    \\item \\phantomsection{}\\label{identify-sources}
-          Identify authoritative sources (\\Cref{sources})
+          Identify authoritative sources \\ifnotpaper on software testing \\fi (\\Cref{sources})
     \\item \\phantomsection{}\\label{identify-terms}
           Identify software testing terminology from each source, including
           test approaches and terms that imply them (\\Cref{derived-tests})
