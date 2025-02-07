@@ -84,7 +84,7 @@ Comparing the authors and years of each source related to a given flaw
 can determine if it manifests within a single document and/or between documents
 by the same author(s) when creating \Cref{fig:flawSources}. Then, the
 relevant sources can be sorted into their categories based on their citations
-\seeSrcCode{e709acf}{flawCounter}{39}{56}.
+\seeSrcCode{82167b7}{scripts/flawCounter.py}{63}{80}.
 % done by the function in \Cref{lst:getSrcCat}, since each source tier
 % outlined in \Cref{sources} is comprised of a small number of authors (with the
 % exception of papers and other documents; see \Cref{papers}).
@@ -253,5 +253,52 @@ brevity. We create macros to reuse many types of information throughout our
 documents as shown in \Cref{tab:macrosText}.
 
 \input{assets/tables/macrosText}
+
+\phantomsection{}\label{paper-macros}
+In addition to this thesis, we also prepare a conference paper based on our
+research. While we can reuse most content without modifying it, there are some
+formatting differences between the two document types. For example, our thesis
+uses the \texttt{natbib} package for citations while the IEEE guidelines for
+paper submissions suggest the use of \texttt{cite} \citep[p.~8]{Shell2015};
+we define aliases so that we can reuse text that includes citations
+\seeSrcCode{82167b7}{paper_preamble.tex}{19}{60}.
+
+In general, we use the command\todo{Is this a ``command''?}
+\texttt{\textbackslash ifnotpaper} to allow for manual distinctions between the
+two documents' formats, such as how they handle citations, using this basic format:
+\begin{displayquote}
+    \texttt{\textbackslash ifnotpaper <thesis code> \textbackslash else <paper code> \textbackslash fi}
+\end{displayquote}
+For example, in \Cref{nonIEEE-sources}, we provide a list of non-IEEE sources
+that support a claim made by the IEEE. Since we sort sources based on
+trustworthiness (see \Cref{sources}), publication year, and number of authors,
+the relevant thesis code is:
+\begin{displayquote}
+    \texttt{(\textbackslash citealp[pp.\textasciitilde 5\textbackslash =/6 to 5\textbackslash =/7]\{SWEBOK2024\}; \\
+        \displayNL \textbackslash citealpISTQB\{\};
+        \textbackslash citealp[pp.\textasciitilde 807\textbackslash ==808]\{Perry2006\}; \\
+        \displayNL \textbackslash citealp[pp.\textasciitilde 443\textbackslash ==445]\{PetersAndPedrycz2000\}; \\
+        \displayNL \textbackslash citealp[p.\textasciitilde 218]\{KuļešovsEtAl2013\}\textbackslash todo\{OG Black, 2009\}; \\
+        \displayNL \textbackslash citealp[pp.\textasciitilde 9, 13]\{Gerrard2000a\})}
+\end{displayquote}
+Meanwhile, IEEE guidelines prefer that sources are kept in separate brackets,
+sorted in order of their first appearance in the document. Therefore, paper
+code for this list of sources is:
+\begin{displayquote}
+    \texttt{\textbackslash cite[pp.\textasciitilde 443\textbackslash ==445]\{PetersAndPedrycz2000\}, \\
+        \displayNL \textbackslash cite[pp.\textasciitilde 5\textbackslash =/6 to 5\textbackslash =/7]\{SWEBOK2024\},
+        \textbackslash cite\{ISTQB\}, \\
+        \displayNL \textbackslash cite[pp.\textasciitilde 807\textbackslash ==808]\{Perry2006\},\\
+        \displayNL \textbackslash cite[pp.\textasciitilde 9, 13]\{Gerrard2000a\}, \\
+        \displayNL \textbackslash cite[p.\textasciitilde 218]\{KuļešovsEtAl2013\}}
+\end{displayquote}\latertodo{Ensure this code matches the final version!}
+In particular, note the usage of the \macro{cite} command, the \emph{lack} of
+use of the custom alias for citing the \acs{istqb} glossary, the different
+order, and the lack of the \macro{todo}, since these are only rendered for
+reference in the thesis. For other edge cases with different formatting styles
+for these document types, we define the macros given in \Cref{tab:macrosPaper}
+via an example usage of the macro(s) and how the code is rendered in our thesis
+\emph{and} paper\footnote{Since this document is the thesis version, some of
+    the paper renderings are hardcoded.}\todo{Does this footnote make sense?}:
 
 \input{assets/tables/macrosPaper}
