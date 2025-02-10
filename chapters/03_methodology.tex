@@ -174,19 +174,20 @@ While there are many ways to categorize software testing approaches, perhaps
 the most widely used is the one given by \ifnotpaper\else \citeauthor{IEEE2022}
 \fi \citet{IEEE2022}. This schema categorizes test approaches as levels, types,
 techniques, practices, or static testing \citeyearpar[Fig.~2; see
-    \Cref{tab:ieeeCats}]{IEEE2022}. However, we consider static testing to be a
-less prominent category, since these test approaches can often be grouped into
-one of the other four categories. For example, static assertion checking
-(mentioned by \ifnotpaper \citealp[p.~345]{LahiriEtAl2013};
-    \citealp[p.~343]{ChalinEtAl2006}\else \citealp[p.~343]{ChalinEtAl2006},
-    \citealp[p.~345]{LahiriEtAl2013}\fi) is a subapproach of assertion checking,
-which may also be performed dynamically. Therefore, static assertion checking
-may inherit assertion checking's inferred category of ``practice'', which is a
-more meaningful classification than one based solely on ``whether it is
-performed by running code or not''. We track static testing approaches at this
-level of analysis\ifnotpaper\ (see \Cref{static-test})\fi, but may fold them
-into other categories as appropriate, although some teams may wish to keep them
-separate based on their specific context.
+    \Cref{tab:ieeeCats}]{IEEE2022}. However, static testing seems to be
+non-orthogonal and thus less helpful for categorizing test approaches.
+For example, static assertion checking (mentioned by \ifnotpaper
+    \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
+    \citealp[p.~343]{ChalinEtAl2006}, \citealp[p.~345]{LahiriEtAl2013}\fi) is a
+subapproach of assertion checking, which can also be performed dynamically.
+This parent-child relation (defined in \Cref{par-chd-rels}) means that static
+assertion checking may inherit assertion checking's inferred category of
+``practice''. Based on observations such as this, we categorize static testing
+approaches based on the remaining categories from \citet{IEEE2022}: approach,
+level, type, technique, and practice. \ifnotpaper However, since there are many
+    ways to categorize test approaches (see \Cref{tab:otherCats,%
+        tab:otherCategorizations}), considering static testing separately may not
+    be entirely incorrect and may have merit in specific contexts. \fi
 
 \phantomsection{}\label{nonIEEE-sources}
 Of the five primary categories we use (see \Cref{tab:ieeeCats}), ``level''
