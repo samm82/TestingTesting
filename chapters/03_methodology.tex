@@ -46,8 +46,9 @@ descending trustworthiness:
     \item textbooks (\Cref{texts}), and
     \item papers and other documents (\Cref{papers}).
 \end{enumerate}
-A summary of how many sources comprise each tier is
-given in \Cref{fig:sourceSummary}. We often use papers to ``fill in'' missing
+A summary of how many sources comprise each tier is given in
+\Cref{fig:sourceSummary}\ifnotpaper; complete lists of sources for each tier
+are given in \Cref{app-src-tiers}\fi. We often use papers to ``fill in'' missing
 information in a more specific subdomain and do not always investigate them
 entirely (see \Cref{undef-terms}), which results in a large number of them. We
 use standards the second most frequently due to their high trustworthiness and
@@ -91,7 +92,6 @@ standards for software testing that can be used by any organization when
 performing any form of software testing''
 \ifnotpaper(\fi\citeyear[p.~vii]{IEEE2022}\ifnotpaper; similar in
 \citeyear[p.~ix]{IEEE2016})\fi.
-This tier is composed of \stdSources{2} .
 
 \subsubsection{\metaSources{1}}
 \label{metas}
@@ -114,7 +114,6 @@ organization, such as the \acf{istqb}, but not always.
 test approaches and \citet{DoğanEtAl2014}'s literature
 review cites many sources from which we can ``snowball'' if desired
 (see \Cref{sources}), so we include them in this tier as well.
-This tier is composed of \metaSources{2}.
 
 \subsubsection{\textSources{1}}
 \label{texts}
@@ -127,7 +126,6 @@ authors, they follow a formal review process before publication. Textbooks used
 at McMaster University \citep{Patton2006,PetersAndPedrycz2000,vanVliet2000}
 served as the original (albeit ad hoc and arbitrary) starting point of this
 research, and we investigate other books as they arise. \addTextEx{}
-This tier is composed of \textSources{2}.
 
 \subsubsection{\paperSources{1}}
 \label{papers}
@@ -148,8 +146,6 @@ observing how terms are used in practice\thesisissueref{89}:
     \item \ifnotpaper \else ChatGPT \fi \citet{ChatGPT2024} (with its claims
           supported by \citet{RusEtAl2008})
 \end{itemize}
-
-The full set of sources that comprise this tier is \paperSources{2}.
 
 % Moved here to display nicely in paper
 \ifnotpaper\else
