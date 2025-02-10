@@ -11,7 +11,8 @@ toRecord: list[str] = [
     "name", f"category{CAT_FOOTNOTE}(\\Cref{{categories-observ}})",
     "definition", "synonyms (\\Cref{syn-rels})",
     "parents (\\Cref{par-chd-rels})",
-    "flaws\\phantomsection{}\\label{manual-flaws} (in a separate document)"]
+    "flaws\\phantomsection{}\\label{manual-flaws} (in a separate document)\
+    \\latertodo{Define in \\nameref{terminology}; \\thesisissuerefhelper{140}}"]
 
 OTHER_NOTES = "other relevant notes"
 OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
@@ -29,9 +30,11 @@ methodology_a = """    \\item \\phantomsection{}\\label{identify-sources}
                           for i in toRecord + [OTHER_NOTES +
                                                f" (e.g., {OTHER_NOTES_EXS})"]])
         ]) + """\n    \\item Repeat steps~\\ref{identify-sources} to
-          \\ref{record-terms} for any missing or unclear terminology (\\Cref{undef-terms})"""
+          \\ref{record-terms} on any subsets of terminology that are missing or
+          unclear (\\Cref{undef-terms}) until some stopping criteria
+          \\imptodo{Define/add pointer}"""
     
-methodology_b = """    \\item Analyze these data for flaws
+methodology_b = """    \\item Analyze recorded test approach data for additional flaws
           \\begin{enumerate}
               \\item Generate relation graphs (\\Cref{\\ifnotpaper graph-gen\\else tools\\fi})
               \\item Automatically detect certain classes of flaws
