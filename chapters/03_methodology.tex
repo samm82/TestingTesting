@@ -172,27 +172,12 @@ since we use them throughout this \docType{}, even though they are
 
 While there are many ways to categorize software testing approaches, perhaps
 the most widely used is the one given by \ifnotpaper\else \citeauthor{IEEE2022}
-\fi \citet{IEEE2022}. This schema categorizes test approaches as levels, types,
-techniques, practices, or static testing \citeyearpar[Fig.~2; see
-    \Cref{tab:ieeeCats}]{IEEE2022}. However, static testing seems to be
-non-orthogonal and thus less helpful for categorizing test approaches.
-For example, static assertion checking (mentioned by \ifnotpaper
-    \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
-    \citealp[p.~343]{ChalinEtAl2006}, \citealp[p.~345]{LahiriEtAl2013}\fi) is a
-subapproach of assertion checking, which can also be performed dynamically.
-This parent-child relation (defined in \Cref{par-chd-rels}) means that static
-assertion checking may inherit assertion checking's inferred category of
-``practice''. Based on observations such as this, we categorize static testing
-approaches based on the remaining categories from \citet{IEEE2022}: approach,
-level, type, technique, and practice. \ifnotpaper However, since there are many
-    ways to categorize test approaches (see \Cref{tab:otherCats,%
-        tab:otherCategorizations}), considering static testing separately may not
-    be entirely incorrect and may have merit in specific contexts. \fi
-
-\phantomsection{}\label{nonIEEE-sources}
-Of the five primary categories we use (see \Cref{tab:ieeeCats}), ``level''
-and ``type'' are particularly pervasive in the literature; for example,
-six non-IEEE sources also give unit testing, integration testing,
+\fi \citet{IEEE2022}. This schema divides test approaches---a generic, catch-all
+term for any form of ``testing''---into levels, types, techniques, and practices
+\citeyearpar[Fig.~2; see \Cref{tab:ieeeCats}]{IEEE2022}. These categories seem
+to be pervasive throughout the literature, particularly ``level'' and ``type''.
+\phantomsection{}\label{nonIEEE-sources}%
+For example, six non-IEEE sources also give unit testing, integration testing,
 system testing, and acceptance testing as examples of test levels \ifnotpaper
     (\citealp[pp.~5\=/6 to 5\=/7]{SWEBOK2024}; \citealpISTQB{};
     \citealp[pp.~807\==808]{Perry2006}; \citealp[pp.~443\==445]{PetersAndPedrycz2000};
@@ -227,7 +212,22 @@ accept a system or component'' \ifnotpaper (\citealp[p.~5]{IEEE2017}; similar
     \cite[p.~5]{IEEE2017}\fi, which requires the system or component to be
 developed and ready for testing.
 
-\ifnotpaper
+In addition to these five categories, \citet[Fig.~2]{IEEE2022} also includes
+``static testing''. However, this seems to be non-orthogonal
+to the others and thus less helpful for grouping test approaches.
+For example, static assertion checking (mentioned by \ifnotpaper
+    \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
+    \citealp[p.~343]{ChalinEtAl2006}, \citealp[p.~345]{LahiriEtAl2013}\fi) is a
+subapproach of assertion checking, which can also be performed dynamically.
+This parent-child relation (defined in \Cref{par-chd-rels}) means that static
+assertion checking may inherit assertion checking's inferred category of
+``practice''. Based on observations such as this, we categorize testing
+approaches, \emph{including} static ones, based on the remaining categories
+from \citet{IEEE2022}: approach, level, type, technique, and practice.
+\ifnotpaper However, since there are many ways to categorize test approaches
+    (see \Cref{tab:otherCats,tab:otherCategorizations}), considering static
+    testing as an orthogonal distinction could make sense in specific contexts.
+
     \afterpage{
         \begin{landscape}
             % Moved earlier to display nicely in paper
