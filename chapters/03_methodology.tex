@@ -232,9 +232,6 @@ from \citet{IEEE2022}: approach, level, type, technique, and practice.
         \begin{landscape}
             % Moved earlier to display nicely in paper
             \ieeeCatsTable{}
-            \newpage
-            % Omitted from paper for brevity
-            \otherCatsTable{}
         \end{landscape}
     }
 \fi
@@ -436,6 +433,14 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     categories provide new perspectives and may be useful in some contexts,
     either in place of or in tandem with \citeauthor{IEEE2022}'s categorization
     \citeyearpar{IEEE2022}\todo{Correct grammar?}.
+    \newpage
+
+    % \afterpage{
+    \begin{landscape}
+        % Omitted from paper for brevity
+        \otherCatsTable{}
+    \end{landscape}
+    % }
 
     Similarly, the literature gives many other ways to categorize test
     approaches that may be used in tandem with or in place of those given in
@@ -466,6 +471,13 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     the example approaches were not categorized by the literature; additional
     context is sometimes provided in a footnote.
 
+    \afterpage{
+        \begin{landscape}
+            % Omitted from paper for brevity
+            \otherCategorizationsTable{}
+        \end{landscape}
+    }
+
     \phantomsection{}\label{method-family}
     Another way that the IEEE categories can be subdivided is by grouping related
     testing approaches into a ``class'' or ``family'' with ``commonalities and
@@ -488,10 +500,7 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     testing to whole-application security testing''
     \citep[p.~23]{GodefroidAndLuchaup2011}! This is, in part, why research on
     software testing terminology is so vital.
-
-    \begin{landscape}
-        \otherCategorizationsTable{}
-    \end{landscape}
+    \newpage
 \fi
 
 \subsubsection{Synonym Relations}
