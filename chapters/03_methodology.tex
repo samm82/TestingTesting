@@ -410,16 +410,27 @@ combination of formal testing and reviews. \ifnotpaper The following examples
     \end{enumerate}
 \fi
 
-One important side effect of the particularity of these terms is that they can
-be ``overloaded''; for example, someone could reasonably yet imprecisely use
-any of these four categories as a synonym for ``approach''. Even our prompt in
-\ifnotpaper \citep[emphasis added]{ChatGPT2024} \else \cite{ChatGPT2024} \fi was
-imprecise, asking for the ``\emph{type} of software testing that focuses on
-looking for bugs where others have already been found.'' Interestingly, ChatGPT
-later ``corrected'' this by calling defect-based testing an approach (although
-this may have been biased by our previous usage of the term ``approach'')!
-Because of this nuance, we need to carefully investigate these kinds of
-flaws. For example, \citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}
+A side effect of using the terms ``level'', ``type'', ``technique'', and
+``practice'' is that they---perhaps excluding ``level''---can
+be used interchangably or as synonyms for ``approach''. For example,
+\citet[p.~88]{Patton2006} says that if a specific defect is found, it is wise
+to look for other defects in the same location and for similar defects in other
+locations, but does not provide a name for this approach. After researching in
+vain, we ask ChatGPT\footnote{We do \emph{not} take ChatGPT's output to be
+    true at face value; this approach seems to be called ``defect-based
+    testing'' based on the principle of ``defect clustering''
+    \citep{ChatGPT2024}, which \citet{RusEtAl2008} \multiAuthHelper{support}.}
+to name the ``\emph{type} of software testing that focuses on looking for bugs
+where others have already been found''
+\ifnotpaper \citep[emphasis added]{ChatGPT2024}\else \cite{ChatGPT2024}\fi%
+\qtodo{Is this sufficient to explain ChatGPT's role in our methodology?},
+using the word ``type'' in a general sense, akin to ``kind'' or ``subset''.
+Interestingly, ChatGPT ``corrects'' this imprecise term in its response,
+using the more correct term ``approach'' (although it may have been biased by
+our previous usage of these terms)! Because natural language can be ambiguous,
+we need to exercise judgement when determining if these terms are being used
+in a general or technical sense. For example,
+\citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}
 defines interface testing as ``an integration \emph{test type} that is
 concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
 \fi does not define ``test type'', this may not have special significance.
