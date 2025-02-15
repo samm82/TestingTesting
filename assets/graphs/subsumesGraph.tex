@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{subsumesGraph}{
+rankdir=BT;
+
+// Dummy node to push the legend to the top left
+start [style="invis"];
+
+AllCUsesSomePUsesTesting [label=<All-C-Uses/Some-P-Uses<br/>Testing>];
+AllDefinitionsTesting [label=<All-Definitions<br/>Testing>];
+AllDUPathsTesting [label=<All-DU-Paths<br/>Testing>];
+AllPUsesTesting [label=<All-P-Uses<br/>Testing>];
+AllPUsesSomeCUsesTesting [label=<All-P-Uses/Some-C-Uses<br/>Testing>];
+AllUsesTesting [label=<All-Uses<br/>Testing>];
+BranchConditionCombinationTesting [label=<Branch<br/>Condition<br/>Combination<br/>Testing>];
+BranchConditionTesting [label=<Branch<br/>Condition<br/>Testing>];
+BranchTesting [label=<Branch<br/>Testing>];
+MCDCTesting [label=<MC/DC<br/>Testing>];
+PathTesting [label=<Path<br/>Testing>];
+StatementTesting [label=<Statement<br/>Testing>];
+StrongMutationTesting [label=<Strong<br/>Mutation<br/>Testing>];
+WeakMutationTesting [label=<Weak<br/>Mutation<br/>Testing>];
+
+
+
+AllCUsesSomePUsesTesting -> AllUsesTesting[style="dashed",color="maroon"];
+AllDefinitionsTesting -> AllDUPathsTesting[style="dashed",color="blue"];
+AllDefinitionsTesting -> AllUsesTesting[style="dashed",color="maroon"];
+AllDefinitionsTesting -> AllCUsesSomePUsesTesting[style="dashed",color="maroon"];
+AllDefinitionsTesting -> AllPUsesSomeCUsesTesting[style="dashed",color="maroon"];
+AllDUPathsTesting -> PathTesting[style="dashed",color="green"];
+AllPUsesTesting -> AllUsesTesting[color="green"];
+AllPUsesTesting -> AllDUPathsTesting[color="green"];
+AllPUsesTesting -> AllPUsesSomeCUsesTesting[style="dashed",color="maroon"];
+AllPUsesSomeCUsesTesting -> AllUsesTesting[style="dashed",color="maroon"];
+AllUsesTesting -> AllDUPathsTesting[style="dashed",color="blue"];
+BranchConditionCombinationTesting -> PathTesting[style="dashed",color="maroon"];
+BranchConditionTesting -> BranchConditionCombinationTesting[color="green"];
+BranchConditionTesting -> MCDCTesting[style="dashed",color="green"];
+BranchTesting -> PathTesting[color="maroon"];
+BranchTesting -> PathTesting[style="dashed",color="green"];
+BranchTesting -> BranchConditionCombinationTesting[color="maroon"];
+BranchTesting -> MCDCTesting[style="dashed",color="green"];
+BranchTesting -> AllPUsesTesting[style="dashed",color="green"];
+BranchTesting -> WeakMutationTesting[style="dashed",color="maroon"];
+MCDCTesting -> BranchConditionCombinationTesting[style="dashed",color="green"];
+StatementTesting -> BranchTesting[color="maroon"];
+StatementTesting -> BranchTesting[style="dashed",color="green"];
+StatementTesting -> BranchConditionCombinationTesting[color="maroon"];
+WeakMutationTesting -> StrongMutationTesting[style="dashed",color="maroon"];
+
+subgraph cluster_legend {
+
+    label="Legend";
+    labelloc="b";
+    fontsize="48pt"
+
+    {
+        rank=same
+        chd [label="Child"];
+        par [label="Parent"];
+        chd -> par [label="                "];
+        syn1 [label="Synonym"];
+        syn2 [label="Synonym"];
+        syn1 -> syn2 [dir=none label="                "];
+    }
+    {
+        rank=same
+        imp1 [label="Child"];
+        imp2 [label=<Implied<br/>Parent>];
+        imp1 -> imp2 [style="dashed" label="                "]
+        imp3 [label=<Implied<br/>Synonym>];
+        imp4 [label=<Implied<br/>Synonym>];
+        imp3 -> imp4 [style="dashed" dir=none label="                "]
+    }
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [color=blue, label=<From Terminology<br/>Collections>]
+}
+{
+rank=same
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [color=maroon, label=<From Textbooks>]
+src7 [style=invis];
+src8 [style=invis];
+src7 -> src8 [color=black, label=<From Papers and<br/>Other Documents>]
+}
+edge [style="invis"]
+imp1 -> chd
+imp2 -> par
+imp3 -> syn1
+imp4 -> syn2
+src1 -> imp1
+src2 -> imp2
+src3 -> imp3
+src4 -> imp4
+src5 -> src1
+src6 -> src2
+src7 -> src3
+src8 -> src4
+}
+
+// Connect the dummy node to the first node of the legend
+start -> chd [style="invis"];
+}
+\end{document}

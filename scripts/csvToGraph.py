@@ -977,12 +977,12 @@ class CustomGraph:
 
 subsumesGraph = CustomGraph(
     "subsumes",
-    {"Path Testing", "All-DU-Paths Testing", "All-Uses Testing",
-     "All-C-Uses/Some-P-Uses Testing", "All-P-Uses/Some-C-Uses Testing",
+    {"All-C-Uses/Some-P-Uses Testing", "All-DU-Paths Testing",
      "All-Definitions Testing", "All-P-Uses Testing",
+     "All-P-Uses/Some-C-Uses Testing", "All-Uses Testing",
      "Branch Condition Combination Testing", "Branch Condition Testing",
-     "Strong Mutation Testing", "Weak Mutation Testing", "Branch Testing",
-     "Statement Testing"},
+     "Branch Testing", "MC/DC Testing", "Path Testing", "Statement Testing",
+     "Strong Mutation Testing", "Weak Mutation Testing"}
 )
 
 recoveryGraph = CustomGraph(
