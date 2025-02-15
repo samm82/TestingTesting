@@ -165,7 +165,8 @@ def removeInParens(s: str, stripInit: bool=False):
         s = s.strip(")")
     return s.replace("?", "")
 
-def lineBreak(s: str):
+def lineBreak(s: str) -> str:
+    s = s.replace("/Some", "/<br/>Some")
     return f"<{s.replace(" ", "<br/>")}>"
 
 def formatApproach(s: str, stripInit=False):
