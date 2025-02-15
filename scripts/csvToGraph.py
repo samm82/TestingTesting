@@ -889,7 +889,9 @@ class CustomGraph:
                 (line.split(" ")[1] in formattedTerms and
                 line.split(" ")[2].strip("}") in formattedTerms)]
         nodes = [node for node in nodes if "->" not in node and
-                any(node.split(" ")[0] in line for line in rels)]
+                 # Only include nodes if they *actually* appear in a relation
+                 any(re.search(fr"\b{node.split(" ")[0]}\b", line)
+                     for line in rels)]
 
         # Will be used to build legend
         allLines = nodes + rels
@@ -914,7 +916,7 @@ class CustomGraph:
                     print("\t", rel)
                     for line in lines:
                         print("\t\t", line)
-                    input
+                    input()
 
         for child, parents in self.remove.items():
             if isinstance(parents, list):
@@ -972,6 +974,16 @@ class CustomGraph:
             writeDotFile(splitLegend[0] + [INVIS_EDGE_LINE] + sameRank(["chd", "src1"]) +
                          sameRank(["imp1", "src5"]) + splitLegend[-1],
                          f"{self.name}Legend")
+
+subsumesGraph = CustomGraph(
+    "subsumes",
+    {"Path Testing", "All-DU-Paths Testing", "All-Uses Testing",
+     "All-C-Uses/Some-P-Uses Testing", "All-P-Uses/Some-C-Uses Testing",
+     "All-Definitions Testing", "All-P-Uses Testing",
+     "Branch Condition Combination Testing", "Branch Condition Testing",
+     "Strong Mutation Testing", "Weak Mutation Testing", "Branch Testing",
+     "Statement Testing"},
+)
 
 recoveryGraph = CustomGraph(
     "recovery",
@@ -1059,5 +1071,6 @@ performanceGraph.inherit(recoveryGraph)
 performanceGraph.inherit(scalabilityGraph)
 
 if "Example" not in csvFilename:
-    for subgraph in {recoveryGraph, scalabilityGraph, performanceGraph}:
+    for subgraph in {subsumesGraph, recoveryGraph, scalabilityGraph,
+                     performanceGraph}:
         subgraph.buildGraph()
