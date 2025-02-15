@@ -782,6 +782,16 @@ There are many reasons two approaches may have a parent-child relation, such as:
           relation only ``compares the thoroughness of test techniques, not
           their ability to detect faults'' \citetext{p.~434}, it is sufficient
           to consider one a child of the other.
+    \item \textbf{One is a superset of the other.} In other words, for one
+          (parent) test approach to be performed in its entirety, the other
+          (child) approach will necessarily be performed as well. This is often
+          the case when one ``well-understood'' subset of testing can be
+          decomposed into smaller approaches that can be performed
+          independently. Performing all known subapproaches then logically
+          implies that the parent approach has also been performed! In
+          practice, this is harder to prove; although many hierarchies exist
+          (such as \citealp[Fig.~2]{IEEE2022}, \citeyear[Fig.~2]{IEEE2021},
+          and those in \citealp{Firesmith2015}), they are likely incomplete.
 \end{enumerate}
 
 \subsection{Procedure}

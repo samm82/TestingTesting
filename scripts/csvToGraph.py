@@ -986,6 +986,16 @@ subsumesGraph = CustomGraph(
      "Strong Mutation Testing", "Weak Mutation Testing"}
 )
 
+specBasedGraph = CustomGraph(
+    "specBased",
+    {"All Combinations Testing", "Base Choice Testing", "Boundary Value Analysis",
+     "Cause-Effect Graphing", "Classification Tree Method","Combinatorial Testing",
+     "Decision Table Testing", "Each Choice Testing", "Equivalence Partitioning",
+     "Metamorphic Testing", "Pairwise Testing", "Random Testing",
+     "Requirements-based Testing", "Scenario Testing", "Specification-based Testing",
+     "State Transition Testing", "Syntax Testing", "Use Case Testing"}
+)
+
 recoveryGraph = CustomGraph(
     "recovery",
     {"Availability Testing", "Backup and Recovery Testing", "Backup/Recovery Testing",
@@ -1072,6 +1082,6 @@ performanceGraph.inherit(recoveryGraph)
 performanceGraph.inherit(scalabilityGraph)
 
 if "Example" not in csvFilename:
-    for subgraph in {subsumesGraph, recoveryGraph, scalabilityGraph,
-                     performanceGraph}:
+    for subgraph in {subsumesGraph, specBasedGraph, recoveryGraph,
+                     scalabilityGraph, performanceGraph}:
         subgraph.buildGraph()

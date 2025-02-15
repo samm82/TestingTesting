@@ -10,7 +10,7 @@ GRAPH_GLOSSARIES = ApproachGlossary.csv assets/graphs/exampleGlossaries/*Glossar
 
 LEGENDS = assets/graphs/*Legend.tex
 GRAPHS = $(LEGENDS) assets/graphs/*Graph.tex assets/graphs/manual/*.tex
-CUSTOM_STUBS = subsumes recovery scalability performance
+CUSTOM_STUBS = subsumes specBased recovery scalability performance
 ALL_CUSTOM_STUBS = $(CUSTOM_STUBS) $(addsuffix Proposed, $(CUSTOM_STUBS))
 CUSTOM_GRAPHS = $(addprefix assets/graphs/, $(addsuffix Graph, $(ALL_CUSTOM_STUBS)))
 
