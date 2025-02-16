@@ -778,7 +778,7 @@ def makeLegend(lines, separate: bool=False) -> tuple[list[str], list[str]]:
         '// Connect the dummy node to the first node of the legend',
         'start -> chd [style="invis"];'])
 
-CUSTOM_LEGEND = {"recovery", "scalability", "Example"}
+CUSTOM_LEGEND = {"subsumes", "specBased", "parChd", "recovery", "scalability", "Example"}
 
 def writeDotFile(lines, filename):
     legend = []
@@ -963,6 +963,17 @@ class CustomGraph:
 
             writeDotFile(nodesList+rels, f"{self.name}ProposedGraph")
             allLines += nodesList+rels
+        
+        # TODO: 'Vertical' custom legends are hardcoded to be these two
+        if self.name == "specBased":
+            return
+        elif self.name == "subsumes":
+            horizontal = False
+            # Share legend between subsumes and specBased
+            subsumesGraph.inherit(specBasedGraph)
+            subsumesGraph.name = "parChd"
+        else:
+            horizontal = True
 
         if self.name in CUSTOM_LEGEND:
             _, legend = makeLegend(allLines, separate=True)
@@ -975,9 +986,10 @@ class CustomGraph:
                                for line in splitLegend[-1]
                                if not all(node in line for node in {"imp", "src"})]
 
-            writeDotFile(splitLegend[0] + [INVIS_EDGE_LINE] + sameRank(["chd", "src1"]) +
-                         sameRank(["imp1", "src5"]) + splitLegend[-1],
-                         f"{self.name}Legend")
+            writeDotFile(splitLegend[0] + [INVIS_EDGE_LINE] + (
+                (sameRank(["chd", "src1"]) + sameRank(["imp1", "src5"]))
+                if horizontal else ["imp1 -> src1 -> src5"]) + splitLegend[-1],
+                f"{self.name}Legend")
 
 subsumesGraph = CustomGraph(
     "subsumes",

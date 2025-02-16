@@ -30,6 +30,32 @@
 %------------------------------------------------------------------------------
 
 % Organization of files
+
+\newcommand{\parChdGraphs}{
+    % Only top or bottom to comply with IEEE guidelines
+    \begin{figure}[bt!]
+        \centering
+        \begin{subfigure}[b]{\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{assets/graphs/specBasedGraph.pdf}
+            \caption{``Superset'' relations.}
+            \label{fig:specBasedGraph}
+        \end{subfigure}
+        \begin{subfigure}[t]{.45\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{assets/graphs/parChdLegend.pdf}
+        \end{subfigure}
+        \begin{subfigure}[t]{.5\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{assets/graphs/subsumesGraph.pdf}
+            \caption{``Subsume'' relations.}
+            \label{fig:subsumesGraph}
+        \end{subfigure}
+        \caption{Graphs of different classes of \hyperref[par-chd-rels]{parent-child relations}.}
+        \label{fig:parChdGraphs}
+    \end{figure}
+}
+
 \newcommand{\ExampleGraph}{
     \begin{figure*}
         \begin{subfigure}[b]{0.3\linewidth}
