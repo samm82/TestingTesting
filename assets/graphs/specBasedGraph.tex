@@ -31,7 +31,7 @@ SyntaxTesting [label=<Syntax<br/>Testing>];
 UseCaseTesting [label=<Use<br/>Case<br/>Testing>];
 
 
-ScenarioTesting -> UseCaseTesting[dir=none,color="blue"];
+ScenarioTesting -> UseCaseTesting[dir=none,constraint=false,color="blue"];
 
 AllCombinationsTesting -> CombinatorialTesting[color="green"];
 BaseChoiceTesting -> CombinatorialTesting[color="green"];

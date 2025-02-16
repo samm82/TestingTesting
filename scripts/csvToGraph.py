@@ -830,13 +830,14 @@ SYN = "syn"
 class CustomGraph:
     PROPOSED_COLOR_TAG = "color=orange"
 
-    def __init__(self, name, terms:set, add:dict=dict(),
-                 remove:dict=dict()):
+    def __init__(self, name, terms:set, add:dict = dict(),
+                 remove:dict = dict(), synConstraint:bool = True):
         self.name = name
         self.terms = terms
         self.add = add
         self.remove = remove
         self._addRevSynsToRemove(deepcopy(remove))
+        self.synConstraint = synConstraint
 
         # Update set of terms in case any get added
         self.terms.update(child for child in self.add.keys())
@@ -884,7 +885,9 @@ class CustomGraph:
             raise ValueError("Unexpected grouping of lines for automatic "
                             f"{self.name} graph")
 
-        rels = [line for line in rels if line == "" or
+        rels = [line.replace("dir=none", "dir=none,constraint=false")
+                if not self.synConstraint else line
+                for line in rels if line == "" or
                 (line.split(" -> ")[0] in formattedTerms and
                 line.split(" -> ")[1].split("[")[0].strip(";") in formattedTerms) or
                 (line.split(" ")[1] in formattedTerms and
@@ -993,7 +996,8 @@ specBasedGraph = CustomGraph(
      "Decision Table Testing", "Each Choice Testing", "Equivalence Partitioning",
      "Metamorphic Testing", "Pairwise Testing", "Random Testing",
      "Requirements-based Testing", "Scenario Testing", "Specification-based Testing",
-     "State Transition Testing", "Syntax Testing", "Use Case Testing"}
+     "State Transition Testing", "Syntax Testing", "Use Case Testing"},
+     synConstraint=False
 )
 
 recoveryGraph = CustomGraph(
