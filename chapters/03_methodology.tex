@@ -769,7 +769,11 @@ There are many reasons two approaches may have a parent-child relation, such as:
               (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021};
               \citealp{Firesmith2015})\else \cite{Firesmith2015},
               \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi, these are
-          likely incomplete.
+          likely incomplete. As an example, we graph the parent-child relations
+          from \ifnotpaper (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021})
+          \else \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021} \fi in the
+          subdomain of specification-based testing in \Cref{fig:specBasedGraph}
+          (along with relevant data from other sources).
     \item \textbf{One is ``stronger than'' or ``subsumes'' the other.} When
           comparing adequacy criteria that ``specif[y] requirements for
           testing'' \citep[p.~402]{vanVliet2000}, ``criterion X is stronger
@@ -779,7 +783,12 @@ There are many reasons two approaches may have a parent-child relation, such as:
           their ability to detect faults'' \citetext{p.~434}, it is sufficient
           to consider one a child of the other in a sense. We capture this
           nuance by considering these parent-child relations implicit
-          (see \Cref{rigidity}).
+          (see \Cref{rigidity}). As an example, we graph the parent-child
+          relations from \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
+              \citealp[Fig.~13.17]{vanVliet2000}) \else \cite[Fig.~F.1]{IEEE2021},
+              \citealp[Fig.~13.17]{vanVliet2000} \fi in the subdomain of data
+          flow testing can be found in \Cref{fig:subsumesGraph} (along with
+          relevant data from other sources).
     \item \textbf{The parent approach is part of an orthogonal set.}
           When presented with a set of generic test approaches that are
           orthogonal to each other, it is often trivial to classify a given
