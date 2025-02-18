@@ -4,9 +4,12 @@
 \def\apprExs{Specification-based Testing\\ Structure-based Testing\\ (Stepwise) Code Reading}
 \def\covCritExs{Input Space Partitioning\\ Graph Coverage\\ Logic Coverage\\ Syntax-based Testing}
 \def\questBase{Question Answered: What? When? Where? Who? Why? How? How Well? \citep[p.~17]{Firesmith2015}}
-\def\questExs{System Testing\\ Smoke Testing\\ Regression Testing\\ %Pair Testing\\ 
+\def\questExs{System Testing\\ %Pair Testing\\ 
     Manual Testing\\ Model-based Testing\\ %Unscripted Testing\\
-    Scenario Testing\\ Data Flow Testing\TblrNote{c}}
+    Scenario Testing\\ Data Flow Testing\TblrNote{C}}
+\def\sdlcExs{Waterfall Testing\\ Incremental Testing\\ \acf{ct}}
+\def\reasExs{Smoke Testing\\ Reuse Testing\\ Initial Testing\\ Retesting\\
+    Regresstion Testing\\ Error Seeding}
 \def\execExs{Static Testing\\ Dynamic Testing}
 \def\goalExs{Verification Testing\\ Validation Testing}
 \def\propExs{Functional Testing\\ Non-functional Testing}
@@ -24,10 +27,13 @@
 \def\priorExs{Smoke Testing\\ Usability Testing\\ Performance Testing\\ Functionality Testing}
 \def\purpExs{Correctness Testing\\ Performance Testing\\ Reliability Testing\\ Security Testing}
 
+\newcommand\firesmithSubset[1]{\citep[p.~#1]{Firesmith2015}\TblrNote{c}}
+
 \begin{longtblr}[
     note{a} = {See \Cref{par-chd-rels}.},
     note{b} = {Experience-based testing may instead be a ``practice'' (see \Cref{tab:multiCats}).},
-    note{c} = {This list is \emph{quite} nonexhaustive.},
+    note{C} = {This list is \emph{quite} nonexhaustive.},
+    note{c} = {We only present a subset of the test bases from \citep{Firesmith2015} for brevity.},
     note{d} = {We also consider this categorization meaningful (see \Cref{static-test}).},
     note{e} = {Other test factors are given that do not unambiguously map to corresponding
             test approaches: file integrity, authorization, audit trail, continuity of processing,
@@ -45,59 +51,63 @@
     width = \linewidth, rowhead = 1
     }
     \hline
-    \thead{Test Basis}                       & \thead{Example Approaches} & \thead{Parent\TblrNote{a} IEEE Category}                                                                                                                               \\
+    \thead{Test Basis}                         & \thead{Example Approaches} & \thead{Parent\TblrNote{a} IEEE Category}                                                                                                                               \\
     \hline
     Visibility of the \acs{sut}'s Internal Structure (\citealp[p.~8]{IEEE2021};
     \citealp[pp.~5\=/10, 5\=/16]{SWEBOK2024}; \citealp[pp.~53, 218]{Patton2006};
     \citealp[p.~69]{Perry2006}; \citealp[pp.~57--58]{AmmannAndOffutt2017};
     \citealp[p.~213]{KuļešovsEtAl2013}) or Testing Approach \citep[p.~601; OG {[8]}]{SharmaEtAl2021} or
-    Testing Method \citep[pp.~4--5]{Kam2008} & \visibExs{}                & Technique (\citealp[pp.~4, 8]{IEEE2021}; \citealp[p.~46]{Firesmith2015})                                                                                               \\
+    Testing Method \citep[pp.~4--5]{Kam2008}   & \visibExs{}                & Technique (\citealp[pp.~4, 8]{IEEE2021}; \citealp[p.~46]{Firesmith2015})                                                                                               \\
     \hline
     Source of Information for Designing Tests
-    \citep[p.~8]{IEEE2021}                   & \infoSrcExs{}              & Technique\TblrNote{b} (\citealp[p.~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021} \citealp[pp.~5\=/10, 5\=/13]{SWEBOK2024}; \citealpISTQB{}; \citealp[p.~46]{Firesmith2015}) \\
+    \citep[p.~8]{IEEE2021}                     & \infoSrcExs{}              & Technique\TblrNote{b} (\citealp[p.~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021} \citealp[pp.~5\=/10, 5\=/13]{SWEBOK2024}; \citealpISTQB{}; \citealp[p.~46]{Firesmith2015}) \\
     \hline
     Selection Process
-    \citep[p.~5-16]{SWEBOK2024}              & \selecExs{}                & Technique \citep[pp.~5\=/12, 5\=/16]{SWEBOK2024}                                                                                                                       \\
+    \citep[p.~5-16]{SWEBOK2024}                & \selecExs{}                & Technique \citep[pp.~5\=/12, 5\=/16]{SWEBOK2024}                                                                                                                       \\
     \hline
-    \questBase{}                             & \questExs{}                & Approach                                                                                                                                                               \\
+    \questBase{}                               & \questExs{}                & Approach                                                                                                                                                               \\
+    \hline
+    Location in Lifecycle \firesmithSubset{29} & \sdlcExs{}                 & Practice                                                                                                                                                               \\
+    \hline
+    Reason \firesmithSubset{34}                & \reasExs{}                 & Technique                                                                                                                                                              \\
     \hline
     Execution of Code\TblrNote{d} (\citealp[p.~53]{Patton2006}; \citealp[p.~214]{KuļešovsEtAl2013};
-    \citealp[p.~12]{Gerrard2000a})           & \execExs{}                 & Approach                                                                                                                                                               \\
+    \citealp[p.~12]{Gerrard2000a})             & \execExs{}                 & Approach                                                                                                                                                               \\
     \hline
     Goal of Testing (\citealp[pp.~69--70]{Perry2006};
-    \citealp[p.~214]{KuļešovsEtAl2013})      & \goalExs{}                 & Approach                                                                                                                                                               \\
+    \citealp[p.~214]{KuļešovsEtAl2013})        & \goalExs{}                 & Approach                                                                                                                                                               \\
     \hline
     Test Factor (also called Quality Factor or Quality Attribute)
-    \citep[pp.~40--41]{Perry2006}            & \factExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by its quality and/or \citealp{Firesmith2015})                                                                         \\
+    \citep[pp.~40--41]{Perry2006}              & \factExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by its quality and/or \citealp{Firesmith2015})                                                                         \\
     \hline
     Source of Test Data
-    \citep[p.~440]{PetersAndPedrycz2000}     & \dataSrcExs{}              & Technique                                                                                                                                                              \\
+    \citep[p.~440]{PetersAndPedrycz2000}       & \dataSrcExs{}              & Technique                                                                                                                                                              \\
     \hline
     Adequacy Criterion
-    \citep[pp.~398--399]{vanVliet2000}       & \adqCritExs{}              & Technique \citep[pp.~398--399]{vanVliet2000}                                                                                                                           \\
+    \citep[pp.~398--399]{vanVliet2000}         & \adqCritExs{}              & Technique \citep[pp.~398--399]{vanVliet2000}                                                                                                                           \\
     \hline
     Coverage Criteria
-    \citep[pp.~18--19]{AmmannAndOffutt2017}  & \covCritExs{}              & Technique (\citealp[p.~22]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealp[p.~5\=/11]{SWEBOK2024}; \citealp[pp.~47--48]{Firesmith2015})                               \\
+    \citep[pp.~18--19]{AmmannAndOffutt2017}    & \covCritExs{}              & Technique (\citealp[p.~22]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealp[p.~5\=/11]{SWEBOK2024}; \citealp[pp.~47--48]{Firesmith2015})                               \\
     \hline
     Human Involvement
-    \citep[p.~214]{KuļešovsEtAl2013}         & \humInvExs{}               & \humInvCats{}                                                                                                                                                          \\
+    \citep[p.~214]{KuļešovsEtAl2013}           & \humInvExs{}               & \humInvCats{}                                                                                                                                                          \\
     \hline
     Structuredness
-    \citep[p.~214]{KuļešovsEtAl2013}         & \strExs{}                  & Practice\TblrNote{f} \citep[pp.~20, 22]{IEEE2022}                                                                                                                      \\
+    \citep[p.~214]{KuļešovsEtAl2013}           & \strExs{}                  & Practice\TblrNote{f} \citep[pp.~20, 22]{IEEE2022}                                                                                                                      \\
     \hline
     Property of Code \citep[p.~213]{KuļešovsEtAl2013}
     or Test Target
-    \citep[pp.~4--5]{Kam2008}                & \propExs{}                 & Ambiguous (see \Cref{func-test-flaw})                                                                                                                                  \\
+    \citep[pp.~4--5]{Kam2008}                  & \propExs{}                 & Ambiguous (see \Cref{func-test-flaw})                                                                                                                                  \\
     \hline
     Coverage Requirement
-    \citep[pp.~4--5]{Kam2008}                & \covReqExs{}               & Technique \citep[p.~5\=/13]{SWEBOK2024}                                                                                                                                \\
+    \citep[pp.~4--5]{Kam2008}                  & \covReqExs{}               & Technique \citep[p.~5\=/13]{SWEBOK2024}                                                                                                                                \\
     \hline
     Category of Test Type\TblrNote{g}
-    \citep[p.~12]{Gerrard2000a}              & \typeCatExs{}              & Ambiguous                                                                                                                                                              \\
+    \citep[p.~12]{Gerrard2000a}                & \typeCatExs{}              & Ambiguous                                                                                                                                                              \\
     \hline
     Priority (in the context of testing e-business projects)
-    \citep[p.~13]{Gerrard2000a}              & \priorExs{}                & Type\TblrNote{h} (\citealp[p.~22]{IEEE2022}; \citeyear[Tab.~A.1]{IEEE2021}; and/or implied by \citealp[p.~53]{Firesmith2015})                                          \\
+    \citep[p.~13]{Gerrard2000a}                & \priorExs{}                & Type\TblrNote{h} (\citealp[p.~22]{IEEE2022}; \citeyear[Tab.~A.1]{IEEE2021}; and/or implied by \citealp[p.~53]{Firesmith2015})                                          \\
     \hline
-    Purpose \citep{Pan1999}                  & \purpExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by \citealp[p.~53]{Firesmith2015})                                                                                     \\
+    Purpose \citep{Pan1999}                    & \purpExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by \citealp[p.~53]{Firesmith2015})                                                                                     \\
     \hline
 \end{longtblr}
