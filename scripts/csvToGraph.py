@@ -520,20 +520,22 @@ def splitListAtEmpty(listToSplit):
 # Not stable; MUST be in correct order for table footnotes
 parSynNotes = {
     ("Fault Tolerance Testing", "Robustness Testing") :
-        ("\\ftrnote{}", ""),
+        {"footnote": "\\ftrnote{}"},
     ("Functional Testing", "Specification-based Testing") :
-        ("\\specfn{}", ""),
+        {"footnote": "\\specfn{}"},
     # ("Performance Testing", "Performance-related Testing") :
-    #     ("See \\Cref{perf-test-ambiguity}.", ""),
+    #     {"footnote": "See \\Cref{perf-test-ambiguity}."},
     ("Use Case Testing", "Scenario Testing") :
-        ("\\ucstn{}", ""),
+        {"footnote": "\\ucstn{}"},
     ("Organization-based Testing", "Role-based Testing") :
-        ("The distinction between organization- and "
-        "role-based testing in \\citep[pp.~17, 37, 39]{Firesmith2015} "
-        "seems arbitrary, but further investigation may prove it to be "
-        "meaningful.", "\\thesisissueref{59}"), 
+        {"footnote": "The distinction between organization- and role-based "
+            "testing in \\citep[pp.~17, 37, 39]{Firesmith2015} seems "
+            "arbitrary, but further investigation may prove it to be meaningful.",
+        "todo": "\\thesisissueref{59}"},
     ("Structured Walkthroughs", "Walkthroughs") :
-        ("See \\flawref{walkthrough-syns}.", "")
+        {"footnote": "See \\flawref{walkthrough-syns}."},
+    ("Exploratory Testing", "Unscripted Testing") :
+        {"label": "exp-unscrip"}
 }
 
 parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
@@ -556,6 +558,13 @@ def makeParSynLine(chd, par, parSource, synSource) -> None:
     parSource = formatLineWithSources(parSource, False)
     synSource = formatLineWithSources(synSource, False)
 
+    def processChd(chd, note):
+        # Refactored by GitHub Copilot
+        label = note.get("label")
+        if label:
+            return f"\\phantomsection{{}}\\label{{{label}}}{chd}"
+        return chd
+
     if not (parSource and synSource):
         if parSource:
             parSynSet = infParSynsParSrc
@@ -564,20 +573,30 @@ def makeParSynLine(chd, par, parSource, synSource) -> None:
         else:
             parSynSet = infParSynsNoSrc
         for terms, note in parSynNotes.items():
+            # Processing for list version
             if chd == terms[0] and par == terms[1]:
-                # note[0] is footnote content 
-                # note[1] is "TODO" item
-                par += (f"{note[1]}\\footnote{{{note[0]}}}")
+                try:
+                    par += note["todo"]
+                except KeyError:
+                    pass
+                try:
+                    par += f"\\footnote{{{note["footnote"]}}}"
+                except KeyError:
+                    pass
+                chd = processChd(chd, note)
                 break
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return
 
     for terms, note in parSynNotes.items():
+        # Processing for table version
         if chd == terms[0] and par == terms[1]:
-            # note[0] is footnote content 
-            # note[1] is "TODO" item
-            par += f"\\TblrNote{{{next(letters)}}}"
-            tableFootnotes.append(note[0])
+            try:
+                tableFootnotes.append(note["footnote"])
+                par += f"\\TblrNote{{{next(letters)}}}"
+            except KeyError:
+                pass
+            chd = processChd(chd, note)
             break
     parSyns.add(getFlawCount([parSource, synSource], "PARS", "CONTRA") +
                 f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")

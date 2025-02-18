@@ -606,6 +606,7 @@ InvalidTesting [label=<Invalid<br/>Testing>,style="dotted"];
 ErrorToleranceTesting -> InvalidTesting[dir=none,style="dashed"];
 NegativeTesting -> InvalidTesting[dir=none,color="blue"];
 NegativeTesting -> InvalidTesting[dir=none,style="dashed",color="green"];
+ExploratoryTesting -> UnscriptedTesting[dir=none,style="dashed"];
 FailoverTesting -> FailoverRecoveryTesting[dir=none,style="dashed",color="blue"];
 FaultToleranceTesting -> RobustnessTesting[dir=none,color="blue"];
 FieldTesting -> OperationalTesting[dir=none,style="dashed",color="grey"];
