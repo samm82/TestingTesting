@@ -4,9 +4,9 @@
 \def\apprExs{Specification-based Testing\\ Structure-based Testing\\ (Stepwise) Code Reading}
 \def\covCritExs{Input Space Partitioning\\ Graph Coverage\\ Logic Coverage\\ Syntax-based Testing}
 \def\questBase{Question Answered: What? When? Where? Who? Why? How? How Well? \citep[p.~17]{Firesmith2015}}
-\def\questExs{System Testing\\ %Pair Testing\\ 
-    Manual Testing\\ Model-based Testing\\ %Unscripted Testing\\
-    Scenario Testing\\ Data Flow Testing\TblrNote{C}}
+\def\questExs{System Testing\\ Model-based Testing\\ Scenario Testing\TblrNote{C}
+    %Pair Testing\\ Unscripted Testing\\
+}
 \def\sdlcExs{Waterfall Testing\\ Incremental Testing\\ \acf{ct}}
 \def\reasExs{Smoke Testing\\ Reuse Testing\\ Initial Testing\\ Retesting\\
     Regresstion Testing\\ Error Seeding}
@@ -40,8 +40,9 @@
             service levels, ease of use, coupling (e.g., with other applications in a given environment),
             and ease of operation (e.g., documentation, training) \citep[pp.~40--41]{Perry2006}.},
     note{f} = {Exploratory testing may instead be a ``technique'' (see \Cref{tab:multiCats}).},
-    note{g} = \gerrardDistinctIEEE*{type},
-    note{h} = {With the exception of smoke testing, which is categorized as a technique
+    note{g} = {\citet[p.~49]{Firesmith2015} less-than-helpfully calls this basis ``whitebox testing''.},
+    note{h} = \gerrardDistinctIEEE*{type},
+    note{i} = {With the exception of smoke testing, which is categorized as a technique
             (\citealp[p.~5\=/14]{SWEBOK2024}; \citealp[pp.~601, 603, 605--606]{SharmaEtAl2021});
             performance testing is also sometimes categorized as a technique \citep[p.~38]{IEEE2021}.},
     caption = {Alternate categorizations given by the literature.},
@@ -71,6 +72,9 @@
     \hline
     Reason \firesmithSubset{34}                & \reasExs{}                 & Technique                                                                                                                                                              \\
     \hline
+    Level of Automation \firesmithSubset{44} or Human Involvement
+    \citep[p.~214]{KuļešovsEtAl2013}           & \humInvExs{}               & \humInvCats{}                                                                                                                                                          \\
+    \hline
     Execution of Code\TblrNote{d} (\citealp[p.~53]{Patton2006}; \citealp[p.~214]{KuļešovsEtAl2013};
     \citealp[p.~12]{Gerrard2000a})             & \execExs{}                 & Approach                                                                                                                                                               \\
     \hline
@@ -89,9 +93,6 @@
     Coverage Criteria
     \citep[pp.~18--19]{AmmannAndOffutt2017}    & \covCritExs{}              & Technique (\citealp[p.~22]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealp[p.~5\=/11]{SWEBOK2024}; \citealp[pp.~47--48]{Firesmith2015})                               \\
     \hline
-    Human Involvement
-    \citep[p.~214]{KuļešovsEtAl2013}           & \humInvExs{}               & \humInvCats{}                                                                                                                                                          \\
-    \hline
     Structuredness
     \citep[p.~214]{KuļešovsEtAl2013}           & \strExs{}                  & Practice\TblrNote{f} \citep[pp.~20, 22]{IEEE2022}                                                                                                                      \\
     \hline
@@ -99,14 +100,14 @@
     or Test Target
     \citep[pp.~4--5]{Kam2008}                  & \propExs{}                 & Ambiguous (see \Cref{func-test-flaw})                                                                                                                                  \\
     \hline
-    Coverage Requirement
-    \citep[pp.~4--5]{Kam2008}                  & \covReqExs{}               & Technique \citep[p.~5\=/13]{SWEBOK2024}                                                                                                                                \\
+    Coverage Requirement\TblrNote{g}
+    \citep[pp.~4--5]{Kam2008}                  & \covReqExs{}               & Technique (\citealp[p.~5\=/13]{SWEBOK2024}; \citealp[p.~49]{Firesmith2015})                                                                                            \\
     \hline
-    Category of Test Type\TblrNote{g}
+    Category of Test Type\TblrNote{h}
     \citep[p.~12]{Gerrard2000a}                & \typeCatExs{}              & Ambiguous                                                                                                                                                              \\
     \hline
     Priority (in the context of testing e-business projects)
-    \citep[p.~13]{Gerrard2000a}                & \priorExs{}                & Type\TblrNote{h} (\citealp[p.~22]{IEEE2022}; \citeyear[Tab.~A.1]{IEEE2021}; and/or implied by \citealp[p.~53]{Firesmith2015})                                          \\
+    \citep[p.~13]{Gerrard2000a}                & \priorExs{}                & Type\TblrNote{i} (\citealp[p.~22]{IEEE2022}; \citeyear[Tab.~A.1]{IEEE2021}; and/or implied by \citealp[p.~53]{Firesmith2015})                                          \\
     \hline
     Purpose \citep{Pan1999}                    & \purpExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by \citealp[p.~53]{Firesmith2015})                                                                                     \\
     \hline
