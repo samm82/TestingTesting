@@ -54,10 +54,10 @@ develop a tool to automatically generate graphs of these relations.
     \begin{table*}[hbtp!]
         \centering
         \begin{talltblr}[
-                note{a}={\exampleTableNote},
-                caption={\exampleTableCapHelper{parent-child}{par-chd-rels}},
-                label={tab:exampleGlossary}
-            ]{colspec={|ll|}, rowhead = 1}
+            note{a}={\exampleTableNote},
+            caption={\exampleTableCapHelper{parent-child}{par-chd-rels}},
+            label={tab:exampleGlossary}
+            ]{colspec={|X[0.4,c,m]X[0.6,c,m]|}, rowhead = 1, width = \linewidth}
             \hline
             \thead{Name\TblrNote{a}}    & \thead{Parent(s)}                \\ \hline
             A                           & B (Author, 0000; 0001), C (0000) \\
@@ -104,27 +104,25 @@ pair from our generated graphs based on the following possible cases:
           relation being incorrect.\qtodo{Is this clear enough?}
 \end{description}
 \ifnotpaper
-    \todo{Is this multicolumn formatting OK?}
-    \begin{minipage}{0.55\textwidth}
+    \begin{table*}[hbtp!]
+        \centering
         \begin{talltblr}[
-                note{a}={\exampleTableNote},
-                caption={\exampleTableCapHelper{synonym}{syn-rels}},
-                label={tab:synExampleGlossary}
-            ]{colspec={|ll|}, rowhead = 1}
+            note{a}={\exampleTableNote},
+            caption={\exampleTableCapHelper{synonym}{syn-rels}},
+            label={tab:synExampleGlossary}
+            ]{colspec={|X[0.4,c,m]X[0.6,c,m]|}, rowhead = 1, width = \linewidth}
             \hline
-            \thead{Name\TblrNote{a}} & \thead{Synonym(s)}                \\  \hline
-            E                        & F (Author, 0000; implied by 0001) \\
-            G                        & {F (Author, 0002),                \\ \displayNL{} H (implied by 0000)} \\
-            H                        & X                                 \\ \hline
+            \thead{Name\TblrNote{a}} & \thead{Synonym(s)}                    \\ \hline
+            E                        & F (Author, 0000; implied by 0001)     \\
+            G                        & F (Author, 0002), H (implied by 0000) \\
+            H                        & X                                     \\ \hline
         \end{talltblr}
-    \end{minipage} \hfill
-    \begin{minipage}{0.35\textwidth}
-        We deduce these conditions from the information we parse from our
-        glossary. For example, if the entries in \Cref{tab:synExampleGlossary}
-        appear in the glossary, then they are displayed as \Cref{fig:synExampleGraph}
-        in the generated graph (note that X does not appear since it does not
-        meet any of the criteria given above).
-    \end{minipage} \newpage
+    \end{table*}
+    We deduce these conditions from the information we parse from our
+    glossary. For example, if the entries in \Cref{tab:synExampleGlossary}
+    appear in the glossary, then they are displayed as \Cref{fig:synExampleGraph}
+    in the generated graph (note that X does not appear since it does not
+    meet any of the criteria given above).
 
     This allows for automatic detection of some classes of flaws. The
     most trivial to automate is ``multi-synonym'' relations, given in

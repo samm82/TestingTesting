@@ -158,7 +158,7 @@ Each source is given using its BibTeX key wrapped in curly braces to mimic
 \acs{istqb} glossary, due to its use of custom commands via
 \texttt{\textbackslash citealias}. For example, the line
 \begin{displayquote}
-    \texttt{\% Flaw count: \{IEEE2022\} | \{IEEE2022\} \{IEEE2017\}\\
+    \texttt{\% Flaw count: \{IEEE2022\} | \{IEEE2022\} \{IEEE2017\}
         \displayNL ISTQB \{Kam2008\} \{Bas2024\}}
 \end{displayquote}
 would be parsed as the example given in \Cref{flaw-analysis-example}. Since
@@ -172,7 +172,7 @@ information and before those of implicit information. Parsing this information
 follows the same rules as the automatic flaw analysis
 (see \Cref{auto-flaw-analysis-rigidity}).
 \begin{displayquote}
-    \texttt{\% Flaw count: \{IEEE2022\} implied by \{Kam2008\} |\\
+    \texttt{\% Flaw count: \{IEEE2022\} implied by \{Kam2008\} |
         \displayNL \{IEEE2017\} implied by \{IEEE2022\}}
 \end{displayquote}
 For example, the above line indicates that the flaws given below are
@@ -274,22 +274,22 @@ that support a claim made by the IEEE. Since we sort sources based on
 trustworthiness (see \Cref{sources}), publication year, and number of authors,
 the relevant thesis code is:
 \begin{displayquote}
-    \texttt{(\textbackslash citealp[pp.\textasciitilde 5\textbackslash =/6 to 5\textbackslash =/7]\{SWEBOK2024\}; \\
+    \texttt{(\textbackslash citealp[pp.\textasciitilde 5\textbackslash =/6 to 5\textbackslash =/7]\{SWEBOK2024\};
         \displayNL \textbackslash citealpISTQB\{\};
-        \textbackslash citealp[pp.\textasciitilde 807\textbackslash ==808]\{Perry2006\}; \\
-        \displayNL \textbackslash citealp[pp.\textasciitilde 443\textbackslash ==445]\{PetersAndPedrycz2000\}; \\
-        \displayNL \textbackslash citealp[p.\textasciitilde 218]\{KuļešovsEtAl2013\}\textbackslash todo\{OG Black, 2009\}; \\
+        \textbackslash citealp[pp.\textasciitilde 807\textbackslash ==808]\{Perry2006\};
+        \displayNL \textbackslash citealp[pp.\textasciitilde 443\textbackslash ==445]\{PetersAndPedrycz2000\};
+        \displayNL \textbackslash citealp[p.\textasciitilde 218]\{KuļešovsEtAl2013\}\textbackslash todo\{OG Black, 2009\};
         \displayNL \textbackslash citealp[pp.\textasciitilde 9, 13]\{Gerrard2000a\})}
 \end{displayquote}
 Meanwhile, IEEE guidelines prefer that sources are kept in separate brackets,
 sorted in order of their first appearance in the document. Therefore, paper
 code for this list of sources is:
 \begin{displayquote}
-    \texttt{\textbackslash cite[pp.\textasciitilde 443\textbackslash ==445]\{PetersAndPedrycz2000\}, \\
+    \texttt{\textbackslash cite[pp.\textasciitilde 443\textbackslash ==445]\{PetersAndPedrycz2000\},
         \displayNL \textbackslash cite[pp.\textasciitilde 5\textbackslash =/6 to 5\textbackslash =/7]\{SWEBOK2024\},
-        \textbackslash cite\{ISTQB\}, \\
-        \displayNL \textbackslash cite[pp.\textasciitilde 807\textbackslash ==808]\{Perry2006\},\\
-        \displayNL \textbackslash cite[pp.\textasciitilde 9, 13]\{Gerrard2000a\}, \\
+        \textbackslash cite\{ISTQB\},
+        \displayNL \textbackslash cite[pp.\textasciitilde 807\textbackslash ==808]\{Perry2006\},
+        \displayNL \textbackslash cite[pp.\textasciitilde 9, 13]\{Gerrard2000a\},
         \displayNL \textbackslash cite[p.\textasciitilde 218]\{KuļešovsEtAl2013\}}
 \end{displayquote}\latertodo{Ensure this code matches the final version!}
 In particular, note the usage of the \macro{cite} command, the \emph{lack} of
