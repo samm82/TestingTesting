@@ -18,8 +18,8 @@
     allows us to observe the impacts of smaller changes, such as unexpected
     flaws that arise from a new relation between two approaches. It
     also helps verify the tools themselves; for example, tracking a flaw
-    manually should affect relevant flaw counts, and we can
-    double-check this. We also define macros to help achieve our goals of
+    manually should affect relevant flaw counts, which we can double-check.
+    We also define macros to help achieve our goals of
     maintainability, traceability, and reproducibility (\Cref{macros}).
 
     \subsection{Approach Graph Generation}
@@ -30,7 +30,7 @@ To better visualize how test approaches relate to each other, we
 develop a tool to automatically generate graphs of these relations.
 \ifnotpaper Since synonym (see \Cref{syn-rels}) and parent-child relations
     (see \Cref{par-chd-rels}) between approaches are tracked in
-    \ourApproachGlossary{} in a consistent format, they can be parsed
+    \ourApproachGlossary{} in a consistent format, we can parse them
     systematically. For example, if the entries in \Cref{tab:exampleGlossary}
     appear in the glossary, then their parent relations are displayed as
     \Cref{fig:exampleGraph} in the generated graph. Relevant citation
@@ -41,7 +41,7 @@ develop a tool to automatically generate graphs of these relations.
     information was present in two documents by ``Author'': one written in
     the year 0000, and one in 0001. The following citation, ``(0000)'',
     contains no author, which means it was written by the same one as the
-    previous citation. These citations are processed according to this
+    previous citation (Author). These citations are processed according to this
     logic \seeSrcCode{82167b7}{scripts/csvToGraph.py}{55}{96} so they can be
     consistently tracked throughout the analysis.
 
