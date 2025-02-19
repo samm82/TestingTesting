@@ -145,31 +145,32 @@ pair from our generated graphs based on the following possible cases:
     \texttt{J -> K} would result in these approaches being graphed as shown in
     \Cref{fig:parSynExampleGraph}.
 
-    The visual nature of these graphs makes it possible to represent both
-    explicit and implicit relations without double counting them during the
+    The visual nature of these graphs means we can represent explicit
+    \emph{and} implicit relations without double counting them during the
     analysis in \Cref{flaw-analysis}. If a relation is both explicit
-    \emph{and} implicit, the implicit relation is only shown in the graph
+    \emph{and} implicit, we only include the implicit relation in the graph
     if it is from a more ``trusted'' source tier (see \Cref{sources}).
     For example, note that only the explicit synonym relation between E and F
-    from \Cref{tab:exampleGlossary} is shown in \Cref{fig:synExampleGraph}.
+    from \Cref{tab:exampleGlossary} appears in \Cref{fig:synExampleGraph}.
     Implicit approaches and relations are denoted by dashed lines, as shown
     in \Cref{fig:exampleGraph,fig:synExampleGraph}; explicit approaches are
     \emph{always} denoted by solid lines, even if they are also implicit.
-    ``Rigid'' versions of these graphs that exclude implicit approaches and
-    relations can also be generated; the rigid version of
-    \Cref{fig:exampleGraph} is given in \Cref{fig:rigidExampleGraph}.
+    We can also generate ``rigid'' versions of these graphs that exclude
+    implicit approaches and relations; for example,
+    \Cref{fig:rigidExampleGraph} is the rigid version \Cref{fig:exampleGraph}.
 
 \fi
 Since these graphs tend to be large, it is useful to focus on specific
-subsets of them. \ifnotpaper To do this, we generated graphs limited to
-    approaches in a selected approach category (see \Cref{categories-observ})
-    as well as a graph of static approaches. The latter is done because
-    \citet[Fig.~2]{IEEE2022} \multiAuthHelper{consider} static testing to be a
-    separate approach category and because static testing is quite different
-    from dynamic testing (see \Cref{static-test}). Generated graphs focused
-    on static testing include any relations with dynamic approaches (since
-    they are our primary focus) and these dynamic approach nodes are
-    colored grey, as shown in \Cref{fig:staticExampleGraph}.
+subsets of them. \ifnotpaper For each approach category (see
+    \Cref{categories-observ}), we generate a graph restricted to its approaches
+    and the relations between them. We also generate a graph of all static
+    approaches along with the relations between them \emph{and} between a
+    static approach and a dynamic approach. We generate this static-focused
+    graph because static testing is sometimes considered to be a separate
+    approach category \citep[Fig.~2; see \Cref{static-test}]{IEEE2022},
+    but we include the relations with dynamic approaches since they are our
+    primary focus. We color all dynamic approach nodes in these graphs grey,
+    as in \Cref{fig:staticExampleGraph}, to distinguish them.
 
     Additionally, more specific subsets of these graphs \else These \fi
 can be generated from a given subset of approaches, such as
