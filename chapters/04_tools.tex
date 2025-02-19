@@ -172,28 +172,26 @@ subsets of them. \ifnotpaper For each approach category (see
     primary focus. We color all dynamic approach nodes in these graphs grey,
     as in \Cref{fig:staticExampleGraph}, to distinguish them.
 
-    Additionally, more specific subsets of these graphs \else These \fi
-can be generated from a given subset of approaches, such as
-\ifnotpaper\else those in a selected approach category (see
-    \Cref{categories-observ}) or \fi those pertaining to recovery or
-scability\ifnotpaper. These areas are of particular note, with their own
-sections for discussing flaws (\Cref{recov-flaw,scal-flaw},
-respectively). Graphs of just these subsets help visualize relations
-between relevant test approaches, so these are generated and given
-\else; the latter are shown \fi in \Cref{fig:recovery-graph-current,%
-    fig:scal-graph-current}, respectively. By specifying sets of approaches
-and relations to add or remove,
-these generated graphs can then be updated in accordance with our
-recommendations; applying those given in \Cref{rec-test-rec,,scal-test-rec,,%
-    \ifnotpaper\else perf-test-rec\fi} results in the updated graphs in
-\Cref{fig:recovery-graph-proposed,,fig:scal-graph-proposed,,\ifnotpaper\else
-        fig:perf-graph\fi}, respectively. Any added approaches or relations are
-colored \textcolor{orange}{orange}.
+    We can also generate more specific subsets of these graphs
+\else We can generate more focused graphs \fi from a given subset of
+approaches, such as \ifnotpaper\else those in a selected approach category
+    (see \Cref{categories-observ}) or \fi those pertaining to recovery or
+scability\ifnotpaper. These areas are of particular note as we give them their
+own sections for discussing flaws (\Cref{recov-flaw,scal-flaw}, respectively).
+We generate graphs of just these subsets of software testing to help visualize
+the relations between these approaches, given\else; the latter are shown \fi
+in \Cref{fig:recovery-graph-current,fig:scal-graph-current}, respectively. By
+specifying sets of approaches and relations to add or remove, we can then
+update these generated graphs based on our recommendations; applying those
+given in \Cref{rec-test-rec,,scal-test-rec,,\ifnotpaper\else perf-test-rec\fi}
+results in the updated graphs in \Cref{fig:recovery-graph-proposed,,%
+    fig:scal-graph-proposed,,\ifnotpaper\else fig:perf-graph\fi}, respectively.
+We color any added approaches or relations orange to distinguish them.
 \ifnotpaper
-    Recommendations can also be inherited; for example,
-    \Cref{fig:perf-graph} was generated based on the modifications from
-    \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed} along with
-    other changes mentioned in \Cref{perf-test-rec}.
+    Recommendations can also be inherited; for example, we generate
+    \Cref{fig:perf-graph} based on the modifications we apply to
+    \Cref{fig:recovery-graph-proposed,fig:scal-graph-proposed} and
+    other changes from \Cref{perf-test-rec}.
 \fi
 
 \ifnotpaper
