@@ -1,21 +1,25 @@
 \subsection{Flaw Analysis}
 \label{flaw-analysis}
 
-In addition to analyzing specific flaws, an overview of their amounts,
-sources, rigidities (see \Cref{rigidity}), classes, and categories is
-also useful. Subsets of this task can be automated (\Cref{auto-flaw-analysis})
-and the remaining manual portion can be augmented with automated
-tools (\Cref{aug-flaw-analysis}).
+In addition to analyzing specific flaws, it is also useful to examine them at
+a higher level. We automate subsets of this task where applicable
+(\Cref{auto-flaw-analysis}) and augment the remaining manual portion with
+automated tools (\Cref{aug-flaw-analysis}). This gives us an overview of:
+\begin{itemize}
+    \item how many flaws there are,
+    \item how responsible each source tier (see \Cref{sources}) is for these flaws,
+    \item how obvious (or ``rigid''; see \Cref{rigidity}) these flaws are,
+    \item how these flaws present themselves (see \Cref{sntxFlaws}), and
+    \item in which knowledge domains these flaws occur (see \Cref{smntcFlaws}).
+\end{itemize}
 
-To understand where flaws exist in the literature, they are
-grouped based on the source tiers (as described in \Cref{sources})
-responsible for them. Each flaw is then counted \emph{once} per source
-category if it appears within it \emph{and/or} between it and a more
-``trusted'' category. This avoids counting the same flaw more than once
-for a given category\thesisissueref{83}, which would result in the number of
-\emph{occurrences} of all flaws, instead of the number of flaws
-\emph{themselves}, which is more useful. The exception to this is
-\Cref{fig:flawSources}, which counts the following sources
+To understand where flaws exist in the literature, we group them based on the
+source tier(s) responsible for them. Each flaw is then counted \emph{once} per
+source tier if it appears within it \emph{and/or} between it and a more
+``trusted'' tier. This avoids counting the same flaw more than once for a given
+source tier\thesisissueref{83}, which would give the number of \emph{occurrences}
+of all flaws instead of the more useful number of flaws \emph{themselves}. The
+exception to this is \Cref{fig:flawSources}, which counts the following sources
 of flaws separately:
 \begin{enumerate}
     \item those that appear once in (or consistently throughout) a document
