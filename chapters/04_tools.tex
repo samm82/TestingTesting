@@ -124,25 +124,26 @@ pair from our generated graphs based on the following possible cases:
     in the generated graph (note that X does not appear since it does not
     meet any of the criteria given above).
 
-    This allows for automatic detection of some classes of flaws. The
-    most trivial to automate is ``multi-synonym'' relations, given in
+    Since we can detect these conditions automatically, the next logical step
+    is to automatically detect related classes of flaws. The most trivial class
+    to automate is that of ``multi-synonym'' relations
     % TODO: pretty hacky
-    \hyperref[case-three]{Case 3} above, since these are already found in order
-    to generate the graph as desired. The list found in \Cref{multiSyns}
-    is automatically generated based on glossary entries such as those found
-    in \Cref{tab:synExampleGlossary}. The self-referential definitions in
-    \Cref{selfPars} were also trivial, found by simply looking for lines in
-    the generated .tex files with prefixes of the form \texttt{I -> I} (where
-    \texttt{I} is the label used for a test approach node in these graphs).
-    This process results in output similar to \Cref{fig:selfExampleGraph}. A
-    similar process is used to detect instances where two approaches have a
-    synonym \emph{and} a parent-child relation. A dictionary of each term's
-    synonyms is built to evaluate which synonym relations are notable
-    enough to include in the graph, and these mappings are then checked to
-    see if one appears as a parent of the other. For example, if \texttt{J}
-    and \texttt{K} are synonyms, a generated .tex file with a parent line
-    starting with \texttt{J -> K} would result in these approaches being
-    graphed as shown in \Cref{fig:parSynExampleGraph}.
+    (\hyperref[case-three]{Case 3} above) since we already find these to
+    generate our graphs. We automatically generate the list in \Cref{multiSyns}
+    based on glossary entries such as those found in
+    \Cref{tab:synExampleGlossary}. The self-referential definitions in
+    \Cref{selfPars} are also trivial to automate by looking for lines in the
+    generated \LaTeX{} files that start with \texttt{I -> I}, where \texttt{I}
+    is the label used for a test approach node in these graphs. This process
+    results in output similar to \Cref{fig:selfExampleGraph}. We use a similar
+    process to detect pairs of approaches with a synonym relation \emph{and} a
+    parent-child relation. To accomplish this, we build a dictionary of each
+    term's synonyms to evaluate which synonym relations are notable enough to
+    include in the graph, and then check these mappings to see if one appears
+    as a parent of the other. For example, if \texttt{J} and \texttt{K} are
+    synonyms, a generated \LaTeX{} file with a parent line starting with
+    \texttt{J -> K} would result in these approaches being graphed as shown in
+    \Cref{fig:parSynExampleGraph}.
 
     The visual nature of these graphs makes it possible to represent both
     explicit and implicit relations without double counting them during the
