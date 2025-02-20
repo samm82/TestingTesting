@@ -190,37 +190,43 @@ def writeFile(lines, filename: str, helper: bool = False, dir: str = "graphs"):
     # else:
     #     print(f"No changes to {filename}")
 
-def writeLongtblr(filename: str, caption: str, headers: list[str],
-                  lines: list[str], widths: list[int] = [],
-                  footnotes: list[str] = [], toSort: bool = True,
-                  rowHeadSpec: str = "c", rowDataSpec: str = "l"):
-    # Used for ensuring correct number of xcolumns
-    xcolCount = len(headers) - 1
-    assert all(line.count("&") == xcolCount for line in lines)
-    colSpecList = [f"Q[{rowHeadSpec},m]"]
+def writeTblr(filename: str, caption: str, headers: list[str], lines: list[str], *,
+              env: str = "longtblr", widths: list[int] = [], footnotes: list[str] = [],
+              xCol: bool = True, toSort: bool = True, rowHeadSpec: str = "c",
+              rowDataSpec: str = "l"):
+    colSpecList = []
+    if xCol:
+        # Used for ensuring correct number of xcolumns
+        xcolCount = len(headers) - 1
+        assert all(line.count("&") == xcolCount for line in lines)
+        colSpecList.append(f"Q[{rowHeadSpec},m]")
 
     # If all given widths are equal, don't change them
     if len(set(widths)) > 1:
         # Include first column
-        assert len(widths) == xcolCount
+        if xCol:
+            assert len(widths) == xcolCount
         scale = sum(widths) / len(widths)
         colSpecList += [f"X[{width/scale},{rowDataSpec},m]"
                         for width in widths]
     else:
         colSpecList += [f"X[{rowDataSpec},m]"] * xcolCount
 
-    writeFile(["\\begin{longtblr}[",
-            *(f"   note{{{x}}} = {{{footnote}}},"
-                for x, footnote in zip(ascii_lowercase, footnotes)),
-              f"   caption = {{{caption}}},",
-              f"   label = {{tab:{filename}}}",
-               "   ]{",
-              f"   colspec = {{|{"|".join(colSpecList)}|}}, width = \\linewidth,",
-            #   f"   colspec = {{|{"|".join(colSpecList)}|}}, width = {width},",
-               "   row{1} = {halign=c}, rowhead = 1",
-               "   }",
-               "  \\hline",
-              f"  {" & ".join([f"\\thead{{{h}}}" for h in headers])} \\\\",
-               "  \\hline"] + (sortByImplied(lines) if toSort else lines) +
-              ["  \\hline", "\\end{longtblr}"],
-               filename, True)
+    lines = [f"\\begin{{{env}}}[",
+           *(f"   note{{{x}}} = {{{footnote}}},"
+               for x, footnote in zip(ascii_lowercase, footnotes)),
+             f"   caption = {{{caption}}},",
+             f"   label = {{tab:{filename}}}",
+              "   ]{",
+             f"   colspec = {{|{"|".join(colSpecList)}|}}, width = \\linewidth,",
+           #   f"   colspec = {{|{"|".join(colSpecList)}|}}, width = {width},",
+              "   row{1} = {halign=c}, rowhead = 1",
+              "   }",
+              "  \\hline",
+             f"  {" & ".join([f"\\thead{{{h}}}" for h in headers])} \\\\",
+              "  \\hline"] + (sortByImplied(lines) if toSort else lines) + [
+              "  \\hline", f"\\end{{{env}}}"]
+
+    if env == "talltblr":
+        lines = wrapEnv("table*", ["\\centering"] + lines, arg="hbtp!")
+    writeFile(lines, filename, True)

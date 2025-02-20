@@ -253,9 +253,9 @@ class MultiCatInfo():
         return [round(n * len(avgLens) / sum(avgLens), 2) for n in avgLens]
 
     def output(self):
-        writeLongtblr(multiCat.name, multiCat.caption,
+        writeTblr(multiCat.name, multiCat.caption,
                       ["Approach", "Category 1", "Category 2"],
-                      multiCat.lines, multiCat.getColWidths()
+                      multiCat.lines, widths=multiCat.getColWidths()
         )
 
 multiCatDict = {0 : MultiCatInfo("infMultiCats", "inferred to have"),
@@ -637,7 +637,7 @@ for chd, syns in nameDict.items():
 parSynCount = "".join(parSyns).count("\\to")
 
 if "Example" not in csvFilename:
-    writeLongtblr(
+    writeTblr(
         "parSyns",
         "Pairs of test approaches with a \\hyperref[par-chd-rels]{parent-child} \\emph{and} synonym relation.",
         ["``Child'' $\\to$ ``Parent''", "Parent-Child Source(s)", "Synonym Source(s)"],

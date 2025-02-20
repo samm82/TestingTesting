@@ -45,27 +45,7 @@ develop a tool to automatically generate graphs of these relations.
     logic \seeSrcCode{82167b7}{scripts/csvToGraph.py}{55}{96} so they can be
     consistently tracked throughout the analysis.
 
-    \def\exampleTableNote{``Name'' can refer to the name of a test approach,
-        software quality, or other testing-related term, but we only generate
-        graphs for test approaches.}
-    \newcommand\exampleTableCapHelper[2]{Example glossary entries\
-        demonstrating how we track #1 relations (see \Cref{#2}).}
-
-    \begin{table*}[hbtp!]
-        \centering
-        \begin{talltblr}[
-            note{a}={\exampleTableNote},
-            caption={\exampleTableCapHelper{parent-child}{par-chd-rels}},
-            label={tab:exampleGlossary}
-            ]{colspec={|X[0.4,c,m]X[0.6,c,m]|}, rowhead = 1, width = \linewidth}
-            \hline
-            \thead{Name\TblrNote{a}}    & \thead{Parent(s)}                \\ \hline
-            A                           & B (Author, 0000; 0001), C (0000) \\
-            B                           & C (implied by Author, 0000)      \\
-            C                           & D (Author, 0002)                 \\
-            D (implied by Author, 0002) &                                  \\ \hline
-        \end{talltblr}
-    \end{table*}
+    \input{build/exampleGlossary.tex}
 
     \ExampleGraph{}
 
@@ -104,20 +84,7 @@ pair from our generated graphs based on the following possible cases:
           relation being incorrect.\qtodo{Is this clear enough?}
 \end{description}
 \ifnotpaper
-    \begin{table*}[hbtp!]
-        \centering
-        \begin{talltblr}[
-            note{a}={\exampleTableNote},
-            caption={\exampleTableCapHelper{synonym}{syn-rels}},
-            label={tab:synExampleGlossary}
-            ]{colspec={|X[0.4,c,m]X[0.6,c,m]|}, rowhead = 1, width = \linewidth}
-            \hline
-            \thead{Name\TblrNote{a}} & \thead{Synonym(s)}                    \\ \hline
-            E                        & F (Author, 0000; implied by 0001)     \\
-            G                        & F (Author, 0002), H (implied by 0000) \\
-            H                        & X                                     \\ \hline
-        \end{talltblr}
-    \end{table*}
+    \input{build/synExampleGlossary.tex}
     We deduce these conditions from the information we parse from our
     glossary. For example, if the entries in \Cref{tab:synExampleGlossary}
     appear in the glossary, then they are displayed as \Cref{fig:synExampleGraph}

@@ -388,7 +388,7 @@ def outputFlaws():
                 [f"\\caption{{{flawCaption}}}",
                 "\\label{fig:flawSources}", "\\end{figure*}"], "flawPies")
 
-    writeLongtblr("flawTable", flawCaption,
+    writeTblr("flawTable", flawCaption,
                   ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and a \\dots{}"] + [
                       f"\\rotatebox[origin=c]{{90}}{{{x}}}" for x in
                         [f"\\parbox{{3.5cm}}{{\\centering {x}}}" for x in 
