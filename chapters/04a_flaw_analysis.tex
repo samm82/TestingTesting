@@ -151,9 +151,13 @@ from the examples of these comments throughout this chapter for brevity.
 \end{table*}
 Finally, \texttt{A1}, \texttt{A2}, \texttt{B1},
 \texttt{B2}, and \texttt{C1} are each placeholders for a source involved in
-this example flaw; in general, there can be arbitrarily many. Each ``group'' of
-sources is separated with a pipe symbol (\texttt{|}) to be compared with all
-other groups; in general, a flaw can have any number of groups of sources.
+this example flaw; in general, there can be arbitrarily many. We represent each
+source by its BibTeX key, and wrap each one in curly braces (with the exception
+of the \acs{istqb} glossary due to its use of custom commands via
+\macro{citealias}) to mimic \LaTeX{}'s citation commands for ease of parsing.
+We then separate each ``group'' of sources with a pipe symbol (\texttt{|}) so
+we can compare each pair of groups; in general, a flaw can have any number of
+groups of sources.
 
 We make a distinction between ``self-contained''
 flaws and ``internal'' flaws. Self-contained flaws are those that manifest by
@@ -175,25 +179,22 @@ conflicting sources of information in X.
     \texttt{\% Flaw count: \{X\}\\\% Flaw count: \{X\} | \{X\}\\
         \% Flaw count: \{X\} | \{X\} \{Y\}}
 \end{displayquote}
-Discrepancies between groups are not double counted; this means the following
-line adds discrepancies between X and Z \emph{and} between Y and Z, without
-counting the discrepancy between X and Z twice.
+We do not double count discrepancies that reappear when comparing between pairs
+of groups; this means the following line adds discrepancies between X and Z
+\emph{and} between Y and Z without double counting the discrepancy between X and Z.
 \begin{displayquote}
     \texttt{\% Flaw count: \{X\} | \{X\} \{Y\} | \{Z\}}
 \end{displayquote}
-
-Each source is given using its BibTeX key wrapped in curly braces to mimic
-\LaTeX{}'s citation commands for ease of parsing, with the exception of the
-\acs{istqb} glossary, due to its use of custom commands via
-\texttt{\textbackslash citealias}. For example, the line
+To give a more complete example, the line
 \begin{displayquote}
     \texttt{\% Flaw count: \{IEEE2022\} | \{IEEE2022\} \{IEEE2017\}
         \displayNL ISTQB \{Kam2008\} \{Bas2024\}}
 \end{displayquote}
-would be parsed as the example given in \Cref{flaw-analysis-example}. Since
-the IEEE documents are written by the same standards organizations
-(\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), they are counted as a
-discrepancy between documents by the same author(s) in \Cref{fig:flawSources}.
+is parsed as the example given in \Cref{flaw-analysis-example}. Since
+\texttt{IEEE2022} and \texttt{IEEE2017} are written by the same standards
+organizations (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), we count
+this as a discrepancy between documents by the same author(s) in
+\Cref{fig:flawSources}\latertodo{Link to this specific flaw?}.
 
 The rigidity (see \Cref{rigidity}) of flaws can also be manually
 specified by inserting the phrase ``implied by'' after the sources of explicit
