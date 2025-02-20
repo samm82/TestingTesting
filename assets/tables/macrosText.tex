@@ -10,52 +10,52 @@
     width = \textwidth, rowhead = 1
     }
     \hline
-    \thead{Type}             & \thead{Macro}               & \thead{Used in}                                           \\*
+    \thead{Type}             & \thead{Macro}               & \thead{Used in}                                                 \\*
     \hline
-    \macroType{8}{Flaws}     & \macro{bugPattonFlaw}       & \Cref{intro} and \flawref{bug-patton}                     \\*
-                             & \macro{alphaFlaw}           & \Cref{intro} and \flawref{alpha-def}                      \\*
-                             & \macro{loadFlaw}            & \Cref{intro} and \flawref{load-def}                       \\*
-                             & \macro{expBasedCatMain}     & \Cref{intro,multiCats}                                    \\*
-                             & \macro{tourFlaw}            & \Cref{intro,flaws} and \flawref{tour-def}                 \\*
-                             & \macro{perfAsFamily}        & \Cref{method-family,classFamilyFlaw}                      \\*
-                             & \macro{tolTestFlaw}         & \Cref{aug-flaw-analysis} and \flawref{ground-truth}       \\*
-                             & \macro{accelTolTest}        & \macro{tolTestFlaw} and \Cref{hard-test}                  \\
+    \macroType{8}{Flaws}     & \macro{bugPattonFlaw}       & \Cref{intro} and \flawref{bug-patton}                           \\*
+                             & \macro{alphaFlaw}           & \Cref{intro} and \flawref{alpha-def}                            \\*
+                             & \macro{loadFlaw}            & \Cref{intro} and \flawref{load-def}                             \\*
+                             & \macro{expBasedCatMain}     & \Cref{intro,multiCats}                                          \\*
+                             & \macro{tourFlaw}            & \Cref{intro,flaws} and \flawref{tour-def}                       \\*
+                             & \macro{perfAsFamily}        & \Cref{method-family,classFamilyFlaw}                            \\*
+                             & \macro{tolTestFlaw}         & \Cref{aug-flaw-analysis} and \flawref{ground-truth}             \\*
+                             & \macro{accelTolTest}        & \macro{tolTestFlaw} and \Cref{hard-test}                        \\
 
     \hline
     \macroType{6}{Footnotes} & \macro{ftrnote}             & \SetCell[r=3]{l} Thesis (automated) and paper (manual)
-    versions of \Cref{tab:parSyns}                                                                                     \\*
-                             & \macro{specfn}              &                                                           \\*
-                             & \macro{ucstn}               &                                                           \\*
-    \cline{2-3}              & \macro{notDefDistinctIEEE}  & \flawref{static-test-flaw} and \Cref{exist-tax}           \\*
+    versions of \Cref{tab:parSyns}                                                                                           \\*
+                             & \macro{specfn}              &                                                                 \\*
+                             & \macro{ucstn}               &                                                                 \\*
+    \cline{2-3}              & \macro{notDefDistinctIEEE}  & \flawref{static-test-flaw} and \Cref{exist-tax}                 \\*
                              & \macro{gerrardDistinctIEEE} & \Cref{tab:otherCategorizations} and
-    \flawref{gerrard-distinct}                                                                                         \\*
+    \flawref{gerrard-distinct}                                                                                               \\*
                              & \macro{distinctIEEE}        & \macro{gerrardDistinctIEEE}, \macro{notDefDistinctIEEE},
-    and \Cref{method-family,classFamilyFlaw}                                                                           \\
+    and \Cref{method-family,classFamilyFlaw}                                                                                 \\
     \hline
-    \macroType{3}{Links}     & \macro{ourApproachGlossary} & \Cref{rigidity,orth-test,procedure,graph-gen}             \\*
-                             & \macro{recFigs}             & \Cref{rigidity,infers,recs}                               \\*
-                             & \macro{seeSrcCode}          & \Cref{rigidity,graph-gen,auto-flaw-analysis,paper-macros} \\
+    \macroType{3}{Links}     & \macro{ourApproachGlossary} & \Cref{rigidity,orth-test,procedure,graph-gen,aug-flaw-analysis} \\*
+                             & \macro{recFigs}             & \Cref{rigidity,infers,recs}                                     \\*
+                             & \macro{seeSrcCode}          & \Cref{rigidity,graph-gen,auto-flaw-analysis,paper-macros}       \\
     \hline
     \macroType{5}{Source Tiers\TblrNote{a}}
                              & \macro{stds}                &
-    \Cref{fig:stdFlawSources,fig:sourceSummary,flaw-analysis-example,tab:sntxFlaws,tab:smntcFlaws}                     \\*
+    \Cref{fig:stdFlawSources,fig:sourceSummary,flaw-analysis-example,tab:sntxFlaws,tab:smntcFlaws}                           \\*
                              & \macro{metas}               &
-    \Cref{fig:metaFlawSources,fig:sourceSummary,flaw-analysis-example,tab:sntxFlaws,tab:smntcFlaws}                    \\*
+    \Cref{fig:metaFlawSources,fig:sourceSummary,flaw-analysis-example,tab:sntxFlaws,tab:smntcFlaws}                          \\*
                              & \macro{texts}               &
-    \Cref{fig:textFlawSources,fig:sourceSummary,tab:sntxFlaws,tab:smntcFlaws}                                          \\*
+    \Cref{fig:textFlawSources,fig:sourceSummary,tab:sntxFlaws,tab:smntcFlaws}                                                \\*
                              & \macro{papers}              &
-    \Cref{fig:paperFlawSources,fig:sourceSummary,flaw-analysis-example}                                                \\*
-                             & \macro{papersTbl}           & \Cref{tab:sntxFlaws,tab:smntcFlaws}                       \\
+    \Cref{fig:paperFlawSources,fig:sourceSummary,flaw-analysis-example}                                                      \\*
+                             & \macro{papersTbl}           & \Cref{tab:sntxFlaws,tab:smntcFlaws}                             \\
     \hline
-    \macroType{3}{RQs}       & \macro{rqatext}             & \SetCell[r=3]{l} \Cref{intro} and seminar slides          \\*
-                             & \macro{rqbtext}             &                                                           \\*
-                             & \macro{rqctext}             &                                                           \\
+    \macroType{3}{RQs}       & \macro{rqatext}             & \SetCell[r=3]{l} \Cref{intro} and seminar slides                \\*
+                             & \macro{rqbtext}             &                                                                 \\*
+                             & \macro{rqctext}             &                                                                 \\
     \hline
-    \macroType{5}{Misc.}     & \macro{supersAck}           & \nameref{acknowledgements} and seminar slides             \\*
-                             & \macro{supers}              & \macro{supersAck} and \nameref{decl_aca_ach}              \\*
-                             & \macro{addTextEx}           & \Cref{sources,texts}                                      \\*
-                             & \macro{approachFields}      & \Cref{rigidity,procedure}                                 \\*
+    \macroType{5}{Misc.}     & \macro{supersAck}           & \nameref{acknowledgements} and seminar slides                   \\*
+                             & \macro{supers}              & \macro{supersAck} and \nameref{decl_aca_ach}                    \\*
+                             & \macro{addTextEx}           & \Cref{sources,texts}                                            \\*
+                             & \macro{approachFields}      & \Cref{rigidity,procedure}                                       \\*
                              & \macro{displayNL}           &
-    \Cref{graph-gen,aug-flaw-analysis,paper-macros,tab:macrosPaper}                                                    \\
+    \Cref{graph-gen,aug-flaw-analysis,paper-macros,tab:macrosPaper}                                                          \\
     \hline
 \end{longtblr}

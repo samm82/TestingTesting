@@ -109,25 +109,27 @@ similarly to how we generate graphs (see \Cref{expAndImp}).
 
 \subsubsection{Augmented Flaw Analysis}
 \label{aug-flaw-analysis}
-While some subsets of flaws can be deduced automatically from analyzing
-the testing approach glossary, most need to be tracked
-manually. This is done by adding
-comments to the relevant \LaTeX{} files (generated or not) of the form
+While we can detect some subsets of flaws automatically by analyzing
+\ourApproachGlossary, most are too complex and need to be tracked manually. We
+record these more detailed flaws as \LaTeX{} enumeration items along with
+comments that we can parse automatically, allowing us to analyze them more
+broadly. We also add these comments to flaws we detect automatically before
+generating the corresponding \LaTeX{} file to ensure these flaws also get
+analyzed. These comments have the following format:
 \begin{displayquote}
-    \texttt{\% Flaw count (CAT, CLS): \{A1\} \{A2\} \dots{} | \{B1\}
-        %\{B2\}
-        \dots{} | \{C1\} %\{C2\}
-        \dots}
+    \texttt{\% Flaw count (SEM, SYN): \{A1\} \{A2\} \dots{} | \{B1\} \{B2\}
+        \dots{} | \{C1\} \dots}
 \end{displayquote}
-which can then be parsed to detemine where flaws occur. \texttt{CAT} is
-a placeholder for the flaw's category (see \Cref{smntcFlaws})
-identifier and \texttt{CLS} is a placeholder for its class (see
-\Cref{sntxFlaws}) identifier. These designations are ommitted
-from the following examples of these comments.
+\texttt{SEM} is a placeholder for the flaw's semantics (see \Cref{smntcFlaws})
+identifier and \texttt{SYN} is a placeholder for its syntax (see \Cref{sntxFlaws})
+identifier. We omit these designations from the examples of these comments
+throughout this chapter for brevity. \texttt{A1}, \texttt{A2}, \texttt{B1},
+\texttt{B2}, and \texttt{C1} are each placeholders for a source involved in
+this example flaw; in general, there can be arbitrarily many. Each ``group'' of
+sources is separated with a pipe symbol (\texttt{|}) to be compared with all
+other groups; in general, a flaw can have any number of groups of sources.
 
-Each group of
-sources is separated with a pipe symbol to be compared with the others, so any
-number of groups are permitted. We make a distinction between ``self-contained''
+We make a distinction between ``self-contained''
 flaws and ``internal'' flaws. Self-contained flaws are those that manifest by
 comparing a document to a source of ground truth. Sometimes, these do not
 require an explicit comparison; for example, \nameref{miss} often fall in this
