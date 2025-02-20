@@ -1,13 +1,22 @@
+from pandas import read_csv
+
 from helpers import writeTblr
 
 class ExGloss:
-    def __init__(self, name: str, rel: str, relsRef: str,
-                 head: list[str], lines: list[str]):
+    def __init__(self, name: str, rel: str, relsRef: str, head: list[str]):
         self.filename = name
         self.caption = ("Example glossary entries demonstrating how we track "
                         f"{rel} relations (see \\Cref{{{relsRef}}}).")
-        self.headers = ["Name\\TblrNote{a}", f"{head}(s)"]
-        self.lines = lines
+        _mainHeader = f"{head}(s)"
+        self.headers = ["Name\\TblrNote{a}", _mainHeader]
+
+        _lines = read_csv("assets/graphs/exampleGlossaries/"
+                         f"{self.filename[0].upper()}{self.filename[1:]}.csv")
+        self.lines = [f"{name} & {"" if isinstance(col, float) else col} \\\\"
+                      for name, col in zip(
+                          _lines["Name"].to_list(),
+                          _lines[_mainHeader].to_list())]
+
         self.env = "talltblr"
         self.widths = [0.4, 0.6]
         self.footnotes = ["``Name'' can refer to the name of a test approach, "
@@ -18,17 +27,8 @@ class ExGloss:
         self.rowDataSpec: str = "c"
 
 exGlosses = [
-    ExGloss("exampleGlossary", "parent-child", "par-chd-rels", "Parent", [
-        "A                           & B (Author, 0000; 0001), C (0000) \\\\",
-        "B                           & C (implied by Author, 0000)      \\\\",
-        "C                           & D (Author, 0002)                 \\\\",
-        "D (implied by Author, 0002) &                                  \\\\"
-    ]),
-    ExGloss("synExampleGlossary", "synonym", "syn-rels", "Synonym", [
-        "E                        & F (Author, 0000; implied by 0001)     \\\\",
-        "G                        & F (Author, 0002), H (implied by 0000) \\\\",
-        "H                        & X                                     \\\\"
-    ])
+    ExGloss("exampleGlossary",    "parent-child", "par-chd-rels", "Parent"),
+    ExGloss("synExampleGlossary", "synonym",      "syn-rels",     "Synonym")
 ]
 
 for exGloss in exGlosses:
