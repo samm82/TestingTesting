@@ -3,6 +3,9 @@ import re
 from string import ascii_lowercase
 from typing import Optional
 
+def capFirst(s: str) -> str:
+    return f"{s[0].upper()}{s[1:]}"
+
 # RegEx patterns
 AUTHOR_CHARS = r"a-zA-Zğļöšß.\/_"
 AUTHOR_REGEX = fr"(?<!OG )(?!OG )\b(?:van|[A-Z])[{AUTHOR_CHARS} ]+"

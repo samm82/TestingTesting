@@ -1,17 +1,18 @@
 from pandas import read_csv
 
-from helpers import writeTblr
+from helpers import capFirst, writeTblr
 
 class ExGloss:
-    def __init__(self, name: str, rel: str, relsRef: str, head: list[str]):
+    def __init__(self, name: str, rel: str, relsRef: str):
         self.filename = name
         self.caption = ("Example glossary entries demonstrating how we track "
                         f"{rel} relations (see \\Cref{{{relsRef}}}).")
-        _mainHeader = f"{head}(s)"
+
+        _mainHeader = f"{capFirst(rel.split("-")[0])}(s)"
         self.headers = ["Name\\TblrNote{a}", _mainHeader]
 
         _lines = read_csv("assets/graphs/exampleGlossaries/"
-                         f"{self.filename[0].upper()}{self.filename[1:]}.csv")
+                          f"{capFirst(self.filename)}.csv")
         self.lines = [f"{name} & {"" if isinstance(col, float) else col} \\\\"
                       for name, col in zip(
                           _lines["Name"].to_list(),
@@ -27,8 +28,8 @@ class ExGloss:
         self.rowDataSpec: str = "c"
 
 exGlosses = [
-    ExGloss("exampleGlossary",    "parent-child", "par-chd-rels", "Parent"),
-    ExGloss("synExampleGlossary", "synonym",      "syn-rels",     "Synonym")
+    ExGloss("exampleGlossary",    "parent-child", "par-chd-rels"),
+    ExGloss("synExampleGlossary", "synonym",      "syn-rels"    )
 ]
 
 for exGloss in exGlosses:

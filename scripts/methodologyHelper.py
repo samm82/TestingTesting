@@ -1,6 +1,6 @@
 import re
     
-from helpers import wrapEnv, writeFile
+from helpers import capFirst, wrapEnv, writeFile
 
 CAT_FOOTNOTE = "\n\t".join([
     "\\footnote{",
@@ -26,7 +26,7 @@ methodology_a = """    \\item \\phantomsection{}\\label{identify-sources}
     \\item \\phantomsection{}\\label{record-terms}
           For each test approach, record its: (\\Cref{procedure})\n""" + "\n".join([
         f"\t\t  {line}" for line in wrapEnv(
-            "enumerate", [f"\t\\item {i[0].upper()}{i[1:]}"
+            "enumerate", [f"\t\\item {capFirst(i)}"
                           for i in toRecord + [OTHER_NOTES +
                                                f" (e.g., {OTHER_NOTES_EXS})"]])
         ]) + """\n    \\item Repeat steps~\\ref{identify-sources} to
