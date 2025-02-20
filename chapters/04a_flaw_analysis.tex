@@ -120,10 +120,36 @@ analyzed. These comments have the following format:
     \texttt{\% Flaw count (SEM, SYN): \{A1\} \{A2\} \dots{} | \{B1\} \{B2\}
         \dots{} | \{C1\} \dots}
 \end{displayquote}
-\texttt{SEM} is a placeholder for the flaw's semantics (see \Cref{smntcFlaws})
-identifier and \texttt{SYN} is a placeholder for its syntax (see \Cref{sntxFlaws})
-identifier. We omit these designations from the examples of these comments
-throughout this chapter for brevity. \texttt{A1}, \texttt{A2}, \texttt{B1},
+\texttt{SEM} and \texttt{SYN} are placeholders for ``codes'' we use to identify
+a flaw's semantics and syntax (see \Cref{flaws}). Each flaw has exactly one of
+each, and their values are given in \Cref{tab:flawCodes}\latertodo{Update
+    references to flaw sections once their format is locked down; see
+    \thesisissuerefhelper{134}}. We omit these codes
+from the examples of these comments throughout this chapter for brevity.
+\begin{table*}[b]
+    \centering
+    \begin{talltblr}[
+        % note{a} = {Section omitted for brevity.},
+        caption = {``Codes'' used to indicate a flaw's semantics and syntax.},
+        label = {tab:flawCodes}
+        ]{
+        colspec={|Q[c,m]Q[c,m]||Q[c,m]Q[c,m]|},
+        column{1} = {font=\ttfamily}, column{3} = {font=\ttfamily},
+        width = \textwidth, rowhead = 1
+        }
+        \hline
+        \thead{SEM} & \thead{Semantic Flaws} & \thead{SYN} & \thead{Syntactic Flaws} \\
+        \hline
+        CATS        & \nameref{cats}         & WRONG       & \nameref{wrong}         \\
+        SYNS        & \nameref{syns}         & MISS        & \nameref{miss}          \\
+        PARS        & \nameref{pars}         & CONTRA      & \nameref{contra}        \\
+        DEFS        & \nameref{defs}         & AMBI        & \nameref{ambi}          \\
+        TERMS       & \nameref{terms}        & OVER        & \nameref{over}          \\
+        CITES       & \nameref{cites}        & REDUN       & \nameref{redun}         \\
+        \hline
+    \end{talltblr}
+\end{table*}
+Finally, \texttt{A1}, \texttt{A2}, \texttt{B1},
 \texttt{B2}, and \texttt{C1} are each placeholders for a source involved in
 this example flaw; in general, there can be arbitrarily many. Each ``group'' of
 sources is separated with a pipe symbol (\texttt{|}) to be compared with all
