@@ -11,8 +11,7 @@ toRecord: list[str] = [
     "names", f"categories{CAT_FOOTNOTE}(\\Cref{{categories-observ}})",
     "definitions", "synonyms (\\Cref{syn-rels})",
     "parents (\\Cref{par-chd-rels})",
-    "flaws\\phantomsection{}\\label{manual-flaws} (in a separate document)\
-    \\latertodo{Define in \\nameref{terminology}; \\thesisissuerefhelper{140}}"]
+    "flaws\\phantomsection{}\\label{manual-flaws} (\\Cref{flaw-def}) (in a separate document)"]
 relatedTerms: list[str] = [
     "imply related test approaches (\\Cref{derived-tests})",
     "are used repeatedly",
