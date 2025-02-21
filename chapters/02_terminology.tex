@@ -1,0 +1,658 @@
+\section{Terminology}
+\label{terminology}
+
+Our research aims to describe the current state of software testing
+literature. While sources usually present information explicitly, some
+information is more implicit and therefore more subjective. We call
+this property ``rigidity'' and define it in \Cref{rigidity}. To further
+reduce potential bias, we do not invent or add our own
+classifications or kinds of relations. Instead, the notions of test approach
+categories (\Cref{categories-observ}), synonyms (\Cref{syn-rels}), and
+parent-child relations (\Cref{par-chd-rels}) presented here
+follow logically from the literature. We define them here for clarity
+since we use them throughout this \docType{}, even though they are
+``results'' of our research.
+
+\subsection{Rigidity}
+\label{rigidity}
+
+% Excluded from macro table since it is only used in this subsection
+\def\impKeywordsCode{\seeSrcCode{82167b7}{scripts/helpers.py}{21}{49}}
+
+When recording information from unstandardized sources written in natural
+language, there is a considerable degree of nuance that can get lost. For
+example, a source may provide data from which the reader can logically draw a
+conclusion, but may not state or prove this conclusion explicitly.
+% Most information in sources we investigate is explicit, but this is still a useful
+% distinction to make.
+We call this nuance ``rigidity'' and capture it when citing sources using
+(at least) one of the following keywords: ``implied'', ``inferred'',
+``can be'', ``should be'', ``ideally'', ``usually'', ``most'', ``likely'',
+``often'', ``if'', and ``although''% \impKeywordsCode{}%
+\latertodo{Ensure this list is current!}. While these keywords often appear
+directly within the literature, we also use them to track rigidity without
+getting distracted by less relevant details by summarizing the relevant
+nuance. This allows us to provide a more complete picture of the state of
+the literature; for example, we can view implicit flaws separately in
+\Cref{tab:sntxFlaws,tab:smntcFlaws}, since additional context may rectify
+them. Any kind of information can be implicit, including the names,
+\approachFields{} of identified test approaches. All sources cited throughout
+this \docType{} support their respective
+claims explicitly unless specified otherwise, usually via one of the
+keywords given above\qtodo{Is this enough to satisfy Dr.~Smith's concern about
+    the rigidity of Synonym Relation sources?}. The following non-mutually
+exclusive reasons for information to be considered ``implicit'' emerged, and we
+use the keywords from the above list during data collection to identify them
+when performing later analysis \impKeywordsCode{}:
+
+%% Maybe convert to \paragraph ?
+\begin{enumerate}
+    \item \textbf{The information can be logically deduced but is not explicit.}
+          The implicit categorizations of ``test type'' by
+          \citet[pp.~53\==58]{Firesmith2015} (cf.\qtodo{Is this enough to
+              indicate this forward reference isn't that important?}~%
+          \Cref{tab:multiCats\ifnotpaper,tab:infMultiCats\fi}) are examples
+          of this. The given test approaches are not explicitly called ``test
+          types'', as the term is used more loosely to refer to different kinds
+          of testing---what should be called ``test approaches'' as per
+          \Cref{tab:ieeeCats}. However, this set of test approaches are
+          ``based on the associated quality characteristic and its associated
+          quality attributes'' \citetext{p.~53}, implying that they are
+          test types. Cases such as this are indicated by a question mark or
+          one of the following keywords: ``implied'', ``inferred'', or
+          ``likely''. \ifnotpaper \par
+              Additionally, if a test approach in \ourApproachGlossary{} has a
+              name ending in ``~(Testing)'' with a space, the word ``Testing''
+              might not be part of its name \emph{or} it might not be a test
+              approach at all! For example, the term ``legacy system
+              integration'' is used \ifnotpaper by \citeauthor{Gerrard2000a}
+                  (\citeyear[pp.~12\==13, Tab.~2]{Gerrard2000a};
+                  \citeyear[Tab.~1]{Gerrard2000b})\else in
+                  \cite[pp.~12\==13, Tab.~2]{Gerrard2000a},
+                  \cite[Tab.~1]{Gerrard2000b}\fi, but the more accurate
+              ``legacy system integration testing'' is used in
+              \citeyearpar[pp.~30\==31]{Gerrard2000b}. In other cases where a
+              term is \emph{not} explicitly labelled as ``testing'', we add the
+              suffix ``~(Testing)'' (when it makes sense to do so) and consider
+              the test approach to be implied. \fi
+    \item \textbf{The information is not universal.}
+          \refHelper \citet[p.~372\ifnotpaper, emphasis added\fi]{IEEE2017}%
+          \todo{OG ISO/IEC, 2014} \multiAuthHelper{define} ``regression
+          testing'' as ``testing required to determine that a change to a
+          system component has not adversely affected \emph{functionality,
+              reliability or performance} and has not introduced additional
+          defects''. While reliability testing, for example, is not
+          \emph{always} a subset of regression testing (since it may be
+          performed in other ways), it \emph{can be} accomplished by regression
+          testing, so there is sometimes a parent-child relation (defined in
+          \Cref{par-chd-rels}) between them. \ifnotpaper
+          \citet[p.~5-8\ifnotpaper, emphasis added\fi]{SWEBOK2024} provides a
+          similar list: ``regression testing \dots{} \emph{may} involve
+          functional and non-functional testing, such as reliability,
+          accessibility, usability, maintainability, conversion, migration, and
+          compatibility testing.'' \fi Cases such as this are indicated by one
+          of the following keywords: ``can be'', ``should be'', ``ideally'',
+          ``usually'', ``most'', ``likely'', ``often'', or ``if''.
+    \item \textbf{The information is conditional.}
+          As a more specific case of information not being universal, sometimes
+          prerequisities must be satisfied for information to apply. For
+          example, branch condition combination testing is equivalent
+          to (and is therefore a synonym of) exhaustive testing \emph{if} ``each
+          subcondition is viewed as a single input'' \citep[p.~464]{PetersAndPedrycz2000}.
+          Likewise, statement testing can be used for (and is therefore a child
+          of) unit testing \emph{if} there are ``less than 5000 lines of code''
+          \citetext{p.~481\todo{OG Miller et al., 1994}}. Cases such as this
+          are indicated by the keyword ``can be'' or ``if''. \ifnotpaper
+              \par This can also apply more abstractly at the taxonomy level,
+              where a parent-child relation only makes sense if the parent test
+              approach exists. This occurs when a source gives a relation
+              between qualities but at least one of them does not have an
+              explicit approach associated with it (although it may be derived;
+              see \Cref{cov-test}). For example, \citet{ISO_IEC2023a} provides
+              relations involving dependability and modifiability; these are
+              tracked as qualities, not approaches, since only the qualities
+              are described. Since the prerequisite of the relevant approach
+              existing is \emph{not} satisfied, these relations are omitted
+              from any generated graphs (cf.\qtodo{Is this enough to indicate
+                  this forward reference isn't that important?}~\recFigs{}%
+              \latertodo{Include \Cref{fig:parChdGraphs} if it ends up being
+                  sufficient.}). \fi
+    \item \textbf{The information is dubious.}
+          This happens when there is reason to doubt the information provided.
+          If a source claims one thing that is not true, related claims lose
+          credibility. For example, the incorrect claim that ``white-box
+          testing'', ``grey-box testing'', and ``black-box testing'' are
+          synonyms for ``module testing'', ``integration testing'', and
+          ``system testing'', respectively, \ifnotpaper (see
+              \flawref{dubious-syns}) \fi casts doubt on the claim that
+          ``red-box testing'' is a synonym for ``acceptance testing''
+          \citep[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88}\ifnotpaper\
+              (see \flawref{dubious-red-box-syn})\fi. Doubts such as this
+          can also originate from other sources. \refHelper
+          \citet[p.~48]{Kam2008} gives ``user scenario testing'' as a synonym
+          of ``use case testing'', even though ``an actor [in use case testing]
+          can be \dots{} another system'' \citep[p.~20]{IEEE2021}, which does
+          not fit as well with the label ``user scenario testing''. However,
+          since a system can be seen as a ``user'' of the test item, this
+          synonym relation is treated as implicit instead of as an outright
+          flaw. Cases such as this are indicated by a question mark or
+          one of the following keywords: ``inferred'', ``should be'',
+          ``ideally'', ``likely'', ``if'', or ``although''.
+\end{enumerate}
+
+Flaws based on implicit information are themselves implicit. These are
+automatically detected when generating graphs and analyzing flaws
+(see \ifnotpaper \Cref{graph-gen,flaw-analysis}, respectively\else
+    \Cref{tools}\fi) by looking for the indicators of uncertainty mentioned
+above \impKeywordsCode{}. These are used when creating
+the glossaries to capture varying degrees of nuance, such as when a test
+approach ``can be'' a child of another or is a synonym of another ``most of the
+time'' but not always. \ifnotpaper As an example, \Cref{tab:parSyns} contains
+    relations that are explicit, implicit, and both; implicit relations are
+    marked by the phrase ``implied by''. \fi
+
+\subsection{Approach Categories}
+\label{categories-observ}
+
+While there are many ways to categorize software testing approaches, perhaps
+the most widely used is the one given by \ifnotpaper\else \citeauthor{IEEE2022}
+\fi \citet{IEEE2022}. This schema divides test approaches---a generic, catch-all
+term for any form of ``testing''---into levels, types, techniques, and practices
+\citeyearpar[Fig.~2; see \Cref{tab:ieeeCats}]{IEEE2022}. These categories seem
+to be pervasive throughout the literature, particularly ``level'' and ``type''.
+\phantomsection{}\label{nonIEEE-sources}%
+For example, six non-IEEE sources also give unit testing, integration testing,
+system testing, and acceptance testing as examples of test levels \ifnotpaper
+    (\citealp[pp.~5\=/6 to 5\=/7]{SWEBOK2024}; \citealpISTQB{};
+    \citealp[pp.~807\==808]{Perry2006}; \citealp[pp.~443\==445]{PetersAndPedrycz2000};
+    \citealp[p.~218]{KuļešovsEtAl2013}\todo{OG Black, 2009};
+    \citealp[pp.~9, 13]{Gerrard2000a})\else
+    \cite[pp.~443\==445]{PetersAndPedrycz2000},
+    \cite[pp.~5\=/6 to 5\=/7]{SWEBOK2024}, \cite{ISTQB},
+    \cite[pp.~807\==808]{Perry2006}, \cite[pp.~9, 13]{Gerrard2000a},
+    \cite[p.~218]{KuļešovsEtAl2013}\fi,
+although they may use a different term for ``test
+level'' (see \Cref{tab:ieeeCats}). Because of their widespread use and
+their usefulness in dividing the domain of software testing into more
+manageable subsets, we use these categories for now. These four subcategories
+of test approaches can be loosely described by what they specify as
+follows\thesisissueref{21}:
+\begin{itemize}
+    \item \textbf{Level}: What code is tested
+    \item \textbf{Practice}: How the test is structured and executed
+    \item \textbf{Technique}: How inputs and/or outputs are derived
+    \item \textbf{Type}: Which software quality is evaluated
+\end{itemize}
+For example, boundary value analysis is a test technique since its inputs are
+``the boundaries of equivalence partitions'' \ifnotpaper
+    (\citealp[p.~2]{IEEE2022}; \citeyear[p.~1]{IEEE2021}; similar on p.~12 and
+    in \citealpISTQB{})%
+\else
+    \cite[p.~2]{IEEE2022}, \cite[p.~1]{IEEE2021}%
+\fi. Similarly, acceptance testing is a test level since its goal is to
+``enable a user, customer, or other authorized entity to determine whether to
+accept a system or component'' \ifnotpaper (\citealp[p.~5]{IEEE2017}; similar
+    in \citeyear[p.~6]{IEEE2021}; \citealp[p.~344]{SakamotoEtAl2013})\else
+    \cite[p.~5]{IEEE2017}\fi, which requires the system or component to be
+developed and ready for testing.
+
+In addition to these five categories, \citet[Fig.~2]{IEEE2022} also includes
+``static testing''. However, this seems to be non-orthogonal
+to the others and thus less helpful for grouping test approaches.
+For example, static assertion checking (mentioned by \ifnotpaper
+    \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
+    \citealp[p.~343]{ChalinEtAl2006}, \citealp[p.~345]{LahiriEtAl2013}\fi) is a
+subapproach of assertion checking, which can also be performed dynamically.
+This parent-child relation (defined in \Cref{par-chd-rels}) means that static
+assertion checking may inherit assertion checking's inferred category of
+``practice''. Based on observations such as this, we categorize testing
+approaches, \emph{including} static ones, based on the remaining categories
+from \citet{IEEE2022}: approach, level, type, technique, and practice.
+\ifnotpaper However, since there are many ways to categorize test approaches
+    (see \Cref{tab:otherCats,tab:otherCategorizations}), considering static
+    testing as an orthogonal distinction could make sense in specific contexts.
+
+    \afterpage{
+        \begin{landscape}
+            % Moved earlier to display nicely in paper
+            \ieeeCatsTable{}
+        \end{landscape}
+    }
+\fi
+
+While the vast majority of identified test approaches can be categorized
+in this way, \ifnotpaper there are some outliers. For example, \fi
+an ``artifact'' category is an addition option\thesisissueref{44,119,39},
+since some terms can refer to the application of
+a test approach and/or the resulting document(s). Because of this, a test
+approach being categorized as a category from \Cref{tab:ieeeCats}
+\emph{and} an artifact is \emph{not} a flaw\thesisissueref{119}
+(see \Cref{multiCats}). \ifnotpaper
+    Additionally, ``test metrics'' were also identified\thesisissueref{21,22},
+    but tracking them is out-of-scope, since they describe methods for
+    \emph{evaluating} testing as opposed to methods for \emph{performing} it.
+    The related test approaches that seek to maximize these metrics are instead
+    captured as kinds of coverage-driven testing (see \Cref{cov-test}) and
+    experience-based testing \citep[p.~34]{IEEE2022}.
+
+\fi
+Excluding \ifnotpaper our proposed \else this \fi ``artifact'' category and the
+``approach'' supercategory, the categories given in \Cref{tab:ieeeCats} seem to
+be orthogonal. For example, ``a test type can be performed at a single test
+level or across several test levels''
+\ifnotpaper
+    (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021})%
+\else
+    \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}%
+\fi, and ``Keyword-Driven Testing [sic] can be applied at all testing levels
+\dots{} and for various types of testing'' \citeyearpar[p.~4]{IEEE2016}.
+This means that a specific test approach can be derived by combining multiple
+test approaches from different categories; for example, formal reviews are a
+combination of formal testing and reviews. \ifnotpaper The following examples
+    are given in the literature; the two subapproaches for each are omitted
+    for brevity as the name of the combination makes it clear what they are:
+
+    \phantomsection{}\label{orth-test-exs}
+    \begin{enumerate}
+        \item Black box conformance testing \citep[p.~25]{JardEtAl1999}
+              %   (combining black box and conformance testing)
+              % Specification-based: Technique (IEEE, 2022, p. 22; 2021, p. 8; Washizaki, 2024, p. 5-10; Hamburg and Mogyorodi, 2024; Souza et al., 2017, p. 3; Firesmith, 2015, pp. 46-47; Sakamoto et al., 2013, p. 344; implied by IEEE, 2022, pp. 2-4, 6-9)
+              % Conformance: Type (implied by its quality (IEEE, 2017, p. 92; OG PMBOK 5th ed.))
+        \item Black-box integration testing \citep[pp.~345\==346]{SakamotoEtAl2013}
+              % Specification-based: Technique (IEEE, 2022, p. 22; 2021, p. 8; Washizaki, 2024, p. 5-10; Hamburg and Mogyorodi, 2024; Souza et al., 2017, p. 3; Firesmith, 2015, pp. 46-47; Sakamoto et al., 2013, p. 344; implied by IEEE, 2022, pp. 2-4, 6-9)
+              % Integration: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
+              %           OR Technique (implied by Sharma et al., 2021, pp. 601, 603, 605-606)
+        \item Checklist-based reviews \citepISTQB{}
+              % Checklist-based: Practice (IEEE, 2022, p. 34), Technique (Hamburg and Mogyorodi, 2024)
+              % Reviews: Approach
+        \item Closed-loop HiL verification \citep[p.~6]{PreußeEtAl2012}
+              % Closed Loop: Technique?
+              % HiL: Out of Scope (hardware)
+        \item Closed-loop protection system testing \citep[p.~331]{ForsythEtAl2004}
+              % Closed Loop: Technique?
+              % System: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; 2017, p. 467; 2016, p. 4; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 439; implied by Barbosa et al., 2006, p. 3; Gerrard, 2000a, p. 13)
+        \item Endurance stability testing \citep[p.~55]{Firesmith2015}
+              % Endurance: Type (IEEE, 2013, p. 2; implied by Firesmith, 2015, p. 55)
+              %         OR Technique (IEEE, 2021, p. 38)
+              % Stability: Type (implied by its quality (IEEE, 2017, p. 434; OG ISO/IEC, 2009) and Firesmith, 2015, p. 55)
+        \item End-to-end functionality testing (\citealp[p.~20]{IEEE2021}; \citealp[Tab.~2]{Gerrard2000a})
+              % End-to-end: Type (Hamburg and Mogyorodi, 2024)
+              %          OR Technique (Firesmith, 2015, p. 47; Sharma et al., 2021, pp. 601, 603, 605-606)
+              % Functionality: Type (implied by its quality (IEEE, 2017, p. 196); Firesmith, 2015, p. 53)
+        \item Formal reviews \citepISTQB{}
+              % Formal: Technique (inferred from informal testing)
+              % Reviews: Approach
+        \item Grey-box integration testing \citep[p.~344]{SakamotoEtAl2013}
+              % Grey-Box: Technique (IEEE, 2021, p. 8; Firesmith, 2015, pp. 46, 48; Sakamoto et al., 2013, p. 344)
+              % Integration: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
+              %           OR Technique (implied by Sharma et al., 2021, pp. 601, 603, 605-606)
+        \item Incremental integration testing \citep[pp.~601, 603, 605\==606]{SharmaEtAl2021}\todo{OG [19]}
+              % Incremental: Practice?
+              % Integration: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
+              %           OR Technique (implied by Sharma et al., 2021, pp. 601, 603, 605-606)
+        \item Informal reviews \citepISTQB{}
+              % Informal: Technique (implied by Kam, 2008, p. 6)
+              % Reviews: Approach
+        \item Infrastructure compatibility testing \citep[p.~53]{Firesmith2015}
+              % Infrastructure: Type (implied by Firesmith, 2015, p. 57)
+              %              OR Level (implied by Gerrard, 2000a, p. 13; see \Cref{tab:ieeeCats})
+              % Compatibility: Type (IEEE, 2022, pp. 3, 22; 2021, p. 37, Tab. A.1; 2013, p. 2; implied by its quality (ISO/IEC, 2023a); Firesmith, 2015, p. 53)
+        \item Invariant-based automatic testing \citep[pp.~184\==185, Tab.~21]{DoğanEtAl2014},
+              including for ``AJAX user interfaces'' \citetext{p.~191}
+              % Assertion Checking: Practice?
+              % Automated: Practice (IEEE, 2022, pp. 20, 22)
+              %         OR Technique (implied by p. 35)
+        \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000a}
+              % Legacy: Approach
+              % System Integration: Level (IEEE, 2022, pp. 12, 22; 2021, p. 6; Hamburg and Mogyorodi, 2024)
+        \item Manual procedure testing \citep[p.~47]{Firesmith2015}
+              % Manual: Practice (IEEE, 2022, p. 22)
+              %      OR Technique (implied by p. 35)
+              % Procedure: Type (IEEE, 2022, pp. 7, 22; 2021, p. 39, Tab. A.1; 2017, p. 337; OG IEEE, 2013)
+              %         OR Technique (implied by Firesmith, 2015, p. 47)
+        \item Manual security audits \citep[p.~28]{Gerrard2000b}
+              % Manual: Practice (IEEE, 2022, p. 22)
+              %      OR Technique (implied by p. 35)
+              % Security Audits: Technique (IEEE, 2021, p. 40)
+              %               OR Type (inferred from security testing)
+        \item Model-based GUI testing (\citealp[Tab.~1]{DoğanEtAl2014}; implied by \citealp[p.~356]{SakamotoEtAl2013})
+              % Model-based: Practice (IEEE, 2022, p. 22; 2021, p. viii)
+              %           OR Technique (Engström and Petersen, 2015, pp. 1-2; Kam, 2008, p. 4; implied by IEEE, 2022, p. 32; 2021, p. 7; 2017, p. 469)
+              % GUI: Approach
+        \item Model-based web application testing (implied by \citealp[p.~356]{SakamotoEtAl2013})
+              % Model-based: Practice (IEEE, 2022, p. 22; 2021, p. viii)
+              %           OR Technique (Engström and Petersen, 2015, pp. 1-2; Kam, 2008, p. 4; implied by IEEE, 2022, p. 32; 2021, p. 7; 2017, p. 469)
+              % Web Application: Approach
+        \item Non-functional search-based testing \citep[Tab.~1]{DoğanEtAl2014}
+              % Non-functional: Approach
+              % Search-based: Technique (Engström and Petersen, 2015, pp. 1-2)
+        \item Offline MBT \citepISTQB{}
+              % Offline: Practice?
+              % Model-based: Practice (IEEE, 2022, p. 22; 2021, p. viii)
+              %           OR Technique (Engström and Petersen, 2015, pp. 1-2; Kam, 2008, p. 4; implied by IEEE, 2022, p. 32; 2021, p. 7; 2017, p. 469)
+        \item Online MBT \citepISTQB{}
+              % Online: Practice?
+              % Model-based: Practice (IEEE, 2022, p. 22; 2021, p. viii)
+              %           OR Technique (Engström and Petersen, 2015, pp. 1-2; Kam, 2008, p. 4; implied by IEEE, 2022, p. 32; 2021, p. 7; 2017, p. 469)
+        \item Role-based reviews \citepISTQB{}
+              % Role-based: Practice?
+              % Reviews: Approach
+        \item Scenario walkthroughs \citep[Fig.~4]{Gerrard2000a}
+              % Scenario: Technique (IEEE, 2022, pp. 9, 22; 2021, pp. 5, 8, 20, Fig. 2; 2017, p. 400; OG 2013; Washizaki, 2024, p. 5-12; Firesmith, 2015, p. 47; Sangwan and LaPlante, 2006, p. 26)
+              % Walkthroughs: Technique (IEEE, 2017, p. 508)
+        \item Scenario-based reviews \citepISTQB{}
+              % Scenario-based: Approach
+              % Reviews: Approach
+        \item Security attacks \citepISTQB{}
+              % Security: Type (IEEE, 2022, pp. 9, 22, 26-27; 2021, pp. 7, 40, Tab. A.1; 2017, p. 405; OG 2013; implied by its quality (ISO/IEC, 2023a; Washizaki, 2024, p. 13-4); Firesmith, 2015, p. 53)
+              % Attacks: Practice (IEEE, 2022, p. 34)
+              %       OR Technique (implied by Hamburg and Mogyorodi, 2024)
+        \item Security audits (\citealp[p.~40]{IEEE2021}; \citealp[p.~28]{Gerrard2000b})
+              % Security: Type (IEEE, 2022, pp. 9, 22, 26-27; 2021, pp. 7, 40, Tab. A.1; 2017, p. 405; OG 2013; implied by its quality (ISO/IEC, 2023a; Washizaki, 2024, p. 13-4); Firesmith, 2015, p. 53)
+              % Audits: Practice?
+        \item Statistical web testing \citep[p.~185]{DoğanEtAl2014}
+              % Statistical: Technique (Kam, 2008, pp. 23, 48)      
+              % Web Application: Approach
+        \item Usability test script(ing) \citepISTQB{}
+              % Usability: Type (IEEE, 2022, pp. 22, 26-27; 2021, pp. 7, 40, Tab. A.1; implied by its quality; Firesmith, 2015, p. 53)
+              % Scripted: Practice (IEEE, 2022, pp. 20, 22; implied by p. 33)
+        \item Web application regression testing \cite[Tab.~21]{DoğanEtAl2014}
+              % Web Application: Approach
+              % Regression: Technique (implied by IEEE, 2022, p. 35)
+              %          OR Level (implied by Barbosa et al., 2006, p. 3)
+        \item White-box unit testing \citep[pp.~345\==346]{SakamotoEtAl2013}
+              % Structure-based: Technique (IEEE, 2022, p. 22; 2021, p. 8; Washizaki, 2024, pp. 5-10, 5-13; Hamburg and Mogyorodi, 2024; Firesmith, 2015, pp. 46, 49; Sakamoto et al., 2013, p. 344; implied by IEEE, 2022, pp. 2, 4, 6, 9; Barbosa et al., 2006, p. 3)
+              % Unit: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; 2017, p. 467; 2016, p. 4; Washizaki, 2024, p. 5-6; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
+              %    OR Technique (implied by Engström and Petersen, 2015, pp. 1-2)
+    \end{enumerate}
+    There are some cases where the subapproaches of the ``compound'' approaches
+    above are \emph{not} from separate categories. However, these cases can be
+    explained by insufficient data or by edge cases that require special care.
+    Further analysis is necessary and may end up showing these categories to be
+    orthogonal. All of these special cases are affected by at least one of the
+    following conditions:
+    \begin{enumerate}
+        \item \textbf{At least one subapproach is categorized inconsistently.}
+              When a subapproach has more than one category (see \Cref{multiCats}),
+              it is unclear which one should be used to assess orthogonality.
+        \item \textbf{At least one subapproach's category is inferred.} When the category
+              of a test approach is not given by the literature but is inferred
+              from related context (see \Cref{infers}), it is unclear if it can
+              be used to assess orthogonality.
+        \item \textbf{At least one subapproach is only categorized as an approach.}
+              Since ``approach'' is a catch-all categorization, it does not
+              need to be orthogonal to its subcategories.
+        \item \textbf{A subapproach is explicitly based on another in the same
+                  category.} An example of this is stability testing, which
+              tests a ``property that an object has with respect to a given
+              failure mode if it cannot exhibit that failure mode''
+              \citep[p.~434\todo{OG ISO/IEC, 2009}]{IEEE2017}. This notion of
+              ``property'' is similar to that of ``quality'' that the test type
+              category is built on, so it is acceptable that is implied to be
+              a test type by its quality \citep[p.~434]{IEEE2017}%
+              \todo{OG ISO/IEC, 2009} and by \citet[p.~55]{Firesmith2015}.
+    \end{enumerate}
+\fi
+
+A side effect of using the terms ``level'', ``type'', ``technique'', and
+``practice'' is that they---perhaps excluding ``level''---can
+be used interchangably or as synonyms for ``approach''. For example,
+\citet[p.~88]{Patton2006} says that if a specific defect is found, it is wise
+to look for other defects in the same location and for similar defects in other
+locations, but does not provide a name for this approach. After researching in
+vain, we ask ChatGPT\footnote{We do \emph{not} take ChatGPT's output to be
+    true at face value; this approach seems to be called ``defect-based
+    testing'' based on the principle of ``defect clustering''
+    \citep{ChatGPT2024}, which \citet{RusEtAl2008} \multiAuthHelper{support}.}
+to name the ``\emph{type} of software testing that focuses on looking for bugs
+where others have already been found''
+\ifnotpaper \citep[emphasis added]{ChatGPT2024}\else \cite{ChatGPT2024}\fi%
+\qtodo{Is this sufficient to explain ChatGPT's role in our methodology?},
+using the word ``type'' in a general sense, akin to ``kind'' or ``subset''.
+Interestingly, ChatGPT ``corrects'' this imprecise term in its response,
+using the more correct term ``approach'' (although it may have been biased by
+our previous usage of these terms)! Because natural language can be ambiguous,
+we need to exercise judgement when determining if these terms are being used
+in a general or technical sense. For example,
+\citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}
+defines interface testing as ``an integration \emph{test type} that is
+concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
+\fi does not define ``test type'', this may not have special significance.
+\ifnotpaper We consider these kinds of ``categorizations'' to be
+    inferred and mark them with a question mark (?)~during data collection.
+    When we evaluate test approaches categorized more than once in
+    \Cref{multiCats}, we list well-defined categorizations in
+    \Cref{tab:multiCats} and inferred ones in \Cref{tab:infMultiCats}.
+
+    Other sources \citep[such as][]{SWEBOK2024,BarbosaEtAl2006}
+    propose similar yet distinct categories that clash or overlap with those
+    from \citep{IEEE2022}, given in \Cref{tab:otherCats}. These may simply map
+    to their ``IEEE Equivalents'', but further analysis may reveal that these
+    other categories provide new perspectives and may be useful in some
+    contexts, either in place of or in tandem with \citet{IEEE2022}'s.
+    \newpage
+
+    % \afterpage{
+    \begin{landscape}
+        % Omitted from paper for brevity
+        \otherCatsTable{}
+    \end{landscape}
+    % }
+
+    Similarly, the literature gives many other ways to categorize test
+    approaches that may be used in tandem with or in place of those given in
+    \Cref{tab:ieeeCats,tab:otherCats}. In general, these are defined less
+    systematically but are more fine-grained, seeming to ``specialize''
+    categories from \Cref{tab:ieeeCats}. The existence of these classifications
+    are not inherently wrong, as they may be useful for specific teams or in
+    certain contexts. For example, functional testing and structural testing
+    ``use different sources of information and have been shown to highlight
+    different problems'', and deterministic testing and random testing have
+    ``conditions that make one approach more effective than the other''
+    \citep[p.~5\=/16]{SWEBOK2024}. Unfortunately, even these alternate
+    categories are not used consistently (see \flawref{manual-or-keyword})!
+
+    These categorizations are given in \Cref{tab:otherCategorizations} for
+    completeness. The bases for these alternate categorizations, along with the
+    example approaches listed, come from the source(s) indicated in the ``Test
+    Basis'' column. When multiple sources are given for a test basis, the union
+    of these sources all list the examples given. By looking at a test basis
+    and its corresponding examples, we can infer its ``Parent IEEE Category'':
+    the IEEE category from \Cref{tab:ieeeCats} it seems to subdivide. The
+    sources provided in this column classify the example approaches given
+    accordingly. For example, in the first row, \citet[pp.~4, 8]{IEEE2021} and
+    \citet[p.~46]{Firesmith2015} both classify specification-based testing,
+    structure-based testing, and grey-box testing as test techniques. A lack of
+    source(s) in this column indicate that this category was inferred or that
+    some or all of the example approaches are not categorized by the
+    literature; additional context is sometimes provided in a footnote.
+
+    \afterpage{
+        \begin{landscape}
+            % Omitted from paper for brevity
+            \otherCategorizationsTable{}
+        \end{landscape}
+    }
+
+    \phantomsection{}\label{method-family}
+    Another way that the IEEE categories can be subdivided is by grouping related
+    testing approaches into a ``class'' or ``family'' with ``commonalities and
+    well-identified variabilities that can be
+    instantiated'', where ``the commonalities are large and the variabilities
+    smaller'' \citep{classFamilyDisc}. Examples of these are the classes of
+    combinatorial \citep[p.~15]{IEEE2021} and data flow testing \citetext{p.~3} and
+    the family of performance-related testing \perfAsFamily{}, and is implied for
+    security testing, a test type that consists of ``a number of
+    techniques\footnote{This may or may not be \distinctIEEE{technique}}''
+    \cite[p.~40]{IEEE2021}. This is explored in more detail in
+    \Cref{classFamilyFlaw}. Note that ``there is a lot of overlap between
+    different classes of testing'' \citep[p.~8]{Firesmith2015}, meaning that ``one
+    category [of test techniques] might deal with combining two or more techniques''
+    \citep[p.~5-10]{SWEBOK2024}. For example, ``performance, load and stress
+    testing might considerably overlap in many areas'' \citep[p.~1187]{Moghadam2019}.
+    A side effect of this is that it is difficult to ``untangle'' these classes;
+    for example, take the following sentence: ``whitebox fuzzing extends dynamic
+    test generation based on symbolic execution and constraint solving from unit
+    testing to whole-application security testing''
+    \citep[p.~23]{GodefroidAndLuchaup2011}! This is, in part, why research on
+    software testing terminology is so vital.
+    \newpage
+\fi
+
+\subsection{Synonym Relations}
+\label{syn-rels}
+
+The same approach often has many names. For example,
+\emph{specification-based testing} is also called\todo{more in Umar2000}:
+\begin{enumerate}
+    \item Black-Box Testing
+          \ifnotpaper
+              (\citealp[p.~9]{IEEE2022}; \citeyear[p.~8]{IEEE2021};
+              \citeyear[p.~431]{IEEE2017}; \citealp[p.~5\=/10]{SWEBOK2024};
+              \citealpISTQB{}; \citealp[p.~46 (without hyphen)]{Firesmith2015};
+              \citealp[p.~344]{SakamotoEtAl2013}; \citealp[p.~399]{vanVliet2000})
+          \else
+              \cite[p.~9]{IEEE2022}, \cite{ISTQB}, \cite[p.~431]{IEEE2017},
+              \cite[p.~5\=/10]{SWEBOK2024}, \cite[p.~8]{IEEE2021},
+              % \cite[p.~46 (without hyphen)]{Firesmith2015},
+              \cite[p.~399]{vanVliet2000},
+              \cite[p.~344]{SakamotoEtAl2013}
+          \fi
+    \item Closed-Box Testing
+          \ifnotpaper
+              (\citealp[p.~9]{IEEE2022}; \citeyear[p.~431]{IEEE2017})
+          \else
+              \cite[p.~9]{IEEE2022}, \cite[p.~431]{IEEE2017}
+          \fi
+    \item Functional Testing\footnote{``Functional testing'' may not
+              \emph{actually} be a synonym for ``specification-based testing'';
+              see \Cref{spec-func-test}.}
+          \ifnotpaper
+              (\citealp[p.~196]{IEEE2017}; \citealp[p.~44]{Kam2008};
+              \citealp[p.~399]{vanVliet2000}; implied by
+              \citealp[p.~129]{IEEE2021}; \citeyear[p.~431]{IEEE2017})
+          \else
+              \cite[p.~196]{IEEE2017}, \cite[p.~399]{vanVliet2000},
+              \cite[p.~44]{Kam2008} (implied by \cite[p.~431]{IEEE2017},
+              \cite[p.~129]{IEEE2021})
+          \fi
+    \item Domain Testing \citep[p.~5\=/10]{SWEBOK2024}
+    \item Specification-oriented Testing \citep[p.~440, Fig.~12.2]{PetersAndPedrycz2000}
+    \item Input Domain-Based Testing (implied by \citealp[pp.~4\=/7 to
+              4\=/8]{SWEBOK2014})
+\end{enumerate}
+
+These synonyms are the same as synonyms in natural language; while they may
+emphasize different aspects or express mild variations, their core meaning
+is nevertheless the same. Throughout our work, we use the terms
+``specification-based testing'' and ``structure-based testing'' to articulate
+the source of the information for designing test cases, but a team or project
+also using grey-box testing may prefer the terms ``black-box'' and ``white-box
+testing'' for consistency. Thus, synonyms are not inherently problematic,
+although they can be (see \Cref{syns}).
+
+Synonym relations are often given explicitly in the literature. For example,
+\citet[p.~9]{IEEE2022} \multiAuthHelper{list} ``black-box testing'' and
+``closed box testing'' beneath the glossary entry for ``specification-based
+testing'', meaning they are synonyms. ``Black-box testing'' is likewise given
+under ``functional testing'' in \citeyearpar[p.~196]{IEEE2017}, meaning it is
+also a synonym for ``specification-based testing'' through transitivity%
+\qtodo{Is this clear/correct? Should I explain this more?}.
+However, these relations can also be less ``rigid'' (see \Cref{rigidity});
+``functional testing'' is listed in a \emph{cf.} footnote to the glossary entry
+for ``specification-based testing'' \citeyearpar[p.~431]{IEEE2017}, which
+supports the previous claim but would not necessarily indicate a synonym
+relation on its own.
+
+Similarly, \citet[p.~5-10]{SWEBOK2024} says ``\emph{specification-based
+    techniques} \dots{} [are] sometimes also called domain
+testing techniques'' in the \acs{swebok} V4, from which the synonym of
+``domain testing'' follows logically. However, its predecessor V3 only
+\emph{implies} the more specific ``input domain-based testing'' as a synonym.
+The section on test techniques says ``the classification of testing techniques
+presented here is based on how tests are generated: from the software
+engineer's intuition and experience, the specifications, the code structure
+\dots'' \citep[p.~4\=/7]{SWEBOK2014}, and the first three subsections on the
+following page are ``Based on the Software Engineer's Intuition and
+Experience'', ``Input Domain-Based Techniques'', and ``Code-Based Techniques''
+\citetext{p.~4\=/8}. The order of the introductory list lines up with these
+sections, implying that ``input domain-based techniques'' are ``generated[]
+from \dots{} the specifications'' (i.e., that input domain-based testing is the
+same as specification-based testing). Furthermore, the examples of input
+domain-based techniques given---equivalence partitioning, pairwise testing,
+boundary-value analysis, and random testing---are all given as children%
+\footnote{
+    Pairwise testing is given as a child of combinatorial testing, which is
+    itself a child of specification-based testing, by \ifnotpaper
+        \citep[Fig.~2]{IEEE2021} and \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}%
+    \else
+        \cite[pp.~5\=/11 to 5\=/12]{SWEBOK2024} and \cite[Fig.~2]{IEEE2021}%
+    \fi, making it a ``grandchild'' of specification-based testing according to
+    these sources.
+} of specification-based testing \ifnotpaper
+    (\citealp{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealpISTQB{})\else
+    \cite{IEEE2022,ISTQB}, \cite[Fig.~2]{IEEE2021}\fi; even V4 agrees with
+this \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}!
+
+\subsection{Parent-Child Relations}
+\label{par-chd-rels}
+Many test approaches are multi-faceted and can be ``specialized'' into others;
+for example, there are many subtypes of performance-related testing,
+such as load testing and stress testing (see \Cref{perf-test-rec}). These
+``specializations'' will be referred to as ``children'' or ``subapproaches''
+of the multi-faceted ``parent''. This nomenclature also extends to other
+categories (such as ``subtype''; see \Cref{categories-observ,tab:ieeeCats})
+and software qualities (``subquality''\ifnotpaper; see \Cref{qual-test}\fi).
+There are many reasons two approaches may have a parent-child relation, such as:
+\begin{enumerate}
+    \item \textbf{One is a superset of the other.} In other words, for one
+          (parent) test approach to be performed in its entirety, the other
+          (child) approach will necessarily be performed as well. This is often
+          the case when one ``well-understood'' subset of testing can be
+          decomposed into smaller, independently performable approaches.
+          When all of these have been completed, we can logically conclude that
+          the parent approach has also been performed! In practice, this is
+          much harder to prove; although many hierarchies exist \ifnotpaper
+              (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021};
+              \citealp{Firesmith2015})\else \cite{Firesmith2015},
+              \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi, these are
+          likely incomplete. As an example, we graph the parent-child relations
+          from \ifnotpaper (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021})
+          \else \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021} \fi in the
+          subdomain of specification-based testing in \Cref{fig:specBasedGraph}
+          (along with relevant data from other sources).
+    \item \textbf{One is ``stronger than'' or ``subsumes'' the other.} When
+          comparing adequacy criteria that ``specif[y] requirements for
+          testing'' \citep[p.~402]{vanVliet2000}, ``criterion X is stronger
+          than criterion Y if, for all programs P and all test sets T,
+          X-adequacy implies Y-adequacy'' \citetext{p.~432}. While this
+          relation only ``compares the thoroughness of test techniques, not
+          their ability to detect faults'' \citetext{p.~434}, it is sufficient
+          to consider one a child of the other in a sense. We capture this
+          nuance by considering these parent-child relations implicit
+          (see \Cref{rigidity}). As an example, we graph the parent-child
+          relations from \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
+              \citealp[Fig.~13.17]{vanVliet2000}) \else
+              \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}
+          \fi in the subdomain of data flow testing can be found in
+          \Cref{fig:subsumesGraph} (along with relevant data from other sources).
+    \item \textbf{The parent approach is part of an orthogonal set.}
+          When presented with a set of generic test approaches that are
+          orthogonal to each other, it is often trivial to classify a given
+          test approach as a child of just one them. For example,
+          \citeauthor{IEEE2022} say that ``testing can take two forms: static
+          and dynamic'' \citeyearpar[p.~17]{IEEE2022} and provide examples of
+          subapproaches of static and dynamic testing \citetext{Fig.~1}.
+          Likewise, \citeauthor{Gerrard2000a} says ``tests can be automated or
+          manual'' \citeyearpar[p.~13]{Gerrard2000a} and gives subapproaches of
+          automated and manual testing \ifnotpaper
+              \citeyearpar[Tab.~2; ][Tab.~1]{Gerrard2000b}\else
+              \citetext{Tab.~2}, \cite[Tab.~1]{Gerrard2000b}\fi. However, the
+          orthogonality of these subsets does not mean they are mutually
+          exclusive; in these same tables, \citeauthor{Gerrard2000a} labels
+          usability testing as both static \emph{and} dynamic and 12 approaches
+          as able to ``be done manually \emph{or} using a tool''
+          \citeyearpar[p.~13\ifnotpaper, emphasis added\fi]{Gerrard2000a}.
+\end{enumerate}
+
+\parChdGraphs{}
