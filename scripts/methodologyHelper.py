@@ -3,35 +3,47 @@ import re
 from helpers import capFirst, wrapEnv, writeFile
 
 CAT_FOOTNOTE = "\n\t".join([
-    "\\footnote{",
-    "There may be more than one category given for a single test approach ",
+    "\\footnote{"
+    "A single test approach with more than one category ",
     "\\ifnotpaper (for example, A/B Testing in \\Cref{tab:approachGlossaryExcerpt}) \\fi ",
-    "which is indicative of a flaw (see \\Cref{multiCats}).} \n"])
+    "indicates an underlying flaw; see \\Cref{multiCats}.} \n"])
 toRecord: list[str] = [
-    "name", f"category{CAT_FOOTNOTE}(\\Cref{{categories-observ}})",
-    "definition", "synonyms (\\Cref{syn-rels})",
+    "names", f"categories{CAT_FOOTNOTE}(\\Cref{{categories-observ}})",
+    "definitions", "synonyms (\\Cref{syn-rels})",
     "parents (\\Cref{par-chd-rels})",
     "flaws\\phantomsection{}\\label{manual-flaws} (in a separate document)\
     \\latertodo{Define in \\nameref{terminology}; \\thesisissuerefhelper{140}}"]
+relatedTerms: list[str] = [
+    "imply related test approaches (\\Cref{derived-tests})",
+    "are used repeatedly",
+    "have complex definitions"
+]
 
 OTHER_NOTES = "other relevant notes"
 OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
                              "and other resources"])
 
-methodology_a = """    \\item \\phantomsection{}\\label{identify-sources}
-          Identify authoritative sources \\ifnotpaper on software testing \\fi (\\Cref{sources})
-    \\item \\phantomsection{}\\label{identify-terms}
-          Identify software testing terminology from each source, including
-          test approaches and terms that imply them (\\Cref{derived-tests})
-    \\item \\phantomsection{}\\label{record-terms}
-          For each test approach, record its: (\\Cref{procedure})\n""" + "\n".join([
+methodology_a = """
+    \\item \\phantomsection{}\\label{identify-sources}
+          Identify authoritative sources \\ifnotpaper on software testing
+          \\fi (\\Cref{sources})
+    \\item \\phantomsection{}\\label{record-apps}
+          Identify all test approaches from each source and record their:
+          (\\Cref{procedure})\n""" + "\n".join([
         f"\t\t  {line}" for line in wrapEnv(
             "enumerate", [f"\t\\item {capFirst(i)}"
                           for i in toRecord + [OTHER_NOTES +
                                                f" (e.g., {OTHER_NOTES_EXS})"]])
-        ]) + """\n    \\item Repeat steps~\\ref{identify-sources} to
-          \\ref{record-terms} on any subsets of terminology that are missing or
-          unclear (\\Cref{undef-terms}) until some stopping criteria
+        ]) + """
+    \\item \\phantomsection{}\\label{record-terms}
+          Alongside step~\\ref{record-apps}, identify and record related
+          testing terms that:\n""" + "\n".join([
+        f"\t\t  {line}" for line in wrapEnv(
+            "enumerate", [f"\t\\item {capFirst(i)}" for i in relatedTerms])
+          ]) + """
+    \\item Repeat steps~\\ref{identify-sources} to
+          \\ref{record-terms} for any missing or unclear terms
+          (\\Cref{undef-terms}) until some stopping criteria
           \\imptodo{Define/add pointer}"""
     
 methodology_b = """    \\item Analyze recorded test approach data for additional flaws
@@ -60,7 +72,21 @@ for i, m in enumerate([methodology_a, methodology_b]):
 
     # Hack because enumitem conflicts with beamer :(
     m = m.replace("\\ref{manual-flaws}",
-                  "\\ref{record-terms}.\\ref{manual-flaws}")
+                  "\\ref{record-apps}.\\ref{manual-flaws}")
+
+    if not i:
+        PHANTOM_SEC = "phantomsection"
+        NEG_SPACE = "\\vspace*{-0.4cm}"
+        m = m.split(PHANTOM_SEC)
+        # TODO: this is VERY hardcoded
+        m[2] = m[2].replace("\\begin{enumerate}",
+                            NEG_SPACE + "\\begin{multicols}{3}\\begin{enumerate}")
+        m[3] = m[3].replace("\\item Other relevant notes\n", "")
+        m[3] = m[3].replace("\\end{enumerate}",
+                            # With help from https://tex.stackexchange.com/a/514630/192195
+                            # "\\item[\\vspace{\\fill}]"
+                            "\\end{enumerate}\\end{multicols}" + NEG_SPACE)
+        m = PHANTOM_SEC.join(m)
 
     mList = m.split("\n")
     # From https://tex.stackexchange.com/a/1702/192195!
