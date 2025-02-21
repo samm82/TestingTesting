@@ -25,10 +25,10 @@ OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
 
 methodology_a = """
     \\item \\phantomsection{}\\label{identify-sources}
-          Identify authoritative sources \\ifnotpaper on software testing
+          Identifying authoritative sources \\ifnotpaper on software testing
           \\fi (\\Cref{sources})
     \\item \\phantomsection{}\\label{record-apps}
-          Identify all test approaches from each source and record their:
+          Identifying all test approaches from each source and recording their:
           (\\Cref{procedure})\n""" + "\n".join([
         f"\t\t  {line}" for line in wrapEnv(
             "enumerate", [f"\t\\item {capFirst(i)}"
@@ -36,26 +36,26 @@ methodology_a = """
                                                f" (e.g., {OTHER_NOTES_EXS})"]])
         ]) + """
     \\item \\phantomsection{}\\label{record-terms}
-          Alongside step~\\ref{record-apps}, identify and record related
+          Alongside step~\\ref{record-apps}, identifying and recording related
           testing terms that:\n""" + "\n".join([
         f"\t\t  {line}" for line in wrapEnv(
             "enumerate", [f"\t\\item {capFirst(i)}" for i in relatedTerms])
           ]) + """
-    \\item Repeat steps~\\ref{identify-sources} to
+    \\item Repeating steps~\\ref{identify-sources} to
           \\ref{record-terms} for any missing or unclear terms
           (\\Cref{undef-terms}) until some stopping criteria
           \\imptodo{Define/add pointer}"""
     
-methodology_b = """    \\item Analyze recorded test approach data for additional flaws
+methodology_b = """    \\item Analyzing recorded test approach data for additional flaws
           \\begin{enumerate}
-              \\item Generate relation graphs (\\Cref{\\ifnotpaper graph-gen\\else tools\\fi})
-              \\item Automatically detect certain classes of flaws
+              \\item Generating relation graphs (\\Cref{\\ifnotpaper graph-gen\\else tools\\fi})
+              \\item Automatically detecting certain classes of flaws
                     \\ifnotpaper (\\Cref{auto-flaw-analysis}) \\fi
-              \\item Automatically analyze manually recorded flaws from
+              \\item Automatically analyzing manually recorded flaws from
                     step~\\ref{manual-flaws} \\ifnotpaper (\\Cref{aug-flaw-analysis}) \\fi
           \\end{enumerate}
-    \\item Report results of flaw analysis (\\Cref{flaws})
-    \\item Provide examples of how to resolve these flaws (\\Cref{recs})"""
+    \\item Reporting results of flaw analysis (\\Cref{flaws})
+    \\item Providing examples of how to resolve these flaws (\\Cref{recs})"""
     
 # Base methodology overview
 writeFile(wrapEnv("enumerate", [methodology_a, methodology_b]),
