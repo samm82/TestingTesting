@@ -6,7 +6,7 @@
 
 \begin{document}
 
-\digraph{manualLegendNonSolidTerms}{
+\digraph{manualLegend}{
 margin=0
 subgraph cluster_legend {
 margin=8
@@ -39,12 +39,17 @@ syn3 [label=<Term>]
 syn4 [label=<Synonym<br/>to Both> style="dotted"]
 syn5 [label=<Term>]
 syn3 -> syn4 -> syn5 [dir=none]
+dyn [label=<Dynamic<br/>Approach> style="filled"]
 }
 edge [style="invis"]
 chd -> imp1 -> imp5
 par -> imp2 -> syn3
 syn1 -> imp3 -> syn4
 syn2 -> imp4 -> syn5
+imp1 -> syn3
+imp2 -> syn4
+imp3 -> syn5
+imp4 -> dyn
 }
 }
 
