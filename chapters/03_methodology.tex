@@ -481,8 +481,7 @@ that our procedure constructively uncovers new terminology.
 In addition to terms with missing definitions, some terms do not appear in
 the literature at all! While most test approaches arise as a result of our
 snowballing approach, we each have preexisting knowledge of what test
-approaches exist (a form of experience-based testing, if you will%
-\qtodo{Is this ``joke'' too distracting?}).
+approaches exist (a form of experience-based testing, if you will).
 As an example, we are surprised that property-based testing is not mentioned
 in any sources investigated, even using it as a target ``stopping point''
 throughout this process\thesisissueref{57,81,88,125}\qtodo{I think these issue
@@ -492,16 +491,18 @@ independently of snowballing may serve as starting points for continuing
 research if they are not mentioned by the literature. The following terms come
 from previous knowledge, conversations with colleagues, research for other
 projects, or ad hoc cursory research to see what other test approaches exist:
-\ifnotpaper \begin{multicols}{2} \fi
+\begin{minipage}{\linewidth}
+    \begin{multicols}{2}
         \begin{enumerate}
             \item Chaos engineering
-            \item Chosen-ciphertext attacks
+            \item Chosen-ciphertext \ifnotpaper\else \\ \fi attacks
             \item Concolic testing
             \item Concurrent testing
             \item Destructive testing
             \item Dogfooding
             \item Implementation-based testing
-            \item Interaction-based testing
+            \item \ifnotpaper Interaction-based \else \columnbreak
+                      Interaction-based \\ \fi testing
             \item Lunchtime attacks\ifnotpaper%
                       \footnote{In previous meetings, Dr.~Smith mentioned
                           that with the number of test approaches that suggest
@@ -514,9 +515,10 @@ projects, or ad hoc cursory research to see what other test approaches exist:
                   \fi
             \item Parallel testing
             \item Property-based testing
-            \item Pseudo-random bit testing
+            \item Pseudo-random bit \ifnotpaper\else \\ \fi testing
             \item Rubber duck testing
             \item Shadow testing
-            \item Situational Testing
+            \item Situational testing
         \end{enumerate}
-        \ifnotpaper \end{multicols} \fi
+    \end{multicols}
+\end{minipage}

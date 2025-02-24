@@ -174,26 +174,26 @@ these nuances completely! \refHelper \bugPattonFlaw{}
     would only have to determine which one best suits their needs.
 \fi
 
-But why are minor differences between terms like these even important? Our
-previous list of terms ``error'', ``fault'', ``failure'', and ``defect''
-are used to describe many test approaches, including:%
-\qtodo{Should I include a list of sources that describe each, or
-    would that make this too cluttered?}
-\begin{enumerate}
-    \item Defect-based testing
-    \item Error forcing
-    \item Error guessing
-    \item Error tolerance testing
-    \item Error-based testing
-    \item Error-oriented testing
-    \item Failure tolerance testing
-    \item Fault injection testing
-    \item Fault seeding
-    \item Fault sensitivity testing
-    \item Fault tolerance testing
-    \item Fault tree analysis
-    \item Fault-based testing
-\end{enumerate}
+But why are minor differences between terms like these even important? The
+previously defined terms ``error'', ``fault'', ``failure'', and ``defect''
+are used to describe many test approaches, including:
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item Defect-based testing
+        \item Error forcing
+        \item Error guessing
+        \item Error tolerance testing
+        \item Error-based testing
+        \item Error-oriented testing
+        \item Failure tolerance \ifnotpaper\else \\ \fi testing
+        \item Fault injection testing
+        \item Fault seeding
+        \item Fault sensitivity \ifnotpaper\else \\ \fi testing
+        \item Fault tolerance testing
+        \item Fault tree analysis
+        \item Fault-based testing
+    \end{enumerate}
+\end{multicols}
 When considering which approaches to use or when actually using them, the
 meanings of these four terms inform what their related approaches accomplish
 and how to they are performed. For example, the tester needs to know what a
@@ -201,8 +201,7 @@ and how to they are performed. For example, the tester needs to know what a
 inject? Information such as this is critical to the testing team, and should
 therefore be standardized.
 
-These types of ambiguities\qtodo{Is this OK to use here w.r.t.
-    \#140?} can lead to miscommunications---such as that
+These kinds of discrepancies can lead to miscommunications---such as that
 previously mentioned by \citet[p.~7]{KanerEtAl2011}---and are prominent in the
 literature. \expBasedCatMain{} \tourFlaw{} \loadFlaw{} \alphaFlaw{}
 It is clear that there is a notable gap in the literature, one which we
