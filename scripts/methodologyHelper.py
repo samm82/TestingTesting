@@ -57,8 +57,7 @@ methodology_b = """    \\item Analyzing recorded test approach data for addition
     \\item Providing examples of how to resolve these flaws (\\Cref{recs})"""
     
 # Base methodology overview
-writeFile(wrapEnv("enumerate", [methodology_a, methodology_b]),
-          "methodOverview", helper=True)
+writeFile(wrapEnv("enumerate", [methodology_a]), "methodOverview", helper=True)
 
 methodOverviewSem = []
 m: str
