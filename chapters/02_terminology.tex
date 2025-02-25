@@ -15,7 +15,7 @@ follow logically from the literature. We define them here for clarity
 since we use them throughout this \docType{}, even though they are
 ``results'' of our research.
 
-\subsection{Flaws, etc.}\label{flaw-def}
+\subsection{Flaws/Discrepancies}\label{flaw-def}
 
 Before we can start tracking and discussing flaws, we need to be clear about
 what we mean by the term. This whole project critiques the lack of clarity,
@@ -47,6 +47,59 @@ the notion of ``engineering flaws and violations'' supports our critique of the
 engineering process as a whole, including its supporting documents. Due to this
 precedence and its rarity in the literature, we use the term ``flaw'' to refer
 to anything ``wrong'' with software testing literature.
+
+Perhaps the most obvious example of something being ``wrong'' with the
+literature is that a piece of information it presents is incorrect---``wrong''
+in the literal sense. However, if our standards for correctness require
+clarity, consistency, and robustness, then there are many ways for a flaw to
+manifest. This is one view we take when observing, recording, and analyzing
+flaws: \emph{how} or \emph{why} information is ``wrong''. We observe the
+``manifestations'' described in \Cref{tab:sntxFlawKinds} throughout the
+literature, and give each a unique key for later analysis and discussion. We
+list them in descending order of severity, although this is partially
+subjective: while some may disagree with our ranking, it is clear that
+information being incorrect is worse than it being repeated. This ordering has
+the benefit of serving as a ``flowchart'' for classifying flaws. For example,
+if a piece of information is not intrinsically incorrect, then there are five
+remaining manifestation types the flaw can be!
+
+\begin{table*}[hbtp!]
+    \centering
+    \begin{talltblr}[
+        note{a} = {We use \texttt{WRONG} here to avoid clashing with \texttt{MISS}.},
+        note{b} = {We use \texttt{MISS} here to be more meaningful in isolation,
+                as it implies the synonym of ``missing''; \texttt{OMISS} would
+                be unintuitive and \texttt{OMIT} would be inconsistent with the
+                keys being adjective-based.},
+        caption = {Observed flaw manifestations.},
+        label = {tab:sntxFlawKinds}
+        ]{
+        colspec={|Q[c,m]X[l,m]Q[c,m]|},
+        column{3} = {font=\ttfamily}, row{1} = {font=\normalfont},
+        width = \textwidth, rowhead = 1
+        }
+        \hline
+        \thead{Subset of Flaws} & \thead{Description}                                   & \thead{Key}       \\
+        \hline
+        \nameref{wrong}         & Information is incorrect                              & WRONG\TblrNote{a} \\
+        \nameref{miss}          & Information that should be included is not            & MISS\TblrNote{b}  \\
+        \nameref{contra}        & Information from multiple places conflicts            & CONTRA            \\
+        \nameref{ambi}          & Information is unclear                                & AMBI              \\
+        \nameref{over}          & Information is nonatomic or used in multiple contexts & OVER              \\
+        \nameref{redun}         & Information is redundant                              & REDUN             \\
+        \hline
+    \end{talltblr}
+\end{table*}
+
+While we use the general term ``flaw'' to encompass all of these
+manifestations, it has its limitations. In particular, when referring to a flaw
+with more than one source (such as a contradiction or an overlap), it is
+awkward to call it a ``flaw between two sources''\thesisissueref{140}. A more
+intuitive way to describe this situation is that there is a ``discrepancy''
+between the sources. This clearly indicates that there is disagreement between
+the sources, but also does not imply that either one is correct---the
+discrepancy could be with some ground truth\qtodo{Is this term well understood?}
+if \emph{neither} source is correct\thesisissueref{140,151}!
 
 \subsection{Rigidity}
 \label{rigidity}
