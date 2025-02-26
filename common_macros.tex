@@ -233,7 +233,10 @@
 \def\papersTbl{\hyperref[papers]{Papers and Others}}
 
 \def\srcCat{\hyperref[sources]{Source Tier}}
-\def\reduns{\ifnotpaper\nameref{redun}\else Redundancies\footnote{Section omitted for brevity.}\fi}
+\def\redunsNote{Section omitted for brevity.}
+% Assisted by GitHub Copilot
+\NewDocumentCommand{\reduns}{s o}{\ifnotpaper\nameref{redun}\else%
+        Redundancies\IfBooleanTF{#1}{\TblrNote{#2}}{\footnote{\redunsNote}}\fi}
 
 \def\flawCount{\totalSmntcFlawBrkdwn{13}}
 
@@ -244,7 +247,7 @@
 \def\terms{\hyperref[terms]{Terminology}}
 \def\cites{\hyperref[cites]{Citations}}
 
-% `macro` command assisted by GitHub Copilot
+% Assisted by GitHub Copilot
 \newcommand\macro[2][]{\texttt{\textbackslash#2\{#1\}}}
 
 %------------------------------------------------------------------------------

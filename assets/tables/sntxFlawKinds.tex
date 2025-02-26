@@ -1,4 +1,5 @@
-\begin{table*}[hbtp!]
+\newcommand\redunsNoteHelper[1]{\ifnotpaper\vspace*{-0.4cm}\else#1\fi}
+\begin{table}[tb]
     \centering
     \begin{talltblr}[
         note{a} = {We use \texttt{WRONG} here to avoid clashing with \texttt{MISS}.},
@@ -6,12 +7,14 @@
                 as it implies the synonym of ``missing''; \texttt{OMISS} would
                 be unintuitive and \texttt{OMIT} would be inconsistent with the
                 keys being adjective-based.},
+        % HACK: paper footnote not linking properly
+        note{\redunsNoteHelper{c}} = {\redunsNoteHelper{\redunsNote}},
         caption = {Observed flaw manifestations.},
         label = {tab:sntxFlawKinds}
         ]{
         colspec={|Q[c,m]X[l,m]Q[c,m]|},
         column{3} = {font=\ttfamily}, row{1} = {font=\normalfont},
-        width = \textwidth, rowhead = 1
+        width = \columnwidth, rowhead = 1
         }
         \hline
         \thead{Subset of Flaws} & \thead{Description}                                   & \thead{Key}       \\
@@ -21,7 +24,7 @@
         \nameref{contra}        & Information from multiple places conflicts            & CONTRA            \\
         \nameref{ambi}          & Information is unclear                                & AMBI              \\
         \nameref{over}          & Information is nonatomic or used in multiple contexts & OVER              \\
-        \nameref{redun}         & Information is redundant                              & REDUN             \\
+        \reduns*[c]             & Information is redundant                              & REDUN             \\
         \hline
     \end{talltblr}
-\end{table*}
+\end{table}

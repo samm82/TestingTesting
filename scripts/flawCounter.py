@@ -145,7 +145,7 @@ class FlawSntx(Enum):
     CONTRA = "Contradictions"
     AMBI   = "Ambiguities"
     OVER   = "Overlaps"
-    REDUN  = "Redunancies"
+    REDUN  = "Redundancies"
 
 COMPLEX_TEX_FILES = [
     "build/multiCats.tex",
