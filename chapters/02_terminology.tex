@@ -96,8 +96,7 @@ straightforward enough to not require their own sections, but they do have some
 nuance.\latertodo{Explain later once we (a) move all defs here from the flaws
     section and (b) agree on what to do about the ``citation'' domain.}
 
-\subsection{Rigidity}
-\label{rigidity}
+\subsection{Rigidity}\label{rigidity}
 
 % Excluded from macro table since it is only used in this subsection
 \def\impKeywordsCode{\seeSrcCode{82167b7}{scripts/helpers.py}{21}{49}}
@@ -234,8 +233,23 @@ time'' but not always. \ifnotpaper As an example, \Cref{tab:parSyns} contains
     relations that are explicit, implicit, and both; implicit relations are
     marked by the phrase ``implied by''. \fi
 
-\subsection{Approach Categories}
-\label{cats-def}
+\subsection{Trustworthiness}\label{trust}
+
+In the same way we distinguish between the rigidity of information from
+different sources, we also wish to distinguish between the ``rigidity'' of the
+sources themselves! Of course, we do not want to overload terms, so we define a
+source as more ``trustworthy'' if it:
+\begin{itemize}
+    \item has gone through a peer-review process,
+    \item is written by numerous, well-respected authors,
+    \item cites a (comparatively) large number of sources, and/or
+    \item is accepted and used in the field of software.
+\end{itemize}
+Sources may meet only some of these criteria, so we use our judgement (along
+with the format of the sources themselves) when comparing them
+(cf.~\Cref{sources}).
+
+\subsection{Approach Categories}\label{cats-def}
 
 While there are many ways to categorize software testing approaches, perhaps
 the most widely used is the one given by \ifnotpaper\else \citeauthor{IEEE2022}

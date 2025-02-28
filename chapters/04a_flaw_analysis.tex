@@ -16,7 +16,8 @@ automated tools (\Cref{aug-flaw-analysis}). This gives us an overview of:
 To understand where flaws exist in the literature, we group them based on the
 source tier(s) responsible for them. Each flaw is then counted \emph{once} per
 source tier if it appears within it \emph{and/or} between it and a more
-``trusted'' tier. This avoids counting the same flaw more than once for a given
+``trusted'' tier (see \Cref{trust,sources}). This avoids counting the same flaw
+more than once for a given
 source tier\thesisissueref{83}, which would give the number of \emph{occurrences}
 of all flaws instead of the more useful number of flaws \emph{themselves}. The
 exception to this is \Cref{fig:flawSources}, which counts the following sources
@@ -277,8 +278,8 @@ two documents' formats, such as how they handle citations, using this basic form
 \end{displayquote}
 For example, in \Cref{nonIEEE-sources}, we provide a list of non-IEEE sources
 that support a claim made by the IEEE. Since we sort sources based on
-trustworthiness (see \Cref{sources}), publication year, and number of authors,
-the relevant thesis code is:
+trustworthiness (defined in \Cref{trust}), publication year, and number of
+authors, the relevant thesis code is:
 \begin{displayquote}
     \texttt{(\textbackslash citealp[pp.\textasciitilde 5\textbackslash =/6 to 5\textbackslash =/7]\{SWEBOK2024\};
         \displayNL \textbackslash citealpISTQB\{\};
