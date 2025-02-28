@@ -238,7 +238,7 @@ class MultiCatInfo():
     def __init__(self, name, capHelper) -> None:
         self.name = name
         self.caption = (f"Test approaches {capHelper} more than one " +
-                         "\\hyperref[categories-observ]{category}.")
+                         "\\hyperref[cats-def]{category}.")
         self.lines: list[str] = []
         self.lenTotals: list[tuple[int, int]] = []
 

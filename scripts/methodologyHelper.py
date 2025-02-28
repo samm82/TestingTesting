@@ -8,7 +8,7 @@ CAT_FOOTNOTE = "\n\t".join([
     "\\ifnotpaper (for example, A/B Testing in \\Cref{tab:approachGlossaryExcerpt}) \\fi ",
     "indicates an underlying flaw; see \\Cref{multiCats}.} \n"])
 toRecord: list[str] = [
-    "names", f"categories{CAT_FOOTNOTE}(\\Cref{{categories-observ}})",
+    "names", f"categories{CAT_FOOTNOTE}(\\Cref{{cats-def}})",
     "definitions", "synonyms (\\Cref{syn-rels})",
     "parents (\\Cref{par-chd-rels})",
     "flaws\\phantomsection{}\\label{manual-flaws} (\\Cref{flaw-def}) (in a separate document)"]
