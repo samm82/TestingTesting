@@ -156,9 +156,10 @@ conflicting sources of information in X.
     \texttt{\% Flaw count: \{X\}\\\% Flaw count: \{X\} | \{X\}\\
         \% Flaw count: \{X\} | \{X\} \{Y\}}
 \end{displayquote}
-We do not double count discrepancies that reappear when comparing between pairs
-of groups; this means the following line adds discrepancies between X and Z
-\emph{and} between Y and Z without double counting the discrepancy between X and Z.
+We do not double count flaws that reappear when comparing between pairs of
+groups; this means the following line adds inconsistencies between X and Z
+\emph{and} between Y and Z without double counting the inconsistency between
+X and Z.\qtodo{Does this flow well in light of \thesisissuerefhelper{155}?}
 \begin{displayquote}
     \texttt{\% Flaw count: \{X\} | \{X\} \{Y\} | \{Z\}}
 \end{displayquote}
@@ -170,7 +171,7 @@ To give a more complete example, the line
 is parsed as the example given in \Cref{flaw-analysis-example}. Since
 \texttt{IEEE2022} and \texttt{IEEE2017} are written by the same standards
 organizations (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), we count
-this as a discrepancy between documents by the same author(s) in
+this as an inconsistency between documents by the same author(s) in
 \Cref{fig:flawSources}\latertodo{Link to this specific flaw?}.
 
 We can also specify the rigidity (see \Cref{rigidity}) of a flaw by inserting
@@ -188,10 +189,10 @@ is less ``rigid'' than the first flaw within standards (see \Cref{stds}).
 The rest increment their corresponding count in
 \Cref{fig:flawSources,tab:sntxFlaws,tab:smntcFlaws} by only one:
 \begin{itemize}
-    \item an explicit discrepancy between documents by
+    \item an explicit inconsistency between documents by
           \begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper},
-    \item an implicit discrepancy within a single document, and
-    \item an implicit discrepancy between a paper and a standard.
+    \item an implicit flaw within a single document, and
+    \item an implicit inconsistency between a paper and a standard.
 \end{itemize}
 
 Occasionally, we use a source from a lower tier as the ``ground truth'' for a
