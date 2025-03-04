@@ -77,17 +77,17 @@ analysis that has not been performed yet.
 
 \ifnotpaper \newpage \fi
 
-\input{assets/tables/smntcFlawKinds}
+\input{assets/tables/flawDmnDefs}
 
 Another way to categorize flaws is by \emph{what} information is wrong, which
 we call the flaw's ``domain''. We describe those we observe in
-\Cref{tab:smntcFlawKinds}, and tracking these uncovers which knowledge domains
+\Cref{tab:flawDmnDefs}, and tracking these uncovers which knowledge domains
 are less standardized (and should therefore be approached with more rigour)
 than others. Note that this is an orthogonal categorization to that of a flaw's
 manifestation: each flaw \emph{manifests} in a particular \emph{domain}. This
 means that we give each flaw two keys (one for each classification) and
 present our observations according to these two views in \Cref{tab:flawMnfsts,%
-    tab:smntcFlaws}. We explicitly define some of these domains in future
+    tab:flawDmns}. We explicitly define some of these domains in future
 chapters and thus present them in that same order. The remaining domains are
 straightforward enough to not require their own sections, but they do have some
 nuance.\latertodo{Explain later once we (a) move all defs here from the flaws
@@ -113,7 +113,7 @@ directly within the literature, we also use them to track rigidity without
 getting distracted by less relevant details by summarizing the relevant
 nuance. This allows us to provide a more complete picture of the state of
 the literature; for example, we can view implicit flaws separately in
-\Cref{tab:flawMnfsts,tab:smntcFlaws}, since additional context may rectify
+\Cref{tab:flawMnfsts,tab:flawDmns}, since additional context may rectify
 them. Any kind of information can be implicit, including the names,
 \approachFields{} of identified test approaches. All sources cited throughout
 this \docType{} support their respective

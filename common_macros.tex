@@ -218,17 +218,17 @@
 
 \def\srcCount{\the\numexpr\stdSources{3} + \metaSources{3} + \textSources{3} + \paperSources{3}}
 
-\ReadFile{\stdSmntcFlawBrkdwn}{build/stdSmntcFlawBrkdwn}
-\ReadFile{\metaSmntcFlawBrkdwn}{build/metaSmntcFlawBrkdwn}
-\ReadFile{\textSmntcFlawBrkdwn}{build/textSmntcFlawBrkdwn}
-\ReadFile{\paperSmntcFlawBrkdwn}{build/paperSmntcFlawBrkdwn}
-\ReadFile{\totalSmntcFlawBrkdwn}{build/totalSmntcFlawBrkdwn}
+\ReadFile{\stdFlawDmnBrkdwn}{build/stdFlawDmnBrkdwn}
+\ReadFile{\metaFlawDmnBrkdwn}{build/metaFlawDmnBrkdwn}
+\ReadFile{\textFlawDmnBrkdwn}{build/textFlawDmnBrkdwn}
+\ReadFile{\paperFlawDmnBrkdwn}{build/paperFlawDmnBrkdwn}
+\ReadFile{\totalFlawDmnBrkdwn}{build/totalFlawDmnBrkdwn}
 
-\ReadFile{\stdSntxFlawBrkdwn}{build/stdSntxFlawBrkdwn}
-\ReadFile{\metaSntxFlawBrkdwn}{build/metaSntxFlawBrkdwn}
-\ReadFile{\textSntxFlawBrkdwn}{build/textSntxFlawBrkdwn}
-\ReadFile{\paperSntxFlawBrkdwn}{build/paperSntxFlawBrkdwn}
-\ReadFile{\totalSntxFlawBrkdwn}{build/totalSntxFlawBrkdwn}
+\ReadFile{\stdFlawMnfstBrkdwn}{build/stdFlawMnfstBrkdwn}
+\ReadFile{\metaFlawMnfstBrkdwn}{build/metaFlawMnfstBrkdwn}
+\ReadFile{\textFlawMnfstBrkdwn}{build/textFlawMnfstBrkdwn}
+\ReadFile{\paperFlawMnfstBrkdwn}{build/paperFlawMnfstBrkdwn}
+\ReadFile{\totalFlawMnfstBrkdwn}{build/totalFlawMnfstBrkdwn}
 
 \def\stds{\nameref{stds}}
 \def\metas{\nameref{metas}}
@@ -242,7 +242,7 @@
 \NewDocumentCommand{\reduns}{s o}{\ifnotpaper\nameref{redun}\else%
         Redundancies\IfBooleanTF{#1}{\TblrNote{#2}}{\footnote{\redunsNote}}\fi}
 
-\def\flawCount{\totalSmntcFlawBrkdwn{13}}
+\def\flawCount{\totalFlawDmnBrkdwn{13}}
 
 \def\cats{\hyperref[cats]{Categories}}
 \def\syns{\hyperref[syns]{Synonyms}}

@@ -110,14 +110,14 @@ class FlawCounter:
         self.groundTruth, self.withinDoc, self.withinAuth = 0, 0, 0
         # Differences between two categories; may be within the same category
         self.betweenCats = {k : 0 for k in SrcCat if k.value <= value}
-        self.smntcFlaws = OrderedDict({dc : ExpImpCounter() for dc in FlawSmntc})
-        self.flawMnfsts = OrderedDict({dc : ExpImpCounter() for dc in FlawSntx})
+        self.flawDmns = OrderedDict({dc : ExpImpCounter() for dc in FlawDmn})
+        self.flawMnfsts = OrderedDict({dc : ExpImpCounter() for dc in FlawMnfst})
 
     def __str__(self):
         return "\n".join(filter(None, [
             ", ".join(map(str, [self.groundTruth, self.withinDoc, self.withinAuth])),
             "Diffs: " + ", ".join([f"{k.name} {v}" for k, v in self.betweenCats.items()]),
-            " | ".join(map(str, self.smntcFlaws.values())),
+            " | ".join(map(str, self.flawDmns.values())),
             " | ".join(map(str, self.flawMnfsts.values())),
             ])) + "\n"
 
@@ -126,12 +126,12 @@ class FlawCounter:
                             [sum(v.count() for v in d.values())])
 
     def getCatCounts(self):
-        return FlawCounter._countHelper(self.smntcFlaws)
+        return FlawCounter._countHelper(self.flawDmns)
 
     def getClsCounts(self):
         return FlawCounter._countHelper(self.flawMnfsts)
 
-class FlawSmntc(Enum):
+class FlawDmn(Enum):
     CATS  = "Categories"
     SYNS  = "Synonyms"
     PARS  = "Parents"
@@ -139,7 +139,7 @@ class FlawSmntc(Enum):
     TERMS = "Terminology"
     CITES = "Citations"
 
-class FlawSntx(Enum):
+class FlawMnfst(Enum):
     WRONG  = "Mistakes"
     MISS   = "Omissions"
     CONTRA = "Contradictions"
@@ -167,8 +167,8 @@ def enumOrItem(k):
     # and https://tex.stackexchange.com/a/338027/192195
     return (k, ["\\ifnotpaper", f"\\begin{{enumerate}}[ref={k.value}~Flaw~\\arabic*]",
                       "\\else", f"\\begin{{itemize}}", "\\fi"])
-simpleFlawSmntc = OrderedDict([enumOrItem(k) for k in FlawSmntc])
-simpleFlawSntx  = OrderedDict([enumOrItem(k) for k in FlawSntx])
+simpleFlawDmn = OrderedDict([enumOrItem(k) for k in FlawDmn])
+simpleFlawMnfst  = OrderedDict([enumOrItem(k) for k in FlawMnfst])
 
 def outputFlaws():
     flawDict = {k : FlawCounter(k.value) for k in SrcCat if k.color.value >= 0}
@@ -178,9 +178,9 @@ def outputFlaws():
         print()
 
     def getFlawGroups(s):
-        smntcFlaw, sntxFlaw = re.search(
+        flawDmn, flawMnfst = re.search(
             r"% Flaw count \(([A-Z]+), ([A-Z]+)\):", s).groups()
-        return FlawSmntc[smntcFlaw], FlawSntx[sntxFlaw]
+        return FlawDmn[flawDmn], FlawMnfst[flawMnfst]
 
     for filename in TEX_FILES:
         with open(filename, "r", encoding="utf-8") as file:
@@ -193,22 +193,22 @@ def outputFlaws():
                             "\\item % Flaw count ")[1:]]
 
         if "extra" in filename:
-            for smntcKey in simpleFlawSmntc.keys():
-                simpleFlawSmntc[smntcKey].append("\\ifnotpaper")
-            for sntxKey in simpleFlawSntx.keys():
-                simpleFlawSntx[sntxKey].append("\\ifnotpaper")
+            for dmnKey in simpleFlawDmn.keys():
+                simpleFlawDmn[dmnKey].append("\\ifnotpaper")
+            for mnfstKey in simpleFlawMnfst.keys():
+                simpleFlawMnfst[mnfstKey].append("\\ifnotpaper")
 
         if filename in SIMPLE_TEX_FILES:
             for flaw in flaws:
-                smntcFlaw, sntxFlaw = getFlawGroups(flaw)
-                simpleFlawSmntc[smntcFlaw].append(flaw)
-                simpleFlawSntx[sntxFlaw].append(flaw)
+                flawDmn, flawMnfst = getFlawGroups(flaw)
+                simpleFlawDmn[flawDmn].append(flaw)
+                simpleFlawMnfst[flawMnfst].append(flaw)
 
                 try:
                     labelGroup, label = re.search(
                         r"% Label ([A-Z]+) ([a-z\-]+)", flaw).groups()
-                    for flawGroup, dict in [(smntcFlaw, simpleFlawSmntc),
-                                            (sntxFlaw,  simpleFlawSntx)]:
+                    for flawGroup, dict in [(flawDmn,   simpleFlawDmn),
+                                            (flawMnfst, simpleFlawMnfst)]:
                         dict[flawGroup] = [re.sub(
                             r"\s+% Label [A-Z]+ [a-z\-]+\s+",
                             "\n          ".join(
@@ -219,19 +219,19 @@ def outputFlaws():
                     continue
             
         if "extra" in filename:
-            for smntcKey in simpleFlawSmntc.keys():
-                simpleFlawSmntc[smntcKey].append("\\fi")
-            for sntxKey in simpleFlawSntx.keys():
-                simpleFlawSntx[sntxKey].append("\\fi")
+            for dmnKey in simpleFlawDmn.keys():
+                simpleFlawDmn[dmnKey].append("\\fi")
+            for mnfstKey in simpleFlawMnfst.keys():
+                simpleFlawMnfst[mnfstKey].append("\\fi")
 
         for flaw in flawCounts:
             sources = flaw.split("|")
-            smntcFlaw, sntxFlaw = getFlawGroups(flaw)
+            flawDmn, flawMnfst = getFlawGroups(flaw)
             DEBUG = False
 
             sourceDicts = [categorizeSources(s) for s in sources]
             if DEBUG:
-                print(sourceDicts, smntcFlaw.name, sntxFlaw.name)
+                print(sourceDicts, flawDmn.name, flawMnfst.name)
 
             def inPairs(s, *, sFunc = None):
                 if sFunc:
@@ -243,7 +243,7 @@ def outputFlaws():
             # As of #138, this is now done as a table, but this naming convention is still used
             pieAdded, tableAdded = set(), set()
             def updateCounters(source, pieSec: str, r):
-                nonlocal smntcFlaw, sntxFlaw
+                nonlocal flawDmn, flawMnfst
 
                 if type(source) is tuple:
                     srcTuple = tuple(map(getSrcCat, source))
@@ -260,12 +260,12 @@ def outputFlaws():
                     print(source, sourceCat, pieSec, r)
 
                 if srcTuple not in tableAdded:
-                    if type(flawDict[sourceCat].smntcFlaws[smntcFlaw]) is int:
-                        flawDict[sourceCat].smntcFlaws[smntcFlaw] += 1
-                        flawDict[sourceCat].flawMnfsts[sntxFlaw] += 1
+                    if type(flawDict[sourceCat].flawDmns[flawDmn]) is int:
+                        flawDict[sourceCat].flawDmns[flawDmn] += 1
+                        flawDict[sourceCat].flawMnfsts[flawMnfst] += 1
                     else:
-                        flawDict[sourceCat].smntcFlaws[smntcFlaw].addFlaw(r)
-                        flawDict[sourceCat].flawMnfsts[sntxFlaw].addFlaw(r)
+                        flawDict[sourceCat].flawDmns[flawDmn].addFlaw(r)
+                        flawDict[sourceCat].flawMnfsts[flawMnfst].addFlaw(r)
                     tableAdded.add(srcTuple)
                 if source not in pieAdded:
                     try:
@@ -309,28 +309,28 @@ def outputFlaws():
             if DEBUG:
                 printFlaws()
 
-    for shortname, flawGroup in [("Smntc", simpleFlawSmntc),
-                                    ("Sntx",  simpleFlawSntx)]:
+    for shortname, flawGroup in [("dmn",   simpleFlawDmn),
+                                 ("mnfst", simpleFlawMnfst)]:
         for k in flawGroup.keys():
             flawGroup[k] += ["\\ifnotpaper", "\\end{enumerate}", "\\else",
                                 "\\end{itemize}", "\\fi"]
-            writeFile(flawGroup[k], f"{shortname}Flaw{k.name.title()}", True)
+            writeFile(flawGroup[k], f"Flaw{shortname}{k.name.title()}", True)
 
-    flawPies, flawTable = [], []
-    smntcTotal, sntxTotal = [], []
+    flawPies, flawTable  = [], []
+    dmnTotal, mnfstTotal = [], []
     def totalHelper(total, new):
         return [a + b for a, b in itertools.zip_longest(
             total, [int(d.strip()) for d in new.split("%")], fillvalue=0)]
 
     for k, v in flawDict.items():
-        smntcFlaws, flawMnfsts = v.getCatCounts(), v.getClsCounts()
-        assert smntcFlaws.split("%")[-1] == flawMnfsts.split("%")[-1]
+        flawDmns, flawMnfsts = v.getCatCounts(), v.getClsCounts()
+        assert flawDmns.split("%")[-1] == flawMnfsts.split("%")[-1]
 
-        smntcTotal = totalHelper(smntcTotal, smntcFlaws)
-        sntxTotal  = totalHelper(sntxTotal, flawMnfsts)
+        dmnTotal   = totalHelper(dmnTotal,   flawDmns)
+        mnfstTotal = totalHelper(mnfstTotal, flawMnfsts)
 
-        writeFile([smntcFlaws], f"{k.name.lower()}SmntcFlawBrkdwn", True)
-        writeFile([flawMnfsts],  f"{k.name.lower()}SntxFlawBrkdwn", True)
+        writeFile([flawDmns],   f"{k.name.lower()}FlawDmnBrkdwn", True)
+        writeFile([flawMnfsts], f"{k.name.lower()}FlawMnfstBrkdwn", True)
 
         totalFlaws = sum({v.groundTruth, v.withinDoc, v.withinAuth,
                              sum(v.betweenCats.values())})
@@ -364,8 +364,8 @@ def outputFlaws():
                           ])
         flawTable.append([f"\\{k.name.lower()}s{{}}"] + [val for val, _ in slices])
     
-    writeFile([formatOutput(smntcTotal)], f"totalSmntcFlawBrkdwn", True)
-    writeFile([formatOutput(sntxTotal)],  f"totalSntxFlawBrkdwn", True)
+    writeFile([formatOutput(dmnTotal)],   f"totalFlawDmnBrkdwn", True)
+    writeFile([formatOutput(mnfstTotal)], f"totalflawMnfstBrkdwn", True)
 
     flawPies.append(["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
                         "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",

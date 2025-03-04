@@ -3,7 +3,7 @@
 
 % Moved earlier to display nicely in paper
 % \flawMnfstsTable{}
-% \smntcFlawsTable{}
+% \flawDmnsTable{}
 
 After gathering all these data\footnote{Available in \texttt{ApproachGlossary.csv},
     \texttt{QualityGlossary.csv}, and \texttt{SuppGlossary.csv} at \ifblind{
@@ -13,7 +13,7 @@ flaws. To better understand and analyze them, we group them by their
 syntax and their semantics. Syntactic flaws (\Cref{flawMnfsts})
 describe \emph{how} a flaw manifests, such as information that is wrong
 (a ``mistake''; \Cref{wrong}) or missing (an ``omission''; \Cref{miss}). On the
-other hand, semantic flaws (\Cref{smntcFlaws}) describe the
+other hand, semantic flaws (\Cref{flawDmns}) describe the
 knowledge domain in which a flaw manifests, such as a flaw
 between synonyms (\Cref{syns}) or parent-child relations (\Cref{pars}).
 As an example, \tourFlaw*{}. This is a case of contradictory definitions, so
@@ -26,14 +26,14 @@ definition flaws (\Cref{defs}). Within these sections, \ifnotpaper
 source tier (see \Cref{sources}).
 
 A summary of how many flaws there are by syntax and by semantics is
-shown in \Cref{tab:flawMnfsts,tab:smntcFlaws}, respectively, where a given
+shown in \Cref{tab:flawMnfsts,tab:flawDmns}, respectively, where a given
 row corresponds to the number of flaws either within that
 source tier (see \Cref{sources}) and/or with a ``more trusted'' one
 (i.e., a previous row in the table). The numbers of (Exp)licit and (Imp)licit
 (see \Cref{rigidity}) flaws are also presented in these tables. Since
 each flaw is grouped by syntax \emph{and} by semantics, the totals per
 source and grand totals in these tables are equal. However, the numbers of
-flaws listed in \Cref{flawMnfsts,smntcFlaws} are not equal,
+flaws listed in \Cref{flawMnfsts,flawDmns} are not equal,
 as those automatically uncovered based on semantics \ifnotpaper
     (see \Cref{auto-flaw-analysis}) \fi are only listed in the corresponding
 category section for clarity; they still contribute to the counts in
@@ -44,8 +44,8 @@ flaws. These are given in their respective sections as a ``third view''
 to keep related information together, but still count towards the syntaxes and
 semantics of flaws listed above\ifnotpaper\ (\Cref{aug-flaw-analysis}
     outlines how this is done)\fi, causing a further mismatch between the counts
-in \Cref{tab:flawMnfsts,tab:smntcFlaws} and the counts in \Cref{flawMnfsts,%
-    smntcFlaws}. The ``problem'' subsets of testing include
+in \Cref{tab:flawMnfsts,tab:flawDmns} and the counts in \Cref{flawMnfsts,%
+    flawDmns}. The ``problem'' subsets of testing include
 \nameref{func-test-flaw}, \ifnotpaper\nameref{oat-flaw}, \fi
 \nameref{recov-flaw}, \nameref{scal-flaw}, and \nameref{compat-flaw}.
 \ifnotpaper Finally, \nameref{infer-flaws} are also given for completeness,
@@ -53,7 +53,7 @@ in \Cref{tab:flawMnfsts,tab:smntcFlaws} and the counts in \Cref{flawMnfsts,%
 
     \begin{landscape}
         \flawMnfstsTable{}
-        \smntcFlawsTable{}
+        \flawDmnsTable{}
     \end{landscape}
 
     \input{assets/graphs/flawPies}
@@ -70,49 +70,46 @@ The following are cases where information is incorrect; this includes cases
 \terms{} included that should \emph{not} have been, untrue claims about
 \cites{}, and simple typos:
 
-\input{build/SntxFlawWrong}
+\input{build/FlawMnfstWrong}
 
 \subsubsection{Omissions}\label{miss}
 The following are cases where information (usually \defs{}) \emph{should be}
 included but is not:
 
-\input{build/SntxFlawMiss}
+\input{build/FlawMnfstMiss}
 
 \subsubsection{Contradictions}\label{contra}
 The following are cases where multiple sources of information (sometimes within
 the same document!) disagree:
 
-\input{build/SntxFlawContra}
+\input{build/FlawMnfstContra}
 
 \subsubsection{Ambiguities}\label{ambi}
 The following are cases where information (usually \defs{} or distinctions
 between \terms{}) is unclear:
 
-\input{build/SntxFlawAmbi}
+\input{build/FlawMnfstAmbi}
 
 \subsubsection{Overlaps}\label{over}
 The following are cases where information overlaps, such as nonatomic \defs{}
 and \terms{}:
 
-\input{build/SntxFlawOver}
+\input{build/FlawMnfstOver}
 
 \ifnotpaper
-    \subsubsection{Redundancies}
-    \label{redun}
+    \subsubsection{Redundancies}\label{redun}
     The following are cases of redundant information:
 
-    \input{build/SntxFlawRedun}
+    \input{build/FlawMnfstRedun}
 \fi
 
-\subsection{Semantic Flaws}
-\label{smntcFlaws}
+\subsection{Semantic Flaws}\label{flawDmns}
 
-The following sections list observed flaws grouped by \emph{what area}
-they manifest in. These include \nameref{cats}, \nameref{syns},
+The following sections list observed flaws grouped by \emph{what} information
+is flawed. This includes \nameref{cats}, \nameref{syns},
 \nameref{pars}, \nameref{defs}, \nameref{terms}, and \nameref{cites}.
 
-\subsubsection{Approach Category Flaws}
-\label{cats}
+\subsubsection{Approach Category Flaws}\label{cats}
 
 While the IEEE categorization of testing approaches described in
 \Cref{tab:ieeeCats} is useful, it is not without its faults. One issue,
@@ -131,13 +128,12 @@ themselves are not consistently defined, and some approaches are categorized
 differently by different sources; these differences are tracked so
 they can be analyzed more systematically\thesisissueref{21}.
 
-\input{build/SmntcFlawCats}
+\input{build/flawDmnCats}
 
 % Moved here to display nicely in paper
 \ifnotpaper\else\input{assets/misc/multiCats}\fi
 
-\phantomsection{}
-\label{multiCats}
+\phantomsection{}\label{multiCats}
 
 Some category flaws can be detected automatically, such as test
 approaches with more than one category. These are given in \Cref{tab:multiCats}
@@ -210,14 +206,13 @@ given to them.
 \else % Not yet present in paper
 \fi
 
-\subsubsection{Synonym Relation Flaws}
-\label{syns}
+\subsubsection{Synonym Relation Flaws}\label{syns}
 
 As mentioned in \Cref{syn-rels}, synonyms do not inherently signify a
 flaw. Unfortunately, there are many instances of incorrect or ambiguous
 synonyms, such as the following:
 
-\input{build/SmntcFlawSyns}
+\input{build/flawDmnSyns}
 
 \phantomsection{}
 \label{multiSyns}
@@ -261,12 +256,11 @@ but not with other terms not in italics\todo{Better way to handle/display
     \input{\ifnotpaper build\else assets/misc\fi/multiSyns}
 \end{enumerate}
 
-\subsubsection{Parent-Child Relation Flaws}
-\label{pars}
+\subsubsection{Parent-Child Relation Flaws}\label{pars}
 
 \nameref{par-chd-rels} are also not immune to difficulties\ifnotpaper, as shown
 by the following flaws:
-\input{build/SmntcFlawPars} \else; for example, performance \fi testing and
+\input{build/flawDmnPars} \else; for example, performance \fi testing and
 security testing are given as subtypes of reliability testing by
 \citep{ISO_IEC2023a}, but these are all listed separately by
 \citep[p.~53]{Firesmith2015}.
@@ -275,7 +269,7 @@ security testing are given as subtypes of reliability testing by
 Additionally, some self-referential definitions imply that a test
 approach is a parent of itself. Since these are by nature self-contained within
 a given source, these are counted \emph{once} as explicit flaws within
-their sources in \Cref{tab:flawMnfsts,tab:smntcFlaws}. \ifnotpaper The following
+their sources in \Cref{tab:flawMnfsts,tab:flawDmns}. \ifnotpaper The following
     examples were identified through automatic analysis of the generated graphs:
     \input{build/selfCycles} Interestingly, performance testing is \emph{not}
     described as a subapproach of usability testing by \citep{Gerrard2000a,
@@ -318,14 +312,13 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
 \else % Moved earlier to display nicely in paper
 \fi
 
-\subsubsection{Definition Flaws}
-\label{defs}
+\subsubsection{Definition Flaws}\label{defs}
 
 Perhaps the most interesting category for those seeking to understand how to
 apply a given test approach, there are many flaws with how test
 approaches, as well as supporting terms, are defined:
 
-\input{build/SmntcFlawDefs}
+\input{build/flawDmnDefs}
 
 % TODO: re-investigate this after going through the rest of ISO/IEC/IEEE 29119
 \ifnotpaper
@@ -379,8 +372,7 @@ approaches, as well as supporting terms, are defined:
     \end{itemize}
 \fi
 
-\subsubsection{Terminology Flaws}
-\label{terms}
+\subsubsection{Terminology Flaws}\label{terms}
 
 While some flaws exist because the definition of a term is wrong,
 others exist because term's \emph{name} or \emph{label} is wrong! This could be
@@ -392,15 +384,14 @@ seem different enough to merit their own category. \ifnotpaper
     flaws are presented in that order\else are examples of these
     flaws\fi:
 
-\input{build/SmntcFlawTerms}
+\input{build/flawDmnTerms}
 
-\subsubsection{Citation Flaws}
-\label{cites}
+\subsubsection{Citation Flaws}\label{cites}
 
 Sometimes a document cites another for a piece of information that does not
 appear! \ifnotpaper
     The following flaws are examples of this:
-    \input{build/SmntcFlawCites}
+    \input{build/flawDmnCites}
 \else
     For example, \citet[p.~184]{DoğanEtAl2014} \multiAuthHelper{claim} that
     \citet{SakamotoEtAl2013} \multiAuthHelper{define} ``prime path coverage'',
