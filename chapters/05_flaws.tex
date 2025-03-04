@@ -2,7 +2,7 @@
 \label{flaws}
 
 % Moved earlier to display nicely in paper
-% \sntxFlawsTable{}
+% \flawMnfstsTable{}
 % \smntcFlawsTable{}
 
 After gathering all these data\footnote{Available in \texttt{ApproachGlossary.csv},
@@ -10,7 +10,7 @@ After gathering all these data\footnote{Available in \texttt{ApproachGlossary.cs
         [Repository link suppressed]}{
         \url{https://github.com/samm82/TestingTesting}}.}, we find many
 flaws. To better understand and analyze them, we group them by their
-syntax and their semantics. Syntactic flaws (\Cref{sntxFlaws})
+syntax and their semantics. Syntactic flaws (\Cref{flawMnfsts})
 describe \emph{how} a flaw manifests, such as information that is wrong
 (a ``mistake''; \Cref{wrong}) or missing (an ``omission''; \Cref{miss}). On the
 other hand, semantic flaws (\Cref{smntcFlaws}) describe the
@@ -26,25 +26,25 @@ definition flaws (\Cref{defs}). Within these sections, \ifnotpaper
 source tier (see \Cref{sources}).
 
 A summary of how many flaws there are by syntax and by semantics is
-shown in \Cref{tab:sntxFlaws,tab:smntcFlaws}, respectively, where a given
+shown in \Cref{tab:flawMnfsts,tab:smntcFlaws}, respectively, where a given
 row corresponds to the number of flaws either within that
 source tier (see \Cref{sources}) and/or with a ``more trusted'' one
 (i.e., a previous row in the table). The numbers of (Exp)licit and (Imp)licit
 (see \Cref{rigidity}) flaws are also presented in these tables. Since
 each flaw is grouped by syntax \emph{and} by semantics, the totals per
 source and grand totals in these tables are equal. However, the numbers of
-flaws listed in \Cref{sntxFlaws,smntcFlaws} are not equal,
+flaws listed in \Cref{flawMnfsts,smntcFlaws} are not equal,
 as those automatically uncovered based on semantics \ifnotpaper
     (see \Cref{auto-flaw-analysis}) \fi are only listed in the corresponding
 category section for clarity; they still contribute to the counts in
-\Cref{tab:sntxFlaws}!
+\Cref{tab:flawMnfsts}!
 
 Moreover, certain ``subsets'' of testing revealed many interconnected
 flaws. These are given in their respective sections as a ``third view''
 to keep related information together, but still count towards the syntaxes and
 semantics of flaws listed above\ifnotpaper\ (\Cref{aug-flaw-analysis}
     outlines how this is done)\fi, causing a further mismatch between the counts
-in \Cref{tab:sntxFlaws,tab:smntcFlaws} and the counts in \Cref{sntxFlaws,%
+in \Cref{tab:flawMnfsts,tab:smntcFlaws} and the counts in \Cref{flawMnfsts,%
     smntcFlaws}. The ``problem'' subsets of testing include
 \nameref{func-test-flaw}, \ifnotpaper\nameref{oat-flaw}, \fi
 \nameref{recov-flaw}, \nameref{scal-flaw}, and \nameref{compat-flaw}.
@@ -52,53 +52,45 @@ in \Cref{tab:sntxFlaws,tab:smntcFlaws} and the counts in \Cref{sntxFlaws,%
     despite being less certain and thus not contributing to any counts.
 
     \begin{landscape}
-        \sntxFlawsTable{}
+        \flawMnfstsTable{}
         \smntcFlawsTable{}
     \end{landscape}
 
     \input{assets/graphs/flawPies}
     \input{build/flawTable} \fi
 
-\subsection{Syntactic Flaws}
-\label{sntxFlaws}
+\subsection{Flaw Manifestations}\label{flawMnfsts}
 
 The following sections list observed flaws grouped by \emph{how} they manifest.
 These include \nameref{wrong}, \nameref{miss},
 \nameref{contra}, \nameref{ambi}, \nameref{over}, and \reduns{}.
 
-\subsubsection{Mistakes}
-\label{wrong}
+\subsubsection{Mistakes}\label{wrong}
 The following are cases where information is incorrect; this includes cases
 \terms{} included that should \emph{not} have been, untrue claims about
 \cites{}, and simple typos:
 
 \input{build/SntxFlawWrong}
 
-\subsubsection{Omissions}
-\label{miss}
-The following are cases where information (usually \defs{}) \emph{should have}
-been included but was not:
+\subsubsection{Omissions}\label{miss}
+The following are cases where information (usually \defs{}) \emph{should be}
+included but is not:
 
 \input{build/SntxFlawMiss}
 
-\subsubsection{Contradictions}
-\label{contra}
+\subsubsection{Contradictions}\label{contra}
 The following are cases where multiple sources of information (sometimes within
-the same document!) disagree; note that cases where all sources of information
-are incorrect are considered contradictions and not \nameref{wrong}, since this
-would require analysis that has not been performed yet:
+the same document!) disagree:
 
 \input{build/SntxFlawContra}
 
-\subsubsection{Ambiguities}
-\label{ambi}
+\subsubsection{Ambiguities}\label{ambi}
 The following are cases where information (usually \defs{} or distinctions
 between \terms{}) is unclear:
 
 \input{build/SntxFlawAmbi}
 
-\subsubsection{Overlaps}
-\label{over}
+\subsubsection{Overlaps}\label{over}
 The following are cases where information overlaps, such as nonatomic \defs{}
 and \terms{}:
 
@@ -283,7 +275,7 @@ security testing are given as subtypes of reliability testing by
 Additionally, some self-referential definitions imply that a test
 approach is a parent of itself. Since these are by nature self-contained within
 a given source, these are counted \emph{once} as explicit flaws within
-their sources in \Cref{tab:sntxFlaws,tab:smntcFlaws}. \ifnotpaper The following
+their sources in \Cref{tab:flawMnfsts,tab:smntcFlaws}. \ifnotpaper The following
     examples were identified through automatic analysis of the generated graphs:
     \input{build/selfCycles} Interestingly, performance testing is \emph{not}
     described as a subapproach of usability testing by \citep{Gerrard2000a,

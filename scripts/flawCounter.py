@@ -111,14 +111,14 @@ class FlawCounter:
         # Differences between two categories; may be within the same category
         self.betweenCats = {k : 0 for k in SrcCat if k.value <= value}
         self.smntcFlaws = OrderedDict({dc : ExpImpCounter() for dc in FlawSmntc})
-        self.sntxFlaws = OrderedDict({dc : ExpImpCounter() for dc in FlawSntx})
+        self.flawMnfsts = OrderedDict({dc : ExpImpCounter() for dc in FlawSntx})
 
     def __str__(self):
         return "\n".join(filter(None, [
             ", ".join(map(str, [self.groundTruth, self.withinDoc, self.withinAuth])),
             "Diffs: " + ", ".join([f"{k.name} {v}" for k, v in self.betweenCats.items()]),
             " | ".join(map(str, self.smntcFlaws.values())),
-            " | ".join(map(str, self.sntxFlaws.values())),
+            " | ".join(map(str, self.flawMnfsts.values())),
             ])) + "\n"
 
     def _countHelper(d: dict) -> str:
@@ -129,7 +129,7 @@ class FlawCounter:
         return FlawCounter._countHelper(self.smntcFlaws)
 
     def getClsCounts(self):
-        return FlawCounter._countHelper(self.sntxFlaws)
+        return FlawCounter._countHelper(self.flawMnfsts)
 
 class FlawSmntc(Enum):
     CATS  = "Categories"
@@ -262,10 +262,10 @@ def outputFlaws():
                 if srcTuple not in tableAdded:
                     if type(flawDict[sourceCat].smntcFlaws[smntcFlaw]) is int:
                         flawDict[sourceCat].smntcFlaws[smntcFlaw] += 1
-                        flawDict[sourceCat].sntxFlaws[sntxFlaw] += 1
+                        flawDict[sourceCat].flawMnfsts[sntxFlaw] += 1
                     else:
                         flawDict[sourceCat].smntcFlaws[smntcFlaw].addFlaw(r)
-                        flawDict[sourceCat].sntxFlaws[sntxFlaw].addFlaw(r)
+                        flawDict[sourceCat].flawMnfsts[sntxFlaw].addFlaw(r)
                     tableAdded.add(srcTuple)
                 if source not in pieAdded:
                     try:
@@ -323,14 +323,14 @@ def outputFlaws():
             total, [int(d.strip()) for d in new.split("%")], fillvalue=0)]
 
     for k, v in flawDict.items():
-        smntcFlaws, sntxFlaws = v.getCatCounts(), v.getClsCounts()
-        assert smntcFlaws.split("%")[-1] == sntxFlaws.split("%")[-1]
+        smntcFlaws, flawMnfsts = v.getCatCounts(), v.getClsCounts()
+        assert smntcFlaws.split("%")[-1] == flawMnfsts.split("%")[-1]
 
         smntcTotal = totalHelper(smntcTotal, smntcFlaws)
-        sntxTotal  = totalHelper(sntxTotal, sntxFlaws)
+        sntxTotal  = totalHelper(sntxTotal, flawMnfsts)
 
         writeFile([smntcFlaws], f"{k.name.lower()}SmntcFlawBrkdwn", True)
-        writeFile([sntxFlaws],  f"{k.name.lower()}SntxFlawBrkdwn", True)
+        writeFile([flawMnfsts],  f"{k.name.lower()}SntxFlawBrkdwn", True)
 
         totalFlaws = sum({v.groundTruth, v.withinDoc, v.withinAuth,
                              sum(v.betweenCats.values())})

@@ -9,7 +9,7 @@ automated tools (\Cref{aug-flaw-analysis}). This gives us an overview of:
     \item how many flaws there are,
     \item how responsible each source tier (see \Cref{sources}) is for these flaws,
     \item how obvious (or ``rigid''; see \Cref{rigidity}) these flaws are,
-    \item how these flaws present themselves (see \Cref{sntxFlaws}), and
+    \item how these flaws present themselves (see \Cref{flawMnfsts}), and
     \item in which knowledge domains these flaws occur (see \Cref{smntcFlaws}).
 \end{itemize}
 
@@ -48,7 +48,7 @@ As an example of this process, consider a flaw \emph{within} an IEEE
 document (e.g., two different definitions are given for a term within the same
 IEEE document) \emph{and} between another IEEE document, the \acs{istqb}
 glossary \emph{and} two papers. This would add one to the following rows of
-\Cref{tab:sntxFlaws,tab:smntcFlaws} in the relevant column:
+\Cref{tab:flawMnfsts,tab:smntcFlaws} in the relevant column:
 
 \begin{itemize}
     \item \textbf{\stds{}}: this flaw occurs:
@@ -90,7 +90,7 @@ by the same author(s). Then, we group these sources into their tiers
 % done by the function in \Cref{lst:getSrcCat}, since each source tier
 % outlined in \Cref{sources} is comprised of a small number of authors (with the
 % exception of papers and other documents; see \Cref{papers}).
-to determine the row(s) of \Cref{tab:sntxFlaws,tab:smntcFlaws} and the graph(s)
+to determine the row(s) of \Cref{tab:flawMnfsts,tab:smntcFlaws} and the graph(s)
 and slice(s) in \Cref{fig:flawSources} that the given flaw should count toward.
 We then distill these lists of sources down to sets of tiers and compare them
 against each other to determine how many times a given flaw manifests between
@@ -103,7 +103,7 @@ Alongside this citation information, we include keywords so we can assess how
 ``rigid'' a piece of information is (see \Cref{rigidity}). This is useful when
 counting flaws, since they can be both explicit and implicit but should not be
 double counted as both\thesisissueref{83}! When counting flaws in
-\Cref{tab:sntxFlaws,tab:smntcFlaws}, each one is
+\Cref{tab:flawMnfsts,tab:smntcFlaws}, each one is
 counted only for its most ``rigid'' manifestation (i.e., it will only increment
 a value in the ``Implicit'' column if it is \emph{not} also explicit),
 similarly to how we generate graphs (see \Cref{expAndImp}).
@@ -122,7 +122,7 @@ analyzed. These comments have the following format:
         \dots{} | \{C1\} \dots}
 \end{displayquote}
 \texttt{SEM} and \texttt{SYN} are placeholders for the ``keys'' given in
-\Cref{tab:sntxFlawKinds,tab:smntcFlawKinds} that we use to identify
+\Cref{tab:flawMnfstDefs,tab:smntcFlawKinds} that we use to identify
 a flaw's semantics and syntax (see \Cref{flaws}); each flaw has exactly one
 classification for each of semantics and syntax. We omit
 these keys from the examples of these comments throughout this chapter for
@@ -187,7 +187,7 @@ For example, the above line indicates that the flaws given below are
 present. The second flaw only affects \Cref{fig:flawSources} since it
 is less ``rigid'' than the first flaw within standards (see \Cref{stds}).
 The rest increment their corresponding count in
-\Cref{fig:flawSources,tab:sntxFlaws,tab:smntcFlaws} by only one:
+\Cref{fig:flawSources,tab:flawMnfsts,tab:smntcFlaws} by only one:
 \begin{itemize}
     \item an explicit inconsistency between documents by
           \begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper},
@@ -235,7 +235,7 @@ source tier%
 % \texttt{build/stdSmntcFlawBrkdwn.tex}. These data
 , then read them in to macros
 % (such as \macro{stdSmntcFlawBrkdwn})
-to populate \Cref{tab:sntxFlaws,tab:smntcFlaws}. For example,
+to populate \Cref{tab:flawMnfsts,tab:smntcFlaws}. For example,
 \macro[1]{stdSntxFlawBrkdwn} corresponds to the number of explicit mistakes in
 standards documents, and \macro[2]{stdSntxFlawBrkdwn} to the number of implicit
 ones. These macros also include \macro[13]{totalSntxFlawBrkdwn} and \newline

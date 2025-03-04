@@ -143,6 +143,10 @@
     relevant\dots\todo{Is this a scope flaw?}%
 }
 
+\NewDocumentCommand{\contraBothWrong}{s}{are considered contradictions and not
+    \IfBooleanTF#1{mistakes}{\nameref{wrong}}, since this would require
+    analysis that has not been performed yet}
+
 % Used in parSyns tables
 \def\ftrnote{Fault tolerance testing may also be a subapproach of
     reliability testing \ifnotpaper
