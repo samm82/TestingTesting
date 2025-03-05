@@ -1,7 +1,8 @@
 \newcommand\macroType[2]{\multirow[c]{#1}{*}{\rotatebox[origin=c]{90}{#2}}}
 
 \begin{longtblr}[
-    note{a} = {See \Cref{sources}.},
+    note{a} = {Defined in \Cref{flaw-def}.},
+    note{b} = {Defined in \Cref{sources}.},
     caption = {\LaTeX{} macros for reused text.},
     label = {tab:macrosText}
     ]{
@@ -12,7 +13,8 @@
     \hline
     \thead{Type}             & \thead{Macro}               & \thead{Used in}                                                 \\*
     \hline
-    \macroType{9}{Flaws}     & \macro{genDefectFlaw}       & \Cref{intro,flaw-def}                                           \\*
+    \macroType{10}{Flaws\TblrNote{a}}
+                             & \macro{genDefectFlaw}       & \Cref{intro,flaw-def}                                           \\*
                              & \macro{bugPattonFlaw}       & \Cref{intro} and \flawref{bug-patton}                           \\*
                              & \macro{alphaFlaw}           & \Cref{intro} and \flawref{alpha-def}                            \\*
                              & \macro{loadFlaw}            & \Cref{intro} and \flawref{load-def}                             \\*
@@ -20,8 +22,8 @@
                              & \macro{tourFlaw}            & \Cref{intro,flaws} and \flawref{tour-def}                       \\*
                              & \macro{perfAsFamily}        & \Cref{method-family,classFamilyFlaw}                            \\*
                              & \macro{tolTestFlaw}         & \Cref{aug-flaw-analysis} and \flawref{ground-truth}             \\*
-                             & \macro{accelTolTest}        & \macro{tolTestFlaw} and \Cref{hard-test}                        \\
-
+                             & \macro{accelTolTest}        & \macro{tolTestFlaw} and \Cref{hard-test}                        \\*
+                             & \macro{perfSecParFlaw}      & \flawref{perf-sec-par} and paper version of \Cref{pars}         \\
     \hline
     \macroType{6}{Footnotes} & \macro{ftrnote}             & \SetCell[r=3]{l} Thesis (automated) and paper (manual)
     versions of \Cref{tab:parSyns}                                                                                           \\*
@@ -37,25 +39,26 @@
                              & \macro{recFigs}             & \Cref{rigidity,infers,recs}                                     \\*
                              & \macro{seeSrcCode}          & \Cref{rigidity,graph-gen,auto-flaw-analysis,paper-macros}       \\
     \hline
-    \macroType{5}{Source Tiers\TblrNote{a}}
+    \macroType{5}{Source Tiers\TblrNote{b}}
                              & \macro{stds}                &
-    \Cref{fig:stdFlawSources,fig:sourceSummary,flaw-analysis-example,tab:FlawMnfsts,tab:flawDmns}                            \\*
+    \Cref{fig:stdFlawSources,fig:sourceSummary,flaw-analysis-example,tab:flawMnfsts,tab:flawDmns}                            \\*
                              & \macro{metas}               &
-    \Cref{fig:metaFlawSources,fig:sourceSummary,flaw-analysis-example,tab:FlawMnfsts,tab:flawDmns}                           \\*
+    \Cref{fig:metaFlawSources,fig:sourceSummary,flaw-analysis-example,tab:flawMnfsts,tab:flawDmns}                           \\*
                              & \macro{texts}               &
-    \Cref{fig:textFlawSources,fig:sourceSummary,tab:FlawMnfsts,tab:flawDmns}                                                 \\*
+    \Cref{fig:textFlawSources,fig:sourceSummary,tab:flawMnfsts,tab:flawDmns}                                                 \\*
                              & \macro{papers}              &
     \Cref{fig:paperFlawSources,fig:sourceSummary,flaw-analysis-example}                                                      \\*
-                             & \macro{papersTbl}           & \Cref{tab:FlawMnfsts,tab:flawDmns}                              \\
+                             & \macro{papersTbl}           & \Cref{tab:flawMnfsts,tab:flawDmns}                              \\
     \hline
     \macroType{3}{RQs}       & \macro{rqatext}             & \SetCell[r=3]{l} \Cref{intro} and seminar slides                \\*
                              & \macro{rqbtext}             &                                                                 \\*
                              & \macro{rqctext}             &                                                                 \\
     \hline
-    \macroType{5}{Misc.}     & \macro{supersAck}           & \nameref{acknowledgements} and seminar slides                   \\*
-                             & \macro{supers}              & \macro{supersAck} and \nameref{decl_aca_ach}                    \\*
-                             & \macro{addTextEx}           & \Cref{sources,texts}                                            \\*
+    \macroType{6}{Misc.}     & \macro{supersAck}           & \nameref{acknowledgements} and seminar slides                   \\*
+                             & \macro{supers}              & \nameref{decl_aca_ach} and \macro{supersAck}                    \\*
+                             & \macro{defLabelDistinct}    & \Cref{label-flaw-def,labels}                                    \\*
                              & \macro{approachFields}      & \Cref{rigidity,procedure}                                       \\*
+                             & \macro{addTextEx}           & \Cref{sources,texts}                                            \\*
                              & \macro{displayNL}           &
     \Cref{graph-gen,aug-flaw-analysis,paper-macros,tab:macrosPaper}                                                          \\
     \hline
