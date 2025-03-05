@@ -147,6 +147,29 @@ class FlawMnfst(Enum):
     OVER   = "Overlaps"
     REDUN  = "Redundancies"
 
+def genFlawMacros(flawView):
+    def singPl(k: FlawDmn | FlawMnfst) -> str:
+        pl = k.value
+        if pl.endswith("ies"):
+            sing = pl[:-3] + "y"
+        else:
+            sing = pl[:-1] if pl.endswith("s") else pl
+        return f"{{{sing}}}{{{pl}}}"
+
+    def formatMacro(k: FlawDmn | FlawMnfst, args: list[str] = ["s"],
+                    extra: str = "") -> str:
+        return (f"\\{"Renew" if k.name == "OVER" else "New"}DocumentCommand"
+                f"{{\\{k.name.lower()}}}{{{" ".join(args)}}}"
+                f"{{\\hyperref[{k.name.lower()}]{{\\IfBooleanTF{{#1}}{singPl(k)}}}{extra}}}")
+
+    writeFile([formatMacro(k) if k.name != "REDUN" else 
+               ("% Assisted by GitHub Copilot\n" + formatMacro(
+                   k, ["s", "o"],
+                   "\\ifnotpaper\\else\\IfNoValueTF{#2}{\\footnote{\\redunsNote}}{\\TblrNote{#2}}\\fi")
+                )
+               for k in flawView],
+              f"{flawView.__name__}Macros", True)
+
 COMPLEX_TEX_FILES = [
     "build/multiCats.tex",
     "build/multiSyns.tex",
@@ -167,8 +190,8 @@ def enumOrItem(k):
     # and https://tex.stackexchange.com/a/338027/192195
     return (k, ["\\ifnotpaper", f"\\begin{{enumerate}}[ref={k.value}~Flaw~\\arabic*]",
                       "\\else", f"\\begin{{itemize}}", "\\fi"])
-simpleFlawDmn = OrderedDict([enumOrItem(k) for k in FlawDmn])
-simpleFlawMnfst  = OrderedDict([enumOrItem(k) for k in FlawMnfst])
+simpleFlawDmn   = OrderedDict([enumOrItem(k) for k in FlawDmn])
+simpleFlawMnfst = OrderedDict([enumOrItem(k) for k in FlawMnfst])
 
 def outputFlaws():
     flawDict = {k : FlawCounter(k.value) for k in SrcCat if k.color.value >= 0}

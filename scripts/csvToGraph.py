@@ -668,6 +668,8 @@ def inLine(flag, style, line):
 
 if "Example" not in csvFilename:
     outputFlaws()
+    genFlawMacros(FlawDmn)
+    genFlawMacros(FlawMnfst)
 
 INVIS_EDGE_LINE = 'edge [style="invis"]'
 

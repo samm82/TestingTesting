@@ -1,4 +1,4 @@
-\newcommand\redunsNoteHelper[1]{\ifnotpaper\vspace*{-0.4cm}\else#1\fi}
+\newcommand\redunsNoteHelper[1]{\ifnotpaper\vspace*{-0.4cm}\else#1\vspace*{-0.2cm}\fi}
 \begin{table}[tb]
     \centering
     \begin{talltblr}[
@@ -17,14 +17,14 @@
         width = \columnwidth, rowhead = 1
         }
         \hline
-        \thead{Subset of Flaws} & \thead{Description}                                   & \thead{Key}       \\
+        \thead{Manifestation} & \thead{Description}                                   & \thead{Key}       \\
         \hline
-        \nameref{wrong}         & Information is incorrect                              & WRONG\TblrNote{a} \\
-        \nameref{miss}          & Information that should be included is not            & MISS\TblrNote{b}  \\
-        \nameref{contra}        & Information from multiple places conflicts            & CONTRA            \\
-        \nameref{ambi}          & Information is unclear                                & AMBI              \\
-        \nameref{over}          & Information is nonatomic or used in multiple contexts & OVER              \\
-        \reduns*[c]             & Information is redundant                              & REDUN             \\
+        \wrong*{}             & Information is incorrect                              & WRONG\TblrNote{a} \\
+        \miss*{}              & Information that should be included is not            & MISS\TblrNote{b}  \\
+        \contra*{}            & Information from multiple places conflicts            & CONTRA            \\
+        \ambi*{}              & Information is unclear                                & AMBI              \\
+        \over*{}              & Information is nonatomic or used in multiple contexts & OVER              \\
+        \redun*[c]{}          & Information is redundant                              & REDUN             \\
         \hline
     \end{talltblr}
 \end{table}

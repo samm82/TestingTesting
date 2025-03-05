@@ -231,6 +231,8 @@
 \ReadFile{\paperFlawMnfstBrkdwn}{build/paperFlawMnfstBrkdwn}
 \ReadFile{\totalFlawMnfstBrkdwn}{build/totalFlawMnfstBrkdwn}
 
+\def\flawCount{\totalFlawDmnBrkdwn{13}}
+
 \def\stds{\nameref{stds}}
 \def\metas{\nameref{metas}}
 \def\texts{\nameref{texts}}
@@ -238,19 +240,10 @@
 \def\papersTbl{\hyperref[papers]{Papers and Others}}
 
 \def\srcCat{\hyperref[sources]{Source Tier}}
+
 \def\redunsNote{Section omitted for brevity.}
-% Assisted by GitHub Copilot
-\NewDocumentCommand{\reduns}{s o}{\ifnotpaper\nameref{redun}\else%
-        Redundancies\IfBooleanTF{#1}{\TblrNote{#2}}{\footnote{\redunsNote}}\fi}
-
-\def\flawCount{\totalFlawDmnBrkdwn{13}}
-
-\def\cats{\hyperref[cats]{Categories}}
-\def\syns{\hyperref[syns]{Synonyms}}
-\def\pars{\hyperref[pars]{Parents}}
-\def\defs{\hyperref[defs]{Definitions}}
-\def\labels{\hyperref[labels]{Labels}}
-\def\trace{\hyperref[trace]{Traceability}}
+\input{build/FlawDmnMacros}
+\input{build/FlawMnfstMacros}
 
 % Assisted by GitHub Copilot
 \newcommand\macro[2][]{\texttt{\textbackslash#2\{#1\}}}
