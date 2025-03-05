@@ -184,16 +184,14 @@ SIMPLE_TEX_FILES = [
 
 TEX_FILES = COMPLEX_TEX_FILES + SIMPLE_TEX_FILES
 
-def enumOrItem(k, includeFlaw: bool):
+def enumOrItem(k, extra: str):
     # Based on https://tex.stackexchange.com/a/156061/192195
     # and https://tex.stackexchange.com/a/338027/192195
-    ref = "~".join([x for x in [sing(k.value),
-                                "Flaw" if includeFlaw else "",
-                                "\\arabic*"] if x])
+    ref = "~".join([x for x in [sing(k.value), extra, "\\arabic*"] if x])
     return (k, ["\\ifnotpaper", f"\\begin{{enumerate}}[ref={ref}]",
                       "\\else", f"\\begin{{itemize}}", "\\fi"])
-simpleFlawDmn   = OrderedDict([enumOrItem(k, True)  for k in FlawDmn])
-simpleFlawMnfst = OrderedDict([enumOrItem(k, False) for k in FlawMnfst])
+simpleFlawDmn   = OrderedDict([enumOrItem(k, "Flaw") for k in FlawDmn])
+simpleFlawMnfst = OrderedDict([enumOrItem(k, "")     for k in FlawMnfst])
 
 def outputFlaws():
     flawDict = {k : FlawCounter(k.value) for k in SrcCat if k.color.value >= 0}
