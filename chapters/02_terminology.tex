@@ -88,10 +88,21 @@ manifestation: each flaw \emph{manifests} in a particular \emph{domain}. This
 means that we give each flaw two keys (one for each classification) and
 present our observations according to these two views in \Cref{tab:flawMnfsts,%
     tab:flawDmns}. We explicitly define some of these domains in future
-chapters and thus present them in that same order. The remaining domains are
-straightforward enough to not require their own sections, but they do have some
-nuance.\latertodo{Explain later once we (a) move all defs here from the flaws
-    section and (b) agree on what to do about the ``citation'' domain.}
+chapters and thus present them in that same order. Despite their nuance, the
+remaining domains are relatively straightforward, so we do not define them more
+rigorously in their own sections.
+
+\phantomsection{}\label{label-flaw-def}
+For example, \defLabelDistinct*{}. Definition flaws are quite self-explanatory, but
+% Definition flaws occur when a term's definition is incorrect, unclear, etc.;
+% this often occurs in glossaries or lists of terms from sources we investigate.
+% On the other hand,
+label flaws are harder to detect, despite occurring independently. Examples of
+label flaws include terms that share the same acronym or contain typos or
+redundant information. Sometimes, an author may use one term when they mean
+another; while one could argue that their ``internal'' definition of the term
+is the cause of this mistake, we consider this a label flaw where the wrong
+label is used and we would change the \emph{label} to fix it.
 
 \subsection{Rigidity}\label{rigidity}
 

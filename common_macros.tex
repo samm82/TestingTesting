@@ -143,9 +143,10 @@
     relevant\dots\todo{Is this a scope flaw?}%
 }
 
-\NewDocumentCommand{\contraBothWrong}{s}{are considered contradictions and not
-    \IfBooleanTF#1{mistakes}{\nameref{wrong}}, since this would require
-    analysis that has not been performed yet}
+\NewDocumentCommand{\defLabelDistinct}{s}{%
+    \IfBooleanTF#1{t}{T}erms can be thought of as definition-label pairs,
+    but there is a meaningful distinction between definition flaws and label
+    flaws}
 
 % Used in parSyns tables
 \def\ftrnote{Fault tolerance testing may also be a subapproach of
