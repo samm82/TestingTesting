@@ -639,7 +639,7 @@ parSynCount = "".join(parSyns).count("\\to")
 if "Example" not in csvFilename:
     writeTblr(
         "parSyns",
-        "Pairs of test approaches with a \\hyperref[par-chd-rels]{parent-child} \\emph{and} synonym relation.",
+        "Pairs of test approaches with a \\hyperref[par-chd-rels]{parent-child} \\emph{and} \\hyperref[syn-rels]{synonym} relation.",
         ["``Child'' $\\to$ ``Parent''", "Parent-Child Source(s)", "Synonym Source(s)"],
         list(parSyns),
         footnotes=tableFootnotes
