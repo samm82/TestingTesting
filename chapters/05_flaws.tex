@@ -67,7 +67,7 @@ These include \nameref{wrong}, \nameref{miss},
 
 \subsubsection{Mistakes}\label{wrong}
 The following are cases where information is incorrect; this includes wrong
-\defs{}, untrue claims about \cites{}, and simple typos:
+\defs{}, untrue claims about \trace{}, and simple typos:
 
 \input{build/FlawMnfstWrong}
 
@@ -102,11 +102,11 @@ and \labels{}:
     \input{build/FlawMnfstRedun}
 \fi
 
-\subsection{Semantic Flaws}\label{flawDmns}
+\subsection{Flaw Domains}\label{flawDmns}
 
 The following sections list observed flaws grouped by \emph{what} information
 is flawed. This includes \nameref{cats}, \nameref{syns},
-\nameref{pars}, \nameref{defs}, \nameref{labels}, and \nameref{cites}.
+\nameref{pars}, \nameref{defs}, \nameref{labels}, and \nameref{trace}.
 
 \subsubsection{Approach Category Flaws}\label{cats}
 
@@ -380,16 +380,17 @@ We observe the following label flaws:
 
 \input{build/flawDmnLabels}
 
-\subsubsection{Citation Flaws}\label{cites}
+\subsubsection{Traceability Flaws}\label{trace}
 
-Sometimes a document cites another for a piece of information that does not
-appear! \ifnotpaper
-    The following flaws are examples of this:
-    \input{build/flawDmnCites}
+\ifnotpaper
+    The following are examples of traceability flaws, as defined in
+    \Cref{trace-flaw-def}:
+    \input{build/flawDmnTrace}
 \else
-    For example, \citet[p.~184]{DoğanEtAl2014} \multiAuthHelper{claim} that
-    \citet{SakamotoEtAl2013} \multiAuthHelper{define} ``prime path coverage'',
-    but it does not.
+    Sometimes a document cites another for a piece of information that does not
+    appear! For example, \citet[p.~184]{DoğanEtAl2014} \multiAuthHelper{claim}
+    that \citet{SakamotoEtAl2013} \multiAuthHelper{define} ``prime path
+    coverage'', but it does not.
 \fi
 
 

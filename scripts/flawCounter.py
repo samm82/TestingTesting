@@ -137,7 +137,7 @@ class FlawDmn(Enum):
     PARS   = "Parents"
     DEFS   = "Definitions"
     LABELS = "Labels"
-    CITES  = "Citations"
+    TRACE  = "Traceability"
 
 class FlawMnfst(Enum):
     WRONG  = "Mistakes"
