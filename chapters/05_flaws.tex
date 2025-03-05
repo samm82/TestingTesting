@@ -66,9 +66,8 @@ These include \nameref{wrong}, \nameref{miss},
 \nameref{contra}, \nameref{ambi}, \nameref{over}, and \reduns{}.
 
 \subsubsection{Mistakes}\label{wrong}
-The following are cases where information is incorrect; this includes cases
-\terms{} included that should \emph{not} have been, untrue claims about
-\cites{}, and simple typos:
+The following are cases where information is incorrect; this includes wrong
+\defs{}, untrue claims about \cites{}, and simple typos:
 
 \input{build/FlawMnfstWrong}
 
@@ -86,13 +85,13 @@ the same document!) disagree:
 
 \subsubsection{Ambiguities}\label{ambi}
 The following are cases where information (usually \defs{} or distinctions
-between \terms{}) is unclear:
+between \labels{}) is unclear:
 
 \input{build/FlawMnfstAmbi}
 
 \subsubsection{Overlaps}\label{over}
 The following are cases where information overlaps, such as nonatomic \defs{}
-and \terms{}:
+and \labels{}:
 
 \input{build/FlawMnfstOver}
 
@@ -107,7 +106,7 @@ and \terms{}:
 
 The following sections list observed flaws grouped by \emph{what} information
 is flawed. This includes \nameref{cats}, \nameref{syns},
-\nameref{pars}, \nameref{defs}, \nameref{terms}, and \nameref{cites}.
+\nameref{pars}, \nameref{defs}, \nameref{labels}, and \nameref{cites}.
 
 \subsubsection{Approach Category Flaws}\label{cats}
 
@@ -372,7 +371,7 @@ approaches, as well as supporting terms, are defined:
     \end{itemize}
 \fi
 
-\subsubsection{Terminology Flaws}\label{terms}
+\subsubsection{Labels Flaws}\label{labels}
 
 While some flaws exist because the definition of a term is wrong,
 others exist because term's \emph{name} or \emph{label} is wrong! This could be
@@ -384,7 +383,7 @@ seem different enough to merit their own category. \ifnotpaper
     flaws are presented in that order\else are examples of these
     flaws\fi:
 
-\input{build/flawDmnTerms}
+\input{build/flawDmnLabels}
 
 \subsubsection{Citation Flaws}\label{cites}
 
@@ -542,7 +541,7 @@ non-functional and functionality testing\fi\ \citep[Tab.~2]{Gerrard2000a}.
 \ifnotpaper
     \subsection[Operational (Acceptance) Testing (OAT)]{\acf{operat}}
     \label{oat-flaw}
-    % Flaw count (TERMS, CONTRA): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}
+    % Flaw count (LABELS, CONTRA): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}
     % Flaw count (SYNS, CONTRA): {LambdaTest2024} {BocchinoAndHamilton1996} | {Firesmith2015}
     Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE2022};
     \citealpISTQB{}) while some refer to ``operational testing''
@@ -670,7 +669,7 @@ are shown in \Cref{fig:scal-graph-current}.
           \ifnotpaper \citeyearpar[p.~39]{IEEE2021}\else
               \cite[p.~39]{IEEE2021}\fi, while \citet{ISO_IEC2023a} \ifnotpaper
               imply \else implies \fi that it is limited to the system itself
-    \item % Flaw count (TERMS, WRONG): {SWEBOK2024}
+    \item % Flaw count (LABELS, WRONG): {SWEBOK2024}
           The \acs{swebok} V4's definition of ``scalability testing''
           \citep[p.~5-9]{SWEBOK2024} is really a definition of usability
           testing!
@@ -710,7 +709,7 @@ components (interoperability)'' \citep[p.~3]{IEEE2022}. This
 definition is nonatomic as it combines the ideas of ``co-existence''
 and ``interoperability''. The term ``interoperability testing'' is
 not defined, but is used three times \citep[pp.~22,~43]{IEEE2022}
-% Flaw count (TERMS, WRONG): {IEEE2022}
+% Flaw count (LABELS, WRONG): {IEEE2022}
 (although the third usage seems like it should be ``portability
 testing''). This implies that ``co-existence testing'' and
 ``interoperability testing'' should be defined as their own terms,

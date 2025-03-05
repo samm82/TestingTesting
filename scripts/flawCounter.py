@@ -132,12 +132,12 @@ class FlawCounter:
         return FlawCounter._countHelper(self.flawMnfsts)
 
 class FlawDmn(Enum):
-    CATS  = "Categories"
-    SYNS  = "Synonyms"
-    PARS  = "Parents"
-    DEFS  = "Definitions"
-    TERMS = "Terminology"
-    CITES = "Citations"
+    CATS   = "Categories"
+    SYNS   = "Synonyms"
+    PARS   = "Parents"
+    DEFS   = "Definitions"
+    LABELS = "Labels"
+    CITES  = "Citations"
 
 class FlawMnfst(Enum):
     WRONG  = "Mistakes"
