@@ -62,8 +62,7 @@ in \Cref{tab:flawMnfsts,tab:flawDmns} and the counts in \Cref{flawMnfsts,%
 \subsection{Flaw Manifestations}\label{flawMnfsts}
 
 The following sections list observed flaws grouped by \emph{how} they manifest.
-These include \wrong{}, \miss{},
-\contra{}, \ambi{}, \over{}, and \redun{}.
+These include \wrong{}, \miss{}, \contra{}, \ambi{}, \over{}, and \redun{}.
 
 \subsubsection{Mistakes}\label{wrong}
 The following are cases where information is incorrect; this includes wrong
@@ -257,14 +256,9 @@ but not with other terms not in italics\todo{Better way to handle/display
 
 \subsubsection{Parent-Child Relation Flaws}\label{pars}
 
-\nameref{par-chd-rels} are also not immune to difficulties\ifnotpaper, as shown
-by the following flaws:
-\input{build/flawDmnPars} \else; for example, performance \fi testing and
-security testing are given as subtypes of reliability testing by
-\citep{ISO_IEC2023a}, but these are all listed separately by
-\citep[p.~53]{Firesmith2015}.
-
-\phantomsection{}\label{selfPars}
+Parent-child relations (defined in \Cref{par-chd-rels}) are also not immune to
+flaws\ifnotpaper, such as the following: \input{build/flawDmnPars} \par \else;
+for example, \perfSecParFlaw*{}\fi \phantomsection{}\label{selfPars}%
 Additionally, some self-referential definitions imply that a test
 approach is a parent of itself. Since these are by nature self-contained within
 a given source, these are counted \emph{once} as explicit flaws within

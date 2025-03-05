@@ -142,6 +142,11 @@
     acceleration tolerance of \accelTolTest{}, which don't exactly seem
     relevant\dots\todo{Is this a scope flaw?}%
 }
+\NewDocumentCommand{\perfSecParFlaw}{s}{%
+    \IfBooleanTF#1{p}{P}erformance testing and security testing are given as subtypes of
+    reliability testing by \citet{ISO_IEC2023a}, but these are all listed
+    separately by \citet[p.~53]{Firesmith2015}.
+}
 
 \NewDocumentCommand{\defLabelDistinct}{s}{%
     \IfBooleanTF#1{t}{T}erms can be thought of as definition-label pairs,
