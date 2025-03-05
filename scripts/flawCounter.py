@@ -147,20 +147,19 @@ class FlawMnfst(Enum):
     OVER   = "Overlaps"
     REDUN  = "Redundancies"
 
-def genFlawMacros(flawView):
-    def singPl(k: FlawDmn | FlawMnfst) -> str:
-        pl = k.value
-        if pl.endswith("ies"):
-            sing = pl[:-3] + "y"
-        else:
-            sing = pl[:-1] if pl.endswith("s") else pl
-        return f"{{{sing}}}{{{pl}}}"
+def sing(s: str) -> str:
+    if s.endswith("ies"):
+        return s[:-3] + "y"
+    else:
+        return s[:-1] if s.endswith("s") else s
 
+def genFlawMacros(flawView):
     def formatMacro(k: FlawDmn | FlawMnfst, args: list[str] = ["s"],
                     extra: str = "") -> str:
         return (f"\\{"Renew" if k.name == "OVER" else "New"}DocumentCommand"
                 f"{{\\{k.name.lower()}}}{{{" ".join(args)}}}"
-                f"{{\\hyperref[{k.name.lower()}]{{\\IfBooleanTF{{#1}}{singPl(k)}}}{extra}}}")
+                f"{{\\hyperref[{k.name.lower()}]"
+                f"{{\\IfBooleanTF{{#1}}{{{sing(k.value)}}}{{{k.value}}}}}{extra}}}")
 
     writeFile([formatMacro(k) if k.name != "REDUN" else 
                ("% Assisted by GitHub Copilot\n" + formatMacro(
