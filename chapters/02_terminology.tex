@@ -307,9 +307,9 @@ accept a system or component'' \ifnotpaper (\citealp[p.~5]{IEEE2017}; similar
     \cite[p.~5]{IEEE2017}\fi, which requires the system or component to be
 developed and ready for testing.
 
-In addition to these five categories, \citet[Fig.~2]{IEEE2022} also includes
-``static testing''. However, this seems to be non-orthogonal
-to the others and thus less helpful for grouping test approaches.
+In addition to these five categories, \citet[Fig.~2]{IEEE2022} also
+\multiAuthHelper{include} ``static testing''. However, this seems to be
+non-orthogonal to the others and thus less helpful for grouping test approaches.
 For example, static assertion checking (mentioned by \ifnotpaper
     \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
     \citealp[p.~343]{ChalinEtAl2006}, \citealp[p.~345]{LahiriEtAl2013}\fi) is a
@@ -321,7 +321,8 @@ approaches, \emph{including} static ones, based on the remaining categories
 from \citet{IEEE2022}: approach, level, type, technique, and practice.
 \ifnotpaper However, since there are many ways to categorize test approaches
     (see \Cref{tab:otherCats,tab:otherCategorizations}), considering static
-    testing as an orthogonal distinction could make sense in specific contexts.
+    testing as an orthogonal distinction could make sense in specific contexts
+    (see \Cref{static-test}).
 
     \afterpage{
         \begin{landscape}
@@ -479,9 +480,9 @@ combination of formal testing and reviews. \ifnotpaper The following examples
     There are some cases where the subapproaches of the ``compound'' approaches
     above are \emph{not} from separate categories. However, these cases can be
     explained by insufficient data or by edge cases that require special care.
-    Further analysis is necessary and may end up showing these categories to be
-    orthogonal. All of these special cases are affected by at least one of the
-    following conditions:
+    While we assume that the categories given in \Cref{tab:ieeeCats} are
+    orthogonal, further analysis may disprove this. For now, all of these special
+    cases are affected by at least one of the following conditions:
     \begin{enumerate}
         \item \textbf{At least one subapproach is categorized inconsistently.}
               When a subapproach has more than one category (see \Cref{multiCats}),
