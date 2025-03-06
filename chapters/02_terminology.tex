@@ -540,8 +540,11 @@ in a general or technical sense. For example,
 \citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}
 defines interface testing as ``an integration \emph{test type} that is
 concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
-\fi does not define ``test type'', this may not have special significance.
-\ifnotpaper We consider these kinds of ``categorizations'' to be
+\fi does not define ``test type'', this may not have special significance.%
+\ifnotpaper\afterpage{\begin{landscape}%
+            % Omitted from paper for brevity
+            \otherCatsTable{}%
+        \end{landscape}} We consider these kinds of ``categorizations'' to be
     inferred and mark them with a question mark (?)~during data collection.
     When we evaluate test approaches categorized more than once in
     \Cref{multiCats}, we list well-defined categorizations in
@@ -553,21 +556,13 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     to their ``IEEE Equivalents'' or could provide new perspectives and be
     useful in some contexts, either in place of or in tandem with
     \citet{IEEE2022}'s.
-    % \newpage
 
-    % \afterpage{
-    \begin{landscape}
-        % Omitted from paper for brevity
-        \otherCatsTable{}
-    \end{landscape}
-    % }
-
-    Similarly, the literature gives many other ways to categorize test
-    approaches that may be used in tandem with or in place of those given in
-    \Cref{tab:ieeeCats,tab:otherCats}. In general, these are defined less
+    Similarly, we find many other ways to categorize test approaches in the
+    literature which may be used in tandem with or in place of those given
+    in \Cref{tab:ieeeCats,tab:otherCats}. In general, these are defined less
     systematically but are more fine-grained, seeming to ``specialize''
     categories from \Cref{tab:ieeeCats}. The existence of these classifications
-    are not inherently wrong, as they may be useful for specific teams or in
+    is not inherently wrong, as they may be useful for specific teams or in
     certain contexts. For example, functional testing and structural testing
     ``use different sources of information and have been shown to highlight
     different problems'', and deterministic testing and random testing have
@@ -575,7 +570,7 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     \citep[p.~5\=/16]{SWEBOK2024}. Unfortunately, even these alternate
     categories are not used consistently (see \flawref{manual-or-keyword})!
 
-    These categorizations are given in \Cref{tab:otherCategorizations} for
+    We give these categorizations in \Cref{tab:otherCategorizations} for
     completeness. The bases for these alternate categorizations, along with the
     example approaches listed, come from the source(s) indicated in the ``Test
     Basis'' column. When multiple sources are given for a test basis, the union
@@ -586,9 +581,9 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     accordingly. For example, in the first row, \citet[pp.~4, 8]{IEEE2021} and
     \citet[p.~46]{Firesmith2015} both classify specification-based testing,
     structure-based testing, and grey-box testing as test techniques. A lack of
-    source(s) in this column indicate that this category was inferred or that
-    some or all of the example approaches are not categorized by the
-    literature; additional context is sometimes provided in a footnote.
+    source(s) in this column indicates that we inferred the category or that
+    not all of the example approaches were categorized by the
+    literature; we provide additional context in footnotes when applicable.
 
     \afterpage{
         \begin{landscape}
@@ -598,16 +593,14 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     }
 
     \phantomsection{}\label{method-family}
-    Another way that the IEEE categories can be subdivided is by grouping related
-    testing approaches into a ``class'' or ``family'' with ``commonalities and
+    Another way to subdivide the IEEE categories is by grouping related test
+    approaches into a ``class'' or ``family'' with ``commonalities and
     well-identified variabilities that can be
     instantiated'', where ``the commonalities are large and the variabilities
     smaller'' \citep{classFamilyDisc}. Examples of these are the classes of
-    combinatorial \citep[p.~15]{IEEE2021} and data flow testing \citetext{p.~3} and
-    the family of performance-related testing \perfAsFamily{}, and is implied for
-    security testing, a test type that consists of ``a number of
-    techniques\footnote{This may or may not be \distinctIEEE{technique}}''
-    \cite[p.~40]{IEEE2021}. This is explored in more detail in
+    combinatorial \citep[p.~15]{IEEE2021} and data flow testing \citetext{p.~3}
+    and the family of performance-related testing \perfAsFamily{}; we explore
+    the notion of test approaches families in more detail in
     \Cref{classFamilyFlaw}. Note that ``there is a lot of overlap between
     different classes of testing'' \citep[p.~8]{Firesmith2015}, meaning that ``one
     category [of test techniques] might deal with combining two or more techniques''
@@ -619,7 +612,6 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     testing to whole-application security testing''
     \citep[p.~23]{GodefroidAndLuchaup2011}! This is, in part, why research on
     software testing terminology is so vital.
-    \newpage
 \fi
 
 \subsection{Synonym Relations}
