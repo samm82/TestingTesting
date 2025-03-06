@@ -307,6 +307,17 @@ accept a system or component'' \ifnotpaper (\citealp[p.~5]{IEEE2017}; similar
     \cite[p.~5]{IEEE2017}\fi, which requires the system or component to be
 developed and ready for testing.
 
+\ifnotpaper
+    % \afterpage{
+    \begin{landscape}
+        \begin{table*}[hbtp!]
+            % Moved earlier to display nicely in paper
+            \ieeeCatsTable{}
+        \end{table*}
+    \end{landscape}
+    % }
+\fi
+
 In addition to these five categories, \citet[Fig.~2]{IEEE2022} also
 \multiAuthHelper{include} ``static testing''. However, this seems to be
 non-orthogonal to the others and thus less helpful for grouping test approaches.
@@ -323,13 +334,6 @@ from \citet{IEEE2022}: approach, level, type, technique, and practice.
     (see \Cref{tab:otherCats,tab:otherCategorizations}), considering static
     testing as an orthogonal distinction could make sense in specific contexts
     (see \Cref{static-test}).
-
-    \afterpage{
-        \begin{landscape}
-            % Moved earlier to display nicely in paper
-            \ieeeCatsTable{}
-        \end{landscape}
-    }
 \fi
 
 While the vast majority of identified test approaches can be categorized
@@ -538,11 +542,11 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
 
     Other sources \citep[such as][]{SWEBOK2024,BarbosaEtAl2006}
     propose similar yet distinct categories that clash or overlap with those
-    from \citep{IEEE2022}, given in \Cref{tab:otherCats}. These may simply map
-    to their ``IEEE Equivalents'', but further analysis may reveal that these
-    other categories provide new perspectives and may be useful in some
-    contexts, either in place of or in tandem with \citet{IEEE2022}'s.
-    \newpage
+    from \citep{IEEE2022}, given in \Cref{tab:otherCats}. These could simply map
+    to their ``IEEE Equivalents'' or could provide new perspectives and be
+    useful in some contexts, either in place of or in tandem with
+    \citet{IEEE2022}'s.
+    % \newpage
 
     % \afterpage{
     \begin{landscape}
