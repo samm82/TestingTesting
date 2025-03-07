@@ -318,51 +318,19 @@ developed and ready for testing.
     % }
 \fi
 
-In addition to these five categories, \citet[Fig.~2]{IEEE2022} also
-\multiAuthHelper{include} ``static testing''. However, this seems to be
-non-orthogonal to the others and thus less helpful for grouping test approaches.
-For example, static assertion checking (mentioned by \ifnotpaper
-    \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
-    \citealp[p.~343]{ChalinEtAl2006}, \citealp[p.~345]{LahiriEtAl2013}\fi) is a
-subapproach of assertion checking, which can also be performed dynamically.
-This parent-child relation (defined in \Cref{par-chd-rels}) means that static
-assertion checking may inherit assertion checking's inferred category of
-``practice''. Based on observations such as this, we categorize testing
-approaches, \emph{including} static ones, based on the remaining categories
-from \citet{IEEE2022}: approach, level, type, technique, and practice.
-\ifnotpaper However, since there are many ways to categorize test approaches
-    (see \Cref{tab:otherCats,tab:otherCategorizations}), considering static
-    testing as an orthogonal distinction could make sense in specific contexts
-    (see \Cref{static-test}).
-\fi
-
-While we can categorize the vast majority of identified test approaches
-in this way, \ifnotpaper there are some outliers. For example, \fi
-an ``artifact'' category is an additional option\thesisissueref{44,119,39},
-since some terms can refer to the application of a test approach
-\emph{as well as} the resulting document(s). Because of this, we do \emph{not}
-include test approachs categorized as a category from \Cref{tab:ieeeCats}
-\emph{and} an artifact as flaws\thesisissueref{119} in \Cref{multiCats}.
-\ifnotpaper
-    Additionally, we identified\ptq{} ``test metrics''\thesisissueref{21,22},
-    but tracking them is out-of-scope, since they describe methods for
-    \emph{evaluating} testing as opposed to methods for \emph{performing} it.
-    We instead capture the related test approaches that seek to maximize these
-    metrics as subsets of coverage-driven testing (see \Cref{cov-test}) and
-    experience-based testing \citep[p.~34]{IEEE2022}.
-
-\fi
-Excluding \ifnotpaper our proposed \else this \fi ``artifact'' category and the
-``approach'' supercategory, the categories given in \Cref{tab:ieeeCats} seem to
-be orthogonal. For example, ``a test type can be performed at a single test
+Based on their definitions and usage, the categories given in
+\Cref{tab:ieeeCats} seem to be orthogonal (excluding the ``approach''
+supercategory). For example, ``a test type can be performed at a single test
 level or across several test levels''
 \ifnotpaper
     (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021})%
 \else
     \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}%
 \fi, and ``Keyword-Driven Testing [sic] can be applied at all testing levels
-\dots{} and for various types of testing'' \citeyearpar[p.~4]{IEEE2016}.
-This means that a specific test approach can be derived by combining multiple
+\dots{} and for various types of testing'' \citeyearpar[p.~4]{IEEE2016}. We
+assume this to be true when identifying flaws and may assess the orthogonality
+of these categories more rigorously in the future. For now, this assumption
+implies that a specific test approach can be derived by combining multiple
 test approaches from different categories; for example, usability test
 script(ing) \citepISTQB{} is a combination of usability testing, a test type
 \ifnotpaper (\citealp[pp.~22, 26--27]{IEEE2022};
@@ -515,6 +483,42 @@ practice \citep[pp.~20, 22\ifnotpaper; implied by p.~33\fi]{IEEE2022}.
               a test type by its quality \citep[p.~434]{IEEE2017}%
               \todo{OG ISO/IEC, 2009} and by \citet[p.~55]{Firesmith2015}.
     \end{enumerate}
+\fi
+
+In addition to the categories of approach, level, type, technique, and
+practice, \citet[Fig.~2]{IEEE2022} also \multiAuthHelper{include}
+``static testing''. However, this seems to be non-orthogonal to the others and
+thus less helpful for grouping test approaches.
+For example, static assertion checking (mentioned by \ifnotpaper
+    \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
+    \citealp[p.~343]{ChalinEtAl2006}, \citealp[p.~345]{LahiriEtAl2013}\fi) is a
+subapproach of assertion checking, which can also be performed dynamically.
+This parent-child relation (defined in \Cref{par-chd-rels}) means that static
+assertion checking may inherit assertion checking's inferred category of
+``practice''. Based on observations such as this, we categorize testing
+approaches, \emph{including} static ones, based on the remaining categories
+from \citet{IEEE2022}.
+\ifnotpaper However, since there are many ways to categorize test approaches
+    (see \Cref{tab:otherCats,tab:otherCategorizations}), considering static
+    testing as an orthogonal distinction could make sense in specific contexts
+    (see \Cref{static-test}).
+
+\fi
+While we can categorize the vast majority of identified test approaches
+in this way, there are some outliers. For example, we categorize some test
+approaches as ``artifacts'' in addition to \citet{IEEE2022}'s categories%
+\thesisissueref{44,119,39}, since some terms can refer to the application of a
+test approach \emph{as well as} the resulting document(s). Because of this, we
+do \emph{not} consider these cases to violate our assumption that
+\citet{IEEE2022}'s categories are orthogonal and do not include them as flaws%
+\thesisissueref{119} in \Cref{multiCats}.
+\ifnotpaper
+    Additionally, we identify ``test metrics''\thesisissueref{21,22} that
+    describe methods for \emph{evaluating} testing as opposed to methods for
+    \emph{performing} it and are therefore out-of-scope. Instead,
+    we capture the related test approaches that seek to maximize these
+    metrics as subsets of coverage-driven testing (see \Cref{cov-test}) and
+    experience-based testing \citep[p.~34]{IEEE2022}.
 \fi
 
 A side effect of using the terms ``level'', ``type'', ``technique'', and
