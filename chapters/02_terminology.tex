@@ -129,12 +129,8 @@ We call this nuance ``rigidity'' and capture it when citing sources using
 directly within the literature, we also use them to track rigidity without
 getting distracted by less relevant details by summarizing the relevant
 nuance. This allows us to provide a more complete picture of the state of
-the literature; for example, we can view implicit flaws separately in
-\Cref{tab:flawMnfsts,tab:flawDmns}, since additional context may rectify
-them. Any kind of information can be implicit, including the names,
-\approachFields{} of identified test approaches. All sources cited throughout
-this \docType{} support their respective
-claims explicitly unless specified otherwise, usually via one of the
+the literature. All sources cited throughout this \docType{} support their
+respective claims explicitly unless specified otherwise, usually via one of the
 keywords given above\qtodo{Is this enough to satisfy Dr.~Smith's concern about
     the rigidity of Synonym Relation sources?}. The following non-mutually
 exclusive reasons for information to be considered ``implicit'' emerged, and we
@@ -236,16 +232,22 @@ when performing later analysis \impKeywordsCode{}:
           ``ideally'', ``likely'', ``if'', or ``although''.
 \end{enumerate}
 
-Flaws based on implicit information are themselves implicit. These are
-automatically detected when generating graphs and analyzing flaws
-(see \ifnotpaper \Cref{graph-gen,flaw-analysis}, respectively\else
-    \Cref{tools}\fi) by looking for the indicators of uncertainty mentioned
-above \impKeywordsCode{}. These are used when creating
-the glossaries to capture varying degrees of nuance, such as when a test
-approach ``can be'' a child of another or is a synonym of another ``most of the
-time'' but not always. \ifnotpaper As an example, \Cref{tab:parSyns} contains
-    relations that are explicit, implicit, and both; implicit relations are
-    marked by the phrase ``implied by''. \fi
+Any kind of information can be implicit, including the names,
+\approachFields{} of identified test approaches. Flaws based on implicit
+information are themselves implicit. By looking for the
+indicators of uncertainty mentioned above \impKeywordsCode{}, we can
+automatically detect implicit flaws when generating graphs and performing
+analysis (see \ifnotpaper \Cref{graph-gen,flaw-analysis}, respectively\else
+    \Cref{tools}\fi).
+%     These are used when creating
+% the glossaries to capture varying degrees of nuance, such as when a test
+% approach ``can be'' a child of another or is a synonym of another ``most of the
+% time'' but not always. 
+For example, we can view implicit flaws separately in
+\Cref{tab:flawMnfsts,tab:flawDmns}, since additional context may rectify them.
+\ifnotpaper Additionally, \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats}
+    contain relations that are explicit, implicit, and both; implicit relations
+    are marked by the phrases ``implied by'' and ``inferred from''. \fi
 
 \subsection{Trustworthiness}\label{trust}
 
