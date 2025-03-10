@@ -329,11 +329,12 @@ level or across several test levels''
 \else
     \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}%
 \fi, and ``Keyword-Driven Testing [sic] can be applied at all testing levels
-\dots{} and for various types of testing'' \citeyearpar[p.~4]{IEEE2016}. We
-assume this to be true when identifying flaws and may assess the orthogonality
-of these categories more rigorously in the future. For now, this assumption
+\dots{} and for various types of testing'' \citeyearpar[p.~4]{IEEE2016}.
+Therefore, we assume these categories to be orthogonal throughout this
+\docType{} (e.g., when identifying flaws). We may assess this assumption more
+rigorously in the future, but for now, it
 implies that a specific test approach can be derived by combining multiple
-test approaches from different categories; for example, usability test
+test approaches from different categories. For example, usability test
 script(ing) \citepISTQB{} is a combination of usability testing, a test type
 \ifnotpaper (\citealp[pp.~22, 26--27]{IEEE2022};
     \citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021}; implied by its quality;
@@ -489,7 +490,7 @@ practice \citep[pp.~20, 22\ifnotpaper; implied by p.~33\fi]{IEEE2022}.
 
 In addition to the categories of approach, level, type, technique, and
 practice, \citet[Fig.~2]{IEEE2022} also \multiAuthHelper{include}
-``static testing''. However, this seems to be non-orthogonal to the others and
+``static testing'', which seems to be non-orthogonal to the others and
 thus less helpful for grouping test approaches.
 For example, static assertion checking (mentioned by \ifnotpaper
     \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
@@ -507,10 +508,10 @@ from \citet{IEEE2022}.
 
 \fi
 While we can categorize the vast majority of identified test approaches
-in this way, there are some outliers. For example, we categorize some test
-approaches as ``artifacts'' in addition to \citet{IEEE2022}'s categories%
-\thesisissueref{44,119,39}, since some terms can refer to the application of a
-test approach \emph{as well as} the resulting document(s). Because of this, we
+based on \citet{IEEE2022}'s categories, there are some outliers. For example,
+we categorize some test approaches as ``artifacts''\thesisissueref{44,119,39},
+since some terms can refer to the application of a
+test approach \emph{as well as} the resulting document(s). Therefore, we
 do \emph{not} consider these cases to violate our assumption that
 \citet{IEEE2022}'s categories are orthogonal and do not include them as flaws%
 \thesisissueref{119} in \Cref{multiCats}.
@@ -538,7 +539,7 @@ where others have already been found''
 \ifnotpaper \citep[emphasis added]{ChatGPT2024}\else \cite{ChatGPT2024}\fi%
 \qtodo{Is this sufficient to explain ChatGPT's role in our methodology?},
 using the word ``type'' in a general sense, akin to ``kind'' or ``subset''.
-Interestingly, ChatGPT ``corrects'' this imprecise term in its response,
+Interestingly, ChatGPT ``corrects'' our imprecise term in its response,
 using the more correct term ``approach'' (although it may have been biased by
 our previous usage of these terms)! Because natural language can be ambiguous,
 we need to exercise judgement when determining if these terms are being used
@@ -577,11 +578,11 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     categories are not used consistently (see \flawref{manual-or-keyword})!
 
     We include the most prominent of these alternate categorizations in
-    \Cref{tab:otherCategorizations} for completeness. The source for each basis
-    also lists the example approaches given; in some cases, it provides
-    additional approaches that we omit for brevity. This source categorizes
-    all these example approaches as the given ``Parent IEEE Category'' unless
-    stated otherwise. For example, in the first row, \citet[pp.~22, 35]{IEEE2022}
+    \Cref{tab:otherCategorizations} for completeness. In each row, the source
+    given lists the example approaches and categorizes them as the given
+    ``Parent IEEE Category'' unless stated otherwise (in some cases, the source
+    gives additional approaches that we omit for brevity). For example, in the
+    first row, \citet[pp.~22, 35]{IEEE2022}
     categorize both manual testing and automated testing as test practices.
     Note that since ``approach'' is a catch-all category, it does not require
     an explicit categorization, and that these categorizations may be
@@ -613,7 +614,7 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     test generation based on symbolic execution and constraint solving from unit
     testing to whole-application security testing''
     \citep[p.~23]{GodefroidAndLuchaup2011}! This is, in part, why research on
-    software testing terminology is so vital.
+    software testing terminology is so vital.\qtodo{Is this sentence needed?}
 \fi
 
 \subsection{Synonym Relations}
