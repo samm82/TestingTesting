@@ -2,15 +2,9 @@
 \def\infoSrcExs{Specification-based Testing\\ Structure-based Testing\\
     Experience-based Testing}
 \def\sdlcExs{Waterfall Testing\\ Incremental Testing\\ \acf{ct}}
-\def\reasExs{Smoke Testing\\ Initial Testing\\ Regression Testing}
 \def\execExs{Static Testing\\ Dynamic Testing}
 \def\goalExs{Verification Testing\\ Validation Testing}
-\def\reqExs{Functional Testing\\ Non-functional Testing}
 \def\humInvExs{Manual Testing\\ Automated Testing}
-\def\strExs{Scripted Testing\\ Exploratory Testing\TblrNote{f}}
-\def\factExs{Correctness Testing\\ Response-Time Testing\\ Access Control Testing\\
-    Compliance Testing\\ Reliability Testing\\ Maintainability Testing\\ Portability Testing\\
-    Performance Testing\TblrNote{e}}
 \def\adqCritExs{Coverage-based Testing\\ Fault-based Testing\\ Error-based Testing}
 
 \def\parCat{Parent\TblrNote{a} IEEE\\ Category\TblrNote{b}}
@@ -43,56 +37,17 @@
     % (\citealp[pp.~69--70]{Perry2006}; \citealp[p.~214]{KuļešovsEtAl2013})
                                  & \goalExs{}                 & Approach              & \citep[p.~16]{IEEE2022}                \\
     \hline
-    % Visibility of the \acs{sut}'s Internal Structure % (\citealp[p.~8]{IEEE2021}; \citealp[pp.~5\=/10, 5\=/16]{SWEBOK2024};
-    % % \citealp[pp.~53, 218]{Patton2006}; \citealp[p.~69]{Perry2006}; \citealp[p.~601; OG {[8]}]{SharmaEtAl2021};
-    % % \citealp[pp.~57--58]{AmmannAndOffutt2017}; \citealp[p.~213]{KuļešovsEtAl2013}; \citep[pp.~4--5]{Kam2008})                       
-    %                    & \visibExs{}                & Technique
-    % % (\citealp[pp.~4, 8]{IEEE2021}; \citealp[p.~46]{Firesmith2015})        
-    %                    & \citep[pp.~4, 8]{IEEE2021}                                                                  \\
-    % \hline
     Source of Information for Designing Tests % \citep[p.~8; one other source]{IEEE2021} 
                                  & \infoSrcExs{}              & Technique\TblrNote{e}
     % (\citealp[p.~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021};
     % \citealp[pp.~5\=/10, 5\=/13]{SWEBOK2024}; \citealpISTQB{}; \citealp[p.~46]{Firesmith2015}) 
                                  & \citep[pp.~4, 8]{IEEE2021}                                                                  \\
     \hline
-    % Source of Test Data
-    % \citep[p.~440]{PetersAndPedrycz2000}    & \dataSrcExs{}              & Technique                                                                                                                                \\
-    % \hline
-    % Coverage Requirement % \citep[pp.~4--5]{Kam2008}             
-    %                    & \covReqExs{}               & Technique             & \citep[p.~5\=/13]{SWEBOK2024}          \\
-    % %    \citealp[p.~49]{Firesmith2015}                                         
-    % \hline
     Selection Process % \citep[p.~5-16]{SWEBOK2024}            
                                  & \selecExs{}                & Technique             & \citep[pp.~5\=/12, 5\=/16]{SWEBOK2024} \\
     \hline
-    % \questBase{}                             & \questExs{}                & Approach                                                                                                                                                               \\
-    % \hline
     Stage of Lifecycle           & \sdlcExs{}                 & Practice (inferred)   & \citep[p.~29]{Firesmith2015}           \\
     \hline
-    % Reason             & \reasExs{}                 & Technique (inferred)  & \citep[p.~34]{Firesmith2015}                   \\
-    % \hline
-    % Seems synonymous with testing based on software qualities
-    % Test Factor (also called Quality Factor or Quality Attribute)
-    % \citep[pp.~40--41]{Perry2006}           & \factExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by its quality and/or \citealp{Firesmith2015})                                           \\
-    % \hline
     Adequacy Criterion           & \adqCritExs{}              & Technique             & \citep[pp.~398--399]{vanVliet2000}     \\
     \hline
-    % Coverage Criteria
-    % \citep[pp.~18--19]{AmmannAndOffutt2017} & \covCritExs{}              & Technique (\citealp[p.~22]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealp[p.~5\=/11]{SWEBOK2024}; \citealp[pp.~47--48]{Firesmith2015})                                             \\
-    % \hline
-    % Structuredness
-    % \citep[p.~214]{KuļešovsEtAl2013}        & \strExs{}                  & Practice\TblrNote{g} \citep[pp.~20, 22]{IEEE2022}                                                                                                                                    \\
-    % \hline
-    % Requirement Type
-    % % Target (\citealp[p.~213]{KuļešovsEtAl2013}; \citealp[pp.~4--5]{Kam2008})
-    %                    & \reqExs{}                  & Ambiguous (see \Cref{func-test-flaw}) & \citep[p.~213]{KuļešovsEtAl2013}       \\
-    % \hline
-    % Risk Area \citep[p.~12]{Gerrard2000a}   & \typeCatExs{}              & Ambiguous                                                                                                                                                                            \\
-    % \hline
-    % Priority (in the context of testing e-business projects)
-    % \citep[p.~13]{Gerrard2000a}             & \priorExs{}                & Type\TblrNote{h} (\citealp[p.~22]{IEEE2022}; \citeyear[Tab.~A.1]{IEEE2021}; and/or implied by \citealp[p.~53]{Firesmith2015})                                                        \\
-    % \hline
-    % Purpose \citep{Pan1999}                 & \purpExs{}                 & Type (\citealp[p.~22]{IEEE2022}; and/or implied by \citealp[p.~53]{Firesmith2015})                                                                                                   \\
-    % \hline
 \end{longtblr}
