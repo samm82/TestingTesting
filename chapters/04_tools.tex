@@ -136,16 +136,15 @@ subsets of them. \ifnotpaper For each approach category (see
     approaches along with the relations between them \emph{and} between a
     static approach and a dynamic approach. We generate this static-focused
     graph because static testing is sometimes considered to be a separate
-    approach category \citep[Fig.~2; see \Cref{static-test}]{IEEE2022},
-    but we include the relations with dynamic approaches since they are our
-    primary focus. We color all dynamic approach nodes in these graphs grey,
-    as in \Cref{fig:staticExampleGraph}, to distinguish them, and include this
-    in the legend of \Cref{fig:exampleGraphs} for convenience. If we assume
-    that the approaches in \Cref{fig:exampleGraph,fig:rigidExampleGraph,%
-        fig:synExampleGraph,fig:selfExampleGraph,fig:parSynExampleGraph} are
-    all static, then this portion of the legend applies to the entirety of
-    \Cref{fig:exampleGraphs}; otherwise, it does not apply to the
-    aforementioned subgraphs.\qtodo{Does this make sense?}
+    approach category (see \flawref{static-test-flaw}), but we include the
+    relations with dynamic approaches since they are our primary focus
+    (see \Cref{static-test}). We color all dynamic approach nodes in these
+    graphs grey, as in \Cref{fig:staticExampleGraph}, to distinguish them,
+    and include this in the legend of \Cref{fig:exampleGraphs} for convenience.
+    If we assume that the approaches in \Crefrange{fig:exampleGraph}
+    {fig:parSynExampleGraph} are all static, then this portion of the legend
+    applies to the entirety of \Cref{fig:exampleGraphs}; otherwise, it only
+    applies to \Cref{fig:staticExampleGraph}.\qtodo{Does this make sense?}
 
     We can also generate more specific subsets of these graphs
 \else We can generate more focused graphs \fi from a given subset of
