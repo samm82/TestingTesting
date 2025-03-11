@@ -112,13 +112,14 @@ pair from our generated graphs based on the following possible cases:
     \texttt{J -> K} would result in these approaches being graphed as shown in
     \Cref{fig:parSynExampleGraph}.
 
-    \phantomsection{}\label{expAndImp}
-    The visual nature of these graphs means we can represent explicit
+    \phantomsection{}\label{graphRigid}
+    Since we also track the ``rigidity'' of information (see \Cref{rigidity}),
+    we can represent explicit
     \emph{and} implicit relations without double counting them during the
     analysis in \Cref{flaw-analysis}. If a relation is both explicit
     \emph{and} implicit, we only include the implicit relation in the graph
-    if it is from a more ``trusted'' source tier (see \Cref{sources}).
-    For example, note that only the explicit synonym relation between E and F
+    if its source is more ``trustworthy'' (see \Cref{trust}).
+    For example, only the explicit synonym relation between E and F
     from \Cref{tab:exampleGlossary} appears in \Cref{fig:synExampleGraph}.
     Implicit approaches and relations are denoted by dashed lines, as shown
     in \Cref{fig:exampleGraph,fig:synExampleGraph}; explicit approaches are
