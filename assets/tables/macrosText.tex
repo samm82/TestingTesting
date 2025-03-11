@@ -1,4 +1,6 @@
-\newcommand\macroType[2]{\multirow[c]{#1}{*}{\rotatebox[origin=c]{90}{#2}}}
+% With help from https://tex.stackexchange.com/a/40468/192195, https://tex.stackexchange.com/a/245663/192195, and Copliot
+\newcommand\macroType[2]{\multirow[c]{#1}{*}{\adjustbox{minipage=\the\dimexpr 0.3cm * #1 \relax,rotate=90}{#2}}}
+% \newcommand\macroType[2]{\multirow[c]{#1}{*}{\rotatebox[origin=c]{90}{#2}}}
 
 \begin{longtblr}[
     note{a} = {Defined in \Cref{flaw-def}.},
@@ -40,15 +42,13 @@
                              & \macro{recFigs}             & \Cref{rigidity,infers,recs}                                     \\*
                              & \macro{seeSrcCode}          & \Cref{rigidity,graph-gen,auto-flaw-analysis,paper-macros}       \\
     \hline
-    \macroType{5}{Source Tiers\TblrNote{b}}
-                             & \macro{stds}                &
-    \Cref{fig:stdFlawSources,fig:sourceSummary,flaw-analysis-example,tab:flawMnfsts,tab:flawDmns}                            \\*
-                             & \macro{metas}               &
-    \Cref{fig:metaFlawSources,fig:sourceSummary,flaw-analysis-example,tab:flawMnfsts,tab:flawDmns}                           \\*
-                             & \macro{texts}               &
-    \Cref{fig:textFlawSources,fig:sourceSummary,tab:flawMnfsts,tab:flawDmns}                                                 \\*
-                             & \macro{papers}\TblrNote{c}  &
-    \Cref{fig:paperFlawSources,fig:sourceSummary,flaw-analysis-example,tab:flawMnfsts,tab:flawDmns}                          \\
+    \macroType{4}{Source                                                                                                     \\
+    Tiers\TblrNote{b}}       & \macro{stds}                & \SetCell[r=4]{l}
+    {\Cref{fig:sourceSummary,fig:flawSources,tab:flawMnfsts,tab:flawDmns}                                                    \\\quad\\
+    \Cref{flaw-analysis-example} (except for \macro{texts})}                                                                 \\*
+                             & \macro{metas}               &                                                                 \\*
+                             & \macro{texts}               &                                                                 \\*
+                             & \macro{papers}\TblrNote{c}  &                                                                 \\
     \hline
     \macroType{3}{RQs}       & \macro{rqatext}             & \SetCell[r=3]{l} \Cref{intro} and seminar slides                \\*
                              & \macro{rqbtext}             &                                                                 \\*
