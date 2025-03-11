@@ -237,8 +237,9 @@
 \def\stds{\nameref{stds}}
 \def\metas{\nameref{metas}}
 \def\texts{\nameref{texts}}
-\def\papers{\nameref{papers}}
-\def\papersTbl{\hyperref[papers]{Papers and Others}}
+\NewDocumentCommand{\papers}{s}{%
+    \IfBooleanTF{#1}{\hyperref[papers]{Papers and Others}}{\nameref{papers}}%
+}
 
 \def\srcCat{\hyperref[sources]{Source Tier}}
 

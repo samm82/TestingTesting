@@ -3,6 +3,8 @@
 \begin{longtblr}[
     note{a} = {Defined in \Cref{flaw-def}.},
     note{b} = {Defined in \Cref{sources}.},
+    note{c} = {We define a starred version, \macro{papers*}, to shorten the
+            display name for use in tables.},
     caption = {\LaTeX{} macros for reused text.},
     label = {tab:macrosText}
     ]{
@@ -45,9 +47,8 @@
     \Cref{fig:metaFlawSources,fig:sourceSummary,flaw-analysis-example,tab:flawMnfsts,tab:flawDmns}                           \\*
                              & \macro{texts}               &
     \Cref{fig:textFlawSources,fig:sourceSummary,tab:flawMnfsts,tab:flawDmns}                                                 \\*
-                             & \macro{papers}              &
-    \Cref{fig:paperFlawSources,fig:sourceSummary,flaw-analysis-example}                                                      \\*
-                             & \macro{papersTbl}           & \Cref{tab:flawMnfsts,tab:flawDmns}                              \\
+                             & \macro{papers}\TblrNote{c}  &
+    \Cref{fig:paperFlawSources,fig:sourceSummary,flaw-analysis-example,tab:flawMnfsts,tab:flawDmns}                          \\
     \hline
     \macroType{3}{RQs}       & \macro{rqatext}             & \SetCell[r=3]{l} \Cref{intro} and seminar slides                \\*
                              & \macro{rqbtext}             &                                                                 \\*
