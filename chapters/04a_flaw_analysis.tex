@@ -250,15 +250,22 @@ the lists of sources in \Cref{sources}. These are built by extracting all
 sources cited in our three glossaries, categorizing, sorting, and formatting
 them (including handling edge cases), and saving them to a file. These are then
 defined as \macro{stdSources}, \macro{metaSources}, \macro{textSources}, and
-\macro{paperSources}.\todo{Should I explicitly display these lists in a table
-    here? That feels redundant and might make things unnecessarily cluttered.}
-The numbers of sources in each tier are also saved to build \Cref{fig:sourceSummary}
-and calcuate \macro{srcCount} (see \Cref{tab:macrosCalc}). However, most of the
-macros for reused text are created manually when the reuse is first noticed.
-Some of these macros account for context-specific formatting, such as
-capitalization, depending on how they are used; we omit these details here for
-brevity. We create macros to reuse many types of information throughout our
-documents as shown in \Cref{tab:macrosText}.
+\macro{paperSources}, which include:
+\begin{enumerate}
+    \item the source tier's name,
+    \item the list of sources in the tier, and
+    \item the number of sources in the tier.
+\end{enumerate}
+These are accessed by passing in the corresponding number in the above
+enumeration. We use the first one for the subheadings in \Cref{sources}, the
+first two for \Cref{app-src-tiers} and the third to build \Cref{fig:sourceSummary}
+and calcuate \macro{srcCount} (see \Cref{tab:macrosCalc}).
+
+However, we create most of these macros for reused text manually when we first
+notice the reuse. Some of these macros account for context-specific formatting,
+such as capitalization, depending on how they are used; we omit these details
+here for brevity. We create macros to reuse many types of information
+throughout our documents as shown in \Cref{tab:macrosText}.
 
 \input{assets/tables/macrosText}
 
