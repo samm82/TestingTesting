@@ -28,22 +28,22 @@
 
 To better visualize how test approaches relate to each other, we
 develop a tool to automatically generate graphs of these relations.
-\ifnotpaper Since synonym (see \Cref{syn-rels}) and parent-child relations
-    (see \Cref{par-chd-rels}) between approaches are tracked in
-    \ourApproachGlossary{} in a consistent format, we can parse them
+\ifnotpaper Since we use a consistent format to track synonym
+    (see \Cref{syn-rels}) and parent-child relations (see \Cref{par-chd-rels})
+    between approaches in \ourApproachGlossary{}, we can parse them
     systematically. For example, if the entries in \Cref{tab:exampleGlossary}
-    appear in the glossary, then their parent relations are displayed as
-    \Cref{fig:exampleGraph} in the generated graph. Relevant citation
-    information is also captured in our glossary following the author-year
-    citation format, including ``reusing'' information from previous
-    citations. For example, the first row of \Cref{tab:exampleGlossary}
+    appear in the glossary, then their parent-child relations are displayed as
+    \Cref{fig:exampleGraph} in the generated graph. We also capture relevant
+    citation information in our glossary in the author-year citation format,
+    ``reusing'' information from previous citations when applicable.
+    For example, the first row of \Cref{tab:exampleGlossary}
     contains the citation ``(Author, 0000; 0001)'', which means that this
-    information was present in two documents by ``Author'': one written in
+    information was present in two documents by Author: one written in
     the year 0000, and one in 0001. The following citation, ``(0000)'',
     contains no author, which means it was written by the same one as the
-    previous citation (Author). These citations are processed according to this
-    logic \seeSrcCode{82167b7}{scripts/csvToGraph.py}{55}{96} so they can be
-    consistently tracked throughout the analysis.
+    previous citation (Author). We process these citations according to this
+    logic \seeSrcCode{f173e88}{scripts/csvToGraph.py}{55}{96} so we can
+    consistently track them throughout our analysis.
 
     \input{build/exampleGlossary.tex}
 
