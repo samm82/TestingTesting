@@ -123,10 +123,9 @@ analyzed. These comments have the following format:
 \end{displayquote}
 \texttt{SEM} and \texttt{SYN} are placeholders for the ``keys'' given in
 \Cref{tab:flawMnfstDefs,tab:flawDmnDefs} that we use to identify
-a flaw's semantics and syntax (see \Cref{flaws}); each flaw has exactly one
-classification for each of semantics and syntax. We omit
-these keys from the examples of these comments throughout this chapter for
-brevity. Finally, \texttt{A1}, \texttt{A2}, \texttt{B1},
+a flaw's semantics and syntax (see \Cref{flaws}). We omit these keys from
+arbitrary examples of these comments without associated flaws throughout this
+chapter for brevity. Finally, \texttt{A1}, \texttt{A2}, \texttt{B1},
 \texttt{B2}, and \texttt{C1} are each placeholders for a source involved in
 this example flaw; in general, there can be arbitrarily many. We represent each
 source by its BibTeX key, and wrap each one in curly braces (with the exception
@@ -157,9 +156,8 @@ conflicting sources of information in X.
         \% Flaw count: \{X\} | \{X\} \{Y\}}
 \end{displayquote}
 We do not double count flaws that reappear when comparing between pairs of
-groups; this means the following line adds inconsistencies between X and Z
-\emph{and} between Y and Z without double counting the inconsistency between
-X and Z.\qtodo{Does this flow well in light of \thesisissuerefhelper{155}?}
+groups; this means the following line adds an inconsistency between X and Z
+\emph{and} between Y and Z \emph{without} double counting the former.
 \begin{displayquote}
     \texttt{\% Flaw count: \{X\} | \{X\} \{Y\} | \{Z\}}
 \end{displayquote}
