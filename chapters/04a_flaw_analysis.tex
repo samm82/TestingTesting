@@ -44,30 +44,30 @@ by the same organization: the IEEE Computer Society (\citealp{AboutSWEBOK}; see
 
 \phantomsection{}
 \label{flaw-analysis-example}
-As an example of this process, consider a flaw \emph{within} an IEEE
-document (e.g., two different definitions are given for a term within the same
-IEEE document) \emph{and} between another IEEE document, the \acs{istqb}
-glossary \emph{and} two papers. This would add one to the following rows of
-\Cref{tab:flawMnfsts,tab:flawDmns} in the relevant column:
+As an example of this process, consider \flawref{level-phase-syns}, where an
+IEEE standard has an internal flaw, and an inconsistency with two other IEEE
+standards, and an inconsistency with a textbook. This adds one to the following
+rows of \Cref{tab:flawMnfsts,tab:flawDmns} in the relevant column for a total
+of two counted flaws:
 
 \begin{itemize}
     \item \textbf{\stds{}}: this flaw occurs:
           \begin{enumerate}
               \item within one standard and
-              \item between two standards.
+              \item between three standards (with the same set of authors).
           \end{enumerate}
           This increments the count by just one to avoid double counting and
           would do so even if only one of the above conditions was true. A more
           nuanced breakdown of flaws that identifies those within a
           singular document and those between documents by the same author is
           given in \Cref{fig:flawSources} and explained in more detail in
-          \Cref{aug-flaw-analysis}.
-    \item \textbf{\metas{}}: this flaw occurs between a source in this tier and
+          \Cref{aug-flaw-analysis}; this view counts three total flaws here.
+    \item \textbf{\texts{}}: this flaw occurs between a source in this tier and
           a ``more trusted'' one (the IEEE standards).
-    \item \textbf{\papers{}}: this flaw occurs between a source in this tier
-          and a ``more trusted'' one. Even though there are two sources in this
-          tier \emph{and} two ``more trusted'' tier involved, this increments
-          the count by just one to avoid double counting.
+          % \item \textbf{\papers{}}: this flaw occurs between a source in this tier
+          %       and a ``more trusted'' one. Even though there are two sources in this
+          %       tier \emph{and} two ``more trusted'' tier involved, this increments
+          %       the count by just one to avoid double counting.
 \end{itemize}
 
 \subsubsection{Automated Flaw Analysis}
@@ -163,16 +163,18 @@ X and Z.\qtodo{Does this flow well in light of \thesisissuerefhelper{155}?}
 \begin{displayquote}
     \texttt{\% Flaw count: \{X\} | \{X\} \{Y\} | \{Z\}}
 \end{displayquote}
-To give a more complete example, the line
+To give a more complete example, we track \flawref{level-phase-syns} with the
+following comment line:\latertodo{Ensure this is up to date}
 \begin{displayquote}
-    \texttt{\% Flaw count: \{IEEE2022\} | \{IEEE2022\} \{IEEE2017\}
-        \displayNL ISTQB \{Kam2008\} \{Bas2024\}}
-\end{displayquote}
-is parsed as the example given in \Cref{flaw-analysis-example}. Since
-\texttt{IEEE2022} and \texttt{IEEE2017} are written by the same standards
+    \texttt{\% Flaw count (SYNS, OVER): \{IEEE2017\} \{IEEE2013\} | \{IEEE2022\}
+        \displayNL{} \{IEEE2017\} \{Perry2006\}}
+\end{displayquote}%
+We parse this as the example given in \Cref{flaw-analysis-example}. Since
+\texttt{IEEE2022}, \texttt{IEEE2017}, and \texttt{IEEE2013} are all written by
+the same standards
 organizations (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), we count
 this as an inconsistency between documents by the same author(s) in
-\Cref{fig:flawSources}\latertodo{Link to this specific flaw?}.
+\Cref{fig:flawSources}, but only once to avoid double counting.
 
 We can also specify the rigidity (see \Cref{rigidity}) of a flaw by inserting
 the phrase ``implied by'' after the sources of explicit information and before
