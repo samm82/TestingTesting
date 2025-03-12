@@ -178,21 +178,22 @@ We can also specify the rigidity (see \Cref{rigidity}) of a flaw by inserting
 the phrase ``implied by'' after the sources of explicit information and before
 those of implicit information. This information is parsed following the same
 rules described in \Cref{auto-flaw-analysis-rigidity} for automatically
-detected flaws.
+detected flaws. Note that we only count implicit flaws if there is not an
+equivalent explicit flaw, as we do when generating graphs (\Cref{graphRigid}).
 \begin{displayquote}
-    \texttt{\% Flaw count: \{IEEE2022\} implied by \{Kam2008\} |
-        \displayNL \{IEEE2017\} implied by \{IEEE2022\}}
-\end{displayquote}\latertodo{Link to this specific flaw?}
-For example, the above line indicates that the flaws given below are
-present. The second flaw only affects \Cref{fig:flawSources} since it
-is less ``rigid'' than the first flaw within standards (see \Cref{stds}).
-The rest increment their corresponding count in
-\Cref{fig:flawSources,tab:flawMnfsts,tab:flawDmns} by only one:
+    \texttt{\% Flaw count (DEFS, CONTRA): \{IEEE2021\} \{IEEE2017\} |
+        \displayNL \{vanVliet2000\} implied by \{IEEE2021\}}
+\end{displayquote}
+For example, the above comment line\utd{} from \flawref{c-use-def} indicates that the
+flaws given below are present. The third flaw only affects \Cref{fig:flawSources}
+due to its more nuanced breakdown of the sources of flaws. The rest increment
+their corresponding count in \Cref{fig:flawSources,tab:flawMnfsts,tab:flawDmns}
+by only one:
 \begin{itemize}
-    \item an explicit inconsistency between documents by
-          \begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper},
+    \item an explicit inconsistency between a textbook and a standard,
     \item an implicit flaw within a single document, and
-    \item an implicit inconsistency between a paper and a standard.
+    \item an implicit inconsistency between documents with the same set of
+          authors (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}).
 \end{itemize}
 
 Occasionally, we use a source from a lower tier as the ``ground truth'' for a
