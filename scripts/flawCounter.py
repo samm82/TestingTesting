@@ -190,8 +190,8 @@ def enumOrItem(k, extra: str):
     ref = "~".join([x for x in [sing(k.value), extra, "\\arabic*"] if x])
     return (k, ["\\ifnotpaper", f"\\begin{{enumerate}}[ref={ref}]",
                       "\\else", f"\\begin{{itemize}}", "\\fi"])
-simpleFlawDmn   = OrderedDict([enumOrItem(k, "Flaw") for k in FlawDmn])
 simpleFlawMnfst = OrderedDict([enumOrItem(k, "")     for k in FlawMnfst])
+simpleFlawDmn   = OrderedDict([enumOrItem(k, "Flaw") for k in FlawDmn])
 
 def outputFlaws():
     flawDict = {k : FlawCounter(k.value) for k in SrcCat if k.color.value >= 0}
@@ -201,9 +201,9 @@ def outputFlaws():
         print()
 
     def getFlawGroups(s):
-        flawDmn, flawMnfst = re.search(
+        flawMnfst, flawDmn = re.search(
             r"% Flaw count \(([A-Z]+), ([A-Z]+)\):", s).groups()
-        return FlawDmn[flawDmn], FlawMnfst[flawMnfst]
+        return FlawMnfst[flawMnfst], FlawDmn[flawDmn]
 
     for filename in TEX_FILES:
         with open(filename, "r", encoding="utf-8") as file:
@@ -223,7 +223,7 @@ def outputFlaws():
 
         if filename in SIMPLE_TEX_FILES:
             for flaw in flaws:
-                flawDmn, flawMnfst = getFlawGroups(flaw)
+                flawMnfst, flawDmn = getFlawGroups(flaw)
                 simpleFlawDmn[flawDmn].append(flaw)
                 simpleFlawMnfst[flawMnfst].append(flaw)
 
@@ -249,12 +249,12 @@ def outputFlaws():
 
         for flaw in flawCounts:
             sources = flaw.split("|")
-            flawDmn, flawMnfst = getFlawGroups(flaw)
+            flawMnfst, flawDmn = getFlawGroups(flaw)
             DEBUG = False
 
             sourceDicts = [categorizeSources(s) for s in sources]
             if DEBUG:
-                print(sourceDicts, flawDmn.name, flawMnfst.name)
+                print(sourceDicts, flawMnfst.name, flawDmn.name)
 
             def inPairs(s, *, sFunc = None):
                 if sFunc:

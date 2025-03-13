@@ -118,18 +118,18 @@ broadly. We also add these comments to flaws we detect automatically before
 generating the corresponding \LaTeX{} file to ensure these flaws also get
 analyzed. These comments have the following format:
 \begin{displayquote}
-    \texttt{\% Flaw count (SYN, SEM): \{A1\} \{A2\} \dots{} | \{B1\} \{B2\}
+    \texttt{\% Flaw count (MNFST, DMN): \{A1\} \{A2\} \dots{} | \{B1\} % \{B2\}
         \dots{} | \{C1\} \dots}
 \end{displayquote}
-\texttt{SYN} and \texttt{SEM} are placeholders for the ``keys'' given in
-\Cref{tab:flawMnfstDefs,tab:flawDmnDefs} that we use to identify
-a flaw's syntax and semantics (see \Cref{flaws}). We omit these keys from
-arbitrary examples of these comments without associated flaws throughout this
-chapter for brevity. Finally, \texttt{A1}, \texttt{A2}, \texttt{B1},
-\texttt{B2}, and \texttt{C1} are each placeholders for a source involved in
+\texttt{MNFST} and \texttt{DMN} are placeholders for the ``keys'' given in
+\Cref{tab:flawMnfstDefs,tab:flawDmnDefs}, respectively, that we use to track a
+flaw's manifestation(s) and domain(s) (defined in \Cref{flaw-def}). We omit
+these keys from constructed examples of these comments without associated flaws
+throughout this chapter for brevity. Finally, \texttt{A1}, \texttt{A2}, % \texttt{B2},
+\texttt{B1}, and \texttt{C1} are each placeholders for a source involved in
 this example flaw; in general, there can be arbitrarily many. We represent each
-source by its BibTeX key, and wrap each one in curly braces (with the exception
-of the \acs{istqb} glossary due to its use of custom commands via
+source by its \BibTeX{} key, and wrap each one in curly braces (with the
+exception of the \acs{istqb} glossary due to its use of custom commands via
 \macro{citealias}) to mimic \LaTeX{}'s citation commands for ease of parsing.
 We then separate each ``group'' of sources with a pipe symbol (\texttt{|}) so
 we can compare each pair of groups; in general, a flaw can have any number of

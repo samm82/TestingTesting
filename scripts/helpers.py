@@ -127,7 +127,7 @@ def formatLineWithSources(line, todo=True):
 
     return line
 
-def getFlawCount(line: list[str], cat, cls, todo=True):
+def getFlawCount(line: list[str], mnfst, dmn, todo=True):
     # The following replacements should only apply when counting flaws
     line = line.copy()
 
@@ -149,7 +149,7 @@ def getFlawCount(line: list[str], cat, cls, todo=True):
 
     if not all(sources):
         return ""
-    return f"% Flaw count ({cls}, {cat}): {" | ".join(sources)}\n\t"
+    return f"% Flaw count ({mnfst}, {dmn}): {" | ".join(sources)}\n\t"
 
 # I/O
 def readFileAsStr(filename) -> str:

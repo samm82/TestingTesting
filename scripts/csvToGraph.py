@@ -275,7 +275,7 @@ for name, category in zip(names, categories):
     category = [c for c in category
                 if not any(t in c for t in {"Approach", "Artifact"})]
     if len(category) > 1:
-        flawCount = (getFlawCount(category, "CATS", "CONTRA")
+        flawCount = (getFlawCount(category, "CONTRA", "CATS")
                         if not any("?" in c for c in category) else "")
         multiCatDict[bool(flawCount)].addMultiCatLine(
             flawCount, # if criteria else "",
@@ -412,7 +412,7 @@ def makeMultiSynLine(valid, syn, terms, alsoSyns):
         return f"\t\t\\item {term}"
 
     line = "\n".join([f"\\item \\textbf{{{syn}:}}",
-                      f"{getFlawCount(terms, "SYNS", "CONTRA")}\\begin{{itemize}}"] +
+                      f"{getFlawCount(terms, "CONTRA", "SYNS")}\\begin{{itemize}}"] +
                       list(map(processTerm, terms)) + ["\t\\end{itemize}"])
     if syn not in paperExamples:
         line = "\n".join(["\\ifnotpaper", line, "\\fi"])
@@ -506,7 +506,7 @@ print()
 selfCycleCount = len(selfCycles)
 
 if "Example" not in csvFilename:
-    selfCycles = [f"\\item {getFlawCount([cycle], "PARS", "WRONG")}{formatLineWithSources(cycle)}"
+    selfCycles = [f"\\item {getFlawCount([cycle], "WRONG", "PARS")}{formatLineWithSources(cycle)}"
                   for cycle in selfCycles]
     writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
               "selfCycles", True)
@@ -598,7 +598,7 @@ def makeParSynLine(chd, par, parSource, synSource) -> None:
                 pass
             chd = processChd(chd, note)
             break
-    parSyns.add(getFlawCount([parSource, synSource], "PARS", "CONTRA") +
+    parSyns.add(getFlawCount([parSource, synSource], "CONTRA", "PARS") +
                 f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
 
 splitAtEmpty = splitListAtEmpty(categoryDict["Approach"][1])
