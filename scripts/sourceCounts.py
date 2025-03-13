@@ -36,7 +36,6 @@ sources.add("ISTQB2024")
 # Omit internal paper references
 sources = {s for s in sources if not s.startswith(tuple(INTERNAL_REFS))}
 
-ONLY_IEEE = {"2012"}
 # Based on ChatGPT
 def sort_key(s: str, cat: SrcCat):
     match = re.search(r'(\d+)', s)

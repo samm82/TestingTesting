@@ -19,6 +19,7 @@ PREFIX_REGEX = r"\(|[a-z;] "
 SPLIT_REGEX = r',(?!(?:[^()]*\([^()]*\))*[^()]*\)) '
 
 INTERNAL_REFS = {"tab:"}
+ONLY_IEEE = {"2012"}
 
 # Used in multiple files
 IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "should be", "ideally",
@@ -57,11 +58,14 @@ class Rigidity(Enum):
 
     # Sources for flaws
 
-def getSources(s) -> list[tuple[str, str]]:
+def getSources(s, bibtex: bool = False) -> list[tuple[str, str]]:
     sources = re.findall(fr"\{{({AUTHOR_REGEX})({YEAR_REGEX})\}}", s)
     if "ISTQB" in s:
         sources.append(("ISTQB", "2024"))
-    return sources
+    return sources if bibtex else [
+        # Count flaws based on sets of authors; #138
+        ("ISO_IEC_IEEE", y) if a == "IEEE" and y not in ONLY_IEEE else (a, y)
+        for a, y in sources ]
 
 def categorizeSources(sources: str):
     if sources.startswith(tuple(f"({imp}" for imp in IMPLICIT_KEYWORDS)):
@@ -113,7 +117,7 @@ def formatLineWithSources(line, todo=True):
     line = line.replace(" et al.", "EtAl")
     line = line.replace("van V", "vanV")
 
-    for source in getSources(line):
+    for source in getSources(line, bibtex=True):
         line = line.replace(source[0], source[0].replace(" and ", "And"))
 
     while True:
