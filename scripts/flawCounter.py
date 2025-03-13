@@ -360,7 +360,7 @@ def outputFlaws():
 
         slices = ([(v.groundTruth, "With a source of ground truth"),
                    (v.withinDoc, "Within a single document"),
-                   (v.withinAuth, "Between documents by the same author(s) or standards organization(s)")] +
+                   (v.withinAuth, "Between documents with the same set of authors")] +
                    [(catCount, "Between a document from this category and a " +
                      cat.shortname.lower()[:-1])  # Strip plural "s"
                      for cat, catCount in v.betweenCats.items()])
@@ -412,14 +412,15 @@ def outputFlaws():
                 "\\label{fig:flawSources}", "\\end{figure*}"], "flawPies")
 
     writeTblr("flawTable", flawCaption,
-                  ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and a \\dots{}"] + [
-                      f"\\rotatebox[origin=c]{{90}}{{{x}}}" for x in
-                        [f"\\parbox{{3.5cm}}{{\\centering {x}}}" for x in 
-                            ["source of \\\\ ground truth", "part of the same document",
-                             "document with the same author"]] +
-                        [cat.shortname.lower()[:-1] for cat in SrcCat  # Strip plural "s"
-                            if cat.color.value >= 0]  # Exclude inferences and proposals
-                  ], 
+                  ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and a(n) \\dots{}"] + [
+                      f"\\rotatebox[origin=c]{{90}}{{\\parbox{{4.35cm}}{{\\centering {x}}}}}" 
+                        for x in ["source of \\\\ ground truth",
+                                  "part of the same document",
+                                  "document with the same set of author(s)"] +
+                                 [cat.longname.lower()[:-1]  # Strip plural "s"
+                                  if cat.color != Color.BLACK else "paper or other document"
+                                                      # Exclude inferences and proposals
+                                    for cat in SrcCat if cat.color.value >= 0]],
                   [" & ".join(map(str, x)) + " \\\\" for x in
                    # From https://stackoverflow.com/a/63080837/10002168
                    zip(*itertools.zip_longest(*flawTable, fillvalue="---"))],
