@@ -149,7 +149,7 @@ def getFlawCount(line: list[str], cat, cls, todo=True):
 
     if not all(sources):
         return ""
-    return f"% Flaw count ({cat}, {cls}): {" | ".join(sources)}\n\t"
+    return f"% Flaw count ({cls}, {cat}): {" | ".join(sources)}\n\t"
 
 # I/O
 def readFileAsStr(filename) -> str:

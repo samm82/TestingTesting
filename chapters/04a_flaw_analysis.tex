@@ -118,12 +118,12 @@ broadly. We also add these comments to flaws we detect automatically before
 generating the corresponding \LaTeX{} file to ensure these flaws also get
 analyzed. These comments have the following format:
 \begin{displayquote}
-    \texttt{\% Flaw count (SEM, SYN): \{A1\} \{A2\} \dots{} | \{B1\} \{B2\}
+    \texttt{\% Flaw count (SYN, SEM): \{A1\} \{A2\} \dots{} | \{B1\} \{B2\}
         \dots{} | \{C1\} \dots}
 \end{displayquote}
-\texttt{SEM} and \texttt{SYN} are placeholders for the ``keys'' given in
+\texttt{SYN} and \texttt{SEM} are placeholders for the ``keys'' given in
 \Cref{tab:flawMnfstDefs,tab:flawDmnDefs} that we use to identify
-a flaw's semantics and syntax (see \Cref{flaws}). We omit these keys from
+a flaw's syntax and semantics (see \Cref{flaws}). We omit these keys from
 arbitrary examples of these comments without associated flaws throughout this
 chapter for brevity. Finally, \texttt{A1}, \texttt{A2}, \texttt{B1},
 \texttt{B2}, and \texttt{C1} are each placeholders for a source involved in
@@ -165,7 +165,7 @@ groups; this means the following line adds an inconsistency between X and Z
 To give a more complete example, we track \flawref{level-phase-syns} with the
 following comment line:\utd{}
 \begin{displayquote}
-    \texttt{\% Flaw count (SYNS, OVER): \{IEEE2017\} \{IEEE2013\} | \{IEEE2022\}
+    \texttt{\% Flaw count (OVER, SYNS): \{IEEE2017\} \{IEEE2013\} | \{IEEE2022\}
         \displayNL{} \{IEEE2017\} \{Perry2006\}}
 \end{displayquote}%
 We parse this as the example given in \Cref{flaw-analysis-example}. Since
@@ -182,7 +182,7 @@ rules described in \Cref{auto-flaw-analysis-rigidity} for automatically
 detected flaws. Note that we only count implicit flaws if there is not an
 equivalent explicit flaw, as we do when generating graphs (\Cref{graphRigid}).
 \begin{displayquote}
-    \texttt{\% Flaw count (DEFS, CONTRA): \{IEEE2021\} \{IEEE2017\} |
+    \texttt{\% Flaw count (CONTRA, DEFS): \{IEEE2021\} \{IEEE2017\} |
         \displayNL \{vanVliet2000\} implied by \{IEEE2021\}}
 \end{displayquote}
 For example, the above comment line\utd{} from \flawref{c-use-def} indicates that the
@@ -209,7 +209,7 @@ truth'' sources separately to track them for traceability without incorrectly
 counting flaws, such as the following for this specific example
 (\flawref{ground-truth}):
 \begin{displayquote}
-    \texttt{\% Flaw count (LABELS, WRONG): \{Firesmith2015\}\\
+    \texttt{\% Flaw count (WRONG, LABELS): \{Firesmith2015\}\\
         \% Ground truth: \{LiuEtAl2023\} \{MorgunEtAl1999\} \{HolleyEtAl1996\}
         \displayNL \{HoweAndJohnson1995\}}
 \end{displayquote}

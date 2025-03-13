@@ -369,7 +369,7 @@ multiSynNotes = {
         "\\citet[p.~55]{Firesmith2015}, although the terms are not synonyms."
     ),
     "Static Assertion Checking": (
-        "% Flaw count (SYNS, WRONG): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
+        "% Flaw count (WRONG, SYNS): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
         "\\citet[p.~343]{ChalinEtAl2006} \\multiAuthHelper{list} "
         "\\ifnotpaper \\acf{rac} and \\acf{sv} \\else Runtime Assertion Checking "
         "\\acf{rac} and Software Verification \\acf{sv} \\fi "
@@ -379,7 +379,7 @@ multiSynNotes = {
         "complement to \\acs{rac} instead."
     ),
     "Operational Testing": (
-        "% Flaw count (SYNS, CONTRA): ISTQB | {Firesmith2015} \n\t\t"
+        "% Flaw count (CONTRA, SYNS): ISTQB | {Firesmith2015} \n\t\t"
         "``Operational'' and ``production acceptance testing'' are treated as "
         "synonyms by \\citetISTQB{} but listed separately by \\citet[p.~30]{Firesmith2015}."
     ),
