@@ -227,9 +227,8 @@ def outputFlaws():
                 simpleFlawDmn[flawDmn].append(flaw)
                 simpleFlawMnfst[flawMnfst].append(flaw)
 
-                try:
-                    labelGroup, label = re.search(
-                        r"% Label ([A-Z]+) ([a-z\-]+)", flaw).groups()
+                labels = re.findall(r"% Label ([A-Z]+) ([a-z\-]+)", flaw)
+                for labelGroup, label in labels:
                     for flawGroup, dict in [(flawDmn,   simpleFlawDmn),
                                             (flawMnfst, simpleFlawMnfst)]:
                         dict[flawGroup] = [re.sub(
@@ -238,8 +237,6 @@ def outputFlaws():
                                 ["", "\\\\phantomsection{}", f"\\\\label{{{label}}}", ""]
                                 if labelGroup == flawGroup.name else ["", ""]),
                             line) for line in dict[flawGroup]]
-                except AttributeError:
-                    continue
             
         if "extra" in filename:
             for dmnKey in simpleFlawDmn.keys():

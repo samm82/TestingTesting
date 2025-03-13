@@ -10,46 +10,39 @@ After gathering all these data\footnote{Available in \texttt{ApproachGlossary.cs
         [Repository link suppressed]}{
         \url{https://github.com/samm82/TestingTesting}}.}, we find many
 flaws. To better understand and analyze them, we group them by their
-syntax and their semantics. Syntactic flaws (\Cref{flawMnfsts})
-describe \emph{how} a flaw manifests, such as information that is wrong
-(a ``mistake''; \Cref{wrong}) or missing (an ``omission''; \Cref{miss}). On the
-other hand, semantic flaws (\Cref{flawDmns}) describe the
-knowledge domain in which a flaw manifests, such as a flaw
-between synonyms (\Cref{syns}) or parent-child relations (\Cref{pars}).
-As an example, \tourFlaw*{}. This is a case of contradictory definitions, so
-it appears with both the contradictions (\Cref{contra}) \emph{and} the
-definition flaws (\Cref{defs}). Within these sections, \ifnotpaper
+manifestations and their domains (defined in \Cref{flaw-def}).
+Within these sections, \ifnotpaper
     ``more significant'' flaws are
     listed first, followed by ``less significant'' ones omitted from the paper
     version of this thesis. They \else ``less significant'' flaws are
     omitted for brevity, and those remaining \fi are then sorted based on their
 source tier (see \Cref{sources}).
 
-A summary of how many flaws there are by syntax and by semantics is
+A summary of how many flaws there are by manifestation and by domain is
 shown in \Cref{tab:flawMnfsts,tab:flawDmns}, respectively, where a given
-row corresponds to the number of flaws either within that
-source tier (see \Cref{sources}) and/or with a ``more trusted'' one
-(i.e., a previous row in the table). The numbers of (Exp)licit and (Imp)licit
+row corresponds to the number of flaws either within that source tier and/or
+with a ``more trusted'' one (i.e., a previous row in the table; see
+\Cref{trust}). The numbers of (Exp)licit and (Imp)licit
 (see \Cref{rigidity}) flaws are also presented in these tables. Since
-each flaw is grouped by syntax \emph{and} by semantics, the totals per
-source and grand totals in these tables are equal. However, the numbers of
-flaws listed in \Cref{flawMnfsts,flawDmns} are not equal,
-as those automatically uncovered based on semantics \ifnotpaper
-    (see \Cref{auto-flaw-analysis}) \fi are only listed in the corresponding
-category section for clarity; they still contribute to the counts in
-\Cref{tab:flawMnfsts}!
+we give each flaw a manifestation \emph{and} a domain, the totals per
+source and grand totals in these tables are equal. As an example, \tourFlaw*{}.
+This is a contradictory definition, so it appears \ifnotpaper as both \else in
+\fi \flawref{tour-def-contra,tour-def}.
 
-Moreover, certain ``subsets'' of testing revealed many interconnected
-flaws. These are given in their respective sections as a ``third view''
-to keep related information together, but still count towards the syntaxes and
-semantics of flaws listed above\ifnotpaper\ (\Cref{aug-flaw-analysis}
-    outlines how this is done)\fi, causing a further mismatch between the counts
-in \Cref{tab:flawMnfsts,tab:flawDmns} and the counts in \Cref{flawMnfsts,%
-    flawDmns}. The ``problem'' subsets of testing include
-\nameref{func-test-flaw}, \ifnotpaper\nameref{oat-flaw}, \fi
-\nameref{recov-flaw}, \nameref{scal-flaw}, and \nameref{compat-flaw}.
-\ifnotpaper Finally, \nameref{infer-flaws} are also given for completeness,
-    despite being less certain and thus not contributing to any counts.
+Flaws that we automatically uncover based on their domain \ifnotpaper
+    (see \Cref{auto-flaw-analysis}) \fi are only listed in the corresponding
+domain section for clarity, although they still contribute to the counts in
+\Cref{tab:flawMnfsts}. Moreover, certain ``subsets'' of testing contain many
+interconnected flaws, which we present in subsections as a ``third view''. This
+keeps related information together but causes a further apparent mismatch
+between the counts in \Cref{tab:flawMnfsts,tab:flawDmns} and the number of
+flaws in \Cref{flawMnfsts,flawDmns}; we still include these flaws in the
+manifestation and domain counts\ifnotpaper\ (\Cref{aug-flaw-analysis} outlines
+    how this is done)\fi. These subsets include \nameref{func-test-flaw},
+\ifnotpaper\nameref{oat-flaw}, \fi \nameref{recov-flaw}, \nameref{scal-flaw},
+and \nameref{compat-flaw}. \ifnotpaper Finally, we also present
+    \nameref{infer-flaws} for completeness, although these are more subjective
+    and thus do not contribute to any counts.
 
     \begin{landscape}
         \flawMnfstsTable{}
