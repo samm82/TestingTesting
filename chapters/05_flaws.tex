@@ -38,11 +38,12 @@ keeps related information together but causes a further apparent mismatch
 between the counts in \Cref{tab:flawMnfsts,tab:flawDmns} and the number of
 flaws in \Cref{flawMnfsts,flawDmns}; we still include these flaws in the
 manifestation and domain counts\ifnotpaper\ (\Cref{aug-flaw-analysis} outlines
-    how this is done)\fi. These subsets include \nameref{func-test-flaw},
-\ifnotpaper\nameref{oat-flaw}, \fi \nameref{recov-flaw}, \nameref{scal-flaw},
-and \nameref{compat-flaw}. \ifnotpaper Finally, we also present
-    \nameref{infer-flaws} for completeness, although these are more subjective
-    and thus do not contribute to any counts.
+    how this is done)\fi. These subsets include functional testing
+(\Cref{func-test-flaw}), \ifnotpaper \acf{operat} (\Cref{oat-flaw}), \fi
+recovery testing (\Cref{recov-flaw}), scalability testing (\Cref{scal-flaw}),
+and compatibility testing (\Cref{compat-flaw}). \ifnotpaper Finally, we infer
+    the more subjective flaws presented in \Cref{infer-flaws} which do not
+    contribute to any counts.
 
     \begin{landscape}
         \flawMnfstsTable{}
@@ -97,8 +98,10 @@ and \labels{}:
 \subsection{Flaw Domains}\label{flawDmns}
 
 The following sections list observed flaws grouped by \emph{what} information
-is flawed. This includes \nameref{cats}, \nameref{syns},
-\nameref{pars}, \nameref{defs}, \nameref{labels}, and \nameref{trace}.
+is flawed as presented in \Cref{tab:flawDmnDefs}. This includes test approach
+categories (\Cref{cats}), synonym relations (\Cref{syns}), parent-child
+relations (\Cref{pars}), definitions (\Cref{defs}), labels (\Cref{labels}), and
+traceability information (\Cref{trace}).
 
 \subsubsection{Approach Category Flaws}\label{cats}
 
@@ -442,7 +445,8 @@ it seems consistent to label ``functional testing'' as a ``test type''
 \else
     \cite[pp.~15,~20,~22]{IEEE2022}, \cite[pp.~7,~38,~Tab.~A.1]{IEEE2021},
     \cite[p.~4]{IEEE2016}\fi. However, this conflicts with its categorization
-as a ``technique'' if considered a synonym of \nameref{spec-func-test}.
+as a ``technique'' if considered a synonym of specification-based testing
+(see \Cref{spec-func-test}).
 % Flaw count (CONTRA, CATS): {IEEE2022} {IEEE2021} {IEEE2016} implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
 Additionally, ``correctness testing'' is listed separately from ``functionality
 testing'' by \citet[p.~53]{Firesmith2015}.
