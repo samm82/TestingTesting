@@ -55,18 +55,22 @@ and compatibility testing (\Cref{compat-flaw}). \ifnotpaper Finally, we infer
 
 \subsection{Flaw Manifestations}\label{flawMnfsts}
 
-The following sections list observed flaws grouped by \emph{how} they manifest.
-These include \wrong{}, \miss{}, \contra{}, \ambi{}, \over{}, and \redun{}.
+The following sections list observed flaws grouped by \emph{how} they manifest
+as presented in \Cref{tab:flawMnfstDefs}. These include mistakes (\Cref{wrong}),
+omissions (\Cref{miss}), contradictions (\Cref{contra}), ambiguities
+(\Cref{ambi}), \ifnotpaper \else and \fi overlaps (\Cref{over})\ifnotpaper,
+and redundancies (\Cref{redun})\fi.
 
 \subsubsection{Mistakes}\label{wrong}
 The following are cases where information is incorrect; this includes wrong
-\defs{}, untrue claims about \trace{}, and simple typos:
+definitions (see \Cref{defs}), untrue claims about citations (see \Cref{trace}),
+and simple typos:
 
 \input{build/FlawMnfstWrong}
 
 \subsubsection{Omissions}\label{miss}
-The following are cases where information (usually \defs{}) \emph{should be}
-included but is not:
+The following are cases where information (usually definitions; see \Cref{defs})
+\emph{should be} included but is not:
 
 \input{build/FlawMnfstMiss}
 
@@ -77,14 +81,14 @@ the same document!) disagree:
 \input{build/FlawMnfstContra}
 
 \subsubsection{Ambiguities}\label{ambi}
-The following are cases where information (usually \defs{} or distinctions
-between \labels{}) is unclear:
+The following are cases where information (usually definitions or distinctions
+between terms; see \Cref{defs,labels}, respectively) is unclear:
 
 \input{build/FlawMnfstAmbi}
 
 \subsubsection{Overlaps}\label{over}
-The following are cases where information overlaps, such as nonatomic \defs{}
-and \labels{}:
+The following are cases where information overlaps, such as nonatomic
+definitions and terms (see \Cref{defs,labels}, respectively):
 
 \input{build/FlawMnfstOver}
 
