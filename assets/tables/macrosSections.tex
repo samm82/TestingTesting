@@ -1,11 +1,13 @@
 \begin{longtblr}[
     note{a} = {Defined in \Cref{mnfst-def}; we also define starred versions,
             such as \macro{wrong*} (\wrong*{}), that use the singular noun.},
-    note{b} = {Defined in \Cref{sources}.},
-    note{c} = {We overwrite the primitive \TeX{} command \macro{over} (\over{})
+    note{b} = {Defined in \Cref{dmn-def}; we also define starred versions,
+            such as \macro{cats*} (\cats*{}), that use the singular noun.},
+    note{c} = {Defined in \Cref{sources}.},
+    note{d} = {We overwrite the primitive \TeX{} command \macro{over} (\over{})
             % Source: https://tex.stackexchange.com/a/73825/192195
             since we do not otherwise use it.},
-    note{d} = {This takes an optional parameter for a \texttt{note-tag} that
+    note{e} = {This takes an optional parameter for a \texttt{note-tag} that
             corresponds to \macro{redunsNote} (\redunsNote{}) when used in \texttt{tabularray}s
             (i.e., \texttt{\textbackslash reduns[c]\{\}}) since we omit this
             section from our paper.},
@@ -14,26 +16,28 @@
     caption = {\LaTeX{} macros for referencing well-defined sections.},
     label = {tab:macrosSections}
     ]{
-    colspec={|Q[1.75cm,c,m]|Q[l,m]Q[r,m]|Q[l,m]Q[r,m]|},
+    colspec={|Q[1.75cm,c,m]|Q[l,m]Q[r,m]|Q[l,m]Q[r,m]|Q[l,m]Q[r,m]|},
     row{1} = {halign=c},
     width = \textwidth, rowhead = 1
     }
     \hline
-                                & \SetCell[c=2]{c} \thead{Flaw Manifestations\TblrNote{a}}  &             & \SetCell[c=2]{c} \thead{Source Tiers\TblrNote{b}} &              \\
+                                & \SetCell[c=2]{c} \thead{Flaw Manifestations\TblrNote{a}}  &             & \SetCell[c=2]{c} \thead{Flaw Domains\TblrNote{b}} &             & \SetCell[c=2]{c} \thead{Source Tiers\TblrNote{c}} &              \\
     \hline
-    \SetCell[r=6]{c} \textbf{Macros                                                                                                                                          \\
-    (Values)}                   & \macro{wrong}                                             & (\wrong{})  & \macro{stds}                                      & (\stds{})    \\
-                                & \macro{miss}                                              & (\miss{})   & \macro{metas}                                     & (\metas{})   \\
-                                & \macro{contra}                                            & (\contra{}) & \macro{texts}                                     & (\texts{})   \\
-                                & \macro{ambi}                                              & (\ambi{})   & \macro{papers}                                    & (\papers{})  \\ %\TblrNote{e}                                              \\
-                                & \macro{over}\TblrNote{c}                                  & (\over{})   & \macro{papers*}                                   & (\papers*{}) \\
-                                & \macro{redun}\TblrNote{d}                                 & (\redun{})  &                                                                  \\
+    \SetCell[r=6]{c} \textbf{Macros                                                                                                                                                                                                            \\
+    (Values)}                   & \macro{wrong}                                             & (\wrong{})  & \macro{cats}                                      & (\cats{})   & \macro{stds}                                      & (\stds{})    \\
+                                & \macro{miss}                                              & (\miss{})   & \macro{syns}                                      & (\syns{})   & \macro{metas}                                     & (\metas{})   \\
+                                & \macro{contra}                                            & (\contra{}) & \macro{pars}                                      & (\pars{})   & \macro{texts}                                     & (\texts{})   \\
+                                & \macro{ambi}                                              & (\ambi{})   & \macro{defs}                                      & (\defs{})   & \macro{papers}                                    & (\papers{})  \\ %\TblrNote{e}                                              \\
+                                & \macro{over}\TblrNote{d}                                  & (\over{})   & \macro{labels}                                    & (\labels{}) & \macro{papers*}                                   & (\papers*{}) \\
+                                & \macro{redun}\TblrNote{e}                                 & (\redun{})  & \macro{trace}                                     & (\trace{})  &                                                                  \\
     \hline
-    \textbf{Used In}            & \SetCell[c=2]{c} {\Cref{tab:flawMnfstDefs,tab:flawMnfsts}                                                                                  \\
+    \textbf{Used In}            & \SetCell[c=2]{c} {\Cref{tab:flawMnfstDefs,tab:flawMnfsts}                                                                                                                                                    \\
+    (in both thesis and paper)} &
+                                & \SetCell[c=2]{c} {\Cref{tab:flawDmnDefs,tab:flawDmns}                                                                                                                                                        \\
     (in both thesis and paper)} &                                                           &
-    \SetCell[c=2]{c} {\Cref{fig:sourceSummary,fig:flawSources}                                                                                                               \\
-    \Cref{tab:flawMnfsts,tab:flawDmns}                                                                                                                                       \\
+    \SetCell[c=2]{c} {\Cref{fig:sourceSummary,fig:flawSources}                                                                                                                                                                                 \\
+    \Cref{tab:flawMnfsts,tab:flawDmns}                                                                                                                                                                                                         \\
         \Cref{flaw-analysis-example} (only \macro{stds} and
-    \macro{texts})}             &                                                                                                                                            \\
+    \macro{texts})}             &                                                                                                                                                                                                              \\
     \hline
 \end{longtblr}
