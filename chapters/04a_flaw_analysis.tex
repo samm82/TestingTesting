@@ -221,12 +221,12 @@ counting flaws, such as the following for this specific example
 \subsection[LaTeX Commands]{\LaTeX{} Commands}\label{macros}
 To improve maintainability, traceability, and reproducibility, we define
 helper commands (also called ``macros'') for content that is prone to change
-or used in multiple places. For example, many values are calculated by a Python
-script and saved to a file. We then assign these values to a corresponding
-\LaTeX{} macro, which we can use instead of manually replacing the value
-throughout our documents every time it changes. \Cref{tab:macrosCalc} lists
-these macros, along with descriptions of what they define and their current
-values.
+or used in multiple places. For example, we use Python scripts to calculate
+values based on our glossaries and save them to files to be assigned to
+corresponding \LaTeX{} macros. We use these throughout our documents instead of
+manually updating these constantly changing values, which is prone to error.
+\Cref{tab:macrosCalc} lists these macros, along with their current values and
+descriptions of what they represent.
 
 \input{assets/tables/macrosCalc}
 
@@ -265,7 +265,7 @@ defined as \macro{stdSources}, \macro{metaSources}, \macro{textSources}, and
 These are accessed by passing in the corresponding number in the above
 enumeration. We use the first one for the subheadings in \Cref{sources}, the
 first two for \Cref{app-src-tiers} and the third to build \Cref{fig:sourceSummary}
-and calcuate \macro{srcCount} (see \Cref{tab:macrosCalc}). We also define
+and calculate \macro{srcCount} (see \Cref{tab:macrosCalc}). We also define
 macros for well-defined sections in \Cref{tab:macrosSections}.
 
 \begin{landscape}
