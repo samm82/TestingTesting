@@ -164,7 +164,7 @@ def genFlawMacros(flawView):
     writeFile([formatMacro(k) if k.name != "REDUN" else 
                ("% Assisted by GitHub Copilot\n" + formatMacro(
                    k, ["s", "o"],
-                   "\\ifnotpaper\\else\\IfNoValueTF{#2}{\\footnote{\\redunsNote}}{\\TblrNote{#2}}\\fi")
+                   "\\ifnotpaper\\else\\IfNoValueTF{#2}{\\footnote{\\redunNote}}{\\TblrNote{#2}}\\fi")
                 )
                for k in flawView],
               f"{flawView.__name__}Macros", True)

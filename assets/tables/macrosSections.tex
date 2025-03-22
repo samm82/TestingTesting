@@ -4,12 +4,13 @@
     note{b} = {Defined in \Cref{dmn-def}; we also define starred versions,
             such as \macro{cats*} (\cats*{}), that use the singular noun.},
     note{c} = {Defined in \Cref{sources}.},
-    note{d} = {We overwrite the primitive \TeX{} command \macro{over} (\over{})
+    note{d} = {We overwrite the primitive \TeX{} command \macro{over}
             % Source: https://tex.stackexchange.com/a/73825/192195
             since we do not otherwise use it.},
     note{e} = {This takes an optional parameter for a \texttt{note-tag} that
-            corresponds to \macro{redunsNote} (\redunsNote{}) when used in \texttt{tabularray}s
-            (i.e., \texttt{\textbackslash reduns[c]\{\}}) since we omit this
+            corresponds to \macro{redunNote} (``\redunNote{}''; see
+            \Cref{tab:macrosText})\ when used in \texttt{tabularray}s
+            (i.e., \texttt{\textbackslash redun[c]\{\}}) since we omit this
             section from our paper.},
     % note{e} = {We define a starred version, \macro{papers*} (\papers*{}), to shorten the
     %         display name for use in tables.},
@@ -35,8 +36,7 @@
     (in both thesis and paper)} &
                                 & \SetCell[c=2]{c} {\Cref{tab:flawDmnDefs,tab:flawDmns}                                                                                                                                                        \\
     (in both thesis and paper)} &                                                           &
-    \SetCell[c=2]{c} {\Cref{fig:sourceSummary,fig:flawSources}                                                                                                                                                                                 \\
-    \Cref{tab:flawMnfsts,tab:flawDmns}                                                                                                                                                                                                         \\
+    \SetCell[c=2]{c} {\Cref{fig:sourceSummary,fig:flawSources,tab:flawMnfsts,tab:flawDmns}                                                                                                                                                     \\
         \Cref{flaw-analysis-example} (only \macro{stds} and
     \macro{texts})}             &                                                                                                                                                                                                              \\
     \hline

@@ -4,6 +4,8 @@
 
 \begin{longtblr}[
     note{a} = {Defined in \Cref{flaw-def}.},
+    note{b} = {See \Cref{tab:macrosSections} for more details on how we use
+            \macro{redunNote} alongside \macro{redun}.},
     caption = {\LaTeX{} macros for reused text.},
     label = {tab:macrosText}
     ]{
@@ -25,10 +27,11 @@
                              & \macro{accelTolTest}        & \macro{tolTestFlaw} and \Cref{hard-test}                        \\*
                              & \macro{perfSecParFlaw}      & \flawref{perf-sec-par} and paper version of \Cref{pars}         \\
     \hline
-    \macroType{6}{Footnotes} & \macro{ftrnote}             & \SetCell[r=3]{l} Thesis (automated) and paper (manual)
+    \macroType{7}{Footnotes} & \macro{ftrnote}             & \SetCell[r=3]{l} Thesis (automated) and paper (manual)
     versions of \Cref{tab:parSyns}                                                                                           \\*
                              & \macro{specfn}              &                                                                 \\*
                              & \macro{ucstn}               &                                                                 \\*
+    \cline{2-3}              & \macro{redunNote}           & \macro{redun} and \Cref{tab:flawMnfstDefs}\TblrNote{b}          \\*
     \cline{2-3}              & \macro{notDefDistinctIEEE}  & \flawref{static-test-flaw} and \Cref{exist-tax}                 \\*
                              & \macro{gerrardDistinctIEEE} & \Cref{tab:otherCategorizations} and
     \flawref{gerrard-distinct}                                                                                               \\*
