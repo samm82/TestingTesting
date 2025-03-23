@@ -98,7 +98,9 @@ pair from our generated graphs based on the following possible cases:
     (\hyperref[case-three]{Case 3} above) since we already find these to
     generate our graphs. We automatically generate the list in \Cref{multiSyns}
     based on glossary entries such as those found in
-    \Cref{tab:synExampleGlossary}. The self-referential definitions in
+    \Cref{tab:synExampleGlossary}.
+    \phantomsection{}\label{selfCycles}
+    The self-referential definitions in
     \Cref{selfPars} are also trivial to automate by looking for lines in the
     generated \LaTeX{} files that start with \texttt{I -> I}, where \texttt{I}
     is the label used for a test approach node in these graphs. This process

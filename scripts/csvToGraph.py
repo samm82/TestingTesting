@@ -655,8 +655,8 @@ if "Example" not in csvFilename:
             ["\\end{enumerate}"]), [infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc])))],
             "infParSyns", True)
 
-    writeFile([f"{parSynCount}% Pairs of terms with parent/child AND synonym relations",
-            f"{selfCycleCount}% Self-cycles"],
+    writeFile([f"{formatCount(parSynCount)}% Pairs of terms with parent/child AND synonym relations",
+            f"{formatCount(selfCycleCount)}% Self-cycles"],
             "parSynCounts", True)
 
 class Flag(Enum):

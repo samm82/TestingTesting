@@ -83,8 +83,15 @@ def categorizeSources(sources: str):
 
         return {Rigidity.EXP: getSources(sources)}
 
+def formatCount(n: int) -> str:
+    try:
+        return {0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four',
+                5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine'}[n]
+    except KeyError:
+        return str(n)
+
 # Format sources for LaTeX citations
-def formatLineWithSources(line, todo=True):
+def formatLineWithSources(line: str, todo=True):
     line = line.replace("(Hamburg and Mogyorodi, 2024)", "\\citepISTQB{}")
     line = line.replace("Hamburg and Mogyorodi, 2024", "\\citealpISTQB{}")
 
