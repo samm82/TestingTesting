@@ -119,8 +119,8 @@ pair from our generated graphs based on the following possible cases:
     to automate is that of ``multi-synonym'' relations
     % TODO: pretty hacky
     (\hyperref[case-three]{Case 3} above) since we already find these to
-    generate our graphs. We automatically generate the list in \Cref{multiSyns}
-    based on glossary entries such as those found in
+    generate our graphs. We automatically generate the lists in
+    \Cref{multiSyns,infMultiSyns} based on glossary entries such as those in
     \Cref{tab:synExampleGlossary}.
     \phantomsection{}\label{selfCycles}
     The self-referential definitions in \Cref{selfPars} (defined as
@@ -131,10 +131,10 @@ pair from our generated graphs based on the following possible cases:
     results in output similar to \Cref{fig:selfExampleGraph}. We use a similar
     process to detect pairs of approaches with a synonym relation \emph{and} a
     parent-child relation, defined as
-    $\left\{(x, y) \in P \mid \{x, y\} \in S\right\}$. To accomplish this, we
-    build a dictionary of each
-    term's synonyms to evaluate which synonym relations are notable enough to
-    include in the graph, and then check these mappings to see if one appears
+    $\left\{(x, y) \in P \mid \{x, y\} \in S\right\}$ and given in
+    \Cref{tab:parSyns,infParSyns}. To accomplish this, we build a dictionary of
+    each term's synonyms to evaluate which synonym relations are notable enough
+    to include in the graph, and then check these mappings to see if one appears
     as a parent of the other. For example, if \texttt{J} and \texttt{K} are
     synonyms, a generated \LaTeX{} file with a parent line starting with
     \texttt{J~->~K} would result in these approaches being graphed as shown in
