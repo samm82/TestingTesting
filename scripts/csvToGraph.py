@@ -379,9 +379,7 @@ multiSynNotes = {
         "complement to \\acs{rac} instead."
     ),
     "Operational Testing": (
-        "% Flaw count (CONTRA, SYNS): ISTQB | {Firesmith2015} \n\t\t"
-        "``Operational'' and ``production acceptance testing'' are treated as "
-        "synonyms by \\citetISTQB{} but listed separately by \\citet[p.~30]{Firesmith2015}."
+        "See \\flawref{oat-pat-syns}."
     ),
     "Production Verification Testing": (
         "``Production acceptance testing'' \\citep[p.~30]{Firesmith2015} seems "
@@ -417,7 +415,10 @@ def makeMultiSynLine(valid, syn, terms, alsoSyns):
     if syn not in paperExamples:
         line = "\n".join(["\\ifnotpaper", line, "\\fi"])
 
-    multiSynsList.append(formatLineWithSources(line))
+    multiSynsList.append(formatLineWithSources(line).replace(
+        # Hack to avoid more in-depth coding
+        "Operational Testing", "Operational (Acceptance) Testing"
+    ))
 
 for key in categoryDict.keys():
     for syn, terms in synDict.items():
