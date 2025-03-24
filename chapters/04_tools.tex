@@ -73,26 +73,33 @@ relevant glossary. We then decide whether to include or exclude the synonym
 pair from our generated graphs based on the following possible cases:
 \begin{description}
     \item[1. (Excluded)] \phantomsection{}\label{case-one}
-          \ifnotpaper\else \hfill\break \fi
+          \hfill \ifnotpaper
+              $\left\{ \{x, y\} \in S \mid x \in A \oplus y \in A \right\}$
+          \fi \break
           \textbf{Only one synonym has its own row.}
           This is a ``typical'' synonym relation (see \Cref{syn-rels}) where
           the terms are interchangeable. We \emph{could} include the synonym
           as an alternate name inside the node of its partner, but we do not
           want to clutter our graphs unnecessarily.
 
-          % Reference for singular 'row': https://ell.stackexchange.com/q/105868/169502
     \item[2. (Included)] \phantomsection{}\label{case-two}
-          \ifnotpaper\else \hfill\break \fi
+          \hfill \ifnotpaper
+              $\left\{ \{x, y\} \in S \mid x, y \in A \right\}$
+          \fi \break
+          % Reference for singular 'row': https://ell.stackexchange.com/q/105868/169502
           \textbf{Both synonyms have their own row in the glossary.}
           This may indicate that the synonym relation is incorrect, as it
           equates separate approaches (with their own definitions, nuances,
-          etc.) that should likely be distinct. This could, however, also
+          etc.)\ that should likely be distinct. This could, however, also
           indicate that the two terms are interchangeable and could be merged
           % TODO: pretty hacky
           into one row, which would result in \hyperref[case-one]{Case 1} above.
 
     \item[3. (Included)] \phantomsection{}\label{case-three}
-          \ifnotpaper\else\hfill\break\fi
+          \hfill \ifnotpaper
+              $\left\{ \{x, z\}, \{y, z\} \in S \mid x, y \in A \land
+                  z \notin A \right\}$
+          \fi \break
           \textbf{Two synonym pairs share a synonym without its own row.}
           This is a transitive extension to the previous case. If
           two distinct approaches share a synonym, that implies that they are
