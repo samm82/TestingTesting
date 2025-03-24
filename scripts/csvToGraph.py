@@ -472,9 +472,13 @@ for synList in [expMultiSyns, impMultiSyns, infMultiSyns]:
     synList.sort(key=lambda x: x.count("\\item"), reverse=True)
 
 if "Example" not in csvFilename:
-    writeFile(expMultiSyns + impMultiSyns, "multiSyns", True)
+    multiSyns = expMultiSyns + impMultiSyns
+    writeFile(multiSyns, "multiSyns", True)
+    writeFile([f"{formatCount(len(multiSyns))}% Synonyms to multiple discrete terms"],
+              "multiSynCounts", True)
+
     writeFile(sorted(infMultiSyns, key=lambda x: x.count("\\cite"), reverse=True),
-            "infMultiSyns", True)
+              "infMultiSyns", True)
 
 workingStaticSet = staticApproaches.copy()
 
