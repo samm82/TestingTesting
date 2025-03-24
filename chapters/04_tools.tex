@@ -35,8 +35,8 @@ develop a tool to automatically generate graphs of these relations.
               literature,
         \item $A \subseteq T$, a subset of the \approachCount{} test approaches
               we identify that function as the vertices of the graph,
-        \item $S \subseteq \left\{ \{x, y\} \mid x, y \in T \land
-                  (x \in A \lor y \in A) \land x \neq y \right\}$,
+        \item $S \subseteq \left\{ \{x, y\} \mid x, y \in T \,\textrm{ and }\,
+                  (x \in A \,\textrm{ or }\, y \in A) \,\textrm{ and }\, x \neq y \right\}$,
               a subset of our identified synonym relations (defined in
               \Cref{syn-rels}) that function as edges, and
         \item $P \subseteq \left\{(x,y) \mid (x, y) \in A^2 \right\}$, a subset
@@ -74,7 +74,7 @@ pair from our generated graphs based on the following possible cases:
 \begin{description}
     \item[1. (Excluded)] \phantomsection{}\label{case-one}
           \hfill \ifnotpaper
-              $\left\{ \{x, y\} \in S \mid x \in A \oplus y \in A \right\}$
+              $\left\{ \{x, y\} \in S \mid x \in A \,\textrm{ xor }\, y \in A \right\}$
           \fi \break
           \textbf{Only one synonym has its own row.}
           This is a ``typical'' synonym relation (see \Cref{syn-rels}) where
@@ -97,7 +97,7 @@ pair from our generated graphs based on the following possible cases:
 
     \item[3. (Included)] \phantomsection{}\label{case-three}
           \hfill \ifnotpaper
-              $\left\{ \{x, z\}, \{y, z\} \in S \mid x, y \in A \land
+              $\left\{ \{x, z\}, \{y, z\} \in S \mid x, y \in A \,\textrm{ and }\,
                   z \notin A \right\}$
           \fi \break
           \textbf{Two synonym pairs share a synonym without its own row.}
