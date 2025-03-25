@@ -29,12 +29,12 @@ of flaws separately:
           (i.e., internal conflicts)\thesisissueref{137,138},
     \item those between documents with the same set of authors, which includes
           \begin{enumerate}
+              \item the various combinations of ISO, the \acf{iec}, and IEEE
+                    shown in \Cref{fig:ieeeSourceSets} and
               \item the different versions of the \acfp{swebok}, which have
                     different editors \citep{SWEBOK2024,SWEBOK2014} but are
                     written by the same organization: the IEEE Computer Society
-                    (\citealp{AboutSWEBOK}; see \Cref{metas}) and
-              \item the various combinations of ISO, the \acf{iec}, and IEEE as
-                    shown in\todo{add Venn diagram}, and
+                    (\citealp{AboutSWEBOK}; see \Cref{metas}), and
           \end{enumerate}
     \item those within a single source tier.
 \end{enumerate}
@@ -45,6 +45,40 @@ there is an example of each flaw source that is \emph{not} ignored to
 avoid double counting; for example, while a single flaw within a single
 document would technically fulfill all four criteria, it would only be counted
 once.
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \def\radius{4cm}
+        \def\spread{1.7}
+        \def\offset{\spread*1.6}
+
+        \draw (-\spread, 0) coordinate (a) circle (\radius);
+        \draw ( \spread, 0) coordinate (b) circle (\radius);
+        \draw (0, -\offset) coordinate (c) circle (\radius);
+
+        \node[above] at (-\offset,        \radius) {ISO};
+        \node[above] at ( \offset,        \radius) {IEC};
+        \node[above] at (0, -\offset-1.85*\radius) {IEEE};
+
+        % ALL
+        \node[above] at (0, -\spread-0.5) {\parbox[t]{3.7cm}{\centering
+                \citealp{IEEE2010,IEEE2013,IEEE2016,IEEE2017,IEEE2019,
+                    IEEE2021,IEEE2022}}};
+        % ISO/IEC
+        \node[above] at (0, 0.325*\radius) {\parbox[t]{2.8cm}{\centering
+                \citealp{ISO_IEC2011,ISO_IEC2015,ISO_IEC2018,ISO_IEC2023a,ISO_IEC2023b}}};
+        % IEEE
+        \node[above] at (0, -\spread-1.4*\radius) {\citealp{IEEE2012}};
+
+        % \node (a) {\citealp{ISO2015,ISO2022}};
+        % \node (b) {---};
+        % \node (c) {\citealp{IEEE2012}};
+    \end{tikzpicture}
+
+    \caption{TODO}
+    \label{fig:ieeeSourceSets}
+\end{figure}
 
 \phantomsection{}
 \label{flaw-analysis-example}
