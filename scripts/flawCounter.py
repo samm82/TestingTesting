@@ -387,12 +387,13 @@ def outputFlaws():
     writeFile([formatOutput(dmnTotal)],   f"totalFlawDmnBrkdwn", True)
     writeFile([formatOutput(mnfstTotal)], f"totalflawMnfstBrkdwn", True)
 
-    flawPies.append(["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
-                        "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",
-                        "\\node[label=center:Legend] {{}}; \\\\"] +
-                        [f"\\node[thick, shape=rectangle, draw=black, fill={DEFAULT_COLORS[i]}, label=right:{{{slice[1]}}}]({i}) {{}}; \\\\"
-                        for i, slice in enumerate(slices)] +
-                        ["};", "\\end{tikzpicture}", "\\end{subfigure}", "\\end{center}"])
+    flawLegend = ["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
+                  "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",
+                  "\\node[label=center:Legend] {{}}; \\\\",
+                  *[f"\\node[thick, shape=rectangle, draw=black, fill={DEFAULT_COLORS[i]}, label=right:{{{slice[1]}}}]({i}) {{}}; \\\\"
+                    for i, slice in enumerate(slices)], "};",
+                  "\\end{tikzpicture}", "\\end{subfigure}", "\\end{center}"]
+    flawPies.append(flawLegend)
 
     # From ChatGPT
     sepPieCharts: list[str] = []
@@ -402,6 +403,8 @@ def outputFlaws():
             sepPieCharts.append("\\vskip\\baselineskip")
         else:
             sepPieCharts.append("\\hfill")
+
+    writeFile(flawLegend, "flawLegend")
 
     flawCaption = "Sources of flaws based on \\hyperref[sources]{source tier}."
     writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
