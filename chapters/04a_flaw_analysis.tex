@@ -46,37 +46,43 @@ avoid double counting; for example, while a single flaw within a single
 document would technically fulfill all four criteria, it would only be counted
 once.
 
-\begin{figure}
+\begin{figure}[bt!]
     \centering
     \begin{tikzpicture}
-        \def\radius{4cm}
-        \def\spread{1.7}
+        \def\radius{3.6cm}
+        \def\spread{1.5}
         \def\offset{\spread*1.6}
 
-        \draw (-\spread, 0) coordinate (a) circle (\radius);
-        \draw ( \spread, 0) coordinate (b) circle (\radius);
-        \draw (0, -\offset) coordinate (c) circle (\radius);
+        \draw (-\spread, 0) circle (\radius);
+        \draw ( \spread, 0) circle (\radius);
+        \draw (0, -\offset) circle (\radius);
 
         \node[above] at (-\offset,        \radius) {ISO};
         \node[above] at ( \offset,        \radius) {IEC};
         \node[above] at (0, -\offset-1.85*\radius) {IEEE};
 
         % ALL
-        \node[above] at (0, -\spread-0.5) {\parbox[t]{3.7cm}{\centering
-                \citealp{IEEE2010,IEEE2013,IEEE2016,IEEE2017,IEEE2019,
-                    IEEE2021,IEEE2022}}};
+        \node[above] at (0, -\spread-0.5) {\parbox{3.7cm}{\centering
+                \citealp{IEEE2022,IEEE2021,IEEE2019,IEEE2017,IEEE2016,
+                    IEEE2013,IEEE2010}}};
         % ISO/IEC
-        \node[above] at (0, 0.325*\radius) {\parbox[t]{2.8cm}{\centering
-                \citealp{ISO_IEC2011,ISO_IEC2015,ISO_IEC2018,ISO_IEC2023a,ISO_IEC2023b}}};
+        \node[above] at (0, 0.325*\radius) {\parbox{2.8cm}{\centering
+                \citealp{ISO_IEC2023a,ISO_IEC2023b,ISO_IEC2018,ISO_IEC2015,ISO_IEC2011}}};
+        % ISO/IEEE
+        \node[above] at ( \offset, -\offset) {---};
+        % IEC/IEEE
+        \node[above] at (-\offset, -\offset) {---};
+
+        % ISO
+        \node[above] at (-1.4*\offset, 0.25) {\parbox{2cm}{\centering
+                \citealp{ISO2022,ISO2015}}};
+        % IEC
+        \node[above] at ( 1.4*\offset, 0.25) {---};
         % IEEE
         \node[above] at (0, -\spread-1.4*\radius) {\citealp{IEEE2012}};
 
-        % \node (a) {\citealp{ISO2015,ISO2022}};
-        % \node (b) {---};
-        % \node (c) {\citealp{IEEE2012}};
     \end{tikzpicture}
-
-    \caption{TODO}
+    \caption{The sets of authors of \stds{}.}
     \label{fig:ieeeSourceSets}
 \end{figure}
 
