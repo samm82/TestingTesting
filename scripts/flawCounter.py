@@ -433,8 +433,17 @@ def outputFlaws():
             #    \\stds{},\\metas{},\\texts{},\\papers{},ERROR},",
             "xlabel=Source Tier (see \\Cref{sources}), ylabel=Flaws,",
             "enlargelimits=0.05, xbar=0pt, ybar interval=0.8,",  # bar width=5, bar shift=3",
+            "legend style={at={(0.5,-0.35)}, anchor=north, legend columns=1,",
+            "inner xsep=6pt,inner ysep=4pt,",
+            "nodes={inner sep=4pt,text depth=0.3em},},",
+            "legend cell align=left,",
             # "nodes near coords,",
-        "]", *flawBars, "\\end{axis}", "\\end{tikzpicture}"], "flawBars")
+        # Legend header from https://tex.stackexchange.com/a/2332/192195
+        "]", "\\addlegendimage{empty legend}", *flawBars,
+        *map(lambda x: f"\\addlegendentry{{{x}}}",
+             ["{\\centering \\textbf{Legend}}", *(vals[1] for vals in slices)]),
+        # f"\\legend{{{",".join([vals[1] for vals in slices])}}}",
+        "\\end{axis}", "\\end{tikzpicture}"], "flawBars")
 
     writeTblr("flawTable", flawCaption,
                   ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and a(n) \\dots{}"] + [
