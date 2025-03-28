@@ -336,7 +336,7 @@ def outputFlaws():
                                 "\\end{itemize}", "\\fi"]
             writeFile(flawGroup[k], f"Flaw{shortname}{k.name.title()}", True)
 
-    flawPies, flawTable  = [], []
+    flawPies, flawBars, flawTable = [], [], []
     dmnTotal, mnfstTotal = [], []
     def totalHelper(total, new):
         return [a + b for a, b in itertools.zip_longest(
@@ -382,6 +382,7 @@ def outputFlaws():
                           f"\\label{{fig:{k.name.lower()}FlawSources}}",
                           "\\end{subfigure}"
                           ])
+        flawBars.append([val for val, _ in slices])
         flawTable.append([f"\\{k.name.lower()}s{{}}"] + [val for val, _ in slices])
     
     writeFile([formatOutput(dmnTotal)],   f"totalFlawDmnBrkdwn", True)
@@ -410,6 +411,32 @@ def outputFlaws():
     writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
                 [f"\\caption{{{flawCaption}}}",
                 "\\label{fig:flawSources}", "\\end{figure*}"], "flawPies")
+
+    # Include Inferences and "junk" list as padding for the bar intervals
+    # These won't appear in the generated plot 
+    flawCats = [cat.name.lower() for cat in SrcCat if cat.color.value >= -1]
+    flawBars.append([])
+    
+    # Transpose 2D list; from https://stackoverflow.com/a/6473724/10002168
+    flawBars = list(map(list, itertools.zip_longest(*flawBars, fillvalue=0)))
+    flawBars = [f"\\addplot coordinates {{{' '.join(
+                    # [f'({i*len(flawBars)+j}, {val})'
+                    [f'({cat}, {val})' 
+                        for cat, val in zip(flawCats, vals)])}}};"
+                for j, vals in enumerate(flawBars)]
+    writeFile(["\\begin{tikzpicture}", "\\begin{axis}[",
+            "width=\\textwidth, height=10cm,",
+            # "x tick label style={rotate=90},",
+           f"symbolic x coords={{{",".join(flawCats)}}},",
+            "x tick label as interval,",
+           f"xticklabels={{{",".join(map(
+               lambda cat: f'{{\\parbox{{0.16\\textwidth}}{{\\centering \\{cat}s{{}}}}}}',
+               flawCats))}}},",
+            #    \\stds{},\\metas{},\\texts{},\\papers{},ERROR},",
+            "xlabel=Source Tier (see \\Cref{sources}), ylabel=Flaws,",
+            "enlargelimits=0.05, xbar=0pt, ybar interval=0.8,",  # bar width=5, bar shift=3",
+            # "nodes near coords,",
+        "]", *flawBars, "\\end{axis}", "\\end{tikzpicture}"], "flawBars")
 
     writeTblr("flawTable", flawCaption,
                   ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and a(n) \\dots{}"] + [
