@@ -7,12 +7,12 @@ xticklabels={{\parbox{0.16\textwidth}{\centering \stds{}}},{\parbox{0.16\textwid
 xlabel=Source Tier (see \Cref{sources}), ylabel=Flaws,
 enlargelimits=0.05, xbar=0pt, ybar interval=0.8,
 ]
-\addplot coordinates {(std, 11) (meta, 19) (text, 0) (paper, 10) (infer, 0)};
-\addplot coordinates {(std, 29) (meta, 10) (text, 4) (paper, 3) (infer, 0)};
-\addplot coordinates {(std, 25) (meta, 0) (text, 0) (paper, 0) (infer, 0)};
-\addplot coordinates {(std, 5) (meta, 44) (text, 26) (paper, 23) (infer, 0)};
-\addplot coordinates {(std, 0) (meta, 18) (text, 14) (paper, 24) (infer, 0)};
-\addplot coordinates {(std, 0) (meta, 0) (text, 14) (paper, 10) (infer, 0)};
-\addplot coordinates {(std, 0) (meta, 0) (text, 0) (paper, 7) (infer, 0)};
+\addplot[fill=blue!60] coordinates {(std, 11) (meta, 19) (text, 0) (paper, 10) (infer, 0)};
+\addplot[fill=cyan!60] coordinates {(std, 29) (meta, 10) (text, 4) (paper, 3) (infer, 0)};
+\addplot[fill=yellow!60] coordinates {(std, 25) (meta, 0) (text, 0) (paper, 0) (infer, 0)};
+\addplot[fill=orange!60] coordinates {(std, 5) (meta, 44) (text, 26) (paper, 23) (infer, 0)};
+\addplot[fill=red!60] coordinates {(std, 0) (meta, 18) (text, 14) (paper, 24) (infer, 0)};
+\addplot[fill=blue!60!cyan!60] coordinates {(std, 0) (meta, 0) (text, 14) (paper, 10) (infer, 0)};
+\addplot[fill=cyan!60!yellow!60] coordinates {(std, 0) (meta, 0) (text, 0) (paper, 7) (infer, 0)};
 \end{axis}
 \end{tikzpicture}

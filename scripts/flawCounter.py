@@ -419,11 +419,9 @@ def outputFlaws():
     
     # Transpose 2D list; from https://stackoverflow.com/a/6473724/10002168
     flawBars = list(map(list, itertools.zip_longest(*flawBars, fillvalue=0)))
-    flawBars = [f"\\addplot coordinates {{{' '.join(
-                    # [f'({i*len(flawBars)+j}, {val})'
-                    [f'({cat}, {val})' 
-                        for cat, val in zip(flawCats, vals)])}}};"
-                for j, vals in enumerate(flawBars)]
+    flawBars = [f"\\addplot[fill={color}] coordinates {{{' '.join(
+                    [str(x).replace("'", "") for x in zip(flawCats, vals)])}}};"
+                for color, vals in zip(DEFAULT_COLORS, flawBars)]
     writeFile(["\\begin{tikzpicture}", "\\begin{axis}[",
             "width=\\textwidth, height=10cm,",
             # "x tick label style={rotate=90},",
