@@ -29,23 +29,23 @@
 To better visualize how test approaches relate to each other, we
 develop a tool to automatically generate graphs of these relations.
 \ifnotpaper We can describe these graphs formally as ordered triplets
-    $G = (A, S, P)$ comprising:  % Format based on https://en.wikipedia.org/wiki/Graph_theory
+    $G = (A, S, P)$, where:  % Format based on https://en.wikipedia.org/wiki/Graph_theory
     \begin{itemize}
-        \item $T$, the set of terms assigned to test approaches by the
+        \item $T$ is the set of terms assigned to test approaches by the
               literature,
-        \item $A \subseteq T$, a subset of the \approachCount{} test approaches
-              we identify that function as the vertices of the graph,
+        \item $A \subseteq T$ is a subset of the \approachCount{} test
+              approaches we identify that function as the vertices of the graph,
         \item $S \subseteq \left\{ \{x, y\} \mid x, y \in T \,\textrm{ and }\,
-                  (x \in A \,\textrm{ or }\, y \in A) \,\textrm{ and }\, x \neq y \right\}$,
-              a subset of our identified synonym relations (defined in
-              \Cref{syn-rels}) that function as edges, and
-        \item $P \subseteq \left\{(x,y) \mid (x, y) \in A^2 \right\}$, a subset
-              of our identified parent-child relations (defined in
+                  (x \in A \,\textrm{ or }\, y \in A) \,\textrm{ and }\, x \neq y \right\}$
+              is a subset of our identified synonym relations (defined
+              in \Cref{syn-rels}) that function as edges, and
+        \item $P \subseteq \left\{(x,y) \mid (x, y) \in A^2 \right\}$ is a
+              subset of our identified parent-child relations (defined in
               \Cref{par-chd-rels}) that also function as edges.
     \end{itemize}
 
-    Since we use a consistent format to track synonym
-    (see \Cref{syn-rels}) and parent-child relations (see \Cref{par-chd-rels})
+    Since we use a consistent format to track synonym and parent-child
+    relations (see \Cref{syn-rels,par-chd-rels}, respectively)
     between approaches in \ourApproachGlossary{}, we can parse them
     systematically. For example, if the entries in \Cref{tab:exampleGlossary}
     appear in the glossary, then their parent-child relations are displayed as
