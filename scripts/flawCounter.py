@@ -407,10 +407,10 @@ def outputFlaws():
 
     writeFile(flawLegend, "flawLegend")
 
-    flawCaption = "Sources of flaws based on \\hyperref[sources]{source tier}."
-    writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
-                [f"\\caption{{{flawCaption}}}",
-                "\\label{fig:flawSources}", "\\end{figure*}"], "flawPies")
+    FLAW_CAPTION = "Sources of flaws based on \\hyperref[sources]{source tier}."
+    # writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
+    #             [f"\\caption{{{FLAW_CAPTION}}}",
+    #             "\\label{fig:flawSources}", "\\end{figure*}"], "flawPies")
 
     # Include Inferences and "junk" list as padding for the bar intervals
     # These won't appear in the generated plot 
@@ -422,30 +422,31 @@ def outputFlaws():
     flawBars = [f"\\addplot[fill={color}] coordinates {{{' '.join(
                     [str(x).replace("'", "") for x in zip(flawCats, vals)])}}};"
                 for color, vals in zip(DEFAULT_COLORS, flawBars)]
-    writeFile(["\\begin{tikzpicture}", "\\begin{axis}[",
-            "width=\\textwidth, height=10cm,",
-            # "x tick label style={rotate=90},",
-           f"symbolic x coords={{{",".join(flawCats)}}},",
-            "x tick label as interval,",
-           f"xticklabels={{{",".join(map(
-               lambda cat: f'{{\\parbox{{0.16\\textwidth}}{{\\centering \\{cat}s{{}}}}}}',
-               flawCats))}}},",
-            #    \\stds{},\\metas{},\\texts{},\\papers{},ERROR},",
-            "xlabel=Source Tier (see \\Cref{sources}), ylabel=Flaws,",
-            "enlargelimits=0.05, xbar=0pt, ybar interval=0.8,",  # bar width=5, bar shift=3",
-            "legend style={at={(0.5,-0.35)}, anchor=north, legend columns=1,",
-            "inner xsep=6pt,inner ysep=4pt,",
-            "nodes={inner sep=4pt,text depth=0.3em},},",
-            "legend cell align=left,",
-            # "nodes near coords,",
-        # Legend header from https://tex.stackexchange.com/a/2332/192195
-        "]", "\\addlegendimage{empty legend}", *flawBars,
-        *map(lambda x: f"\\addlegendentry{{{x}}}",
-             ["{\\centering \\textbf{Legend}}", *(vals[1] for vals in slices)]),
-        # f"\\legend{{{",".join([vals[1] for vals in slices])}}}",
-        "\\end{axis}", "\\end{tikzpicture}"], "flawBars")
+    writeFile(["\\begin{figure*}", "\\centering",
+               "\\begin{tikzpicture}", "\\begin{axis}[",
+                    "width=\\textwidth, height=10cm,",
+                    # "x tick label style={rotate=90},",
+                   f"symbolic x coords={{{",".join(flawCats)}}},",
+                    "x tick label as interval,",
+                   f"xticklabels={{{",".join(map(
+                       lambda cat: f'{{\\parbox{{0.16\\textwidth}}{{\\centering \\{cat}s{{}}}}}}',
+                       flawCats))}}},",
+                    "xlabel=Source Tier (see \\Cref{sources}), ylabel=Flaws,",
+                    "enlargelimits=0.05, xbar=0pt, ybar interval=0.8,",  # bar width=5, bar shift=3",
+                    "legend style={at={(0.5,-0.35)}, anchor=north, legend columns=1,",
+                    "inner xsep=6pt,inner ysep=4pt,",
+                    "nodes={inner sep=4pt,text depth=0.3em},},",
+                    "legend cell align=left,",
+                    # "nodes near coords,",
+               # Legend header from https://tex.stackexchange.com/a/2332/192195
+               "]", "\\addlegendimage{empty legend}", *flawBars,
+               *map(lambda x: f"\\addlegendentry{{{x}}}",
+                    ["{\\centering \\textbf{Legend}}", *(vals[1] for vals in slices)]),
+               # f"\\legend{{{",".join([vals[1] for vals in slices])}}}",
+               "\\end{axis}", "\\end{tikzpicture}", f"\\caption{{{FLAW_CAPTION}}}",
+               "\\label{fig:flawBars}", "\\end{figure*}"], "flawBars")
 
-    writeTblr("flawTable", flawCaption,
+    writeTblr("flawTable", FLAW_CAPTION,
                   ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and a(n) \\dots{}"] + [
                       f"\\rotatebox[origin=c]{{90}}{{\\parbox{{4.35cm}}{{\\centering {x}}}}}" 
                         for x in ["source of \\\\ ground truth",
