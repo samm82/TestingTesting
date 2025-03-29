@@ -9,25 +9,45 @@ After gathering all these data\footnote{Available in \texttt{ApproachGlossary.cs
     \texttt{QualityGlossary.csv}, and \texttt{SuppGlossary.csv} at \ifblind{
         [Repository link suppressed]}{
         \url{https://github.com/samm82/TestingTesting}}.}, we find many
-flaws. To better understand and analyze them, we group them by their
-manifestations and their domains (defined in \Cref{flaw-def}).
+flaws. \Cref{tab:flawTable,fig:flawBars} show the source tiers (see \Cref{sources})
+responsible for these flaws, which reveals a lot about software testing literature:
+\begin{enumerate}
+    \item Established standards (\Cref{stds}) aren't actually standardized, since:
+          \begin{enumerate}
+              \item other documents disagree with them \emph{very} frequently and
+              \item they are the most internally inconsistent source tier!
+          \end{enumerate}
+    \item Less standardized (or ``trustworthy''; see \Cref{trust}) documents,
+          such as terminology collections and textbooks (\Cref{metas,texts},
+          respectively) are also not followed to the extent they should be.
+    \item Documents across the board have flaws within the same document,
+          between documents with the same author(s), or even with reality%
+          \qtodo{Is this too strong of a synonym for ``ground truth''?}!
+\end{enumerate}
+
+\ifnotpaper
+    \afterpage{\input{assets/graphs/flawBars}}
+    % \input{assets/graphs/flawPies}
+\fi
+
+To better understand and analyze these flaws, we group them by their
+manifestations and their domains as defined in \Cref{flaw-def}.
+A summary of how many flaws there are by manifestation and by domain is
+shown in \Cref{tab:flawMnfsts,tab:flawDmns}, respectively, where a given
+row corresponds to the number of flaws either within that source tier and/or
+with a ``more trusted'' one (i.e., a previous row in the table; see
+\Cref{trust,sources}). The numbers of (Exp)licit and (Imp)licit
+(see \Cref{rigidity}) flaws are also presented in these tables. Since
+we give each flaw a manifestation \emph{and} a domain, the totals per
+source and grand totals in these tables are equal. As an example, \tourFlaw*{}.
+This is a contradictory definition, so it appears \ifnotpaper as both \else in
+\fi \flawref{tour-def-contra,tour-def}.
 Within these sections, \ifnotpaper
     ``more significant'' flaws are
     listed first, followed by ``less significant'' ones omitted from the paper
     version of this thesis. They \else ``less significant'' flaws are
     omitted for brevity, and those remaining \fi are then sorted based on their
 source tier (see \Cref{sources}).
-
-A summary of how many flaws there are by manifestation and by domain is
-shown in \Cref{tab:flawMnfsts,tab:flawDmns}, respectively, where a given
-row corresponds to the number of flaws either within that source tier and/or
-with a ``more trusted'' one (i.e., a previous row in the table; see
-\Cref{trust}). The numbers of (Exp)licit and (Imp)licit
-(see \Cref{rigidity}) flaws are also presented in these tables. Since
-we give each flaw a manifestation \emph{and} a domain, the totals per
-source and grand totals in these tables are equal. As an example, \tourFlaw*{}.
-This is a contradictory definition, so it appears \ifnotpaper as both \else in
-\fi \flawref{tour-def-contra,tour-def}.
 
 Flaws that we automatically uncover based on their domain \ifnotpaper
     (see \Cref{auto-flaw-analysis}) \fi are only listed in the corresponding
@@ -45,14 +65,14 @@ and compatibility testing (\Cref{compat-flaw}). \ifnotpaper Finally, we infer
     the more subjective flaws presented in \Cref{infer-flaws} which do not
     contribute to any counts.
 
+    \input{build/flawTable}
+
     \begin{landscape}
         \flawMnfstsTable{}
         \flawDmnsTable{}
     \end{landscape}
 
-    \input{assets/graphs/flawBars}
-    % \input{assets/graphs/flawPies}
-    \input{build/flawTable} \fi
+\fi
 
 \subsection{Flaws by Manifestation}\label{flawMnfsts}
 

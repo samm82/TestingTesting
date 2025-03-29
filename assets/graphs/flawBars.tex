@@ -1,4 +1,4 @@
-\begin{figure*}
+\begin{figure}[bt!]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -6,9 +6,9 @@ width=\textwidth, height=10cm,
 symbolic x coords={std,meta,text,paper,infer},
 x tick label as interval,
 xticklabels={{\parbox{0.16\textwidth}{\centering \stds{}}},{\parbox{0.16\textwidth}{\centering \metas{}}},{\parbox{0.16\textwidth}{\centering \texts{}}},{\parbox{0.16\textwidth}{\centering \papers{}}},{\parbox{0.16\textwidth}{\centering \infers{}}}},
-xlabel=Source Tier (see \Cref{sources}), ylabel=Flaws,
+ylabel=Flaws,
 enlargelimits=0.05, xbar=0pt, ybar interval=0.8,
-legend style={at={(0.5,-0.35)}, anchor=north, legend columns=1,
+legend style={at={(0.5,-0.25)}, anchor=north, legend columns=1,
 inner xsep=6pt,inner ysep=4pt,
 nodes={inner sep=4pt,text depth=0.3em},},
 legend cell align=left,
@@ -31,6 +31,6 @@ legend cell align=left,
 \addlegendentry{Between a document from this category and a paper}
 \end{axis}
 \end{tikzpicture}
-\caption{Sources of flaws based on \hyperref[sources]{source tier}.}
+\caption{Identified flaws by the \hyperref[sources]{source tier} responsible.}
 \label{fig:flawBars}
-\end{figure*}
+\end{figure}
