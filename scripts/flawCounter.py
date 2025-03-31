@@ -405,40 +405,39 @@ def outputFlaws():
         else:
             sepPieCharts.append("\\hfill")
 
-    writeFile(flawLegend, "flawLegend")
-
     FLAW_CAPTION = "Identified flaws by the \\hyperref[sources]{source tier} responsible."
+
+    # writeFile(flawLegend, "flawLegend")
     # writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +
     #             [f"\\caption{{{FLAW_CAPTION}}}",
     #             "\\label{fig:flawSources}", "\\end{figure*}"], "flawPies")
 
-    # Include Inferences and "junk" list as padding for the bar intervals
-    # These won't appear in the generated plot 
-    flawCats = [cat.name.lower() for cat in SrcCat if cat.color.value >= -1]
-    flawBars.append([])
-    
+    flawCats = [cat.name.lower() for cat in SrcCat if cat.color.value >= 0]
     # Transpose 2D list; from https://stackoverflow.com/a/6473724/10002168
     flawBars = list(map(list, itertools.zip_longest(*flawBars, fillvalue=0)))
     flawBars = [f"\\addplot[fill={color}] coordinates {{{' '.join(
                     [str(x).replace("'", "") for x in zip(flawCats, vals)])}}};"
                 for color, vals in zip(DEFAULT_COLORS, flawBars)]
+
+    # Formatting help from https://github.com/CSchank/MSc/blob/main/Thesis/chapters_after_preface/7_results.tex
     writeFile(["\\begin{figure}[bt!]", "\\centering",
                "\\begin{tikzpicture}", "\\begin{axis}[",
                     "width=\\textwidth, height=9cm,",
                     # "x tick label style={rotate=90},",
                    f"symbolic x coords={{{",".join(flawCats)}}},",
-                    "x tick label as interval,",
+                    "xtick=data,",  # "x tick label as interval,",
                    f"xticklabels={{{",".join(map(
                        lambda cat: f'{{\\parbox{{0.16\\textwidth}}{{\\centering \\{cat}s{{}}}}}}',
                        flawCats))}}},",
                     # "xlabel=Source Tier (see \\Cref{sources}),",  # Legend should be -0.35 if xlabel
-                    "ylabel=Flaws,",
-                    "enlargelimits=0.05, xbar=0pt, ybar interval=0.8,",  # bar width=5, bar shift=3",
+                    "ylabel=Flaws, ybar,",  # xbar=0pt, bar width=5, bar shift=3",
+                    "enlargelimits=0.2, enlarge y limits=0.1,",
                     "legend style={at={(0.5,-0.25)}, anchor=north, legend columns=1,",
                     "inner xsep=6pt,inner ysep=4pt,",
                     "nodes={inner sep=4pt,text depth=0.3em},},",
                     "legend cell align=left,",
-                    # "nodes near coords,",
+                    "nodes near coords,", # nodes near coords align={vertical}, point meta=y,"
+                    "every node near coord/.append style={font=\\tiny},",
                # Legend header from https://tex.stackexchange.com/a/2332/192195
                "]", "\\addlegendimage{empty legend}", *flawBars,
                *map(lambda x: f"\\addlegendentry{{{x}}}",
