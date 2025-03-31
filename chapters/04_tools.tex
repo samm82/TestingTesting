@@ -114,32 +114,6 @@ pair from our generated graphs based on the following possible cases:
     in the generated graph (note that X does not appear since it does not
     meet any of the criteria given above).
 
-    Since we can detect these conditions automatically, the next logical step
-    is to automatically detect related classes of flaws. The most trivial class
-    to automate is that of ``multi-synonym'' relations
-    % TODO: pretty hacky
-    (\hyperref[case-three]{Case 3} above) since we already find these to
-    generate our graphs. We automatically generate the lists in
-    \Cref{multiSyns,infMultiSyns} based on glossary entries such as those in
-    \Cref{tab:synExampleGlossary}.
-    \phantomsection{}\label{selfCycles}
-    The self-referential definitions in \Cref{selfPars} (defined as
-    $\left\{(x, y) \in P \mid x = y\right\}$) are also trivial to automate by
-    looking for lines in the
-    generated \LaTeX{} files that start with \texttt{I~->~I}, where \texttt{I}
-    is the label used for a test approach node in these graphs. This process
-    results in output similar to \Cref{fig:selfExampleGraph}. We use a similar
-    process to detect pairs of approaches with a synonym relation \emph{and} a
-    parent-child relation, defined as
-    $\left\{(x, y) \in P \mid \{x, y\} \in S\right\}$ and given in
-    \Cref{tab:parSyns,infParSyns}. To accomplish this, we build a dictionary of
-    each term's synonyms to evaluate which synonym relations are notable enough
-    to include in the graph, and then check these mappings to see if one appears
-    as a parent of the other. For example, if \texttt{J} and \texttt{K} are
-    synonyms, a generated \LaTeX{} file with a parent line starting with
-    \texttt{J~->~K} would result in these approaches being graphed as shown in
-    \Cref{fig:parSynExampleGraph}.
-
     \phantomsection{}\label{graphRigid}
     Since we also track the ``rigidity'' of information (see \Cref{rigidity}),
     we can represent explicit
