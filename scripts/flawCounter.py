@@ -415,9 +415,12 @@ def outputFlaws():
     flawCats = [cat.name.lower() for cat in SrcCat if cat.color.value >= 0]
     # Transpose 2D list; from https://stackoverflow.com/a/6473724/10002168
     flawBars = list(map(list, itertools.zip_longest(*flawBars, fillvalue=0)))
+
     # Filter out comparisons we don't make
     for i in range(3):
         flawBars[i-3] = flawBars[i-3][i+1:]
+    FLAW_CAPTION += (" Some bars are omitted as they correspond to comparisons"
+                     " we do not make; see \\Cref{lower-ground-truth}.")
 
     flawBars = [f"\\addplot[fill={color}] coordinates {{{' '.join(
                 reversed([str(x).replace("'", "") for x in zip(
@@ -440,12 +443,13 @@ def outputFlaws():
                     "nodes={inner sep=4pt,text depth=0.3em},},",
                     "legend cell align=left,",
                     "nodes near coords,", # nodes near coords align={vertical}, point meta=y,"
-                    "every node near coord/.append style={font=\\tiny},",
+                    "every node near coord/.append style={font=\\tiny},", "]",
                # Legend header from https://tex.stackexchange.com/a/2332/192195
-               "]", "\\addlegendimage{empty legend}", *flawBars,
-               *map(lambda x: f"\\addlegendentry{{{x}}}",
-                    ["{\\centering \\textbf{Legend}}", *(vals[1] for vals in slices)]),
-               # f"\\legend{{{",".join([vals[1] for vals in slices])}}}",
+            #    "\\addlegendimage{empty legend}",
+               *flawBars,
+            #    *map(lambda x: f"\\addlegendentry{{{x}}}",
+            #         ["{\\centering \\textbf{Legend}}", *(vals[1] for vals in slices)]),
+               f"\\legend{{{",".join([vals[1] for vals in slices])}}}",
                "\\end{axis}", "\\end{tikzpicture}", f"\\caption{{{FLAW_CAPTION}}}",
                "\\label{fig:flawBars}", "\\end{figure}"], "flawBars")
 

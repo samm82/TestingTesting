@@ -16,7 +16,11 @@ automated tools (\Cref{aug-flaw-analysis}). This gives us an overview of:
 To understand where flaws exist in the literature, we group them based on the
 source tier(s) responsible for them. Each flaw is then counted \emph{once} per
 source tier if it appears within it \emph{and/or} between it and a more
-``trusted'' tier (see \Cref{trust,sources}). This avoids counting the same flaw
+``trusted'' tier\footnote{If an inconsistency occurs between two source tiers
+    and the more trustworthy one is \emph{incorrect}, we instead count it as an
+    inconsistency between it and ground truth, as described in
+    \Cref{lower-ground-truth}.} (see \Cref{trust,sources}). This avoids
+counting the same flaw
 more than once for a given source tier\thesisissueref{83}, which would give the
 number of \emph{occurrences} of all flaws instead of the more useful number of
 flaws \emph{themselves}. The exception to this is \Cref{fig:flawBars}, which
@@ -263,6 +267,7 @@ sources of flaws. The rest increment their corresponding count in
           authors (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}).
 \end{itemize}
 
+\phantomsection{}\label{lower-ground-truth}
 Occasionally, we use a source from a lower tier as the ``ground truth'' for a
 flaw. For example, \tolTestFlaw*{} This flaw is supported
 by additional papers found via a miniature literature review (described in
