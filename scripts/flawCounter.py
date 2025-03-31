@@ -415,11 +415,14 @@ def outputFlaws():
     flawCats = [cat.name.lower() for cat in SrcCat if cat.color.value >= 0]
     # Transpose 2D list; from https://stackoverflow.com/a/6473724/10002168
     flawBars = list(map(list, itertools.zip_longest(*flawBars, fillvalue=0)))
-    flawBars = [f"\\addplot[fill={color}] coordinates {{{' '.join(
-                    [str(x).replace("'", "") for x in zip(flawCats, vals)])}}};"
-                for color, vals in zip(DEFAULT_COLORS, flawBars)]
+    # Filter out comparisons we don't make
+    for i in range(3):
+        flawBars[i-3] = flawBars[i-3][i+1:]
 
-    # Formatting help from https://github.com/CSchank/MSc/blob/main/Thesis/chapters_after_preface/7_results.tex
+    flawBars = [f"\\addplot[fill={color}] coordinates {{{' '.join(
+                reversed([str(x).replace("'", "") for x in zip(
+                         reversed(flawCats), reversed(vals))]))}}};"
+                    for color, vals in zip(DEFAULT_COLORS, flawBars)]
     writeFile(["\\begin{figure}[bt!]", "\\centering",
                "\\begin{tikzpicture}", "\\begin{axis}[",
                     "width=\\textwidth, height=9cm,",
