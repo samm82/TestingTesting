@@ -19,8 +19,8 @@ source tier if it appears within it \emph{and/or} between it and a more
 ``trusted'' tier (see \Cref{trust,sources}). This avoids counting the same flaw
 more than once for a given source tier\thesisissueref{83}, which would give the
 number of \emph{occurrences} of all flaws instead of the more useful number of
-flaws \emph{themselves}. The exceptions to this are \Cref{tab:flawTable,%
-    fig:flawBars}, which count the following sources of flaws separately:
+flaws \emph{themselves}. The exception to this is \Cref{fig:flawBars}, which
+counts the following sources of flaws separately:
 \begin{enumerate}
     \item those that appear once in (or consistently throughout) a document
           (i.e., are ``self-contained'')\thesisissueref{137,138},
@@ -38,8 +38,8 @@ flaws \emph{themselves}. The exceptions to this are \Cref{tab:flawTable,%
     \item those within a single source tier.
 \end{enumerate}
 As before, these are not double counted, meaning that the maximum number of
-counted flaws possible within a \emph{single} source tier in \Cref{tab:flawTable,%
-    fig:flawBars} is four (one for each type). This only occurs if
+counted flaws possible within a \emph{single} source tier in
+\Cref{fig:flawBars} is four (one for each type). This only occurs if
 there is an example of each flaw source that is \emph{not} ignored to
 avoid double counting; for example, while a single flaw within a single
 document would technically fulfill all four criteria, it would only be counted
@@ -103,7 +103,7 @@ of two counted flaws:
           would do so even if only one of the above conditions was true. A more
           nuanced breakdown of flaws that identifies those within a
           singular document and those between documents by the same author is
-          given in \Cref{tab:flawTable,fig:flawBars} and explained in more detail in
+          given in \Cref{fig:flawBars} and explained in more detail in
           \Cref{aug-flaw-analysis}; this view counts three total flaws here.
     \item \textbf{\texts{}}: this flaw occurs between a source in this tier and
           a ``more trusted'' one (the IEEE standards; see \Cref{trust}).
@@ -135,8 +135,7 @@ with the same set of authors. Then, we group these sources into their tiers
 % exception of papers and other documents; see \Cref{papers}).
 We then distill these lists of sources down to sets of tiers and compare them
 against each other to determine how many times a given flaw manifests between
-source tiers. This determines which row(s) of \Cref{tab:flawMnfsts,tab:flawDmns},
-which row(s) and column(s) of \Cref{tab:flawTable},
+source tiers. This determines which row(s) of \Cref{tab:flawMnfsts,tab:flawDmns}
 and which bar(s) of \Cref{fig:flawBars} that the given flaw should count toward.
 We describe this process in more detail in \Cref{aug-flaw-analysis}.
 
@@ -216,7 +215,7 @@ We parse this as the example given in \Cref{flaw-analysis-example}. Since
 the same standards
 organizations (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), we count
 this as an inconsistency between documents with the same set of authors in
-\Cref{tab:flawTable,fig:flawBars}, but only once to avoid double counting.
+\Cref{fig:flawBars}, but only once to avoid double counting.
 
 We can also specify the rigidity (see \Cref{rigidity}) of a flaw by inserting
 the phrase ``implied by'' after the sources of explicit information and before
@@ -230,9 +229,9 @@ equivalent explicit flaw, as we do when generating graphs (\Cref{graphRigid}).
 \end{displayquote}
 For example, the above comment line\utd{} from \flawref{c-use-def} indicates
 that the flaws given below are present. The third flaw only affects
-\Cref{tab:flawTable,fig:flawBars} due to their more nuanced breakdown of the
+\Cref{fig:flawBars} due to its more nuanced breakdown of the
 sources of flaws. The rest increment their corresponding count in
-\Cref{tab:flawTable,fig:flawBars,tab:flawMnfsts,tab:flawDmns} by only one:
+\Cref{fig:flawBars,tab:flawMnfsts,tab:flawDmns} by only one:
 \begin{itemize}
     \item an explicit inconsistency between a textbook and a standard,
     \item an implicit flaw within a single document, and

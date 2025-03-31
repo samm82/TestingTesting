@@ -424,7 +424,7 @@ def outputFlaws():
                 for color, vals in zip(DEFAULT_COLORS, flawBars)]
     writeFile(["\\begin{figure}[bt!]", "\\centering",
                "\\begin{tikzpicture}", "\\begin{axis}[",
-                    "width=\\textwidth, height=10cm,",
+                    "width=\\textwidth, height=9cm,",
                     # "x tick label style={rotate=90},",
                    f"symbolic x coords={{{",".join(flawCats)}}},",
                     "x tick label as interval,",
@@ -447,17 +447,17 @@ def outputFlaws():
                "\\end{axis}", "\\end{tikzpicture}", f"\\caption{{{FLAW_CAPTION}}}",
                "\\label{fig:flawBars}", "\\end{figure}"], "flawBars")
 
-    writeTblr("flawTable", FLAW_CAPTION,
-                  ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and a(n) \\dots{}"] + [
-                      f"\\rotatebox[origin=c]{{90}}{{\\parbox{{4.35cm}}{{\\centering {x}}}}}" 
-                        for x in ["source of \\\\ ground truth",
-                                  "part of the same document",
-                                  "document with the same set of author(s)"] +
-                                 [cat.longname.lower()[:-1]  # Strip plural "s"
-                                  if cat.color != Color.BLACK else "paper or other document"
-                                                      # Exclude inferences and proposals
-                                    for cat in SrcCat if cat.color.value >= 0]],
-                  [" & ".join(map(str, x)) + " \\\\" for x in
-                   # From https://stackoverflow.com/a/63080837/10002168
-                   zip(*itertools.zip_longest(*flawTable, fillvalue="---"))],
-                   toSort=False, rowHeadSpec="r", rowDataSpec="c")
+    # writeTblr("flawTable", FLAW_CAPTION,
+    #               ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and a(n) \\dots{}"] + [
+    #                   f"\\rotatebox[origin=c]{{90}}{{\\parbox{{4.35cm}}{{\\centering {x}}}}}" 
+    #                     for x in ["source of \\\\ ground truth",
+    #                               "part of the same document",
+    #                               "document with the same set of author(s)"] +
+    #                              [cat.longname.lower()[:-1]  # Strip plural "s"
+    #                               if cat.color != Color.BLACK else "paper or other document"
+    #                                                   # Exclude inferences and proposals
+    #                                 for cat in SrcCat if cat.color.value >= 0]],
+    #               [" & ".join(map(str, x)) + " \\\\" for x in
+    #                # From https://stackoverflow.com/a/63080837/10002168
+    #                zip(*itertools.zip_longest(*flawTable, fillvalue="---"))],
+    #                toSort=False, rowHeadSpec="r", rowDataSpec="c")
