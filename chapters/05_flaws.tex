@@ -32,25 +32,23 @@ responsible for these flaws, which reveals a lot about software testing literatu
 
 To better understand and analyze these flaws, we group them by their
 manifestations and their domains as defined in \Cref{flaw-def}.
-A summary of how many flaws there are by manifestation and by domain is
-shown in \Cref{tab:flawMnfsts,tab:flawDmns}, respectively, where a given
+We present the total number of flaws by manifestation and by domain
+in \Cref{tab:flawMnfsts,tab:flawDmns}, respectively, where a given
 row corresponds to the number of flaws either within that source tier and/or
 with a ``more trusted'' one (i.e., a previous row in the table; see
-\Cref{trust,sources}). The numbers of (Exp)licit and (Imp)licit
-(see \Cref{rigidity}) flaws are also presented in these tables. Since
-we give each flaw a manifestation \emph{and} a domain, the totals per
+\Cref{trust,sources}). We also group these flaws by their rigidity (defined
+in \Cref{rigidity}) by counting (Exp)licit and (Imp)licit flaws separately.
+Since we give each flaw a manifestation \emph{and} a domain, the totals per
 source and grand totals in these tables are equal. As an example, \tourFlaw*{}.
 This is a contradictory definition, so it appears \ifnotpaper as both \else in
-\fi \flawref{tour-def-contra,tour-def}.
-Within these sections, \ifnotpaper
-    ``more significant'' flaws are
-    listed first, followed by ``less significant'' ones omitted from the paper
-    version of this thesis. They \else ``less significant'' flaws are
-    omitted for brevity, and those remaining \fi are then sorted based on their
-source tier (see \Cref{sources}).
+\fi \flawref{tour-def-contra,tour-def}. Within these sections, we \ifnotpaper
+    list ``more significant'' flaws first, followed by ``less significant''
+    ones we omit from the paper version of this thesis. We \else
+    omit ``less significant'' flaws for brevity, \fi then sort these flaws
+by their source tier (see \Cref{sources}).
 
-Flaws that we automatically uncover based on their domain \ifnotpaper
-    (see \Cref{auto-flaw-analysis}) \fi are only listed in the corresponding
+We only list flaws we automatically uncover based on their domain \ifnotpaper
+    (see \Cref{auto-flaw-analysis}) \fi in their corresponding
 domain section for clarity, although they still contribute to the counts in
 \Cref{tab:flawMnfsts}. Moreover, certain ``subsets'' of testing contain many
 interconnected flaws, which we present in subsections as a ``third view''. This
