@@ -38,9 +38,16 @@
           % Flaw count (CONTRA, PARS): ISTQB | {Firesmith2015}
           of integration testing by \citetISTQB{}
           and of system testing by \citet[p.~23]{Firesmith2015}.
+    \item % Flaw count (MISS, DEFS): {IEEE2017}
+          Similarly, component testing, integration testing, and component
+          integration testing are all listed in \citep{IEEE2017}, but ``component
+          integration testing'' is only defined as ``testing of groups of
+          related components'' \citep[p.~82]{IEEE2017}; it is a combination of
+          the two? somewhere on the spectrum between them? As above, it is
+          listed as a child of integration testing by \citetISTQB{}.
     \item % Flaw count (WRONG, LABELS): {IEEE2021} {SWEBOK2024} {SWEBOK2014}
           % Flaw count (CONTRA, DEFS): {IEEE2021} | {SWEBOK2024} {SWEBOK2014}
-          % Ground truth: {IEEE2010} {SWEBOK2024} {vanVliet2000} implied by {SWEBOK2014} {vanVliet2000}
+          % Ground truth: {IEEE2010} {SWEBOK2024} {vanVliet2000}
           Since errors are distinct from defects/faults \ifnotpaper
               (\citealp[pp.~128, 140]{IEEE2010}; \citealp[p.~12\=/3]{SWEBOK2024};
               \citealp[pp.~399--400]{vanVliet2000})\else
@@ -58,25 +65,16 @@
           % Flaw count (WRONG, SYNS): {IEEE2017} {vanVliet2000}
           % Ground truth: {IEEE2010} {SWEBOK2024} {vanVliet2000}
           Similarly, ``fault seeding'' is not a synonym of ``error seeding''
-          as claimed by \ifnotpaper (\citealp[p.~165]{IEEE2017};
-              \citealp[p.~427]{vanVliet2000})\else \cite[p.~165]{IEEE2017} and
-              \cite[p.~427]{vanVliet2000}\fi. The term ``error seeding'', used
-          by \ifnotpaper (\citealp[p.~165]{IEEE2017}; \citealp[p.~34]{Firesmith2015};
-              \citealp[p.~427]{vanVliet2000})\else \citealp[p.~34]{Firesmith2015},
-              \citealp[p.~165]{IEEE2017}, and \citealp[p.~427]{vanVliet2000}\fi,
+          as claimed by \citet[p.~165]{IEEE2017} and
+          % TODO: may need to be reordered via \ifnotpaper
+          \citet[p.~427]{vanVliet2000}. The term ``error seeding'', also
+          used by \citet[p.~34]{Firesmith2015},
           should be abandoned in favour of ``fault seeding'', as it is defined
           as the ``process of intentionally adding known faults to those
           already in a computer program \dots{} [to] estimat[e] the number of
           faults remaining'' \citep[p.~165]{IEEE2017} based on the ratio
           between the number of new faults and the number of introduced faults
           that were discovered \citep[p.~427]{vanVliet2000}.
-    \item % Flaw count (MISS, DEFS): {IEEE2017}
-          Similarly, component testing, integration testing, and component
-          integration testing are all listed in \citep{IEEE2017}, but ``component
-          integration testing'' is only defined as ``testing of groups of
-          related components'' \citep[p.~82]{IEEE2017}; it is a combination of
-          the two? somewhere on the spectrum between them? As above, it is
-          listed as a child of integration testing by \citetISTQB{}.
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} {SWEBOK2024} {Firesmith2015} {AmmannAndOffutt2017} {PetersAndPedrycz2000} | {IEEE2022} {Gerrard2000a}
           % Label DEFS static-test-flaw 
           ``Software testing'' is often defined to exclude static testing
