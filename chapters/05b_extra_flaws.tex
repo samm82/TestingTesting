@@ -26,8 +26,8 @@
           superset of the latter two, this distinction doesn't seem useful.
     \item % Flaw count (WRONG, DEFS): {IEEE2017} | {IEEE2017}
           % TODO: SUPP DEFS?
-          \citeauthor{IEEE2017} use the same definition for ``partial correctness''
-          \citeyearpar[p.~314]{IEEE2017} and ``total correctness'' (p.~480).
+          \citet{IEEE2017} use the same definition for ``partial correctness''
+          \citetext{p.~314} and ``total correctness'' \citetext{p.~480}.
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {IEEE2021} {vanVliet2000} {PetersAndPedrycz2000}
           \citeauthor{IEEE2017}'s definition of ``all-\acsp{c-use} testing''---testing
           that aims to execute all data ``use[s] of the value of a variable in
@@ -248,13 +248,12 @@
           \citeauthor{SWEBOK2024} does not specify this caveat
           \citeyearpar[p.~5-13]{SWEBOK2024}.
     \item % Flaw count (WRONG, PARS): implied by {IEEE2021} | {PetersAndPedrycz2000}
-          \refHelper \citeauthor{PetersAndPedrycz2000} \ifnotpaper imply \else
-              implies \fi that decision coverage is a child of both \acs{c-use}
-          coverage \emph{and} \acs{p-use} coverage \citeyearpar[Fig.~12.31]{
-              PetersAndPedrycz2000}; this seems incorrect, since decisions are
-          the result of \acsp{p-use} (\emph{not} \acsp{c-use}) and only the
-          \acs{p-use} relation is implied by \citep[Fig.~F.1%
-              \todo{OG Reid 1996}]{IEEE2021}.
+          \refHelper \citet[Fig.~12.31]{PetersAndPedrycz2000} \ifnotpaper imply
+          \else implies \fi that decision coverage is a child of both \acs{c-use}
+          coverage \emph{and} \acs{p-use} coverage; this seems incorrect, since
+          decisions are the result of \acsp{p-use} (\emph{not} \acsp{c-use})
+          and only the \acs{p-use} relation is implied by
+          \citep[Fig.~F.1\todo{OG Reid 1996}]{IEEE2021}.
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {SWEBOK2014} | {vanVliet2000}
           Acceptance testing is ``usually performed by the purchaser \dots{}
           with the \dots{} vendor'' \citep[p.~5]{IEEE2017}, ``may or may not
