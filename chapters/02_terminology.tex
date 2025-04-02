@@ -624,7 +624,7 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
 The same approach often has many names. For example,
 \emph{specification-based testing} is also called\todo{more in Umar2000}:
 \begin{enumerate}
-    \item Black-Box Testing
+    \item \emph{black-box testing}
           \ifnotpaper
               (\citealp[p.~9]{IEEE2022}; \citeyear[p.~8]{IEEE2021};
               \citeyear[p.~431]{IEEE2017}; \citealp[p.~5\=/10]{SWEBOK2024};
@@ -637,13 +637,13 @@ The same approach often has many names. For example,
               \cite[p.~399]{vanVliet2000},
               \cite[p.~344]{SakamotoEtAl2013}
           \fi
-    \item Closed-Box Testing
+    \item \emph{closed-box testing}
           \ifnotpaper
               (\citealp[p.~9]{IEEE2022}; \citeyear[p.~431]{IEEE2017})
           \else
               \cite[p.~9]{IEEE2022}, \cite[p.~431]{IEEE2017}
           \fi
-    \item Functional Testing\footnote{``Functional testing'' may not
+    \item \emph{functional testing}\footnote{``Functional testing'' may not
               \emph{actually} be a synonym for ``specification-based testing'';
               see \Cref{spec-func-test}.}
           \ifnotpaper
@@ -655,20 +655,34 @@ The same approach often has many names. For example,
               \cite[p.~44]{Kam2008} (implied by \cite[p.~431]{IEEE2017},
               \cite[p.~129]{IEEE2021})
           \fi
-    \item Domain Testing \citep[p.~5\=/10]{SWEBOK2024}
-    \item Specification-oriented Testing \citep[p.~440, Fig.~12.2]{PetersAndPedrycz2000}
-    \item Input Domain-Based Testing (implied by \citealp[pp.~4\=/7 to
+    \item \emph{domain testing} \citep[p.~5\=/10]{SWEBOK2024}
+    \item \emph{specification-oriented testing} \citep[p.~440, Fig.~12.2]{PetersAndPedrycz2000}
+    \item \emph{input domain-based testing} (implied by \citealp[pp.~4\=/7 to
               4\=/8]{SWEBOK2014})
 \end{enumerate}
-
-These synonyms are the same as synonyms in natural language; while they may
-emphasize different aspects or express mild variations, their core meaning
-is nevertheless the same. Throughout our work, we use the terms
+Throughout our work, we use the terms
 ``specification-based testing'' and ``structure-based testing'' to articulate
 the source of the information for designing test cases, but a team or project
 also using grey-box testing may prefer the terms ``black-box'' and ``white-box
 testing'' for consistency. Thus, synonyms are not inherently problematic,
 although they can be (see \Cref{syns}).
+
+We can formally define the synonym relation $S$ on the set $T$ of terms used by
+the literature to describe test approaches based on how synonyms are used in
+natural language. $S$ is symmetric; for example, since ``windy'' is a synonym
+of ``gusty'' \citep{WindySyns}, the inverse is also true \citeyearpar{GustySyns}.
+$S$ is also transitive: since ``windy'' is a synonym of ``blustery''
+\citeyearpar{WindySyns} and ``gusty'' is a synonym of ``windy'', ``gusty''
+is transitively a synonym of ``blustery'' \citeyearpar{GustySyns}. Although
+pairs of synonyms in natural language are implied to be distinct
+\citeyearpar{WindySyns,GustySyns}, a relation that is symmetric and transitive
+is provably reflexive, so we extend $S$ to be reflexive as well, implying that
+all terms are trivially synonyms of themselves. Since $S$ is symmetric,
+transitive, and reflexive, it is therefore an equivalence relation, which
+reflects the role of synonyms in natural language. While synonyms may
+emphasize different aspects or express mild variations---``gust'' is defined as
+``a sudden brief rush of wind'' \citeyearpar{GustDef}---their core meaning is
+nevertheless the same.
 
 Synonym relations are often given explicitly in the literature. For example,
 \citet[p.~9]{IEEE2022} \multiAuthHelper{list} ``black-box testing'' and
