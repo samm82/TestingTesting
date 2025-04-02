@@ -51,9 +51,9 @@
           % Ground truth: {IEEE2010} {SWEBOK2024} {vanVliet2000}
           Since errors are distinct from defects/faults \ifnotpaper
               (\citealp[pp.~128, 140]{IEEE2010}; \citealp[p.~12\=/3]{SWEBOK2024};
-              \citealp[pp.~399--400]{vanVliet2000})\else
+              \citealp[pp.~399\==400]{vanVliet2000})\else
               \cite[p.~12\=/3]{SWEBOK2024}, \cite[pp.~128, 140]{IEEE2010},
-              \cite[pp.~399--400]{vanVliet2000}\fi, error guessing should
+              \cite[pp.~399\==400]{vanVliet2000}\fi, error guessing should
           instead be called ``defect guessing'' if it is based on a ``checklist
           of potential defects'' \citep[p.~29]{IEEE2021} or ``fault guessing''
           if it is a ``fault-based technique'' \citep[p.~4\=/9]{SWEBOK2014}
@@ -92,10 +92,10 @@
           use the term `testing' to refer to static techniques%
           \notDefDistinctIEEE{technique} as well'' \citep[p.~5\=/2]{SWEBOK2024}.
           This is done by \citet[pp.~16\==17]{IEEE2022} and
-          \citet[pp.~8--9]{Gerrard2000a}; the \ifnotpaper \else authors of the
+          \citet[pp.~8\==9]{Gerrard2000a}; the \ifnotpaper \else authors of the
           \fi former even explicitly \emph{exclude} static testing in another
           document \citeyearpar[p.~440]{IEEE2017}!
-    \item % Flaw count (CONTRA, SYNS): {IEEE2017} ISTQB | {IEEE2017} {BaresiAndPezzè2006}
+    \item % Flaw count (CONTRA, SYNS): ISTQB | {BaresiAndPezzè2006}
           A component is an ``entity with discrete structure \dots\ within a
           system considered at a particular level of analysis''
           \citep{ISO_IEC2023b} and ``the terms module, component, and unit
@@ -105,13 +105,14 @@
           \citetISTQB{} \multiAuthHelper{define} them as synonyms while
           \citet[p.~107]{BaresiAndPezzè2006} \multiAuthHelper{say} ``components
           differ from classical modules for being re-used in different contexts
-          independently of their development''. Additionally, since components
-          are structurally, functionally, or logically discrete
-          \citep[p.~419]{IEEE2017} and ``can be tested in isolation''
-          \citepISTQB{}, ``unit/component/module testing'' could refer to the
-          testing of both a module \emph{and} a specific function in a module%
-          \thesisissueref{14}, introducing a further level of ambiguity.
-          % Flaw count (AMBI, SYNS): {IEEE2017} ISTQB
+          independently of their development''.
+          % Flaw count (AMBI, DEFS): {IEEE2017} ISTQB
+          Additionally, since components are structurally, functionally, or
+          logically discrete \citep[p.~419]{IEEE2017} and ``can be tested in
+          isolation'' \citepISTQB{}, ``unit/component/module testing'' could
+          refer to the testing of both a module \emph{and} a specific function
+          in a module\thesisissueref{14}, introducing a further level of
+          ambiguity.
     \item % Flaw count (OVER, SYNS): {IEEE2017} {IEEE2013} | {IEEE2022} {IEEE2017} {Perry2006}
           % Label SYNS level-phase-syns
           \citeauthor{IEEE2017} say that ``test level'' and ``test phase''
@@ -139,9 +140,9 @@
           a developer makes an error \ifnotpaper
               (\citeyear[pp.~128, 140]{IEEE2010};
               \citealp[p.~12\=/3]{SWEBOK2024};
-              \citealp[pp.~399--400]{vanVliet2000})\else
+              \citealp[pp.~399\==400]{vanVliet2000})\else
               \cite[p.~12\=/3]{SWEBOK2024}, \cite[pp.~128, 140]{IEEE2010},
-              \cite[pp.~399--400]{vanVliet2000}\fi, this means that they are
+              \cite[pp.~399\==400]{vanVliet2000}\fi, this means that they are
           ``incorrect results'', making ``error'' and ``fault'' synonyms and
           the distinction between them less useful.
     \item % Flaw count (OVER, DEFS): {IEEE2010} {SWEBOK2024}
@@ -213,7 +214,7 @@
           ``Use case testing'' is given as a synonym of ``scenario testing''
           by \citetISTQB{}
           %   Old; based on inconsistent citations from Kam2008/ISTQB
-          %   and \citet[pp.~47--49]{Kam2008} \ifnotpaper (see
+          %   and \citet[pp.~47\==49]{Kam2008} \ifnotpaper (see
           %       \Cref{fig:threeWaySyns}) \fi
           but listed separately by
           \citet[Fig.~2]{IEEE2022} and described as a ``common form of scenario
@@ -247,8 +248,8 @@
           based on the object of testing, the \emph{target}, or on the purpose
           or \emph{objective}'' and calls the former ``test stages'', giving
           the term a child relation (see \Cref{par-chd-rels}) to ``test level''
-          instead. However, the examples listed---unit testing, integration
-          testing, system testing, and acceptance testing
+          instead. However, the examples of ``test stages'' listed---unit
+          testing, integration testing, system testing, and acceptance testing
           \citep[pp.~5\=/6 to 5\=/7]{SWEBOK2024}---are commonly categorized as
           ``test levels'' (see \Cref{cats-def}).
     \item % Flaw count (WRONG, LABELS): {Firesmith2015}
@@ -298,30 +299,32 @@
           % Label SYNS bug-patton
           The differences between the terms ``error'', ``failure'',
           ``fault'', ``defect'' are significant and meaningful \ifnotpaper
-              (\citealp[pp.~128, 139--140]{IEEE2010};
+              (\citealp[pp.~128, 139\==140]{IEEE2010};
               \citealp[p.~12\=/3]{SWEBOK2024};
-              \citealp[pp.~399--400]{vanVliet2000})\else
-              \cite[pp.~128, 139--140]{IEEE2010},
-              \cite[pp.~399--400]{vanVliet2000},
+              \citealp[pp.~399\==400]{vanVliet2000})\else
+              \cite[pp.~128, 139\==140]{IEEE2010},
+              \cite[pp.~399\==400]{vanVliet2000},
               \cite[p.~12\=/3]{SWEBOK2024}\fi, but \bugPattonFlaw{}
     \item % Flaw count (CONTRA, DEFS): {IEEE2022} | {Patton2006}
           % Label DEFS load-def
           \loadFlaw{}
     \item % Flaw count (CONTRA, DEFS): {IEEE2021} | {Patton2006}
           State testing requires that ``all states in the state model
-          \dots\ [are] `visited'\,'' in \citep[p.~19]{IEEE2021} which
-          is only one of its possible criteria in \citep[pp.~82-83]{Patton2006}.
+          \dots\ [are] `visited'\,'' \citep[p.~19]{IEEE2021}, but
+          \citet[pp.~82\==83]{Patton2006} lists this as only one of its
+          possible criteria.
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} {PetersAndPedrycz2000} {vanVliet2000} | {Patton2006}
-          \refHelper \citet[p.~456]{IEEE2017} \multiAuthHelper{say} system
-          testing is ``conducted on a complete, integrated system'' (which
-          \citet[Tab.~12.3]{PetersAndPedrycz2000} and
-          \citet[p.~439]{vanVliet2000} agree with), while
-          \citet[p.~109]{Patton2006} says it can also be done on ``at least a
-          major portion'' of the product.
+          System testing is ``conducted on a complete, integrated system''
+          \ifnotpaper (\citealp[p.~456]{IEEE2017}; similar in
+              \citealp[Tab.~12.3]{PetersAndPedrycz2000};
+              \citealp[p.~439]{vanVliet2000})\else \cite[p.~456]{IEEE2017}
+              (similar in \cite[Tab.~12.3]{PetersAndPedrycz2000},
+              \cite[p.~439]{vanVliet2000})\fi, but \citet[p.~109]{Patton2006}
+          says it can also be done on ``at least a major portion'' of the product.
     \item % Flaw count (AMBI, SYNS): ISTQB | {Patton2006}
           % TODO: NEAR SYNS?
           \refHelper \citetISTQB{} \multiAuthHelper{claim} that code inspections
-          are related to peer reviews but \citet[pp.~94--95]{Patton2006} makes
+          are related to peer reviews but \citet[pp.~94\==95]{Patton2006} makes
           them quite distinct.
     \item % Flaw count (CONTRA, SYNS): ISTQB | {PetersAndPedrycz2000}
           % Label SYNS walkthrough-syns
@@ -339,10 +342,10 @@
           tests in such a way that they exercise all components of the code
           (say, statements, branches, paths)'' on the same page!
     \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | implied by {Patton2006}
-          \refHelper \citet[p.~92\ifnotpaper, emphasis added\fi]{Patton2006}
+          While \citet[p.~92\ifnotpaper, emphasis added\fi]{Patton2006}
           says that reviews are ``\emph{the} process[es] under which static
-          white-box testing is performed'' but correctness proofs are given
-          as another example by \citet[pp.~418--419]{vanVliet2000}.
+          white-box testing is performed'', \citet[pp.~418\==419]{vanVliet2000}
+          gives correctness proofs as another example.
 
           % TEXT | PAPER
     \item % Flaw count (WRONG, DEFS): ISTQB | {Kam2008}

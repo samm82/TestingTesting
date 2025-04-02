@@ -28,15 +28,16 @@
           % TODO: SUPP DEFS?
           \citet{IEEE2017} use the same definition for ``partial correctness''
           \citetext{p.~314} and ``total correctness'' \citetext{p.~480}.
-    \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {IEEE2021} {vanVliet2000} {PetersAndPedrycz2000}
-          \citeauthor{IEEE2017}'s definition of ``all-\acsp{c-use} testing''---testing
-          that aims to execute all data ``use[s] of the value of a variable in
-          any type of statement'' \citeyearpar[p.~83]{IEEE2017}\todo{OG 2015}---%
-          is \emph{much} more vague than the definition given in
-          \citeyearpar[p.~27]{IEEE2021}: testing that exercises ``control flow
-          sub-paths from each variable definition to each \acs{c-use} of that
-          definition (with no intervening definitions)'' (similar in
-          \citealp[p.~425]{vanVliet2000}; \citealp[p.~479]{PetersAndPedrycz2000}).
+    \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {IEEE2021}
+          % Ground truth: {IEEE2021} {vanVliet2000} {PetersAndPedrycz2000}
+          \citet[p.~83\todo{OG 2015}]{IEEE2017}'s definition of
+          ``all-\acsp{c-use} testing''---testing that aims to execute all data
+          ``use[s] of the value of a variable in any type of statement''---is
+          \emph{much} more vague than the definition they give in
+          (\citeyear[p.~27]{IEEE2021}; similar in \citealp[p.~425]{vanVliet2000};
+          \citealp[p.~479]{PetersAndPedrycz2000})---testing that exercises
+          ``control flow sub-paths from each variable definition to each
+          \acs{c-use} of that definition (with no intervening definitions)''.
     \item % Flaw count (WRONG, CATS): {IEEE2016} | {IEEE2016}
           % Label CATS manual-or-keyword
           Since keyword-driven testing can be used for automated \emph{or}
@@ -203,15 +204,15 @@
           % TODO: SUPP LABELS?
           Different capitalizations of the abbreviations of ``computation data
           use'' and ``predicate data use'' are used: the lowercase ``\acs{c-use}''
-          and ``\acs{p-use}'' (\citealp[pp.~3, 27-29, 35-36, 114-155, 117-118,
-              129]{IEEE2021}; \citeyear[p.~124]{IEEE2017};
+          and ``\acs{p-use}'' (\citealp[pp.~3, 27\==29, 35\==36, 114\==155,
+              117\==118, 129]{IEEE2021}; \citeyear[p.~124]{IEEE2017};
           \citealp[p.~477, Tab.~12.6]{PetersAndPedrycz2000}) and the uppercase
-          ``C-use'' and ``P-use'' \citep[pp.~424-425]{vanVliet2000}.
+          ``C-use'' and ``P-use'' \citep[pp.~424\==425]{vanVliet2000}.
     \item % Flaw count (CONTRA, LABELS): {IEEE2021} {PetersAndPedrycz2000} | {vanVliet2000}
           % TODO: SUPP LABELS?
           Similarly for ``definition-use'' (such as in ``definition-use
           path''), both the lowercase ``du'' (\citealp[pp.~3, 27, 29, 35,
-              119-121, 129]{IEEE2021}; \citealp[pp.~478-479]{
+              119\==121, 129]{IEEE2021}; \citealp[pp.~478\==479]{
               PetersAndPedrycz2000}) and the uppercase ``DU''
           \citep[p.~425]{vanVliet2000} are used.
     \item % Flaw count (MISS, DEFS): {IEEE2021} {IEEE2017} {PetersAndPedrycz2000} implied by {vanVliet2000} | {vanVliet2000}
@@ -223,31 +224,30 @@
           defined elsewhere (\citealp[p.~27]{IEEE2021};
           \citeyear[p.~83]{IEEE2017}; \citealp[p.~479]{PetersAndPedrycz2000}).
     \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021} {IEEE2017} {PetersAndPedrycz2000}
-          \refHelper \Citeauthor{vanVliet2000} specifies that every successor
-          of a data definition use needs to be executed as part of all-uses
-          testing \citeyearpar[pp.~424-425]{vanVliet2000}, but this condition
-          is not included elsewhere (\citealp[pp.~28-29]{IEEE2021};
-          \citeyear[p.~120]{IEEE2017}; \citealp[pp.~478-479]{PetersAndPedrycz2000}).
+          \refHelper \Citet[pp.~424-425]{vanVliet2000} specifies that every
+          successor of a data definition use needs to be executed as part of
+          all-uses testing, but this condition is not included elsewhere
+          (\citealp[pp.~28\==29]{IEEE2021}; \citeyear[p.~120]{IEEE2017};
+          \citealp[pp.~478\==479]{PetersAndPedrycz2000}).
     \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021} {IEEE2017} {SWEBOK2024} {PetersAndPedrycz2000}
           All-\acsp{du-path} testing is usually defined as exercising all
           ``loop-free control flow sub-paths from each variable definition to
           every use (both \acs{p-use} and \acs{c-use}) of that definition (with no
           intervening definitions)'' (\citealp[p.~29]{IEEE2021}; similar in
-          \citeyear[p.~125]{IEEE2017}; \citealp[p.~5-13]{SWEBOK2024};
+          \citeyear[p.~125]{IEEE2017}; \citealp[p.~5\=/13]{SWEBOK2024};
           \citealp[p.~479]{PetersAndPedrycz2000}); however, paths containing
           simple cycles may also be required \citep[p.~425]{vanVliet2000}.
     \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021}
-          \refHelper \Citeauthor{vanVliet2000} says that all-\acsp{p-use}
-          testing is only stronger than all-edges (branch) testing if there are
-          infeasible paths \citeyearpar[pp.~432-433]{vanVliet2000}, but
-          \citeauthor{IEEE2021} \ifnotpaper do \else \does \fi not specify this
-          caveat \citeyearpar[Fig.~F.1\todo{OG Reid, 1996}]{IEEE2021}.
+          \refHelper \Citet[pp.~432\==433]{vanVliet2000} says that
+          all-\acsp{p-use} testing is only stronger than all-edges (branch)
+          testing if there are infeasible paths, but
+          \citet[Fig.~F.1\todo{OG Reid, 1996}]{IEEE2021} \ifnotpaper do
+          \else does \fi not specify this caveat.
     \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {SWEBOK2024}
-          Similarly, \citeauthor{vanVliet2000} says that all-\acsp{du-path}
-          testing is only stronger than all-uses testing if there are
-          infeasible paths \citeyearpar[pp.~432-433]{vanVliet2000}, but
-          \citeauthor{SWEBOK2024} does not specify this caveat
-          \citeyearpar[p.~5-13]{SWEBOK2024}.
+          Similarly, \citet[pp.~432\==433]{vanVliet2000} says that
+          all-\acsp{du-path} testing is only stronger than all-uses testing if
+          there are infeasible paths, but \citet[p.~5\=/13]{SWEBOK2024} does
+          not specify this caveat.
     \item % Flaw count (WRONG, PARS): implied by {IEEE2021} | {PetersAndPedrycz2000}
           \refHelper \citet[Fig.~12.31]{PetersAndPedrycz2000} \ifnotpaper imply
           \else implies \fi that decision coverage is a child of both \acs{c-use}
@@ -258,11 +258,11 @@
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {SWEBOK2014} | {vanVliet2000}
           Acceptance testing is ``usually performed by the purchaser \dots{}
           with the \dots{} vendor'' \citep[p.~5]{IEEE2017}, ``may or may not
-          involve the developers of the system'' \citep[p.~4-6]{SWEBOK2014},
+          involve the developers of the system'' \citep[p.~4\=/6]{SWEBOK2014},
           and/or ``is often performed under supervision of the user
           organization'' \citep[p.~439]{vanVliet2000}; these descriptions
           of who the testers are contradict each other \emph{and} all introduce
-          some uncertainty\todo{Does this merit counting this as an Ambiguity
+          some uncertainty\qtodo{Does this merit counting this as an Ambiguity
               as well as a Contradiction?}
           (``usually'', ``may or may not'', and ``often'', respectively).
 
@@ -281,7 +281,7 @@
           universal and at worst incorrect.
     \item % Flaw count (CONTRA, CATS): {SWEBOK2024} | {Kam2008}
           Although ad hoc testing is classified as a ``technique''
-          \citep[p.~5-14]{SWEBOK2024}, it is one in which ``no recognized test
+          \citep[p.~5\=/14]{SWEBOK2024}, it is one in which ``no recognized test
           design technique is used'' \citep[p.~42]{Kam2008}.
     \item % Flaw count (MISS, DEFS): {Bas2024}
           \refHelper \citet[p.~16]{Bas2024} lists ``three [backup] location
