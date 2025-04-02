@@ -83,17 +83,17 @@
               runtime errors, and logical errors'' \citep[p.~16\=/13,
                   cf.~p.~18\=/13]{SWEBOK2024} since they seem to be in different
               domains. Does that make sense? How should I document this?}
-    \item % Flaw count (AMBI, LABELS): {IEEE2019} {IEEE2010} | {SWEBOK2024}
+    \item % Flaw count (AMBI, LABELS): {IEEE2019a} {IEEE2010} | {SWEBOK2024}
           % Ground truth: {vanVliet2000}
           \refHelper{} \citet[p.~1\=/1]{SWEBOK2024} defines ``defect'' as ``an
           observable difference between what the software is intended to do and
           what it does'', but this seems to match the definition of
           ``failure'': the inability of a system ``to perform a required
           function or \dots{} within previously specified limits'' \ifnotpaper
-              (\citealp[p.~7]{IEEE2019}; \citeyear[p.~139]{IEEE2010}%
+              (\citealp[p.~7]{IEEE2019a}; \citeyear[p.~139]{IEEE2010}%
               \todo{OG ISO/IEC, 2005}; similar in \citealp[p.~400]{vanVliet2000})
           \else [TODO: format citation] \fi that is ``externally visible''
-          \ifnotpaper (\citealp[p.~7]{IEEE2019}; similar in
+          \ifnotpaper (\citealp[p.~7]{IEEE2019a}; similar in
               \citealp[p.~400]{vanVliet2000})\else [TODO: format citation]\fi.
     \item % Flaw count (AMBI, LABELS): {SWEBOK2024} | {SWEBOK2024}
           % Ground truth: {vanVliet2000}
@@ -181,8 +181,8 @@
           them to test the object under test; the wording of its subtypes
           \citep[p.~25]{Firesmith2015} seems to imply the former.
     \item % Flaw count (MISS, DEFS): {Firesmith2015}
-          The acronym ``SoS'' is used but not defined by
-          \citet[p.~23]{Firesmith2015}.
+          The acronym for \acf{sos} \citep{IEEE2019b} is used but not defined
+          by \citet[p.~23]{Firesmith2015}.
     \item % Flaw count (OVER, LABELS): {Firesmith2015} | {Firesmith2015}
           % Label OVER cat-acro
           ``Customer acceptance testing'' and ``contract(ual) acceptance

@@ -55,6 +55,7 @@ undefTerms = [
                   "\\citep{YuEtAl2011} and \\citep{Tsui2007} were added as "
                   "out-of-scope examples."),
     UndefinedTerm("Backup Testing", "Bas2024", footnote="See \\Cref{recov-flaw}."),
+    UndefinedTerm("SoS (Integration) Testing", "IEEE2019b"),
 ]
 
 for term in undefTerms:
