@@ -106,9 +106,9 @@
           \emph{faults} and then recovering from them'', since ``error'' and
           ``fault'' have distinct meanings \ifnotpaper
               (\citealp[p.~5\=/3]{SWEBOK2024};
-              \citealp[pp.~399--400]{vanVliet2000})\else
+              \citealp[pp.~399\==400]{vanVliet2000})\else
               \cite[p.~5\=/3]{SWEBOK2024},
-              \cite[pp.~399--400]{vanVliet2000}\fi. The intent of this
+              \cite[pp.~399\==400]{vanVliet2000}\fi. The intent of this
           term-definition pair is unclear, as the strategies given---``backing
           up and retrying, using auxiliary code and voting algorithms, and
           replacing an erroneous value with a phony value that will have a
@@ -122,10 +122,11 @@
           is clearer.
     \item % Flaw count (AMBI, DEFS): ISTQB
           While ergonomics testing is out of scope (as it tests hardware, not
-          software), its definition of ``testing to determine whether a
-          component or system and its input devices are being used properly
-          with correct posture'' \citepISTQB{} seems to focus on how the
-          system is \emph{used} as opposed to the system \emph{itself}.
+          software; see \Cref{hard-test}), its definition of ``testing to
+          determine whether a component or system and its input devices are
+          being used properly with correct posture'' \citepISTQB{} seems to
+          focus on how the system is \emph{used} as opposed to the system
+          \emph{itself}.
     \item % Flaw count (AMBI, DEFS): ISTQB
           Similarly, end-to-end testing is defined as testing ``in which
           business processes are tested from start to finish under
@@ -271,7 +272,9 @@
           The phrase ``continuous automated testing'' \citep[p.~11]{Gerrard2000a}
           is redundant since \acf{ct} is already a subapproach of automated
           testing (\citealp[p.~35]{IEEE2022}; \citealpISTQB{}).
-    \item % Flaw count (AMBI, CATS): {IEEE2022} | {IEEE2022} {IEEE2021} {IEEE2017} {SWEBOK2024} ISTQB {KuļešovsEtAl2013} {Perry2006} {PetersAndPedrycz2000} {Gerrard2000a} | {BarbosaEtAl2006}
+    \item % Flaw count (AMBI, CATS): {IEEE2022} {IEEE2021} {IEEE2017} {SWEBOK2024} ISTQB {KuļešovsEtAl2013} {Perry2006} {PetersAndPedrycz2000} {Gerrard2000a} | {BarbosaEtAl2006}
+          % Flaw count (AMBI, CATS): {IEEE2022} | {IEEE2022} {IEEE2021} {IEEE2017}
+          % Ground truth: {SWEBOK2024} ISTQB {KuļešovsEtAl2013} {Perry2006} {PetersAndPedrycz2000} {Gerrard2000a}
           Retesting and regression testing seem to be separated from the rest
           of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
           clearly detailed why; \citet[p.~3]{BarbosaEtAl2006} consider
