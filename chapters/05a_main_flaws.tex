@@ -115,52 +115,52 @@
           ambiguity.
     \item % Flaw count (OVER, SYNS): {IEEE2017} {IEEE2013} | {IEEE2022} {IEEE2017} {Perry2006}
           % Label SYNS level-phase-syns
-          \citeauthor{IEEE2017} say that ``test level'' and ``test phase''
-          are synonyms, both meaning a ``specific instantiation of [a] test
-          sub-process'' \ifnotpaper
-              (\citeyear[pp.~469, 470]{IEEE2017}; \citeyear[p.~9]{IEEE2013})%
-          \else
-              \cite[pp.~469, 470]{IEEE2017}, \cite[p.~9]{IEEE2013}%
-          \fi, but they have other definitions as well. ``Test level'' can also
+          \citeauthor{IEEE2017} \ifnotpaper
+              (\citeyear[pp.~469, 470]{IEEE2017}; \citeyear[p.~9]{IEEE2013}) \else
+              \cite[pp.~469, 470]{IEEE2017}, \cite[p.~9]{IEEE2013} \fi say that
+          ``test level'' and ``test phase'' are synonyms, both meaning a
+          ``specific instantiation of [a] test sub-process'', but they have
+          other definitions as well. ``Test level'' can also
           refer to the scope of a test process; for example, ``across the whole
           organization'' or only ``to specific projects''
           \citeyearpar[p.~24]{IEEE2022} and ``test phase'' can also refer to
           the ``period of time in the software life cycle'' when testing occurs
           \citeyearpar[p.~470]{IEEE2017}, usually after the implementation phase
-          \ifnotpaper
-              (\citeyear[pp.~420, 509]{IEEE2017}; \citealp[p.~56]{Perry2006})%
+          \ifnotpaper % \cite[pp.~420, 509]{IEEE2017}
+              (pp.~420, 509; \citealp[p.~56]{Perry2006})%
           \else
-              % \cite[pp.~420, 509]{IEEE2017}
               \citetext{pp.~420, 509}, \cite[p.~56]{Perry2006}%
           \fi.
     \item % Flaw count (OVER, DEFS): {IEEE2010} | {IEEE2010}
-          \citeauthor{IEEE2010} define ``error'' as ``a human action that
-          produces an incorrect result'', but also as ``an incorrect result''
-          itself \citeyearpar[p.~128]{IEEE2010}. Since faults are inserted when
-          a developer makes an error \ifnotpaper
-              (\citeyear[pp.~128, 140]{IEEE2010};
-              \citealp[p.~12\=/3]{SWEBOK2024};
+          % Ground truth: {SWEBOK2024} {vanVliet2000}
+          \refHelper \citet[p.~128]{IEEE2010} \multiAuthHelper{define}
+          ``error'' as ``a human action that produces an incorrect result'',
+          but also as ``an incorrect result'' itself. Since faults are inserted
+          when a developer makes an error \ifnotpaper
+              % \citeyear[pp.~128, 140]{IEEE2010}
+              (pp.~128, 140; \citealp[p.~12\=/3]{SWEBOK2024};
               \citealp[pp.~399\==400]{vanVliet2000})\else
-              \cite[p.~12\=/3]{SWEBOK2024}, \cite[pp.~128, 140]{IEEE2010},
-              \cite[pp.~399\==400]{vanVliet2000}\fi, this means that they are
-          ``incorrect results'', making ``error'' and ``fault'' synonyms and
+              \citetext{pp.~128, 140}, \cite[pp.~399\==400]{vanVliet2000},
+              \cite[p.~12\=/3]{SWEBOK2024}\fi, this means that they are
+          ``incorrect results'', making ``error'' and ``fault'' synonyms%
+          \qtodo{Should we classify this as a Synonym Flaw at all?} and
           the distinction between them less useful.
     \item % Flaw count (OVER, DEFS): {IEEE2010} {SWEBOK2024}
           Additionally, ``error'' can also be defined as ``the
           difference between a computed, observed, or measured value or
           condition and the true, specified, or theoretically correct value
-          or condition'' \ifnotpaper (\citealp[p.~128]{IEEE2010}; similar in
-              \citealp[pp.~17\=/18 to 17\=/19, 18\=/7 to 18\=/8]{SWEBOK2024})%
-          \else \cite[p.~128]{IEEE2010} (similar in
-              \cite[pp.~17\=/18 to 17\=/19, 18\=/7 to 18\=/8]{SWEBOK2024})\fi.
+          or condition'' \ifnotpaper (\citealp[p.~128]{IEEE2010}; \else
+              \cite[p.~128]{IEEE2010} (\fi similar in
+          \citealp[pp.~17\=/18 to 17\=/19, 18\=/7 to 18\=/8]{SWEBOK2024}).
           While this is a widely used definition, particularly in mathematics,
-          it makes some test approaches ambiguous; for example, back-to-back
+          it makes some test approaches ambiguous.
+          % Flaw count (AMBI, DEFS): {IEEE2010} {SWEBOK2024} | {IEEE2010} ISTQB
+          For example, back-to-back
           testing is ``testing in which two or more variants of a program are
           executed with the same inputs, the outputs are compared, and errors
           are analyzed in case of discrepancies'' \ifnotpaper
               (\citealp[p.~30]{IEEE2010}; similar in \citealpISTQB{})\else
               \cite[p.~30]{IEEE2010} (similar in \cite{ISTQB})\fi,
-          % Flaw count (AMBI, DEFS): {IEEE2010} {SWEBOK2024} | {IEEE2010} ISTQB
           which seems to refer to this definition of ``error''.
 
           % STD | META
@@ -186,11 +186,12 @@
     \item % Flaw count (OVER, DEFS): {SWEBOK2024} | {IEEE2022}
           The \acs{swebok} V4 defines ``privacy testing'' as testing that
           ``assess[es] the security and privacy of users' personal data to
-          prevent local attacks'' \citep[p.~5-10]{SWEBOK2024}; this seems to
+          prevent local attacks'' \citep[p.~5\=/10]{SWEBOK2024}. This seems to
           overlap (both in scope and name) with the definition of ``security
           testing'' in \citep[p.~7]{IEEE2022}: testing
           ``conducted to evaluate the degree to which a test item, and
-          associated data and information, [sic] are protected so that'' only
+          associated data and information, [sic]\qtodo{Shouldn't this be
+              ``is'', referring to ``test item''?} are protected so that'' only
           ``authorized persons or systems'' can use them as intended.
     \item % Flaw count (CONTRA, DEFS): {SWEBOK2024} {Patton2006} | {IEEE2017}
           % Label DEFS path-test
