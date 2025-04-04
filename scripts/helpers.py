@@ -22,8 +22,9 @@ INTERNAL_REFS = {"tab:"}
 ONLY_IEEE = {"2012"}
 
 # Used in multiple files
-IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "should be", "ideally",
-                     "usually", "most", "likely", "often", "if", "although"]
+IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "sometimes", "should be",
+                     "ideally", "usually", "most", "likely", "often", "if",
+                     "although"]
 warned_multi_unsure = set()
 def sortByImplied(ls: list[str]):
     ls = sortIgnoringParens(ls)
