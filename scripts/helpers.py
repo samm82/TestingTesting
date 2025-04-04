@@ -100,8 +100,6 @@ def formatLineWithSources(line: str, todo=True):
     line = line.replace("ISO/IEC", "ISO_IEC")
     line = line.replace("Mackert GmbH", "SPICE")
 
-    line = re.sub(fr"({NUM_INFO_REGEX})-+({NUM_INFO_REGEX})",
-                  r"\1\=/\2", line)
     line = re.sub(fr"({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
                   r"\1~\2", line)
 
@@ -135,6 +133,17 @@ def formatLineWithSources(line: str, todo=True):
         line = newLine
 
     line = re.sub(r"\"([\w\s]*)\"", r"``\1''", line)
+
+    line = re.sub(fr"({NUM_INFO_REGEX})-+({NUM_INFO_REGEX})",
+                  r"\1\==\2", line)
+
+    # Handle hyphenations of SWEBOK page numbers
+    if "\\==" in line:
+        line = line.split(";")
+        for i, src in enumerate(line):
+            if "SWEBOK" in src:
+                line[i] = line[i].replace("\\==", "\\=/")
+        line = ";".join(line)
 
     return line
 
