@@ -57,11 +57,11 @@ between the counts in \Cref{tab:flawMnfsts,tab:flawDmns} and the number of
 flaws in \Cref{flawMnfsts,flawDmns}; we still include these flaws in the
 manifestation and domain counts\ifnotpaper\ (\Cref{aug-flaw-analysis} outlines
     how this is done)\fi. These subsets include functional testing
-(\Cref{func-test-flaw}), \ifnotpaper \acf{operat} (\Cref{oat-flaw}), \fi
-recovery testing (\Cref{recov-flaw}), scalability testing (\Cref{scal-flaw}),
-and compatibility testing (\Cref{compat-flaw}). \ifnotpaper Finally, we infer
-    the more subjective flaws presented in \Cref{infer-flaws} which do not
-    contribute to any counts.
+(\Cref{func-test-flaw}), \ifnotpaper operational (acceptance) testing
+    (\Cref{oat-flaw}), \fi recovery testing (\Cref{recov-flaw}), scalability
+testing (\Cref{scal-flaw}), and compatibility testing (\Cref{compat-flaw}).
+\ifnotpaper Finally, we infer the more subjective flaws presented in
+    \Cref{infer-flaws} which do not contribute to any counts.
 
     % \input{build/flawTable}
 
@@ -550,33 +550,44 @@ non-functional and functionality testing\fi\ \citep[Tab.~2]{Gerrard2000a}.
 \citet[p.~53]{Firesmith2015}.
 
 \ifnotpaper
-    \subsection[Operational (Acceptance) Testing (OAT)]{\acf{operat}}
-    \label{oat-flaw}
+    \subsection{Operational (Acceptance) Testing}\label{oat-flaw}
+    \paragraph{\texttt{(CONTRA, LABELS)}}
     % Flaw count (CONTRA, LABELS): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}
-    % Flaw count (CONTRA, SYNS): {LambdaTest2024} {BocchinoAndHamilton1996} | {Firesmith2015}
-    Some sources refer to ``operational acceptance testing'' (\citealp[p.~22]{IEEE2022};
-    \citealpISTQB{}) while some refer to ``operational testing''
-    (\citealp[p.~6-9,~in the context of software engineering operations]{SWEBOK2024};
-    \citealp{ISO_IEC2018}; \citealp[p.~303]{IEEE2017};
-    \citealp[pp.~4-6,~4-9]{SWEBOK2014}). A distinction is sometimes made
-    \citep[p.~30]{Firesmith2015} but without accompanying definitions, it is hard
-    to evaluate its merit. Since this terminology is not standardized, I
-    propose that the two terms are treated as synonyms (as done by other sources
-    \citep{LambdaTest2024, BocchinoAndHamilton1996}) as a type of
-    acceptance testing (\citealp[p.~22]{IEEE2022}; \citealpISTQB{}) that focuses on
-    ``non-functional'' attributes of the system \citep{LambdaTest2024}%
-    \todo{find more academic sources}.
-    %% Recommendations in the above: should be split out
+    There are two names that the literature gives to this test approach:
+    \begin{itemize}
+        \item \emph{\acf{operat}} (\citealp[p.~22]{IEEE2022};
+              \citealpISTQB{}) and
+        \item \emph{\acf{ot}} (\citealp{ISO_IEC2018};
+              \citealp[p.~303]{IEEE2017}; \citealp[p.~6\=/9, in the context of
+                  software engineering operations]{SWEBOK2024};
+              \citealp[pp.~4\=/6, 4\=/9]{SWEBOK2014}).
+    \end{itemize}
 
-    %% The following 'summary' appears out of place? I'm not quite understanding
-    % the point this is trying to make.
-    A summary of definitions of ``operational (acceptance) testing'' is that
-    it is ``test[ing] to determine the correct
-    installation, configuration and operation of a module and that it operates
-    securely in the operational environment'' \citep{ISO_IEC2018} or ``evaluate a
-    system or component in its operational environment'' \citep[p.~303]{IEEE2017},
-    particularly ``to determine if operations and/or systems administration staff
-    can accept [it]'' \citepISTQB{}.
+    \paragraph{\texttt{(CONTRA, SYNS)}}
+    % Flaw count (CONTRA, SYNS): {Firesmith2015}
+    % Ground truth: {LambdaTest2024} {BocchinoAndHamilton1996}
+    \refHelper \citet[p.~30]{Firesmith2015} lists the above terms separately,
+    but they are considered synonyms elsewhere \citep{LambdaTest2024,
+        BocchinoAndHamilton1996}\todo{find more academic sources}; since
+    \citeauthor{Firesmith2015} does not define these terms, it is hard to
+    evaluate \ifnotpaper his \else its \fi distinction.
+
+    % Since this terminology is not standardized, I
+    % propose that the two terms are treated as synonyms as a type of
+    % acceptance testing (\citealp[p.~22]{IEEE2022}; \citealpISTQB{}) that focuses on
+    % ``non-functional'' attributes of the system \citep{LambdaTest2024}%
+    % \todo{find more academic sources}.
+    % %% Recommendations in the above: should be split out
+
+    % %% The following 'summary' appears out of place? I'm not quite understanding
+    % % the point this is trying to make.
+    % A summary of definitions of ``operational (acceptance) testing'' is that
+    % it is ``test[ing] to determine the correct
+    % installation, configuration and operation of a module and that it operates
+    % securely in the operational environment'' \citep{ISO_IEC2018} or ``evaluate a
+    % system or component in its operational environment'' \citep[p.~303]{IEEE2017},
+    % particularly ``to determine if operations and/or systems administration staff
+    % can accept [it]'' \citepISTQB{}.
 \fi
 
 \subsection{Recovery Testing}
