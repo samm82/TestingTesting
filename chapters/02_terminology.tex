@@ -619,8 +619,7 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     software testing terminology is so vital.\qtodo{Is this sentence needed?}
 \fi
 
-\subsection{Synonym Relations}
-\label{syn-rels}
+\subsection{Synonym Relations}\label{syn-rels}
 
 The same approach often has many names. For example,
 \emph{specification-based testing} is also called\todo{more in Umar2000}:
@@ -670,20 +669,24 @@ although they can be (see \Cref{syns}).
 
 We can formally define the synonym relation $S$ on the set $T$ of terms used by
 the literature to describe test approaches based on how synonyms are used in
-natural language. $S$ is symmetric; for example, since ``windy'' is a synonym
-of ``gusty'' \citep{WindySyns}, the inverse is also true \citeyearpar{GustySyns}.
-$S$ is also transitive: since ``windy'' is a synonym of ``blustery''
-\citeyearpar{WindySyns} and ``gusty'' is a synonym of ``windy'', ``gusty''
-is transitively a synonym of ``blustery'' \citeyearpar{GustySyns}. Although
-pairs of synonyms in natural language are implied to be distinct
-\citeyearpar{WindySyns,GustySyns}, a relation that is symmetric and transitive
-is provably reflexive, so we extend $S$ to be reflexive as well, implying that
-all terms are trivially synonyms of themselves. Since $S$ is symmetric,
-transitive, and reflexive, it is therefore an equivalence relation, which
-reflects the role of synonyms in natural language. While synonyms may
-emphasize different aspects or express mild variations---``gust'' is defined as
-``a sudden brief rush of wind'' \citeyearpar{GustDef}---their core meaning is
-nevertheless the same.
+natural language. $S$ is symmetric and transitive, and although pairs of
+synonyms in natural language are implied to be distinct, a relation that is
+symmetric and transitive is provably reflexive; this implies that all terms are
+trivially synonyms of themselves. Since $S$ is symmetric, transitive, and
+reflexive, it is therefore an equivalence relation, reflecting the role of
+synonyms in natural language where they can be used interchangeably. While
+synonyms may emphasize different aspects or express mild variations, their core
+meaning is nevertheless the same.
+
+As an example of synonyms in natural language, ``windy'' is a synonym of
+``gusty'' \citep{WindySyns}; since this is a symmetric relation, the inverse is
+also true \citeyearpar{GustySyns}. ``Windy'' is also a synonym of ``blustery''
+\citeyearpar{WindySyns}, so since this relation is transitive and ``gusty'' is
+a synonym of ``windy'', ``gusty'' is also a synonym of ``blustery''
+\citeyearpar{GustySyns}. Although these terms are distinct
+\citeyearpar{GustySyns,WindySyns} and have nuance---``gust'' is defined as ``a
+sudden brief rush of wind'' \citeyearpar{GustDef}---they still reflect the
+same core concept and could be considered synonyms of themselves.
 
 Synonym relations are often given explicitly in the literature. For example,
 \citet[p.~9]{IEEE2022} \multiAuthHelper{list} ``black-box testing'' and
