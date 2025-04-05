@@ -181,12 +181,27 @@ prerequisites, and other resources to investigate.
 We use similar procedures to track software qualities \ifnotpaper (see
     \Cref{qual-test}) \fi and supplementary terminology (either shared by
 multiple approaches or too complicated to explain inline) in separate
-glossaries with a similar format. The name, definition, and synonym(s) of all
-terms are tracked, as well as any precedence for a related test type for a
-given software quality. We use heuristics to guide this process for all three
+glossaries with a similar format. This includes recording the name, definition,
+and synonym(s) of these terms, as well as any precedence for a related test
+type for a given software quality. For example, analyzability\footnote{
+    This may be spelled ``analyzability'' \citep[p.~18]{IEEE2017} or
+    ``analysability'' \citep{ISO_IEC2023a}; since this is a dialectal
+    difference, we do not count this as a label flaw (see
+    \Cref{label-flaw-def}).}, modifiability, modularity, reusability, and
+testability are all subqualities of maintainability \ifnotpaper
+    (\citealp{ISO_IEC2023a}; \citealp[Tab.~A.1]{IEEE2021};
+    \citealp[p.~7\=/10]{SWEBOK2024}) \else
+    \cite[p.~7\=/10]{SWEBOK2024}, \cite[Tab.~A.1]{IEEE2021},
+    \cite{ISO_IEC2023a} \fi which has an associated test type
+\ifnotpaper
+    (\citealp[pp.~5, 22]{IEEE2022}; \citeyear[p.~38, Tab.~A.1]{IEEE2021})\else
+    \cite[pp.~5, 22]{IEEE2022}, \cite[p.~38, Tab.~A.1]{IEEE2021}\fi. This sets
+a ``precedent'' for each of these subqualities having its own associated test
+type (e.g., reusability testing).
+
+We use heuristics to guide this process for all three
 glossaries to increase confidence that all terms are identified, paying
 special attention to the following when investigating a new source:
-
 \begin{itemize}
     \item glossaries and lists of terms,
     \item testing-related terms (e.g., terms containing ``test(ing)'',
