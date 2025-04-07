@@ -178,6 +178,44 @@ clearest and most concise version is kept, or they are merged to paint a more
 complete picture. Finally, we record any other notes, such as questions,
 prerequisites, and other resources to investigate.
 
+For example, \citet[p.~1, 36]{IEEE2022} \multiAuthHelper{define} ``A/B testing''
+(see \Cref{fig:IEEE-A-B-Testing}), giving ``split-run testing'' as a synonym
+and describing it as ``statistical testing approach''. We therefore create a
+new row in \ourApproachGlossary{} for ``A/B Testing'' with the
+Category\qtodo{Should glossary headers be capitalized?}
+of ``Approach'', a Synonym of ``Split-Run Testing'', and a
+Parent of ``Statistical Testing'' (based on \Cref{par-chd-rels}), all with
+their relevant citations. We then abstract away this already-captured
+information from its Definition before recording it as ``testing `that allows
+testers to determine which of two systems or components performs better'\,''
+with the same citation information \citep[pp.~1, 36]{IEEE2022}. The latter page
+provides more information that we capture as Notes in our glossary: it ``can be
+time-consuming, although tools can be used to support it'', ``is a means of
+solving the test oracle problem by using the existing system as a partial
+oracle'', and is ``not a test case generation technique as test inputs are not
+generated'' \citetext{p.~36}. Interestingly, this explicitly rules out
+``Technique'' as a possible Category for this approach, which is consistent
+with its categorization as a test practice \citetext{Fig.~2}; we replace our
+previous Category of ``Approach'' with the more specific ``Practice''
+(see \Cref{cats-def}).
+\begin{figure}[bt!]
+    \includegraphics[width=\linewidth]{assets/images/a-b testing.png}
+    \caption{\refHelper \citet[p.~1]{IEEE2022}'s glossary entry for
+        ``A/B testing''.}\label{fig:IEEE-A-B-Testing}
+\end{figure}
+As we investigate other sources, we learn more about this approach. \refHelper
+\citet[p.~58]{Firesmith2015} gives it as a child of usability testing, so we
+include this Parent alongside ``Statistical Testing'' without issue. However,
+since usability testing is a test type \ifnotpaper
+    (\citealp[pp.~22, 26\=/27]{IEEE2022}; \citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021};
+    implied by its quality; \citealp[p.~53]{Firesmith2015})\else
+    \cite[pp.~22, 26\=/27]{IEEE2022}, \cite[pp.~7, 40, Tab.~A.1]{IEEE2021}\fi,
+A/B testing may inherit this categorization. We document this by adding
+``Type'' as a Category alongside ``Practice'' with the source
+``inferred from usability testing'', causing it to be automatically detected as
+an inferred flaw \ifnotpaper (see \Cref{auto-flaw-analysis}) and appear in
+    \Cref{tab:infMultiCats}\else (details omitted for brevity)\fi.
+
 We use similar procedures to track software qualities \ifnotpaper (see
     \Cref{qual-test}) \fi and supplementary terminology (either shared by
 multiple approaches or too complicated to explain inline) in separate
