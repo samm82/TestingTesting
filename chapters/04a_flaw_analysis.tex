@@ -16,10 +16,10 @@ automated tools (\Cref{aug-flaw-analysis}). This gives us an overview of:
 To understand where flaws exist in the literature, we group them based on the
 source tier(s) responsible for them. Each flaw is then counted \emph{once} per
 source tier if it appears within it \emph{and/or} between it and a more
-``trusted'' tier\footnote{If an inconsistency occurs between two source tiers
-    and the more trustworthy one is \emph{incorrect}, we instead count it as an
+``credible'' tier\footnote{If an inconsistency occurs between two source tiers
+    and the more credible one is \emph{incorrect}, we instead count it as an
     inconsistency between it and ground truth, as described in
-    \Cref{lower-ground-truth}.} (see \Cref{trust,sources}). This avoids
+    \Cref{lower-ground-truth}.} (see \Cref{cred,sources}). This avoids
 counting the same flaw
 more than once for a given source tier\thesisissueref{83}, which would give the
 number of \emph{occurrences} of all flaws instead of the more useful number of
@@ -110,10 +110,10 @@ of two counted flaws:
           given in \Cref{fig:flawBars} and explained in more detail in
           \Cref{aug-flaw-analysis}; this view counts three total flaws here.
     \item \textbf{\texts{}}: this flaw occurs between a source in this tier and
-          a ``more trusted'' one (the IEEE standards; see \Cref{trust}).
+          a ``more credible'' one (the IEEE standards; see \Cref{cred}).
           % \item \textbf{\papers{}}: this flaw occurs between a source in this tier
-          %       and a ``more trusted'' one. Even though there are two sources in this
-          %       tier \emph{and} two ``more trusted'' tier involved, this increments
+          %       and a ``more credible'' one. Even though there are two sources in this
+          %       tier \emph{and} two ``more credible'' tier involved, this increments
           %       the count by just one to avoid double counting.
 \end{itemize}
 
@@ -382,7 +382,7 @@ inside their own set of square brackets.
 
 For example, in \Cref{nonIEEE-sources}, we provide a list of non-IEEE sources
 that support a claim made by the IEEE. Since we sort sources based on
-trustworthiness (defined in \Cref{trust}) and then by publication year, the
+credibility (defined in \Cref{cred}) and then by publication year, the
 relevant thesis code is given below. (We use ``\texttt{\textbackslash =/}'',
 etc. from the \texttt{extdash} package for non-breaking dashes.)
 \begin{displayquote}

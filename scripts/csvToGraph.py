@@ -741,7 +741,7 @@ def makeLegend(lines, separate: bool=False) -> tuple[list[str], list[str]]:
     srcCats = [srcCat for srcCat in SrcCat
                 if any(srcCat.color.name.lower() in line for line in lines)]
     srcCats.append(SrcCat.PAPER)
-    srcCats.sort(reverse=True)  # Sort in decreasing "trustworthiness"
+    srcCats.sort(reverse=True)  # Sort in decreasing "credibility"
 
     colors, colorRow = [], []
     prevAlignNodes = (sorted(set(a.split(" -> ")[0] for a in align)) or
