@@ -651,34 +651,35 @@ between them can be found in \Cref{fig:recovery-graph-current}.
           % Flaw count (AMBI, SYNS): {SWEBOK2024} ISTQB | implied by {Firesmith2015}
 \end{itemize}
 
-\subsection{Scalability Testing}
-\label{scal-flaw}
+\subsection{Scalability Testing}\label{scal-flaw}
 
-There were three ambiguities around the term ``scalability testing'', listed
-below. The relations between these test approaches (and other relevant ones)
+% There were three ambiguities around the term ``scalability testing'', listed
+% below.
+The relations between test approaches related to scalability testing
 are shown in \Cref{fig:scal-graph-current}.
 
-\begin{enumerate}
-    \item % Flaw count (CONTRA, SYNS): {IEEE2021} | {Firesmith2015} {Bas2024}
-          \ifnotpaper \citeauthor{IEEE2021} \else ISO/IEC and IEEE \fi give
-          ``scalability testing'' as a synonym of ``capacity testing''
-          \ifnotpaper \citeyearpar[p.~39]{IEEE2021} \else \cite[p.~39]{IEEE2021}
-          \fi while other sources differentiate between the two
-          \ifnotpaper \citetext{\citealp[p.~53]{Firesmith2015};
-                  \citealp[pp.~22-23]{Bas2024}}
-          \else \citep[p.~53]{Firesmith2015}, \citep[pp.~22-23]{Bas2024}
-          \fi
-    \item % Flaw count (CONTRA, DEFS): {IEEE2021} | implied by {ISO_IEC2023a}
-          \ifnotpaper \citeauthor{IEEE2021} \else ISO/IEC and IEEE \fi give
-          the external modification of the system as part of ``scalability''
-          \ifnotpaper \citeyearpar[p.~39]{IEEE2021}\else
-              \cite[p.~39]{IEEE2021}\fi, while \citet{ISO_IEC2023a} \ifnotpaper
-              imply \else implies \fi that it is limited to the system itself
-    \item % Flaw count (WRONG, LABELS): {SWEBOK2024}
-          The \acs{swebok} V4's definition of ``scalability testing''
-          \citep[p.~5-9]{SWEBOK2024} is really a definition of usability
-          testing!
-\end{enumerate}
+\paragraph{\texttt{(CONTRA, SYNS)}}
+
+% Flaw count (CONTRA, SYNS): {IEEE2021} | {Firesmith2015} {Bas2024}
+\citeauthor{IEEE2021} \citeyearpar[p.~39]{IEEE2021} give
+``scalability testing'' as a synonym of ``capacity testing''
+while other sources differentiate between the two \ifnotpaper
+    (\citealp[p.~53]{Firesmith2015}; \citealp[pp.~22\==23]{Bas2024})%
+\else \cite[p.~53]{Firesmith2015}, \cite[pp.~22\==23]{Bas2024}\fi.
+
+\paragraph{\texttt{(CONTRA, DEFS)}}
+
+% Flaw count (CONTRA, DEFS): {IEEE2021} | implied by {ISO_IEC2023a}
+\citeauthor{IEEE2021} \citeyearpar[p.~39]{IEEE2021} also include the external
+modification of the system as part of ``scalability'' but
+\citet{ISO_IEC2023a} \ifnotpaper imply \else implies \fi that it is limited
+to the system itself.
+
+\paragraph{\texttt{(WRONG, LABELS)}}
+
+% Flaw count (WRONG, LABELS): {SWEBOK2024}
+\citeauthor{SWEBOK2024} \citeyearpar[p.~5\=/9]{SWEBOK2024}'s definition of
+``scalability testing'' is really a definition of usability testing!
 
 % \subsection{Performance Testing}
 % \label{perf-test-ambiguity}
