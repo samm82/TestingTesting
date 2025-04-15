@@ -653,11 +653,6 @@ between them can be found in \Cref{fig:recovery-graph-current}.
 
 \subsection{Scalability Testing}\label{scal-flaw}
 
-% There were three ambiguities around the term ``scalability testing'', listed
-% below.
-The relations between test approaches related to scalability testing
-are shown in \Cref{fig:scal-graph-current}.
-
 \paragraph{\texttt{(CONTRA, SYNS)}}
 
 % Flaw count (CONTRA, SYNS): {IEEE2021} | {Firesmith2015} {Bas2024}
@@ -672,14 +667,17 @@ while other sources differentiate between the two \ifnotpaper
 % Flaw count (CONTRA, DEFS): {IEEE2021} | implied by {ISO_IEC2023a}
 \citeauthor{IEEE2021} \citeyearpar[p.~39]{IEEE2021} also include the external
 modification of the system as part of ``scalability'' but
-\citet{ISO_IEC2023a} \ifnotpaper imply \else implies \fi that it is limited
-to the system itself.
+\citet{ISO_IEC2023a} \multiAuthHelper{describe} it as testing the ``capability
+of a product to handle growing or shrinking workloads or to adapt its capacity
+to handle variability'', implying that this is done by the system itself.
 
 \paragraph{\texttt{(WRONG, LABELS)}}
 
 % Flaw count (WRONG, LABELS): {SWEBOK2024}
-\citeauthor{SWEBOK2024} \citeyearpar[p.~5\=/9]{SWEBOK2024}'s definition of
-``scalability testing'' is really a definition of usability testing!
+\citeauthor{SWEBOK2024} \citeyearpar[p.~5\=/9]{SWEBOK2024} says ``scalability
+testing evaluates the capability to use and learn the system and the user
+documentation'' and ``focuses on the system's effectiveness in supporting user
+tasks and the ability to recover from user errors''. \swebokScalDef{}.
 
 % \subsection{Performance Testing}
 % \label{perf-test-ambiguity}

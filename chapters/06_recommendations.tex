@@ -125,16 +125,23 @@ demonstrated in \Cref{fig:recovery-graph-proposed}.
           \hyperref[orth-test]{orthogonally derived test approach}.
 \end{itemize}
 
-\subsection{Scalability Testing}
-\label{scal-test-rec}
+\subsection{Scalability Testing}\label{scal-test-rec}
 
-The ambiguity around scalability testing found in the literature is resolved
-and/or explained by other sources! \citet[p.~39]{IEEE2021} \multiAuthHelper{give}
-``scalability testing'' as a synonym of ``capacity testing'', defined
-as the testing of a system's ability to ``perform under conditions that may
-need to be supported in the future'', which ``may include assessing what level
-of additional resources (e.g. memory, disk capacity, network bandwidth) will
-be required to support anticipated future loads''. This focus on ``the future''
+We describe the issues with scalability testing terminology in \Cref{scal-flaw}
+and show the relations between related approaches (as described by the
+literature) in \Cref{fig:scal-graph-current}. These flaws are resolved and/or
+explained by other sources! Taking this extra information into account results
+in \Cref{fig:scal-graph-proposed} and provides a more accurate description of
+scalability testing.
+
+\paragraph{\texttt{(CONTRA, SYNS)}}
+\citeauthor{IEEE2021} \citeyearpar[p.~39]{IEEE2021} define ``scalability
+testing'' as the testing of a system's ability to ``perform under conditions
+that may need to be supported in the future''.
+%, which ``may include assessing what level of additional resources (e.g.
+% memory, disk capacity, network bandwidth) will be required to support
+% anticipated future loads''.
+This focus on ``the future''
 is supported by \citetISTQB{}, \ifnotpaper who define \else which defines \fi
 ``scalability'' as ``the degree to which a component or system can be adjusted
 for changing capacity''\ifnotpaper; the original source they reference agrees,
@@ -142,65 +149,53 @@ defining it as ``the measure of a system's ability to be upgraded to
 accommodate increased loads'' \citep[p.~381]{GerrardAndThompson2002}\fi. In
 contrast, capacity testing focuses on the system's present state, evaluating
 the ``capability of a product to meet requirements for the maximum limits of a
-product parameter'', such as the number of concurrent users, transaction
-throughput, or database size \citep{ISO_IEC2023a}. Because of this nuance, it
-makes more sense to consider these terms separate and \emph{not} synonyms, as
-done by
-\ifnotpaper \citet[p.~53]{Firesmith2015} and \citet[pp.~22-23]{Bas2024}%
-\else \cite[p.~53]{Firesmith2015} and \cite[pp.~22-23]{Bas2024}%
-\fi.
+product parameter''
+%, such as the number of concurrent users, transaction
+% throughput, or database size 
+\citep{ISO_IEC2023a}. Therefore, it these terms should \emph{not} be synonyms,
+as done by \ifnotpaper
+    \citet[p.~53]{Firesmith2015} and \citet[pp.~22\==23]{Bas2024}\else
+    \cite[p.~53]{Firesmith2015} and \cite[pp.~22\==23]{Bas2024}\fi.
 
-Unfortunately, only focusing on future capacity requirements still leaves room
-for ambiguity. While the previous definition of ``scalability testing'' includes
-the external modification of the system, \citet{ISO_IEC2023a}
-\multiAuthHelper{describe} it as testing the ``capability of a product to
-handle growing or shrinking workloads or to adapt its capacity to handle
-variability'', implying that this is done by the system itself. The potential
-reason for this is implied by \citet[p.~5-9]{SWEBOK2024}'s claim that one
-objective of elasticity testing is ``to evaluate scalability'':
-\citep{ISO_IEC2023a}'s notion of ``scalability''
-likely refers more accurately to ``elasticity''! This also makes sense in the
-context of other definitions provided by \citet{SWEBOK2024}:
+\paragraph{\texttt{(CONTRA, DEFS)}}
+
+There seems to be an underlying reason that sources disagree on whether
+external modification of the system is part of scalability testing.
+\citeauthor{SWEBOK2024} \citeyearpar[p.~5\=/9]{SWEBOK2024} claim that one
+objective of elasticity testing is ``to evaluate scalability'', implying that
+\citep{ISO_IEC2023a}'s notion of ``scalability'' actually refers to
+``elasticity''! This makes sense in the context of other definitions
+provided by \citet{SWEBOK2024}:
 \begin{itemize}
     \item \textbf{Scalability:} ``the software's ability to increase and
           scale up on its nonfunctional requirements, such as load, number of
-          transactions, and volume of data'' \citetext{p.~5-5}.
-          Based on this
+          transactions, and volume of data'' \citetext{p.~5\=/5}. Based on this
           definition, scalability testing is then a subtype of load testing
           and volume testing, as well as potentially transaction flow testing.
     \item \textbf{Elasticity Testing\footnote{While this definition seems
                   correct, it \swebokElasRef{}}:} testing that ``assesses
           the ability of the \acs{sut} \dots\ to rapidly expand or shrink
           compute, memory, and storage resources without compromising the
-          capacity to meet peak utilization'' \citetext{p.~5-9}. Based on this
+          capacity to meet peak utilization'' \citetext{p.~5\=/9}. Based on this
           definition, elasticity testing is then a subtype of memory
           management testing (with both being a subtype of resource
           utilization testing) and stress testing.
 \end{itemize}
-This distinction is also consistent with how the terms are used in industry:
+This distinction is consistent with how the terms are used in industry:
 \citet{Pandey2023}\thesisissueref{35} says that scalability is the ability to
 ``increase \dots\ performance or efficiency as demand increases over time'',
 while elasticity allows a system to ``tackle changes in the workload [that]
 occur for a short period''.
 
+\paragraph{\texttt{(WRONG, LABELS)}}
+
+\citeauthor{SWEBOK2024} \citeyearpar[p.~5\=/9]{SWEBOK2024}'s definition of
+``scalability testing'' is completely separate from the definitions of
+``scalability'', ``capacity'', and ``elasticity'' discussed above! Therefore,
+this definition and its related synonym relations should simply be disregarded
+since they are inconsistent with the rest of the literature.
+
 \scalGraphs{}
-
-\begin{paperFigure}
-    \centering
-    \performanceGraph{}
-    \caption{Proposed relations between rationalized ``performance-related testing'' terms.}
-    \label{fig:perf-graph}
-\end{paperFigure}
-
-To make things even more confusing, the \acs{swebok} V4 says ``scalability
-testing evaluates the capability to use and learn the system and the user
-documentation'' and ``focuses on the system's effectiveness in supporting user
-tasks and the ability to recover from user errors'' \citep[p.~5-9]{SWEBOK2024}.
-\swebokScalDef{}, which is completely separate from the definitions of
-``scalability'', ``capacity'', and ``elasticity testing''! This definition
-should simply be disregarded, since it is inconsistent with the rest of the
-literature. The removal of the previous two synonym relations is demonstrated
-in \Cref{fig:scal-graph-proposed}.
 
 \subsection{Performance(-related) Testing}
 \label{perf-test-rec}
@@ -283,3 +278,10 @@ synonym to both ``endurance testing'' \emph{and} ``reliability testing'' (see
 is potentially ambiguous. These changes (along with those from
 \Cref{rec-test-rec,scal-test-rec} made implicitly) result in
 the relations shown in \Cref{fig:perf-graph}.
+
+\begin{paperFigure}
+    \centering
+    \performanceGraph{}
+    \caption{Proposed relations between rationalized ``performance-related testing'' terms.}
+    \label{fig:perf-graph}
+\end{paperFigure}
