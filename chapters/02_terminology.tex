@@ -667,9 +667,8 @@ also using grey-box testing may prefer the terms ``black-box'' and ``white-box
 testing'' for consistency. Thus, synonyms are not inherently problematic,
 although they can be (see \Cref{syns}).
 
-We can formally define the synonym relation $S$ on the set $T$ of terms used by
-the literature to describe test approaches based on how synonyms are used in
-natural language. $S$ is symmetric and transitive, and although pairs of
+\defRel{synonym}{S}{how synonyms are used in natural language}.
+$S$ is symmetric and transitive, and although pairs of
 synonyms in natural language are implied to be distinct, a relation that is
 symmetric and transitive is provably reflexive; this implies that all terms are
 trivially synonyms of themselves. Since $S$ is symmetric, transitive, and
@@ -739,56 +738,87 @@ such as load testing and stress testing (see \Cref{perf-test-rec}). These
 of the multi-faceted ``parent''. This nomenclature also extends to other
 categories (such as ``subtype''; see \Cref{cats-def,tab:ieeeCats})
 and software qualities (``subquality''\ifnotpaper; see \Cref{qual-test}\fi).
-There are many reasons two approaches may have a parent-child relation, such as:
+
+\defRel{parent-child}{P}{directed relations between approach pairs} This
+relation should be irreflexive, asymmetric and transitive, making it a strict
+partial order, and a given $c$ may have more than one parent $p$.
+Based on what we observe in the literature,
+$P(c, p) = c \subset p \textrm{ or } c \Leftarrow p$. In other words,
+one of the following must be true:
+% There are many reasons two approaches may have a parent-child relation, such as:
+
 \begin{enumerate}
-    \item \textbf{One is a superset of the other.} In other words, for one
-          (parent) test approach to be performed in its entirety, the other
-          (child) approach will necessarily be performed as well. This is often
-          the case when one ``well-understood'' subset of testing can be
-          decomposed into smaller, independently performable approaches.
-          When all of these have been completed, we can logically conclude that
-          the parent approach has also been performed! In practice, this is
-          much harder to prove; although many hierarchies exist \ifnotpaper
+    \item Everything described by $c$ is also described by $p$; $c \subset p$.
+          This is often the case when one ``well-understood'' subset of testing
+          can be decomposed into smaller, independently performable approaches,
+          each with its own focus or nuance. This is often the case for
+          hierarchies of approaches given in the literature \ifnotpaper
               (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021};
               \citealp{Firesmith2015})\else \cite{Firesmith2015},
-              \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi, these are
-          likely incomplete. As an example, we graph the parent-child relations
-          from \ifnotpaper (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021})
-          \else \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021} \fi in the
-          subdomain of specification-based testing in \Cref{fig:specBasedGraph}
-          (along with relevant data from other sources).
-    \item \textbf{One is ``stronger than'' or ``subsumes'' the other.} When
-          comparing adequacy criteria that ``specif[y] requirements for
-          testing'' \citep[p.~402]{vanVliet2000}, ``criterion X is stronger
-          than criterion Y if, for all programs P and all test sets T,
-          X-adequacy implies Y-adequacy'' \citetext{p.~432}. While this
-          relation only ``compares the thoroughness of test techniques, not
-          their ability to detect faults'' \citetext{p.~434}, it is sufficient
-          to consider one a child of the other in a sense. We capture this
-          nuance by considering these parent-child relations implicit
-          (see \Cref{rigidity}). As an example, we graph the parent-child
-          relations from \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
-              \citealp[Fig.~13.17]{vanVliet2000}) \else
-              \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}
-          \fi in the subdomain of data flow testing can be found in
-          \Cref{fig:subsumesGraph} (along with relevant data from other sources).
-    \item \textbf{The parent approach is part of an orthogonal set.}
-          When presented with a set of generic test approaches that are
-          orthogonal to each other, it is often trivial to classify a given
-          test approach as a child of just one them. For example,
-          \citeauthor{IEEE2022} say that ``testing can take two forms: static
-          and dynamic'' \citeyearpar[p.~17]{IEEE2022} and provide examples of
-          subapproaches of static and dynamic testing \citetext{Fig.~1}.
-          Likewise, \citeauthor{Gerrard2000a} says ``tests can be automated or
-          manual'' \citeyearpar[p.~13]{Gerrard2000a} and gives subapproaches of
-          automated and manual testing \ifnotpaper
-              \citeyearpar[Tab.~2; ][Tab.~1]{Gerrard2000b}\else
-              \citetext{Tab.~2}, \cite[Tab.~1]{Gerrard2000b}\fi. However, the
-          orthogonality of these subsets does not mean they are mutually
-          exclusive; in these same tables, \citeauthor{Gerrard2000a} labels
-          usability testing as both static \emph{and} dynamic and 12 approaches
-          as able to ``be done manually \emph{or} using a tool''
-          \citeyearpar[p.~13\ifnotpaper, emphasis added\fi]{Gerrard2000a}.
+              \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi; we graph
+          the parent-child relations in the subdomain of specification-based
+          testing in \Cref{fig:specBasedGraph} as an example.
+    \item Completing $p$ implies that $c$ has also been completed; $c \Leftarrow p$.
+          This is really just a more specific case of the previous condition that
+          occurs when $c$'s adequacy criteria is already met by $p$. While
+          this relation only ``compares the thoroughness of test techniques, not
+          their ability to detect faults'' \citep[p.~434]{vanVliet2000}, it is
+          sufficient to consistute a parent-child relation. These may also be
+          represented as hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
+              \citealp[Fig.~13.17]{vanVliet2000})\else
+              \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}\fi; we graph the
+          parent-child relations in the subdomain of data flow testing in
+          \Cref{fig:subsumesGraph} as an example.
 \end{enumerate}
-
+% \begin{enumerate}
+%     \item \textbf{One is a superset of the other.} In other words, for one
+%           (parent) test approach to be performed in its entirety, the other
+%           (child) approach will necessarily be performed as well. This is often
+%           the case when one ``well-understood'' subset of testing can be
+%           decomposed into smaller, independently performable approaches.
+%           When all of these have been completed, we can logically conclude that
+%           the parent approach has also been performed! In practice, this is
+%           much harder to prove; although many hierarchies exist \ifnotpaper
+%               (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021};
+%               \citealp{Firesmith2015})\else \cite{Firesmith2015},
+%               \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi, these are
+%           likely incomplete. As an example, we graph the parent-child relations
+%           from \ifnotpaper (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021})
+%           \else \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021} \fi in the
+%           subdomain of specification-based testing in \Cref{fig:specBasedGraph}
+%           (along with relevant data from other sources).
+%     \item \textbf{One is ``stronger than'' or ``subsumes'' the other.} When
+%           comparing adequacy criteria that ``specif[y] requirements for
+%           testing'' \citep[p.~402]{vanVliet2000}, ``criterion X is stronger
+%           than criterion Y if, for all programs P and all test sets T,
+%           X-adequacy implies Y-adequacy'' \citetext{p.~432}. While this
+%           relation only ``compares the thoroughness of test techniques, not
+%           their ability to detect faults'' \citetext{p.~434}, it is sufficient
+%           to consider one a child of the other in a sense. We capture this
+%           nuance by considering these parent-child relations implicit
+%           (see \Cref{rigidity}). As an example, we graph the parent-child
+%           relations from \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
+%               \citealp[Fig.~13.17]{vanVliet2000}) \else
+%               \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}
+%           \fi in the subdomain of data flow testing can be found in
+%           \Cref{fig:subsumesGraph} (along with relevant data from other sources).
+%           \item \textbf{The parent approach is part of an orthogonal set.}
+%                 When presented with a set of generic test approaches that are
+%                 orthogonal to each other, it is often trivial to classify a given
+%                 test approach as a child of just one them. For example,
+%                 \citeauthor{IEEE2022} say that ``testing can take two forms: static
+%                 and dynamic'' \citeyearpar[p.~17]{IEEE2022} and provide examples of
+%                 subapproaches of static and dynamic testing \citetext{Fig.~1}.
+%                 Likewise, \citeauthor{Gerrard2000a} says ``tests can be automated or
+%                 manual'' \citeyearpar[p.~13]{Gerrard2000a} and gives subapproaches of
+%                 automated and manual testing \ifnotpaper
+%                     \citeyearpar[Tab.~2; ][Tab.~1]{Gerrard2000b}\else
+%                     \citetext{Tab.~2}, \cite[Tab.~1]{Gerrard2000b}\fi. However, the
+%                 orthogonality of these subsets does not mean they are mutually
+%                 exclusive; in these same tables, \citeauthor{Gerrard2000a} labels
+%                 usability testing as both static \emph{and} dynamic and 12 approaches
+%                 as able to ``be done manually \emph{or} using a tool''
+%                 \citeyearpar[p.~13\ifnotpaper, emphasis added\fi]{Gerrard2000a}.
+% \end{enumerate}
 \parChdGraphs{}
+
