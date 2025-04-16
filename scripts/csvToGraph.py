@@ -179,10 +179,10 @@ def formatApproach(s: str, stripInit=False):
 
 def addNode(name, style = "", key = "Approach", cat = ""):
     dashed = isUnsure(name, only=True)
-    infer = False
+    infer = "(inferred" in name
     if key in cat:
-        infer = ("Example" not in csvFilename and
-                 ("(inferred" in cat or "(" not in cat))
+        infer = infer or ("Example" not in csvFilename and
+                          ("(inferred" in cat or "(" not in cat))
         if not infer:
             dashed = dashed or isUnsure(cat, only=True)
     if dashed:
