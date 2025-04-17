@@ -20,6 +20,29 @@ follow logically from the literature. We define them here for clarity
 since we use them throughout this \docType{}, even though they are
 ``results'' of our research.
 
+\subsection{Test Approaches}\label{approach-def}
+
+Software testing is ``the process of executing a program with the intent of
+finding errors'' \citep[p.~438]{PetersAndPedrycz2000}\todo{OG Myers 1976} where
+the main steps are to:
+\begin{enumerate}
+    \item Identify the goal(s) of the test
+    \item Decide on an approach
+    \item Develop the tests
+    \item Determine the expected results\todo{They introduce the idea of an
+              oracle here, but we may not want to for simplicity.}
+    \item Run the tests
+    \item Compare the expected results to the actual results
+          \ifnotpaper \citep[p.~443; similar in][p.~11]{Firesmith2015}
+          \else \citetext{p.~443} (similar in \cite[p.~11]{Firesmith2015}) \fi
+\end{enumerate}
+The end goal is to evaluate ``some aspect of the system or component'' based on
+these results \ifnotpaper (\citealp[p.~10]{IEEE2022}; \citeyear[p.~6]{IEEE2021};
+    \citeyear[p.~465]{IEEE2017}\todo{OG ISO/IEC 2014})\else
+    \cite[p.~465]{IEEE2017}, \cite[p.~10]{IEEE2022}, \cite[p.~6]{IEEE2021}\fi.
+When this evaluation reveals errors, ``the faults causing them are what can and
+must be removed'' \citep[p.~5\=/3]{SWEBOK2024}.
+
 \subsection{Flaws/Inconsistencies}\label{flaw-def}
 
 Before we can start tracking and discussing flaws, we need to be clear about
