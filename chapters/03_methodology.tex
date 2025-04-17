@@ -538,6 +538,8 @@ independently of snowballing may serve as starting points for continuing
 research if they are not mentioned by the literature. The following terms come
 from previous knowledge, conversations with colleagues, research for other
 projects, or ad hoc cursory research to see what other test approaches exist:
+\newline
+
 \begin{minipage}{\linewidth}
     \begin{multicols}{2}
         \begin{enumerate}
@@ -548,8 +550,8 @@ projects, or ad hoc cursory research to see what other test approaches exist:
             \item Destructive testing
             \item Dogfooding
             \item Implementation-based testing
-            \item \ifnotpaper Interaction-based \else \columnbreak
-                      Interaction-based \\ \fi testing
+            \item Interaction-based \ifnotpaper\else \\ \fi testing
+                  \ifnotpaper\else\columnbreak\fi
             \item Lunchtime attacks\ifnotpaper%
                       \footnote{In previous meetings, Dr.~Smith mentioned
                           that with the number of test approaches that suggest
@@ -564,6 +566,7 @@ projects, or ad hoc cursory research to see what other test approaches exist:
             \item Property-based testing
             \item Pseudo-random bit \ifnotpaper\else \\ \fi testing
             \item Rubber duck testing
+            \item Scream testing
             \item Shadow testing
             \item Situational testing
         \end{enumerate}
