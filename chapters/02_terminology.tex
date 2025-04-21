@@ -43,19 +43,18 @@ these results \ifnotpaper (\citealp[p.~10]{IEEE2022}; \citeyear[p.~6]{IEEE2021};
 When this evaluation reveals errors, ``the faults causing them are what can and
 must be removed'' \citep[p.~5\=/3]{SWEBOK2024}.
 
-Of course, the approach the tester chooses influences how the tests are
-developed, so it is important that they are unambiguous, consistent, and
-defined correctly. This is where we focus our efforts: tracking flaws with
-how the literature describes approaches to testing, or ``test approaches''.
-These are ``high-level test implementation choice[s]'' \citep[p.~10]{IEEE2022}
-that are used to ``pick the particular test case values''
-\citeyearpar[p.~465]{IEEE2017}. Since the only approach that can ``fully'' test
-a system is exhaustive testing which is infeasible in most non-trivial
+Of course, the chosen approaches influence what kinds of test cases are
+developed and how, so it is important that they are defined correctly,
+consistently, and unambiguously. We therefore focus on tracking flaws with how
+the literature describes ``test approaches'': ``high-level test implementation
+choice[s]'' \citep[p.~10]{IEEE2022} used to ``pick the particular test case
+values'' \citeyearpar[p.~465]{IEEE2017}. Since the only approach that can
+``fully'' test a system (exhaustive testing) is infeasible in most non-trivial
 situations \ifnotpaper (\citeyear[p.~4]{IEEE2022}; \citealp[p.~5\=/5]{SWEBOK2024};
     \citealp[pp.~439, 461]{PetersAndPedrycz2000}; \citealp[p.~421]{vanVliet2000})\else
     \cite[pp.~439, 461]{PetersAndPedrycz2000}, \cite[p.~421]{vanVliet2000},
     \cite[p.~5\=/5]{SWEBOK2024}, \cite[p.~4]{IEEE2022}\fi, it is wise to select
-multiple approaches \ifnotpaper \citealp[p.~18]{IEEE2022} \else
+multiple approaches \ifnotpaper \citep[p.~18]{IEEE2022} \else
     \citetext{p.~18} \fi to ``suitably cover any system''
 \citetext{p.~33}. We record \approachCount{} test approaches mentioned in
 the literature in \ourApproachGlossary{}, along with their properties and
