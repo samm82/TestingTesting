@@ -704,6 +704,7 @@ tasks and the ability to recover from user errors''. \swebokScalDef{}.
 \subsection{Compatibility Testing}
 \label{compat-flaw}
 
+\paragraph{\texttt{(OVER, DEFS)}}
 % Flaw count (OVER, DEFS): {IEEE2022} | {IEEE2017} ISTQB {ISO_IEC2023a}
 ``Compatibility testing'' is defined as ``testing that measures the
 degree to which a test item can function satisfactorily alongside
@@ -712,28 +713,45 @@ and where necessary, exchanges information with other systems or
 components (interoperability)'' \citep[p.~3]{IEEE2022}. This
 definition is nonatomic as it combines the ideas of ``co-existence''
 and ``interoperability''. The term ``interoperability testing'' is
-not defined, but is used three times \citep[pp.~22,~43]{IEEE2022}
-% Flaw count (WRONG, LABELS): {IEEE2022}
-(although the third usage seems like it should be ``portability
-testing''). This implies that ``co-existence testing'' and
+not defined, but \emph{is} used three times \citep[pp.~22, 43]{IEEE2022}.
+This implies that ``co-existence testing'' and
 ``interoperability testing'' should be defined as their own terms,
 which is supported by definitions of ``co-existence'' and
 ``interoperability'' often being separate \ifnotpaper
-    \citetext{\citealpISTQB{}; \citealp[pp.~73,~237]{IEEE2017}}%
+    \citetext{\citealpISTQB{}; \citealp[pp.~73, 237]{IEEE2017}}%
 \else
-    \cite[pp.~73,~237]{IEEE2017}, \cite{ISTQB}%
+    \cite[pp.~73, 237]{IEEE2017}, \cite{ISTQB}%
 \fi, the definition of
 ``interoperability testing'' from \citet[p.~238]{IEEE2017},
 and the decomposition of ``compatibility'' into ``co-existence''
 and ``interoperability'' by \citet{ISO_IEC2023a}!
+
+\paragraph{\texttt{(WRONG, SYNS)}}
 % Flaw count (WRONG, SYNS): implied by {IEEE2021} | {IEEE2022}
 The ``interoperability'' element of ``compatibility testing'' is explicitly
 excluded by \citet[p.~37]{IEEE2021}, (incorrectly) implying that ``compatibility
 testing'' and ``co-existence testing'' are synonyms.
+
+\paragraph{\texttt{(AMBI, SYNS)}}
 % Flaw count (AMBI, SYNS): {Kam2008} | {IEEE2022}
 Furthermore, the definition of ``compatibility testing'' in
-\citep[p.~43]{Kam2008} unhelpfully says ``See \emph{interoperability testing}'',
+\citet[p.~43]{Kam2008} unhelpfully says ``see \emph{interoperability testing}'',
 adding another layer of confusion to the direction of their relationship.
+
+\paragraph{\texttt{(WRONG, LABELS)}}
+% Flaw count (WRONG, LABELS): {IEEE2022}
+% Ground truth: {ISO_IEC2023a} {IEEE2022} {IEEE2021} {IEEE2017} ISTQB
+\refHelper \citet[pp.~22, 43]{IEEE2022} \multiAuthHelper{say}
+``interoperability testing helps confirm that applications can work on multiple
+operating systems and devices'', but this seems to instead describe
+``portability testing'', which evaluates the ``capability of a product to be
+adapted to changes in its requirements, contexts of use, or system environment''
+\ifnotpaper
+    (\citealp{ISO_IEC2023a}; similar in \citealp[p.~7]{IEEE2022};
+    \citeyear[pp.~184, 329]{IEEE2017}; \citealpISTQB{})\else
+    \cite{ISO_IEC2023a} (similar in \citeyear[pp.~184, 329]{IEEE2017},
+    \citealp[p.~7]{IEEE2022}, \cite{ISTQB})\fi, such as being ``transferred
+from one hardware \dots{} environment to another'' \citep[p.~39]{IEEE2021}.
 
 \ifnotpaper
     \subsection{Inferred Flaws}
