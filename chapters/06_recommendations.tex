@@ -31,16 +31,15 @@ synonym relation (\Cref{parSyns}).\todo{Same label to different phantomsections;
 
 We give recommendations for the areas of \ifnotpaper operational (acceptance)
     testing (\Cref{oat-test-rec}), \fi recovery testing (\Cref{rec-test-rec}),
-scalability testing (\Cref{scal-test-rec}), and performance-related testing
-(\Cref{perf-test-rec}). Graphical representations (described in
-\Cref{\ifnotpaper graph-gen\else tools\fi}) of these subsets are given in
-\recFigs{}, in which arrows representing relations between approaches are
-coloured based on the source tier (see \Cref{sources}) that defines them.
-Any added approaches or relations are colored \textcolor{orange}{orange}.
-\ifnotpaper Note that
-    inferred relations (colored \textcolor{gray}{grey}) are included for
-    completeness\todo{Should this be the case?}, despite not coming from the
-    literature (see \Cref{infers}).
+scalability testing (\Cref{scal-test-rec}), performance-related testing
+(\Cref{perf-test-rec}), and compatibility testing (\Cref{compat-test-rec}). We
+provide graphical representations (see \Cref{\ifnotpaper graph-gen\else tools\fi})
+of these subsets when helpful in \recFigs{}, in which arrows representing
+relations between approaches are coloured based on the source tier (see
+\Cref{sources}) that defines them. We color all proposed approaches and
+relations orange. \ifnotpaper We also include inferred approaches and relations
+    in grey for completeness\todo{Should this be the case?}, although they are
+    not explicitly defined in the literature (see \Cref{infers}).
 
     \subsection{Operational (Acceptance) Testing}\label{oat-test-rec}
     Since this terminology is not standardized (see \Cref{oat-flaw}), we
@@ -286,3 +285,16 @@ the relations shown in \Cref{fig:perf-graph}.
     \caption{Proposed relations between rationalized ``performance-related testing'' terms.}
     \label{fig:perf-graph}
 \end{paperFigure}
+
+\subsection{Compatibility Testing}\label{compat-test-rec}
+``Co-existence'' and ``interoperability'' are often defined separately
+\ifnotpaper (\citealp[pp.~73, 237]{IEEE2017}; \citealpISTQB{})%
+\else \cite[pp.~73, 237]{IEEE2017}, \cite{ISTQB}\fi, sometimes explicitly as a
+decomposition of ``compatibility'' \citep{ISO_IEC2023a}! Following this
+precedent, ``co-existence testing'' and ``interoperability testing'' should be
+defined as their own test approaches to make their definitions atomic;
+\citet{IEEE2017} \multiAuthHelper{define} ``interoperability testing''
+\citetext{p.~238} but not ``co-existence testing''. The term ``compatibility
+testing'' may still be a useful test approach to define, but it should be
+defined independently of its children: ``co-existence testing'' and
+``interoperability testing''.
