@@ -56,73 +56,101 @@ relations orange. \ifnotpaper We also include inferred approaches and relations
 \fi
 
 \subsection{Recovery Testing}\label{rec-test-rec}
-The following terms should be used in place of the current terminology to
-more clearly distinguish between different recovery-related test approaches.
-The result of the proposed terminology, along with their relations, is
-demonstrated in \Cref{fig:rec-graph-proposed}.
+% The following terms should be used in place of the current terminology to
+% more clearly distinguish between different recovery-related test approaches.
+% The result of the proposed terminology, along with their relations, is
+% demonstrated in \Cref{fig:rec-graph-proposed}.
+
+To remedy the flaws we describe in \Cref{recov-flaw}, we recommend that the
+literature uses these terms more consistently, resulting in the improved graph
+in \Cref{fig:rec-graph-proposed}. The following proposals ``recapture''
+information from the literature more consistently:
+
+\begin{enumerate}
+    \item Prefer the term ``recoverability testing'' over ``recovery testing''
+          to indicate its focus on a system's \emph{ability} to recover, not its
+          \emph{performance} of recovering \citep[p.~47]{Kam2008}. ``Recovery
+          testing'' may be an acceptable synonym, since it seems to be more
+          prevelant in the literature.
+    \item Introduce the term \emph{recovery performance testing} when evaluating
+          performance metrics of a system's recovery as a subapproach of
+          recoverability testing and performance-related testing\footnote{
+              See \Cref{perf-test-rec}.}
+          (\citealp[Fig.~2]{IEEE2022}; \citeyear[p.~2]{IEEE2013}).
+    \item Introduce separate terms for the different methods of recovery which
+          are all subapproaches of recoverability testing:
+          \begin{enumerate}
+              \item from backup memory (\emph{backup recovery testing})
+                    (\citealp[p.~37]{IEEE2021}; \citeyear[p.~2]{IEEE2013}),
+              \item from a back-up system (\emph{failover testing})
+                    (\citealp[p.~5\=/9]{SWEBOK2024}; \citealpISTQB{}), or
+              \item by transferring operations elsewhere (\emph{transfer
+                        recovery testing}) \citep[p.~37]{IEEE2021}.
+          \end{enumerate}
+\end{enumerate}
 
 \recoveryGraphs{}
 
-\begin{itemize}
-    \item \textbf{Recoverability Testing:} ``Testing \dots\ aimed at
-          verifying software restart capabilities after a system crash or
-          other disaster'' \citep[p.~5-9]{SWEBOK2024} including ``recover[ing]
-          the data directly affected and re-establish[ing] the desired state
-          of the system''
-          \ifnotpaper
-              (\citealp{ISO_IEC2023a}; similar in \citealp[p.~7-10]{SWEBOK2024})
-          \else
-              \cite{ISO_IEC2023a} (similar in \cite[p.~7-10]{SWEBOK2024})
-          \fi so that the system ``can perform
-          required functions'' \citep[p.~370]{IEEE2017}. ``Recovery testing''
-          will be a synonym, as in \citep[p.~47]{Kam2008}, since it is the
-          more prevalent term throughout various sources, although
-          ``recoverability testing'' is preferred to indicate that this
-          explicitly focuses on the \emph{ability} to
-          recover, not the \emph{performance} of recovering.
-    \item \textbf{Failover Testing:} Testing that ``validates the SUT's
-          ability to manage heavy loads or unexpected failure to continue
-          typical operations'' \cite[p.~5-9]{SWEBOK2024} by entering a
-          ``backup operational mode in which [these responsibilities] \dots\
-          are assumed by a secondary system'' \citepISTQB{}. This will
-          replace ``failover/recovery testing'', since it is more clear, and
-          since this is one way that a system can recover from failure, it
-          will be a subset of ``recovery testing''.
-    \item \textbf{Transfer Recovery Testing:} Testing to evaluate if,
-          in the case of a failure, ``operation of the test item can be
-          transferred to a different operating site and \dots\ be transferred
-          back again once the failure has been resolved''
-          \citeyearpar[p.~37]{IEEE2021}. This replaces the second definition
-          of ``disaster/recovery testing'', since the first is just a
-          description of ``recovery testing'', and could potentially be
-          considered as a kind of failover testing. This may not be
-          intrinsic to the hardware/software (e.g., may be the responsibility
-          of humans/processes).
-    \item \textbf{Backup Recovery Testing:} Testing that determines the
-          ability ``to restor[e] from back-up memory in the event of failure''
-          \citep[p.~37]{IEEE2021}. The qualification that this occurs
-          ``without transfer[ing] to a different operating site or back-up
-          system'' \citetext{p.~37} \emph{could} be made explicit, but this is
-          implied since it is separate from transfer recovery testing and
-          failover testing, respectively.
-    \item \textbf{Recovery Performance Testing:} Testing ``how well a system or
-          software can recover \dots\ [from] an interruption or failure''
-          \ifnotpaper
-              (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
-          \else
-              \cite[p.~7-10]{SWEBOK2024} (similar in \cite{ISO_IEC2023a})
-          \fi ``within specified parameters of time, cost, completeness, and
-          accuracy'' \citep[p.~2]{IEEE2013}. The distinction between the
-          performance-related elements of recovery testing seemed to be
-          meaningful\thesisissueref{40}, but was not captured consistently
-          by the literature. This will be a subset of ``performance-related
-          testing'' \ifnotpaper (see \Cref{perf-test-rec}) \fi
-          as ``recovery testing'' is in \citep[p.~22]{IEEE2022}. This could
-          also be extended into testing the performance of specific elements
-          of recovery (e.g., failover performance testing), but this be too
-          fine-grained and may better be captured as an
-          \hyperref[orth-test]{orthogonally derived test approach}.
-\end{itemize}
+% \begin{itemize}
+%     \item \textbf{Recoverability Testing:} ``Testing \dots\ aimed at
+%           verifying software restart capabilities after a system crash or
+%           other disaster'' \citep[p.~5-9]{SWEBOK2024} including ``recover[ing]
+%           the data directly affected and re-establish[ing] the desired state
+%           of the system''
+%           \ifnotpaper
+%               (\citealp{ISO_IEC2023a}; similar in \citealp[p.~7-10]{SWEBOK2024})
+%           \else
+%               \cite{ISO_IEC2023a} (similar in \cite[p.~7-10]{SWEBOK2024})
+%           \fi so that the system ``can perform
+%           required functions'' \citep[p.~370]{IEEE2017}. ``Recovery testing''
+%           will be a synonym, as in \citep[p.~47]{Kam2008}, since it is the
+%           more prevalent term throughout various sources, although
+%           ``recoverability testing'' is preferred to indicate that this
+%           explicitly focuses on the \emph{ability} to
+%           recover, not the \emph{performance} of recovering.
+%     \item \textbf{Failover Testing:} Testing that ``validates the SUT's
+%           ability to manage heavy loads or unexpected failure to continue
+%           typical operations'' \cite[p.~5-9]{SWEBOK2024} by entering a
+%           ``backup operational mode in which [these responsibilities] \dots\
+%           are assumed by a secondary system'' \citepISTQB{}. This will
+%           replace ``failover/recovery testing'', since it is more clear, and
+%           since this is one way that a system can recover from failure, it
+%           will be a subset of ``recovery testing''.
+%     \item \textbf{Transfer Recovery Testing:} Testing to evaluate if,
+%           in the case of a failure, ``operation of the test item can be
+%           transferred to a different operating site and \dots\ be transferred
+%           back again once the failure has been resolved''
+%           \citeyearpar[p.~37]{IEEE2021}. This replaces the second definition
+%           of ``disaster/recovery testing'', since the first is just a
+%           description of ``recovery testing'', and could potentially be
+%           considered as a kind of failover testing. This may not be
+%           intrinsic to the hardware/software (e.g., may be the responsibility
+%           of humans/processes).
+%     \item \textbf{Backup Recovery Testing:} Testing that determines the
+%           ability ``to restor[e] from back-up memory in the event of failure''
+%           \citep[p.~37]{IEEE2021}. The qualification that this occurs
+%           ``without transfer[ing] to a different operating site or back-up
+%           system'' \citetext{p.~37} \emph{could} be made explicit, but this is
+%           implied since it is separate from transfer recovery testing and
+%           failover testing, respectively.
+%     \item \textbf{Recovery Performance Testing:} Testing ``how well a system or
+%           software can recover \dots\ [from] an interruption or failure''
+%           \ifnotpaper
+%               (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
+%           \else
+%               \cite[p.~7-10]{SWEBOK2024} (similar in \cite{ISO_IEC2023a})
+%           \fi ``within specified parameters of time, cost, completeness, and
+%           accuracy'' \citep[p.~2]{IEEE2013}. The distinction between the
+%           performance-related elements of recovery testing seemed to be
+%           meaningful\thesisissueref{40}, but was not captured consistently
+%           by the literature. This will be a subset of ``performance-related
+%           testing'' \ifnotpaper (see \Cref{perf-test-rec}) \fi
+%           as ``recovery testing'' is in \citep[p.~22]{IEEE2022}. This could
+%           also be extended into testing the performance of specific elements
+%           of recovery (e.g., failover performance testing), but this be too
+%           fine-grained and may better be captured as an
+%           \hyperref[orth-test]{orthogonally derived test approach}.
+% \end{itemize}
 
 \subsection{Scalability Testing}\label{scal-test-rec}
 

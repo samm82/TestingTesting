@@ -9,6 +9,7 @@
 rankdir=BT;
 
 AvailabilityTesting [label=<Availability<br/>Testing>];
+BackupRecoveryTesting [label=<Backup<br/>Recovery<br/>Testing>,color=orange];
 FailoverTesting [label=<Failover<br/>Testing>,color=grey];
 FailureToleranceTesting [label=<Failure<br/>Tolerance<br/>Testing>];
 FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
@@ -18,6 +19,7 @@ RecoverabilityTesting [label=<Recoverability<br/>Testing>];
 RecoveryPerformanceTesting [label=<Recovery<br/>Performance<br/>Testing>,color=orange];
 ReliabilityTesting [label=<Reliability<br/>Testing>];
 SurvivabilityTesting [label=<Survivability<br/>Testing>];
+TransferRecoveryTesting [label=<Transfer<br/>Recovery<br/>Testing>,color=orange];
 UsabilityTesting [label=<Usability<br/>Testing>];
 
 
@@ -35,10 +37,13 @@ ReliabilityTesting -> PerformanceTesting;
 SurvivabilityTesting -> RecoverabilityTesting[color="green"];
 UsabilityTesting -> UsabilityTesting;
 
+BackupRecoveryTesting -> RecoverabilityTesting[color=orange];
+FailoverTesting -> RecoverabilityTesting[color=orange];
 RecoverabilityTesting -> AvailabilityTesting[color=orange];
 RecoverabilityTesting -> FailureToleranceTesting[color=orange];
 RecoverabilityTesting -> FaultToleranceTesting[color=orange];
 RecoveryPerformanceTesting -> PerformancerelatedTesting[color=orange];
 RecoveryPerformanceTesting -> RecoverabilityTesting[color=orange];
+TransferRecoveryTesting -> RecoverabilityTesting[color=orange];
 }
 \end{document}

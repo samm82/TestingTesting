@@ -882,6 +882,7 @@ class CustomGraph:
                             self.remove[par[1]] = [(SYN, chd)]
 
     def inherit(self, child: 'CustomGraph'):
+        self.terms.update(child.terms)
         self.add.update({chd: [par for par in pars if par in self.terms]
                          for chd, pars in child.add.items()
                          if chd in self.terms})
@@ -927,6 +928,26 @@ class CustomGraph:
         allLines = nodes + rels
         writeDotFile(allLines, f"{self.name}Graph")
 
+        for child, parents in self.remove.items():
+            if isinstance(parents, list):
+                def getParentFromTuple(t):
+                    return t[1] if isinstance(t, tuple) else t
+
+                rels = [rel for rel in rels if not rel.startswith(tuple(
+                    f"{formatApproach(child)} -> {formatApproach(
+                        getParentFromTuple(parent))}{"[dir=none" if isinstance(
+                            parent, tuple) and parent[0] == SYN else ""}"
+                    for parent in parents if child in self.terms and
+                        getParentFromTuple(parent) in self.terms
+                ))]
+            elif isinstance(parents, bool) and parents:
+                nodes = [node for node in nodes if not formatApproach(child) in node]
+                rels  = [rel  for rel  in rels  if not formatApproach(child) in rel ]
+                self.terms.discard(child)
+            else:
+                raise ValueError("Unexpected set of items to remove from "
+                                 f"{self.name} graph")
+
         if self.add:
             rels.append("")
             alreadyAdded = dict()
@@ -947,26 +968,6 @@ class CustomGraph:
                     for line in lines:
                         print("\t\t", line)
                     input()
-
-        for child, parents in self.remove.items():
-            if isinstance(parents, list):
-                def getParentFromTuple(t):
-                    return t[1] if isinstance(t, tuple) else t
-
-                rels = [rel for rel in rels if not rel.startswith(tuple(
-                    f"{formatApproach(child)} -> {formatApproach(
-                        getParentFromTuple(parent))}{"[dir=none" if isinstance(
-                            parent, tuple) and parent[0] == SYN else ""}"
-                    for parent in parents if child in self.terms and
-                        getParentFromTuple(parent) in self.terms
-                ))]
-            elif isinstance(parents, bool) and parents:
-                nodes = [node for node in nodes if not formatApproach(child) in node]
-                rels  = [rel  for rel  in rels  if not formatApproach(child) in rel ]
-                self.terms.discard(child)
-            else:
-                raise ValueError("Unexpected set of items to remove from "
-                                 f"{self.name} graph")
 
         if self.add or self.remove:
             nodes = set(nodes)
@@ -1046,7 +1047,8 @@ recoveryGraph = CustomGraph(
      "Performance-related Testing", "Recoverability Testing", "Recovery Testing",
      "Reliability Testing", "Survivability Testing", "Usability Testing"},
     add = {
-        "Backup and Recovery Testing" : ["Recoverability Testing"],
+        "Backup Recovery Testing" : ["Recoverability Testing"],
+        "Failover Testing" : ["Recoverability Testing"],
         "Recoverability Testing" : ["Availability Testing",
                                     "Failure Tolerance Testing",
                                     "Fault Tolerance Testing"],
@@ -1055,7 +1057,9 @@ recoveryGraph = CustomGraph(
         "Transfer Recovery Testing" : ["Recoverability Testing"],
     },
     remove = {
-        "Backup and Recovery Testing" : ["Reliability Testing"],
+        "Backup and Recovery Testing" : True,
+        "Backup/Recovery Testing" : True,
+        "Disaster/Recovery Testing" : True,
         "Failover/Recovery Testing" : True,
         "Recovery Testing" : True,
     }
@@ -1068,15 +1072,6 @@ scalabilityGraph = CustomGraph(
      "Performance Efficiency Testing", "Performance Testing",
      "Resource Utilization Testing", "Scalability Testing",
      "Stress Testing", "Transaction Flow Testing", "Volume Testing"},
-    # add = {
-    #     "Backup and Recovery Testing" : ["Recoverability Testing"],
-    #     "Recoverability Testing" : ["Availability Testing",
-    #                                 "Failure Tolerance Testing",
-    #                                 "Fault Tolerance Testing"],
-    #     "Recovery Performance Testing" : ["Performance-related Testing",
-    #                                       "Recoverability Testing"],
-    #     "Transfer Recovery Testing" : ["Recoverability Testing"],
-    # },
     remove = {
         "Scalability Testing" : [(SYN, "Capacity Testing"),
                                  (SYN, "Elasticity Testing")],

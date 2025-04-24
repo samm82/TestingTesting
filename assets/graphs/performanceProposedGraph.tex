@@ -12,6 +12,7 @@ rankdir=BT;
 start [style="invis"];
 
 AvailabilityTesting [label=<Availability<br/>Testing>];
+BackupRecoveryTesting [label=<Backup<br/>Recovery<br/>Testing>,color=orange];
 CapacityTesting [label=<Capacity<br/>Testing>];
 ConcurrencyTesting [label=<Concurrency<br/>Testing>,color=grey];
 EfficiencyTesting [label=<Efficiency<br/>Testing>];
@@ -33,7 +34,9 @@ ResourceUtilizationTesting [label=<Resource<br/>Utilization<br/>Testing>];
 ResponseTimeTesting [label=<Response-Time<br/>Testing>];
 ScalabilityTesting [label=<Scalability<br/>Testing>];
 StressTesting [label=<Stress<br/>Testing>];
+SurvivabilityTesting [label=<Survivability<br/>Testing>];
 TransactionFlowTesting [label=<Transaction<br/>Flow<br/>Testing>];
+TransferRecoveryTesting [label=<Transfer<br/>Recovery<br/>Testing>,color=orange];
 UsabilityTesting [label=<Usability<br/>Testing>];
 VolumeTesting [label=<Volume<br/>Testing>];
 
@@ -79,6 +82,7 @@ ScalabilityTesting -> MemoryManagementTesting[style="dashed",color="green"];
 StressTesting -> PerformancerelatedTesting[color="green"];
 StressTesting -> PerformanceEfficiencyTesting[color="green"];
 StressTesting -> CapacityTesting[color="blue"];
+SurvivabilityTesting -> RecoverabilityTesting[color="green"];
 VolumeTesting -> PerformancerelatedTesting[color="green"];
 VolumeTesting -> PerformanceEfficiencyTesting[color="green"];
 VolumeTesting -> CapacityTesting[color="blue"];
@@ -88,11 +92,14 @@ CapacityTesting -> LoadTesting[color=orange];
 ConcurrencyTesting -> PerformancerelatedTesting[color=orange];
 PerformanceTesting -> LoadTesting[color=orange];
 ReliabilityTesting -> PerformancerelatedTesting[color=orange];
+BackupRecoveryTesting -> RecoverabilityTesting[color=orange];
+FailoverTesting -> RecoverabilityTesting[color=orange];
 RecoverabilityTesting -> AvailabilityTesting[color=orange];
 RecoverabilityTesting -> FailureToleranceTesting[color=orange];
 RecoverabilityTesting -> FaultToleranceTesting[color=orange];
 RecoveryPerformanceTesting -> PerformancerelatedTesting[color=orange];
 RecoveryPerformanceTesting -> RecoverabilityTesting[color=orange];
+TransferRecoveryTesting -> RecoverabilityTesting[color=orange];
 
 subgraph cluster_legend {
 
