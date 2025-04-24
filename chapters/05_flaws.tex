@@ -573,82 +573,105 @@ non-functional and functionality testing\fi\ \citep[Tab.~2]{Gerrard2000a}.
     evaluate \ifnotpaper his \else its \fi distinction.
 \fi
 
-\subsection{Recovery Testing}
-\label{recov-flaw}
+\subsection{Recovery Testing}\label{recov-flaw}
 
 ``Recovery testing'' is ``testing \dots\ aimed at verifying
 software restart capabilities after a system crash or other disaster''
-\citep[p.~5-9]{SWEBOK2024} including ``recover[ing] the data directly affected
-and re-establish[ing] the desired state of the system''
-\ifnotpaper
-    (\citealp{ISO_IEC2023a}; similar in \citealp[p.~7-10]{SWEBOK2024})
-\else
-    \cite{ISO_IEC2023a} (similar in \cite[p.~7-10]{SWEBOK2024})
-\fi
+\citep[p.~5\=/9]{SWEBOK2024} including ``recover[ing] the data directly affected
+and re-establish[ing] the desired state of the system'' \ifnotpaper
+    (\citealp{ISO_IEC2023a}; similar in \citealp[p.~7\=/10]{SWEBOK2024})
+\else \cite{ISO_IEC2023a} (similar in \cite[p.~7\=/10]{SWEBOK2024}) \fi
 so that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
-It is also called ``recoverability testing'' \cite[p.~47]{Kam2008} and
-potentially ``restart \& recovery (testing)'' \cite[Fig.~5]{Gerrard2000a}.
-% Flaw count (AMBI, SYNS): {Gerrard2000a}
-The following terms, along with ``recovery testing'' itself
-\citep[p.~22]{IEEE2022} are all classified as test types, and the relations
-between them can be found in \Cref{fig:recovery-graph-current}.
+However, the literature also describes similar test approaches with vague or
+non-existent distinctions between them. We describe these approaches and their
+flaws here and present the relations between them in \Cref{fig:rec-graph-current}.
+
+\NewDocumentCommand\subDRT{s}{given as a subtype of ``disaster/recovery
+    testing'' which tests if ``operation of the test item can
+    be transferred to a different operating site''
+    \IfBooleanTF{#1}{\citetext{p.~37}}{\citeyearpar[p.~37]{IEEE2021}},
+    even though this is \emph{explicitly} excluded from its definition on the
+    same page!}
 
 %% again, maybe convert to \paragraph ?
 \begin{itemize}
-    \item \textbf{Recoverability Testing:} Testing ``how well a system or
+    \item \emph{Recoverability testing} evaluates ``how well a system or
           software can recover data during an interruption or failure''
-          \ifnotpaper
-              (\citealp[p.~7-10]{SWEBOK2024}; similar in \citealp{ISO_IEC2023a})
-          \else
-              \cite[p.~7-10]{SWEBOK2024} (similar in \cite{ISO_IEC2023a})
-          \fi
-          and ``re-establish the desired state of the system'' \citep{ISO_IEC2023a}.
-          Synonym for ``recovery testing'' in \citet[p.~47]{Kam2008}.
-    \item \textbf{Disaster/Recovery Testing} serves to evaluate if a system
+          \ifnotpaper (\citealp[p.~7\=/10]{SWEBOK2024}; \else
+              \cite[p.~7\=/10]{SWEBOK2024} (\fi similar in \citealp{ISO_IEC2023a})
+          and ``re-establish the desired state of the system''
+          \citeyearpar{ISO_IEC2023a}. \refHelper \citet[p.~47]{Kam2008}
+          gives this as a synonym for ``recovery testing''.
+    \item \emph{Disaster/recovery testing} evaluates if a system
           can ``return to normal operation after a hardware
           or software failure'' \citep[p.~140]{IEEE2017} or if ``operation of
           the test item can be transferred to a different operating site and
           \dots\ be transferred back again once the failure has been
-          resolved'' \citeyearpar[p.~37]{IEEE2021}. These two definitions seem to
-          describe different aspects of the system, where the first is
-          intrinsic to the hardware/software and the second might not be.
-          % Flaw count (OVER, DEFS): {IEEE2017} | {IEEE2021}
-    \item \textbf{Backup and Recovery Testing} ``measures the
+          resolved'' \citeyearpar[p.~37]{IEEE2021}.
+          \begin{itemize}
+              \item \texttt{(OVER, DEFS)}
+                    % Flaw count (OVER, DEFS): {IEEE2017} | {IEEE2021}
+                    These two definitions seem to describe different aspects of
+                    the system, where the first is intrinsic to the
+                    hardware/software and the second might not be, making this
+                    term nonatomic.
+          \end{itemize}
+    \item \emph{Backup and recovery testing} ``measures the
           degree to which system state can be restored from backup within
           specified parameters of time, cost, completeness, and accuracy in
           the event of failure'' \citep[p.~2]{IEEE2013}. This may be what is
           meant by ``recovery testing'' in the context of performance-related
-          testing and seems to correspond to the definition of
-          ``disaster/recovery testing'' in \citeyearpar[p.~140]{IEEE2017}.
-    \item \textbf{Backup/Recovery Testing:} Testing that determines the
-          ability ``to restor[e] from back-up memory in the event of failure,
-          without transfer[ing] to a different operating site or back-up
-          system'' \citep[p.~37]{IEEE2021}. This seems to correspond to the
-          definition of ``disaster/recovery testing'' in
-          \citeyearpar[p.~37]{IEEE2021}. It is also given as a subtype of
-          ``disaster/recovery testing'', even though that tests if ``operation
-          of the test item can be transferred to a different operating site''
-          \citetext{p.~37}. % Flaw count (CONTRA, PARS): {IEEE2021} | {IEEE2021}
-          It also seems to overlap with ``backup and
-          recovery testing'', which adds confusion.
-          % Flaw count (OVER, DEFS): {IEEE2021} | {IEEE2013}
-    \item \textbf{Failover/Recovery Testing:} Testing that determines the
+          testing \citeyearpar[Fig.~2]{IEEE2022}.
+    \item \emph{Backup/recovery testing} determines the ability of a system
+          ``to restor[e] from back-up memory in the event of failure, without
+          transfer[ing] to a different operating site or back-up system''
+          \citep[p.~37]{IEEE2021}.
+          \begin{itemize}
+              \item \texttt{(OVER, DEFS)}
+                    % Flaw count (OVER, DEFS): {IEEE2021} | {IEEE2017}
+                    This definition corresponds to the first definition of
+                    ``disaster/recovery testing'' given by
+                    \citeyearpar[p.~140]{IEEE2017}.
+              \item \texttt{(CONTRA, PARS)}
+                    % Flaw count (CONTRA, PARS): {IEEE2021} | {IEEE2021}
+                    It is also \subDRT{}
+              \item \texttt{(OVER, LABELS)}
+                    % Flaw count (OVER, LABELS): {IEEE2021} | {IEEE2013}
+                    Its name is also quite similar to ``backup and
+                    recovery testing'', adding further confusion.
+          \end{itemize}
+    \item \emph{Failover/recovery testing} determines the
           ability ``to mov[e] to a back-up system in the event of failure,
           without transfer[ing] to a different operating site''
-          \citep[p.~37]{IEEE2021}. This is given as a subtype of
-          ``disaster/recovery testing'', even though that tests if ``operation
-          of the test item can be transferred to a different operating site''
-          \citetext{p.~37}. % Flaw count (CONTRA, PARS): {IEEE2021} | {IEEE2021}
-    \item \textbf{Failover Testing:} Testing that ``validates the SUT's
-          ability to manage heavy loads or unexpected failure to continue
-          typical operations'' \citep[p.~5-9]{SWEBOK2024} by entering a
-          ``backup operational mode in which [these responsibilities] \dots\
-          are assumed by a secondary system'' \citepISTQB{}. While not
-          \emph{explicitly} related to recovery, ``failover/recovery testing''
-          also describes the idea of ``failover'', and \citet[p.~56]{Firesmith2015}
-          uses the term ``failover and recovery testing'', which could be a
-          synonym of both of these terms.
-          % Flaw count (AMBI, SYNS): {SWEBOK2024} ISTQB | implied by {Firesmith2015}
+          \citep[p.~37]{IEEE2021}.
+          \begin{itemize}
+              \item \texttt{(CONTRA, PARS)}
+                    % Flaw count (CONTRA, PARS): {IEEE2021} | {IEEE2021}
+                    This is also \subDRT*{}
+              \item \texttt{(AMBI, PARS)}
+                    % Flaw count (AMBI, PARS): {IEEE2021}
+                    % Ground truth: {SWEBOK2024} ISTQB
+                    While not explicitly related to recovery, \emph{failover
+                        testing} ``validates the SUT's ability to manage heavy
+                    loads or unexpected failure to continue typical operations''
+                    \citep[p.~5\=/9]{SWEBOK2024} by entering a ``backup
+                    operational mode in which [these responsibilities] \dots\
+                    are assumed by a secondary system'' \citepISTQB{}. Its name
+                    implies that it is a child of ``failover/recovery testing''
+                    but its definition makes it more broad (as it includes handling
+                    ``heavy loads'' where failover/recovery testing does not)
+                    which may reverse the direction of this relation.
+              \item \texttt{(AMBI, SYNS)}
+                    % Flaw count (AMBI, SYNS): {IEEE2021} | implied by {Firesmith2015}
+                    \refHelper \citet[p.~56]{Firesmith2015} uses the term
+                    ``failover and recovery testing'' which may be a synonym of
+                    ``failover/recovery testing''.
+          \end{itemize}
+    \item \emph{Restart \& recovery (testing)} is listed as a test approach by
+          \citet[Fig.~5]{Gerrard2000a} but is not defined \texttt{(MISS, DEFS)}
+          % Flaw count (MISS, DEFS): {Gerrard2000a}
+          and may simply be a synonym to ``recovery testing'' \texttt{(AMBI, SYNS)}.
+          % Flaw count (AMBI, SYNS): {Gerrard2000a}
 \end{itemize}
 
 \subsection{Scalability Testing}\label{scal-flaw}
