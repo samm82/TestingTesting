@@ -68,254 +68,7 @@ since we use them throughout this \docType{}.
 % \dots{} static testing'' \citep[p.~10]{IEEE2022} and is used to  & black or white box, minimum and maximum
 % boundary value testing \citep[p.~465]{IEEE2017}                                                  \\
 
-\subsection{Flaws/Inconsistencies}\label{flaw-def}
-
-Before we can start tracking and discussing flaws, we need to be clear about
-what we mean by the term. Our research shows that the literature is full of
-incorrect, missing, contradictory, unclear, nonatomic, and redundant
-information. This should not be the case for a field as rigorous as software
-engineering; we should be correct, complete, consistent, and clear, keeping
-separate ideas separate and only including what is necessary! We refer to
-any instance where one of these ideals is violated as a ``flaw'', as it
-implies that something is wrong with the literature and an opportunity to
-improve it, while avoiding words that are ``overloaded with too many meanings''
-like ``error'' and ``fault'' \citep[p.~12\=/3; see
-    \Cref{error-fault-failure}]{SWEBOK2024}. Terms such as these are primarily
-used to describe software itself, while we want a term to describe its
-supporting documents\footnote{A small literature review reveals that
-    established standards (see \Cref{stds}) only use ``flaw'' to refer to
-    requirements \citep[p.~38]{IEEE2022}, design \citetext{p.~43}, ``system
-    security procedures \dots{} and internal controls''
-    % under the term ``vulnerability''
-    \citep[p.~194]{IEEE2012}, or code itself \citetext{p.~92}.}. \refHelper
-\citet[p.~7\=/9]{SWEBOK2024} mentions that ``techniques and indicators can help
-engineers measure technical debt, including \dots{} the number of engineering
-flaws and violations'', which aligns with our goal of analyzing what is wrong
-with software engineering's testing literature.
-
-\subsubsection{Flaw Manifestations}\label{mnfst-def}
-
-Perhaps the most obvious example of something being ``wrong'' with the
-literature is that a piece of information it presents is incorrect---``wrong''
-in the literal sense. However, if our standards for correctness require
-clarity, consistency, and robustness, then there are many ways for a flaw to
-manifest. This is one view we take when observing, recording, and analyzing
-flaws: \emph{how}\thesisissueref{155} information is ``wrong''. We observe the
-``manifestations'' described in \Cref{tab:flawMnfstDefs} throughout the
-literature, and give each a unique key for later analysis and discussion. We
-list them in descending order of severity, although this is partially
-subjective: while some may disagree with our ranking, it is clear that
-information being incorrect is worse than it being repeated. This ordering has
-the benefit of serving as a ``flowchart'' for classifying flaws. For example,
-if a piece of information is not intrinsically incorrect, then there are five
-remaining manifestation types the flaw can be!
-
-\input{assets/tables/flawMnfstDefs}
-
-While we use the general term ``flaw'' to encompass all of these
-manifestations, it has its limitations. In particular, when referring to a flaw
-with more than one source (such as a contradiction or an overlap), it is
-awkward to call it a ``flaw between two sources''\thesisissueref{140}. A more
-intuitive way to describe this situation is that there is an ``inconsistency''
-between the sources. This clearly indicates that there is disagreement between
-the sources, but also does not imply that either one is correct---the
-inconsistency could be with some ground truth\qtodo{Is this term well understood?}
-if \emph{neither} source is correct\thesisissueref{140,151}! Note that these
-cases are not categorized as ``mistakes'' if finding this ground truth requires
-analysis that has not been performed yet.
-
-\ifnotpaper \newpage \fi
-
-\subsubsection{Flaw Domains}\label{dmn-def}
-
-Another way to categorize flaws is by \emph{what} information is wrong, which
-we call the flaw's ``domain''. We describe those we observe in
-\Cref{tab:flawDmnDefs}, and tracking these uncovers which knowledge domains
-are less standardized (and should therefore be approached with more rigour)
-than others. Note that this is an orthogonal categorization to that of a flaw's
-manifestation: each flaw \emph{manifests} in a particular \emph{domain}. This
-means that we give each flaw two keys (one for each classification) and
-present our observations according to these two views in \Cref{tab:flawMnfsts,%
-    tab:flawDmns}. We explicitly define some of these domains in future
-chapters and thus present them in that same order. Despite their nuance, the
-remaining domains are relatively straightforward, so we do not define them more
-rigorously in their own sections.
-
-\input{assets/tables/flawDmnDefs}
-
-\phantomsection{}\label{label-flaw-def}
-For example, \defLabelDistinct*{}. Definition flaws are quite self-explanatory, but
-% Definition flaws occur when a term's definition is incorrect, unclear, etc.;
-% this often occurs in glossaries or lists of terms from sources we investigate.
-% On the other hand,
-label flaws are harder to detect, despite occurring independently. Examples of
-label flaws include terms that share the same acronym or contain typos or
-redundant information. Sometimes, an author may use one term when they mean
-another; while one could argue that their ``internal'' definition of the term
-is the cause of this mistake, we consider this a label flaw where the wrong
-label is used and we would change the \emph{label} to fix it.
-\phantomsection{}\label{trace-flaw-def}%
-Additionally, some traceability information is flawed, such as how one document
-cites other or even what information is included \emph{within} a document
-(see \flawref{see-ref-missing})!
-
-\subsection{Rigidity}\label{rigidity}
-
-% Excluded from macro table since it is only used in this subsection
-\def\impKeywordsCode{\seeSrcCode{82167b7}{scripts/helpers.py}{21}{49}}
-
-When recording information from unstandardized sources written in natural
-language, there is a considerable degree of nuance that can get lost. For
-example, a source may provide data from which the reader can logically draw a
-conclusion, but may not state or prove this conclusion explicitly.
-% Most information in sources we investigate is explicit, but this is still a useful
-% distinction to make.
-We call this nuance ``rigidity'' and capture it when citing sources using
-(at least) one of the following keywords: ``implied'', ``inferred'',
-``can be'', ``sometimes'', ``should be'', ``ideally'', ``usually'', ``most'',
-``likely'', ``often'', ``if'', and ``although''% \impKeywordsCode{}%
-\utd{}. While these keywords often appear
-directly within the literature, we also use them to track rigidity without
-getting distracted by less relevant details by summarizing the relevant
-nuance. This allows us to provide a more complete picture of the state of
-the literature. All sources cited throughout this \docType{} support their
-respective claims explicitly unless specified otherwise, usually via one of the
-keywords given above\qtodo{Is this enough to satisfy Dr.~Smith's concern about
-    the rigidity of Synonym Relation sources?}. The following non-mutually
-exclusive reasons for information to be considered ``implicit'' emerged, and we
-use the keywords from the above list during data collection to identify them
-when performing later analysis \impKeywordsCode{}:
-
-%% Maybe convert to \paragraph ?
-\begin{enumerate}
-    \item \textbf{The information can be logically deduced but is not explicit.}
-          The implicit categorizations of ``test type'' by
-          \citet[pp.~53\==58]{Firesmith2015} (cf.\qtodo{Is this enough to
-              indicate this forward reference isn't that important?}~%
-          \Cref{tab:multiCats\ifnotpaper,tab:infMultiCats\fi}) are examples
-          of this. The given test approaches are not explicitly called ``test
-          types'', as the term is used more loosely to refer to different kinds
-          of testing---what should be called ``test approaches'' as per
-          \Cref{tab:ieeeCats}. However, this set of test approaches are
-          ``based on the associated quality characteristic and its associated
-          quality attributes'' \citetext{p.~53}, implying that they are
-          test types. Cases such as this are indicated by a question mark or
-          one of the following keywords: ``implied'', ``inferred'', or
-          ``likely''. \ifnotpaper \par
-              Additionally, if a test approach in \ourApproachGlossary{} has a
-              name ending in ``~(Testing)'' with a space, the word ``Testing''
-              might not be part of its name \emph{or} it might not be a test
-              approach at all! For example, the term ``legacy system
-              integration'' is used \ifnotpaper by \citeauthor{Gerrard2000a}
-                  (\citeyear[pp.~12\==13, Tab.~2]{Gerrard2000a};
-                  \citeyear[Tab.~1]{Gerrard2000b})\else in
-                  \cite[pp.~12\==13, Tab.~2]{Gerrard2000a},
-                  \cite[Tab.~1]{Gerrard2000b}\fi, but the more accurate
-              ``legacy system integration testing'' is used in
-              \citeyearpar[pp.~30\==31]{Gerrard2000b}. In other cases where a
-              term is \emph{not} explicitly labelled as ``testing'', we add the
-              suffix ``~(Testing)'' (when it makes sense to do so) and consider
-              the test approach to be implied. \fi
-    \item \textbf{The information is not universal.}
-          \refHelper \citet[p.~372\ifnotpaper, emphasis added\fi]{IEEE2017}%
-          \todo{OG ISO/IEC, 2014} \multiAuthHelper{define} ``regression
-          testing'' as ``testing required to determine that a change to a
-          system component has not adversely affected \emph{functionality,
-              reliability or performance} and has not introduced additional
-          defects''. While reliability testing, for example, is not
-          \emph{always} a subset of regression testing (since it may be
-          performed in other ways), it \emph{can be} accomplished by regression
-          testing, so there is sometimes a parent-child relation (defined in
-          \Cref{par-chd-rels}) between them. \ifnotpaper
-          \citet[p.~5-8\ifnotpaper, emphasis added\fi]{SWEBOK2024} provides a
-          similar list: ``regression testing \dots{} \emph{may} involve
-          functional and non-functional testing, such as reliability,
-          accessibility, usability, maintainability, conversion, migration, and
-          compatibility testing.'' \fi Cases such as this are indicated by one
-          of the following keywords: ``can be'', ``sometimes'', ``should be'',
-          ``ideally'', ``usually'', ``most'', ``likely'', ``often'', or ``if''.
-    \item \textbf{The information is conditional.}
-          As a more specific case of information not being universal, sometimes
-          prerequisities must be satisfied for information to apply. For
-          example, branch condition combination testing is equivalent
-          to (and is therefore a synonym of) exhaustive testing \emph{if} ``each
-          subcondition is viewed as a single input'' \citep[p.~464]{PetersAndPedrycz2000}.
-          Likewise, statement testing can be used for (and is therefore a child
-          of) unit testing \emph{if} there are ``less than 5000 lines of code''
-          \citetext{p.~481\todo{OG Miller et al., 1994}}. Cases such as this
-          are indicated by the keyword ``can be'', ``sometimes'', or ``if''.
-          \ifnotpaper
-              \par This can also apply more abstractly at the taxonomy level,
-              where a parent-child relation only makes sense if the parent test
-              approach exists. This occurs when a source gives a relation
-              between qualities but at least one of them does not have an
-              explicit approach associated with it (although it may be derived;
-              see \Cref{cov-test}). For example, \citet{ISO_IEC2023a} provides
-              relations involving dependability and modifiability; these are
-              tracked as qualities, not approaches, since only the qualities
-              are described. Since the prerequisite of the relevant approach
-              existing is \emph{not} satisfied, these relations are omitted
-              from any generated graphs (cf.\qtodo{Is this enough to indicate
-                  this forward reference isn't that important?}~\recFigs{}%
-              \latertodo{Include \Cref{fig:parChdGraphs} if it ends up being
-                  sufficient.}). \fi
-    \item \textbf{The information is dubious.}
-          This happens when there is reason to doubt the information provided.
-          If a source claims one thing that is not true, related claims lose
-          credibility. For example, the incorrect claim that ``white-box
-          testing'', ``grey-box testing'', and ``black-box testing'' are
-          synonyms for ``module testing'', ``integration testing'', and
-          ``system testing'', respectively, \ifnotpaper (see
-              \flawref{dubious-syns}) \fi casts doubt on the claim that
-          ``red-box testing'' is a synonym for ``acceptance testing''
-          \citep[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88}\ifnotpaper\
-              (see \flawref{dubious-red-box-syn})\fi. Doubts such as this
-          can also originate from other sources. \refHelper
-          \citet[p.~48]{Kam2008} gives ``user scenario testing'' as a synonym
-          of ``use case testing'', even though ``an actor [in use case testing]
-          can be \dots{} another system'' \citep[p.~20]{IEEE2021}, which does
-          not fit as well with the label ``user scenario testing''. However,
-          since a system can be seen as a ``user'' of the test item, this
-          synonym relation is treated as implicit instead of as an outright
-          flaw. Cases such as this are indicated by a question mark or
-          one of the following keywords: ``inferred'', ``should be'',
-          ``ideally'', ``likely'', ``if'', or ``although''.
-\end{enumerate}
-
-Any kind of information can be implicit, including the names,
-\approachFields{} of identified test approaches. Flaws based on implicit
-information are themselves implicit. By looking for the
-indicators of uncertainty mentioned above \impKeywordsCode{}, we can
-automatically detect implicit flaws when generating graphs and performing
-analysis (see \ifnotpaper \Cref{graph-gen,flaw-analysis}, respectively\else
-    \Cref{tools}\fi).
-%     These are used when creating
-% the glossaries to capture varying degrees of nuance, such as when a test
-% approach ``can be'' a child of another or is a synonym of another ``most of the
-% time'' but not always. 
-For example, we can view implicit flaws separately in
-\Cref{tab:flawMnfsts,tab:flawDmns}, since additional context may rectify them.
-\ifnotpaper Additionally, \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats}
-    contain relations that are explicit, implicit, and both; implicit relations
-    are marked by the phrases ``implied by'' and ``inferred from''. \fi
-
-\subsection{Credibility}\label{cred}
-
-In the same way we distinguish between the rigidity of information from
-different sources, we also wish to distinguish between the ``rigidity'' of the
-sources themselves! Of course, we do not want to overload terms, so we define a
-source as more ``credible'' if it:
-\begin{itemize}
-    \item has gone through a peer-review process,
-    \item is written by numerous, well-respected authors,
-    \item cites a (comparatively) large number of sources, and/or
-    \item is accepted and used in the field of software.
-\end{itemize}
-Sources may meet only some of these criteria, so we use our judgement (along
-with the format of the sources themselves) when comparing them
-(cf.~\Cref{sources}).
-
-\subsection{Approach Categories}\label{cats-def}
+\subsubsection{Approach Categories}\label{cats-def}
 
 While there are many ways to categorize software testing approaches, perhaps
 the most widely used is the one given by \ifnotpaper\else \citeauthor{IEEE2022}
@@ -667,7 +420,7 @@ concerned with testing \dots{} interfaces'', but since \ifnotpaper he \else it
     software testing terminology is so vital.\qtodo{Is this sentence needed?}
 \fi
 
-\subsection{Synonym Relations}\label{syn-rels}
+\subsubsection{Synonym Relations}\label{syn-rels}
 
 The same approach often has many names. For example,
 ``specification-based testing'' is also called\todo{more in Umar2000}:
@@ -778,7 +531,7 @@ boundary-value analysis, and random testing---are all given as children%
     \cite{IEEE2022,ISTQB}, \cite[Fig.~2]{IEEE2021}\fi; even V4 agrees with
 this \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}!
 
-\subsection{Parent-Child Relations}\label{par-chd-rels}
+\subsubsection{Parent-Child Relations}\label{par-chd-rels}
 Many test approaches are multi-faceted and can be ``specialized'' into others;
 for example, there are many subtypes of performance-related testing,
 such as load testing and stress testing (see \Cref{perf-test-rec}). These
@@ -870,3 +623,249 @@ one of the following must be true:
 % \end{enumerate}
 \parChdGraphs{}
 
+\subsection{Flaws/Inconsistencies}\label{flaw-def}
+
+Before we can start tracking and discussing flaws, we need to be clear about
+what we mean by the term. Our research shows that the literature is full of
+incorrect, missing, contradictory, unclear, nonatomic, and redundant
+information. This should not be the case for a field as rigorous as software
+engineering; we should be correct, complete, consistent, and clear, keeping
+separate ideas separate and only including what is necessary! We refer to
+any instance where one of these ideals is violated as a ``flaw'', as it
+implies that something is wrong with the literature and an opportunity to
+improve it, while avoiding words that are ``overloaded with too many meanings''
+like ``error'' and ``fault'' \citep[p.~12\=/3; see
+    \Cref{error-fault-failure}]{SWEBOK2024}. Terms such as these are primarily
+used to describe software itself, while we want a term to describe its
+supporting documents\footnote{A small literature review reveals that
+    established standards (see \Cref{stds}) only use ``flaw'' to refer to
+    requirements \citep[p.~38]{IEEE2022}, design \citetext{p.~43}, ``system
+    security procedures \dots{} and internal controls''
+    % under the term ``vulnerability''
+    \citep[p.~194]{IEEE2012}, or code itself \citetext{p.~92}.}. \refHelper
+\citet[p.~7\=/9]{SWEBOK2024} mentions that ``techniques and indicators can help
+engineers measure technical debt, including \dots{} the number of engineering
+flaws and violations'', which aligns with our goal of analyzing what is wrong
+with software engineering's testing literature.
+
+\subsubsection{Flaw Manifestations}\label{mnfst-def}
+
+Perhaps the most obvious example of something being ``wrong'' with the
+literature is that a piece of information it presents is incorrect---``wrong''
+in the literal sense. However, if our standards for correctness require
+clarity, consistency, and robustness, then there are many ways for a flaw to
+manifest. This is one view we take when observing, recording, and analyzing
+flaws: \emph{how}\thesisissueref{155} information is ``wrong''. We observe the
+``manifestations'' described in \Cref{tab:flawMnfstDefs} throughout the
+literature, and give each a unique key for later analysis and discussion. We
+list them in descending order of severity, although this is partially
+subjective: while some may disagree with our ranking, it is clear that
+information being incorrect is worse than it being repeated. This ordering has
+the benefit of serving as a ``flowchart'' for classifying flaws. For example,
+if a piece of information is not intrinsically incorrect, then there are five
+remaining manifestation types the flaw can be!
+
+\input{assets/tables/flawMnfstDefs}
+
+While we use the general term ``flaw'' to encompass all of these
+manifestations, it has its limitations. In particular, when referring to a flaw
+with more than one source (such as a contradiction or an overlap), it is
+awkward to call it a ``flaw between two sources''\thesisissueref{140}. A more
+intuitive way to describe this situation is that there is an ``inconsistency''
+between the sources. This clearly indicates that there is disagreement between
+the sources, but also does not imply that either one is correct---the
+inconsistency could be with some ground truth\qtodo{Is this term well understood?}
+if \emph{neither} source is correct\thesisissueref{140,151}! Note that these
+cases are not categorized as ``mistakes'' if finding this ground truth requires
+analysis that has not been performed yet.
+
+\ifnotpaper \newpage \fi
+
+\subsubsection{Flaw Domains}\label{dmn-def}
+
+Another way to categorize flaws is by \emph{what} information is wrong, which
+we call the flaw's ``domain''. We describe those we observe in
+\Cref{tab:flawDmnDefs}, and tracking these uncovers which knowledge domains
+are less standardized (and should therefore be approached with more rigour)
+than others. Note that this is an orthogonal categorization to that of a flaw's
+manifestation: each flaw \emph{manifests} in a particular \emph{domain}. This
+means that we give each flaw two keys (one for each classification) and
+present our observations according to these two views in \Cref{tab:flawMnfsts,%
+    tab:flawDmns}. We explicitly define some of these domains in future
+chapters and thus present them in that same order. Despite their nuance, the
+remaining domains are relatively straightforward, so we do not define them more
+rigorously in their own sections.
+
+\input{assets/tables/flawDmnDefs}
+
+\phantomsection{}\label{label-flaw-def}
+For example, \defLabelDistinct*{}. Definition flaws are quite self-explanatory, but
+% Definition flaws occur when a term's definition is incorrect, unclear, etc.;
+% this often occurs in glossaries or lists of terms from sources we investigate.
+% On the other hand,
+label flaws are harder to detect, despite occurring independently. Examples of
+label flaws include terms that share the same acronym or contain typos or
+redundant information. Sometimes, an author may use one term when they mean
+another; while one could argue that their ``internal'' definition of the term
+is the cause of this mistake, we consider this a label flaw where the wrong
+label is used and we would change the \emph{label} to fix it.
+\phantomsection{}\label{trace-flaw-def}%
+Additionally, some traceability information is flawed, such as how one document
+cites other or even what information is included \emph{within} a document
+(see \flawref{see-ref-missing})!
+
+\subsection{Rigidity}\label{rigidity}
+
+% Excluded from macro table since it is only used in this subsection
+\def\impKeywordsCode{\seeSrcCode{82167b7}{scripts/helpers.py}{21}{49}}
+
+When recording information from unstandardized sources written in natural
+language, there is a considerable degree of nuance that can get lost. For
+example, a source may provide data from which the reader can logically draw a
+conclusion, but may not state or prove this conclusion explicitly.
+% Most information in sources we investigate is explicit, but this is still a useful
+% distinction to make.
+We call this nuance ``rigidity'' and capture it when citing sources using
+(at least) one of the following keywords: ``implied'', ``inferred'',
+``can be'', ``sometimes'', ``should be'', ``ideally'', ``usually'', ``most'',
+``likely'', ``often'', ``if'', and ``although''% \impKeywordsCode{}%
+\utd{}. While these keywords often appear
+directly within the literature, we also use them to track rigidity without
+getting distracted by less relevant details by summarizing the relevant
+nuance. This allows us to provide a more complete picture of the state of
+the literature. All sources cited throughout this \docType{} support their
+respective claims explicitly unless specified otherwise, usually via one of the
+keywords given above\qtodo{Is this enough to satisfy Dr.~Smith's concern about
+    the rigidity of Synonym Relation sources?}. The following non-mutually
+exclusive reasons for information to be considered ``implicit'' emerged, and we
+use the keywords from the above list during data collection to identify them
+when performing later analysis \impKeywordsCode{}:
+
+%% Maybe convert to \paragraph ?
+\begin{enumerate}
+    \item \textbf{The information can be logically deduced but is not explicit.}
+          The implicit categorizations of ``test type'' by
+          \citet[pp.~53\==58]{Firesmith2015} (cf.\qtodo{Is this enough to
+              indicate this forward reference isn't that important?}~%
+          \Cref{tab:multiCats\ifnotpaper,tab:infMultiCats\fi}) are examples
+          of this. The given test approaches are not explicitly called ``test
+          types'', as the term is used more loosely to refer to different kinds
+          of testing---what should be called ``test approaches'' as per
+          \Cref{tab:ieeeCats}. However, this set of test approaches are
+          ``based on the associated quality characteristic and its associated
+          quality attributes'' \citetext{p.~53}, implying that they are
+          test types. Cases such as this are indicated by a question mark or
+          one of the following keywords: ``implied'', ``inferred'', or
+          ``likely''. \ifnotpaper \par
+              Additionally, if a test approach in \ourApproachGlossary{} has a
+              name ending in ``~(Testing)'' with a space, the word ``Testing''
+              might not be part of its name \emph{or} it might not be a test
+              approach at all! For example, the term ``legacy system
+              integration'' is used \ifnotpaper by \citeauthor{Gerrard2000a}
+                  (\citeyear[pp.~12\==13, Tab.~2]{Gerrard2000a};
+                  \citeyear[Tab.~1]{Gerrard2000b})\else in
+                  \cite[pp.~12\==13, Tab.~2]{Gerrard2000a},
+                  \cite[Tab.~1]{Gerrard2000b}\fi, but the more accurate
+              ``legacy system integration testing'' is used in
+              \citeyearpar[pp.~30\==31]{Gerrard2000b}. In other cases where a
+              term is \emph{not} explicitly labelled as ``testing'', we add the
+              suffix ``~(Testing)'' (when it makes sense to do so) and consider
+              the test approach to be implied. \fi
+    \item \textbf{The information is not universal.}
+          \refHelper \citet[p.~372\ifnotpaper, emphasis added\fi]{IEEE2017}%
+          \todo{OG ISO/IEC, 2014} \multiAuthHelper{define} ``regression
+          testing'' as ``testing required to determine that a change to a
+          system component has not adversely affected \emph{functionality,
+              reliability or performance} and has not introduced additional
+          defects''. While reliability testing, for example, is not
+          \emph{always} a subset of regression testing (since it may be
+          performed in other ways), it \emph{can be} accomplished by regression
+          testing, so there is sometimes a parent-child relation (defined in
+          \Cref{par-chd-rels}) between them. \ifnotpaper
+          \citet[p.~5-8\ifnotpaper, emphasis added\fi]{SWEBOK2024} provides a
+          similar list: ``regression testing \dots{} \emph{may} involve
+          functional and non-functional testing, such as reliability,
+          accessibility, usability, maintainability, conversion, migration, and
+          compatibility testing.'' \fi Cases such as this are indicated by one
+          of the following keywords: ``can be'', ``sometimes'', ``should be'',
+          ``ideally'', ``usually'', ``most'', ``likely'', ``often'', or ``if''.
+    \item \textbf{The information is conditional.}
+          As a more specific case of information not being universal, sometimes
+          prerequisities must be satisfied for information to apply. For
+          example, branch condition combination testing is equivalent
+          to (and is therefore a synonym of) exhaustive testing \emph{if} ``each
+          subcondition is viewed as a single input'' \citep[p.~464]{PetersAndPedrycz2000}.
+          Likewise, statement testing can be used for (and is therefore a child
+          of) unit testing \emph{if} there are ``less than 5000 lines of code''
+          \citetext{p.~481\todo{OG Miller et al., 1994}}. Cases such as this
+          are indicated by the keyword ``can be'', ``sometimes'', or ``if''.
+          \ifnotpaper
+              \par This can also apply more abstractly at the taxonomy level,
+              where a parent-child relation only makes sense if the parent test
+              approach exists. This occurs when a source gives a relation
+              between qualities but at least one of them does not have an
+              explicit approach associated with it (although it may be derived;
+              see \Cref{cov-test}). For example, \citet{ISO_IEC2023a} provides
+              relations involving dependability and modifiability; these are
+              tracked as qualities, not approaches, since only the qualities
+              are described. Since the prerequisite of the relevant approach
+              existing is \emph{not} satisfied, these relations are omitted
+              from any generated graphs (cf.\qtodo{Is this enough to indicate
+                  this forward reference isn't that important?}~\recFigs{}%
+              \latertodo{Include \Cref{fig:parChdGraphs} if it ends up being
+                  sufficient.}). \fi
+    \item \textbf{The information is dubious.}
+          This happens when there is reason to doubt the information provided.
+          If a source claims one thing that is not true, related claims lose
+          credibility. For example, the incorrect claim that ``white-box
+          testing'', ``grey-box testing'', and ``black-box testing'' are
+          synonyms for ``module testing'', ``integration testing'', and
+          ``system testing'', respectively, \ifnotpaper (see
+              \flawref{dubious-syns}) \fi casts doubt on the claim that
+          ``red-box testing'' is a synonym for ``acceptance testing''
+          \citep[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88}\ifnotpaper\
+              (see \flawref{dubious-red-box-syn})\fi. Doubts such as this
+          can also originate from other sources. \refHelper
+          \citet[p.~48]{Kam2008} gives ``user scenario testing'' as a synonym
+          of ``use case testing'', even though ``an actor [in use case testing]
+          can be \dots{} another system'' \citep[p.~20]{IEEE2021}, which does
+          not fit as well with the label ``user scenario testing''. However,
+          since a system can be seen as a ``user'' of the test item, this
+          synonym relation is treated as implicit instead of as an outright
+          flaw. Cases such as this are indicated by a question mark or
+          one of the following keywords: ``inferred'', ``should be'',
+          ``ideally'', ``likely'', ``if'', or ``although''.
+\end{enumerate}
+
+Any kind of information can be implicit, including the names,
+\approachFields{} of identified test approaches. Flaws based on implicit
+information are themselves implicit. By looking for the
+indicators of uncertainty mentioned above \impKeywordsCode{}, we can
+automatically detect implicit flaws when generating graphs and performing
+analysis (see \ifnotpaper \Cref{graph-gen,flaw-analysis}, respectively\else
+    \Cref{tools}\fi).
+%     These are used when creating
+% the glossaries to capture varying degrees of nuance, such as when a test
+% approach ``can be'' a child of another or is a synonym of another ``most of the
+% time'' but not always. 
+For example, we can view implicit flaws separately in
+\Cref{tab:flawMnfsts,tab:flawDmns}, since additional context may rectify them.
+\ifnotpaper Additionally, \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats}
+    contain relations that are explicit, implicit, and both; implicit relations
+    are marked by the phrases ``implied by'' and ``inferred from''. \fi
+
+\subsection{Credibility}\label{cred}
+
+In the same way we distinguish between the rigidity of information from
+different sources, we also wish to distinguish between the ``rigidity'' of the
+sources themselves! Of course, we do not want to overload terms, so we define a
+source as more ``credible'' if it:
+\begin{itemize}
+    \item has gone through a peer-review process,
+    \item is written by numerous, well-respected authors,
+    \item cites a (comparatively) large number of sources, and/or
+    \item is accepted and used in the field of software.
+\end{itemize}
+Sources may meet only some of these criteria, so we use our judgement (along
+with the format of the sources themselves) when comparing them
+(cf.~\Cref{sources}).
