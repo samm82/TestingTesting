@@ -90,7 +90,20 @@ system testing, and acceptance testing as examples of test levels \ifnotpaper
 although they may use a different term for ``test
 level'' (see \Cref{tab:ieeeCats}). Because of their widespread use and
 their usefulness in dividing the domain of software testing into more
-manageable subsets, we use these categories for now. These four subcategories
+manageable subsets, we use these categories for now.
+
+\ifnotpaper
+    % \afterpage{
+    \begin{landscape}
+        \begin{table*}[hbtp!]
+            % Moved earlier to display nicely in paper
+            \ieeeCatsTable{}
+        \end{table*}
+    \end{landscape}
+    % }
+\fi
+
+These four subcategories
 of test approaches can be loosely described by what they specify as
 follows\thesisissueref{21}:
 \begin{itemize}
@@ -112,52 +125,51 @@ accept a system or component'' \ifnotpaper (\citealp[p.~5]{IEEE2017}; similar
     \cite[p.~5]{IEEE2017}\fi, which requires the system or component to be
 developed and ready for testing.
 
-\ifnotpaper
-    \afterpage{
-        \begin{landscape}
-            \begin{table*}[hbtp!]
-                % Moved earlier to display nicely in paper
-                \ieeeCatsTable{}
-            \end{table*}
-        \end{landscape}
-    }
-\fi
+Based on how we observe test approaches being categorized in the literature, we
+make the following changes to the schema from \citet[Fig.~2]{IEEE2022}:
 
-In addition to the categories of approach, level, type, technique, and
-practice, \citet[Fig.~2]{IEEE2022} also \multiAuthHelper{include}
-``static testing'', which seems to be non-orthogonal to the others and
-thus less helpful for grouping test approaches.
-For example, static assertion checking (mentioned by \ifnotpaper
-    \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
-    \citealp[p.~343]{ChalinEtAl2006}, \citealp[p.~345]{LahiriEtAl2013}\fi) is a
-subapproach of assertion checking, which can also be performed dynamically.
-This parent-child relation (defined in \Cref{par-chd-rels}) means that static
-assertion checking may inherit assertion checking's inferred category of
-``practice''. Based on observations such as this, we categorize testing
-approaches, \emph{including} static ones, based on the remaining categories
-from \citet{IEEE2022}.
-\ifnotpaper However, since there are many ways to categorize test approaches
-    (see \Cref{tab:otherCats,tab:otherCategorizations}), considering static
-    testing as an orthogonal distinction could make sense in specific contexts
-    (see \Cref{static-test}).
+\begin{enumerate}
+    \item We omit ``static testing'' as a test approach category, since it
+          seems to be non-orthogonal to the others and thus less helpful for
+          grouping test approaches. \ifnotpaper Other categorization schemas
+              (see \Cref{alt-cats}) may consider static testing orthogonal, and
+              some may consider it out-of-scope entirely (see \Cref{static-test})! \fi
+    \item We introduce a non-orthogonal category of ``artifact''\thesisissueref{44,119,39}
+          since some terms can refer to the application of a test approach
+          \emph{as well as} the resulting document(s). Therefore, we do
+          \emph{not} consider approaches categorized as an artifact \emph{and}
+          another category as flaws\thesisissueref{119}, and as such omit them
+          from \Cref{multiCats}.
+\end{enumerate}
 
-\fi
-While we can categorize the vast majority of identified test approaches
-based on \citet{IEEE2022}'s categories, there are some outliers. For example,
-we categorize some test approaches as ``artifacts''\thesisissueref{44,119,39},
-since some terms can refer to the application of a
-test approach \emph{as well as} the resulting document(s). Therefore, we
-do \emph{not} consider these cases to violate our assumption that
-\citet{IEEE2022}'s categories are orthogonal and do not include them as flaws%
-\thesisissueref{119} in \Cref{multiCats}.
-\ifnotpaper
-    Additionally, we identify ``test metrics''\thesisissueref{21,22} that
-    describe methods for \emph{evaluating} testing as opposed to methods for
-    \emph{performing} it and are therefore out-of-scope. Instead,
-    we capture the related test approaches that seek to maximize these
-    metrics as subsets of coverage-driven testing (see \Cref{cov-test}) and
-    experience-based testing \citep[p.~34]{IEEE2022}.
-\fi
+% For example, static assertion checking (mentioned by \ifnotpaper
+%     \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
+%     \citealp[p.~343]{ChalinEtAl2006}, \citealp[p.~345]{LahiriEtAl2013}\fi) is a
+% subapproach of assertion checking, which can also be performed dynamically.
+% This parent-child relation (defined in \Cref{par-chd-rels}) means that static
+% assertion checking may inherit assertion checking's inferred category of
+% ``practice''. Based on observations such as this, we categorize testing
+% approaches, \emph{including} static ones, based on the remaining categories
+% from \citet{IEEE2022}.
+% \ifnotpaper However, since there are many ways to categorize test approaches
+%     (see \Cref{tab:otherCats,tab:otherCategorizations}), considering static
+%     testing as an orthogonal distinction could make sense in specific contexts
+%     (see \Cref{static-test}).
+
+% \fi
+% While we can categorize the vast majority of identified test approaches
+% based on \citet{IEEE2022}'s categories, there are some outliers. For example,
+% we categorize some test approaches as ``artifacts'',
+% since some terms can refer to the application of a
+% test approach \emph{as well as} the resulting document(s). Therefore,
+% \ifnotpaper
+%     Additionally, we identify ``test metrics''\thesisissueref{21,22} that
+%     describe methods for \emph{evaluating} testing as opposed to methods for
+%     \emph{performing} it and are therefore out-of-scope. Instead,
+%     we capture the related test approaches that seek to maximize these
+%     metrics as subsets of coverage-driven testing (see \Cref{cov-test}) and
+%     experience-based testing \citep[p.~34]{IEEE2022}.
+% \fi
 
 \subsubsection{Synonym Relations}\label{syn-rels}
 
