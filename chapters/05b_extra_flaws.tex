@@ -250,13 +250,14 @@
           all-\acsp{du-path} testing is only stronger than all-uses testing if
           there are infeasible paths, but \citet[p.~5\=/13]{SWEBOK2024} does
           not specify this caveat.
-    \item % Flaw count (WRONG, PARS): implied by {IEEE2021} | {PetersAndPedrycz2000}
+    \item % Flaw count (WRONG, PARS): {IEEE2021} {IEEE2017} {vanVliet2000} | implied by {PetersAndPedrycz2000}
           \refHelper \citet[Fig.~12.31]{PetersAndPedrycz2000} \ifnotpaper imply
           \else implies \fi that decision coverage is a child of both \acs{c-use}
           coverage \emph{and} \acs{p-use} coverage; this seems incorrect, since
-          decisions are the result of \acsp{p-use} (\emph{not} \acsp{c-use})
-          and only the \acs{p-use} relation is implied by
-          \citep[Fig.~F.1\todo{OG Reid 1996}]{IEEE2021}.
+          decisions are the result of \acsp{p-use} and \emph{not} \acsp{c-use}
+          (\citealp[pp.~5, 27]{IEEE2021}; \citeyear[p.~332\todo{OG 2015}]{IEEE2017};
+          \citealp[p.~424]{vanVliet2000}), and only the \acs{p-use} relation is
+          implied by \citet[Fig.~F.1\todo{OG Reid 1996}]{IEEE2021}.
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {SWEBOK2014} | {vanVliet2000}
           Acceptance testing is ``usually performed by the purchaser \dots{}
           with the \dots{} vendor'' \citep[p.~5]{IEEE2017}, ``may or may not
