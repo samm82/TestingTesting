@@ -130,7 +130,6 @@ ScenarioTesting -> UseCaseTesting[dir=none,color="blue"];
 UserScenarioTesting [label=<User<br/>Scenario<br/>Testing>,style="dotted"];
 ScenarioTesting -> UserScenarioTesting[dir=none,color="blue"];
 UseCaseTesting -> UserScenarioTesting[dir=none,color="blue"];
-StructurebasedTesting -> StructuralTesting[dir=none,color="green"];
 
 AdHocTesting -> ExperiencebasedTesting[color="blue"];
 AdaptiveRandomTesting -> RandomTesting[color="blue"];
@@ -283,6 +282,7 @@ StrongMutationTesting -> MutationTesting[color="maroon"];
 StrongMutationTesting -> FaultbasedTesting[color="maroon"];
 StructuralTesting -> StructurebasedTesting[color="maroon"];
 StructurebasedTesting -> ModelbasedTesting[color="green"];
+StructurebasedTesting -> StructuralTesting[color="maroon"];
 StuckKeyTesting -> RandomTesting[color="blue"];
 SymbolicExecution -> StructurebasedTesting[color="maroon"];
 SyntaxTesting -> SpecificationbasedTesting[color="green"];

@@ -350,13 +350,16 @@ for name, synonym in zip(names, synonyms):
                 nameDict[nameWithSource].append(rsyn)
             except KeyError:
                 nameDict[nameWithSource] = [rsyn]
-            # To only track relation one way and check inconsistencies
-            try:
-                if synSets[f"{fname} -> {fsyn}"] != getRelColor(syn):
-                    raise ValueError(
-                        f"Mismatch between rigidity of synonyms {fsyn} and {fname}")
-            except KeyError:
-                synSets[f"{fsyn} -> {fname}"] = getRelColor(syn)
+
+            # Track synonym relations one way and check inconsistencies
+            # EXCEPT for this specific manual case
+            if (fsyn, fname) != ("StructuralTesting", "StructurebasedTesting"):
+                try:
+                    if synSets[f"{fname} -> {fsyn}"] != getRelColor(syn):
+                        raise ValueError(
+                            f"Mismatch between rigidity of synonyms {fsyn} and {fname}")
+                except KeyError:
+                    synSets[f"{fsyn} -> {fname}"] = getRelColor(syn)
 
 nameDict.update(synDict)
 
@@ -532,6 +535,15 @@ parSynNotes = {
     #     {"footnote": "See \\Cref{perf-test-ambiguity}."},
     ("Use Case Testing", "Scenario Testing") :
         {"footnote": "\\ucstn{}"},
+    ("Structural Testing", "Structure-based Testing") :
+        {"footnote": "\\refHelper \\citet[p.~447]{PetersAndPedrycz2000} "
+         "\\multiAuthHelper{claim} that ``structural testing subsumes white "
+         "box testing'', but also \\multiAuthHelper{say} ``structure tests "
+         "are aimed at exercising the internal logic of a software system'' "
+         "and ``in white box testing \\dots, using detailed knowledge of code, "
+         "one creates a battery of tests in such a way that they exercise all "
+         "components of the code (say, statements, branches, paths)'' on the "
+         "same page!"},
     ("Organization-based Testing", "Role-based Testing") :
         {"footnote": "The distinction between organization- and role-based "
             "testing in \\citep[pp.~17, 37, 39]{Firesmith2015} seems "
