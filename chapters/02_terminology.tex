@@ -293,35 +293,56 @@ and software qualities (``subquality''\ifnotpaper; see \Cref{qual-test}\fi).
 
 \defRel{parent-child}{P}{directed relations between approach pairs} This
 relation should be irreflexive, asymmetric and transitive, making it a strict
-partial order, and a given $c$ may have more than one parent $p$.
-Based on what we observe in the literature,
-$P(c, p) = c \subset p \textrm{ or } c \Leftarrow p$. In other words,
-one of the following must be true:
-% There are many reasons two approaches may have a parent-child relation, such as:
+partial order, and a given given ``child'' approach $c$ may have more than one
+``parent'' approach $p$. This often manifests when a ``well-understood'' test
+approach $p$ is decomposed into smaller, independently performable approaches
+$c_1, \dots, c_n$, each with its own focus or nuance. This is often the case
+for hierarchies of approaches given in the literature \ifnotpaper
+    (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021};
+    \citealp{Firesmith2015})\else \cite{Firesmith2015},
+    \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi; see the graph of
+specification-based test approaches in \Cref{fig:specBasedGraph}.
 
-\begin{enumerate}
-    \item Everything described by $c$ is also described by $p$; $c \subset p$.
-          This is often the case when one ``well-understood'' subset of testing
-          can be decomposed into smaller, independently performable approaches,
-          each with its own focus or nuance. This is often the case for
-          hierarchies of approaches given in the literature \ifnotpaper
-              (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021};
-              \citealp{Firesmith2015})\else \cite{Firesmith2015},
-              \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi; we graph
-          the parent-child relations in the subdomain of specification-based
-          testing in \Cref{fig:specBasedGraph} as an example.
-    \item Completing $p$ implies that $c$ has also been completed; $c \Leftarrow p$.
-          This is really just a more specific case of the previous condition that
-          occurs when $c$'s adequacy criteria is already met by $p$. While
-          this relation only ``compares the thoroughness of test techniques, not
-          their ability to detect faults'' \citep[p.~434]{vanVliet2000}, it is
-          sufficient to constitute a parent-child relation. These may also be
-          represented as hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
-              \citealp[Fig.~13.17]{vanVliet2000})\else
-              \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}\fi; we graph the
-          parent-child relations in the subdomain of data flow testing in
-          \Cref{fig:subsumesGraph} as an example.
-\end{enumerate}
+This can also occur when $c$'s adequacy criteria is already satisfied by $p$.
+While this relation only ``compares the thoroughness of test techniques, not
+their ability to detect faults'' \citep[p.~434]{vanVliet2000}, it is
+sufficient to constitute a parent-child relation. These may also be
+represented as hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
+    \citealp[Fig.~13.17]{vanVliet2000})\else
+    \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}\fi; see the graph of
+data flow test approaches in \Cref{fig:subsumesGraph}.
+
+\parChdGraphs{}
+
+% Based on what we observe in the literature,
+% $P(c, p) = c \subset p \textrm{ or } c \Leftarrow p$. In other words,
+% one of the following must be true:
+% % There are many reasons two approaches may have a parent-child relation, such as:
+
+% \begin{enumerate}
+%     \item Everything described by $c$ is also described by $p$; $c \subset p$.
+%           This is often the case when one ``well-understood'' subset of testing
+%           can be decomposed into smaller, independently performable approaches,
+%           each with its own focus or nuance. This is often the case for
+%           hierarchies of approaches given in the literature \ifnotpaper
+%               (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021};
+%               \citealp{Firesmith2015})\else \cite{Firesmith2015},
+%               \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi; we graph
+%           the parent-child relations in the subdomain of specification-based
+%           testing in \Cref{fig:specBasedGraph} as an example.
+%     \item Completing $p$ implies that $c$ has also been completed; $c \Leftarrow p$.
+%           This is really just a more specific case of the previous condition that
+%           occurs when $c$'s adequacy criteria is already met by $p$. While
+%           this relation only ``compares the thoroughness of test techniques, not
+%           their ability to detect faults'' \citep[p.~434]{vanVliet2000}, it is
+%           sufficient to constitute a parent-child relation. These may also be
+%           represented as hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
+%               \citealp[Fig.~13.17]{vanVliet2000})\else
+%               \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}\fi; we graph the
+%           parent-child relations in the subdomain of data flow testing in
+%           \Cref{fig:subsumesGraph} as an example.
+% \end{enumerate}
+
 % \begin{enumerate}
 %     \item \textbf{One is a superset of the other.} In other words, for one
 %           (parent) test approach to be performed in its entirety, the other
@@ -372,7 +393,6 @@ one of the following must be true:
 %                 as able to ``be done manually \emph{or} using a tool''
 %                 \citeyearpar[p.~13\ifnotpaper, emphasis added\fi]{Gerrard2000a}.
 % \end{enumerate}
-\parChdGraphs{}
 
 \subsection{Flaws/Inconsistencies}\label{flaw-def}
 
