@@ -303,11 +303,14 @@ for hierarchies of approaches given in the literature \ifnotpaper
     \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi; see the graph of
 specification-based test approaches in \Cref{fig:specBasedGraph}.
 
-This can also occur when $c$'s adequacy criteria is already satisfied by $p$.
-While this relation only ``compares the thoroughness of test techniques, not
-their ability to detect faults'' \citep[p.~434]{vanVliet2000}, it is
-sufficient to constitute a parent-child relation. These may also be
-represented as hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
+Another possible way for a parent-child relation to occur is when $c$'s
+adequacy criteria is already satisfied by $p$. In other words, the completion
+of $p$ indicates that ``sufficient testing has been done'' in regards to $c$
+\citep[p.~402]{vanVliet2000}. While this metric only ``compares the
+thoroughness of test techniques, not their ability to detect faults''
+\citetext{p.~434}, it is sufficient to justify a parent-child relation
+between the two approaches. These relations may also be represented as
+hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
     \citealp[Fig.~13.17]{vanVliet2000})\else
     \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}\fi; see the graph of
 data flow test approaches in \Cref{fig:subsumesGraph}.
