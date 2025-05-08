@@ -8,7 +8,7 @@ standard by defining and using terms consistently. For example, before we can
 constructively describe the flaws in the literature, we need to define what
 we mean by ``flaw'' and its related terms (\Cref{flaw-def}). We also track if
 information found in our sources is more implicit (and therefore more
-subjective) by defining the notion of ``rigidity'' (\Cref{rigidity}) and
+subjective) by defining the notion of ``explicitness'' (\Cref{explicitness}) and
 similarly track the ``credibility'' of the sources themselves
 (\Cref{cred}). We make these distinctions to reduce how much our
 preconceptions affect our analysis (or at least make it more obvious to future
@@ -246,7 +246,7 @@ testing'', meaning they are synonyms. ``Black-box testing'' is likewise given
 under ``functional testing'' in \citeyearpar[p.~196]{IEEE2017}, meaning it is
 also a synonym for ``specification-based testing'' through transitivity%
 \qtodo{Is this clear/correct? Should I explain this more?}.
-However, these relations can also be less ``rigid'' (see \Cref{rigidity});
+However, these relations can also be less ``explicit'' (see \Cref{explicitness});
 ``functional testing'' is listed in a \emph{cf.} footnote to the glossary entry
 for ``specification-based testing'' \citeyearpar[p.~431]{IEEE2017}, which
 supports the previous claim but would not necessarily indicate a synonym
@@ -372,7 +372,7 @@ data flow test approaches in \Cref{fig:subsumesGraph}.
 %           their ability to detect faults'' \citetext{p.~434}, it is sufficient
 %           to consider one a child of the other in a sense. We capture this
 %           nuance by considering these parent-child relations implicit
-%           (see \Cref{rigidity}). As an example, we graph the parent-child
+%           (see \Cref{explicitness}). As an example, we graph the parent-child
 %           relations from \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
 %               \citealp[Fig.~13.17]{vanVliet2000}) \else
 %               \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}
@@ -488,7 +488,7 @@ Additionally, some traceability information is flawed, such as how one document
 cites other or even what information is included \emph{within} a document
 (see \flawref{see-ref-missing})!
 
-\subsection{Rigidity}\label{rigidity}
+\subsection{Explicitness}\label{explicitness}
 
 % Excluded from macro table since it is only used in this subsection
 \def\impKeywordsCode{\seeSrcCode{82167b7}{scripts/helpers.py}{21}{49}}
@@ -499,18 +499,18 @@ example, a source may provide data from which the reader can logically draw a
 conclusion, but may not state or prove this conclusion explicitly.
 % Most information in sources we investigate is explicit, but this is still a useful
 % distinction to make.
-We call this nuance ``rigidity'' and capture it when citing sources using
+We call this nuance ``explicitness'' and capture it when citing sources using
 (at least) one of the following keywords: ``implied'', ``inferred'',
 ``can be'', ``sometimes'', ``should be'', ``ideally'', ``usually'', ``most'',
 ``likely'', ``often'', ``if'', and ``although''% \impKeywordsCode{}%
 \utd{}. While these keywords often appear
-directly within the literature, we also use them to track rigidity without
+directly within the literature, we also use them to track explicitness without
 getting distracted by less relevant details by summarizing the relevant
 nuance. This allows us to provide a more complete picture of the state of
 the literature. All sources cited throughout this \docType{} support their
 respective claims explicitly unless specified otherwise, usually via one of the
 keywords given above\qtodo{Is this enough to satisfy Dr.~Smith's concern about
-    the rigidity of Synonym Relation sources?}. The following non-mutually
+    the explicitness of Synonym Relation sources?}. The following non-mutually
 exclusive reasons for information to be considered ``implicit'' emerged, and we
 use the keywords from the above list during data collection to identify them
 when performing later analysis \impKeywordsCode{}:
@@ -623,8 +623,8 @@ For example, we can view implicit flaws separately in
 
 \subsection{Credibility}\label{cred}
 
-In the same way we distinguish between the rigidity of information from
-different sources, we also wish to distinguish between the ``rigidity'' of the
+In the same way we distinguish between the explicitness of information from
+different sources, we also wish to distinguish between the ``explicitness'' of the
 sources themselves! Of course, we do not want to overload terms, so we define a
 source as more ``credible'' if it:
 \begin{itemize}

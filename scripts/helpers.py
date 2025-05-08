@@ -53,7 +53,7 @@ def isUnsure(name: str, only: bool = False) -> Optional[str]:
     return (sorted(outTerms, key=name.index, reverse=True)[0]
             if outTerms else None)
 
-class Rigidity(Enum):
+class Explicitness(Enum):
     EXP = auto()
     IMP = auto()
 
@@ -70,19 +70,19 @@ def getSources(s, bibtex: bool = False) -> list[tuple[str, str]]:
 
 def categorizeSources(sources: str):
     if sources.startswith(tuple(f"({imp}" for imp in IMPLICIT_KEYWORDS)):
-        return {Rigidity.IMP: getSources(sources)}
+        return {Explicitness.IMP: getSources(sources)}
     else:
         imps = {imp: sources.find(imp) for imp in IMPLICIT_KEYWORDS
                 if sources.find(imp) > 0}
         if imps:
             parts = sources.split(max(imps))
-            parsed = {Rigidity.EXP: getSources(parts[0])}
+            parsed = {Explicitness.EXP: getSources(parts[0])}
             # Exclude implicit elements that are also explicit
-            parsed[Rigidity.IMP] = [t for t in getSources(parts[1])
-                                    if t not in parsed[Rigidity.EXP]]
+            parsed[Explicitness.IMP] = [t for t in getSources(parts[1])
+                                    if t not in parsed[Explicitness.EXP]]
             return parsed
 
-        return {Rigidity.EXP: getSources(sources)}
+        return {Explicitness.EXP: getSources(sources)}
 
 def formatCount(n: int) -> str:
     try:

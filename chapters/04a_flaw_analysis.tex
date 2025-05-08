@@ -8,7 +8,7 @@ automated tools (\Cref{aug-flaw-analysis}). This gives us an overview of:
 \begin{itemize}
     \item how many flaws there are,
     \item how responsible each source tier (see \Cref{sources}) is for these flaws,
-    \item how obvious (or ``rigid''; see \Cref{rigidity}) these flaws are,
+    \item how obvious (or ``explicit''; see \Cref{explicitness}) these flaws are,
     \item how these flaws present themselves (see \Cref{flawMnfsts}), and
     \item in which knowledge domains these flaws occur (see \Cref{flawDmns}).
 \end{itemize}
@@ -168,15 +168,15 @@ and which bar(s) of \Cref{fig:flawBars} that the given flaw should count toward.
 We describe this process in more detail in \Cref{aug-flaw-analysis}.
 
 \phantomsection{}
-\label{auto-flaw-analysis-rigidity}
+\label{auto-flaw-analysis-explicitness}
 Alongside this citation information, we include keywords so we can assess how
-``rigid'' a piece of information is (see \Cref{rigidity}). This is useful when
+``explicit'' a piece of information is (see \Cref{explicitness}). This is useful when
 counting flaws, since they can be both explicit and implicit but should not be
 double counted as both\thesisissueref{83}! When counting flaws in
 \Cref{tab:flawMnfsts,tab:flawDmns}, each one is
-counted only for its most ``rigid'' manifestation (i.e., it will only increment
+counted only for its most ``explicit'' manifestation (i.e., it will only increment
 a value in the ``Implicit'' column if it is \emph{not} also explicit),
-similarly to how we generate graphs (see \Cref{graphRigid}).
+similarly to how we generate graphs (see \Cref{graphExplicit}).
 
 \subsubsection{Augmented Flaw Analysis}
 \label{aug-flaw-analysis}
@@ -245,12 +245,12 @@ organizations (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), we count
 this as an inconsistency between documents with the same set of authors in
 \Cref{fig:flawBars}, but only once to avoid double counting.
 
-We can also specify the rigidity (see \Cref{rigidity}) of a flaw by inserting
+We can also specify the explicitness (see \Cref{explicitness}) of a flaw by inserting
 the phrase ``implied by'' after the sources of explicit information and before
 those of implicit information. This information is parsed following the same
-rules described in \Cref{auto-flaw-analysis-rigidity} for automatically
+rules described in \Cref{auto-flaw-analysis-explicitness} for automatically
 detected flaws. Note that we only count implicit flaws if there is not an
-equivalent explicit flaw, as we do when generating graphs (\Cref{graphRigid}).
+equivalent explicit flaw, as we do when generating graphs (\Cref{graphExplicit}).
 \begin{displayquote}
     \texttt{\% Flaw count (CONTRA, DEFS): \{IEEE2021\} \{IEEE2017\} |
         \displayNL \{vanVliet2000\} implied by \{IEEE2021\}}
@@ -299,10 +299,10 @@ their textual equivalents when necessary to follow IEEE guidelines.
 \input{assets/tables/macrosCalc}
 
 \phantomsection{}\label{flawCounts}
-Additionally, we count flaws based on their manifestation and domain, rigidity,
-and source tier (defined in \Cref{flaw-def,rigidity,sources}, respectively).
+Additionally, we count flaws based on their manifestation and domain, explicitness,
+and source tier (defined in \Cref{flaw-def,explicitness,sources}, respectively).
 For each source tier, we create two files that each include both levels of
-rigidity: one for manifestations and one for domains. For example, flaws in
+explicitness: one for manifestations and one for domains. For example, flaws in
 standards are saved to \texttt{build/stdFlawMnfstBrkdwn.tex} by manifestation%
 % and \texttt{build/stdFlawDmnBrkdwn.tex} for domains
 . We then assign these data to macros (such as \macro{stdFlawMnfstBrkdwn}) to

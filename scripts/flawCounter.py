@@ -79,19 +79,19 @@ def getSrcCat(s, rel: bool = False) -> SrcCat:
         return SrcCat.TEXT
     return SrcCat.INFER if rel and not any(par in s for par in "()") else SrcCat.PAPER
 
-def getRigidity(rigidity: Rigidity | tuple[Rigidity]):
-    if isinstance(rigidity, tuple):
-        if any(r not in Rigidity for r in rigidity):
-            raise ValueError(f"Invalid rigidity value in {rigidity}.")
-        return Rigidity.IMP if Rigidity.IMP in rigidity else Rigidity.EXP
-    return rigidity
+def getExplicitness(explicitness: Explicitness | tuple[Explicitness]):
+    if isinstance(explicitness, tuple):
+        if any(e not in Explicitness for e in explicitness):
+            raise ValueError(f"Invalid explicitness value in {explicitness}.")
+        return Explicitness.IMP if Explicitness.IMP in explicitness else Explicitness.EXP
+    return explicitness
 
 def formatOutput(ls):
     return "%\n".join(map(str, ls))
 
 class ExpImpCounter:
     def __init__(self):
-        self.dict = {k: 0 for k in list(Rigidity)}
+        self.dict = {k: 0 for k in list(Explicitness)}
     
     def __str__(self):
         return str(tuple(self.dict.values()))
@@ -102,8 +102,8 @@ class ExpImpCounter:
     def output(self):
         return formatOutput(self.dict.values())
 
-    def addFlaw(self, rigidity: Rigidity | list[Rigidity]):
-        self.dict[getRigidity(rigidity)] += 1
+    def addFlaw(self, explicitness: Explicitness | list[Explicitness]):
+        self.dict[getExplicitness(explicitness)] += 1
 
 class FlawCounter:
     def __init__(self, value):
@@ -262,7 +262,7 @@ def outputFlaws():
             # Note that pieAdded is used based on the previous presentation of flaws by source tier
             # As of #138, this is now done as a table, but this naming convention is still used
             pieAdded, tableAdded = set(), set()
-            def updateCounters(source, pieSec: str, r):
+            def updateCounters(source, pieSec: str, e):
                 nonlocal flawDmn, flawMnfst
 
                 if type(source) is tuple:
@@ -277,15 +277,15 @@ def outputFlaws():
                     return
 
                 if DEBUG:
-                    print(source, sourceCat, pieSec, r)
+                    print(source, sourceCat, pieSec, e)
 
                 if srcTuple not in tableAdded:
                     if type(flawDict[sourceCat].flawDmns[flawDmn]) is int:
                         flawDict[sourceCat].flawDmns[flawDmn] += 1
                         flawDict[sourceCat].flawMnfsts[flawMnfst] += 1
                     else:
-                        flawDict[sourceCat].flawDmns[flawDmn].addFlaw(r)
-                        flawDict[sourceCat].flawMnfsts[flawMnfst].addFlaw(r)
+                        flawDict[sourceCat].flawDmns[flawDmn].addFlaw(e)
+                        flawDict[sourceCat].flawMnfsts[flawMnfst].addFlaw(e)
                     tableAdded.add(srcTuple)
                 if source not in pieAdded:
                     try:
@@ -301,31 +301,31 @@ def outputFlaws():
 
             GROUP_SIZE = 2
             if len(sourceDicts) == 1:
-                for r, sources in sourceDicts[0].items():
-                    if sources and isinstance(r, Rigidity):
-                        updateCounters(str(list(map("".join, sources))), "groundTruth", r)
+                for e, sources in sourceDicts[0].items():
+                    if sources and isinstance(e, Explicitness):
+                        updateCounters(str(list(map("".join, sources))), "groundTruth", e)
             else:
                 for dicts in itertools.combinations(sourceDicts, r=GROUP_SIZE):
-                    for r in itertools.product(list(Rigidity), repeat=GROUP_SIZE):
+                    for e in itertools.product(list(Explicitness), repeat=GROUP_SIZE):
                         try:
-                            sets = [set(s[xi]) for s, xi in zip(dicts, r)]
+                            sets = [set(s[xi]) for s, xi in zip(dicts, e)]
                         except KeyError:
                             continue
 
                         for source in inPairs(sets, sFunc="".join):
-                            updateCounters(source, "withinDoc", r)
+                            updateCounters(source, "withinDoc", e)
 
                         for author in inPairs(sets, sFunc=lambda x: x[0]):
                             yearSets = [{y for a, y in s if a == author} for s in sets]
                             # Don't double count flaws within a single document
                             if (reduce(operator.mul, map(len, yearSets)) >
                                     len(inPairs(yearSets))):
-                                updateCounters(author, "withinAuth", r)
+                                updateCounters(author, "withinAuth", e)
 
                         for tup in {tuple(sorted([ai[0], bi[0]], key=getSrcCat))
                                 for a, b in itertools.combinations(sets, 2)
                                 for ai in a for bi in b if ai[0] != bi[0]}:
-                            updateCounters(tup, "betweenCats", r)
+                            updateCounters(tup, "betweenCats", e)
             if DEBUG:
                 printFlaws()
 

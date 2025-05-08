@@ -303,7 +303,7 @@ def addToIterable(s, iterable, key=key):
     else:
         raise ValueError(f"addToIterable unimplemented for {type(iterable)}")
 
-# Returns a tuple with the color for the rigid relations (if any),
+# Returns a tuple with the color for the explicit relations (if any),
 # then for the unsure ones (if any)
 def getRelColor(name: str) -> tuple[str]:
     def getSourceColor(s):
@@ -357,7 +357,7 @@ for name, synonym in zip(names, synonyms):
                 try:
                     if synSets[f"{fname} -> {fsyn}"] != getRelColor(syn):
                         raise ValueError(
-                            f"Mismatch between rigidity of synonyms {fsyn} and {fname}")
+                            f"Mismatch between explicitness of synonyms {fsyn} and {fname}")
                 except KeyError:
                     synSets[f"{fsyn} -> {fname}"] = getRelColor(syn)
 
@@ -846,13 +846,13 @@ if "Example" in csvFilename:
     writeDotFile(categoryDict["Static" if "Static" in csvFilename else "Approach"][1],
                  f"{csvFilename.split("/")[-1][:-4]}Graph")
     
-    rigidDict = ({"ExampleGlossary": categoryDict["Approach"]}
+    explicitDict = ({"ExampleGlossary": categoryDict["Approach"]}
                   if csvFilename.split("/")[-1] == "ExampleGlossary.csv"
                   else dict())
 else:
-    rigidDict = categoryDict
+    explicitDict = categoryDict
 
-for key, value in rigidDict.items():
+for key, value in explicitDict.items():
     lines = value[1]
     if key != "ExampleGlossary":
         writeDotFile(lines, f"{key.lower()}Graph")
@@ -862,7 +862,7 @@ for key, value in rigidDict.items():
                     for flag, val in {(Flag.STYLE, "dashed"), (Flag.COLOR, "grey")}])
 
     writeDotFile([c for c in lines if all(x not in c for x in unsure)],
-                f"rigid{key}Graph")
+                f"exp{key}Graph")
 
 SYN = "syn"
 class CustomGraph:
