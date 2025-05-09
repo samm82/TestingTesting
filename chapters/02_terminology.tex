@@ -518,14 +518,15 @@ information can be \emph{not} explicit that we observe in the literature.
 Despite ``implicit'' only describing the first of these cases, we use it
 (as well as ``implied by'' when describing sources of information) as a
 shorthand for all ``not explicit'' manifestations throughout this \docType{}
-for clarity.\qtodo{Is this OK?} The following non-mutually exclusive reasons
-for information to be considered ``implicit'' emerged, and we use the keywords
-from the above list during data collection to identify them when performing
-later analysis \impKeywordsCode{}:
+for clarity.\qtodo{Is this OK?} The following are non-mutually exclusive
+examples from the literature of ways that information can be ``implicit'';
+we use the keywords from the above list during data collection to identify
+them when performing later analysis \impKeywordsCode{}:
 
 %% Maybe convert to \paragraph ?
-\begin{enumerate}
-    \item \textbf{The information can be logically deduced but is not explicit.}
+\begin{description}
+    \item[1. The information follows logically.]
+          \phantomsection{}\label{imp-case-one}~\\
           The implicit categorizations of ``test type'' by
           \citet[pp.~53\==58]{Firesmith2015} (cf.\qtodo{Is this enough to
               indicate this forward reference isn't that important?}~%
@@ -553,7 +554,8 @@ later analysis \impKeywordsCode{}:
               term is \emph{not} explicitly labelled as ``testing'', we add the
               suffix ``~(Testing)'' (when it makes sense to do so) and consider
               the test approach to be implied. \fi
-    \item \textbf{The information is not universal.}
+    \item [2. The information is not universal.]
+          \phantomsection{}\label{imp-case-two}~\\
           \refHelper \citet[p.~372\ifnotpaper, emphasis added\fi]{IEEE2017}%
           \todo{OG ISO/IEC, 2014} \multiAuthHelper{define} ``regression
           testing'' as ``testing required to determine that a change to a
@@ -571,8 +573,8 @@ later analysis \impKeywordsCode{}:
           compatibility testing.'' \fi Cases such as this are indicated by one
           of the following keywords: ``can be'', ``sometimes'', ``should be'',
           ``ideally'', ``usually'', ``most'', ``likely'', ``often'', or ``if''.
-          \ifnotpaper
-    \item \textbf{The information is conditional.}
+    \item[3. The information is \ifnotpaper conditional\else dubious\fi.]
+          \phantomsection{}\label{imp-case-three}~\\ \ifnotpaper
           As a more specific case of information not being universal, sometimes
           prerequisites must be satisfied for information to apply. For
           example, branch condition combination testing is equivalent
@@ -597,8 +599,8 @@ later analysis \impKeywordsCode{}:
                   this forward reference isn't that important?}~\recFigs{}%
               \latertodo{Include \Cref{fig:parChdGraphs} if it ends up being
                   sufficient.}). \fi
-          \fi
-    \item \textbf{The information is dubious.}
+    \item[4. The information is dubious.]
+          \phantomsection{}\label{imp-case-four}~\\ \fi
           This happens when there is reason to doubt the information provided.
           If a source claims one thing that is not true, related claims lose
           credibility. For example, \redBoxFlaw*{} Doubts such as this
@@ -612,7 +614,7 @@ later analysis \impKeywordsCode{}:
           flaw. Cases such as this are indicated by a question mark or
           one of the following keywords: ``inferred'', ``should be'',
           ``ideally'', ``likely'', ``if'', or ``although''.
-\end{enumerate}
+\end{description}
 
 As our research focuses on the flaws present in the literature, the
 explicitness of information affects how seriously we take it. We call flaws

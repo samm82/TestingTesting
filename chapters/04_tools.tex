@@ -72,7 +72,7 @@ be captured by our methodology, at least one term will have its own row in its
 relevant glossary. We then decide whether to include or exclude the synonym
 pair from our generated graphs based on the following possible cases:
 \begin{description}
-    \item[1. (Excluded)] \phantomsection{}\label{case-one}
+    \item[1. (Excluded)] \phantomsection{}\label{syn-case-one}
           \hfill \ifnotpaper
               $\left\{ \{x, y\} \in S \mid x \in A \,\textrm{ xor }\, y \in A \right\}$
           \fi \break
@@ -82,7 +82,7 @@ pair from our generated graphs based on the following possible cases:
           as an alternate name inside the node of its partner, but we do not
           want to clutter our graphs unnecessarily.
 
-    \item[2. (Included)] \phantomsection{}\label{case-two}
+    \item[2. (Included)] \phantomsection{}\label{syn-case-two}
           \hfill \ifnotpaper
               $\left\{ \{x, y\} \in S \mid x, y \in A \right\}$
           \fi \break
@@ -93,9 +93,9 @@ pair from our generated graphs based on the following possible cases:
           etc.)\ that should likely be distinct. This could, however, also
           indicate that the two terms are interchangeable and could be merged
           % TODO: pretty hacky
-          into one row, which would result in \hyperref[case-one]{Case 1} above.
+          into one row, which would result in \hyperref[syn-case-one]{Case 1} above.
 
-    \item[3. (Included)] \phantomsection{}\label{case-three}
+    \item[3. (Included)] \phantomsection{}\label{syn-case-three}
           \hfill \ifnotpaper
               $\left\{ \{x, z\}, \{y, z\} \in S \mid x, y \in A \,\textrm{ and }\,
                   z \notin A \right\}$
