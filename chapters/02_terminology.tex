@@ -7,12 +7,12 @@ robustness in the literature, we do our best to hold ourselves to a higher
 standard by defining and using terms consistently. For example, before we can
 constructively describe the flaws in the literature, we need to define what
 we mean by ``flaw'' and its related terms (\Cref{flaw-def}). We also track if
-information found in our sources is more implicit (and therefore more
-subjective) by defining the notion of ``explicitness'' (\Cref{explicitness}) and
-similarly track the ``credibility'' of the sources themselves
-(\Cref{cred}). We make these distinctions to reduce how much our
-preconceptions affect our analysis (or at least make it more obvious to future
-researchers). To further prevent bias, we do not invent
+information found in our sources is more implicit (and therefore requires some
+degree of judgement\thesisissueref{176}) by defining the notion of
+``explicitness'' (\Cref{explicitness}) and similarly track the ``credibility''
+of the sources themselves (\Cref{cred}). We make these distinctions to reduce
+how much our preconceptions affect our analysis (or at least make it more
+obvious to future researchers). To further prevent bias, we do not invent
 or add our own classifications or kinds of relations. Instead, the notions of
 test approach categories (\Cref{cats-def}), synonyms (\Cref{syn-rels}), and
 parent-child relations (\Cref{par-chd-rels}) we present here
@@ -246,7 +246,7 @@ testing'', meaning they are synonyms. ``Black-box testing'' is likewise given
 under ``functional testing'' in \citeyearpar[p.~196]{IEEE2017}, meaning it is
 also a synonym for ``specification-based testing'' through transitivity%
 \qtodo{Is this clear/correct? Should I explain this more?}.
-However, these relations can also be less ``explicit'' (see \Cref{explicitness});
+However, these relations can also be implicit (see \Cref{explicitness});
 ``functional testing'' is listed in a \emph{cf.} footnote to the glossary entry
 for ``specification-based testing'' \citeyearpar[p.~431]{IEEE2017}, which
 supports the previous claim but would not necessarily indicate a synonym
@@ -510,7 +510,10 @@ nuance. This allows us to provide a more complete picture of the state of
 the literature. All sources cited throughout this \docType{} support their
 respective claims explicitly unless specified otherwise, usually via one of the
 keywords given above\qtodo{Is this enough to satisfy Dr.~Smith's concern about
-    the explicitness of Synonym Relation sources?}. The following non-mutually
+    the explicitness of Synonym Relation sources?}.
+
+Any kind of information can be implicit, including the names,
+\approachFields{} of identified test approaches. The following non-mutually
 exclusive reasons for information to be considered ``implicit'' emerged, and we
 use the keywords from the above list during data collection to identify them
 when performing later analysis \impKeywordsCode{}:
@@ -604,18 +607,21 @@ when performing later analysis \impKeywordsCode{}:
           ``ideally'', ``likely'', ``if'', or ``although''.
 \end{enumerate}
 
-Any kind of information can be implicit, including the names,
-\approachFields{} of identified test approaches. Flaws based on implicit
-information are themselves implicit. By looking for the
-indicators of uncertainty mentioned above \impKeywordsCode{}, we can
-automatically detect implicit flaws when generating graphs and performing
+As our research focuses on the flaws present in the literature, the
+explicitness of information affects how seriously we take it. We call flaws
+based on explicit information ``objective'', since they are self-evident in
+the literature. On the other hand, we call flaws based on implicit information
+``subjective'', since some level of judgement is required to assess whether
+these flaws are \emph{actually} problematic\thesisissueref{176}. By looking for
+the indicators of uncertainty mentioned above \impKeywordsCode{}, we can
+automatically detect subjective flaws when generating graphs and performing
 analysis (see \ifnotpaper \Cref{graph-gen,flaw-analysis}, respectively\else
     \Cref{tools}\fi).
 %     These are used when creating
 % the glossaries to capture varying degrees of nuance, such as when a test
 % approach ``can be'' a child of another or is a synonym of another ``most of the
 % time'' but not always. 
-For example, we can view implicit flaws separately in
+For example, we can view subjective flaws separately in
 \Cref{tab:flawMnfsts,tab:flawDmns}, since additional context may rectify them.
 \ifnotpaper Additionally, \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats}
     contain relations that are explicit, implicit, and both; implicit relations

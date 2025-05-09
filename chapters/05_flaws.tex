@@ -37,7 +37,7 @@ in \Cref{tab:flawMnfsts,tab:flawDmns}, respectively, where a given
 row corresponds to the number of flaws either within that source tier and/or
 with a ``more credible'' one (i.e., a previous row in the table; see
 \Cref{cred,sources}). We also group these flaws by their explicitness (defined
-in \Cref{explicitness}) by counting (Exp)licit and (Imp)licit flaws separately.
+in \Cref{explicitness}) by counting (Obj)ective and (Sub)jective flaws separately.
 Since we give each flaw a manifestation \emph{and} a domain, the totals per
 source and grand totals in these tables are equal. As an example, \tourFlaw*{}.
 This is a contradictory definition, so it appears \ifnotpaper as both \else in
@@ -293,7 +293,7 @@ flaws\ifnotpaper, such as the following: \input{build/flawDmnPars} \par \else;
 for example, \perfSecParFlaw*{}\fi \phantomsection{}\label{selfPars}%
 Additionally, some self-referential definitions imply that a test
 approach is a parent of itself. Since these are by nature self-contained within
-a given source, these are counted \emph{once} as explicit flaws within
+a given source, these are counted \emph{once} as objective flaws within
 their sources in \Cref{tab:flawMnfsts,tab:flawDmns}. \ifnotpaper We identify
     the following \selfCycleCount{} examples through automatic analysis of our
     generated graphs (see \Cref{selfCycles}):
