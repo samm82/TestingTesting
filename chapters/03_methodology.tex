@@ -234,7 +234,14 @@ testability are all subqualities of maintainability \ifnotpaper
     (\citealp[pp.~5, 22]{IEEE2022}; \citeyear[p.~38, Tab.~A.1]{IEEE2021})\else
     \cite[pp.~5, 22]{IEEE2022}, \cite[p.~38, Tab.~A.1]{IEEE2021}\fi. This sets
 a ``precedent'' for each of these subqualities having its own associated test
-type (e.g., reusability testing).
+type (e.g., reusability testing). \ifnotpaper
+    Sometimes, the literature provides a relation between qualities where at
+    least one of them does not have an explicit approach associated with it
+    (although it may be derived; see \Cref{cov-test}). For example,
+    \citet{ISO_IEC2023a} provides relations involving dependability and
+    modifiability; since only the qualities are described, we do not record
+    their implicit related approaches and omit these relations when generating
+    \recFigs{} (as described in \Cref{graph-gen}).\fi
 
 We use heuristics to guide this process for all three
 glossaries to increase confidence that all terms are identified, paying
