@@ -1,0 +1,36 @@
+% Currently only displayed in thesis
+
+\begin{table}[tb]
+    \centering
+    \begin{talltblr}[
+        % note{a} = {We use \texttt{WRONG} here to avoid clashing with \texttt{MISS}.},
+        caption = {Breakdown of implicit keywords used for analyzing explicitness
+                (defined in \Cref{explicitness}).},
+        label = {tab:expAnalysis}
+        ]{
+        colspec={|X[c,m]|Q[c,m]Q[c,m]Q[c,m]Q[c,m]|},
+        % column{3} = {font=\ttfamily}, row{1} = {font=\normalfont},
+        width = \columnwidth, rowhead = 1
+        }
+        \hline
+        \thead{Keyword} & \thead{\hyperref[imp-case-one]{\makecell{Follows             \\Logically}}}
+                        & \thead{\hyperref[imp-case-two]{Not Universal}}
+                        & \thead{\hyperref[imp-case-three]{Conditional}}
+                        & \thead{\hyperref[imp-case-four]{Dubious}}                    \\
+        \hline
+        ``implied''     & X                                                &   &   &   \\
+        ``inferred''    & X                                                &   &   & X \\
+        ``can be''      &                                                  & X & X &   \\
+        ``sometimes''   &                                                  & X & X &   \\
+        ``should be''   &                                                  & X &   & X \\
+        ``ideally''     &                                                  & X &   & X \\
+        ``usually''     &                                                  & X &   &   \\
+        ``most''        &                                                  & X &   &   \\
+        ``likely''      & X                                                & X &   & X \\
+        ``often''       &                                                  & X &   &   \\
+        ``if''          &                                                  & X & X & X \\
+        ``although''    &                                                  &   &   & X \\
+        ``~(Testing)''  & X                                                &   &   &   \\
+        \hline
+    \end{talltblr}
+\end{table}
