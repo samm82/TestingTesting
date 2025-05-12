@@ -25,6 +25,21 @@
     \subsection{Explicitness Analysis}\label{exp-analysis}
     \input{assets/tables/expAnalysis}
 
+    Regarding the last entry in \Cref{tab:expAnalysis}, if a test approach in
+    \ourApproachGlossary{} has a name ending in ``~(Testing)'' (space
+    included), then the word ``Testing'' might not be part of its name
+    \emph{or} it might not be a test approach at all! For example, the term
+    ``legacy system integration'' is used in \ifnotpaper
+        \citeauthor{Gerrard2000a} (\citeyear[pp.~12\==13, Tab.~2]{Gerrard2000a};
+        \citeyear[Tab.~1]{Gerrard2000b})\else
+        \cite[pp.~12\==13, Tab.~2]{Gerrard2000a},
+        \cite[Tab.~1]{Gerrard2000b}\fi, but the more accurate
+    ``legacy system integration testing'' is used in
+    \citeyearpar[pp.~30\==31]{Gerrard2000b}. In other cases where a
+    term is \emph{not} explicitly labelled as ``testing'', we add the
+    suffix ``~(Testing)'' (when it makes sense to do so) and consider
+    the test approach to be implied.
+
     \subsection{Approach Graph Generation}\label{graph-gen}
 \fi
 
