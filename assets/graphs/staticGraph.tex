@@ -58,7 +58,7 @@ Walkthroughs -> StructuredWalkthroughs[dir=none,color="blue"];
 AdHocReviews -> Reviews[color="grey"];
 AnomalyTesting [label=<Anomaly<br/>Testing>,style="filled"];
 AnomalyTesting -> StaticTesting[color="maroon"];
-AttheBeginningTesting [label=<At-the-Beginning<br/>Testing>,style="dashed,filled",color=grey];
+AttheBeginningTesting [label=<At-the-Beginning<br/>Testing>,style="filled",color=grey];
 AttheBeginningTesting -> StaticTesting[style="dashed"];
 Audits -> StaticAnalysis[style="dashed",color="blue"];
 Audits -> StaticTesting[style="dashed",color="green"];
@@ -126,9 +126,9 @@ PerformanceTesting -> StaticAnalysis;
 PhysicalConfigurationAudits -> Audits[color="green"];
 ProofsofCorrectness -> StaticAnalysis[color="maroon"];
 ProofsofCorrectness -> StaticTesting[style="dashed",color="maroon"];
-ProofsofPartialCorrectness [label=<Proofs<br/>of<br/>Partial<br/>Correctness>,style="dashed,filled",color=grey];
+ProofsofPartialCorrectness [label=<Proofs<br/>of<br/>Partial<br/>Correctness>,style="filled",color=grey];
 ProofsofPartialCorrectness -> StaticTesting[style="dashed",color="grey"];
-ProofsofTotalCorrectness [label=<Proofs<br/>of<br/>Total<br/>Correctness>,style="dashed,filled",color=grey];
+ProofsofTotalCorrectness [label=<Proofs<br/>of<br/>Total<br/>Correctness>,style="filled",color=grey];
 ProofsofTotalCorrectness -> StaticTesting[style="dashed",color="grey"];
 RequirementsAnimation [label=<Requirements<br/>Animation>,style="filled"];
 RequirementsAnimation -> StaticTesting;
@@ -229,8 +229,8 @@ subgraph cluster_legend {
         chd [label="Child"];
         par [label="Parent"];
         chd -> par [label="                "];
-        syn1 [label="Synonym"];
-        syn2 [label="Synonym"];
+        syn1 [label="Synonym 1"];
+        syn2 [label="Synonym 2"];
         syn1 -> syn2 [dir=none label="                "];
     }
     {
@@ -238,8 +238,8 @@ subgraph cluster_legend {
         imp1 [label="Child"];
         imp2 [label=<Implied<br/>Parent>];
         imp1 -> imp2 [style="dashed" label="                "]
-        imp3 [label=<Implied<br/>Synonym>];
-        imp4 [label=<Implied<br/>Synonym>];
+        imp3 [label=<Implied<br/>Synonym 1>];
+        imp4 [label=<Implied<br/>Synonym 2>];
         imp3 -> imp4 [style="dashed" dir=none label="                "]
     }
     {

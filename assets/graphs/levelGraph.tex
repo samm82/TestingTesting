@@ -162,8 +162,8 @@ subgraph cluster_legend {
         chd [label="Child"];
         par [label="Parent"];
         chd -> par [label="                "];
-        syn1 [label="Synonym"];
-        syn2 [label="Synonym"];
+        syn1 [label="Synonym 1"];
+        syn2 [label="Synonym 2"];
         syn1 -> syn2 [dir=none label="                "];
     }
     {
@@ -171,8 +171,8 @@ subgraph cluster_legend {
         imp1 [label="Child"];
         imp2 [label=<Implied<br/>Parent>];
         imp1 -> imp2 [style="dashed" label="                "]
-        imp3 [label=<Implied<br/>Synonym>];
-        imp4 [label=<Implied<br/>Synonym>];
+        imp3 [label=<Implied<br/>Synonym 1>];
+        imp4 [label=<Implied<br/>Synonym 2>];
         imp3 -> imp4 [style="dashed" dir=none label="                "]
     }
     {

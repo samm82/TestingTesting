@@ -19,7 +19,7 @@ ArchitectTesting [label=<Architect<br/>Testing>,color=grey];
 AssertionChecking [label=<Assertion<br/>Checking>,color=grey];
 AsynchronousTesting [label=<Asynchronous<br/>Testing>,color=grey];
 Attacks [label=<Attacks>];
-AttheBeginningTesting [label=<At-the-Beginning<br/>Testing>,style="dashed",color=grey];
+AttheBeginningTesting [label=<At-the-Beginning<br/>Testing>,color=grey];
 AttheEndTesting [label=<At-the-End<br/>Testing>,color=grey];
 Audits [label=<Audits>,color=grey];
 AutomatedTesting [label=<Automated<br/>Testing>];
@@ -59,7 +59,7 @@ LifecyclebasedTesting [label=<Lifecycle-based<br/>Testing>,color=grey];
 LinearScripting [label=<Linear<br/>Scripting>,style="dashed"];
 LocalTesting [label=<Local<br/>Testing>,color=grey];
 LoopbackTesting [label=<Loopback<br/>Testing>,color=grey];
-MachineLearningAssistedTesting [label=<Machine<br/>Learning-Assisted<br/>Testing>,style="dashed",color=grey];
+MachineLearningAssistedTesting [label=<Machine<br/>Learning-Assisted<br/>Testing>,color=grey];
 ManualTesting [label=<Manual<br/>Testing>];
 MathematicalbasedTesting [label=<Mathematical-based<br/>Testing>];
 ModelbasedTesting [label=<Model-based<br/>Testing>];
@@ -224,8 +224,8 @@ subgraph cluster_legend {
         chd [label="Child"];
         par [label="Parent"];
         chd -> par [label="                "];
-        syn1 [label="Synonym"];
-        syn2 [label="Synonym"];
+        syn1 [label="Synonym 1"];
+        syn2 [label="Synonym 2"];
         syn1 -> syn2 [dir=none label="                "];
     }
     {
@@ -233,8 +233,8 @@ subgraph cluster_legend {
         imp1 [label="Child"];
         imp2 [label=<Implied<br/>Parent>];
         imp1 -> imp2 [style="dashed" label="                "]
-        imp3 [label=<Implied<br/>Synonym>];
-        imp4 [label=<Implied<br/>Synonym>];
+        imp3 [label=<Implied<br/>Synonym 1>];
+        imp4 [label=<Implied<br/>Synonym 2>];
         imp3 -> imp4 [style="dashed" dir=none label="                "]
     }
         imp5 [label=<Implied<br/>Term> style="dashed"]

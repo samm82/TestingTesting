@@ -62,6 +62,8 @@ class SrcCat(AutoNumberEnum):
 
 # rel == True if the SrcCat is used for coloring relations
 def getSrcCat(s, rel: bool = False) -> SrcCat:
+    if "(infer" in s:
+        return SrcCat.INFER
     if any(std in s for std in {"IEEE", "ISO", "IEC"}):
         return SrcCat.STD
     if any(metastd in s for metastd in

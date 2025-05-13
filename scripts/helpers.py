@@ -22,7 +22,7 @@ INTERNAL_REFS = {"tab:"}
 ONLY_IEEE = {"2012"}
 
 # Used in multiple files
-IMPLICIT_KEYWORDS = ["implied", "inferred", "can be", "sometimes", "should be",
+IMPLICIT_KEYWORDS = ["implied", "can be", "sometimes", "should be",
                      "ideally", "usually", "most", "likely", "often", "if",
                      "although"]
 warned_multi_unsure = set()

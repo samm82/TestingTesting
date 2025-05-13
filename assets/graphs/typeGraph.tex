@@ -12,7 +12,7 @@ rankdir=BT;
 start [style="invis"];
 
 ABTesting [label=<A/B<br/>Testing>,color=grey];
-AbsoluteCorrectnessTesting [label=<Absolute<br/>Correctness<br/>Testing>,style="dashed",color=grey];
+AbsoluteCorrectnessTesting [label=<Absolute<br/>Correctness<br/>Testing>,color=grey];
 AccessControlTesting [label=<Access<br/>Control<br/>Testing>,style="dashed"];
 AccessibilityTesting [label=<Accessibility<br/>Testing>];
 AlphaTesting [label=<Alpha<br/>Testing>,style="dashed"];
@@ -46,7 +46,7 @@ FailoverRecoveryTesting [label=<Failover/Recovery<br/>Testing>];
 FailureToleranceTesting [label=<Failure<br/>Tolerance<br/>Testing>,style="dashed"];
 FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>,style="dashed"];
 FlexibilityTesting [label=<Flexibility<br/>Testing>,style="dashed"];
-FullConformanceTesting [label=<Full<br/>Conformance<br/>Testing>,style="dashed",color=grey];
+FullConformanceTesting [label=<Full<br/>Conformance<br/>Testing>,color=grey];
 FunctionalSuitabilityTesting [label=<Functional<br/>Suitability<br/>Testing>];
 FunctionalTesting [label=<Functional<br/>Testing>];
 FunctionalityTesting [label=<Functionality<br/>Testing>,style="dashed"];
@@ -77,7 +77,7 @@ RaceConditionTesting [label=<Race<br/>Condition<br/>Testing>,color=grey];
 RecoverabilityTesting [label=<Recoverability<br/>Testing>,style="dashed"];
 RecoveryTesting [label=<Recovery<br/>Testing>];
 RedTeamTesting [label=<Red<br/>Team<br/>Testing>,style="dashed"];
-RelativeCorrectnessTesting [label=<Relative<br/>Correctness<br/>Testing>,style="dashed",color=grey];
+RelativeCorrectnessTesting [label=<Relative<br/>Correctness<br/>Testing>,color=grey];
 ReliabilityEnhancementTesting [label=<Reliability<br/>Enhancement<br/>Testing>,style="dashed"];
 ReliabilityGrowthTesting [label=<Reliability<br/>Growth<br/>Testing>,style="dashed"];
 ReliabilityMechanismTesting [label=<Reliability<br/>Mechanism<br/>Testing>,style="dashed"];
@@ -93,7 +93,7 @@ SecurityTesting [label=<Security<br/>Testing>];
 StabilityTesting [label=<Stability<br/>Testing>,style="dashed"];
 StressTesting [label=<Stress<br/>Testing>];
 SurvivabilityTesting [label=<Survivability<br/>Testing>,style="dashed"];
-TailoredConformanceTesting [label=<Tailored<br/>Conformance<br/>Testing>,style="dashed",color=grey];
+TailoredConformanceTesting [label=<Tailored<br/>Conformance<br/>Testing>,color=grey];
 UsabilityTesting [label=<Usability<br/>Testing>];
 VolumeTesting [label=<Volume<br/>Testing>,style="dashed"];
 VulnerabilityScanning [label=<Vulnerability<br/>Scanning>,color=grey];
@@ -270,8 +270,8 @@ subgraph cluster_legend {
         chd [label="Child"];
         par [label="Parent"];
         chd -> par [label="                "];
-        syn1 [label="Synonym"];
-        syn2 [label="Synonym"];
+        syn1 [label="Synonym 1"];
+        syn2 [label="Synonym 2"];
         syn1 -> syn2 [dir=none label="                "];
     }
     {
@@ -279,8 +279,8 @@ subgraph cluster_legend {
         imp1 [label="Child"];
         imp2 [label=<Implied<br/>Parent>];
         imp1 -> imp2 [style="dashed" label="                "]
-        imp3 [label=<Implied<br/>Synonym>];
-        imp4 [label=<Implied<br/>Synonym>];
+        imp3 [label=<Implied<br/>Synonym 1>];
+        imp4 [label=<Implied<br/>Synonym 2>];
         imp3 -> imp4 [style="dashed" dir=none label="                "]
     }
     {
