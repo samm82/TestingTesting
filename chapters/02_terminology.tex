@@ -401,28 +401,26 @@ data flow test approaches in \Cref{fig:subsumesGraph}.
 
 \subsection{Flaws/Inconsistencies}\label{flaw-def}
 
-Before we can start tracking and discussing flaws, we need to be clear about
-what we mean by the term. Our research shows that the literature is full of
-incorrect, missing, contradictory, unclear, nonatomic, and redundant
-information. This should not be the case for a field as rigorous as software
-engineering; we should be correct, complete, consistent, and clear, keeping
-separate ideas separate and only including what is necessary! We refer to
-any instance where one of these ideals is violated as a ``flaw'', as it
-implies that something is wrong with the literature and an opportunity to
-improve it, while avoiding words that are ``overloaded with too many meanings''
-like ``error'' and ``fault'' \citep[p.~12\=/3; see
-    \Cref{error-fault-failure}]{SWEBOK2024}. Terms such as these are primarily
-used to describe software itself, while we want a term to describe its
-supporting documents\footnote{A small literature review reveals that
-    established standards (see \Cref{stds}) only use ``flaw'' to refer to
-    requirements \citep[p.~38]{IEEE2022}, design \citetext{p.~43}, ``system
+% Before we can start tracking and discussing flaws, we need to be clear about
+% what we mean by the term. 
+Software engineering is a rigorous discipline that
+focuses on, among other things, correctness, completeness, consistency, and
+separation of concerns. Unfortunately, software testing literature does not
+meet these criteria itself! We refer to any instance where one of these ideals
+is violated as a ``flaw''\footnote{A small literature review reveals that
+    established standards (see \Cref{stds}) only use the term ``flaw'' to refer
+    to requirements \citep[p.~38]{IEEE2022}, design \citetext{p.~43}, ``system
     security procedures \dots{} and internal controls''
     % under the term ``vulnerability''
-    \citep[p.~194]{IEEE2012}, or code itself \citetext{p.~92}.}. \refHelper
-\citet[p.~7\=/9]{SWEBOK2024} mentions that ``techniques and indicators can help
-engineers measure technical debt, including \dots{} the number of engineering
-flaws and violations'', which aligns with our goal of analyzing what is wrong
-with software engineering's testing literature.
+    \citep[p.~194]{IEEE2012}, or code itself \citetext{p.~92}. \refHelper
+    \citet[p.~7\=/9]{SWEBOK2024} also uses the word ``flaw'' in a way that
+    aligns with our goal of analyzing what is wrong with software
+    engineering's testing literature.}
+%     , as it implies that something is wrong with the literature and an
+% opportunity to improve it, 
+while avoiding words that are ``overloaded with too many meanings''
+like ``error'' and ``fault'' \citep[p.~12\=/3; see
+    \Cref{error-fault-failure}]{SWEBOK2024}.
 
 We noticed that referring to a flaw with more than one source (such as a
 contradiction or an overlap) as a ``flaw between two sources'' is awkward%
