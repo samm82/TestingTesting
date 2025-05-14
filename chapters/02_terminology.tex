@@ -424,6 +424,17 @@ engineers measure technical debt, including \dots{} the number of engineering
 flaws and violations'', which aligns with our goal of analyzing what is wrong
 with software engineering's testing literature.
 
+We noticed that referring to a flaw with more than one source (such as a
+contradiction or an overlap) as a ``flaw between two sources'' is awkward%
+\thesisissueref{140}. A more intuitive way to describe this situation
+is that there is an ``inconsistency'' between the sources, so we use this term
+in these instances. This clearly indicates that there is disagreement between
+the sources, but also does not imply that either one is correct---the
+inconsistency could be with some ground truth\qtodo{Is this term well understood?}
+if \emph{neither} source is correct\thesisissueref{140,151}! Note that these
+cases are not categorized as ``mistakes'' if finding this ground truth requires
+analysis that has not been performed yet.
+
 \subsubsection{Flaw Manifestations}\label{mnfst-def}
 
 Perhaps the most obvious example of something being ``wrong'' with the
@@ -442,18 +453,6 @@ if a piece of information is not intrinsically incorrect, then there are five
 remaining manifestation types the flaw can be!
 
 \input{assets/tables/flawMnfstDefs}
-
-While we use the general term ``flaw'' to encompass all of these
-manifestations, it has its limitations. In particular, when referring to a flaw
-with more than one source (such as a contradiction or an overlap), it is
-awkward to call it a ``flaw between two sources''\thesisissueref{140}. A more
-intuitive way to describe this situation is that there is an ``inconsistency''
-between the sources. This clearly indicates that there is disagreement between
-the sources, but also does not imply that either one is correct---the
-inconsistency could be with some ground truth\qtodo{Is this term well understood?}
-if \emph{neither} source is correct\thesisissueref{140,151}! Note that these
-cases are not categorized as ``mistakes'' if finding this ground truth requires
-analysis that has not been performed yet.
 
 \ifnotpaper \newpage \fi
 
