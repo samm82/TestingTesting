@@ -186,17 +186,16 @@ The same approach often has many names. For example,
               \citealpISTQB{}; \citealp[p.~46 (without hyphen)]{Firesmith2015};
               \citealp[p.~344]{SakamotoEtAl2013}; \citealp[p.~399]{vanVliet2000})
           \else
-              \cite[p.~9]{IEEE2022}, \cite{ISTQB}, \cite[p.~431]{IEEE2017},
-              \cite[p.~5\=/10]{SWEBOK2024}, \cite[p.~8]{IEEE2021},
-              % \cite[p.~46 (without hyphen)]{Firesmith2015},
-              \cite[p.~399]{vanVliet2000},
+              \cite[p.~399]{vanVliet2000}, \cite[p.~5\=/10]{SWEBOK2024},
+              \cite[p.~431]{IEEE2017}, \cite[p.~9]{IEEE2022}, \cite{ISTQB},
+              \cite[p.~8]{IEEE2021}, % \cite[p.~46 (without hyphen)]{Firesmith2015},
               \cite[p.~344]{SakamotoEtAl2013}
           \fi
     \item ``closed-box testing''
           \ifnotpaper
               (\citealp[p.~9]{IEEE2022}; \citeyear[p.~431]{IEEE2017})
           \else
-              \cite[p.~9]{IEEE2022}, \cite[p.~431]{IEEE2017}
+              \cite[p.~431]{IEEE2017}, \cite[p.~9]{IEEE2022}
           \fi
     \item ``functional testing''\footnote{``Functional testing'' may not
               \emph{actually} be a synonym for ``specification-based testing'';
@@ -206,7 +205,7 @@ The same approach often has many names. For example,
               \citealp[p.~399]{vanVliet2000}; implied by
               \citealp[p.~129]{IEEE2021}; \citeyear[p.~431]{IEEE2017})
           \else
-              \cite[p.~196]{IEEE2017}, \cite[p.~399]{vanVliet2000},
+              \cite[p.~399]{vanVliet2000}, \cite[p.~196]{IEEE2017},
               \cite[p.~44]{Kam2008} (implied by \cite[p.~431]{IEEE2017},
               \cite[p.~129]{IEEE2021})
           \fi
@@ -232,57 +231,59 @@ synonyms in natural language where they can be used interchangeably. While
 synonyms may emphasize different aspects or express mild variations, their core
 meaning is nevertheless the same.
 
-As an example of synonyms in natural language, ``windy'' is a synonym of
-``gusty'' \citep{WindySyns}; since this is a symmetric relation, the inverse is
-also true \citeyearpar{GustySyns}. ``Windy'' is also a synonym of ``blustery''
-\citeyearpar{WindySyns}, so since this relation is transitive and ``gusty'' is
-a synonym of ``windy'', ``gusty'' is also a synonym of ``blustery''
-\citeyearpar{GustySyns}. Although these terms are distinct
-\citeyearpar{GustySyns,WindySyns} and have nuance---``gust'' is defined as ``a
-sudden brief rush of wind'' \citeyearpar{GustDef}---they still reflect the
-same core concept and could be considered synonyms of themselves.
+%%  Removed for brevity, but may be used elsewhere; #183
 
-Synonym relations are often given explicitly in the literature. For example,
-\citet[p.~9]{IEEE2022} \multiAuthHelper{list} ``black-box testing'' and
-``closed box testing'' beneath the glossary entry for ``specification-based
-testing'', meaning they are synonyms. ``Black-box testing'' is likewise given
-under ``functional testing'' in \citeyearpar[p.~196]{IEEE2017}, so it is
-also a synonym for ``specification-based testing'' through transitivity.
-However, these relations can also be implicit (see \Cref{explicitness});
-``functional testing'' is listed in a \emph{cf.} footnote to the glossary entry
-for ``specification-based testing'' \citeyearpar[p.~431]{IEEE2017}, which
-supports the previous claim but would not necessarily indicate a synonym
-relation on its own.
+% As an example of synonyms in natural language, ``windy'' is a synonym of
+% ``gusty'' \citep{WindySyns}; since this is a symmetric relation, the inverse is
+% also true \citeyearpar{GustySyns}. ``Windy'' is also a synonym of ``blustery''
+% \citeyearpar{WindySyns}, so since this relation is transitive and ``gusty'' is
+% a synonym of ``windy'', ``gusty'' is also a synonym of ``blustery''
+% \citeyearpar{GustySyns}. Although these terms are distinct
+% \citeyearpar{GustySyns,WindySyns} and have nuance---``gust'' is defined as ``a
+% sudden brief rush of wind'' \citeyearpar{GustDef}---they still reflect the
+% same core concept and could be considered synonyms of themselves.
 
-Similarly, \citet[p.~5\=/10]{SWEBOK2024} says ``\emph{specification-based
-    techniques} \dots{} [are] sometimes also called domain
-testing techniques'' in the \acs{swebok} V4, from which the synonym of
-``domain testing'' follows logically. However, its predecessor V3 only
-\emph{implies} the more specific ``input domain-based testing'' as a synonym.
-The section on test techniques says ``the classification of testing techniques
-presented here is based on how tests are generated: from the software
-engineer's intuition and experience, the specifications, the code structure
-\dots'' \citep[p.~4\=/7]{SWEBOK2014}, and the first three subsections on the
-following page are ``Based on the Software Engineer's Intuition and
-Experience'', ``Input Domain-Based Techniques'', and ``Code-Based Techniques''
-\citetext{p.~4\=/8}. The order of the introductory list lines up with these
-sections, implying that ``input domain-based techniques'' are ``generated[]
-from \dots{} the specifications'' (i.e., that input domain-based testing is the
-same as specification-based testing). Furthermore, the examples of input
-domain-based techniques given---equivalence partitioning, pairwise testing,
-boundary-value analysis, and random testing---are all given as children%
-\footnote{
-    Pairwise testing is given as a child of combinatorial testing, which is
-    itself a child of specification-based testing, by \ifnotpaper
-        \citep[Fig.~2]{IEEE2021} and \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}%
-    \else
-        \cite[pp.~5\=/11 to 5\=/12]{SWEBOK2024} and \cite[Fig.~2]{IEEE2021}%
-    \fi, making it a ``grandchild'' of specification-based testing according to
-    these sources.
-} of specification-based testing \ifnotpaper
-    (\citealp{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealpISTQB{})\else
-    \cite{IEEE2022,ISTQB}, \cite[Fig.~2]{IEEE2021}\fi; even V4 agrees with
-this \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}!
+% Synonym relations are often given explicitly in the literature. For example,
+% \citet[p.~9]{IEEE2022} \multiAuthHelper{list} ``black-box testing'' and
+% ``closed box testing'' beneath the glossary entry for ``specification-based
+% testing'', meaning they are synonyms. ``Black-box testing'' is likewise given
+% under ``functional testing'' in \citeyearpar[p.~196]{IEEE2017}, so it is
+% also a synonym for ``specification-based testing'' through transitivity.
+% However, these relations can also be implicit (see \Cref{explicitness});
+% ``functional testing'' is listed in a \emph{cf.} footnote to the glossary entry
+% for ``specification-based testing'' \citeyearpar[p.~431]{IEEE2017}, which
+% supports the previous claim but would not necessarily indicate a synonym
+% relation on its own.
+
+% Similarly, \citet[p.~5\=/10]{SWEBOK2024} says ``\emph{specification-based
+%     techniques} \dots{} [are] sometimes also called domain
+% testing techniques'' in the \acs{swebok} V4, from which the synonym of
+% ``domain testing'' follows logically. However, its predecessor V3 only
+% \emph{implies} the more specific ``input domain-based testing'' as a synonym.
+% The section on test techniques says ``the classification of testing techniques
+% presented here is based on how tests are generated: from the software
+% engineer's intuition and experience, the specifications, the code structure
+% \dots'' \citep[p.~4\=/7]{SWEBOK2014}, and the first three subsections on the
+% following page are ``Based on the Software Engineer's Intuition and
+% Experience'', ``Input Domain-Based Techniques'', and ``Code-Based Techniques''
+% \citetext{p.~4\=/8}. The order of the introductory list lines up with these
+% sections, implying that ``input domain-based techniques'' are ``generated[]
+% from \dots{} the specifications'' (i.e., that input domain-based testing is the
+% same as specification-based testing). Furthermore, the examples of input
+% domain-based techniques given---equivalence partitioning, pairwise testing,
+% boundary-value analysis, and random testing---are all given as children%
+% \footnote{
+%     Pairwise testing is given as a child of combinatorial testing, which is
+%     itself a child of specification-based testing, by \ifnotpaper
+%         \citep[Fig.~2]{IEEE2021} and \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}%
+%     \else
+%         \cite[pp.~5\=/11 to 5\=/12]{SWEBOK2024} and \cite[Fig.~2]{IEEE2021}%
+%     \fi, making it a ``grandchild'' of specification-based testing according to
+%     these sources.
+% } of specification-based testing \ifnotpaper
+%     (\citealp{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealpISTQB{})\else
+%     \cite{IEEE2022,ISTQB}, \cite[Fig.~2]{IEEE2021}\fi; even V4 agrees with
+% this \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}!
 
 \subsubsection{Parent-Child Relations}\label{par-chd-rels}
 Many test approaches are multi-faceted and can be ``specialized'' into others;
