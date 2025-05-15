@@ -13,8 +13,7 @@ logically from the literature. For example, test approaches can have categories
 (\Cref{cats-def}), synonyms (\Cref{syn-rels}), and parent-child relations
 (\Cref{par-chd-rels}) and while these terms are not used by the literature, we
 observe flaws having both manifestations (\Cref{mnfst-def}) and domains
-(\Cref{dmn-def}). We define these terms here for clarity since we use them
-throughout this \docType{}, even though they are ``results'' of our research.
+(\Cref{dmn-def}). \conceptResults{}
 
 Since the literature is flawed, we need to be careful with what information we
 take at face value. We do this by tracking the nuance, or ``explicitness''%
@@ -63,9 +62,7 @@ multiple approaches \ifnotpaper \citep[p.~18]{IEEE2022} \else
 the literature in \ourApproachGlossary{}, along with their properties and
 relations. This includes any categories (\Cref{cats-def}), synonyms
 (\Cref{syn-rels}), and parent-child relations (\Cref{par-chd-rels}) described
-by the literature. These concepts follow logically from the literature so are
-technically ``results'' of our research, but we define them here for clarity
-since we use them throughout this \docType{}.
+by the literature. \conceptResults{}
 
 % that includes ``test level, test type, test technique, test practice and
 % \dots{} static testing'' \citep[p.~10]{IEEE2022} and is used to  & black or white box, minimum and maximum
@@ -423,11 +420,10 @@ while avoiding words that are ``overloaded with too many meanings''
 like ``error'' and ``fault'' \citep[p.~12\=/3; see
     \Cref{error-fault-failure}]{SWEBOK2024}.
 
-We noticed that referring to a flaw with more than one source (such as a
-contradiction or an overlap) as a ``flaw between two sources'' is awkward%
-\thesisissueref{140}. A more intuitive way to describe this situation
-is that there is an ``inconsistency'' between the sources, so we use this term
-in these instances. This clearly indicates that there is disagreement between
+Referring to a flaw with more than one source (such as a contradiction or an
+overlap) as a ``flaw between two sources'' is awkward\thesisissueref{140}, so
+we refer to this more intuitively as an ``inconsistency'' between the sources.
+This clearly indicates that there is disagreement between
 the sources, but also does not imply that either one is correct---the
 inconsistency could be with some ground truth\qtodo{Is this term well understood?}
 if \emph{neither} source is correct\thesisissueref{140,151}! Note that these
@@ -465,8 +461,8 @@ than others. Note that this is an orthogonal categorization to that of a flaw's
 manifestation: each flaw \emph{manifests} in a particular \emph{domain}. This
 means that we give each flaw two keys (one for each classification) and
 present our observations according to these two views in \Cref{tab:flawMnfsts,%
-    tab:flawDmns}. We explicitly define some of these domains in future
-chapters and thus present them in that same order. Despite their nuance, the
+    tab:flawDmns}. We explicitly define some of these domains in previous
+sections and thus present them in that same order. Despite their nuance, the
 remaining domains are relatively straightforward, so we do not define them more
 rigorously in their own sections.
 
