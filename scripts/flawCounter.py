@@ -357,7 +357,7 @@ def outputFlaws():
         totalFlaws = sum({v.groundTruth, v.withinDoc, v.withinAuth,
                              sum(v.betweenCats.values())})
 
-        slices = ([(v.groundTruth, "With a source of ground truth"),
+        slices = ([(v.groundTruth, "With an assertion of ground truth"),
                    (v.withinDoc, "Within a single document"),
                    (v.withinAuth, "Between documents with the same set of authors")] +
                    [(catCount, "Between a document from this category and a " +
@@ -422,7 +422,7 @@ def outputFlaws():
     for i in range(3):
         flawBars[i-3] = flawBars[i-3][i+1:]
     FLAW_CAPTION += (" Some bars are omitted as they correspond to comparisons"
-                     " we do not make; see \\Cref{lower-ground-truth}.")
+                     " we do not make; see \\Cref{flaw-cred-compare}.")
 
     flawBars = [f"\\addplot[fill={color}] coordinates {{{' '.join(
                 reversed([str(x).replace("'", "") for x in zip(

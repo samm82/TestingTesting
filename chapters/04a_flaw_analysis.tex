@@ -13,14 +13,15 @@ automated tools (\Cref{aug-flaw-analysis}). This gives us an overview of:
     \item in which knowledge domains these flaws occur (see \Cref{flawDmns}).
 \end{itemize}
 
+\phantomsection{}\label{flaw-cred-compare}
 To understand where flaws exist in the literature, we group them based on the
 source tier(s) responsible for them. Each flaw is then counted \emph{once} per
 source tier if it appears within it \emph{and/or} between it and a more
 ``credible'' tier\footnote{If an inconsistency occurs between two source tiers
     and the more credible one is \emph{incorrect}, we instead count it as an
-    inconsistency between it and ground truth, as described in
-    \Cref{lower-ground-truth}.} (see \Cref{cred,sources}). This avoids
-counting the same flaw
+    inconsistency between it and the asserted truth from the less credible
+    source, as described in \Cref{less-cred-assert}.} (see \Cref{cred,sources}).
+This avoids counting the same flaw
 more than once for a given source tier\thesisissueref{83}, which would give the
 number of \emph{occurrences} of all flaws instead of the more useful number of
 flaws \emph{themselves}. The exception to this is \Cref{fig:flawBars}, which
@@ -206,12 +207,12 @@ we can compare each pair of groups; in general, a flaw can have any number of
 groups of sources.
 
 We make a distinction between ``self-contained'' flaws and ``internal'' flaws.
-Self-contained flaws are those that manifest by comparing a document to a
-source of ground truth. Sometimes, these do not require an explicit comparison;
+Self-contained flaws are those that manifest by comparing a document to an
+assertion of ground truth. Sometimes, these do not require an explicit comparison;
 for example, omissions (listed in \Cref{miss}) often fall into this category,
 since the lack of information is contained within a single source and does not
-need to be cross-checked against a source of ground truth. If only one group of
-sources is present in a flaw's comment, such as the first line below, we
+need to be cross-checked against an assertion of ground truth. If only one group
+of sources is present in a flaw's comment, such as the first line below, we
 consider it to be a self-contained flaw. On the other hand, internal flaws
 arise when a document disagrees with itself by containing two conflicting
 pieces of information; this includes many contradictions and overlaps (listed
@@ -267,21 +268,22 @@ sources of flaws. The rest increment their corresponding count in
           authors (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}).
 \end{itemize}
 
-\phantomsection{}\label{lower-ground-truth}
-Occasionally, we use a source from a lower tier as the ``ground truth'' for a
-flaw. For example, \tolTestFlaw*{} This flaw is supported
+\phantomsection{}\label{less-cred-assert}
+Occasionally, we assert that a source from a less credible tier is more correct
+than a source from a more credible tier\thesisissueref{184}.
+For example, \tolTestFlaw*{} This flaw is supported
 by additional papers found via a miniature literature review (described in
 \Cref{undef-terms}) from a lower source tier than \citep{Firesmith2015}
 (which is a terminology collection; see \Cref{sources}). However, this flaw
 is really based in \citep{Firesmith2015} and not in these
 additional papers, but this would be counted as a flaw in these papers if they
-were included as detailed above. Therefore, we document these ``ground
-truth'' sources separately to track them for traceability without incorrectly
+were included as detailed above. Therefore, we document these ``assertion''
+sources separately to track them for traceability without incorrectly
 counting flaws, such as the following for this specific example
-(\flawref{ground-truth}):
+(\flawref{assert-truth}):
 \begin{displayquote}
     \texttt{\% Flaw count (WRONG, LABELS): \{Firesmith2015\}\\
-        \% Ground truth: \{LiuEtAl2023\} \{MorgunEtAl1999\} \{HolleyEtAl1996\}
+        \% Assertion: \{LiuEtAl2023\} \{MorgunEtAl1999\} \{HolleyEtAl1996\}
         \displayNL \{HoweAndJohnson1995\}}
 \end{displayquote}
 
