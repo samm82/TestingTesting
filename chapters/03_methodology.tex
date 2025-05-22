@@ -306,19 +306,6 @@ or quite broad\ifnotpaper\ (such as attacks; see \Cref{attacks}%
               of a software product according to a specified procedure''
               \citep[p.~424]{IEEE2017}
     \end{itemize}
-
-    \phantomsection{}\label{infers}
-    Throughout this process, information can be inferred from ``surface-level''
-    analysis that follows straightforwardly but isn't explicitly stated by any
-    source. Examples of this are large scale integration testing and legacy
-    system integration testing, described by \citeauthor{Gerrard2000a} in
-    \citeyearpar[p.~30]{Gerrard2000b} and (\citeyear[Tab.~2]{Gerrard2000a};
-    \citeyear[Tab.~1]{Gerrard2000b}), respectively. While he never explicitly
-    says so, it can be inferred that these approaches are children of
-    integration testing and system integration testing, respectively.
-    Although these data do not come from the literature, they are documented
-    for completeness; inferred flaws are given in \Cref{infer-flaws}
-    and inferred relations, if any, are included in \recFigs{}.
 \fi
 
 \subsubsection{Derived Test Approaches}
@@ -465,8 +452,7 @@ including the following examples:
 \end{itemize}
 
 \paragraph{Orthogonally Derived Approaches}\label{orth-test}
-Some test approaches appear to be combinations of other (seemingly
-orthogonal) approaches. While the use of a combination term can sometimes
+\orthTestIntro. While the use of a combination term can sometimes
 make sense, such as when writing a paper or performing testing that focuses
 on the intersection between two test approaches, they are sometimes given
 the same ``weight'' as their atomic counterparts. For example, \citetISTQB{}
@@ -595,16 +581,11 @@ The following are examples of these out-of-scope orthogonally derived approaches
           %    OR Technique (implied by Engström and Petersen, 2015, pp. 1-2)
 \end{enumerate}
 
-The existence of orthogonal combinations could allow for other test
-approaches to be extrapolated from them. For example, \citet{Moghadam2019}
-uses the phrase ``machine learning-assisted performance testing''; since
-performance testing is a known test approach, we can infer the existence
-of the test approach ``machine learning-assisted testing''. Likewise,
-\citet{JardEtAl1999} \multiAuthHelper{use} the phrases ``local synchronous
-testing'' and ``remote asynchronous testing''. While these can be
-decomposed, for example, into local testing and synchronous testing,
-the two resulting approaches may not be orthogonal, potentially even having
-a parent-child relation (defined in \Cref{par-chd-rels}).
+% \citet{JardEtAl1999} \multiAuthHelper{use} the phrases ``local synchronous
+% testing'' and ``remote asynchronous testing''. While these can be
+% decomposed, for example, into local testing and synchronous testing,
+% the two resulting approaches may not be orthogonal, potentially even having
+% a parent-child relation (defined in \Cref{par-chd-rels}).
 
 Based on their definitions and usage, the categories given in
 \Cref{tab:ieeeCats} seem to be orthogonal. For example, ``a test type can be

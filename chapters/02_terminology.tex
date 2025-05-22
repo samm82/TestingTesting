@@ -593,7 +593,27 @@ For example, we can view subjective flaws separately in
 \Cref{tab:flawMnfsts,tab:flawDmns}, since additional context may rectify them.
 \ifnotpaper Additionally, \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats}
     contain relations that are explicit, implicit, and both; implicit relations
-    are marked by the phrases ``implied by''. \fi
+    are marked by the phrases ``implied by''.
+
+    \phantomsection{}\label{infers}
+    Throughout our research, we also infer some information through
+    ``surface-level'' analysis that follows straightforwardly but is not stated,
+    explicitly or otherwise, by a source. For example, \citeauthor{Gerrard2000a}
+    describes large scale integration testing and legacy system integration
+    testing in \citeyearpar[p.~30]{Gerrard2000b} and
+    (\citeyear[Tab.~2]{Gerrard2000a}; \citeyear[Tab.~1]{Gerrard2000b}),
+    respectively. While he never explicitly says so, we infer that these
+    approaches are children of integration testing and system integration
+    testing, respectively. Similarly, \orthTestIntro* (described in
+    more detail in \Cref{orth-test}), from which we can extrapolate other test
+    approaches. For example, \citet{Moghadam2019} uses the phrase ``machine
+    learning-assisted performance testing''; since performance testing is a
+    known test approach, we infer the existence of the test approach ``machine
+    learning-assisted testing'' and include it in \ourApproachGlossary{} as
+    such. Although these data originate from our judgement,
+    we document them for completeness; we give inferred flaws in
+    \Cref{infer-flaws} and any inferred relations in \recFigs{}.
+\fi
 
 \subsection{Credibility}\label{cred}
 
