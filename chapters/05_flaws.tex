@@ -60,8 +60,8 @@ manifestation and domain counts\ifnotpaper\ (\Cref{aug-flaw-analysis} outlines
 (\Cref{func-test-flaw}), \ifnotpaper operational (acceptance) testing
     (\Cref{oat-flaw}), \fi recovery testing (\Cref{recov-flaw}), scalability
 testing (\Cref{scal-flaw}), and compatibility testing (\Cref{compat-flaw}).
-\ifnotpaper Finally, we infer the more subjective flaws presented in
-    \Cref{infer-flaws} which do not contribute to any counts.
+\ifnotpaper Finally, we present inferred flaws (see \Cref{infers}) in
+    \Cref{infer-flaws}; these do not contribute to any counts.
 
     % \input{build/flawTable}
 
@@ -220,11 +220,11 @@ testing''. This seems to imply that error guessing is both a technique
 \emph{and} a practice, which does not make sense if these categories are
 orthogonal. \ifnotpaper Similarly, the conflicting categorizations of beta
     testing in \Cref{tab:multiCats} may propagate to its children closed beta
-    testing and open beta testing; since this is an inferrence, it is omitted
-    from that table and instead included in \Cref{tab:infMultiCats}. \fi These
-kinds of inconsistencies between parent and child test approach categorizations
-may indicate that categories are not transitive or that more thought must be
-given to them.
+    testing and open beta testing. Since we infer this (see \Cref{infers}), we
+    omit it from that table and instead include it in \Cref{tab:infMultiCats}.
+\fi These kinds of inconsistencies between parent and child test approach
+categorizations may indicate that categories are not transitive or that more
+thought must be given to them.
 
 \ifnotpaper
     \begin{landscape}
@@ -306,8 +306,8 @@ There are also pairs of synonyms where one is described as a subapproach
 of the other, abusing the meaning of ``synonym'' and causing confusion.
 We identify \parSynCount{} of these pairs through automatic analysis of the
 generated graphs, \ifnotpaper which are \else with the most prominent \fi
-given in \Cref{tab:parSyns}\ifnotpaper\ (additional pairs where a flaw
-    is inferred are given in \Cref{infParSyns} for completeness)\fi. Of
+given in \Cref{tab:parSyns}\ifnotpaper\ (additional pairs where we infer a flaw
+    are given in \Cref{infParSyns} for completeness)\fi. Of
 particular note is the relation between path testing and exhaustive testing.
 While \citet[p.~421]{vanVliet2000} claims that path testing done completely
 ``is equivalent to exhaustively testing the program''\footnote{The
@@ -774,12 +774,12 @@ adapted to changes in its requirements, contexts of use, or system environment''
 from one hardware \dots{} environment to another'' \citep[p.~39]{IEEE2021}.
 
 \ifnotpaper
-    \subsection{Inferred Flaws}
-    \label{infer-flaws}
-    Along the course of this analysis, we inferred many potential flaws.
-    Some of these have a conflicting source while others do not. These are
-    excluded from any counts of the numbers of flaws, since they are
-    more subjective, but are given below for completeness.
+    \subsection{Inferred Flaws}\label{infer-flaws}
+    Throughout our research, we infer many potential flaws as described in
+    \Cref{infers}. Some of these have a conflicting source while others do not.
+    Since these are more subjective and are based on our own judgement, we
+    exclude them from any counts of the numbers of flaws but give them here for
+    completeness.
 
     \subsubsection{Inferred Synonym Flaws}\label{infMultiSyns}
     See \Cref{multiSyns}.
