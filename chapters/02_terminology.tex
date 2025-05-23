@@ -487,7 +487,7 @@ cites other or even what information is included \emph{within} a document
 \subsection{Explicitness}\label{explicitness}
 
 % Excluded from macro table since it is only used in this subsection
-\def\impKeywordsCode{\seeSrcCode{23dbe41}{scripts/helpers.py}{25}{54}}
+\def\impKeywordsCode{\seeSrcCode{9b04254}{scripts/helpers.py}{25}{54}}
 
 When recording information from unstandardized sources written in natural
 language, there is a considerable degree of nuance that can get lost. For
@@ -505,15 +505,14 @@ relevant nuance. This allows us to provide a more complete picture of the state
 of the literature without getting distracted by less relevant details. All
 sources cited throughout this \docType{} support their
 respective claims explicitly unless specified otherwise, usually via one of the
-keywords given above\qtodo{Is this enough to satisfy Dr.~Smith's concern about
-    the explicitness of Synonym Relation sources?}.
+keywords given above.
 
 There are many ways that
 information can be \emph{not} explicit that we observe in the literature.
 Despite ``implicit'' only describing the first of these cases, we use it
 (as well as ``implied by'' when describing sources of information) as a
 shorthand for all ``not explicit'' manifestations throughout this \docType{}
-for clarity.\qtodo{Is this OK?} Any kind of information can be implicit,
+for clarity. Any kind of information can be implicit,
 including the names, \approachFields{} of identified test approaches. The
 following are non-mutually exclusive
 examples from the literature of ways that information can be ``implicit'';
@@ -527,11 +526,11 @@ them when performing later analysis \impKeywordsCode{}:
           \refHelper \citet[pp.~53\==58]{Firesmith2015} lists a set of test
           approaches that are ``based on the[ir] associated quality
           characteristic[s] and \dots{} associated quality attributes''
-          \citetext{p.~53}. This matches our definition of ``test type'' in
-          \Cref{cats-def}, but this term is used more loosely to refer to
-          different kinds of testing---what we would call ``test approaches''.
-          We therefore consider these categorizations to be implicit, as in
-          \Cref{tab:multiCats\ifnotpaper,tab:infMultiCats\fi}.
+          \citetext{p.~53}. This matches our definition of ``test type'', but
+          this term is used more loosely in this document to refer to different
+          kinds of testing that we would call ``test approaches'' (see
+          \Cref{cats-def}). We therefore consider these categorizations to be
+          implicit, as in \Cref{tab:multiCats\ifnotpaper,tab:infMultiCats\fi}.
     \item [2. The information is not universal.]
           \phantomsection{}\label{imp-case-two}~\\
           \refHelper \citet[p.~372\ifnotpaper, emphasis added\fi]{IEEE2017}%
@@ -612,12 +611,12 @@ For example, we can view subjective flaws separately in
     learning-assisted testing'' and include it in \ourApproachGlossary{} as
     such. We also infer that child approaches inherit their parents' categories
     (see \Cref{cats-def}). Although these data originate from our judgement,
-    we document them for completeness. Additionally, all data in our
-    glossaries with no source attached are inferred, such as algebraic testing
-    \citep[Fig.~12.2]{PetersAndPedrycz2000} being a child of mathematical-based
-    testing. We present inferred flaws in \Cref{infer-flaws} and colour
-    inferred approaches and relations grey in our generated graphs, such as
-    \recFigs{}.
+    we document them for completeness, using the phrase ``inferred from'' when
+    relevant. Additionally, all data in our glossaries without a citation are
+    inferred, such as algebraic testing \citep[Fig.~12.2]{PetersAndPedrycz2000}
+    being a child of mathematical-based testing. We present inferred flaws in
+    \Cref{infer-flaws} and colour inferred approaches and relations grey in our
+    generated graphs, such as \recFigs{}.
 \fi
 
 \subsection{Credibility}\label{cred}
