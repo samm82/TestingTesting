@@ -114,8 +114,8 @@ follows\thesisissueref{21}:
 \end{itemize}
 For example, boundary value analysis is a test technique since its inputs are
 ``the boundaries of equivalence partitions'' \ifnotpaper
-    (\citealp[p.~2]{IEEE2022}; \citeyear[p.~1]{IEEE2021}; similar on p.~12 and
-    in \citealpISTQB{})%
+    (\citealp[p.~2]{IEEE2022}; \citeyear[p.~1]{IEEE2021}; similar on p.~12;
+    \citealpISTQB{})%
 \else
     \cite[p.~2]{IEEE2022}, \cite[p.~1]{IEEE2021}%
 \fi. Similarly, acceptance testing is a test level since its goal is to
@@ -284,18 +284,18 @@ meaning is nevertheless the same.
 
 \subsubsection{Parent-Child Relations}\label{par-chd-rels}
 Many test approaches are multi-faceted and can be ``specialized'' into others;
-for example, there are many subtypes of performance-related testing,
-such as load testing and stress testing (see \Cref{perf-test-rec}). These
-``specializations'' will be referred to as ``children'' or ``subapproaches''
-of the multi-faceted ``parent''. This nomenclature also extends to other
-categories (such as ``subtype''; see \Cref{cats-def,tab:ieeeCats})
-and software qualities (``subquality''\ifnotpaper; see \Cref{qual-test}\fi).
+for example, load testing and stress testing are some of the subtypes of
+performance-related testing (described in more detail in \Cref{perf-test-rec}).
+We refer to these ``specializations'' as ``children'' or ``subapproaches'' of
+their multi-faceted ``parent(s)''. This nomenclature also extends to other
+categories (such as ``subtype''; see \Cref{cats-def,tab:ieeeCats}) and software
+qualities (``subquality''\ifnotpaper; see \Cref{qual-test}\fi).
 
 \defRel{parent-child}{P}{directed relations between approach pairs} This
-relation should be irreflexive, asymmetric and transitive, making it a strict
-partial order, and a given given ``child'' approach $c$ may have more than one
-``parent'' approach $p$. This often manifests when a ``well-understood'' test
-approach $p$ is decomposed into smaller, independently performable approaches
+relation should be irreflexive, asymmetric, and transitive, making it a strict
+partial order, and a given ``child'' approach $c$ may have more than one
+``parent'' approach $p$. This relation often manifests when a ``well-understood''
+test approach $p$ is decomposed into smaller, independently performable approaches
 $c_1, \dots, c_n$, each with its own focus or nuance. This is often the case
 for hierarchies of approaches given in the literature \ifnotpaper
     (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021};
