@@ -11,7 +11,7 @@ toRecord: list[str] = [
     "names", f"categories{CAT_FOOTNOTE}(\\Cref{{cats-def}})",
     "definitions", "synonyms (\\Cref{syn-rels})",
     "parents (\\Cref{par-chd-rels})",
-    "flaws\\phantomsection{}\\label{manual-flaws} (\\Cref{flaw-def}) (in a separate document)"]
+    "flaws\\phantomsection{}\\label{manual-flaws} (\\Cref{flaw-def}) (in separate documents)"]
 relatedTerms: list[str] = [
     "imply related test approaches (\\Cref{derived-tests})",
     "are used repeatedly",
@@ -20,15 +20,16 @@ relatedTerms: list[str] = [
 
 OTHER_NOTES = "other relevant notes"
 OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
-                             "and other resources"])
+                             "and further reading"])
 
 methodology_a = """
     \\item \\phantomsection{}\\label{identify-sources}
           Identifying authoritative sources \\ifnotpaper on software testing
           \\fi (\\Cref{sources})
     \\item \\phantomsection{}\\label{record-apps}
-          Identifying all test approaches from each source and recording their:
-          (\\Cref{procedure})\n""" + "\n".join([
+          Identifying all test approaches (\\Cref{approach-def}) from each
+          source and recording all relevant data (\\Cref{procedure}),
+          comprised of:\n""" + "\n".join([
         f"\t\t  {line}" for line in wrapEnv(
             "enumerate", [f"\t\\item {capFirst(i)}"
                           for i in toRecord + [OTHER_NOTES +
