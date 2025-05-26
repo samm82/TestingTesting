@@ -41,10 +41,9 @@ methodology_a = """
         f"\t\t  {line}" for line in wrapEnv(
             "enumerate", [f"\t\\item {capFirst(i)}" for i in relatedTerms])
           ]) + """
-    \\item Repeating steps~\\ref{identify-sources} to
-          \\ref{record-terms} for any missing or unclear terms
-          (\\Cref{undef-terms}) until some stopping criteria
-          \\imptodo{Define/add pointer}"""
+    \\item Repeating steps~\\ref{identify-sources} to \\ref{record-terms} for 
+          any missing or unclear terms (\\Cref{undef-terms}) until some
+          stopping criteria (\\Cref{stop-crit})"""
     
 methodology_b = """    \\item Analyzing recorded test approach data for additional flaws
           \\begin{enumerate}
