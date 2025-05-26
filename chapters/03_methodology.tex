@@ -266,50 +266,21 @@ special attention to the following when investigating a new source:
               } (see \Cref{derived-tests})\fi.
 \end{itemize}
 We apply these heuristics to most investigated sources, especially established
-standards (see \Cref{stds}), in their entirety. Some sources, however, are only
-partially investigated, such as those chosen for a specific area of
+standards (see \Cref{stds}), in their entirety. Some sources, however, we only
+partially investigate, such as those chosen for a specific area of
 interest or based on a test approach that was determined to be out-of-scope.
 These include the following sources as described in \Cref{undef-terms}:
 \citep{ISO2022,ISO2015,Dominguez-PumarEtAl2020,PierreEtAl2017,
     TrudnowskiEtAl2017,YuEtAl2011,Tsui2007,Goralski1999}.
-
 During the first pass of data collection, we investigate and record all
 terminology related to software testing. Some of these terms are less
 applicable to test case automation---our original motivation---%
 \ifnotpaper(such as static testing; see \Cref{static-test}%
-\thesisissueref{39})\ \fi%
-or quite broad\ifnotpaper\ (such as attacks; see \Cref{attacks}%
-    \thesisissueref{55})\fi, so they will be omitted during future analysis.
-\ifnotpaper
-    Others are so vague that they do not provide any new, meaningful
-    information. For example, the ``systematic determination of the extent to
-    which an entity meets its specified criteria'' \citep[p.~167]{IEEE2017} is
-    certainly relevant to testing software; while this definition of
-    ``evaluation'' may be meaningful when defining software testing generally,
-    it does not define a new approach or procedure and applies much more
-    broadly than just to testing. We decided\thesisissueref{39,44,28} that the
-    following terms are too vague to merit tracking in our glossaries or
-    analyzing further:
-    \begin{itemize}
-        \item \textbf{Evaluation:} the ``systematic determination of the extent
-              to which an entity meets its specified criteria''
-              \citep[p.~167]{IEEE2017}
-        \item \textbf{Product Analysis:} the ``process of evaluating a product by
-              manual or automated means to determine if the product has certain
-              characteristics'' \citep[p.~343]{IEEE2017}
-        \item \textbf{Quality Audit:} ``a structured, independent process to
-              determine if project activities comply with organizational and
-              project policies, processes, and procedures'' \citep[p.~361]{IEEE2017}
-              \todo{OG PMBOK}
-        \item \textbf{Software Product Evaluation:} a ``technical operation that
-              consists of producing an assessment of one or more characteristics
-              of a software product according to a specified procedure''
-              \citep[p.~424]{IEEE2017}
-    \end{itemize}
-\fi
+\thesisissueref{39})\ \fi or quite broad\ifnotpaper\ (such as attacks; see
+    \Cref{attacks}\thesisissueref{55})\fi, so we will omit them during future
+analysis.
 
-\subsubsection{Derived Test Approaches}
-\label{derived-tests}
+\subsubsection{Derived Test Approaches}\label{derived-tests}
 
 Throughout this research, we noticed many groups of test approaches that arise
 from some underlying area of software (testing) knowledge. The legitimacy of
