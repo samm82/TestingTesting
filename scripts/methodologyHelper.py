@@ -6,7 +6,7 @@ CAT_FOOTNOTE = "\n\t".join([
     "\\footnote{"
     "A single test approach with more than one category ",
     "\\ifnotpaper (for example, A/B Testing in \\Cref{tab:approachGlossaryExcerpt}) \\fi ",
-    "indicates an underlying flaw; see \\Cref{multiCats}.} \n"])
+    "often indicates an underlying flaw; see \\Cref{multiCats}.} \n"])
 toRecord: list[str] = [
     "names", f"categories{CAT_FOOTNOTE}(\\Cref{{cats-def}})",
     "definitions", "synonyms (\\Cref{syn-rels})",
@@ -20,7 +20,7 @@ relatedTerms: list[str] = [
 
 OTHER_NOTES = "other relevant notes"
 OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
-                             "and further reading"])
+                             "other sources"])
 
 methodology_a = """
     \\item \\phantomsection{}\\label{identify-sources}
@@ -33,7 +33,7 @@ methodology_a = """
         f"\t\t  {line}" for line in wrapEnv(
             "enumerate", [f"\t\\item {capFirst(i)}"
                           for i in toRecord + [OTHER_NOTES +
-                                               f" (e.g., {OTHER_NOTES_EXS})"]])
+                                               f" ({OTHER_NOTES_EXS}, etc.)"]])
         ]) + """
     \\item \\phantomsection{}\\label{record-terms}
           Alongside step~\\ref{record-apps}, identifying and recording related
