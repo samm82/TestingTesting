@@ -25,7 +25,7 @@ OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
 methodology_a = """
     \\item \\phantomsection{}\\label{identify-sources}
           Identifying authoritative sources \\ifnotpaper on software testing
-          \\fi (\\Cref{sources})
+          and ``snowballing'' from them \\fi (\\Cref{sources})
     \\item \\phantomsection{}\\label{record-apps}
           Identifying all test approaches (\\Cref{approach-def}) from each
           source and recording all relevant data (\\Cref{procedure}),
