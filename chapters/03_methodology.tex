@@ -210,8 +210,8 @@ since usability testing is a test type \ifnotpaper
 A/B testing may inherit this categorization. We document this by adding
 ``Type'' as a Category alongside ``Practice'' with the source
 ``inferred from usability testing'', causing it to be automatically detected as
-an inferred flaw \ifnotpaper (see \Cref{infers,auto-flaw-analysis}) and appear
-    in \Cref{tab:infMultiCats}\else (details omitted for brevity)\fi.
+an inferred flaw\ifnotpaper, defined in \Cref{infers} and documented later in
+\Cref{auto-flaw-analysis,tab:infMultiCats}\else\ (details omitted for brevity)\fi.
 
 We use similar procedures to track software qualities \ifnotpaper (see
     \Cref{qual-test}) \fi and supplementary terminology (either shared by
@@ -239,13 +239,13 @@ type (e.g., reusability testing). \ifnotpaper
     \citet{ISO_IEC2023a} provides relations involving dependability and
     modifiability; since only the qualities are described, we do not record
     their implicit related approaches and omit these relations when generating
-    \recFigs{} (as described in \Cref{graph-gen}).\fi
+    graphs as described in \Cref{graph-gen}.\fi
 
 We use heuristics to guide this process for all three
 glossaries to increase confidence that all terms are identified, paying
 special attention to the following when investigating a new source:
 \begin{itemize}
-    \item glossaries and lists of terms,
+    \item glossaries, taxonomies, hierarchies, and lists of terms,
     \item testing-related terms (e.g., terms containing ``test(ing)'',
           \ifnotpaper ``review(s)'', ``audit(s)'', \fi
           ``validation'', or ``verification''),
@@ -254,8 +254,7 @@ special attention to the following when investigating a new source:
           or prompted further discussion (e.g., terms containing
           ``performance'', ``recovery'', ``component'', ``bottom-up'',
           \ifnotpaper ``boundary'', \fi or ``configuration''), and
-    \item terms that implied testing approaches%
-          \ifnotpaper\footnote{
+    \item terms that imply test approaches\ifnotpaper\footnote{
                   Since these methods for deriving test approaches only arose
                   as research progressed, some examples would have been missed
                   during the first pass(es) of resources investigated earlier
@@ -268,13 +267,13 @@ standards (see \Cref{stds}), in their entirety. Some sources, however, we only
 partially investigate, such as those chosen for a specific area of
 interest or based on a test approach that was determined to be out-of-scope.
 These include the following sources as described in \Cref{undef-terms}:
-\citep{ISO2022,ISO2015,Dominguez-PumarEtAl2020,PierreEtAl2017,
+\citet{ISO2022,ISO2015,Dominguez-PumarEtAl2020,PierreEtAl2017,
     TrudnowskiEtAl2017,YuEtAl2011,Tsui2007,Goralski1999}.
 During the first pass of data collection, we investigate and record all
 terminology related to software testing. Some of these terms are less
-applicable to test case automation---our original motivation---%
-\ifnotpaper(such as static testing; see \Cref{static-test}%
-\thesisissueref{39})\ \fi or quite broad\ifnotpaper\ (such as attacks; see
+applicable to our original motivation of test case automation \ifnotpaper
+    (such as static testing; see \Cref{static-test}\thesisissueref{39}) \fi or
+are quite broad\ifnotpaper\ (such as attacks; see
     \Cref{attacks}\thesisissueref{55})\fi, so we will omit them during future
 analysis.
 
