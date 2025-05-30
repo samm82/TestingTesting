@@ -338,7 +338,7 @@ Since test types are ``focused on specific quality characteristics''
 software product[s] to satisfy stated and implied needs when used under
 specified conditions'' \citep[p.~424]{IEEE2017}\todo{OG ISO/IEC 2014}. This
 is supported by reliability and performance testing, which are both examples of
-test types \citep{IEEE2022, IEEE2021} that are based on their underlying
+test types \citeyearpar{IEEE2022, IEEE2021} that are based on their underlying
 qualities \citep[p.~18]{FentonAndPfleeger1997}.
 % \ifnotpaper
 %     For quantifying quality-driven testing, measurements should include
@@ -348,11 +348,12 @@ qualities \citep[p.~18]{FentonAndPfleeger1997}.
 %     defined before they can be measured \citetext{p.~38}.
 %
 % \fi
-Given the importance of software qualities to defining test types, the
-definitions of \qualityCount{} software qualities are also tracked in this
-current work\thesisissueref{21,23,27}. This was done by capturing their
-definitions, any precedent for the existence of an associated test type,
-and any synonyms (see \Cref{syn-rels}) and additional notes in a glossary.
+Because of the importance of software qualities to defining test types, we track
+\qualityCount{} software qualities\thesisissueref{21,23,27} in addition to our
+tracked test approaches. We do this by capturing their definitions, any precedent
+for the existence of an associated test type (e.g., a parent-child relation---see
+\Cref{par-chd-rels}---with a quality that has an associated test approach), and
+any synonyms (see \Cref{syn-rels}) and additional notes in a glossary.
 We then ``upgrade'' software qualities to test types when they are mentioned
 (or implied) by a source by removing its entry from this quality glossary
 and adding an associated test approach to \ourApproachGlossary{} (as outlined
@@ -364,14 +365,18 @@ in \Cref{procedure}). Examples of this include conformance testing \ifnotpaper
 
 \paragraph{Attacks}\label{attacks}
 While attacks can be ``malicious'' \citep[p.~7]{IEEE2017}, they are also
-given as a test practice (\citeyear[p.~34]{IEEE2022}; see \Cref{tab:multiCats}).
-This means that software attacks, such as code injection and password
-cracking \citepISTQB{}, can also be used for testing software, and only
-this kind of software attack is in scope. This is supported by the fact
-that penetration testing is also called ``ethical hacking testing''
-\citep[p.~13\=/4]{SWEBOK2024} or just ``ethical hacking''
-\citep[p.~28]{Gerrard2000b}; while hacking in general is not a test
-approach, doing so systematically to test and improve the software is.
+described as a test approach \ifnotpaper
+    (\citeyear[pp.~4, 34]{IEEE2022}; \citeyear[p.~4]{IEEE2021};
+    \citeyear[p.~7]{IEEE2019a}; \citealpISTQB{}; implied by
+    \citealp[p.~5\=/10]{SWEBOK2024}; \citealp[p.~26]{Bas2024};
+    \citealp[p.~87\==89]{Patton2006})\else \cite[pp.~4, 34]{IEEE2022},
+    \cite[p.~4]{IEEE2021}; \cite[p.~7]{IEEE2019a}; \cite{ISTQB}\fi.
+This is supported by the fact that penetration testing is also called ``ethical
+hacking testing'' \citep[p.~13\=/4]{SWEBOK2024} or just ``ethical hacking''
+\citep[p.~28]{Gerrard2000b}. This means that software attacks, such as code
+injection and password cracking \citepISTQB{}, can also be used for testing
+software if they are performed systematically to test and improve the software
+(i.e., \emph{without} the malicious intent).
 
 \paragraph{Requirements-driven Approaches}\label{req-test}
 While not as universally applicable, some kinds of requirements have associated
