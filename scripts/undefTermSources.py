@@ -34,12 +34,12 @@ undefTerms = [
     UndefinedTerm("Loop Testing", "DhokAndRamanathan2016,"
                   "GodefroidAndLuchaup2011,PreußeEtAl2012,ForsythEtAl2004",
                   footnote="\\ifnotpaper \\else References \\fi"
-                  "\\citep{ISO2022} and \\citep{ISO2015} "
+                  "\\citet{ISO2022} and \\citet{ISO2015} "
                   "were used as reference for terms but not fully "
-                  "investigated, \\citep{PierreEtAl2017} and "
-                  "\\citep{TrudnowskiEtAl2017} were added as potentially in "
-                  "scope, and \\citep{Dominguez-PumarEtAl2020} and "
-                  "\\citep{Goralski1999} were added as "
+                  "investigated, \\citet{PierreEtAl2017} and "
+                  "\\citet{TrudnowskiEtAl2017} were added as potentially in "
+                  "scope, and \\citet{Dominguez-PumarEtAl2020} and "
+                  "\\citet{Goralski1999} were added as "
                   "out-of-scope examples."),
     UndefinedTerm("EMSEC Testing", "ZhouEtAl2012,ISO2021"),
     UndefinedTerm("Asynchronous Testing", "JardEtAl1999"),
@@ -52,7 +52,7 @@ undefTerms = [
     UndefinedTerm("Sandwich Testing", "SharmaEtAl2021,SangwanAndLaPlante2006"),
     UndefinedTerm("Orthogonal Array Testing", "Mandl1985,Valcheva2013",
                   footnote="\\ifnotpaper \\else References \\fi"
-                  "\\citep{YuEtAl2011} and \\citep{Tsui2007} were added as "
+                  "\\citet{YuEtAl2011} and \\citet{Tsui2007} were added as "
                   "out-of-scope examples."),
     UndefinedTerm("Backup Testing", "Bas2024", footnote="See \\Cref{recov-flaw}."),
     UndefinedTerm("SoS (Integration) Testing", "IEEE2019b"),

@@ -440,10 +440,9 @@ approaches.
 The literature mentions many software testing terms without defining them.
 While this includes test approaches, software qualities, and more general
 software terms, we focus on the former as the main focus of our research.
-In particular, many undefined test approaches are given by \ifnotpaper
-    \citep{IEEE2022} and \citep{Firesmith2015}\else
-    \cite{Firesmith2015} and \cite{IEEE2022}\fi. Once we exhaust the standards
-in \Cref{stds}, we
+In particular, \ifnotpaper \citet{IEEE2022} and \citet{Firesmith2015} \else
+    \cite{Firesmith2015} and \cite{IEEE2022} \fi name many undefined test
+approaches. Once we exhaust the standards in \Cref{stds}, we
 perform miniature literature reviews on these subsets to ``fill in'' the
 missing definitions (along with any relations), essentially ``snowballing''
 on these terms. This process uncovers even more approaches, although some are
@@ -459,7 +458,7 @@ number of \emph{undefined} terms from \the\UndefBefore{} to \the\UndefAfter{}%
 \ifnotpaper\ (see \Cref{fig:undefPies})\fi. This implies that about
 \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) / (\TotalAfter -
 \TotalBefore)\relax\% of added test approaches are defined, which helps verify
-that our procedure constructively uncovers new terminology.
+that our procedure constructively uncovers \emph{and} defines new terminology.
 
 \ifnotpaper
     \input{assets/graphs/undefPies}
