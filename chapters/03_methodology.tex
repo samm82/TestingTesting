@@ -214,12 +214,13 @@ orthogonal\ifnotpaper\ (see \Cref{orth-approach})\fi, we consider this to be
 an inferred flaw\ifnotpaper, defined in \Cref{infers} and documented later in
 \Cref{auto-flaw-analysis,tab:infMultiCats}\else\ (details omitted for brevity)\fi.
 
-We use similar procedures to track software qualities \ifnotpaper (see
-    \Cref{qual-test}) \fi and supplementary terminology (either shared by
-multiple approaches or too complicated to explain inline) in separate
-glossaries with a similar format. This includes recording the name, definition,
-and synonym(s) of these terms, as well as any precedence for a related test
-type for a given software quality. For example, analyzability\footnote{
+\phantomsection{}\label{qual-supp-procedure}
+We use similar procedures to track software qualities and supplementary
+terminology (either shared by multiple approaches or too complicated to explain
+inline) in separate glossaries with a similar format. This includes recording
+the name, definition, and synonym(s) of these terms, as well as any precedence
+for a related test type for a given software quality as described in
+\Cref{qual-test}. For example, analyzability\footnote{
     This may be spelled ``analyzability'' \citep[p.~18]{IEEE2017} or
     ``analysability'' \citep{ISO_IEC2023a}; since this is a dialectal
     difference, we do not count this as a label flaw (see
@@ -236,11 +237,13 @@ a ``precedent'' for each of these subqualities having its own associated test
 type (e.g., reusability testing). \ifnotpaper
     Sometimes, the literature provides a relation between qualities where at
     least one of them does not have an explicit approach associated with it
-    (although it may be derived; see \Cref{cov-test}). For example,
-    \citet{ISO_IEC2023a} provides relations involving dependability and
-    modifiability; since only the qualities are described, we do not record
-    their implicit related approaches and omit these relations when generating
-    graphs as described in \Cref{graph-gen}.\fi
+    (although it may be inferred). We record this information regardless, since
+    it may become relevant if an associated test type emerges as described in
+    \Cref{qual-test}. For example, \citet{ISO_IEC2023a} provides
+    relations involving dependability and modifiability, but only in terms of
+    them as qualities, not types of testing. We record these relations in case
+    an associated test type is explicitly named by the literature, which would
+    inherit these relations. \fi
 
 We use heuristics to guide this process for all three
 glossaries to increase confidence that all terms are identified, paying
@@ -351,14 +354,11 @@ approaches.
     % \fi
     Because of the importance of software qualities to defining test types, we track
     \qualityCount{} software qualities\thesisissueref{21,23,27} in addition to our
-    tracked test approaches. We do this by capturing their definitions, any precedent
-    for the existence of an associated test type (e.g., a parent-child relation---see
-    \Cref{par-chd-rels}---with a quality that has an associated test approach), and
-    any synonyms (see \Cref{syn-rels}) and additional notes in a glossary.
+    tracked test approaches following the procedure in \Cref{qual-supp-procedure}.
     We then ``upgrade'' software qualities to test types when they are mentioned
     (or implied) by a source by removing its entry from this quality glossary
-    and adding an associated test approach to \ourApproachGlossary{} (as outlined
-    in \Cref{procedure}). Examples of this include conformance testing \ifnotpaper
+    and adding an associated test approach to \ourApproachGlossary{}, also outlined
+    in \Cref{procedure}. Examples of this include conformance testing \ifnotpaper
         (\citealp[p.~5\=/7]{SWEBOK2024}; \citealp[p.~25]{JardEtAl1999}; implied
         by \citealp[p.~93]{IEEE2017})\else \cite[p.~5\=/7]{SWEBOK2024},
         \cite[p.~25]{JardEtAl1999}\fi, efficiency testing
