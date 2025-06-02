@@ -142,6 +142,30 @@ make the following changes to the schema from \citet[Fig.~2]{IEEE2022}:
           from \Cref{multiCats}.
 \end{enumerate}
 
+\ifnotpaper\label{orth-approach}
+Based on their definitions and usage, these categories seem to be orthogonal.
+For example, ``a test type can be
+performed at a single test level or across several test levels''
+\ifnotpaper
+    (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021})%
+\else
+    \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}%
+\fi, and ``Keyword-Driven Testing can be applied at all testing levels
+\dots{} and for various types of testing'' \citeyearpar[p.~4]{IEEE2016}.
+Therefore, we assume these categories to be orthogonal throughout this
+\docType{} (e.g., when identifying flaws). We may assess this assumption more
+rigorously in the future, but for now, it
+implies that a specific test approach can be derived by combining multiple
+test approaches from different categories. For example, usability test
+script(ing) \citepISTQB{} is a combination of usability testing, a test type
+\ifnotpaper (\citealp[pp.~22, 26--27]{IEEE2022};
+    \citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021}; implied by its quality;
+    \citealp[p.~53]{Firesmith2015})\else \cite[pp.~22, 26--27]{IEEE2022},
+    \cite[pp.~7, 40, Tab.~A.1]{IEEE2021}\fi, and scripted testing, a test
+practice \citep[pp.~20, 22\ifnotpaper; implied by p.~33\fi]{IEEE2022}; see
+\Cref{app-orth-test} for more detailed discussion.
+\fi
+
 % For example, static assertion checking (mentioned by \ifnotpaper
 %     \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
 %     \citealp[p.~343]{ChalinEtAl2006}, \citealp[p.~345]{LahiriEtAl2013}\fi) is a
