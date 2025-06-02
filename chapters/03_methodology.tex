@@ -426,13 +426,13 @@ the same ``weight'' as their atomic counterparts. For example, \citetISTQB{}
 \ifnotpaper their \else its \fi glossary as separate terms, despite their
 definitions essentially boiling down to ``reviews that follow (or do not
 follow) a formal process'', which do not provide any new information.
-If a source describes an orthogonally derived approach in more detail, such
-as security audits, we record it as a distinct approach in
-\ourApproachGlossary{} with its related information. Otherwise, we consider
-it out of scope since its details are captured by its in-scope subapproaches.
-The following are examples of these out-of-scope orthogonally derived approaches:
-% , with their subapproaches omitted for brevity as they 
-% (which are apparent from the name of each ``combination approach''):
+These approaches are simply the combinations of ``reviews'' with ``formal''
+and ``informal testing'', respectively. If a source describes an orthogonally
+derived approach in more detail, such as security audits, we record it as a
+distinct approach in \ourApproachGlossary{} with its related information.
+Otherwise, we consider it out of scope since its details are captured by its
+in-scope subapproaches. The following are examples of these out-of-scope
+orthogonally derived approaches:
 
 \begin{enumerate}
     \item Black box conformance testing \citep[p.~25]{JardEtAl1999}
@@ -460,7 +460,7 @@ The following are examples of these out-of-scope orthogonally derived approaches
           % End-to-end: Type (Hamburg and Mogyorodi, 2024)
           %          OR Technique (Firesmith, 2015, p. 47; Sharma et al., 2021, pp. 601, 603, 605-606)
           % Functionality: Type (implied by its quality (IEEE, 2017, p. 196); Firesmith, 2015, p. 53)
-    \item Formal reviews \citepISTQB{}
+    \item Formal reviews (\citealpISTQB{}; \citealp[p.~12\=/14]{SWEBOK2024})
           % Formal: Technique (inferred from informal testing)
           % Reviews: Approach
     \item Grey-box integration testing \citep[p.~344]{SakamotoEtAl2013}
@@ -471,7 +471,7 @@ The following are examples of these out-of-scope orthogonally derived approaches
           % Incremental: Practice?
           % Integration: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
           %           OR Technique (implied by Sharma et al., 2021, pp. 601, 603, 605-606)
-    \item Informal reviews \citepISTQB{}
+    \item Informal reviews (\citealpISTQB{}; \citealp[p.~12\=/14]{SWEBOK2024})
           % Informal: Technique (implied by Kam, 2008, p. 6)
           % Reviews: Approach
     \item Infrastructure compatibility testing \citep[p.~53]{Firesmith2015}
@@ -483,7 +483,7 @@ The following are examples of these out-of-scope orthogonally derived approaches
           % Assertion Checking: Practice?
           % Automated: Practice (IEEE, 2022, pp. 20, 22)
           %         OR Technique (implied by p. 35)
-    \item Legacy system integration (testing) \citep[Tab.~2]{Gerrard2000a}
+    \item Legacy system integration (testing)\qtodo{Is this orthogonal? Investigate legacy testing} \citep[Tab.~2]{Gerrard2000a}
           % Legacy: Approach
           % System Integration: Level (IEEE, 2022, pp. 12, 22; 2021, p. 6; Hamburg and Mogyorodi, 2024)
     \item Manual procedure testing \citep[p.~47]{Firesmith2015}
@@ -515,13 +515,13 @@ The following are examples of these out-of-scope orthogonally derived approaches
           % Online: Practice?
           % Model-based: Practice (IEEE, 2022, p. 22; 2021, p. viii)
           %           OR Technique (Engström and Petersen, 2015, pp. 1-2; Kam, 2008, p. 4; implied by IEEE, 2022, p. 32; 2021, p. 7; 2017, p. 469)
-    \item Role-based reviews \citepISTQB{}
+    \item Role-based reviews\qtodo{Is this orthogonal? Investigate role-based testing} \citepISTQB{}
           % Role-based: Practice?
           % Reviews: Approach
-    \item Scenario walkthroughs \citep[Fig.~4]{Gerrard2000a}
+    \item Scenario walkthroughs\qtodo{Is this orthogonal? Investigate scenario-based testing} \citep[Fig.~4]{Gerrard2000a}
           % Scenario: Technique (IEEE, 2022, pp. 9, 22; 2021, pp. 5, 8, 20, Fig. 2; 2017, p. 400; OG 2013; Washizaki, 2024, p. 5-12; Firesmith, 2015, p. 47; Sangwan and LaPlante, 2006, p. 26)
           % Walkthroughs: Technique (IEEE, 2017, p. 508)
-    \item Scenario-based reviews \citepISTQB{}
+    \item Scenario-based\qtodo{Is this orthogonal? Investigate scenario-based testing} reviews \citepISTQB{}
           % Scenario-based: Approach
           % Reviews: Approach
     \item Security attacks \citepISTQB{}
