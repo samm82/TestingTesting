@@ -133,8 +133,8 @@ definitions and terms (see \Cref{defs,labels}, respectively):
 The following sections list observed flaws grouped by \emph{what} information
 is flawed as presented in \Cref{dmn-def}. This includes test approach
 categories (\Cref{cats}), synonym relations (\Cref{syns}), parent-child
-relations (\Cref{pars}), definitions (\Cref{defs}), labels (\Cref{labels}), and
-traceability information (\Cref{trace}).
+relations (\Cref{pars}), definitions (\Cref{defs}), labels (\Cref{labels}),
+scope (\Cref{scope}), and traceability information (\Cref{trace}).
 
 \subsubsection{Approach Category Flaws}\label{cats}
 
@@ -404,6 +404,15 @@ We observe the following label flaws:
 
 \input{build/flawDmnLabels}
 
+\subsubsection{Scope Flaws}\label{scope}
+
+Some information is given that is technically correct, but it is either given
+too narrowly, too broadly, or when it should not have been (i.e., it is
+irrelevant)\thesisissueref{182}! We observe the following scope flaws as
+defined in \Cref{scope-flaw-def}:
+
+\input{build/flawDmnScope}
+
 \subsubsection{Traceability Flaws}\label{trace}
 
 \ifnotpaper
@@ -417,16 +426,13 @@ We observe the following label flaws:
     coverage'', but it does not.
 \fi
 
-
-\subsection{Functional Testing}
-\label{func-test-flaw}
+\subsection{Functional Testing}\label{func-test-flaw}
 
 ``Functional testing'' is described alongside many other, likely related,
 terms. This leads to confusion about what distinguishes these terms, as shown
 by the following five:
 
-\subsubsection{Specification-based Testing}
-\label{spec-func-test}
+\subsubsection{Specification-based Testing}\label{spec-func-test}
 This is defined as ``testing in which the principal test basis is the external
 inputs and outputs of the test item'' \citep[p.~9]{IEEE2022}. This agrees
 with a definition of ``functional testing'': ``testing that
