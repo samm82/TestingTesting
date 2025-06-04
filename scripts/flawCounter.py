@@ -139,6 +139,7 @@ class FlawDmn(Enum):
     PARS   = "Parents"
     DEFS   = "Definitions"
     LABELS = "Labels"
+    SCOPE  = "Scope"
     TRACE  = "Traceability"
 
 class FlawMnfst(Enum):
@@ -331,8 +332,8 @@ def outputFlaws():
             if DEBUG:
                 printFlaws()
 
-    for shortname, flawGroup in [("dmn",   simpleFlawDmn),
-                                 ("mnfst", simpleFlawMnfst)]:
+    for shortname, flawGroup in [("Dmn",   simpleFlawDmn),
+                                 ("Mnfst", simpleFlawMnfst)]:
         for k in flawGroup.keys():
             flawGroup[k] += ["\\ifnotpaper", "\\end{enumerate}", "\\else",
                                 "\\end{itemize}", "\\fi"]
@@ -388,7 +389,7 @@ def outputFlaws():
         flawTable.append([f"\\{k.name.lower()}s{{}}"] + [val for val, _ in slices])
     
     writeFile([formatOutput(dmnTotal)],   f"totalFlawDmnBrkdwn", True)
-    writeFile([formatOutput(mnfstTotal)], f"totalflawMnfstBrkdwn", True)
+    writeFile([formatOutput(mnfstTotal)], f"totalFlawMnfstBrkdwn", True)
 
     flawLegend = ["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
                   "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",
