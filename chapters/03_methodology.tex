@@ -453,13 +453,22 @@ aspects of \acf{orthat} \ifnotpaper and loop testing (see \Cref{hard-test}),
 following terms (and their respective related terms) were explored in the
 sources given:
 \input{build/undefTerms}
-Applying our procedure from \Cref{procedure} to these sources brings the number
-of testing approaches from \the\TotalBefore{} to \the\TotalAfter{} and the
-number of \emph{undefined} terms from \the\UndefBefore{} to \the\UndefAfter{}%
-\ifnotpaper\ (see \Cref{fig:undefPies})\fi. This implies that about
-\the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) / (\TotalAfter -
-\TotalBefore)\relax\% of added test approaches are defined, which helps verify
-that our procedure constructively uncovers \emph{and} defines new terminology.
+
+\phantomsection{}\label{iter-undef}
+Applying our procedure from \Cref{procedure} to these sources uncovers
+\the\numexpr \TotalAfter - \TotalBefore\relax\ new approaches and
+\the\numexpr \TotalAfter - \UndefAfter - \TotalBefore + \UndefBefore\relax\ new
+definitions. These definitions are either for existing undefined approaches or
+new uncovered approaches; while not every new approach is presented alongside
+a definition, if we assume that each of these definitions is for a new approach,
+we can deduce that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
+(\TotalAfter - \TotalBefore)\relax\% of added test approaches are defined. This
+indicates that this procedure leads to a higher proportion of defined terms
+(\the\numexpr 100 - 100 * \UndefBefore / \TotalBefore\relax\% vs.~%
+\the\numexpr 100 - 100 * \UndefAfter / \TotalAfter\relax\%), as shown in
+\Cref{fig:undefPies}, which helps verify that our procedure constructively
+uncovers \emph{and} defines new terminology. Further iterating on it would
+continue this trend, creating something approaching a complete taxonomy.
 
 \ifnotpaper
     \input{assets/graphs/undefPies}
@@ -467,14 +476,14 @@ that our procedure constructively uncovers \emph{and} defines new terminology.
 
 \subsubsection{Stopping Criteria}\label{stop-crit}
 
-Since we cannot continue looking for new approaches indefinitely, we need a
-``stopping criteria'' to let us know when we are ``finished'' looking for test
-approaches in the literature. Our original plan was to iterate steps
-\ref{record-apps} and \ref{record-terms} until there are diminishing returns,
-which would imply that we had created something approaching a complete
-taxonomy! However, due to time constraints, this is infeasible, so our stopping
-point is artificially imposed. Ideally, with more time, we would find
-definitions for all terms we uncover, as described in \Cref{undef-terms}.
+Unfortunately, we cannot continue looking for new approaches indefinitely. We
+therefore need a ``stopping criteria'' to let us know when we are ``finished''
+looking for test approaches in the literature. Our original plan was to iterate
+steps \ref{record-apps} and \ref{record-terms} until there are diminishing
+returns, implying an approach of a complete taxonomy! However, due to time
+constraints, this is infeasible, so our stopping point is artificially imposed.
+With more time, we would find definitions for all terms we uncover as described
+in \Cref{undef-terms}.
 
 \ifnotpaper
     In addition to these undefined terms, some terms do not appear in
