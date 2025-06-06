@@ -77,7 +77,10 @@ develop a tool to automatically generate graphs of these relations.
     contains no author, which means it was written by the same one as the
     previous citation (Author). We process these citations according to this
     logic \seeSrcCode{f173e88}{scripts/csvToGraph.py}{55}{96} so we can
-    consistently track them throughout our analysis.
+    consistently track them throughout our analysis. We also color each
+    relation according to its source tier (see \Cref{sources}), including
+    inferences (see \Cref{infers}) and proposals (see \Cref{recs}),
+    although we omit this from \Cref{fig:exampleGraphs} for brevity.
 
     \input{build/exampleGlossary.tex}
 
