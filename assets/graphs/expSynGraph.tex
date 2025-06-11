@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{expSynGraph}{
+rankdir=BT;
+
+AcceptanceTesting [label=<Acceptance<br/>Testing>];
+BranchConditionCombinationTesting [label=<Branch<br/>Condition<br/>Combination<br/>Testing>];
+BranchConditionTesting [label=<Branch<br/>Condition<br/>Testing>];
+CapacityTesting [label=<Capacity<br/>Testing>];
+CoexistenceTesting [label=<Co-existence<br/>Testing>];
+CompatibilityTesting [label=<Compatibility<br/>Testing>];
+ComponentIntegrationTesting [label=<Component<br/>Integration<br/>Testing>];
+ConfigurationTesting [label=<Configuration<br/>Testing>];
+ConformanceTesting [label=<Conformance<br/>Testing>];
+ConversionTesting [label=<Conversion<br/>Testing>];
+DecisionTesting [label=<Decision<br/>Testing>];
+EnduranceTesting [label=<Endurance<br/>Testing>];
+ExhaustiveTesting [label=<Exhaustive<br/>Testing>];
+FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
+FlexibilityTesting [label=<Flexibility<br/>Testing>];
+FunctionalTesting [label=<Functional<br/>Testing>];
+LargeScaleIntegrationTesting [label=<Large<br/>Scale<br/>Integration<br/>Testing>];
+MigrationTesting [label=<Migration<br/>Testing>];
+NegativeTesting [label=<Negative<br/>Testing>];
+OperationalTesting [label=<Operational<br/>(Acceptance)<br/>Testing>];
+PathTesting [label=<Path<br/>Testing>];
+PerformanceTesting [label=<Performance<br/>Testing>];
+PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
+PortabilityTesting [label=<Portability<br/>Testing>];
+ProductionAcceptanceTesting [label=<Production<br/>Acceptance<br/>Testing>];
+QualificationTesting [label=<Qualification<br/>Testing>];
+RecoverabilityTesting [label=<Recoverability<br/>Testing>];
+RecoveryTesting [label=<Recovery<br/>Testing>];
+ReliabilityTesting [label=<Reliability<br/>Testing>];
+RobustnessTesting [label=<Robustness<br/>Testing>];
+ScalabilityTesting [label=<Scalability<br/>Testing>];
+ScenarioTesting [label=<Scenario<br/>Testing>];
+SpecificationbasedTesting [label=<Specification-based<br/>Testing>];
+StatebasedWebBrowserTesting [label=<State-based<br/>Web<br/>Browser<br/>Testing>];
+StaticAssertionChecking [label=<Static<br/>Assertion<br/>Checking>];
+StructuredWalkthroughs [label=<Structured<br/>Walkthroughs>];
+SystemsIntegrationTesting [label=<Systems<br/>Integration<br/>Testing>];
+UseCaseTesting [label=<Use<br/>Case<br/>Testing>];
+Walkthroughs [label=<Walkthroughs>];
+
+
+AcceptanceTesting -> QualificationTesting[dir=none,color="blue"];
+BranchConditionCombinationTesting -> DecisionTesting[dir=none,color="blue"];
+ConditionTesting [label=<Condition<br/>Testing>,style="dotted"];
+BranchConditionCombinationTesting -> ConditionTesting[dir=none,color="maroon"];
+BranchConditionTesting -> ConditionTesting[dir=none,color="blue"];
+DecisionTesting -> ConditionTesting[dir=none,color="blue"];
+PathTesting -> ExhaustiveTesting[dir=none,color="maroon"];
+LinkTesting [label=<Link<br/>Testing>,style="dotted"];
+ComponentIntegrationTesting -> LinkTesting[dir=none];
+CapacityTesting -> ScalabilityTesting[dir=none,color="green"];
+CompatibilityTesting -> CoexistenceTesting[dir=none,color="green"];
+ConfigurationTesting -> PortabilityTesting[dir=none];
+ConversionTesting -> MigrationTesting[dir=none];
+FunctionalTesting -> ConformanceTesting[dir=none,color="blue"];
+SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
+EnduranceTesting -> SoakTesting[dir=none,color="green"];
+ReliabilityTesting -> SoakTesting[dir=none];
+InvalidTesting [label=<Invalid<br/>Testing>,style="dotted"];
+NegativeTesting -> InvalidTesting[dir=none,color="blue"];
+FaultToleranceTesting -> RobustnessTesting[dir=none,color="blue"];
+TestingtoFail [label=<Testing-to-Fail>,style="dotted"];
+NegativeTesting -> TestingtoFail[dir=none,color="maroon"];
+FunctionalTesting -> SpecificationbasedTesting[dir=none,color="green"];
+OperationalTesting -> ProductionAcceptanceTesting[dir=none,color="blue"];
+PerformanceTesting -> PerformancerelatedTesting[dir=none];
+PortabilityTesting -> FlexibilityTesting[dir=none,color="green"];
+RecoverabilityTesting -> RecoveryTesting[dir=none];
+ScenarioTesting -> UseCaseTesting[dir=none,color="blue"];
+UserScenarioTesting [label=<User<br/>Scenario<br/>Testing>,style="dotted"];
+ScenarioTesting -> UserScenarioTesting[dir=none,color="blue"];
+UseCaseTesting -> UserScenarioTesting[dir=none,color="blue"];
+StatebasedTesting [label=<State-based<br/>Testing>,style="dotted"];
+StatebasedWebBrowserTesting -> StatebasedTesting[dir=none,color="blue"];
+StaticVerification [label=<Static<br/>Verification>,style="dotted"];
+StaticAssertionChecking -> StaticVerification[dir=none];
+SystemsIntegrationTesting -> LargeScaleIntegrationTesting[dir=none];
+Walkthroughs -> StructuredWalkthroughs[dir=none,color="blue"];
+
+
+}
+\end{document}

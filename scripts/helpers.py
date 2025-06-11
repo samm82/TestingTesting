@@ -1,4 +1,7 @@
 from enum import Enum, auto
+from functools import reduce
+import numpy as np
+import operator
 import re
 from string import ascii_lowercase
 from typing import Optional
@@ -171,6 +174,27 @@ def getFlawCount(line: list[str], mnfst, dmn, todo=True):
     if not all(sources):
         return ""
     return f"% Flaw count ({mnfst}, {dmn}): {" | ".join(sources)}\n\t"
+
+def splitListAtEmpty(listToSplit):
+    recArr = np.array(listToSplit)
+    return [subarray.tolist() for subarray in
+            np.split(recArr, np.where(recArr == "")[0]+1)
+            if len(subarray) > 0]
+
+def inLine(flag, style, line):
+    return re.search(fr"label=.+,{flag.name.lower()}=.*{style}", line)
+
+class Flag(Enum):
+    COLOR = auto()
+    STYLE = auto()
+
+def removeImplicit(data):
+    unsure = reduce(operator.add,
+                    [[val] + [c.split()[0] for c in data if inLine(flag, val, c)]
+                     for flag, val in {(Flag.STYLE, "dashed"),
+                                       (Flag.COLOR, "grey")}])
+
+    return [c for c in data if all(x not in c for x in unsure)]
 
 # I/O
 def readFileAsStr(filename) -> str:

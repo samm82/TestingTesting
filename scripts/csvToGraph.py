@@ -1,6 +1,5 @@
 from copy import deepcopy
 from math import ceil
-import numpy as np
 import itertools
 from pandas import read_csv
 import re
@@ -476,6 +475,14 @@ for synList in [expMultiSyns, impMultiSyns, infMultiSyns]:
     synList.sort(key=lambda x: x.count("\\item"), reverse=True)
 
 if "Example" not in csvFilename:
+    synLinesGraph = splitListAtEmpty(removeImplicit(categoryDict["Approach"][1]))
+    synLinesGraph[0] = list(filter(
+        lambda x: any(line.startswith(x.split(" ")[0]) or
+                        f"-> {x.split(" ")[0]}" in line
+                      for line in synLinesGraph[1]),
+        synLinesGraph[0]))
+    synLinesGraph = synLinesGraph[0] + [""] + synLinesGraph[1] + [""]
+
     multiSyns = expMultiSyns + impMultiSyns
     writeFile(multiSyns, "multiSyns", True)
     writeFile([f"{formatCount(len(multiSyns))}% Synonyms to multiple discrete terms"],
@@ -518,12 +525,6 @@ if "Example" not in csvFilename:
                   for cycle in selfCycles]
     writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
               "selfCycles", True)
-
-def splitListAtEmpty(listToSplit):
-    recArr = np.array(listToSplit)
-    return [subarray.tolist() for subarray in
-            np.split(recArr, np.where(recArr == "")[0]+1)
-            if len(subarray) > 0]
 
 # Not stable; MUST be in correct order for table footnotes
 parSynNotes = {
@@ -676,13 +677,6 @@ if "Example" not in csvFilename:
             f"{formatCount(selfCycleCount)}% Self-cycles"],
             "parSynCounts", True)
 
-class Flag(Enum):
-    COLOR = auto()
-    STYLE = auto()
-
-def inLine(flag, style, line):
-    return re.search(fr"label=.+,{flag.name.lower()}=.*{style}", line)
-
 if "Example" not in csvFilename:
     outputFlaws()
     genFlawMacros(FlawDmn)
@@ -816,7 +810,8 @@ def makeLegend(lines, separate: bool=False) -> tuple[list[str], list[str]]:
         '// Connect the dummy node to the first node of the legend',
         'start -> chd [style="invis"];'])
 
-CUSTOM_LEGEND = {"subsumes", "specBased", "parChd", "recovery", "scalability", "Example"}
+CUSTOM_LEGEND = {"subsumes", "specBased", "parChd", "recovery", "scalability",
+                 "Example", "expSynGraph"}
 
 def writeDotFile(lines, filename):
     legend = []
@@ -851,18 +846,13 @@ if "Example" in csvFilename:
                   else dict())
 else:
     explicitDict = categoryDict
+    writeDotFile(synLinesGraph, "expSynGraph")
 
 for key, value in explicitDict.items():
     lines = value[1]
     if key != "ExampleGlossary":
         writeDotFile(lines, f"{key.lower()}Graph")
-
-    unsure = reduce(operator.add,
-                    [[val] + [c.split()[0] for c in lines if inLine(flag, val, c)]
-                    for flag, val in {(Flag.STYLE, "dashed"), (Flag.COLOR, "grey")}])
-
-    writeDotFile([c for c in lines if all(x not in c for x in unsure)],
-                f"exp{key}Graph")
+    writeDotFile(removeImplicit(lines), f"exp{key}Graph")
 
 SYN = "syn"
 class CustomGraph:
