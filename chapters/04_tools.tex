@@ -89,45 +89,50 @@ develop a tool to automatically generate visualizations of these relations.
 
     \newpage\fi
 We graph all parent-child relations, since they are guaranteed to be visually
-meaningful, but only graph some synonym relations. For a given synonym pair to
-be captured by our methodology, at least one term will have its own row in its
-relevant glossary. We then decide whether to include or exclude the synonym
-pair from our generated graphs based on the following possible cases:
-\begin{description}
-    \item[1. (Excluded)] \phantomsection{}\label{syn-case-one}
-          \hfill \ifnotpaper
-              $\left\{ \{x, y\} \in S \mid x \in A \,\textrm{ xor }\, y \in A \right\}$
-          \fi \break
-          \textbf{Only one synonym has its own row.}
-          This is a ``typical'' synonym relation (see \Cref{syn-rels}) where
-          the terms are interchangeable. We \emph{could} include the synonym
-          as an alternate name inside the node of its partner, but we do not
-          want to clutter our graphs unnecessarily.
+meaningful.
+% , but only graph some synonym relations.
+% For a given synonym pair to
+% be captured by our methodology, at least one term will have its own row in its
+% relevant glossary.
+However, since each term is trivially a synonym of itself and there are many
+non-problematic synonyms that do not imply flaws (see \Cref{syn-rels}),
+we only visualize the following synonym relations, which may indicate flaws:
 
-    \item[2. (Included)] \phantomsection{}\label{syn-case-two}
-          \hfill \ifnotpaper
-              $\left\{ \{x, y\} \in S \mid x, y \in A \right\}$
-          \fi \break
-          % Reference for singular 'row': https://ell.stackexchange.com/q/105868/169502
-          \textbf{Both synonyms have their own row in the glossary.}
-          This may indicate that the synonym relation is incorrect, as it
-          equates separate approaches (with their own definitions, nuances,
-          etc.)\ that should likely be distinct. This could, however, also
-          indicate that the two terms are interchangeable and could be merged
+% We then decide whether to include or exclude the synonym
+% pair from our generated graphs based on the following possible cases:
+\begin{enumerate}
+    % \item[1. (Excluded)] \phantomsection{}\label{syn-case-one}
+    %       \hfill \ifnotpaper
+    %           $\left\{ \{x, y\} \in S \mid x \in A \,\textrm{ xor }\, y \in A \right\}$
+    %       \fi \break
+    %       \textbf{Only one synonym has its own row.}
+    %       This is a ``typical'' synonym relation (see \Cref{syn-rels}) where
+    %       the terms are interchangeable. We \emph{could} include the synonym
+    %       as an alternate name inside the node of its partner, but we do not
+    %       want to clutter our graphs unnecessarily.
+
+    \item%[2. (Included)] \phantomsection{}\label{syn-case-two}
+          %   \hfill \ifnotpaper
+          %       $\left\{ \{x, y\} \in S \mid x, y \in A \right\}$
+          %   \fi \break
+          \textbf{Synonyms between approaches defined independently.}\hfill\break
+          If two separate approaches have their own definitions, nuances,
+          etc.~but are also labelled as synonyms, this may indicate that the
+          two terms are interchangeable and could be merged \emph{or} that
+          either their definitions or this synonym relation is incorrect.
           % TODO: pretty hacky
-          into one row, which would result in \hyperref[syn-case-one]{Case 1} above.
+          % into one row, which would result in \hyperref[syn-case-one]{Case 1} above.
 
-    \item[3. (Included)] \phantomsection{}\label{syn-case-three}
-          \hfill \ifnotpaper
-              $\left\{ \{x, z\}, \{y, z\} \in S \mid x, y \in A \,\textrm{ and }\,
-                  z \notin A \right\}$
-          \fi \break
-          \textbf{Two synonym pairs share a synonym without its own row.}
-          This is a transitive extension to the previous case. If
-          two distinct approaches share a synonym, that implies that they are
-          synonyms themselves, resulting in the same possibility of the
-          relation being incorrect.\qtodo{Is this clear enough?}
-\end{description}
+    \item%[3. (Included)] \phantomsection{}\label{syn-case-three}
+          %   \hfill \ifnotpaper
+          %       $\left\{ \{x, z\}, \{y, z\} \in S \mid x, y \in A \,\textrm{ and }\,
+          %           z \notin A \right\}$
+          %   \fi \break
+          \textbf{Synonyms that violate transitivity.}\hfill\break
+          If two distinct approaches share a synonym, that implies that they
+          are synonyms themselves. If they are \emph{not}, one or more
+          relations may be incorrect or missing.
+\end{enumerate}
 \ifnotpaper
     \input{build/synExampleGlossary.tex}
     We deduce these conditions from the information we parse from our
