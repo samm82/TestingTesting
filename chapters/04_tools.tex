@@ -80,8 +80,9 @@ develop a tool to automatically generate visualizations of these relations.
     logic \seeSrcCode{f173e88}{scripts/csvToGraph.py}{55}{96} so we can
     consistently track them throughout our analysis. We also color each
     relation according to its source tier (see \Cref{sources}), including
-    inferences (see \Cref{infers}) and proposals (see \Cref{recs}),
-    although we omit this from \Cref{fig:exampleGraphs} for brevity.
+    inferences (see \Cref{infers}) and proposals (see \Cref{recs}). Although we
+    omit this from \Cref{fig:exampleGraphs} for brevity, \Cref{fig:expSynGraph}
+    serves as an example of this.
 
     \input{build/exampleGlossary.tex}
 
@@ -142,6 +143,22 @@ we only visualize the following synonym relations, which may indicate flaws:
     since it does not have its own row in the glossary and is not shared
     between multiple approaches that do).
 
+    Applying this technique to \ourApproachGlossary{} (and manually modifying
+    it for legibility) results in \Cref{fig:expSynGraph}. These relations are
+    given as described by the literature and are therefore flawed. In
+    particular, we later discuss synonyms that violate transitivity (as
+    described earlier) in \Cref{multiSyns} and other kinds of flawed synonym
+    relations in \Cref{parSyns,func-test-flaw,scal-flaw,compat-flaw}.
+
+    \begin{figure}[tb!]
+        \centering
+        \includegraphics[width=\textwidth]{assets/graphs/manual/expSynLegend.pdf}
+        \includegraphics[width=\textwidth]{assets/graphs/manual/expSynGraph.pdf}
+        % \vspace{-7mm}
+        \caption{Synonym relations given explicitly by the literature.}
+        \label{fig:expSynGraph}
+    \end{figure}
+
     \phantomsection{}\label{graphExplicit}
     Since we also track the ``explicitness'' of information
     (see \Cref{explicitness}), we can represent explicit
@@ -156,7 +173,9 @@ we only visualize the following synonym relations, which may indicate flaws:
     \emph{always} denoted by solid lines, even if they are also implicit.
     We can also generate ``explicit'' versions of these graphs that exclude
     implicit approaches and relations; for example, \Cref{fig:expExampleGraph}
-    is the explicit version of \Cref{fig:exampleGraph}.
+    is the explicit version of \Cref{fig:exampleGraph}, and
+    \Cref{fig:expSynGraph} likewise only contains explicit approaches and
+    synonym relations.
 
 \fi
 Since these graphs tend to be large, it is useful to focus on specific
