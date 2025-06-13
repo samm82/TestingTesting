@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{expSynLegend}{
+margin=0
+subgraph cluster_legend {
+margin=8
+label="Legend";
+labelloc="t";
+fontsize="48pt"
+rankdir=BT
+{
+rank=same
+syn1 [label="Synonym 1"];
+syn2 [label="Synonym 2"];
+syn1 -> syn2 [dir=none label="                "];
+syn3 [label=<Term>]
+syn4 [label=<Synonym<br/>to Both> style="dotted"]
+syn5 [label=<Term>]
+syn3 -> syn4 -> syn5 [dir=none]
+}
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [dir=none, color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src4 [style=invis];
+src3 -> src4 [dir=none, color=blue, label=<From Terminology<br/>Collections>]
+src5 [style=invis];
+src6 [style=invis];
+src5 -> src6 [dir=none, color=maroon, label=<From Textbooks>]
+src7 [style=invis];
+src8 [style=invis];
+src7 -> src8 [dir=none, color=black, label=<From Papers and<br/>Other Documents>]
+}
+edge [style="invis"]
+syn1 -> src1
+syn1 -> src2
+syn1 -> src3
+syn2 -> src3
+syn2 -> src4
+syn3 -> src4
+syn3 -> src5
+syn4 -> src5
+syn4 -> src6
+syn5 -> src6
+syn5 -> src7
+syn5 -> src8
+}
+
+}
+\end{document}
