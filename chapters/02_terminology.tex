@@ -25,44 +25,51 @@ least make it more obvious to future researchers).
 \subsection{Test Approaches}\label{approach-def}
 
 Software testing is ``the process of executing a program with the intent of
-finding errors'' \citep[p.~438]{PetersAndPedrycz2000}\todo{OG Myers 1976} where
-the main steps are to:
+finding errors'' \citep[p.~438]{PetersAndPedrycz2000}\todo{OG Myers 1976}. For
+each test, the main steps are to:
 \begin{enumerate}
-    \item Identify the goal(s) of the test
-    \item Decide on an approach
-    \item Develop the tests
-    \item Determine the expected results\todo{They introduce the idea of an
-              oracle here, but we may not want to for simplicity.}
-    \item Run the tests
-    \item Compare the expected results to the actual results
-          \ifnotpaper \citep[p.~443; similar in][p.~11]{Firesmith2015}
-          \else \citetext{p.~443} (similar in \cite[p.~11]{Firesmith2015}) \fi
+    \item identify the goal(s) of the test,
+    \item \phantomsection{}\label{decide-app} decide on an approach,
+    \item develop the tests,
+    \item determine the expected results,
+    \item \phantomsection{}\label{run-tests} run the tests, and
+    \item \phantomsection{}\label{cmp-results} compare the expected results to
+          the actual results \citetext{p.~443}.
+          %   Only step 6 is similar in Firesmith2015; exclude for simplicity
+          %   \ifnotpaper \citep[p.~443; similar in][p.~11]{Firesmith2015}
+          %   \else \citetext{p.~443} (similar in \cite[p.~11]{Firesmith2015}) \fi
 \end{enumerate}
 The end goal is to evaluate ``some aspect of the system or component'' based on
-these results \ifnotpaper (\citealp[p.~10]{IEEE2022}; \citeyear[p.~6]{IEEE2021};
+the results of step~\ref{cmp-results} \ifnotpaper (\citealp[p.~10]{IEEE2022};
+    \citeyear[p.~6]{IEEE2021};
     \citeyear[p.~465]{IEEE2017}\todo{OG ISO/IEC 2014})\else
     \cite[p.~465]{IEEE2017}, \cite[p.~10]{IEEE2022}, \cite[p.~6]{IEEE2021}\fi.
 When this evaluation reveals errors, ``the faults causing them are what can and
 must be removed'' \citep[p.~5\=/3]{SWEBOK2024}.
 
-Of course, the chosen approaches influence what kinds of test cases are
-developed and how, so it is important that they are defined correctly,
-consistently, and unambiguously. We therefore focus on tracking flaws with how
-the literature describes ``test approaches'': ``high-level test implementation
-choice[s]'' \citep[p.~10]{IEEE2022} used to ``pick the particular test case
-values'' \citeyearpar[p.~465]{IEEE2017}. Since the only approach that can
-``fully'' test a system (exhaustive testing) is infeasible in most non-trivial
-situations \ifnotpaper (\citeyear[p.~4]{IEEE2022}; \citealp[p.~5\=/5]{SWEBOK2024};
-    \citealp[pp.~439, 461]{PetersAndPedrycz2000}; \citealp[p.~421]{vanVliet2000})\else
+Of course, the approach chosen in step~\ref{decide-app} influences what
+kinds of test cases should be developed and executed in later steps, so it is
+important that test approaches are defined correctly, consistently, and
+unambiguously.
+% How the literature describes these approaches is the focus of our research.
+A ``test approach'' is a ``high-level test implementation
+choice'' \citep[p.~10]{IEEE2022} used to ``pick the particular test case
+values'' \citeyearpar[p.~465]{IEEE2017} used in step~\ref{run-tests}. The only
+approach that can ``fully'' test a system (exhaustive testing) is infeasible in
+most non-trivial situations \ifnotpaper (\citeyear[p.~4]{IEEE2022};
+    \citealp[p.~5\=/5]{SWEBOK2024}; \citealp[pp.~439, 461]{PetersAndPedrycz2000};
+    \citealp[p.~421]{vanVliet2000})\else
     \cite[pp.~439, 461]{PetersAndPedrycz2000}, \cite[p.~421]{vanVliet2000},
-    \cite[p.~5\=/5]{SWEBOK2024}, \cite[p.~4]{IEEE2022}\fi, it is wise to select
-multiple approaches \ifnotpaper \citep[p.~18]{IEEE2022} \else
-    \citetext{p.~18} \fi to ``suitably cover any system''
-\citetext{p.~33}. We record \approachCount{} test approaches mentioned in
-the literature in \ourApproachGlossary{}, along with their properties and
-relations. This includes any categories (\Cref{cats-def}), synonyms
-(\Cref{syn-rels}), and parent-child relations (\Cref{par-chd-rels}) described
-by the literature. \conceptResults{}
+    \cite[p.~5\=/5]{SWEBOK2024}, \cite[p.~4]{IEEE2022}\fi, so multiple
+approaches are needed \ifnotpaper \citep[p.~18]{IEEE2022} \else
+    \citetext{p.~18} \fi to ``suitably cover any system'' \citetext{p.~33}.
+This is why this process should be repeated and there are so many test
+approaches described in the literature.
+% We record \approachCount{} test approaches mentioned in
+% the literature in \ourApproachGlossary{}, along with their properties and
+% relations. This includes any categories (\Cref{cats-def}), synonyms
+% (\Cref{syn-rels}), and parent-child relations (\Cref{par-chd-rels}) described
+% by the literature. \conceptResults{}
 
 % that includes ``test level, test type, test technique, test practice and
 % \dots{} static testing'' \citep[p.~10]{IEEE2022} and is used to  & black or white box, minimum and maximum
