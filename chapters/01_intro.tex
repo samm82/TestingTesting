@@ -268,4 +268,10 @@ flaws (\Cref{recs}).
     \begin{landscape}
         \input{assets/tables/exampleGlossary}
     \end{landscape}
+    % Moved here to display nicely in paper
+\else
+    % Only top or bottom to comply with IEEE guidelines
+    \begin{table*}[t!]
+        \ieeeCatsTable{}
+    \end{table*}
 \fi

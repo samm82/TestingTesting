@@ -96,16 +96,52 @@ system testing, and acceptance testing as examples of test levels \ifnotpaper
     \cite[pp.~443\==445]{PetersAndPedrycz2000},
     \cite[pp.~5\=/6 to 5\=/7]{SWEBOK2024}, \cite{ISTQB},
     \cite[pp.~807\==808]{Perry2006}, \cite[pp.~9, 13]{Gerrard2000a},
-    \cite[p.~218]{KuļešovsEtAl2013}\fi,
-although they may use a different term for ``test
-level'' (see \Cref{tab:ieeeCats}). Because of their widespread use and
-their usefulness in dividing the domain of software testing into more
-manageable subsets, we use these categories.
+    \cite[p.~218]{KuļešovsEtAl2013}\fi, although they may use a different term
+for ``test level'' \ifnotpaper
+    (see \flawref{level-phase-syns,stage-level-syns}).\label{orth-approach}
+\else (see relevant synonym flaws in \Cref{syns}). \fi
+These categories seem to be orthogonal based on their definitions and usage.
+For example, ``a test type can be performed at a single test level or across
+several test levels'' \ifnotpaper
+    (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021})\else
+    \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}\fi.
+% , and ``Keyword-Driven Testing can be applied at all testing levels
+% \dots{} and for various types of testing'' \citeyearpar[p.~4]{IEEE2016}.
+% Therefore, we assume these categories to be orthogonal throughout this
+% \docType{} (e.g., when identifying flaws).
+We may assess this assumption more rigorously in the future, but for now, it
+implies that a specific test approach can be derived by combining multiple
+test approaches from different categories\ifnotpaper
+    %. For example, usability test
+    % script(ing) \citepISTQB{} is a combination of usability testing, a test type
+    % \ifnotpaper (\citealp[pp.~22, 26--27]{IEEE2022};
+    %     \citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021}; implied by its quality;
+    %     \citealp[p.~53]{Firesmith2015})\else \cite[pp.~22, 26--27]{IEEE2022},
+    %     \cite[pp.~7, 40, Tab.~A.1]{IEEE2021}\fi, and scripted testing, a test
+    % practice \citep[pp.~20, 22\ifnotpaper; implied by p.~33\fi]{IEEE2022}
+    ; see \Cref{app-orth-test} for more detailed discussion\fi.
+Because of their widespread use and their usefulness in dividing the domain of
+software testing into more manageable subsets, we use these categories
+throughout this \docType{}.
+
+% For example, static assertion checking (mentioned by \ifnotpaper
+%     \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
+%     \citealp[p.~343]{ChalinEtAl2006}, \citealp[p.~345]{LahiriEtAl2013}\fi) is a
+% subapproach of assertion checking, which can also be performed dynamically.
+% This parent-child relation (defined in \Cref{par-chd-rels}) means that static
+% assertion checking may inherit assertion checking's inferred category of
+% ``practice''. Based on observations such as this, we categorize testing
+% approaches, \emph{including} static ones, based on the remaining categories
+% from \citet{IEEE2022}.
+% \ifnotpaper However, since there are many ways to categorize test approaches
+%     (see \Cref{tab:otherCats,tab:otherCategorizations}), considering static
+%     testing as an orthogonal distinction could make sense in specific contexts
+%     (see \Cref{static-test}).
 
 \ifnotpaper
     % \afterpage{
     \begin{landscape}
-        \begin{table*}[hbtp!]
+        \begin{table*}[p]
             % Moved earlier to display nicely in paper
             \ieeeCatsTable{}
         \end{table*}
@@ -113,9 +149,8 @@ manageable subsets, we use these categories.
     % }
 \fi
 
-These four subcategories
-of test approaches can be loosely described by what they specify as
-follows\thesisissueref{21}:
+The four main categories we describe in \Cref{tab:ieeeCats} can be loosely
+described by what they specify as follows\thesisissueref{21}:
 \begin{itemize}
     \item \textbf{Level}: What code is tested
     \item \textbf{Practice}: How the test is structured and executed
@@ -135,59 +170,19 @@ accept a system or component'' \ifnotpaper (\citealp[p.~5]{IEEE2017}; similar
     \cite[p.~5]{IEEE2017}\fi, which requires the system or component to be
 developed and ready for testing.
 
-Based on how we observe test approaches being categorized in the literature, we
-make the following changes to the schema from \citet[Fig.~2]{IEEE2022}:
+% Based on how we observe test approaches being categorized in the literature, 
+% We also make the following changes to the schema from \citet[Fig.~2]{IEEE2022}:
 
-\begin{enumerate}
-    \item We omit ``static testing'' as a test approach category, since it
-          seems to be non-orthogonal to the others and thus less helpful for
-          grouping test approaches. \ifnotpaper Other categorization schemas
-              (see \Cref{alt-cats}) may consider static testing orthogonal, and
-              some may consider it out-of-scope entirely (see \Cref{static-test})! \fi
-    \item We introduce a non-orthogonal category of ``artifact''\thesisissueref{44,119,39}
-          since some terms can refer to the application of a test approach
-          \emph{as well as} the resulting document(s). Therefore, we do
-          \emph{not} consider approaches categorized as an artifact \emph{and}
-          another category as flaws\thesisissueref{119} (see \Cref{multiCats}).
-\end{enumerate}
-
-\ifnotpaper\label{orth-approach}
-Based on their definitions and usage, these categories seem to be orthogonal.
-For example, ``a test type can be
-performed at a single test level or across several test levels''
-\ifnotpaper
-    (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021})%
-\else
-    \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}%
-\fi, and ``Keyword-Driven Testing can be applied at all testing levels
-\dots{} and for various types of testing'' \citeyearpar[p.~4]{IEEE2016}.
-Therefore, we assume these categories to be orthogonal throughout this
-\docType{} (e.g., when identifying flaws). We may assess this assumption more
-rigorously in the future, but for now, it
-implies that a specific test approach can be derived by combining multiple
-test approaches from different categories. For example, usability test
-script(ing) \citepISTQB{} is a combination of usability testing, a test type
-\ifnotpaper (\citealp[pp.~22, 26--27]{IEEE2022};
-    \citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021}; implied by its quality;
-    \citealp[p.~53]{Firesmith2015})\else \cite[pp.~22, 26--27]{IEEE2022},
-    \cite[pp.~7, 40, Tab.~A.1]{IEEE2021}\fi, and scripted testing, a test
-practice \citep[pp.~20, 22\ifnotpaper; implied by p.~33\fi]{IEEE2022}; see
-\Cref{app-orth-test} for more detailed discussion.
-\fi
-
-% For example, static assertion checking (mentioned by \ifnotpaper
-%     \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
-%     \citealp[p.~343]{ChalinEtAl2006}, \citealp[p.~345]{LahiriEtAl2013}\fi) is a
-% subapproach of assertion checking, which can also be performed dynamically.
-% This parent-child relation (defined in \Cref{par-chd-rels}) means that static
-% assertion checking may inherit assertion checking's inferred category of
-% ``practice''. Based on observations such as this, we categorize testing
-% approaches, \emph{including} static ones, based on the remaining categories
-% from \citet{IEEE2022}.
-% \ifnotpaper However, since there are many ways to categorize test approaches
-%     (see \Cref{tab:otherCats,tab:otherCategorizations}), considering static
-%     testing as an orthogonal distinction could make sense in specific contexts
-%     (see \Cref{static-test}).
+While \citet{IEEE2022}'s schema includes ``static testing'' as a test
+approach category, we omit it as it seems non-orthogonal to the others
+and thus less helpful for grouping test approaches. \ifnotpaper Other
+    categorization schemas (see \Cref{alt-cats}) may consider static testing
+    orthogonal, and some may consider it out-of-scope entirely (see
+    \Cref{static-test})! \fi We also introduce a ``supplemental'' category of
+``artifact''\thesisissueref{44,119,39} since some terms can refer to the
+application of a test approach \emph{as well as} the resulting document(s).
+Therefore, we do \emph{not} consider approaches categorized as an artifact
+\emph{and} another category as flaws\thesisissueref{119} (see \Cref{multiCats}).
 
 % \fi
 % While we can categorize the vast majority of identified test approaches
