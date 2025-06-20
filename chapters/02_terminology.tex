@@ -320,29 +320,31 @@ qualities (``subquality''\ifnotpaper; see \Cref{qual-test}\fi).
 
 \defRel{parent-child}{P}{directed relations between approach pairs} This
 relation should be irreflexive, asymmetric, and transitive, making it a strict
-partial order, and a given ``child'' approach $c$ may have more than one
-``parent'' approach $p$. This relation often manifests when a ``well-understood''
+partial order. A given child approach $c$ may have more than one
+parent approach $p$. This relation often manifests when a ``well-understood''
 test approach $p$ is decomposed into smaller, independently performable approaches
-$c_1, \dots, c_n$, each with its own focus or nuance. This is often the case
+$c_1, \dots, c_n$, each with its own focus or nuance. This is frequently the case
 for hierarchies of approaches given in the literature \ifnotpaper
     (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021};
     \citealp{Firesmith2015})\else \cite{Firesmith2015},
-    \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi; see the graph of
-specification-based test approaches in \Cref{fig:specBasedGraph}.
+    \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi%; see the graph of
+%specification-based test approaches in \Cref{fig:specBasedGraph}
+.
 
-Another possible way for a parent-child relation to occur is when $c$'s
-adequacy criteria is already satisfied by $p$. In other words, the completion
-of $p$ indicates that ``sufficient testing has been done'' in regards to $c$
-\citep[p.~402]{vanVliet2000}. While this metric only ``compares the
+Another possible way for a parent-child relation to occur is when
+% $c$'s adequacy criteria is already satisfied by $p$. In other words,
+the completion of $p$ indicates that ``sufficient testing has been done'' in
+regards to $c$ \citep[p.~402]{vanVliet2000}. While this only ``compares the
 thoroughness of test techniques, not their ability to detect faults''
 \citetext{p.~434}, it is sufficient to justify a parent-child relation
 between the two approaches. These relations may also be represented as
 hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
     \citealp[Fig.~13.17]{vanVliet2000})\else
-    \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}\fi; see the graph of
-data flow test approaches in \Cref{fig:subsumesGraph}.
+    \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}\fi%; see the graph of
+% data flow test approaches in \Cref{fig:subsumesGraph}
+.
 
-\parChdGraphs{}
+% \parChdGraphs{}
 
 % Based on what we observe in the literature,
 % $P(c, p) = c \subset p \textrm{ or } c \Leftarrow p$. In other words,
