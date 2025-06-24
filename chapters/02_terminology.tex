@@ -448,6 +448,13 @@ is violated as a ``flaw''\footnote{A small literature review reveals that
 while avoiding words that are ``overloaded with too many meanings''
 like ``error'' and ``fault'' \citep[p.~12\=/3; see \Cref{error-fault-failure}
     for more detailed discussion]{SWEBOK2024}.
+Some flaws involve information from more than one source, but referring to this
+as a ``flaw between two sources'' is awkward\thesisissueref{140}. We instead
+refer to this kind of flaw more intuitively as an ``inconsistency'' between the
+sources. This clearly indicates that there is disagreement between
+the sources, but also does not imply that either one is correct---the
+inconsistency could be with some ground truth if \emph{neither} source is
+correct\thesisissueref{140,151}!
 
 We classify flaws by both their ``manifestations'' (\emph{how} information is
 wrong; see \Cref{mnfst-def}) and their ``domains'' (\emph{what} information is
@@ -458,16 +465,6 @@ classification. We list these keys in \Cref{tab:flawMnfstDefs,tab:flawDmnDefs},
 respectively, and use them to count and analyze the flaws we uncover; for
 example, we present the number of flaws according to these two views in
 \Cref{tab:flawMnfsts,tab:flawDmns}, respectively.
-
-Referring to a flaw with more than one source (such as a contradiction or an
-overlap) as a ``flaw between two sources'' is awkward\thesisissueref{140}, so
-we refer to this more intuitively as an ``inconsistency'' between the sources.
-This clearly indicates that there is disagreement between
-the sources, but also does not imply that either one is correct---the
-inconsistency could be with some ground truth if \emph{neither} source is
-correct\thesisissueref{140,151}! Note that these cases are not categorized as
-``mistakes'' if finding this ground truth requires analysis that has not been
-performed yet.
 
 \subsubsection{Flaw Manifestations}\label{mnfst-def}
 
@@ -480,11 +477,14 @@ flaws: \emph{how}\thesisissueref{155} information is ``wrong''. We observe the
 ``manifestations'' described in \Cref{tab:flawMnfstDefs} throughout the
 literature, and give each a unique key for later analysis and discussion. We
 list them in descending order of severity, although this is partially
-subjective: while some may disagree with our ranking, it is clear that
-information being incorrect is worse than it being repeated. This ordering has
+subjective. While some may disagree with our ranking, it is clear that
+information being incorrect is worse than it being repeated. Our ordering has
 the benefit of serving as a ``flowchart'' for classifying flaws. For example,
 if a piece of information is not intrinsically incorrect, then there are five
-remaining manifestation types the flaw can be!
+remaining manifestation types for the flaw. Note that some flaws involve
+information from multiple sources (contradictions and overlaps in particular).
+We do not categorize these flaws as ``mistakes'' if finding the ground truth
+requires analysis that has not been performed yet.
 
 \input{assets/tables/flawMnfstDefs}
 
