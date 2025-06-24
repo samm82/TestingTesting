@@ -446,8 +446,18 @@ is violated as a ``flaw''\footnote{A small literature review reveals that
 %     , as it implies that something is wrong with the literature and an
 % opportunity to improve it, 
 while avoiding words that are ``overloaded with too many meanings''
-like ``error'' and ``fault'' \citep[p.~12\=/3; see
-    \Cref{error-fault-failure}]{SWEBOK2024}.
+like ``error'' and ``fault'' \citep[p.~12\=/3; see \Cref{error-fault-failure}
+    for more detailed discussion]{SWEBOK2024}.
+
+We classify flaws by both their ``manifestations'' (\emph{how} information is
+wrong; see \Cref{mnfst-def}) and their ``domains'' (\emph{what} information is
+wrong; see \Cref{dmn-def})\thesisissueref{155}. These are orthogonal
+classifications, since each flaw \emph{manifests} in a particular
+\emph{domain}, which we track by assigning each flaw one ``key'' for each
+classification. We list these keys in \Cref{tab:flawMnfstDefs,tab:flawDmnDefs},
+respectively, and use them to count and analyze the flaws we uncover; for
+example, we present the number of flaws according to these two views in
+\Cref{tab:flawMnfsts,tab:flawDmns}, respectively.
 
 Referring to a flaw with more than one source (such as a contradiction or an
 overlap) as a ``flaw between two sources'' is awkward\thesisissueref{140}, so
@@ -486,11 +496,7 @@ Another way to categorize flaws is by \emph{what} information is wrong, which
 we call the flaw's ``domain''. We describe those we observe in
 \Cref{tab:flawDmnDefs}, and tracking these uncovers which knowledge domains
 are less standardized (and should therefore be approached with more rigour)
-than others. Note that this is an orthogonal categorization to that of a flaw's
-manifestation: each flaw \emph{manifests} in a particular \emph{domain}. This
-means that we give each flaw two keys (one for each classification) and
-present our observations according to these two views in \Cref{tab:flawMnfsts,%
-    tab:flawDmns}. We explicitly define some of these domains in previous
+than others. We explicitly define some of these domains in previous
 sections and thus present them in that same order. Despite their nuance, the
 remaining domains are relatively straightforward, so we do not define them more
 rigorously in their own sections.
