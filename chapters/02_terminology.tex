@@ -498,29 +498,28 @@ we call the flaw's ``domain''. We describe those we observe in
 are less standardized (and should therefore be approached with more rigour)
 than others. We explicitly define some of these domains in previous
 sections and thus present them in that same order. Despite their nuance, the
-remaining domains are relatively straightforward, so we do not define them more
-rigorously in their own sections.
+remaining domains are relatively straightforward, so we define them briefly as
+follows instead of defining them more rigorously in their own sections.
 
 \input{assets/tables/flawDmnDefs}
 
 \phantomsection{}\label{label-flaw-def}
-For example, \defLabelDistinct*{}. Definition flaws are quite self-explanatory, but
+\defLabelDistinct{}. Definition flaws are quite self-explanatory, but
 % Definition flaws occur when a term's definition is incorrect, unclear, etc.;
 % this often occurs in glossaries or lists of terms from sources we investigate.
 % On the other hand,
 label flaws are harder to detect, despite occurring independently. Examples of
 label flaws include terms that share the same acronym or contain typos or
 redundant information. Sometimes, an author may use one term when they mean
-another; while one could argue that their ``internal'' definition of the term
+another. One could argue that their ``internal'' definition of the term
 is the cause of this mistake, we consider this a label flaw where the wrong
 label is used and we would change the \emph{label} to fix it.
-\phantomsection{}\label{scope-flaw-def}%
+\phantomsection{}\label{scope-flaw-def}% (see \flawref{assert-truth})
 Additionally, some information is presented with an incorrect scope and
-sometimes should not have been included at all (see \flawref{assert-truth})!
-\phantomsection{}\label{trace-flaw-def}%
+sometimes should not have been included at all!
+\phantomsection{}\label{trace-flaw-def}% (see \flawref{see-ref-missing})
 Finally, some traceability information is flawed, such as how one document
-cites other or even what information is included \emph{within} a document
-(see \flawref{see-ref-missing}).
+cites other or even what information is included \emph{within} a document.
 
 \subsection{Explicitness}\label{explicitness}
 
