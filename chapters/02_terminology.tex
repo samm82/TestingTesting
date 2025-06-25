@@ -560,14 +560,15 @@ them when performing later analysis: %\impKeywordsCode{}
 \begin{description}
     \item[1. The information follows logically.]
           \phantomsection{}\label{imp-case-one}~\\
-          \refHelper \citet[pp.~53\==58]{Firesmith2015} lists a set of test
-          approaches that are ``based on the[ir] associated quality
-          characteristic[s] and \dots{} associated quality attributes''
+          \citeauthor{Firesmith2015} \citeyearpar[pp.~53\==58]{Firesmith2015}
+          lists a set of test approaches that are ``based on the[ir] associated
+          quality characteristic[s] and \dots{} associated quality attributes''
           \citetext{p.~53}. This matches our definition of ``test type'', but
           this term is used more loosely in this document to refer to different
           kinds of testing that we would call ``test approaches'' (see
-          \Cref{cats-def}). We therefore consider these categorizations to be
-          implicit, as in \Cref{tab:multiCats\ifnotpaper,tab:infMultiCats\fi}.
+          \Cref{cats-def}). We therefore consider \citeauthor{Firesmith2015}'s
+          categorizations of ``test type'' to be implicit\ifnotpaper\
+              (such as in \Cref{tab:multiCats,tab:infMultiCats})\fi.
     \item [2. The information is not universal.]
           \phantomsection{}\label{imp-case-two}~\\
           \refHelper \citet[p.~372\ifnotpaper, emphasis added\fi]{IEEE2017}%
@@ -578,8 +579,9 @@ them when performing later analysis: %\impKeywordsCode{}
           defects''. While reliability testing, for example, is not
           \emph{always} a subset of regression testing (since it may be
           performed in other ways), it \emph{can be} accomplished by regression
-          testing, so there is sometimes a parent-child relation (defined in
-          \Cref{par-chd-rels}) between them.
+          testing. This means that these parent-child relations (defined in
+          \Cref{par-chd-rels}) between these pairs of approaches only exist
+          \emph{sometimes}, but this qualifier is given implicitly.
           %   \citet[p.~5\=/8\ifnotpaper, emphasis added\fi]{SWEBOK2024} provides a
           %   similar list: ``regression testing \dots{} \emph{may} involve
           %   functional and non-functional testing, such as reliability,
@@ -588,13 +590,13 @@ them when performing later analysis: %\impKeywordsCode{}
     \item[3. The information is \ifnotpaper conditional\else dubious\fi.]
           \phantomsection{}\label{imp-case-three}~\\ \ifnotpaper
           As a more specific case of information not being universal, sometimes
-          prerequisites must be satisfied for information to apply. For
-          example, branch condition combination testing is equivalent
-          to (and is therefore a synonym of) exhaustive testing \emph{if} ``each
+          prerequisites must be satisfied for information to apply. For example,
+          branch condition combination testing is equivalent to (and is therefore
+          implied to be a synonym of) exhaustive testing \emph{if} ``each
           subcondition is viewed as a single input'' \citep[p.~464]{PetersAndPedrycz2000}.
-          Likewise, statement testing can be used for (and is therefore a child
-          of) unit testing \emph{if} there are ``less than 5000 lines of code''
-          \citetext{p.~481\todo{OG Miller et al., 1994}}.
+          Likewise, statement testing can be used for (and is therefore implied
+          to be a child of) unit testing \emph{if} there are ``less than 5000
+          lines of code'' \citetext{p.~481\todo{OG Miller et al., 1994}}.
     \item[4. The information is dubious.]
           \phantomsection{}\label{imp-case-four}~\\ \fi
           This happens when there is reason to doubt the information provided.
@@ -617,7 +619,8 @@ based on explicit information ``objective'', since they are self-evident in
 the literature. On the other hand, we call flaws based on implicit information
 ``subjective'', since some level of judgement is required to assess whether
 these flaws are \emph{actually} problematic\thesisissueref{176}. By looking for
-the indicators of uncertainty mentioned above \impKeywordsCode{}, we can
+the indicators of uncertainty mentioned above% \impKeywordsCode{}
+, we can
 automatically detect subjective flaws when generating graphs and performing
 analysis (see \ifnotpaper \Cref{graph-gen,flaw-analysis}, respectively\else
     \Cref{tools}\fi).
