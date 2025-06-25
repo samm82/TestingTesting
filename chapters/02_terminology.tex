@@ -624,16 +624,8 @@ the indicators of uncertainty mentioned above% \impKeywordsCode{}
 automatically detect subjective flaws when generating graphs and performing
 analysis (see \ifnotpaper \Cref{graph-gen,flaw-analysis}, respectively\else
     \Cref{tools}\fi).
-%     These are used when creating
-% the glossaries to capture varying degrees of nuance, such as when a test
-% approach ``can be'' a child of another or is a synonym of another ``most of the
-% time'' but not always. 
-For example, we can view subjective flaws separately in
-\Cref{tab:flawMnfsts,tab:flawDmns}, since additional context may rectify them.
-\ifnotpaper Additionally, \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats}
-    contain relations that are explicit, implicit, and both; implicit relations
-    are marked by the phrases ``implied by''.
 
+\ifnotpaper
     \phantomsection{}\label{infers}
     Throughout our research, we also infer some information through
     ``surface-level'' analysis that follows straightforwardly but is not stated,
@@ -654,9 +646,7 @@ For example, we can view subjective flaws separately in
     we document them for completeness, using the phrase ``inferred from'' when
     relevant. Additionally, all data in our glossaries without a citation are
     inferred, such as algebraic testing \citep[Fig.~12.2]{PetersAndPedrycz2000}
-    being a child of mathematical-based testing. We present inferred flaws in
-    \Cref{infer-flaws} and colour inferred approaches and relations grey in our
-    generated graphs, such as \recFigs{}.
+    being a child of mathematical-based testing.
 \fi
 
 \subsection{Credibility}\label{cred}

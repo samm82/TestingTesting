@@ -1,5 +1,4 @@
-\section{Flaws}
-\label{flaws}
+\section{Flaws}\label{flaws}
 
 % Moved earlier to display nicely in paper
 % \flawMnfstsTable{}
@@ -37,7 +36,13 @@ in \Cref{tab:flawMnfsts,tab:flawDmns}, respectively, where a given
 row corresponds to the number of flaws either within that source tier and/or
 with a ``more credible'' one (i.e., a previous row in the table; see
 \Cref{cred,sources}). We also group these flaws by their explicitness (defined
-in \Cref{explicitness}) by counting (Obj)ective and (Sub)jective flaws separately.
+in \Cref{explicitness}) by counting (Obj)ective and (Sub)jective flaws
+separately (see \Cref{tab:flawMnfsts,tab:flawDmns}), since additional
+context may rectify them.
+\ifnotpaper Additionally, \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats}
+    contain relations that are explicit, implicit, and both; implicit relations
+    are marked by the phrases ``implied by''. \fi
+
 Since we give each flaw a manifestation \emph{and} a domain, the totals per
 source and grand totals in these tables are equal. As an example, \tourFlaw*{}.
 This is a contradictory definition, so it appears \ifnotpaper as both \else in
@@ -60,8 +65,12 @@ manifestation and domain counts\ifnotpaper\ (\Cref{aug-flaw-analysis} outlines
 (\Cref{func-test-flaw}), \ifnotpaper operational (acceptance) testing
     (\Cref{oat-flaw}), \fi recovery testing (\Cref{recov-flaw}), scalability
 testing (\Cref{scal-flaw}), and compatibility testing (\Cref{compat-flaw}).
-\ifnotpaper Finally, we present inferred flaws (see \Cref{infers}) in
-    \Cref{infer-flaws}; these do not contribute to any counts.
+\ifnotpaper Finally, we present inferred flaws, as described in \Cref{infers},
+    for completeness in \Cref{infer-flaws}; these do not contribute to any
+    counts. % since they require further analysis to determine
+    % if they are flaws at all!
+    We colour inferred approaches and relations grey in our generated graphs,
+    such as \recFigs{}.
 
     % \input{build/flawTable}
 
