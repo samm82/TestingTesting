@@ -239,9 +239,52 @@ analyzing further:
           \citep[p.~424]{IEEE2017}
 \end{itemize}
 
-\section{Orthogonally Derived Approaches}\label{app-orth-test}
-As described in \Cref{orth-test}, \orthTestIntro*{}. The following are examples
-of these orthogonally derived approaches, most of which are out of scope:
+\section{Language-specific Approaches}\label{lang-test}
+Specific programming languages are sometimes used to define test approaches.
+If the reliance on a specific programming language is intentional, then
+this really implies an underlying test approach that may be generalized to
+other languages. These are therefore considered out-of-scope\thesisissueref{63},
+including the following examples:
+
+\begin{itemize}
+    \item ``An approach \dots{} for JavaScript testing
+          (referred to as Randomized)'' \citep[p.~192]{DoğanEtAl2014} is
+          really just random testing used within JavaScript.
+    \item ``SQL statement coverage'' \citep[Tab.~13]{DoğanEtAl2014}%
+          \todo{OG Alalfi et al., 2010} is really just statement coverage
+          used specifically for SQL statements.
+    \item Testing for ``faults specific to PHP'' is just a subcategory of
+          fault-based testing, since ``execution failures \dots{} caused by
+          missing an included file, wrong MySQL quer[ies] and uncaught
+          exceptions'' \citep[Tab.~27]{DoğanEtAl2014}\todo{OG Artzi et al., 2008}
+          are not exclusive to PHP.
+    \item While ``HTML testing'' is listed or implied by
+          \citeauthor{Gerrard2000a} (\citeyear[Tab.~2]{Gerrard2000a};
+          \citeyear[Tab.~1, p.~3]{Gerrard2000b}) and
+          \citet[p.~220]{Patton2006}, it seems to be a combination of syntax
+          testing, functionality testing, hyperlink testing/link checking,
+          cross-browser compatibility testing, performance testing,
+          content checking \citep[p.~3]{Gerrard2000b}, and grey-box testing
+          \citep[pp.~218\==220]{Patton2006}.
+\end{itemize}
+
+\section{Orthogonally Derived Approaches}\label{orth-test}
+\orthTestIntro. While the use of a combination term can sometimes
+make sense, such as when writing a paper or performing testing that focuses
+on the intersection between two test approaches, they are sometimes given
+the same ``weight'' as their atomic counterparts. For example, \citetISTQB{}
+\multiAuthHelper{include} ``formal reviews'' and ``informal reviews'' in
+\ifnotpaper their \else its \fi glossary as separate terms, despite their
+definitions essentially boiling down to ``reviews that follow (or do not
+follow) a formal process'', which do not provide any new information.
+These approaches are simply the combinations of ``reviews'' with ``formal''
+and ``informal testing'', respectively. If a source describes an orthogonally
+derived approach in more detail, such as security audits, we record it as a
+distinct approach in \ourApproachGlossary{} with its related information.
+Otherwise, we consider it out of scope since its details are captured by its
+in-scope subapproaches; see \Cref{app-orth-test} for more detailed discussion.
+The following are examples of these orthogonally derived approaches, most of
+which are out of scope:
 
 \begin{enumerate}
     \item Black box conformance testing \citep[p.~25]{JardEtAl1999}
