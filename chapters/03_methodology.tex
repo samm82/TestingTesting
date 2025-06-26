@@ -143,8 +143,53 @@ observing how terms are used in practice\thesisissueref{89}:
 \subsection{Procedure}\label{procedure}
 
 We track terminology used in the literature by building glossaries. The one
-most central to our research is \ourApproachGlossary{}, where we give each
-test approach its own row to record its name and any given \approachFields{}.
+most central to our research is \ourApproachGlossary{}, where we record all
+test approaches we identify in the literature. We use heuristics to guide this
+process to increase confidence that we identify all terms, paying
+special attention to the following when investigating a new source:
+\begin{itemize}
+    \item glossaries, taxonomies, hierarchies, and lists of terms,
+    \item testing-related terms (e.g., terms containing ``test(ing)'',
+          \ifnotpaper ``review(s)'', ``audit(s)'', ``attack(s)''%
+              \thesisissueref{55}, \fi ``validation'', or ``verification''),
+    \item terms that had emerged as part of already-discovered
+          test approaches, \emph{especially} those that were ambiguous
+          or prompted further discussion (e.g., terms containing
+          ``performance'', ``recovery'', ``component'', ``bottom-up'',
+          \ifnotpaper ``boundary'', \fi or ``configuration''), and
+    \item terms that imply test approaches\ifnotpaper\footnote{
+                  Since these methods for deriving test approaches only arose
+                  as research progressed, some examples would have been missed
+                  during the first pass(es) of resources investigated earlier
+                  in the process. While reiterating over them would be ideal,
+                  this may not be possible due to time constraints.
+              }% (see \Cref{derived-tests})
+          \fi, including:
+          \newcommand\derivTest[2]{#1 that may imply \ifnotpaper related \fi test #2}
+          \begin{itemize}
+              \item \derivTest{coverage metrics}{techniques},
+              \item \phantomsection{}\label{qual-types}
+                    \derivTest{software qualities}{types}, and
+              \item \derivTest{\ifnotpaper software \fi requirements}{approaches}.
+          \end{itemize}
+\end{itemize}
+We apply these heuristics to the entirety of most investigated sources,
+especially established standards (see \Cref{stds}). However, we only partially
+investigate some sources, such as those chosen for a specific area of
+interest or based on a test approach that was determined to be out-of-scope.
+These include the following sources as described in \Cref{undef-terms}:
+\citet{ISO2022,ISO2015,Dominguez-PumarEtAl2020,PierreEtAl2017,
+    TrudnowskiEtAl2017,YuEtAl2011,Tsui2007,Goralski1999}.
+During the first pass of data collection, we investigate and record all
+approaches to software testing. Some of these approaches are less
+applicable to our original motivation of test case automation \ifnotpaper
+    (such as static testing; see \Cref{static-test}\thesisissueref{39}) \fi or
+are quite broad\ifnotpaper\ (such as attacks%
+    %; see \Cref{attacks}
+    \thesisissueref{55})\fi, so we will omit them during future analysis.
+
+We give each test approach its own row in \ourApproachGlossary{} to record its
+name and any given \approachFields{}.
 If no category is given, the ``approach'' category is assigned
 (with no accompanying citation) as a ``catch-all'' category. All other fields
 may be left blank, but a lack of definition indicates that the approach should
@@ -206,11 +251,10 @@ We use similar procedures to track software qualities and supplementary
 terminology (either shared by multiple approaches or too complicated to explain
 inline) in separate glossaries with a similar format. This includes recording
 the name, definition, and synonym(s) of these terms, as well as any precedence
-for a related test type for a given software quality as described in
-\Cref{qual-test}. For example, analyzability\footnote{
-    This may be spelled ``analyzability'' \citep[p.~18]{IEEE2017} or
+for a related test type for a given software quality. For example, analyzability%
+\footnote{This may be spelled ``analyzability'' \citep[p.~18]{IEEE2017} or
     ``analysability'' \citep{ISO_IEC2023a}; since this is a dialectal
-    difference, we do not count this as a label flaw (see
+    difference, we do not count this as a label flaw (described in
     \Cref{label-flaw-def}).}, modifiability, modularity, reusability, and
 testability are all subqualities of maintainability \ifnotpaper
     (\citealp{ISO_IEC2023a}; \citealp[Tab.~A.1]{IEEE2021};
@@ -225,55 +269,12 @@ type (e.g., reusability testing). \ifnotpaper
     Sometimes, the literature provides a relation between qualities where at
     least one of them does not have an explicit approach associated with it
     (although it may be inferred). We record this information regardless, since
-    it may become relevant if an associated test type emerges as described in
-    \Cref{qual-test}. For example, \citet{ISO_IEC2023a} provides
+    it may become relevant if an associated test type emerges as alluded to
+    \hyperref[qual-types]{earlier}. For example, \citet{ISO_IEC2023a} provides
     relations involving dependability and modifiability, but only in terms of
     them as qualities, not types of testing. We record these relations in case
     an associated test type is explicitly named by the literature, which would
     inherit these relations. \fi
-
-We use heuristics to guide this process for all three
-glossaries to increase confidence that all terms are identified, paying
-special attention to the following when investigating a new source:
-\begin{itemize}
-    \item glossaries, taxonomies, hierarchies, and lists of terms,
-    \item testing-related terms (e.g., terms containing ``test(ing)'',
-          \ifnotpaper ``review(s)'', ``audit(s)'', ``attack(s)''%
-              \thesisissueref{55}, \fi ``validation'', or ``verification''),
-    \item terms that had emerged as part of already-discovered
-          test approaches, \emph{especially} those that were ambiguous
-          or prompted further discussion (e.g., terms containing
-          ``performance'', ``recovery'', ``component'', ``bottom-up'',
-          \ifnotpaper ``boundary'', \fi or ``configuration''), and
-    \item terms that imply test approaches\ifnotpaper\footnote{
-                  Since these methods for deriving test approaches only arose
-                  as research progressed, some examples would have been missed
-                  during the first pass(es) of resources investigated earlier
-                  in the process. While reiterating over them would be ideal,
-                  this may not be possible due to time constraints.
-              }% (see \Cref{derived-tests})
-          \fi, including:
-          \newcommand\derivTest[2]{#1 that may imply \ifnotpaper related \fi test #2}
-          \begin{itemize}
-              \item \derivTest{coverage metrics}{techniques},
-              \item \derivTest{software qualities}{types}, and
-              \item \derivTest{\ifnotpaper software \fi requirements}{approaches}.
-          \end{itemize}
-\end{itemize}
-We apply these heuristics to most investigated sources, especially established
-standards (see \Cref{stds}), in their entirety. Some sources, however, we only
-partially investigate, such as those chosen for a specific area of
-interest or based on a test approach that was determined to be out-of-scope.
-These include the following sources as described in \Cref{undef-terms}:
-\citet{ISO2022,ISO2015,Dominguez-PumarEtAl2020,PierreEtAl2017,
-    TrudnowskiEtAl2017,YuEtAl2011,Tsui2007,Goralski1999}.
-During the first pass of data collection, we investigate and record all
-terminology related to software testing. Some of these terms are less
-applicable to our original motivation of test case automation \ifnotpaper
-    (such as static testing; see \Cref{static-test}\thesisissueref{39}) \fi or
-are quite broad\ifnotpaper\ (such as attacks%
-    %; see \Cref{attacks}
-    \thesisissueref{55})\fi, so we will omit them during future analysis.
 
 % \subsubsection{Derived Test Approaches}\label{derived-tests}
 
