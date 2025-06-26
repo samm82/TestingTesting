@@ -12,11 +12,11 @@ toRecord: list[str] = [
     "definitions", "synonyms (\\Cref{syn-rels})",
     "parents (\\Cref{par-chd-rels})",
     "flaws\\phantomsection{}\\label{manual-flaws} (\\Cref{flaw-def}) (in separate documents)"]
-relatedTerms: list[str] = [
-    "imply related test approaches (\\Cref{derived-tests})",
-    "are used repeatedly",
-    "have complex definitions"
-]
+# relatedTerms: list[str] = [
+#     "imply related test approaches (\\Cref{derived-tests})",
+#     "are used repeatedly",
+#     "have complex definitions"
+# ]
 
 OTHER_NOTES = "other relevant notes"
 OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
@@ -34,16 +34,17 @@ methodology_a = """
             "enumerate", [f"\t\\item {capFirst(i)}"
                           for i in toRecord + [OTHER_NOTES +
                                                f" ({OTHER_NOTES_EXS}, etc.)"]])
-        ]) + """
+        ]) + ("""
     \\item \\phantomsection{}\\label{record-terms}
           Alongside step~\\ref{record-apps}, identifying and recording related
-          testing terms that:\n""" + "\n".join([
-        f"\t\t  {line}" for line in wrapEnv(
-            "enumerate", [f"\t\\item {capFirst(i)}" for i in relatedTerms])
-          ]) + """
-    \\item Repeating steps~\\ref{identify-sources} to \\ref{record-terms} for 
+          testing terms that are used repeatedly and/or have complex definitions""" +
+        #   :\n""" + "\n".join([
+        # f"\t\t  {line}" for line in wrapEnv(
+        #     "enumerate", [f"\t\\item {capFirst(i)}" for i in relatedTerms])
+        #   ]) + """
+    """\\item Repeating steps~\\ref{identify-sources} to \\ref{record-terms} for 
           any missing or unclear terms (\\Cref{undef-terms}) until some
-          stopping criteria (\\Cref{stop-crit})"""
+          stopping criteria (\\Cref{stop-crit})""")
     
 methodology_b = """    \\item Analyzing recorded test approach data for additional flaws
           \\begin{enumerate}

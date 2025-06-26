@@ -238,10 +238,10 @@ special attention to the following when investigating a new source:
 \begin{itemize}
     \item glossaries, taxonomies, hierarchies, and lists of terms,
     \item testing-related terms (e.g., terms containing ``test(ing)'',
-          \ifnotpaper ``review(s)'', ``audit(s)'', \fi
-          ``validation'', or ``verification''),
+          \ifnotpaper ``review(s)'', ``audit(s)'', ``attack(s)''%
+              \thesisissueref{55}, \fi ``validation'', or ``verification''),
     \item terms that had emerged as part of already-discovered
-          testing approaches, \emph{especially} those that were ambiguous
+          test approaches, \emph{especially} those that were ambiguous
           or prompted further discussion (e.g., terms containing
           ``performance'', ``recovery'', ``component'', ``bottom-up'',
           \ifnotpaper ``boundary'', \fi or ``configuration''), and
@@ -251,7 +251,14 @@ special attention to the following when investigating a new source:
                   during the first pass(es) of resources investigated earlier
                   in the process. While reiterating over them would be ideal,
                   this may not be possible due to time constraints.
-              } (see \Cref{derived-tests})\fi.
+              }% (see \Cref{derived-tests})
+          \fi, including:
+          \newcommand\derivTest[2]{#1 that may imply \ifnotpaper related \fi test #2}
+          \begin{itemize}
+              \item \derivTest{coverage metrics}{techniques},
+              \item \derivTest{software qualities}{types}, and
+              \item \derivTest{\ifnotpaper software \fi requirements}{approaches}.
+          \end{itemize}
 \end{itemize}
 We apply these heuristics to most investigated sources, especially established
 standards (see \Cref{stds}), in their entirety. Some sources, however, we only
@@ -264,118 +271,118 @@ During the first pass of data collection, we investigate and record all
 terminology related to software testing. Some of these terms are less
 applicable to our original motivation of test case automation \ifnotpaper
     (such as static testing; see \Cref{static-test}\thesisissueref{39}) \fi or
-are quite broad\ifnotpaper\ (such as attacks; see
-    \Cref{attacks}\thesisissueref{55})\fi, so we will omit them during future
-analysis.
+are quite broad\ifnotpaper\ (such as attacks%
+    %; see \Cref{attacks}
+    \thesisissueref{55})\fi, so we will omit them during future analysis.
 
-\subsubsection{Derived Test Approaches}\label{derived-tests}
+% \subsubsection{Derived Test Approaches}\label{derived-tests}
 
-Throughout this research, we noticed many groups of test approaches that arise
-from some underlying area of software (testing) knowledge. The legitimacy of
-extrapolating new test approaches from these knowledge domains is heavily
-implied by the literature, but not explicitly stated as a general rule. Regardless,
-since the field of software is ever-evolving, it is crucial to be able to
-adapt to, talk about, and understand new developments in software testing.
-Bases for defining new test approaches suggested by the literature include
-coverage metrics, software qualities, and attacks. These are meaningful
-enough to merit analysis and are therefore in scope. Requirements may also
-imply related test approaches, but this mainly results in test approaches
-that would be out of scope. \ifnotpaper Other test approaches found in the
-    literature are derived from programming languages or other orthogonal test
-    approaches, but these are out of scope as this information is better
-    captured by other approaches (see \Cref{lang-test,orth-test}, respectively).
+% Throughout this research, we noticed many groups of test approaches that arise
+% from some underlying area of software (testing) knowledge. The legitimacy of
+% extrapolating new test approaches from these knowledge domains is heavily
+% implied by the literature, but not explicitly stated as a general rule. Regardless,
+% since the field of software is ever-evolving, it is crucial to be able to
+% adapt to, talk about, and understand new developments in software testing.
+% Bases for defining new test approaches suggested by the literature include
+% coverage metrics, software qualities, and attacks. These are meaningful
+% enough to merit analysis and are therefore in scope. Requirements may also
+% imply related test approaches, but this mainly results in test approaches
+% that would be out of scope. \ifnotpaper Other test approaches found in the
+%     literature are derived from programming languages or other orthogonal test
+%     approaches, but these are out of scope as this information is better
+%     captured by other approaches (see \Cref{lang-test,orth-test}, respectively).
 
-    \paragraph{Coverage-driven Techniques}\label{cov-test}
+%     \paragraph{Coverage-driven Techniques}\label{cov-test}
 
-    Test techniques are able to ``identify test coverage items \dots{} and
-    derive corresponding test cases''
-    \ifnotpaper
-        (\citealp[p.~11]{IEEE2022}; similar in \citeyear[p.~467]{IEEE2017})
-    \else
-        \cite[p.~11]{IEEE2022} (similar in \cite[p.~467]{IEEE2017})
-    \fi
-    in a ``systematic'' way
-    \citeyearpar[p.~464]{IEEE2017}.
-    \ifnotpaper
-        This allows for ``the coverage achieved by a specific test design
-        technique'' to be calculated as a percentage of ``the number of test
-        coverage items covered by executed test cases'' \citeyearpar[p.~30]{IEEE2021}.
-        %     ``Coverage levels can range
-        %     from 0\% to 100\%'' and may or may not include ``infeasible'' test coverage
-        %     items, which are ``not \dots{} executable or [are] impossible to be covered by a
-        %     test case'' \citetext{p.~30}. Perhaps more interestingly, the further
-        %     implication is
-        % \else
-        %     This means
-    \fi % that
-    Therefore, a given coverage metric implies a test approach aimed to
-    maximize it. For example, path testing ``aims to execute all entry-to-exit
-    control flow paths in a \acs{sut}'s control flow graph'' \citep[p.~5-13]{SWEBOK2024},
-    thus maximizing the path coverage
-    \ifnotpaper
-        \citep[see][Fig.~1\thesisissueref{63}]{SharmaEtAl2021}\else
-        (see \cite[Fig.~1]{SharmaEtAl2021}\thesisissueref{63})\fi.
+%     Test techniques are able to ``identify test coverage items \dots{} and
+%     derive corresponding test cases''
+%     \ifnotpaper
+%         (\citealp[p.~11]{IEEE2022}; similar in \citeyear[p.~467]{IEEE2017})
+%     \else
+%         \cite[p.~11]{IEEE2022} (similar in \cite[p.~467]{IEEE2017})
+%     \fi
+%     in a ``systematic'' way
+%     \citeyearpar[p.~464]{IEEE2017}.
+%     \ifnotpaper
+%         This allows for ``the coverage achieved by a specific test design
+%         technique'' to be calculated as a percentage of ``the number of test
+%         coverage items covered by executed test cases'' \citeyearpar[p.~30]{IEEE2021}.
+%         %     ``Coverage levels can range
+%         %     from 0\% to 100\%'' and may or may not include ``infeasible'' test coverage
+%         %     items, which are ``not \dots{} executable or [are] impossible to be covered by a
+%         %     test case'' \citetext{p.~30}. Perhaps more interestingly, the further
+%         %     implication is
+%         % \else
+%         %     This means
+%     \fi % that
+%     Therefore, a given coverage metric implies a test approach aimed to
+%     maximize it. For example, path testing ``aims to execute all entry-to-exit
+%     control flow paths in a \acs{sut}'s control flow graph'' \citep[p.~5-13]{SWEBOK2024},
+%     thus maximizing the path coverage
+%     \ifnotpaper
+%         \citep[see][Fig.~1\thesisissueref{63}]{SharmaEtAl2021}\else
+%         (see \cite[Fig.~1]{SharmaEtAl2021}\thesisissueref{63})\fi.
 
-    \paragraph{Quality-driven Types}\label{qual-test}
+%     \paragraph{Quality-driven Types}\label{qual-test}
 
-    Since test types are ``focused on specific quality characteristics''
-    \ifnotpaper
-        (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021};
-        \citeyear[p.~473]{IEEE2017}\todo{OG IEEE 2013})%
-    \else
-        \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}, \cite[p.~473]{IEEE2017}%
-    \fi, they can be derived from software qualities: ``capabilit[ies] of
-    software product[s] to satisfy stated and implied needs when used under
-    specified conditions'' \citep[p.~424]{IEEE2017}\todo{OG ISO/IEC 2014}. This
-    is supported by reliability and performance testing, which are both examples of
-    test types \citeyearpar{IEEE2022, IEEE2021} that are based on their underlying
-    qualities \citep[p.~18]{FentonAndPfleeger1997}.
-    % \ifnotpaper
-    %     For quantifying quality-driven testing, measurements should include
-    %     an entity to be measured, a specific attribute to measure, and the actual
-    %     measure (i.e., units, starting state, ending state, what to include)
-    %     \citetext{p.~36} where attributes must be
-    %     defined before they can be measured \citetext{p.~38}.
-    %
-    % \fi
-    Because of the importance of software qualities to defining test types, we track
-    \qualityCount{} software qualities\thesisissueref{21,23,27} in addition to our
-    tracked test approaches following the procedure in \Cref{qual-supp-procedure}.
-    We then ``upgrade'' software qualities to test types when they are mentioned
-    (or implied) by a source by removing its entry from this quality glossary
-    and adding an associated test approach to \ourApproachGlossary{}, also outlined
-    in \Cref{procedure}. Examples of this include conformance testing \ifnotpaper
-        (\citealp[p.~5\=/7]{SWEBOK2024}; \citealp[p.~25]{JardEtAl1999}; implied
-        by \citealp[p.~93]{IEEE2017})\else \cite[p.~5\=/7]{SWEBOK2024},
-        \cite[p.~25]{JardEtAl1999}\fi, efficiency testing
-    \citep[p.~44]{Kam2008}, and survivability testing \citep[p.~40]{GhoshAndVoas1999}.
+%     Since test types are ``focused on specific quality characteristics''
+%     \ifnotpaper
+%         (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021};
+%         \citeyear[p.~473]{IEEE2017}\todo{OG IEEE 2013})%
+%     \else
+%         \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}, \cite[p.~473]{IEEE2017}%
+%     \fi, they can be derived from software qualities: ``capabilit[ies] of
+%     software product[s] to satisfy stated and implied needs when used under
+%     specified conditions'' \citep[p.~424]{IEEE2017}\todo{OG ISO/IEC 2014}. This
+%     is supported by reliability and performance testing, which are both examples of
+%     test types \citeyearpar{IEEE2022, IEEE2021} that are based on their underlying
+%     qualities \citep[p.~18]{FentonAndPfleeger1997}.
+%     % \ifnotpaper
+%     %     For quantifying quality-driven testing, measurements should include
+%     %     an entity to be measured, a specific attribute to measure, and the actual
+%     %     measure (i.e., units, starting state, ending state, what to include)
+%     %     \citetext{p.~36} where attributes must be
+%     %     defined before they can be measured \citetext{p.~38}.
+%     %
+%     % \fi
+%     Because of the importance of software qualities to defining test types, we track
+%     \qualityCount{} software qualities\thesisissueref{21,23,27} in addition to our
+%     tracked test approaches following the procedure in \Cref{qual-supp-procedure}.
+%     We then ``upgrade'' software qualities to test types when they are mentioned
+%     (or implied) by a source by removing its entry from this quality glossary
+%     and adding an associated test approach to \ourApproachGlossary{}, also outlined
+%     in \Cref{procedure}. Examples of this include conformance testing \ifnotpaper
+%         (\citealp[p.~5\=/7]{SWEBOK2024}; \citealp[p.~25]{JardEtAl1999}; implied
+%         by \citealp[p.~93]{IEEE2017})\else \cite[p.~5\=/7]{SWEBOK2024},
+%         \cite[p.~25]{JardEtAl1999}\fi, efficiency testing
+%     \citep[p.~44]{Kam2008}, and survivability testing \citep[p.~40]{GhoshAndVoas1999}.
 
-    \paragraph{Attacks}\label{attacks}
-    While attacks can be ``malicious'' \citep[p.~7]{IEEE2017}, they are also
-    described as a test approach \ifnotpaper
-        (\citeyear[pp.~4, 34]{IEEE2022}; \citeyear[p.~4]{IEEE2021};
-        \citeyear[p.~7]{IEEE2019a}; \citealpISTQB{}; implied by
-        \citealp[p.~5\=/10]{SWEBOK2024}; \citealp[p.~26]{Bas2024};
-        \citealp[p.~87\==89]{Patton2006})\else \cite[pp.~4, 34]{IEEE2022},
-        \cite[p.~4]{IEEE2021}; \cite[p.~7]{IEEE2019a}; \cite{ISTQB}\fi.
-    This is supported by the fact that penetration testing is also called
-    ``ethical hacking testing'' \citep[p.~13\=/4]{SWEBOK2024} or just ``ethical
-    hacking'' \citep[p.~28; see \flawref{ethical-hacking}]{Gerrard2000b}. This
-    means that software attacks, such as code injection and password cracking
-    \citepISTQB{}, can also be used for testing software if they are performed
-    systematically to test and improve the software (i.e., \emph{without} the
-    malicious intent).
+%     \paragraph{Attacks}\label{attacks}
+%     While attacks can be ``malicious'' \citep[p.~7]{IEEE2017}, they are also
+%     described as a test approach \ifnotpaper
+%         (\citeyear[pp.~4, 34]{IEEE2022}; \citeyear[p.~4]{IEEE2021};
+%         \citeyear[p.~7]{IEEE2019a}; \citealpISTQB{}; implied by
+%         \citealp[p.~5\=/10]{SWEBOK2024}; \citealp[p.~26]{Bas2024};
+%         \citealp[p.~87\==89]{Patton2006})\else \cite[pp.~4, 34]{IEEE2022},
+%         \cite[p.~4]{IEEE2021}; \cite[p.~7]{IEEE2019a}; \cite{ISTQB}\fi.
+%     This is supported by the fact that penetration testing is also called
+%     ``ethical hacking testing'' \citep[p.~13\=/4]{SWEBOK2024} or just ``ethical
+%     hacking'' \citep[p.~28; see \flawref{ethical-hacking}]{Gerrard2000b}. This
+%     means that software attacks, such as code injection and password cracking
+%     \citepISTQB{}, can also be used for testing software if they are performed
+%     systematically to test and improve the software (i.e., \emph{without} the
+%     malicious intent).
 
-    \paragraph{Requirements-driven Approaches}\label{req-test}
-    While not as universally applicable, some kinds of requirements have associated
-    types of testing (e.g., functional, non-functional, security). This may mean
-    that others kinds of requirements \emph{also} have associated test approaches;
-    for example, we infer ``technical testing'' from the existence of technical
-    requirements \citep[p.~463]{IEEE2017} and requirements-based testing
-    (see \Cref{infers}). \ifnotpaper Even assuming this is true, some kinds of
-        requirements do not apply to the code itself so their relevant inferred
-        test approaches are out of scope (see \Cref{phys-req-test,nontech-req-test}).\fi
-\fi
+%     \paragraph{Requirements-driven Approaches}\label{req-test}
+%     While not as universally applicable, some kinds of requirements have associated
+%     types of testing (e.g., functional, non-functional, security). This may mean
+%     that others kinds of requirements \emph{also} have associated test approaches;
+%     for example, we infer ``technical testing'' from the existence of technical
+%     requirements \citep[p.~463]{IEEE2017} and requirements-based testing
+%     (see \Cref{infers}). \ifnotpaper Even assuming this is true, some kinds of
+%         requirements do not apply to the code itself so their relevant inferred
+%         test approaches are out of scope (see \Cref{phys-req-test,nontech-req-test}).\fi
+% \fi
 
 \subsubsection{Undefined Terms}\label{undef-terms}
 
