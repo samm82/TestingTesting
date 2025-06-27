@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+
+\digraph{manualParChdLegend}{
+margin=0
+subgraph cluster_legend {
+margin=8
+label="Legend";
+labelloc="t";
+fontsize="32pt"
+rankdir=BT
+{
+rank=same
+chd [label="Child"];
+par [label="Parent"];
+chd -> par [label="                "];
+}
+{
+rank=same
+imp1 [label="Child"];
+imp2 [label=<Implied<br/>Parent>];
+imp1 -> imp2 [style="dashed" label="                "]
+imp3 [label=<Implied<br/>Term> style="dashed"]
+}
+edge [style="invis"]
+chd -> imp1
+par -> imp2
+}
+}
+
+\end{document}
