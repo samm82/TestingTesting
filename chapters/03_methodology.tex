@@ -140,12 +140,10 @@ observing how terms are used in practice\thesisissueref{89}:
           supported by \citet{RusEtAl2008})
 \end{itemize}
 
-\subsection{Procedure}\label{procedure}
-
-We track terminology used in the literature by building glossaries. The one
-most central to our research is \ourApproachGlossary{}, where we record all
-test approaches we identify in the literature. We use heuristics to guide this
-process to increase confidence that we identify all terms, paying
+\subsection{Identifying Relevant Terms}\label{ident-terms}
+Before we can consistently track software testing terminology used in the
+literature, we must first determine what to record. We use heuristics to guide
+this process to increase confidence that we identify all relevant terms, paying
 special attention to the following when investigating a new source:
 \begin{itemize}
     \item glossaries, taxonomies, hierarchies, and lists of terms,
@@ -188,8 +186,13 @@ are quite broad\ifnotpaper\ (such as attacks%
     %; see \Cref{attacks}
     \thesisissueref{55})\fi, so we will omit them during future analysis.
 
-We give each test approach its own row in \ourApproachGlossary{} to record its
-name and any given \approachFields{}.
+\subsection{Recording Relevant Terms}\label{record-terms}
+
+Once we have identified which terms from the literature are relevant, we can
+then track them consistently. We do this by building glossaries, mainly
+focusing on the one most central to our research---\ourApproachGlossary{}---where
+we record all test approaches we identify in the literature. We give each test
+approach its own row where we record its name and any given \approachFields{}.
 If no category is given, the ``approach'' category is assigned
 (with no accompanying citation) as a ``catch-all'' category. All other fields
 may be left blank, but a lack of definition indicates that the approach should
@@ -385,7 +388,7 @@ type (e.g., reusability testing). \ifnotpaper
 %         test approaches are out of scope (see \Cref{phys-req-test,nontech-req-test}).\fi
 % \fi
 
-\subsubsection{Undefined Terms}\label{undef-terms}
+\subsection{Undefined Terms}\label{undef-terms}
 
 The literature mentions many software testing terms without defining them.
 While this includes test approaches, software qualities, and more general
@@ -423,12 +426,12 @@ continue this trend, creating something approaching a complete taxonomy.
     \input{assets/graphs/undefPies}
 \fi
 
-\subsubsection{Stopping Criteria}\label{stop-crit}
+\subsection{Stopping Criteria}\label{stop-crit}
 
 Unfortunately, we cannot continue looking for new approaches indefinitely. We
 therefore need a ``stopping criteria'' to let us know when we are ``finished''
 looking for test approaches in the literature. Our original plan was to iterate
-steps \ref{record-apps} and \ref{record-terms} until there are diminishing
+steps \ref{step:record-apps} and \ref{step:record-terms} until there are diminishing
 returns, implying an approach of a complete taxonomy! However, due to time
 constraints, this is infeasible, so our stopping point is artificially imposed.
 With more time, we would find definitions for all terms we uncover as described

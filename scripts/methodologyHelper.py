@@ -17,34 +17,38 @@ toRecord: list[str] = [
 #     "are used repeatedly",
 #     "have complex definitions"
 # ]
+# """
+# \\item \\phantomsection{}\\label{step:record-terms}
+# Alongside step~\\ref{step:ident-terms}, identifying and recording related
+# testing terms that are used repeatedly and/or have complex definitions""" + "\n".join([
+#     f"\t\t  {line}" for line in wrapEnv(
+#         "enumerate", [f"\t\\item {capFirst(i)}" for i in relatedTerms])
+#         ])
 
 OTHER_NOTES = "other relevant notes"
 OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
                              "other sources"])
 
 methodology_a = """
-    \\item \\phantomsection{}\\label{identify-sources}
+    \\item \\phantomsection{}\\label{step:identify-sources}
           Identifying authoritative sources \\ifnotpaper on software testing
           and ``snowballing'' from them \\fi (\\Cref{sources})
-    \\item \\phantomsection{}\\label{record-apps}
-          Identifying all test approaches (\\Cref{approach-def}) from each
-          source and recording all relevant data (\\Cref{procedure}),
-          comprised of:\n""" + "\n".join([
+    \\item \\phantomsection{}\\label{step:ident-terms}
+          Identifying all test approaches (\\Cref{approach-def}) and related
+          testing terms that are used repeatedly and/or have complex definitions
+          (\\Cref{ident-terms})
+    \\item \\phantomsection{}\\label{step:record-terms}
+          Recording all relevant data (\\Cref{record-terms}) for each term
+          identified in step~\\ref{step:ident-terms}; for test approaches,
+          these are comprised of:\n""" + "\n".join([
         f"\t\t  {line}" for line in wrapEnv(
             "enumerate", [f"\t\\item {capFirst(i)}"
                           for i in toRecord + [OTHER_NOTES +
                                                f" ({OTHER_NOTES_EXS}, etc.)"]])
-        ]) + ("""
-    \\item \\phantomsection{}\\label{record-terms}
-          Alongside step~\\ref{record-apps}, identifying and recording related
-          testing terms that are used repeatedly and/or have complex definitions""" +
-        #   :\n""" + "\n".join([
-        # f"\t\t  {line}" for line in wrapEnv(
-        #     "enumerate", [f"\t\\item {capFirst(i)}" for i in relatedTerms])
-        #   ]) + """
-    """\\item Repeating steps~\\ref{identify-sources} to \\ref{record-terms} for 
+        ]) + """
+    \\item Repeating steps~\\ref{step:identify-sources} to \\ref{step:record-terms} for 
           any missing or unclear terms (\\Cref{undef-terms}) until some
-          stopping criteria (\\Cref{stop-crit})""")
+          stopping criteria (\\Cref{stop-crit})"""
     
 methodology_b = """    \\item Analyzing recorded test approach data for additional flaws
           \\begin{enumerate}
@@ -71,17 +75,17 @@ for i, m in enumerate([methodology_a, methodology_b]):
 
     # Hack because enumitem conflicts with beamer :(
     m = m.replace("\\ref{manual-flaws}",
-                  "\\ref{record-apps}.\\ref{manual-flaws}")
+                  "\\ref{step:record-terms}.\\ref{manual-flaws}")
 
     if not i:
         PHANTOM_SEC = "phantomsection"
         NEG_SPACE = "\\vspace*{-0.4cm}"
         m = m.split(PHANTOM_SEC)
         # TODO: this is VERY hardcoded
-        m[2] = m[2].replace("\\begin{enumerate}",
+        m[3] = m[3].replace("\\begin{enumerate}",
                             NEG_SPACE + "\\begin{multicols}{3}\\begin{enumerate}")
-        m[3] = m[3].replace("\\item Other relevant notes\n", "")
-        m[3] = m[3].replace("\\end{enumerate}",
+        m[4] = m[4].replace("\\item Other relevant notes\n", "")
+        m[4] = m[4].replace("\\end{enumerate}",
                             # With help from https://tex.stackexchange.com/a/514630/192195
                             # "\\item[\\vspace{\\fill}]"
                             "\\end{enumerate}\\end{multicols}" + NEG_SPACE)

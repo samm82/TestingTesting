@@ -32,32 +32,32 @@ finding errors'' \citep[p.~438]{PetersAndPedrycz2000}\todo{OG Myers 1976}. For
 each test, the main steps are to:
 \begin{enumerate}
     \item identify the goal(s) of the test,
-    \item \phantomsection{}\label{decide-app} decide on an approach,
+    \item \phantomsection{}\label{step:decide-app} decide on an approach,
     \item develop the tests,
     \item determine the expected results,
-    \item \phantomsection{}\label{run-tests} run the tests, and
-    \item \phantomsection{}\label{cmp-results} compare the expected results to
+    \item \phantomsection{}\label{step:run-tests} run the tests, and
+    \item \phantomsection{}\label{step:cmp-results} compare the expected results to
           the actual results \citetext{p.~443}.
           %   Only step 6 is similar in Firesmith2015; exclude for simplicity
           %   \ifnotpaper \citep[p.~443; similar in][p.~11]{Firesmith2015}
           %   \else \citetext{p.~443} (similar in \cite[p.~11]{Firesmith2015}) \fi
 \end{enumerate}
 The end goal is to evaluate ``some aspect of the system or component'' based on
-the results of step~\ref{cmp-results} \ifnotpaper (\citealp[p.~10]{IEEE2022};
+the results of step~\ref{step:cmp-results} \ifnotpaper (\citealp[p.~10]{IEEE2022};
     \citeyear[p.~6]{IEEE2021};
     \citeyear[p.~465]{IEEE2017}\todo{OG ISO/IEC 2014})\else
     \cite[p.~465]{IEEE2017}, \cite[p.~10]{IEEE2022}, \cite[p.~6]{IEEE2021}\fi.
 When this evaluation reveals errors, ``the faults causing them are what can and
 must be removed'' \citep[p.~5\=/3]{SWEBOK2024}.
 
-Of course, the approach chosen in step~\ref{decide-app} influences what
+Of course, the approach chosen in step~\ref{step:decide-app} influences what
 kinds of test cases should be developed and executed in later steps, so it is
 important that test approaches are defined correctly, consistently, and
 unambiguously.
 % How the literature describes these approaches is the focus of our research.
 A ``test approach'' is a ``high-level test implementation
 choice'' \citep[p.~10]{IEEE2022} used to ``pick the particular test case
-values'' \citeyearpar[p.~465]{IEEE2017} used in step~\ref{run-tests}. The only
+values'' \citeyearpar[p.~465]{IEEE2017} used in step~\ref{step:run-tests}. The only
 approach that can ``fully'' test a system (exhaustive testing) is infeasible in
 most non-trivial situations \ifnotpaper (\citeyear[p.~4]{IEEE2022};
     \citealp[p.~5\=/5]{SWEBOK2024}; \citealp[pp.~439, 461]{PetersAndPedrycz2000};
