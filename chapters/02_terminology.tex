@@ -436,20 +436,20 @@ Software engineering is a rigorous discipline that
 focuses on, among other things, correctness, completeness, consistency, and
 separation of concerns. Unfortunately, software testing literature does not
 meet these criteria itself! We refer to any instance where one of these ideals
-is violated as a ``flaw''\footnote{A small literature review reveals that
-    established standards (see \Cref{stds}) only use the term ``flaw'' to refer
-    to requirements \citep[p.~38]{IEEE2022}, design \citetext{p.~43}, ``system
-    security procedures \dots{} and internal controls''
+is violated as a ``flaw''\footnote{When picking a word to describe these violations,
+    we wanted to avoid words that are ``overloaded with too many meanings'' like
+    ``error'' and ``fault'' \citep[p.~12\=/3; see \Cref{error-fault-failure}
+        for more detailed discussion]{SWEBOK2024}. A small literature review
+    revealed that established standards (see \Cref{stds}) only use the term
+    ``flaw'' to refer to requirements \citep[p.~38]{IEEE2022}, design
+    \citetext{p.~43}, ``system security procedures \dots{} and internal controls''
     % under the term ``vulnerability''
     \citep[p.~194]{IEEE2012}, or code itself \citetext{p.~92}. \refHelper
     \citet[p.~7\=/9]{SWEBOK2024} also uses the word ``flaw'' in a way that
     aligns with our goal of analyzing what is wrong with software
-    engineering's testing literature.}
-%     , as it implies that something is wrong with the literature and an
-% opportunity to improve it, 
-while avoiding words that are ``overloaded with too many meanings''
-like ``error'' and ``fault'' \citep[p.~12\=/3; see \Cref{error-fault-failure}
-    for more detailed discussion]{SWEBOK2024}.
+    engineering's testing literature.}\todo{Present tense in footnote?}.
+% , as it implies that something is wrong with the literature and there is an
+% opportunity to improve it
 Some flaws involve information from more than one source, but referring to this
 as a ``flaw between two sources'' is awkward\thesisissueref{140}. We instead
 refer to this kind of flaw more intuitively as an ``inconsistency'' between the
