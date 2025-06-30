@@ -182,7 +182,7 @@ and thus less helpful for grouping test approaches. \ifnotpaper Other
 ``artifact''\thesisissueref{44,119,39} since some terms can refer to the
 application of a test approach \emph{as well as} the resulting document(s).
 Therefore, we do \emph{not} consider approaches categorized as an artifact
-\emph{and} another category as flaws\thesisissueref{119} (see \Cref{multiCats}).
+\emph{and} another category as flaws\thesisissueref{119} in \Cref{multiCats}.
 
 % \fi
 % While we can categorize the vast majority of identified test approaches
@@ -207,14 +207,16 @@ The same approach often has many names. For example,
 % \begin{enumerate}
 %     \item 
 ``black-box testing''
+\def\noHyphenFn{\footnote{\refHelper \citet{Firesmith2015} excludes the hyphen,
+        calling it ``black box testing''.}}
 \ifnotpaper
     (\citealp[p.~9]{IEEE2022}; \citeyear[p.~8]{IEEE2021};
     \citeyear[p.~431]{IEEE2017}; \citealp[p.~5\=/10]{SWEBOK2024};
-    \citealpISTQB{}; \citealp[p.~46 (without hyphen)]{Firesmith2015};
+    \citealpISTQB{}; \citealp[p.~46\noHyphenFn]{Firesmith2015};
     \citealp[p.~344]{SakamotoEtAl2013}; \citealp[p.~399]{vanVliet2000})\else
-    \cite[p.~399]{vanVliet2000}, \cite[p.~5\=/10]{SWEBOK2024},
-    \cite[p.~431]{IEEE2017}, \cite[p.~9]{IEEE2022}, \cite{ISTQB},
-    \cite[p.~8]{IEEE2021}, % \cite[p.~46 (without hyphen)]{Firesmith2015},
+    \cite[p.~46\noHyphenFn]{Firesmith2015}, \cite[p.~399]{vanVliet2000},
+    \cite[p.~5\=/10]{SWEBOK2024}, \cite[p.~431]{IEEE2017},
+    \cite[p.~9]{IEEE2022}, \cite{ISTQB}, \cite[p.~8]{IEEE2021},
     \cite[p.~344]{SakamotoEtAl2013}\fi.
 %     \item ``closed-box testing''
 %           \ifnotpaper
@@ -314,7 +316,7 @@ Many test approaches are multi-faceted and can be ``specialized'' into others;
 for example, load testing and stress testing are some of the subtypes of
 performance-related testing (described in more detail in \Cref{perf-test-rec}).
 We refer to these ``specializations'' as ``children'' or ``subapproaches'' of
-their multi-faceted ``parent(s)''. This nomenclature also extends to other
+their multi-faceted ``parent(s)''. This nomenclature also extends to approach
 categories (such as ``subtype''; see \Cref{cats-def,tab:ieeeCats}) and software
 qualities (``subquality''\ifnotpaper; see \Cref{qual-supp-procedure}\fi).
 
