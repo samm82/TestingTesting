@@ -109,9 +109,14 @@ def processCol(col, sortByLen: bool=False):
 
 names = [n.strip() for n in names if isinstance(n, str)]
 # Sort entries for alphabetical order in multiCats rable
-categories = processCol(categories, True)
+categories: list[list[str]] = processCol(categories, True)
 parents = processCol(parents)
 synonyms = processCol(synonyms)
+
+for c in categories:
+    newC = [x for x in c if not x.startswith(("Approach", "Artifact", "Type", "Level", "Practice", "Technique"))]
+    if newC:
+        print(c)
 
 staticApproaches = {
     'ConcreteExecution', 'SymbolicExecution', 'InductiveAssertionMethods',
