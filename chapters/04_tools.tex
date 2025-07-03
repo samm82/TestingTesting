@@ -82,15 +82,14 @@ develop a tool to automatically generate visualizations of these relations.
     consistently track them throughout our analysis. We also color each
     relation according to its source tier (see \Cref{sources}), including
     inferences (see \Cref{infers}) and proposals (see \Cref{recs}). Although we
-    omit this from \Cref{fig:exampleGraphs} for brevity, \Cref{fig:expSynGraph}
-    serves as an example of this.
+    omit this from \Cref{fig:exampleParChdGraphs,fig:exampleGraphs} for brevity,
+    \Cref{fig:expSynGraph} demonstrates how we represent the credibility of
+    each relation in our visualizations.
 
     \input{build/exampleGlossary.tex}
     \ExampleParChdGraphs{}
 
-    \ExampleGraph{}
-
-    \newpage\fi
+    \clearpage\fi
 We graph all parent-child relations, since they are guaranteed to be visually
 meaningful.
 % , but only graph some synonym relations.
@@ -160,6 +159,8 @@ we only visualize the following synonym relations, which may indicate flaws:
         \caption{Synonym relations given explicitly by the literature.}
         \label{fig:expSynGraph}
     \end{figure}
+
+    \ExampleGraph{}
 
     \phantomsection{}\label{graphExplicit}
     Since we also track the ``explicitness'' of information
