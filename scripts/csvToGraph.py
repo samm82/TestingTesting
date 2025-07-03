@@ -26,7 +26,7 @@ def debugSource(x, toPrint = ""):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python ApproachGlossary.py <filename>")
+        print("Usage: python csvToGraph.py <filename>")
         sys.exit(1)
     
     csvFilename = sys.argv[1]
@@ -112,11 +112,6 @@ names = [n.strip() for n in names if isinstance(n, str)]
 categories: list[list[str]] = processCol(categories, True)
 parents = processCol(parents)
 synonyms = processCol(synonyms)
-
-for c in categories:
-    newC = [x for x in c if not x.startswith(("Approach", "Artifact", "Type", "Level", "Practice", "Technique"))]
-    if newC:
-        print(c)
 
 staticApproaches = {
     'ConcreteExecution', 'SymbolicExecution', 'InductiveAssertionMethods',
