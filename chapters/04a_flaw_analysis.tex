@@ -15,7 +15,7 @@ automated tools (\Cref{aug-flaw-analysis}). This gives us an overview of:
 
 \phantomsection{}\label{flaw-cred-compare}
 To understand where flaws exist in the literature, we group them based on the
-source tier(s) responsible for them. Each flaw is then counted \emph{once} per
+source tier(s) responsible for them. We then count each flaw \emph{once} per
 source tier if it appears within it \emph{and/or} between it and a more
 ``credible'' tier\footnote{If an inconsistency occurs between two source tiers
     and the more credible one is \emph{incorrect}, we instead count it as an
@@ -24,8 +24,9 @@ source tier if it appears within it \emph{and/or} between it and a more
 This avoids counting the same flaw
 more than once for a given source tier\thesisissueref{83}, which would give the
 number of \emph{occurrences} of all flaws instead of the more useful number of
-flaws \emph{themselves}. The exception to this is \Cref{fig:flawBars}, which
-counts the following sources of flaws separately:
+flaws \emph{themselves}. When taking a more detailed look at the \emph{sources}
+of flaws (as opposed to just the responsible source \emph{tiers}), as we do in
+\Cref{fig:flawBars}, we also count the following sources of flaws separately:
 \begin{enumerate}
     \item those that appear once in (or consistently throughout) a document
           (i.e., are ``self-contained'')\thesisissueref{137,138},
@@ -42,12 +43,12 @@ counts the following sources of flaws separately:
           \end{enumerate}
     \item those within a single source tier.
 \end{enumerate}
-As before, these are not double counted, meaning that the maximum number of
-counted flaws possible within a \emph{single} source tier in
-\Cref{fig:flawBars} is four (one for each type). This only occurs if
-there is an example of each flaw source that is \emph{not} ignored to
-avoid double counting; for example, while a single flaw within a single
-document would technically fulfill all four criteria, it would only be counted
+As before, we do not double count these sources of flaws, meaning that the
+maximum number of counted flaws possible within a \emph{single} source tier in
+this more detailed view is four (one for each type). This only occurs if there
+is an example of each flaw source that is \emph{not} ignored to avoid double
+counting; for example, while a single flaw within a single document would
+technically and trivially fulfill all four criteria, we would only count it
 once.
 
 \begin{figure}[bt!]
@@ -86,14 +87,13 @@ once.
         \node[above] at (0, -\spread-1.4*\radius) {\citealp{IEEE2012}};
 
     \end{tikzpicture}
-    \caption{The sets of authors of established standards (see \Cref{stds}).}
-    \label{fig:ieeeSourceSets}
+    \caption{The sets of authors of established standards (as defined in
+        \Cref{stds}).}\label{fig:ieeeSourceSets}
 \end{figure}
 
-\phantomsection{}
-\label{flaw-analysis-example}
+\phantomsection{}\label{flaw-analysis-example}
 As an example of this process, consider \flawref{level-phase-syns}, where an
-IEEE standard has an internal flaw, and an inconsistency with two other IEEE
+IEEE standard has an internal flaw, an inconsistency with two other IEEE
 standards, and an inconsistency with a textbook. This adds one to the following
 rows of \Cref{tab:flawMnfsts,tab:flawDmns} in the relevant column for a total
 of two counted flaws:
