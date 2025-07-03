@@ -118,32 +118,36 @@ of two counted flaws:
           %       the count by just one to avoid double counting.
 \end{itemize}
 
-\subsubsection{Automated Flaw Analysis}
-\label{auto-flaw-analysis}
+\subsubsection{Automated Flaw Analysis}\label{auto-flaw-analysis}
 
-As outlined in \Cref{graph-gen}, we automatically detect test approaches that
-share a synonym (\hyperref[case-three]{Case 3} in \Cref{graph-gen}) to generate
-our graphs. These relations are significant because they are potential flaws.
-They arise from glossary entries such as those in \Cref{tab:synExampleGlossary}
-which we automatically detect, format, and present in
-\Cref{multiSyns,infMultiSyns}. The next logical step is to detect other classes
-of flaws.\phantomsection{}\label{selfCycles}
-The self-referential definitions in \Cref{selfPars} (defined as
-$\left\{(x, y) \in P \mid x = y\right\}$) are also trivial to automate by
-looking for lines in the
+As outlined in \Cref{relevantSyns}, we automatically detect synonym relations
+that violate transitivity to generate our graphs. These relations are
+significant because they indicate potential flaws and arise from glossary
+entries such as those in \Cref{tab:synExampleGlossary}. We automatically detect
+and format these flaws to present them when discussing synonym relation flaws
+in \Cref{syns}. % \Cref{multiSyns,infMultiSyns}
+The next logical step is then to detect other classes of flaws.
+
+\phantomsection{}\label{selfParDef}
+Parent-child relations that violate irreflexivity as outlined in
+\Cref{par-chd-rels} (i.e., cases where a child is given as a parent of itself)
+are also trivial to automate by looking for lines in the
 generated \LaTeX{} files that start with \texttt{I~->~I}, where \texttt{I}
 is the label used for a test approach node in these graphs. This process
-results in output similar to \Cref{fig:selfExampleGraph}. We use a similar
+results in output similar to \Cref{fig:selfExampleGraph}.% \Cref{selfPars}
+\phantomsection{}\label{parSynDef} We use a similar
 process to detect pairs of approaches with a synonym relation \emph{and} a
-parent-child relation, defined as
-$\left\{(x, y) \in P \mid \{x, y\} \in S\right\}$ and given in
-\Cref{tab:parSyns,infParSyns}. To accomplish this, we build a dictionary of
+parent-child relation; these are flaws since synonym relations are symmetric
+while parent-child relations are asymmetric as outlined in \Cref{syn-rels,%
+    par-chd-rels}, respectively. To find these flaws, we build a dictionary of
 each term's synonyms to evaluate which synonym relations are notable enough
 to include in the graph, and then check these mappings to see if one appears
 as a parent of the other. For example, if \texttt{J} and \texttt{K} are
 synonyms, a generated \LaTeX{} file with a parent line starting with
-\texttt{J~->~K} would result in these approaches being graphed as shown in
-\Cref{fig:parSynExampleGraph}.
+\texttt{J~->~K} \emph{or} \texttt{K~->~J} would result in these approaches
+being graphed as shown in \Cref{fig:parSynExampleGraph}. We present these two
+classes of flaws when discussing parent-child relation flaws in \Cref{pars}.
+% \Cref{tab:parSyns,infParSyns}
 
 While just counting the total number of flaws (found automatically \emph{or}
 manually) is trivial, tracking
@@ -168,8 +172,7 @@ source tiers. This determines which row(s) of \Cref{tab:flawMnfsts,tab:flawDmns}
 and which bar(s) of \Cref{fig:flawBars} that the given flaw should count toward.
 We describe this process in more detail in \Cref{aug-flaw-analysis}.
 
-\phantomsection{}
-\label{auto-flaw-analysis-explicitness}
+\phantomsection{}\label{auto-flaw-analysis-explicitness}
 Alongside this citation information, we include keywords so we can assess how
 ``explicit'' a piece of information is (see \Cref{explicitness}). This is
 useful when counting flaws, since they can be both objective and subjective but
@@ -179,8 +182,7 @@ most ``explicit'' manifestation (i.e., it will only increment a value in the
 ``(Sub)jective'' column if it is \emph{not} also ``(Obj)ective''),
 similarly to how we generate graphs (see \Cref{graphExplicit}).
 
-\subsubsection{Augmented Flaw Analysis}
-\label{aug-flaw-analysis}
+\subsubsection{Augmented Flaw Analysis}\label{aug-flaw-analysis}
 While we can detect some subsets of flaws automatically by analyzing
 \ourApproachGlossary, most are too complex and need to be tracked manually. We
 record these more detailed flaws as \LaTeX{} enumeration items along with

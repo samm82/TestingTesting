@@ -176,7 +176,7 @@ COMPLEX_TEX_FILES = [
     "build/multiCats.tex",
     "build/multiSyns.tex",
     "build/parSyns.tex",
-    "build/selfCycles.tex",
+    "build/selfPars.tex",
     "chapters/05_flaws.tex",
 ]
 

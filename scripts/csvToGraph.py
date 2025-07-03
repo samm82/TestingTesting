@@ -493,7 +493,7 @@ if "Example" not in csvFilename:
 
 workingStaticSet = staticApproaches.copy()
 
-selfCycles = []
+selfPars = []
 # Add parent relations
 for name, parent in zip(names, parents):
     fname = formatApproach(name)
@@ -502,7 +502,7 @@ for name, parent in zip(names, parents):
         if not fpar.replace(" ", ""):
             continue
         if fname == fpar:
-            selfCycles.append(par)
+            selfPars.append(par)
 
         for key in categoryDict.keys():
             for parentLine in colorRelations(
@@ -518,13 +518,13 @@ for name, parent in zip(names, parents):
 
 print()
 
-selfCycleCount = len(selfCycles)
+selfParCount = len(selfPars)
 
 if "Example" not in csvFilename:
-    selfCycles = [f"\\item {getFlawCount([cycle], "WRONG", "PARS")}{formatLineWithSources(cycle)}"
-                  for cycle in selfCycles]
-    writeFile(["\\begin{enumerate}"] + selfCycles + ["\\end{enumerate}"],
-              "selfCycles", True)
+    selfPars = [f"\\item {getFlawCount([cycle], "WRONG", "PARS")}{formatLineWithSources(cycle)}"
+                  for cycle in selfPars]
+    writeFile(["\\begin{enumerate}"] + selfPars + ["\\end{enumerate}"],
+              "selfPars", True)
 
 # Not stable; MUST be in correct order for table footnotes
 parSynNotes = {
@@ -674,7 +674,7 @@ if "Example" not in csvFilename:
             "infParSyns", True)
 
     writeFile([f"{formatCount(parSynCount)}% Pairs of terms with parent/child AND synonym relations",
-            f"{formatCount(selfCycleCount)}% Self-cycles"],
+            f"{formatCount(selfParCount)}% Terms that are parents of themselves"],
             "parSynCounts", True)
 
 if "Example" not in csvFilename:
