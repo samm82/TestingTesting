@@ -157,20 +157,8 @@ we record (see \Cref{tab:exampleGlossary,tab:synExampleGlossary} for examples
 of how these citations are formatted in the glossaries), we can use them to
 identify the offending source tier(s). This comes with the added benefit that
 we can format these citations to use with \LaTeX{}'s citation commands in this
-\docType{}.
-
-We compare the authors and years of each source involved with a given flaw
-to determine if it manifests within a single document and/or between documents
-with the same set of authors. Then, we group these sources into their tiers
-\seeSrcCode{82167b7}{scripts/flawCounter.py}{63}{80}.
-% done by the function in \Cref{lst:getSrcCat}, since each source tier
-% outlined in \Cref{sources} is comprised of a small number of authors (with the
-% exception of papers and other documents; see \Cref{papers}).
-We then distill these lists of sources down to sets of tiers and compare them
-against each other to determine how many times a given flaw manifests between
-source tiers. This determines which row(s) of \Cref{tab:flawMnfsts,tab:flawDmns}
-and which bar(s) of \Cref{fig:flawBars} that the given flaw should count toward.
-We describe this process in more detail in \Cref{aug-flaw-analysis}.
+\docType{}, including generating the comments used to analyze flaws as
+described in \Cref{aug-flaw-analysis}.
 
 \phantomsection{}\label{auto-flaw-analysis-explicitness}
 Alongside this citation information, we include keywords so we can assess how
@@ -235,6 +223,20 @@ groups; this means the following line adds an inconsistency between X and Z
 \begin{displayquote}
     \texttt{\% Flaw count: \{X\} | \{X\} \{Y\} | \{Z\}}
 \end{displayquote}
+
+We compare the authors and years of each source involved with a given flaw
+to determine if it manifests within a single document and/or between documents
+with the same set of authors. Then, we group these sources into their tiers
+\seeSrcCode{82167b7}{scripts/flawCounter.py}{63}{80}.
+% done by the function in \Cref{lst:getSrcCat}, since each source tier
+% outlined in \Cref{sources} is comprised of a small number of authors (with the
+% exception of papers and other documents; see \Cref{papers}).
+We then distill these lists of sources down to sets of tiers and compare them
+against each other to determine how many times a given flaw manifests between
+source tiers. This determines which row(s) of \Cref{tab:flawMnfsts,tab:flawDmns}
+and which bar(s) of \Cref{fig:flawBars} that the given flaw should count toward.
+We describe this process in more detail in \Cref{aug-flaw-analysis}.
+
 To give a more complete example, we track \flawref{level-phase-syns} with the
 following comment line:\utd{}
 \begin{displayquote}
