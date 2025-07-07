@@ -119,7 +119,14 @@ test approaches from different categories\ifnotpaper
     ; see \Cref{orth-test} for more detailed discussion\fi.
 Because of their widespread use and their usefulness in dividing the domain of
 software testing into more manageable subsets, we use these categories
-throughout this \docType{}.
+throughout this \docType{}. They can be loosely described by what they specify
+as follows\thesisissueref{21}:
+\begin{itemize}
+    \item \textbf{Level}: What code is tested
+    \item \textbf{Practice}: How the test is structured and executed
+    \item \textbf{Technique}: How inputs and/or outputs are derived
+    \item \textbf{Type}: Which software quality is evaluated
+\end{itemize}
 
 % For example, static assertion checking (mentioned by \ifnotpaper
 %     \citealp[p.~345]{LahiriEtAl2013}; \citealp[p.~343]{ChalinEtAl2006}\else
@@ -146,26 +153,19 @@ throughout this \docType{}.
     % }
 \fi
 
-The four main categories we describe in \Cref{tab:ieeeCats} can be loosely
-described by what they specify as follows\thesisissueref{21}:
-\begin{itemize}
-    \item \textbf{Level}: What code is tested
-    \item \textbf{Practice}: How the test is structured and executed
-    \item \textbf{Technique}: How inputs and/or outputs are derived
-    \item \textbf{Type}: Which software quality is evaluated
-\end{itemize}
-For example, boundary value analysis is a test technique since its inputs are
-``the boundaries of equivalence partitions'' \ifnotpaper
-    (\citealp[p.~2]{IEEE2022}; \citeyear[p.~1]{IEEE2021}; similar on p.~12;
-    \citealpISTQB{})%
-\else
-    \cite[p.~2]{IEEE2022}, \cite[p.~1]{IEEE2021}%
-\fi. Similarly, acceptance testing is a test level since its goal is to
-``enable a user, customer, or other authorized entity to determine whether to
-accept a system or component'' \ifnotpaper (\citealp[p.~5]{IEEE2017}; similar
-    in \citeyear[p.~6]{IEEE2021}; \citealp[p.~344]{SakamotoEtAl2013})\else
-    \cite[p.~5]{IEEE2017}\fi, which requires the system or component to be
-developed and ready for testing.
+% % Removed for brevity; #202
+% For example, boundary value analysis is a test technique since its inputs are
+% ``the boundaries of equivalence partitions'' \ifnotpaper
+%     (\citealp[p.~2]{IEEE2022}; \citeyear[p.~1]{IEEE2021}; similar on p.~12;
+%     \citealpISTQB{})%
+% \else
+%     \cite[p.~2]{IEEE2022}, \cite[p.~1]{IEEE2021}%
+% \fi. Similarly, acceptance testing is a test level since its goal is to
+% ``enable a user, customer, or other authorized entity to determine whether to
+% accept a system or component'' \ifnotpaper (\citealp[p.~5]{IEEE2017}; similar
+%     in \citeyear[p.~6]{IEEE2021}; \citealp[p.~344]{SakamotoEtAl2013})\else
+%     \cite[p.~5]{IEEE2017}\fi, which requires the system or component to be
+% developed and ready for testing.
 
 % Based on how we observe test approaches being categorized in the literature, 
 % We also make the following changes to the schema from \citet[Fig.~2]{IEEE2022}:
