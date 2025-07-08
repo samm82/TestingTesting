@@ -22,7 +22,7 @@ draw=black, fill=blue!30]
 minimum width=3cm,
 minimum height=1cm,
 text centered,
-text width=4cm,
+text width=4.25cm,
 draw=black,
 fill=orange!30]
 
@@ -61,12 +61,17 @@ fill=green!30]
         \node (catgiven) [decisionS, below of=ident,  yshift=-0.5cm] {Category Given?};
         \node (catmatch) [decisionL, below of=catapp, yshift=-2.5cm] {Given Category Matches Present Category?};
 
-        \node (replace) [process, below of=catgiven, yshift=-1.25cm, xshift=-0.5cm] {Replace ``Approach'' with Given Category};
-        \node (matches) [process, below of=catmatch, yshift=-1cm] {Add Citation};
-        \node (nomatch) [process, below of=replace,  yshift=-1cm] {Add Given Category};
+        \node (catreplace) [process, below of=catgiven,   yshift=-1.5cm, xshift=-0.5cm] {Replace ``Approach'' with Given Category};
+        \node (catmatches) [process, below of=catmatch,   yshift=-1cm] {Add Citation for Approach};
+        \node (catnomatch) [process, below of=catreplace, yshift=-1cm] {Add Given Category};
 
-        \node (out1) [io, below of=newapp, yshift=-3.5cm] {Output};
-        \node (end) [startend, below of=out1] {End};
+        \node (data)        [io,        below of=newapp,      yshift=-3.5cm] {Additional Approach Data Identified};
+        \node (datagiven)   [decisionL, below of=catnomatch,  yshift=-1.5cm] {Given Data Matches Present Data?};
+        \node (datanomatch)   [process, below of=datagiven,   yshift=-1.5cm] {Add Given Data and Document as Flaw (as applicable)};
+        \node (datamatch)     [process, left of=datanomatch,  xshift=-3cm]   {Add Citation for Data};
+        \node (datasomematch) [process, right of=datanomatch, xshift=3cm]    {Merge with Present Data};
+
+        \node (end) [startend, below of=datanomatch] {End};
 
         \draw [arrow] (start) -- (ident);
         \draw [arrow] (ident) -- (present);
@@ -76,16 +81,24 @@ fill=green!30]
         \draw [arrow] (newapp.west) -- (catgiven);
 
         \draw [arrow] (catgiven) -- node[anchor=south] {yes} (catapp);
-        \draw [arrow] (catapp)   -- node[anchor=south] {yes} (replace);
+        \draw [arrow] (catapp)   -- node[anchor=south] {\enspace yes} (catreplace);
         \draw [arrow] (catapp)   -- node[anchor=east]  {no}  (catmatch);
-        \draw [arrow] (catmatch) -- node[anchor=east]  {yes} (matches);
-        \draw [arrow] (catmatch) -- node[anchor=south] {no}  (nomatch);
+        \draw [arrow] (catmatch) -- node[anchor=east]  {yes} (catmatches);
+        \draw [arrow] (catmatch) -- node[anchor=south] {no}  (catnomatch);
 
-        \draw [arrow] (catgiven) -- node[anchor=west] {no} (out1);
-        \draw [arrow] (matches) -- (out1);
-        \draw [arrow] (nomatch) -- (out1);
-        \draw [arrow] (replace) -- (out1);
-        \draw [arrow] (out1) -- (end);
+        \draw [arrow] (catgiven) -- node[anchor=west] {no} (data);
+        \draw [arrow] (catmatches) -- (data);
+        \draw [arrow] (catnomatch) -- (data);
+        \draw [arrow] (catreplace) -- (data);
+
+        \draw [arrow] (data) -- (datagiven);
+        \draw [arrow] (datagiven) -- node[anchor=east] {yes\enspace} (datamatch);
+        \draw [arrow] (datagiven) -- node[anchor=east] {no} (datanomatch);
+        \draw [arrow] (datagiven) -- node[anchor=west] {\quad somewhat} (datasomematch);
+
+        \draw [arrow] (datamatch)     -- (end);
+        \draw [arrow] (datanomatch)   -- (end);
+        \draw [arrow] (datasomematch) -- (end);
 
     \end{tikzpicture}
     \caption{Procedure for recording test approaches in our glossary.}
