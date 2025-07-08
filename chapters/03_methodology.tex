@@ -197,23 +197,26 @@ Once we have identified which terms from the literature are relevant, we can
 then track them consistently. We do this by building glossaries, mainly
 focusing on the one most central to our research---\ourApproachGlossary{}---where
 we record all test approaches we identify in the literature. We give each test
-approach its own row where we record its name and any given \approachFields{}.
-If no category is given, the ``approach'' category is assigned
-(with no accompanying citation) as a ``catch-all'' category. All other fields
-may be left blank, but a lack of definition indicates that the approach should
-be investigated further to see if its inclusion is meaningful (see
-\Cref{undef-terms}). Any additional information from other sources is added to
-or merged with the existing information in our glossary where appropriate.
-This includes the generic ``approach'' category being replaced with a more
-specific one, an additional synonym being mentioned, or another source
-describing an already-documented parent-child relation. If any new information
-does not agree with existing information or indicates a potential flaw, we
-record it in our glossary as dubious information (see \Cref{imp-case-four})
-or in a separate document if it is clearly flawed (see \Cref{flaw-def}).
-When new information does not conflict with existing information, we either
-keep the clearest and most concise version or merge them to paint a more
-complete picture. Finally, we record any other notes, such as questions,
-prerequisites, and other resources to investigate.
+approach its own row where we record its name and any given \approachFields{}
+(along with any other notes, such as questions, prerequisites, and other
+resources to investigate) following the procedure in \Cref{fig:recAppFlowchart}.
+Note that only the name and category fields are required; all other fields
+may be left blank, although a lack of definition indicates that the approach
+should be investigated further to see if its inclusion is meaningful (see
+\Cref{undef-terms}). When recording flawed data, we record it in our glossary as
+dubious information (see \Cref{\ifnotpaper imp-case-four\else imp-case-three\fi})
+and/or in a separate document if it is clearly flawed (see \Cref{flaw-def}).
+% If no category is given, the ``approach'' category is assigned
+% (with no accompanying citation) as a ``catch-all'' category. 
+% Any additional information from other sources is added to
+% or merged with the existing information in our glossary where appropriate.
+% This includes the generic ``approach'' category being replaced with a more
+% specific one, an additional synonym being mentioned, or another source
+% describing an already-documented parent-child relation. If any new information
+% does not agree with existing information or indicates a potential flaw, …
+% When new information does not conflict with existing information, we either
+% keep the clearest and most concise version or merge them to paint a more
+% complete picture.
 
 For example, \citet[p.~1, 36]{IEEE2022} \multiAuthHelper{define} ``A/B testing''
 (see \Cref{fig:IEEE-A-B-Testing}), giving ``split-run testing'' as a synonym
