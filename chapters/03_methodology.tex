@@ -402,8 +402,7 @@ As described in \Cref{explicitness}, the use of natural language introduces
 significant nuance that we need to document. Keywords such as \impKeywords{}
 indicate that information from the literature is \emph{not} explicit. We find
 the following non-mutually exclusive cases of ``implicit'' information from the
-literature; we use the keywords from the above list during data collection to
-identify them when performing later analysis:
+literature:
 
 %% Maybe convert to \paragraph ?
 \begin{description}
@@ -462,16 +461,18 @@ identify them when performing later analysis:
           %   flaw.
 \end{description}
 
-Despite ``implicit'' only describing the first of these cases, we use it
-(as well as ``implied by'' when describing sources of information) as a
-shorthand for all ``not explicit'' manifestations throughout this \docType{}
-for clarity. \ifnotpaper We group keywords
-    for implicit information based on which case(s) they apply to, as shown in
-    \Cref{tab:expAnalysis}, which helps us decide what information is implicit.
+When we encounter information that meets one of these criteria, we use an
+appropriate keyword to capture this nuance in \ourApproachGlossary{}\ifnotpaper\
+    (see \Cref{tab:impCaseKeywords})\fi. This also helps us identify implicit
+information when performing later analysis. Despite ``implicit'' only
+describing the first of these cases, we use it (as well as ``implied by'' when
+describing sources of information) as a shorthand for all ``not explicit''
+manifestations throughout this \docType{} for clarity.
 
-    \input{assets/tables/expAnalysis}
+\ifnotpaper
+    \input{assets/tables/impCaseKeywords}
 
-    Regarding the last entry in \Cref{tab:expAnalysis}, if a test approach in
+    Regarding the last entry in \Cref{tab:impCaseKeywords}, if a test approach in
     \ourApproachGlossary{} has a name ending in ``~(Testing)'' (space
     included), then the word ``Testing'' might not be part of its name
     \emph{or} it might not be a test approach at all! For example, the term
