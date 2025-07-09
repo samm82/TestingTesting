@@ -399,18 +399,11 @@ type (e.g., reusability testing). \ifnotpaper
 \subsection{Implicit Information}\label{imp-info}
 
 As described in \Cref{explicitness}, the use of natural language introduces
-significant nuance that we need to document. We observe many ways that
-information can be \emph{not} explicit in the literature, indicated by the
-keywords \impKeywords{}.
-Despite ``implicit'' only describing the first of these cases, we use it
-(as well as ``implied by'' when describing sources of information) as a
-shorthand for all ``not explicit'' manifestations throughout this \docType{}
-for clarity. Any kind of information can be implicit,
-including the names, \approachFields{} of identified test approaches. The
-following are non-mutually exclusive
-examples from the literature of ways that information can be ``implicit'';
-we use the keywords from the above list during data collection to identify
-them when performing later analysis:
+significant nuance that we need to document. Keywords such as \impKeywords{}
+indicate that information from the literature is \emph{not} explicit. We find
+the following non-mutually exclusive cases of ``implicit'' information from the
+literature; we use the keywords from the above list during data collection to
+identify them when performing later analysis:
 
 %% Maybe convert to \paragraph ?
 \begin{description}
@@ -468,6 +461,31 @@ them when performing later analysis:
           %   synonym relation is treated as implicit instead of as an objective
           %   flaw.
 \end{description}
+
+Despite ``implicit'' only describing the first of these cases, we use it
+(as well as ``implied by'' when describing sources of information) as a
+shorthand for all ``not explicit'' manifestations throughout this \docType{}
+for clarity. \ifnotpaper We group keywords
+    for implicit information based on which case(s) they apply to, as shown in
+    \Cref{tab:expAnalysis}, which helps us decide what information is implicit.
+
+    \input{assets/tables/expAnalysis}
+
+    Regarding the last entry in \Cref{tab:expAnalysis}, if a test approach in
+    \ourApproachGlossary{} has a name ending in ``~(Testing)'' (space
+    included), then the word ``Testing'' might not be part of its name
+    \emph{or} it might not be a test approach at all! For example, the term
+    ``legacy system integration'' is used in \ifnotpaper
+        \citeauthor{Gerrard2000a} (\citeyear[pp.~12\==13, Tab.~2]{Gerrard2000a};
+        \citeyear[Tab.~1]{Gerrard2000b})\else
+        \cite[pp.~12\==13, Tab.~2]{Gerrard2000a},
+        \cite[Tab.~1]{Gerrard2000b}\fi, but the more accurate
+    ``legacy system integration testing'' is used in
+    \citeyearpar[pp.~30\==31]{Gerrard2000b}. In other cases where a
+    term is \emph{not} explicitly labelled as ``testing'', we add the
+    suffix ``~(Testing)'' (when it makes sense to do so) and consider
+    the test approach to be implied.
+\fi
 
 \subsection{Undefined Terms}\label{undef-terms}
 
