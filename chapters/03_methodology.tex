@@ -396,6 +396,79 @@ type (e.g., reusability testing). \ifnotpaper
 %         test approaches are out of scope (see \Cref{phys-req-test,nontech-req-test}).\fi
 % \fi
 
+\subsection{Implicit Information}\label{imp-info}
+
+As described in \Cref{explicitness}, the use of natural language introduces
+significant nuance that we need to document. We observe many ways that
+information can be \emph{not} explicit in the literature, indicated by the
+keywords \impKeywords{}.
+Despite ``implicit'' only describing the first of these cases, we use it
+(as well as ``implied by'' when describing sources of information) as a
+shorthand for all ``not explicit'' manifestations throughout this \docType{}
+for clarity. Any kind of information can be implicit,
+including the names, \approachFields{} of identified test approaches. The
+following are non-mutually exclusive
+examples from the literature of ways that information can be ``implicit'';
+we use the keywords from the above list during data collection to identify
+them when performing later analysis:
+
+%% Maybe convert to \paragraph ?
+\begin{description}
+    \item[1. The information follows logically.]
+          \phantomsection{}\label{imp-case-one}~\\
+          \citeauthor{Firesmith2015} \citeyearpar[pp.~53\==58]{Firesmith2015}
+          lists a set of test approaches that are ``based on the[ir] associated
+          quality characteristic[s] and \dots{} associated quality attributes''
+          \citetext{p.~53}. This matches our definition of ``test type'', but
+          this term is used more loosely in this document to refer to different
+          kinds of testing that we would call ``test approaches'' (see
+          \Cref{cats-def}). We therefore consider \citeauthor{Firesmith2015}'s
+          categorizations of ``test type'' to be implicit\ifnotpaper\
+              (such as in \Cref{tab:multiCats,tab:infMultiCats})\fi.
+    \item [2. The information is not universal.]
+          \phantomsection{}\label{imp-case-two}~\\
+          \refHelper \citet[p.~372\ifnotpaper, emphasis added\fi]{IEEE2017}%
+          \todo{OG ISO/IEC, 2014} \multiAuthHelper{define} ``regression
+          testing'' as ``testing required to determine that a change to a
+          system component has not adversely affected \emph{functionality,
+              reliability or performance} and has not introduced additional
+          defects''. While reliability testing, for example, is not
+          \emph{always} a subset of regression testing (since it may be
+          performed in other ways), it \emph{can be} accomplished by regression
+          testing. This means that these parent-child relations (defined in
+          \Cref{par-chd-rels}) between these pairs of approaches only exist
+          \emph{sometimes}, but this qualifier is given implicitly.
+          %   \citet[p.~5\=/8\ifnotpaper, emphasis added\fi]{SWEBOK2024} provides a
+          %   similar list: ``regression testing \dots{} \emph{may} involve
+          %   functional and non-functional testing, such as reliability,
+          %   accessibility, usability, maintainability, conversion, migration, and
+          %   compatibility testing.''
+    \item[3. The information is \ifnotpaper conditional\else dubious\fi.]
+          \phantomsection{}\label{imp-case-three}~\\ \ifnotpaper
+          As a more specific case of information not being universal, sometimes
+          prerequisites must be satisfied for information to apply. For example,
+          branch condition combination testing is equivalent to (and is therefore
+          implied to be a synonym of) exhaustive testing \emph{if} ``each
+          subcondition is viewed as a single input'' \citep[p.~464]{PetersAndPedrycz2000}.
+          Likewise, statement testing can be used for (and is therefore implied
+          to be a child of) unit testing \emph{if} there are ``less than 5000
+          lines of code'' \citetext{p.~481\todo{OG Miller et al., 1994}}.
+    \item[4. The information is dubious.]
+          \phantomsection{}\label{imp-case-four}~\\ \fi
+          This happens when there is reason to doubt the information provided.
+          If a source claims one thing that is not true, related claims lose
+          credibility. For example, \redBoxFlaw*{}
+          %   Doubts such as this
+          %   can also originate from other sources. \refHelper
+          %   \citet[p.~48]{Kam2008} gives ``user scenario testing'' as a synonym
+          %   of ``use case testing'', even though ``an actor [in use case testing]
+          %   can be \dots{} another system'' \citep[p.~20]{IEEE2021}, which does
+          %   not fit as well with the label ``user scenario testing''. However,
+          %   since a system can be seen as a ``user'' of the test item, this
+          %   synonym relation is treated as implicit instead of as an objective
+          %   flaw.
+\end{description}
+
 \subsection{Undefined Terms}\label{undef-terms}
 
 The literature mentions many software testing terms without defining them.
