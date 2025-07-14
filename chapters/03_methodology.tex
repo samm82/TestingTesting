@@ -218,31 +218,41 @@ and/or in a separate document if it is clearly flawed (see \Cref{flaw-def}).
 % keep the clearest and most concise version or merge them to paint a more
 % complete picture.
 
-For example, \citet[p.~1, 36]{IEEE2022} \multiAuthHelper{define} ``A/B testing''
-(see \Cref{fig:IEEE-A-B-Testing}), giving ``split-run testing'' as a synonym
-and describing it as ``statistical testing approach''. We therefore create a
-new row in \ourApproachGlossary{} for ``A/B Testing'' with the
-Category\qtodo{Should glossary headers be capitalized?}
-of ``Approach'', a Synonym of ``Split-Run Testing'', and a
-Parent of ``Statistical Testing'' (based on \Cref{par-chd-rels}), all with
-their relevant citations. We then abstract away this already-captured
-information from its Definition before recording it as ``testing `that allows
-testers to determine which of two systems or components performs better'\,''
-with the same citation information \citep[pp.~1, 36]{IEEE2022}. The latter page
-provides more information that we capture as Notes in our glossary: it ``can be
-time-consuming, although tools can be used to support it'', ``is a means of
-solving the test oracle problem by using the existing system as a partial
-oracle'', and is ``not a test case generation technique as test inputs are not
-generated'' \citetext{p.~36}. Interestingly, this explicitly rules out
-``Technique'' as a possible Category for this approach, which is consistent
-with its categorization as a test practice \citetext{Fig.~2}; we replace our
-previous Category of ``Approach'' with the more specific ``Practice''
-(see \Cref{cats-def}).
 \begin{figure}[bt!]
     \includegraphics[width=\linewidth]{assets/images/a-b testing.png}
     \caption{\refHelper \citet[p.~1]{IEEE2022}'s glossary entry for
         ``A/B testing''.}\label{fig:IEEE-A-B-Testing}
 \end{figure}
+
+For example, \citet[p.~1, 36]{IEEE2022} \multiAuthHelper{define} ``A/B testing''
+as shown in \Cref{fig:IEEE-A-B-Testing}. Since we do not yet have a row for
+``A/B testing'' in \ourApproachGlossary{}, we apply our procedure as follows:%
+\qtodo{Should glossary headers be capitalized?}
+\begin{enumerate}
+    \item Create a new row with the name ``A/B testing'' and the category
+          ``Approach'' (see \Cref{cats-def}).
+    \item Record the synonym ``Split-Run Testing'' (see \Cref{syn-rels}).
+    \item Record the parent ``Statistical Testing'' (see \Cref{par-chd-rels}).%
+          \qtodo{Are these references helpful or distracting?}
+    \item Record the definition ``Testing `that allows testers to determine
+          which of two systems or components performs better'\,''; note that
+          we abstract away information that we have previously captured (i.e.,
+          its synonym and parent).
+\end{enumerate}
+Note that we accompany all of these entries (excluding its name) with the
+citation ``\citep[pp.~1, 36]{IEEE2022}''. This document provides more
+information which we capture as follows:
+\begin{enumerate}
+    \item Record the note ``It `can be time-consuming, although tools can be
+          used to support it', `is a means of solving the test oracle problem
+          by using the existing system as a partial oracle', and is `not a test
+          case generation technique as test inputs are not generated'\,''
+          \citetext{p.~36}.
+    \item Replace the category of ``Approach'' with the more specific
+          ``Practice'' \citetext{Fig.~2} (see \Cref{cats-def}); note that this
+          is consistent with the exclusion of ``Technique'' as a possible
+          category for this approach from page~36.
+\end{enumerate}
 As we investigate other sources, we learn more about this approach. \refHelper
 \citet[p.~58]{Firesmith2015} gives it as a child of usability testing, so we
 include this Parent alongside ``Statistical Testing'' without issue. However,
