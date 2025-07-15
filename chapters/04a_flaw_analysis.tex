@@ -91,32 +91,32 @@ once.
         \Cref{stds}).}\label{fig:ieeeSourceSets}
 \end{figure}
 
-\phantomsection{}\label{flaw-analysis-example}
-As an example of this process, consider \flawref{level-phase-syns}, where an
-IEEE standard has an internal flaw, an inconsistency with two other IEEE
-standards, and an inconsistency with a textbook. This adds one to the following
-rows of \Cref{tab:flawMnfsts,tab:flawDmns} in the relevant column for a total
-of two counted flaws:
+% \phantomsection{}\label{flaw-analysis-example}
+% As an example of this process, consider \flawref{level-phase-syns}, where an
+% IEEE standard has an internal flaw, an inconsistency with two other IEEE
+% standards, and an inconsistency with a textbook. This adds one to the following
+% rows of \Cref{tab:flawMnfsts,tab:flawDmns} in the relevant column for a total
+% of two counted flaws:
 
-\begin{itemize}
-    \item \textbf{\stds{}}: this flaw occurs:
-          \begin{enumerate}
-              \item within one standard and
-              \item between three standards (with the same set of authors).
-          \end{enumerate}
-          This increments the count by just one to avoid double counting and
-          would do so even if only one of the above conditions was true. A more
-          nuanced breakdown of flaws that identifies those within a
-          singular document and those between documents by the same author is
-          given in \Cref{fig:flawBars} and explained in more detail in
-          \Cref{aug-flaw-analysis}; this view counts three total flaws here.
-    \item \textbf{\texts{}}: this flaw occurs between a source in this tier and
-          a ``more credible'' one (the IEEE standards; see \Cref{cred}).
-          % \item \textbf{\papers{}}: this flaw occurs between a source in this tier
-          %       and a ``more credible'' one. Even though there are two sources in this
-          %       tier \emph{and} two ``more credible'' tier involved, this increments
-          %       the count by just one to avoid double counting.
-\end{itemize}
+% \begin{itemize}
+%     \item \textbf{\stds{}}: this flaw occurs:
+%           \begin{enumerate}
+%               \item within one standard and
+%               \item between three standards (with the same set of authors).
+%           \end{enumerate}
+%           This increments the count by just one to avoid double counting and
+%           would do so even if only one of the above conditions was true. A more
+%           nuanced breakdown of flaws that identifies those within a
+%           singular document and those between documents by the same author is
+%           given in \Cref{fig:flawBars} and explained in more detail in
+%           \Cref{aug-flaw-analysis}; this view counts three total flaws here.
+%     \item \textbf{\texts{}}: this flaw occurs between a source in this tier and
+%           a ``more credible'' one (the IEEE standards; see \Cref{cred}).
+%           % \item \textbf{\papers{}}: this flaw occurs between a source in this tier
+%           %       and a ``more credible'' one. Even though there are two sources in this
+%           %       tier \emph{and} two ``more credible'' tier involved, this increments
+%           %       the count by just one to avoid double counting.
+% \end{itemize}
 
 \subsubsection{Automated Flaw Analysis}\label{auto-flaw-analysis}
 
@@ -243,9 +243,9 @@ following comment line:\utd{}
     \texttt{\% Flaw count (OVER, SYNS): \{IEEE2017\} \{IEEE2013\} | \{IEEE2022\}
         \displayNL{} \{IEEE2017\} \{Perry2006\}}
 \end{displayquote}%
-We parse this as the example given in \Cref{flaw-analysis-example}. Since
-\texttt{IEEE2022}, \texttt{IEEE2017}, and \texttt{IEEE2013} are all written by
-the same standards
+% We parse this as the example given in \Cref{flaw-analysis-example}.
+Since \texttt{IEEE2022}, \texttt{IEEE2017}, and \texttt{IEEE2013} are all
+written by the same standards
 organizations (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), we count
 this as an inconsistency between documents with the same set of authors in
 \Cref{fig:flawBars}, but only once to avoid double counting.
@@ -341,10 +341,11 @@ third to build \Cref{fig:sourceSummary} and calculate \macro{srcCount}
 (see \Cref{tab:macrosCalc}).
 % We also define macros for well-defined sections in \Cref{tab:macrosSections}.
 
-\afterpage{
-    \begin{landscape}
-        \input{assets/tables/macrosSections}
-    \end{landscape}}
+% \afterpage{
+\begin{landscape}
+    \input{assets/tables/macrosSections}
+\end{landscape}
+% }
 
 However, we create most of these macros for reused text manually when we first
 notice the reuse, including the source tier macros in \Cref{tab:macrosSections}.
