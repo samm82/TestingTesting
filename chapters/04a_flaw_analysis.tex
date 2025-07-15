@@ -341,12 +341,6 @@ third to build \Cref{fig:sourceSummary} and calculate \macro{srcCount}
 (see \Cref{tab:macrosCalc}).
 % We also define macros for well-defined sections in \Cref{tab:macrosSections}.
 
-% \afterpage{
-\begin{landscape}
-    \input{assets/tables/macrosSections}
-\end{landscape}
-% }
-
 However, we create most of these macros for reused text manually when we first
 notice the reuse, including the source tier macros in \Cref{tab:macrosSections}.
 Some of these macros account for context-specific formatting depending on how
@@ -355,61 +349,7 @@ since they arise naturally from the writing process, so we omit these details
 from the manually created text macros in \Cref{tab:macrosText}, which are
 grouped based on the type of information they contain.
 
+\begin{landscape}
+    \input{assets/tables/macrosSections}
+\end{landscape}
 \input{assets/tables/macrosText}
-
-\phantomsection{}\label{paper-macros}
-In addition to this thesis, we also prepare a conference paper based on our
-research. While we can reuse most content without modifying it, we need to
-address the formatting differences between the two document types.
-In general, we use the conditional \texttt{\textbackslash ifnotpaper} to allow
-for manual distinctions between the two documents' formats using this basic
-template:
-\begin{displayquote}
-    \texttt{\textbackslash ifnotpaper <thesis code> \textbackslash else <paper code> \textbackslash fi}
-\end{displayquote}
-We define the macros given in \Cref{tab:macrosPaper} for recurring edge cases
-between formatting requirements for these document types, presented along with
-example usages and renderings. Since this document is the thesis, we have to
-hardcode some of the paper renderings, so they may not be perfectly accurate.
-
-\input{assets/tables/macrosPaper}
-
-The most common difference between the two document styles is how citations are
-displayed. We use the \texttt{natbib} package for our thesis, but the IEEE
-guidelines for paper submissions suggest the use of \texttt{cite}
-\citep[p.~8]{Shell2015a}. For simplicity, we define aliases so we can reuse
-text that includes a single citation
-\seeSrcCode{0a2dcdf}{paper_preamble.tex}{19}{60}. However, text that
-cites multiple sources requires more work to be reused and has to be done so
-manually, since the \texttt{natbib} package groups multiple citations within a
-single set of parentheses while the \texttt{cite} package keeps them separate
-inside their own set of square brackets.
-
-For example, in \Cref{nonIEEE-sources}, we provide a list of non-IEEE sources
-that support a claim made by the IEEE. Since we sort sources based on
-credibility (defined in \Cref{cred}) and then by publication year, the
-relevant thesis code is given below. (We use ``\texttt{\textbackslash =/}'',
-etc. from the \texttt{extdash} package for non-breaking dashes.)
-\begin{displayquote}
-    \texttt{(\textbackslash citealp[pp.\textasciitilde 5\textbackslash =/6 to 5\textbackslash =/7]\{SWEBOK2024\};
-        \displayNL \textbackslash citealpISTQB\{\};
-        \textbackslash citealp[pp.\textasciitilde 807\textbackslash ==808]\{Perry2006\};
-        \displayNL \textbackslash citealp[pp.\textasciitilde 443\textbackslash ==445]\{PetersAndPedrycz2000\};
-        \displayNL \textbackslash citealp[p.\textasciitilde 218]\{KuļešovsEtAl2013\}; %\textbackslash todo\{OG Black, 2009\};
-        \displayNL \textbackslash citealp[pp.\textasciitilde 9, 13]\{Gerrard2000a\})}
-\end{displayquote}
-Meanwhile, IEEE guidelines recommend that references ``appear in the order in
-which they are cited'' \citep[p.~1]{Shell2015b}. Therefore, the relevant paper
-code for this list of sources is:
-\begin{displayquote}
-    \texttt{\textbackslash cite[pp.\textasciitilde 443\textbackslash ==445]\{PetersAndPedrycz2000\},
-        \displayNL \textbackslash cite[pp.\textasciitilde 5\textbackslash =/6 to 5\textbackslash =/7]\{SWEBOK2024\},
-        \textbackslash cite\{ISTQB\},
-        \displayNL \textbackslash cite[pp.\textasciitilde 807\textbackslash ==808]\{Perry2006\},
-        \displayNL \textbackslash cite[pp.\textasciitilde 9, 13]\{Gerrard2000a\},
-        \displayNL \textbackslash cite[p.\textasciitilde 218]\{KuļešovsEtAl2013\}}
-\end{displayquote}\utd{}In particular, note the usage of the \macro{cite}
-command, the \emph{lack} of use of the custom alias for citing the \acs{istqb}
-glossary, and the different ordering and punctuation.
-% , and the lack of the \macro{todo}, since these are only rendered for
-% reference in the thesis.
