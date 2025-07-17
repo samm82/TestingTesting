@@ -53,7 +53,7 @@ methodology_a = """
     
 methodology_b = """    \\item Analyzing recorded test approach data for additional flaws
           \\begin{enumerate}
-              \\item Generating relation graphs (\\Cref{\\ifnotpaper graph-gen\\else tools\\fi})
+              \\item Generating relation graphs (\\Cref{\\ifnotpaper app-rel-vis\\else tools\\fi})
               \\item Automatically detecting certain classes of flaws
                     \\ifnotpaper (\\Cref{auto-flaw-analysis}) \\fi
               \\item Automatically analyzing manually recorded flaws from
