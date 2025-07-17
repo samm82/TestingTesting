@@ -38,7 +38,8 @@ methodology_a = """
           testing terms that are used repeatedly and/or have complex definitions
           (\\Cref{ident-terms})
     \\item \\phantomsection{}\\label{step:record-terms}
-          Recording all relevant data (\\Cref{record-terms}) for each term
+          Recording all relevant data (\\Cref{record-terms}), including
+          implicit data (\\Cref{imp-info}), for each term
           identified in step~\\ref{step:ident-terms}; for test approaches,
           these are comprised of:\n""" + "\n".join([
         f"\t\t  {line}" for line in wrapEnv(
