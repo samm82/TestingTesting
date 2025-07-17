@@ -3,7 +3,8 @@ from pandas import read_csv
 from helpers import capFirst, writeTblr
 
 class ExGloss:
-    def __init__(self, name: str, rel: str, relsRef: str, widths: list[float]):
+    def __init__(self, name: str, rel: str, relsRef: str, widths: list[float],
+                 envArg: str = "hbtp!"):
         self.filename = name
         self.caption = ("Example glossary entries demonstrating how we track "
                         f"{rel} relations (see \\Cref{{{relsRef}}}).")
@@ -19,6 +20,7 @@ class ExGloss:
                           _lines[_mainHeader].to_list())]
 
         self.env = "talltblr"
+        self.envArg = envArg
         self.widths = widths
         self.footnotes = ["``Name'' can refer to the name of a test approach, "
             "software quality, or other testing-related term, but we only "
@@ -28,8 +30,8 @@ class ExGloss:
         self.rowDataSpec: str = "c"
 
 exGlosses = [
-    ExGloss("exampleGlossary",    "parent-child \\\\", "par-chd-rels", [0.4,  0.6]),
-    ExGloss("synExampleGlossary", "synonym",           "syn-rels"    , [0.25, 0.75])
+    ExGloss("exampleGlossary",    "parent-child \\\\", "par-chd-rels", [0.4,  0.6], "bt!"),
+    ExGloss("synExampleGlossary", "synonym",           "syn-rels"    , [0.25, 0.75]      )
 ]
 
 for exGloss in exGlosses:

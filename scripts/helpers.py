@@ -239,9 +239,9 @@ def writeFile(lines, filename: str, helper: bool = False, dir: str = "graphs"):
     #     print(f"No changes to {filename}")
 
 def writeTblr(filename: str, caption: str, headers: list[str], lines: list[str], *,
-              env: str = "longtblr", widths: list[int] = [], footnotes: list[str] = [],
-              xCol: bool = True, toSort: bool = True, rowHeadSpec: str = "c",
-              rowDataSpec: str = "l"):
+              env: str = "longtblr", envArg: str = "hbtp!", widths: list[int] = [],
+              footnotes: list[str] = [], xCol: bool = True, toSort: bool = True,
+              rowHeadSpec: str = "c", rowDataSpec: str = "l"):
     colSpecList = []
     if xCol:
         # Used for ensuring correct number of xcolumns
@@ -276,5 +276,5 @@ def writeTblr(filename: str, caption: str, headers: list[str], lines: list[str],
               "  \\hline", f"\\end{{{env}}}"]
 
     if env == "talltblr":
-        lines = wrapEnv("table*", ["\\centering"] + lines, arg="hbtp!")
+        lines = wrapEnv("table*", ["\\centering"] + lines, arg=envArg)
     writeFile(lines, filename, True)
