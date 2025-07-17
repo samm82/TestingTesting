@@ -543,23 +543,22 @@ We investigate the following terms (and their respective related terms) in the
 sources given:
 \input{build/undefTerms}
 
-\phantomsection{}\label{iter-undef}
-Applying our procedure from \Cref{methodology} to these sources uncovers
-\the\numexpr \TotalAfter - \TotalBefore\relax\ new approaches and
-\the\numexpr \TotalAfter - \UndefAfter - \TotalBefore + \UndefBefore\relax\ new
-definitions. These definitions are either for existing undefined approaches or
-new uncovered approaches; while not every new approach is presented alongside
-a definition, if we assume that each of these definitions is for a new approach,
-we can deduce that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
-(\TotalAfter - \TotalBefore)\relax\% of added test approaches are defined. This
-indicates that this procedure leads to a higher proportion of defined terms
-(\the\numexpr 100 - 100 * \UndefBefore / \TotalBefore\relax\% vs.~%
-\the\numexpr 100 - 100 * \UndefAfter / \TotalAfter\relax\%), as shown in
-\Cref{fig:undefPies}, which helps verify that our procedure constructively
-uncovers \emph{and} defines new terminology. Further iterating on it would
-continue this trend, creating something approaching a complete taxonomy.
-
 \ifnotpaper
+    Applying our procedure shown in \Cref{fig:recAppFlowchart} to these sources
+    uncovers \the\numexpr \TotalAfter - \TotalBefore\relax\ new approaches and
+    \the\numexpr \TotalAfter - \UndefAfter - \TotalBefore + \UndefBefore\relax\ new
+    definitions. These definitions are either for existing undefined approaches or
+    new uncovered approaches; while not every new approach is presented alongside
+    a definition, if we assume that each of these definitions is for a new approach,
+    we can deduce that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
+    (\TotalAfter - \TotalBefore)\relax\% of added test approaches are defined. This
+    indicates that this procedure leads to a higher proportion of defined terms
+    (\the\numexpr 100 - 100 * \UndefBefore / \TotalBefore\relax\% vs.~%
+    \the\numexpr 100 - 100 * \UndefAfter / \TotalAfter\relax\%), as shown in
+    \Cref{fig:undefPies}, which helps verify that our procedure constructively
+    uncovers \emph{and} defines new terminology. Further iterating on it would
+    continue this trend, creating something approaching a complete taxonomy.
+
     \input{assets/graphs/undefPies}
 \fi
 
