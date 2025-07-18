@@ -121,11 +121,10 @@ once.
 \subsubsection{Automated Flaw Analysis}\label{auto-flaw-analysis}
 
 As outlined in \Cref{relevantSyns}, we automatically detect synonym relations
-that violate transitivity to generate our graphs. These relations are
-significant because they indicate potential flaws and arise from glossary
-entries such as those in \Cref{tab:synExampleGlossary}. We automatically detect
-and format these flaws to present them when discussing synonym relation flaws
-in \Cref{syns}. % \Cref{multiSyns,infMultiSyns}
+from \ourApproachGlossary{} that violate transitivity to generate our graphs.
+These relations are significant because they indicate potential flaws. We
+automatically detect and format these flaws to present them when discussing
+synonym relation flaws in \Cref{syns}. % \Cref{multiSyns,infMultiSyns}
 The next logical step is then to detect other classes of flaws.
 
 \ExampleFlawGraphs{}
@@ -155,8 +154,8 @@ While just counting the total number of flaws (found automatically \emph{or}
 manually) is trivial, tracking
 the source(s) of these flaws is more useful, albeit more involved. Since
 we consistently track the appropriate citations for each piece of information
-we record (see \Cref{tab:exampleGlossary,tab:synExampleGlossary} for examples
-of how these citations are formatted in the glossaries), we can use them to
+we record (see \Cref{tab:exampleGlossary} for an example % tab:synExampleGlossary
+of how we format these citations in our glossaries), we can use them to
 identify the offending source tier(s). This comes with the added benefit that
 we can format these citations to use with \LaTeX{}'s citation commands in this
 \docType{}, including generating the comments used to analyze flaws as
