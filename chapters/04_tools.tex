@@ -57,12 +57,14 @@ develop a tool to automatically generate visualizations of these relations.
     contains no author, which means it was written by the same one as the
     previous citation (Author). We process these citations according to this
     logic \seeSrcCode{f173e88}{scripts/csvToGraph.py}{55}{96} so we can
-    consistently track them throughout our analysis. We also color each
+    consistently track them throughout our analysis. We also colour each
     relation according to its source tier (see \Cref{sources}), including
-    inferences (see \Cref{infers}) and proposals (see \Cref{recs}). Although we
-    omit this from \Cref{fig:exampleParChdGraphs,fig:exampleFlawGraphs} for
-    brevity, \Cref{fig:expSynGraph} demonstrates how we represent the
-    credibility of each relation in our visualizations.
+    inferences (see \Cref{infers}) and proposals (see \Cref{recs}), but only
+    display the relation with the most credible source tier (see \Cref{cred}).
+    Although we omit this colouring from \Cref{fig:exampleParChdGraphs,%
+        fig:exampleFlawGraphs} for brevity, \Cref{fig:expSynGraph} shows how
+    this affects our visualizations; each line representing a synonym relation
+    is coloured based on the most credible source that describes that relation.
 
     \input{build/exampleGlossary.tex}
     \ExampleParChdGraphs{}
@@ -172,7 +174,7 @@ subsets of them. \ifnotpaper For each approach category (see
     graph because static testing is sometimes considered to be a separate
     approach category (see \flawref{static-test-flaw}), but we include the
     relations with dynamic approaches since they are our primary focus
-    (see \Cref{static-test}). We color all dynamic approach nodes in these
+    (see \Cref{static-test}). We colour all dynamic approach nodes in these
     graphs grey
     %, as in \Cref{fig:staticExampleGraph}, 
     to distinguish them%
@@ -187,7 +189,7 @@ subsets of them. \ifnotpaper For each approach category (see
 \else We can generate more focused graphs \fi from a given subset of
 approaches, such as \ifnotpaper\else those in a selected approach category
     (see \Cref{cats-def}) or \fi those pertaining to recovery or
-scability\ifnotpaper. These areas are of particular note as we discuss their
+scalability\ifnotpaper. These areas are of particular note as we discuss their
 flaws in their own sections (\Cref{recov-flaw,scal-flaw}, respectively).
 We generate graphs of just these subsets of software testing to help visualize
 the relations between these approaches, given \else; the latter are shown \fi
@@ -197,7 +199,7 @@ update these generated graphs based on our recommendations; applying those
 given in \Cref{rec-test-rec,,scal-test-rec,,\ifnotpaper\else perf-test-rec\fi}
 results in the updated graphs in \Cref{fig:rec-graph-proposed,,%
     fig:scal-graph-proposed,,\ifnotpaper\else fig:perf-graph\fi}, respectively.
-We color any added approaches or relations orange to distinguish them.
+We colour any added approaches or relations orange to distinguish them.
 % \ifnotpaper
 Recommendations can also be inherited; for example, we generate
 \Cref{fig:perf-graph} based on the modifications we apply to
