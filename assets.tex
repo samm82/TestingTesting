@@ -128,6 +128,30 @@
     \end{figure*}
 }
 
+\newcommand{\ExampleFlawGraphs}{
+    \begin{figure*}
+        \begin{subfigure}[t]{0.15\linewidth}
+            \includegraphics[width=1.8\linewidth]{assets/graphs/SelfExampleGlossaryGraph.pdf}
+            \caption{Self-loop graph.}\label{fig:selfExampleGraph}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[t]{0.285\linewidth}
+            \centering
+            \includegraphics[width=0.8\linewidth]{assets/graphs/ParSynExampleGlossaryGraph.pdf}
+            \caption{Graph of a pair of terms with a \hyperref[par-chd-rels]{parent-child}
+                \emph{and} \hyperref[syn-rels]{synonym} relation.}
+            \label{fig:parSynExampleGraph}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[t]{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{assets/graphs/manual/manualFlawLegend.pdf}
+        \end{subfigure}
+        \caption{Example generated graphs containing \hyperref[flaw-def]{flaws}.}
+        \label{fig:exampleFlawGraphs}
+    \end{figure*}
+}
+
 \newcommand{\recoveryGraphs}{
     % Only top or bottom to comply with IEEE guidelines
     \begin{figure}[bt!]

@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+
+\digraph{manualFlawLegend}{
+margin=0
+subgraph cluster_legend {
+margin=8
+label="Legend";
+labelloc="t";
+fontsize="32pt"
+rankdir=BT
+{
+rank=same
+chd [label="Child"];
+par [label="Parent"];
+chd -> par [label="                "];
+}
+{
+rank=same
+syn1 [label="Synonym 1"];
+syn2 [label="Synonym 2"];
+syn1 -> syn2 [dir=none label="                "];
+}
+edge [style="invis"]
+chd -> syn1
+par -> syn2
+}
+}
+
+\end{document}
