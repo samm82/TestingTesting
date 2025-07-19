@@ -8,7 +8,7 @@ automated tools (\Cref{aug-flaw-analysis}). This gives us an overview of:
 \begin{itemize}
     \item how many flaws there are,
     \item how responsible each source tier (see \Cref{sources}) is for these flaws,
-    \item how obvious (or ``explicit''; see \Cref{explicitness}) these flaws are,
+    \item how explicit (see \Cref{explicitness}) these flaws are,
     \item how these flaws present themselves (see \Cref{flawMnfsts}), and
     \item in which knowledge domains these flaws occur (see \Cref{flawDmns}).
 \end{itemize}
@@ -17,7 +17,7 @@ automated tools (\Cref{aug-flaw-analysis}). This gives us an overview of:
 To understand where flaws exist in the literature, we group them based on the
 source tier(s) responsible for them. We then count each flaw \emph{once} per
 source tier if it appears within it \emph{and/or} between it and a more
-``credible'' tier\footnote{If an inconsistency occurs between two source tiers
+credible tier\footnote{If an inconsistency occurs between two source tiers
     and the more credible one is \emph{incorrect}, we instead count it as an
     inconsistency between it and the asserted truth from the less credible
     source, as described in \Cref{less-cred-assert}.} (see \Cref{cred,sources}).
@@ -165,8 +165,9 @@ described in \Cref{aug-flaw-analysis}.
 Alongside this citation information, we include keywords so we can assess how
 ``explicit'' a piece of information is (see \Cref{explicitness}). This is
 useful when counting flaws, since they can be both objective and subjective but
-should not be double counted as both\thesisissueref{83,176}! When counting
-flaws in \Cref{tab:flawMnfsts,tab:flawDmns}, each one is counted only for its
+should not be double counted as both\thesisissueref{83,176}! When presenting
+the numbers of flaws sorted by various criteria in
+\Cref{tab:flawMnfsts,tab:flawDmns}, each flaw is counted only for its
 most ``explicit'' manifestation (i.e., it will only increment a value in the
 ``(Sub)jective'' column if it is \emph{not} also ``(Obj)ective''),
 similarly to how we generate graphs (see \Cref{graphExplicit}).
