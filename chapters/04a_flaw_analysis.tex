@@ -28,10 +28,8 @@ flaws \emph{themselves}. When taking a more detailed look at the \emph{sources}
 of flaws (as opposed to just the responsible source \emph{tiers}), as we do in
 \Cref{fig:flawBars}, we also count the following sources of flaws separately:
 \begin{enumerate}
-    \item those that appear once in (or consistently throughout) a document
-          (i.e., are ``self-contained'')\thesisissueref{137,138},
-    \item those between two parts of a single document
-          (i.e., internal conflicts)\thesisissueref{137,138},
+    \item self-contained flaws (defined in \Cref{one-src-flaws}),
+    \item internal flaws (defined in \Cref{one-src-flaws}),
     \item those between documents with the same set of authors, which includes
           \begin{enumerate}
               \item the various combinations of ISO, the \acf{iec}, and IEEE
@@ -201,19 +199,9 @@ We then separate each ``group'' of sources with a pipe symbol (\texttt{|}) so
 we can compare each pair of groups; in general, a flaw can have any number of
 groups of sources.
 
-We make a distinction between ``self-contained'' flaws and ``internal'' flaws.
-Self-contained flaws are those that manifest by comparing a document to an
-assertion of ground truth. Sometimes, these do not require an explicit comparison;
-for example, omissions (listed in \Cref{miss}) often fall into this category,
-since the lack of information is contained within a single source and does not
-need to be cross-checked against an assertion of ground truth. If only one group
+As mentioned in \Cref{one-src-flaws}, \oneSrcDistinct{} If only one group
 of sources is present in a flaw's comment, such as the first line below, we
-consider it to be a self-contained flaw. On the other hand, internal flaws
-arise when a document disagrees with itself by containing two conflicting
-pieces of information; this includes many contradictions and overlaps (listed
-in \Cref{contra,over}, respectively). These can even occur on the same page,
-such as when a source gives an acronym to two distinct terms
-(see \flawref{cat-acro,hil-acro})! If a
+consider it to be a self-contained flaw. If a
 source appears in multiple groups in a flaw's comment, we consider it to
 be an internal flaw. The second line is a standard example of this, while the
 third is more complex; in this case, source Y agrees with only one of the

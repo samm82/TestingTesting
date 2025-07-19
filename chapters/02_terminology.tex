@@ -428,7 +428,7 @@ hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
 %                 \citeyearpar[p.~13\ifnotpaper, emphasis added\fi]{Gerrard2000a}.
 % \end{enumerate}
 
-\subsection{Flaws/Inconsistencies}\label{flaw-def}
+\subsection{Flaws}\label{flaw-def}
 
 % Before we can start tracking and discussing flaws, we need to be clear about
 % what we mean by the term. 
@@ -449,14 +449,6 @@ We refer to any instance where one of these ideals is violated as a ``flaw''%
     engineering's testing literature.}\todo{Present tense in footnote?}.
 % , as it implies that something is wrong with the literature and there is an
 % opportunity to improve it
-Some flaws involve information from more than one source, but referring to this
-as a ``flaw between two sources'' is awkward\thesisissueref{140}. We instead
-refer to this kind of flaw more intuitively as an ``inconsistency'' between the
-sources. This clearly indicates that there is disagreement between
-the sources, but also does not imply that either one is correct---the
-inconsistency could be with some ground truth if \emph{neither} source is
-correct\thesisissueref{140,151}!
-
 We classify flaws by both their ``manifestations'' (\emph{how} information is
 wrong; see \Cref{mnfst-def}) and their ``domains'' (\emph{what} information is
 wrong; see \Cref{dmn-def})\thesisissueref{155}. These are orthogonal
@@ -465,7 +457,9 @@ classifications, since each flaw \emph{manifests} in a particular
 classification. We list these keys in \Cref{tab:flawMnfstDefs,tab:flawDmnDefs},
 respectively, and use them to count and analyze the flaws we uncover; for
 example, we present the number of flaws according to these two views in
-\Cref{tab:flawMnfsts,tab:flawDmns}, respectively.
+\Cref{tab:flawMnfsts,tab:flawDmns}, respectively. We also introduce some terms
+to be used when discussing flaws based on how many sources contribute to them
+(\Cref{add-flaw-terms}).
 
 \subsubsection{Flaw Manifestations}\label{mnfst-def}
 
@@ -521,6 +515,28 @@ sometimes should not have been included at all!
 \phantomsection{}\label{trace-flaw-def}% (see \flawref{see-ref-missing})
 Finally, some traceability information is flawed, such as how one document
 cites other or even what information is included \emph{within} a document.
+
+\subsubsection{Additional Flaw Terminology}\label{add-flaw-terms}
+Some flaws involve information from more than one source, but referring to this
+as a ``flaw between two sources'' is awkward\thesisissueref{140}. We instead
+refer to this kind of flaw more intuitively as an ``inconsistency'' between the
+sources. This clearly indicates that there is disagreement between
+the sources, but also does not imply that either one is correct---the
+inconsistency could be with some ground truth if \emph{neither} source is
+correct\thesisissueref{140,151}!
+
+\phantomsection{}\label{one-src-flaws}
+Other flaws only involve one source, but \oneSrcDistinct{}
+Self-contained flaws are those that manifest by comparing a document to an
+assertion of ground truth. These may appear once in a document or consistently
+throughout it. Sometimes, these do not require an explicit comparison to ground
+truth; these often include omissions as the lack of information is
+contained within a single source and does not need to be cross-checked against
+an assertion of ground truth. On the other hand, internal flaws arise when a
+document disagrees with itself by containing two conflicting pieces of
+information; this includes many contradictions and overlaps. Internal flaws can
+even occur on the same page, such as when a source gives the same acronym to
+two distinct terms\ifnotpaper\ (see \flawref{cat-acro,hil-acro})\fi!
 
 \subsection{Explicitness}\label{explicitness}
 
