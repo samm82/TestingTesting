@@ -47,7 +47,8 @@ methodology_a = """
                           for i in toRecord + [OTHER_NOTES +
                                                f" ({OTHER_NOTES_EXS}, etc.)"]])
         ]) + """
-    \\item Repeating steps~\\ref{step:identify-sources} to \\ref{step:record-terms} for 
+    \\item \\phantomsection{}\\label{step:repeat-process}
+          Repeating steps~\\ref{step:identify-sources} to \\ref{step:record-terms} for 
           any missing or unclear terms (\\Cref{undef-terms}) until some
           stopping criteria (\\Cref{stop-crit})"""
     
