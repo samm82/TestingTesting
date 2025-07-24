@@ -557,7 +557,8 @@ In particular, \ifnotpaper \citet{IEEE2022} and \citet{Firesmith2015} \else
 approaches. Once we exhaust the standards in \Cref{stds}, we
 perform miniature literature reviews on these subsets to ``fill in'' the
 missing definitions (along with any relations), essentially ``snowballing''
-on these terms. This process uncovers even more approaches, although some are
+on these terms as described in \Cref{sources}. This process uncovers even more
+approaches, although some are
 out of scope, such as \acf{emsec} testing\ifnotpaper, \else\ and \fi
 aspects of \acf{orthat} \ifnotpaper and loop testing (see \Cref{hard-test}),
     and HTML testing (see \Cref{lang-test})\else (see \Cref{scope-overview})\fi.
@@ -588,12 +589,12 @@ sources given:
 
 Unfortunately, we cannot continue looking for new approaches indefinitely. We
 therefore need a ``stopping criteria'' to let us know when we are ``finished''
-looking for test approaches in the literature. Our original plan was to iterate
-steps \ref{step:ident-terms} and \ref{step:record-terms} until there are
-diminishing returns, implying an approach of a complete taxonomy! However, due
-to time constraints, this is infeasible, so our stopping point is artificially
-imposed. With more time, we would find definitions for all terms we uncover as
-described in \Cref{undef-terms}.
+looking for test approaches in the literature. Our original plan was to repeat
+step~\ref{step:repeat-process} until we got diminishing returns, implying that
+we achieved something close to a complete taxonomy! However, this is infeasible
+due to time constraints, so we impose our stopping point artificially. With
+more time, we would find definitions for all terms we uncover as described in
+\Cref{undef-terms}.
 
 \ifnotpaper
     In addition to these undefined terms, some terms do not appear in
@@ -602,13 +603,13 @@ described in \Cref{undef-terms}.
     approaches exist (a form of experience-based testing, if you will).
     As an example, we are surprised that property-based testing is not mentioned
     in any sources investigated, even considering it as a potential stopping point
-    during our research%\thesisissueref{57,81,88,125}\qtodo{I think these issue
+    during our research\thesisissueref{57,81,88,125}%\qtodo{I think these issue
     % refs, along with some others may actually be worth keeping in our final
     % thesis/paper; thoughts?}
-    . Test approaches such as these that arise independently of snowballing
-    may serve as starting points for continued research if we do not find
-    them in the literature using our iterative approach. The following terms come
-    from previous knowledge, conversations with colleagues, research for other
+    . Test approaches such as these that arise independently of snowballing may
+    serve as starting points for continued research if we do not find them in
+    the literature using our iterative approach. The following terms come from
+    previous knowledge, conversations with colleagues, research for other
     projects, or ad hoc cursory research to see what other test approaches exist:
     \newline
 
