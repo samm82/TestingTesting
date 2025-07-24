@@ -12,7 +12,7 @@ testing terminology consists of:
 
 \input{build/methodOverview}
 
-\subsection{Sources}\label{sources}
+\subsection{Identifying Sources}\label{ident-sources}
 As there is no single authoritative source on software testing terminology,
 we need to look at many sources to observe how this terminology is used in
 practice. Since we are particularly interested in software engineering, we
@@ -26,123 +26,8 @@ one \citep{SWEBOK2014} and one submitted for public review\footnote{
 ``snowball sampling'',
 which ``is commonly used to locate hidden populations \dots{} [via] referrals
 from initially sampled respondents to other persons'' \citep{Johnson2014}. We
-apply this concept to ``referrals'' between sources. \addTextEx{}
-
-For ease of discussion and analysis, we group the complete set of sources into
-``tiers'' based on their format, method of publication, and our heuristic of
-credibility (defined in \Cref{cred}). In order of descending credibility, we
-define the following tiers:
-\begin{enumerate}
-    \item established standards (\Cref{stds}),
-    \item terminology collections (\Cref{metas}),
-    \item textbooks (\Cref{texts}), and
-    \item papers and other documents (\Cref{papers}).
-\end{enumerate}
-We provide a summary of how many sources comprise each tier in
-\Cref{fig:sourceSummary}\ifnotpaper\ and list all sources in each tier
-    in \Cref{app-src-tiers}\fi. The ``papers'' tier is quite large since we
-often ``snowball'' on terminology itself when a term requires more
-investigation (e.g., its definition is missing or unclear). This includes
-performing a miniature literature review on this subset to ``fill in'' missing
-information (see \Cref{undef-terms}) and potentially fully investigating these
-additional sources, as opposed to just the original subset of interest,
-based on their credibility and how much extra information they provide.
-We use standards the second most frequently due to their high credibility and
-broad scope; for example, the glossary portion of \citet{IEEE2017} has 514
-pages! Using these standards allows us to record many test approaches in a
-similar context from a source that is widely used and well-respected.
-
-% Only top or bottom to comply with IEEE guidelines
-\begin{figure}[bt!]
-    \centering
-    \begin{tikzpicture}
-        \pie[sum=auto, after number=, text=legend, thick,
-            scale=\ifnotpaper0.7\else0.5\fi,
-            every label/.style={align=left, scale=0.7}]
-        {\stdSources{3}/\stds{},
-            \metaSources{3}/\metas{},
-            \textSources{3}/\texts{},
-            \paperSources{3}/\papers{}}
-    \end{tikzpicture}
-    \caption{Summary of how many sources comprise each source tier.}
-    \label{fig:sourceSummary}
-\end{figure}
-
-\subsubsection{\stdSources{1}}\label{stds}
-% Colored \textcolor{green}{green}
-
-These are documents written for the field of software engineering by reputable
-standards bodies, namely ISO, the \acf{iec}, and IEEE. Their purpose is to
-``encourage the use of systems and software engineering standards'' and
-``collect and standardize terminology'' by ``provid[ing] definitions that are
-rigorous, uncomplicated, and understandable by all concerned''
-\citep[p.~viii]{IEEE2017} ``that can be used by any organization when
-performing any form of software testing''
-\ifnotpaper(\fi\citeyear[p.~vii]{IEEE2022}\ifnotpaper; similar in
-\citeyear[p.~ix]{IEEE2016})\fi. For these reasons, they
-are the most credible sources. However, this does not imply perfection, as we
-identify \stdFlawMnfstBrkdwn{13} % is (should be!) equal to \stdFlawDmnBrkdwn{15}
-flaws within these standards (see \Cref{tab:flawMnfsts,tab:flawDmns})!
-Only standards for software development and testing are in scope for
-this research (see \Cref{scope-overview} for \highLvlScope).
-% For example, ``the purpose of the
-% ISO/IEC/IEEE 29119 series is to define an internationally agreed set of
-% standards for software testing that can be used by any organization when
-% performing any form of software testing''
-% \ifnotpaper(\fi\citeyear[p.~vii]{IEEE2022}\ifnotpaper; similar in
-% \citeyear[p.~ix]{IEEE2016})\fi.
-
-\subsubsection{\metaSources{1}}\label{metas}
-% Colored \textcolor{blue}{blue}
-
-These are collections of software testing terminology built up from multiple
-sources, such as the established standards outlined in \Cref{stds}. For
-example, the \acs{swebok} is ``proposed as a
-suitable foundation for government licensing, for the regulation of software
-engineers, and for the development of university curricula in software
-engineering'' \citep[p.~xix]{KanerEtAl2011}. Even though it is ``published by
-the IEEE Computer Society'', it ``reflects the current state of generally
-accepted, consensus-driven knowledge derived from the interaction between
-software engineering theory and practice'' \citep{AboutSWEBOK}. Due to this
-combination of IEEE standards and state-of-the-practice observations, we
-designate it as a collection of terminology as opposed to an established
-standard. Collections such as this are often written by a large
-organization, such as the \acf{istqb}, but not always. \ifnotpaper \else
-    \citeauthor{Firesmith2015} \fi \citet{Firesmith2015}'s taxonomy presents
-relations between many test approaches and \ifnotpaper \else
-    \citeauthor{DoğanEtAl2014} \fi \citet{DoğanEtAl2014}'s literature
-review cites many sources from which we can ``snowball'' if desired
-(see \Cref{sources}), so we include them in this tier as well.
-
-\subsubsection{\textSources{1}}\label{texts}
-% Colored \textcolor{Maroon}{maroon}
-
-We consider textbooks to be more credible than papers (see \Cref{papers})
-because they are widely used as resources for teaching software engineering and
-industry frequently uses them as guides. Although textbooks have smaller sets of
-authors, they follow a formal review process before publication. Textbooks used
-at McMaster University \citep{Patton2006,PetersAndPedrycz2000,vanVliet2000}
-served as the original (albeit ad hoc and arbitrary) starting point of this
-research, and we investigate other books as they arise. \addTextEx{}
-
-\subsubsection{\paperSources{1}}\label{papers}
-% Colored black
-
-The remaining documents all have much smaller sets of authors and are much less
-widespread than those in higher source tiers. While most of these are journal
-articles and conference papers, we also include the following document types.
-Some of these are not peer-reviewed works but are still useful for
-observing how terms are used in practice\thesisissueref{89}:
-
-\begin{itemize}
-    \item Report \citep{Kam2008,Gerrard2000a,Gerrard2000b}
-    \item Thesis \citep{Bas2024}
-          % \item A less-formal classification \citep{KuļešovsEtAl2013}
-    \item Website \citep{LambdaTest2024,Pandey2023}
-    \item Booklet \citep{SPICE2022}
-    \item \ifnotpaper \else ChatGPT \fi \citet{ChatGPT2024} (with its claims
-          supported by \citet{RusEtAl2008})
-\end{itemize}
+apply this concept to ``referrals'' between sources. \addTextEx{} We group all
+sources into the source tiers we define in \Cref{source-tiers}\listAllSrcs{}.
 
 \subsection{Identifying Relevant Terms}\label{ident-terms}
 Before we can consistently track software testing terminology used in the

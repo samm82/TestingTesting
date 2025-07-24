@@ -8,7 +8,7 @@ After gathering all these data\footnote{Available in \texttt{ApproachGlossary.cs
     \texttt{QualityGlossary.csv}, and \texttt{SuppGlossary.csv} at \ifblind{
         [Repository link suppressed]}{
         \url{https://github.com/samm82/TestingTesting}}.}, we find many
-flaws. \Cref{fig:flawBars} shows the source tiers (see \Cref{sources})
+flaws. \Cref{fig:flawBars} shows the source tiers (see \Cref{source-tiers})
 responsible for these flaws, which reveals a lot about software testing literature:
 \begin{enumerate}
     \item Established standards (\Cref{stds}) aren't actually standardized, since:
@@ -35,8 +35,8 @@ We present the total number of flaws by manifestation and by domain
 in \Cref{tab:flawMnfsts,tab:flawDmns}, respectively, where a given
 row corresponds to the number of flaws either within that source tier and/or
 with a ``more credible'' one (i.e., a previous row in the table; see
-\Cref{cred,sources}). We also group these flaws by their explicitness (defined
-in \Cref{explicitness}) by counting (Obj)ective and (Sub)jective flaws
+\Cref{cred,source-tiers}). We also group these flaws by their explicitness
+(defined in \Cref{explicitness}) by counting (Obj)ective and (Sub)jective flaws
 separately (see \Cref{tab:flawMnfsts,tab:flawDmns}), since additional
 context may rectify them.
 \ifnotpaper Additionally, \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats}
@@ -50,7 +50,7 @@ This is a contradictory definition, so it appears \ifnotpaper as both \else in
     list ``more significant'' flaws first, followed by ``less significant''
     ones we omit from the paper version of this thesis. We \else
     omit ``less significant'' flaws for brevity, \fi then sort these flaws
-by their source tier (see \Cref{sources}).
+by their source tier (see \Cref{source-tiers}).
 
 We only list flaws we automatically uncover based on their domain \ifnotpaper
     (see \Cref{auto-flaw-analysis}) \fi in their corresponding

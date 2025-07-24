@@ -30,9 +30,9 @@ OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
                              "other sources"])
 
 methodology_a = """
-    \\item \\phantomsection{}\\label{step:identify-sources}
+    \\item \\phantomsection{}\\label{step:ident-sources}
           Identifying authoritative sources \\ifnotpaper on software testing
-          and ``snowballing'' from them \\fi (\\Cref{sources})
+          and ``snowballing'' from them \\fi (\\Cref{ident-sources})
     \\item \\phantomsection{}\\label{step:ident-terms}
           Identifying all test approaches (\\Cref{approach-def}) and related
           testing terms that are used repeatedly and/or have complex definitions
@@ -48,7 +48,7 @@ methodology_a = """
                                                f" ({OTHER_NOTES_EXS}, etc.)"]])
         ]) + """
     \\item \\phantomsection{}\\label{step:repeat-process}
-          Repeating steps~\\ref{step:identify-sources} to \\ref{step:record-terms} for 
+          Repeating steps~\\ref{step:ident-sources} to \\ref{step:record-terms} for 
           any missing or unclear terms (\\Cref{undef-terms}) until some
           stopping criteria (\\Cref{stop-crit})"""
     
@@ -113,7 +113,7 @@ writeFile(["\n\n".join(methodOverviewSem)], "methodOverviewSem", helper=True)
 toRecord[-1] = "and " + toRecord[-1]
 methodOverviewIntro = [
     "We start by documenting the \\approachCount{} test approaches mentioned ",
-    "by \\srcCount{} sources (described in \\Cref{sources}), recording their ",
+    "by \\srcCount{} sources (described in \\Cref{source-tiers}), recording their ",
     ", ".join([record.replace("(\\Cref", "(see \\Cref") for record in toRecord]),
     f"as applicable. We also record any {OTHER_NOTES}, such as {OTHER_NOTES_EXS}.%"]
 

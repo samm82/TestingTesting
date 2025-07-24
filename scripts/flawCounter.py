@@ -438,7 +438,7 @@ def outputFlaws():
                    f"xticklabels={{{",".join(map(
                        lambda cat: f'{{\\parbox{{0.16\\textwidth}}{{\\centering \\{cat}s{{}}}}}}',
                        flawCats))}}},",
-                    # "xlabel=Source Tier (see \\Cref{sources}),",  # Legend should be -0.35 if xlabel
+                    # "xlabel=Source Tier (see \\Cref{source-tiers}),",  # Legend should be -0.35 if xlabel
                     "ylabel=Flaws, ybar,",  # xbar=0pt, bar width=5, bar shift=3",
                     "enlargelimits=0.2, enlarge y limits=0.1,",
                     "legend style={at={(0.5,-0.25)}, anchor=north, legend columns=1,",

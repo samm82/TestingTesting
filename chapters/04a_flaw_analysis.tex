@@ -9,8 +9,8 @@ automated tools (\Cref{aug-flaw-analysis}). This gives us an overview of:
     \item how these flaws present themselves (see \Cref{mnfst-def}),
     \item in which knowledge domains these flaws occur (see \Cref{dmn-def}),
     \item how explicit (see \Cref{explicitness}) these flaws are, and
-    \item how responsible each source tier (see \Cref{sources}) is for these
-          flaws.
+    \item how responsible each source tier (see \Cref{source-tiers}) is for
+          these flaws.
 \end{itemize}
 
 \phantomsection{}\label{flaw-cred-compare}
@@ -20,8 +20,8 @@ source tier if it appears within it \emph{and/or} between it and a more
 credible tier\footnote{If an inconsistency occurs between two source tiers
     and the more credible one is \emph{incorrect}, we instead count it as an
     inconsistency between it and the asserted truth from the less credible
-    source, as described in \Cref{less-cred-assert}.} (see \Cref{cred,sources}).
-This avoids counting the same flaw
+    source, as described in \Cref{less-cred-assert}.} (see \Cref{cred,%
+    source-tiers}). This avoids counting the same flaw
 more than once for a given source tier\thesisissueref{83}, which would give the
 number of \emph{occurrences} of all flaws instead of the more useful number of
 flaws \emph{themselves}. When taking a more detailed look at the \emph{sources}
@@ -222,8 +222,8 @@ to determine if it manifests within a single document and/or between documents
 with the same set of authors. Then, we group these sources into their tiers
 \seeSrcCode{82167b7}{scripts/flawCounter.py}{63}{80}.
 % done by the function in \Cref{lst:getSrcCat}, since each source tier
-% outlined in \Cref{sources} is comprised of a small number of authors (with the
-% exception of papers and other documents; see \Cref{papers}).
+% outlined in \Cref{source-tiers} is comprised of a small number of authors (with
+% the exception of papers and other documents; see \Cref{papers}).
 We then distill these lists of sources down to sets of tiers and compare them
 against each other to determine how many times a given flaw manifests between
 source tiers. This determines which row(s) of \Cref{tab:flawMnfsts,tab:flawDmns}
@@ -271,8 +271,8 @@ than a source from a more credible tier\thesisissueref{184}.
 For example, \tolTestFlaw*{} This flaw is supported
 by additional papers found via a miniature literature review (described in
 \Cref{undef-terms}) from a lower source tier than \citep{Firesmith2015}
-(which is a terminology collection; see \Cref{sources}). However, this flaw
-is really based in \citep{Firesmith2015} and not in these
+(which is a terminology collection; see \Cref{source-tiers}). However, this
+flaw is really based in \citep{Firesmith2015} and not in these
 additional papers, but this would be counted as a flaw in these papers if they
 were included as detailed above. Therefore, we document these ``assertion''
 sources separately to track them for traceability without incorrectly
@@ -298,8 +298,9 @@ their textual equivalents when necessary to follow IEEE guidelines.
 \input{assets/tables/macrosCalc}
 
 \phantomsection{}\label{flawCounts}
-Additionally, we count flaws based on their manifestation and domain, explicitness,
-and source tier (defined in \Cref{flaw-def,explicitness,sources}, respectively).
+Additionally, we count flaws based on their manifestation and domain,
+explicitness, and source tier (defined in \Cref{flaw-def,explicitness,%
+    source-tiers}, respectively).
 For each source tier, we create two files that each include both levels of
 explicitness: one for manifestations and one for domains. For example, flaws in
 standards are saved to \texttt{build/stdFlawMnfstBrkdwn.tex} by manifestation%
@@ -329,8 +330,8 @@ assigned to \macro{stdSources}, \macro{metaSources}, \macro{textSources}, and
 \end{enumerate}
 These are accessed by passing in the corresponding number in the above
 enumeration (e.g., \macro[2]{paperSources}). We use the first value for the
-subheadings in \Cref{sources}, the first two for \Cref{app-src-tiers} and the
-third to build \Cref{fig:sourceSummary} and calculate \macro{srcCount}
+subheadings in \Cref{source-tiers}, the first two for \Cref{app-src-tiers} and
+the third to build \Cref{fig:sourceSummary} and calculate \macro{srcCount}
 (see \Cref{tab:macrosCalc}).
 % We also define macros for well-defined sections in \Cref{tab:macrosSections}.
 
