@@ -291,7 +291,7 @@ orthogonal\ifnotpaper\ (see \Cref{orth-approach})\fi, so we consider this to be
 an inferred flaw \ifnotpaper (defined in \Cref{infers}) \fi that we
 automatically detect and document \ifnotpaper (see \Cref{auto-flaw-analysis,%
         tab:infMultiCats}, respectively). This results in the corresponding row
-    in \Cref{tab:approachGlossaryExcerpt} although we exclude the ``Notes''
+    in \Cref{tab:approachGlossaryExcerpt}, although we exclude the ``Notes''
     column for brevity\else (details omitted for brevity)\fi.
 
 \phantomsection{}\label{qual-supp-procedure}
@@ -313,9 +313,10 @@ literature more thoroughly, since these data may become relevant based on
 information from other yet-uninvestigated sources. When the literature mentions
 (or implies) a test approach that corresponds to a software quality we have
 recorded, we first follow the procedure given in \Cref{fig:recAppFlowchart}
-with the information provided in the source that mentions it. We then repeat
-this process with the relevant data from our quality glossary, then remove its
-entry (since it has now been ``upgraded'' to a test type).
+with the information provided in the source that mentions it. We then remove
+the relevant data from our quality glossary and repeat our procedure with it
+to upgrade the quality to a test type in \ourApproachGlossary{}.%
+\qtodo{Does this make sense? I tried rewording it for brevity/clarity}
 
 % For example, analyzability%
 % \footnote{This may be spelled ``analyzability'' \citep[p.~18]{IEEE2017} or
