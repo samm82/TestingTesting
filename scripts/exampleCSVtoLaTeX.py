@@ -30,8 +30,8 @@ class ExGloss:
         self.rowDataSpec: str = "c"
 
 exGlosses = [
-    ExGloss("exampleGlossary",    "parent-child \\\\", "par-chd-rels", [0.4,  0.6], "bt!"),
-    ExGloss("synExampleGlossary", "synonym",           "syn-rels"    , [0.25, 0.75]      )
+    ExGloss("exampleGlossary",    "parent-child \\\\", "par-chd-rels", [0.4,  0.6] , "bt!"),
+    ExGloss("synExampleGlossary", "synonym",           "syn-rels"    , [0.25, 0.75], "bt!")
 ]
 
 for exGloss in exGlosses:

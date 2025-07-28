@@ -81,56 +81,32 @@
     \end{figure*}
 }
 
-% \newcommand{\ExampleGraph}{
-%     \begin{figure*}
-%         \begin{subfigure}[b]{0.275\linewidth}
-%             \includegraphics[width=\linewidth]{assets/graphs/ExampleGlossaryGraph.pdf}
-%             \caption{Graph from \\ \Cref{tab:exampleGlossary}.}
-%             % \label{fig:exampleGraph}
-%         \end{subfigure}
-%         \centering
-%         \begin{subfigure}[b]{0.7\linewidth}
-%             \centering
-%             \includegraphics[width=\linewidth]{assets/graphs/manual/manualLegend.pdf}
-%             \hspace{5cm}\begin{subfigure}[t]{0.475\linewidth}
-%                 \includegraphics[width=1.1\linewidth]{assets/graphs/expExampleGlossaryGraph.pdf}
-%                 \caption{Explicit graph from\\\Cref{tab:exampleGlossary}.}
-%                 % \label{fig:expExampleGraph}
-%             \end{subfigure}
-%             \begin{subfigure}[t]{0.475\linewidth}
-%                 \includegraphics[width=1.1\linewidth]{assets/graphs/SynExampleGlossaryGraph.pdf}
-%                 \caption{Graph from \Cref{tab:synExampleGlossary}.}
-%                 \label{fig:synExampleGraph}
-%             \end{subfigure}
-%         \end{subfigure}
-%         \begin{subfigure}[t]{0.25\linewidth}
-%             \centering
-%             \includegraphics[width=1.2\linewidth]{assets/graphs/SelfExampleGlossaryGraph.pdf}
-%             \caption{Self-loop graph.}
-%             \label{fig:selfExampleGraph}
-%         \end{subfigure}
-%         \hfill
-%         \begin{subfigure}[t]{0.425\linewidth}
-%             \centering
-%             \includegraphics[width=0.6\linewidth]{assets/graphs/ParSynExampleGlossaryGraph.pdf}
-%             \caption{Graph of a pair of terms with a \hyperref[par-chd-rels]{parent-child} \emph{and} synonym relation.}
-%             \label{fig:parSynExampleGraph}
-%         \end{subfigure}
-%         \hfill
-%         \begin{subfigure}[t]{0.25\linewidth}
-%             \centering
-%             \includegraphics[width=1.4\linewidth]{assets/graphs/StaticExampleGlossaryGraph.pdf}
-%             \caption{Static graph.}
-%             \label{fig:staticExampleGraph}
-%         \end{subfigure}
-%         \caption{Example generated graphs.}
-%         \label{fig:exampleGraphs}
-%     \end{figure*}
-% }
+\newcommand{\ExampleSynGraph}{
+    \begin{figure*}
+        \begin{subfigure}[t]{0.5\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{assets/graphs/SynExampleGlossaryGraph.pdf}
+            \caption{Graph from \Cref{tab:synExampleGlossary}.} %\label{fig:exampleSynGraph}
+        \end{subfigure}
+        \begin{subfigure}[t]{0.475\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{assets/graphs/manual/manualSynLegend.pdf}
+        \end{subfigure}
+        \caption{Example generated visualizations of synonym relations.}\label{fig:exampleSynGraph}
+    \end{figure*}
+}
+
+% \begin{subfigure}[t]{0.25\linewidth}
+%     \centering
+%     \includegraphics[width=1.4\linewidth]{assets/graphs/StaticExampleGlossaryGraph.pdf}
+%     \caption{Static graph.}
+%     \label{fig:staticExampleGraph}
+% \end{subfigure}
 
 \newcommand{\ExampleFlawGraphs}{
     \begin{figure*}
         \begin{subfigure}[t]{0.15\linewidth}
+            \centering
             \includegraphics[width=1.8\linewidth]{assets/graphs/SelfExampleGlossaryGraph.pdf}
             \caption{Self-loop graph.}\label{fig:selfExampleGraph}
         \end{subfigure}

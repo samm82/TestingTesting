@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+
+\digraph{manualSynLegend}{
+margin=0
+subgraph cluster_legend {
+margin=8
+label="Legend";
+labelloc="t";
+fontsize="32pt"
+rankdir=BT
+{
+rank=same
+syn1 [label="Synonym 1"];
+syn2 [label="Synonym 2"];
+syn1 -> syn2 [dir=none label="                "];
+}
+{
+rank=same
+imp1 [label=<Implied<br/>Synonym 1>];
+imp2 [label=<Implied<br/>Synonym 2>];
+imp1 -> imp2 [style="dashed" dir=none label="                "]
+}
+{
+rank=same
+syn3 [label=<Term>]
+syn4 [label=<Synonym<br/>to Both> style="dotted"]
+syn5 [label=<Term>]
+syn3 -> syn4 -> syn5 [dir=none]
+}
+edge [style="invis"]
+syn1 -> imp1 -> syn4
+syn2 -> imp2 -> syn5
+imp1 -> syn3
+imp2 -> syn4
+}
+}
+
+\end{document}
