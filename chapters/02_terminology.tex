@@ -85,7 +85,7 @@ approaches described in the literature.
 
 Since there are so many test approaches, it is helpful to categorize them.
 The literature provides many ways to do so, but we use the one given by
-\ifnotpaper\else \citeauthor{IEEE2022} \fi \citet{IEEE2022} due to its wide usage.
+\ifnotpaper\else \citeauthor{IEEE2022} \fi \citet{IEEE2022} because of its wide usage.
 This schema divides test approaches into levels, types, techniques, and practices
 \citeyearpar[Fig.~2; see \Cref{tab:ieeeCats}]{IEEE2022}. These categories seem
 to be pervasive throughout the literature, particularly ``level'' and ``type''.
@@ -110,7 +110,7 @@ several test levels'' \ifnotpaper
 % Therefore, we assume these categories to be orthogonal throughout this
 % \docType{} (e.g., when identifying flaws).
 We may assess this assumption more rigorously in the future, but for now, it
-implies that a specific test approach can be derived by combining multiple
+implies that one can derive a specific test approach by combining multiple
 test approaches from different categories\ifnotpaper
     %. For example, usability test
     % script(ing) \citepISTQB{} is a combination of usability testing, a test type
@@ -123,7 +123,7 @@ test approaches from different categories\ifnotpaper
 % Because of their widespread use and their usefulness in dividing the domain of
 % software testing into more manageable subsets, we use these categories
 % throughout this \docType{}.
-These categories are loosely described by what they specify
+We loosely describe these categories based on what they specify
 as follows\thesisissueref{21}:
 \begin{itemize}
     \item \textbf{Level}: What code is tested
@@ -180,8 +180,8 @@ and thus less helpful for grouping test approaches. \ifnotpaper Other
     categorization schemas (see \Cref{alt-cats}) may consider static testing
     orthogonal, and some may consider it out-of-scope entirely (see
     \Cref{static-test})! \fi We also introduce a ``supplemental'' category of
-``artifact''\thesisissueref{44,119,39} since some terms can refer to the
-application of a test approach \emph{as well as} the resulting document(s).
+``artifact''\thesisissueref{44,119,39} since some terms can refer to both the
+application of a test approach \emph{and} the resulting document(s).
 Therefore, we do \emph{not} consider approaches categorized as an artifact
 \emph{and} another category as flaws\thesisissueref{119} in \Cref{multiCats}.
 Finally, we also record the test category of ``process'' for completeness,
@@ -317,7 +317,7 @@ meaning is nevertheless the same.
 
 \subsubsection{Parent-Child Relations}\label{par-chd-rels}
 Many test approaches are multi-faceted and can be ``specialized'' into others;
-for example, load testing and stress testing are some of the subtypes of
+for example, load testing and stress testing are some subtypes of
 performance-related testing (described in more detail in \Cref{perf-test-rec}).
 We refer to these ``specializations'' as ``children'' or ``subapproaches'' of
 their multi-faceted ``parent(s)''. This nomenclature also extends to approach
@@ -337,7 +337,7 @@ for hierarchies of approaches given in the literature \ifnotpaper
 %specification-based test approaches in \Cref{fig:specBasedGraph}
 .
 
-Another possible way for a parent-child relation to occur is when
+Another way for a parent-child relation to occur is when
 % $c$'s adequacy criteria is already satisfied by $p$. In other words,
 the completion of $p$ indicates that ``sufficient testing has been done'' in
 regards to $c$ \citep[p.~402]{vanVliet2000}. While this only ``compares the
