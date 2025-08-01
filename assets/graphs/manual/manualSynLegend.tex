@@ -24,7 +24,7 @@ syn1 -> syn2 [dir=none label="                "];
 rank=same
 imp1 [label=<Implied<br/>Synonym 1>];
 imp2 [label=<Implied<br/>Synonym 2>];
-imp1 -> imp2 [style="dashed" dir=none label="                "]
+imp1 -> imp2 [style="dashed" dir=none label="                "];
 }
 {
 rank=same
@@ -33,11 +33,19 @@ syn4 [label=<Synonym<br/>to Both> style="dotted"]
 syn5 [label=<Term>]
 syn3 -> syn4 -> syn5 [dir=none]
 }
+{
+rank=same
+src1 [style=invis];
+src2 [style=invis];
+src1 -> src2 [dir=none, color=green, label=<From Established<br/>Standards>]
+src3 [style=invis];
+src2 -> src3 [dir=none, color=black, label=<From Papers and<br/>Other Documents>]
+}
 edge [style="invis"]
-syn1 -> imp1 -> syn4
-syn2 -> imp2 -> syn5
-imp1 -> syn3
-imp2 -> syn4
+syn1 -> imp1 -> syn3 -> src1
+syn2 -> imp2 -> syn4 -> src2
+imp1 -> syn4
+imp2 -> syn5 -> src3
 }
 }
 

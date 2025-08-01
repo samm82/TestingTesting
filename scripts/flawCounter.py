@@ -64,7 +64,8 @@ class SrcCat(AutoNumberEnum):
 def getSrcCat(s, rel: bool = False) -> SrcCat:
     if "(infer" in s:
         return SrcCat.INFER
-    if any(std in s for std in {"IEEE", "ISO", "IEC"}):
+    # "StdAuthor" used for example
+    if any(std in s for std in {"IEEE", "ISO", "IEC", "StdAuthor"}):
         return SrcCat.STD
     if any(metastd in s for metastd in
         {"Washizaki", "Bourque and Fairley", "SWEBOK",

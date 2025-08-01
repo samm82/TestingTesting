@@ -152,12 +152,17 @@ we only visualize the following synonym relations, which may indicate flaws:
     \emph{and} implicit relations without double counting them during the
     analysis in \Cref{flaw-analysis}. If a relation is both explicit
     \emph{and} implicit, we only include the implicit relation in the graph
-    if its source is more ``credible'' (see \Cref{cred}).%
-    \qtodo{Do I need an example of this?}
+    if its source is more ``credible'' (see \Cref{cred}). For example, if
+    ``StdAuthor'' from \Cref{tab:synExampleGlossary} is an author of an
+    established standard, than we display the implicit relation from their
+    document alongside the explicit one from ``Author'' as shown in
+    \Cref{fig:exampleSynGraph}. We denote the credibility of relations by
+    colouring each source tier (defined in \Cref{source-tiers}) a different
+    colour, which we label in the legend for each visualization.
     % For example, only the explicit synonym relation between E and F
     % from \Cref{tab:exampleGlossary} appears in \Cref{fig:synExampleGraph}.
     Implicit approaches and relations are denoted by dashed lines, as shown
-    in \Cref{fig:exampleGraph}; explicit approaches are % fig:synExampleGraph
+    in \Cref{fig:exampleGraph,fig:exampleSynGraph}; explicit approaches are
     \emph{always} denoted by solid lines, even if they are also implicit.
     We can also generate ``explicit'' versions of these graphs that exclude
     implicit approaches and relations; for example, \Cref{fig:expExampleGraph}
@@ -167,7 +172,7 @@ we only visualize the following synonym relations, which may indicate flaws:
     .
 
 \fi
-Since these graphs tend to be large, it is useful to focus on specific
+These graphs tend to be large, so it is often useful to focus on specific
 subsets of them. \ifnotpaper For each approach category (see
     \Cref{cats-def}), we generate a graph restricted to its approaches
     and the relations between them. We also generate a graph of all static
