@@ -1,4 +1,4 @@
 ﻿Name,Approach Category,Definition,Parent(s),Synonym(s),Notes
-E,Approach,,,"F (Author, 0000; implied by 0001)",
-G,Approach,,,"F (Author, 0002), H (implied by 0000)",
-H,Approach,,,"X (Author, 0001)",
+E,Approach,,,"F (Author, 2022; implied by 2021)",
+G,Approach,,,"F (Author, 2017), H (implied by 2022)",
+H,Approach,,,"X (Author, 2021)",
