@@ -84,8 +84,8 @@ approaches described in the literature.
 \subsubsection{Approach Categories}\label{cats-def}
 
 Since there are so many test approaches, it is helpful to categorize them.
-The literature provides many ways to do so, but perhaps the most widely used
-is the one given by \ifnotpaper\else \citeauthor{IEEE2022} \fi \citet{IEEE2022}.
+The literature provides many ways to do so, but we use the one given by
+\ifnotpaper\else \citeauthor{IEEE2022} \fi \citet{IEEE2022} due to its wide usage.
 This schema divides test approaches into levels, types, techniques, and practices
 \citeyearpar[Fig.~2; see \Cref{tab:ieeeCats}]{IEEE2022}. These categories seem
 to be pervasive throughout the literature, particularly ``level'' and ``type''.
@@ -120,9 +120,10 @@ test approaches from different categories\ifnotpaper
     %     \cite[pp.~7, 40, Tab.~A.1]{IEEE2021}\fi, and scripted testing, a test
     % practice \citep[pp.~20, 22\ifnotpaper; implied by p.~33\fi]{IEEE2022}
     ; see \Cref{orth-test} for more detailed discussion\fi.
-Because of their widespread use and their usefulness in dividing the domain of
-software testing into more manageable subsets, we use these categories
-throughout this \docType{}. They can be loosely described by what they specify
+% Because of their widespread use and their usefulness in dividing the domain of
+% software testing into more manageable subsets, we use these categories
+% throughout this \docType{}.
+These categories are loosely described by what they specify
 as follows\thesisissueref{21}:
 \begin{itemize}
     \item \textbf{Level}: What code is tested
@@ -173,8 +174,8 @@ as follows\thesisissueref{21}:
 % Based on how we observe test approaches being categorized in the literature, 
 % We also make the following changes to the schema from \citet[Fig.~2]{IEEE2022}:
 
-While \citet{IEEE2022}'s schema includes ``static testing'' as a test
-approach category, we omit it as it seems non-orthogonal to the others
+While \citet{IEEE2022}'s schema includes ``static testing'' as a test approach
+category, we omit it from our scope as it seems non-orthogonal to the others
 and thus less helpful for grouping test approaches. \ifnotpaper Other
     categorization schemas (see \Cref{alt-cats}) may consider static testing
     orthogonal, and some may consider it out-of-scope entirely (see
