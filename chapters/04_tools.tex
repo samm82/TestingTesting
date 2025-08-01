@@ -43,7 +43,7 @@ develop a tool to automatically generate visualizations of these relations.
     %               \Cref{par-chd-rels}) that also function as edges.
     %     \end{itemize}
     Since we use a consistent format to track synonym and parent-child
-    relations (see \Cref{syn-rels,par-chd-rels}, respectively)
+    relations (defined in \Cref{syn-rels,par-chd-rels}, respectively)
     between approaches in \ourApproachGlossary{}, we can parse them
     systematically. For example, if the entries in \Cref{tab:exampleGlossary}
     appear in the glossary, then their parent-child relations are displayed as
@@ -53,20 +53,11 @@ develop a tool to automatically generate visualizations of these relations.
     For example, the first row of \Cref{tab:exampleGlossary}
     contains the citation ``(Author, 2022; 2021)'', which means that this
     information was present in two documents by Author: one written in
-    the year 2022, and one in 2021. The following citation, ``(2022)'',
+    2022 and one in 2021. The following citation, ``(2022)'',
     contains no author, which means it was written by the same one as the
     previous citation (Author). We process these citations according to this
-    logic \seeSrcCode{f173e88}{scripts/csvToGraph.py}{55}{96} so we can
-    consistently track them throughout our analysis. We also colour each
-    relation according to its source tier (see \Cref{source-tiers}), including
-    inferences (see \Cref{infers}) and proposals (see \Cref{recs}), but only
-    display the relation with the most credible source tier (see \Cref{cred}).
-    Although we omit this colouring from \Cref{fig:exampleParChdGraphs,%
-        fig:exampleSynGraph,fig:exampleFlawGraphs} for brevity%,
-    % \Cref{fig:expSynGraph} shows how
-    % this affects our visualizations; each line representing a synonym relation
-    % is coloured based on the most credible source that describes that relation
-    .
+    logic \seeSrcCode{231bd5e}{scripts/csvToGraph.py}{54}{95} so we can
+    consistently track them throughout our analysis.
 
     \input{build/exampleGlossary.tex}
     \ExampleParChdGraphs{}
@@ -148,17 +139,14 @@ we only visualize the following synonym relations, which may indicate flaws:
 
     \phantomsection{}\label{graphExplicit}
     Since we also track the ``explicitness'' of information
-    (see \Cref{explicitness}), we can represent explicit
-    \emph{and} implicit relations without double counting them during the
-    analysis in \Cref{flaw-analysis}. If a relation is both explicit
-    \emph{and} implicit, we only include the implicit relation in the graph
-    if its source is more ``credible'' (see \Cref{cred}). For example, if
-    ``StdAuthor'' from \Cref{tab:synExampleGlossary} is an author of an
-    established standard, than we display the implicit relation from their
-    document alongside the explicit one from ``Author'' as shown in
-    \Cref{fig:exampleSynGraph}. We denote the credibility of relations by
-    colouring each source tier (defined in \Cref{source-tiers}) a different
-    colour, which we label in the legend for each visualization.
+    (see \Cref{explicitness}), we can represent explicit \emph{and} implicit
+    relations without double counting them during the analysis in
+    \Cref{flaw-analysis}. If a relation is both explicit \emph{and} implicit,
+    we only display the implicit relation if its source is more ``credible''
+    (see \Cref{cred}). For example, if ``StdAuthor'' from
+    \Cref{tab:synExampleGlossary} is an author of an established standard, then
+    we display the implicit relation from their document alongside the explicit
+    one from ``Author'' as shown in \Cref{fig:exampleSynGraph}.
     % For example, only the explicit synonym relation between E and F
     % from \Cref{tab:exampleGlossary} appears in \Cref{fig:synExampleGraph}.
     Implicit approaches and relations are denoted by dashed lines, as shown
@@ -170,6 +158,15 @@ we only visualize the following synonym relations, which may indicate flaws:
     % \Cref{fig:expSynGraph} likewise only contains explicit approaches and
     % synonym relations
     .
+
+    We also colour each relation according to its source tier, including
+    inferences (see \Cref{infers}) and proposals (see \Cref{recs}). For
+    clarity, we only display the relation with the most credible source tier
+    (except in the case of a more credible implicit relation we previously
+    describe). Each source tier gets its own colour that we include in the
+    legend for each visualization (such as \Cref{fig:exampleSynGraph}),
+    although we omit this colouring from \Cref{fig:exampleParChdGraphs,%
+        fig:exampleFlawGraphs} for clarity.
 
 \fi
 These graphs tend to be large, so it is often useful to focus on specific
