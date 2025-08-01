@@ -168,7 +168,8 @@ the numbers of flaws sorted by various criteria in
 \Cref{tab:flawMnfsts,tab:flawDmns}, each flaw is counted only for its
 most ``explicit'' manifestation (i.e., it will only increment a value in the
 ``(Sub)jective'' column if it is \emph{not} also ``(Obj)ective''),
-similarly to how we generate graphs (see \Cref{graphExplicit}).
+similarly to how we visualize the relations between approaches
+(see \Cref{graphExplicit}).
 
 \subsubsection{Augmented Flaw Analysis}\label{aug-flaw-analysis}
 While we can detect some subsets of flaws automatically by analyzing
@@ -220,7 +221,7 @@ groups; this means the following line adds an inconsistency between X and Z
 We compare the authors and years of each source involved with a given flaw
 to determine if it manifests within a single document and/or between documents
 with the same set of authors. Then, we group these sources into their tiers
-\seeSrcCode{82167b7}{scripts/flawCounter.py}{63}{80}.
+\seeSrcCode{a13e9d4}{scripts/flawCounter.py}{63}{83}.
 % done by the function in \Cref{lst:getSrcCat}, since each source tier
 % outlined in \Cref{source-tiers} is comprised of a small number of authors (with
 % the exception of papers and other documents; see \Cref{papers}).
@@ -243,12 +244,13 @@ organizations (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), we count
 this as an inconsistency between documents with the same set of authors in
 \Cref{fig:flawBars}, but only once to avoid double counting.
 
-We can also specify the ``explicitness'' (see \Cref{explicitness}) of a flaw by inserting
-the phrase ``implied by'' after the sources of explicit information and before
-those of implicit information. This information is parsed following the same
-rules described in \Cref{auto-flaw-analysis-explicitness} for automatically
-detected flaws. Note that we only count subjective flaws if there is not an
-equivalent objective flaw, as we do when generating graphs (\Cref{graphExplicit}).
+We can also specify the ``explicitness'' (see \Cref{explicitness}) of a flaw by
+inserting the phrase ``implied by'' after the sources of explicit information
+and before those of implicit information. This information is parsed following
+the same rules described in \Cref{auto-flaw-analysis-explicitness} for
+automatically detected flaws. Note that we only count subjective flaws if there
+is not an equivalent objective flaw, as we do when visualizing relations
+(\Cref{graphExplicit}).
 \begin{displayquote}
     \texttt{\% Flaw count (CONTRA, DEFS): \{IEEE2021\} \{IEEE2017\} |
         \displayNL \{vanVliet2000\} implied by \{IEEE2021\}}
@@ -268,8 +270,8 @@ sources of flaws. The rest increment their corresponding count in
 \phantomsection{}\label{less-cred-assert}
 Occasionally, we assert that a source from a less credible tier is more correct
 than a source from a more credible tier\thesisissueref{184}.
-For example, \tolTestFlaw*{} This flaw is supported
-by additional papers found via a miniature literature review (described in
+For example, \tolTestFlaw*{} This flaw is supported by these additional papers
+found via a miniature literature review (described in
 \Cref{undef-terms}) from a lower source tier than \citep{Firesmith2015}
 (which is a terminology collection; see \Cref{source-tiers}). However, this
 flaw is really based in \citep{Firesmith2015} and not in these
