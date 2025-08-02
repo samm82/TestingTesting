@@ -2,16 +2,28 @@ import re
     
 from helpers import capFirst, wrapEnv, writeFile
 
-CAT_FOOTNOTE = "\n\t".join([
-    "\\footnote{"
-    "A single test approach with more than one category ",
-    "\\ifnotpaper (for example, A/B Testing in \\Cref{tab:approachGlossaryExcerpt}) \\fi ",
-    "often indicates an underlying flaw; see \\Cref{multiCats}.} \n"])
+# See #209
+
+def footnoteHelper(label):
+    return f"\\footnote{{Defined in \\Cref{{{label}}}.}}"
+
+# CAT_FOOTNOTE = "\n\t".join([
+#     "\\footnote{"
+#     "A single test approach with more than one category ",
+#     "\\ifnotpaper (for example, A/B Testing in \\Cref{tab:approachGlossaryExcerpt}) \\fi ",
+#     "often indicates an underlying flaw; see \\Cref{multiCats}.} \n"])
+# toRecord: list[str] = [
+#     "names", f"categories{CAT_FOOTNOTE}(\\Cref{{cats-def}})",
+#     "definitions", "synonyms (\\Cref{syn-rels})",
+#     "parents (\\Cref{par-chd-rels})",
+#     "flaws\\phantomsection{}\\label{manual-flaws} (\\Cref{flaw-def}) (in separate documents)"]
+
 toRecord: list[str] = [
-    "names", f"categories{CAT_FOOTNOTE}(\\Cref{{cats-def}})",
-    "definitions", "synonyms (\\Cref{syn-rels})",
-    "parents (\\Cref{par-chd-rels})",
-    "flaws\\phantomsection{}\\label{manual-flaws} (\\Cref{flaw-def}) (in separate documents)"]
+    "names", f"categories{footnoteHelper("cats-def")}",
+    "definitions", f"synonyms{footnoteHelper("syn-rels")}",
+    f"parents{footnoteHelper("par-chd-rels")}",
+    f"flaws{footnoteHelper("flaw-def")}\\phantomsection{{}}\\label{{manual-flaws}} (in separate documents)"]
+
 # relatedTerms: list[str] = [
 #     "imply related test approaches (\\Cref{derived-tests})",
 #     "are used repeatedly",
@@ -29,19 +41,19 @@ OTHER_NOTES = "other relevant notes"
 OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
                              "other sources"])
 
-methodology_a = """
+methodology_a = ("""
     \\item \\phantomsection{}\\label{step:ident-sources}
           Identifying authoritative sources \\ifnotpaper on software testing
           and ``snowballing'' from them \\fi (\\Cref{ident-sources})
     \\item \\phantomsection{}\\label{step:ident-terms}
-          Identifying all test approaches (\\Cref{approach-def}) and related
-          testing terms that are used repeatedly and/or have complex definitions
-          (\\Cref{ident-terms})
+          Identifying all test approaches""" + footnoteHelper("approach-def") +
+          """ and related testing terms that are used repeatedly and/or have
+          complex definitions (\\Cref{ident-terms})
     \\item \\phantomsection{}\\label{step:record-terms}
           Recording all relevant data (\\Cref{record-terms}), including
-          implicit data (\\Cref{imp-info}), for each term
-          identified in step~\\ref{step:ident-terms}; for test approaches,
-          these are comprised of:\n""" + "\n".join([
+          implicit data (\\Cref{imp-info}), for each term identified in
+          step~\\ref{step:ident-terms}; test approach data are comprised of:
+          \n""" + "\n".join([
         f"\t\t  {line}" for line in wrapEnv(
             "enumerate", [f"\t\\item {capFirst(i)}"
                           for i in toRecord + [OTHER_NOTES +
@@ -50,7 +62,7 @@ methodology_a = """
     \\item \\phantomsection{}\\label{step:repeat-process}
           Repeating steps~\\ref{step:ident-sources} to \\ref{step:record-terms} for 
           any missing or unclear terms (\\Cref{undef-terms}) until some
-          stopping criteria (\\Cref{stop-crit})"""
+          stopping criteria (\\Cref{stop-crit})""")
     
 methodology_b = """    \\item Analyzing recorded test approach data for additional flaws
           \\begin{enumerate}
