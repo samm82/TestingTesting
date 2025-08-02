@@ -87,8 +87,11 @@
 \newcommand\defRel[3]{We can formally define the #1 relation $#2$ on the set
     $T$ of terms used by the literature to describe test approaches based on #3.}
 
-\def\approachFields{definitions, categories (see \Cref{cats-def}),
-    synonyms (see \Cref{syn-rels}), and parents (see \Cref{par-chd-rels})}
+\NewDocumentCommand{\approachFields}{s}{
+    definitions, categories\IfBooleanTF{#1}{}{\ (see \Cref{cats-def})},
+    synonyms\IfBooleanTF{#1}{}{\ (see \Cref{syn-rels})}, and
+    parents\IfBooleanTF{#1}{}{\ (see \Cref{par-chd-rels})}
+}
 
 \def\displayNL{\\
     $\,\hookrightarrow\,$\quad }
