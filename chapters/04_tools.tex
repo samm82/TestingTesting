@@ -23,8 +23,8 @@
     \subsection{Approach Relation Visualization}\label{app-rel-vis}
 \fi
 
-To better visualize how test approaches relate to each other, we
-develop a tool to automatically generate visualizations of these relations.
+To better understand the relations between test approaches, we develop a tool
+to generate visualizations of these relations automatically.
 \ifnotpaper
     % We can describe these graphs formally as ordered triplets
     %     $G = (A, S, P)$, where:  % Format based on https://en.wikipedia.org/wiki/Graph_theory
@@ -46,8 +46,8 @@ develop a tool to automatically generate visualizations of these relations.
     relations (defined in \Cref{syn-rels,par-chd-rels}, respectively)
     between approaches in \ourApproachGlossary{}, we can parse them
     systematically. For example, if the entries in \Cref{tab:exampleGlossary}
-    appear in the glossary, then their parent-child relations are displayed as
-    \Cref{fig:exampleGraph} in the generated graph. We also capture relevant
+    appear, then their parent-child relations are visualized as
+    shown in \Cref{fig:exampleGraph}. We also capture relevant
     citation information in our glossary in the author-year citation format,
     ``reusing'' information from previous citations when applicable.
     For example, the first row of \Cref{tab:exampleGlossary}
@@ -64,7 +64,7 @@ develop a tool to automatically generate visualizations of these relations.
 
     \clearpage\fi
 \phantomsection{}\label{relevantSyns}
-We graph all parent-child relations, since they are guaranteed to be visually
+We graph all parent-child relations as they are guaranteed to be visually
 meaningful.
 % , but only graph some synonym relations.
 % For a given synonym pair to
@@ -110,12 +110,11 @@ we only visualize the following synonym relations, which may indicate flaws:
           relations may be incorrect or missing.
 \end{enumerate}
 \ifnotpaper
-    We deduce these conditions from the information we parse from our
-    glossary. For example, if the entries in \Cref{tab:synExampleGlossary}
-    appear in the glossary, then they are displayed as \Cref{fig:exampleSynGraph}
-    in the generated graph (note that we do not include X in our visualization
-    since it does not have its own row in the glossary and is not shared
-    between multiple approaches that do).
+    We deduce these conditions from the information we parse from our glossary.
+    For example, if the entries in \Cref{tab:synExampleGlossary} appear, then
+    they are visualized as shown in \Cref{fig:exampleSynGraph} (note that X
+    does not appear since it is not defined independently and does not violate
+    transitivity).
 
     % Applying this technique to \ourApproachGlossary{} (and manually modifying
     % it for legibility) results in \Cref{fig:expSynGraph} (note that we exclude
@@ -149,8 +148,8 @@ we only visualize the following synonym relations, which may indicate flaws:
     one from ``Author'' as shown in \Cref{fig:exampleSynGraph}.
     % For example, only the explicit synonym relation between E and F
     % from \Cref{tab:exampleGlossary} appears in \Cref{fig:synExampleGraph}.
-    Implicit approaches and relations are denoted by dashed lines, as shown
-    in \Cref{fig:exampleGraph,fig:exampleSynGraph}; explicit approaches are
+    Implicit approaches and relations are denoted by dashed lines, as shown in
+    \Cref{fig:exampleGraph,fig:exampleSynGraph}, while explicit approaches are
     \emph{always} denoted by solid lines, even if they are also implicit.
     We can also generate ``explicit'' versions of these graphs that exclude
     implicit approaches and relations; for example, \Cref{fig:expExampleGraph}
@@ -162,7 +161,7 @@ we only visualize the following synonym relations, which may indicate flaws:
     We also colour each relation according to its source tier, including
     inferences (see \Cref{infers}) and proposals (see \Cref{recs}). For
     clarity, we only display the relation with the most credible source tier
-    (except in the case of a more credible implicit relation we previously
+    (except if there is a more credible implicit relation as we previously
     describe). Each source tier gets its own colour that we include in the
     legend for each visualization (such as \Cref{fig:exampleSynGraph}),
     although we omit this colouring from \Cref{fig:exampleParChdGraphs,%
@@ -174,13 +173,12 @@ subsets of them. \ifnotpaper For each approach category (see
     \Cref{cats-def}), we generate a graph restricted to its approaches
     and the relations between them. We also generate a graph of all static
     approaches along with the relations between them \emph{and} between a
-    static approach and a dynamic approach. We generate this static-focused
-    graph because static testing is sometimes considered to be a separate
-    approach category (see \flawref{static-test-flaw}), but we include the
-    relations with dynamic approaches since they are our primary focus
-    (see \Cref{static-test}). We colour all dynamic approach nodes in these
-    graphs grey %, as in \Cref{fig:staticExampleGraph}, 
-    to distinguish them.
+    static approach and a dynamic approach. This static-focused graph is
+    notable because static testing is sometimes considered to be a separate
+    approach category (see \flawref{static-test-flaw}). Since dynamic
+    approaches are our primary focus (see \Cref{static-test}), we include them
+    in this static graph, colouring their nodes grey to distinguish them.
+    %, as in \Cref{fig:staticExampleGraph}, 
 
     We can also generate more specific subsets of these graphs
 \else We can generate more focused graphs \fi from a given subset of
