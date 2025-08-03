@@ -119,10 +119,10 @@ once.
 \subsubsection{Automated Flaw Analysis}\label{auto-flaw-analysis}
 
 As outlined in \Cref{relevantSyns}, we automatically detect synonym relations
-from \ourApproachGlossary{} that violate transitivity to generate our graphs.
-These relations are significant because they indicate potential flaws. We
-automatically detect and format these flaws to present them when discussing
-synonym relation flaws in \Cref{syns}. % \Cref{multiSyns,infMultiSyns}
+from \ourApproachGlossary{} that violate transitivity to generate our
+visualizations. These relations are significant because they indicate potential
+flaws. We automatically detect and format these flaws to present them when
+discussing synonym relation flaws in \Cref{syns}. % \Cref{multiSyns,infMultiSyns}
 The next logical step is then to detect other classes of flaws.
 
 \ExampleFlawGraphs{}
@@ -132,7 +132,7 @@ Parent-child relations that violate irreflexivity as outlined in
 \Cref{par-chd-rels} (i.e., cases where a child is given as a parent of itself)
 are also trivial to automate by looking for lines in the
 generated \LaTeX{} files that start with \texttt{I~->~I}, where \texttt{I}
-is the label used for a test approach node in these graphs. This process
+is the label used for a test approach node in these visualizations. This process
 results in output similar to \Cref{fig:selfExampleGraph}.% \Cref{selfPars}
 \phantomsection{}\label{parSynDef} We use a similar
 process to detect pairs of approaches with a synonym relation \emph{and} a
@@ -140,11 +140,11 @@ parent-child relation; these are flaws since synonym relations are symmetric
 while parent-child relations are asymmetric as outlined in \Cref{syn-rels,%
     par-chd-rels}, respectively. To find these flaws, we build a dictionary of
 each term's synonyms to evaluate which synonym relations are notable enough
-to include in the graph, and then check these mappings to see if one appears
-as a parent of the other. For example, if \texttt{J} and \texttt{K} are
+to include in the visualization, and then check these mappings to see if one
+appears as a parent of the other. For example, if \texttt{J} and \texttt{K} are
 synonyms, a generated \LaTeX{} file with a parent line starting with
-\texttt{J~->~K} \emph{or} \texttt{K~->~J} would result in these approaches
-being graphed as shown in \Cref{fig:parSynExampleGraph}. We present these two
+\texttt{J~->~K} \emph{or} \texttt{K~->~J} would be visualized as shown in
+\Cref{fig:parSynExampleGraph}. We present these two
 classes of flaws when discussing parent-child relation flaws in \Cref{pars}.
 % \Cref{tab:parSyns,infParSyns}
 
@@ -169,7 +169,7 @@ the numbers of flaws sorted by various criteria in
 most ``explicit'' manifestation (i.e., it will only increment a value in the
 ``(Sub)jective'' column if it is \emph{not} also ``(Obj)ective''),
 similarly to how we visualize the relations between approaches
-(see \Cref{graphExplicit}).
+(see \Cref{visExplicit}).
 
 \subsubsection{Augmented Flaw Analysis}\label{aug-flaw-analysis}
 While we can detect some subsets of flaws automatically by analyzing
@@ -250,7 +250,7 @@ and before those of implicit information. This information is parsed following
 the same rules described in \Cref{auto-flaw-analysis-explicitness} for
 automatically detected flaws. Note that we only count subjective flaws if there
 is not an equivalent objective flaw, as we do when visualizing relations
-(\Cref{graphExplicit}).
+(\Cref{visExplicit}).
 \begin{displayquote}
     \texttt{\% Flaw count (CONTRA, DEFS): \{IEEE2021\} \{IEEE2017\} |
         \displayNL \{vanVliet2000\} implied by \{IEEE2021\}}

@@ -10,12 +10,12 @@
     example, we identify \approachCount{} test approaches) and the number of
     situations where the underlying data would change, including more detailed
     analysis, error corrections, and the addition of data. These all require
-    tedious updates to the corresponding graphs that may be overlooked or done
-    incorrectly, so automating these processes allows for our results to be
-    reproduced (by us or others) and account for new data. Besides being more
-    systematic, this also allows us to observe the impacts of smaller changes,
-    such as unexpected flaws that arise from a new relation between two
-    approaches. It also helps verify the tools themselves; for example,
+    tedious updates to the corresponding visualizations that may be overlooked
+    or done incorrectly, so automating these processes allows for our results
+    to be reproduced (by us or others) and account for new data. Besides being
+    more systematic, this also allows us to observe the impacts of smaller
+    changes, such as unexpected flaws that arise from a new relation between
+    two approaches. It also helps verify the tools themselves; for example,
     tracking a flaw manually should affect relevant flaw counts, which we can
     double-check. We also define \LaTeX{} macros to help achieve our goals of
     maintainability, traceability, and reproducibility (\Cref{macros}).
@@ -64,7 +64,7 @@ to generate visualizations of these relations automatically.
 
     \clearpage\fi
 \phantomsection{}\label{relevantSyns}
-We graph all parent-child relations as they are guaranteed to be visually
+We visualize all parent-child relations as they are guaranteed to be
 meaningful.
 % , but only graph some synonym relations.
 % For a given synonym pair to
@@ -136,7 +136,7 @@ we only visualize the following synonym relations, which may indicate flaws:
     \input{build/synExampleGlossary.tex}
     \ExampleSynGraph{}
 
-    \phantomsection{}\label{graphExplicit}
+    \phantomsection{}\label{visExplicit}
     Since we also track the ``explicitness'' of information
     (see \Cref{explicitness}), we can represent explicit \emph{and} implicit
     relations without double counting them during the analysis in
@@ -150,8 +150,8 @@ we only visualize the following synonym relations, which may indicate flaws:
     % from \Cref{tab:exampleGlossary} appears in \Cref{fig:synExampleGraph}.
     Implicit approaches and relations are denoted by dashed lines, as shown in
     \Cref{fig:exampleGraph,fig:exampleSynGraph}, while explicit approaches are
-    \emph{always} denoted by solid lines, even if they are also implicit.
-    We can also generate ``explicit'' versions of these graphs that exclude
+    \emph{always} denoted by solid lines, even if they are also implicit. We
+    can also generate ``explicit'' versions of these visualizations that exclude
     implicit approaches and relations; for example, \Cref{fig:expExampleGraph}
     is the explicit version of \Cref{fig:exampleGraph}%, and
     % \Cref{fig:expSynGraph} likewise only contains explicit approaches and
@@ -168,27 +168,26 @@ we only visualize the following synonym relations, which may indicate flaws:
         fig:exampleFlawGraphs} for clarity.
 
 \fi
-These graphs tend to be large, so it is often useful to focus on specific
-subsets of them. \ifnotpaper For each approach category (see
-    \Cref{cats-def}), we generate a graph restricted to its approaches
-    and the relations between them. We also generate a graph of all static
+These visualizations tend to be large, so it is often useful to focus on
+specific subsets of them. \ifnotpaper For each approach category (see
+    \Cref{cats-def}), we generate a visualization restricted to its approaches
+    and the relations between them. We also generate a visualization of all static
     approaches along with the relations between them \emph{and} between a
-    static approach and a dynamic approach. This static-focused graph is
+    static approach and a dynamic approach. This static-focused visualization is
     notable because static testing is sometimes considered to be a separate
     approach category (see \flawref{static-test-flaw}). Since dynamic
     approaches are our primary focus (see \Cref{static-test}), we include them
-    in this static graph, colouring their nodes grey to distinguish them.
+    in this static visualization, colouring their nodes grey to distinguish them.
     %, as in \Cref{fig:staticExampleGraph}, 
 
-    We can also generate more specific subsets of these graphs
-\else We can generate more focused graphs \fi from a given subset of
-approaches, such as \ifnotpaper\else those in a selected approach category
-    (see \Cref{cats-def}) or \fi those pertaining to recovery or
-scalability\ifnotpaper.
+    We can also \else We can \fi generate more focused visualizations from a
+given subset of approaches, such as \ifnotpaper\else those in a selected
+    approach category (defined in \Cref{cats-def}) or \fi those pertaining to
+recovery or scalability\ifnotpaper.
 % These areas are of particular note as we discuss their
 % flaws in their own sections (\Cref{recov-flaw,scal-flaw}, respectively).
-We generate graphs of just these subsets of software testing to help visualize
-the relations between these approaches, but we can also update them based on
+We use these visualizations to better understand the relations within these
+subsets of approaches, but we can also update them based on
 our recommendations by specifying sets of approaches and relations to add or
 remove. % given \else; the latter are shown \fi
 % in \Cref{fig:rec-graph-current,fig:scal-graph-current}, respectively.
