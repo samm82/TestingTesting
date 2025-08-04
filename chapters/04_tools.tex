@@ -140,15 +140,16 @@ we only visualize the following synonym relations, which may indicate flaws:
     \ExampleSynGraph{}
 
     \phantomsection{}\label{visExplicit}
-    Since we also track the ``explicitness'' of information
-    (see \Cref{explicitness}), we can represent explicit \emph{and} implicit
+    Since we also track the ``explicitness'' of information (defined in
+    \Cref{explicitness}), we can represent explicit \emph{and} implicit
     relations without double counting them during the analysis in
     \Cref{flaw-analysis}. If a relation is both explicit \emph{and} implicit,
-    we only display the implicit relation if its source is more ``credible''
-    (see \Cref{cred}). For example, if ``StdAuthor'' from
-    \Cref{tab:synExampleGlossary} is an author of an established standard, then
-    we display the implicit relation from their document alongside the explicit
-    one from ``Author'' as shown in \Cref{fig:exampleSynGraph}.
+    we only display the implicit relation if its source is from a more
+    credible source tier (see \Cref{cred,source-tiers}). For example, if
+    ``StdAuthor'' from \Cref{tab:synExampleGlossary} is an author of an
+    established standard, then we display the implicit relation from their
+    document alongside the explicit one from ``Author'' as shown in
+    \Cref{fig:exampleSynGraph}.
     % For example, only the explicit synonym relation between E and F
     % from \Cref{tab:exampleGlossary} appears in \Cref{fig:synExampleGraph}.
     Implicit approaches and relations are denoted by dashed lines, as shown in
@@ -172,7 +173,7 @@ we only visualize the following synonym relations, which may indicate flaws:
 
 \fi
 These visualizations tend to be large, so it is often useful to focus on
-specific subsets of them. \ifnotpaper For each approach category (see
+specific subsets of them. \ifnotpaper For each approach category (defined in
     \Cref{cats-def}), we generate a visualization restricted to its approaches
     and the relations between them. We also generate a visualization of all static
     approaches along with the relations between them \emph{and} between a
@@ -198,13 +199,13 @@ remove. % given \else; the latter are shown \fi
 %         perf-test-rec\fi} results in the updated graphs in
 % \Cref{fig:rec-graph-proposed,,fig:scal-graph-proposed,,\ifnotpaper\else%
 %         fig:perf-graph\fi}, respectively.
-When doing so, we colour any added approaches or relations orange to
-distinguish them. % \ifnotpaper
+When doing so\ifnotpaper\ in \Cref{recs}\fi, we colour any added approaches or
+relations orange to distinguish them.
+% \ifnotpaper
 % Recommendations can also be inherited; for example, we generate
 % \Cref{fig:perf-graph} based on the modifications we apply to
 % \Cref{fig:rec-graph-proposed,fig:scal-graph-proposed} and
 % other changes from \Cref{perf-test-rec}. \fi
-See \Cref{recs} for examples of this process's output.
 
 \input{chapters/04a_flaw_analysis}
 \else
