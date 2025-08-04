@@ -7,7 +7,7 @@ class ExGloss:
                  envArg: str = "hbtp!"):
         self.filename = name
         self.caption = ("Example glossary entries demonstrating how we track "
-                        f"{rel} relations (see \\Cref{{{relsRef}}}).")
+                        f"{rel} \\\\ relations (defined in \\Cref{{{relsRef}}}).")
 
         _mainHeader = f"{capFirst(rel.split("-")[0])}(s)"
         self.headers = ["Name\\TblrNote{a}", _mainHeader]
@@ -24,14 +24,14 @@ class ExGloss:
         self.widths = widths
         self.footnotes = ["``Name'' can refer to the name of a test approach, "
             "software quality, or other testing-related term, but we only "
-            "generate graphs for test approaches."]
+            "visualize relations between test approaches."]
         self.xCol = False
         self.toSort = False
         self.rowDataSpec: str = "c"
 
 exGlosses = [
-    ExGloss("exampleGlossary",    "parent-child \\\\", "par-chd-rels", [0.4,  0.6] , "bt!"),
-    ExGloss("synExampleGlossary", "synonym",           "syn-rels"    , [0.25, 0.75], "bt!")
+    ExGloss("exampleGlossary",    "parent-child", "par-chd-rels", [0.4,  0.6] , "bt!"),
+    ExGloss("synExampleGlossary", "synonym",      "syn-rels"    , [0.25, 0.75], "bt!")
 ]
 
 for exGloss in exGlosses:
