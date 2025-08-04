@@ -228,9 +228,9 @@ with the same set of authors. Then, we group these sources into their tiers
 % the exception of papers and other documents; see \Cref{papers}).
 We then distill these lists of sources down to sets of tiers and compare them
 against each other to determine how many times a given flaw manifests between
-source tiers. This determines which row(s) of \Cref{tab:flawMnfsts,tab:flawDmns}
-and which bar(s) of \Cref{fig:flawBars} that the given flaw should count toward.
-We describe this process in more detail in \Cref{aug-flaw-analysis}.
+source tiers, which we use when counting flaws in \Cref{flaws}.
+% This determines which row(s) of \Cref{tab:flawMnfsts,tab:flawDmns}
+% and which bar(s) of \Cref{fig:flawBars} that the given flaw should count toward.
 
 To give a more complete example, we track \flawref{level-phase-syns} with the
 following comment line:\utd{}
@@ -257,16 +257,17 @@ is not an equivalent objective flaw, as we do when visualizing relations
         \displayNL \{vanVliet2000\} implied by \{IEEE2021\}}
 \end{displayquote}
 For example, the above comment line\utd{} from \flawref{c-use-def} indicates
-that the flaws given below are present. The third flaw only affects
-\Cref{fig:flawBars} due to its more nuanced breakdown of the
-sources of flaws. The rest increment their corresponding count in
-\Cref{fig:flawBars,tab:flawMnfsts,tab:flawDmns} by only one:
+that the flaws given below are present.
 \begin{itemize}
     \item an objective inconsistency between a textbook and a standard,
     \item a subjective flaw within a single document, and
     \item a subjective inconsistency between documents with the same set of
-          authors (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}).
+          authors (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}; see
+          \Cref{fig:ieeeSourceSets}).
 \end{itemize}
+This third flaw only affects our more nuanced breakdown of the sources of flaws
+in \Cref{fig:flawBars}. % The rest increment their corresponding
+% count in \Cref{fig:flawBars,tab:flawMnfsts,tab:flawDmns} by only one.
 
 \phantomsection{}\label{less-cred-assert}
 Occasionally, we assert that a source from a less credible tier is more correct
