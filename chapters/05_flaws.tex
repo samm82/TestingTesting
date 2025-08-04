@@ -244,9 +244,30 @@ thought must be given to them.
 
 \subsubsection{Synonym Relation Flaws}\label{syns}
 
-As mentioned in \Cref{syn-rels}, synonyms do not inherently signify a
-flaw. Unfortunately, there are many instances of incorrect or ambiguous
-synonyms, such as the following:
+While synonyms do not inherently signify a flaw (as we discuss in
+\Cref{syn-rels}), the software testing literature is full of incorrect and
+ambiguous synonyms that do. As described in \Cref{relevantSyns}, we pay
+special attention to synonyms between independently defined approaches (which
+may be flaws) and to intransitive synonyms (which definitely \emph{are} flaws).
+\ifnotpaper We present explicit (see \Cref{explicitness}) synonym relations that
+    fit either of these criteria in \Cref{fig:expSynGraph}\utd{}, which we
+    automatically generate from \ourApproachGlossary{} and manually modify for
+    legibility. These relations are given as described by the literature and are
+    therefore flawed.
+
+    \begin{figure}[b!]
+        \centering
+        \includegraphics[width=\textwidth]{assets/graphs/manual/expSynLegend.pdf}
+        \includegraphics[width=\textwidth]{assets/graphs/manual/expSynGraph.pdf}
+        % \vspace{-7mm}
+        \caption{Visually meaningful synonym relations given explicitly by the
+            literature.}\label{fig:expSynGraph}
+    \end{figure}
+
+    We provide the full list of synonyms that violate transitivity in
+    \Cref{multiSyns} and discuss and other kinds of flawed synonym relations in
+    \Cref{parSyns,func-test-flaw,scal-flaw,compat-flaw}. \fi We also observe
+and manually track the following synonym flaws:
 
 \input{build/flawDmnSyns}
 
