@@ -1,4 +1,3 @@
-\newcommand\redunNoteHelper[1]{\ifnotpaper\vspace*{-0.4cm}\else#1\vspace*{-0.2cm}\fi}
 \begin{table}[tb]
     \centering
     \begin{talltblr}[
@@ -7,8 +6,6 @@
                 as it implies the synonym of ``missing''; \texttt{OMISS} would
                 be unintuitive and \texttt{OMIT} would be inconsistent with the
                 keys being adjective-based.},
-        % HACK: paper footnote not linking properly
-        note{\redunNoteHelper{c}} = {\redunNoteHelper{\redunNote}},
         caption = {Observed flaw manifestations.},
         label = {tab:flawMnfstDefs}
         ]{
@@ -24,7 +21,7 @@
         \contra*{}            & Information from multiple places conflicts            & CONTRA            \\
         \ambi*{}              & Information is unclear                                & AMBI              \\
         \over*{}              & Information is nonatomic or used in multiple contexts & OVER              \\
-        \redun*[c]{}          & Information is redundant                              & REDUN             \\
+        \redun*{}             & Information is redundant                              & REDUN             \\
         \hline
     \end{talltblr}
 \end{table}

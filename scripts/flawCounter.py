@@ -165,13 +165,7 @@ def genFlawMacros(flawView):
                 f"{{\\hyperref[{k.name.lower()}]"
                 f"{{\\IfBooleanTF{{#1}}{{{sing(k.value)}}}{{{k.value}}}}}{extra}}}")
 
-    writeFile([formatMacro(k) if k.name != "REDUN" else 
-               ("% Assisted by GitHub Copilot\n" + formatMacro(
-                   k, ["s", "o"],
-                   "\\ifnotpaper\\else\\IfNoValueTF{#2}{\\footnote{\\redunNote}}{\\TblrNote{#2}}\\fi")
-                )
-               for k in flawView],
-              f"{flawView.__name__}Macros", True)
+    writeFile([formatMacro(k) for k in flawView], f"{flawView.__name__}Macros", True)
 
 COMPLEX_TEX_FILES = [
     "build/multiCats.tex",

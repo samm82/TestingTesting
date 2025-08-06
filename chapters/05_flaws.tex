@@ -86,8 +86,7 @@ testing (\Cref{scal-flaw}), and compatibility testing (\Cref{compat-flaw}).
 The following sections list observed flaws grouped by \emph{how} they manifest
 as presented in \Cref{mnfst-def}. These include mistakes (\Cref{wrong}),
 omissions (\Cref{miss}), contradictions (\Cref{contra}), ambiguities
-(\Cref{ambi}), \ifnotpaper \else and \fi overlaps (\Cref{over})\ifnotpaper,
-and redundancies (\Cref{redun})\fi.
+(\Cref{ambi}), overlaps (\Cref{over}), and redundancies (\Cref{redun}).
 
 \subsubsection{Mistakes}\label{wrong}
 
@@ -130,12 +129,9 @@ definitions and terms (see \Cref{defs,labels}, respectively):
 
 \input{build/FlawMnfstOver}
 
-\ifnotpaper
-    \subsubsection{Redundancies}\label{redun}
-    The following are cases of redundant information:
-
-    \input{build/FlawMnfstRedun}
-\fi
+\subsubsection{Redundancies}\label{redun}
+We find redundancies in one term, one definition, and one parent-child relation%
+\ifnotpaper\ as listed in \Cref{redun-full}\fi.
 
 \subsection{Flaws by Domain}\label{flawDmns}
 

@@ -7,11 +7,6 @@
     note{d} = {We overwrite the primitive \TeX{} command \macro{over}
             % Source: https://tex.stackexchange.com/a/73825/192195
             since we do not otherwise use it.},
-    note{e} = {This takes an optional parameter for a \texttt{note-tag} that
-            corresponds to \macro{redunNote} (``\redunNote{}''; see
-            \Cref{tab:macrosText})\ when used in \texttt{tabularray}s
-            (i.e., \texttt{\textbackslash redun[c]\{\}}) since we omit this
-            section from our paper.}, % (see \Cref{tab:macrosPaper})
     % note{e} = {We define a starred version, \macro{papers*} (\papers*{}), to shorten the
     %         display name for use in tables.},
     caption = {\LaTeX{} macros for referencing well-defined sections.},
@@ -30,7 +25,7 @@
                                 & \macro{contra}                                            & (\contra{}) & \macro{pars}                                      & (\pars{})   & \macro{texts}                                     & (\texts{})   \\
                                 & \macro{ambi}                                              & (\ambi{})   & \macro{defs}                                      & (\defs{})   & \macro{papers}                                    & (\papers{})  \\ %\TblrNote{e}                                              \\
                                 & \macro{over}\TblrNote{d}                                  & (\over{})   & \macro{labels}                                    & (\labels{}) & \macro{papers*}                                   & (\papers*{}) \\
-                                & \macro{redun}\TblrNote{e}                                 & (\redun{})  & \macro{scope}                                     & (\scope{})  &                                                                  \\
+                                & \macro{redun}                                             & (\redun{})  & \macro{scope}                                     & (\scope{})  &                                                                  \\
                                 &                                                           &             & \macro{trace}                                     & (\trace{})  &                                                                  \\
     \hline
     \textbf{Used In}            & \SetCell[c=2]{c} {\Cref{tab:flawMnfstDefs,tab:flawMnfsts}                                                                                                                                                    \\
