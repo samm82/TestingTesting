@@ -149,6 +149,11 @@
 \def\loadFlaw{Load testing is performed with loads ``between anticipated
     conditions of low, typical, and peak usage'' \citep[p.~5]{IEEE2022} or
     loads that are as large as possible \citep[p.~86]{Patton2006}.}
+\NewDocumentCommand{\seeRefMissing}{s}{%
+    \IfBooleanTF#1{}{\refHelper} \citet[p.~42]{Kam2008} says ``See
+    \emph{boundary value analysis},'' for the glossary entry of ``boundary
+    value testing'' but does not include ``boundary value analysis'' in the
+    glossary.}
 \NewDocumentCommand{\tolTestFlaw}{s}{%
     \IfBooleanTF#1{t}{T}he terms ``acceleration tolerance testing'' and
     ``acoustic tolerance testing'' seem to only refer to software testing in
