@@ -51,7 +51,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \ExplSyntaxOn
 \RenewDocumentCommand \TblrNote { m }
 {{
-            \cs_if_exist:NT \hypersetup { \ExpTblrTemplate { note-border }{ default } }
+            \cs_if_exist:NT \hypersetup { \ExpTblrTemplate { note-border }{ empty } }
             {
                 \__tblr_hyper_link:nn {#1}
                 { \textit { \textrm { \textsuperscript { \UseTblrFont { note-tag } #1 } } } }
