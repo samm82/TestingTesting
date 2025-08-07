@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{expParSynGraph}{
+rankdir=BT;
+
+AllTransitionsTesting [label=<All<br/>Transitions<br/>Testing>];
+BranchConditionCombinationTesting [label=<Branch<br/>Condition<br/>Combination<br/>Testing>];
+DecisionTesting [label=<Decision<br/>Testing>];
+DeveloperTesting [label=<Developer<br/>Testing>];
+ExhaustiveTesting [label=<Exhaustive<br/>Testing>];
+FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
+OrthogonalArrayTesting [label=<Orthogonal<br/>Array<br/>Testing>];
+PairwiseTesting [label=<Pairwise<br/>Testing>];
+PathTesting [label=<Path<br/>Testing>];
+ProgrammerTesting [label=<Programmer<br/>Testing>];
+RobustnessTesting [label=<Robustness<br/>Testing>];
+ScenarioTesting [label=<Scenario<br/>Testing>];
+StateTransitionTesting [label=<State<br/>Transition<br/>Testing>];
+StructuredWalkthroughs [label=<Structured<br/>Walkthroughs>];
+UseCaseTesting [label=<Use<br/>Case<br/>Testing>];
+Walkthroughs [label=<Walkthroughs>];
+
+
+BranchConditionCombinationTesting -> DecisionTesting[dir=none,color="blue"];
+PathTesting -> ExhaustiveTesting[dir=none,color="maroon"];
+FaultToleranceTesting -> RobustnessTesting[dir=none,color="blue"];
+ScenarioTesting -> UseCaseTesting[dir=none,color="blue"];
+Walkthroughs -> StructuredWalkthroughs[dir=none,color="blue"];
+
+AllTransitionsTesting -> StateTransitionTesting[color="green"];
+FaultToleranceTesting -> RobustnessTesting[color="blue"];
+OrthogonalArrayTesting -> PairwiseTesting;
+PathTesting -> ExhaustiveTesting[color="maroon"];
+ProgrammerTesting -> DeveloperTesting[color="blue"];
+UseCaseTesting -> ScenarioTesting[color="green"];
+}
+\end{document}

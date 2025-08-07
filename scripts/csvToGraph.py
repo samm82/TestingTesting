@@ -676,8 +676,26 @@ if "Example" not in csvFilename:
     writeFile([f"{formatCount(parSynCount)}% Pairs of terms with parent/child AND synonym relations",
             f"{formatCount(selfParCount)}% Terms that are parents of themselves"],
             "parSynCounts", True)
+    
+    # Account for synonyms being symmetric
+    addedParSyns.update({(y, x) for (x, y) in addedParSyns})
+    addedParSyns = {(x.replace(" ", ""), y.replace(" ", ""))
+                    for (x, y) in addedParSyns}
+        
+    def findPairsInLines(lines: list[str]):
+        return list(filter(
+            lambda line: any(line.startswith(f"{chd} -> {par}")
+                            for (chd, par) in addedParSyns), lines))
+    
+    parSynsGraph = splitListAtEmpty(removeImplicit(categoryDict["Approach"][1]))
+    parSynsRels = (findPairsInLines(parSynsGraph[1]) + [""] +
+                   findPairsInLines(parSynsGraph[2]))
+    parSynsGraph = [
+        *filter(lambda x: any(
+            line.startswith(x.split(" ")[0]) or f"-> {x.split(" ")[0]}" in line
+            for line in parSynsRels),
+            parSynsGraph[0]), "", *parSynsRels]
 
-if "Example" not in csvFilename:
     outputFlaws()
     genFlawMacros(FlawDmn)
     genFlawMacros(FlawMnfst)
@@ -811,7 +829,7 @@ def makeLegend(lines, separate: bool=False) -> tuple[list[str], list[str]]:
         'start -> chd [style="invis"];'])
 
 CUSTOM_LEGEND = {"subsumes", "specBased", "parChd", "recovery", "scalability",
-                 "Example", "expSynGraph"}
+                 "Example", "expSynGraph", "expParSynGraph"}
 
 def writeDotFile(lines, filename):
     legend = []
@@ -847,6 +865,7 @@ if "Example" in csvFilename:
 else:
     explicitDict = categoryDict
     writeDotFile(synLinesGraph, "expSynGraph")
+    writeDotFile(parSynsGraph,  "expParSynGraph")
 
 for key, value in explicitDict.items():
     lines = value[1]

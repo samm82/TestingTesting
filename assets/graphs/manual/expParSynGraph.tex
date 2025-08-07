@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{expParSynGraph}{
+    rankdir=BT;
+
+    // Dummy node to push the legend to the top left
+    start [style="invis"];
+
+    ExhaustiveTesting [label=<Exhaustive<br/>Testing>];
+    FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
+    PathTesting [label=<Path<br/>Testing>];
+    RobustnessTesting [label=<Robustness<br/>Testing>];
+    ScenarioTesting [label=<Scenario<br/>Testing>];
+    UseCaseTesting [label=<Use<br/>Case<br/>Testing>];
+
+    FaultToleranceTesting -> RobustnessTesting[dir=none,color="blue"];
+    FaultToleranceTesting -> RobustnessTesting[color="blue"];
+
+    PathTesting -> ExhaustiveTesting[dir=none,color="maroon"];
+    PathTesting -> ExhaustiveTesting[color="maroon"];
+
+    UseCaseTesting -> ScenarioTesting[dir=none,color="blue"];
+    UseCaseTesting -> ScenarioTesting[color="green"];
+
+}
+\end{document}
