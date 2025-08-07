@@ -563,13 +563,13 @@ parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
 letters = iter(ascii_lowercase)
 tableFootnotes: list[str] = []
 
-manualInfParSyns = {("Dynamic Analysis", "Dynamic Testing")}
 # Since TblrNote uses unique footnotes, this is needed to avoid duplicates
-addedParSyns: set[tuple[str, str]] = set()
+                                     # Populate with manually tracked parSyns
+addedParSyns: set[tuple[str, str]] = {("Dynamic Analysis", "Dynamic Testing")}
 
 def makeParSynLine(chd, par, parSource, synSource) -> None:
     # Don't add manually tracked or already-tracked parSyns to table
-    if any((chd, par) in s for s in [manualInfParSyns, addedParSyns]):
+    if (chd, par) in addedParSyns:
         return
     addedParSyns.add((chd, par))
 
