@@ -686,16 +686,14 @@ if "Example" not in csvFilename:
     def findPairsInLines(lines: list[str]):
         return list(filter(
             lambda line: any(line.startswith(f"{chd} -> {par}")
-                            for (chd, par) in addedParSyns), lines))
+                            for chd, par in addedParSyns), lines))
     
     parSynsGraph = splitListAtEmpty(removeImplicit(categoryDict["Approach"][1]))
     parSynsRels = (findPairsInLines(parSynsGraph[1]) + [""] +
                    findPairsInLines(parSynsGraph[2]))
-    parSynsGraph = [
-        *filter(lambda x: any(
-            line.startswith(x.split(" ")[0]) or f"-> {x.split(" ")[0]}" in line
-            for line in parSynsRels),
-            parSynsGraph[0]), "", *parSynsRels]
+    parSynsGraph = list(filter(lambda x: any(
+        line.startswith(x.split(" ")[0]) or f"-> {x.split(" ")[0]}" in line
+        for line in parSynsRels), parSynsGraph[0])) + [""] + parSynsRels
 
     outputFlaws()
     genFlawMacros(FlawDmn)
