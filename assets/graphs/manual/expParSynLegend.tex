@@ -18,15 +18,15 @@ rank=same
 chd [label="Child"];
 par [label="Parent"];
 chd -> par [label="                "];
-syn1 [label="Synonym 1"];
-syn2 [label="Synonym 2"];
-syn1 -> syn2 [dir=none label="                "];
-}
-{
-rank=same
 src1 [style=invis];
 src2 [style=invis];
 src1 -> src2 [color=green, label=<From Established<br/>Standards>]
+}
+{
+rank=same
+syn1 [label="Synonym 1"];
+syn2 [label="Synonym 2"];
+syn1 -> syn2 [dir=none label="                "];
 src3 [style=invis];
 src4 [style=invis];
 src3 -> src4 [color=blue, label=<From Terminology<br/>Collections>]
@@ -38,10 +38,10 @@ src6 [style=invis];
 src5 -> src6 [color=maroon, label=<From Textbooks>]
 }
 edge [style="invis"]
-chd -> src1
-par -> src2 -> src5
-syn1 -> src3 -> src6
-syn2 -> src4
+chd -> syn1
+par -> syn2
+src1 -> src3 -> src5
+src2 -> src4 -> src6
 }
 
 }
