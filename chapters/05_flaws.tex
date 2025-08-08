@@ -129,8 +129,11 @@ relation\ifnotpaper\ as listed in \Cref{redun-full}\fi.
 
 \subsection{Flaws by Domain}\label{flawDmns}
 
-The following sections list observed flaws grouped by \emph{what} information
-is flawed as presented in \Cref{dmn-def}. This includes test approach
+The following sections present flaws that we detect automatically
+(see \Cref{auto-flaw-analysis}) grouped by \emph{what} information
+is flawed as presented in \Cref{dmn-def}. We also provide more detailed
+information on specific areas of these domains that require more investigation
+in the future. The domains we focus on here are test approach
 categories (\Cref{cats}), synonym relations (\Cref{syns}), parent-child
 relations (\Cref{pars}), definitions (\Cref{defs}), labels (\Cref{labels}),
 scope (\Cref{scope}), and traceability information (\Cref{trace}).
@@ -141,7 +144,7 @@ While the IEEE categorization of testing approaches described in
 \Cref{tab:ieeeCats} is useful, it is not without its faults. One issue,
 which is not inherent to the categorization itself, is the fact that it is not
 used consistently\ifnotpaper\ (see \Cref{tab:otherCats})\fi. The most
-blatant example of this is that \ifnotpaper \else ISO/IEC and IEEE \fi
+blatant example of this is that \ifnotpaper \else \citeauthor{IEEE2017} \fi
 \citet[p.~286]{IEEE2017} describe mutation testing as a
 methodology, even though this is not one of the categories \emph{they} created!
 Additionally, the boundaries between approaches within a category may
@@ -151,18 +154,15 @@ in practice [sic] some can be used in combination with other techniques''
 applying equivalence partitioning can be used to identify the input parameters
 of test cases derived for scenario testing'' \citetext{p.~8}. Even the categories
 themselves are not consistently defined, and some approaches are categorized
-differently by different sources; these differences are tracked so
-they can be analyzed more systematically\thesisissueref{21}.
-
-\input{build/flawDmnCats}
+differently by different sources; we track these differences so we can analyze
+them more systematically\thesisissueref{21}.
 
 % Moved here to display nicely in paper
 \ifnotpaper\else\input{assets/misc/multiCats}\fi
 
 \phantomsection{}\label{multiCats}
-
-Some category flaws can be detected automatically, such as test
-approaches with more than one category. These are given in \Cref{tab:multiCats}
+In particular, we can automatically detect test approaches with more than one
+category. These are given in \Cref{tab:multiCats}
 and include experience-based testing, which is of particular note.
 \expBasedCatMain{} These authors say ``experience-based testing practices like
 exploratory testing \dots\ are not \dots\ techniques for designing test cases'',
