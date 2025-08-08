@@ -38,19 +38,12 @@ with a ``more credible'' one (i.e., a previous row in the table; see
 \Cref{cred,source-tiers}). We also group these flaws by their explicitness
 (defined in \Cref{explicitness}) by counting (Obj)ective and (Sub)jective flaws
 separately (see \Cref{tab:flawMnfsts,tab:flawDmns}), since additional
-context may rectify them.
-\ifnotpaper Additionally, \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats}
-    contain relations that are explicit, implicit, and both; implicit relations
-    are marked by the phrases ``implied by''. \fi
-
+context may rectify them. \ifnotpaper Additionally,
+    \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats} contain relations that
+    are explicit, implicit, and both; implicit relations are marked by the
+    phrase ``implied by''. \fi
 Since we give each flaw a manifestation \emph{and} a domain, the totals per
-source and grand totals in these tables are equal. As an example, \tourFlaw*{}.
-This is a contradictory definition, so it appears \ifnotpaper as both \else in
-\fi \flawref{tour-def-contra,tour-def}. Within these sections, we \ifnotpaper
-    list ``more significant'' flaws first, followed by ``less significant''
-    ones we omit from the paper version of this thesis. We \else
-    omit ``less significant'' flaws for brevity, \fi then sort these flaws
-by their source tier (see \Cref{source-tiers}).
+source and grand totals in these tables are equal.
 
 We only list flaws we automatically uncover based on their domain \ifnotpaper
     (see \Cref{auto-flaw-analysis}) \fi in their corresponding
@@ -298,14 +291,14 @@ given in \Cref{tab:parSyns}\ifnotpaper\ (additional pairs where we infer a flaw
     are given in \Cref{infParSyns} for completeness)\fi. Of
 particular note is the relation between path testing and exhaustive testing.
 While \citet[p.~421]{vanVliet2000} claims that path testing done completely
-``is equivalent to exhaustively testing the program''\footnote{The
-    contradictory definitions of path testing given in \flawref{path-test}
-    add another layer of complexity to this claim.}, this overlooks the effects
-of input data \ifnotpaper
-    (\citealp[pp.~129--130]{IEEE2021}; \citealp[p.~121]{Patton2006};
+``is equivalent to exhaustively testing the program''\ifnotpaper\footnote{The
+        contradictory definitions of path testing given in \flawref{path-test}
+        add another layer of complexity to this claim.}\fi, this overlooks the
+effects of input data \ifnotpaper
+    (\citealp[pp.~129\==130]{IEEE2021}; \citealp[p.~121]{Patton2006};
     \citealp[p.~467]{PetersAndPedrycz2000})
 \else
-    \cite[p.~121]{Patton2006}, \cite[p.~129]{IEEE2021},
+    \cite[p.~121]{Patton2006}, \cite[p.~129\==130]{IEEE2021},
     \cite[p.~467]{PetersAndPedrycz2000}
 \fi and implementation issues \citetext{p.~476} % \citep[p.~476]{PetersAndPedrycz2000}
 on the code's behaviour. Exhaustive testing
