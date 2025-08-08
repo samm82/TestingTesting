@@ -181,7 +181,8 @@ def addNode(name, style = "", key = "Approach", cat = ""):
     infer = "(inferred" in name
     if key in cat:
         infer = infer or ("Example" not in csvFilename and
-                          ("(inferred" in cat or "(" not in cat))
+                          ("(inferred" in cat or (
+                              key != "Approach" and "(" not in cat)))
         if not infer:
             dashed = dashed or isUnsure(cat, only=True)
     if dashed:

@@ -11,40 +11,102 @@ rankdir=BT;
 // Dummy node to push the legend to the top left
 start [style="invis"];
 
+AdHocReviews [label=<Ad<br/>Hoc<br/>Reviews>];
+CodeReviews [label=<Code<br/>Reviews>];
+ContentChecking [label=<Content<br/>Checking>];
+ExpertUsabilityReviews [label=<Expert<br/>Usability<br/>Reviews>];
 InductiveAssertionMethods [label=<Inductive<br/>Assertion<br/>Methods>];
+ModelVerification [label=<Model<br/>Verification>];
+PeerReviews [label=<Peer<br/>Reviews>];
+Reviews [label=<Reviews>];
+RolebasedReviews [label=<Role-based<br/>Reviews>];
+ScenarioWalkthroughs [label=<Scenario<br/>Walkthroughs>];
+ScenariobasedReviews [label=<Scenario-based<br/>Reviews>];
+StaticAnalysis [label=<Static<br/>Analysis>];
+StaticTesting [label=<Static<br/>Testing>];
 SymbolicExecution [label=<Symbolic<br/>Execution>];
+TechnicalReviews [label=<Technical<br/>Reviews>];
+UsabilityReviews [label=<Usability<br/>Reviews>];
+UsabilityWalkthroughs [label=<Usability<br/>Walkthroughs>];
 Walkthroughs [label=<Walkthroughs>];
 
+StaticTesting -> StaticAnalysis[dir=none,color="maroon"];
 
 AnomalyTesting [label=<Anomaly<br/>Testing>,style="filled"];
+AnomalyTesting -> StaticTesting[color="maroon"];
+CodeReviews -> Reviews[color="blue"];
 UsabilityTesting [label=<Usability<br/>Testing>,style="filled"];
+ContentChecking -> UsabilityTesting;
+ContentChecking -> StaticTesting;
 DesktopDevelopmentTesting [label=<Desktop<br/>Development<br/>Testing>,style="filled"];
+ContentChecking -> DesktopDevelopmentTesting;
 WebApplicationTesting [label=<Web<br/>Application<br/>Testing>,style="filled"];
+ContentChecking -> WebApplicationTesting[color="maroon"];
 ControlFlowAnalysis [label=<Control<br/>Flow<br/>Analysis>,style="filled"];
+ControlFlowAnalysis -> StaticAnalysis[color="blue"];
 DataFlowAnalysis [label=<Data<br/>Flow<br/>Analysis>,style="filled"];
+DataFlowAnalysis -> StaticAnalysis[color="blue"];
 InformalTesting [label=<Informal<br/>Testing>,style="filled"];
+ExpertUsabilityReviews -> InformalTesting[color="blue"];
+ExpertUsabilityReviews -> UsabilityTesting[color="blue"];
+ExpertUsabilityReviews -> Reviews[color="blue"];
 FaultTreeAnalysis [label=<Fault<br/>Tree<br/>Analysis>,style="filled"];
 HeuristicEvaluations [label=<Heuristic<br/>Evaluations>,style="filled"];
+HeuristicEvaluations -> UsabilityReviews[color="blue"];
 ProofsofCorrectness [label=<Proofs<br/>of<br/>Correctness>,style="filled"];
 InductiveAssertionMethods -> ProofsofCorrectness[color="green"];
 MathematicalbasedTesting [label=<Mathematical-based<br/>Testing>,style="filled"];
 AssertionChecking [label=<Assertion<br/>Checking>,style="filled"];
 CodeInspections [label=<(Code)<br/>Inspections>,style="filled"];
+CodeInspections -> StaticAnalysis[color="green"];
+CodeInspections -> StaticTesting[color="green"];
+CodeInspections -> Reviews[color="maroon"];
 MalwareScanning [label=<Malware<br/>Scanning>,style="filled"];
+MalwareScanning -> StaticAnalysis[color="blue"];
+ModelVerification -> StaticTesting[color="green"];
+PeerReviews -> Reviews[color="green"];
+PeerReviews -> InformalTesting[color="maroon"];
 PerformanceTesting [label=<Performance<br/>Testing>,style="filled"];
+PerformanceTesting -> StaticAnalysis;
+ProofsofCorrectness -> StaticAnalysis[color="maroon"];
 RequirementsAnimation [label=<Requirements<br/>Animation>,style="filled"];
+RequirementsAnimation -> StaticTesting;
+Reviews -> StaticTesting[color="green"];
 WModelTesting [label=<W-Model<br/>Testing>,style="filled"];
+Reviews -> WModelTesting;
 StructuralAnalysis [label=<Structural<br/>Analysis>,style="filled"];
+Reviews -> StructuralAnalysis[color="maroon"];
 StructuredTesting [label=<Structured<br/>Testing>,style="filled"];
+Reviews -> StructuredTesting[color="maroon"];
 RolebasedTesting [label=<Role-based<br/>Testing>,style="filled"];
+Reviews -> RolebasedTesting[color="maroon"];
+RolebasedReviews -> Reviews[color="blue"];
+ScenarioWalkthroughs -> StaticTesting;
+ScenarioWalkthroughs -> WModelTesting;
 ScenarioTesting [label=<Scenario<br/>Testing>,style="filled"];
+ScenariobasedReviews -> Reviews[color="blue"];
 SecurityTesting [label=<Security<br/>Testing>,style="filled"];
 Inspections [label=<Inspections>,style="filled"];
+StaticAnalysis -> StaticTesting[color="green"];
+StaticAnalysis -> WModelTesting;
+StaticTesting -> WModelTesting;
+StructuralAnalysis -> StaticTesting[color="maroon"];
 StructurebasedTesting [label=<Structure-based<br/>Testing>,style="filled"];
 SymbolicExecution -> StructurebasedTesting[color="maroon"];
+SymbolicExecution -> StaticTesting[color="maroon"];
 SyntaxTesting [label=<Syntax<br/>Testing>,style="filled"];
+SyntaxTesting -> StaticTesting;
+FormalReviews [label=<Formal<br/>Reviews>,style="filled"];
+TechnicalReviews -> FormalReviews[color="blue"];
 TransactionVerification [label=<Transaction<br/>Verification>,style="filled"];
+TransactionVerification -> StaticTesting;
+UsabilityReviews -> UsabilityTesting[color="blue"];
+UsabilityReviews -> Reviews[color="blue"];
+UsabilityWalkthroughs -> UsabilityTesting[color="green"];
 VisualBrowserValidation [label=<Visual<br/>Browser<br/>Validation>,style="filled"];
+Walkthroughs -> StaticAnalysis[color="green"];
+Walkthroughs -> FormalReviews[color="blue"];
+Walkthroughs -> Reviews[color="blue"];
 
 subgraph cluster_legend {
 
@@ -78,13 +140,16 @@ src2 [style=invis];
 src1 -> src2 [color=green, label=<From Established<br/>Standards>]
 src3 [style=invis];
 src4 [style=invis];
-src3 -> src4 [color=maroon, label=<From Textbooks>]
+src3 -> src4 [color=blue, label=<From Terminology<br/>Collections>]
 }
 {
 rank=same
 src5 [style=invis];
 src6 [style=invis];
-src5 -> src6 [color=black, label=<From Papers and<br/>Other Documents>]
+src5 -> src6 [color=maroon, label=<From Textbooks>]
+src7 [style=invis];
+src8 [style=invis];
+src7 -> src8 [color=black, label=<From Papers and<br/>Other Documents>]
 }
 edge [style="invis"]
 imp1 -> chd
@@ -93,8 +158,10 @@ imp3 -> syn1
 imp4 -> syn2
 dyn -> { imp2 imp3 }
 src1 -> dyn
-src5 -> src2
-src6 -> src3
+src5 -> src1
+src6 -> src2
+src7 -> src3
+src8 -> src4
 }
 
 // Connect the dummy node to the first node of the legend
