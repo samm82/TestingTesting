@@ -16,6 +16,8 @@
     PathTesting [label=<Path<br/>Testing>];
     RobustnessTesting [label=<Robustness<br/>Testing>];
     ScenarioTesting [label=<Scenario<br/>Testing>];
+    StaticAnalysis [label=<Static<br/>Analysis>];
+    StaticTesting [label=<Static<br/>Testing>];
     UseCaseTesting [label=<Use<br/>Case<br/>Testing>];
 
     FaultToleranceTesting -> RobustnessTesting[dir=none,color="blue"];
@@ -23,6 +25,9 @@
 
     PathTesting -> ExhaustiveTesting[dir=none,color="maroon"];
     PathTesting -> ExhaustiveTesting[color="maroon"];
+
+    StaticAnalysis -> StaticTesting[dir=none,color="maroon"];
+    StaticAnalysis -> StaticTesting[color="green"];
 
     UseCaseTesting -> ScenarioTesting[dir=none,color="blue"];
     UseCaseTesting -> ScenarioTesting[color="green"];
