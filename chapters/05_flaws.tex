@@ -129,14 +129,14 @@ relation\ifnotpaper\ as listed in \Cref{redun-full}\fi.
 
 \subsection{Flaws by Domain}\label{flawDmns}
 
-The following sections present flaws that we detect automatically
-(see \Cref{auto-flaw-analysis}) grouped by \emph{what} information
+The following sections present flaws that we detect automatically \ifnotpaper
+    (see \Cref{auto-flaw-analysis}) \fi grouped by \emph{what} information
 is flawed as presented in \Cref{dmn-def}. We also provide more detailed
 information on specific areas of these domains that require more investigation
-in the future. The domains we focus on here are test approach
-categories (\Cref{cats}), synonym relations (\Cref{syns}), parent-child
-relations (\Cref{pars}), definitions (\Cref{defs}), labels (\Cref{labels}),
-scope (\Cref{scope}), and traceability information (\Cref{trace}).
+in the future. The domains we focus on here are test approach categories
+(\Cref{cats}), synonym relations (\Cref{syns}), \ifnotpaper \else and \fi
+parent-child relations (\Cref{pars})\ifnotpaper, and definitions
+(\Cref{defs})\fi.
 
 \subsubsection{Approach Category Flaws}\label{cats}
 
@@ -321,17 +321,11 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
 \else % Moved earlier to display nicely in paper
 \fi
 
-\subsubsection{Definition Flaws}\label{defs}
-
-Perhaps the most interesting category for those seeking to understand how to
-apply a given test approach, there are many flaws with how test
-approaches, as well as supporting terms, are defined:
-
-\input{build/flawDmnDefs}
-
 % TODO: re-investigate this after going through the rest of ISO/IEC/IEEE 29119
 \ifnotpaper
-    Also of note: \citep{IEEE2022, IEEE2021}, from the
+    \subsubsection{Definition Flaws}\label{defs}
+
+    \citet{IEEE2022, IEEE2021}, from the
     ISO/IEC/IEEE 29119 family of standards, mention the following 23 test
     approaches without defining them. This means that out of the 114 test
     approaches they mention, about 20\% have no associated definition!
@@ -379,37 +373,6 @@ approaches, as well as supporting terms, are defined:
               Software Unit Testing implicitly listed in the bibliography!)
         \item User Acceptance Testing
     \end{itemize}
-\fi
-
-\subsubsection{Label Flaws}\label{labels}
-
-While some flaws exist because the definition of a term is wrong,
-others exist because a term's \emph{name} or \emph{label} is wrong!
-\defLabelDistinct{}, which we define in \Cref{label-flaw-def}.
-We observe the following label flaws:
-
-\input{build/flawDmnLabels}
-
-\subsubsection{Scope Flaws}\label{scope}
-
-Some information is given that is technically correct, but it is either given
-too narrowly, too broadly, or when it should not have been (i.e., it is
-irrelevant)\thesisissueref{182}! We observe the following scope flaws as
-defined in \Cref{scope-flaw-def}:
-
-\input{build/flawDmnScope}
-
-\subsubsection{Traceability Flaws}\label{trace}
-
-\ifnotpaper
-    The following are examples of traceability flaws, as defined in
-    \Cref{trace-flaw-def}:
-    \input{build/flawDmnTrace}
-\else
-    Sometimes a document cites another for a piece of information that does not
-    appear! For example, \citet[p.~184]{DoğanEtAl2014} \multiAuthHelper{claim}
-    that \citet{SakamotoEtAl2013} \multiAuthHelper{define} ``prime path
-    coverage'', but it does not.
 \fi
 
 \subsection{Functional Testing}\label{func-test-flaw}

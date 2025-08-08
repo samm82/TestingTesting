@@ -179,10 +179,10 @@ error-based testing (implied by \citealp[p.~399]{vanVliet2000}).}
     reliability testing by \citet{ISO_IEC2023a}, but these are all listed
     separately by \citet[p.~53]{Firesmith2015}.}
 \def\parSheetTestFlaw{``Par sheet testing'' from \citepISTQB{} seems to refer
-    to the specific example mentioned in \flawref{specific-istqb} and does
-    not seem more widely applicable, since a ``PAR sheet'' is ``a list of
-    all the symbols on each reel of a slot machine''
-    \citep{Bluejay2024}.}
+    to \ifnotpaper the specific example mentioned in \flawref{specific-istqb}
+    \else some specific example they do not cite \fi and does not seem more
+    widely applicable, since a ``PAR sheet'' is ``a list of all the symbols on
+    each reel of a slot machine'' \citep{Bluejay2024}.}
 \NewDocumentCommand{\redBoxFlaw}{s}{%
     \IfBooleanTF#1{t}{T}he incorrect claim that ``white-box
     testing'', ``grey-box testing'', and ``black-box testing'' are
