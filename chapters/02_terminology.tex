@@ -438,16 +438,18 @@ hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
 % what we mean by the term. 
 Ideally, software testing literature would describe test approaches correctly,
 completely, consistently, and modularly, but this is not the case in reality.
-We refer to any instance where one of these ideals is violated as a ``flaw''%
+We use the term ``flaw'' to refer to any instance of the literature violating
+these ideals, \emph{not} to instances of \emph{software} doing the same.%
 \footnote{When picking a word to describe these violations, we wanted to avoid
     words that are ``overloaded with too many meanings'' like
     ``error'' and ``fault'' \citep[p.~12\=/3; see \Cref{error-fault-failure}
         for more detailed discussion]{SWEBOK2024}. A small literature review
-    revealed that established standards (see \Cref{stds}) only use the term
+    revealed that established standards (see \Cref{stds}) use the term
     ``flaw'' to refer to requirements \citep[p.~38]{IEEE2022}, design
-    \citetext{p.~43}, ``system security procedures \dots{} and internal controls''
-    % under the term ``vulnerability''
-    \citep[p.~194]{IEEE2012}, or code itself \citetext{p.~92}. \refHelper
+    \citetext{p.~43}, ``system security procedures \dots{} and internal
+    controls'' % under the term ``vulnerability''
+    \citep[p.~194]{IEEE2012}, but only once to refer to code itself
+    \citetext{p.~92}. \refHelper
     \citet[p.~7\=/9]{SWEBOK2024} also uses the word ``flaw'' in a way that
     aligns with our goal of analyzing what is wrong with software
     engineering's testing literature.}\todo{Present tense in footnote?}.
