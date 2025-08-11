@@ -279,12 +279,11 @@ their sources in \Cref{tab:flawMnfsts,tab:flawDmns}. \ifnotpaper We identify
     \cite[Tab.~1]{Gerrard2000b}.\fi
 
 \phantomsection{}\label{parSyns}
-There are also pairs of synonyms where one is described as a subapproach
-of the other, abusing the meaning of ``synonym'' and causing confusion.
-We identify \parSynCount{} of these pairs through automatic analysis of the
-generated graphs, \ifnotpaper which are \else with the most prominent \fi
-given in \Cref{tab:parSyns}\ifnotpaper\ (additional pairs where we infer a flaw
-    are given in \Cref{infParSyns} for completeness)\fi. Of
+\parSynIntro{}\ifnotpaper. We visualize the pairs where both
+relations are explicit in \Cref{fig:expParSynGraph} and list all
+identified pairs in \Cref{tab:parSyns}, as well as pairs where we infer a
+flaw in \Cref{infParSyns} for completeness\else\ and list the most
+prominent in \Cref{tab:parSyns}\fi. Of
 particular note is the relation between path testing and exhaustive testing.
 While \citet[p.~421]{vanVliet2000} claims that path testing done completely
 ``is equivalent to exhaustively testing the program''\ifnotpaper\footnote{The
@@ -294,8 +293,8 @@ effects of input data \ifnotpaper
     (\citealp[pp.~129\==130]{IEEE2021}; \citealp[p.~121]{Patton2006};
     \citealp[p.~467]{PetersAndPedrycz2000})
 \else
-    \cite[p.~121]{Patton2006}, \cite[p.~129\==130]{IEEE2021},
-    \cite[p.~467]{PetersAndPedrycz2000}
+    \cite[p.~467]{PetersAndPedrycz2000}, \cite[p.~121]{Patton2006},
+    \cite[p.~129\==130]{IEEE2021}
 \fi and implementation issues \citetext{p.~476} % \citep[p.~476]{PetersAndPedrycz2000}
 on the code's behaviour. Exhaustive testing
 requires ``all combinations of input values \emph{and} preconditions \dots{}
@@ -314,11 +313,7 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
         \caption{Pairs of test approaches with a \hyperref[par-chd-rels]{parent-child}
             \emph{and} \hyperref[syn-rels]{synonym} relation.}\label{fig:expParSynGraph}
     \end{figure}
-
-    \begin{landscape}
-        \input{build/parSyns}
-    \end{landscape}
-\else % Moved earlier to display nicely in paper
+\else
 \fi
 
 % TODO: re-investigate this after going through the rest of ISO/IEC/IEEE 29119

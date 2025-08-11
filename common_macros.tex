@@ -131,6 +131,14 @@
         \citep[p.~12]{Gerrard2000a}, which is \distinctIEEE{#2}}
 }
 
+\NewDocumentCommand\parSynIntro{s}{%
+    \IfBooleanTF#1{t}{T}here are also pairs of synonyms where one is described
+    as a subapproach of the other, abusing the meaning of ``synonym'' and
+    causing confusion. \IfBooleanTF#1{Below are all}{We identify} \parSynCount{}
+    of these pairs\IfBooleanTF#1{\ that we identify}{} through automatic
+    analysis of the generated graphs\ifnotpaper\ as described in
+        \Cref{auto-flaw-analysis}\fi}
+
 % Examples of flaws
 \def\bugPattonFlaw{\citet[pp.~13\==14]{Patton2006} ``just call[s] it what it
     is and get[s] on with it'', abandoning these four terms, ``problem'',

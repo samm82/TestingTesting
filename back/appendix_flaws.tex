@@ -29,9 +29,10 @@ We sort the following groups of flaws by their source tier (defined in
 
 \section{Full Lists of Flaws by Domain}\label{flawDmn-full}
 
-\subsection{Full List of Synonym Flaws}
+The following sections provide all of the data that we automatically detect
+(as described in \Cref{auto-flaw-analysis}) and summarize in \Cref{flawDmns}.
 
-\subsubsection{Intransitive Synonyms}\label{multiSyns}
+\subsection{Intransitive Synonyms}\label{multiSyns}
 There are also cases in which a term is given as a synonym to two (or more)
 terms that are not synonyms themselves. Sometimes, these terms
 \emph{are} synonyms; for example, \citetISTQB{} \multiAuthHelper{say}
@@ -68,3 +69,9 @@ but not with other terms not in italics\todo{Better way to handle/display
 \begin{enumerate}
     \input{\ifnotpaper build\else assets/misc\fi/multiSyns}
 \end{enumerate}
+
+\subsection{Synonym and Parent-Child Overlaps}\label{parSyns-full}
+As described in \Cref{parSyns}, \parSynIntro*{}.
+\begin{landscape}
+    \input{build/parSyns}
+\end{landscape}
