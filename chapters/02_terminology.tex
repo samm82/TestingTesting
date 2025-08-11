@@ -26,8 +26,12 @@ heuristic of credibility to group our identified sources into ``tiers''
 (\Cref{source-tiers}). Defining these terms helps reduce the effect of our
 preconceptions on our analysis (or at least makes it more obvious to future
 researchers), as there may be other equally valid ways to analyze the
-literature and its flaws.
+literature and its flaws. To be clear: we do \emph{not} prescribe what
+terminology software testers \emph{should} use, we simply observe the
+terminology that the literature uses and try to use it as consistently and
+logically as possible.
 
+\ifnotpaper\newpage\fi
 \subsection{Test Approaches}\label{approach-def}
 
 Software testing is defined as ``the process of executing a program with the
@@ -146,17 +150,6 @@ as follows\thesisissueref{21}:
 %     testing as an orthogonal distinction could make sense in specific contexts
 %     (see \Cref{static-test}).
 
-\ifnotpaper
-    % \afterpage{
-    \begin{landscape}
-        \begin{table*}[p]
-            % Moved earlier to display nicely in paper
-            \ieeeCatsTable{}
-        \end{table*}
-    \end{landscape}
-    % }
-\fi
-
 % % Removed for brevity; #202
 % For example, boundary value analysis is a test technique since its inputs are
 % ``the boundaries of equivalence partitions'' \ifnotpaper
@@ -187,6 +180,17 @@ Therefore, we do \emph{not} consider approaches categorized as an artifact
 Finally, we also record the test category of ``process'' for completeness,
 although this seems to be a higher level classification and these approaches
 will likely be excluded during later analysis\thesisissueref{52}.
+
+\ifnotpaper
+    % \afterpage{
+    \begin{landscape}
+        \begin{table*}[p]
+            % Moved earlier to display nicely in paper
+            \ieeeCatsTable{}
+        \end{table*}
+    \end{landscape}
+    % }
+\fi
 
 % \fi
 % While we can categorize the vast majority of identified test approaches
@@ -614,6 +618,7 @@ source as more ``credible'' if it:
 Sources may meet only some of these criteria, so we use our judgement (along
 with the format of the sources themselves) when comparing them.
 
+\ifnotpaper\newpage\fi
 \subsection{Source Tiers}\label{source-tiers}
 For ease of discussion and analysis, we group the complete set of sources into
 ``tiers'' based on their format, method of publication, and our heuristic of
@@ -638,7 +643,7 @@ pages! Using these standards allows us to record many test approaches in a
 similar context from a source that is widely used and well-respected.
 
 % Only top or bottom to comply with IEEE guidelines
-\begin{figure}[bt!]
+\begin{figure}[b!]
     \centering
     \begin{tikzpicture}
         \pie[sum=auto, after number=, text=legend, thick,
@@ -653,6 +658,7 @@ similar context from a source that is widely used and well-respected.
     \label{fig:sourceSummary}
 \end{figure}
 
+\ifnotpaper\newpage\fi
 \subsubsection{\stdSources{1}}\label{stds}
 % Colored \textcolor{green}{green}
 
@@ -726,5 +732,7 @@ observing how terms are used in practice\thesisissueref{89}:
     \item Website \citep{LambdaTest2024,Pandey2023}
     \item Booklet \citep{SPICE2022}
     \item \ifnotpaper \else ChatGPT \fi \citet{ChatGPT2024} (with its claims
-          supported by \citet{RusEtAl2008})
+          supported by \citet{RusEtAl2008})\ifnotpaper\footnote{For more
+                  information on how and why we use ChatGPT, see
+                  \Cref{use-of-chatgpt}.}\fi
 \end{itemize}
