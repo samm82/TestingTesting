@@ -258,6 +258,7 @@ class MultiCatInfo():
 
 multiCatDict = {0 : MultiCatInfo("infMultiCats", "inferred to have"),
                 1 : MultiCatInfo("multiCats",    "with")}
+multiCatCounter = {c: 0 for c in itertools.combinations(APP_CATS, 2)}
 
 LONG_ENDINGS = {"Testing", "Management", "Scanning", "Audits",
                "Guessing", "Correctness"}
@@ -281,6 +282,21 @@ for name, category in zip(names, categories):
             f"{{{LONG_ENDINGS_REGEX.sub(r'\\\\\1', name)}}}",
             [formatLineWithSources(c, False) for c in category]
         )
+
+        # Exclude inferences
+        if bool(flawCount):
+            flawCats = tuple(c.split(" ")[0].strip("?") for c in sorted(category))
+            multiCatCounter[flawCats] += 1
+
+# See which categories get confused the most
+multiCatTotals = {cat: 0 for cat in APP_CATS + ["Total"]}
+for (x, y), total in multiCatCounter.items():
+    for ind in {x, y, "Total"}:
+        multiCatTotals[ind] += total
+
+for x, y in multiCatTotals.items():
+    print(x, y)
+input()
 
 if "Example" not in csvFilename:
     for multiCat in multiCatDict.values():
