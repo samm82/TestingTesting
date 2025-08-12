@@ -307,7 +307,7 @@ if "Example" not in csvFilename:
     writeFile([
         f"{multiCatTotal}% Total number of approaches with multiple categories",
         f"{multiCatMax[0].lower()}% Category with the most overlaps",
-        f"{formatCount(multiCatMax[1])}% Number of overlaps of the previous category",
+        f"{formatCount(multiCatMax[1])}% Number of overlaps involving the previous category",
         ], "multiCatCounts", True)
 
 for key in categoryDict.keys():
