@@ -119,14 +119,9 @@ staticApproaches = {
 staticKeywords = {'Audit', 'Inspection' 'Proof', 'Review', 'Static', 'Walkthrough'}
 dynamicExceptions = {}
 
-categoryDict = {
-    "Approach": ([], []),
-    "Level": ([], []),
-    "Practice": ([], []),
-    "Static": ([], []), # Not a category in the same way, but makes for easier code
-    "Technique": ([], []),
-    "Type": ([], []),
-}
+APP_CATS = ["Level", "Practice", "Technique", "Type"]
+categoryDict = {key: ([], []) for key in ["Approach", "Static"] + APP_CATS}
+# Static is not a category in the same way, but this makes for easier code
 
 warned_multi_unsure = set()
 # only == True returns a string iff the passed `name` is not explicit
@@ -182,7 +177,7 @@ def addNode(name, style = "", key = "Approach", cat = ""):
     if key in cat:
         infer = infer or ("Example" not in csvFilename and
                           ("(inferred" in cat or (
-                              key != "Approach" and "(" not in cat)))
+                              key in APP_CATS and "(" not in cat)))
         if not infer:
             dashed = dashed or isUnsure(cat, only=True)
     if dashed:
@@ -209,12 +204,15 @@ def addNode(name, style = "", key = "Approach", cat = ""):
             staticApproaches.add(formatApproach(name))
             break
     
-    if style == "filled" and key == "Static":
-        addLineToCategory("Static", nameLine)
-        return
+    if key == "Static":
+        if style == "filled":
+            addLineToCategory("Static", nameLine)
+            return
+    else:
+        if formatApproach(name) in staticApproaches and \
+                nameLine.replace(",color=grey", "") not in categoryDict["Static"][1]:
+            addLineToCategory("Static", nameLine)
 
-    if formatApproach(name) in staticApproaches:
-        addLineToCategory("Static", nameLine)
     addLineToCategory(key, nameLine)
 
 # Old criteria
