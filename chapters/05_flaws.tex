@@ -162,9 +162,12 @@ them more systematically\thesisissueref{21}.
 \ifnotpaper\else\input{assets/misc/multiCats}\fi
 
 \phantomsection{}\label{multiCats}
-In particular, we can automatically detect test approaches with more than one
-category. These are given in \Cref{tab:multiCats}
-and include experience-based testing, which is of particular note.
+In particular, \multiCatIntro{}. We identify \multiCatCount{} such cases, which
+we consider flaws as they violate our assumption of orthogonality (see
+\Cref{orth-approach}). These flaws mostly involve the category of ``test
+\multiCatMax{}'', which shows up in \multiCatMaxCount{} of them. We list all of
+these flaws along with their sources in \Cref{tab:multiCats} for completeness,
+but the multiple categorizations of experience-based testing are of particular note.
 \expBasedCatMain{} These authors say ``experience-based testing practices like
 exploratory testing \dots\ are not \dots\ techniques for designing test cases'',
 although they ``can use \dots\ test techniques'' \citeyearpar[p.~viii]{IEEE2021},
@@ -225,13 +228,6 @@ orthogonal. \ifnotpaper Similarly, the conflicting categorizations of beta
 \fi These kinds of inconsistencies between parent and child test approach
 categorizations may indicate that categories are not transitive or that more
 thought must be given to them.
-
-\ifnotpaper
-    \begin{landscape}
-        \input{build/multiCats}
-    \end{landscape}
-\else % Not yet present in paper
-\fi
 
 \subsubsection{Synonym Relation Flaws}\label{syns}
 
