@@ -241,24 +241,31 @@ def writeFile(lines, filename: str, helper: bool = False, dir: str = "graphs"):
 def writeTblr(filename: str, caption: str, headers: list[str], lines: list[str], *,
               env: str = "longtblr", envArg: str = "hbtp!", widths: list[int] = [],
               footnotes: list[str] = [], xCol: bool = True, toSort: bool = True,
-              rowHeadSpec: str = "c", rowDataSpec: str = "l"):
+              fullWidth: bool = True, rowHeadSpec: str = "c", rowDataSpec: str = "l"):
     colSpecList = []
+    # Used for ensuring correct number of xcolumns
+    colCount = len(headers)
     if xCol:
-        # Used for ensuring correct number of xcolumns
-        xcolCount = len(headers) - 1
-        assert all(line.count("&") == xcolCount for line in lines)
-        colSpecList.append(f"Q[{rowHeadSpec},m]")
+        colCount -= 1
+        assert all(line.count("&") == colCount for line in lines)
 
-    # If all given widths are equal, don't change them
-    if len(set(widths)) > 1:
-        # Include first column
+    if fullWidth:
         if xCol:
-            assert len(widths) == xcolCount
-        scale = sum(widths) / len(widths)
-        colSpecList += [f"X[{width/scale},{rowDataSpec},m]"
-                        for width in widths]
+            colSpecList.append(f"Q[{rowHeadSpec},m]")
+
+        # If all given widths are equal, don't change them
+        if len(set(widths)) > 1:
+            assert len(widths) == colCount
+            scale = sum(widths) / len(widths)
+            colSpecList += [f"X[{width/scale},{rowDataSpec},m]"
+                            for width in widths]
+        else:
+            colSpecList += [f"X[{rowDataSpec},m]"] * colCount
     else:
-        colSpecList += [f"X[{rowDataSpec},m]"] * xcolCount
+        assert not widths
+        if xCol:
+            colSpecList.append(rowHeadSpec)
+        colSpecList += [rowDataSpec] * colCount
 
     lines = [f"\\begin{{{env}}}[",
            *(f"   note{{{x}}} = {{{footnote}}},"
@@ -266,8 +273,7 @@ def writeTblr(filename: str, caption: str, headers: list[str], lines: list[str],
              f"   caption = {{{caption}}},",
              f"   label = {{tab:{filename}}}",
               "   ]{",
-             f"   colspec = {{|{"|".join(colSpecList)}|}}, width = \\linewidth,",
-           #   f"   colspec = {{|{"|".join(colSpecList)}|}}, width = {width},",
+             f"   colspec = {{|{"|".join(colSpecList)}|}}{", width = \\linewidth" if fullWidth else ""},",
               "   row{1} = {halign=c}, rowhead = 1",
               "   }",
               "  \\hline",

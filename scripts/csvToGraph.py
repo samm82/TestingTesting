@@ -303,11 +303,30 @@ if "Example" not in csvFilename:
 
     # TODO: this assumes there is only one maximum
     multiCatMax = max(multiCatTotals.items(), key=lambda k: k[1])
+    multiCatMax, multiCatMaxCount = multiCatMax
+
+    multiCatTable = []
+    for pair, total in multiCatCounter.copy().items():
+        if multiCatMax in pair:
+            del multiCatCounter[pair]
+            if pair[1] == multiCatMax:
+                pair = tuple(reversed(pair))
+            multiCatTable.append(f"{'/'.join(pair)} & {total} \\\\")
+
+    for pair, total in multiCatCounter.copy().items():
+        if total:
+            multiCatTable.append(f"{'/'.join(pair)} & {total} \\\\")
+    multiCatTable.append("\\hline")
+    multiCatTable.append(f"Total & {multiCatTotal} \\\\")
+
+    writeTblr("multiCatTable", "Summary of pairs of categories assigned to a test approach.",
+              ["Categories", "Count"], multiCatTable, xCol=False, toSort=False,
+              fullWidth=False, rowHeadSpec="l", rowDataSpec="c")
 
     writeFile([
         f"{multiCatTotal}% Total number of approaches with multiple categories",
-        f"{multiCatMax[0].lower()}% Category with the most overlaps",
-        f"{formatCount(multiCatMax[1])}% Number of overlaps involving the previous category",
+        f"{multiCatMax.lower()}% Category with the most overlaps",
+        f"{formatCount(multiCatMaxCount)}% Number of overlaps involving the previous category",
         ], "multiCatCounts", True)
 
 for key in categoryDict.keys():

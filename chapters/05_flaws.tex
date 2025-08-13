@@ -162,8 +162,9 @@ them more systematically\thesisissueref{21}.
 \ifnotpaper\else\input{assets/misc/multiCats}\fi
 
 \phantomsection{}\label{multiCats}
-In particular, \multiCatIntro{}. We identify \multiCatCount{} such cases, which
-we consider flaws as they violate our assumption of orthogonality (see
+In particular, \multiCatIntro{}. We identify \multiCatCount{} such cases%
+\ifnotpaper\ that we summarize in \Cref{tab:multiCatTable}\fi; we consider these
+flaws as they violate our assumption of orthogonality (see
 \Cref{orth-approach}). These flaws mostly involve the category of ``test
 \multiCatMax{}'', which shows up in \multiCatMaxCount{} of them. We list all of
 these flaws along with their sources in \Cref{tab:multiCats} for completeness,
@@ -180,6 +181,8 @@ experience-based testing is categorized inconsistently in the literature%
 \thesisissueref{64}.
 
 \ifnotpaper
+    \input{build/multiCatTable}
+
     \phantomsection{}\label{classFamilyFlaw}
     However, this might mean that a practice such as experience-based testing
     can be viewed as a ``class of test case design techniques''
