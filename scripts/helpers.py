@@ -263,9 +263,8 @@ def writeTblr(filename: str, caption: str, headers: list[str], lines: list[str],
             colSpecList += [f"X[{rowDataSpec},m]"] * colCount
     else:
         assert not widths
-        if xCol:
-            colSpecList.append(rowHeadSpec)
-        colSpecList += [rowDataSpec] * colCount
+        colSpecList.append(rowHeadSpec)
+        colSpecList += [rowDataSpec] * (colCount - 1)
 
     lines = [f"\\begin{{{env}}}[",
            *(f"   note{{{x}}} = {{{footnote}}},"
