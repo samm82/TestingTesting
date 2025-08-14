@@ -49,7 +49,7 @@
     \item % Flaw count (WRONG, LABELS): {IEEE2021} {SWEBOK2024} {SWEBOK2014}
           % Flaw count (CONTRA, DEFS): {IEEE2021} | {SWEBOK2024} {SWEBOK2014}
           % Assertion: {IEEE2010} {SWEBOK2024} {vanVliet2000}
-          % Label WRONG error-guess
+          % Label error-guess
           \errorGuessFlaw{}
     \item % Flaw count (WRONG, LABELS): {IEEE2017} {Firesmith2015} {vanVliet2000}
           % Flaw count (WRONG, SYNS): {IEEE2017} {vanVliet2000}
@@ -66,7 +66,7 @@
           between the number of new faults and the number of introduced faults
           that were discovered \citep[p.~427]{vanVliet2000}.
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} {SWEBOK2024} {Firesmith2015} {AmmannAndOffutt2017} {PetersAndPedrycz2000} | {IEEE2022} {Gerrard2000a}
-          % Label CONTRA static-test-flaw 
+          % Label static-test-flaw 
           ``Software testing'' is often defined to exclude static testing
           \ifnotpaper
               (\citealp[p.~13]{Firesmith2015}; \citealp[p.~222]{AmmannAndOffutt2017};
@@ -103,7 +103,7 @@
           in a module\thesisissueref{14}, introducing a further level of
           ambiguity.
     \item % Flaw count (OVER, SYNS): {IEEE2017} {IEEE2013} | {IEEE2022} {IEEE2017} {Perry2006}
-          % Label OVER level-phase-syns
+          % Label level-phase-syns
           \citeauthor{IEEE2017} \ifnotpaper
               (\citeyear[pp.~469, 470]{IEEE2017}; \citeyear[p.~9]{IEEE2013}) \else
               \cite[pp.~469, 470]{IEEE2017}, \cite[p.~9]{IEEE2013} \fi say that
@@ -160,7 +160,7 @@
           test process'': a vague definition that does not match the one in
           \Cref{tab:ieeeCats}.
     \item % Flaw count (CONTRA, PARS): {ISO_IEC2023a} | {Firesmith2015}
-          % Label CONTRA perf-sec-par
+          % Label perf-sec-par
           \perfSecParFlaw{}
     \item % Flaw count (CONTRA, PARS): {IEEE2022} {IEEE2021} {SWEBOK2024} ISTQB | {Firesmith2015}
           Similarly, random testing is a subtechnique of specification-based
@@ -183,7 +183,7 @@
               ``is'', referring to ``test item''?} are protected so that'' only
           ``authorized persons or systems'' can use them as intended.
     \item % Flaw count (CONTRA, DEFS): {SWEBOK2024} {Patton2006} | {IEEE2017}
-          % Label CONTRA path-test
+          % Label path-test
           Path testing ``aims to execute all entry-to-exit control flow paths
           in a \acs{sut}'s control flow graph'' \ifnotpaper
               (\citealp[p.~5-13]{SWEBOK2024}; similar in
@@ -192,14 +192,14 @@
           \citet[p.~316]{IEEE2017} \multiAuthHelper{add} that it can also be
           ``designed to execute \dots{} selected paths.''
     \item % Flaw count (CONTRA, DEFS): {IEEE2022} | ISTQB
-          % Label CONTRA tour-def
-          % Label CONTRA tour-def-contra
+          % Label tour-def
+          % Label tour-def-contra
           \tourFlaw{}
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {SWEBOK2024} | ISTQB
-          % Label CONTRA alpha-def
+          % Label alpha-def
           \alphaFlaw{}
     \item % Flaw count (CONTRA, SYNS): ISTQB | {IEEE2022}
-          % Label CONTRA use-case-scenario
+          % Label use-case-scenario
           % IEEE2021 omitted to avoid double-counting in parSyns table
           ``Use case testing'' is given as a synonym of ``scenario testing''
           by \citetISTQB{}
@@ -238,11 +238,11 @@
           possesses certain qualities is in scope, actively improving the
           system in response is \emph{not} part of testing.
     \item % Flaw count (WRONG, TRACE): {SWEBOK2024}
-          % Label WRONG elas-ref
+          % Label elas-ref
           \refHelper \citet[p.~5\=/9]{SWEBOK2024}'s definition of
           ``elasticity testing'' \swebokElasRef{}
     \item % Flaw count (CONTRA, SYNS): ISTQB implied by {Gerrard2000a} | {SWEBOK2024}
-          % Label CONTRA stage-level-syns
+          % Label stage-level-syns
           The terms ``test level'' and ``test stage'' are given as synonyms
           \ifnotpaper (\citealpISTQB{}; \else \cite{ISTQB} (\fi implied
           by \citealp[p.~9]{Gerrard2000a}), but
@@ -256,7 +256,7 @@
           ``test levels'' (see \Cref{cats-def}).
     \item % Flaw count (WRONG, SCOPE): {Firesmith2015}
           % Assertion: {LiuEtAl2023} {MorgunEtAl1999} {HolleyEtAl1996} {HoweAndJohnson1995}
-          % Label WRONG assert-truth
+          % Label assert-truth
           \tolTestFlaw{}
     \item % Flaw count (OVER, LABELS): {SWEBOK2024} implied by {Valcheva2013} {YuEtAl2011} | {Firesmith2015}
           ``Orthogonal array testing'' \ifnotpaper \citetext{%
@@ -267,7 +267,7 @@
           acceptance testing'' \citep[p.~30]{Firesmith2015} have the same
           acronym (``OAT'').
     \item % Flaw count (CONTRA, SYNS): ISTQB | {Firesmith2015}
-          % Label CONTRA oat-pat-syns
+          % Label oat-pat-syns
           ``Operational acceptance testing'' and ``production acceptance
           testing'' are given as synonyms by \citetISTQB{} but listed
           separately by \citet[p.~30]{Firesmith2015}.
@@ -280,7 +280,7 @@
           condition coverage \citetext{p.~422}) does not subsume and is not
           subsumed by path coverage.
     \item % Flaw count (WRONG, SYNS): {IEEE2010} {SWEBOK2024} {vanVliet2000} | {Patton2006}
-          % Label WRONG bug-patton
+          % Label bug-patton
           The differences between the terms ``error'', ``failure'',
           ``fault'', ``defect'' are significant and meaningful \ifnotpaper
               (\citealp[pp.~128, 139\==140]{IEEE2010};
@@ -290,7 +290,7 @@
               \cite[pp.~399\==400]{vanVliet2000},
               \cite[p.~12\=/3]{SWEBOK2024}\fi, but \bugPattonFlaw{}
     \item % Flaw count (CONTRA, DEFS): {IEEE2022} | {Patton2006}
-          % Label CONTRA load-def
+          % Label load-def
           \loadFlaw{}
     \item % Flaw count (CONTRA, DEFS): {IEEE2021} | {Patton2006}
           State testing requires that ``all states in the state model
@@ -311,7 +311,7 @@
           are related to peer reviews but \citet[pp.~94\==95]{Patton2006} makes
           them quite distinct.
     \item % Flaw count (CONTRA, SYNS): ISTQB | {PetersAndPedrycz2000}
-          % Label CONTRA walkthrough-syns
+          % Label walkthrough-syns
           ``Walkthroughs'' and ``structured walkthroughs'' are given
           as synonyms by \citetISTQB{} but \citet[p.~484]{PetersAndPedrycz2000}
           \ifnotpaper imply \else implies \fi that they are different, saying a
@@ -332,7 +332,7 @@
           way to help test this!
     \item % Flaw count (WRONG, TRACE): {Kam2008}
           % Flaw count (MISS, DEFS): {Kam2008}
-          % Label WRONG see-ref-missing
+          % Label see-ref-missing
           \seeRefMissing{}
     \item % Flaw count (CONTRA, CATS): {Kam2008} | implied by {IEEE2021}
           \refHelper \citet[p.~46]{Kam2008}\todo{OG Beizer} says ``negative

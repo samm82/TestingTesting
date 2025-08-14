@@ -1,6 +1,6 @@
 \begin{enumerate}
     \item % Flaw count (CONTRA, DEFS): {IEEE2021} {IEEE2017} | {vanVliet2000} implied by {IEEE2021}
-          % Label CONTRA c-use-def
+          % Label c-use-def
           % TODO: SUPP DEFS?
           While a computation data use is defined as the ``use of the value of a
           variable in \emph{any} type of statement'' (\citealp[p.~2]{IEEE2021};
@@ -39,7 +39,7 @@
           ``control flow sub-paths from each variable definition to each
           \acs{c-use} of that definition (with no intervening definitions)''.
     \item % Flaw count (CONTRA, CATS): {IEEE2016} | {IEEE2016}
-          % Label CONTRA manual-or-keyword
+          % Label manual-or-keyword
           Since keyword-driven testing can be used for automated \emph{or}
           manual testing \citep[pp.~4, 6]{IEEE2016}, the claim that ``test
           cases can be either manual test cases or keyword test cases''
@@ -116,7 +116,7 @@
           errors or faults.
     \item % Flaw count (REDUN, LABELS): {SWEBOK2024}
           % Assertion: {Gerrard2000b}
-          % Label REDUN ethical-hacking
+          % Label ethical-hacking
           ``Ethical hacking testing'' is given as a synonym of penetration
           testing by \citet[p.~13\=/4]{SWEBOK2024}, which seems redundant;
           \citet[p.~28]{Gerrard2000b} uses the term ``ethical hacking'' which
@@ -145,7 +145,7 @@
           \citep[p.~153]{SPICE2022}; is this a testing approach or a tool
           that supports testing?
     \item % Flaw count (WRONG, SCOPE): ISTQB
-          % Label WRONG specific-istqb
+          % Label specific-istqb
           The definition of ``math testing'' given by \citetISTQB{} is
           too specific to be useful, likely taken from an example instead of
           a general definition: ``testing to determine the correctness of the
@@ -160,7 +160,7 @@
           of the component or system'' \citepISTQB{}.
     \item % Flaw count (WRONG, SCOPE): ISTQB
           % Assertion: {Bluejay2024}
-          % Label WRONG par-sheet-test
+          % Label par-sheet-test
           \parSheetTestFlaw{}
     \item % Flaw count (WRONG, TRACE): ISTQB
           The source that \citetISTQB{} cite for the definition of ``test
@@ -184,11 +184,11 @@
           The acronym for \acf{sos} \citep{IEEE2019b} is used but not defined
           by \citet[p.~23]{Firesmith2015}.
     \item % Flaw count (OVER, LABELS): {Firesmith2015} | {Firesmith2015}
-          % Label OVER cat-acro
+          % Label cat-acro
           ``Customer acceptance testing'' and ``contract(ual) acceptance
           testing'' have the same acronym (``CAT'') \citep[p.~30]{Firesmith2015}.
     \item % Flaw count (OVER, LABELS): {Firesmith2015} | {Firesmith2015}
-          % Label OVER hil-acro
+          % Label hil-acro
           The same is true for ``hardware-in-the-loop testing'' and
           ``human-in-the-loop testing'' (``HIL'') \citep[p.~23]{Firesmith2015},
           % Flaw count (CONTRA, LABELS): {Firesmith2015} | {PreußeEtAl2012}
@@ -304,14 +304,14 @@
           uses the phrase ``transaction flows'' \citetext{Fig.~5} but doesn't
           explain them.
     \item % Flaw count (MISS, DEFS): {Gerrard2000a} | {Gerrard2000a}
-          % Label MISS gerrard-distinct
+          % Label gerrard-distinct
           Availability testing isn't assigned to a test priority
           \citep[Tab.~2]{Gerrard2000a}, despite the claim that ``the test
           types\gerrardDistinctIEEE{type} have been allocated a slot against
           the four test priorities'' \citetext{p.~13}; usability testing and/or
           performance testing would have been good candidates.
     \item % Flaw count (WRONG, SYNS): {IEEE2017} {SakamotoEtAl2013} | {SneedAndGöschl2000}
-          % Label WRONG dubious-syns
+          % Label dubious-syns
           \refHelper \citet[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88}
           \multiAuthHelper{give} ``white-box testing'', ``grey-box testing'',
           and ``black-box testing'' as synonyms for ``module testing'',
@@ -323,7 +323,7 @@
           \multiAuthHelper{describe} ``black-box integration testing''%
           \todo{more examples?}.
     \item % Flaw count (WRONG, SYNS): {SneedAndGöschl2000}
-          % Label WRONG dubious-red-box-syn
+          % Label dubious-red-box-syn
           The previous flaw makes the claim that
           ``red-box testing'' is a synonym for ``acceptance testing''
           \citep[p.~18]{SneedAndGöschl2000} lose credibility.
