@@ -182,14 +182,13 @@ SIMPLE_TEX_FILES = [
 
 TEX_FILES = COMPLEX_TEX_FILES + SIMPLE_TEX_FILES
 
-def enumOrItem(k, extra: str):
+simpleFlawMnfst = OrderedDict([
     # Based on https://tex.stackexchange.com/a/156061/192195
-    # and https://tex.stackexchange.com/a/338027/192195
-    ref = "~".join([x for x in [sing(k.value), extra, "\\arabic*"] if x])
-    return (k, ["\\ifnotpaper", f"\\begin{{enumerate}}[ref={ref}]",
-                      "\\else", f"\\begin{{itemize}}", "\\fi"])
-simpleFlawMnfst = OrderedDict([enumOrItem(k, "")     for k in FlawMnfst])
-simpleFlawDmn   = OrderedDict([enumOrItem(k, "Flaw") for k in FlawDmn])
+    #      and https://tex.stackexchange.com/a/338027/192195
+    (k, ["\\ifnotpaper",
+         f"\\begin{{enumerate}}[ref={sing(k.value)}~\\arabic*]",
+         "\\else", f"\\begin{{itemize}}", "\\fi"])
+         for k in FlawMnfst])
 
 def outputFlaws():
     flawDict = {k : FlawCounter(k.value) for k in SrcCat if k.color.value >= 0}
@@ -214,15 +213,12 @@ def outputFlaws():
                             "\\item % Flaw count ")[1:]]
 
         if "extra" in filename:
-            for dmnKey in simpleFlawDmn.keys():
-                simpleFlawDmn[dmnKey].append("\\ifnotpaper")
             for mnfstKey in simpleFlawMnfst.keys():
                 simpleFlawMnfst[mnfstKey].append("\\ifnotpaper")
 
         if filename in SIMPLE_TEX_FILES:
             for flaw in flaws:
                 flawMnfst, flawDmn = getFlawGroups(flaw)
-                simpleFlawDmn[flawDmn].append(flaw)
                 simpleFlawMnfst[flawMnfst].append(flaw)
 
                 labels = re.findall(r"% Label ([a-z\-]+)", flaw)
@@ -234,8 +230,6 @@ def outputFlaws():
                         line) for line in simpleFlawMnfst[flawMnfst]]
             
         if "extra" in filename:
-            for dmnKey in simpleFlawDmn.keys():
-                simpleFlawDmn[dmnKey].append("\\fi")
             for mnfstKey in simpleFlawMnfst.keys():
                 simpleFlawMnfst[mnfstKey].append("\\fi")
 
@@ -324,12 +318,10 @@ def outputFlaws():
             if DEBUG:
                 printFlaws()
 
-    for shortname, flawGroup in [("Dmn",   simpleFlawDmn),
-                                 ("Mnfst", simpleFlawMnfst)]:
-        for k in flawGroup.keys():
-            flawGroup[k] += ["\\ifnotpaper", "\\end{enumerate}", "\\else",
-                                "\\end{itemize}", "\\fi"]
-            writeFile(flawGroup[k], f"Flaw{shortname}{k.name.title()}", True)
+    for k in simpleFlawMnfst.keys():
+        simpleFlawMnfst[k] += ["\\ifnotpaper", "\\end{enumerate}", "\\else",
+                               "\\end{itemize}", "\\fi"]
+        writeFile(simpleFlawMnfst[k], f"Flaw{"Mnfst"}{k.name.title()}", True)
 
     flawPies, flawBars, flawTable = [], [], []
     dmnTotal, mnfstTotal = [], []
