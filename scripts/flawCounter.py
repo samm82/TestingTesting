@@ -158,14 +158,10 @@ def sing(s: str) -> str:
         return s[:-1] if s.endswith("s") else s
 
 def genFlawMacros(flawView):
-    def formatMacro(k: FlawDmn | FlawMnfst, args: list[str] = ["s"],
-                    extra: str = "") -> str:
-        return (f"\\{"Renew" if k.name == "OVER" else "New"}DocumentCommand"
-                f"{{\\{k.name.lower()}}}{{{" ".join(args)}}}"
-                f"{{\\hyperref[{k.name.lower()}]"
-                f"{{\\IfBooleanTF{{#1}}{{{sing(k.value)}}}{{{k.value}}}}}{extra}}}")
-
-    writeFile([formatMacro(k) for k in flawView], f"{flawView.__name__}Macros", True)
+    writeFile([f"\\{"Renew" if k.name == "OVER" else "New"}DocumentCommand"
+                f"{{\\{k.name.lower()}}}{{s}}{{\\hyperref[{k.name.lower()}]"
+                f"{{\\IfBooleanTF{{#1}}{{{sing(k.value)}}}{{{k.value}}}}}}}"
+                for k in flawView], f"{flawView.__name__}Macros", True)
 
 COMPLEX_TEX_FILES = [
     "build/multiCats.tex",
@@ -211,10 +207,6 @@ def outputFlaws():
                         "\\end{enumerate}", 1)[0].split(
                             "\\item % Flaw count ")[1:]]
 
-        if "extra" in filename:
-            for mnfstKey in simpleFlawMnfst.keys():
-                simpleFlawMnfst[mnfstKey].append("\\ifnotpaper")
-
         if filename in SIMPLE_TEX_FILES:
             for flaw in flaws:
                 flawMnfst, flawDmn = getFlawGroups(flaw)
@@ -227,10 +219,6 @@ def outputFlaws():
                         "\n          ".join(
                             ["", "\\\\phantomsection{}", f"\\\\label{{{label}}}", ""]),
                         line) for line in simpleFlawMnfst[flawMnfst]]
-            
-        if "extra" in filename:
-            for mnfstKey in simpleFlawMnfst.keys():
-                simpleFlawMnfst[mnfstKey].append("\\fi")
 
         for flaw in flawCounts:
             sources = flaw.split("|")
