@@ -176,8 +176,7 @@ COMPLEX_TEX_FILES = [
 ]
 
 SIMPLE_TEX_FILES = [
-    "chapters/05a_main_flaws.tex",
-    "chapters/05b_extra_flaws.tex",
+    "chapters/05a_flaw_list.tex",
 ]
 
 TEX_FILES = COMPLEX_TEX_FILES + SIMPLE_TEX_FILES
