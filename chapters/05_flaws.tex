@@ -151,7 +151,7 @@ methodology, even though this is not one of the categories \emph{they} created!
 Additionally, the boundaries between approaches within a category may
 be unclear: ``although each technique is defined independently of all others,
 in practice [sic] some can be used in combination with other techniques''
-\citep[p.~8]{IEEE2021}. For example, ``the test coverage items derived by
+\citep[p.~8]{IEEE2021b}. For example, ``the test coverage items derived by
 applying equivalence partitioning can be used to identify the input parameters
 of test cases derived for scenario testing'' \citetext{p.~8}. Even the categories
 themselves are not consistently defined, and some approaches are categorized
@@ -179,7 +179,7 @@ more general sense where we would use the term ``test approach''. We list
 categorizations of experience-based testing are of particular note.
 \expBasedCatMain{} These authors say ``experience-based testing practices like
 exploratory testing \dots\ are not \dots\ techniques for designing test cases'',
-although they ``can use \dots\ test techniques'' \citeyearpar[p.~viii]{IEEE2021},
+although they ``can use \dots\ test techniques'' \citeyearpar[p.~viii]{IEEE2021b},
 which they support in \citeyearpar[p.~33]{IEEE2022} along with scripted testing.
 This implies that ``experience-based test design techniques'' are used \emph{by}
 the practice of experience-based testing which is not \emph{itself} a test
@@ -199,32 +199,32 @@ practices. The following test approaches are each described as a ``class'',
 seems to support this:
 \begin{itemize}
     \item Combinatorial testing (\citealp[p.~3]{IEEE2022};
-          \citeyear[p.~2]{IEEE2021}; \citealp[p.~5-11]{SWEBOK2024})
-    \item Data flow testing (\citeyear[p.~3]{IEEE2021};
+          \citeyear[p.~2]{IEEE2021b}; \citealp[p.~5-11]{SWEBOK2024})
+    \item Data flow testing (\citeyear[p.~3]{IEEE2021b};
           implied by \citealp[p.~5-13]{SWEBOK2024})
-    \item Performance(-related) testing (\citealp[p.~38]{IEEE2021};
+    \item Performance(-related) testing (\citealp[p.~38]{IEEE2021b};
           \perfAsFamily*{})
-    \item Security testing \citep[implied by][p.~40]{IEEE2021}
+    \item Security testing \citep[implied by][p.~40]{IEEE2021b}
     \item Fault tolerance testing \citep[implied by][p.~4\=/11]{SWEBOK2024}
 \end{itemize}
 Of the above, security testing is an outlier, since it is consistently
 categorized as a test type (\citealp[pp.~9, 22, 26--27]{IEEE2022};
-\citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021}; \citeyear[p.~405]{IEEE2017}%
+\citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021b}; \citeyear[p.~405]{IEEE2017}%
 \todo{OG 2013}; implied by its quality (\citealp{ISO_IEC2023a};
 \citealp[p.~13-4]{SWEBOK2024}); \citealp[p.~53]{Firesmith2015}) despite
-consisting of ``a number of techniques'' \cite[p.~40]{IEEE2021}, although
+consisting of ``a number of techniques'' \cite[p.~40]{IEEE2021b}, although
 this may be \distinctIEEE{technique} In addition, specification-based
 testing and structure-based testing may also be considered ``families''
 since they are quite broad with many subtechniques and are described as
 ``complementary'' alongside experience-based testing
-\citep[p.~8, Fig.~2]{IEEE2021}.
+\citep[p.~8, Fig.~2]{IEEE2021b}.
 
 As described in \Cref{infers}, we infer that child approaches inherit their
 parents' categories. However, subapproaches of experience-based tesing, such as
 error guessing and exploratory testing, are categorized ambiguously, casting
 doubt on the validity of this assumption.
 \refHelper \citet[p.~34\ifnotpaper, emphasis added\fi]{IEEE2022}
-\multiAuthHelper{say} that a previous standard \citeyearpar{IEEE2021}
+\multiAuthHelper{say} that a previous standard \citeyearpar{IEEE2021b}
 ``describes the experience-based test \emph{design technique} of error
 guessing. Other experience-based test \emph{practices} include (but are not
 limited to) exploratory testing\dots, tours, attacks, and checklist-based
@@ -297,11 +297,11 @@ While \citet[p.~421]{vanVliet2000} claims that path testing done completely
         contradictory definitions of path testing given in \flawref{path-test}
         add another layer of complexity to this claim.}\fi, this overlooks the
 effects of input data \ifnotpaper
-    (\citealp[pp.~129\==130]{IEEE2021}; \citealp[p.~121]{Patton2006};
+    (\citealp[pp.~129\==130]{IEEE2021b}; \citealp[p.~121]{Patton2006};
     \citealp[p.~467]{PetersAndPedrycz2000})
 \else
     \cite[p.~467]{PetersAndPedrycz2000}, \cite[p.~121]{Patton2006},
-    \cite[p.~129\==130]{IEEE2021}
+    \cite[p.~129\==130]{IEEE2021b}
 \fi and implementation issues \citetext{p.~476} % \citep[p.~476]{PetersAndPedrycz2000}
 on the code's behaviour. Exhaustive testing
 requires ``all combinations of input values \emph{and} preconditions \dots{}
@@ -327,7 +327,7 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
 \ifnotpaper
     \subsubsection{Definition Flaws}\label{defs}
 
-    \citet{IEEE2022, IEEE2021}, from the
+    \citet{IEEE2022, IEEE2021b}, from the
     ISO/IEC/IEEE 29119 family of standards, mention the following 23 test
     approaches without defining them. This means that out of the 114 test
     approaches they mention, about 20\% have no associated definition!
@@ -432,13 +432,13 @@ what defines a ``test type'' \citep[p.~15]{IEEE2022}\ifnotpaper\
 it seems consistent to label ``functional testing'' as a ``test type''
 \ifnotpaper
     \citetext{\citealp[pp.~15,~20,~22]{IEEE2022};
-        \citeyear[pp.~7,~38,~Tab.~A.1]{IEEE2021}; \citeyear[p.~4]{IEEE2016}}%
+        \citeyear[pp.~7,~38,~Tab.~A.1]{IEEE2021b}; \citeyear[p.~4]{IEEE2016}}%
 \else
-    \cite[pp.~15,~20,~22]{IEEE2022}, \cite[pp.~7,~38,~Tab.~A.1]{IEEE2021},
+    \cite[pp.~15,~20,~22]{IEEE2022}, \cite[pp.~7,~38,~Tab.~A.1]{IEEE2021b},
     \cite[p.~4]{IEEE2016}\fi. However, this conflicts with its categorization
 as a ``technique'' if considered a synonym of specification-based testing
 (see \Cref{spec-func-test}).
-% Flaw count (CONTRA, CATS): {IEEE2022} {IEEE2021} {IEEE2016} implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
+% Flaw count (CONTRA, CATS): {IEEE2022} {IEEE2021b} {IEEE2016} implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
 Additionally, ``correctness testing'' is listed separately from ``functionality
 testing'' by \citet[p.~53]{Firesmith2015}.
 % Flaw count (CONTRA, SYNS): {SWEBOK2024} | {Firesmith2015}
@@ -556,7 +556,7 @@ flaws here and present the relations between them in \Cref{fig:rec-graph-current
 \NewDocumentCommand\subDRT{s}{given as a subtype of ``disaster/recovery
     testing'' which tests if ``operation of the test item can
     be transferred to a different operating site''
-    \IfBooleanTF{#1}{\citetext{p.~37}}{\citeyearpar[p.~37]{IEEE2021}},
+    \IfBooleanTF{#1}{\citetext{p.~37}}{\citeyearpar[p.~37]{IEEE2021b}},
     even though this is \emph{explicitly} excluded from its definition on the
     same page!}
 
@@ -574,10 +574,10 @@ flaws here and present the relations between them in \Cref{fig:rec-graph-current
           or software failure'' \citep[p.~140]{IEEE2017} or if ``operation of
           the test item can be transferred to a different operating site and
           \dots\ be transferred back again once the failure has been
-          resolved'' \citeyearpar[p.~37]{IEEE2021}.
+          resolved'' \citeyearpar[p.~37]{IEEE2021b}.
           \begin{itemize}
               \item \texttt{(OVER, DEFS)}
-                    % Flaw count (OVER, DEFS): {IEEE2017} | {IEEE2021}
+                    % Flaw count (OVER, DEFS): {IEEE2017} | {IEEE2021b}
                     These two definitions seem to describe different aspects of
                     the system, where the first is intrinsic to the
                     hardware/software and the second might not be, making this
@@ -592,31 +592,31 @@ flaws here and present the relations between them in \Cref{fig:rec-graph-current
     \item \emph{Backup/recovery testing} determines the ability of a system
           ``to restor[e] from back-up memory in the event of failure, without
           transfer[ing] to a different operating site or back-up system''
-          \citep[p.~37]{IEEE2021}.
+          \citep[p.~37]{IEEE2021b}.
           \begin{itemize}
               %   \item \texttt{(OVER, DEFS)}
-              %         % Flaw count (OVER, DEFS): {IEEE2021} | {IEEE2017}
+              %         % Flaw count (OVER, DEFS): {IEEE2021b} | {IEEE2017}
               %         This definition corresponds to the first definition of
               %         ``disaster/recovery testing'' given by
               %         \citeyearpar[p.~140]{IEEE2017}.
               \item \texttt{(CONTRA, PARS)}
-                    % Flaw count (CONTRA, PARS): {IEEE2021} | {IEEE2021}
+                    % Flaw count (CONTRA, PARS): {IEEE2021b} | {IEEE2021b}
                     This \subDRT{}
               \item \texttt{(OVER, LABELS)}
-                    % Flaw count (OVER, LABELS): {IEEE2021} | {IEEE2013}
+                    % Flaw count (OVER, LABELS): {IEEE2021b} | {IEEE2013}
                     Its name is also quite similar to ``backup and
                     recovery testing'', adding further confusion.
           \end{itemize}
     \item \emph{Failover/recovery testing} determines the
           ability ``to mov[e] to a back-up system in the event of failure,
           without transfer[ing] to a different operating site''
-          \citep[p.~37]{IEEE2021}.
+          \citep[p.~37]{IEEE2021b}.
           \begin{itemize}
               \item \texttt{(CONTRA, PARS)}
-                    % Flaw count (CONTRA, PARS): {IEEE2021} | {IEEE2021}
+                    % Flaw count (CONTRA, PARS): {IEEE2021b} | {IEEE2021b}
                     This is also \subDRT*{}
               \item \texttt{(AMBI, PARS)}
-                    % Flaw count (AMBI, PARS): {IEEE2021}
+                    % Flaw count (AMBI, PARS): {IEEE2021b}
                     % Assertion: {SWEBOK2024} ISTQB
                     While not explicitly related to recovery, \emph{failover
                         testing} ``validates the SUT's ability to manage heavy
@@ -629,7 +629,7 @@ flaws here and present the relations between them in \Cref{fig:rec-graph-current
                     ``heavy loads'' where failover/recovery testing does not)
                     which may reverse the direction of this relation.
               \item \texttt{(AMBI, SYNS)}
-                    % Flaw count (AMBI, SYNS): {IEEE2021} | implied by {Firesmith2015}
+                    % Flaw count (AMBI, SYNS): {IEEE2021b} | implied by {Firesmith2015}
                     \refHelper \citet[p.~56]{Firesmith2015} uses the term
                     ``failover and recovery testing'' which may be a synonym of
                     ``failover/recovery testing''.
@@ -645,8 +645,8 @@ flaws here and present the relations between them in \Cref{fig:rec-graph-current
 
 \paragraph{\texttt{(CONTRA, SYNS)}}
 
-% Flaw count (CONTRA, SYNS): {IEEE2021} | {Firesmith2015} {Bas2024}
-\citeauthor{IEEE2021} \citeyearpar[p.~39]{IEEE2021} give
+% Flaw count (CONTRA, SYNS): {IEEE2021b} | {Firesmith2015} {Bas2024}
+\citeauthor{IEEE2021b} \citeyearpar[p.~39]{IEEE2021b} give
 ``scalability testing'' as a synonym of ``capacity testing''
 while other sources differentiate between the two \ifnotpaper
     (\citealp[p.~53]{Firesmith2015}; \citealp[pp.~22\==23]{Bas2024})%
@@ -654,8 +654,8 @@ while other sources differentiate between the two \ifnotpaper
 
 \paragraph{\texttt{(CONTRA, DEFS)}}
 
-% Flaw count (CONTRA, DEFS): {IEEE2021} | implied by {ISO_IEC2023a}
-\citeauthor{IEEE2021} \citeyearpar[p.~39]{IEEE2021} also include the external
+% Flaw count (CONTRA, DEFS): {IEEE2021b} | implied by {ISO_IEC2023a}
+\citeauthor{IEEE2021b} \citeyearpar[p.~39]{IEEE2021b} also include the external
 modification of the system as part of ``scalability'' but
 \citet{ISO_IEC2023a} \multiAuthHelper{describe} it as testing the ``capability
 of a product to handle growing or shrinking workloads or to adapt its capacity
@@ -704,9 +704,9 @@ definition is nonatomic as it combines the ideas of ``co-existence''
 and ``interoperability''.
 
 \paragraph{\texttt{(WRONG, SYNS)}}
-% Flaw count (WRONG, SYNS): implied by {IEEE2021} | {IEEE2022}
+% Flaw count (WRONG, SYNS): implied by {IEEE2021b} | {IEEE2022}
 The ``interoperability'' element of ``compatibility testing'' is explicitly
-excluded by \citet[p.~37]{IEEE2021}, (incorrectly) implying that ``compatibility
+excluded by \citet[p.~37]{IEEE2021b}, (incorrectly) implying that ``compatibility
 testing'' and ``co-existence testing'' are synonyms.
 
 \paragraph{\texttt{(AMBI, SYNS)}}
@@ -717,7 +717,7 @@ adding another layer of confusion to the direction of their relationship.
 
 \paragraph{\texttt{(WRONG, LABELS)}}
 % Flaw count (WRONG, LABELS): {IEEE2022}
-% Assertion: {ISO_IEC2023a} {IEEE2022} {IEEE2021} {IEEE2017} ISTQB
+% Assertion: {ISO_IEC2023a} {IEEE2022} {IEEE2021b} {IEEE2017} ISTQB
 \refHelper \citet[pp.~22, 43]{IEEE2022} \multiAuthHelper{say}
 ``interoperability testing helps confirm that applications can work on multiple
 operating systems and devices'', but this seems to instead describe
@@ -728,7 +728,7 @@ adapted to changes in its requirements, contexts of use, or system environment''
     \citeyear[pp.~184, 329]{IEEE2017}; \citealpISTQB{})\else
     \cite{ISO_IEC2023a} (similar in \citeyear[pp.~184, 329]{IEEE2017},
     \citealp[p.~7]{IEEE2022}, \cite{ISTQB})\fi, such as being ``transferred
-from one hardware \dots{} environment to another'' \citep[p.~39]{IEEE2021}.
+from one hardware \dots{} environment to another'' \citep[p.~39]{IEEE2021b}.
 
 \ifnotpaper
     \subsection{Inferred Flaws}\label{infer-flaws}
@@ -775,7 +775,7 @@ from one hardware \dots{} environment to another'' \citep[p.~39]{IEEE2021}.
     \emph{not} give ``functionality testing'' as a parent of ``end-to-end
     functionality testing''. Finally, \citet[p.~119]{Patton2006} says that
     branch testing is ``the simplest form of path testing'' which is also
-    implied by \citet[Fig.~F.1]{IEEE2021}\todo{OG Reid, 1996} and
+    implied by \citet[Fig.~F.1]{IEEE2021b}\todo{OG Reid, 1996} and
     \citet[p.~433]{vanVliet2000}. This is true in the example
     \citeauthor{Patton2006} gives, but is not necessarily generalizable; one
     could test the behaviour at branches without testing even a \emph{subset}

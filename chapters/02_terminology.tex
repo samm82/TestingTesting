@@ -51,9 +51,9 @@ intent of finding errors'' \citep[p.~438]{PetersAndPedrycz2000}%
 \end{enumerate}
 The end goal is to evaluate ``some aspect of the system or component'' based on
 the results of step~\ref{step:cmp-results} \ifnotpaper (\citealp[p.~10]{IEEE2022};
-    \citeyear[p.~6]{IEEE2021};
+    \citeyear[p.~6]{IEEE2021b};
     \citeyear[p.~465]{IEEE2017}\todo{OG ISO/IEC 2014})\else
-    \cite[p.~465]{IEEE2017}, \cite[p.~10]{IEEE2022}, \cite[p.~6]{IEEE2021}\fi.
+    \cite[p.~465]{IEEE2017}, \cite[p.~10]{IEEE2022}, \cite[p.~6]{IEEE2021b}\fi.
 When this evaluation reveals errors, ``the faults causing them are what can and
 must be removed'' \citep[p.~5\=/3]{SWEBOK2024}.
 
@@ -107,8 +107,8 @@ system testing, and acceptance testing as examples of test levels \ifnotpaper
 These categories seem to be orthogonal based on their definitions and usage.
 For example, ``a test type can be performed at a single test level or across
 several test levels'' \ifnotpaper
-    (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021})\else
-    \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021}\fi.
+    (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021b})\else
+    \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021b}\fi.
 % , and ``Keyword-Driven Testing can be applied at all testing levels
 % \dots{} and for various types of testing'' \citeyearpar[p.~4]{IEEE2016}.
 % Therefore, we assume these categories to be orthogonal throughout this
@@ -119,9 +119,9 @@ test approaches from different categories\ifnotpaper
     %. For example, usability test
     % script(ing) \citepISTQB{} is a combination of usability testing, a test type
     % \ifnotpaper (\citealp[pp.~22, 26--27]{IEEE2022};
-    %     \citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021}; implied by its quality;
+    %     \citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021b}; implied by its quality;
     %     \citealp[p.~53]{Firesmith2015})\else \cite[pp.~22, 26--27]{IEEE2022},
-    %     \cite[pp.~7, 40, Tab.~A.1]{IEEE2021}\fi, and scripted testing, a test
+    %     \cite[pp.~7, 40, Tab.~A.1]{IEEE2021b}\fi, and scripted testing, a test
     % practice \citep[pp.~20, 22\ifnotpaper; implied by p.~33\fi]{IEEE2022}
     ; see \Cref{orth-test} for more detailed discussion\fi.
 % Because of their widespread use and their usefulness in dividing the domain of
@@ -153,14 +153,14 @@ as follows\thesisissueref{21}:
 % % Removed for brevity; #202
 % For example, boundary value analysis is a test technique since its inputs are
 % ``the boundaries of equivalence partitions'' \ifnotpaper
-%     (\citealp[p.~2]{IEEE2022}; \citeyear[p.~1]{IEEE2021}; similar on p.~12;
+%     (\citealp[p.~2]{IEEE2022}; \citeyear[p.~1]{IEEE2021b}; similar on p.~12;
 %     \citealpISTQB{})%
 % \else
-%     \cite[p.~2]{IEEE2022}, \cite[p.~1]{IEEE2021}%
+%     \cite[p.~2]{IEEE2022}, \cite[p.~1]{IEEE2021b}%
 % \fi. Similarly, acceptance testing is a test level since its goal is to
 % ``enable a user, customer, or other authorized entity to determine whether to
 % accept a system or component'' \ifnotpaper (\citealp[p.~5]{IEEE2017}; similar
-%     in \citeyear[p.~6]{IEEE2021}; \citealp[p.~344]{SakamotoEtAl2013})\else
+%     in \citeyear[p.~6]{IEEE2021b}; \citealp[p.~344]{SakamotoEtAl2013})\else
 %     \cite[p.~5]{IEEE2017}\fi, which requires the system or component to be
 % developed and ready for testing.
 
@@ -218,13 +218,13 @@ The same approach often has many names. For example,
 \def\noHyphenFn{\footnote{\refHelper \citet{Firesmith2015} excludes the hyphen,
         calling it ``black box testing''.}}
 \ifnotpaper
-    (\citealp[p.~9]{IEEE2022}; \citeyear[p.~8]{IEEE2021};
+    (\citealp[p.~9]{IEEE2022}; \citeyear[p.~8]{IEEE2021b};
     \citeyear[p.~431]{IEEE2017}; \citealp[p.~5\=/10]{SWEBOK2024};
     \citealpISTQB{}; \citealp[p.~46\noHyphenFn]{Firesmith2015};
     \citealp[p.~344]{SakamotoEtAl2013}; \citealp[p.~399]{vanVliet2000})\else
     \cite[p.~46\noHyphenFn]{Firesmith2015}, \cite[p.~399]{vanVliet2000},
     \cite[p.~5\=/10]{SWEBOK2024}, \cite[p.~431]{IEEE2017},
-    \cite[p.~9]{IEEE2022}, \cite{ISTQB}, \cite[p.~8]{IEEE2021},
+    \cite[p.~9]{IEEE2022}, \cite{ISTQB}, \cite[p.~8]{IEEE2021b},
     \cite[p.~344]{SakamotoEtAl2013}\fi.
 %     \item ``closed-box testing''
 %           \ifnotpaper
@@ -238,11 +238,11 @@ The same approach often has many names. For example,
 %           \ifnotpaper
 %               (\citealp[p.~196]{IEEE2017}; \citealp[p.~44]{Kam2008};
 %               \citealp[p.~399]{vanVliet2000}; implied by
-%               \citealp[p.~129]{IEEE2021}; \citeyear[p.~431]{IEEE2017})
+%               \citealp[p.~129]{IEEE2021b}; \citeyear[p.~431]{IEEE2017})
 %           \else
 %               \cite[p.~399]{vanVliet2000}, \cite[p.~196]{IEEE2017},
 %               \cite[p.~44]{Kam2008} (implied by \cite[p.~431]{IEEE2017},
-%               \cite[p.~129]{IEEE2021})
+%               \cite[p.~129]{IEEE2021b})
 %           \fi
 %     \item ``domain testing'' \citep[p.~5\=/10]{SWEBOK2024}
 %     \item ``specification-oriented testing'' \citep[p.~440, Fig.~12.2]{PetersAndPedrycz2000}
@@ -309,14 +309,14 @@ meaning is nevertheless the same.
 % \footnote{
 %     Pairwise testing is given as a child of combinatorial testing, which is
 %     itself a child of specification-based testing, by \ifnotpaper
-%         \citep[Fig.~2]{IEEE2021} and \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}%
+%         \citep[Fig.~2]{IEEE2021b} and \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}%
 %     \else
-%         \cite[pp.~5\=/11 to 5\=/12]{SWEBOK2024} and \cite[Fig.~2]{IEEE2021}%
+%         \cite[pp.~5\=/11 to 5\=/12]{SWEBOK2024} and \cite[Fig.~2]{IEEE2021b}%
 %     \fi, making it a ``grandchild'' of specification-based testing according to
 %     these sources.
 % } of specification-based testing \ifnotpaper
-%     (\citealp{IEEE2022}; \citeyear[Fig.~2]{IEEE2021}; \citealpISTQB{})\else
-%     \cite{IEEE2022,ISTQB}, \cite[Fig.~2]{IEEE2021}\fi; even V4 agrees with
+%     (\citealp{IEEE2022}; \citeyear[Fig.~2]{IEEE2021b}; \citealpISTQB{})\else
+%     \cite{IEEE2022,ISTQB}, \cite[Fig.~2]{IEEE2021b}\fi; even V4 agrees with
 % this \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}!
 
 \subsubsection{Parent-Child Relations}\label{par-chd-rels}
@@ -335,9 +335,9 @@ parent approach $p$. This relation often manifests when a ``well-understood''
 test approach $p$ is decomposed into smaller, independently performable approaches
 $c_1, \dots, c_n$, each with its own focus or nuance. This is frequently the case
 for hierarchies of approaches given in the literature \ifnotpaper
-    (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021};
+    (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021b};
     \citealp{Firesmith2015})\else \cite{Firesmith2015},
-    \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi%; see the graph of
+    \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021b}\fi%; see the graph of
 %specification-based test approaches in \Cref{fig:specBasedGraph}
 .
 
@@ -348,9 +348,9 @@ regards to $c$ \citep[p.~402]{vanVliet2000}. While this only ``compares the
 thoroughness of test techniques, not their ability to detect faults''
 \citetext{p.~434}, it is sufficient to justify a parent-child relation
 between the two approaches. These relations may also be represented as
-hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
+hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021b};
     \citealp[Fig.~13.17]{vanVliet2000})\else
-    \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}\fi%; see the graph of
+    \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021b}\fi%; see the graph of
 % data flow test approaches in \Cref{fig:subsumesGraph}
 .
 
@@ -367,9 +367,9 @@ hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
 %           can be decomposed into smaller, independently performable approaches,
 %           each with its own focus or nuance. This is often the case for
 %           hierarchies of approaches given in the literature \ifnotpaper
-%               (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021};
+%               (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021b};
 %               \citealp{Firesmith2015})\else \cite{Firesmith2015},
-%               \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi; we graph
+%               \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021b}\fi; we graph
 %           the parent-child relations in the subdomain of specification-based
 %           testing in \Cref{fig:specBasedGraph} as an example.
 %     \item Completing $p$ implies that $c$ has also been completed; $c \Leftarrow p$.
@@ -378,9 +378,9 @@ hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
 %           this relation only ``compares the thoroughness of test techniques, not
 %           their ability to detect faults'' \citep[p.~434]{vanVliet2000}, it is
 %           sufficient to constitute a parent-child relation. These may also be
-%           represented as hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
+%           represented as hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021b};
 %               \citealp[Fig.~13.17]{vanVliet2000})\else
-%               \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}\fi; we graph the
+%               \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021b}\fi; we graph the
 %           parent-child relations in the subdomain of data flow testing in
 %           \Cref{fig:subsumesGraph} as an example.
 % \end{enumerate}
@@ -394,12 +394,12 @@ hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
 %           When all of these have been completed, we can logically conclude that
 %           the parent approach has also been performed! In practice, this is
 %           much harder to prove; although many hierarchies exist \ifnotpaper
-%               (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021};
+%               (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021b};
 %               \citealp{Firesmith2015})\else \cite{Firesmith2015},
-%               \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021}\fi, these are
+%               \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021b}\fi, these are
 %           likely incomplete. As an example, we graph the parent-child relations
-%           from \ifnotpaper (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021})
-%           \else \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021} \fi in the
+%           from \ifnotpaper (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021b})
+%           \else \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021b} \fi in the
 %           subdomain of specification-based testing in \Cref{fig:specBasedGraph}
 %           (along with relevant data from other sources).
 %     \item \textbf{One is ``stronger than'' or ``subsumes'' the other.} When
@@ -412,9 +412,9 @@ hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
 %           to consider one a child of the other in a sense. We capture this
 %           nuance by considering these parent-child relations implicit
 %           (see \Cref{explicitness}). As an example, we graph the parent-child
-%           relations from \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021};
+%           relations from \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021b};
 %               \citealp[Fig.~13.17]{vanVliet2000}) \else
-%               \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021}
+%               \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021b}
 %           \fi in the subdomain of data flow testing can be found in
 %           \Cref{fig:subsumesGraph} (along with relevant data from other sources).
 %           \item \textbf{The parent approach is part of an orthogonal set.}
