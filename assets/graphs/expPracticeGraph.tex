@@ -12,6 +12,7 @@ rankdir=BT;
 start [style="invis"];
 
 ABTesting [label=<A/B<br/>Testing>];
+AdHocTesting [label=<Ad<br/>Hoc<br/>Testing>];
 Attacks [label=<Attacks>];
 AutomatedTesting [label=<Automated<br/>Testing>];
 BacktoBackTesting [label=<Back-to-Back<br/>Testing>];
@@ -19,6 +20,7 @@ CaptureReplayDrivenTesting [label=<Capture-Replay<br/>Driven<br/>Testing>];
 ChecklistbasedTesting [label=<Checklist-based<br/>Testing>];
 ContinuousTesting [label=<Continuous<br/>Testing>];
 DatadrivenTesting [label=<Data-driven<br/>Testing>];
+ErrorGuessing [label=<Error<br/>Guessing>];
 ExperiencebasedTesting [label=<Experience-based<br/>Testing>];
 ExploratoryTesting [label=<Exploratory<br/>Testing>];
 ManualTesting [label=<Manual<br/>Testing>];
@@ -28,6 +30,7 @@ ScriptedTesting [label=<Scripted<br/>Testing>];
 Tours [label=<Tours>];
 
 
+AdHocTesting -> ExperiencebasedTesting[color="blue"];
 Attacks -> ExperiencebasedTesting[color="green"];
 AutomatedTesting -> ScriptedTesting[color="green"];
 CaptureReplayDrivenTesting -> AutomatedTesting[color="green"];
@@ -35,6 +38,9 @@ ChecklistbasedTesting -> ExperiencebasedTesting[color="green"];
 ContinuousTesting -> AutomatedTesting[color="green"];
 DatadrivenTesting -> AutomatedTesting[color="green"];
 DatadrivenTesting -> ScriptedTesting;
+ErrorGuessing -> ExperiencebasedTesting[color="green"];
+ErrorGuessing -> ModelbasedTesting[color="green"];
+ErrorGuessing -> ChecklistbasedTesting[color="green"];
 ExploratoryTesting -> ExperiencebasedTesting[color="green"];
 ManualTesting -> ScriptedTesting[color="green"];
 ModelbasedTesting -> AutomatedTesting[color="blue"];

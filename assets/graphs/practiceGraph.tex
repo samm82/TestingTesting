@@ -13,6 +13,7 @@ start [style="invis"];
 
 ABTesting [label=<A/B<br/>Testing>];
 AcquisitionOrganizationTesting [label=<Acquisition<br/>Organization<br/>Testing>,color=grey];
+AdHocTesting [label=<Ad<br/>Hoc<br/>Testing>];
 AgileTesting [label=<Agile<br/>Testing>,color=grey];
 AJAXTesting [label=<AJAX<br/>Testing>,color=grey];
 ArchitectTesting [label=<Architect<br/>Testing>,color=grey];
@@ -40,7 +41,7 @@ DevOpsTesting [label=<DevOps<br/>Testing>,color=grey];
 DifferentialAssertionChecking [label=<Differential<br/>Assertion<br/>Checking>,color=grey];
 DTOrganizationTesting [label=<DT<br/>Organization<br/>Testing>,color=grey];
 EmbeddedTesterTesting [label=<Embedded<br/>Tester<br/>Testing>,color=grey];
-ErrorGuessing [label=<Error<br/>Guessing>,style="dashed"];
+ErrorGuessing [label=<Error<br/>Guessing>];
 ExperiencebasedTesting [label=<Experience-based<br/>Testing>];
 ExploratoryTesting [label=<Exploratory<br/>Testing>];
 FaultSeeding [label=<Fault<br/>Seeding>,color=grey];
@@ -113,6 +114,7 @@ WModelTesting [label=<W-Model<br/>Testing>,color=grey];
 
 ProgrammerTesting -> DeveloperTesting[dir=none,style="dashed",color="grey"];
 
+AdHocTesting -> ExperiencebasedTesting[color="blue"];
 AgileTesting -> ContinuousTesting[color="blue"];
 AgileTesting -> LifecyclebasedTesting[color="blue"];
 AgileTesting -> IncrementalTesting;
