@@ -7,8 +7,9 @@
                 (see \flawref{stage-level-syns})\else (see relevant synonym
                 flaws in \Cref{syns})\fi.},
         note{b} = {Also called ``test design technique'' \ifnotpaper
-                (\citealp[p.~11]{IEEE2022}; \citealpISTQB{})\else
-                \cite[p.~11]{IEEE2022}, \cite{ISTQB}\fi.},
+                (\citealp[p.~11]{IEEE2022}; \citeyear[p.~5]{IEEE2021a};
+                \citealpISTQB{})\else \cite[p.~11]{IEEE2022},
+                \cite[p.~5]{IEEE2021a}, \cite{ISTQB}\fi.},
         caption={Categories of test approaches given by ISO/IEC and IEEE.},
         label={tab:ieeeCats}
         ]{
@@ -36,24 +37,28 @@
                                    & scripted testing, exploratory testing,
         automated testing \citeyearpar[p.~20]{IEEE2022}                                              \\
         Test Technique\TblrNote{b} & A ``procedure used to create or select a
-        test model, identify test coverage items, and derive corresponding test
-        cases'' \ifnotpaper (\citeyear[p.~11]{IEEE2022}; similar in
-        \citeyear[p.~467]{IEEE2017}) \else \cite[p.~11]{IEEE2022} (similar in
+        test model \dots, identify test coverage items \dots, and derive
+        corresponding test cases'' \ifnotpaper (\citeyear[p.~11]{IEEE2022};
+        \citeyear[p.~5]{IEEE2021a}; similar in citeyear[p.~467]{IEEE2017}; OG
+        \citeyear{IEEE2013}) \else \cite[p.~11]{IEEE2022}, \cite[p.~5]{IEEE2021a} (similar in
         \cite[p.~467]{IEEE2017}) \fi that ``generate evidence that test item
         requirements have been met or that defects are present in a test item''
-        \citeyearpar[p.~vii]{IEEE2021b} % ; ``a variety \dots\ is typically
+        \citeyearpar[p.~vii]{IEEE2021b} ``typically used to achieve a required
+        level of coverage'' \citeyearpar[p.~5]{IEEE2021a}
+        % ; ``a variety \dots\ is typically
         % required to suitably cover any system'' \citeyearpar[p.~33]{IEEE2022} and
         % is ``often selected based on team skills and familiarity, on the format
         % of the test basis'', and on expectations \citeyearpar[p.~23]{IEEE2022}
                                    & equivalence partitioning,
-        boundary value analysis, branch testing \citeyearpar[p.~11]{IEEE2022}                        \\
+        boundary value analysis, branch testing \ifnotpaper (\citeyear[p.~11]{IEEE2022};
+        \citeyear[p.~5]{IEEE2021a}) \else \cite[p.~11]{IEEE2022}, \cite[p.~5]{IEEE2021a} \fi         \\
         Test Type                  & ``Testing that is focused on specific
         quality characteristics'' \ifnotpaper (\citeyear[p.~15]{IEEE2022};
         \citeyear[p.~7]{IEEE2021b}; \citeyear[p.~473]{IEEE2017}; OG IEEE 2013)
         \else \cite[p.~473]{IEEE2017}, \cite[p.~15]{IEEE2022}, \cite[p.~7]{IEEE2021b}
         \fi                        & security testing, usability testing,
         performance testing \ifnotpaper (\citeyear[p.~15]{IEEE2022};
-        \citeyear[p.~2]{IEEE2021a}; \citeyear[p.~473]{IEEE2017}) \else
-        \cite[p.~473]{IEEE2017}, \cite[p.~15]{IEEE2022}, \citeyear[p.~2]{IEEE2021a} \fi              \\
+        \citeyear[p.~8]{IEEE2021a}; \citeyear[p.~473]{IEEE2017}) \else
+        \cite[p.~473]{IEEE2017}, \cite[p.~15]{IEEE2022}, \citeyear[p.~8]{IEEE2021a} \fi              \\
     \end{talltblr}
 \end{center}
