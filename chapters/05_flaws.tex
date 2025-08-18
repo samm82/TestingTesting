@@ -165,7 +165,9 @@ them more systematically\thesisissueref{21}.
 In particular, \multiCatIntro{}. We identify \multiCatCount{} such cases%
 \ifnotpaper\ that we summarize in \Cref{tab:multiCatTable}\fi; we consider these
 flaws as they violate our assumption of orthogonality (see
-\Cref{orth-approach}). These flaws mostly involve the category of ``test
+\Cref{orth-approach}). We list \ifnotpaper all \else some \fi of these flaws
+along with their sources in \Cref{tab:multiCats}\ifnotpaper\ for completeness%
+\fi. These flaws mostly involve the category of ``test
 \multiCatMax{}'', which shows up in \multiCatMaxCount{} of them. \ifnotpaper
     \begin{wraptable}{r}{6cm}
         \vspace{-1cm}
@@ -173,27 +175,32 @@ flaws as they violate our assumption of orthogonality (see
         \vspace{-1cm}
     \end{wraptable}
 \fi This may simply be because authors use the term ``test technique'' in a
-more general sense where we would use the term ``test approach''. We list
-\ifnotpaper all \else some \fi of these flaws along with their sources in
-\Cref{tab:multiCats}\ifnotpaper\ for completeness\fi, but the multiple
-categorizations of experience-based testing are of particular note.
-\expBasedCatMain{} These authors say ``experience-based testing practices like
-exploratory testing \dots\ are not \dots\ techniques for designing test cases'',
-although they ``can use \dots\ test techniques'' \citeyearpar[p.~viii]{IEEE2021b},
-which they support in \citeyearpar[p.~33]{IEEE2022} along with scripted testing.
-This implies that ``experience-based test design techniques'' are used \emph{by}
-the practice of experience-based testing which is not \emph{itself} a test
-technique (and similarly with scripted testing). If this is the case, it blurs
-the line between ``practice'' and ``technique'', which may explain why
-experience-based testing is categorized inconsistently in the literature%
-\thesisissueref{64}.
+more general sense where we would use the term ``test approach''. A more
+specific reason for this is how the line between ``test technique'' and
+``test practice'' can be blurred when these categories are \emph{not}
+transitive. For example, ``some test practices, such as exploratory testing or
+model-based testing are sometimes [incorrectly] referred to as `test techniques'
+\dots{} as they are not themselves providing a way to create test cases, but
+instead use test design techniques to achieve that'' \ifnotpaper
+    (\citealp[p.~11]{IEEE2022}; \citeyear[p.~5]{IEEE2021a})\else
+    \cite[p.~11]{IEEE2022}, \cite[p.~5]{IEEE2021a}\fi. This is further
+supported for exploratory testing \ifnotpaper (\citeyear[p.~33]{IEEE2022};
+    \citeyear[p.~viii]{IEEE2021b}; \citeyear[p.~13]{IEEE2013}) \else
+    \cite[p.~33]{IEEE2022}, \cite[p.~viii]{IEEE2021b}, \cite[p.~13]{IEEE2013}
+\fi as well as for experience-based testing \ifnotpaper
+    (\citeyear[p.~4]{IEEE2022}; \citeyear[pp.~viii, 4]{IEEE2021b};
+    \citeyear[p.~33]{IEEE2013}) \else \cite[p.~4]{IEEE2022},
+    \cite[pp.~viii, 4]{IEEE2021b}, \cite[p.~33]{IEEE2013} \fi and scripted
+testing \citeyearpar[p.~33]{IEEE2022}\ifnotpaper\ and \emph{seems} to be
+    further supported for model-based testing
+    (\citealp[pp.~1\==2]{EngströmAndPetersen2015}; \citealp[p.~4]{Kam2008})\fi.
 
 \ifnotpaper
 \phantomsection{}\label{classFamilyFlaw}
-However, this might mean that a practice such as experience-based testing
-can be viewed as a ``class of test case design techniques''
-\citep[p.~4]{IEEE2022}. If \emph{this} is the case, then test approaches
-that are a collection of specific subtechniques may be considered
+More generally, this might mean that a practice such as experience-based
+testing can be viewed as a ``class of test case design techniques''
+\citep[p.~4]{IEEE2022}\thesisissueref{64}. If this is the case, then test
+approaches that are a collection of specific subtechniques may be considered
 practices. The following test approaches are each described as a ``class'',
 ``family'', or ``collection'' of techniques by the sources given, which
 seems to support this:
