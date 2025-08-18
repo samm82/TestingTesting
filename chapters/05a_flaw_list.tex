@@ -1,27 +1,18 @@
 \begin{enumerate}
     \item % Flaw count (CONTRA, PARS): {IEEE2022} {IEEE2021a} {Firesmith2015} | {IEEE2017} {SWEBOK2024} {BarbosaEtAl2006} | {vanVliet2000}
           Regression testing and retesting are sometimes given as two distinct
-          approaches \ifnotpaper
-              (\citealp[p.~8]{IEEE2022}; \citealp[p.~3]{IEEE2021a};
-              \citealp[p.~34]{Firesmith2015})%
-          \else
-              \cite[p.~8]{IEEE2022}, \cite[p.~3]{IEEE2021a},
-              \cite[p.~34]{Firesmith2015}%
-          \fi, but sometimes regression testing is defined as a form of
-          ``selective retesting'' \ifnotpaper (\citealp[p.~372]{IEEE2017};
-              \citealp[pp.~5\=/8, 6\=/5, 7\=/5 to 7\=/6]{SWEBOK2024};
-              \citealp[p.~3]{BarbosaEtAl2006})%
-          \else \cite[p.~372]{IEEE2017},
-              \cite[pp.~5\=/8, 6\=/5, 7\=/5 to 7\=/6]{SWEBOK2024},
-              \cite[p.~3]{BarbosaEtAl2006}%
-          \fi. Moreover, the two possible variations
+          approaches (\citealp[p.~8]{IEEE2022}; \citealp[p.~3]{IEEE2021a};
+          \citealp[p.~34]{Firesmith2015}), but sometimes regression testing is
+          defined as a form of ``selective retesting'' (\citealp[p.~372]{IEEE2017};
+          \citealp[pp.~5\=/8, 6\=/5, 7\=/5 to 7\=/6]{SWEBOK2024};
+          \citealp[p.~3]{BarbosaEtAl2006}). Moreover, the two possible variations
           of regression testing given by \citet[p.~411]{vanVliet2000} are
           ``retest-all'' and ``selective retest''\todo{Are these separate
               approaches?}, which is possibly the source
           of the above misconception. This creates a cyclic
           relation between regression testing and selective retesting.
     \item % Flaw count (OVER, DEFS): {IEEE2022} | {IEEE2022}
-          \refHelper \citet[p.~34]{IEEE2022} \multiAuthHelper{give} the
+          \citet[p.~34]{IEEE2022} give the
           ``landmark tour'' as an example of ``a tour used for exploratory
           testing'', but they also use the analogy of ``a tour guide lead[ing]
           a tourist through the landmarks of a big city'' to describe tours in
@@ -29,11 +20,8 @@
           are pre-planned and follow a decided-upon sequence \citetext{p.~34}?
     \item % Flaw count (MISS, DEFS): {IEEE2022} {IEEE2021b}
           Integration testing, system testing, and system integration testing
-          are all listed as ``common test levels'' \ifnotpaper
-              (\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021b})%
-          \else
-              \cite[p.~12]{IEEE2022}, \cite[p.~6]{IEEE2021b}%
-          \fi, but the latter two are not defined.
+          are all listed as ``common test levels'' (\citealp[p.~12]{IEEE2022};
+          \citeyear[p.~6]{IEEE2021b}), but the latter two are not defined.
           % Flaw count (CONTRA, PARS): ISTQB | {Firesmith2015}
           This makes the relations between these three terms unclear; system
           integration testing is listed as a child of both integration testing
@@ -70,21 +58,16 @@
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} {SWEBOK2024} {Firesmith2015} {AmmannAndOffutt2017} {PetersAndPedrycz2000} | {IEEE2022} {Gerrard2000a}
           % Label static-test-flaw 
           ``Software testing'' is often defined to exclude static testing
-          \ifnotpaper
-              (\citealp[p.~13]{Firesmith2015}; \citealp[p.~222]{AmmannAndOffutt2017};
-              \citealp[p.~439]{PetersAndPedrycz2000})%
-          \else
-              \cite[p.~439]{PetersAndPedrycz2000}, \cite[p.~13]{Firesmith2015},
-              \cite[p.~222]{AmmannAndOffutt2017}%
-          \fi, restricting ``testing'' to mean dynamic validation
-          \citep[p.~5\=/1]{SWEBOK2024} or verification ``in which a system or
-          component is executed'' \citep[p.~427]{IEEE2017}. However,
-          ``terminology is not uniform among different communities, and some
-          use the term `testing' to refer to static techniques%
+          (\citealp[p.~13]{Firesmith2015}; \citealp[p.~222]{AmmannAndOffutt2017};
+          \citealp[p.~439]{PetersAndPedrycz2000}), restricting ``testing'' to
+          mean dynamic validation \citep[p.~5\=/1]{SWEBOK2024} or verification
+          ``in which a system or component is executed'' \citep[p.~427]{IEEE2017}.
+          However, ``terminology is not uniform among different communities, and
+          some use the term `testing' to refer to static techniques%
           \notDefDistinctIEEE{technique} as well'' \citep[p.~5\=/2]{SWEBOK2024}.
           This is done by \citet[pp.~16\==17]{IEEE2022} and
-          \citet[pp.~8\==9]{Gerrard2000a}; the \ifnotpaper \else authors of the
-          \fi former even explicitly \emph{exclude} static testing in another
+          \citet[pp.~8\==9]{Gerrard2000a}; the former even explicitly
+          \emph{exclude} static testing in another
           document \citeyearpar[p.~440]{IEEE2017}!
     \item % Flaw count (CONTRA, SYNS): ISTQB | {BaresiAndPezzè2006}
           A component is an ``entity with discrete structure \dots\ within a
@@ -93,8 +76,8 @@
               [sic] are often used interchangeably or defined to be subelements
           of one another in different ways depending upon the context'' with
           no standardized relationship \citep[p.~82]{IEEE2017}. For example,
-          \citetISTQB{} \multiAuthHelper{define} them as synonyms while
-          \citet[p.~107]{BaresiAndPezzè2006} \multiAuthHelper{say} ``components
+          \citetISTQB{} define them as synonyms while
+          \citet[p.~107]{BaresiAndPezzè2006} say ``components
           differ from classical modules for being re-used in different contexts
           independently of their development''.
           % Flaw count (AMBI, DEFS): {IEEE2017} ISTQB
@@ -117,22 +100,15 @@
           \citeyearpar[p.~24]{IEEE2022} and ``test phase'' can also refer to
           the ``period of time in the software life cycle'' when testing occurs
           \citeyearpar[p.~470]{IEEE2017}, usually after the implementation phase
-          \ifnotpaper % \cite[pp.~420, 509]{IEEE2017}
-              (pp.~420, 509; \citealp[p.~56]{Perry2006})%
-          \else
-              \citetext{pp.~420, 509}, \cite[p.~56]{Perry2006}%
-          \fi.
+          \citep[pp.~420, 509;][p.~56]{Perry2006}.
     \item % Flaw count (OVER, DEFS): {IEEE2010} | {IEEE2010}
           % Assertion: {SWEBOK2024} {vanVliet2000}
-          \refHelper \citet[p.~128]{IEEE2010} \multiAuthHelper{define}
+          \citet[p.~128]{IEEE2010} define
           ``error'' as ``a human action that produces an incorrect result'',
           but also as ``an incorrect result'' itself. Since faults are inserted
-          when a developer makes an error \ifnotpaper
-              % \citeyear[pp.~128, 140]{IEEE2010}
-              (pp.~128, 140; \citealp[p.~12\=/3]{SWEBOK2024};
-              \citealp[pp.~399\==400]{vanVliet2000})\else
-              \citetext{pp.~128, 140}, \cite[pp.~399\==400]{vanVliet2000},
-              \cite[p.~12\=/3]{SWEBOK2024}\fi, this means that they are
+          when a developer makes an error % \citeyear[pp.~128, 140]{IEEE2010}
+          (pp.~128, 140; \citealp[p.~12\=/3]{SWEBOK2024};
+          \citealp[pp.~399\==400]{vanVliet2000}), this means that they are
           ``incorrect results'', making ``error'' and ``fault'' synonyms%
           \qtodo{Should we classify this as a Synonym Flaw at all?} and
           the distinction between them less useful.
@@ -140,8 +116,7 @@
           Additionally, ``error'' can also be defined as ``the
           difference between a computed, observed, or measured value or
           condition and the true, specified, or theoretically correct value
-          or condition'' \ifnotpaper (\citealp[p.~128]{IEEE2010}; \else
-              \cite[p.~128]{IEEE2010} (\fi similar in
+          or condition'' (\citealp[p.~128]{IEEE2010}; similar in
           \citealp[pp.~17\=/18 to 17\=/19, 18\=/7 to 18\=/8]{SWEBOK2024}).
           While this is a widely used definition, particularly in mathematics,
           it makes some test approaches ambiguous.
@@ -149,10 +124,9 @@
           For example, back-to-back
           testing is ``testing in which two or more variants of a program are
           executed with the same inputs, the outputs are compared, and errors
-          are analyzed in case of discrepancies'' \ifnotpaper
-              (\citealp[p.~30]{IEEE2010}; similar in \citealpISTQB{})\else
-              \cite[p.~30]{IEEE2010} (similar in \cite{ISTQB})\fi,
-          which seems to refer to this definition of ``error''.
+          are analyzed in case of discrepancies'' (\citealp[p.~30]{IEEE2010};
+          similar in \citealpISTQB{}), which seems to refer to this definition
+          of ``error''.
     \item % Flaw count (CONTRA, DEFS): {IEEE2021b} {IEEE2017} | {vanVliet2000} implied by {IEEE2021b}
           % Label c-use-def
           % TODO: SUPP DEFS?
@@ -209,7 +183,7 @@
           \citep{WikiHaskell2023}, this could cause confusion and/or be
           imprecise.
     \item % Flaw count (CONTRA, CATS): {IEEE2022} | implied by {IEEE2022}
-          \refHelper \citet[p.~36]{IEEE2022} say ``A/B testing is not a test
+          \citet[p.~36]{IEEE2022} say ``A/B testing is not a test
           case generation technique as test inputs are not generated'', where
           ``test case generation technique'' may be a synonym of ``test design
           technique''. However, the inclusion of A/B testing under the heading
@@ -221,29 +195,20 @@
           The claim that ``test cases can be either manual test cases or
           keyword test cases'' \citep[p.~6]{IEEE2016} implies that ``keyword-driven
           testing'' could be a synonym of ``automated testing'' instead of its
-          child, which seems more reasonable \ifnotpaper
-              \citetext{\citeyear[p.~4]{IEEE2016}; \citeyear[p.~35]{IEEE2022}}%
-          \else\cite[p.~35]{IEEE2022}, \cite[p.~4]{IEEE2016}\fi.
+          child, which seems more reasonable \citeyearpar[p.~4;][p.~35]{IEEE2022}.
 
           % STD | META
     \item % Flaw count (WRONG, CATS): {IEEE2022} {IEEE2021b} {IEEE2017} | ISTQB
-          \refHelper \citetISTQB{} \ifnotpaper classify \else classifies \fi
-          \acs{ml} model testing as a test level, which \ifnotpaper they \else
-              it \fi \multiAuthHelper{define} as ``a specific instantiation of a
-          test process'': a vague definition that does not match the one in
-          \Cref{tab:ieeeCats}.
+          \citetISTQB{} classify \acs{ml} model testing as a test level, which
+          they define as ``a specific instantiation of a test process'': a vague
+          definition that does not match the one in \Cref{tab:ieeeCats}.
     \item % Flaw count (CONTRA, PARS): {ISO_IEC2023a} | {Firesmith2015}
           % Label perf-sec-par
           \perfSecParFlaw{}
     \item % Flaw count (CONTRA, PARS): {IEEE2022} {IEEE2021b} {SWEBOK2024} ISTQB | {Firesmith2015}
           Similarly, random testing is a subtechnique of specification-based
-          testing \ifnotpaper
-              \citetext{\citealp[pp.~7, 22]{IEEE2022};
-                  \citeyear[pp.~5, 20, Fig.~2]{IEEE2021b};
-                  \citealp[p.~5\=/12]{SWEBOK2024}; \citealpISTQB{}} \else
-              \cite[pp.~7, 22]{IEEE2022}, \cite{ISTQB},
-              \cite[p.~5\=/12]{SWEBOK2024}, \cite[pp.~5, 20, Fig.~2]{IEEE2021b}
-          \fi but is listed
+          testing (\citealp[pp.~7, 22]{IEEE2022}; \citeyear[pp.~5, 20, Fig.~2]{IEEE2021b};
+          \citealp[p.~5\=/12]{SWEBOK2024}; \citealpISTQB{}) but is listed
           separately by \citet[p.~46]{Firesmith2015}.
     \item % Flaw count (OVER, DEFS): {SWEBOK2024} | {IEEE2022}
           The \acs{swebok} V4 defines ``privacy testing'' as testing that
@@ -258,12 +223,9 @@
     \item % Flaw count (CONTRA, DEFS): {SWEBOK2024} {Patton2006} | {IEEE2017}
           % Label path-test
           Path testing ``aims to execute all entry-to-exit control flow paths
-          in a \acs{sut}'s control flow graph'' \ifnotpaper
-              (\citealp[p.~5-13]{SWEBOK2024}; similar in
-              \citealp[p.~119]{Patton2006})\else \cite[p.~5-13]{SWEBOK2024}
-              (similar in \cite[p.~119]{Patton2006})\fi, but
-          \citet[p.~316]{IEEE2017} \multiAuthHelper{add} that it can also be
-          ``designed to execute \dots{} selected paths.''
+          in a \acs{sut}'s control flow graph'' (\citealp[p.~5\=/13]{SWEBOK2024};
+          similar in \citealp[p.~119]{Patton2006}), but \citet[p.~316]{IEEE2017}
+          add that it can also be ``designed to execute \dots{} selected paths.''
     \item % Flaw count (CONTRA, DEFS): {IEEE2022} | ISTQB
           % Label tour-def
           % Label tour-def-contra
@@ -287,15 +249,11 @@
     \item % Flaw count (AMBI, LABELS): {IEEE2017} | {Firesmith2015} | {Firesmith2015} {Gerrard2000a}
           The distinctions between development testing \citep[p.~136]{IEEE2017},
           developmental testing \citep[p.~30]{Firesmith2015}, and developer
-          testing
-          \ifnotpaper  % \citealp[p.~39]{Firesmith2015}
-              (p.~39; \citealp[p.~11]{Gerrard2000a})
-          \else
-              \citetext{p.~39}, \cite[p.~11]{Gerrard2000a}
-          \fi are unclear and seem miniscule.\todo{Is this a def flaw?}
+          testing \citep[p.~39;][p.~11]{Gerrard2000a} are unclear and seem
+          miniscule.\todo{Is this a def flaw?}
     \item % Flaw count (AMBI, DEFS): ISTQB
           % TODO: SUPP DEFS?
-          \refHelper \citetISTQB{} \multiAuthHelper{define}
+          \citetISTQB{} define
           ``\acf{ml} model testing'' and ``\acs{ml} functional performance''
           in terms of ``\acs{ml} functional performance criteria'',
           which is defined in terms of ``\acs{ml} functional performance
@@ -304,7 +262,7 @@
           of ``performance'' (or ``correctness'') in these definitions is at
           best ambiguous and at worst incorrect.
     \item % Flaw count (WRONG, SCOPE): {SWEBOK2024}
-          \refHelper \citet[p.~5\=/4]{SWEBOK2024} says that quality improvement,
+          \citet[p.~5\=/4]{SWEBOK2024} says that quality improvement,
           along with quality assurance, is an aspect of testing that involves
           ``defining methods, tools, skills, and practices to achieve the
           specific quality level and objective''; while testing that a system
@@ -312,13 +270,12 @@
           system in response is \emph{not} part of testing.
     \item % Flaw count (WRONG, TRACE): {SWEBOK2024}
           % Label elas-ref
-          \refHelper \citet[p.~5\=/9]{SWEBOK2024}'s definition of
+          \citet[p.~5\=/9]{SWEBOK2024}'s definition of
           ``elasticity testing'' \swebokElasRef{}
     \item % Flaw count (CONTRA, SYNS): ISTQB implied by {Gerrard2000a} | {SWEBOK2024}
           % Label stage-level-syns
           The terms ``test level'' and ``test stage'' are given as synonyms
-          \ifnotpaper (\citealpISTQB{}; \else \cite{ISTQB} (\fi implied
-          by \citealp[p.~9]{Gerrard2000a}), but
+          (\citealpISTQB{}; implied by \citealp[p.~9]{Gerrard2000a}), but
           \citet[p.~5\=/6]{SWEBOK2024} says ``[test] levels can be distinguished
           based on the object of testing, the \emph{target}, or on the purpose
           or \emph{objective}'' and calls the former ``test stages'', giving
@@ -332,11 +289,9 @@
           % Label assert-truth
           \tolTestFlaw{}
     \item % Flaw count (OVER, LABELS): {SWEBOK2024} implied by {Valcheva2013} {YuEtAl2011} | {Firesmith2015}
-          ``Orthogonal array testing'' \ifnotpaper \citetext{%
-                  \citealp[pp.~5\=/1, 5\=/11]{SWEBOK2024};
-                  implied by \citealp[pp.~467, 473]{Valcheva2013};
-                  \citealp[pp.~1573\==1577, 1580]{YuEtAl2011}} \else
-              \cite[pp.~5\=/1, 5\=/11]{SWEBOK2024} \fi and ``operational
+          ``Orthogonal array testing'' (\citealp[pp.~5\=/1, 5\=/11]{SWEBOK2024};
+          implied by \citealp[pp.~467, 473]{Valcheva2013};
+          \citealp[pp.~1573\==1577, 1580]{YuEtAl2011}) and ``operational
           acceptance testing'' \citep[p.~30]{Firesmith2015} have the same
           acronym (``OAT'').
     \item % Flaw count (CONTRA, SYNS): ISTQB | {Firesmith2015}
@@ -346,10 +301,9 @@
           separately by \citet[p.~30]{Firesmith2015}.
     \item % Flaw count (AMBI, DEFS): {SWEBOK2024} | {SWEBOK2024}
           % Assertion: {vanVliet2000}
-          While ``error'' is defined as ``a human action that produces an incorrect
-          result'' \ifnotpaper (\citealp[pp.~12\=/3]{SWEBOK2024}\todo{OG [14]};
-              \citealp[p.~399]{vanVliet2000})\else \cite[pp.~12\=/3]{SWEBOK2024},
-              \cite[p.~399]{vanVliet2000}\fi, \citeauthor{SWEBOK2024} does not
+          While ``error'' is defined as ``a human action that produces an
+          incorrect result'' (\citealp[pp.~12\=/3]{SWEBOK2024}\todo{OG [14]};
+          \citealp[p.~399]{vanVliet2000}), \citeauthor{SWEBOK2024} does not
           use this consistently, sometimes implying that errors can be instrinsic
           to software itself \citeyearpar[pp.~4\=/9, 6\=/5, 7\=/3, 12\=/4,
               12\=/9, 12\=/13]{SWEBOK2024}.\qtodo{I ignore ``syntax errors,
@@ -362,12 +316,11 @@
           observable difference between what the software is intended to do and
           what it does'', but this seems to match the definition of
           ``failure'': the inability of a system ``to perform a required
-          function or \dots{} within previously specified limits'' \ifnotpaper
-              (\citealp[p.~7]{IEEE2019a}; \citeyear[p.~139]{IEEE2010}%
-              \todo{OG ISO/IEC, 2005}; similar in \citealp[p.~400]{vanVliet2000})
-          \else [TODO: format citation] \fi that is ``externally visible''
-          \ifnotpaper (\citealp[p.~7]{IEEE2019a}; similar in
-              \citealp[p.~400]{vanVliet2000})\else [TODO: format citation]\fi.
+          function or \dots{} within previously specified limits''
+          (\citealp[p.~7]{IEEE2019a}; \citeyear[p.~139]{IEEE2010}%
+          \todo{OG ISO/IEC, 2005}; similar in \citealp[p.~400]{vanVliet2000})
+          that is ``externally visible'' (\citealp[p.~7]{IEEE2019a}; similar in
+          \citealp[p.~400]{vanVliet2000}).
     \item % Flaw count (AMBI, LABELS): {SWEBOK2024} | {SWEBOK2024}
           % Assertion: {vanVliet2000}
           Similarly, \citet[p.~4\=/11]{SWEBOK2024} says ``fault tolerance is
@@ -376,11 +329,8 @@
           effects if recovery is not possible.'' This should either be called
           ``\emph{error} tolerance'' or be described as ``detecting
           \emph{faults} and then recovering from them'', since ``error'' and
-          ``fault'' have distinct meanings \ifnotpaper
-              (\citealp[p.~5\=/3]{SWEBOK2024};
-              \citealp[pp.~399\==400]{vanVliet2000})\else
-              \cite[p.~5\=/3]{SWEBOK2024},
-              \cite[pp.~399\==400]{vanVliet2000}\fi. The intent of this
+          ``fault'' have distinct meanings (\citealp[p.~5\=/3]{SWEBOK2024};
+          \citealp[pp.~399\==400]{vanVliet2000}). The intent of this
           term-definition pair is unclear, as the strategies given---``backing
           up and retrying, using auxiliary code and voting algorithms, and
           replacing an erroneous value with a phony value that will have a
@@ -409,9 +359,8 @@
     \item % Flaw count (AMBI, DEFS): ISTQB
           % Flaw count (AMBI, TRACE): ISTQB
           % Assertion: {SPICE2022}
-          \refHelper \citetISTQB{} \multiAuthHelper{describe} the term
-          ``software in the loop'' as a kind of testing, while the source
-          \ifnotpaper they \else it \fi \multiAuthHelper{reference} seems to
+          \citetISTQB{} describe the term ``software in the loop'' as a kind of
+          testing, while the source they reference seems to
           describe ``Software-in-the-Loop-Simulation'' as a ``simulation
           environment'' that may support software integration testing
           \citep[p.~153]{SPICE2022}; is this a testing approach or a tool
@@ -464,12 +413,10 @@
           The same is true for ``hardware-in-the-loop testing'' and
           ``human-in-the-loop testing'' (``HIL'') \citep[p.~23]{Firesmith2015},
           % Flaw count (CONTRA, LABELS): {Firesmith2015} | {PreußeEtAl2012}
-          although \citet[p.~2]{PreußeEtAl2012} \multiAuthHelper{use} ``HiL''
-          for the former.
+          although \citet[p.~2]{PreußeEtAl2012} use ``HiL'' for the former.
     \item % Flaw count (WRONG, TRACE): {DoğanEtAl2014}
-          \citet[p.~184]{DoğanEtAl2014} \multiAuthHelper{claim} that
-          \citet{SakamotoEtAl2013} \multiAuthHelper{define} ``prime path
-          coverage'', but they do not.
+          \citet[p.~184]{DoğanEtAl2014} claim that \citet{SakamotoEtAl2013}
+          define ``prime path coverage'', but they do not.
 
           % META | TEXT
     \item % Flaw count (CONTRA, PARS): implied by {Patton2006} | {vanVliet2000}
@@ -481,13 +428,9 @@
     \item % Flaw count (WRONG, SYNS): {IEEE2010} {SWEBOK2024} {vanVliet2000} | {Patton2006}
           % Label bug-patton
           The differences between the terms ``error'', ``failure'',
-          ``fault'', ``defect'' are significant and meaningful \ifnotpaper
-              (\citealp[pp.~128, 139\==140]{IEEE2010};
-              \citealp[p.~12\=/3]{SWEBOK2024};
-              \citealp[pp.~399\==400]{vanVliet2000})\else
-              \cite[pp.~128, 139\==140]{IEEE2010},
-              \cite[pp.~399\==400]{vanVliet2000},
-              \cite[p.~12\=/3]{SWEBOK2024}\fi, but \bugPattonFlaw{}
+          ``fault'', ``defect'' are significant and meaningful
+          (\citealp[pp.~128, 139\==140]{IEEE2010}; \citealp[p.~12\=/3]{SWEBOK2024};
+          \citealp[pp.~399\==400]{vanVliet2000}), but \bugPattonFlaw{}
     \item % Flaw count (CONTRA, DEFS): {IEEE2022} | {Patton2006}
           % Label load-def
           \loadFlaw{}
@@ -498,22 +441,18 @@
           possible criteria.
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} {PetersAndPedrycz2000} {vanVliet2000} | {Patton2006}
           System testing is ``conducted on a complete, integrated system''
-          \ifnotpaper (\citealp[p.~456]{IEEE2017}; similar in
-              \citealp[Tab.~12.3]{PetersAndPedrycz2000};
-              \citealp[p.~439]{vanVliet2000})\else \cite[p.~456]{IEEE2017}
-              (similar in \cite[Tab.~12.3]{PetersAndPedrycz2000},
-              \cite[p.~439]{vanVliet2000})\fi, but \citet[p.~109]{Patton2006}
+          (\citealp[p.~456]{IEEE2017}; similar in \citealp[Tab.~12.3]{PetersAndPedrycz2000};
+          \citealp[p.~439]{vanVliet2000}), but \citet[p.~109]{Patton2006}
           says it can also be done on ``at least a major portion'' of the product.
     \item % Flaw count (AMBI, SYNS): ISTQB | {Patton2006}
           % TODO: NEAR SYNS?
-          \refHelper \citetISTQB{} \multiAuthHelper{claim} that code inspections
-          are related to peer reviews but \citet[pp.~94\==95]{Patton2006} makes
-          them quite distinct.
+          \citetISTQB{} claim that code inspections are related to peer reviews
+          but \citet[pp.~94\==95]{Patton2006} makes them quite distinct.
     \item % Flaw count (CONTRA, SYNS): ISTQB | {PetersAndPedrycz2000}
           % Label walkthrough-syns
           ``Walkthroughs'' and ``structured walkthroughs'' are given
           as synonyms by \citetISTQB{} but \citet[p.~484]{PetersAndPedrycz2000}
-          \ifnotpaper imply \else implies \fi that they are different, saying a
+          imply that they are different, saying a
           more structured walkthrough may have specific roles.
     \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | implied by {Patton2006}
           While \citet[p.~92\ifnotpaper, emphasis added\fi]{Patton2006}
@@ -536,7 +475,7 @@
               PetersAndPedrycz2000}) and the uppercase ``DU''
           \citep[p.~425]{vanVliet2000} are used.
     \item % Flaw count (MISS, DEFS): {IEEE2021b} {IEEE2017} {PetersAndPedrycz2000} implied by {vanVliet2000} | {vanVliet2000}
-          \refHelper \Citet[p.~425]{vanVliet2000} defines many types of data
+          \Citet[p.~425]{vanVliet2000} defines many types of data
           flow coverage, including all-\acsp{p-use},
           all-\acsp{p-use}/some-\acsp{c-use}, and
           all-\acsp{c-use}/some-\acsp{p-use}, but
@@ -544,7 +483,7 @@
           defined elsewhere (\citealp[p.~27]{IEEE2021b};
           \citeyear[p.~83]{IEEE2017}; \citealp[p.~479]{PetersAndPedrycz2000}).
     \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021b} {IEEE2017} {PetersAndPedrycz2000}
-          \refHelper \Citet[pp.~424-425]{vanVliet2000} specifies that every
+          \Citet[pp.~424\==425]{vanVliet2000} specifies that every
           successor of a data definition use needs to be executed as part of
           all-uses testing, but this condition is not included elsewhere
           (\citealp[pp.~28\==29]{IEEE2021b}; \citeyear[p.~120]{IEEE2017};
@@ -558,7 +497,7 @@
           \citealp[p.~479]{PetersAndPedrycz2000}); however, paths containing
           simple cycles may also be required \citep[p.~425]{vanVliet2000}.
     \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021b}
-          \refHelper \Citet[pp.~432\==433]{vanVliet2000} says that
+          \Citet[pp.~432\==433]{vanVliet2000} says that
           all-\acsp{p-use} testing is only stronger than all-edges (branch)
           testing if there are infeasible paths, but
           \citet[Fig.~F.1\todo{OG Reid, 1996}]{IEEE2021b} \ifnotpaper do
@@ -569,7 +508,7 @@
           there are infeasible paths, but \citet[p.~5\=/13]{SWEBOK2024} does
           not specify this caveat.
     \item % Flaw count (WRONG, PARS): {IEEE2021b} {IEEE2017} {vanVliet2000} | implied by {PetersAndPedrycz2000}
-          \refHelper \citet[Fig.~12.31]{PetersAndPedrycz2000} \ifnotpaper imply
+          \citet[Fig.~12.31]{PetersAndPedrycz2000} \ifnotpaper imply
           \else implies \fi that decision coverage is a child of both \acs{c-use}
           coverage \emph{and} \acs{p-use} coverage; this seems incorrect, since
           decisions are the result of \acsp{p-use} and \emph{not} \acsp{c-use}
@@ -589,7 +528,7 @@
 
           % TEXT | PAPER
     \item % Flaw count (WRONG, DEFS): ISTQB | {Kam2008}
-          \refHelper \citet[p.~46]{Kam2008}\todo{OG Beizer} says that the goal
+          \citet[p.~46]{Kam2008}\todo{OG Beizer} says that the goal
           of negative testing is ``showing that a component or system does not
           work'' which is not true; if robustness is an important quality for
           the system, then testing the system ``in a way for which it was not
@@ -600,12 +539,11 @@
           % Label see-ref-missing
           \seeRefMissing{}
     \item % Flaw count (CONTRA, CATS): {Kam2008} | implied by {IEEE2021b}
-          \refHelper \citet[p.~46]{Kam2008}\todo{OG Beizer} says ``negative
-          testing is related to the testers' attitude rather than a specific
-          test approach or test design technique''; while \citet{IEEE2021b}
-          \multiAuthHelper{seem} to support this idea of negative testing being
-          at a ``higher'' level than other approaches, \ifnotpaper they also
-              imply \else it also implies \fi that it is a test technique
+          \citet[p.~46]{Kam2008}\todo{OG Beizer} says ``negative testing is
+          related to the testers' attitude rather than a specific test approach
+          or test design technique''; while \citet{IEEE2021b} seem to support
+          this idea of negative testing being at a ``higher'' level than other
+          approaches, they also imply that it is a test technique
           \citetext{pp.~10, 14}.
     \item % Flaw count (REDUN, LABELS): {Gerrard2000a} | {IEEE2022} ISTQB
           The phrase ``continuous automated testing'' \citep[p.~11]{Gerrard2000a}
@@ -626,19 +564,18 @@
           \citep[p.~5\=/14]{SWEBOK2024}, it is one in which ``no recognized test
           design technique is used'' \citep[p.~42]{Kam2008}.
     \item % Flaw count (MISS, DEFS): {Bas2024}
-          \refHelper \citet[p.~16]{Bas2024} lists ``three [backup] location
+          \citet[p.~16]{Bas2024} lists ``three [backup] location
           categories: local, offsite and cloud based [sic]'' but does not
-          define or discuss ``offsite backups'' \citetext{pp.~16-17}.
+          define or discuss ``offsite backups'' \citetext{pp.~16\==17}.
     \item % Flaw count (WRONG, SYNS): implied by {SharmaEtAl2021}
-          \refHelper \citet[p.~601]{SharmaEtAl2021} \multiAuthHelper{seem} to
-          use the terms ``grey-box testing'' and ``(stepwise) code reading''
-          interchangeably, which would incorrectly imply that they are synonyms%
-          \todo{FIND SOURCES}.
+          \citet[p.~601]{SharmaEtAl2021} seem to use the terms ``grey-box
+          testing'' and ``(stepwise) code reading'' interchangeably, which would
+          incorrectly imply that they are synonyms\todo{FIND SOURCES}.
     \item % Flaw count (WRONG, LABELS): {Kam2008}
-          \refHelper \citet{Kam2008} misspells ``state-based'' as ``state-base''
+          \citet{Kam2008} misspells ``state-based'' as ``state-base''
           \citetext{pp.~13, 15} and ``stated-base'' \citetext{Tab.~1}.
     \item % Flaw count (MISS, DEFS): {Gerrard2000a}
-          \refHelper \citet[Tab.~2]{Gerrard2000a} makes a distinction between
+          \citet[Tab.~2]{Gerrard2000a} makes a distinction between
           ``transaction verification'' and ``transaction testing'' and
           uses the phrase ``transaction flows'' \citetext{Fig.~5} but doesn't
           explain them.
@@ -651,29 +588,26 @@
           performance testing would have been good candidates.
     \item % Flaw count (WRONG, SYNS): {IEEE2017} {SakamotoEtAl2013} | {SneedAndGöschl2000}
           % Label dubious-syns
-          \refHelper \citet[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88}
-          \multiAuthHelper{give} ``white-box testing'', ``grey-box testing'',
-          and ``black-box testing'' as synonyms for ``module testing'',
-          ``integration testing'', and ``system testing'', respectively, but
-          this mapping is incorrect; for example, \citet[p.~444]{IEEE2017}
-          \multiAuthHelper{say} ``structure-based [(or white-box)] testing is
-          not restricted to use at component level and can be used at all
-          levels'' and \citet[pp.~345--346]{SakamotoEtAl2013}
-          \multiAuthHelper{describe} ``black-box integration testing''%
-          \todo{more examples?}.
+          \citet[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88} give
+          ``white-box testing'', ``grey-box testing'', and ``black-box testing''
+          as synonyms for ``module testing'', ``integration testing'', and
+          ``system testing'', respectively, but this mapping is incorrect; for
+          example, \citet[p.~444]{IEEE2017} say ``structure-based [(or white-box)]
+          testing is not restricted to use at component level and can be used
+          at all levels'' and \citet[pp.~345\==346]{SakamotoEtAl2013} describe
+          ``black-box integration testing''\todo{more examples?}.
     \item % Flaw count (WRONG, SYNS): {SneedAndGöschl2000}
           % Label dubious-red-box-syn
           The previous flaw makes the claim that
           ``red-box testing'' is a synonym for ``acceptance testing''
           \citep[p.~18]{SneedAndGöschl2000} lose credibility.
     \item % Flaw count (WRONG, SYNS): {SWEBOK2024} {vanVliet2000} | {Kam2008}
-          \refHelper \citet[p.~46]{Kam2008} gives ``mutation testing'' as a
+          \citet[p.~46]{Kam2008} gives ``mutation testing'' as a
           synonym of ``back-to-back testing''; while the two are related
           \citep[p.~30]{IEEE2010}, the variants used in mutation testing are
           generated or designed to be detected as incorrect by the test suite
-          \ifnotpaper (\citealp[p.~5\=/15]{SWEBOK2024};
-              similar in \citealp[pp.~428--429]{vanVliet2000}) \else
-              [TODO: format citation] \fi which is not a requirement of
+          (\citealp[p.~5\=/15]{SWEBOK2024}; similar in
+          \citealp[pp.~428\==429]{vanVliet2000}) which is not a requirement of
           back-to-back testing.
     \item % Flaw count (AMBI, SYNS): {Kam2008} | implied by {Kam2008}
           ``Conformance testing'' is implied to be a synonym of ``compliance
