@@ -88,7 +88,6 @@ ResponseTimeTesting [label=<Response-Time<br/>Testing>,style="dashed"];
 RobustnessTesting [label=<Robustness<br/>Testing>,style="dashed"];
 SafetyTesting [label=<Safety<br/>Testing>,style="dashed"];
 ScalabilityTesting [label=<Scalability<br/>Testing>,style="dashed"];
-SecurityAudits [label=<Security<br/>Audits>,color=grey];
 SecurityTesting [label=<Security<br/>Testing>];
 StabilityTesting [label=<Stability<br/>Testing>,style="dashed"];
 StressTesting [label=<Stress<br/>Testing>];
@@ -96,7 +95,6 @@ SurvivabilityTesting [label=<Survivability<br/>Testing>,style="dashed"];
 TailoredConformanceTesting [label=<Tailored<br/>Conformance<br/>Testing>,color=grey];
 UsabilityTesting [label=<Usability<br/>Testing>];
 VolumeTesting [label=<Volume<br/>Testing>,style="dashed"];
-VulnerabilityScanning [label=<Vulnerability<br/>Scanning>,color=grey];
 
 BackupandRecoveryTesting -> BackupRecoveryTesting[dir=none,style="dashed",color="green"];
 CorrectnessTesting -> FunctionalTesting[dir=none,style="dashed",color="blue"];
@@ -236,7 +234,6 @@ ScalabilityTesting -> PerformanceTesting;
 ScalabilityTesting -> EfficiencyTesting;
 ScalabilityTesting -> PerformanceEfficiencyTesting[style="dashed"];
 ScalabilityTesting -> MemoryManagementTesting[style="dashed",color="green"];
-SecurityAudits -> SecurityTesting[color="green"];
 SecurityTesting -> ReliabilityTesting[color="green"];
 SecurityTesting -> ConformanceTesting[color="green"];
 SecurityTesting -> FunctionalityTesting;
@@ -257,7 +254,6 @@ VolumeTesting -> ConformanceTesting[color="green"];
 VolumeTesting -> PerformanceEfficiencyTesting[color="green"];
 VolumeTesting -> CapacityTesting[color="blue"];
 VolumeTesting -> CapacityTesting[style="dashed",color="green"];
-VulnerabilityScanning -> SecurityTesting[color="green"];
 
 subgraph cluster_legend {
 

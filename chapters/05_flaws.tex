@@ -196,54 +196,18 @@ testing \citeyearpar[p.~33]{IEEE2022}\ifnotpaper\ and \emph{seems} to be
     (\citealp[pp.~1\==2]{EngströmAndPetersen2015}; \citealp[p.~4]{Kam2008})\fi.
 
 \ifnotpaper
-\phantomsection{}\label{classFamilyFlaw}
-More generally, this might mean that a practice such as experience-based
-testing can be viewed as a ``class of test case design techniques''
-\citep[p.~4]{IEEE2022}\thesisissueref{64}. If this is the case, then test
-approaches that are a collection of specific subtechniques may be considered
-practices. The following test approaches are each described as a ``class'',
-``family'', or ``collection'' of techniques by the sources given, which
-seems to support this:
-\begin{itemize}
-    \item Combinatorial testing (\citealp[p.~3]{IEEE2022};
-          \citeyear[p.~2]{IEEE2021b}; \citealp[p.~5-11]{SWEBOK2024})
-    \item Data flow testing (\citeyear[p.~3]{IEEE2021b};
-          implied by \citealp[p.~5-13]{SWEBOK2024})
-    \item Performance(-related) testing (\citealp[p.~38]{IEEE2021b};
-          \perfAsFamily*{})
-    \item Security testing \citep[implied by][p.~40]{IEEE2021b}
-    \item Fault tolerance testing \citep[implied by][p.~4\=/11]{SWEBOK2024}
-\end{itemize}
-Of the above, security testing is an outlier, since it is consistently
-categorized as a test type (\citealp[pp.~9, 22, 26--27]{IEEE2022};
-\citeyear[pp.~7, 40, Tab.~A.1]{IEEE2021b}; \citeyear[p.~405]{IEEE2017}%
-\todo{OG 2013}; implied by its quality (\citealp{ISO_IEC2023a};
-\citealp[p.~13-4]{SWEBOK2024}); \citealp[p.~53]{Firesmith2015}) despite
-consisting of ``a number of techniques'' \cite[p.~40]{IEEE2021b}, although
-this may be \distinctIEEE{technique} In addition, specification-based
-testing and structure-based testing may also be considered ``families''
-since they are quite broad with many subtechniques and are described as
-``complementary'' alongside experience-based testing
-\citep[p.~8, Fig.~2]{IEEE2021b}.
-
-As described in \Cref{infers}, we infer that child approaches inherit their
-parents' categories. However, subapproaches of experience-based tesing, such as
-error guessing and exploratory testing, are categorized ambiguously, casting
-doubt on the validity of this assumption.
-\refHelper \citet[p.~34\ifnotpaper, emphasis added\fi]{IEEE2022}
-\multiAuthHelper{say} that a previous standard \citeyearpar{IEEE2021b}
-``describes the experience-based test \emph{design technique} of error
-guessing. Other experience-based test \emph{practices} include (but are not
-limited to) exploratory testing\dots, tours, attacks, and checklist-based
-testing''. This seems to imply that error guessing is both a technique
-\emph{and} a practice, which does not make sense if these categories are
-orthogonal. Similarly, the conflicting categorizations of beta
-testing in \Cref{tab:multiCats} may propagate to its children closed beta
-testing and open beta testing. These kinds of inconsistencies between parent
-and child test approach categorizations may indicate that categories are not
-transitive or that more thought must be given to them. When we infer these
-flaws, we exclude them from \Cref{tab:multiCatTable,tab:multiCats}, instead
-including them in \Cref{tab:infMultiCats} for completeness.
+    As described in \Cref{infers}, we infer that child approaches inherit their
+    parents' categories. However, there seem to be exceptions to this, which
+    may indicate that categories are \emph{not} transitive or that they are
+    \emph{except} in certain cases. For example, the practice of experience-based
+    testing has many subtechniques, as described above, but it \emph{also} has
+    subpractices, including tours \citep[p.~34]{IEEE2022} and exploratory testing
+    (although the latter is categorized inconsistently; see \Cref{tab:multiCats}).
+    Similarly, the conflicting categorizations of beta testing in
+    \Cref{tab:multiCats} may propagate to its children closed beta testing and
+    open beta testing. When we infer these flaws, we exclude them from
+    \Cref{tab:multiCatTable,tab:multiCats} and instead include them in
+    \Cref{tab:infMultiCats} for completeness.
 \fi
 
 \subsubsection{Synonym Relation Flaws}\label{syns}
