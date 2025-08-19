@@ -12,11 +12,10 @@
 \begin{longtblr}[
     note{a} = {Defined in \Cref{par-chd-rels}.},
     note{b} = {Defined in \Cref{cats-def}.},
-    note{c} = {These approaches may instead be techniques
-            \citep[implied by][p.~35; see \Cref{tab:multiCats}]{IEEE2022}.},
-    note{d} = {We also consider this categorization meaningful (see \Cref{static-test}).},
-    note{e} = {Experience-based testing may instead be a practice (\citealp[pp.~22, 34]{IEEE2022};
-            \citeyear[p.~viii]{IEEE2021b}; see \Cref{tab:multiCats}).},
+    note{c} = {We also consider this categorization meaningful (see \Cref{static-test}).},
+    note{d} = {Experience-based testing is likely a practice instead (\citealp[Fig.~2]{IEEE2022};
+            \citeyear[p.~viii]{IEEE2021c}; \citeyear[pp.~iii, 31, 33]{IEEE2013};
+            see \Cref{cats-intrans,tab:multiCats}).},
     caption = {Alternate categorizations found in the literature.},
     label = {tab:otherCategorizations}
     ]{
@@ -27,9 +26,9 @@
     \thead{Categorization Basis} & \thead{Example Approaches}  & \thead{\parCat{}}     & \thead{Source}                         \\
     \hline
     Level of Automation % (\citealp[p.~44]{Firesmith2015}; \citealp[p.~214]{KuļešovsEtAl2013})
-                                 & \humInvExs{}                & Practice\TblrNote{c}  & \citep[pp.~22, 35]{IEEE2022}           \\
+                                 & \humInvExs{}                & Practice              & \citep[pp.~22, 35]{IEEE2022}           \\
     \hline
-    Execution of Code\TblrNote{d}
+    Execution of Code\TblrNote{c}
     % (\citealp[p.~53]{Patton2006}; \citealp[p.~214]{KuļešovsEtAl2013}; \citealp[p.~12]{Gerrard2000a}
                                  & \execExs{}                  & Approach              & \citep[pp.~17\==18]{IEEE2022}          \\
     \hline
@@ -37,11 +36,11 @@
     % (\citealp[pp.~69--70]{Perry2006}; \citealp[p.~214]{KuļešovsEtAl2013})
                                  & \goalExs{}                  & Approach              & \citep[p.~16]{IEEE2022}                \\
     \hline
-    Source of Information for Designing Tests % \citep[p.~8; one other source]{IEEE2021b} 
-                                 & \infoSrcExs{}               & Technique\TblrNote{e}
-    % (\citealp[p.~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021b};
+    Source of Information for Designing Tests % \citep[p.~8; one other source]{IEEE2021c} 
+                                 & \infoSrcExs{}               & Technique\TblrNote{d}
+    % (\citealp[p.~22]{IEEE2022}; \citeyear[p.~4]{IEEE2021c};
     % \citealp[pp.~5\=/10, 5\=/13]{SWEBOK2024}; \citealpISTQB{}; \citealp[p.~46]{Firesmith2015}) 
-                                 & \citep[pp.~4, 8]{IEEE2021b}                                                                  \\
+                                 & \citep[pp.~4, 8]{IEEE2021c}                                                                  \\
     \hline
     Selection Process % \citep[p.~5-16]{SWEBOK2024}            
                                  & \selecExs{}                 & Technique             & \citep[pp.~5\=/12, 5\=/16]{SWEBOK2024} \\

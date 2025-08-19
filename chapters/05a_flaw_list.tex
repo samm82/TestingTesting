@@ -18,10 +18,10 @@
           a tourist through the landmarks of a big city'' to describe tours in
           general. Is the distinction between them the fact that landmark tours
           are pre-planned and follow a decided-upon sequence \citetext{p.~34}?
-    \item % Flaw count (MISS, DEFS): {IEEE2022} {IEEE2021b}
+    \item % Flaw count (MISS, DEFS): {IEEE2022} {IEEE2021c}
           Integration testing, system testing, and system integration testing
           are all listed as ``common test levels'' (\citealp[p.~12]{IEEE2022};
-          \citeyear[p.~6]{IEEE2021b}), but the latter two are not defined.
+          \citeyear[p.~6]{IEEE2021c}), but the latter two are not defined.
           % Flaw count (CONTRA, PARS): ISTQB | {Firesmith2015}
           This makes the relations between these three terms unclear; system
           integration testing is listed as a child of both integration testing
@@ -36,8 +36,8 @@
               parent relation occurring in ISTQB; is this sufficient?}
           component integration testing is only listed as a child of
           integration testing \citepISTQB{}.
-    \item % Flaw count (WRONG, LABELS): {IEEE2021b} {SWEBOK2024} {SWEBOK2014}
-          % Flaw count (CONTRA, DEFS): {IEEE2021b} | {SWEBOK2024} {SWEBOK2014}
+    \item % Flaw count (WRONG, LABELS): {IEEE2021c} {SWEBOK2024} {SWEBOK2014}
+          % Flaw count (CONTRA, DEFS): {IEEE2021c} | {SWEBOK2024} {SWEBOK2014}
           % Assertion: {IEEE2010} {SWEBOK2024} {vanVliet2000}
           % Label error-guess
           \errorGuessFlaw{}
@@ -127,23 +127,23 @@
           are analyzed in case of discrepancies'' (\citealp[p.~30]{IEEE2010};
           similar in \citealpISTQB{}), which seems to refer to this definition
           of ``error''.
-    \item % Flaw count (CONTRA, DEFS): {IEEE2021b} {IEEE2017} | {vanVliet2000} implied by {IEEE2021b}
+    \item % Flaw count (CONTRA, DEFS): {IEEE2021c} {IEEE2017} | {vanVliet2000} implied by {IEEE2021c}
           % Label c-use-def
           % TODO: SUPP DEFS?
           While a computation data use is defined as the ``use of the value of a
-          variable in \emph{any} type of statement'' (\citealp[p.~2]{IEEE2021b};
+          variable in \emph{any} type of statement'' (\citealp[p.~2]{IEEE2021c};
           \citeyear[p.~83, emphasis added]{IEEE2017}\todo{OG 2015}), it is
           often qualified to \emph{not} be a predicate data use
-          (\citealp[p.~424]{vanVliet2000}; implied by \citealp[p.~27]{IEEE2021b}).
-    \item % Flaw count (CONTRA, DEFS): {IEEE2021b} | {IEEE2017}
+          (\citealp[p.~424]{vanVliet2000}; implied by \citealp[p.~27]{IEEE2021c}).
+    \item % Flaw count (CONTRA, DEFS): {IEEE2021c} | {IEEE2017}
           % TODO: SUPP DEFS?
-          \citeauthor{IEEE2021b} define an ``extended entry (decision) table''
+          \citeauthor{IEEE2021c} define an ``extended entry (decision) table''
           both as a decision table where the ``conditions consist of multiple
-          values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021b}
+          values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021c}
           and one where ``the conditions and actions are generally described
           but are incomplete'' \citeyearpar[p.~175]{IEEE2017}\todo{OG ISO1984}.
-    \item % Flaw count (WRONG, LABELS): {IEEE2021b}
-          A typo in \citep[Fig.~2]{IEEE2021b} means that ``specification-based
+    \item % Flaw count (WRONG, LABELS): {IEEE2021c}
+          A typo in \citep[Fig.~2]{IEEE2021c} means that ``specification-based
           techniques'' is listed twice, when the latter should be
           ``structure-based techniques''.
     \item % Flaw count (REDUN, PARS): {IEEE2017}
@@ -156,13 +156,13 @@
           % TODO: SUPP DEFS?
           \citet{IEEE2017} use the same definition for ``partial correctness''
           \citetext{p.~314} and ``total correctness'' \citetext{p.~480}.
-    \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {IEEE2021b}
-          % Assertion: {IEEE2021b} {vanVliet2000} {PetersAndPedrycz2000}
+    \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {IEEE2021c}
+          % Assertion: {IEEE2021c} {vanVliet2000} {PetersAndPedrycz2000}
           \citet[p.~83\todo{OG 2015}]{IEEE2017}'s definition of
           ``all-\acsp{c-use} testing''---testing that aims to execute all data
           ``use[s] of the value of a variable in any type of statement''---is
           \emph{much} more vague than the definition they give in
-          (\citeyear[p.~27]{IEEE2021b}; similar in \citealp[p.~425]{vanVliet2000};
+          (\citeyear[p.~27]{IEEE2021c}; similar in \citealp[p.~425]{vanVliet2000};
           \citealp[p.~479]{PetersAndPedrycz2000})---testing that exercises
           ``control flow sub-paths from each variable definition to each
           \acs{c-use} of that definition (with no intervening definitions)''.
@@ -176,7 +176,7 @@
           % TODO: SUPP DEFS?
           % Assertion: {WikiHaskell2023}
           ``Data definition'' is defined as a ``statement where a variable is
-          assigned a value'' (\citealp[p.~3]{IEEE2021b}; \citeyear[p.~115]{IEEE2017}%
+          assigned a value'' (\citealp[p.~3]{IEEE2021c}; \citeyear[p.~115]{IEEE2017}%
           \todo{OG 2015}; similar in \citeyear[p.~27]{IEEE2012};
           \citealp[p.~424]{vanVliet2000}), but for functional programming
           languages such as Haskell with immutable variables
@@ -198,16 +198,16 @@
           child, which seems more reasonable \citeyearpar[p.~4;][p.~35]{IEEE2022}.
 
           % STD | META
-    \item % Flaw count (WRONG, CATS): {IEEE2022} {IEEE2021b} {IEEE2017} | ISTQB
+    \item % Flaw count (WRONG, CATS): {IEEE2022} {IEEE2021c} {IEEE2017} | ISTQB
           \citetISTQB{} classify \acs{ml} model testing as a test level, which
           they define as ``a specific instantiation of a test process'': a vague
           definition that does not match the one in \Cref{tab:ieeeCats}.
     \item % Flaw count (CONTRA, PARS): {ISO_IEC2023a} | {Firesmith2015}
           % Label perf-sec-par
           \perfSecParFlaw{}
-    \item % Flaw count (CONTRA, PARS): {IEEE2022} {IEEE2021b} {SWEBOK2024} ISTQB | {Firesmith2015}
+    \item % Flaw count (CONTRA, PARS): {IEEE2022} {IEEE2021c} {SWEBOK2024} ISTQB | {Firesmith2015}
           Similarly, random testing is a subtechnique of specification-based
-          testing (\citealp[pp.~7, 22]{IEEE2022}; \citeyear[pp.~5, 20, Fig.~2]{IEEE2021b};
+          testing (\citealp[pp.~7, 22]{IEEE2022}; \citeyear[pp.~5, 20, Fig.~2]{IEEE2021c};
           \citealp[p.~5\=/12]{SWEBOK2024}; \citealpISTQB{}) but is listed
           separately by \citet[p.~46]{Firesmith2015}.
     \item % Flaw count (OVER, DEFS): {SWEBOK2024} | {IEEE2022}
@@ -235,7 +235,7 @@
           \alphaFlaw{}
     \item % Flaw count (CONTRA, SYNS): ISTQB | {IEEE2022}
           % Label use-case-scenario
-          % IEEE2021b omitted to avoid double-counting in parSyns table
+          % IEEE2021c omitted to avoid double-counting in parSyns table
           ``Use case testing'' is given as a synonym of ``scenario testing''
           by \citetISTQB{}
           %   Old; based on inconsistent citations from Kam2008/ISTQB
@@ -243,7 +243,7 @@
           %       \Cref{fig:threeWaySyns}) \fi
           but listed separately by
           \citet[Fig.~2]{IEEE2022} and described as a ``common form of scenario
-          testing'' in \citeyearpar[p.~20]{IEEE2021b}\todo{OG Hass, 2008}.
+          testing'' in \citeyearpar[p.~20]{IEEE2021c}\todo{OG Hass, 2008}.
           This implies that use case testing may instead be a child of
           user scenario testing (see \Cref{tab:parSyns}).
     \item % Flaw count (AMBI, LABELS): {IEEE2017} | {Firesmith2015} | {Firesmith2015} {Gerrard2000a}
@@ -434,9 +434,9 @@
     \item % Flaw count (CONTRA, DEFS): {IEEE2022} | {Patton2006}
           % Label load-def
           \loadFlaw{}
-    \item % Flaw count (CONTRA, DEFS): {IEEE2021b} | {Patton2006}
+    \item % Flaw count (CONTRA, DEFS): {IEEE2021c} | {Patton2006}
           State testing requires that ``all states in the state model
-          \dots\ [are] `visited'\,'' \citep[p.~19]{IEEE2021b}, but
+          \dots\ [are] `visited'\,'' \citep[p.~19]{IEEE2021c}, but
           \citet[pp.~82\==83]{Patton2006} lists this as only one of its
           possible criteria.
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} {PetersAndPedrycz2000} {vanVliet2000} | {Patton2006}
@@ -459,62 +459,62 @@
           says that reviews are ``\emph{the} process[es] under which static
           white-box testing is performed'', \citet[pp.~418\==419]{vanVliet2000}
           gives correctness proofs as another example.
-    \item % Flaw count (CONTRA, LABELS): {IEEE2021b} {IEEE2017} {PetersAndPedrycz2000} | {vanVliet2000}
+    \item % Flaw count (CONTRA, LABELS): {IEEE2021c} {IEEE2017} {PetersAndPedrycz2000} | {vanVliet2000}
           % TODO: SUPP LABELS?
           Different capitalizations of the abbreviations of ``computation data
           use'' and ``predicate data use'' are used: the lowercase ``\acs{c-use}''
           and ``\acs{p-use}'' (\citealp[pp.~3, 27\==29, 35\==36, 114\==155,
-              117\==118, 129]{IEEE2021b}; \citeyear[p.~124]{IEEE2017};
+              117\==118, 129]{IEEE2021c}; \citeyear[p.~124]{IEEE2017};
           \citealp[p.~477, Tab.~12.6]{PetersAndPedrycz2000}) and the uppercase
           ``C-use'' and ``P-use'' \citep[pp.~424\==425]{vanVliet2000}.
-    \item % Flaw count (CONTRA, LABELS): {IEEE2021b} {PetersAndPedrycz2000} | {vanVliet2000}
+    \item % Flaw count (CONTRA, LABELS): {IEEE2021c} {PetersAndPedrycz2000} | {vanVliet2000}
           % TODO: SUPP LABELS?
           Similarly for ``definition-use'' (such as in ``definition-use
           path''), both the lowercase ``du'' (\citealp[pp.~3, 27, 29, 35,
-              119\==121, 129]{IEEE2021b}; \citealp[pp.~478\==479]{
+              119\==121, 129]{IEEE2021c}; \citealp[pp.~478\==479]{
               PetersAndPedrycz2000}) and the uppercase ``DU''
           \citep[p.~425]{vanVliet2000} are used.
-    \item % Flaw count (MISS, DEFS): {IEEE2021b} {IEEE2017} {PetersAndPedrycz2000} implied by {vanVliet2000} | {vanVliet2000}
+    \item % Flaw count (MISS, DEFS): {IEEE2021c} {IEEE2017} {PetersAndPedrycz2000} implied by {vanVliet2000} | {vanVliet2000}
           \Citet[p.~425]{vanVliet2000} defines many types of data
           flow coverage, including all-\acsp{p-use},
           all-\acsp{p-use}/some-\acsp{c-use}, and
           all-\acsp{c-use}/some-\acsp{p-use}, but
           excludes all-\acsp{c-use}, which is implied by these definitions and
-          defined elsewhere (\citealp[p.~27]{IEEE2021b};
+          defined elsewhere (\citealp[p.~27]{IEEE2021c};
           \citeyear[p.~83]{IEEE2017}; \citealp[p.~479]{PetersAndPedrycz2000}).
-    \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021b} {IEEE2017} {PetersAndPedrycz2000}
+    \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021c} {IEEE2017} {PetersAndPedrycz2000}
           \Citet[pp.~424\==425]{vanVliet2000} specifies that every
           successor of a data definition use needs to be executed as part of
           all-uses testing, but this condition is not included elsewhere
-          (\citealp[pp.~28\==29]{IEEE2021b}; \citeyear[p.~120]{IEEE2017};
+          (\citealp[pp.~28\==29]{IEEE2021c}; \citeyear[p.~120]{IEEE2017};
           \citealp[pp.~478\==479]{PetersAndPedrycz2000}).
-    \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021b} {IEEE2017} {SWEBOK2024} {PetersAndPedrycz2000}
+    \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021c} {IEEE2017} {SWEBOK2024} {PetersAndPedrycz2000}
           All-\acsp{du-path} testing is usually defined as exercising all
           ``loop-free control flow sub-paths from each variable definition to
           every use (both \acs{p-use} and \acs{c-use}) of that definition (with no
-          intervening definitions)'' (\citealp[p.~29]{IEEE2021b}; similar in
+          intervening definitions)'' (\citealp[p.~29]{IEEE2021c}; similar in
           \citeyear[p.~125]{IEEE2017}; \citealp[p.~5\=/13]{SWEBOK2024};
           \citealp[p.~479]{PetersAndPedrycz2000}); however, paths containing
           simple cycles may also be required \citep[p.~425]{vanVliet2000}.
-    \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021b}
+    \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021c}
           \Citet[pp.~432\==433]{vanVliet2000} says that
           all-\acsp{p-use} testing is only stronger than all-edges (branch)
           testing if there are infeasible paths, but
-          \citet[Fig.~F.1\todo{OG Reid, 1996}]{IEEE2021b} \ifnotpaper do
+          \citet[Fig.~F.1\todo{OG Reid, 1996}]{IEEE2021c} \ifnotpaper do
           \else does \fi not specify this caveat.
     \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {SWEBOK2024}
           Similarly, \citet[pp.~432\==433]{vanVliet2000} says that
           all-\acsp{du-path} testing is only stronger than all-uses testing if
           there are infeasible paths, but \citet[p.~5\=/13]{SWEBOK2024} does
           not specify this caveat.
-    \item % Flaw count (WRONG, PARS): {IEEE2021b} {IEEE2017} {vanVliet2000} | implied by {PetersAndPedrycz2000}
+    \item % Flaw count (WRONG, PARS): {IEEE2021c} {IEEE2017} {vanVliet2000} | implied by {PetersAndPedrycz2000}
           \citet[Fig.~12.31]{PetersAndPedrycz2000} \ifnotpaper imply
           \else implies \fi that decision coverage is a child of both \acs{c-use}
           coverage \emph{and} \acs{p-use} coverage; this seems incorrect, since
           decisions are the result of \acsp{p-use} and \emph{not} \acsp{c-use}
-          (\citealp[pp.~5, 27]{IEEE2021b}; \citeyear[p.~332\todo{OG 2015}]{IEEE2017};
+          (\citealp[pp.~5, 27]{IEEE2021c}; \citeyear[p.~332\todo{OG 2015}]{IEEE2017};
           \citealp[p.~424]{vanVliet2000}), and only the \acs{p-use} relation is
-          implied by \citet[Fig.~F.1\todo{OG Reid 1996}]{IEEE2021b}.
+          implied by \citet[Fig.~F.1\todo{OG Reid 1996}]{IEEE2021c}.
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {SWEBOK2014} | {vanVliet2000}
           Acceptance testing is ``usually performed by the purchaser \dots{}
           with the \dots{} vendor'' \citep[p.~5]{IEEE2017}, ``may or may not
@@ -538,10 +538,10 @@
           % Flaw count (MISS, DEFS): {Kam2008}
           % Label see-ref-missing
           \seeRefMissing{}
-    \item % Flaw count (CONTRA, CATS): {Kam2008} | implied by {IEEE2021b}
+    \item % Flaw count (CONTRA, CATS): {Kam2008} | implied by {IEEE2021c}
           \citet[p.~46]{Kam2008}\todo{OG Beizer} says ``negative testing is
           related to the testers' attitude rather than a specific test approach
-          or test design technique''; while \citet{IEEE2021b} seem to support
+          or test design technique''; while \citet{IEEE2021c} seem to support
           this idea of negative testing being at a ``higher'' level than other
           approaches, they also imply that it is a test technique
           \citetext{pp.~10, 14}.
@@ -549,16 +549,20 @@
           The phrase ``continuous automated testing'' \citep[p.~11]{Gerrard2000a}
           is redundant since \acf{ct} is already a subapproach of automated
           testing (\citealp[p.~35]{IEEE2022}; \citealpISTQB{}).
-    \item % Flaw count (AMBI, CATS): {IEEE2022} {IEEE2021b} {IEEE2017} {SWEBOK2024} ISTQB {KuļešovsEtAl2013} {Perry2006} {PetersAndPedrycz2000} {Gerrard2000a} | {BarbosaEtAl2006}
-          % Flaw count (AMBI, CATS): {IEEE2022} | {IEEE2022} {IEEE2021b} {IEEE2017}
+    \item % Flaw count (AMBI, CATS): {IEEE2022} {IEEE2021c} {IEEE2017} {SWEBOK2024} ISTQB {KuļešovsEtAl2013} {Perry2006} {PetersAndPedrycz2000} {Gerrard2000a} | {BarbosaEtAl2006}
+          % Flaw count (AMBI, CATS): {IEEE2022} {IEEE2021a} {IEEE2021b} | {IEEE2022} {IEEE2021c} {IEEE2017}
           % Assertion: {SWEBOK2024} ISTQB {KuļešovsEtAl2013} {Perry2006} {PetersAndPedrycz2000} {Gerrard2000a}
           Retesting and regression testing seem to be separated from the rest
           of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
-          clearly detailed why; \citet[p.~3]{BarbosaEtAl2006} consider
-          regression testing to be a test level, but since it is not given as
-          an example of a test level throughout the sources that describe them
-          (see \Cref{cats-def}), it is likely that it is at best not
-          universal and at worst incorrect.
+          clearly detailed why. They are also implied be separate from test
+          levels, test types, \emph{and} test techniques
+          (\citeyear[p.~8]{IEEE2021a}; \citeyear[p.~4]{IEEE2021b}), which by
+          process of elimination based on our assumption that categories are
+          orthogonal (see \Cref{orth-approach}) might make them test practices.
+          \citet[p.~3]{BarbosaEtAl2006} consider regression testing to be a
+          test level, but since it is not included as an example of a test
+          level by the sources that describe them (see \Cref{cats-def}), this
+          categorization is is likely not universal at best and incorrect at worst.
     \item % Flaw count (CONTRA, CATS): {SWEBOK2024} | {Kam2008}
           Although ad hoc testing is classified as a ``technique''
           \citep[p.~5\=/14]{SWEBOK2024}, it is one in which ``no recognized test

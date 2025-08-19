@@ -81,11 +81,11 @@ information from the literature more consistently:
           are all subapproaches of recoverability testing:
           \begin{enumerate}
               \item from backup memory (\emph{backup recovery testing})
-                    (\citealp[p.~37]{IEEE2021b}; \citeyear[p.~2]{IEEE2013}),
+                    (\citealp[p.~37]{IEEE2021c}; \citeyear[p.~2]{IEEE2013}),
               \item from a back-up system (\emph{failover testing})
                     (\citealp[p.~5\=/9]{SWEBOK2024}; \citealpISTQB{}), or
               \item by transferring operations elsewhere (\emph{transfer
-                        recovery testing}) \citep[p.~37]{IEEE2021b}.
+                        recovery testing}) \citep[p.~37]{IEEE2021c}.
           \end{enumerate}
 \end{enumerate}
 
@@ -120,7 +120,7 @@ information from the literature more consistently:
 %           in the case of a failure, ``operation of the test item can be
 %           transferred to a different operating site and \dots\ be transferred
 %           back again once the failure has been resolved''
-%           \citeyearpar[p.~37]{IEEE2021b}. This replaces the second definition
+%           \citeyearpar[p.~37]{IEEE2021c}. This replaces the second definition
 %           of ``disaster/recovery testing'', since the first is just a
 %           description of ``recovery testing'', and could potentially be
 %           considered as a kind of failover testing. This may not be
@@ -128,7 +128,7 @@ information from the literature more consistently:
 %           of humans/processes).
 %     \item \textbf{Backup Recovery Testing:} Testing that determines the
 %           ability ``to restor[e] from back-up memory in the event of failure''
-%           \citep[p.~37]{IEEE2021b}. The qualification that this occurs
+%           \citep[p.~37]{IEEE2021c}. The qualification that this occurs
 %           ``without transfer[ing] to a different operating site or back-up
 %           system'' \citetext{p.~37} \emph{could} be made explicit, but this is
 %           implied since it is separate from transfer recovery testing and
@@ -162,7 +162,7 @@ in \Cref{fig:scal-graph-proposed} and provides a more accurate description of
 scalability testing.
 
 \paragraph{\texttt{(CONTRA, SYNS)}}
-\citeauthor{IEEE2021b} \citeyearpar[p.~39]{IEEE2021b} define ``scalability
+\citeauthor{IEEE2021c} \citeyearpar[p.~39]{IEEE2021c} define ``scalability
 testing'' as the testing of a system's ability to ``perform under conditions
 that may need to be supported in the future''.
 %, which ``may include assessing what level of additional resources (e.g.
@@ -232,10 +232,10 @@ degree to which a test item \dots{} accomplishes its designated functions''
 \ifnotpaper
     (\citealp[p.~7]{IEEE2022}; \citeyear[p.~2]{IEEE2021a};
     \citeyear[p.~320]{IEEE2017}; similar in
-    \citeyear[pp.~38\=/39]{IEEE2021b}; \citealp[p.~1187]{Moghadam2019})%
+    \citeyear[pp.~38\=/39]{IEEE2021c}; \citealp[p.~1187]{Moghadam2019})%
 \else
     \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022}, \cite[p.~2]{IEEE2021a}
-    (similar in \cite[pp.~38\=/39]{IEEE2021b}, \cite[p.~1187]{Moghadam2019})%
+    (similar in \cite[pp.~38\=/39]{IEEE2021c}, \cite[p.~1187]{Moghadam2019})%
 \fi. It does this
 by ``measuring the performance metrics''
 \ifnotpaper
@@ -260,12 +260,12 @@ stress conditions'' \ifnotpaper
               \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022} (similar
               in \cite[p.~1187]{Moghadam2019})%
           \fi, or
-    \item ``under a `typical' load'' \citep[p.~39]{IEEE2021b}.
+    \item ``under a `typical' load'' \citep[p.~39]{IEEE2021c}.
 \end{enumerate}
 
 It is listed as a subset of performance-related testing, which is defined as
 testing ``to determine whether a test item performs as required when it is
-placed under various types and sizes of `load'\,'' \citeyearpar[p.~38]{IEEE2021b},
+placed under various types and sizes of `load'\,'' \citeyearpar[p.~38]{IEEE2021c},
 along with other approaches like load and capacity testing
 \citep[p.~22]{IEEE2022}. Note that ``performance, load and stress testing might
 considerably overlap in many areas'' \citep[p.~1187]{Moghadam2019}.
@@ -290,13 +290,13 @@ of time and other resources'' \ifnotpaper (\citealp[p.~7]{IEEE2022};
 \else \cite[p.~320]{IEEE2017}, \cite[p.~7]{IEEE2022}, \cite[p.~2]{IEEE2021a}
     (similar in \cite[p.~1187]{Moghadam2019})\fi, and
 ``performance testing'' is a subapproach of this performed ``under a `typical'
-load'' \citep[p.~39]{IEEE2021b}. This has other implications for relations
+load'' \citep[p.~39]{IEEE2021c}. This has other implications for relations
 between these types of testing; for example, ``load testing'' usually occurs
 ``between anticipated conditions of low, typical, and peak usage''
-\ifnotpaper (\citealp[p.~5]{IEEE2022}; \citeyear[p.~39]{IEEE2021b};
+\ifnotpaper (\citealp[p.~5]{IEEE2022}; \citeyear[p.~39]{IEEE2021c};
     \citeyear[p.~253]{IEEE2017}\todo{OG IEEE 2013}; \citealpISTQB{})%
 \else \cite[p.~253]{IEEE2017}, \cite{ISTQB}, \cite[p.~5]{IEEE2022},
-    \cite[p.~39]{IEEE2021b}\fi, so it is a child of ``performance-related
+    \cite[p.~39]{IEEE2021c}\fi, so it is a child of ``performance-related
 testing'' and a parent of ``performance testing''.
 
 After these changes, some finishing touches remain. The ``self-loops''

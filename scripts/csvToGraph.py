@@ -275,7 +275,8 @@ for name, category in zip(names, categories):
                 if not any(t in c for t in {"Approach", "Artifact"})]
     if len(category) > 1:
         flawCount = (getFlawCount(category, "CONTRA", "CATS")
-                        if not any("?" in c for c in category) else "")
+                        if not any(inf in " ".join(category)
+                                   for inf in {"?", "(inferred"}) else "")
         multiCatDict[bool(flawCount)].addMultiCatLine(
             flawCount, # if criteria else "",
             # Add line breaks to longer test approaches
