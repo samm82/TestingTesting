@@ -110,6 +110,7 @@ InputDataTesting -> MLModelTesting[color="grey"];
 InstallationTesting -> OperationalTesting[style="dashed",color="maroon"];
 InstallationTesting -> SystemTesting[style="dashed"];
 IntegratedSystemTesting -> DataCenterTesting[color="blue"];
+IntegrationTesting -> DevelopmentTesting[style="dashed",color="green"];
 InterfaceTesting -> SoSIntegrationTesting[color="green"];
 InterfaceTesting -> IntegrationTesting[color="blue"];
 InterfaceTesting -> SystemIntegrationTesting[style="dashed",color="green"];
@@ -130,6 +131,7 @@ ProductionVerificationTesting -> AcceptanceTesting[color="green"];
 ProductionVerificationTesting -> OperationalTesting[style="dashed",color="grey"];
 QualificationOperationalTesting -> OperationalTesting[color="blue"];
 QualificationOperationalTesting -> QualificationTesting[style="dashed",color="grey"];
+RegressionTesting -> SystemTesting[style="dashed",color="green"];
 RegulatoryAcceptanceTesting -> AcceptanceTesting[color="blue"];
 SandwichTesting -> IntegrationTesting[color="blue"];
 SiteAcceptanceTesting -> AcceptanceTesting[color="blue"];
@@ -151,7 +153,9 @@ SystemTesting -> SystemTesting[color="blue"];
 SystemTesting -> IntegrationTesting[style="dashed"];
 SystemsIntegrationTesting -> IntegrationTesting[color="grey"];
 TopDownTesting -> IntegrationTesting[color="blue"];
+UnitTesting -> DevelopmentTesting[style="dashed",color="green"];
 UserAcceptanceTesting -> AcceptanceTesting[color="green"];
+UserAcceptanceTesting -> CustomerAcceptanceTesting[style="dashed",color="green"];
 
 subgraph cluster_legend {
 
