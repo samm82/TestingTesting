@@ -83,11 +83,9 @@ PrognosticsandHealthManagement [label=<Prognostics<br/>and<br/>Health<br/>Manage
 ProgrammerTesting [label=<Programmer<br/>Testing>,color=grey];
 RapidPrototypingTesting [label=<Rapid<br/>Prototyping<br/>Testing>,color=grey];
 ReactiveTesting [label=<Reactive<br/>Testing>,color=grey];
-RegressionTesting [label=<Regression<br/>Testing>,color=grey];
 RemoteTesting [label=<Remote<br/>Testing>,color=grey];
 RepetitionTesting [label=<Repetition<br/>Testing>,color=grey];
 RequirementsEngineerTesting [label=<Requirements<br/>Engineer<br/>Testing>,color=grey];
-Retesting [label=<Retesting>,color=grey];
 RolebasedTesting [label=<Role-based<br/>Testing>,color=grey];
 RuntimeAssertionChecking [label=<Runtime<br/>Assertion<br/>Checking>,color=grey];
 SafetyEngineerTesting [label=<Safety<br/>Engineer<br/>Testing>,color=grey];
@@ -151,7 +149,6 @@ DeveloperTesting -> RolebasedTesting[color="blue"];
 DevOpsTesting -> ContinuousTesting[color="blue"];
 DevOpsTesting -> AutomatedTesting[style="dashed",color="blue"];
 DifferentialAssertionChecking -> AssertionChecking;
-DifferentialAssertionChecking -> RegressionTesting;
 DifferentialAssertionChecking -> BacktoBackTesting[style="dashed"];
 DTOrganizationTesting -> IndependentTestOrganizationTesting[color="blue"];
 EmbeddedTesterTesting -> TesterTesting[color="blue"];
@@ -187,12 +184,6 @@ PrognosticsandHealthManagement -> OngoingBuiltInTesting[color="blue"];
 ProgrammerTesting -> DeveloperTesting[color="blue"];
 RapidPrototypingTesting -> LifecyclebasedTesting[color="grey"];
 RapidPrototypingTesting -> AttheBeginningTesting[style="dashed",color="grey"];
-RegressionTesting -> ContinuousTesting[color="blue"];
-RegressionTesting -> AgileTesting[color="blue"];
-RegressionTesting -> DevOpsTesting[color="blue"];
-RegressionTesting -> DeveloperTesting[style="dashed"];
-RegressionTesting -> AutomatedTesting[style="dashed",color="maroon"];
-RegressionTesting -> Retesting[color="green"];
 RemoteTesting -> AsynchronousTesting[style="dashed"];
 RemoteTesting -> ManualTesting[style="dashed"];
 RequirementsEngineerTesting -> DeveloperTesting[color="blue"];
@@ -262,16 +253,10 @@ src3 -> src4 [color=blue, label=<From Terminology<br/>Collections>]
 rank=same
 src5 [style=invis];
 src6 [style=invis];
-src5 -> src6 [color=maroon, label=<From Textbooks>]
+src5 -> src6 [color=black, label=<From Papers and<br/>Other Documents>]
 src7 [style=invis];
 src8 [style=invis];
-src7 -> src8 [color=black, label=<From Papers and<br/>Other Documents>]
-}
-{
-rank=same
-src9 [style=invis];
-src10 [style=invis];
-src9 -> src10 [color=grey, label=<Inference>]
+src7 -> src8 [color=grey, label=<Inference>]
 }
 edge [style="invis"]
 imp1 -> chd
@@ -284,8 +269,6 @@ src5 -> src1
 src6 -> src2
 src7 -> src3
 src8 -> src4
-src9 -> src6
-src10 -> src7
 }
 
 // Connect the dummy node to the first node of the legend

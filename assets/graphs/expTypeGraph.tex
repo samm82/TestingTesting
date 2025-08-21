@@ -28,6 +28,8 @@ InteroperabilityTesting [label=<Interoperability<br/>Testing>];
 LoadTesting [label=<Load<br/>Testing>];
 LocalizationTesting [label=<Localization<br/>Testing>];
 MaintainabilityTesting [label=<Maintainability<br/>Testing>];
+MaintenanceTesting [label=<Maintenance<br/>Testing>];
+NonfunctionalTesting [label=<Non-functional<br/>Testing>];
 PenetrationTesting [label=<Penetration<br/>Testing>];
 PerformanceTesting [label=<Performance<br/>Testing>];
 PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
@@ -35,14 +37,19 @@ PortabilityTesting [label=<Portability<br/>Testing>];
 PostReleaseTesting [label=<Post-Release<br/>Testing>];
 ProcedureTesting [label=<Procedure<br/>Testing>];
 RecoveryTesting [label=<Recovery<br/>Testing>];
+RegressionTesting [label=<Regression<br/>Testing>];
 ReliabilityTesting [label=<Reliability<br/>Testing>];
+Retesting [label=<Retesting>];
 SecurityTesting [label=<Security<br/>Testing>];
+SpecificationbasedTesting [label=<Specification-based<br/>Testing>];
 StressTesting [label=<Stress<br/>Testing>];
+StructurebasedTesting [label=<Structure-based<br/>Testing>];
 UsabilityTesting [label=<Usability<br/>Testing>];
 
 SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
 EnduranceTesting -> SoakTesting[dir=none,color="green"];
 ReliabilityTesting -> SoakTesting[dir=none];
+FunctionalTesting -> SpecificationbasedTesting[dir=none,color="green"];
 PerformanceTesting -> PerformancerelatedTesting[dir=none];
 
 AccessibilityTesting -> UsabilityTesting[color="green"];
@@ -50,32 +57,49 @@ BackupandRecoveryTesting -> ReliabilityTesting[color="green"];
 BackupRecoveryTesting -> DisasterRecoveryTesting[color="green"];
 CapacityTesting -> PerformancerelatedTesting[color="green"];
 CapacityTesting -> PerformanceTesting[color="blue"];
+CompatibilityTesting -> NonfunctionalTesting[color="blue"];
 ConversionTesting -> FunctionalSuitabilityTesting[color="green"];
+EndtoendTesting -> SpecificationbasedTesting[color="blue"];
 EnduranceTesting -> PerformancerelatedTesting[color="green"];
 EnduranceTesting -> ReliabilityTesting[color="blue"];
 FailoverRecoveryTesting -> DisasterRecoveryTesting[color="green"];
+FunctionalTesting -> SpecificationbasedTesting[color="green"];
+FunctionalTesting -> StructurebasedTesting[color="green"];
 FunctionalTesting -> FunctionalSuitabilityTesting[color="green"];
+FunctionalTesting -> SpecificationbasedTesting;
 InstallabilityTesting -> PortabilityTesting[color="green"];
 InstallabilityTesting -> CompatibilityTesting[color="green"];
 InteroperabilityTesting -> CompatibilityTesting[color="green"];
 LoadTesting -> PerformancerelatedTesting[color="green"];
 LoadTesting -> PerformanceTesting[color="green"];
 LoadTesting -> ReliabilityTesting[color="green"];
+LoadTesting -> NonfunctionalTesting[color="blue"];
 LoadTesting -> CapacityTesting[color="blue"];
 LocalizationTesting -> FunctionalSuitabilityTesting[color="green"];
 LocalizationTesting -> AccessibilityTesting[color="green"];
 LocalizationTesting -> PortabilityTesting[color="green"];
+NonfunctionalTesting -> SpecificationbasedTesting;
 PenetrationTesting -> SecurityTesting[color="green"];
+PenetrationTesting -> SpecificationbasedTesting[color="maroon"];
 PerformanceTesting -> PerformancerelatedTesting[color="green"];
+PerformanceTesting -> NonfunctionalTesting[color="blue"];
 PerformanceTesting -> PerformanceTesting;
 ProcedureTesting -> FunctionalSuitabilityTesting[color="green"];
 RecoveryTesting -> PerformancerelatedTesting[color="green"];
 RecoveryTesting -> ReliabilityTesting[color="green"];
+RecoveryTesting -> NonfunctionalTesting[color="blue"];
+RegressionTesting -> FunctionalTesting[color="blue"];
+RegressionTesting -> NonfunctionalTesting[color="blue"];
+RegressionTesting -> Retesting[color="green"];
+ReliabilityTesting -> NonfunctionalTesting[color="blue"];
 ReliabilityTesting -> PerformanceTesting;
 SecurityTesting -> ReliabilityTesting[color="green"];
+SecurityTesting -> NonfunctionalTesting;
 StressTesting -> PerformancerelatedTesting[color="green"];
+StressTesting -> NonfunctionalTesting[color="blue"];
 StressTesting -> PerformanceTesting[color="blue"];
 StressTesting -> CapacityTesting[color="blue"];
+UsabilityTesting -> NonfunctionalTesting;
 UsabilityTesting -> UsabilityTesting;
 
 subgraph cluster_legend {
@@ -122,7 +146,10 @@ src3 -> src4 [color=blue, label=<From Terminology<br/>Collections>]
 rank=same
 src5 [style=invis];
 src6 [style=invis];
-src5 -> src6 [color=black, label=<From Papers and<br/>Other Documents>]
+src5 -> src6 [color=maroon, label=<From Textbooks>]
+src7 [style=invis];
+src8 [style=invis];
+src7 -> src8 [color=black, label=<From Papers and<br/>Other Documents>]
 }
 edge [style="invis"]
 imp1 -> chd
@@ -138,8 +165,10 @@ syn5 -> imp3
 src1 -> syn3
 src2 -> syn4
 src3 -> syn5
-src5 -> src2
-src6 -> src3
+src5 -> src1
+src6 -> src2
+src7 -> src3
+src8 -> src4
 }
 
 // Connect the dummy node to the first node of the legend

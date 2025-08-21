@@ -18,24 +18,19 @@
           a tourist through the landmarks of a big city'' to describe tours in
           general. Is the distinction between them the fact that landmark tours
           are pre-planned and follow a decided-upon sequence \citetext{p.~34}?
-    \item % Flaw count (MISS, DEFS): {IEEE2022} {IEEE2021c}
+    \item % Flaw count (CONTRA, PARS): {IEEE2022} {IEEE2021b} {IEEE2021c} | ISTQB | {Firesmith2015}
           Integration testing, system testing, and system integration testing
-          are all listed as ``common test levels'' (\citealp[p.~12]{IEEE2022};
-          \citeyear[p.~6]{IEEE2021c}), but the latter two are not defined.
-          % Flaw count (CONTRA, PARS): ISTQB | {Firesmith2015}
-          This makes the relations between these three terms unclear; system
-          integration testing is listed as a child of both integration testing
-          \citepISTQB{} and system testing \citep[p.~23]{Firesmith2015}.
-    \item % Flaw count (MISS, DEFS): {IEEE2017}
-          Similarly, component testing, integration testing, and component
-          integration testing are all mentioned by \citet{IEEE2017}, but the
-          latter is only defined as ``testing of groups of related
-          components'' \citetext{p.~82}. As before, the relations between these
-          % Flaw count (AMBI, PARS): ISTQB
-          three terms are unclear;\qtodo{I'm counting this as an ambiguous
-              parent relation occurring in ISTQB; is this sufficient?}
-          component integration testing is only listed as a child of
-          integration testing \citepISTQB{}.
+          are all listed as separate test levels (\citealp[p.~12, Fig.~2]{IEEE2022};
+          \citeyear[p.~41\==44, 46, 51, 58, 74]{IEEE2021b}; \citeyear[p.~6]{IEEE2021c}),
+          but system integration testing is listed as a child of both
+          integration testing \citepISTQB{} and system testing
+          \citep[p.~23]{Firesmith2015}.
+    \item % Flaw count (CONTRA, PARS): ISTQB
+          Similarly, the relations between component testing, integration
+          testing, and component integration testing are unclear; in particular,
+          \citetISTQB{} seem to give integration testing as a parent of component
+          integration testing in the latter's definition, but as a child in
+          their graph of static and dynamic testing.
     \item % Flaw count (WRONG, LABELS): {IEEE2021c} {SWEBOK2024} {SWEBOK2014}
           % Flaw count (CONTRA, DEFS): {IEEE2021c} | {SWEBOK2024} {SWEBOK2014}
           % Assertion: {IEEE2010} {SWEBOK2024} {vanVliet2000}
@@ -348,6 +343,20 @@
           testing by \citet[p.~13\=/4]{SWEBOK2024}, which seems redundant;
           \citet[p.~28]{Gerrard2000b} uses the term ``ethical hacking'' which
           is clearer.
+    \item % Flaw count (CONTRA, CATS): {IEEE2022} {IEEE2021a} {IEEE2021b} | ISTQB
+          % Flaw count (CONTRA, CATS): {IEEE2022} {IEEE2021a} {IEEE2021b} | {BarbosaEtAl2006}
+          % Don't double count "ISTQB | {BarbosaEtAl2006}" multiCat flaw
+          % Flaw count (AMBI, CATS): {IEEE2022} {IEEE2021c} {IEEE2017} {SWEBOK2024} ISTQB {KuļešovsEtAl2013} {Perry2006} {PetersAndPedrycz2000} {Gerrard2000a} | {BarbosaEtAl2006}
+          % Flaw count (AMBI, CATS): {IEEE2022} {IEEE2021c} {IEEE2017} | {IEEE2022} {IEEE2021a} {IEEE2021b}
+          % Assertion: {SWEBOK2024} ISTQB {KuļešovsEtAl2013} {Perry2006} {PetersAndPedrycz2000} {Gerrard2000a}
+          Retesting and regression testing seem to be categorized separately
+          from the rest of the testing approaches (\citealp[pp.~15, 23]{IEEE2022};
+          \citeyear[p.~8]{IEEE2021a}; \citeyear[p.~4]{IEEE2021b}) but this is
+          not justified. \citetISTQB{} consider regression testing to be a test
+          type and \citet[p.~3]{BarbosaEtAl2006} consider it a test level;
+          since it is not included as an example of a test level by the sources
+          that describe them (see \Cref{cats-def}), this latter categorization
+          is likely not universal at best and incorrect at worst.
     \item % Flaw count (AMBI, DEFS): ISTQB
           While ergonomics testing is out of scope (as it tests hardware, not
           software; see \Cref{hard-test}), its definition of ``testing to
@@ -554,20 +563,6 @@
           The phrase ``continuous automated testing'' \citep[p.~11]{Gerrard2000a}
           is redundant since \acf{ct} is already a subapproach of automated
           testing (\citealp[p.~35]{IEEE2022}; \citealpISTQB{}).
-    \item % Flaw count (AMBI, CATS): {IEEE2022} {IEEE2021c} {IEEE2017} {SWEBOK2024} ISTQB {KuļešovsEtAl2013} {Perry2006} {PetersAndPedrycz2000} {Gerrard2000a} | {BarbosaEtAl2006}
-          % Flaw count (AMBI, CATS): {IEEE2022} {IEEE2021a} {IEEE2021b} | {IEEE2022} {IEEE2021c} {IEEE2017}
-          % Assertion: {SWEBOK2024} ISTQB {KuļešovsEtAl2013} {Perry2006} {PetersAndPedrycz2000} {Gerrard2000a}
-          Retesting and regression testing seem to be separated from the rest
-          of the testing approaches \citep[p.~23]{IEEE2022}, but it is not
-          clearly detailed why. They are also implied be separate from test
-          levels, test types, \emph{and} test techniques
-          (\citeyear[p.~8]{IEEE2021a}; \citeyear[p.~4]{IEEE2021b}), which by
-          process of elimination based on our assumption that categories are
-          orthogonal (see \Cref{orth-approach}) might make them test practices.
-          \citet[p.~3]{BarbosaEtAl2006} consider regression testing to be a
-          test level, but since it is not included as an example of a test
-          level by the sources that describe them (see \Cref{cats-def}), this
-          categorization is is likely not universal at best and incorrect at worst.
     \item % Flaw count (CONTRA, CATS): {SWEBOK2024} | {Kam2008}
           Although ad hoc testing is classified as a ``technique''
           \citep[p.~5\=/14]{SWEBOK2024}, it is one in which ``no recognized test
