@@ -361,35 +361,6 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
 terms. This leads to confusion about what distinguishes these terms, as shown
 by the following:
 
-\subsubsection{Correctness Testing}\label{corr-func-test}
-\refHelper \citet[p.~5-7]{SWEBOK2024} says ``test cases can be designed to
-check that the functional specifications are correctly implemented, which is
-variously referred to in the literature as conformance testing, correctness
-testing or functional testing''; this mirrors previous definitions
-of ``functional testing'' \ifnotpaper
-    (\citealp[p.~21]{IEEE2022}; \citeyear[p.~196]{IEEE2017})
-\else
-    \cite[p.~21]{IEEE2022}, \cite[p.~196]{IEEE2017}
-\fi but groups it with ``correctness
-testing''. Since ``correctness'' is a software quality \ifnotpaper
-    (\citealp[p.~104]{IEEE2017}; \citealp[p.~3-13]{SWEBOK2024}) \else
-    \cite[p.~104]{IEEE2017}, \cite[p.~3-13]{SWEBOK2024} \fi which is
-what defines a ``test type'' \citep[p.~15]{IEEE2022}\ifnotpaper\
-    (see \Cref{qual-supp-procedure})\fi,
-it seems consistent to label ``functional testing'' as a ``test type''
-\ifnotpaper
-    \citetext{\citealp[pp.~15,~20,~22]{IEEE2022};
-        \citeyear[pp.~7,~38,~Tab.~A.1]{IEEE2021c}; \citeyear[p.~4]{IEEE2016}}%
-\else
-    \cite[pp.~15,~20,~22]{IEEE2022}, \cite[pp.~7,~38,~Tab.~A.1]{IEEE2021c},
-    \cite[p.~4]{IEEE2016}\fi. However, this conflicts with its categorization
-as a ``technique'' if considered a synonym of specification-based testing
-(see \flawref{spec-func-syn}).
-% Flaw count (CONTRA, CATS): {IEEE2022} {IEEE2021c} {IEEE2016} implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
-Additionally, ``correctness testing'' is listed separately from ``functionality
-testing'' by \citet[p.~53]{Firesmith2015}.
-% Flaw count (CONTRA, SYNS): {SWEBOK2024} | {Firesmith2015}
-
 \subsubsection{Conformance Testing}
 Testing that ensures ``that the functional specifications are correctly
 implemented'', and can be called ``conformance testing'' or ``functional
@@ -460,6 +431,7 @@ is implied to be a subapproach of build verification testing
 \citepISTQB{} and made distinct from ``functional testing''%
 \ifnotpaper; interestingly, security is described as a subapproach of both
 non-functional and functionality testing\fi\ \citep[Tab.~2]{Gerrard2000a}.
+% Flaw count (CONTRA, SYNS): {SWEBOK2024} | {Firesmith2015}
 ``Functionality testing'' is listed separately from ``correctness testing'' by
 \citet[p.~53]{Firesmith2015}.
 
