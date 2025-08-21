@@ -359,40 +359,9 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
 
 ``Functional testing'' is described alongside many other, likely related,
 terms. This leads to confusion about what distinguishes these terms, as shown
-by the following five:
+by the following:
 
-\subsubsection{Specification-based Testing}\label{spec-func-test}
-This is defined as ``testing in which the principal test basis is the external
-inputs and outputs of the test item'' \citep[p.~9]{IEEE2022}. This agrees
-with a definition of ``functional testing'': ``testing that
-\dots\ focuses solely on the outputs generated in response to
-selected inputs and execution conditions'' \citep[p.~196]{IEEE2017}.
-\todo{\citet[p.~399]{vanVliet2000} may list these as synonyms; investigate}
-Notably, \citet{IEEE2017} lists both as synonyms of
-``black-box testing'' \citetext{pp. 431, 196, respectively}, despite them
-sometimes being defined separately. For example, the \acf{istqb} defines
-``specification-based testing'' as ``testing based on an analysis of the
-specification of the component or system'' \ifnotpaper (and gives ``black-box
-    testing'' as a synonym) \fi and ``functional testing'' as ``testing
-performed to evaluate if a component or system satisfies functional
-requirements'' \ifnotpaper (specifying no synonyms) \citepISTQB{};
-    % Flaw count (CONTRA, SYNS): {IEEE2022} {IEEE2017} | ISTQB
-    the latter references \citet[p.~196]{IEEE2017}
-    (``testing conducted to evaluate the compliance of a system or
-    component with specified functional requirements'') which
-    \emph{has} ``black-box testing'' as a synonym, and mirrors
-    \citet[p.~21]{IEEE2022} (testing ``used to check the implementation
-    of functional requirements'')\else \cite{ISTQB}\fi. Overall,
-specification-based testing \citep[pp.~2-4,~6-9,~22]{IEEE2022} \ifnotpaper and
-    black-box testing (\citealp[p.~5-10]{SWEBOK2024};
-    \citealp[p.~3]{SouzaEtAl2017})
-    % \else \cite[p.~3]{SouzaEtAl2017}, \cite[p.~5-10]{SWEBOK2024}
-    are test design techniques \else is a test design technique \fi used to
-``derive corresponding test cases'' \citep[p.~11]{IEEE2022} from
-``selected inputs and execution conditions'' \citep[p.~196]{IEEE2017}.
-
-\subsubsection{Correctness Testing}
-\label{corr-func-test}
+\subsubsection{Correctness Testing}\label{corr-func-test}
 \refHelper \citet[p.~5-7]{SWEBOK2024} says ``test cases can be designed to
 check that the functional specifications are correctly implemented, which is
 variously referred to in the literature as conformance testing, correctness
@@ -415,7 +384,7 @@ it seems consistent to label ``functional testing'' as a ``test type''
     \cite[pp.~15,~20,~22]{IEEE2022}, \cite[pp.~7,~38,~Tab.~A.1]{IEEE2021c},
     \cite[p.~4]{IEEE2016}\fi. However, this conflicts with its categorization
 as a ``technique'' if considered a synonym of specification-based testing
-(see \Cref{spec-func-test}).
+(see \flawref{spec-func-syn}).
 % Flaw count (CONTRA, CATS): {IEEE2022} {IEEE2021c} {IEEE2016} implied by {IEEE2017} {SWEBOK2024} {IEEE2022} | {IEEE2022} {SWEBOK2024} {SouzaEtAl2017} {IEEE2017}
 Additionally, ``correctness testing'' is listed separately from ``functionality
 testing'' by \citet[p.~53]{Firesmith2015}.
