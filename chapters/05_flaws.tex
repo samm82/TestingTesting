@@ -56,12 +56,11 @@ contain many interconnected flaws, which we present in subsections as a
 ``third view'' to keep related information together. Therefore, the counts of
 flaws given in \Cref{tab:flawMnfsts,tab:flawDmns} can be thought of as the sum
 the flaws we describe by manifestation, domain, and ``subset''. These subsets
-include functional testing (\Cref{func-test-flaw}), \ifnotpaper operational
-    (acceptance) testing (\Cref{oat-flaw}), \fi recovery testing
-(\Cref{recov-flaw}), scalability testing (\Cref{scal-flaw}), and compatibility
-testing (\Cref{compat-flaw}). \ifnotpaper Finally, we present inferred flaws,
-    as described in \Cref{infers}, for completeness in \Cref{infer-flaws};
-    these do not contribute to any counts.
+include \ifnotpaper operational (acceptance) testing (\Cref{oat-flaw}), \fi
+recovery testing (\Cref{recov-flaw}), scalability testing (\Cref{scal-flaw}),
+and compatibility testing (\Cref{compat-flaw}). \ifnotpaper Finally, we present
+    inferred flaws, as described in \Cref{infers}, for completeness in
+    \Cref{infer-flaws}; these do not contribute to any counts.
     % since they require further analysis to determine if they are flaws at all!
     We colour inferred approaches and relations grey in our generated graphs,
     such as \recFigs{}.
@@ -234,7 +233,7 @@ may be flaws) and to intransitive synonyms (which definitely \emph{are} flaws).
 
     We provide the full list of synonyms that violate transitivity (along with
     their sources) in \Cref{multiSyns} and discuss and other kinds of flawed
-    synonym relations in \Cref{parSyns,func-test-flaw,scal-flaw,compat-flaw}.
+    synonym relations in \Cref{parSyns,scal-flaw,compat-flaw}.
 \fi
 
 % Moved here to display nicely in paper
@@ -327,7 +326,7 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
         \item Factory Acceptance Testing
         \item Fault Injection Testing
         \item Functional Suitability Testing (also mentioned but not defined in
-              \citep{IEEE2017})
+              \citep{IEEE2017}; Functional Suitability*)
         \item Inspections*
         \item \underline{Integration Testing}*
         \item Maintenance Testing
@@ -354,35 +353,6 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
         \item User Acceptance Testing
     \end{itemize}
 \fi
-
-\subsection{Functional Testing}\label{func-test-flaw}
-
-``Functional testing'' is described alongside many other, likely related,
-terms. This leads to confusion about what distinguishes these terms, as shown
-by the following:
-
-% TODO: pull out into Recommendations
-% Perhaps this second definition of
-% ``conformance testing'' should be used, and the previous definition
-% of ``compliance testing'' should be used for describing compliance with
-% external standards, rules, etc.~to keep them distinct.
-
-\subsubsection{Functionality Testing}
-``Functionality'' is defined as the
-``capabilities of the various \dots\ features provided by a product''
-\citep[p.~196]{IEEE2017} and is said to be a synonym of
-``functional suitability'' \citepISTQB{}, although it seems
-like it should really be a synonym of ``functional completeness'' based on
-\citep{ISO_IEC2023a}, which would make ``functional suitability'' a
-% Flaw count (CONTRA, SYNS): ISTQB | implied by {ISO_IEC2023a}
-subapproach. Its associated test type
-is implied to be a subapproach of build verification testing
-\citepISTQB{} and made distinct from ``functional testing''%
-\ifnotpaper; interestingly, security is described as a subapproach of both
-non-functional and functionality testing\fi\ \citep[Tab.~2]{Gerrard2000a}.
-% Flaw count (CONTRA, SYNS): {SWEBOK2024} | {Firesmith2015}
-``Functionality testing'' is listed separately from ``correctness testing'' by
-\citet[p.~53]{Firesmith2015}.
 
 \ifnotpaper
     \subsection{Operational (Acceptance) Testing}\label{oat-flaw}

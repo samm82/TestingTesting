@@ -10,6 +10,7 @@ rankdir=BT;
 
 AllTransitionsTesting [label=<All<br/>Transitions<br/>Testing>];
 BranchConditionCombinationTesting [label=<Branch<br/>Condition<br/>Combination<br/>Testing>];
+BuildVerificationTesting [label=<Build<br/>Verification<br/>Testing>];
 DecisionTesting [label=<Decision<br/>Testing>];
 DeveloperTesting [label=<Developer<br/>Testing>];
 DynamicAnalysis [label=<Dynamic<br/>Analysis>];
@@ -24,6 +25,7 @@ ProgrammerTesting [label=<Programmer<br/>Testing>];
 Reviews [label=<Reviews>];
 RobustnessTesting [label=<Robustness<br/>Testing>];
 ScenarioTesting [label=<Scenario<br/>Testing>];
+SmokeTesting [label=<Smoke<br/>Testing>];
 StateTransitionTesting [label=<State<br/>Transition<br/>Testing>];
 StaticAnalysis [label=<Static<br/>Analysis>];
 StaticTesting [label=<Static<br/>Testing>];
@@ -39,6 +41,7 @@ PathTesting -> ExhaustiveTesting[dir=none,color="maroon"];
 DynamicTesting -> DynamicAnalysis[dir=none,color="maroon"];
 FaultToleranceTesting -> RobustnessTesting[dir=none,color="blue"];
 ScenarioTesting -> UseCaseTesting[dir=none,color="blue"];
+SmokeTesting -> BuildVerificationTesting[dir=none,color="blue"];
 StaticTesting -> StaticAnalysis[dir=none,color="maroon"];
 Walkthroughs -> StructuredWalkthroughs[dir=none,color="blue"];
 

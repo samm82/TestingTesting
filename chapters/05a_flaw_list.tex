@@ -89,6 +89,27 @@
           it is not categorized consistently. \citeauthor{IEEE2021b} categorize
           it as a test level in \citeyearpar[p.~43]{IEEE2021b} but give it its
           own test approach category in \citeyearpar[p.~10, 23, Fig.~2]{IEEE2022}.
+    \item % Flaw count (CONTRA, DEFS): {ISO_IEC2023a} | {IEEE2017}
+          \citet{ISO_IEC2023a} and \citet[p.~196]{IEEE2017} both say that
+          functional suitability is ``concerned with whether the functions meet
+          stated and implied needs'', but the former includes ``the functional
+          specification'' as part of its scope while the latter explicitly
+          excludes it.
+    \item % Flaw count (WRONG, SYNS): {ISO_IEC2023a} | ISTQB
+          ``Functionality'' is defined as the ``capabilities of the various
+          \dots\ features provided by a product'' \citep[p.~196]{IEEE2017}.
+          \citetISTQB{} say that it is a synonym of ``functional suitability'',
+          which refers to the ``capability of a product to provide [specified]
+          functions'' (\citealp{ISO_IEC2023a}; similar in
+          \citealp[p.~196]{IEEE2017}; \citealpISTQB{}) as opposed to the
+          capabilities of those functions themselves.
+          %   It should likely instead be a synonym of its child ``functional
+          %   correctness'', which is the ``capability of a product to provide
+          %   accurate [and precise] results when used by intended users''
+          %   \citep{ISO_IEC2023a}, of ``feature-based testing'' or ``features
+          %   testing'', which are mentioned by not defined by \citet[p.~28]{Firesmith2015}
+          %   and \citet[Fig.~5]{Gerrard2000a}, respectively, or of ``functions
+          %   testing'', which is implied to exist by \citet[Tab.~11]{DoğanEtAl2014}.
     \item % Flaw count (CONTRA, SYNS): ISTQB | {BaresiAndPezzè2006}
           A component is an ``entity with discrete structure \dots\ within a
           system considered at a particular level of analysis''
