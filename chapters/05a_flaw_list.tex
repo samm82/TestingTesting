@@ -291,6 +291,24 @@
           testing'' in \citeyearpar[p.~20]{IEEE2021c}\todo{OG Hass, 2008}.
           This implies that use case testing may instead be a child of
           user scenario testing (see \Cref{tab:parSyns}).
+    \item % Flaw count (CONTRA, DEFS): {SWEBOK2024} | {IEEE2017}
+          % Assertion: {JardEtAl1999}
+          % Flaw count (OVER, DEFS): {SWEBOK2024} | ISTQB {Firesmith2015}
+          % Flaw count (AMBI, SYNS): {Kam2008} | ISTQB {Firesmith2015}
+          % Flaw count (REDUN, DEFS): {Kam2008}
+          ``Conformance testing'' is defined by \citet[p.~5\=/7]{SWEBOK2024} as
+          testing that ``aims to verify that the SUT conforms to standards,
+          rules, specifications, requirements, design, processes, or practices'',
+          but this disagrees with the definition given by \citet[p.~92]{IEEE2017}%
+          \todo{OG PMBOK 5th ed.}: testing that evaluates the degree to which
+          ``results \dots{} fall within the limits that define acceptable
+          variation for a quality requirement''. \citeauthor{SWEBOK2024}'s
+          definition instead seems to correspond to the definition of compliance
+          testing given by \citetISTQB{}\todo{OG IREB Glossary} and
+          \citet[p.~33]{Firesmith2015}, which may explain why
+          \citet[p.~43]{Kam2008} gives them as synonyms (along with his
+          unhelpful definition of compliance testing: ``testing to determine
+          the compliance of the component or system'').
     \item % Flaw count (AMBI, LABELS): {IEEE2017} | {Firesmith2015} | {Firesmith2015} {Gerrard2000a}
           The distinctions between development testing \citep[p.~136]{IEEE2017},
           developmental testing \citep[p.~30]{Firesmith2015}, and developer
@@ -658,9 +676,4 @@
           (\citealp[p.~5\=/15]{SWEBOK2024}; similar in
           \citealp[pp.~428\==429]{vanVliet2000}) which is not a requirement of
           back-to-back testing.
-    \item % Flaw count (AMBI, SYNS): {Kam2008} | implied by {Kam2008}
-          ``Conformance testing'' is implied to be a synonym of ``compliance
-          testing'' by \citet[p.~43]{Kam2008} which only makes sense because
-          of the vague definition of the latter: ``testing to
-          determine the compliance of the component or system''.
 \end{enumerate}
