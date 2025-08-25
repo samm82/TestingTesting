@@ -58,13 +58,9 @@ flaws given in \Cref{tab:flawMnfsts,tab:flawDmns} can be thought of as the sum
 the flaws we describe by manifestation, domain, and ``subset''. These subsets
 include \ifnotpaper operational (acceptance) testing (\Cref{oat-flaw}), \fi
 recovery testing (\Cref{recov-flaw}), scalability testing (\Cref{scal-flaw}),
-and compatibility testing (\Cref{compat-flaw}). \ifnotpaper Finally, we present
-    inferred flaws, as described in \Cref{infers}, for completeness in
-    \Cref{infer-flaws}; these do not contribute to any counts.
-    % since they require further analysis to determine if they are flaws at all!
-    We colour inferred approaches and relations grey in our generated graphs,
-    such as \recFigs{}.
+and compatibility testing (\Cref{compat-flaw}).
 
+\ifnotpaper
     % \input{build/flawTable}
 
     \begin{landscape}
@@ -567,73 +563,3 @@ adapted to changes in its requirements, contexts of use, or system environment''
     \cite{ISO_IEC2023a} (similar in \citeyear[pp.~184, 329]{IEEE2017},
     \citealp[p.~7]{IEEE2022}, \cite{ISTQB})\fi, such as being ``transferred
 from one hardware \dots{} environment to another'' \citep[p.~39]{IEEE2021c}.
-
-\ifnotpaper
-    \subsection{Inferred Flaws}\label{infer-flaws}
-    Throughout our research, we infer many potential flaws as described in
-    \Cref{infers}. Some of these have a conflicting source while others do not.
-    Since these are more subjective and are based on our own judgement, we
-    exclude them from any counts of the numbers of flaws but give them here for
-    completeness.
-
-    \subsubsection{Inferred Synonym Flaws}\label{infMultiSyns}
-    See \Cref{multiSyns}.
-
-    \begin{enumerate}
-        \input{build/infMultiSyns}
-    \end{enumerate}
-
-    Additionally, \citet[p.~46]{Kam2008} gives ``program testing'' as a synonym
-    of ``component testing'' but it probably should be a synonym of ``system
-    testing'' instead.
-    % \item \refHelper \citet[p.~46]{Kam2008} gives ``program testing'' as a
-    % synonym of ``component testing'' but it probably should be a synonym of
-    % ``system testing'' instead.
-
-    \subsubsection{Inferred Parent Flaws}\label{infParSyns}
-    As discussed in \Cref{parSyns}, some pairs of synonyms also have a
-    parent-child relation, abusing the meaning of ``synonym'' and causing
-    confusion. While \Cref{tab:parSyns} gives the cases where both relations
-    are supported by the literature, some are less explicit. For example, while
-    ``\emph{dynamic testing} is sometimes called \dots{} dynamic analysis''
-    (\citealp[p.~438]{PetersAndPedrycz2000}; implied by
-    \citealp[p.~149]{IEEE2017}; \citealpISTQB{}), it could be inferred from
-    their static counterparts that dynamic analysis is a \emph{child} of dynamic
-    testing (see \citealp[pp.~9, 17, 25, 28]{IEEE2022}). Additionally, the
-    following automatically generated lists contain examples where at least
-    one of these conflicting relations is \emph{not} supported by the
-    literature but may, nonetheless, be correct. The relations in the first two
-    lists are explicitly given in the literature but may be incorrect, while
-    those in the third list are unsubtantiated by the literature and require
-    more thought before a recommendation can be made.
-
-    \input{build/infParSyns}
-
-    In addition to this type of flaw, \citep[Tab.~2]{Gerrard2000a} does
-    \emph{not} give ``functionality testing'' as a parent of ``end-to-end
-    functionality testing''. Finally, \citet[p.~119]{Patton2006} says that
-    branch testing is ``the simplest form of path testing'' which is also
-    implied by \citet[Fig.~F.1]{IEEE2021c}\todo{OG Reid, 1996} and
-    \citet[p.~433]{vanVliet2000}. This is true in the example
-    \citeauthor{Patton2006} gives, but is not necessarily generalizable; one
-    could test the behaviour at branches without testing even a \emph{subset}
-    of complete paths, which \citet[p.~316]{IEEE2017} give as a definition of
-    ``path testing'' (see \flawref{path-test})!
-
-    \subsubsection{Inferred Category Flaws}
-    See \Cref{multiCats}.
-
-    \input{build/infMultiCats}
-
-    \subsubsection{Other Inferred Flaws}
-    The following are flaws that, if were more concrete, would also be
-    included alongside the other flaws:
-    \begin{itemize}
-        \item ``Fuzz testing'' is ``tagged'' (?) as ``artificial
-              intelligence'' \citep[p.~5]{IEEE2022}.
-        \item \citeauthor{Gerrard2000b}'s definition for ``security
-              audits'' seems too specific, only applying to ``the products
-              installed on a site'' and ``the known vulnerabilities for
-              those products'' \citeyearpar[p.~28]{Gerrard2000b}.
-    \end{itemize}
-\fi

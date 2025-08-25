@@ -140,19 +140,18 @@ we only visualize the following synonym relations, which may indicate flaws:
     \emph{always} denoted by solid lines, even if they are also implicit. We
     can also generate ``explicit'' versions of these visualizations that exclude
     implicit approaches and relations; for example, \Cref{fig:expExampleGraph}
-    is the explicit version of \Cref{fig:exampleGraph}%, and
+    is the explicit version of \Cref{fig:exampleGraph}. %, and
     % \Cref{fig:expSynGraph} likewise only contains explicit approaches and
     % synonym relations
-    .
 
-    We also colour each relation according to its source tier, including
-    inferences (see \Cref{infers}) and proposals (see \Cref{recs}). For
-    clarity, we only display the relation with the most credible source tier
-    (except if there is a more credible implicit relation as we previously
-    describe). Each source tier gets its own colour that we include in the
-    legend for each visualization (such as \Cref{fig:exampleSynGraph}),
-    although we omit this colouring from \Cref{fig:exampleParChdGraphs,%
-        fig:exampleFlawGraphs} for clarity.
+    We also colour each relation according to its source tier, with each source
+    tier getting its own colour. We label these colours in the legend for each
+    visualization (such as \Cref{fig:exampleSynGraph}), although we omit this
+    colouring from \Cref{fig:exampleParChdGraphs,fig:exampleFlawGraphs} for
+    clarity. We also only display the relation with the most credible source
+    tier (except if there is a more credible implicit relation as we previously
+    describe). Finally, we also colour inferences (see \Cref{infers}) grey and
+    proposals (see \Cref{recs}) orange, such as in \recFigs{}.
 
 \fi
 These visualizations tend to be large, so it is often useful to focus on
@@ -182,8 +181,8 @@ remove. % given \else; the latter are shown \fi
 %         perf-test-rec\fi} results in the updated graphs in
 % \Cref{fig:rec-graph-proposed,,fig:scal-graph-proposed,,\ifnotpaper\else%
 %         fig:perf-graph\fi}, respectively.
-When doing so\ifnotpaper\ in \Cref{recs}\fi, we colour any added approaches or
-relations orange to distinguish them.
+When doing so\ifnotpaper\ in \Cref{recs}\fi, we colour any proposed approaches
+or relations orange to distinguish them.
 % \ifnotpaper
 % Recommendations can also be inherited; for example, we generate
 % \Cref{fig:perf-graph} based on the modifications we apply to
