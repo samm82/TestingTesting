@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from copy import deepcopy
 from math import ceil
 import itertools
@@ -570,11 +571,11 @@ if "Example" not in csvFilename:
               "selfPars", True)
 
 # Not stable; MUST be in correct order for table footnotes
-parSynNotes = {
+parSynNotes = OrderedDict({
     ("Fault Tolerance Testing", "Robustness Testing") :
         {"footnote": "\\ftrnote{}"},
     ("Functional Testing", "Specification-based Testing") :
-        {"footnote": "\\specfn{}"},
+        {"footnote": "See \\flawref{spec-func-syn}."},
     # ("Performance Testing", "Performance-related Testing") :
     #     {"footnote": "See \\Cref{perf-test-ambiguity}."},
     ("Use Case Testing", "Scenario Testing") :
@@ -597,14 +598,12 @@ parSynNotes = {
         {"footnote": "See \\flawref{walkthrough-syns}."},
     ("Exploratory Testing", "Unscripted Testing") :
         {"label": "exp-unscrip"}
-}
+})
 
 parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
     set(), set(), set(), set()
 
-# Iterator to get next letter for footnotes
-letters = iter(ascii_lowercase)
-tableFootnotes: list[str] = []
+tableFootnotes: dict[str, str] = dict()
 
 # Since TblrNote uses unique footnotes, this is needed to avoid duplicates
                                      # Populate with manually tracked parSyns
@@ -649,12 +648,12 @@ def makeParSynLine(chd, par, parSource, synSource) -> None:
         parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
         return
 
-    for terms, note in parSynNotes.items():
+    for i, (terms, note) in enumerate(parSynNotes.items()):
         # Processing for table version
         if chd == terms[0] and par == terms[1]:
             try:
-                tableFootnotes.append(note["footnote"])
-                par += f"\\TblrNote{{{next(letters)}}}"
+                tableFootnotes[ascii_lowercase[i]] = (note["footnote"])
+                par += f"\\TblrNote{{{ascii_lowercase[i]}}}"
             except KeyError:
                 pass
             chd = processChd(chd, note)
@@ -703,7 +702,7 @@ if "Example" not in csvFilename:
         "Pairs of test approaches with a \\hyperref[par-chd-rels]{parent-child} \\emph{and} \\hyperref[syn-rels]{synonym} relation.",
         ["``Child'' $\\to$ ``Parent''", "Parent-Child Source(s)", "Synonym Source(s)"],
         list(parSyns),
-        footnotes=tableFootnotes
+        footnotes=[value for _, value in sorted(tableFootnotes.items())]
     )
 
     writeFile([x for x in itertools.chain.from_iterable(itertools.zip_longest(

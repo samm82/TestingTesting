@@ -1,8 +1,11 @@
 \begin{longtblr}[
     note{a} = {Defined in \Cref{mnfst-def}; we also define starred versions,
-            such as \macro{wrong*} (\wrong*{}), that use the singular noun.},
-    note{b} = {Defined in \Cref{dmn-def}; we also define starred versions,
-            such as \macro{cats*} (\cats*{}), that use the singular noun.},
+            such as \macro{wrong*} (\wrong*{}), that use the singular noun for
+            use in \Cref{tab:flawMnfstDefs}.},
+    note{b} = {Defined in \Cref{dmn-def}; we only include domains with their
+            own section.},
+    % we also define starred versions,
+    % such as \macro{cats*} (\cats*{}), that use the singular noun.
     note{c} = {Defined in \Cref{source-tiers}.},
     note{d} = {We overwrite the primitive \TeX{} command \macro{over}
             % Source: https://tex.stackexchange.com/a/73825/192195
@@ -17,24 +20,23 @@
     width = \textwidth, rowhead = 1
     }
     \hline
-                                & \SetCell[c=2]{c} \thead{Flaw Manifestations\TblrNote{a}}  &             & \SetCell[c=2]{c} \thead{Flaw Domains\TblrNote{b}} &             & \SetCell[c=2]{c} \thead{Source Tiers\TblrNote{c}} &              \\
+                                & \SetCell[c=2]{c} \thead{Flaw Manifestations\TblrNote{a}}  &             & \SetCell[c=2]{c} \thead{Flaw Domains\TblrNote{b}} &           & \SetCell[c=2]{c} \thead{Source Tiers\TblrNote{c}} &              \\
     \hline
-    \SetCell[r=6]{c} \textbf{Macros                                                                                                                                                                                                            \\
-    (Values)}                   & \macro{wrong}                                             & (\wrong{})  & \macro{cats}                                      & (\cats{})   & \macro{stds}                                      & (\stds{})    \\
-                                & \macro{miss}                                              & (\miss{})   & \macro{syns}                                      & (\syns{})   & \macro{metas}                                     & (\metas{})   \\
-                                & \macro{contra}                                            & (\contra{}) & \macro{pars}                                      & (\pars{})   & \macro{texts}                                     & (\texts{})   \\
-                                & \macro{ambi}                                              & (\ambi{})   & \macro{defs}                                      & (\defs{})   & \macro{papers}                                    & (\papers{})  \\ %\TblrNote{e}                                              \\
-                                & \macro{over}\TblrNote{d}                                  & (\over{})   & \macro{labels}                                    & (\labels{}) & \macro{papers*}                                   & (\papers*{}) \\
-                                & \macro{redun}                                             & (\redun{})  & \macro{scope}                                     & (\scope{})  &                                                                  \\
-                                &                                                           &             & \macro{trace}                                     & (\trace{})  &                                                                  \\
+    \SetCell[r=6]{c} \textbf{Macros                                                                                                                                                                                                          \\
+    (Values)}                   & \macro{wrong}                                             & (\wrong{})  & \macro{cats}                                      & (\cats{}) & \macro{stds}                                      & (\stds{})    \\
+                                & \macro{miss}                                              & (\miss{})   & \macro{syns}                                      & (\syns{}) & \macro{metas}                                     & (\metas{})   \\
+                                & \macro{contra}                                            & (\contra{}) & \macro{pars}                                      & (\pars{}) & \macro{texts}                                     & (\texts{})   \\
+                                & \macro{ambi}                                              & (\ambi{})   &                                                   &           & \macro{papers}                                    & (\papers{})  \\ %\TblrNote{e}                                              \\
+                                & \macro{over}\TblrNote{d}                                  & (\over{})   &                                                   &           & \macro{papers*}                                   & (\papers*{}) \\
+                                & \macro{redun}                                             & (\redun{})  &                                                   &           &                                                                  \\
     \hline
-    \textbf{Used In}            & \SetCell[c=2]{c} {\Cref{tab:flawMnfstDefs,tab:flawMnfsts}                                                                                                                                                    \\
+    \textbf{Used In}            & \SetCell[c=2]{c} {\Cref{tab:flawMnfstDefs,tab:flawMnfsts}                                                                                                                                                  \\
     (in both thesis and paper)} &
-                                & \SetCell[c=2]{c} {\Cref{tab:flawDmnDefs,tab:flawDmns}                                                                                                                                                        \\
+                                & \SetCell[c=2]{c} {\Cref{tab:flawDmnDefs,tab:flawDmns}                                                                                                                                                      \\
     (in both thesis and paper)} &                                                           &
     \SetCell[c=2]{c} {
-    \Cref{fig:sourceSummary,fig:flawBars,tab:flawMnfsts,tab:flawDmns}                                                                                                                                                                          \\
+    \Cref{fig:sourceSummary,fig:flawBars,tab:flawMnfsts,tab:flawDmns}                                                                                                                                                                        \\
         % \Cref{flaw-analysis-example} (only \macro{stds} and \macro{texts})
-    }                           &                                                                                                                                                                                                              \\
+    }                           &                                                                                                                                                                                                            \\
     \hline
 \end{longtblr}
