@@ -234,12 +234,13 @@ def addNode(name, style = "", key = "Approach", cat = ""):
 criteria = True
 
 class MultiCatInfo():
-    def __init__(self, name, capHelper) -> None:
+    def __init__(self, name, capHelper, headers) -> None:
         self.name = name
         self.caption = (f"Test approaches {capHelper} more than one " +
                          "\\hyperref[cats-def]{category}.")
         self.lines: list[str] = []
         self.lenTotals: list[tuple[int, int]] = []
+        self.headers = headers
 
     def addMultiCatLine(self, flaw: str, name: str, catCells: list[str]):
         self.lenTotals.append(tuple(map(len, catCells)))
@@ -252,13 +253,14 @@ class MultiCatInfo():
         return [round(n * len(avgLens) / sum(avgLens), 2) for n in avgLens]
 
     def output(self):
-        writeTblr(multiCat.name, multiCat.caption,
-                      ["Approach", "Category 1", "Category 2"],
+        writeTblr(multiCat.name, multiCat.caption, multiCat.headers,
                       multiCat.lines, widths=multiCat.getColWidths()
         )
 
-multiCatDict = {0 : MultiCatInfo("infMultiCats", "inferred to have"),
-                1 : MultiCatInfo("multiCats",    "with")}
+multiCatDict = {0 : MultiCatInfo("infMultiCats", "inferred to have",
+                                 ["Approach", "Given Category", "Inferred Category"]),
+                1 : MultiCatInfo("multiCats", "with",
+                                 ["Approach", "Category 1", "Category 2"])}
 multiCatCounter = {c: 0 for c in itertools.combinations(APP_CATS, 2)}
 
 LONG_ENDINGS = {"Testing", "Management", "Scanning", "Audits",
@@ -278,17 +280,24 @@ for name, category in zip(names, categories):
         flawCount = (getFlawCount(category, "CONTRA", "CATS")
                         if not any(inf in " ".join(category)
                                    for inf in {"?", "(inferred"}) else "")
+        catList = [formatLineWithSources(c, False) for c in category]
+
+        if bool(flawCount):
+            # Exclude inferences from multiCat flaw count
+            flawCats = tuple(c.split(" ")[0].strip("?") for c in sorted(category))
+            multiCatCounter[flawCats] += 1
+        else:
+            # Put inferences last for inferred multiCat flaws
+            if "(inferred" in catList[0]:
+                catList.reverse()
+            catList[1] = catList[1].replace("inferred from ", "")
+
         multiCatDict[bool(flawCount)].addMultiCatLine(
             flawCount, # if criteria else "",
             # Add line breaks to longer test approaches
             f"{{{LONG_ENDINGS_REGEX.sub(r'\\\\\1', name)}}}",
-            [formatLineWithSources(c, False) for c in category]
+            catList
         )
-
-        # Exclude inferences
-        if bool(flawCount):
-            flawCats = tuple(c.split(" ")[0].strip("?") for c in sorted(category))
-            multiCatCounter[flawCats] += 1
 
 if "Example" not in csvFilename:
     for multiCat in multiCatDict.values():
