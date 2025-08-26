@@ -575,7 +575,7 @@ parSynNotes = OrderedDict({
     ("Fault Tolerance Testing", "Robustness Testing") :
         {"footnote": "\\ftrnote{}"},
     ("Functional Testing", "Specification-based Testing") :
-        {"footnote": "See \\flawref{spec-func-syn}."},
+        {"footnote": "\\specfn{}"},
     # ("Performance Testing", "Performance-related Testing") :
     #     {"footnote": "See \\Cref{perf-test-ambiguity}."},
     ("Use Case Testing", "Scenario Testing") :

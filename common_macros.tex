@@ -202,6 +202,20 @@ error-based testing (implied by \citealp[p.~399]{vanVliet2000}).}
         \citetext{\citealp[p.~375]{IEEE2017}; \citealp[p.~7\=/10]{SWEBOK2024}}%
     \else \cite[p.~375]{IEEE2017}, \cite[p.~7\=/10]{SWEBOK2024}%
     \fi, which is distinct from robustness testing \citep[p.~53]{Firesmith2015}.}
+\def\specfn{%
+    % Flaw count (MISS, SYNS): ISTQB | {IEEE2017}
+    \refHelper \citetISTQB{} \multiAuthHelper{cite} \citet[p.~431]{IEEE2017}
+    for \ifnotpaper their \else its \fi definition of ``functional testing''
+    but \multiAuthHelper{exclude} the transitive synonym relationship
+    (see \Cref{syn-rels}) \ifnotpaper they give \else it gives \fi to
+    ``specification-based testing''.
+    % Flaw count (CONTRA, SYNS): {IEEE2017} implied by {IEEE2021c} {IEEE2017} | {IEEE2022} {IEEE2021c} ISTQB
+    % Assertion: {Kam2008} {vanVliet2000}
+    These terms are also defined separately elsewhere \ifnotpaper
+        (\citeyear[Fig.~2]{IEEE2022}; \citeyear[pp.~8, 49, 125]{IEEE2021c})\else
+        \cite{IEEE2022}, \cite{IEEE2021c}\fi, further supporting that they are
+    not synonyms.
+}
 \def\ucstn{%
     % Flaw count (CONTRA, SYNS): ISTQB | {IEEE2022}
     \refHelper \citet[Fig.~2]{IEEE2022} also \multiAuthHelper{list}
