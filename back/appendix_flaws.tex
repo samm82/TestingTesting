@@ -46,14 +46,10 @@ As mentioned in \Cref{multiCats}, \multiCatIntro{} and list them in
 \end{landscape}
 
 \subsection{Intransitive Synonyms}\label{multiSyns}
-There are also cases in which a term is given as a synonym to two (or more)
-terms that are not synonyms themselves. Sometimes, these terms
-\emph{are} synonyms; for example, \citetISTQB{} \multiAuthHelper{say}
-``use case testing'', ``user scenario testing'', and ``scenario testing'' are
-all synonyms (although there may be a slight distinction; see
-\Cref{tab:parSyns}).
-However, this does not always make sense. We identify \multiSynCount{}
-such cases through automatic analysis of the generated graphs\ifnotpaper,
+As described in \Cref{relevantSyns}, intransitive synonyms are examples of
+flaws since they violate our definition of the synonym relation in
+\Cref{syn-rels}. We identify \multiSynCount{}
+such cases through automatic analysis of generated visualizations\ifnotpaper,
 listed below (test approaches in \emph{italics} are synonyms with each other,
 but not with other terms not in italics\todo{Better way to handle/display
     this?})\else. The following three are the most prominent examples\fi:
@@ -83,8 +79,13 @@ list in \Cref{tab:infMultiCats}.
 
 \input{build/infMultiCats}
 
-\subsection{Inferred Synonym Flaws}\label{infMultiSyns}
-See \Cref{multiSyns}.
+\newpage
+
+\subsection{Inferred Intransitive Synonyms}\label{infMultiSyns}
+In addition to the \multiSynCount{} cases of intransitive synonyms we list in
+\Cref{multiCats-full}, we infer some synonym relations based on the terms'
+definitions that create the following inferred flaws (some pairs of synonyms
+have sources; those that do not are ones we infer):
 
 \begin{enumerate}
     \input{build/infMultiSyns}
