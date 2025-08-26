@@ -169,6 +169,7 @@ COMPLEX_TEX_FILES = [
     "build/parSyns.tex",
     "build/selfPars.tex",
     "chapters/05_flaws.tex",
+    "common_macros.tex",
 ]
 
 SIMPLE_TEX_FILES = [
