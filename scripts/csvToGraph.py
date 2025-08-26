@@ -606,11 +606,10 @@ parSyns, infParSynsParSrc, infParSynsSynSrc, infParSynsNoSrc = \
 tableFootnotes: dict[str, str] = dict()
 
 # Since TblrNote uses unique footnotes, this is needed to avoid duplicates
-                                     # Populate with manually tracked parSyns
-addedParSyns: set[tuple[str, str]] = {("Dynamic Analysis", "Dynamic Testing")}
+addedParSyns: set[tuple[str, str]] = set()
 
 def makeParSynLine(chd, par, parSource, synSource) -> None:
-    # Don't add manually tracked or already-tracked parSyns to table
+    # Only track parSyns once
     if (chd, par) in addedParSyns:
         return
     addedParSyns.add((chd, par))
@@ -625,8 +624,9 @@ def makeParSynLine(chd, par, parSource, synSource) -> None:
             return f"\\phantomsection{{}}\\label{{{label}}}{chd}"
         return chd
 
-    if not (parSource and synSource):
-        if parSource:
+    if not (parSource and synSource) or any("(inferred" in src
+                                            for src in {parSource, synSource}):
+        if parSource and "(inferred" not in parSource:
             parSynSet = infParSynsParSrc
         elif synSource:
             parSynSet = infParSynsSynSrc
@@ -645,7 +645,17 @@ def makeParSynLine(chd, par, parSource, synSource) -> None:
                     pass
                 chd = processChd(chd, note)
                 break
-        parSynSet.add(f"\\item {chd} $\\to$ {par} {parSource or synSource or ""}")
+
+        if parSource and synSource:
+            if "(inferred" in parSource:
+                relSource, relInfSource = synSource, parSource
+            else:
+                relSource, relInfSource = parSource, synSource
+            relSource = f"\\footnote{{The proposed relation is {relInfSource[1:-1]}.}} {relSource}"
+        else:
+            relSource = " " + (parSource or synSource or "")
+
+        parSynSet.add(f"\\item {chd} $\\to$ {par}{relSource}")
         return
 
     for i, (terms, note) in enumerate(parSynNotes.items()):
