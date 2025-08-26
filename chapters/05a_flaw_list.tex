@@ -604,6 +604,29 @@
           (``usually'', ``may or may not'', and ``often'', respectively).
 
           % TEXT | PAPER
+    \item % Flaw count (MISS, DEFS): {Bas2024}
+          \citet[p.~16]{Bas2024} lists ``three [backup] location
+          categories: local, offsite and cloud based [sic]'' but does not
+          define or discuss ``offsite backups'' \citetext{pp.~16\==17}.
+    \item % Flaw count (WRONG, SYNS): implied by {SharmaEtAl2021}
+          \citet[p.~601]{SharmaEtAl2021} seem to use the terms ``grey-box
+          testing'' and ``(stepwise) code reading'' interchangeably, which would
+          incorrectly imply that they are synonyms\todo{FIND SOURCES}.
+    \item % Flaw count (WRONG, SYNS): {IEEE2017} ISTQB {PetersAndPedrycz2000} {vanVliet2000} {SakamotoEtAl2013} | {Kam2008}
+          \citet[p.~46]{Kam2008} gives ``program testing'' as a synonym of
+          ``component testing'' but it would make more sense as a synonym of
+          ``system testing'', which is conducted on the system, or program, as
+          a whole (\citealp[p.~456\todo{OG 2012}]{IEEE2017}; \citealpISTQB{};
+          \citealp[Tab.~12.3]{PetersAndPedrycz2000}; \citealp[p.~439]{vanVliet2000};
+          \citealp[pp.~343\==344]{SakamotoEtAl2013}).
+    \item % Flaw count (WRONG, SYNS): {SWEBOK2024} {vanVliet2000} | {Kam2008}
+          \citet[p.~46]{Kam2008} gives ``mutation testing'' as a
+          synonym of ``back-to-back testing''; while the two are related
+          \citep[p.~30]{IEEE2010}, the variants used in mutation testing are
+          generated or designed to be detected as incorrect by the test suite
+          (\citealp[p.~5\=/15]{SWEBOK2024}; similar in
+          \citealp[pp.~428\==429]{vanVliet2000}) which is not a requirement of
+          back-to-back testing.
     \item % Flaw count (WRONG, DEFS): ISTQB | {Kam2008}
           \citet[p.~46]{Kam2008}\todo{OG Beizer} says that the goal
           of negative testing is ``showing that a component or system does not
@@ -611,10 +634,17 @@
           the system, then testing the system ``in a way for which it was not
           intended to be used'' \citepISTQB{} (i.e., negative testing) is one
           way to help test this!
+    \item % Flaw count (CONTRA, CATS): {SWEBOK2024} | {Kam2008}
+          Although ad hoc testing is classified as a ``technique''
+          \citep[p.~5\=/14]{SWEBOK2024}, it is one in which ``no recognized test
+          design technique is used'' \citep[p.~42]{Kam2008}.
     \item % Flaw count (WRONG, TRACE): {Kam2008}
           % Flaw count (MISS, DEFS): {Kam2008}
           % Label see-ref-missing
           \seeRefMissing{}
+    \item % Flaw count (WRONG, LABELS): {Kam2008}
+          \citet{Kam2008} misspells ``state-based'' as ``state-base''
+          \citetext{pp.~13, 15} and ``stated-base'' \citetext{Tab.~1}.
     \item % Flaw count (CONTRA, CATS): {Kam2008} | implied by {IEEE2021c}
           \citet[p.~46]{Kam2008}\todo{OG Beizer} says ``negative testing is
           related to the testers' attitude rather than a specific test approach
@@ -626,21 +656,6 @@
           The phrase ``continuous automated testing'' \citep[p.~11]{Gerrard2000a}
           is redundant since \acf{ct} is already a subapproach of automated
           testing (\citealp[p.~35]{IEEE2022}; \citealpISTQB{}).
-    \item % Flaw count (CONTRA, CATS): {SWEBOK2024} | {Kam2008}
-          Although ad hoc testing is classified as a ``technique''
-          \citep[p.~5\=/14]{SWEBOK2024}, it is one in which ``no recognized test
-          design technique is used'' \citep[p.~42]{Kam2008}.
-    \item % Flaw count (MISS, DEFS): {Bas2024}
-          \citet[p.~16]{Bas2024} lists ``three [backup] location
-          categories: local, offsite and cloud based [sic]'' but does not
-          define or discuss ``offsite backups'' \citetext{pp.~16\==17}.
-    \item % Flaw count (WRONG, SYNS): implied by {SharmaEtAl2021}
-          \citet[p.~601]{SharmaEtAl2021} seem to use the terms ``grey-box
-          testing'' and ``(stepwise) code reading'' interchangeably, which would
-          incorrectly imply that they are synonyms\todo{FIND SOURCES}.
-    \item % Flaw count (WRONG, LABELS): {Kam2008}
-          \citet{Kam2008} misspells ``state-based'' as ``state-base''
-          \citetext{pp.~13, 15} and ``stated-base'' \citetext{Tab.~1}.
     \item % Flaw count (MISS, DEFS): {Gerrard2000a}
           \citet[Tab.~2]{Gerrard2000a} makes a distinction between
           ``transaction verification'' and ``transaction testing'' and
@@ -668,12 +683,4 @@
           The previous flaw makes the claim that
           ``red-box testing'' is a synonym for ``acceptance testing''
           \citep[p.~18]{SneedAndGöschl2000} lose credibility.
-    \item % Flaw count (WRONG, SYNS): {SWEBOK2024} {vanVliet2000} | {Kam2008}
-          \citet[p.~46]{Kam2008} gives ``mutation testing'' as a
-          synonym of ``back-to-back testing''; while the two are related
-          \citep[p.~30]{IEEE2010}, the variants used in mutation testing are
-          generated or designed to be detected as incorrect by the test suite
-          (\citealp[p.~5\=/15]{SWEBOK2024}; similar in
-          \citealp[pp.~428\==429]{vanVliet2000}) which is not a requirement of
-          back-to-back testing.
 \end{enumerate}
