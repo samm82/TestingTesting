@@ -37,28 +37,30 @@ row corresponds to the number of flaws either within that source tier and/or
 with a ``more credible'' one (i.e., a previous row in the table; see
 \Cref{cred,source-tiers}). We also group these flaws by their explicitness
 (defined in \Cref{explicitness}) by counting (Obj)ective and (Sub)jective flaws
-separately (see \Cref{tab:flawMnfsts,tab:flawDmns}), since additional
-context may rectify them. \ifnotpaper Additionally,
-    \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats} contain relations that
-    are explicit, implicit, and both; implicit relations are marked by the
-    phrase ``implied by''. \fi
+separately, since additional context may rectify them.
 Since we give each flaw a manifestation \emph{and} a domain, the totals per
 source and grand totals in these tables are equal.
 
-We summarize the flaws that we discover manually in \Cref{flawMnfsts} based on
-their manifestation (defined in \Cref{mnfst-def}\ifnotpaper; see
-\Cref{aug-flaw-analysis}\fi). This lets us keep flaws that we automatically
-uncover \ifnotpaper (see \Cref{auto-flaw-analysis}) \fi separate; we summarize
-these based on their domain (defined in \Cref{dmn-def}) in \Cref{flawDmns}.
+We summarize the flaws that we discover manually \ifnotpaper (see
+    \Cref{aug-flaw-analysis}) \fi in \Cref{flawMnfsts} based on their
+manifestation (defined in \Cref{mnfst-def}). This lets us keep flaws that we
+automatically uncover \ifnotpaper (see \Cref{auto-flaw-analysis}) \fi separate;
+we summarize these based on their domain (defined in \Cref{dmn-def}) in
+\Cref{flawDmns}.
 \ifnotpaper We list \emph{all} these flaws in \Cref{flaws-full} to balance
-    completeness and brevity. \fi Moreover, certain ``subsets'' of testing
-contain many interconnected flaws, which we present in subsections as a
+    completeness and brevity and denote implicit relations with the phrase
+    ``implied by'' in \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats} as
+    described in \Cref{explicitness}. \fi Moreover, certain ``subsets'' of
+testing contain many interconnected flaws, which we present in subsections as a
 ``third view'' to keep related information together. Therefore, the counts of
 flaws given in \Cref{tab:flawMnfsts,tab:flawDmns} can be thought of as the sum
 the flaws we describe by manifestation, domain, and ``subset''. These subsets
 include \ifnotpaper operational (acceptance) testing (\Cref{oat-flaw}), \fi
 recovery testing (\Cref{recov-flaw}), scalability testing (\Cref{scal-flaw}),
-and compatibility testing (\Cref{compat-flaw}).
+and compatibility testing (\Cref{compat-flaw}). \ifnotpaper Finally, we also
+    infer some flaws as described in \Cref{infers}, which do not contribute to
+    any counts due to their subjectivity; we list them in \Cref{infer-flaws}
+    for completeness. \fi
 
 \ifnotpaper
     % \input{build/flawTable}
