@@ -24,11 +24,6 @@ responsible for these flaws, which reveals a lot about software testing literatu
           \qtodo{Is this too strong of a synonym for ``ground truth''?}!
 \end{enumerate}
 
-\ifnotpaper
-    \afterpage{\input{assets/graphs/flawBars}}
-    % \input{assets/graphs/flawPies}
-\fi
-
 To better understand and analyze these flaws, we group them by their
 manifestations and their domains as defined in \Cref{flaw-def}.
 We present the total number of flaws by manifestation and by domain
@@ -39,7 +34,29 @@ with a ``more credible'' one (i.e., a previous row in the table; see
 (defined in \Cref{explicitness}) by counting (Obj)ective and (Sub)jective flaws
 separately, since additional context may rectify them.
 Since we give each flaw a manifestation \emph{and} a domain, the totals per
-source and grand totals in these tables are equal.
+source and grand totals in these tables are equal. From these tables, we can
+conclude that:
+\begin{enumerate}
+    \item contradictions are by \emph{far} the most common way for a flaw to
+          manifest, which makes sense: if two (groups of) authors do not
+          communicate or work with different resources, there is a higher
+          chance that they will disagree, and
+    \item approach categorizations are the most subjective and one of the most
+          common flaw domains, likely due to the lack of standardization
+          about what categories to use\ifnotpaper\ (see \Cref{alt-cats})\fi.
+\end{enumerate}
+
+\ifnotpaper
+    \input{assets/graphs/flawBars}
+    % \input{assets/graphs/flawPies}
+
+    % \input{build/flawTable}
+    \begin{landscape}
+        \flawMnfstsTable{}
+        \flawDmnsTable{}
+    \end{landscape}
+
+\fi
 
 We summarize the flaws that we discover manually \ifnotpaper (see
     \Cref{aug-flaw-analysis}) \fi in \Cref{flawMnfsts} based on their
@@ -61,16 +78,6 @@ and compatibility testing (\Cref{compat-flaw}). \ifnotpaper Finally, we also
     infer some flaws as described in \Cref{infers}, which do not contribute to
     any counts due to their subjectivity; we list them in \Cref{infer-flaws}
     for completeness. \fi
-
-\ifnotpaper
-    % \input{build/flawTable}
-
-    \begin{landscape}
-        \flawMnfstsTable{}
-        \flawDmnsTable{}
-    \end{landscape}
-
-\fi
 
 \subsection{Flaws by Manifestation}\label{flawMnfsts}
 

@@ -62,7 +62,11 @@ to generate visualizations of these relations automatically.
     \input{build/exampleGlossary.tex}
     \ExampleParChdGraphs{}
 
-    \clearpage\fi
+    \clearpage\else
+    % Moved here to display nicely in paper
+    \flawMnfstsTable{}
+    \flawDmnsTable{}
+\fi
 \phantomsection{}\label{relevantSyns}
 Overall, the parent-child relations between test approaches \emph{should}
 result in a hierarchy (or multiple discrete hierarchies), but due to flaws in
@@ -191,7 +195,4 @@ or relations orange to distinguish them.
 
 \input{chapters/04a_flaw_analysis}
 \else
-% Moved here to display nicely in paper
-\flawMnfstsTable{}
-\flawDmnsTable{}
 \fi
