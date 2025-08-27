@@ -143,6 +143,12 @@ investigation. The domains we focus on here are test approach categories
 (\Cref{pars})%\ifnotpaper, and definitions (\Cref{defs})\fi
 .
 
+% Moved here to display nicely in paper
+\ifnotpaper\else
+    \input{assets/misc/multiCats}
+    \input{assets/misc/parSyns}
+\fi
+
 \subsubsection{Approach Category Flaws}\label{cats}
 
 While the IEEE categorization of testing approaches described in
@@ -162,21 +168,20 @@ themselves are not consistently defined, and some approaches are categorized
 differently by different sources; we track these differences so we can analyze
 them more systematically\thesisissueref{21}.
 
-% Moved here to display nicely in paper
-\ifnotpaper\else\input{assets/misc/multiCats}\fi
-
 \phantomsection{}\label{multiCats}
-In particular, \multiCatIntro{}. We identify \multiCatCount{} such cases%
-\ifnotpaper\ that we summarize in \Cref{tab:multiCatTable}\fi; we consider these
-flaws as they violate our assumption of orthogonality (see
-\Cref{orth-approach}). We list \ifnotpaper all \else some \fi of these flaws
-along with their sources in \Cref{tab:multiCats}\ifnotpaper\ for completeness.
+\ifnotpaper
     \begin{wraptable}{r}{6cm}
-        \vspace{-0.5cm}
+        \vspace{-0.75cm}
         \input{build/multiCatTable}
         \vspace{-1cm}
     \end{wraptable}
-\fi These flaws mostly involve the category of ``test \multiCatMax{}'', which
+\fi
+In particular, \multiCatIntro{}. We identify \multiCatCount{} such cases%
+\ifnotpaper\ that we summarize in \Cref{tab:multiCatTable}\fi; we consider
+these flaws as they violate our assumption of orthogonality (see
+\Cref{orth-approach}). We list \ifnotpaper all \else some \fi of these flaws
+along with their sources in \Cref{tab:multiCats}\ifnotpaper\ for completeness\fi.
+These flaws mostly involve the category of ``test \multiCatMax{}'', which
 shows up in \multiCatMaxCount{} of them. This may simply be because authors use
 the term ``test technique'' in a more general sense where we would use the term
 ``test approach''.\phantomsection{}\label{cats-intrans} A more
@@ -232,9 +237,6 @@ may be flaws) and to intransitive synonyms (which definitely \emph{are} flaws).
     synonym relations in \Cref{parSyns,scal-flaw,compat-flaw}.
 \fi
 
-% Moved here to display nicely in paper
-\ifnotpaper\else\input{assets/misc/parSyns}\fi
-
 \subsubsection{Parent-Child Relation Flaws}\label{pars}
 \phantomsection{}\label{selfPars}
 Parent-child relations are also not immune to flaws. For example,
@@ -271,7 +273,6 @@ their sources in \Cref{tab:flawMnfsts,tab:flawDmns}. \ifnotpaper We identify
             \emph{and} \hyperref[syn-rels]{synonym} relation given explicitly by the
             literature.}\label{fig:expParSynGraph}
     \end{figure}
-    \clearpage
 \else
 \fi
 
@@ -363,6 +364,7 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
 % \fi
 
 \ifnotpaper
+    \clearpage
     \subsection{Operational (Acceptance) Testing}\label{oat-flaw}
     \paragraph{\texttt{(CONTRA, LABELS)}}
     % Flaw count (CONTRA, LABELS): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}

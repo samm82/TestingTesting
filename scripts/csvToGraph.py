@@ -322,11 +322,11 @@ if "Example" not in csvFilename:
             del multiCatCounter[pair]
             if pair[1] == multiCatMax:
                 pair = tuple(reversed(pair))
-            multiCatTable.append(f"{'/'.join(pair)} & {total} \\\\")
+            multiCatTable.append(f"{'/'.join(pair)} & {total} \\\\*")
 
     for pair, total in multiCatCounter.copy().items():
         if total:
-            multiCatTable.append(f"{'/'.join(pair)} & {total} \\\\")
+            multiCatTable.append(f"{'/'.join(pair)} & {total} \\\\*")
     multiCatTable.append("\\hline")
     multiCatTable.append(f"Total & {multiCatTotal} \\\\")
 
