@@ -130,15 +130,13 @@ The next logical step is then to detect other classes of flaws.
 \phantomsection{}\label{selfParDef}
 Parent-child relations that violate irreflexivity as outlined in
 \Cref{par-chd-rels} (i.e., cases where a child is given as a parent of itself)
-are also trivial to automate by looking for lines in the
-generated \LaTeX{} files that start with \texttt{I~->~I}, where \texttt{I}
-is the label used for a test approach node in these visualizations. This process
-results in output similar to \Cref{fig:selfExampleGraph}.% \Cref{selfPars}
-\phantomsection{}\label{parSynDef} We use a similar
-process to detect pairs of approaches with a synonym relation \emph{and} a
-parent-child relation; these are flaws since synonym relations are symmetric
-while parent-child relations are asymmetric as outlined in \Cref{syn-rels,%
-    par-chd-rels}, respectively. To find these flaws, we build a dictionary of
+are also trivial to automate by looking for lines in the generated \LaTeX{}
+files that start with \texttt{I~->~I}, where \texttt{I} is the label used for a
+test approach node in these visualizations. This process results in output
+similar to \Cref{fig:selfExampleGraph}.% \Cref{selfPars}
+\phantomsection{}\label{parSynDef} We use a similar process to detect pairs of
+approaches with a synonym relation \emph{and} a parent-child relation;
+\parSynFlaw{}. To find these flaws, we build a dictionary of
 each term's synonyms to evaluate which synonym relations are notable enough
 to include in the visualization, and then check these mappings to see if one
 appears as a parent of the other. For example, if \texttt{J} and \texttt{K} are

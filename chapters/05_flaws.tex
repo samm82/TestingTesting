@@ -230,10 +230,11 @@ may be flaws) and to intransitive synonyms (which definitely \emph{are} flaws).
 
 \subsubsection{Parent-Child Relation Flaws}\label{pars}
 \phantomsection{}\label{selfPars}
-Parent-child relations (defined in \Cref{par-chd-rels}) are also not immune to
-flaws. For example, some self-referential definitions imply that a test
-approach is a parent of itself. Since these are by nature self-contained within
-a given source, these are counted \emph{once} as objective flaws within
+Parent-child relations are also not immune to flaws. For example,
+self-referential definitions mean that a test approach is a parent of itself,
+violating the irreflexivity of this relation as defined in \Cref{par-chd-rels}.
+Since these are by nature self-contained within a given source, we count these
+\emph{once} as objective flaws within
 their sources in \Cref{tab:flawMnfsts,tab:flawDmns}. \ifnotpaper We identify
     the following \selfParCount{} examples through automatic analysis of our
     generated graphs (see \Cref{selfParDef}):
@@ -291,7 +292,7 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
     similar in \citealpISTQB{}; \citealp[p.~121]{Patton2006})\else
     \cite[p.~4]{IEEE2022} (similar in \citealpISTQB{},
     \cite[p.~121]{Patton2006})\fi.
-% Flaw count (WRONG, SYNS): {vanVliet2000} | {IEEE2022} ISTQB {Patton2006}
+% Flaw count (WRONG, SYNS): {vanVliet2000} | {IEEE2022} {IEEE2021c} ISTQB {PetersAndPedrycz2000} {Patton2006}
 
 % % TODO: re-investigate this after going through the rest of ISO/IEC/IEEE 29119
 % \ifnotpaper
