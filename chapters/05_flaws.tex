@@ -220,15 +220,6 @@ may be flaws) and to intransitive synonyms (which definitely \emph{are} flaws).
     legibility. These relations are given as described by the literature and are
     therefore flawed.
 
-    \begin{figure}[b!]
-        \centering
-        \includegraphics[width=\textwidth]{assets/graphs/manual/expSynLegend.pdf}
-        \includegraphics[width=\textwidth]{assets/graphs/manual/expSynGraph.pdf}
-        % \vspace{-7mm}
-        \caption{Visually meaningful synonym relations given explicitly by the
-            literature.}\label{fig:expSynGraph}
-    \end{figure}
-
     We provide the full list of synonyms that violate transitivity (along with
     their sources) in \Cref{multiSyns} and discuss and other kinds of flawed
     synonym relations in \Cref{parSyns,scal-flaw,compat-flaw}.
@@ -252,6 +243,29 @@ their sources in \Cref{tab:flawMnfsts,tab:flawDmns}. \ifnotpaper We identify
     capture. \else For example, performance and usability testing are both
     given as subapproaches of themselves \cite[Tab.~2]{Gerrard2000a},
     \cite[Tab.~1]{Gerrard2000b}.\fi
+
+\ifnotpaper
+    \begin{figure}[bt!]
+        \centering
+        \includegraphics[width=\textwidth]{assets/graphs/manual/expSynLegend.pdf}
+        \includegraphics[width=\textwidth]{assets/graphs/manual/expSynGraph.pdf}
+        % \vspace{-7mm}
+        \caption{Visually meaningful \hyperref[syn-rels]{synonym} relations
+            given explicitly by the literature.}\label{fig:expSynGraph}
+    \end{figure}
+
+    \begin{figure}[bt!]
+        \centering
+        \includegraphics[width=0.48\linewidth]{assets/graphs/manual/expParSynLegend.pdf}
+        \includegraphics[width=0.5\linewidth]{assets/graphs/manual/expParSynGraph.pdf}
+        % \vspace{-7mm}
+        \caption{Pairs of test approaches with a \hyperref[par-chd-rels]{parent-child}
+            \emph{and} \hyperref[syn-rels]{synonym} relation given explicitly by the
+            literature.}\label{fig:expParSynGraph}
+    \end{figure}
+    \clearpage
+\else
+\fi
 
 \phantomsection{}\label{parSyns}
 \parSynIntro{}\ifnotpaper. We visualize the pairs where both
@@ -278,18 +292,6 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
     \cite[p.~4]{IEEE2022} (similar in \citealpISTQB{},
     \cite[p.~121]{Patton2006})\fi.
 % Flaw count (WRONG, SYNS): {vanVliet2000} | {IEEE2022} ISTQB {Patton2006}
-
-\ifnotpaper
-    \begin{figure}[bt!]
-        \centering
-        \includegraphics[width=0.48\linewidth]{assets/graphs/manual/expParSynLegend.pdf}
-        \includegraphics[width=0.5\linewidth]{assets/graphs/manual/expParSynGraph.pdf}
-        % \vspace{-7mm}
-        \caption{Pairs of test approaches with a \hyperref[par-chd-rels]{parent-child}
-            \emph{and} \hyperref[syn-rels]{synonym} relation.}\label{fig:expParSynGraph}
-    \end{figure}
-\else
-\fi
 
 % % TODO: re-investigate this after going through the rest of ISO/IEC/IEEE 29119
 % \ifnotpaper
