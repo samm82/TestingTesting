@@ -420,11 +420,9 @@ def outputFlaws():
                     "nodes near coords,", # nodes near coords align={vertical}, point meta=y,"
                     "every node near coord/.append style={font=\\tiny},", "]",
                # Legend header from https://tex.stackexchange.com/a/2332/192195
-            #    "\\addlegendimage{empty legend}",
+               "\\addlegendimage{empty legend}",
                *flawBars,
-            #    *map(lambda x: f"\\addlegendentry{{{x}}}",
-            #         ["{\\centering \\textbf{Legend}}", *(vals[1] for vals in slices)]),
-               f"\\legend{{{",".join([vals[1] for vals in slices])}}}",
+               f"\\legend{{\\hspace{{3.4cm}} \\Large \\textbf{{Legend}},{",".join([vals[1] for vals in slices])}}}",
                "\\end{axis}", "\\end{tikzpicture}", f"\\caption{{{FLAW_CAPTION}}}",
                "\\label{fig:flawBars}", "\\end{figure}"], "flawBars")
 
