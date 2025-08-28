@@ -194,17 +194,23 @@ model-based testing are sometimes [incorrectly] referred to as `test techniques'
 \dots{} as they are not themselves providing a way to create test cases, but
 instead use test design techniques to achieve that'' \ifnotpaper
     (\citealp[p.~11]{IEEE2022}; \citeyear[p.~5]{IEEE2021a})\else
-    \cite[p.~11]{IEEE2022}, \cite[p.~5]{IEEE2021a}\fi. This is further
-supported for exploratory testing \ifnotpaper (\citeyear[p.~33]{IEEE2022};
-    \citeyear[p.~viii]{IEEE2021c}; \citeyear[p.~13]{IEEE2013}) \else
-    \cite[p.~33]{IEEE2022}, \cite[p.~viii]{IEEE2021c}, \cite[p.~13]{IEEE2013}
-\fi as well as for experience-based testing \ifnotpaper
-    (\citeyear[p.~4]{IEEE2022}; \citeyear[pp.~viii, 4]{IEEE2021c};
-    \citeyear[p.~33]{IEEE2013}) \else \cite[p.~4]{IEEE2022},
-    \cite[pp.~viii, 4]{IEEE2021c}, \cite[p.~33]{IEEE2013} \fi and scripted
-testing \citeyearpar[p.~33]{IEEE2022}\ifnotpaper\ and \emph{seems} to be
-    further supported for model-based testing
-    (\citealp[pp.~1\==2]{EngströmAndPetersen2015}; \citealp[p.~4]{Kam2008})\fi.
+    \cite[p.~11]{IEEE2022}, \cite[p.~5]{IEEE2021a}\fi. This seems to be the
+case for the following approaches, which may explain these apparent ``flaws'':
+\begin{itemize}
+    \item Exploratory testing \ifnotpaper (\citeyear[p.~33]{IEEE2022};
+              \citeyear[p.~viii]{IEEE2021c}; \citeyear[p.~13]{IEEE2013}) \else
+              \cite[p.~33]{IEEE2022}, \cite[p.~viii]{IEEE2021c},
+              \cite[p.~13]{IEEE2013} \fi
+    \item Experience-based testing \ifnotpaper (\citeyear[p.~4]{IEEE2022};
+              \citeyear[pp.~viii, 4]{IEEE2021c}; \citeyear[p.~33]{IEEE2013})
+          \else \cite[p.~4]{IEEE2022}, \cite[pp.~viii, 4]{IEEE2021c},
+              \cite[p.~33]{IEEE2013} \fi
+    \item Scripted testing \citeyearpar[p.~33]{IEEE2022} \ifnotpaper
+    \item Ad hoc testing (\citealp[p.~5\=/14]{SWEBOK2024}; \citealpISTQB{};
+          \citealp[p.~42]{Kam2008})
+    \item Model-based testing (\citealp[pp.~1\==2]{EngströmAndPetersen2015};
+          \citealp[p.~4]{Kam2008}) \fi
+\end{itemize}
 
 \ifnotpaper
     As described in \Cref{infers}, we infer that child approaches inherit their
