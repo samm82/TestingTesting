@@ -225,9 +225,9 @@ case for the following approaches, which may explain these apparent ``flaws'':
     testing and open beta testing. When we infer these flaws, we exclude them
     from \Cref{tab:multiCatTable,tab:multiCats} and instead include them in
     \Cref{tab:infMultiCats} for completeness.
+    \newpage
 \fi
 
-\newpage
 \subsubsection{Synonym Relation Flaws}\label{syns}
 
 While synonyms do not inherently signify a flaw (as we discuss in
@@ -249,9 +249,10 @@ may be flaws) and to intransitive synonyms (which definitely \emph{are} flaws).
 Parent-child relations are also not immune to flaws. For example, some
 approaches are given as parents of themselves which violates the
 irreflexivity of this relation as defined in \Cref{par-chd-rels}.
-Since these are by nature self-contained within a given source, we count these
-\emph{once} as objective flaws within
-their sources in \Cref{tab:flawMnfsts,tab:flawDmns}. \ifnotpaper We identify
+% Since these are by nature self-contained within a given source, we count these
+% \emph{once} as objective flaws within
+% their sources in \Cref{tab:flawMnfsts,tab:flawDmns}.
+\ifnotpaper We identify
     the following \selfParCount{} examples through automatic analysis of our
     generated graphs (see \Cref{selfParDef}):
     \input{build/selfPars} Interestingly, performance testing is \emph{not}
