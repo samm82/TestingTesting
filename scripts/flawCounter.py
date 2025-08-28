@@ -380,7 +380,7 @@ def outputFlaws():
         else:
             sepPieCharts.append("\\hfill")
 
-    FLAW_CAPTION = "Identified flaws by the \\hyperref[sources]{source tier} responsible."
+    FLAW_CAPTION = "Identified flaws by the source tier responsible."
 
     # writeFile(flawLegend, "flawLegend")
     # writeFile(["\\begin{figure*}", "\\centering"] + sepPieCharts +

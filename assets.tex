@@ -108,7 +108,7 @@
         \begin{subfigure}[t]{0.19\linewidth}
             \centering
             \includegraphics[width=1.5\linewidth]{assets/graphs/SelfExampleGlossaryGraph.pdf}
-            \caption{\raggedright Self-loop visualization.}\label{fig:selfExampleGraph}
+            \caption{Visualization of a reflexive parent relation.}\label{fig:selfExampleGraph}
         \end{subfigure}
         \hfill
         \begin{subfigure}[t]{0.235\linewidth}
@@ -122,8 +122,7 @@
             \centering
             \includegraphics[width=\linewidth]{assets/graphs/manual/manualFlawLegend.pdf}
         \end{subfigure}
-        \caption{\centering Example generated visualizations containing flaws \\
-            (defined in \Cref{flaw-def}).}\label{fig:exampleFlawGraphs}
+        \caption{Example generated visualizations containing flaws.}\label{fig:exampleFlawGraphs}
     \end{figure*}
 }
 
@@ -171,7 +170,15 @@
     \end{figure}
 }
 
-\newcommand{\performanceGraph}{\includegraphics[width=\linewidth]{assets/graphs/performanceProposedGraph.pdf}}
+\newcommand{\performanceGraph}{
+    \begin{paperFigure}
+        \centering
+        \includegraphics[width=\linewidth]{assets/graphs/performanceProposedGraph.pdf}
+        \caption{Visualization of proposed relations between terms related to
+            performance-related testing.}
+        \label{fig:perf-graph}
+    \end{paperFigure}
+}
 
 %------------------------------------------------------------------------------
 % Images & Figures

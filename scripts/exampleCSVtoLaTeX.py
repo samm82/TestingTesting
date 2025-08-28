@@ -3,11 +3,11 @@ from pandas import read_csv
 from helpers import capFirst, writeTblr
 
 class ExGloss:
-    def __init__(self, name: str, rel: str, relsRef: str, widths: list[float],
+    def __init__(self, name: str, rel: str, widths: list[float],
                  envArg: str = "hbtp!"):
         self.filename = name
         self.caption = ("Example glossary entries demonstrating how we track "
-                        f"{rel} \\\\ relations (defined in \\Cref{{{relsRef}}}).")
+                        f"{rel} \\\\ relations.")
 
         _mainHeader = f"{capFirst(rel.split("-")[0])}(s)"
         self.headers = ["Name\\TblrNote{a}", _mainHeader]
@@ -30,8 +30,8 @@ class ExGloss:
         self.rowDataSpec: str = "c"
 
 exGlosses = [
-    ExGloss("exampleGlossary",    "parent-child", "par-chd-rels", [0.4,  0.6] , "bt!"),
-    ExGloss("synExampleGlossary", "synonym",      "syn-rels"    , [0.25, 0.75], "bt!")
+    ExGloss("exampleGlossary",    "parent-child", [0.4,  0.6] , "bt!"),
+    ExGloss("synExampleGlossary", "synonym",      [0.25, 0.75], "bt!")
 ]
 
 for exGloss in exGlosses:

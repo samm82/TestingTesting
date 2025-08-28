@@ -236,8 +236,7 @@ criteria = True
 class MultiCatInfo():
     def __init__(self, name, capHelper, headers) -> None:
         self.name = name
-        self.caption = (f"Test approaches {capHelper} more than one " +
-                         "\\hyperref[cats-def]{category}.")
+        self.caption = f"Test approaches {capHelper} more than one category."
         self.lines: list[str] = []
         self.lenTotals: list[tuple[int, int]] = []
         self.headers = headers
@@ -718,7 +717,7 @@ parSynCount = "".join(parSyns).count("\\to")
 if "Example" not in csvFilename:
     writeTblr(
         "parSyns",
-        "Pairs of test approaches with a \\hyperref[par-chd-rels]{parent-child} \\emph{and} \\hyperref[syn-rels]{synonym} relation.",
+        "Pairs of test approaches with a parent-child \\emph{and} synonym relation.",
         ["``Child'' $\\to$ ``Parent''", "Parent-Child Source(s)", "Synonym Source(s)"],
         list(parSyns),
         footnotes=[value for _, value in sorted(tableFootnotes.items())]
