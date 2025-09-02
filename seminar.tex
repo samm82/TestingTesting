@@ -16,8 +16,9 @@
 \newcolumntype{M}{>{\raggedright\arraybackslash}m}
 \renewcommand\tabularxcolumn[1]{M{#1}}
 \renewcommand\arraystretch{1.2}
-\usetikzlibrary{shapes,shapes.geometric,arrows,fit,calc,positioning,automata,}
-\usepackage{pgf-pie}
+\usetikzlibrary{shapes,shapes.geometric,arrows,graphs,graphdrawing,fit,calc,positioning,automata}
+\usepackage{pgf-pie,pgfplots}
+\pgfplotsset{compat=1.9}
 \usepackage{multicol}
 
 \usepackage[disable]{todonotes}
@@ -74,7 +75,17 @@
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 
 \input{common_macros}
+\input{assets}
 \notpapertrue
+
+\newenvironment{paperTable}{
+    \begingroup
+    \renewcommand*{\thefootnote}{\alph{footnote}}
+    \begin{table}[hbtp!]
+        }{
+    \end{table}
+    \endgroup
+}
 
 \renewcommand\stds{\stdSources{1}}
 \renewcommand\metas{\metaSources{1}}
@@ -684,7 +695,44 @@
     \includegraphics[width=\textwidth]{assets/graphs/staticGraph.pdf}
 \end{frame}
 
-\section{Flaws}
+\section{Results}
+\begin{frame}{Overview}
+    % \onslide<1->\rqa{} \vspace*{\fill}
+    % \onslide<1>\rqb{} \vspace*{\fill}
+    % \onslide<1>\rqc{} \vspace*{\fill}
+    % \onslide<2>
+    % \vspace{-4cm}
+    \begin{columns}
+        \begin{column}{0.45\textwidth}
+            \vspace{-1cm}
+            \begin{itemize}
+                \item \approachCount{} test approaches $\rightarrow$
+                \item<2-> \qualityCount{} software qualities \\ \small (may imply test approaches)
+                \item<3-> \flawCount{} flaws in the software testing literature
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.55\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \pie[sum=100, text=legend, thick, scale=0.5,
+                every label/.style={align=left, scale=0.7}]
+                {{\the\numexpr 100 - 100 * \UndefAfter/\TotalAfter}/Defined,
+                {\the\numexpr 100 * \UndefAfter/\TotalAfter}/{Not defined}}
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Flaw Summary}
+    \begin{center}
+        % \small
+        % \input{assets/graphs/flawBars}
+        % \tiny
+        % \flawMnfstsTable{}
+        % \flawDmnsTable{}
+    \end{center}
+\end{frame}
+
 \begin{frame}{Automated Flaws}
     \begin{itemize}
         \item Some terms are given as a synonym to two (or more) disjoint,
@@ -711,32 +759,6 @@
         \end{column}
     \end{columns} %\pause
     \vspace{-0.25cm}
-\end{frame}
-
-\begin{frame}{Results}
-    % \onslide<1->\rqa{} \vspace*{\fill}
-    % \onslide<1>\rqb{} \vspace*{\fill}
-    % \onslide<1>\rqc{} \vspace*{\fill}
-    % \onslide<2>
-    % \vspace{-4cm}
-    \begin{columns}
-        \begin{column}{0.45\textwidth}
-            \vspace{-1cm}
-            \begin{itemize}
-                \item \approachCount{} test approaches $\rightarrow$
-                \item \qualityCount{} software qualities \\ \small (may imply test approaches)
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.55\textwidth}
-            \centering
-            \begin{tikzpicture}
-                \pie[sum=100, text=legend, thick, scale=0.5,
-                every label/.style={align=left, scale=0.7}]
-                {{\the\numexpr 100 - 100 * \UndefAfter/\TotalAfter}/Defined,
-                {\the\numexpr 100 * \UndefAfter/\TotalAfter}/{Not defined}}
-            \end{tikzpicture}
-        \end{column}
-    \end{columns}
 \end{frame}
 
 \begin{frame}{Automated Flaws}
