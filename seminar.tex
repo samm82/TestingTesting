@@ -735,6 +735,21 @@
     \end{center}
 \end{frame}
 
+\begin{frame}{Flaw Summary by Source Tier}
+    \begin{figure}[b!]
+        \centering
+        \begin{tikzpicture}
+            \pie[sum=auto, after number=, text=legend, thick,
+                scale=\ifnotpaper0.7\else0.5\fi,
+                every label/.style={align=left, scale=0.7}]
+            {\stdFlawMnfstBrkdwn{13}/\stds{},
+                \metaFlawMnfstBrkdwn{13}/\metas{},
+                \textFlawMnfstBrkdwn{13}/\texts{},
+                \paperFlawMnfstBrkdwn{13}/\papers{}}
+        \end{tikzpicture}
+    \end{figure}
+\end{frame}
+
 \begin{frame}{Automated Flaws}
     \begin{itemize}
         \item Some terms are given as a synonym to two (or more) disjoint,
