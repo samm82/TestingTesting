@@ -6,6 +6,12 @@ import re
 from string import ascii_lowercase
 from typing import Optional
 
+# Default color palette for pgf-pie
+# https://github.com/pgf-tikz/pgf-pie/blob/ede5ceea348b0b1c1bbe8ccd0d75167ee3cc53bf/tex/latex/pgf-pie/tikzlibrarypie.code.tex#L239-L241
+DEFAULT_COLORS = ["blue!60", "cyan!60", "yellow!60", "orange!60", "red!60",
+                  "blue!60!cyan!60", "cyan!60!yellow!60", "red!60!cyan!60",
+                  "red!60!blue!60", "orange!60!cyan!60"]
+
 def capFirst(s: str) -> str:
     return f"{s[0].upper()}{s[1:]}"
 

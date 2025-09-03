@@ -1,0 +1,15 @@
+\begin{figure}[bt!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+width=0.8\textwidth, height=7.5cm,
+symbolic y coords={Redundancies,Overlaps,Ambiguities,Contradictions,Omissions,Mistakes},
+ytick=data,
+xlabel=Flaws, xbar,
+nodes near coords,
+every node near coord/.append style={font=\tiny},
+]
+\addplot[fill=blue!60] coordinates {(7,Redundancies) (16,Overlaps) (32,Ambiguities) (175,Contradictions) (10,Omissions) (47,Mistakes)};
+\end{axis}
+\end{tikzpicture}
+\end{figure}
