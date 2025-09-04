@@ -118,8 +118,10 @@
         \citep[p.~12]{Gerrard2000a}, which is \distinctIEEE{#2}}%
 }
 
-\def\multiCatIntro{we automatically detect test approaches with more than one
-    category}
+\NewDocumentCommand{\multiCatIntro}{s}{%
+    \IfBooleanTF{#1}{T}{we automatically detect t}est approaches with more
+    than one category that violate our assumption of orthogonality
+    (see \Cref{orth-approach})}
 
 \def\parSynFlaw{these are flaws since synonym relations are symmetric while
     parent-child relations are asymmetric as outlined in
