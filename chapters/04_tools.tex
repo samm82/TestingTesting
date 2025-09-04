@@ -67,22 +67,19 @@ to generate visualizations of these relations automatically.
     \flawMnfstsTable{}
     \flawDmnsTable{}
 \fi
-\phantomsection{}\label{relevantSyns}
 Overall, the parent-child relations between test approaches \emph{should}
-result in a hierarchy (or multiple discrete hierarchies), but due to flaws in
-the literature such as approaches that are parents of themselves
-(see \Cref{selfParDef}), this is not the case. Therefore, we visualize all
-parent-child relations as they are guaranteed to be meaningful.
-% , but only graph some synonym relations.
+result in something resembling a hierarchy (or multiple discrete hierarchies),
+although this is not the case due to flaws in the literature (see
+\Cref{selfParDef}). Therefore, we visualize all parent-child relations as they
+are guaranteed to be meaningful.
 % For a given synonym pair to
 % be captured by our methodology, at least one term will have its own row in its
 % relevant glossary.
 However, since each term is trivially a synonym of itself and there are many
 non-problematic synonyms that do not imply flaws (see \Cref{syn-rels}),
 we only visualize the synonym relations that may indicate flaws given in
-\Cref{autoDmnFlaws}; i.e., intransitive synonyms and synonyms between
+\Cref{relevantSyns}; i.e., intransitive synonyms and synonyms between
 independently defined approaches.
-
 % We then decide whether to include or exclude the synonym
 % pair from our generated graphs based on the following possible cases:
 % \begin{enumerate}
@@ -95,7 +92,6 @@ independently defined approaches.
 %     %       the terms are interchangeable. We \emph{could} include the synonym
 %     %       as an alternate name inside the node of its partner, but we do not
 %     %       want to clutter our graphs unnecessarily.
-
 %     \item%[2. (Included)] \phantomsection{}\label{syn-case-two}
 %           %   \hfill \ifnotpaper
 %           %       $\left\{ \{x, y\} \in S \mid x, y \in A \right\}$
@@ -107,7 +103,6 @@ independently defined approaches.
 %           either their definitions or this synonym relation is incorrect.
 %           % TODO: pretty hacky
 %           % into one row, which would result in \hyperref[syn-case-one]{Case 1} above.
-
 %     \item%[3. (Included)] \phantomsection{}\label{syn-case-three}
 %           %   \hfill \ifnotpaper
 %           %       $\left\{ \{x, z\}, \{y, z\} \in S \mid x, y \in A \,\textrm{ and }\,
