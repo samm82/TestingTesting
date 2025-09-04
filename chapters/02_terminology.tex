@@ -509,8 +509,21 @@ which we automatically detect flaws as described in \Cref{auto-flaw-analysis}
 and present in \Cref{flawDmns}, so these are the only ones that are
 hyperlinked. We automatically detect the following classes of flaws:
 
+\phantomsection{}\label{autoDmnFlaws}
 \begin{itemize}
     \item \multiCatIntro*{}
+    \item Synonyms that violate transitivity (see \Cref{syn-rels}); if two
+          distinct approaches share a synonym but are not synonyms themselves,
+          at least one relation is incorrect or missing.
+    \item Synonyms between independently defined approaches; if two separate
+          approaches have their own definitions, nuances, etc.~but are also
+          labelled as synonyms, this indicates that:
+          \begin{enumerate}
+              \item the terms are interchangeable and this relation is
+                    trivially reflexive (see \Cref{syn-rels}),
+              \item at least one of these terms is defined incorrectly, and/or
+              \item this synonym relation is incorrect.
+          \end{enumerate}
 \end{itemize}
 
 \input{assets/tables/flawDmnDefs}
