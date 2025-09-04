@@ -135,8 +135,8 @@ files that start with \texttt{I~->~I}, where \texttt{I} is the label used for a
 test approach node in these visualizations. This process results in output
 similar to \Cref{fig:selfExampleGraph}.% \Cref{selfPars}
 \phantomsection{}\label{autoParSyn} We use a similar process to detect pairs of
-approaches with a synonym relation \emph{and} a parent-child relation;
-\parSynFlaw{}. To find these flaws, we build a dictionary of
+approaches with a synonym relation \emph{and} a parent-child relation as
+described in \Cref{parSynDef}. To find these pairs, we build a dictionary of
 each term's synonyms to evaluate which synonym relations are notable enough
 to include in the visualization, and then check these mappings to see if one
 appears as a parent of the other. For example, if \texttt{J} and \texttt{K} are
