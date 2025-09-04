@@ -47,17 +47,12 @@ to generate visualizations of these relations automatically.
     between approaches in \ourApproachGlossary{}, we can parse them
     systematically. For example, if the entries in \Cref{tab:exampleGlossary}
     appear, then their parent-child relations are visualized as
-    shown in \Cref{fig:exampleGraph}. We also capture relevant
-    citation information in our glossary in the author-year citation format,
-    ``reusing'' information from previous citations when applicable.
-    For example, the first row of \Cref{tab:exampleGlossary}
-    contains the citation ``(Author, 2022; 2021)'', which means that this
-    information was present in two documents by Author: one written in
-    2022 and one in 2021. The following citation, ``(2022)'',
-    contains no author, which means it was written by the same one as the
-    previous citation (Author). We process these citations according to this
-    logic \seeSrcCode{231bd5e}{scripts/csvToGraph.py}{54}{95} so we can
-    consistently track them throughout our analysis.
+    shown in \Cref{fig:exampleGraph}. Overall, the parent-child relations
+    between test approaches \emph{should} result in something resembling a
+    hierarchy (or multiple discrete hierarchies), although this is not the case
+    due to flaws in the literature (see \Cref{selfParDef}). Therefore, we
+    visualize all parent-child relations as they are guaranteed to be
+    visually meaningful.
 
     \input{build/exampleGlossary.tex}
     \ExampleParChdGraphs{}
@@ -67,11 +62,6 @@ to generate visualizations of these relations automatically.
     \flawMnfstsTable{}
     \flawDmnsTable{}
 \fi
-Overall, the parent-child relations between test approaches \emph{should}
-result in something resembling a hierarchy (or multiple discrete hierarchies),
-although this is not the case due to flaws in the literature (see
-\Cref{selfParDef}). Therefore, we visualize all parent-child relations as they
-are guaranteed to be meaningful.
 % For a given synonym pair to
 % be captured by our methodology, at least one term will have its own row in its
 % relevant glossary.
@@ -145,9 +135,11 @@ independently defined approaches.
     % \Cref{fig:expSynGraph} likewise only contains explicit approaches and
     % synonym relations
 
-    We also colour each relation according to its source tier, with each source
-    tier getting its own colour. We label these colours in the legend for each
-    visualization (such as \Cref{fig:exampleSynGraph}), although we omit this
+    We also colour each relation according to its source tier, which is
+    possible because we cite all recorded relations as described in
+    \Cref{record-cites}. Each source tier gets its own colour, which we label
+    for each relevant source tier in a given visualization's legend
+    (such as \Cref{fig:exampleSynGraph}), although we omit this
     colouring from \Cref{fig:exampleParChdGraphs,fig:exampleFlawGraphs} for
     clarity. We also only display the relation with the most credible source
     tier (except if there is a more credible implicit relation as we previously
