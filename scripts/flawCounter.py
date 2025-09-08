@@ -392,6 +392,33 @@ def outputFlaws():
             #   f"\\label{{fig:{viewName}BarsSummary}}",
               "\\end{figure}"], f"{viewName}BarsSummary")
 
+    writeFile(["\\begin{figure}[bt!]", "\\centering",
+               "\\begin{tikzpicture}", "\\begin{axis}[",
+                    "width=0.8\\textwidth, height=7.5cm,",
+                    # "x tick label style={rotate=90},",
+                   f"yticklabels={{{",".join(
+                       reversed([f"\\parbox{{0.24\\textwidth}}{{\\raggedleft\\{src.name.lower()}s{{}}}}"
+                                 for src in SrcCat if src.color.value >= 0]))}}},",
+                    "ytick=data,",  # "y tick label as interval,",
+                #     # "ylabel=Flaw View,",
+                    "xlabel=Flaws per Document in Source Tier, xbar,",  # ybar=0pt, bar width=5, bar shift=3",
+                    # "enlargelimits=0.2, enlarge x limits=0.1,",
+                    # "legend style={at={(0.5,-0.25)}, anchor=north, legend columns=1,",
+                    # "inner xsep=6pt,inner ysep=4pt,",
+                    # "nodes={inner sep=4pt,text depth=0.3em},},",
+                    # "legend cell align=left,",
+                    "nodes near coords,", # nodes near coords align={vertical}, point meta=y,"
+                    "every node near coord/.append style={font=\\tiny},", "]",
+               # Legend header from https://tex.stackexchange.com/a/2332/192195
+            #    "\\addlegendimage{empty legend}",
+            f"\\addplot[fill={DEFAULT_COLORS[0]}] coordinates {{{
+                " ".join(reversed([f"(\\the\\numexpr\\{src.name.lower()}FlawMnfstBrkdwn{{13}}/\\{src.name.lower()}Sources{{3}},{src.color.value})"
+                          for src in SrcCat if src.color.value >= 0]))}}};",
+            #    f"\\legend{{\\hspace{{3.4cm}} \\Large \\textbf{{Legend}},{",".join([vals[1] for vals in slices])}}}",
+               "\\end{axis}", "\\end{tikzpicture}", # f"\\caption{{{FLAW_CAPTION}}}",
+            #   f"\\label{{fig:normalizedFlaws}}",
+              "\\end{figure}"], f"normalizedFlaws")
+
     flawLegend = ["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
                   "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",
                   "\\node[label=center:Legend] {{}}; \\\\",
