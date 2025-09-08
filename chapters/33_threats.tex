@@ -42,7 +42,8 @@ it affects the investigated factor'' (p.~154).
           map to their ``IEEE Equivalents'' or could provide new perspectives
           and be useful in some contexts, either in place of or in tandem with
           ours.
-    \item \textbf{Alternate Approach Categories:} Similarly, we find many other
+    \item \phantomsection{}\label{alt-cats}
+          \textbf{Alternate Approach Categories:} Similarly, we find many other
           criteria for categorizing test approaches in the literature.
           % which may be used in tandem with or in place of those given
           % in \Cref{tab:ieeeCats,tab:otherCats}.
@@ -83,15 +84,38 @@ it affects the investigated factor'' (p.~154).
           testing'' \citep[p.~23]{GodefroidAndLuchaup2011}!
 \end{itemize}
 
-\afterpage{\begin{landscape}%
-        % Omitted from paper for brevity
-        \otherCatsTable{}%
-    \end{landscape}}
+\clearpage
+% \afterpage{
+\begin{landscape}%
+    % Omitted from paper for brevity
+    \otherCatsTable{}%
+\end{landscape}
+% }
 
 \subsection{External Validity}\label{exter-valid}
 For results of a study to be externally valid, they should be generalizable and
 ``of interest to other people outside the investigated case''
-\citep[p.~154]{RunesonAndHöst2009}.
+\citep[p.~154]{RunesonAndHöst2009}. The main objective of our research is to
+document the issues with software testing terminology so that they can be
+addressed in the future by improving relevant standards. Some hold that
+``common terminology is dangerous'' and ``to be able to truly understand each
+other, we need to ask questions and discuss in depth'' \citep{AST2014}.
+However, it is possible to have a common terminology and still ``ask questions
+and discuss in depth''---these are not mutually exclusive! Having a basic
+``ground truth'' for what terms mean allows for common ground during these
+sorts of discussions, along with the chance to adapt them to serve the context
+of a given team or project (which we give examples of in
+\Cref{syn-rels,alt-cats}).
+
+Another concern about these standards in particular is that ``reality shows
+standards become mandatory often'' \citep{AST2014}. This is supported by a blog
+post that says ``contracts and bids from large companies'' often ``reference[]
+ISO linking to industry best practices'' \citep{Moolya2015}, but following
+specific standards is only ``mandatory'' if the contract cannot be negotiated.
+Regardless, the idea of ``tailored conformance'' is mentioned throughout this
+family of standards (\citealp[pp.~9\=/10]{IEEE2021a};
+\citeyear[pp.~5, 17, 37]{IEEE2021b}; \citeyear[p.~7]{IEEE2021c}), perhaps
+introduced later to address these concerns.
 
 \subsection{Construct Validity}\label{cons-valid}
 ``Construct validity'' refers to the extent to which ``the operational measures
