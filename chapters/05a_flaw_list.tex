@@ -101,6 +101,17 @@
           %   testing'', which are mentioned by not defined by \citet[p.~28]{Firesmith2015}
           %   and \citet[Fig.~5]{Gerrard2000a}, respectively, or of ``functions
           %   testing'', which is implied to exist by \citet[Tab.~11]{DoğanEtAl2014}.
+    \item % Flaw count (MISS, PARS): {IEEE2021c}
+          % Flaw count (MISS, LABELS): {IEEE2021c}
+          % Assertion: {Reid1996}
+          \citet{IEEE2021c} cite \citet{Reid1996} as the source for their
+          Fig.~F.1 but they omit \acf{lcsaj} testing with no explanation, both
+          from this figure and from the document as a whole. They label the
+          figure as a ``partial ordering'', which might explain its omission
+          from Fig.~F.1, but \citet[p.~7]{Reid1996} already identifies that his
+          hierarchy is incomplete as ``it relates only a subset of the
+          available test completion criteria, so other criteria \dots{} should
+          still be considered''.
     \item % Flaw count (CONTRA, SYNS): ISTQB | {BaresiAndPezzè2006}
           A component is an ``entity with discrete structure \dots\ within a
           system considered at a particular level of analysis''
@@ -525,21 +536,22 @@
           says that reviews are ``\emph{the} process[es] under which static
           white-box testing is performed'', \citet[pp.~418\==419]{vanVliet2000}
           gives correctness proofs as another example.
-    \item % Flaw count (CONTRA, LABELS): {IEEE2021c} {IEEE2017} {PetersAndPedrycz2000} | {vanVliet2000}
+    \item % Flaw count (CONTRA, LABELS): {IEEE2021c} {IEEE2017} {PetersAndPedrycz2000} {Reid1996} | {vanVliet2000}
           % TODO: SUPP LABELS?
           Different capitalizations of the abbreviations of ``computation data
           use'' and ``predicate data use'' are used: the lowercase ``\acs{c-use}''
           and ``\acs{p-use}'' (\citealp[pp.~3, 27\==29, 35\==36, 114\==155,
               117\==118, 129]{IEEE2021c}; \citeyear[p.~124]{IEEE2017};
-          \citealp[p.~477, Tab.~12.6]{PetersAndPedrycz2000}) and the uppercase
-          ``C-use'' and ``P-use'' \citep[pp.~424\==425]{vanVliet2000}.
-    \item % Flaw count (CONTRA, LABELS): {IEEE2021c} {PetersAndPedrycz2000} | {vanVliet2000}
+          \citealp[p.~477, Tab.~12.6]{PetersAndPedrycz2000};
+          \citealp[Fig.~2]{Reid1996}) and the uppercase ``C-use'' and ``P-use''
+          \citep[pp.~424\==425]{vanVliet2000}.
+    \item % Flaw count (CONTRA, LABELS): {IEEE2021c} {PetersAndPedrycz2000} {Reid1996} | {vanVliet2000}
           % TODO: SUPP LABELS?
           Similarly for ``definition-use'' (such as in ``definition-use
           path''), both the lowercase ``du'' (\citealp[pp.~3, 27, 29, 35,
               119\==121, 129]{IEEE2021c}; \citealp[pp.~478\==479]{
-              PetersAndPedrycz2000}) and the uppercase ``DU''
-          \citep[p.~425]{vanVliet2000} are used.
+              PetersAndPedrycz2000}; \citealp[Fig.~2]{Reid1996}) and the
+          uppercase ``DU'' \citep[p.~425]{vanVliet2000} are used.
     \item % Flaw count (MISS, DEFS): {IEEE2021c} {IEEE2017} {PetersAndPedrycz2000} implied by {vanVliet2000} | {vanVliet2000}
           \Citet[p.~425]{vanVliet2000} defines many types of data
           flow coverage, including all-\acsp{p-use},
