@@ -508,7 +508,7 @@
     \item % Flaw count (AMBI, PARS): {IEEE2017} | {Patton2006} implied by {IEEE2021c} {vanVliet2000}
           \citet[p.~119]{Patton2006} says that branch testing is ``the simplest
           form of path testing'' which is also implied by
-          \citet[Fig.~F.1]{IEEE2021c}\todo{OG Reid, 1996} and
+          \citet[Fig.~F.1]{IEEE2021c} and
           \citet[p.~433]{vanVliet2000}. This is true in the example
           \citeauthor{Patton2006} gives, but is not necessarily generalizable;
           one could test the behaviour at branches without testing even a
@@ -562,12 +562,12 @@
           \citeyear[p.~125]{IEEE2017}; \citealp[p.~5\=/13]{SWEBOK2024};
           \citealp[p.~479]{PetersAndPedrycz2000}); however, paths containing
           simple cycles may also be required \citep[p.~425]{vanVliet2000}.
-    \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021c}
-          \Citet[pp.~432\==433]{vanVliet2000} says that
-          all-\acsp{p-use} testing is only stronger than all-edges (branch)
-          testing if there are infeasible paths, but
-          \citet[Fig.~F.1\todo{OG Reid, 1996}]{IEEE2021c} \ifnotpaper do
-          \else does \fi not specify this caveat.
+          % This was only a flaw when looking at IEEE2021c
+          % \item % OUTDATED Flaw count (CONTRA, DEFS): {vanVliet2000} | implied by {Reid1996}
+          %       \Citet[pp.~432\==433]{vanVliet2000} says that all-\acsp{p-use}
+          %       testing is only stronger than all-edges (branch) testing if there are
+          %       infeasible paths, but \citet[pp.~3, 6\==7]{Reid1996} only specifies
+          %       this caveat implicitly.
     \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {SWEBOK2024}
           Similarly, \citet[pp.~432\==433]{vanVliet2000} says that
           all-\acsp{du-path} testing is only stronger than all-uses testing if
@@ -580,7 +580,7 @@
           decisions are the result of \acsp{p-use} and \emph{not} \acsp{c-use}
           (\citealp[pp.~5, 27]{IEEE2021c}; \citeyear[p.~332]{IEEE2017};
           \citealp[p.~424]{vanVliet2000}), and only the \acs{p-use} relation is
-          implied by \citet[Fig.~F.1\todo{OG Reid 1996}]{IEEE2021c}.
+          implied by \citet[Fig.~F.1]{IEEE2021c}.
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {SWEBOK2014} | {vanVliet2000}
           Acceptance testing is ``usually performed by the purchaser \dots{}
           with the \dots{} vendor'' \citep[p.~5]{IEEE2017}, ``may or may not
