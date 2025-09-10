@@ -69,8 +69,8 @@ def getSrcCat(s, rel: bool = False) -> SrcCat:
         return SrcCat.STD
     if any(metastd in s for metastd in
         {"Washizaki", "Bourque and Fairley", "SWEBOK",
-            "Hamburg and Mogyorodi", "ISTQB", "Firesmith",
-            "Doğan et al", "DoğanEtAl"}):
+            "Hamburg and Mogyorodi", "ISTQB", "PMBOK",
+            "Firesmith", "Doğan et al", "DoğanEtAl"}):
         return SrcCat.META
     if any(textbook in s for textbook in
         {"van Vliet", "vanVliet", "Patton", "Peters and Pedrycz",
@@ -337,12 +337,6 @@ def outputFlaws():
                      cat.shortname.lower()[:-1])  # Strip plural "s"
                      for cat, catCount in v.betweenCats.items()])
 
-        # Default color palette for pgf-pie
-        # https://github.com/pgf-tikz/pgf-pie/blob/ede5ceea348b0b1c1bbe8ccd0d75167ee3cc53bf/tex/latex/pgf-pie/tikzlibrarypie.code.tex#L239-L241
-        DEFAULT_COLORS = ["blue!60", "cyan!60", "yellow!60", "orange!60", "red!60",
-                          "blue!60!cyan!60", "cyan!60!yellow!60", "red!60!cyan!60",
-                          "red!60!blue!60", "orange!60!cyan!60"]
-
         colors = [DEFAULT_COLORS[i] for i, slice in enumerate(slices) if slice[0]]
 
         # LaTeX from https://tex.stackexchange.com/a/196483/192195
@@ -360,8 +354,70 @@ def outputFlaws():
         flawBars.append([val for val, _ in slices])
         flawTable.append([f"\\{k.name.lower()}s{{}}"] + [val for val, _ in slices])
     
-    writeFile([formatOutput(dmnTotal)],   f"totalFlawDmnBrkdwn", True)
-    writeFile([formatOutput(mnfstTotal)], f"totalFlawMnfstBrkdwn", True)
+    flawViewDict = {FlawMnfst : mnfstTotal, FlawDmn: dmnTotal}
+
+    for view, total in flawViewDict.items():
+        writeFile([formatOutput(total)], f"total{view.__name__}Brkdwn", True)
+
+        viewName = view.__name__[0].lower() + view.__name__[1:]
+        viewValues = [v.value for v in view]
+        writeFile(["\\begin{figure}[bt!]", "\\centering",
+               "\\begin{tikzpicture}", "\\begin{axis}[",
+                    "width=0.8\\textwidth, height=7.5cm,",
+                    # "x tick label style={rotate=90},",
+                   f"symbolic y coords={{{",".join(reversed(viewValues))}}},",
+                    "ytick=data,",  # "y tick label as interval,",
+                #    f"yticklabels={{{",".join(
+                #        viewValues
+                #     #    map(
+                #     #    lambda cat: f'{{\\parbox{{0.16\\textwidth}}{{\\centering \\{cat}s{{}}}}}}',
+                #     #    flawCats)
+                #        )}}},",
+                    # "ylabel=Flaw View,",
+                    "xlabel=Flaws, xbar,",  # ybar=0pt, bar width=5, bar shift=3",
+                    # "enlargelimits=0.2, enlarge x limits=0.1,",
+                    # "legend style={at={(0.5,-0.25)}, anchor=north, legend columns=1,",
+                    # "inner xsep=6pt,inner ysep=4pt,",
+                    # "nodes={inner sep=4pt,text depth=0.3em},},",
+                    # "legend cell align=left,",
+                    "nodes near coords,", # nodes near coords align={vertical}, point meta=y,"
+                    "every node near coord/.append style={font=\\tiny},", "]",
+               # Legend header from https://tex.stackexchange.com/a/2332/192195
+            #    "\\addlegendimage{empty legend}",
+            f"\\addplot[fill={DEFAULT_COLORS[0]}] coordinates {{{
+                " ".join(reversed([f"({total[2*i] + total[2*i+1]},{viewValues[i]})"
+                          for i in range(len(viewValues))]))}}};",
+            #    f"\\legend{{\\hspace{{3.4cm}} \\Large \\textbf{{Legend}},{",".join([vals[1] for vals in slices])}}}",
+               "\\end{axis}", "\\end{tikzpicture}", # f"\\caption{{{FLAW_CAPTION}}}",
+            #   f"\\label{{fig:{viewName}BarsSummary}}",
+              "\\end{figure}"], f"{viewName}BarsSummary")
+
+    writeFile(["\\begin{figure}[bt!]", "\\centering",
+               "\\begin{tikzpicture}", "\\begin{axis}[",
+                    "width=0.8\\textwidth, height=7.5cm,",
+                    # "x tick label style={rotate=90},",
+                   f"yticklabels={{{",".join(
+                       reversed([f"\\parbox{{0.24\\textwidth}}{{\\raggedleft\\{src.name.lower()}s{{}}}}"
+                                 for src in SrcCat if src.color.value >= 0]))}}},",
+                    "ytick=data,",  # "y tick label as interval,",
+                #     # "ylabel=Flaw View,",
+                    "xlabel=Flaws per Document in Source Tier, xbar,",  # ybar=0pt, bar width=5, bar shift=3",
+                    # "enlargelimits=0.2, enlarge x limits=0.1,",
+                    # "legend style={at={(0.5,-0.25)}, anchor=north, legend columns=1,",
+                    # "inner xsep=6pt,inner ysep=4pt,",
+                    # "nodes={inner sep=4pt,text depth=0.3em},},",
+                    # "legend cell align=left,",
+                    "nodes near coords,", # nodes near coords align={vertical}, point meta=y,"
+                    "every node near coord/.append style={font=\\tiny},", "]",
+               # Legend header from https://tex.stackexchange.com/a/2332/192195
+            #    "\\addlegendimage{empty legend}",
+            f"\\addplot[fill={DEFAULT_COLORS[0]}] coordinates {{{
+                " ".join(reversed([f"(\\the\\numexpr\\{src.name.lower()}FlawMnfstBrkdwn{{13}}/\\{src.name.lower()}Sources{{3}},{src.color.value})"
+                          for src in SrcCat if src.color.value >= 0]))}}};",
+            #    f"\\legend{{\\hspace{{3.4cm}} \\Large \\textbf{{Legend}},{",".join([vals[1] for vals in slices])}}}",
+               "\\end{axis}", "\\end{tikzpicture}", # f"\\caption{{{FLAW_CAPTION}}}",
+            #   f"\\label{{fig:normalizedFlaws}}",
+              "\\end{figure}"], f"normalizedFlaws")
 
     flawLegend = ["\\begin{center}", "\\begin{subfigure}[t]{\\linewidth}",
                   "\\begin{tikzpicture}", "\\matrix [thick, draw=black] {",

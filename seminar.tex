@@ -16,13 +16,17 @@
 \newcolumntype{M}{>{\raggedright\arraybackslash}m}
 \renewcommand\tabularxcolumn[1]{M{#1}}
 \renewcommand\arraystretch{1.2}
-\usetikzlibrary{shapes,shapes.geometric,arrows,fit,calc,positioning,automata,}
-\usepackage{pgf-pie}
+\usetikzlibrary{shapes,shapes.geometric,arrows,graphs,graphdrawing,fit,calc,positioning,automata}
+\usepackage{pgf-pie,pgfplots}
+\pgfplotsset{compat=1.9}
 \usepackage{multicol}
 
 \usepackage[disable]{todonotes}
 % Disable footnotes; from https://tex.stackexchange.com/a/240494/192195
 \renewcommand{\footnote}[2][]{\relax}
+
+% From https://tex.stackexchange.com/a/283202/192195
+\usepackage[shortcuts]{extdash}
 
 % Required for biblatex, but also adds functionality for quotation
 \usepackage{csquotes}
@@ -71,7 +75,17 @@
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 
 \input{common_macros}
+\input{assets}
 \notpapertrue
+
+\newenvironment{paperTable}{
+    \begingroup
+    \renewcommand*{\thefootnote}{\alph{footnote}}
+    \begin{table}[hbtp!]
+        }{
+    \end{table}
+    \endgroup
+}
 
 \renewcommand\stds{\stdSources{1}}
 \renewcommand\metas{\metaSources{1}}
@@ -470,9 +484,9 @@
             \small
             \begin{tabularx}{\linewidth}{|M{1.1cm}|M{1.3cm}|X|M{1.5cm}|M{1.6cm}|}
                 \hline
-                \thead{\textbf{Name}} & \thead{\textbf{Category}} & \thead{\textbf{Definition}}                                                                                    & \thead{\textbf{Parent(s)}}                       & \thead{\textbf{Synonym(s)}}           \\
+                \thead{\textbf{Name}} & \thead{\textbf{Category}} & \thead{\textbf{Definition}}                                                                                         & \thead{\textbf{Parent(s)}}                       & \thead{\textbf{Synonym(s)}}           \\
                 \hline
-                A/B Testing           & Practice {\tiny (p.~22)}  & Testing ``that allows testers to determine which of two systems or components performs better'' {\tiny (p.~1)} & Statistical Testing {\tiny (pp.~1,~35)}, \dots{} & Split-Run Testing {\tiny (pp.~1,~35)} \\
+                A/B Testing           & Practice {\tiny (Fig.~2)} & Testing ``that allows testers to determine which of two systems or components performs better'' {\tiny (pp.~1, 36)} & Statistical Testing {\tiny (pp.~1,~36)}, \dots{} & Split-Run Testing {\tiny (pp.~1,~36)} \\
                 \hline
             \end{tabularx}
             \caption{\tiny Information from \citep{IEEE2022}}
@@ -482,7 +496,7 @@
     \begin{itemize}
         \item This information is gathered from sources by looking for
               \begin{itemize}
-                  \item Glossaries
+                  \item Glossaries, taxonomies, hierarchies, etc.
                   \item Testing-related terms
                   \item Terms described \emph{by} other approaches
                   \item Terms that \emph{imply} other approaches
@@ -509,7 +523,7 @@
 % \begin{frame}{Methodology}
 %     \framesubtitle{Procedure}
 %     \begin{itemize}
-%         \item Recording these data in a consistent format allows for graphs to
+%         \item Recording these data in a consistent format allows for visualizations to
 %               be generated according to a certain logic \pause
 %         \item It also allows for subsets of flaws to be identified \pause
 %               \vspace{1cm}\rqb{}
@@ -569,14 +583,17 @@
             values'' \citeyearpar[p.~465]{IEEE2017}}
         \only<2>{\textbf{Level:} a stage of testing with ``particular
             objectives and \dots{} risks'', each performed in sequence
-            (\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021c})}
+            (\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021a};
+            \citeyear[p.~6]{IEEE2021c})}
         \only<3>{\textbf{Practice:} a ``conceptual framework that can be applied
             to \dots{} [a] test process to facilitate testing''
             (\citealp[p.~14]{IEEE2022}; \citeyear[p.~471]{IEEE2017})}
-        \only<4>{\textbf{Technique:} a ``defined'' and ``systematic''
-            \citep[p.~464]{IEEE2017} ``procedure used to create or select a test
+        \only<4>{\textbf{Technique:} a
+            % ``defined'' and ``systematic'' \citep[p.~464]{IEEE2017}
+            ``procedure used to create or select a test
             model, identify test coverage items, and derive corresponding test cases''
-            \citeyearpar[p.~11]{IEEE2022}}
+            (\citeyear[p.~11]{IEEE2022}; \citeyear[p.~5]{IEEE2021a};
+            similar in \citeyear[p.~467]{IEEE2017})}
         \only<5>{\textbf{Type:} ``Testing that is focused on specific quality
             characteristics'' (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021c};
             \citeyear[p.~473]{IEEE2017})}
@@ -584,7 +601,7 @@
 \end{frame}
 
 \begin{frame}[t]{Methodology}
-    \framesubtitle{Graph Notation}
+    \framesubtitle{Visualization Notation}
     \vspace{-0.925cm}
     \centering
     \only<1>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels5.pdf}}
@@ -604,17 +621,17 @@
 \end{frame}
 
 \begin{frame}[t]{Methodology}
-    \framesubtitle{Graph Notation}
+    \framesubtitle{Visualization Notation}
     \begin{columns}[T]
         \begin{column}{.5\textwidth}
-            \vspace{-0.75cm}
+            \vspace{-0.5cm}
             \centering
             \includegraphics[width=\linewidth]{assets/graphs/manual/catRels8.pdf}
         \end{column}
         \begin{column}{.5\textwidth}
             \vspace{0.75cm}
-            Dashed outlines indicate a term is \emph{implied}.\\
-            \vspace{2.5cm}
+            Dashed outlines indicate a term is \emph{implicit}.\\
+            \vspace{1.3cm}
             Dotted outlines indicate a term is a \emph{synonym} to more than one term.
         \end{column}
     \end{columns}
@@ -643,7 +660,7 @@
 \end{frame}
 
 \begin{frame}[t]{Methodology}
-    \framesubtitle{Graph Notation}
+    \framesubtitle{Visualization Notation}
     \begin{figure}
         \centering
         \includegraphics[height=0.65\textheight]{assets/images/test approach choices}
@@ -652,7 +669,7 @@
 \end{frame}
 
 \begin{frame}{Methodology}
-    \framesubtitle{Graph Notation}
+    \framesubtitle{Visualization Notation}
     \begin{columns}[c]
         \begin{column}{.4\textwidth}
             \begin{figure}
@@ -678,36 +695,8 @@
     \includegraphics[width=\textwidth]{assets/graphs/staticGraph.pdf}
 \end{frame}
 
-\section{Flaws}
-\begin{frame}{Automated Flaws}
-    \begin{itemize}
-        \item Some terms are given as a synonym to two (or more) disjoint,
-              unrelated terms, making the relation between the given synonyms
-              ambiguous \pause
-        \item These are included in generated graphs automatically
-    \end{itemize}
-    \vspace{-0.5cm}
-    \begin{columns}[c]
-        \begin{column}{.55\textwidth}
-            \small
-            \begin{table}[hbtp!]
-                \centering
-                \begin{tabular}{ll} \hline
-                    Name & Synonym(s)                            \\ \hline
-                    E    & F (Author, 2022; implied by 2021)     \\
-                    G    & F (Author, 2017), H (implied by 2022) \\
-                    H    & X                                     \\ \hline
-                \end{tabular}
-            \end{table}
-        \end{column}
-        \begin{column}{.4\textwidth}
-            \includegraphics[width=\textwidth]{assets/graphs/SynExampleGlossaryGraph.pdf}
-        \end{column}
-    \end{columns} \pause
-    \vspace{-0.25cm}
-\end{frame}
-
-\begin{frame}{Results}
+\section{Results}
+\begin{frame}{Overview}
     % \onslide<1->\rqa{} \vspace*{\fill}
     % \onslide<1>\rqb{} \vspace*{\fill}
     % \onslide<1>\rqc{} \vspace*{\fill}
@@ -718,7 +707,8 @@
             \vspace{-1cm}
             \begin{itemize}
                 \item \approachCount{} test approaches $\rightarrow$
-                \item \qualityCount{} software qualities \\ \small (may imply test approaches)
+                \item<2-> \qualityCount{} software qualities \\ \small (may imply test approaches)
+                \item<3-> \flawCount{} flaws in the software testing literature
             \end{itemize}
         \end{column}
         \begin{column}{0.55\textwidth}
@@ -733,19 +723,88 @@
     \end{columns}
 \end{frame}
 
+\begin{frame}{Flaw Summary by Manifestation}
+    \begin{center}
+        \input{assets/graphs/flawMnfstBarsSummary}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Flaw Summary by Domain}
+    \begin{center}
+        \input{assets/graphs/flawDmnBarsSummary}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Flaw Summary by Source Tier}
+    \begin{figure}[b!]
+        \centering
+        \begin{tikzpicture}
+            \pie[sum=auto, after number=, text=legend, thick,
+                scale=\ifnotpaper0.7\else0.5\fi,
+                every label/.style={align=left, scale=0.7}]
+            {\stdFlawMnfstBrkdwn{13}/\stds{},
+                \metaFlawMnfstBrkdwn{13}/\metas{},
+                \textFlawMnfstBrkdwn{13}/\texts{},
+                \paperFlawMnfstBrkdwn{13}/\papers{}}
+        \end{tikzpicture}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Normalized Flaw Summary}
+    \begin{center}
+        \input{assets/graphs/normalizedFlaws}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Automated Flaws}
+    \begin{itemize}
+        \item Some terms are given as a synonym to two (or more) disjoint,
+              unrelated terms, making the relation between the given synonyms
+              ambiguous \pause
+        \item These are included in generated visualizations automatically
+    \end{itemize}
+    \vspace{-0.5cm}
+    \begin{columns}[c]
+        \begin{column}{.475\linewidth}
+            \small
+            \begin{table}[hbtp!]
+                \centering
+                \begin{tabularx}{\textwidth}{c>{\raggedleft\arraybackslash}X} \hline
+                    Name & Synonym(s)                                   \\ \hline
+                    E    & F (Author, 2022; implied by StdAuthor, 2021) \\
+                    G    & F (Author, 2017), H (implied by 2022)        \\
+                    H    & X (StdAuthor, 2021)                          \\ \hline
+                \end{tabularx}
+            \end{table}
+        \end{column}
+        \begin{column}{.5\linewidth}
+            \includegraphics[width=\textwidth]{assets/graphs/SynExampleGlossaryGraph.pdf}
+        \end{column}
+    \end{columns} %\pause
+    \vspace{-0.25cm}
+\end{frame}
+
 \begin{frame}{Automated Flaws}
     Prominent examples of these ``multi-synonyms'': \vspace{0.25cm}
     \begin{enumerate}
-        \item \textbf{Invalid Testing:} \hfill \textbf{Source(s)}
-              \begin{itemize}
-                  \item Error Tolerance Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
-                  \item Negative Testing {\hfill \tiny \citepISTQB{}}
-              \end{itemize} \pause
-        \item \textbf{Soak Testing:}
+        % \item \textbf{Invalid Testing:} \hfill \textbf{Source(s)}
+        %       \begin{itemize}
+        %           \item Error Tolerance Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
+        %           \item Negative Testing {\hfill \tiny \citepISTQB{}}
+        %       \end{itemize} \pause
+        \item \textbf{Soak Testing:} \hfill \textbf{Source(s)}
               \begin{itemize}
                   \item Endurance Testing {\hfill \tiny \citep[p.~39]{IEEE2021c}}
                   \item Reliability Testing {\hfill \tiny (\citealp[Tab.~2]{Gerrard2000a};
-                                \citeyear[Tab.~1,~p.~26]{Gerrard2000b})}
+                                \citeyear[Tab.~1, p.~26]{Gerrard2000b})}
+              \end{itemize} \pause
+        \item \textbf{Functional Testing:}
+              \begin{itemize}
+                  \item Behavioural Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
+                  \item Correctness Testing {\hfill \tiny \citep[p.~5\=/7]{SWEBOK2024}}
+                  \item Specification-based Testing {\hfill \tiny (\citealp[p.~196]{IEEE2017}; \dots{})}
+                        % \citealp[pp.~44\==45]{Kam2008}; \citealp[p.~399]{vanVliet2000})}
+                        % implied by \citealp[p.~129]{IEEE2021c}; \citeyear[p.~431]{IEEE2017})}
               \end{itemize} \pause
         \item \textbf{Link Testing:}
               \begin{itemize}

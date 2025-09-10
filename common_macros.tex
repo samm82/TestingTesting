@@ -118,15 +118,18 @@
         \citep[p.~12]{Gerrard2000a}, which is \distinctIEEE{#2}}%
 }
 
-\def\multiCatIntro{we automatically detect test approaches with more than one
-    category}
+\NewDocumentCommand{\multiCatIntro}{s}{%
+    \IfBooleanTF{#1}{T}{we automatically detect t}est approaches with more
+    than one category that violate our assumption of orthogonality
+    (see \Cref{orth-approach})}
 
-\def\parSynFlaw{these are flaws since synonym relations are symmetric while
-    parent-child relations are asymmetric as outlined in
-    \Cref{syn-rels,par-chd-rels}, respectively}
+\NewDocumentCommand{\parSynFlaw}{s}{%
+    \IfBooleanTF#1{P}{p}airs of synonyms where one is a subapproach of the
+    other; these relations cannot coexist as synonym relations are symmetric
+    while parent-child relations are asymmetric as outlined in
+    \Cref{syn-rels,par-chd-rels}, respectively.}
 \NewDocumentCommand\parSynIntro{s}{%
-    \IfBooleanTF#1{t}{T}here are also pairs of synonyms where one is described
-    as a subapproach of the other; \parSynFlaw{}.
+    \IfBooleanTF#1{t}{T}here are also \parSynFlaw{}
     \IfBooleanTF#1{Below are all}{We identify} \parSynCount{}
     of these pairs\IfBooleanTF#1{\ that we identify}{} through automatic
     analysis of our generated visualizations\ifnotpaper\ as described in

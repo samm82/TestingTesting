@@ -177,6 +177,14 @@ and thus less helpful for grouping test approaches. \ifnotpaper Other
     \Cref{static-test})! \fi We also introduce a ``supplemental'' category of
 ``artifact''\thesisissueref{44,119,39} since some terms can refer to both the
 application of a test approach \emph{and} the resulting document(s).
+\ifnotpaper
+    Additionally, \citet[p.~3]{SouzaEtAl2017} give ``test procedures'', which
+    may be considered equivalent to ``test approaches''
+    (see \Cref{tab:otherCats}), as examples of testing artifacts.
+\fi
+% The role of testing artifacts is not specified in \citep{BarbosaEtAl2006};
+% requirements, drivers, and source code are all treated the same
+% with no distinction \citep[p.~3]{BarbosaEtAl2006}.
 Therefore, we do \emph{not} consider approaches categorized as an artifact
 \emph{and} another category as flaws\thesisissueref{119} in \Cref{multiCats}.
 Finally, we also record the test category of ``process'' for completeness,
@@ -332,18 +340,19 @@ qualities (``subquality''\ifnotpaper; see \Cref{qual-supp-procedure}\fi).
 
 \defRel{parent-child}{P}{directed relations between approach pairs} This
 relation should be irreflexive, asymmetric, and transitive, making it a strict
-partial order. A given child approach $c$ may have more than one
-parent approach $p$. This relation often manifests when a ``well-understood''
-test approach $p$ is decomposed into smaller, independently performable approaches
-$c_1, \dots, c_n$, each with its own focus or nuance. This is frequently the case
-for hierarchies of approaches given in the literature \ifnotpaper
+partial order. A consequence of this is that there should be no directed
+cycles, although since a given child approach $c$ may have more than one
+parent approach $p$, undirected cycles may exist\qtodo{Is this precise enough?}.
+
+Parent-child relations often manifest when a ``well-understood'' test approach
+$p$ is decomposed into smaller, independently performable approaches
+$c_1, \dots, c_n$, each with its own focus or nuance. This is frequently the
+case for hierarchies of approaches given in the literature \ifnotpaper
     (\citealp[Fig.~2]{IEEE2022}; \citeyear[Fig.~2]{IEEE2021c};
     \citealp{Firesmith2015})\else \cite{Firesmith2015},
-    \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021c}\fi%; see the graph of
-%specification-based test approaches in \Cref{fig:specBasedGraph}
-.
-
-Another way for a parent-child relation to occur is when
+    \cite[Fig.~2]{IEEE2022}, \cite[Fig.~2]{IEEE2021c}\fi.
+%; see the graph of specification-based test approaches in \Cref{fig:specBasedGraph}
+Another way for these relations to occur is when
 % $c$'s adequacy criteria is already satisfied by $p$. In other words,
 the completion of $p$ indicates that ``sufficient testing has been done'' in
 regards to $c$ \citep[p.~402]{vanVliet2000}. While this only ``compares the
@@ -352,9 +361,8 @@ thoroughness of test techniques, not their ability to detect faults''
 between the two approaches. These relations may also be represented as
 hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021c};
     \citealp[Fig.~13.17]{vanVliet2000})\else
-    \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021c}\fi%; see the graph of
-% data flow test approaches in \Cref{fig:subsumesGraph}
-.
+    \citetext{Fig.~13.17}, \cite[Fig.~F.1]{IEEE2021c}\fi.
+%; see the graph of data flow test approaches in \Cref{fig:subsumesGraph}
 
 % \parChdGraphs{}
 
@@ -507,16 +515,39 @@ than others. We explicitly define some of these domains in previous
 sections and thus present them in that same order. These are the domains in
 which we automatically detect flaws as described in \Cref{auto-flaw-analysis}
 and present in \Cref{flawDmns}, so these are the only ones that are
-hyperlinked. Despite their nuance, the
-remaining domains are relatively straightforward, so we define them briefly as
-follows instead of defining them more rigorously in their own sections.
+hyperlinked. We automatically detect the following classes of flaws:
+
+\begin{itemize}
+    \item \multiCatIntro*{}
+    \item \phantomsection{}\label{relevantSyns}
+          Synonyms that violate transitivity (see \Cref{syn-rels}); if two
+          distinct approaches share a synonym but are not synonyms themselves,
+          at least one relation is incorrect or missing.
+    \item Synonyms between independently defined approaches; if two separate
+          approaches have their own definitions, nuances, etc.~but are also
+          labelled as synonyms, this indicates that:
+          \begin{enumerate}
+              \item the terms are interchangeable and this relation is
+                    trivially reflexive (see \Cref{syn-rels}),
+              \item at least one of these terms is defined incorrectly, and/or
+              \item this synonym relation is incorrect.
+          \end{enumerate}
+    \item \phantomsection{}\label{selfParDef}
+          Parent-child relations that violate irreflexivity, or approaches that
+          are parents of themselves.\todo{Mention detecting other cycles as
+              flaws as Future Work}
+    \item \phantomsection{}\label{parSynDef}
+          \parSynFlaw*{}
+\end{itemize}
 
 \input{assets/tables/flawDmnDefs}
 
-\phantomsection{}\label{label-flaw-def}
+Despite their nuance, the remaining domains are relatively straightforward, so
+we define them briefly as follows instead of defining them more rigorously in
+their own sections.\phantomsection{}\label{label-flaw-def}
 \defLabelDistinct{}. Definition flaws are quite self-explanatory, but
-% Definition flaws occur when a term's definition is incorrect, unclear, etc.;
-% this often occurs in glossaries or lists of terms from sources we investigate.
+% occur when a term's definition is incorrect, unclear, etc., which often
+% occurs in glossaries or lists of terms from sources we investigate.
 % On the other hand,
 label flaws are harder to detect, despite occurring independently. Examples of
 label flaws include terms that share the same acronym or contain typos or

@@ -68,7 +68,7 @@ once.
         % ALL
         \node[above] at (0, -\spread-0.5) {\parbox{3.6cm}{\centering
                 \citealp{IEEE2022,IEEE2021a,IEEE2021b,IEEE2021c,IEEE2019a,
-                    IEEE2019b,IEEE2017,IEEE2016,IEEE2013,IEEE2010}}};
+                    IEEE2019b,IEEE2017,IEEE2016,IEEE2015,IEEE2013,IEEE2010}}};
         % ISO/IEC
         \node[above] at (0, 0.325*\radius) {\parbox{2.8cm}{\centering
                 \citealp{ISO_IEC2023a,ISO_IEC2023b,ISO_IEC2018,ISO_IEC2015,ISO_IEC2011}}};
@@ -127,16 +127,16 @@ The next logical step is then to detect other classes of flaws.
 
 \ExampleFlawGraphs{}
 
-\phantomsection{}\label{selfParDef}
+\phantomsection{}\label{autoSelfPar}
 Parent-child relations that violate irreflexivity as outlined in
 \Cref{par-chd-rels} (i.e., cases where a child is given as a parent of itself)
 are also trivial to automate by looking for lines in the generated \LaTeX{}
 files that start with \texttt{I~->~I}, where \texttt{I} is the label used for a
 test approach node in these visualizations. This process results in output
 similar to \Cref{fig:selfExampleGraph}.% \Cref{selfPars}
-\phantomsection{}\label{parSynDef} We use a similar process to detect pairs of
-approaches with a synonym relation \emph{and} a parent-child relation;
-\parSynFlaw{}. To find these flaws, we build a dictionary of
+\phantomsection{}\label{autoParSyn} We use a similar process to detect pairs of
+approaches with a synonym relation \emph{and} a parent-child relation as
+described in \Cref{parSynDef}. To find these pairs, we build a dictionary of
 each term's synonyms to evaluate which synonym relations are notable enough
 to include in the visualization, and then check these mappings to see if one
 appears as a parent of the other. For example, if \texttt{J} and \texttt{K} are

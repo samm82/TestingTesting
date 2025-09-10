@@ -47,17 +47,12 @@ to generate visualizations of these relations automatically.
     between approaches in \ourApproachGlossary{}, we can parse them
     systematically. For example, if the entries in \Cref{tab:exampleGlossary}
     appear, then their parent-child relations are visualized as
-    shown in \Cref{fig:exampleGraph}. We also capture relevant
-    citation information in our glossary in the author-year citation format,
-    ``reusing'' information from previous citations when applicable.
-    For example, the first row of \Cref{tab:exampleGlossary}
-    contains the citation ``(Author, 2022; 2021)'', which means that this
-    information was present in two documents by Author: one written in
-    2022 and one in 2021. The following citation, ``(2022)'',
-    contains no author, which means it was written by the same one as the
-    previous citation (Author). We process these citations according to this
-    logic \seeSrcCode{231bd5e}{scripts/csvToGraph.py}{54}{95} so we can
-    consistently track them throughout our analysis.
+    shown in \Cref{fig:exampleGraph}. Overall, the parent-child relations
+    between test approaches \emph{should} result in something resembling a
+    hierarchy (or multiple discrete hierarchies), although this is not the case
+    due to flaws in the literature (see \Cref{selfParDef}). Therefore, we
+    visualize all parent-child relations as they are guaranteed to be
+    visually meaningful.
 
     \input{build/exampleGlossary.tex}
     \ExampleParChdGraphs{}
@@ -67,55 +62,47 @@ to generate visualizations of these relations automatically.
     \flawMnfstsTable{}
     \flawDmnsTable{}
 \fi
-\phantomsection{}\label{relevantSyns}
-Overall, the parent-child relations between test approaches \emph{should}
-result in a hierarchy (or multiple discrete hierarchies), but due to flaws in
-the literature such as approaches that are parents of themselves
-(see \Cref{selfParDef}), this is not the case. Therefore, we visualize all
-parent-child relations as they are guaranteed to be meaningful.
-% , but only graph some synonym relations.
 % For a given synonym pair to
 % be captured by our methodology, at least one term will have its own row in its
 % relevant glossary.
 However, since each term is trivially a synonym of itself and there are many
 non-problematic synonyms that do not imply flaws (see \Cref{syn-rels}),
-we only visualize the following synonym relations, which may indicate flaws:
-
+we only visualize the synonym relations that may indicate flaws given in
+\Cref{relevantSyns}; i.e., intransitive synonyms and synonyms between
+independently defined approaches.
 % We then decide whether to include or exclude the synonym
 % pair from our generated graphs based on the following possible cases:
-\begin{enumerate}
-    % \item[1. (Excluded)] \phantomsection{}\label{syn-case-one}
-    %       \hfill \ifnotpaper
-    %           $\left\{ \{x, y\} \in S \mid x \in A \,\textrm{ xor }\, y \in A \right\}$
-    %       \fi \break
-    %       \textbf{Only one synonym has its own row.}
-    %       This is a ``typical'' synonym relation (see \Cref{syn-rels}) where
-    %       the terms are interchangeable. We \emph{could} include the synonym
-    %       as an alternate name inside the node of its partner, but we do not
-    %       want to clutter our graphs unnecessarily.
-
-    \item%[2. (Included)] \phantomsection{}\label{syn-case-two}
-          %   \hfill \ifnotpaper
-          %       $\left\{ \{x, y\} \in S \mid x, y \in A \right\}$
-          %   \fi \break
-          \textbf{Synonyms between approaches defined independently.}\hfill\break
-          If two separate approaches have their own definitions, nuances,
-          etc.~but are also labelled as synonyms, this may indicate that the
-          two terms are interchangeable and could be merged \emph{or} that
-          either their definitions or this synonym relation is incorrect.
-          % TODO: pretty hacky
-          % into one row, which would result in \hyperref[syn-case-one]{Case 1} above.
-
-    \item%[3. (Included)] \phantomsection{}\label{syn-case-three}
-          %   \hfill \ifnotpaper
-          %       $\left\{ \{x, z\}, \{y, z\} \in S \mid x, y \in A \,\textrm{ and }\,
-          %           z \notin A \right\}$
-          %   \fi \break
-          \textbf{Synonyms that violate transitivity.}\hfill\break
-          If two distinct approaches share a synonym, that implies that they
-          are synonyms themselves. If they are \emph{not}, one or more
-          relations may be incorrect or missing.
-\end{enumerate}
+% \begin{enumerate}
+%     % \item[1. (Excluded)] \phantomsection{}\label{syn-case-one}
+%     %       \hfill \ifnotpaper
+%     %           $\left\{ \{x, y\} \in S \mid x \in A \,\textrm{ xor }\, y \in A \right\}$
+%     %       \fi \break
+%     %       \textbf{Only one synonym has its own row.}
+%     %       This is a ``typical'' synonym relation (see \Cref{syn-rels}) where
+%     %       the terms are interchangeable. We \emph{could} include the synonym
+%     %       as an alternate name inside the node of its partner, but we do not
+%     %       want to clutter our graphs unnecessarily.
+%     \item%[2. (Included)] \phantomsection{}\label{syn-case-two}
+%           %   \hfill \ifnotpaper
+%           %       $\left\{ \{x, y\} \in S \mid x, y \in A \right\}$
+%           %   \fi \break
+%           \textbf{Synonyms between approaches defined independently.}\hfill\break
+%           If two separate approaches have their own definitions, nuances,
+%           etc.~but are also labelled as synonyms, this may indicate that the
+%           two terms are interchangeable and could be merged \emph{or} that
+%           either their definitions or this synonym relation is incorrect.
+%           % TODO: pretty hacky
+%           % into one row, which would result in \hyperref[syn-case-one]{Case 1} above.
+%     \item%[3. (Included)] \phantomsection{}\label{syn-case-three}
+%           %   \hfill \ifnotpaper
+%           %       $\left\{ \{x, z\}, \{y, z\} \in S \mid x, y \in A \,\textrm{ and }\,
+%           %           z \notin A \right\}$
+%           %   \fi \break
+%           \textbf{Synonyms that violate transitivity.}\hfill\break
+%           If two distinct approaches share a synonym, that implies that they
+%           are synonyms themselves. If they are \emph{not}, one or more
+%           relations may be incorrect or missing.
+% \end{enumerate}
 \ifnotpaper
     We deduce these conditions from the information we parse from our glossary.
     For example, if the entries in \Cref{tab:synExampleGlossary} appear, then
@@ -148,9 +135,11 @@ we only visualize the following synonym relations, which may indicate flaws:
     % \Cref{fig:expSynGraph} likewise only contains explicit approaches and
     % synonym relations
 
-    We also colour each relation according to its source tier, with each source
-    tier getting its own colour. We label these colours in the legend for each
-    visualization (such as \Cref{fig:exampleSynGraph}), although we omit this
+    We also colour each relation according to its source tier, which is
+    possible because we cite all recorded relations as described in
+    \Cref{record-cites}. Each source tier gets its own colour, which we label
+    for each relevant source tier in a given visualization's legend
+    (such as \Cref{fig:exampleSynGraph}), although we omit this
     colouring from \Cref{fig:exampleParChdGraphs,fig:exampleFlawGraphs} for
     clarity. We also only display the relation with the most credible source
     tier (except if there is a more credible implicit relation as we previously
@@ -169,7 +158,6 @@ specific subsets of them. \ifnotpaper For each approach category (defined in
     approaches are our primary focus (see \Cref{static-test}), we include them
     in this static visualization, colouring their nodes grey to distinguish them.
     %, as in \Cref{fig:staticExampleGraph}, 
-
     We can also \else We can \fi generate more focused visualizations from a
 given subset of approaches, such as \ifnotpaper\else those in a selected
     approach category (defined in \Cref{cats-def}) or \fi those pertaining to
@@ -185,14 +173,14 @@ remove. % given \else; the latter are shown \fi
 %         perf-test-rec\fi} results in the updated graphs in
 % \Cref{fig:rec-graph-proposed,,fig:scal-graph-proposed,,\ifnotpaper\else%
 %         fig:perf-graph\fi}, respectively.
-When doing so\ifnotpaper\ in \Cref{recs}\fi, we colour any proposed approaches
-or relations orange to distinguish them.
 % \ifnotpaper
 % Recommendations can also be inherited; for example, we generate
 % \Cref{fig:perf-graph} based on the modifications we apply to
 % \Cref{fig:rec-graph-proposed,fig:scal-graph-proposed} and
 % other changes from \Cref{perf-test-rec}. \fi
-
 \ifnotpaper
     \input{chapters/04a_flaw_analysis}
+\else
+    When doing so in \Cref{recs}, we colour any proposed approaches
+    or relations orange to distinguish them.
 \fi

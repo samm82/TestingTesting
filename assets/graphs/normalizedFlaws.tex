@@ -1,0 +1,15 @@
+\begin{figure}[bt!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+width=0.8\textwidth, height=7.5cm,
+yticklabels={\parbox{0.24\textwidth}{\raggedleft\papers{}},\parbox{0.24\textwidth}{\raggedleft\texts{}},\parbox{0.24\textwidth}{\raggedleft\metas{}},\parbox{0.24\textwidth}{\raggedleft\stds{}}},
+ytick=data,
+xlabel=Flaws per Document in Source Tier, xbar,
+nodes near coords,
+every node near coord/.append style={font=\tiny},
+]
+\addplot[fill=blue!60] coordinates {(\the\numexpr\paperFlawMnfstBrkdwn{13}/\paperSources{3},0) (\the\numexpr\textFlawMnfstBrkdwn{13}/\textSources{3},1) (\the\numexpr\metaFlawMnfstBrkdwn{13}/\metaSources{3},2) (\the\numexpr\stdFlawMnfstBrkdwn{13}/\stdSources{3},3)};
+\end{axis}
+\end{tikzpicture}
+\end{figure}

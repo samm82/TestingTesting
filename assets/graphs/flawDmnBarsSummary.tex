@@ -1,0 +1,15 @@
+\begin{figure}[bt!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+width=0.8\textwidth, height=7.5cm,
+symbolic y coords={Traceability,Scope,Labels,Definitions,Parents,Synonyms,Categories},
+ytick=data,
+xlabel=Flaws, xbar,
+nodes near coords,
+every node near coord/.append style={font=\tiny},
+]
+\addplot[fill=blue!60] coordinates {(7,Traceability) (5,Scope) (28,Labels) (69,Definitions) (55,Parents) (58,Synonyms) (65,Categories)};
+\end{axis}
+\end{tikzpicture}
+\end{figure}

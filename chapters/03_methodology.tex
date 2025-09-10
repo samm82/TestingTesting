@@ -181,6 +181,22 @@ automatically detect and document \ifnotpaper (see \Cref{auto-flaw-analysis,%
     in \Cref{tab:approachGlossaryExcerpt}, although we exclude the ``Notes''
     column for brevity\else (details omitted for brevity)\fi.
 
+\ifnotpaper
+    \phantomsection{}\label{record-cites}
+    We also capture relevant citation information in our glossary in the
+    author-year citation format, ``reusing'' information from previous citations
+    when applicable. For example, the first row of \Cref{tab:exampleGlossary}
+    contains the citation ``(Author, 2022; 2021)'', which means that this
+    information was present in two documents by Author: one written in
+    2022 and one in 2021. The following citation, ``(2022)'', contains no author,
+    which means it was written by the same one as the previous citation (Author).
+    This reduces duplication and improves maintainability when recording this
+    information. When processing these data when visualizating relations
+    (see \Cref{\ifnotpaper app-rel-vis\else tools\fi}), we do so according to this
+    logic \seeSrcCode{231bd5e}{scripts/csvToGraph.py}{54}{95} so we can
+    consistently track the source(s) of data throughout our analysis.
+\fi
+
 \phantomsection{}\label{qual-supp-procedure}
 We use this same procedure to track software qualities and supplementary
 terminology that is either shared by multiple approaches or too complicated to
@@ -519,6 +535,7 @@ more time, we would find definitions for all terms we uncover as described in
                 \item Chosen-ciphertext \ifnotpaper\else \\ \fi attacks
                 \item Concolic testing
                 \item Concurrent testing
+                \item Context-driven testing
                 \item Destructive testing
                 \item Dogfooding
                 \item Implementation-based testing
@@ -538,6 +555,7 @@ more time, we would find definitions for all terms we uncover as described in
                 \item Property-based testing
                 \item Pseudo-random bit \ifnotpaper\else \\ \fi testing
                 \item Rubber duck testing
+                \item Sanity testing
                 \item Scream testing
                 \item Shadow testing
                 \item Situational testing
