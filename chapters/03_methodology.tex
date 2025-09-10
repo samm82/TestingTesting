@@ -57,8 +57,10 @@ special attention to the following when investigating a new source:
           \newcommand\derivTest[2]{#1 that may imply \ifnotpaper related \fi test #2}
           \begin{itemize}
               \item \derivTest{coverage metrics}{techniques}%\ifnotpaper
-                    % (\citealp[p.~11]{IEEE2022}; \citeyear[p.~5]{IEEE2021a})\else
-                    % \cite[p.~11]{IEEE2022}, \cite[p.~5]{IEEE2021a}\fi
+                    % (\citealp[p.~11]{IEEE2022}; \citeyear[p.~5]{IEEE2021a};
+                    % \citealp[p.~2]{Reid1996})\else
+                    % \cite[p.~11]{IEEE2022}, \cite[p.~5]{IEEE2021a},
+                    % \cite[p.~2]{Reid1996}\fi
                     ,
               \item \phantomsection{}\label{qual-types}
                     \derivTest{software qualities}{types}, and
