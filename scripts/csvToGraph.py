@@ -453,6 +453,18 @@ def makeMultiSynLine(valid, syn, terms, alsoSyns):
             synSets[f"{fsyn} -> {term}"][0] for term in valid)
             else expMultiSyns)
 
+    # Look up any additional information for implied approaches
+    if multiSynsList == impMultiSyns:
+        fullSyns: list[str] = sum([synonyms[i] for i, name in enumerate(names)
+                                   if name.startswith(syn)], []) 
+        print(fullSyns)
+        for i, term in enumerate(terms):
+            for fullSyn in fullSyns:
+                termSplit = term.split(" (")
+                if (fullSyn.startswith(termSplit[0]) and
+                        fullSyn.endswith(termSplit[1])):
+                    terms[i] = fullSyn
+
     def processTerm(term):
         emph = term in alsoSyns
         term = term.split(" (")
