@@ -189,6 +189,19 @@
           values rather than simple Booleans'' \citeyearpar[p.~18]{IEEE2021c}
           and one where ``the conditions and actions are generally described
           but are incomplete'' \citeyearpar[p.~175]{IEEE2017}\todo{OG ISO1984}.
+    \item % Flaw count (CONTRA, SYNS): {IEEE2021c} | implied by {IEEE2021c}
+          % Flaw count (AMBI, PARS): {IEEE2021c}
+          % Assertion: {Reid1996}
+          \citet[Fig.~F.1]{IEEE2021c} is an adaptation of
+          \citet[Fig.~2]{Reid1996} and one of the changes they make is
+          replacing ``branch [coverage]'' with ``branch/decision coverage''.
+          \citeauthor{Reid1996} notes that ``the term decision coverage is used
+          interchangeably with that of branch coverage'' but that comparing one
+          to the other is not a direct mapping (p.~4). This is supported by the
+          two terms being separated in \citet[Fig.~G.1, Secs.~5.3.2, 5.3.3]
+          {IEEE2021c}, but (Fig.~F.1) implies these terms are synonyms,
+          contradicting this separation and making decision testing's relations
+          ambiguous.
     \item % Flaw count (WRONG, LABELS): {IEEE2021c}
           A typo in \citep[Fig.~2]{IEEE2021c} means that ``specification-based
           techniques'' is listed twice, when the latter should be
