@@ -221,9 +221,6 @@ UserScenarioTesting [label=<User<br/>Scenario<br/>Testing>,style="dotted"];
 ScenarioTesting -> UserScenarioTesting[dir=none,color="blue"];
 UseCaseTesting -> UserScenarioTesting[dir=none,color="blue"];
 UseCaseTesting -> UserScenarioTesting[dir=none,style="dashed",color="green"];
-StatebasedTesting [label=<State-based<br/>Testing>,style="dotted"];
-StateTransitionTesting -> StatebasedTesting[dir=none,style="dashed",color="blue"];
-StatebasedWebBrowserTesting -> StatebasedTesting[dir=none,color="blue"];
 StateTransitionTesting -> AllTransitionsTesting[dir=none,style="dashed"];
 
 ZeroSwitchTesting -> StateTransitionTesting[color="green"];

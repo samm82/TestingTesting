@@ -641,9 +641,6 @@ ScenariobasedEvaluations -> ScenariobasedTesting[dir=none,style="dashed",color="
 SmokeTesting -> BuildVerificationTesting[dir=none,color="blue"];
 SmokeTesting -> IntakeTesting[dir=none,color="blue"];
 SpecificationbasedTesting -> DomainTesting[dir=none,color="blue"];
-StatebasedTesting [label=<State-based<br/>Testing>,style="dotted"];
-StateTransitionTesting -> StatebasedTesting[dir=none,style="dashed",color="blue"];
-StatebasedWebBrowserTesting -> StatebasedTesting[dir=none,color="blue"];
 StateTransitionTesting -> AllTransitionsTesting[dir=none,style="dashed"];
 StaticVerification [label=<Static<br/>Verification>,style="dotted"];
 StaticAssertionChecking -> StaticVerification[dir=none];
@@ -1848,6 +1845,7 @@ StaticAssertionChecking -> AssertionChecking;
 StaticAssertionChecking -> StaticAnalysis;
 StaticAssertionChecking -> SpecificationbasedTesting[style="dashed",color="grey"];
 StaticTesting -> WModelTesting;
+StaticTesting -> SpecificationbasedTesting[style="dashed"];
 StatisticalTesting -> UsagebasedTesting[color="blue"];
 StatisticalTesting -> ModelbasedTesting[color="grey"];
 StepwiseAbstraction -> StructuralAnalysis[style="dashed",color="maroon"];
