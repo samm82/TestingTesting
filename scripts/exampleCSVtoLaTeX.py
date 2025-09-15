@@ -31,7 +31,7 @@ class ExGloss:
 
 exGlosses = [
     ExGloss("exampleGlossary",    "parent-child", [0.4,  0.6] , "bt!"),
-    ExGloss("synExampleGlossary", "synonym",      [0.25, 0.75], "bt!")
+    ExGloss("synExampleGlossary", "synonym",      [0.25, 0.75], "b!")
 ]
 
 for exGloss in exGlosses:
