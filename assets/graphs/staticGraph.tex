@@ -169,6 +169,7 @@ StaticAssertionChecking -> StaticAnalysis;
 SpecificationbasedTesting [label=<Specification-based<br/>Testing>,style="dashed,filled"];
 StaticAssertionChecking -> SpecificationbasedTesting[style="dashed",color="grey"];
 StaticTesting -> WModelTesting;
+StaticTesting -> SpecificationbasedTesting[style="dashed"];
 StructuralAnalysis -> StaticTesting[color="maroon"];
 StructurebasedTesting [label=<Structure-based<br/>Testing>,style="filled"];
 StructurebasedTesting -> StaticTesting[style="dashed",color="green"];

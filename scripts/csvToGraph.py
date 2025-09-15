@@ -422,6 +422,9 @@ multiSynNotes = {
         "Endurance testing is given as a child of reliability testing by "
         "\\citet[p.~55]{Firesmith2015}, although the terms are not synonyms."
     ),
+    "Path Testing": (
+        "This synonym relation is likely incorrect (see \\Cref{parSyns})."
+    ),
     "Static Assertion Checking": (
         "% Flaw count (WRONG, SYNS): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
         "\\citet[p.~343]{ChalinEtAl2006} \\multiAuthHelper{list} "
@@ -452,6 +455,17 @@ def makeMultiSynLine(valid, syn, terms, alsoSyns):
         multiSynsList = (impMultiSyns if not all(
             synSets[f"{fsyn} -> {term}"][0] for term in valid)
             else expMultiSyns)
+
+    # Look up any additional information for implied approaches
+    if multiSynsList == impMultiSyns:
+        fullSyns: list[str] = sum([synonyms[i] for i, name in enumerate(names)
+                                   if name.startswith(syn)], []) 
+        for i, term in enumerate(terms):
+            for fullSyn in fullSyns:
+                termSplit = term.split(" (")
+                if (fullSyn.startswith(termSplit[0]) and
+                        fullSyn.endswith(termSplit[1])):
+                    terms[i] = fullSyn
 
     def processTerm(term):
         emph = term in alsoSyns
