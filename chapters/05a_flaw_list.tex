@@ -686,7 +686,10 @@
           % Label gerrard-distinct
           Availability testing is not assigned to a test priority
           \citep[Tab.~2]{Gerrard2000a}, despite the claim that ``the test
-          types\gerrardDistinctIEEE{type} have been allocated a slot against
+          types%\gerrardDistinctIEEE{type}
+          \footnote{``Each type of test addresses a different risk area''
+              \citep[p.~12]{Gerrard2000a}, which is \distinctIEEE{type}}
+          have been allocated a slot against
           the four test priorities'' \citetext{p.~13}; usability testing and/or
           performance testing would have been good candidates.
     \item % Flaw count (WRONG, DEFS): {Gerrard2000b}

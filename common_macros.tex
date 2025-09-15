@@ -111,12 +111,12 @@
     in \Cref{tab:ieeeCats}.}
 \newcommand{\notDefDistinctIEEE}[1]{\footnote{Not formally defined, but
         \distinctIEEE{#1}}}
-% Defined with help from GitHub Copilot
-\NewDocumentCommand{\gerrardDistinctIEEE}{s m}{%
-    \IfBooleanTF{#1}{}{\footnote}%
-    {``Each type of test addresses a different risk area''
-        \citep[p.~12]{Gerrard2000a}, which is \distinctIEEE{#2}}%
-}
+% % Defined with help from GitHub Copilot
+% \NewDocumentCommand{\gerrardDistinctIEEE}{s m}{%
+%     \IfBooleanTF{#1}{}{\footnote}%
+%     {``Each type of test addresses a different risk area''
+%         \citep[p.~12]{Gerrard2000a}, which is \distinctIEEE{#2}}%
+% }
 
 \NewDocumentCommand{\multiCatIntro}{s}{%
     \IfBooleanTF{#1}{T}{we automatically detect t}est approaches with more
