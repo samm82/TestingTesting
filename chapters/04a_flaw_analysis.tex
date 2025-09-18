@@ -178,16 +178,10 @@ between approaches as described in \Cref{visExplicit}.
 
 To perform more detailed analysis on the flaws we uncover, we use \LaTeX{}
 comments to capture information about the flaws themselves as outlined in
-\Cref{record-flaws}. We manually create these flaw comments when recording
-flaws from the literature manually (\Cref{record-info}) and generate them when
-automatically detecting flaws from \ourApproachGlossary{} (\Cref{auto-flaw-analysis}).
-
-We do not double count flaws that reappear when comparing between pairs of
-groups; this means the following line adds an inconsistency between X and Z
-\emph{and} between Y and Z \emph{without} double counting the former.
-\begin{displayquote}
-    \texttt{\% Flaw count: \{X\} | \{X\} \{Y\} | \{Z\}}
-\end{displayquote}
+\Cref{record-flaws}. We include these flaw comments when manually recording
+flaws from the literature (\Cref{record-info}) and generate them when
+automatically detecting flaws from \ourApproachGlossary{}
+(\Cref{auto-flaw-analysis}).
 
 We compare the authors and years of each source involved with a given flaw
 to determine if it manifests within a single document and/or between documents
@@ -202,30 +196,30 @@ source tiers, which we use when counting flaws in \Cref{flaws}.
 % This determines which row(s) of \Cref{tab:flawMnfsts,tab:flawDmns}
 % and which bar(s) of \Cref{fig:flawBars} that the given flaw should count toward.
 
-To give a more complete example, we track \flawref{level-phase-syns} with the
-following comment line:\utd{}
-\begin{displayquote}
-    \texttt{\% Flaw count (OVER, SYNS): \{IEEE2017\} \{IEEE2013\} | \{IEEE2022\}
-        \displayNL{} \{IEEE2017\} \{Perry2006\}}
-\end{displayquote}%
-% We parse this as the example given in \Cref{flaw-analysis-example}.
-Since \texttt{IEEE2022}, \texttt{IEEE2017}, and \texttt{IEEE2013} are all
-written by the same standards
-organizations (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), we count
-this as an inconsistency between documents with the same set of authors in
-\Cref{fig:flawBars}, but only once to avoid double counting.
+% To give a more complete example, we track \flawref{level-phase-syns} with the
+% following comment line:\utd{}
+% \begin{displayquote}
+%     \texttt{\% Flaw count (OVER, SYNS): \{IEEE2017\} \{IEEE2013\} | \{IEEE2022\}
+%         \displayNL{} \{IEEE2017\} \{Perry2006\}}
+% \end{displayquote}%
+% % We parse this as the example given in \Cref{flaw-analysis-example}.
+% Since \texttt{IEEE2022}, \texttt{IEEE2017}, and \texttt{IEEE2013} are all
+% written by the same standards
+% organizations (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}), we count
+% this as an inconsistency between documents with the same set of authors in
+% \Cref{fig:flawBars}, but only once to avoid double counting.
 
 We parse implicit information following
 the same rules given in \Cref{auto-flaw-analysis-explicitness} for
 automatically detecting flaws. Note that we only count subjective flaws if there
 is not an equivalent objective flaw, as we do when visualizing relations
-(as described in \Cref{visExplicit}).
+(as described in \Cref{visExplicit}). The following comment line\utd{} from
+\flawref{c-use-def} is an example of a flaw that is both objective and subjective:
 \begin{displayquote}
     \texttt{\% Flaw count (CONTRA, DEFS): \{IEEE2021c\} \{IEEE2017\} |
         \displayNL \{vanVliet2000\} implied by \{IEEE2021c\}}
 \end{displayquote}
-For example, the above comment line\utd{} from \flawref{c-use-def} indicates
-that the flaws given below are present.
+This indicates that the following flaws are present:
 \begin{itemize}
     \item an objective inconsistency between a textbook and a standard,
     \item a subjective flaw within a single document, and
@@ -236,14 +230,22 @@ that the flaws given below are present.
 This third flaw only affects our more nuanced breakdown of the sources of flaws
 in \Cref{fig:flawBars}. % The rest increment their corresponding
 % count in \Cref{fig:flawBars,tab:flawMnfsts,tab:flawDmns} by only one.
+Note that we do not double count the first flaw. We likewise do not double
+count flaws that reappear when comparing between pairs of groups; for example,
+we would only count the inconsistency between \texttt{X} and \texttt{Z}
+\emph{once} in the following flaw comment:
+\begin{displayquote}
+    \texttt{\% Flaw count: \{X\} | \{X\} \{Y\} | \{Z\}}
+\end{displayquote}
 
 In cases where a flaw can be viewed in multiple ways (see \Cref{multi-view-flaws}),
-we only count and display the flaw once (in the subsections of \Cref{flaws} and
-the full lists in \Cref{flaws-full}) based on the pair of keys that appears
+we only represent the flaw once in the subsections of \Cref{flaws} and
+the full lists in \Cref{flaws-full} based on the pair of keys that appears
 first. This allows us to decide which view is most central to understanding the
-flaw, but this choice is only a preference in presentation since we also count
-its other views as flaws (for example, in \Cref{tab:flawMnfsts,tab:flawDmns})
-without introducing clutter by displaying it in full multiple times.
+flaw without affecting the results of our research. The choice of which flaw is
+more ``meaningful'' only affects its presentation, since we also count its other
+views as flaws (for example, in \Cref{tab:flawMnfsts,tab:flawDmns}), with the
+benefit of not introducing clutter by displaying it in full multiple times.
 
 \phantomsection{}\label{less-cred-assert}
 Occasionally, we assert that a source from a less credible tier is more correct
