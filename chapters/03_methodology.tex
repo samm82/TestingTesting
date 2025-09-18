@@ -464,6 +464,7 @@ manifestations throughout this \docType{} for clarity.
     suffix ``~(Testing)'' (when it makes sense to do so) and consider
     the test approach to be implied.
 
+    \clearpage
     \subsubsection{Recording Flaws}\label{record-flaws}
     In \Cref{auto-flaw-analysis}, we describe some subsets of flaws that we
     detect automatically by analyzing \ourApproachGlossary. Unfortunately, most
@@ -520,7 +521,27 @@ manifestations throughout this \docType{} for clarity.
     The pair of keys that appears first determines where this flaw is displayed,
     although all pairs are counted as their own flaws; this flaw is displayed
     as an example of incorrect traceability information as
-    \flawref{see-ref-missing}, which we determine to be more meaningful.
+    \flawref{see-ref-missing} since we determine this to be more meaningful.
+
+    \phantomsection{}\label{less-cred-assert}
+    Occasionally, we assert that a source from a less credible tier is more
+    correct than a source from a more credible tier\thesisissueref{184}.
+    For example, \tolTestFlaw*{} This flaw is supported by these additional
+    papers found via a miniature literature review (described in
+    \Cref{undef-terms}) from a lower source tier than \citet{Firesmith2015}
+    (which is a terminology collection; see \Cref{source-tiers}). However,
+    this flaw is really based in \citet{Firesmith2015} and not in these
+    additional papers, but this would be counted as a flaw in these papers if
+    they were included as detailed above. Therefore, we document these
+    ``assertion'' sources separately to track them for traceability without
+    counting them incorrectly in \Cref{aug-flaw-analysis}. As an example, the
+    following is the comment line\utd{} for this specific example
+    (\flawref{assert-truth}):
+    \begin{displayquote}
+        \texttt{\% Flaw count (WRONG, LABELS): \{Firesmith2015\}\\
+            \% Assertion: \{LiuEtAl2023\} \{MorgunEtAl1999\} \{HolleyEtAl1996\}
+            \displayNL \{HoweAndJohnson1995\}}
+    \end{displayquote}
 \fi
 
 \subsection{Undefined Terms}\label{undef-terms}

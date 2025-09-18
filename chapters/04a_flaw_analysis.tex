@@ -247,26 +247,6 @@ more ``meaningful'' only affects its presentation, since we also count its other
 views as flaws (for example, in \Cref{tab:flawMnfsts,tab:flawDmns}), with the
 benefit of not introducing clutter by displaying it in full multiple times.
 
-\phantomsection{}\label{less-cred-assert}
-Occasionally, we assert that a source from a less credible tier is more correct
-than a source from a more credible tier\thesisissueref{184}.
-For example, \tolTestFlaw*{} This flaw is supported by these additional papers
-found via a miniature literature review (described in
-\Cref{undef-terms}) from a lower source tier than \citep{Firesmith2015}
-(which is a terminology collection; see \Cref{source-tiers}). However, this
-flaw is really based in \citep{Firesmith2015} and not in these
-additional papers, but this would be counted as a flaw in these papers if they
-were included as detailed above. Therefore, we document these ``assertion''
-sources separately to track them for traceability without incorrectly
-counting flaws, such as the following for this specific example
-(\flawref{assert-truth}):
-\begin{displayquote}
-    \texttt{\% Flaw count (WRONG, LABELS): \{Firesmith2015\}\\
-        \% Assertion: \{LiuEtAl2023\} \{MorgunEtAl1999\} \{HolleyEtAl1996\}
-        \displayNL \{HoweAndJohnson1995\}}
-\end{displayquote}
-
-\clearpage
 \subsection[LaTeX Commands]{\LaTeX{} Commands}\label{macros}
 To improve maintainability, traceability, and reproducibility, we define
 helper commands (also called ``macros'') for content that is prone to change
