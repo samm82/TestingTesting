@@ -85,7 +85,7 @@ These include the following sources as described in \Cref{undef-terms}:
 %     %; see \Cref{attacks}
 %     \thesisissueref{55})\fi, so we will omit them during future analysis.
 
-\subsection{Recording Relevant Terms}\label{record-terms}
+\subsection{Recording Relevant Information}\label{record-info}
 
 \ifnotpaper
     \input{assets/graphs/recAppFlowchart}
@@ -101,9 +101,9 @@ resources to investigate) following the procedure in \Cref{fig:recAppFlowchart}.
 Note that only the name and category fields are required; all other fields
 may be left blank, although a lack of definition indicates that the approach
 should be investigated further to see if its inclusion is meaningful (see
-\Cref{undef-terms}). When recording flawed data, we record it in our glossary as
-dubious information (as described in \Cref{imp-info})
-and/or in a separate document if it is clearly flawed.
+\Cref{undef-terms}). When recording flawed data, we record it in our glossary
+as dubious information (as described in \Cref{imp-info}) and/or in a separate
+document if it is clearly flawed\ifnotpaper\ (see \Cref{record-flaws})\fi.
 % If no category is given, the ``approach'' category is assigned
 % (with no accompanying citation) as a ``catch-all'' category. 
 % Any additional information from other sources is added to
@@ -356,8 +356,9 @@ to upgrade the quality to a test type in \ourApproachGlossary{}.%
 %         requirements do not apply to the code itself so their relevant inferred
 %         test approaches are out of scope (see \Cref{phys-req-test,nontech-req-test}).\fi
 % \fi
-
-\subsection{Implicit Information}\label{imp-info}
+\ifnotpaper\subsubsection{Recording Implicit Information}
+\else\subsection{Recording Implicit Information}
+\fi\label{imp-info}
 
 As described in \Cref{explicitness}, the use of natural language introduces
 significant nuance that we need to document. Keywords such as \impKeywords{}
@@ -462,6 +463,46 @@ manifestations throughout this \docType{} for clarity.
     term is \emph{not} explicitly labelled as ``testing'', we add the
     suffix ``~(Testing)'' (when it makes sense to do so) and consider
     the test approach to be implied.
+
+    \subsubsection{Recording Flaws}\label{record-flaws}
+    In \Cref{auto-flaw-analysis}, we describe some subsets of flaws that we
+    detect automatically by analyzing \ourApproachGlossary. Unfortunately, most
+    are too complex and need to be tracked manually. We record these more
+    detailed flaws in a separate document as \LaTeX{} enumeration items along
+    with comments that we can parse automatically, allowing us to analyze them
+    more broadly. These comments have the following format:
+    \begin{displayquote}
+        \texttt{\% Flaw count (MNFST, DMN): \{A1\} \{A2\} \dots{} | \{B1\} % \{B2\}
+            \dots{} | \{C1\} \dots}
+    \end{displayquote}
+    \texttt{MNFST} and \texttt{DMN} are placeholders for the ``keys'' given in
+    \Cref{tab:flawMnfstDefs,tab:flawDmnDefs}, respectively, that we use to
+    track a flaw's manifestation(s) and domain(s) (defined in \Cref{flaw-def}).
+    For example, the comment line for an incorrect synonym relation would start
+    with \texttt{\% Flaw count (WRONG, SYNS)} and one for a redundant label
+    would start with \texttt{\% Flaw count (REDUN, LABELS)}. We omit these keys
+    from constructed examples of these comments without associated flaws
+    throughout this chapter for brevity. Finally, \texttt{A1}, \texttt{A2}, % \texttt{B2},
+    \texttt{B1}, and \texttt{C1} are each placeholders for a source involved in
+    this example flaw; in general, there can be arbitrarily many. We represent
+    each source by its \BibTeX{} key, and wrap each one in curly braces (with
+    the exception of the \acs{istqb} glossary due to its use of custom commands
+    via \macro{citealias}) to mimic \LaTeX{}'s citation commands for ease of
+    parsing. We then separate each ``group'' of sources with a pipe symbol
+    (\texttt{|}) so we can compare each pair of groups; in general, a flaw can
+    have any number of groups of sources.
+
+    As mentioned in \Cref{one-src-flaws}, \oneSrcDistinct{} We track
+    self-contained flaws by recording the single source that the flaw is present
+    in such as in the first line below. In constrast, we track internal flaws
+    by recording the single source in multiple groups (as defined above). The
+    second line is a standard example of this, while the third is more complex;
+    in this case, source \texttt{Y} agrees with only one of the conflicting
+    sources of information in \texttt{X}.
+    \begin{displayquote}
+        \texttt{\% Flaw count: \{X\}\\\% Flaw count: \{X\} | \{X\}\\
+            \% Flaw count: \{X\} | \{X\} \{Y\}}
+    \end{displayquote}
 \fi
 
 \subsection{Undefined Terms}\label{undef-terms}

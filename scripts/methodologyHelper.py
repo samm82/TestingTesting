@@ -16,13 +16,14 @@ def footnoteHelper(label):
 #     "names", f"categories{CAT_FOOTNOTE}(\\Cref{{cats-def}})",
 #     "definitions", "synonyms (\\Cref{syn-rels})",
 #     "parents (\\Cref{par-chd-rels})",
-#     "flaws\\phantomsection{}\\label{manual-flaws} (\\Cref{flaw-def}) (in separate documents)"]
+#     "flaws\\phantomsection{}\\label{manual-flaws} (\\Cref{flaw-def}) (in a separate document)"]
 
 toRecord: list[str] = [
     "names", f"categories{footnoteHelper("cats-def")}",
     "definitions", f"synonyms{footnoteHelper("syn-rels")}",
     f"parents{footnoteHelper("par-chd-rels")}",
-    f"flaws{footnoteHelper("flaw-def")}\\phantomsection{{}}\\label{{manual-flaws}} (in separate documents)"]
+    f"flaws{footnoteHelper("flaw-def")}\\phantomsection{{}}\\label{{manual-flaws}}"
+    " \\ifnotpaper (\\Cref{record-flaws})\\fi"]
 
 # relatedTerms: list[str] = [
 #     "imply related test approaches (\\Cref{derived-tests})",
@@ -30,7 +31,7 @@ toRecord: list[str] = [
 #     "have complex definitions"
 # ]
 # """
-# \\item \\phantomsection{}\\label{step:record-terms}
+# \\item \\phantomsection{}\\label{step:record-info}
 # Alongside step~\\ref{step:ident-terms}, identifying and recording related
 # testing terms that are used repeatedly and/or have complex definitions""" + "\n".join([
 #     f"\t\t  {line}" for line in wrapEnv(
@@ -49,8 +50,8 @@ methodology_a = ("""
           Identifying all test approaches""" + footnoteHelper("approach-def") +
           """ and related testing terms that are used repeatedly and/or have
           complex definitions (\\Cref{ident-terms})
-    \\item \\phantomsection{}\\label{step:record-terms}
-          Recording all relevant data (\\Cref{record-terms}), including
+    \\item \\phantomsection{}\\label{step:record-info}
+          Recording all relevant data (\\Cref{record-info}), including
           implicit data (\\Cref{imp-info}), for each term identified in
           step~\\ref{step:ident-terms}; test approach data are comprised of:
           \n""" + "\n".join([
@@ -60,7 +61,7 @@ methodology_a = ("""
                                                f" ({OTHER_NOTES_EXS}, etc.)"]])
         ]) + """
     \\item \\phantomsection{}\\label{step:repeat-process}
-          Repeating steps~\\ref{step:ident-sources} to \\ref{step:record-terms} for 
+          Repeating steps~\\ref{step:ident-sources} to \\ref{step:record-info} for 
           any missing or unclear terms (\\Cref{undef-terms}) until some
           stopping criteria (\\Cref{stop-crit})""")
     
@@ -89,7 +90,7 @@ for i, m in enumerate([methodology_a, methodology_b]):
 
     # Hack because enumitem conflicts with beamer :(
     m = m.replace("\\ref{manual-flaws}",
-                  "\\ref{step:record-terms}.\\ref{manual-flaws}")
+                  "\\ref{step:record-info}.\\ref{manual-flaws}")
 
     if not i:
         PHANTOM_SEC = "phantomsection"
