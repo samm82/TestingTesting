@@ -21,7 +21,7 @@ start from the vocabulary document for systems and software engineering%
 \citep{IEEE2017} and two versions of the \acf{swebok}---the newest
 one \citep{SWEBOK2014} and one submitted for public review%
 \footnote{%
-    \refHelper \citep{SWEBOK2024} has been published since we investigated
+    \refHelper \citet{SWEBOK2024} has been published since we investigated
     these sources; if time permits, we will revisit this published version.
 }
 \citep{SWEBOK2024}. To gather further sources, we then use a version of
@@ -102,7 +102,7 @@ Note that only the name and category fields are required; all other fields
 may be left blank, although a lack of definition indicates that the approach
 should be investigated further to see if its inclusion is meaningful (see
 \Cref{undef-terms}). When recording flawed data, we record it in our glossary
-as dubious information (as described in \Cref{imp-info}) and/or in a separate
+as dubious information (see \Cref{imp-info}) and/or in a separate
 document if it is clearly flawed\ifnotpaper\ (see \Cref{record-flaws})\fi.
 % If no category is given, the ``approach'' category is assigned
 % (with no accompanying citation) as a ``catch-all'' category. 
@@ -123,7 +123,7 @@ document if it is clearly flawed\ifnotpaper\ (see \Cref{record-flaws})\fi.
 \end{figure}
 
 For example, when we first encounter ``A/B Testing'' in
-\citep[p.~1, 36]{IEEE2022} as shown in \Cref{fig:IEEE-A-B-Testing}, we apply
+\citet[p.~1, 36]{IEEE2022} as shown in \Cref{fig:IEEE-A-B-Testing}, we apply
 our procedure as follows:\qtodo{Should glossary headers be capitalized?}
 \begin{enumerate}
     \item Create a new row with the name ``A/B testing'' and the category
@@ -136,9 +136,10 @@ our procedure as follows:\qtodo{Should glossary headers be capitalized?}
           its synonym and parent).
 \end{enumerate}
 \ifnotpaper\newpage\noindent\fi
-Note that we accompany all of these entries (excluding its name) with the
-citation ``\citep[pp.~1, 36]{IEEE2022}''. This document provides more
-information which we capture as follows:
+We also include the relevant citation \ifnotpaper ``\citep[pp.~1, 36]{IEEE2022}''
+\else in the author-year citation format \fi with these entries (excluding its
+name) to track where they came from. This source also provides the following
+information, which we capture as follows:
 \begin{enumerate}
     \item Record the note ``It `can be time-consuming, although tools can be
           used to support it', `is a means of solving the test oracle problem
@@ -148,7 +149,7 @@ information which we capture as follows:
     \item Replace the category of ``Approach'' with the more specific
           ``Practice'' \citetext{Fig.~2}; note that this
           is consistent with the exclusion of ``Technique'' as a possible
-          category for this approach from page~36.
+          category for this approach \citetext{p.~36}.
 \end{enumerate}
 As we investigate other sources, we learn more about this approach. \ifnotpaper
 \else \citeauthor{Firesmith2015} \fi \citet[p.~58]{Firesmith2015} includes it
@@ -185,8 +186,10 @@ automatically detect and document \ifnotpaper (see \Cref{auto-flaw-analysis,%
 
 \ifnotpaper
     \phantomsection{}\label{record-cites}
-    We also capture relevant citation information in our glossary in the
-    author-year citation format, ``reusing'' information from previous citations
+    As implied throughout the previous example, we capture relevant citation
+    information in our glossary in the author-year citation format. When citing
+    the same authors or sources multiple times, we ``reuse'' information from
+    previous citations
     when applicable. For example, the first row of \Cref{tab:exampleGlossary}
     contains the citation ``(Author, 2022; 2021)'', which means that this
     information was present in two documents by Author: one written in
