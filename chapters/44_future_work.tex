@@ -10,7 +10,32 @@ to analyze our data on the software testing literature, such as detecting
 more classes of flaws (and identifying them!) (\Cref{future-detect-flaws}).
 
 \subsection{Iterating Over Undefined Terms}\label{future-undef-terms}
-\imptodo{Fill in}
+
+As we explain in \Cref{undef-terms}, our methodology includes performing
+miniature literature reviews on undefined terms to record their
+missing definitions (and any relations). We were able to do this for the
+following approaches, although some are out of scope, such as \acf{emsec}
+testing, aspects of \acf{orthat} and loop testing (see \Cref{hard-test}),
+and HTML testing (see \Cref{lang-test}). We investigate the following terms
+(and their respective related terms) in the sources given:
+\input{build/undefTerms}
+
+Applying our procedure shown in \Cref{fig:recAppFlowchart} to these sources
+uncovers \the\numexpr \TotalAfter - \TotalBefore\relax\ new approaches and
+\the\numexpr \TotalAfter - \UndefAfter - \TotalBefore + \UndefBefore\relax\ new
+definitions. These definitions are either for existing undefined approaches or
+new uncovered approaches; while not every new approach is presented alongside
+a definition, if we assume that each of these definitions is for a new approach,
+we can deduce that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
+(\TotalAfter - \TotalBefore)\relax\% of added test approaches are defined. This
+indicates that this procedure leads to a higher proportion of defined terms
+(\the\numexpr 100 - 100 * \UndefBefore / \TotalBefore\relax\% vs.~%
+\the\numexpr 100 - 100 * \UndefAfter / \TotalAfter\relax\%), as shown in
+\Cref{fig:undefPies}, which helps verify that our procedure constructively
+uncovers \emph{and} defines new terminology. With repeated iterations, this
+ratio would approach 100\%, resulting in a (plausibly) complete taxonomy.
+
+\input{assets/graphs/undefPies}
 
 \subsection{Missing Terms}\label{future-miss-terms}
 \imptodo{Fill in}

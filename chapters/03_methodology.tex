@@ -565,32 +565,10 @@ approaches. Once we exhaust the standards in \Cref{stds}, we
 perform miniature literature reviews on these subsets to ``fill in'' the
 missing definitions (along with any relations), essentially ``snowballing''
 on these terms as described in \Cref{ident-sources}. This process uncovers
-even more approaches, although some are
-out of scope, such as \acf{emsec} testing\ifnotpaper, \else\ and \fi
-aspects of \acf{orthat} \ifnotpaper and loop testing (see \Cref{hard-test}),
-    and HTML testing (see \Cref{lang-test})\else (see \Cref{scope-overview})\fi.
-We investigate the following terms (and their respective related terms) in the
-sources given:
-\input{build/undefTerms}
-
-\ifnotpaper
-    Applying our procedure shown in \Cref{fig:recAppFlowchart} to these sources
-    uncovers \the\numexpr \TotalAfter - \TotalBefore\relax\ new approaches and
-    \the\numexpr \TotalAfter - \UndefAfter - \TotalBefore + \UndefBefore\relax\ new
-    definitions. These definitions are either for existing undefined approaches or
-    new uncovered approaches; while not every new approach is presented alongside
-    a definition, if we assume that each of these definitions is for a new approach,
-    we can deduce that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
-    (\TotalAfter - \TotalBefore)\relax\% of added test approaches are defined. This
-    indicates that this procedure leads to a higher proportion of defined terms
-    (\the\numexpr 100 - 100 * \UndefBefore / \TotalBefore\relax\% vs.~%
-    \the\numexpr 100 - 100 * \UndefAfter / \TotalAfter\relax\%), as shown in
-    \Cref{fig:undefPies}, which helps verify that our procedure constructively
-    uncovers \emph{and} defines new terminology. Further iterating on it would
-    continue this trend, creating something approaching a complete taxonomy.
-
-    \input{assets/graphs/undefPies}
-\fi
+even more approaches, on which we can then repeat this process. \ifnotpaper
+    While we are only able to do this partially due to time constraints, we
+    outline what we accomplished and potential next steps in
+    \Cref{future-undef-terms}. \fi
 
 \subsection{Stopping Criteria}\label{stop-crit}
 
