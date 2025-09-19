@@ -136,7 +136,14 @@ our procedure as follows:\qtodo{Should glossary headers be capitalized?}
           its synonym and parent).
 \end{enumerate}
 \ifnotpaper\newpage\noindent\fi
-We also include the relevant citation \ifnotpaper ``\citep[pp.~1, 36]{IEEE2022}''
+We also include the relevant citation \ifnotpaper
+    ``\citep[pp.~1, 36]{IEEE2022}''\footnote{In \ourApproachGlossary{}, we
+        \emph{actually} cite this as ``(\hyperlink{cite.IEEE2022}{
+            \textcolor{blue!50!black}{IEEE}},  % With help from ChatGPT
+        \citeyear[pp.~1, 36]{IEEE2022})'' for brevity, as most standards are
+        written by ISO/IEC \emph{and} IEEE (see \Cref{fig:ieeeSourceSets});
+        these glossary citations are handled by our choice of \BibTeX{} keys,
+        such as \texttt{IEEE2022} in this example.}
 \else in the author-year citation format \fi with these entries (excluding its
 name) to track where they came from. This source also provides the following
 information, which we capture as follows:
