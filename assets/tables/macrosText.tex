@@ -50,8 +50,10 @@
     \macroType{3}{RQs}       & \macro{rqatext}             & \SetCell[r=3]{l} \Cref{intro} and seminar slides            \\*
                              & \macro{rqbtext}             &                                                             \\*
                              & \macro{rqctext}             &                                                             \\
-    \hline
-    \macroType{10}{Misc.}    & \macro{supersAck}           & \nameref{acknowledgements} and seminar slides               \\*
+    \hline                                                 % not working with Cref
+    \macroType{12}{Misc.}    & \macro{docType}             & \hyperref[abstract]{Abstract},
+    \Cref{terminology,explicitness,imp-info,auto-flaw-analysis,future-detect-flaws}                                      \\*
+                             & \macro{supersAck}           & \nameref{acknowledgements} and seminar slides               \\*
                              & \macro{supers}              & \nameref{decl_aca_ach} and \macro{supersAck}                \\*
                              & \macro{highLvlScope}        & \Cref{scope-overview,stds}                                  \\*
                              & \macro{defRel}              & \Cref{syn-rels,par-chd-rels}                                \\*
@@ -61,9 +63,8 @@
                              & \macro{impKeywords}         & \Cref{explicitness,imp-info}                                \\*
                              & \macro{orthTestIntro}       & \Cref{infers,orth-test}                                     \\*
                              & \macro{listAllSrcs}         & \Cref{source-tiers,ident-sources}                           \\*
-                             & \macro{addTextEx}           & \Cref{texts,ident-sources}                                  \\
-    %                          & \macro{displayNL}           &
-    % \Cref{aug-flaw-analysis}                                                                                             \\
+                             & \macro{addTextEx}           & \Cref{texts,ident-sources}                                  \\*
+                             & \macro{displayNL}           & \Cref{less-cred-assert,aug-flaw-analysis}                   \\
     % paper-macros,tab:macrosPaper
     \hline
 \end{longtblr}
