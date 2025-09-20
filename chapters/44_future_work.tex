@@ -102,3 +102,14 @@ for use in this \docType{}, and resolving any issues that arise during this
 process. Detecting larger cycles would also be possible but would likely
 require the use of an additional tool to analyze the graph of parent-child
 relations.
+
+Unfortunately, writing code to detect flaws is only half the battle. First, we
+need to identify classes of flaws we even want to detect, which may never be
+complete as new test approaches emerge with potentially new relations. The
+classes of flaws we detect emerged over time based on our observations of the
+literature. For example, our understanding of the ``standard'' test approach
+categories described in \Cref{cats-def} led to us being able to detect
+approaches that are categorized inconsistently in \Cref{cats,multiCats-full}.
+Performing more thorough analysis, both on the literature and on our collected
+data, will likely reveal more classes of flaws that can be tracked
+automatically but is infeasible for the purposes of this \docType{}.
