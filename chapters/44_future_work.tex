@@ -85,4 +85,20 @@ projects, or ad hoc cursory research to see what other test approaches exist:
 \end{minipage}
 
 \subsection{Detecting More Flaws}\label{future-detect-flaws}
-\imptodo{Fill in}
+In addition to the classes of flaws we \emph{do} detect automatically, we could
+detect many more if time permitted. We currently detect parent-child relations
+that violate irreflexivity (see \Cref{autoSelfPar}) which can be thought of as
+cycles with length $n=1$. Since parent-child relations should also be
+transitive (see \Cref{par-chd-rels}), cycles of \emph{any} size are flaws.
+Given the current way we generate visualizations of these relations (see
+\Cref{app-rel-vis}), detecting cycles where $n=2$ would be straightforward: if
+a parent-child relation \emph{and} its inverse (i.e., \texttt{A~->~B} and
+\texttt{B~->~A} for test approaches with labels \texttt{A} and \texttt{B}) both
+exist in the generated \LaTeX{} file for a visualization, (at least) one of
+these parent-child flaws is incorrect since they contradict each other and we
+have found a cycle. The main reason this would be time-consuming would be
+deciding on how to format these findings, writing code to do so automatically
+for use in this \docType{}, and resolving any issues that arise during this
+process. Detecting larger cycles would also be possible but would likely
+require the use of an additional tool to analyze the graph of parent-child
+relations.
