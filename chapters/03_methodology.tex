@@ -479,9 +479,10 @@ manifestations throughout this \docType{} for clarity.
     In \Cref{auto-flaw-analysis}, we describe some subsets of flaws that we
     detect automatically by analyzing \ourApproachGlossary. Unfortunately, most
     are too complex and need to be tracked manually. We record these more
-    detailed flaws in a separate document as \LaTeX{} enumeration items along
-    with comments that we can parse automatically, allowing us to analyze them
-    more broadly. These comments have the following format:
+    detailed flaws as \LaTeX{} enumeration items in a separate document along
+    with comments we can parse automatically (as described in
+    \Cref{aug-flaw-analysis}) %, allowing us to analyze them more broadly. These comments have
+    with the following format:
     \begin{displayquote}
         \texttt{\% Flaw count (MNFST, DMN): \{A1\} \{A2\} \dots{} | \{B1\} % \{B2\}
             \dots{} | \{C1\} \dots}
@@ -490,13 +491,13 @@ manifestations throughout this \docType{} for clarity.
     \Cref{tab:flawMnfstDefs,tab:flawDmnDefs}, respectively, that we use to
     track a flaw's manifestation(s) and domain(s) (defined in \Cref{flaw-def}).
     For example, the comment line for an incorrect synonym relation would start
-    with \texttt{\% Flaw count (WRONG, SYNS)} and one for a redundant label
-    would start with \texttt{\% Flaw count (REDUN, LABELS)}. We omit these keys
-    from constructed examples of these comments without associated flaws
-    throughout this chapter for brevity. Finally, \texttt{A1}, \texttt{A2}, % \texttt{B2},
+    with ``\texttt{\% Flaw count (WRONG, SYNS)}'' and one for a redundant label would
+    start with ``\texttt{\% Flaw count (REDUN, LABELS)}''. We omit these keys from
+    % constructed examples of these comments without associated flaws throughout / brevity
+    this chapter for simplicity. Finally, \texttt{A1}, \texttt{A2}, % \texttt{B2},
     \texttt{B1}, and \texttt{C1} are each placeholders for a source involved in
     this example flaw; in general, there can be arbitrarily many. We represent
-    each source by its \BibTeX{} key, and wrap each one in curly braces (with
+    each source by its \BibTeX{} key and wrap each one in curly braces (with
     the exception of the \acs{istqb} glossary due to its use of custom commands
     via \macro{citealias}) to mimic \LaTeX{}'s citation commands for ease of
     parsing. We then separate each ``group'' of sources with a pipe symbol
@@ -517,10 +518,37 @@ manifestations throughout this \docType{} for clarity.
     We can also specify the ``explicitness'' (see \Cref{explicitness}) of a
     flaw by inserting the phrase ``implied by'' after the sources of explicit
     information and before those of implicit information, such as in the
-    following example:
+    following example:\qtodo{Is this clear enough?}
     \begin{displayquote}
         \texttt{\% Flaw count: \{X\} \{Y\} | \{Z\} implied by \{X\}}
-    \end{displayquote}\qtodo{Is this clear enough?}
+    \end{displayquote}\phantomsection{}\label{less-cred-assert}%
+    Occasionally, we assert that a source from a less credible tier is more
+    correct than a source from a more credible tier\thesisissueref{184}.
+    % For example, \tolTestFlaw*{} This flaw is supported by these additional
+    % papers found via a miniature literature review (described in
+    % \Cref{undef-terms}) from a lower source tier than \citet{Firesmith2015}
+    % (which is a terminology collection; see \Cref{source-tiers}). However,
+    % this flaw is really based in \citet{Firesmith2015} and not in these
+    % additional papers, but this would be counted as a flaw in these papers if
+    % they were included as detailed above.
+    If we documented these flaws as above, they would incorrectly be counted as
+    flaws within the less credible tier! Therefore, we document these
+    ``assertion'' sources separately to track them for traceability without
+    counting them incorrectly.
+    % As an example, the
+    % following is the comment line\utd{} for this specific example
+    % (\flawref{assert-truth}):
+    % \begin{displayquote}
+    %     \texttt{\% Flaw count (WRONG, LABELS): \{Firesmith2015\}\\
+    %         \% Assertion: \{LiuEtAl2023\} \{MorgunEtAl1999\} \{HolleyEtAl1996\}
+    %         \displayNL \{HoweAndJohnson1995\}}
+    % \end{displayquote}
+    For example, if we assert that a textbook \texttt{W} is correct and
+    indicates a flaw in established standards \texttt{X} and \texttt{Y}, we
+    would track this assertion separately from its associated flaw as follows:
+    \begin{displayquote}
+        \texttt{\% Flaw count: \{X\} \{Y\}\\\% Assertion: \{W\}}
+    \end{displayquote}
 
     \phantomsection{}\label{multi-view-flaws}
     It is important to note that some flaws are multi-faceted, and thus can be
@@ -532,26 +560,6 @@ manifestations throughout this \docType{} for clarity.
     although all pairs are counted as their own flaws; this flaw is displayed
     as an example of incorrect traceability information as
     \flawref{see-ref-missing} since we determine this to be more meaningful.
-
-    \phantomsection{}\label{less-cred-assert}
-    Occasionally, we assert that a source from a less credible tier is more
-    correct than a source from a more credible tier\thesisissueref{184}.
-    For example, \tolTestFlaw*{} This flaw is supported by these additional
-    papers found via a miniature literature review (described in
-    \Cref{undef-terms}) from a lower source tier than \citet{Firesmith2015}
-    (which is a terminology collection; see \Cref{source-tiers}). However,
-    this flaw is really based in \citet{Firesmith2015} and not in these
-    additional papers, but this would be counted as a flaw in these papers if
-    they were included as detailed above. Therefore, we document these
-    ``assertion'' sources separately to track them for traceability without
-    counting them incorrectly in \Cref{aug-flaw-analysis}. As an example, the
-    following is the comment line\utd{} for this specific example
-    (\flawref{assert-truth}):
-    \begin{displayquote}
-        \texttt{\% Flaw count (WRONG, LABELS): \{Firesmith2015\}\\
-            \% Assertion: \{LiuEtAl2023\} \{MorgunEtAl1999\} \{HolleyEtAl1996\}
-            \displayNL \{HoweAndJohnson1995\}}
-    \end{displayquote}
 \fi
 
 \subsection{Undefined Terms}\label{undef-terms}
