@@ -30,7 +30,7 @@ class ExGloss:
         self.rowDataSpec: str = "c"
 
 exGlosses = [
-    ExGloss("exampleGlossary",    "parent-child", [0.4,  0.6] , "bt!"),
+    ExGloss("exampleGlossary",    "parent-child", [0.4,  0.6] , "tb!"),
     ExGloss("synExampleGlossary", "synonym",      [0.25, 0.75], "b!")
 ]
 

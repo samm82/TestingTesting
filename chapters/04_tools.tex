@@ -6,29 +6,30 @@
     To better understand our findings, we build tools to
     visualize relations between test approaches (\Cref{app-rel-vis}) and
     automatically track their flaws (\Cref{flaw-analysis}). Doing
-    this manually would be error-prone due to the amount of data involved (for
-    example, we identify \approachCount{} test approaches) and the number of
-    situations where the underlying data would change, such as adding to it,
-    further analyzing it, or correcting it. These all require
-    % including more detailed analysis, error corrections, and the addition of data. 
-    tedious updates to the corresponding visualizations that may be overlooked
-    or done incorrectly, so automating these processes allows for our results
-    to be reproduced (by us or others) and account for new data.
-    % Besides being more systematic, this 
-    Automation also allows us to observe the impacts of smaller changes
-    %, such as unexpected flaws that arise from a new relation between
-    %two approaches. It also 
-    and helps us verify the tools themselves; for example,
-    tracking a flaw manually should affect relevant flaw counts, which we can
-    double-check. Additionally, we define \LaTeX{} macros (\Cref{macros}) to
-    help achieve our goals of maintainability, traceability, and reproducibility.
+    this manually would be error-prone or even overlooked due to the amount of
+    data involved (for example, we identify \approachCount{} test approaches)
+    and the number of situations where the underlying data would change, such
+    as adding to it, further analyzing it, or correcting it. % These all require
+    % tedious updates to the corresponding visualizations that may be overlooked
+    % or done incorrectly, so automating these processes allows for our results
+    % to be reproduced (by us or others) and account for new data.
+    % Besides being more systematic, automation also allows us to observe the
+    % impacts of smaller changes, such as unexpected flaws that arise from a
+    % new relation between two approaches. It also helps us verify the tools
+    % themselves; for example, tracking a flaw manually should affect relevant
+    % flaw counts, which we can double-check.
+    We also define \LaTeX{} macros (\Cref{macros}) to help achieve our
+    goals of maintainability, traceability, and reproducibility.
 
     \subsection{Approach Relation Visualization}\label{app-rel-vis}
+\else
+    % Moved here to display nicely in paper
+    \flawMnfstsTable{}
+    \flawDmnsTable{}
 \fi
 
 To better understand the relations between test approaches, we develop a tool
-to generate visualizations of these relations automatically.
-\ifnotpaper
+to generate visualizations of these relations automatically. \ifnotpaper%
     % We can describe these graphs formally as ordered triplets
     %     $G = (A, S, P)$, where:  % Format based on https://en.wikipedia.org/wiki/Graph_theory
     %     \begin{itemize}
@@ -57,14 +58,11 @@ to generate visualizations of these relations automatically.
     visualize all parent-child relations as they are guaranteed to be
     visually meaningful.
 
+    \clearpage
     \input{build/exampleGlossary.tex}
     \ExampleParChdGraphs{}
-
-    \clearpage\else
-    % Moved here to display nicely in paper
-    \flawMnfstsTable{}
-    \flawDmnsTable{}
-\fi
+    \clearpage
+\fi%
 % For a given synonym pair to
 % be captured by our methodology, at least one term will have its own row in its
 % relevant glossary.
