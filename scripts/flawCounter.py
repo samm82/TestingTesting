@@ -455,10 +455,10 @@ def outputFlaws():
                 #    f"\\legend{{\\hspace{{3.4cm}} \\Large \\textbf{{Legend}},{",".join([vals[1] for vals in slices])}}}",
                 "\\end{axis}", "\\end{tikzpicture}",
                 "" if sem else f"\\caption{{{cap}}}\\label{{fig:{label}}}",
-                "\\end{figure}"], label)
+                "\\end{figure}"], label + ("Sem" if sem else ""))
 
-    flawSummaryHelper(normalize=False, sem=True)
-    flawSummaryHelper(normalize=True,  sem=True)
+    for x, y in itertools.product([True, False], repeat=2):
+        flawSummaryHelper(normalize=x, sem=y)
 
     # From ChatGPT
     sepPieCharts: list[str] = []
