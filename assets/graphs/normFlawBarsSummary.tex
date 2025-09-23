@@ -7,7 +7,7 @@ yticklabels={\parbox{0.24\textwidth}{\raggedleft\papers{}},\parbox{0.24\textwidt
 ytick=data,
 xlabel=\parbox{0.5\textwidth}{\centering Average Number of Flaws per Document by Source Tier}, xbar, xmin=0,
 nodes near coords,
-every node near coord/.append style={font=\tiny,/pgf/number format/fixed,/pgf/number format/fixed zerofill,/pgf/number format/precision=1},
+every node near coord/.append style={font=\small,/pgf/number format/fixed,/pgf/number format/fixed zerofill,/pgf/number format/precision=1},
 ]
 \pgfmathsetmacro{\stdResult}{\stdFlawMnfstBrkdwn{13} / \stdSources{3}}
 \pgfmathsetmacro{\metaResult}{\metaFlawMnfstBrkdwn{13} / \metaSources{3}}

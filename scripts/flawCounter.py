@@ -440,7 +440,8 @@ def outputFlaws():
                         # "nodes={inner sep=4pt,text depth=0.3em},},",
                         # "legend cell align=left,",
                         "nodes near coords,", # nodes near coords align={vertical}, point meta=y,"
-                        "every node near coord/.append style={font=\\tiny" +
+                        "every node near coord/.append style={" +
+                        (f"font=\\{"tiny" if sem else "small"}") +
                         (",/pgf/number format/".join(["", "fixed", "fixed zerofill", "precision=1"])
                          if normalize else "") + "},", "]",
                 # Legend header from https://tex.stackexchange.com/a/2332/192195
