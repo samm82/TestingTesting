@@ -398,16 +398,29 @@ def outputFlaws():
         normAxisHelper = ["Average", "Document by"]
         label = "flawBarsSummary"
         cap   = FLAW_CAPTION
+        divMacros = ""
 
         if normalize:
             # From https://stackoverflow.com/a/70310935/10002168
             axisHelper = list(sum(zip(normAxisHelper, axisHelper), ()))
             label = "normF" + label[1:]
             cap   = "Normalized summary of i" + FLAW_CAPTION[1:]
+            # With help from ChatGPT
+            divMacros = "\n".join([
+                (f"\\pgfmathsetmacro{{\\{src.name.lower()}Result}}"
+                 f"{{\\{src.name.lower()}FlawMnfstBrkdwn{{13}} "
+                 f"/ \\{src.name.lower()}Sources{{3}}}}")
+                for src in SrcCat if src.color.value >= 0
+            ])
         else:
             # For approximately consistent figure sizing
             axisHelper.append("\\\\ \\quad{}")
         axisLabel = " ".join(axisHelper)
+
+        def numDisp(src:str):
+            if normalize:
+                return f"\\{src}Result"
+            return f"\\the\\numexpr\\{src}FlawMnfstBrkdwn{{13}}"
 
         # Flaw summary
         writeFile(["\\begin{figure}[bt!]", "\\centering",
@@ -427,13 +440,17 @@ def outputFlaws():
                         # "nodes={inner sep=4pt,text depth=0.3em},},",
                         # "legend cell align=left,",
                         "nodes near coords,", # nodes near coords align={vertical}, point meta=y,"
-                        "every node near coord/.append style={font=\\tiny},", "]",
+                        "every node near coord/.append style={font=\\tiny" +
+                        (",/pgf/number format/".join(["", "fixed", "fixed zerofill", "precision=1"])
+                         if normalize else "") + "},", "]",
                 # Legend header from https://tex.stackexchange.com/a/2332/192195
                 #    "\\addlegendimage{empty legend}",
+                divMacros,
                 f"\\addplot[fill={DEFAULT_COLORS[0]}] coordinates {{{
                     " ".join(reversed([
-                        f"(\\the\\numexpr\\{src.name.lower()}FlawMnfstBrkdwn{{13}}" +
-                        f"{f"/\\{src.name.lower()}Sources{{3}}" if normalize else ""},{src.color.value})"
+                        f"({numDisp(src.name.lower())},{src.color.value})"
+                        # f"(\\the\\numexpr\\{src.name.lower()}FlawMnfstBrkdwn{{13}}" +
+                        # f"{f"/\\{src.name.lower()}Sources{{3}}" if normalize else ""},{src.color.value})"
                             for src in SrcCat if src.color.value >= 0]))}}};",
                 #    f"\\legend{{\\hspace{{3.4cm}} \\Large \\textbf{{Legend}},{",".join([vals[1] for vals in slices])}}}",
                 "\\end{axis}", "\\end{tikzpicture}",

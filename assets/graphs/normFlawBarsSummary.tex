@@ -7,9 +7,13 @@ yticklabels={\parbox{0.24\textwidth}{\raggedleft\papers{}},\parbox{0.24\textwidt
 ytick=data,
 xlabel=\parbox{0.5\textwidth}{\centering Average Number of Flaws per Document by Source Tier}, xbar, xmin=0,
 nodes near coords,
-every node near coord/.append style={font=\tiny},
+every node near coord/.append style={font=\tiny,/pgf/number format/fixed,/pgf/number format/fixed zerofill,/pgf/number format/precision=1},
 ]
-\addplot[fill=blue!60] coordinates {(\the\numexpr\paperFlawMnfstBrkdwn{13}/\paperSources{3},0) (\the\numexpr\textFlawMnfstBrkdwn{13}/\textSources{3},1) (\the\numexpr\metaFlawMnfstBrkdwn{13}/\metaSources{3},2) (\the\numexpr\stdFlawMnfstBrkdwn{13}/\stdSources{3},3)};
+\pgfmathsetmacro{\stdResult}{\stdFlawMnfstBrkdwn{13} / \stdSources{3}}
+\pgfmathsetmacro{\metaResult}{\metaFlawMnfstBrkdwn{13} / \metaSources{3}}
+\pgfmathsetmacro{\textResult}{\textFlawMnfstBrkdwn{13} / \textSources{3}}
+\pgfmathsetmacro{\paperResult}{\paperFlawMnfstBrkdwn{13} / \paperSources{3}}
+\addplot[fill=blue!60] coordinates {(\paperResult,0) (\textResult,1) (\metaResult,2) (\stdResult,3)};
 \end{axis}
 \end{tikzpicture}
 
