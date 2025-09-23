@@ -375,7 +375,7 @@ def outputFlaws():
                 #     #    flawCats)
                 #        )}}},",
                     # "ylabel=Flaw View,",
-                    "xlabel=Number of Flaws, xbar,",  # ybar=0pt, bar width=5, bar shift=3",
+                    "xlabel=Number of Flaws, xbar, xmin=0,",  # ybar=0pt, bar width=5, bar shift=3",
                     # "enlargelimits=0.2, enlarge x limits=0.1,",
                     # "legend style={at={(0.5,-0.25)}, anchor=north, legend columns=1,",
                     # "inner xsep=6pt,inner ysep=4pt,",
@@ -419,7 +419,7 @@ def outputFlaws():
                                     for src in SrcCat if src.color.value >= 0]))}}},",
                         "ytick=data,",  # "y tick label as interval,",
                         # "ylabel=Flaw View,",
-                        f"xlabel={f"\\parbox{{0.5\\textwidth}}{{\\centering {axisLabel}}}"}, xbar,", 
+                        f"xlabel={f"\\parbox{{0.5\\textwidth}}{{\\centering {axisLabel}}}"}, xbar, xmin=0,",
                         # ybar=0pt, bar width=5, bar shift=3",
                         # "enlargelimits=0.2, enlarge x limits=0.1,",
                         # "legend style={at={(0.5,-0.25)}, anchor=north, legend columns=1,",
