@@ -768,8 +768,17 @@ observing how terms are used in practice\thesisissueref{89}:
           % \item A less-formal classification \citep{KuļešovsEtAl2013}
     \item Website \citep{LambdaTest2024,Pandey2023}
     \item Booklet \citep{SPICE2022}
-    \item \ifnotpaper \else ChatGPT \fi \citet{ChatGPT2024} (with its claims
-          supported by \citet{RusEtAl2008})\ifnotpaper\footnote{For more
-                  information on how and why we use ChatGPT, see
-                  \Cref{use-of-chatgpt}.}\fi
+    \item \ifnotpaper \else ChatGPT \fi \citet{ChatGPT2024} with its claims
+          supported by \citet{RusEtAl2008}\ifnotpaper%
+              \footnote{\citet[p.~88]{Patton2006} says that if a specific
+                  defect is found, it is wise to look for other defects in the
+                  same location and for similar defects in other locations, but
+                  does not provide a name for this approach. After researching
+                  in vain, we ask \citet{ChatGPT2024} to name this test approach
+                  but do \emph{not} take its output to be true at face value.
+                  \citet{RusEtAl2008} support calling this approach ``defect-based
+                  testing'' based on the principle of ``defect clustering''.
+                  %   For more information on how and why we use ChatGPT, see
+                  %   \Cref{use-of-chatgpt}.
+              }\fi
 \end{itemize}
