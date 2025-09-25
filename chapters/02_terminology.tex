@@ -49,7 +49,8 @@ For each test, the main steps are to:
     \item determine the expected results,
     \item \phantomsection{}\label{step:run-tests} run the tests, and
     \item \phantomsection{}\label{step:cmp-results} compare the expected results to
-          the actual results \citetext{p.~443}.
+          the actual results \ifnotpaper \citetext{p.~443}\else
+              \cite[p.~443]{PetersAndPedrycz2000}\fi.
           %   Only step 6 is similar in Firesmith2015; exclude for simplicity
           %   \ifnotpaper \citep[p.~443; similar in][p.~11]{Firesmith2015}
           %   \else \citetext{p.~443} (similar in \cite[p.~11]{Firesmith2015}) \fi
