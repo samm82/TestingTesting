@@ -111,6 +111,7 @@ ConformanceTesting -> CorrectnessTesting[dir=none,color="blue"];
 ConformanceTesting -> ComplianceTesting[dir=none,style="dashed"];
 ConversionTesting -> MigrationTesting[dir=none];
 FunctionalTesting -> ConformanceTesting[dir=none,color="blue"];
+FunctionalTesting -> ConformanceTesting[dir=none,style="dashed",color="green"];
 SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
 EnduranceTesting -> SoakTesting[dir=none,color="green"];
 ReliabilityTesting -> SoakTesting[dir=none];

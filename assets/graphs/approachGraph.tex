@@ -598,6 +598,7 @@ ConformanceTesting -> CorrectnessTesting[dir=none,color="blue"];
 ConformanceTesting -> ComplianceTesting[dir=none,style="dashed"];
 ConversionTesting -> MigrationTesting[dir=none];
 FunctionalTesting -> ConformanceTesting[dir=none,color="blue"];
+FunctionalTesting -> ConformanceTesting[dir=none,style="dashed",color="green"];
 DataTesting -> DatadrivenTesting[dir=none,style="dashed",color="grey"];
 DynamicTesting -> DynamicAnalysis[dir=none,color="maroon"];
 DynamicTesting -> DynamicAnalysis[dir=none,style="dashed",color="green"];

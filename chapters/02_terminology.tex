@@ -34,11 +34,13 @@ logically as possible.
 \ifnotpaper\newpage\fi
 \subsection{Test Approaches}\label{approach-def}
 
-Software testing is defined as ``the process of executing a program with the
-intent of finding errors'' \ifnotpaper
-    (\citealp{Myers1976}, as cited in \citealp[p.~438]{PetersAndPedrycz2000}%
-    \footnote{See \flawref{myers-citation}.})\else
-    TODO: replace quote since original source can't be found\fi.
+Software testing is defined as the ``process of operating a system or component
+under specified conditions, observing or recording the results, and making an
+evaluation of some aspect of the system or component'' \citep{ISO_IEC2014}%
+%                     or ``the process of executing a program 
+\todo{OG IEEE, 1990}\ifnotpaper, usually ``with the intent of finding errors''
+(\citealp{Myers1976}, as cited in \citealp[p.~438]{PetersAndPedrycz2000}%
+\footnote{See \flawref{myers-citation}.})\fi.
 For each test, the main steps are to:
 \begin{enumerate}
     \item identify the goal(s) of the test,
@@ -54,9 +56,8 @@ For each test, the main steps are to:
 \end{enumerate}
 The end goal is to evaluate ``some aspect of the system or component'' based on
 the results of step~\ref{step:cmp-results} \ifnotpaper (\citealp[p.~10]{IEEE2022};
-    \citeyear[p.~6]{IEEE2021c};
-    \citeyear[p.~465]{IEEE2017}\todo{OG ISO/IEC 2014})\else
-    \cite[p.~465]{IEEE2017}, \cite[p.~10]{IEEE2022}, \cite[p.~6]{IEEE2021c}\fi.
+    \citeyear[p.~6]{IEEE2021c}; \citealp{ISO_IEC2014}\todo{OG IEEE, 1990})\else
+    \cite[p.~10]{IEEE2022}, \cite[p.~6]{IEEE2021c}, \cite{ISO_IEC2014}\fi.
 When this evaluation reveals errors, ``the faults causing them are what can and
 must be removed'' \citep[p.~5\=/3]{SWEBOK2024}.
 
@@ -181,9 +182,12 @@ and thus less helpful for grouping test approaches. \ifnotpaper Other
 ``artifact''\thesisissueref{44,119,39} since some terms can refer to both the
 application of a test approach \emph{and} the resulting document(s).
 \ifnotpaper
-    Additionally, \citet[p.~3]{SouzaEtAl2017} give ``test procedures'', which
-    may be considered equivalent to ``test approaches''
-    (see \Cref{tab:otherCats}), as examples of testing artifacts.
+    These two ideas are sometimes explicitly distinguished, such as
+    ``conformity evaluation'' and ``conformity evaluation report''
+    \citep{ISO_IEC2014}, but often are not.
+    % Additionally, \citet[p.~3]{SouzaEtAl2017} give ``test procedures'', which
+    % may be considered equivalent to ``test approaches''
+    % (see \Cref{tab:otherCats}), as examples of testing artifacts.
 \fi
 % The role of testing artifacts is not specified in \citep{BarbosaEtAl2006};
 % requirements, drivers, and source code are all treated the same
