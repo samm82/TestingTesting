@@ -35,8 +35,11 @@ logically as possible.
 \subsection{Test Approaches}\label{approach-def}
 
 Software testing is defined as ``the process of executing a program with the
-intent of finding errors'' \citep[p.~438]{PetersAndPedrycz2000}%
-\todo{OG Myers 1976}. For each test, the main steps are to:
+intent of finding errors'' \ifnotpaper
+    (\citealp{Myers1976}, as cited in \citealp[p.~438]{PetersAndPedrycz2000}%
+    \footnote{See \flawref{myers-citation}.})\else
+    TODO: replace quote since original source can't be found\fi.
+For each test, the main steps are to:
 \begin{enumerate}
     \item identify the goal(s) of the test,
     \item \phantomsection{}\label{step:decide-app} decide on an approach,
@@ -453,7 +456,7 @@ hierarchies \ifnotpaper (\citealp[Fig.~F.1]{IEEE2021c};
 Ideally, software testing literature would describe test approaches correctly,
 completely, consistently, and modularly, but this is not the case in reality.
 We use the term ``flaw'' to refer to any instance of the literature violating
-these ideals, \emph{not} to instances of \emph{software} doing the same.%
+these ideals, \emph{not} to instances of \emph{software} doing the same%
 \footnote{When picking a word to describe these violations, we wanted to avoid
     words that are ``overloaded with too many meanings'' like
     ``error'' and ``fault'' \citep[p.~12\=/3; see \Cref{error-fault-failure}
