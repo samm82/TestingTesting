@@ -53,16 +53,16 @@ once.
 \begin{figure}[bt!]
     \centering
     \begin{tikzpicture}
-        \def\radius{3.8cm}
-        \def\spread{1.5}
+        \def\radius{4cm}
+        \def\spread{1.7}
         \def\offset{\spread*1.8}
 
         \draw (-\spread, 0) circle (\radius);
         \draw ( \spread, 0) circle (\radius);
         \draw (0, -\offset) circle (\radius);
 
-        \node[above] at (-\offset,        \radius) {ISO};
-        \node[above] at ( \offset,        \radius) {IEC};
+        \node[above] at (-\offset,       \radius) {ISO};
+        \node[above] at ( \offset,       \radius) {IEC};
         \node[above] at (0, -\offset-1.9*\radius) {IEEE};
 
         % ALL
@@ -70,9 +70,9 @@ once.
                 \citealp{IEEE2022,IEEE2021a,IEEE2021b,IEEE2021c,IEEE2019a,
                     IEEE2019b,IEEE2017,IEEE2016,IEEE2015,IEEE2013,IEEE2010}}};
         % ISO/IEC
-        \node[above] at (0, 0.325*\radius) {\parbox{3cm}{\centering
+        \node[above] at (0, 0.25*\radius) {\parbox{3.25cm}{\centering
                 \citealp{ISO_IEC2023a,ISO_IEC2023b,ISO_IEC2018,ISO_IEC2015,
-                    ISO_IEC2014,ISO_IEC2011}}};
+                    ISO_IEC2014,ISO_IEC2011,ISO_IEC2005}}};
         % ISO/IEEE
         \node[above] at ( \offset, -\offset) {---};
         % IEC/IEEE
