@@ -48,8 +48,8 @@ methodology_a = ("""
           and ``snowball'' from them \\fi (\\Cref{ident-sources})
     \\item \\phantomsection{}\\label{step:ident-terms}
           Identify all test approaches""" + footnoteHelper("approach-def") +
-          """ and related testing terms that are used repeatedly and/or have
-          complex definitions (\\Cref{ident-terms})
+          """ and testing-related terms (\\Cref{ident-terms}) described in
+          these authoritative sources 
     \\item \\phantomsection{}\\label{step:record-info}
           Record all relevant data (\\Cref{record-info}), including
           implicit data (\\Cref{imp-info}), for each term identified in
