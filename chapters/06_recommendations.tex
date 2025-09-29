@@ -154,12 +154,12 @@ information from the literature more consistently:
 
 \subsection{Scalability Testing}\label{scal-test-rec}
 
-We describe the issues with scalability testing terminology in \Cref{scal-flaw}
-and show the relations between related approaches (as described by the
-literature) in \Cref{fig:scal-graph-current}. These flaws are resolved and/or
-explained by other sources! Taking this extra information into account results
-in \Cref{fig:scal-graph-proposed} and provides a more accurate description of
-scalability testing.
+The issues with scalability testing terminology we describe in \Cref{scal-flaw}
+% and show the relations between related approaches (as described by the
+% literature) in \Cref{fig:scal-graph-current}. These flaws
+are resolved and/or explained by other sources! Taking this extra information
+into account % results in \Cref{fig:scal-graph-proposed} and
+provides a more accurate description of scalability testing.
 
 \paragraph{\texttt{(CONTRA, SYNS)}}
 \citeauthor{IEEE2021c} \citeyearpar[p.~39]{IEEE2021c} define ``scalability
@@ -179,7 +179,7 @@ the ``capability of a product to meet requirements for the maximum limits of a
 product parameter''
 %, such as the number of concurrent users, transaction
 % throughput, or database size 
-\citep{ISO_IEC2023a}. Therefore, it these terms should \emph{not} be synonyms,
+\citep{ISO_IEC2023a}. Therefore, these terms should \emph{not} be synonyms,
 as done by \ifnotpaper
     \citet[p.~53]{Firesmith2015} and \citet[pp.~22\==23]{Bas2024}\else
     \cite[p.~53]{Firesmith2015} and \cite[pp.~22\==23]{Bas2024}\fi.
@@ -188,17 +188,16 @@ as done by \ifnotpaper
 
 The underlying reason that sources disagree on whether external modification of
 the system is part of scalability testing is its confusion with elasticity
-testing. \citeauthor{BertolinoEtAl2019} say the two approaches are ``closely
+testing. \citeauthor{BertolinoEtAl2019}\ say the two approaches are ``closely
 related'' \citeyearpar[p.~93:28]{BertolinoEtAl2019}, even claiming that one
 objective of elasticity testing is ``to evaluate scalability''
-\citetext{p.~93:14}! However, these terms are distinct in the context of
-definitions provided by \citet{SWEBOK2024} \ifnotpaper who \else which \fi
-cites \citet{BertolinoEtAl2019}:
+\citetext{p.~93:14}! However, \citet{SWEBOK2025} (\ifnotpaper who \else which \fi
+cites \citet{BertolinoEtAl2019}) distinguishes between these approaches:
 \begin{itemize}
-    \item \textbf{Scalability:} ``the software's ability to increase and
-          scale up on its nonfunctional requirements, such as load, number of
-          transactions, and volume of data'' \citep[p.~5\=/5; similar on
-              p.~5\=/9]{SWEBOK2024}.
+    \item \textbf{Scalability Testing:} testing that evaluates ``the software's
+          ability to scale up non-functional requirements such as load, number
+          of transactions, and volume of data'' \citep[p.~5\=/9; similar on
+              p.~5\=/5]{SWEBOK2025}.
           %       Based on this definition, scalability
           %   testing is a subtype of load testing, volume testing, and potentially
           %   transaction flow testing.
@@ -220,7 +219,7 @@ part of scalability testing but \emph{not} elasticity testing. This also
 implies that \citep{ISO_IEC2023a}'s notion of ``scalability'' actually refers
 to ``elasticity''.
 
-\scalGraphs{}
+% \scalGraphs{}
 
 \subsection{Performance(-related) Testing}\label{perf-test-rec}
 
