@@ -44,14 +44,14 @@ OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
 
 methodology_a = ("""
     \\item \\phantomsection{}\\label{step:ident-sources}
-          Identifying authoritative sources \\ifnotpaper on software testing
-          and ``snowballing'' from them \\fi (\\Cref{ident-sources})
+          Identify authoritative sources \\ifnotpaper on software testing
+          and ``snowball'' from them \\fi (\\Cref{ident-sources})
     \\item \\phantomsection{}\\label{step:ident-terms}
-          Identifying all test approaches""" + footnoteHelper("approach-def") +
-          """ and related testing terms that are used repeatedly and/or have
-          complex definitions (\\Cref{ident-terms})
+          Identify all test approaches""" + footnoteHelper("approach-def") +
+          """ and testing-related terms (\\Cref{ident-terms}) described in
+          these authoritative sources 
     \\item \\phantomsection{}\\label{step:record-info}
-          Recording all relevant data (\\Cref{record-info}), including
+          Record all relevant data (\\Cref{record-info}), including
           implicit data (\\Cref{imp-info}), for each term identified in
           step~\\ref{step:ident-terms}; test approach data are comprised of:
           \n""" + "\n".join([
@@ -61,20 +61,20 @@ methodology_a = ("""
                                                f" ({OTHER_NOTES_EXS}, etc.)"]])
         ]) + """
     \\item \\phantomsection{}\\label{step:repeat-process}
-          Repeating steps~\\ref{step:ident-sources} to \\ref{step:record-info} for 
-          any missing or unclear terms (\\Cref{undef-terms}) until some
-          stopping criteria (\\Cref{stop-crit})""")
+          Repeat steps~\\ref{step:ident-sources} to \\ref{step:record-info} for 
+          any missing or unclear terms (\\Cref{undef-terms}) until the stopping
+          criteria (\\Cref{stop-crit}) is reached""")
     
-methodology_b = """    \\item Analyzing recorded test approach data for additional flaws
+methodology_b = """    \\item Analyze recorded test approach data for additional flaws
           \\begin{enumerate}
-              \\item Generating relation graphs (\\Cref{\\ifnotpaper app-rel-vis\\else tools\\fi})
-              \\item Automatically detecting certain classes of flaws
+              \\item Generate relation graphs (\\Cref{\\ifnotpaper app-rel-vis\\else tools\\fi})
+              \\item Automatically detect certain classes of flaws
                     \\ifnotpaper (\\Cref{auto-flaw-analysis}) \\fi
-              \\item Automatically analyzing manually recorded flaws from
+              \\item Automatically analyze manually recorded flaws from
                     step~\\ref{manual-flaws} \\ifnotpaper (\\Cref{aug-flaw-analysis}) \\fi
           \\end{enumerate}
-    \\item Reporting results of flaw analysis (\\Cref{flaws})
-    \\item Providing examples of how to resolve these flaws (\\Cref{recs})"""
+    \\item Report results of flaw analysis (\\Cref{flaws})
+    \\item Provide examples of how to resolve these flaws (\\Cref{recs})"""
     
 # Base methodology overview
 writeFile(wrapEnv("enumerate", [methodology_a]), "methodOverview", helper=True)
