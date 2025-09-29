@@ -22,12 +22,13 @@ TransactionFlowTesting [label=<Transaction<br/>Flow<br/>Testing>];
 VolumeTesting [label=<Volume<br/>Testing>];
 
 
-CapacityTesting -> ScalabilityTesting[dir=none,color="green"];
+ScalabilityTesting -> CapacityTesting[dir=none,color="green"];
 
 CapacityTesting -> PerformanceEfficiencyTesting[color="green"];
 CapacityTesting -> PerformanceTesting[color="blue"];
 ElasticityTesting -> MemoryManagementTesting[color="blue"];
 ElasticityTesting -> ResourceUtilizationTesting[color="blue"];
+ElasticityTesting -> PerformanceTesting;
 ElasticityTesting -> StressTesting[color="grey"];
 LoadTesting -> PerformanceTesting[color="green"];
 LoadTesting -> PerformanceEfficiencyTesting[color="green"];
@@ -42,7 +43,8 @@ ResourceUtilizationTesting -> EfficiencyTesting[style="dashed"];
 ScalabilityTesting -> LoadTesting[color="blue"];
 ScalabilityTesting -> VolumeTesting[color="blue"];
 ScalabilityTesting -> TransactionFlowTesting[style="dashed",color="blue"];
-ScalabilityTesting -> ElasticityTesting[style="dashed",color="blue"];
+ScalabilityTesting -> ElasticityTesting[color="blue"];
+ScalabilityTesting -> StressTesting[color="blue"];
 ScalabilityTesting -> PerformanceTesting;
 ScalabilityTesting -> EfficiencyTesting;
 ScalabilityTesting -> PerformanceEfficiencyTesting[style="dashed"];

@@ -186,42 +186,39 @@ as done by \ifnotpaper
 
 \paragraph{\texttt{(CONTRA, DEFS)}}
 
-There seems to be an underlying reason that sources disagree on whether
-external modification of the system is part of scalability testing.
-\citeauthor{SWEBOK2024} \citeyearpar[p.~5\=/9]{SWEBOK2024} claim that one
-objective of elasticity testing is ``to evaluate scalability'', implying that
-\citep{ISO_IEC2023a}'s notion of ``scalability'' actually refers to
-``elasticity''! This makes sense in the context of other definitions
-provided by \citet{SWEBOK2024}:
+The underlying reason that sources disagree on whether external modification of
+the system is part of scalability testing is its confusion with elasticity
+testing. \citeauthor{BertolinoEtAl2019} say the two approaches are ``closely
+related'' \citeyearpar[p.~93:28]{BertolinoEtAl2019}, even claiming that one
+objective of elasticity testing is ``to evaluate scalability''
+\citetext{p.~93:14}! However, these terms are distinct in the context of
+definitions provided by \citet{SWEBOK2024} \ifnotpaper who \else which \fi
+cites \citet{BertolinoEtAl2019}:
 \begin{itemize}
     \item \textbf{Scalability:} ``the software's ability to increase and
           scale up on its nonfunctional requirements, such as load, number of
-          transactions, and volume of data'' \citetext{p.~5\=/5}. Based on this
-          definition, scalability testing is then a subtype of load testing
-          and volume testing, as well as potentially transaction flow testing.
-    \item \textbf{Elasticity Testing\ifnotpaper\footnote{This definition seems
-                      correct but its source is unclear; see
-                      \flawref{elas-ref}.}\fi:} testing that ``assesses
-          the ability of the \acs{sut} \dots\ to rapidly expand or shrink
-          compute, memory, and storage resources without compromising the
-          capacity to meet peak utilization'' \citetext{p.~5\=/9}. Based on this
-          definition, elasticity testing is then a subtype of memory
-          management testing (with both being a subtype of resource
-          utilization testing) and stress testing.
+          transactions, and volume of data'' \citep[p.~5\=/5; similar on
+              p.~5\=/9]{SWEBOK2024}.
+          %       Based on this definition, scalability
+          %   testing is a subtype of load testing, volume testing, and potentially
+          %   transaction flow testing.
+    \item \textbf{Elasticity Testing:} testing that evaluates the ability of a
+          system to ``dynamically scal[e] up and down \dots{} resources as
+          needed'' \citep[p.~93:18; similar on p.~93:13]{BertolinoEtAl2019}
+          ``without compromising the capacity to meet peak utilization''
+          \citep[p.~5\=/9]{SWEBOK2025}.
+          %   Based on this definition, elasticity
+          %   testing is then a subtype of memory management testing (with both
+          %   being a subtype of resource utilization testing) and stress testing.
 \end{itemize}
 This distinction is consistent with how the terms are used in industry:
 \citet{Pandey2023}\thesisissueref{35} says that scalability is the ability to
 ``increase \dots\ performance or efficiency as demand increases over time'',
 while elasticity allows a system to ``tackle changes in the workload [that]
-occur for a short period''.
-
-\paragraph{\texttt{(WRONG, LABELS)}}
-
-\citeauthor{SWEBOK2024} \citeyearpar[p.~5\=/9]{SWEBOK2024}'s definition of
-``scalability testing'' is completely separate from the definitions of
-``scalability'', ``capacity'', and ``elasticity'' discussed above! Therefore,
-this definition and its related synonym relations should simply be disregarded
-since they are inconsistent with the rest of the literature.
+occur for a short period''. Therefore, external modification of a system is
+part of scalability testing but \emph{not} elasticity testing. This also
+implies that \citep{ISO_IEC2023a}'s notion of ``scalability'' actually refers
+to ``elasticity''.
 
 \scalGraphs{}
 
