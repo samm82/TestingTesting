@@ -22,10 +22,10 @@
                              & \macro{multiCatIntro}       & \Cref{dmn-def,multiCats,multiCats-full,infMultiCats}        \\*
                              & \macro{redBoxFlaw}          & \Cref{explicitness,wrong} and \flawref{dubious-red-box-syn} \\*
                              & \macro{seeRefMissing}       & \Cref{multi-view-flaws} and \flawref{see-ref-missing}       \\*
+                             & \macro{errorGuessFlaw}      & \Cref{wrong} and \flawref{error-guess}                      \\*
                              & \macro{tolTestFlaw}         & \Cref{wrong} and \flawref{assert-truth}                     \\*
     %                                                        less-cred-assert
                              & \macro{accelTolTest}        & \macro{tolTestFlaw} and \Cref{hard-test}                    \\*
-                             & \macro{errorGuessFlaw}      & \Cref{wrong} and \flawref{error-guess}                      \\*
                              & \macro{parSheetTestFlaw}    & \Cref{wrong} and \flawref{par-sheet-test}                   \\*
     %  & \macro{perfSecParFlaw}      & \flawref{perf-sec-par} and paper version of \Cref{pars}     \\
                              & \macro{parSynIntro}         & \Cref{parSyns,parSyns-full}                                 \\*
@@ -43,8 +43,8 @@
     \hline
     \macroType{3}{Links}     & \macro{ourApproachGlossary} &
     \Cref{tab:approachGlossaryExcerpt,infers,record-info,imp-info,record-flaws,stop-crit,app-rel-vis,%
-    auto-flaw-analysis,aug-flaw-analysis,syns,oat-test-rec,orth-test}                                                    \\*
-                             & \macro{seeSrcCode}          & \Cref{app-rel-vis,auto-flaw-analysis}                       \\*
+    auto-flaw-detect,flaw-comment-analysis,syns,oat-test-rec,orth-test}                                                  \\*
+                             & \macro{seeSrcCode}          & \Cref{app-rel-vis,auto-flaw-detect}                         \\*
     % paper-macros
                              & \macro{recFigs}             & \Cref{flaws,recs}                                           \\
     \hline
@@ -53,19 +53,19 @@
                              & \macro{rqctext}             &                                                             \\
     \hline                                                 % not working with Cref
     \macroType{11}{Misc.}    & \macro{docType}             & \hyperref[abstract]{Abstract},
-    \Cref{terminology,explicitness,imp-info,auto-flaw-analysis,future-detect-flaws}                                      \\*
+    \Cref{terminology,explicitness,imp-info,auto-flaw-detect,future-detect-flaws}                                        \\*
                              & \macro{supersAck}           & \nameref{acknowledgements} and seminar slides               \\*
                              & \macro{supers}              & \nameref{decl_aca_ach} and \macro{supersAck}                \\*
                              & \macro{highLvlScope}        & \Cref{scope-overview,stds}                                  \\*
                              & \macro{defRel}              & \Cref{syn-rels,par-chd-rels}                                \\*
     %  & \macro{defLabelDistinct}    & \Cref{label-flaw-def,labels}                                \\*
-                             & \macro{oneSrcDistinct}      & \Cref{one-src-flaws,aug-flaw-analysis}                      \\*
+                             & \macro{oneSrcDistinct}      & \Cref{one-src-flaws,flaw-comment-syntax}                    \\*
                              & \macro{approachFields}      & \Cref{explicitness,record-info}                             \\*
                              & \macro{impKeywords}         & \Cref{explicitness,imp-info}                                \\*
                              & \macro{orthTestIntro}       & \Cref{infers,orth-test}                                     \\*
                              & \macro{listAllSrcs}         & \Cref{source-tiers,ident-sources}                           \\*
                              & \macro{addTextEx}           & \Cref{texts,ident-sources}                                  \\
-    %  & \macro{displayNL}           & \Cref{less-cred-assert,aug-flaw-analysis}                   \\
+    %  & \macro{displayNL}           & \Cref{less-cred-assert,flaw-comment-analysis}                   \\
     % paper-macros,tab:macrosPaper
     \hline
 \end{longtblr}

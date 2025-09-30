@@ -69,9 +69,9 @@ methodology_b = """    \\item Analyze recorded test approach data for additional
           \\begin{enumerate}
               \\item Generate relation graphs (\\Cref{\\ifnotpaper app-rel-vis\\else tools\\fi})
               \\item Automatically detect certain classes of flaws
-                    \\ifnotpaper (\\Cref{auto-flaw-analysis}) \\fi
+                    \\ifnotpaper (\\Cref{auto-flaw-detect}) \\fi
               \\item Automatically analyze manually recorded flaws from
-                    step~\\ref{manual-flaws} \\ifnotpaper (\\Cref{aug-flaw-analysis}) \\fi
+                    step~\\ref{manual-flaws} \\ifnotpaper (\\Cref{flaw-comment-analysis}) \\fi
           \\end{enumerate}
     \\item Report results of flaw analysis (\\Cref{flaws})
     \\item Provide examples of how to resolve these flaws (\\Cref{recs})"""

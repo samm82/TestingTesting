@@ -1,9 +1,11 @@
 \subsection{Flaw Analysis}\label{flaw-analysis}
 
 In addition to analyzing specific flaws, it is also useful to examine them at
-a higher level. We automate subsets of this task where applicable
-(\Cref{auto-flaw-analysis}) and augment the remaining manual portion with
-automated tools (\Cref{aug-flaw-analysis}). This gives us an overview of:
+a higher level. We facilitate this by including a comment containing key
+information alongside each flaw (\Cref{flaw-comment-syntax}), both when
+detecting flaws automatically where applicable (\Cref{auto-flaw-detect}) and
+when recording flaws manually, so we can parse and analyze this information
+using automated tools (\Cref{flaw-comment-analysis}). This gives us an overview of:
 \begin{itemize}
     \item how many flaws (defined in \Cref{flaw-def}) there are,
     \item how these flaws present themselves (see \Cref{mnfst-def}),
@@ -108,7 +110,7 @@ once.
 %           nuanced breakdown of flaws that identifies those within a
 %           singular document and those between documents by the same author is
 %           given in \Cref{fig:flawBars} and explained in more detail in
-%           \Cref{aug-flaw-analysis}; this view counts three total flaws here.
+%           \Cref{flaw-comment-analysis}; this view counts three total flaws here.
 %     \item \textbf{\texts{}}: this flaw occurs between a source in this tier and
 %           a ``more credible'' one (the IEEE standards; see \Cref{cred}).
 %           % \item \textbf{\papers{}}: this flaw occurs between a source in this tier
@@ -117,7 +119,78 @@ once.
 %           %       the count by just one to avoid double counting.
 % \end{itemize}
 
-\subsubsection{Automated Flaw Analysis}\label{auto-flaw-analysis}
+\subsubsection{Flaw Comment Syntax}\label{flaw-comment-syntax}
+As described in \Cref{record-flaws}, we include comments alongside the flaws we
+document so we can analyze them automatically (as described in
+\Cref{flaw-comment-analysis}). These comments have the following format:
+\begin{displayquote}
+    \texttt{\% Flaw count (MNFST, DMN): \{A1\} \{A2\} \dots{} | \{B1\} % \{B2\}
+        \dots{} | \{C1\} \dots}
+\end{displayquote}
+\texttt{MNFST} and \texttt{DMN} are placeholders for the ``keys'' given in
+\Cref{tab:flawMnfstDefs,tab:flawDmnDefs}, respectively, that we use to
+track a flaw's manifestation(s) and domain(s) (defined in \Cref{flaw-def}).
+For example, the comment line for an incorrect synonym relation would start
+with ``\texttt{\% Flaw count (WRONG, SYNS)}'' and one for a redundant label would
+start with ``\texttt{\% Flaw count (REDUN, LABELS)}''. We omit these keys from
+% constructed examples of these comments without associated flaws throughout / brevity
+this chapter for simplicity. Finally, \texttt{A1}, \texttt{A2}, % \texttt{B2},
+\texttt{B1}, and \texttt{C1} are each placeholders for a source involved in
+this example flaw; in general, there can be arbitrarily many. We represent
+each source by its \BibTeX{} key and wrap each one in curly braces (with
+the exception of the \acs{istqb} glossary due to its use of custom commands
+via \macro{citealias}) to mimic \LaTeX{}'s citation commands for ease of
+parsing. We then separate each ``group'' of sources with a pipe symbol
+(\texttt{|}) so we can compare each pair of groups; in general, a flaw can
+have any number of groups of sources.
+
+As mentioned in \Cref{one-src-flaws}, \oneSrcDistinct{} We track
+self-contained flaws by recording the single source that the flaw is present
+in such as in the first line below. In constrast, we track internal flaws
+by recording the single source in multiple groups (as defined above). The
+second line is a standard example of this, while the third is more complex;
+in this case, source \texttt{Y} agrees with only one of the conflicting
+sources of information in \texttt{X}.
+\begin{displayquote}
+    \texttt{\% Flaw count: \{X\}\\\% Flaw count: \{X\} | \{X\}\\
+        \% Flaw count: \{X\} | \{X\} \{Y\}}
+\end{displayquote}
+We can also specify the ``explicitness'' (see \Cref{explicitness}) of a
+flaw by inserting the phrase ``implied by'' after the sources of explicit
+information and before those of implicit information, such as in the
+following example:\qtodo{Is this clear enough?}
+\begin{displayquote}
+    \texttt{\% Flaw count: \{X\} \{Y\} | \{Z\} implied by \{X\}}
+\end{displayquote}\phantomsection{}\label{less-cred-assert}%
+Occasionally, we assert that a source from a less credible tier is more
+correct than a source from a more credible tier\thesisissueref{184}.
+% For example, \tolTestFlaw*{} This flaw is supported by these additional
+% papers found via a miniature literature review (described in
+% \Cref{undef-terms}) from a lower source tier than \citet{Firesmith2015}
+% (which is a terminology collection; see \Cref{source-tiers}). However,
+% this flaw is really based in \citet{Firesmith2015} and not in these
+% additional papers, but this would be counted as a flaw in these papers if
+% they were included as detailed above.
+If we documented these flaws as above, they would incorrectly be counted as
+flaws within the less credible tier! Therefore, we document these
+``assertion'' sources separately to track them for traceability without
+counting them incorrectly.
+% As an example, the
+% following is the comment line\utd{} for this specific example
+% (\flawref{assert-truth}):
+% \begin{displayquote}
+%     \texttt{\% Flaw count (WRONG, LABELS): \{Firesmith2015\}\\
+%         \% Assertion: \{LiuEtAl2023\} \{MorgunEtAl1999\} \{HolleyEtAl1996\}
+%         \displayNL \{HoweAndJohnson1995\}}
+% \end{displayquote}
+For example, if we assert that a textbook \texttt{W} is correct and
+indicates a flaw in established standards \texttt{X} and \texttt{Y}, we
+would track this assertion separately from its associated flaw as follows:
+\begin{displayquote}
+    \texttt{\% Flaw count: \{X\} \{Y\}\\\% Assertion: \{W\}}
+\end{displayquote}
+
+\subsubsection{Automated Flaw Detection}\label{auto-flaw-detect}
 
 As outlined in \Cref{relevantSyns}, we automatically detect synonym relations
 from \ourApproachGlossary{} that violate transitivity to generate our
@@ -125,10 +198,10 @@ visualizations. These relations are significant because they indicate potential
 flaws. We automatically detect and format these flaws to present them when
 discussing synonym relation flaws in \Cref{syns}. % \Cref{multiSyns,infMultiSyns}
 For these and other kinds of flaws, we also generate the corresponding comments
-as described in \Cref{record-flaws} we detect automatically before generating
-the corresponding \LaTeX{} file to ensure these flaws also get analyzed.
-Since we already automatically detect one kind of flaw, the next logical step
-is then to detect more.
+described in \Cref{flaw-comment-syntax} and include them in the
+corresponding \LaTeX{} files to ensure that we analyze and count these flaws in
+addition to those we record manually. Since we already automatically detect
+one kind of flaw, the next logical step is then to detect more.
 
 \ExampleFlawGraphs{}
 
@@ -159,10 +232,10 @@ we record (see \Cref{tab:exampleGlossary,tab:synExampleGlossary} for examples
 of our citation format), we can use them to
 identify the offending source tier(s). This comes with the added benefit that
 we can format these citations to use with \LaTeX{}'s citation commands in this
-\docType{}, including generating the comments used to analyze flaws as
-described in \Cref{aug-flaw-analysis}.
+\docType{}, including generating the comments described in
+\Cref{flaw-comment-syntax}.
 
-\phantomsection{}\label{auto-flaw-analysis-explicitness}
+\phantomsection{}\label{auto-flaw-detect-explicitness}
 Alongside this citation information, we include keywords so we can assess how
 ``explicit'' a piece of information is (see \Cref{explicitness}). This is
 useful when counting flaws, since they can be both objective and subjective but
@@ -175,14 +248,14 @@ we only count each flaw for its most ``explicit'' manifestation%
 , similarly to how we visualize the relations
 between approaches as described in \Cref{visExplicit}.
 
-\subsubsection{Augmented Flaw Analysis}\label{aug-flaw-analysis}
+\subsubsection{Flaw Comment Analysis}\label{flaw-comment-analysis}
 
 To perform more detailed analysis on the flaws we uncover, we use \LaTeX{}
 comments to capture information about the flaws themselves as outlined in
-\Cref{record-flaws}. We include these flaw comments when manually recording
-flaws from the literature (\Cref{record-info}) and generate them when
+\Cref{flaw-comment-syntax}. We include these flaw comments when manually
+recording flaws from the literature (\Cref{record-info}) and generate them when
 automatically detecting flaws from \ourApproachGlossary{}
-(\Cref{auto-flaw-analysis}).
+(\Cref{auto-flaw-detect}).
 
 The main way we use these comments is to determine where each flaw originates.
 We compare the authors and years of each source involved with a given flaw
@@ -212,7 +285,7 @@ source tiers, which we use when counting flaws in \Cref{flaws}.
 % \Cref{fig:flawBars}, but only once to avoid double counting.
 
 We parse implicit information following
-the same rules given in \Cref{auto-flaw-analysis-explicitness} for
+the same rules given in \Cref{auto-flaw-detect-explicitness} for
 automatically detecting flaws. Note that we only count subjective flaws if there
 is not an equivalent objective flaw, as we do when visualizing relations
 (as described in \Cref{visExplicit}). The following comment line\utd{} from
