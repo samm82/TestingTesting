@@ -459,8 +459,6 @@ describing sources of information) as a shorthand for all ``not explicit''
 manifestations throughout this \docType{} for clarity.
 
 \ifnotpaper
-    \input{assets/tables/impCaseKeywords}
-
     Regarding the last entry in \Cref{tab:impCaseKeywords}, if a test approach in
     \ourApproachGlossary{} has a name ending in ``~(Testing)'' (space
     included), then the word ``Testing'' might not be part of its name
@@ -476,7 +474,8 @@ manifestations throughout this \docType{} for clarity.
     suffix ``~(Testing)'' (when it makes sense to do so) and consider
     the test approach to be implied.
 
-    \clearpage
+    \input{assets/tables/impCaseKeywords}
+
     \subsubsection{Recording Flaws}\label{record-flaws}
     While we can detect some subsets of flaws automatically by analyzing
     \ourApproachGlossary{} (see \Cref{auto-flaw-detect}), most
@@ -500,6 +499,7 @@ manifestations throughout this \docType{} for clarity.
     we display this flaw as an example of incorrect traceability information as
     \flawref{see-ref-missing} since we determine this to be more meaningful.
     % as described in \Cref{flaw-comment-analysis}
+    \newpage
 \fi
 
 \subsection{Undefined Terms}\label{undef-terms}
