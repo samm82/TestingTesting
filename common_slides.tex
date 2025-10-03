@@ -1,0 +1,395 @@
+\begin{frame}{Taxonomies to the Rescue?}
+    \framesubtitle{``The Problem'' (cont.)}
+    \begin{columns}[T]
+        \begin{column}{.6\textwidth}
+            \begin{itemize}
+                \item Existing software testing taxonomies:
+                      \begin{itemize}
+                          \item \citet{TebesEtAl2020a}
+                          \item \citet{SouzaEtAl2017}
+                          \item \citet{Firesmith2015}
+                          \item \citet{UnterkalmsteinerEtAl2014}
+                      \end{itemize}
+            \end{itemize}
+        \end{column}
+        \begin{column}<2->{.4\textwidth}
+            \centering
+            \vspace{1.5mm}
+            Focus on:
+            \vspace{0.5mm}
+
+            \small The Testing Process
+
+            Organizing Terminology
+
+            Relations between Approaches
+
+            Traceability between Stages
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PROJECT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Project}
+\subsection{Research Questions}
+
+\def\rqa{\begin{alertblock}{Research Question 1}
+        \rqatext{}
+    \end{alertblock}
+}
+
+\def\rqb{\begin{alertblock}{Research Question 2}
+        \rqbtext{}
+    \end{alertblock}
+}
+
+\def\rqc{\begin{alertblock}{Research Question 3}
+        \rqctext{}
+    \end{alertblock}
+}
+
+\begin{frame}{Research Questions}
+    \onslide<1->\rqa{} \vspace*{\fill}
+    \onslide<1>\rqb{} \vspace*{\fill}
+    \onslide<1>\rqc{} \vspace*{\fill}
+    \vspace{0.2cm}
+\end{frame}
+
+\subsection{Methodology}
+
+\input{build/methodOverviewSem}
+
+\begin{frame}{Methodology}
+    \framesubtitle{Procedure}
+    \begin{itemize}
+        \item A row is created for each test approach
+    \end{itemize}
+    \begin{center}
+        \begin{table}
+            \small
+            \begin{tabularx}{\linewidth}{|M{1.1cm}|M{1.3cm}|X|M{1.5cm}|M{1.6cm}|}
+                \hline
+                \thead{\textbf{Name}} & \thead{\textbf{Category}} & \thead{\textbf{Definition}}                                                                                         & \thead{\textbf{Parent(s)}}                       & \thead{\textbf{Synonym(s)}}           \\
+                \hline
+                A/B Testing           & Practice {\tiny (Fig.~2)} & Testing ``that allows testers to determine which of two systems or components performs better'' {\tiny (pp.~1, 36)} & Statistical Testing {\tiny (pp.~1,~36)}, \dots{} & Split-Run Testing {\tiny (pp.~1,~36)} \\
+                \hline
+            \end{tabularx}
+            \caption{\tiny Information from \citep{IEEE2022}}
+        \end{table}
+    \end{center}
+    \pause \vspace{-0.5cm}
+    \begin{itemize}
+        \item This information is gathered from sources by looking for
+              \begin{itemize}
+                  \item Glossaries, taxonomies, hierarchies, etc.
+                  \item Testing-related terms
+                  \item Terms described \emph{by} other approaches
+                  \item Terms that \emph{imply} other approaches
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+% \begin{frame}{Methodology}
+%     \framesubtitle{Procedure}
+%     \begin{itemize}
+%         \item It seems that the existence of a software quality implies the
+%               existence of a test type associated with it \pause
+%         \item Some test approaches use shared or complicated terminology \pause
+%         \item For each of these, we record its
+%               \begin{itemize}
+%                   \item Name
+%                   \item Definition
+%                   \item Precedence for a related test type (only for qualities)
+%                   \item Synonym(s)
+%               \end{itemize}
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Methodology}
+%     \framesubtitle{Procedure}
+%     \begin{itemize}
+%         \item Recording these data in a consistent format allows for visualizations to
+%               be generated according to a certain logic \pause
+%         \item It also allows for subsets of flaws to be identified \pause
+%               \vspace{1cm}\rqb{}
+%     \end{itemize}
+% \end{frame}
+
+\begin{frame}{Methodology}
+    \framesubtitle{Sources}
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \pie[sum=auto, after number=, text=legend, thick,
+                scale=\ifnotpaper0.7\else0.5\fi,
+                every label/.style={align=left, scale=0.7}]
+            {\stdSources{3}/\stds{},
+                \metaSources{3}/\metas{},
+                \textSources{3}/\texts{},
+                \paperSources{3}/\papers{}}
+
+            \onslide<2>{
+                \node[anchor=west, align=center] at (-1.9, 3) {
+                    Textbooks used at McMaster were our ad hoc starting points\\
+                    \tiny \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
+                };
+                \draw[->, very thick] (-1.5, 2.85) -- (-1.25, 1.4);
+            }
+
+            % \onslide<3>{
+            %     \node[anchor=west, align=left] at (2.4, -2) {
+            %         Includes websites \citetext{\citealp{LambdaTest2024}; \\
+            %             \quad\quad\citealp{Pandey2023}} and a booklet\\
+            %         \quad\quad\citep{SPICE2022}};
+            %     \draw[->, very thick] (2.25, -1.5) -- (1.25, -1.1);
+            % }
+
+        \end{tikzpicture}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]{Methodology}
+    \framesubtitle{Categories}
+    \vspace{-0.925cm}
+    \centering
+    \only<1>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels1.pdf}}
+    \only<2>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels2.pdf}}
+    \only<3>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels3.pdf}}
+    \only<4>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels4.pdf}}
+    \only<5>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels5.pdf}}
+
+    \begin{minipage}{0.98\textwidth}
+        % For weird spacing issue
+        \only<1-3>{\vspace{-0.8cm}}
+        \only<4>{\vspace{-0.475cm}}
+        \only<5>{\vspace{0.02cm}}
+        \only<1>{\textbf{Approach:} a ``high-level test implementation choice''
+            \citep[p.~10]{IEEE2022} used to ``pick the particular test case
+            values'' \citeyearpar[p.~465]{IEEE2017}}
+        \only<2>{\textbf{Level:} a stage of testing with ``particular
+            objectives and \dots{} risks'', each performed in sequence
+            (\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021a};
+            \citeyear[p.~6]{IEEE2021c})}
+        \only<3>{\textbf{Practice:} a ``conceptual framework that can be applied
+            to \dots{} [a] test process to facilitate testing''
+            (\citealp[p.~14]{IEEE2022}; \citeyear[p.~471]{IEEE2017})}
+        \only<4>{\textbf{Technique:} a
+            % ``defined'' and ``systematic'' \citep[p.~464]{IEEE2017}
+            ``procedure used to create or select a test
+            model, identify test coverage items, and derive corresponding test cases''
+            (\citeyear[p.~11]{IEEE2022}; \citeyear[p.~5]{IEEE2021a};
+            similar in \citeyear[p.~467]{IEEE2017})}
+        \only<5>{\textbf{Type:} ``Testing that is focused on specific quality
+            characteristics'' (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021c};
+            \citeyear[p.~473]{IEEE2017})}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}[t]{Methodology}
+    \framesubtitle{Visualization Notation}
+    \vspace{-0.925cm}
+    \centering
+    \only<1>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels5.pdf}}
+    \only<2>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels6.pdf}}
+    \only<3>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels7.pdf}}
+
+    \begin{minipage}{0.98\textwidth}
+        \centering
+        % For spacing issues
+        \only<1>{\vspace{1.6cm}}
+        \only<2>{\vspace{-2.2cm}}
+        \only<3>{\vspace{-1.2cm}}
+        \only<1>{Arrows point from a \emph{child} node to a \emph{parent} node.}
+        \only<2>{Lines without arrowheads connect \emph{synonyms}.}
+        \only<3>{Dashed lines indicate a relationship is \emph{implicit}.}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}[t]{Methodology}
+    \framesubtitle{Visualization Notation}
+    \begin{columns}[T]
+        \begin{column}{.5\textwidth}
+            \vspace{-0.5cm}
+            \centering
+            \includegraphics[width=\linewidth]{assets/graphs/manual/catRels8.pdf}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \vspace{0.75cm}
+            Dashed outlines indicate a term is \emph{implicit}.\\
+            \vspace{1.3cm}
+            Dotted outlines indicate a term is a \emph{synonym} to more than one term.
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Graph of Test Approaches}
+    \pause \large \centering \texttt{! Dimension too large.}
+    % \includegraphics[width=0.75\textwidth, height=0.75\textheight,
+    %     keepaspectratio]{assets/graphs/approachGraph.pdf}
+\end{frame}
+
+\begin{frame}{Graph of Test Levels}
+    \includegraphics[width=\textwidth]{assets/graphs/levelGraph.pdf}
+\end{frame}
+
+\begin{frame}{Graph of Test Practices}
+    \includegraphics[width=\textwidth]{assets/graphs/practiceGraph.pdf}
+\end{frame}
+
+\begin{frame}{Graph of Test Techniques}
+    \includegraphics[width=\textwidth]{assets/graphs/techniqueGraph.pdf}
+\end{frame}
+
+\begin{frame}{Graph of Test Types}
+    \includegraphics[width=\textwidth]{assets/graphs/typeGraph.pdf}
+\end{frame}
+
+\begin{frame}[t]{Methodology}
+    \framesubtitle{Visualization Notation}
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.65\textheight]{assets/images/test approach choices}
+        \caption{\tiny \citep[Fig.~2]{IEEE2022}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Methodology}
+    \framesubtitle{Visualization Notation}
+    \begin{columns}[c]
+        \begin{column}{.4\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\linewidth]{assets/images/test approach static testing}
+                \caption{\tiny Adapted from \citep[Fig.~2]{IEEE2022}}
+            \end{figure}
+        \end{column}
+        \begin{column}{.6\textwidth}
+            \begin{itemize}
+                \item \pause Quite distinct but not necessarily orthogonal
+                \item \pause When considering static testing in isolation,
+                      related \emph{dynamic approaches} have grey backgrounds
+
+                      \vspace{-0.5cm}
+                      \includegraphics[width=\linewidth]{assets/graphs/manual/catRels9.pdf}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Graph of \emph{Static} Test Approaches}
+    \includegraphics[width=\textwidth]{assets/graphs/staticGraph.pdf}
+\end{frame}
+
+\section{Results}
+\begin{frame}{Overview}
+    % \onslide<1->\rqa{} \vspace*{\fill}
+    % \onslide<1>\rqb{} \vspace*{\fill}
+    % \onslide<1>\rqc{} \vspace*{\fill}
+    % \onslide<2>
+    % \vspace{-4cm}
+    \begin{columns}
+        \begin{column}{0.45\textwidth}
+            \vspace{-1cm}
+            \begin{itemize}
+                \item \approachCount{} test approaches $\rightarrow$
+                \item<2-> \qualityCount{} software qualities \\ \small (may imply test approaches)
+                \item<3-> \flawCount{} flaws in the software testing literature
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.55\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \pie[sum=100, text=legend, thick, scale=0.5,
+                every label/.style={align=left, scale=0.7}]
+                {{\the\numexpr 100 - 100 * \UndefAfter/\TotalAfter}/Defined,
+                {\the\numexpr 100 * \UndefAfter/\TotalAfter}/{Not defined}}
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Flaw Summary by Source Tier}
+    \begin{center}
+        \input{assets/graphs/flawBarsSummarySem}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Normalized Flaw Summary}
+    \begin{center}
+        \input{assets/graphs/normFlawBarsSummarySem}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Flaw Summary by Manifestation}
+    \begin{center}
+        \input{assets/graphs/flawMnfstBarsSummary}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Flaw Summary by Domain}
+    \begin{center}
+        \input{assets/graphs/flawDmnBarsSummary}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Automated Flaws}
+    \begin{itemize}
+        \item Some terms are given as a synonym to two (or more) disjoint,
+              unrelated terms, making the relation between the given synonyms
+              ambiguous \pause
+        \item These are included in generated visualizations automatically
+    \end{itemize}
+    \vspace{-0.5cm}
+    \begin{columns}[c]
+        \begin{column}{.475\linewidth}
+            \small
+            \begin{table}[hbtp!]
+                \centering
+                \begin{tabularx}{\textwidth}{c>{\raggedleft\arraybackslash}X} \hline
+                    Name & Synonym(s)                                   \\ \hline
+                    E    & F (Author, 2022; implied by StdAuthor, 2021) \\
+                    G    & F (Author, 2017), H (implied by 2022)        \\
+                    H    & X (StdAuthor, 2021)                          \\ \hline
+                \end{tabularx}
+            \end{table}
+        \end{column}
+        \begin{column}{.5\linewidth}
+            \includegraphics[width=\textwidth]{assets/graphs/SynExampleGlossaryGraph.pdf}
+        \end{column}
+    \end{columns} %\pause
+    \vspace{-0.25cm}
+\end{frame}
+
+\begin{frame}{Automated Flaws}
+    Prominent examples of these ``multi-synonyms'': \vspace{0.25cm}
+    \begin{enumerate}
+        % \item \textbf{Invalid Testing:} \hfill \textbf{Source(s)}
+        %       \begin{itemize}
+        %           \item Error Tolerance Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
+        %           \item Negative Testing {\hfill \tiny \citepISTQB{}}
+        %       \end{itemize} \pause
+        \item \textbf{Soak Testing:} \hfill \textbf{Source(s)}
+              \begin{itemize}
+                  \item Endurance Testing {\hfill \tiny \citep[p.~39]{IEEE2021c}}
+                  \item Reliability Testing {\hfill \tiny (\citealp[Tab.~2]{Gerrard2000a};
+                                \citeyear[Tab.~1, p.~26]{Gerrard2000b})}
+              \end{itemize} \pause
+        \item \textbf{Functional Testing:}
+              \begin{itemize}
+                  \item Behavioural Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
+                  \item Correctness Testing {\hfill \tiny \citep[p.~5\=/7]{SWEBOK2024}}
+                  \item Specification-based Testing {\hfill \tiny (\citealp[p.~196]{IEEE2017}; \dots{})}
+                        % \citealp[pp.~44\==45]{Kam2008}; \citealp[p.~399]{vanVliet2000})}
+                        % implied by \citealp[p.~129]{IEEE2021c}; \citeyear[p.~431]{IEEE2017})}
+              \end{itemize} \pause
+        \item \textbf{Link Testing:}
+              \begin{itemize}
+                  \item Branch Testing {\hfill \tiny (implied by \citealp[p.~24]{IEEE2021c})}
+                  \item Component Integration Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
+                  \item Integration Testing {\hfill \tiny (implied by \citealp[p.~13]{Gerrard2000a})}
+              \end{itemize}
+    \end{enumerate}
+\end{frame}
