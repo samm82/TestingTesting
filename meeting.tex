@@ -1,0 +1,337 @@
+\documentclass{beamer}
+
+% Manifest data
+\input{manifest}
+
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{tikzsymbols}
+\usepackage{anyfontsize}
+
+\usepackage{makecell, tabularx}
+\newcolumntype{M}{>{\raggedright\arraybackslash}m}
+\renewcommand\tabularxcolumn[1]{M{#1}}
+\renewcommand\arraystretch{1.2}
+\usetikzlibrary{shapes,shapes.geometric,arrows,graphs,graphdrawing,fit,calc,positioning,automata}
+\usepackage{pgf-pie,pgfplots}
+\pgfplotsset{compat=1.9}
+
+\usepackage{multicol}
+
+\usepackage[disable]{todonotes}
+% Disable footnotes; from https://tex.stackexchange.com/a/240494/192195
+\renewcommand{\footnote}[2][]{\relax}
+
+% From https://tex.stackexchange.com/a/283202/192195
+\usepackage[shortcuts]{extdash}
+
+% Required for biblatex, but also adds functionality for quotation
+\usepackage{csquotes}
+
+% Jason's bibliography format
+% % Credit to Gabriel Devenyi for this bibliography cfg:
+% % github.com/gdevenyi/mcmaster.latex
+% \usepackage[
+%   style=numeric-comp,
+%   backend=biber,
+%   sorting=none,
+%   backref=true,
+%   maxnames=99,
+%   alldates=iso,
+%   seconds=true
+% ]{biblatex} % bibliography
+% \addbibresource{references.bib}
+\usepackage[round]{natbib}
+\bibliographystyle{plainnat}
+\setcitestyle{yysep={;}}
+\defcitealias{ISTQB}{Hamburg and Mogyorodi}
+\newcommand{\citetISTQB}{\citetalias{ISTQB} (\citeyear{ISTQB})}
+\newcommand{\citepISTQB}{\citepalias[\citeyear{ISTQB}]{ISTQB}}
+\newcommand{\citealpISTQB}{\citetalias{ISTQB}, \citeyear{ISTQB}}
+
+\lstset{
+    language=[latex]tex,
+    breaklines=true}
+
+\usetheme{Madrid}
+
+\setbeamertemplate{caption}{\centering\insertcaption\par}
+
+% Change block width
+\addtobeamertemplate{block begin}{%
+    \centering\large%
+    \setlength{\textwidth}{0.9\textwidth}
+}{}
+
+% From https://tex.stackexchange.com/a/489625/192195
+\BeforeBeginEnvironment{block}{\begin{adjustbox}{minipage={\linewidth}, center}}
+    \AfterEndEnvironment{block}{\end{adjustbox}}
+
+\usepackage{adjustbox}
+
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+\input{common_macros}
+\input{assets}
+\notpapertrue
+
+\newenvironment{paperTable}{
+    \begingroup
+    \renewcommand*{\thefootnote}{\alph{footnote}}
+    \begin{table}[hbtp!]
+        }{
+    \end{table}
+    \endgroup
+}
+
+\renewcommand\stds{\stdSources{1}}
+\renewcommand\metas{\metaSources{1}}
+\renewcommand\texts{\textSources{1}}
+\renewcommand\papers{\paperSources{1}}
+
+\newcounter{methodCounter}
+
+\title[Committee Meeting 2]{Second Committee Meeting}
+\subtitle{Updated Progress Report}
+\author{\thesisAuthorName{}}
+
+% Committee
+% \begin{itemize}
+%     \item \emph{Supervisor}: Dr.~Jacques Carette
+%     \item \emph{Supervisor}: Dr.~Spencer Smith
+%     \item Dr.~Ned Nedialkov
+%     \item Dr.~Richard Paige
+% \end{itemize}
+
+\institute{McMaster University}
+\date{Fall 2025}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+% From https://tex.stackexchange.com/a/42826/192195
+\NewDocumentCommand{\ShowListingForLineNumber}{s O{1.0} m m}{
+    \IfBooleanTF{#1}{\vspace{-#2\baselineskip}}{}
+    \lstinputlisting[
+        style=MyListStyle,
+        linerange={#3-#3},
+        firstnumber=#3,
+    ]{#4}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TITLE PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TABLE OF CONTENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% INTRODUCTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+% \subsection{The Need for Standardized Terminology}
+
+% \subsection{The Lack of Standardized Terminology}
+
+% \begin{frame}[c]{The Lack of Standardized Terminology}
+%     \framesubtitle{``The Problem''}
+%     \begin{figure}
+%         \centering
+%         \only{\includegraphics[height=0.65\textheight]{assets/images/test approach choices}
+%             \caption{\tiny \citep[Fig.~2]{IEEE2022}}}<1>
+%         \only{\includegraphics[height=0.65\textheight]{assets/images/test approach exp based}
+%             \caption{\tiny Adapted from \citep[Fig.~2]{IEEE2022}}}<2>
+%         \only{\includegraphics[width=\textwidth]{assets/images/exp based 2}
+%             \caption{\tiny Adapted from \citep[p.~34]{IEEE2022}}}<3>
+%     \end{figure}
+% \end{frame}
+
+% \begin{frame}[c]{The Lack of Standardized Terminology}
+%     \framesubtitle{``The Problem'' (cont.)}
+%     \begin{figure}
+%         \begin{center}
+%             \only{\includegraphics[height=0.65\textheight]{assets/images/system testing}
+%                 \caption{\tiny \citep[p.~23]{Firesmith2015}}}<1>
+%             \only{\includegraphics[height=0.65\textheight]{assets/images/system testing hil}
+%                 \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}}<2>
+%             \only{\includegraphics[height=0.65\textheight]{assets/images/system testing sos}
+%                 \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}}<3>
+%             \only{\includegraphics[height=0.65\textheight]{assets/images/system testing self}
+%                 \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}}<4>
+%             \only{\includegraphics[height=0.65\textheight]{assets/images/system testing int}
+%                 \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}}<5>
+%             \only{\includegraphics[height=0.65\textheight]{assets/images/system testing int 2}
+%                 \begin{columns}
+%                     \centering
+%                     \begin{column}{0.4\textwidth}
+%                         \caption{\tiny Adapted from \citepISTQB{}}
+%                     \end{column}
+%                     \begin{column}{0.4\textwidth}
+%                         \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}
+%                     \end{column}
+%                 \end{columns}
+%             }<6>
+%         \end{center}
+%     \end{figure}
+% \end{frame}
+
+% \begin{frame}
+%     \frametitle{Barriers to Effective Communication}
+%     \framesubtitle{``The Problem'' (cont.)}
+%     \vspace{-1cm}
+%     \begin{columns}[T]
+%         \begin{column}{.5\textwidth}
+%             \begin{center}
+%                 \huge Interorganizational
+
+%                 \normalsize Schools, companies, etc.
+
+%                 \vspace{5mm}
+
+%                 % Based on code frustratingly generated by ChatGPT
+%                 \begin{tikzpicture}
+
+%                     % Define coordinates of the triangle's vertices
+%                     \coordinate (A) at (0, 0);
+%                     \coordinate (B) at (3, 0);
+%                     \coordinate (C) at (1.5, 2.6);
+%                     \coordinate (D) at (1.5, 0.86667);
+
+%                     % Draw circles at each vertex without labels
+%                     \draw[fill=blue!20] (A) circle [radius=0.5];
+%                     \draw[fill=blue!20] (B) circle [radius=0.5];
+%                     \draw[fill=blue!20] (C) circle [radius=0.5];
+
+%                     % Draw arrows as arcs
+%                     \draw[->, thick, shorten <= 20pt] (B) arc (0:48:3cm);
+%                     \draw[->, thick, shorten <= 20pt] (C) arc (120:168:3cm);
+%                     \draw[->, thick, shorten <= 20pt] (A) arc (240:288:3cm);
+
+%                     % Small diagrams inside each circle
+%                     \only<2->{
+%                         \foreach \x in {A,B,C} {
+%                                 \begin{scope}[shift={(\x)}, scale=0.2] % Scaling down and shifting to position A
+%                                     \coordinate (D) at (-1.25, -0.75);
+%                                     \coordinate (E) at (1.25, -0.75);
+%                                     \coordinate (F) at (0, 1.5);
+%                                     \draw[fill=blue!20] (D) circle [radius=0.5];
+%                                     \draw[fill=blue!20] (E) circle [radius=0.5];
+%                                     \draw[fill=blue!20] (F) circle [radius=0.5];
+%                                     \draw[->, shorten <= 4pt] (E) arc (0:45:2.5cm);
+%                                     \draw[->, shorten <= 4pt] (F) arc (120:165:2.5cm);
+%                                     \draw[->, shorten <= 4pt] (D) arc (240:285:2.5cm);
+%                                 \end{scope}
+%                             }
+%                     }
+%                 \end{tikzpicture}
+%             \end{center}
+%         \end{column}
+%         \begin{column}<2->{.5\textwidth}
+%             \begin{center}
+%                 \huge Intraorganizational \normalsize
+%             \end{center}
+
+%             ``Complete testing'' could require the tester to:
+%             \begin{itemize}
+%                 \item discover every bug,
+%                 \item exhaust the time allocated,
+%                 \item implement every planned test,
+%                 \item \dots{} \tiny \citep[p.~7]{KanerEtAl2011}
+%                       \normalsize \hspace{0pt} % For bullet spacing
+%             \end{itemize}
+%         \end{column}
+%     \end{columns}
+% \end{frame}
+
+\input{common_slides}
+
+%   \begin{figure}
+%       %   \vspace{-1mm}
+%       \includegraphics[width=.8\textwidth]{assets/stable.png}
+%       %   \vspace{-3mm}
+%       \caption{Contents of \texttt{stable}}
+%       \vspace{-1mm}
+%   \end{figure}
+
+%   \lstinputlisting[
+%       title=An example log,
+%       captionpos=b,
+%       language={},
+%       basicstyle=\tiny, % TODO: reduce font size?
+%       breakatwhitespace=true,
+%       showstringspaces=false
+%   ]{assets/log.txt}
+
+% \onslide<7-|handout:1>\begin{block}{}
+%     {"The information you have should be just as useful for generating
+%         tests as it should be for manually running them."}
+%     \vspace{3mm}
+%     \hspace\fill{\small--- Dr.~Jacques Carette}
+% \end{block}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ACKNOWLEDGEMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+    \frametitle{Acknowledgment}
+
+    \begin{itemize}
+        \item \supersAck{}
+              \begin{itemize}
+                  \item They have helped me refine the scope of this project
+                  \item Dr.~Smith first suggested generating test cases back in 2020!
+              \end{itemize}
+        \item<2-> The format of this presentation was \emph{heavily} based on
+              a previous presentation by Jason Balaci, who also provided a
+              great thesis template
+        \item<3-> The past and current Drasil team have created a truly amazing
+              framework!
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A FINAL THANK YOU
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+    \center
+    \huge{Thank you!}\\
+    \normalsize{Questions?}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% From https://tex.stackexchange.com/a/457255/192195
+\setbeamertemplate{page number in head/foot}{}
+
+\begin{frame}[allowframebreaks,noframenumbering]
+    \frametitle{References}
+
+    \bibliography{references,seminar_images}
+\end{frame}
+
+\end{document}
