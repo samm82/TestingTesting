@@ -396,6 +396,7 @@ def outputFlaws():
     def flawSummaryHelper(normalize:bool, sem:bool):
         axisHelper     = ["Number of Flaws per", "Source Tier"]
         normAxisHelper = ["Average", "Document by"]
+        location = "bt!"
         label = "flawBarsSummary"
         cap   = FLAW_CAPTION
         divMacros = ""
@@ -403,6 +404,7 @@ def outputFlaws():
         if normalize:
             # From https://stackoverflow.com/a/70310935/10002168
             axisHelper = list(sum(zip(normAxisHelper, axisHelper), ()))
+            location = "b!"
             label = "normF" + label[1:]
             cap   = "Normalized summary of i" + FLAW_CAPTION[1:]
             # With help from ChatGPT
@@ -423,7 +425,7 @@ def outputFlaws():
             return f"\\the\\numexpr\\{src}FlawMnfstBrkdwn{{13}}"
 
         # Flaw summary
-        writeFile(["\\begin{figure}[bt!]", "\\centering",
+        writeFile([f"\\begin{{figure}}[{location}]", "\\centering",
                 "\\begin{tikzpicture}", "\\begin{axis}[",
                         "width=0.8\\textwidth, height=7.5cm,",
                         # "x tick label style={rotate=90},",

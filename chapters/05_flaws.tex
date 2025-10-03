@@ -7,9 +7,9 @@
 After gathering all these data\footnote{Available in \texttt{ApproachGlossary.csv},
     \texttt{QualityGlossary.csv}, and \texttt{SuppGlossary.csv} at \ifblind{
         [Repository link suppressed]}{
-        \url{https://github.com/samm82/TestingTesting}}.}, we find many
-flaws. \Cref{fig:flawBars} shows the source tiers (see \Cref{source-tiers})
-responsible for these flaws, which reveals a lot about software testing literature:
+        \url{https://github.com/samm82/TestingTesting}}.}, we find many flaws.
+\Cref{fig:flawBars} shows where these flaws appear within each source tier (see
+\Cref{source-tiers}) which reveals a lot about software testing literature:
 \begin{enumerate}
     \item Established standards (\Cref{stds}) aren't actually standardized, since:
           \begin{enumerate}
@@ -58,8 +58,19 @@ draw some conclusions about \emph{how} the literature is flawed:
     \end{landscape}
 
     \input{assets/graphs/flawBarsSummary}
-    \input{assets/graphs/normFlawBarsSummary}
+    To give a clearer picture of the offending source tiers, we also summarize
+    how many flaws appear in each source tier in \Cref{fig:flawBarsSummary}.
+    (Note that these values align with the totals in \Cref{tab:flawMnfsts,%
+        tab:flawDmns}). Each tier is responsible for a comparable number of
+    flaws, although most flaws come from terminology collections. This is made
+    even more noticeable when normalizing these totals by the number of
+    documents in each source tier which we present in \Cref{fig:normFlawBarsSummary}.
+    The relatively low numbers of flaws per document in standards and papers
+    are likely due to the amount of content in these documents that we did
+    \emph{not} investigate, either for scope reasons or time reasons.
 
+    \input{assets/graphs/normFlawBarsSummary}
+    \clearpage
 \fi
 
 We summarize the flaws that we discover manually \ifnotpaper (see
