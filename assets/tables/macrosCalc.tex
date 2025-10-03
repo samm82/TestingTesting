@@ -1,11 +1,14 @@
-\def\repProc{step~\ref{step:repeat-process}\TblrNote{d}}
+\def\repProc{step~\ref{step:repeat-process}\TblrNote{f}}
 
 \begin{longtblr}[
-    note{a} = {Calculated in \LaTeX{} from source tier lists; see \Cref{text-macros}.},
-    note{b} = {Alias for \macro[15]{totalFlawDmnBrkdwn}; see \Cref{flawCounts}.},
-    note{c} = {These macros are defined as counters to allow them to be used in
-            calculations within \LaTeX{} (such as in \Cref{undef-terms,fig:undefPies}).},
-    note{d} = {Step~\ref{step:repeat-process} of our methodology involves iterating
+    note{a} = {Calculated in \LaTeX{} from other macros for reuse.},
+    note{b} = {Percent sign omitted as it is used in another calculation.},
+    note{c} = {Calculated in \LaTeX{} from source tier lists; see \Cref{text-macros}.},
+    note{d} = {Alias for \macro[15]{totalFlawDmnBrkdwn}; see \Cref{flawCounts}.},
+    note{e} = {These macros are defined as counters to allow them to be used in
+            calculations within \LaTeX{} (such as in \macro{undefPerc},
+            \Cref{undef-terms}, and \Cref{fig:undefPies}).},
+    note{f} = {Step~\ref{step:repeat-process} of our methodology involves iterating
             over undefined terms and is described in more detail in \Cref{undef-terms}.},
     caption = {\LaTeX{} macros for calculated values.},
     label = {tab:macrosCalc}
@@ -18,17 +21,19 @@
     \thead{Macro}                   & \thead{What it Counts}        & \thead{Value}    \\
     \hline
     \macro{approachCount}           & Identified test approaches    & \approachCount{} \\*
+    \macro{undefPerc}\TblrNote{a}   & Percentage of undefined test
+    approaches                      & \undefPerc{}\TblrNote{b}                         \\*
     \macro{qualityCount}            & Identified software qualities & \qualityCount{}  \\*
-    \macro{srcCount}\TblrNote{a}    & Sources used in glossaries    & \srcCount{}      \\*
-    \macro{flawCount}\TblrNote{b}   & Identified flaws              & \flawCount{}     \\
+    \macro{srcCount}\TblrNote{c}    & Sources used in glossaries    & \srcCount{}      \\*
+    \macro{flawCount}\TblrNote{d}   & Identified flaws              & \flawCount{}     \\
     \hline
-    \macro{TotalBefore}\TblrNote{c} & Test approaches identified
+    \macro{TotalBefore}\TblrNote{e} & Test approaches identified
     before \repProc{}               & \the\TotalBefore{}                               \\*
-    \macro{UndefBefore}\TblrNote{c} & Undefined test approaches
+    \macro{UndefBefore}\TblrNote{e} & Undefined test approaches
     identified before \repProc{}    & \the\UndefBefore{}                               \\*
-    \macro{TotalAfter}\TblrNote{c}  & Test approaches identified
+    \macro{TotalAfter}\TblrNote{e}  & Test approaches identified
     after \repProc{}                & \the\TotalAfter{}                                \\*
-    \macro{UndefAfter}\TblrNote{c}  & Undefined test approaches
+    \macro{UndefAfter}\TblrNote{e}  & Undefined test approaches
     identified after \repProc{}     & \the\UndefAfter{}                                \\
     \hline
     \macro{multiCatCount}           & Total number of approaches

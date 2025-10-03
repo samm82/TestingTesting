@@ -30,7 +30,7 @@ we can deduce that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
 (\TotalAfter - \TotalBefore)\relax\% of added test approaches are defined. This
 indicates that this procedure leads to a higher proportion of defined terms
 (\the\numexpr 100 - 100 * \UndefBefore / \TotalBefore\relax\% vs.~%
-\the\numexpr 100 - 100 * \UndefAfter / \TotalAfter\relax\%), as shown in
+\the\numexpr 100 - \undefPerc\relax\%), as shown in
 \Cref{fig:undefPies}, which helps verify that our procedure constructively
 uncovers \emph{and} defines new terminology. With repeated iterations, this
 ratio would approach 100\%, resulting in a (plausibly) complete taxonomy.

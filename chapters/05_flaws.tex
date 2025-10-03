@@ -103,17 +103,22 @@ approaches (see \Cref{implied-approaches}); % (see \Cref{derived-tests})
 while reiterating over investigated sources would be ideal, this is infeasible
 due to time constraints.
 
+From this partial implementation of our methodology, we identify
+\approachCount{} test approaches, \undefPerc\% of which are undefined.
+With more time, we would continue to snowball on these undefined terms
+following the procedure in \Cref{undef-terms}\ifnotpaper\ (see
+    \Cref{future-undef-terms} for more detailed discussion on what we
+    accomplished)\fi.
 Likewise, we were unable to reach our stopping criteria outlined in
 \Cref{stop-crit}. We considered the discovery of property-based testing as an
 alternate stopping point for our research\thesisissueref{57,81,88,125}%
 \todo{These issue refs might be useful in our final documents.} since we were
 surprised that it was not mentioned in any sources we investigated. Even so, we
 had to stop our snowballing approach before we discovered property-based testing
-in the literature! With more time, we would find definitions for all uncovered
-terms as described in \Cref{undef-terms}, \ifnotpaper as well as those that did
-    not arise as described in \Cref{future-miss-terms} (including property-based
-    testing), \fi but unfortunately, we impose our stopping point artificially.%
-\qtodo{Present tense in this paragraph?}
+in the literature!\ifnotpaper\ With more time, we would uncover this along with
+    other test approaches that did not arise (as described in
+    \Cref{future-miss-terms}), but unfortunately, we impose our stopping point
+    artificially.\fi\qtodo{Present tense in this paragraph?}
 
 \subsection{Flaws by Manifestation}\label{flawMnfsts}
 

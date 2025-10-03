@@ -307,6 +307,7 @@
 \ReadFile{\paperSources}{build/paperSources}
 
 \def\srcCount{\the\numexpr\stdSources{3} + \metaSources{3} + \textSources{3} + \paperSources{3}}
+\def\undefPerc{\the\numexpr 100 * \UndefAfter / \TotalAfter}
 
 \ReadFile{\stdFlawDmnBrkdwn}{build/stdFlawDmnBrkdwn}
 \ReadFile{\metaFlawDmnBrkdwn}{build/metaFlawDmnBrkdwn}
