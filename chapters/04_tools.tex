@@ -29,7 +29,7 @@
 \fi
 
 To better understand the relations between test approaches, we develop a tool
-to generate visualizations of these relations automatically. \ifnotpaper%
+to visualize them. \ifnotpaper%
     % We can describe these graphs formally as ordered triplets
     %     $G = (A, S, P)$, where:  % Format based on https://en.wikipedia.org/wiki/Graph_theory
     %     \begin{itemize}
@@ -130,11 +130,10 @@ independently defined approaches.
     Implicit approaches and relations are denoted by dashed lines, as shown in
     \Cref{fig:exampleGraph,fig:exampleSynGraph}, while explicit approaches are
     \emph{always} denoted by solid lines, even if they are also implicit. We
-    can also generate ``explicit'' versions of these visualizations that exclude
-    implicit approaches and relations; for example, \Cref{fig:expExampleGraph}
-    is the explicit version of \Cref{fig:exampleGraph}. %, and
-    % \Cref{fig:expSynGraph} likewise only contains explicit approaches and
-    % synonym relations
+    can also visualize only the ``explicit'' approaches and relations; for
+    example, \Cref{fig:expExampleGraph} is the explicit version of
+    \Cref{fig:exampleGraph}. %, and \Cref{fig:expSynGraph} likewise only
+    % contains explicit approaches and synonym relations
 
     We also colour each relation according to its source tier, which is
     possible because we cite all recorded relations as described in
