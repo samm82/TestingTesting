@@ -115,22 +115,20 @@ independently defined approaches.
     \ExampleSynGraph{}
 
     \phantomsection{}\label{visExplicit}
-    Since we also track the ``explicitness'' of information (defined in
-    \Cref{explicitness}), we can represent explicit \emph{and} implicit
-    relations without double counting them during the analysis in
-    \Cref{flaw-analysis}. If a relation is both explicit \emph{and} implicit,
-    we only display the implicit relation if its source is from a more
-    credible source tier (see \Cref{cred,source-tiers}). For example, if
-    ``StdAuthor'' from \Cref{tab:synExampleGlossary} is an author of an
-    established standard, then we display the implicit relation from their
+    We can also visualize the ``explicitness'' of information (defined in
+    \Cref{explicitness}). If a relation is explicit \emph{and} implicit,
+    we only display the latter if its source is from a more credible source
+    tier than the former (see \Cref{cred,source-tiers}). For example, if
+    ``StdAuthor'' from \Cref{tab:synExampleGlossary} is the author of a
+    standard, then we display the implicit relation from their
     document alongside the explicit one from ``Author'' as shown in
     \Cref{fig:exampleSynGraph}.
     % For example, only the explicit synonym relation between E and F
     % from \Cref{tab:exampleGlossary} appears in \Cref{fig:synExampleGraph}.
-    Implicit approaches and relations are denoted by dashed lines, as shown in
-    \Cref{fig:exampleGraph,fig:exampleSynGraph}, while explicit approaches are
-    \emph{always} denoted by solid lines, even if they are also implicit. We
-    can also visualize only the ``explicit'' approaches and relations; for
+    We represent implicit approaches and relations with dashed lines (see
+    \Cref{fig:exampleGraph,fig:exampleSynGraph}); explicit approaches
+    \emph{always} have solid lines, even if they are also implicit. We
+    can also omit implicit approaches and relations from visualizations; for
     example, \Cref{fig:expExampleGraph} is the explicit version of
     \Cref{fig:exampleGraph}. %, and \Cref{fig:expSynGraph} likewise only
     % contains explicit approaches and synonym relations
