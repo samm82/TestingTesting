@@ -157,6 +157,12 @@
     \emph{boundary value analysis},'' for the glossary entry of ``boundary
     value testing'' but does not include ``boundary value analysis'' in the
     glossary.}
+\def\qualImprovFlaw{\citet[p.~5\=/4]{SWEBOK2025} says that quality improvement,
+    along with quality assurance, is an aspect of testing that involves
+    ``defining methods, tools, skills, and practices to achieve the specific
+    quality level and objectives''; while testing that a system possesses
+    certain qualities is in scope, actively improving the system in response is
+    \emph{not} part of testing.}
 \NewDocumentCommand{\tolTestFlaw}{s}{%
     \IfBooleanTF#1{t}{T}he terms ``acceleration tolerance testing'' and
     ``acoustic tolerance testing'' do not seem to refer to software testing,
@@ -194,7 +200,7 @@
     separately by \citet[p.~53]{Firesmith2015}.}
 \def\parSheetTestFlaw{``Par sheet testing'' from \citepISTQB{} seems to refer
     to \ifnotpaper the specific example mentioned in \flawref{specific-istqb}
-    \else some specific example they do not cite \fi and does not seem more
+    \else some specific example it does not cite \fi and does not seem more
     widely applicable, since a ``PAR sheet'' is ``a list of all the symbols on
     each reel of a slot machine'' \citep{Bluejay2024}.}
 \NewDocumentCommand{\redBoxFlaw}{s}{%
