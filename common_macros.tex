@@ -124,9 +124,9 @@
 
 \NewDocumentCommand{\parSynFlaw}{s}{%
     \IfBooleanTF#1{P}{p}airs of synonyms where one is a subapproach of the
-    other; these relations cannot coexist as synonym relations are symmetric
-    while parent-child relations are asymmetric as outlined in
-    \Cref{syn-rels,par-chd-rels}, respectively.}
+    other; these relations cannot coexist since synonym relations are symmetric
+    while parent-child relations are asymmetric (as outlined in
+    \Cref{syn-rels,par-chd-rels}, respectively).}
 \NewDocumentCommand\parSynIntro{s}{%
     \IfBooleanTF#1{t}{T}here are also \parSynFlaw{}
     \IfBooleanTF#1{Below are all}{We identify} \parSynCount{}

@@ -188,6 +188,7 @@ multiple definitions, and three terms that share acronyms. \ifnotpaper We list
 We find redundancies in two parent-child relations, two definitions, and two
 labels\ifnotpaper\ as listed in \Cref{redun-full}\fi.
 
+\ifnotpaper\newpage\fi
 \subsection{Flaws by Domain}\label{flawDmns}
 
 The following sections present flaws that we detect automatically \ifnotpaper
@@ -227,9 +228,9 @@ them more systematically\thesisissueref{21}.
 
 \phantomsection{}\label{multiCats}
 \ifnotpaper
-    \clearpage
+    % \clearpage
     \begin{wraptable}{r}{6cm}
-        \vspace{0.375cm}
+        \vspace{-0.9cm}
         \input{build/multiCatTable}
         \vspace{-1cm}
     \end{wraptable}
@@ -238,19 +239,20 @@ In particular, \multiCatIntro{}. We identify \multiCatCount{} such cases
 \ifnotpaper that we summarize in \Cref{tab:multiCatTable} \fi and list
 \ifnotpaper \else the most prominent \fi along with their sources in
 \Cref{tab:multiCats}\ifnotpaper\ for completeness\fi.
-These flaws mostly involve the category of ``test \multiCatMax{}'', which
-shows up in \multiCatMaxCount{} of them. This may simply be because authors use
-the term ``test technique'' in a more general sense where we would use the term
-``test approach''.\phantomsection{}\label{cats-intrans} A more
+Most of these flaws (\multiCatMaxCount{}) involve the category of ``test
+\multiCatMax{}'', which may simply be because authors use
+this term more generally (where we would use the term
+``test approach'').\phantomsection{}\label{cats-intrans} A more
 specific reason for this is how the line between ``test technique'' and
-``test practice'' can be blurred when these categories are \emph{not}
+``test practice'' can blur when these categories are \emph{not}
 transitive. For example, ``some test practices, such as exploratory testing or
 model-based testing are sometimes [incorrectly] referred to as `test techniques'
 \dots{} as they are not themselves providing a way to create test cases, but
 instead use test design techniques to achieve that'' \ifnotpaper
     (\citealp[p.~11]{IEEE2022}; \citeyear[p.~5]{IEEE2021a})\else
     \cite[p.~11]{IEEE2022}, \cite[p.~5]{IEEE2021a}\fi. This seems to be the
-case for the following approaches, which may explain these apparent ``flaws'':
+case for the following approaches:
+% , which may explain these apparent ``flaws'':
 \begin{itemize}
     \item Exploratory testing \ifnotpaper (\citeyear[p.~33]{IEEE2022};
               \citeyear[p.~viii]{IEEE2021c}; \citeyear[p.~13]{IEEE2013}) \else
@@ -280,7 +282,6 @@ case for the following approaches, which may explain these apparent ``flaws'':
     testing and open beta testing. When we infer these flaws, we exclude them
     from \Cref{tab:multiCatTable,tab:multiCats} and instead include them in
     \Cref{tab:infMultiCats} for completeness.
-    \newpage
 \fi
 
 \subsubsection{Synonym Relation Flaws}\label{syns}
@@ -297,28 +298,6 @@ may be flaws) and to intransitive synonyms (which definitely \emph{are} flaws).
     therefore flawed. We provide the full list of synonyms that violate
     transitivity (along with their sources) in \Cref{multiSyns} and discuss and
     other kinds of flawed synonym relations in \Cref{parSyns,scal-flaw,compat-flaw}.
-\fi
-
-\subsubsection{Parent-Child Relation Flaws}\label{pars}
-\phantomsection{}\label{selfPars}
-Parent-child relations are also not immune to flaws. For example, some
-approaches are given as parents of themselves which violates the
-irreflexivity of this relation as defined in \Cref{par-chd-rels}.
-% Since these are by nature self-contained within a given source, we count these
-% \emph{once} as objective flaws within
-% their sources in \Cref{tab:flawMnfsts,tab:flawDmns}.
-\ifnotpaper We identify
-    the following \selfParCount{} examples through automatic analysis of our
-    generated graphs (see \Cref{autoSelfPar}):
-    \input{build/selfPars} Interestingly, performance testing is \emph{not}
-    described as a subapproach of usability testing by \citep{Gerrard2000a,
-        Gerrard2000b}, which would have been more meaningful information to
-    capture. \else For example, performance and usability testing are both
-    given as subapproaches of themselves \cite[Tab.~2]{Gerrard2000a},
-    \cite[Tab.~1]{Gerrard2000b}.\fi
-% Flaw count (MISS, PARS): {Gerrard2000a} {Gerrard2000b}
-
-\ifnotpaper
     \begin{figure}[bt!]
         \centering
         \includegraphics[width=\linewidth]{assets/graphs/manual/expSynLegend.pdf}
@@ -328,24 +307,34 @@ irreflexivity of this relation as defined in \Cref{par-chd-rels}.
             given explicitly by the literature.}\label{fig:expSynGraph}
     \end{figure}
     \clearpage
-    \begin{figure}[bt!]
-        \centering
-        \includegraphics[width=0.48\linewidth]{assets/graphs/manual/expParSynLegend.pdf}
-        \includegraphics[width=0.5\linewidth]{assets/graphs/manual/expParSynGraph.pdf}
-        % \vspace{-7mm}
-        \caption{Pairs of test approaches with a parent-child \emph{and} synonym
-            relation given explicitly by the literature.}\label{fig:expParSynGraph}
-    \end{figure}
-\else
 \fi
 
-\phantomsection{}\label{parSyns}
-\parSynIntro{}\ifnotpaper. We visualize the pairs where both
-relations are explicit in \Cref{fig:expParSynGraph} and list all
-identified pairs in \Cref{tab:parSyns}, as well as pairs where we infer a
+\subsubsection{Parent-Child Relation Flaws}\label{pars}
+\phantomsection{}\label{selfPars}
+Parent-child relations are also not immune to flaws. For example, some
+approaches are given as parents of themselves, which violates the
+irreflexivity of this relation as defined in \Cref{par-chd-rels}.
+% Since these are by nature self-contained within a given source, we count these
+% \emph{once} as objective flaws within
+% their sources in \Cref{tab:flawMnfsts,tab:flawDmns}.
+\ifnotpaper We identify
+    the following \selfParCount{} examples through automatic analysis of our
+    generated graphs (see \Cref{autoSelfPar}):
+    \input{build/selfPars} Interestingly, \citet{Gerrard2000a,Gerrard2000b}
+    does \emph{not} give performance testing as a subapproach of usability
+    testing, which would have been more meaningful information to include.
+\else For example, performance and usability testing are both
+    given as subapproaches of themselves \cite[Tab.~2]{Gerrard2000a},
+    \cite[Tab.~1]{Gerrard2000b}.\fi
+% Flaw count (MISS, PARS): {Gerrard2000a} {Gerrard2000b}
+
+\phantomsection{}\label{parSyns}\parSynIntro{}\ifnotpaper. We visualize the
+pairs where both relations are explicit in \Cref{fig:expParSynGraph} and list
+all identified pairs in \Cref{tab:parSyns}, as well as pairs where we infer a
 flaw in \Cref{infParSyns} for completeness\else\ and list the most
-prominent in \Cref{tab:parSyns}\fi. Of
-particular note is the relation between path testing and exhaustive testing.
+prominent in \Cref{tab:parSyns}\fi.
+
+Of particular note is the relation between path testing and exhaustive testing.
 While \citet[p.~421]{vanVliet2000} claims that path testing done completely
 ``is equivalent to exhaustively testing the program''\ifnotpaper\footnote{The
         contradictory definitions of path testing given in \flawref{path-test}
@@ -360,9 +349,17 @@ effects of input data \ifnotpaper
 on the code's behaviour. Exhaustive testing
 requires ``all combinations of input values \emph{and} preconditions \dots{}
 [to be] tested'' \ifnotpaper (\citealp[p.~4, emphasis added]{IEEE2022};
-    similar in \citealpISTQB{}; \citealp[p.~121]{Patton2006})\else
-    \cite[p.~4]{IEEE2022} (similar in \citealpISTQB{},
+    similar in \citealpISTQB{}; \citealp[p.~121]{Patton2006})%
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.48\linewidth]{assets/graphs/manual/expParSynLegend.pdf}
+        \includegraphics[width=0.5\linewidth]{assets/graphs/manual/expParSynGraph.pdf}
+        % \vspace{-7mm}
+        \caption{Pairs of test approaches with a parent-child \emph{and} synonym
+            relation given explicitly by the literature.}\label{fig:expParSynGraph}
+    \end{figure}\else \cite[p.~4]{IEEE2022} (similar in \citealpISTQB{},
     \cite[p.~121]{Patton2006})\fi.
+
 % Flaw count (WRONG, SYNS): {vanVliet2000} | {IEEE2022} {IEEE2021c} ISTQB {PetersAndPedrycz2000} {Patton2006}
 
 % % TODO: re-investigate this after going through the rest of ISO/IEC/IEEE 29119
