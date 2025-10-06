@@ -1,54 +1,41 @@
-\def\repProc{step~\ref{step:repeat-process}\TblrNote{f}}
+\def\repProc{step~\ref{step:repeat-process}\TblrNote{e}}
 
 \begin{longtblr}[
     note{a} = {Calculated in \LaTeX{} from other macros for reuse.},
-    note{b} = {Percent sign omitted as it is used in another calculation.},
-    note{c} = {Calculated in \LaTeX{} from source tier lists; see \Cref{text-macros}.},
-    note{d} = {Alias for \macro[15]{totalFlawDmnBrkdwn}; see \Cref{flawCounts}.},
-    note{e} = {These macros are defined as counters to allow them to be used in
+    note{b} = {Calculated in \LaTeX{} from source tier lists; see \Cref{text-macros}.},
+    note{c} = {Alias for \macro[15]{totalFlawDmnBrkdwn}; see \Cref{flawCounts}.},
+    note{d} = {These macros are defined as counters to allow them to be used in
             calculations within \LaTeX{} (such as in \macro{undefPerc},
             \Cref{undef-terms}, and \Cref{fig:undefPies}).},
-    note{f} = {Step~\ref{step:repeat-process} of our methodology involves iterating
+    note{e} = {Step~\ref{step:repeat-process} of our methodology involves iterating
             over undefined terms and is described in more detail in \Cref{undef-terms}.},
     caption = {\LaTeX{} macros for calculated values.},
     label = {tab:macrosCalc}
     ]{
-    % colspec={|X[0.3,l,m]X[0.5,c,m]X[0.2,c,m]|},
-    colspec={|lX[c]c|}, row{1} = {halign=c},
+    colspec={|lX[c]|}, row{1} = {halign=c},
     width = \linewidth, rowhead = 1
     }
     \hline
-    \thead{Macro}                   & \thead{What it Counts}        & \thead{Value}    \\
+    \thead{Macro}                   & \thead{What it Counts}                                 \\
     \hline
-    \macro{approachCount}           & Identified test approaches    & \approachCount{} \\*
-    \macro{undefPerc}\TblrNote{a}   & Percentage of undefined test
-    approaches                      & \undefPerc{}\TblrNote{b}                         \\*
-    \macro{qualityCount}            & Identified software qualities & \qualityCount{}  \\*
-    \macro{srcCount}\TblrNote{c}    & Sources used in glossaries    & \srcCount{}      \\*
-    \macro{flawCount}\TblrNote{d}   & Identified flaws              & \flawCount{}     \\
+    \macro{approachCount}           & Identified test approaches                             \\*
+    \macro{undefPerc}\TblrNote{a}   & Percentage of undefined test approaches                \\*
+    \macro{qualityCount}            & Identified software qualities                          \\*
+    \macro{srcCount}\TblrNote{b}    & Sources used in glossaries                             \\*
+    \macro{flawCount}\TblrNote{c}   & Identified flaws                                       \\
     \hline
-    \macro{TotalBefore}\TblrNote{e} & Test approaches identified
-    before \repProc{}               & \the\TotalBefore{}                               \\*
-    \macro{UndefBefore}\TblrNote{e} & Undefined test approaches
-    identified before \repProc{}    & \the\UndefBefore{}                               \\*
-    \macro{TotalAfter}\TblrNote{e}  & Test approaches identified
-    after \repProc{}                & \the\TotalAfter{}                                \\*
-    \macro{UndefAfter}\TblrNote{e}  & Undefined test approaches
-    identified after \repProc{}     & \the\UndefAfter{}                                \\
+    \macro{TotalBefore}\TblrNote{d} & Test approaches identified before \repProc{}           \\*
+    \macro{UndefBefore}\TblrNote{d} & Undefined test approaches identified before \repProc{} \\*
+    \macro{TotalAfter}\TblrNote{d}  & Test approaches identified after \repProc{}            \\*
+    \macro{UndefAfter}\TblrNote{d}  & Undefined test approaches identified after \repProc{}  \\
     \hline
-    \macro{multiCatCount}           & Total number of approaches
-    with multiple categories        & \multiCatCount{}                                 \\*
-    \macro{multiCatMax}             & Category with the most
-    overlaps                        & \multiCatMax{}                                   \\*
-    \macro{multiCatMaxCount}        & Number of overlaps involving
-    the previous category           & \multiCatMaxCount{}                              \\*
+    \macro{multiCatCount}           & Total number of approaches with multiple categories    \\*
+    \macro{multiCatMax}             & Category with the most overlaps                        \\*
+    \macro{multiCatMaxCount}        & Number of overlaps involving the previous category     \\*
     \hline[dashed]
-    \macro{multiSynCount}           & Terms given as synonyms for
-    multiple discrete terms         & \multiSynCount{}                                 \\*
-    \macro{parSynCount}             & Pairs of test approaches
-    with a child-parent \emph{and}
-    synonym relation                & \parSynCount{}                                   \\*
-    \macro{selfParCount}            & Test approaches that are
-    a parent of themselves          & \selfParCount{}                                  \\
+    \macro{multiSynCount}           & Terms given as synonyms for multiple discrete terms    \\*
+    \macro{parSynCount}             & Pairs of test approaches with a child-parent
+    \emph{and} synonym relation                                                              \\*
+    \macro{selfParCount}            & Test approaches that are a parent of themselves        \\
     \hline
 \end{longtblr}
