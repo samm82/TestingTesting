@@ -73,25 +73,26 @@ draw some conclusions about \emph{how} the literature is flawed:
     \clearpage
 \fi
 
-We summarize the flaws that we discover manually \ifnotpaper (see
-    \Cref{flaw-comment-analysis}) \fi in \Cref{flawMnfsts} based on their
-manifestation (defined in \Cref{mnfst-def}). This lets us keep flaws that we
-automatically uncover \ifnotpaper (see \Cref{auto-flaw-detect}) \fi separate;
-we summarize these based on their domain (defined in \Cref{dmn-def}) in
-\Cref{flawDmns}.
+We summarize the flaws that we discover manually
+% \ifnotpaper (see \Cref{flaw-comment-analysis}) \fi
+in \Cref{flawMnfsts} based on their manifestation% (defined in \Cref{mnfst-def})
+. This lets us separately summarize the flaws we automatically detect
+\ifnotpaper (see \Cref{auto-flaw-detect}) \fi based on their domain %(defined in \Cref{dmn-def})
+in \Cref{flawDmns}.
 \ifnotpaper We list \emph{all} these flaws in \Cref{flaws-full} to balance
     completeness and brevity and denote implicit relations with the phrase
     ``implied by'' in \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats} as
     described in \Cref{explicitness}. \fi Moreover, certain ``subsets'' of
 testing contain many interconnected flaws, which we present in subsections as a
-``third view'' to keep related information together. Therefore, the counts of
-flaws given in \Cref{tab:flawMnfsts,tab:flawDmns} can be thought of as the sum
-the flaws we describe by manifestation, domain, and ``subset''. These subsets
-include \ifnotpaper operational (acceptance) testing (\Cref{oat-flaw}), \fi
+``third view'' to keep related information together. These subsets include
+\ifnotpaper operational (acceptance) testing (\Cref{oat-flaw}), \fi
 recovery testing (\Cref{recov-flaw}), scalability testing (\Cref{scal-flaw}),
-and compatibility testing (\Cref{compat-flaw}). \ifnotpaper Finally, we also
+and compatibility testing (\Cref{compat-flaw}). The counts of flaws given in
+\Cref{tab:flawMnfsts,tab:flawDmns} can be thought of\qtodo{Active voice here?
+    Would this use ``we'' or ``one''?} as the sum of the flaws we
+describe by manifestation, domain, and ``subset''.  \ifnotpaper Finally, we
     infer some flaws as described in \Cref{infers}, which do not contribute to
-    any counts due to their subjectivity; we list them in \Cref{infer-flaws}
+    any counts because they are subjective; we list these in \Cref{infer-flaws}
     for completeness. \fi
 
 Note that due to time constraints, this collection of flaws is still not
