@@ -116,8 +116,8 @@ paper_blind: paper # double-blind build of ICSE paper for review submission
 	make compile_doc DOC_NAME=$@ TEX_NAME=$<
 
 build: csv_diff paper graphs thesis
-docs: paper thesis seminar
-presentations: seminar poster
+docs: paper thesis presentations
+presentations: meeting seminar # poster
 
 debug: DOC_NAME=thesis
 debug: TEX_FLAGS=
