@@ -34,7 +34,7 @@
 \begin{frame}{Methodology}
     \framesubtitle{Procedure}
     \begin{itemize}
-        \item A row is created for each test approach
+        \item We build a glossary with a row for each test approach
     \end{itemize}
     \begin{center}
         \begin{table}
@@ -51,7 +51,7 @@
     \end{center}
     \pause \vspace{-0.5cm}
     \begin{itemize}
-        \item This information is gathered from sources by looking for
+        \item We gather this information from sources by looking for:
               \begin{itemize}
                   \item Glossaries, taxonomies, hierarchies, etc.
                   \item Testing-related terms
@@ -100,12 +100,18 @@
                 \textSources{3}/\texts{},
                 \paperSources{3}/\papers{}}
 
+            \onslide<1>{
+                \node[anchor=west, align=center] at (0, 3) {
+                    In total, we investigate \srcCount{} sources
+                };
+            }
+
             \onslide<2>{
-                \node[anchor=west, align=center] at (-1.9, 3) {
+                \node[anchor=west, align=center] at (-2.2, 3) {
                     Textbooks used at McMaster were our ad hoc starting points\\
                     \tiny \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
                 };
-                \draw[->, very thick] (-1.5, 2.85) -- (-1.25, 1.4);
+                \draw[->, very thick] (-1.8, 2.9) -- (-1.55, 1.1);
             }
 
             % \onslide<3>{
