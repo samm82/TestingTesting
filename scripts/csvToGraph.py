@@ -423,7 +423,7 @@ multiSynNotes = {
         "\\citet[p.~55]{Firesmith2015}, although the terms are not synonyms."
     ),
     "Path Testing": (
-        "This synonym relation is likely incorrect (see \\Cref{parSyns})."
+        "This synonym relation is likely incorrect (see \\Cref{path-exh-syns})."
     ),
     "Static Assertion Checking": (
         "% Flaw count (WRONG, SYNS): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
@@ -541,14 +541,6 @@ for synList in [expMultiSyns, impMultiSyns, infMultiSyns]:
     synList.sort(key=lambda x: x.count("\\item"), reverse=True)
 
 if "Example" not in csvFilename:
-    synLinesGraph = splitListAtEmpty(removeImplicit(categoryDict["Approach"][1]))
-    synLinesGraph[0] = list(filter(
-        lambda x: any(line.startswith(x.split(" ")[0]) or
-                        f"-> {x.split(" ")[0]}" in line
-                      for line in synLinesGraph[1]),
-        synLinesGraph[0]))
-    synLinesGraph = synLinesGraph[0] + [""] + synLinesGraph[1] + [""]
-
     multiSyns = expMultiSyns + impMultiSyns
     writeFile(multiSyns, "multiSyns", True)
     writeFile([f"{formatCount(len(multiSyns))}% Synonyms to multiple discrete terms"],
@@ -936,6 +928,15 @@ if "Example" in csvFilename:
                   else dict())
 else:
     explicitDict = categoryDict
+
+    synLinesGraph = splitListAtEmpty(removeImplicit(categoryDict["Approach"][1]))
+    synLinesGraph[0] = list(filter(
+        lambda x: any(line.startswith(x.split(" ")[0]) or
+                        f"-> {x.split(" ")[0]}" in line
+                      for line in synLinesGraph[1]),
+        synLinesGraph[0]))
+    synLinesGraph = synLinesGraph[0] + [""] + synLinesGraph[1] + [""]
+
     writeDotFile(synLinesGraph, "expSynGraph")
     writeDotFile(parSynsGraph,  "expParSynGraph")
 
