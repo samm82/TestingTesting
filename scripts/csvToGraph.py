@@ -754,11 +754,9 @@ if "Example" not in csvFilename:
                             for chd, par in addedParSyns), lines))
     
     parSynsGraph = splitListAtEmpty(removeImplicit(categoryDict["Approach"][1]))
-    parSynsRels = (findPairsInLines(parSynsGraph[1]) + [""] +
-                   findPairsInLines(parSynsGraph[2]))
-    parSynsGraph = list(filter(lambda x: any(
-        line.startswith(x.split(" ")[0]) or f"-> {x.split(" ")[0]}" in line
-        for line in parSynsRels), parSynsGraph[0])) + [""] + parSynsRels
+    parSynsGraph = (parSynsGraph[0] +
+                    findPairsInLines(parSynsGraph[1]) + [""] +
+                    findPairsInLines(parSynsGraph[2]))
 
     outputFlaws()
     genFlawMacros(FlawDmn)
@@ -896,6 +894,12 @@ CUSTOM_LEGEND = {"subsumes", "specBased", "parChd", "recovery", "scalability",
                  "Example", "expSynGraph", "expParSynGraph"}
 
 def writeDotFile(lines: list[str], filename: str) -> None:
+
+    def termInRel(term: str, relLines: list[str]) -> bool:
+        label = term.split(" ")[0]
+        return any(relLine.startswith(label) or f"-> {label}" in relLine
+                for relLine in relLines)
+
     if "Legend" not in filename:
         # Separate node labels from rest of file content
         lines = splitListAtEmpty(lines)
@@ -904,7 +908,7 @@ def writeDotFile(lines: list[str], filename: str) -> None:
         # Exclude test approaches with no relations; #253
         orphans, nonorphans = [], []
         for label in lines[0]:
-            if not label or any(label.split()[0] in line for line in lines[1]):
+            if not label or termInRel(label, lines[1]):
                 nonorphans.append(label)
             else:
                 # Store "orphans" for future use
@@ -945,13 +949,10 @@ if "Example" in csvFilename:
 else:
     explicitDict = categoryDict
 
-    synLinesGraph = splitListAtEmpty(removeImplicit(categoryDict["Approach"][1]))
-    synLinesGraph[0] = list(filter(
-        lambda x: any(line.startswith(x.split(" ")[0]) or
-                        f"-> {x.split(" ")[0]}" in line
-                      for line in synLinesGraph[1]),
-        synLinesGraph[0]))
-    synLinesGraph = synLinesGraph[0] + [""] + synLinesGraph[1] + [""]
+    # Visualize synonym relations by excluding parent-child relations
+    synLinesGraph = sum(
+        splitListAtEmpty(removeImplicit(categoryDict["Approach"][1]))[:-1],
+        start=[])
 
     writeDotFile(synLinesGraph, "expSynGraph")
     writeDotFile(parSynsGraph,  "expParSynGraph")
