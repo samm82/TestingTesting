@@ -403,14 +403,32 @@ for name, synonym in zip(names, synonyms):
                 nameDict[nameWithSource] = [rsyn]
 
             # Track synonym relations one way and check inconsistencies
-            # EXCEPT for this specific manual case
-            if (fsyn, fname) != ("StructuralTesting", "StructurebasedTesting"):
-                try:
-                    if synSets[f"{fname} -> {fsyn}"] != getRelColor(syn):
+            try:
+                if synSets[f"{fname} -> {fsyn}"] != getRelColor(syn):
+                    if (synSets[f"{fname} -> {fsyn}"][0] == getRelColor(syn)[0] and
+                        synSets[f"{fname} -> {fsyn}"][1] is None):
+                        synSets[f"{fname} -> {fsyn}"] = getRelColor(syn)
+                    else:
                         raise ValueError(
                             f"Mismatch between explicitness of synonyms {fsyn} and {fname}")
-                except KeyError:
-                    synSets[f"{fsyn} -> {fname}"] = getRelColor(syn)
+            except KeyError:
+                synSets[f"{fsyn} -> {fname}"] = getRelColor(syn)
+
+def synSetsLookup(a: str, b: str) -> tuple[SrcCat, SrcCat]:
+    # print(a, b)
+    try:
+        ab = synSets[f"{a} -> {b}"]
+    except KeyError:
+        try:
+            return synSets[f"{b} -> {a}"]
+        except KeyError:
+            return (None, None)
+    try:
+        ba = synSets[f"{b} -> {a}"]
+    except KeyError:
+        return ab
+
+    return(max(ab[0], ba[0]), max(ab[1], ba[1]))
 
 nameDict.update(synDict)
 
@@ -452,8 +470,13 @@ def makeMultiSynLine(valid, syn, terms, alsoSyns):
     if any("(" not in term for term in terms):
         multiSynsList = infMultiSyns
     else:
+        # print(fsyn)
+        # for term in valid:
+        #     print(term)
+        #     print(synSetsLookup(fsyn, term))
+        # input()
         multiSynsList = (impMultiSyns if not all(
-            synSets[f"{fsyn} -> {term}"][0] for term in valid)
+            synSetsLookup(fsyn, term)[0] for term in valid)
             else expMultiSyns)
 
     # Look up any additional information for implied approaches
@@ -494,8 +517,7 @@ for key in categoryDict.keys():
         knownTerm = lambda x: removeInParens(x) in categoryDict[key][0]
         if (knownTerm(syn) or (sum(1 for x in terms if knownTerm(x)) > 1)):
             validTerms = [term for term in terms
-                          if (f"{fsyn} -> {formatApproach(term)}"
-                              in synSets.keys())
+                          if synSetsLookup(fsyn, formatApproach(term))
                           and knownTerm(term)]
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
@@ -515,10 +537,13 @@ for key in categoryDict.keys():
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
 
-                    fterm = formatApproach(term)
-                    for line in colorRelations(synSets[f"{fsyn} -> {fterm}"],
-                                               f"{fterm} -> {fsyn}", "dir=none"):
-                        addLineToCategory(key, line)
+                    for a, b in itertools.permutations([fsyn, formatApproach(term)]):
+                        try:
+                            for line in colorRelations(synSets[f"{a} -> {b}"],
+                                                       f"{b} -> {a}", "dir=none"):
+                                addLineToCategory(key, line)
+                        except KeyError:
+                            continue
 
     if categoryDict[key][1][-1] != "":
         categoryDict[key][1].append("")
