@@ -895,7 +895,23 @@ def makeLegend(lines, separate: bool=False) -> tuple[list[str], list[str]]:
 CUSTOM_LEGEND = {"subsumes", "specBased", "parChd", "recovery", "scalability",
                  "Example", "expSynGraph", "expParSynGraph"}
 
-def writeDotFile(lines, filename):
+def writeDotFile(lines: list[str], filename: str) -> None:
+    if "Legend" not in filename:
+        # Separate node labels from rest of file content
+        lines = splitListAtEmpty(lines)
+        lines = [lines[0], sum(lines[1:], start=[])]
+
+        # Exclude test approaches with no relations; #253
+        orphans, nonorphans = [], []
+        for label in lines[0]:
+            if not label or any(label.split()[0] in line for line in lines[1]):
+                nonorphans.append(label)
+            else:
+                # Store "orphans" for future use
+                orphans.append(label)
+
+        lines = nonorphans + lines[1]
+
     legend = []
     if all(name not in filename for name in CUSTOM_LEGEND):
         lines, legend = makeLegend(lines)

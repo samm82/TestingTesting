@@ -181,7 +181,7 @@ def getFlawCount(line: list[str], mnfst, dmn, todo=True):
         return ""
     return f"% Flaw count ({mnfst}, {dmn}): {" | ".join(sources)}\n\t"
 
-def splitListAtEmpty(listToSplit):
+def splitListAtEmpty(listToSplit: list) -> list[list]:
     recArr = np.array(listToSplit)
     return [subarray.tolist() for subarray in
             np.split(recArr, np.where(recArr == "")[0]+1)
