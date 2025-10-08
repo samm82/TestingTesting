@@ -101,6 +101,7 @@ VolumeTesting [label=<Volume<br/>Testing>,style="dashed"];
 BackupandRecoveryTesting -> BackupRecoveryTesting[dir=none,style="dashed",color="green"];
 CompatibilityTesting -> CoexistenceTesting[dir=none,color="green"];
 ConfigurationTesting -> PortabilityTesting[dir=none];
+FlexibilityTesting -> PortabilityTesting[dir=none,color="green"];
 ConformanceTesting -> CorrectnessTesting[dir=none,color="blue"];
 CorrectnessTesting -> FunctionalTesting[dir=none,color="blue"];
 ConformanceTesting -> FunctionalTesting[dir=none,color="blue"];
@@ -114,7 +115,6 @@ FaultToleranceTesting -> RobustnessTesting[dir=none,color="blue"];
 FunctionalSuitabilityTesting -> FunctionalityTesting[dir=none,style="dashed",color="blue"];
 InternationalizationTesting -> LocalizationTesting[dir=none,style="dashed"];
 PerformanceTesting -> PerformancerelatedTesting[dir=none];
-PortabilityTesting -> FlexibilityTesting[dir=none,color="green"];
 RecoverabilityTesting -> RecoveryTesting[dir=none];
 ScalabilityTesting -> CapacityTesting[dir=none,color="green"];
 
