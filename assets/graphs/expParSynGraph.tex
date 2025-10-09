@@ -8,7 +8,6 @@
 \digraph{expParSynGraph}{
 rankdir=BT;
 
-AllTransitionsTesting [label=<All<br/>Transitions<br/>Testing>];
 BranchConditionCombinationTesting [label=<Branch<br/>Condition<br/>Combination<br/>Testing>];
 BuildVerificationTesting [label=<Build<br/>Verification<br/>Testing>];
 DecisionTesting [label=<Decision<br/>Testing>];
@@ -26,7 +25,6 @@ Reviews [label=<Reviews>];
 RobustnessTesting [label=<Robustness<br/>Testing>];
 ScenarioTesting [label=<Scenario<br/>Testing>];
 SmokeTesting [label=<Smoke<br/>Testing>];
-StateTransitionTesting [label=<State<br/>Transition<br/>Testing>];
 StaticAnalysis [label=<Static<br/>Analysis>];
 StaticTesting [label=<Static<br/>Testing>];
 StructuralAnalysis [label=<Structural<br/>Analysis>];
@@ -44,7 +42,6 @@ SmokeTesting -> BuildVerificationTesting[dir=none,color="blue"];
 StaticTesting -> StaticAnalysis[dir=none,color="maroon"];
 Walkthroughs -> StructuredWalkthroughs[dir=none,color="blue"];
 
-AllTransitionsTesting -> StateTransitionTesting[color="green"];
 ExploratoryTesting -> UnscriptedTesting[color="green"];
 FaultToleranceTesting -> RobustnessTesting[color="blue"];
 OrthogonalArrayTesting -> PairwiseTesting;
