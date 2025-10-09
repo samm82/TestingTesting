@@ -335,6 +335,7 @@
 \end{frame}
 
 \begin{frame}{Automated Flaws}
+    \framesubtitle{Intransitive Synonyms}
     \begin{itemize}
         \item The literature gives some terms as a synonym to two (or more)
               disjoint, unrelated terms, making their synonym relations ambiguous
@@ -362,32 +363,54 @@
 \end{frame}
 
 \begin{frame}{Automated Flaws}
-    Prominent examples of these ``multi-synonyms'': \vspace{0.25cm}
+    \framesubtitle{Intransitive Synonyms}
+    Some prominent examples: \vspace{0.25cm}
     \begin{enumerate}
-        % \item \textbf{Invalid Testing:} \hfill \textbf{Source(s)}
-        %       \begin{itemize}
-        %           \item Error Tolerance Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
-        %           \item Negative Testing {\hfill \tiny \citepISTQB{}}
-        %       \end{itemize} \pause
-        \item \textbf{Soak Testing:} \hfill \textbf{Source(s)}
+        \item \textbf{Functional Testing:} \hfill \textbf{Source(s)}
+              \begin{itemize}
+                  \item \emph{Conformance Testing} {\hfill \tiny \citep[p.~5\=/7]{SWEBOK2025}}
+                  \item \emph{Correctness Testing} {\hfill \tiny \citep[p.~5\=/7]{SWEBOK2025}}
+                  \item Specification-based Testing {\hfill \tiny \citep[p.~196; \dots{}]{IEEE2017}}
+                        %   ; \citealp[pp.~44\==45, 48]{Kam2008}; \citealp[p.~399]{vanVliet2000};
+                        % implied by \citealp[p.~129]{IEEE2021c}; \citeyear[p.~431]{IEEE2017})
+              \end{itemize}\pause
+              \vspace{0.25cm}
+        \item \textbf{Portability Testing:}
+              \begin{itemize}
+                  \item Configuration Testing {\hfill \tiny \citep[p.~43]{Kam2008}}
+                  \item Flexibility Testing {\hfill \tiny \citep{ISO_IEC2023a}}
+              \end{itemize}
+              \vspace{0.25cm}
+        \item \textbf{Soak Testing:}
               \begin{itemize}
                   \item Endurance Testing {\hfill \tiny \citep[p.~39]{IEEE2021c}}
                   \item Reliability Testing {\hfill \tiny (\citealp[Tab.~2]{Gerrard2000a};
                                 \citeyear[Tab.~1, p.~26]{Gerrard2000b})}
-              \end{itemize} \pause
-        \item \textbf{Functional Testing:}
-              \begin{itemize}
-                  \item Behavioural Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
-                  \item Correctness Testing {\hfill \tiny \citep[p.~5\=/7]{SWEBOK2024}}
-                  \item Specification-based Testing {\hfill \tiny (\citealp[p.~196]{IEEE2017}; \dots{})}
-                        % \citealp[pp.~44\==45]{Kam2008}; \citealp[p.~399]{vanVliet2000})}
-                        % implied by \citealp[p.~129]{IEEE2021c}; \citeyear[p.~431]{IEEE2017})}
-              \end{itemize} \pause
-        \item \textbf{Link Testing:}
-              \begin{itemize}
-                  \item Branch Testing {\hfill \tiny (implied by \citealp[p.~24]{IEEE2021c})}
-                  \item Component Integration Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
-                  \item Integration Testing {\hfill \tiny (implied by \citealp[p.~13]{Gerrard2000a})}
+                        % Endurance testing is given as a child of reliability testing by
+                        % \citet[p.~55]{Firesmith2015}, although the terms are not synonyms.
               \end{itemize}
+              %   \item \textbf{Link Testing:}
+              %   \begin{itemize}
+              %       \item Branch Testing {\hfill \tiny (implied by \citealp[p.~24]{IEEE2021c};
+              %             \citealp[p.~4]{Reid1996})}
+              %       \item Component Integration Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
+              %       \item Integration Testing {\hfill \tiny (implied by \citealp[p.~13]{Gerrard2000a})}
+              %   \end{itemize}
+              % \item \textbf{Invalid Testing:}
+              %       \begin{itemize}
+              %           \item Error Tolerance Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
+              %           \item Negative Testing {\hfill \tiny \citepISTQB{}}
+              %       \end{itemize} \pause
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Automated Flaws}
+    \framesubtitle{Irreflexive Parents}
+    We also find some test approaches that are given as parents of themselves:
+    \vspace{0.25cm}
+    \begin{enumerate}
+        \item Performance Testing {\tiny (\citealp[Tab.~2]{Gerrard2000a}; \citeyear[Tab.~1]{Gerrard2000b})}
+        \item System Testing {\tiny \citep[p.~23]{Firesmith2015}}
+        \item Usability Testing {\tiny (\citealp[Tab.~2]{Gerrard2000a}; \citeyear[Tab.~1]{Gerrard2000b})}
     \end{enumerate}
 \end{frame}

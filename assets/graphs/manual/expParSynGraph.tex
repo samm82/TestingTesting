@@ -8,12 +8,7 @@
 \digraph{expParSynGraph}{
 rankdir=BT;
 
-// Dummy node to push the legend to the top left
-start [style="invis"];
-
-ExhaustiveTesting [label=<Exhaustive<br/>Testing>];
 FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
-PathTesting [label=<Path<br/>Testing>];
 RobustnessTesting [label=<Robustness<br/>Testing>];
 ScenarioTesting [label=<Scenario<br/>Testing>];
 StaticAnalysis [label=<Static<br/>Analysis>];
@@ -22,9 +17,6 @@ UseCaseTesting [label=<Use<br/>Case<br/>Testing>];
 
 FaultToleranceTesting -> RobustnessTesting[dir=none,color="blue"];
 FaultToleranceTesting -> RobustnessTesting[color="blue"];
-
-PathTesting -> ExhaustiveTesting[dir=none,color="maroon"];
-PathTesting -> ExhaustiveTesting[color="maroon"];
 
 StaticAnalysis -> StaticTesting[dir=none,color="maroon"];
 StaticAnalysis -> StaticTesting[color="green"];
@@ -36,7 +28,7 @@ UseCaseTesting -> ScenarioTesting[color="green"];
 {
 rank = same;
 edge[style=invis];
-UseCaseTesting -> StaticAnalysis -> FaultToleranceTesting -> PathTesting;
+UseCaseTesting -> StaticAnalysis -> FaultToleranceTesting;
 rankdir = LR;
 }
 

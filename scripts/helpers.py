@@ -33,7 +33,7 @@ ONLY_IEEE = {"2012"}
 # Used in multiple files
 IMPLICIT_KEYWORDS = ["implied", "can be", "sometimes", "should be",
                      "ideally", "usually", "most", "likely", "often", "if",
-                     "although"]
+                     "although", "incorrectly"]
 warned_multi_unsure = set()
 def sortByImplied(ls: list[str]):
     ls = sortIgnoringParens(ls)
