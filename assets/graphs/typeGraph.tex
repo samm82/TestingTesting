@@ -100,7 +100,7 @@ VolumeTesting [label=<Volume<br/>Testing>,style="dashed"];
 
 BackupandRecoveryTesting -> BackupRecoveryTesting[dir=none,style="dashed",color="green"];
 CorrectnessTesting -> FunctionalTesting[dir=none,color="blue"];
-CompatibilityTesting -> CoexistenceTesting[dir=none,color="green"];
+CompatibilityTesting -> CoexistenceTesting[dir=none,style="dashed",color="green"];
 ConfigurationTesting -> PortabilityTesting[dir=none];
 ConformanceTesting -> CorrectnessTesting[dir=none,color="blue"];
 ConformanceTesting -> ComplianceTesting[dir=none,style="dashed"];
@@ -251,7 +251,7 @@ RecoveryTesting -> NonfunctionalTesting[color="blue"];
 RedTeamTesting -> PenetrationTesting[color="blue"];
 RegressionTesting -> FunctionalTesting[color="blue"];
 RegressionTesting -> NonfunctionalTesting[color="blue"];
-RegressionTesting -> Retesting[color="green"];
+RegressionTesting -> Retesting[style="dashed",color="green"];
 RegressionTesting -> RelativeCorrectnessTesting[color="grey"];
 RelativeCorrectnessTesting -> CorrectnessTesting[color="grey"];
 ReliabilityEnhancementTesting -> ReliabilityTesting[color="blue"];

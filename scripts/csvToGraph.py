@@ -685,6 +685,9 @@ def makeParSynLine(chd, par, parSource, synSource) -> None:
     parSyns.add(getFlawCount([parSource, synSource], "CONTRA", "PARS") +
                 f"{chd} $\\to$ {par} & {parSource} & {synSource} \\\\")
 
+def getSource(rel: str) -> str:
+    return "(" + rel.split("(", 1)[1] if "(" in rel else ""
+
 splitAtEmpty = splitListAtEmpty(categoryDict["Approach"][1])
 # Don't look for parent/synonym flaws unless both are present
 parentLines = splitAtEmpty[-1] if len(splitAtEmpty) > 2 else []
@@ -695,10 +698,10 @@ for chd, syns in nameDict.items():
             f"{formatApproach(chd)} -> {formatApproach(par)}")]
         if synLines:
             if chd in synDict.keys():
-                synSource = par.split("(", 1)
+                synSource = getSource(par)
                 par = removeInParens(par)
             else:
-                synSource = chd.split("(", 1)
+                synSource = getSource(chd)
                 chd = removeInParens(chd)
 
             nameLookup = [name for name in names if name.startswith(chd)]
@@ -711,11 +714,8 @@ for chd, syns in nameDict.items():
                 raise ValueError(
                     "Problem with finding source for parent relation between "
                      f"'{removeInParens(chd)}' and '{removeInParens(par)}'")
-            parSource = parSource[0].split("(", 1)
 
-            parSource = "(" + parSource[-1] if len(parSource) > 1 else ""
-            synSource = "(" + synSource[-1] if len(synSource) > 1 else ""
-            makeParSynLine(chd, par, parSource, synSource)
+            makeParSynLine(chd, par, getSource(parSource[0]), synSource)
 
 # Pairs with sources for both
 parSynCount = "".join(parSyns).count("\\to")
