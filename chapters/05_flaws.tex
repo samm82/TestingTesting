@@ -331,8 +331,15 @@ irreflexivity of this relation as defined in \Cref{par-chd-rels}.
 \phantomsection{}\label{parSyns}\parSynIntro{}\ifnotpaper. We visualize the
 pairs where both relations are explicit in \Cref{fig:expParSynGraph} and list
 all identified pairs in \Cref{tab:parSyns}, as well as pairs where we infer a
-flaw in \Cref{infParSyns} for completeness\else\ and list the most
-prominent in \Cref{tab:parSyns}\fi.
+flaw in \Cref{infParSyns} for completeness%
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{assets/graphs/manual/expParSynLegend.pdf}
+    \includegraphics[width=\linewidth]{assets/graphs/manual/expParSynGraph.pdf}
+    % \vspace{-7mm}
+    \caption{Pairs of test approaches with a parent-child \emph{and} synonym
+        relation given explicitly by the literature.}\label{fig:expParSynGraph}
+\end{figure}\else\ and list the most prominent in \Cref{tab:parSyns}\fi.
 
 \phantomsection{}\label{path-exh-syns}
 Of particular note is the relation between path testing and exhaustive testing.
@@ -350,17 +357,8 @@ effects of input data \ifnotpaper
 on the code's behaviour. Exhaustive testing
 requires ``all combinations of input values \emph{and} preconditions \dots{}
 [to be] tested'' \ifnotpaper (\citealp[p.~4, emphasis added]{IEEE2022};
-    similar in \citealpISTQB{}; \citealp[p.~121]{Patton2006})%
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=0.54\linewidth]{assets/graphs/manual/expParSynLegend.pdf}
-        \includegraphics[width=0.44\linewidth]{assets/graphs/manual/expParSynGraph.pdf}
-        % \vspace{-7mm}
-        \caption{Pairs of test approaches with a parent-child \emph{and} synonym
-            relation given explicitly by the literature.}\label{fig:expParSynGraph}
-    \end{figure}\else \cite[p.~4]{IEEE2022} (similar in \citealpISTQB{},
-    \cite[p.~121]{Patton2006})\fi.
-
+    similar in \citealpISTQB{}; \citealp[p.~121]{Patton2006})\else
+    \cite[p.~4]{IEEE2022} (similar in \citealpISTQB{}, \cite[p.~121]{Patton2006})\fi.
 % Flaw count (WRONG, SYNS): {vanVliet2000} | {IEEE2022} {IEEE2021c} ISTQB {PetersAndPedrycz2000} {Patton2006}
 
 % % TODO: re-investigate this after going through the rest of ISO/IEC/IEEE 29119

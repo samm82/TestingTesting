@@ -8,46 +8,40 @@
 \digraph{expParSynGraph}{
 rankdir=BT;
 
-BranchConditionCombinationTesting [label=<Branch<br/>Condition<br/>Combination<br/>Testing>];
-BuildVerificationTesting [label=<Build<br/>Verification<br/>Testing>];
-DecisionTesting [label=<Decision<br/>Testing>];
-DeveloperTesting [label=<Developer<br/>Testing>];
-DynamicAnalysis [label=<Dynamic<br/>Analysis>];
-DynamicTesting [label=<Dynamic<br/>Testing>];
+DomainTesting [label=<Domain<br/>Testing>];
 ExhaustiveTesting [label=<Exhaustive<br/>Testing>];
-ExploratoryTesting [label=<Exploratory<br/>Testing>];
 FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
-OrthogonalArrayTesting [label=<Orthogonal<br/>Array<br/>Testing>];
-PairwiseTesting [label=<Pairwise<br/>Testing>];
+FunctionalTesting [label=<Functional<br/>Testing>];
 PathTesting [label=<Path<br/>Testing>];
-ProgrammerTesting [label=<Programmer<br/>Testing>];
-Reviews [label=<Reviews>];
 RobustnessTesting [label=<Robustness<br/>Testing>];
 ScenarioTesting [label=<Scenario<br/>Testing>];
-SmokeTesting [label=<Smoke<br/>Testing>];
+SpecificationbasedTesting [label=<Specification-based<br/>Testing>];
 StaticAnalysis [label=<Static<br/>Analysis>];
 StaticTesting [label=<Static<br/>Testing>];
-StructuralAnalysis [label=<Structural<br/>Analysis>];
-StructuredWalkthroughs [label=<Structured<br/>Walkthroughs>];
-UnscriptedTesting [label=<Unscripted<br/>Testing>];
+StructuralTesting [label=<Structural<br/>Testing>];
+StructurebasedTesting [label=<Structure-based<br/>Testing>];
 UseCaseTesting [label=<Use<br/>Case<br/>Testing>];
-Walkthroughs [label=<Walkthroughs>];
 
-BranchConditionCombinationTesting -> DecisionTesting[dir=none,color="blue"];
-DynamicTesting -> DynamicAnalysis[dir=none,color="maroon"];
-FaultToleranceTesting -> RobustnessTesting[dir=none,color="blue"];
-ScenarioTesting -> UseCaseTesting[dir=none,color="blue"];
-SmokeTesting -> BuildVerificationTesting[dir=none,color="blue"];
-StaticTesting -> StaticAnalysis[dir=none,color="maroon"];
-Walkthroughs -> StructuredWalkthroughs[dir=none,color="blue"];
+FaultToleranceTesting -> RobustnessTesting[dir=none,color=blue];
+FaultToleranceTesting -> RobustnessTesting[color=blue];
 
-ExploratoryTesting -> UnscriptedTesting[color="green"];
-FaultToleranceTesting -> RobustnessTesting[color="blue"];
-OrthogonalArrayTesting -> PairwiseTesting;
-PathTesting -> ExhaustiveTesting[color="maroon"];
-ProgrammerTesting -> DeveloperTesting[color="blue"];
-Reviews -> StructuralAnalysis[color="maroon"];
-StaticAnalysis -> StaticTesting[color="green"];
-UseCaseTesting -> ScenarioTesting[color="green"];
+FunctionalTesting -> SpecificationbasedTesting[dir=none,color=green];
+FunctionalTesting -> SpecificationbasedTesting[color=green];
+
+PathTesting -> ExhaustiveTesting[dir=none,color=maroon];
+PathTesting -> ExhaustiveTesting[color=maroon];
+
+StructurebasedTesting -> StructuralTesting[dir=none,color=green];
+StructurebasedTesting -> StructuralTesting[color=maroon];
+
+UseCaseTesting -> ScenarioTesting[dir=none,color=blue];
+UseCaseTesting -> ScenarioTesting[color=green];
+
+DomainTesting -> SpecificationbasedTesting[dir=none,color=blue];
+DomainTesting -> SpecificationbasedTesting[color=maroon];
+
+StaticAnalysis -> StaticTesting[dir=none,color=maroon];
+StaticAnalysis -> StaticTesting[color=green];
+
 }
 \end{document}
