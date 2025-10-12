@@ -16,7 +16,7 @@
 \newcolumntype{M}{>{\raggedright\arraybackslash}m}
 \renewcommand\tabularxcolumn[1]{M{#1}}
 \renewcommand\arraystretch{1.2}
-\usetikzlibrary{shapes,shapes.geometric,arrows,graphs,graphdrawing,fit,calc,positioning,automata}
+\usetikzlibrary{shapes,shapes.geometric,arrows,graphs,graphdrawing,fit,calc,positioning,automata,decorations.pathreplacing}
 \usepackage{pgf-pie,pgfplots}
 \pgfplotsset{compat=1.9}
 
@@ -94,6 +94,24 @@
 \renewcommand\papers{\paperSources{1}}
 
 \newcounter{methodCounter}
+
+% Based on https://tex.stackexchange.com/a/182669/192195
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node[baseline] (#1) {};}
+
+\tikzset{bracestyle/.style={midway, left, xshift=-2ex, align=right, font=\small, draw=none, thin, text=black}}
+
+\newcommand\VerticalBrace[5][]{%
+    % #1 = draw options
+    % #2 = top mark
+    % #3 = bottom mark
+    % #4 = amplitude
+    % #5 = label
+\begin{tikzpicture}[overlay,remember picture]
+  \draw[decorate,decoration={brace, amplitude=#4ex}, #1] 
+    ([yshift=0.5ex, xshift=-3ex]#3.south west) -- ([yshift=1ex, xshift=-3ex]#2.north west)
+        node[bracestyle] {#5};
+\end{tikzpicture}
+}
 
 \title[Committee Meeting 2]{Second Committee Meeting}
 \subtitle{Updated Progress Report}
@@ -332,6 +350,39 @@
 %     \hspace\fill{\small--- Dr.~Jacques Carette}
 % \end{block}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% NEXT STEPS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Next Steps}
+\begin{frame}
+    \frametitle{Thesis Chapters}
+    \begin{columns}
+        \begin{column}{0.2\textwidth}
+        \end{column}
+        \begin{column}{0.8\textwidth}
+            \begin{enumerate}
+                \setcounter{enumi}{-1}
+                \item\tikzmark{top 1}Abstract
+                \item Introduction
+                \item Terminology (including relevant appendices)
+                \item\tikzmark{bottom 1}Methodology
+                \item\tikzmark{top 2}Tools
+                \item\tikzmark{bottom 2}Observed Flaws (including relevant appendix)
+                \item\tikzmark{top 3}Recommendations
+                \item Threats to Validity
+                \item\tikzmark{bottom 3}Future Work
+                \item\tikzmark{top 4}\tikzmark{bottom 4}Conclusion
+            \end{enumerate}\pause
+
+            \VerticalBrace[ultra thick, blue]{top 1}{bottom 1}{1.50}{Complete}
+            \VerticalBrace[ultra thick, blue]{top 2}{bottom 2}{1.46}{Under Review}
+            \VerticalBrace[ultra thick, blue]{top 3}{bottom 3}{1.48}{In Progress}
+            \VerticalBrace[ultra thick, blue]{top 4}{bottom 4}{1.15}{To Do Later}
+        \end{column}
+    \end{columns}
+
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ACKNOWLEDGEMENTS
