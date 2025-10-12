@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{expParSynSpecGraph}{
+rankdir=BT;
+
+DomainTesting [label=<Domain<br/>Testing>];
+FunctionalTesting [label=<Functional<br/>Testing>];
+SpecificationbasedTesting [label=<Specification-based<br/>Testing>];
+
+FunctionalTesting -> SpecificationbasedTesting[dir=none,color=green];
+FunctionalTesting -> SpecificationbasedTesting[color=green];
+
+DomainTesting -> SpecificationbasedTesting[dir=none,color=blue];
+DomainTesting -> SpecificationbasedTesting[color=maroon];
+
+% From https://stackoverflow.com/a/64007295/10002168
+{
+rank = same;
+edge[style=invis];
+FunctionalTesting -> DomainTesting;
+rankdir = LR;
+}
+
+}
+\end{document}
