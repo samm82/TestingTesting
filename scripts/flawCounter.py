@@ -80,7 +80,8 @@ def getSrcCat(s, rel: bool = False) -> SrcCat:
             "Fenton and Pfleeger", "FentonAndPfleeger",
             "Kaner et al", "KanerEtAl"}):
         return SrcCat.TEXT
-    return SrcCat.INFER if rel and not any(par in s for par in "()") else SrcCat.PAPER
+    return SrcCat.INFER if rel and not any(
+        src in s for src in ["(", ")", "\\cite"]) else SrcCat.PAPER
 
 def getExplicitness(explicitness: Explicitness | tuple[Explicitness]):
     if isinstance(explicitness, tuple):

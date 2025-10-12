@@ -13,6 +13,8 @@ ExhaustiveTesting [label=<Exhaustive<br/>Testing>];
 FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
 FunctionalTesting [label=<Functional<br/>Testing>];
 PathTesting [label=<Path<br/>Testing>];
+PerformanceTesting [label=<Performance<br/>Testing>];
+PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
 RobustnessTesting [label=<Robustness<br/>Testing>];
 ScenarioTesting [label=<Scenario<br/>Testing>];
 SpecificationbasedTesting [label=<Specification-based<br/>Testing>];
@@ -31,6 +33,9 @@ FunctionalTesting -> SpecificationbasedTesting[color=green];
 PathTesting -> ExhaustiveTesting[dir=none,color=maroon];
 PathTesting -> ExhaustiveTesting[color=maroon];
 
+PerformanceTesting -> PerformancerelatedTesting[dir=none,color=black];
+PerformanceTesting -> PerformancerelatedTesting[color=green];
+
 StructurebasedTesting -> StructuralTesting[dir=none,color=green];
 StructurebasedTesting -> StructuralTesting[color=maroon];
 
@@ -48,7 +53,8 @@ StaticAnalysis -> StaticTesting[color=green];
 rank = same;
 edge[style=invis];
 FunctionalTesting -> DomainTesting -> UseCaseTesting -> StaticAnalysis;
-StaticAnalysis -> StructurebasedTesting -> FaultToleranceTesting -> PathTesting
+StaticAnalysis -> StructurebasedTesting -> PerformanceTesting;
+PerformanceTesting -> FaultToleranceTesting -> PathTesting;
 rankdir = LR;
 }
 

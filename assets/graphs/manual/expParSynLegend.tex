@@ -33,14 +33,19 @@ src3 -> src4 [color=blue, label=<From Terminology<br/>Collections>]
 src5 [style=invis];
 src6 [style=invis];
 src5 -> src6 [color=maroon, label=<From Textbooks>]
+src7 [style=invis];
+src8 [style=invis];
+src7 -> src8 [color=black, label=<From Papers and<br/>Other Documents>]
 }
 edge [style="invis"]
 chd -> src1
 chd -> src2
 par -> src3
-syn1 -> src4
-syn2 -> src5
-syn2 -> src6
+par -> src4
+syn1 -> src5
+syn1 -> src6
+syn2 -> src7
+syn2 -> src8
 }
 
 }
