@@ -157,7 +157,7 @@
             model, identify test coverage items, and derive corresponding test cases''
             (\citeyear[p.~11]{IEEE2022}; \citeyear[p.~5]{IEEE2021a};
             similar in \citeyear[p.~467]{IEEE2017})}
-        \only<5>{\textbf{Type:} ``Testing that is focused on specific quality
+        \only<5>{\textbf{Type:} ``testing that is focused on specific quality
             characteristics'' (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021c};
             \citeyear[p.~473]{IEEE2017})}
     \end{minipage}
@@ -291,11 +291,11 @@
     % \vspace{-4cm}
     \begin{columns}
         \begin{column}{0.45\textwidth}
-            \vspace{-1cm}
+            \vspace{-0.5cm}
             \begin{itemize}
                 \item \approachCount{} test approaches $\rightarrow$
-                \item<2-> \qualityCount{} software qualities \\ \small (may imply test approaches)
-                \item<3-> \flawCount{} flaws in the software testing literature
+                \item \qualityCount{} software qualities \\ \small (may imply test approaches)
+                \item \flawCount{} flaws in the software testing literature
             \end{itemize}
         \end{column}
         \begin{column}{0.55\textwidth}
@@ -312,7 +312,7 @@
 
 \begin{frame}{Flaw Summary by Source Tier}
     \begin{center}
-        \input{assets/graphs/flawBarsSummarySem}
+        \input{assets/graphs/flawBarsSummarySem}\vspace*{0.4mm}
     \end{center}
 \end{frame}
 
@@ -324,7 +324,7 @@
 
 \begin{frame}{Flaw Summary by Manifestation}
     \begin{center}
-        \input{assets/graphs/flawMnfstBarsSummary}
+        \input{assets/graphs/flawMnfstBarsSummary}\hspace{18cm}\vspace*{-8mm}
     \end{center}
 \end{frame}
 
@@ -336,11 +336,8 @@
 
 \begin{frame}{Automated Flaws}
     \framesubtitle{Intransitive Synonyms}
-    \begin{itemize}
-        \item The literature gives some terms as a synonym to two (or more)
-              disjoint, unrelated terms, making their synonym relations ambiguous
-        \item \pause We include these in our generated visualizations
-    \end{itemize}
+    Some terms are given as a synonym to two (or more) disjoint terms, making
+    their relations ambiguous
     \vspace{-0.5cm}
     \begin{columns}[c]
         \begin{column}{.475\linewidth}
