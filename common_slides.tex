@@ -21,71 +21,46 @@
 }
 
 \begin{frame}{Research Questions}
-    \onslide<1->\rqa{} \vspace*{\fill}
-    \onslide<1>\rqb{} \vspace*{\fill}
-    \onslide<1>\rqc{} \vspace*{\fill}
+    \rqa{} \vspace*{\fill}
+    \rqb{} \vspace*{\fill}
+    \rqc{} \vspace*{\fill}
     \vspace{0.2cm}
 \end{frame}
 
 \subsection{Methodology}
 
-\input{build/methodOverviewSem}
-
 \begin{frame}{Methodology}
     \framesubtitle{Procedure}
-    \begin{itemize}
-        \item We build a glossary with a row for each test approach
-    \end{itemize}
-    \begin{center}
-        \begin{table}
-            \small
-            \begin{tabularx}{\linewidth}{|M{1.1cm}|M{1.3cm}|X|M{1.5cm}|M{1.6cm}|}
-                \hline
-                \thead{\textbf{Name}} & \thead{\textbf{Category}} & \thead{\textbf{Definition}}                                                                                         & \thead{\textbf{Parent(s)}}                       & \thead{\textbf{Synonym(s)}}           \\
-                \hline
-                A/B Testing           & Practice {\tiny (Fig.~2)} & Testing ``that allows testers to determine which of two systems or components performs better'' {\tiny (pp.~1, 36)} & Statistical Testing {\tiny (pp.~1,~36)}, \dots{} & Split-Run Testing {\tiny (pp.~1,~36)} \\
-                \hline
-            \end{tabularx}
-            \caption{\tiny Information from \citep{IEEE2022}}
-        \end{table}
-    \end{center}
-    \pause \vspace{-0.5cm}
-    \begin{itemize}
-        \item We gather this information from sources by looking for:
-              \begin{itemize}
-                  \item Glossaries, taxonomies, hierarchies, etc.
-                  \item Testing-related terms
-                  \item Terms described \emph{by} other approaches
-                  \item Terms that \emph{imply} other approaches
-              \end{itemize}
-    \end{itemize}
+    \rqa{}
+    \vspace{0.75cm}
+    \begin{enumerate}
+        \item \phantomsection{}\label{step:ident-sources}
+              Identify authoritative sources on software testing
+              %   and ``snowball'' from them
+        \item \phantomsection{}\label{step:ident-terms}
+              Identify all test approaches and testing-related terms
+              %   described in these authoritative sources
+        \item \phantomsection{}\label{step:record-info}
+              Record data for these terms% all relevant data, including
+              %   implicit data, for each term identified in
+              %   step~\ref{step:ident-terms}
+              ; test approach data are comprised of:
+              \vspace*{-0.4cm}\begin{multicols}{3}\begin{enumerate}
+                      \item Names
+                      \item Categories\footnote{Defined in \Cref{cats-def}.}
+                      \item Definitions
+                      \item Synonyms\footnote{Defined in \Cref{syn-rels}.}
+                      \item Parents\footnote{Defined in \Cref{par-chd-rels}.}
+                      \item Flaws\footnote{Defined in \Cref{flaw-def}.}%
+                            \phantomsection{}\label{manual-flaws}
+                  \end{enumerate}\end{multicols}\vspace*{-0.4cm}
+        \item \phantomsection{}\label{step:repeat-process}
+              Repeat steps~\ref{step:ident-sources} to \ref{step:record-info} for
+              any missing or unclear terms  % until the stopping criteria is reached
+              \setcounter{methodCounter}{\value{enumi}}
+    \end{enumerate}
+    \vspace{1.3cm}
 \end{frame}
-
-% \begin{frame}{Methodology}
-%     \framesubtitle{Procedure}
-%     \begin{itemize}
-%         \item It seems that the existence of a software quality implies the
-%               existence of a test type associated with it \pause
-%         \item Some test approaches use shared or complicated terminology \pause
-%         \item For each of these, we record its
-%               \begin{itemize}
-%                   \item Name
-%                   \item Definition
-%                   \item Precedence for a related test type (only for qualities)
-%                   \item Synonym(s)
-%               \end{itemize}
-%     \end{itemize}
-% \end{frame}
-
-% \begin{frame}{Methodology}
-%     \framesubtitle{Procedure}
-%     \begin{itemize}
-%         \item Recording these data in a consistent format allows for visualizations to
-%               be generated according to a certain logic \pause
-%         \item It also allows for subsets of flaws to be identified \pause
-%               \vspace{1cm}\rqb{}
-%     \end{itemize}
-% \end{frame}
 
 \begin{frame}{Methodology}
     \framesubtitle{Sources}
@@ -124,6 +99,81 @@
 
         \end{tikzpicture}
     \end{figure}
+\end{frame}
+
+\begin{frame}{Methodology}
+    \framesubtitle{Terms}
+    \begin{itemize}
+        \item We build a glossary with a row for each test approach
+    \end{itemize}
+    \begin{center}
+        \begin{table}
+            \small
+            \begin{tabularx}{\linewidth}{|M{1.1cm}|M{1.3cm}|X|M{1.5cm}|M{1.6cm}|}
+                \hline
+                \thead{\textbf{Name}} & \thead{\textbf{Category}} & \thead{\textbf{Definition}}                                                                                         & \thead{\textbf{Parent(s)}}                       & \thead{\textbf{Synonym(s)}}           \\
+                \hline
+                A/B Testing           & Practice {\tiny (Fig.~2)} & Testing ``that allows testers to determine which of two systems or components performs better'' {\tiny (pp.~1, 36)} & Statistical Testing {\tiny (pp.~1,~36)}, \dots{} & Split-Run Testing {\tiny (pp.~1,~36)} \\
+                \hline
+            \end{tabularx}
+            \caption{\tiny Information from \citep{IEEE2022}}
+        \end{table}
+    \end{center}
+    \vspace{-0.5cm}
+    \begin{itemize}
+        \item We gather this information from sources by looking for:
+              \begin{itemize}
+                  \item Glossaries, taxonomies, hierarchies, etc.
+                  \item Testing-related terms
+                  \item Terms described \emph{by} other approaches
+                  \item Terms that \emph{imply} other approaches
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+% \begin{frame}{Methodology}
+%     \framesubtitle{Procedure}
+%     \begin{itemize}
+%         \item It seems that the existence of a software quality implies the
+%               existence of a test type associated with it \pause
+%         \item Some test approaches use shared or complicated terminology \pause
+%         \item For each of these, we record its
+%               \begin{itemize}
+%                   \item Name
+%                   \item Definition
+%                   \item Precedence for a related test type (only for qualities)
+%                   \item Synonym(s)
+%               \end{itemize}
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Methodology}
+%     \framesubtitle{Procedure}
+%     \begin{itemize}
+%         \item Recording these data in a consistent format allows for visualizations to
+%               be generated according to a certain logic \pause
+%         \item It also allows for subsets of flaws to be identified \pause
+%               \vspace{1cm}\rqb{}
+%     \end{itemize}
+% \end{frame}
+
+\begin{frame}{Methodology}
+    \framesubtitle{Procedure}
+    \rqb{}
+    \begin{enumerate}
+        \setcounter{enumi}{\value{methodCounter}}
+        \item Analyze recorded test approach data for additional flaws
+              \begin{enumerate}
+                  \item Generate relation graphs
+                  \item Automatically detect certain classes of flaws
+                  \item Automatically analyze manually recorded flaws from
+                        step~\ref{step:record-info}.\ref{manual-flaws}
+              \end{enumerate}
+        \item Report results of flaw analysis
+              \vspace{0.43cm}
+              \rqc{}
+        \item Provide examples of how to resolve these flaws
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}[t]{Methodology}
