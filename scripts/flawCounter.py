@@ -365,7 +365,7 @@ def outputFlaws():
         viewValues = [v.value for v in view]
         writeFile(["\\begin{figure}[bt!]", "\\centering",
                "\\begin{tikzpicture}", "\\begin{axis}[",
-                    "width=0.8\\textwidth, height=7.5cm,",
+                    "width=0.8\\textwidth, height=0.8\\textheight,",
                     # "x tick label style={rotate=90},",
                    f"symbolic y coords={{{",".join(reversed(viewValues))}}},",
                     "ytick=data,",  # "y tick label as interval,",
