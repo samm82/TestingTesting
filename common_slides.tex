@@ -361,15 +361,17 @@
 \end{frame}
 
 \begin{frame}{Flaw Summary by Source Tier}
-    \begin{center}
+    \begin{figure}
+        \centering
         \input{assets/graphs/flawBarsSummarySem}\vspace*{0.4mm}
-    \end{center}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Normalized Flaw Summary}
-    \begin{center}
+    \begin{figure}
+        \centering
         \input{assets/graphs/normFlawBarsSummarySem}
-    \end{center}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Flaw Summary by Manifestation}
@@ -500,10 +502,10 @@
               don't assume everyone is on the same page
 
               \only<1>{\vspace{0.3cm}
-                  % TODO: using adjustbox here throws an error but generates desired output
-                  \adjustbox{scale=0.85, center}{
-                      \input{assets/graphs/flawBarsSummarySem}}}
-              \pause
+                  \begin{figure}
+                      \adjustbox{scale=0.85, center}{
+                          \input{assets/graphs/flawBarsSummarySem}}
+                  \end{figure}} \pause
         \item Even if they are, there can still be issues!
     \end{itemize}
     \begin{figure}
