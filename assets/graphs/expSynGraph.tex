@@ -31,6 +31,7 @@ LargeScaleIntegrationTesting [label=<Large<br/>Scale<br/>Integration<br/>Testing
 MigrationTesting [label=<Migration<br/>Testing>];
 NegativeTesting [label=<Negative<br/>Testing>];
 OperationalTesting [label=<Operational<br/>(Acceptance)<br/>Testing>];
+OrthogonalArrayTesting [label=<Orthogonal<br/>Array<br/>Testing>];
 PerformanceTesting [label=<Performance<br/>Testing>];
 PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
 PortabilityTesting [label=<Portability<br/>Testing>];
@@ -51,6 +52,7 @@ StructuralTesting [label=<Structural<br/>Testing>];
 StructurebasedTesting [label=<Structure-based<br/>Testing>];
 StructuredWalkthroughs [label=<Structured<br/>Walkthroughs>];
 SystemsIntegrationTesting [label=<Systems<br/>Integration<br/>Testing>];
+twiseTesting [label=<t-wise<br/>Testing>];
 UseCaseTesting [label=<Use<br/>Case<br/>Testing>];
 Walkthroughs [label=<Walkthroughs>];
 
@@ -94,6 +96,7 @@ StaticAssertionChecking -> StaticVerification[dir=none];
 StaticTesting -> StaticAnalysis[dir=none,color="maroon"];
 StructurebasedTesting -> StructuralTesting[dir=none,color="green"];
 SystemsIntegrationTesting -> LargeScaleIntegrationTesting[dir=none];
+twiseTesting -> OrthogonalArrayTesting[dir=none,color="blue"];
 Walkthroughs -> StructuredWalkthroughs[dir=none,color="blue"];
 
 }

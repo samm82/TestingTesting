@@ -16,6 +16,10 @@
 \def\supers{Dr.~Spencer Smith and Dr.~Jacques Carette}
 \def\supersAck{\supers{} have been great supervisors and valuable sources of
     guidance and feedback}
+\NewDocumentCommand{\codeAI}{s}{ChatGPT was used to help generate supplementary
+    Python code for constructing visualizations and generating \LaTeX{} code,
+    including regex\IfBooleanTF{#1}{\\ \item}{.} ChatGPT and GitHub Copilot
+    were both used for assistance with \LaTeX{} formatting}
 
 %------------------------------------------------------------------------------
 % Spacing Options
@@ -107,14 +111,14 @@
 
 % Define common footnotes about IEEE testing terms for reuse
 \newcommand{\distinctIEEE}[1]{distinct from the notion of ``test #1'' described
-    in \Cref{tab:ieeeCats}.}
+    in \Cref{tab:ieeeCats}}
 \newcommand{\notDefDistinctIEEE}[1]{\footnote{Not formally defined, but
-        \distinctIEEE{#1}}}
+        \distinctIEEE{#1}.}}
 % % Defined with help from GitHub Copilot
 % \NewDocumentCommand{\gerrardDistinctIEEE}{s m}{%
 %     \IfBooleanTF{#1}{}{\footnote}%
 %     {``Each type of test addresses a different risk area''
-%         \citep[p.~12]{Gerrard2000a}, which is \distinctIEEE{#2}}%
+%         \citep[p.~12]{Gerrard2000a}, which is \distinctIEEE{#2}.}%
 % }
 
 \NewDocumentCommand{\multiCatIntro}{s}{%

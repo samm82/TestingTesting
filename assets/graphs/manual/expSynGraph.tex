@@ -32,6 +32,7 @@ IntakeTesting [label=<Intake<br/>Testing>];
 LargeScaleIntegrationTesting [label=<Large Scale<br/>Integration<br/>Testing>];
 MigrationTesting [label=<Migration<br/>Testing>];
 OperationalTesting [label=<Operational<br/>(Acceptance)<br/>Testing>];
+OrthogonalArrayTesting [label=<Orthogonal<br/>Array<br/>Testing>];
 PathTesting [label=<Path<br/>Testing>];
 PerformanceTesting [label=<Performance<br/>Testing>];
 PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
@@ -50,58 +51,64 @@ StaticAnalysis [label=<Static<br/>Analysis>];
 StaticTesting [label=<Static<br/>Testing>];
 StructuredWalkthroughs [label=<Structured<br/>Walkthroughs>];
 SystemsIntegrationTesting [label=<Systems<br/>Integration<br/>Testing>];
+twiseTesting [label=<t-wise<br/>Testing>];
 UseCaseTesting [label=<Use<br/>Case<br/>Testing>];
 Walkthroughs [label=<Walkthroughs>];
 
-CapacityTesting -> ScalabilityTesting[dir=none,color="green"];
-CompatibilityTesting -> CoexistenceTesting[dir=none,color="green"];
+CapacityTesting -> ScalabilityTesting[dir=none,color=green];
+CompatibilityTesting -> CoexistenceTesting[dir=none,color=green];
 
-AcceptanceTesting -> QualificationTesting[dir=none,color="blue"];
-FaultToleranceTesting -> RobustnessTesting[dir=none,color="blue"];
-OperationalTesting -> ProductionAcceptanceTesting[dir=none,color="blue"];
-Walkthroughs -> StructuredWalkthroughs[dir=none,color="blue"];
+AcceptanceTesting -> QualificationTesting[dir=none,color=blue];
+FaultToleranceTesting -> RobustnessTesting[dir=none,color=blue];
+OperationalTesting -> ProductionAcceptanceTesting[dir=none,color=blue];
+OrthogonalArrayTesting -> twiseTesting[dir=none,color=blue];
+Walkthroughs -> StructuredWalkthroughs[dir=none,color=blue];
 
-DynamicAnalysis -> DynamicTesting[dir=none,color="maroon"];
-ExhaustiveTesting -> PathTesting[dir=none,color="maroon"];
-StaticAnalysis -> StaticTesting[dir=none,color="maroon"];
+DynamicAnalysis -> DynamicTesting[dir=none,color=maroon];
+ExhaustiveTesting -> PathTesting[dir=none,color=maroon];
+StaticAnalysis -> StaticTesting[dir=none,color=maroon];
 
 ConversionTesting -> MigrationTesting[dir=none];
 LargeScaleIntegrationTesting -> SystemsIntegrationTesting[dir=none];
-PerformancerelatedTesting -> PerformanceTesting[dir=none];
+PerformanceTesting -> PerformancerelatedTesting[dir=none];
 RecoverabilityTesting -> RecoveryTesting[dir=none];
 
-CorrectnessTesting -> ConformanceTesting[dir=none,color="blue"];
-CorrectnessTesting -> FunctionalTesting[dir=none,color="blue"];
-ConformanceTesting -> FunctionalTesting[dir=none,color="blue"];
-FunctionalTesting -> SpecificationbasedTesting[dir=none,color="green"];
-SpecificationbasedTesting -> DomainTesting[dir=none,color="blue"];
+CorrectnessTesting -> ConformanceTesting[dir=none,color=blue];
+CorrectnessTesting -> FunctionalTesting[dir=none,color=blue];
+ConformanceTesting -> FunctionalTesting[dir=none,color=blue];
+FunctionalTesting -> SpecificationbasedTesting[dir=none,color=green];
+SpecificationbasedTesting -> DomainTesting[dir=none,color=blue];
 
-BranchConditionTesting -> ConditionTesting[dir=none,color="blue"];
-ConditionTesting [label=<Condition<br/>Testing>,style="dotted"];
-ConditionTesting -> DecisionTesting[dir=none,color="blue"];
-ConditionTesting -> BranchConditionCombinationTesting[dir=none,color="maroon"];
-BranchConditionCombinationTesting -> DecisionTesting[dir=none,color="blue"];
+BranchConditionTesting -> ConditionTesting[dir=none,color=blue];
+ConditionTesting [label=<Condition<br/>Testing>,style=dotted];
+ConditionTesting -> DecisionTesting[dir=none,color=blue];
+ConditionTesting -> BranchConditionCombinationTesting[dir=none,color=maroon];
+BranchConditionCombinationTesting -> DecisionTesting[dir=none,color=blue];
 
-UserScenarioTesting [label=<User<br/>Scenario<br/>Testing>,style="dotted"];
-ScenarioTesting -> UseCaseTesting[dir=none,color="blue"];
-ScenarioTesting -> UserScenarioTesting[dir=none,color="blue"];
-UseCaseTesting -> UserScenarioTesting[dir=none,color="blue"];
+UserScenarioTesting [label=<User<br/>Scenario<br/>Testing>,style=dotted];
+ScenarioTesting -> UseCaseTesting[dir=none,color=blue];
+ScenarioTesting -> UserScenarioTesting[dir=none,color=blue];
+UseCaseTesting -> UserScenarioTesting[dir=none,color=blue];
 
-FlexibilityTesting -> PortabilityTesting[dir=none,color="green"];
+FlexibilityTesting -> PortabilityTesting[dir=none,color=green];
 PortabilityTesting -> ConfigurationTesting[dir=none];
 
-SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
-EnduranceTesting -> SoakTesting[dir=none,color="green"];
+SoakTesting [label=<Soak<br/>Testing>,style=dotted];
+EnduranceTesting -> SoakTesting[dir=none,color=green];
 SoakTesting -> ReliabilityTesting[dir=none];
 
-BuildVerificationTesting -> SmokeTesting -> IntakeTesting[dir=none,color="blue"];
+BuildVerificationTesting -> SmokeTesting -> IntakeTesting[dir=none,color=blue];
 
+ConfigurationTesting -> ScenarioTesting[dir=none,style=invis];
+ReliabilityTesting -> UseCaseTesting[dir=none,style=invis];
 IntakeTesting -> AcceptanceTesting[dir=none,style=invis];
-ScalabilityTesting -> Walkthroughs -> FaultToleranceTesting[dir=none,style=invis];
-CoexistenceTesting -> StructuredWalkthroughs -> OperationalTesting[dir=none,style=invis];
-
-PathTesting -> PerformancerelatedTesting[dir=none,style=invis];
-StaticTesting -> PerformanceTesting[dir=none,style=invis];
+ScalabilityTesting -> OrthogonalArrayTesting -> FaultToleranceTesting[dir=none,style=invis];
+CoexistenceTesting -> twiseTesting -> OperationalTesting[dir=none,style=invis];
+Walkthroughs -> OperationalTesting[dir=none,style=invis];
+DynamicTesting -> Walkthroughs -> ConversionTesting[dir=none,style=invis];
+PathTesting -> StructuredWalkthroughs -> LargeScaleIntegrationTesting[dir=none,style=invis];
+PerformancerelatedTesting -> RecoverabilityTesting[dir=none,style=invis];
+PerformanceTesting -> RecoverabilityTesting[dir=none,style=invis];
 
 {
 rank = same;
@@ -119,6 +126,12 @@ UseCaseTesting;
 rank = same;
 BranchConditionCombinationTesting;
 DecisionTesting;
+}
+
+{
+rank = same;
+OrthogonalArrayTesting;
+twiseTesting;
 }
 
 {
@@ -147,8 +160,8 @@ rankdir = TB;
 rank = same;
 edge[style=invis];
 SpecificationbasedTesting -> BranchConditionTesting -> ConfigurationTesting;
-ConfigurationTesting -> ReliabilityTesting -> IntakeTesting -> Walkthroughs;
-Walkthroughs -> PerformancerelatedTesting;
+ConfigurationTesting -> ReliabilityTesting -> IntakeTesting -> OrthogonalArrayTesting;
+OrthogonalArrayTesting -> Walkthroughs -> PerformancerelatedTesting;
 rankdir = TB;
 }
 

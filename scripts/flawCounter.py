@@ -80,7 +80,8 @@ def getSrcCat(s, rel: bool = False) -> SrcCat:
             "Fenton and Pfleeger", "FentonAndPfleeger",
             "Kaner et al", "KanerEtAl"}):
         return SrcCat.TEXT
-    return SrcCat.INFER if rel and not any(par in s for par in "()") else SrcCat.PAPER
+    return SrcCat.INFER if rel and not any(
+        src in s for src in ["(", ")", "\\cite"]) else SrcCat.PAPER
 
 def getExplicitness(explicitness: Explicitness | tuple[Explicitness]):
     if isinstance(explicitness, tuple):
@@ -364,7 +365,7 @@ def outputFlaws():
         viewValues = [v.value for v in view]
         writeFile(["\\begin{figure}[bt!]", "\\centering",
                "\\begin{tikzpicture}", "\\begin{axis}[",
-                    "width=0.8\\textwidth, height=7.5cm,",
+                    "width=0.8\\textwidth, height=0.8\\textheight,",
                     # "x tick label style={rotate=90},",
                    f"symbolic y coords={{{",".join(reversed(viewValues))}}},",
                     "ytick=data,",  # "y tick label as interval,",
@@ -425,40 +426,43 @@ def outputFlaws():
             return f"\\the\\numexpr\\{src}FlawMnfstBrkdwn{{13}}"
 
         # Flaw summary
-        writeFile([f"\\begin{{figure}}[{location}]", "\\centering",
-                "\\begin{tikzpicture}", "\\begin{axis}[",
-                        "width=0.8\\textwidth, height=7.5cm,",
-                        # "x tick label style={rotate=90},",
-                    f"yticklabels={{{",".join(
-                        reversed([f"\\parbox{{0.24\\textwidth}}{{\\raggedleft\\{src.name.lower()}s{{}}}}"
-                                    for src in SrcCat if src.color.value >= 0]))}}},",
-                        "ytick=data,",  # "y tick label as interval,",
-                        # "ylabel=Flaw View,",
-                        f"xlabel={f"\\parbox{{0.5\\textwidth}}{{\\centering {axisLabel}}}"}, xbar, xmin=0,",
-                        # ybar=0pt, bar width=5, bar shift=3",
-                        # "enlargelimits=0.2, enlarge x limits=0.1,",
-                        # "legend style={at={(0.5,-0.25)}, anchor=north, legend columns=1,",
-                        # "inner xsep=6pt,inner ysep=4pt,",
-                        # "nodes={inner sep=4pt,text depth=0.3em},},",
-                        # "legend cell align=left,",
-                        "nodes near coords,", # nodes near coords align={vertical}, point meta=y,"
-                        "every node near coord/.append style={" +
-                        (f"font=\\{"tiny" if sem else "small"}") +
-                        (",/pgf/number format/".join(["", "fixed", "fixed zerofill", "precision=1"])
-                         if normalize else "") + "},", "]",
-                # Legend header from https://tex.stackexchange.com/a/2332/192195
-                #    "\\addlegendimage{empty legend}",
-                divMacros,
-                f"\\addplot[fill={DEFAULT_COLORS[0]}] coordinates {{{
-                    " ".join(reversed([
-                        f"({numDisp(src.name.lower())},{src.color.value})"
-                        # f"(\\the\\numexpr\\{src.name.lower()}FlawMnfstBrkdwn{{13}}" +
-                        # f"{f"/\\{src.name.lower()}Sources{{3}}" if normalize else ""},{src.color.value})"
-                            for src in SrcCat if src.color.value >= 0]))}}};",
-                #    f"\\legend{{\\hspace{{3.4cm}} \\Large \\textbf{{Legend}},{",".join([vals[1] for vals in slices])}}}",
-                "\\end{axis}", "\\end{tikzpicture}",
-                "" if sem else f"\\caption{{{cap}}}\\label{{fig:{label}}}",
-                "\\end{figure}"], label + ("Sem" if sem else ""))
+        summaryContent = ["\\begin{tikzpicture}", "\\begin{axis}[",
+                          "width=0.8\\textwidth, height=7.5cm,",
+                        #   "x tick label style={rotate=90},",
+                          f"yticklabels={{{",".join(
+                              reversed([f"\\parbox{{0.24\\textwidth}}{{\\raggedleft\\{src.name.lower()}s{{}}}}"
+                                        for src in SrcCat if src.color.value >= 0]))}}},",
+                          "ytick=data,",  # "y tick label as interval,",
+                        #   "ylabel=Flaw View,",
+                          f"xlabel={f"\\parbox{{0.5\\textwidth}}{{\\centering {axisLabel}}}"}, xbar, xmin=0,",
+                        #   "ybar=0pt, bar width=5, bar shift=3,",
+                        #   "enlargelimits=0.2, enlarge x limits=0.1,",
+                        #   "legend style={at={(0.5,-0.25)}, anchor=north, legend columns=1,",
+                        #   "inner xsep=6pt,inner ysep=4pt,",
+                        #   "nodes={inner sep=4pt,text depth=0.3em},},",
+                        #   "legend cell align=left,",
+                          "nodes near coords,", # nodes near coords align={vertical}, point meta=y,"
+                          "every node near coord/.append style={" +
+                          (f"font=\\{"tiny" if sem else "small"}") +
+                          (",/pgf/number format/".join(["", "fixed", "fixed zerofill", "precision=1"])
+                           if normalize else "") + "},", "]",
+                        # Legend header from https://tex.stackexchange.com/a/2332/192195
+                        #    "\\addlegendimage{empty legend}",
+                          divMacros,
+                          f"\\addplot[fill={DEFAULT_COLORS[0]}] coordinates {{{
+                              " ".join(reversed([
+                                  f"({numDisp(src.name.lower())},{src.color.value})"
+                                #   f"(\\the\\numexpr\\{src.name.lower()}FlawMnfstBrkdwn{{13}}" +
+                                #   f"{f"/\\{src.name.lower()}Sources{{3}}" if normalize else ""},{src.color.value})"
+                                    for src in SrcCat if src.color.value >= 0]))}}};",
+                        #    f"\\legend{{\\hspace{{3.4cm}} \\Large \\textbf{{Legend}},{",".join([vals[1] for vals in slices])}}}",
+                          "\\end{axis}", "\\end{tikzpicture}",
+                          "" if sem else f"\\caption{{{cap}}}\\label{{fig:{label}}}"]
+        if sem:
+            writeFile(summaryContent, f"{label}Sem")
+        else:
+            writeFile(wrapEnv("figure", ["\\centering"] + summaryContent,
+                              arg=location), label)
 
     for x, y in itertools.product([True, False], repeat=2):
         flawSummaryHelper(normalize=x, sem=y)

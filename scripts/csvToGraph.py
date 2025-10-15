@@ -647,7 +647,13 @@ tableFootnotes: dict[str, str] = dict()
 # Since TblrNote uses unique footnotes, this is needed to avoid duplicates
 addedParSyns: set[tuple[str, str]] = set()
 
+# Used for visualizing parSyns
+parSynApps, parSynRels = set(), []
+
 def makeParSynLine(chd, par, parSource, synSource) -> None:
+    global parSynRels  # Needed because lists are mutable
+    # See https://stackoverflow.com/questions/43247452/python-why-is-scope-of-variable-referencing-a-list-is-different-than-a-variable
+
     # Only track parSyns once
     if (chd, par) in addedParSyns:
         return
@@ -696,6 +702,17 @@ def makeParSynLine(chd, par, parSource, synSource) -> None:
 
         parSynSet.add(f"\\item {chd} $\\to$ {par}{relSource}")
         return
+
+    # Update visualization of these flaws
+    if all(getRelColor(src)[0] and getRelColor(src)[0].value > -1
+           for src in {parSource, synSource}):
+        fchd, fpar = formatApproach(chd), formatApproach(par)
+        parSynApps.update({f"{formatApproach(term)} [label={lineBreak(term)}];"
+                           for term in {chd, par}})
+        parSynRels += [
+            f"{fchd} -> {fpar}[dir=none,color={getRelColor(synSource)[0]}];",
+            f"{fchd} -> {fpar}[color={getRelColor(parSource)[0]}];", "",
+        ]
 
     for i, (terms, note) in enumerate(parSynNotes.items()):
         # Processing for table version
@@ -778,11 +795,6 @@ if "Example" not in csvFilename:
             lambda line: any(line.startswith(f"{chd} -> {par}")
                             for chd, par in addedParSyns), lines))
     
-    parSynsGraph = splitListAtEmpty(removeImplicit(categoryDict["Approach"][1]))
-    parSynsGraph = (parSynsGraph[0] +
-                    findPairsInLines(parSynsGraph[1]) + [""] +
-                    findPairsInLines(parSynsGraph[2]))
-
     outputFlaws()
     genFlawMacros(FlawDmn)
     genFlawMacros(FlawMnfst)
@@ -980,7 +992,8 @@ else:
         start=[])
 
     writeDotFile(synLinesGraph, "expSynGraph")
-    writeDotFile(parSynsGraph,  "expParSynGraph")
+    writeDotFile(list(sorted(parSynApps)) + [""] + parSynRels,
+                 "expParSynGraph")
 
 for key, value in explicitDict.items():
     lines = value[1]

@@ -2,14 +2,14 @@
 \centering
 \begin{tikzpicture}
 \begin{axis}[
-width=0.8\textwidth, height=7.5cm,
+width=0.8\textwidth, height=0.8\textheight,
 symbolic y coords={Redundancies,Overlaps,Ambiguities,Contradictions,Omissions,Mistakes},
 ytick=data,
 xlabel=Number of Flaws, xbar, xmin=0,
 nodes near coords,
 every node near coord/.append style={font=\tiny},
 ]
-\addplot[fill=blue!60] coordinates {(8,Redundancies) (16,Overlaps) (35,Ambiguities) (181,Contradictions) (13,Omissions) (54,Mistakes)};
+\addplot[fill=blue!60] coordinates {(8,Redundancies) (16,Overlaps) (36,Ambiguities) (183,Contradictions) (13,Omissions) (54,Mistakes)};
 \end{axis}
 \end{tikzpicture}
 \end{figure}
