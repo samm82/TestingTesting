@@ -117,7 +117,7 @@ paper_blind: paper # double-blind build of ICSE paper for review submission
 
 build: csv_diff paper graphs thesis
 docs: paper thesis presentations
-presentations: meeting seminar # poster
+presentations: seminar # meeting poster
 
 debug: DOC_NAME=thesis
 debug: TEX_FLAGS=
