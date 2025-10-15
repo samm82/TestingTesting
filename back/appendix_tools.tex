@@ -3,6 +3,42 @@
 Since we keep the description of our tools abstract in \Cref{tools},
 we provide a more in-depth description of our tools as follows.
 
+\section{Citation Syntax}\label{citation-syntax}
+
+When recording data in our glossaries, we capture relevant citation information
+using the author-year citation format. When citing the same authors or sources
+multiple times, we ``reuse'' information from previous citations when
+applicable. For example, the citation ``\citep{IEEE2022,IEEE2017}'' means that
+the relevant information appears in both \citet{IEEE2022} \emph{and}
+\citet{IEEE2017}. If the following citation was ``\citeyearpar{IEEE2022}'',
+it would have the same \emph{author} as the last citation with one specified;
+this would be equivalent to ``\citep{IEEE2022}''. If this was then followed by
+``\citetext{p.~36}'', this would have the same \emph{year} as the last citation
+with one specified and the same \emph{author} as the last citation before that,
+resulting in ``\citep[p.~36]{IEEE2022}''.\imptodo{Figure out better way to
+    describe ``last citation''. ``Most recent''?}
+%%  Use new example here, since it is no longer close to this one.
+% the first row of \Cref{tab:exampleGlossary}
+% contains the citation ``(Author, 2022; 2021)'', which means that this
+% information was present in two documents by Author: one written in
+% 2022 and one in 2021. The following citation, ``(2022)'', contains no author,
+% which means it was written by the same one as the previous citation (Author).
+This reduces duplication and improves maintainability when recording this
+information. When processing these data when visualizating relations
+\ifnotpaper and detecting flaws \fi (see \Cref{\ifnotpaper app-rel-vis,%
+        auto-flaw-detect\else tools\fi}), we do so according to this
+logic \seeSrcCode{7aad614}{scripts/csvToGraph.py}{55}{96} so we can
+consistently track the source(s) of data throughout our analysis.
+
+One minor note to make here is that in \ourApproachGlossary{}, we
+\emph{actually} record ``\citep{IEEE2022}'' as  % With help from ChatGPT
+``(\hyperlink{cite.IEEE2022}{\textcolor{blue!50!black}{IEEE}},
+\citeyear{IEEE2022})'' for brevity, since most standards are written by ISO/IEC
+\emph{and} IEEE (see \Cref{fig:ieeeSourceSets}). To faciliate this, we choose
+corresponding \BibTeX{} keys, such as ``\texttt{IEEE2022}'' in this example,
+and specify which documents are only written by IEEE
+\seeSrcCode{7aad614}{scripts/helpers.py}{31}.
+
 \section{Flaw Comment Syntax}\label{flaw-comment-syntax}
 As described in \Cref{record-flaws}, we include comments alongside the flaws we
 document so we can analyze them automatically (as described in
