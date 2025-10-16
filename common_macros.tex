@@ -64,6 +64,9 @@
 % Generic "chunks" that get reused
 %------------------------------------------------------------------------------
 
+\NewDocumentCommand{\citepos}{o m}{%
+    \citeauthor{#2}'s \IfValueTF{#1}{\citeyearpar[#1]{#2}}{\citeyearpar{#2}}}
+
 \def\oneSrcDistinct{we make a distinction between ``self-contained'' flaws and
     ``internal'' flaws\thesisissueref{137,138}.}
 
