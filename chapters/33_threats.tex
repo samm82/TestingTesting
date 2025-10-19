@@ -35,12 +35,22 @@ and list them in their respective subsections as follows:
 \end{enumerate}
 
 \subsection{Reliability}\label{rel-valid}
+Natural language is nuanced and software testing has a wide scope, so we have
+to make judgement calls throughout the research process, usually involving
+which information to record. Other researchers may make different decisions,
+which would threaten the reliability of our results. We mitigate this at a high
+level by outlining what we exclude from our scope in \Cref{app-scope}. This
+means that even if other researchers decide on a different scope, the data and
+results within the intersection of these scopes should match. By following the
+methodology outlined in \Cref{methodology}, we further mitgate the following
+threats to reliability:
+
 \begin{itemize}
     \item \textbf{Single Researcher:} Since only one researcher was responsible
-          for data collection, it was up to them to determine what data and
-          relations were important to record and investigate. We mitigate this
-          as much as possible by following a methodology (outlined in
-          \Cref{methodology}) as rigorously as possible, including heuristics
+          for data collection, it was solely up to them to determine what data
+          and relations were important to record and investigate. To reduce the
+          negative impact this might have on our research, we follow our
+          methodology as rigorously as possible, including heuristics
           for what data is important (see \Cref{ident-terms}). When ambiguity
           arises or more involved judgement is required, we discuss these
           details as a team to include more perspectives, reducing the amount
@@ -49,16 +59,10 @@ and list them in their respective subsections as follows:
                   https://github.com/samm82/TestingTesting/issues?q=state\%3Aclosed label\%3Adiscussion
               }{on our repo}}.
 
-    \item \textbf{Subjective Judgement Calls:} Because of the nuance of natural
-          language and the fact that a single researcher collected\qtodo{
-              Present tense?} our data (as
-          mentioned before), we need to make some judgement calls on what
-          data to include with which other researchers may disagree. In
-          addition to the steps already mentioned, we mitigate this by
-          outlining what we exclude from our scope in \Cref{app-scope}. This
-          means that even if other researchers decide on a different scope, the
-          data and results within the intersection of these scopes should
-          match. Similarly, we document implicit information from the
+    \item \textbf{Implicit Information:} While natural language can be
+          ambiguous, only recording explicit information would omit a lot of
+          data provided by the software testing literature. We therefore
+          document implicit information from the
           literature for completeness as described in \Cref{imp-info}. While
           other researchers may disagree on what information ``follows
           logically'' or ``is dubious'', these data are innately subjective,
@@ -71,18 +75,20 @@ and list them in their respective subsections as follows:
               }{first version of our test approach glossary})}, we have
           iterated on what we consider to be in scope and what methodology to
           use. Some sources we investigate have even been updated (see
-          \Cref{swebok-update})! While we could partially mitigate this by
-          re-iterating over all sources with our ``finalized'' methodology,
-          this is not possible due to time constraints. With respect to sources
-          updating during our research, future researchers could replicate our
-          results by reviewing a ``snapshot'' of them from when we reviewed%
-          \qtodo{Present tense? And does this make sense?} them. However, if
-          future researchers were to
-          repeat this research, they \emph{should} use the most up-to-date
-          sources and use these to update our existing data, methodology,
-          and tools. This is one of the benefits of our research being
-          open-source: it can exist as a ``living document'' that can (ideally)
-          keep up with innovations to software testing!
+          \Cref{swebok-update})! Future researchers following our methodology
+          would therefore end up with different results. While we could
+          partially mitigate this by re-iterating over all sources with our
+          ``finalized'' methodology, this is not possible due to time
+          constraints. With respect to sources updating during the course of
+          our research, future researchers could replicate our results by
+          reviewing a ``snapshot'' of them from when we reviewed\qtodo{Present
+              tense? And does this make sense?} them. However, if future
+          researchers were to repeat this research, they \emph{should} use the
+          most up-to-date sources to update our existing data, methodology, and
+          tools. This is one of the benefits of our research being open-source:
+          it can exist as a ``living document'' that can (ideally) keep up with
+          innovations to software testing!\qtodo{Is this valid to include in
+              this chapter?}
 \end{itemize}
 
 \subsection{Internal Validity}\label{inter-valid}
