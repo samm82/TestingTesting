@@ -116,9 +116,18 @@ parents = processCol(parents)
 synonyms = processCol(synonyms)
 
 # Write undefined test approaches to a file
+def processUndefTerm(s: str) -> str:
+    acrosToReplace = re.findall(r"[A-Z]+[a-z]*[A-Z]+[a-z]*", s)
+    capIndex = s.startswith("(") + 1
+    s = s[:capIndex] + s[capIndex:].lower()
+    for acro in acrosToReplace:
+        s = re.sub(fr"^{acro[0]}{acro[1:].lower()} ", f"{acro} ", s)
+        s = re.sub(fr"(\W?){acro.lower()} ", f"\\1{acro} ", s)
+    return f"\\item {s}"
+
 # Ignore qualifiers for the two "kinds" of open loop testing but omit sources
 pureNames = [re.sub(r" \((?!Control)[^)]+ .+\)", "", name) for name in names]
-writeFile([name for name, termDef in zip(pureNames, defs)
+writeFile([processUndefTerm(name) for name, termDef in zip(pureNames, defs)
            if isinstance(termDef, float)],
           "undefTerms", True)
 
