@@ -125,11 +125,12 @@ def processUndefTerm(s: str) -> str:
         s = re.sub(fr"(\W?){acro.lower()} ", f"\\1{acro} ", s)
     return f"\\item {s}"
 
-# Ignore qualifiers for the two "kinds" of open loop testing but omit sources
-pureNames = [re.sub(r" \((?!Control)[^)]+ .+\)", "", name) for name in names]
-writeFile([processUndefTerm(name) for name, termDef in zip(pureNames, defs)
-           if isinstance(termDef, float)],
-          "undefTerms", True)
+if "Example" not in csvFilename:
+    # Ignore qualifiers for the two "kinds" of open loop testing but omit sources
+    pureNames = [re.sub(r" \((?!Control)[^)]+ .+\)", "", name) for name in names]
+    writeFile([processUndefTerm(name) for name, termDef in zip(pureNames, defs)
+            if isinstance(termDef, float)],
+            "futureUndefTerms", True)
 
 staticApproaches = {
     'ConcreteExecution', 'SymbolicExecution', 'InductiveAssertionMethods',
