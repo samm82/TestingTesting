@@ -470,14 +470,12 @@ wrong; see \Cref{mnfst-def}) and their ``domains'' (\emph{what} information is
 wrong; see \Cref{dmn-def})\thesisissueref{155}. These are orthogonal
 classifications, since each flaw \emph{manifests} in a particular
 \emph{domain}, which we track by assigning each flaw one ``key'' for each
-classification. We list these keys in \Cref{tab:flawMnfstDefs,tab:flawDmnDefs},
-respectively, and use them to count and analyze the flaws we uncover
-in \Cref{flaws}% ; for
-% example, we present the number of flaws according to these two views in
-% \Cref{tab:flawMnfsts,tab:flawDmns}, respectively
-. We also introduce some terms
-to be used when discussing flaws based on how many sources contribute to them
-(\Cref{add-flaw-terms}).
+classification (listed keys in \Cref{tab:flawMnfstDefs,tab:flawDmnDefs},
+respectively)%, and use them to count and analyze the flaws we uncover
+% in \Cref{flaws}; for example, we present the number of flaws according to
+% these two views in \Cref{tab:flawMnfsts,tab:flawDmns}, respectively
+. We also introduce terms we use when discussing flaws based on how many
+sources contribute to them (\Cref{add-flaw-terms}).
 
 \subsubsection{Flaw Manifestations}\label{mnfst-def}
 
@@ -509,8 +507,9 @@ we call the flaw's ``domain''. We describe those we observe in
 are less standardized (and should therefore be approached with more rigour)
 than others. We explicitly define some of these domains in previous
 sections and thus present them in that same order. These are the domains in
-which we automatically detect flaws as described in \Cref{auto-flaw-detect}
-and present in \Cref{flawDmns}, so these are the only ones that are
+which we automatically detect and present flaws as described in \ifnotpaper
+    \Cref{auto-flaw-detect,flawDmns}, respectively\else \Cref{flawDmns}\fi,
+so these are the only ones that are
 hyperlinked. We automatically detect the following classes of flaws:
 
 \begin{itemize}
@@ -530,8 +529,7 @@ hyperlinked. We automatically detect the following classes of flaws:
           \end{enumerate}
     \item \phantomsection{}\label{selfParDef}
           Parent-child relations that violate irreflexivity, or approaches that
-          are parents of themselves.\todo{Mention detecting other cycles as
-              flaws as Future Work}
+          are parents of themselves.
     \item \phantomsection{}\label{parSynDef}
           \parSynFlaw*{}
 \end{itemize}
@@ -633,6 +631,8 @@ analysis (see \ifnotpaper \Cref{app-rel-vis,flaw-analysis}, respectively\else
     learning-assisted testing'' and include it in \ourApproachGlossary{} as
     such. We also infer that child approaches inherit their parents' categories
     (see \Cref{cats-def}).
+
+    \newpage
 \fi
 
 \subsection{Credibility}\label{cred}
@@ -650,7 +650,6 @@ source as more ``credible'' if it:
 Sources may meet only some of these criteria, so we use our judgement (along
 with the format of the sources themselves) when comparing them.
 
-\ifnotpaper\newpage\fi
 \subsection{Source Tiers}\label{source-tiers}
 For ease of discussion and analysis, we group the complete set of sources into
 ``tiers'' based on their format, method of publication, and our heuristic of
@@ -674,8 +673,7 @@ broad scope; for example, the glossary portion of \citet{IEEE2017} has 514
 pages! Using these standards allows us to record many test approaches in a
 similar context from a source that is widely used and well-respected.
 
-% Only top or bottom to comply with IEEE guidelines
-\begin{figure}[b!]
+\ifnotpaper\begin{figure}[t!]\else\begin{figure}[b!]\fi
     \centering
     \begin{tikzpicture}
         \pie[sum=auto, after number=, text=legend, thick,
