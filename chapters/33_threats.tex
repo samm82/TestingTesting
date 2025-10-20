@@ -15,6 +15,11 @@ and list them in their respective subsections as follows:
     \item \textbf{Reliability:} If another researcher were to conduct the case
           study later on and get the same result, then the case study is
           reliable. (\Cref{rel-valid})
+    \item \textbf{Construct Validity:} This refers to the extent to which ``the
+          operational measures that are studied really represent what the
+          researcher[s] have in mind and what is investigated'', or how well
+          the studied data aligns with the data that the researchers
+          \emph{intended} to study. (\Cref{cons-valid})
     \item \textbf{Internal Validity:} A study is internally valid if the
           discovered causal relations are trustworthy and cannot be explained
           by other factors. % ``When \dots{} investigating whether one
@@ -27,11 +32,6 @@ and list them in their respective subsections as follows:
     \item \textbf{External Validity:} For results of a study to be externally
           valid, they should be generalizable and ``of interest to other people
           outside the investigated case''. (\Cref{exter-valid})
-    \item \textbf{Construct Validity:} This refers to the extent to which ``the
-          operational measures that are studied really represent what the
-          researcher[s] have in mind and what is investigated'', or how well
-          the studied data aligns with the data that the researchers
-          \emph{intended} to study. (\Cref{cons-valid})
 \end{enumerate}
 
 \subsection{Reliability}\label{rel-valid}
@@ -91,20 +91,8 @@ threats to reliability:
               this chapter?}
 \end{itemize}
 
-\subsection{Internal Validity}\label{inter-valid}
-
+\subsection{Construct Validity}\label{cons-valid}
 \begin{itemize}
-    \item \textbf{Overloaded Terms:} The ambiguity of natural language means
-          that terms are often overloaded. In \Cref{tab:ieeeCats}, we describe
-          the categories we use, but these terms may not be used in the same
-          way universally; ``test type'', ``test technique'', ``test practice'',
-          and ``test approach'' could all reasonably used as synonyms. For
-          example, \citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}
-          defines interface testing as ``an integration \emph{test type} that
-          is concerned with testing \dots{} interfaces'', but since \ifnotpaper
-              he \else it \fi does not define ``test type'', this may not have
-          special significance.
-          % Use of ChatGPT omitted for brevity
     \item \textbf{Similar Approach Categories:} While our categorization in
           \Cref{tab:ieeeCats} is used fairly consistently, other sources
           \citep[such as][]{SWEBOK2024,BarbosaEtAl2006} propose similar yet
@@ -130,8 +118,8 @@ threats to reliability:
           alternate categories are not used consistently
           (see \flawref{manual-or-keyword})!
           % Examples omitted for brevity
-    \item \textbf{Unclear Category Boundaries:} Some of these categories can
-          also be grouped into ``classes'' or ``families'' such as
+    \item \textbf{Unclear Category Boundaries:} Some of these categories can be
+          further divided into ``classes'' or ``families'' such as
           %   with ``commonalities and well-identified variabilities that can be
           %   instantiated'', where ``the commonalities are large and the variabilities
           %   smaller'' \citep{classFamilyDisc}. Examples of these are
@@ -155,13 +143,29 @@ threats to reliability:
           testing'' \citep[p.~23]{GodefroidAndLuchaup2011}!
 \end{itemize}
 
-\clearpage
+% \clearpage
 % \afterpage{
 \begin{landscape}%
     % Omitted from paper for brevity
     \otherCatsTable{}%
 \end{landscape}
 % }
+
+\subsection{Internal Validity}\label{inter-valid}
+
+\begin{itemize}
+    \item \textbf{Overloaded Terms:} The ambiguity of natural language means
+          that terms are often overloaded. In \Cref{tab:ieeeCats}, we describe
+          the categories we use, but these terms may not be used in the same
+          way universally; ``test type'', ``test technique'', ``test practice'',
+          and ``test approach'' could all reasonably used as synonyms. For
+          example, \citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}
+          defines interface testing as ``an integration \emph{test type} that
+          is concerned with testing \dots{} interfaces'', but since \ifnotpaper
+              he \else it \fi does not define ``test type'', this may not have
+          special significance.
+          % Use of ChatGPT omitted for brevity
+\end{itemize}
 
 \subsection{External Validity}\label{exter-valid}
 While we document issues with
@@ -198,9 +202,6 @@ reasons, including the following:
                     introduced later to address concerns such as these.
           \end{enumerate}
 \end{itemize}
-
-\subsection{Construct Validity}\label{cons-valid}
-\imptodo{Fill in}
 
 % \subsection{Threats from Approach Categories}\label{cat-threats}
 
