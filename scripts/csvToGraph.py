@@ -1,6 +1,6 @@
 from collections import OrderedDict
 from copy import deepcopy
-from math import ceil
+from math import ceil, nan
 import itertools
 from pandas import read_csv
 import re
@@ -35,6 +35,7 @@ if __name__ == "__main__":
 approaches = read_csv(csvFilename)
 names = approaches["Name"].to_list()
 categories = approaches["Approach Category"].to_list()
+defs = approaches["Definition"].to_list()
 parents = approaches["Parent(s)"].to_list()
 synonyms = approaches["Synonym(s)"].to_list()
 
@@ -113,6 +114,13 @@ names = [n.strip() for n in names if isinstance(n, str)]
 categories: list[list[str]] = processCol(categories, True)
 parents = processCol(parents)
 synonyms = processCol(synonyms)
+
+# Write undefined test approaches to a file
+# Ignore qualifiers for the two "kinds" of open loop testing but omit sources
+pureNames = [re.sub(r" \((?!Control)[^)]+ .+\)", "", name) for name in names]
+writeFile([name for name, termDef in zip(pureNames, defs)
+           if isinstance(termDef, float)],
+          "undefTerms", True)
 
 staticApproaches = {
     'ConcreteExecution', 'SymbolicExecution', 'InductiveAssertionMethods',
