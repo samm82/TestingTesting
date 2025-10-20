@@ -92,17 +92,41 @@ threats to reliability:
 \end{itemize}
 
 \subsection{Construct Validity}\label{cons-valid}
+For clarity and consistency throughout this \docType, we define the terminology
+we use in \Cref{terminology}. The following threats to validity come from our
+use of \citepos{IEEE2022} categorization scheme; while it is supported by the
+testing literature, we make the final decision to use it as described in
+\Cref{cats-def}:
+
 \begin{itemize}
-    \item \textbf{Similar Approach Categories:} While our categorization in
-          \Cref{tab:ieeeCats} is used fairly consistently, other sources
-          \citep[such as][]{SWEBOK2024,BarbosaEtAl2006} propose similar yet
-          distinct categories that clash or overlap with them. We give these
-          alternate categorizations in \Cref{tab:otherCats}, which could simply
-          map to their ``IEEE Equivalents'' or could provide new perspectives
-          and be useful in some contexts, either in place of or in tandem with
-          ours.
+    \item \textbf{Similar Approach Categories:}
+          % As we outline in \Cref{cats-def},
+          % the categorization given in \Cref{tab:ieeeCats} is used fairly
+          % consistently by the literature. However, 
+          Some sources \citep[such as][]{SWEBOK2024,BarbosaEtAl2006} propose
+          similar yet distinct categories that clash or overlap with our
+          categories given in \Cref{tab:ieeeCats}. We give these alternate
+          categorizations, which seem to simply map to their ``IEEE
+          Equivalent''s, in \Cref{tab:otherCats}. While these categories
+          could provide new perspectives and be useful in some contexts, either
+          in place of or in tandem with ours, their existence suggests that
+          \citepos{IEEE2022} categorization scheme is not universal.
     \item \phantomsection{}\label{alt-cats}
-          \textbf{Alternate Approach Categories:} Similarly, we find many other
+          \textbf{Alternate Approach Categories:} Some of these categories can
+          be further divided into ``classes'' or ``families'' such as
+          %   with ``commonalities and well-identified variabilities that can be
+          %   instantiated'', where ``the commonalities are large and the variabilities
+          %   smaller'' \citep{classFamilyDisc}. Examples of these are
+          the classes of combinatorial \citep[p.~15]{IEEE2021c} and data flow
+          testing \citetext{p.~3} and the family of performance-related testing
+          \citep[p.~1187]{Moghadam2019}\footnote{The original source describes
+              ``performance testing \dots\ as a family of performance-related
+              testing techniques'', but it makes more sense to consider
+              ``performance-related testing'' as the ``family'' with
+              ``performance testing'' being one of the variabilities
+              (see \Cref{perf-test-rec}).}.
+
+          Similarly, we find many other
           criteria for categorizing test approaches in the literature.
           % which may be used in tandem with or in place of those given
           % in \Cref{tab:ieeeCats,tab:otherCats}.
@@ -116,31 +140,23 @@ threats to reliability:
           testing have ``conditions that make one approach more effective than
           the other'' \citep[p.~5\=/16]{SWEBOK2024}. Unfortunately, even these
           alternate categories are not used consistently
-          (see \flawref{manual-or-keyword})!
+          (see \flawref{manual-or-keyword})! While these categories suggest
+          that ours are not complete or minimal, they seem to be supplementary
+          and generally do not conflict with them.\qtodo{Does this make sense,
+              especially in the absence of the examples I omitted for brevity?}
           % Examples omitted for brevity
-    \item \textbf{Unclear Category Boundaries:} Some of these categories can be
-          further divided into ``classes'' or ``families'' such as
-          %   with ``commonalities and well-identified variabilities that can be
-          %   instantiated'', where ``the commonalities are large and the variabilities
-          %   smaller'' \citep{classFamilyDisc}. Examples of these are
-          the classes of combinatorial \citep[p.~15]{IEEE2021c} and data flow
-          testing \citetext{p.~3} and the family of performance-related testing
-          \citep[p.~1187]{Moghadam2019}\footnote{The original source describes
-              ``performance testing \dots\ as a family of performance-related
-              testing techniques'', but it makes more sense to consider
-              ``performance-related testing'' as the ``family'' with
-              ``performance testing'' being one of the variabilities
-              (see \Cref{perf-test-rec}).}. Note that ``there is a lot of
-          overlap between different classes of testing'' \citep[p.~8]{Firesmith2015},
-          meaning that ``one category [of test techniques] might deal with
-          combining two or more techniques'' \citep[p.~5\=/10]{SWEBOK2024}.
-          %   For example, ``performance, load and stress
-          %   testing might considerably overlap in many areas'' \citep[p.~1187]{Moghadam2019}.
-          A side effect of this is that it is difficult to ``untangle'' these
-          classes; for example, take the following sentence: ``whitebox fuzzing
-          extends dynamic test generation based on symbolic execution and
-          constraint solving from unit testing to whole-application security
-          testing'' \citep[p.~23]{GodefroidAndLuchaup2011}!
+          % Threat omitted for clarity/brevity
+          % \item \textbf{Unclear Category Boundaries:} Note that ``there is a lot of
+          %       overlap between different classes of testing'' \citep[p.~8]{Firesmith2015},
+          %       meaning that ``one category [of test techniques] might deal with
+          %       combining two or more techniques'' \citep[p.~5\=/10]{SWEBOK2024}.
+          %       %   For example, ``performance, load and stress
+          %       %   testing might considerably overlap in many areas'' \citep[p.~1187]{Moghadam2019}.
+          %       A side effect of this is that it is difficult to ``untangle'' these
+          %       classes; for example, take the following sentence: ``whitebox fuzzing
+          %       extends dynamic test generation based on symbolic execution and
+          %       constraint solving from unit testing to whole-application security
+          %       testing'' \citep[p.~23]{GodefroidAndLuchaup2011}! As before,
 \end{itemize}
 
 % \clearpage
@@ -150,6 +166,8 @@ threats to reliability:
     \otherCatsTable{}%
 \end{landscape}
 % }
+
+% Potential threats can also be found in other terms we define, described as follows:
 
 \subsection{Internal Validity}\label{inter-valid}
 
