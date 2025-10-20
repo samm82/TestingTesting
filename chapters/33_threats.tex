@@ -167,7 +167,30 @@ testing literature, we make the final decision to use it as described in
 \end{landscape}
 % }
 
-% Potential threats can also be found in other terms we define, described as follows:
+Threats can also be found in other terms we define, such as the following:
+
+\begin{itemize}
+    \item \phantomsection{}\label{flaw-def-threat}
+          \textbf{Definition of Flaw:} We define a ``flaw'' as an instance
+          where the software testing literature describes a testing-related
+          term (especially a test approach) in a way that is incorrect,
+          incomplete, inconsistent, and/or improperly coupled. When picking a
+          word to describe one of these instances, we wanted to avoid words
+          ``overloaded with too many meanings'' like ``error'' and ``fault''
+          \citep[p.~12\=/3; see \Cref{error-fault-failure} for more detailed
+              discussion]{SWEBOK2025}. A small literature review revealed that
+          established standards (see \Cref{stds}) primarily use the term
+          ``flaw'' to refer software artifacts that are \emph{not} code:
+          requirements \citep[p.~38]{IEEE2022}, design \citetext{p.~43}, and
+          ``system security procedures \dots{} and internal controls''
+          % under the term ``vulnerability''
+          \citep[p.~194]{IEEE2012}. However, this term sometimes refers to
+          problems with software itself \citep[p.~92;][p.~7\=/9]{SWEBOK2025},
+          which introduces some confusion \citetext{Dr.~R.~Paige, private
+              communication, Oct.~14, 2025}. We attempt to mitigate this by
+          being precise with our use of the words ``flaw'', ``error'',
+          ``fault'', ``defect'', and ``failure''.
+\end{itemize}
 
 \subsection{Internal Validity}\label{inter-valid}
 
