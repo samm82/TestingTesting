@@ -47,13 +47,18 @@ special attention to the following when investigating a new source:
     \item \phantomsection{}\label{implied-approaches}
           terms that imply test approaches, including:
           \NewDocumentCommand{\derivTest}{m m o}{#1 that may imply \ifnotpaper
-                  related \fi test #2\IfNoValueF{#3}{\footnote{
-                      See \Cref{#3} for more detailed discussion.
-                  }}}
+                  related \fi test #2\ifnotpaper\IfNoValueF{#3}{\footnote{
+                          See \Cref{#3} for more detailed discussion.
+                      }}\fi}
+          \def\covHelper{\item \derivTest{coverage metrics}{techniques}[cov-test],
+          }
           \begin{itemize}
+              % Slight ordering hack to make paper display nicely
+              \ifnotpaper\else\covHelper\fi
               \item \phantomsection{}\label{qual-types}
                     \derivTest{software qualities}{types}[qual-test],
-              \item \derivTest{coverage metrics}{techniques}[cov-test], and
+                    \ifnotpaper\covHelper\fi
+                    and
               \item \phantomsection{}\label{req-apps}
                     \derivTest{\ifnotpaper software \fi requirements}{approaches}.
           \end{itemize}
