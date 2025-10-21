@@ -52,13 +52,8 @@ special attention to the following when investigating a new source:
                   }}}
           \begin{itemize}
               \item \phantomsection{}\label{qual-types}
-                    \derivTest{software qualities}{types}[qual-test], and
-              \item \derivTest{coverage metrics}{techniques}%\ifnotpaper
-                    % (\citealp[p.~11]{IEEE2022}; \citeyear[p.~5]{IEEE2021a};
-                    % \citealp[p.~2]{Reid1996})\else
-                    % \cite[p.~11]{IEEE2022}, \cite[p.~5]{IEEE2021a},
-                    % \cite[p.~2]{Reid1996}\fi
-                    ,
+                    \derivTest{software qualities}{types}[qual-test],
+              \item \derivTest{coverage metrics}{techniques}[cov-test], and
               \item \phantomsection{}\label{req-apps}
                     \derivTest{\ifnotpaper software \fi requirements}{approaches}.
           \end{itemize}
@@ -252,37 +247,6 @@ to upgrade the quality to a test type in \ourApproachGlossary{}.
 %     literature are derived from programming languages or other orthogonal test
 %     approaches, but these are out of scope as this information is better
 %     captured by other approaches (see \Cref{lang-test,orth-test}, respectively).
-
-%     \paragraph{Coverage-driven Techniques}\label{cov-test}
-
-%     Test techniques are able to ``identify test coverage items \dots{} and
-%     derive corresponding test cases''
-%     \ifnotpaper
-%         (\citealp[p.~11]{IEEE2022}; similar in \citeyear[p.~467]{IEEE2017})
-%     \else
-%         \cite[p.~11]{IEEE2022} (similar in \cite[p.~467]{IEEE2017})
-%     \fi
-%     in a ``systematic'' way
-%     \citeyearpar[p.~464]{IEEE2017}.
-%     \ifnotpaper
-%         This allows for ``the coverage achieved by a specific test design
-%         technique'' to be calculated as a percentage of ``the number of test
-%         coverage items covered by executed test cases'' \citeyearpar[p.~30]{IEEE2021c}.
-%         %     ``Coverage levels can range
-%         %     from 0\% to 100\%'' and may or may not include ``infeasible'' test coverage
-%         %     items, which are ``not \dots{} executable or [are] impossible to be covered by a
-%         %     test case'' \citetext{p.~30}. Perhaps more interestingly, the further
-%         %     implication is
-%         % \else
-%         %     This means
-%     \fi % that
-%     Therefore, a given coverage metric implies a test approach aimed to
-%     maximize it. For example, path testing ``aims to execute all entry-to-exit
-%     control flow paths in a \acs{sut}'s control flow graph'' \citep[p.~5-13]{SWEBOK2024},
-%     thus maximizing the path coverage
-%     \ifnotpaper
-%         \citep[see][Fig.~1\thesisissueref{63}]{SharmaEtAl2021}\else
-%         (see \cite[Fig.~1]{SharmaEtAl2021}\thesisissueref{63})\fi.
 
 %     \paragraph{Attacks}\label{attacks}
 %     While attacks can be ``malicious'' \citep[p.~7]{IEEE2017}, they are also

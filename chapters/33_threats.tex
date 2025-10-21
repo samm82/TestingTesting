@@ -241,12 +241,12 @@ Threats can also be found in other terms we define, such as the following:
           \textbf{Qualities Implying Test Types:}
           Since test types are ``focused on specific quality characteristics''
           (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021c};
-          \citeyear[p.~473]{IEEE2017}\todo{OG IEEE, 2013}), we posit that
-          they can be derived from software qualities: ``capabilit[ies] of
-          software product[s] to satisfy stated and implied needs when used
-          under specified conditions'' \citetext{p.~424}%\citep[p.~424]{IEEE2017}
-          \todo{OG ISO/IEC, 2014}. We track \qualityCount{} software qualities%
-          \thesisissueref{21,23,27} %in addition to test approaches
+          \citeyear[p.~473]{IEEE2017}), we posit that they can be derived from
+          software qualities: ``capabilit[ies] of software product[s] to
+          satisfy stated and implied needs when used under specified
+          conditions'' \citetext{p.~424}\todo{OG ISO/IEC, 2014}.
+          We track \qualityCount{} software qualities\thesisissueref{21,23,27}
+          %in addition to test approaches
           following our procedure in \Cref{qual-supp-procedure}, ``upgrading''
           them to test types when they are mentioned (or implied) by a source.
           %   by removing its entry from this quality
@@ -269,6 +269,34 @@ Threats can also be found in other terms we define, such as the following:
           %     \citetext{p.~36} where attributes must be
           %     defined before they can be measured \citetext{p.~38}.
           % \fi
+
+    \item \phantomsection{}\label{cov-test}
+          \textbf{Coverage Metrics Implying Test Techniques:}
+          Test techniques are able to ``identify test coverage items \dots{} and
+          derive corresponding test cases'' (\citealp[p.~11]{IEEE2022};
+          \citeyear[p.~5]{IEEE2021a}; similar in \citeyear[p.~467]{IEEE2017})%
+          %   in a ``systematic'' way \citeyearpar[p.~464]{IEEE2017}
+          , which allows for ``the coverage achieved by a specific test design
+          technique'' to be calculated as a percentage % of ``the number of
+          %   test coverage items covered by executed test cases''
+          \citeyearpar[p.~30]{IEEE2021c}. %   ``Coverage levels can range from
+          %   0\% to 100\%'' and may or may not include ``infeasible'' test
+          %   coverage items, which are ``not \dots{} executable or [are]
+          %   impossible to be covered by a test case'' \citetext{p.~30}.
+          %   Perhaps more interestingly, the further implication is that
+          Therefore, we posit that a given coverage metric implies a test
+          technique with the intent to maximize it. For example, path testing
+          ``aims to execute all entry-to-exit control flow paths in a
+          \acs{sut}'s control flow graph'' \citep[p.~5\=/13]{SWEBOK2025},
+          thus maximizing the path coverage. Again, while other
+          researchers may disagree with this relation between coverage
+          metrics and test techniques, it seems to be supported by the
+          literature as described above and by
+          \citet[pp.~183\==185]{DoğanEtAl2014}\thesisissueref{63},
+          \citet[Fig.~1]{SharmaEtAl2021}, and \citet[pp.~2\==3]{Reid1996}%
+          %   , who elaborates on this relation specifically in regards to
+          %   syntax testing and levels of coverage less than 100\%
+          .
 \end{itemize}
 
 \subsection{External Validity}\label{exter-valid}
