@@ -236,6 +236,39 @@ Threats can also be found in other terms we define, such as the following:
           \PaigeMtgNote. Dr.~Paige also notes that a deeper domain analysis
           may explain why system testing is given as its own parent (as
           described in \Cref{selfPars}).
+
+    \item \phantomsection{}\label{qual-test}
+          \textbf{Qualities Implying Test Types:}
+          Since test types are ``focused on specific quality characteristics''
+          (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021c};
+          \citeyear[p.~473]{IEEE2017}\todo{OG IEEE, 2013}), we posit that
+          they can be derived from software qualities: ``capabilit[ies] of
+          software product[s] to satisfy stated and implied needs when used
+          under specified conditions'' \citetext{p.~424}%\citep[p.~424]{IEEE2017}
+          \todo{OG ISO/IEC, 2014}. We track \qualityCount{} software qualities%
+          \thesisissueref{21,23,27} %in addition to test approaches
+          following our procedure in \Cref{qual-supp-procedure}, ``upgrading''
+          them to test types when they are mentioned (or implied) by a source.
+          %   by removing its entry from this quality
+          %   glossary and adding an associated test approach to
+          %   \ourApproachGlossary{}, also outlined in \Cref{methodology}
+          Examples of this include conformance testing
+          (\citealp[p.~5\=/7]{SWEBOK2025}; \citealp[p.~25]{JardEtAl1999};
+          implied by \citealp[p.~93]{IEEE2017}), efficiency testing
+          \citep[p.~44]{Kam2008}, and survivability testing
+          \citep[p.~40]{GhoshAndVoas1999}. While other researchers may disagree
+          with this relation between software qualities and test types, it
+          seems to be supported by the literature (as described above) and is
+          further supported by reliability and performance testing: test types
+          \citep{IEEE2022,IEEE2021c} that are based on their underlying
+          software qualities \citep[p.~18]{FentonAndPfleeger1997}.
+          % \ifnotpaper
+          %     For quantifying quality-driven testing, measurements should include
+          %     an entity to be measured, a specific attribute to measure, and the actual
+          %     measure (i.e., units, starting state, ending state, what to include)
+          %     \citetext{p.~36} where attributes must be
+          %     defined before they can be measured \citetext{p.~38}.
+          % \fi
 \end{itemize}
 
 \subsection{External Validity}\label{exter-valid}
