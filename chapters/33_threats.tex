@@ -186,9 +186,8 @@ Threats can also be found in other terms we define, such as the following:
           % under the term ``vulnerability''
           \citep[p.~194]{IEEE2012}. However, this term sometimes refers to
           problems with software itself \citep[p.~92;][p.~7\=/9]{SWEBOK2025},
-          which introduces some confusion \citetext{Dr.~R.~Paige, private
-              communication, Oct.~14, 2025}. We attempt to mitigate this by
-          being precise with our use of the words ``flaw'', ``error'',
+          which introduces some confusion \PaigeMtgNote. We attempt to mitigate
+          this by being precise with our use of the words ``flaw'', ``error'',
           ``fault'', ``defect'', and ``failure''.
     \item \textbf{Manifestation and Domain:} Similarly, we define the terms
           ``manifestation'' and ``domain'' (see \Cref{mnfst-def,dmn-def},
@@ -227,6 +226,16 @@ Threats can also be found in other terms we define, such as the following:
               he \else it \fi does not define ``test type'', this may not have
           special significance.
           % Use of ChatGPT omitted for brevity
+
+          Additionally, \citet[p.~23]{Firesmith2015} uses the same acronym
+          (``HIL'') for ``hardware-in-the-loop testing'' and
+          ``human-in-the-loop testing''. We track this as a flaw (see
+          \flawref{hil-acro}), but these terms ``might be disambiguated in
+          practice as they often come at very different stages/phases of
+          testing; a deeper domain analysis might reveal this''
+          \PaigeMtgNote. Dr.~Paige also notes that a deeper domain analysis
+          may explain why system testing is given as its own parent (as
+          described in \Cref{selfPars}).
 \end{itemize}
 
 \subsection{External Validity}\label{exter-valid}
