@@ -495,7 +495,7 @@ def outputFlaws():
                 reversed([str(x).replace("'", "") for x in zip(
                          reversed(flawCats), reversed(vals))]))}}};"
                     for color, vals in zip(DEFAULT_COLORS, flawBars)]
-    writeFile(["\\begin{figure}[bt!]", "\\centering",
+    writeFile(["\\begin{figure}[h]", "\\centering",
                "\\begin{tikzpicture}", "\\begin{axis}[",
                     "width=\\textwidth, height=9cm,",
                     # "x tick label style={rotate=90},",
