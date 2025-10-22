@@ -6,7 +6,7 @@ Since our research is a systematic analysis and summary of the software
 community's usage of testing terminology, we do our
 best to accomplish this. To present and explain our findings,
 we make some decisions with which others may disagree. The benefit of our work
-being open-source means that others can make their own decisions, modify our
+being open source means that others can make their own decisions, modify our
 data/code appropriately, and observe how this changes the results. Despite this
 and our best efforts, some threats to validity remain; we use
 \citepos[pp.~153\==154]{RunesonAndHöst2009} definitions of threats to validity
@@ -30,7 +30,7 @@ complexity) as follows:
           %   third factor and/or does not know to what extent it affects the
           %   investigated factor''.
           (\Cref{inter-valid})
-    \item \textbf{External Validity:} For results of a study to be externally
+    \item \textbf{External Validity:} For the results of a study to be externally
           valid, they should be generalizable and ``of interest to other people
           outside the investigated case''. (\Cref{exter-valid})
 \end{enumerate}
@@ -44,12 +44,12 @@ which would threaten the reliability of our results. We mitigate this at a high
 level by outlining what we exclude from our scope in \Cref{app-scope}. This
 means that even if other researchers decide on a different scope, the data and
 results within the intersection of these scopes should match. By following the
-methodology outlined in \Cref{methodology}, we further mitgate the following
+methodology outlined in \Cref{methodology}, we further mitigate the following
 threats to reliability:
 
 \begin{itemize}
-    \item \textbf{Single Researcher:} Since only one researcher was responsible
-          for data collection, it was solely up to them to determine what data
+    \item \textbf{Single Researcher:} Since only one researcher collected our
+          data, it was solely up to them to determine what data
           and relations were important to record and investigate. To reduce the
           negative impact this might have on our research, we follow our
           methodology as rigorously as possible, including heuristics
@@ -65,7 +65,7 @@ threats to reliability:
           ambiguous, only recording explicit information would omit a lot of
           data provided by the software testing literature. We therefore
           document implicit information from the
-          literature for completeness as described in \Cref{imp-info}. While
+          literature for completeness, as described in \Cref{imp-info}. While
           other researchers may disagree on what information ``follows
           logically'' or ``is dubious'', these data are innately subjective,
           so excluding them should result in our \emph{explicit} data (and
@@ -80,14 +80,14 @@ threats to reliability:
           \Cref{swebok-update})! Future researchers following our methodology
           would therefore end up with different results. While we could
           partially mitigate this by re-iterating over all sources with our
-          ``finalized'' methodology, this is not possible due to time
-          constraints. With respect to sources updating during the course of
+          ``finalized'' methodology, this is not possible because of time
+          constraints. Regarding sources that were updated during
           our research, future researchers could replicate our results by
           reviewing a ``snapshot'' of them from when we reviewed\qtodo{Present
               tense? And does this make sense?} them. However, if future
           researchers were to repeat this research, they \emph{should} use the
           most up-to-date sources to update our existing data, methodology, and
-          tools. This is one of the benefits of our research being open-source:
+          tools. This is one benefit of our research being open source:
           it can exist as a ``living document'' that can (ideally) keep up with
           innovations to software testing!
 \end{itemize}
@@ -96,8 +96,8 @@ threats to reliability:
 \subsection{Construct Validity}\label{cons-valid}
 For clarity and consistency throughout this \docType, we define the terminology
 we use in \Cref{terminology}. The following threats to validity come from our
-use of \citepos{IEEE2022} categorization scheme; while it is supported by the
-testing literature, we make the final decision to use it as described in
+use of \citepos{IEEE2022} categorization scheme; while the testing literature
+supports it, we make the final decision to use it as described in
 \Cref{cats-def}:
 
 \begin{itemize}
@@ -108,14 +108,14 @@ testing literature, we make the final decision to use it as described in
           Some sources \citep[such as][]{SWEBOK2025,BarbosaEtAl2006} propose
           similar yet distinct categories that clash or overlap with our
           categories given in \Cref{tab:ieeeCats}. We give these alternate
-          categorizations, which seem to simply map to their ``IEEE
+          categorizations, which seem to map to their ``IEEE
           Equivalent''s, in \Cref{tab:otherCats}. While these categories
           could provide new perspectives and be useful in some contexts, either
           in place of or in tandem with ours, their existence suggests that
           \citepos{IEEE2022} categorization scheme is not universal.
     \item \phantomsection{}\label{alt-cats}
           \textbf{Alternate Approach Categories:} Some of these categories can
-          be further divided into ``classes'' or ``families'' such as
+          be divided further into ``classes'' or ``families'' such as
           %   with ``commonalities and well-identified variabilities that can be
           %   instantiated'', where ``the commonalities are large and the variabilities
           %   smaller'' \citep{classFamilyDisc}. Examples of these are
@@ -132,7 +132,7 @@ testing literature, we make the final decision to use it as described in
           criteria for categorizing test approaches in the literature.
           % which may be used in tandem with or in place of those given
           % in \Cref{tab:ieeeCats,tab:otherCats}.
-          In general, these are defined less systematically but are more
+          These have less systematic definitions but are more
           fine-grained, seeming to ``specialize'' our categories from
           \Cref{tab:ieeeCats}. The existence of these categorizations is not
           inherently wrong, as they may be useful for specific teams or in
@@ -144,7 +144,7 @@ testing literature, we make the final decision to use it as described in
           alternate categories are not used consistently
           (see \flawref{manual-or-keyword})! While these categories suggest
           that ours are not complete or minimal, they seem to be supplementary
-          and generally do not conflict with them.\qtodo{Does this make sense,
+          and rarely conflict with them.\qtodo{Does this make sense,
               especially in the absence of the examples I omitted for brevity?}
           % Examples omitted for brevity
           % Threat omitted for clarity/brevity
@@ -169,7 +169,7 @@ testing literature, we make the final decision to use it as described in
 \end{landscape}
 % }
 
-Threats can also be found in other terms we define, such as the following:
+More threats exist because of other terms we define, such as the following:
 
 \begin{itemize}
     \item \phantomsection{}\label{flaw-def-threat}
@@ -205,11 +205,11 @@ Threats can also be found in other terms we define, such as the following:
     \item \textbf{Notion of Credibility:} We also define a metric for ranking
           the impact a document has on testing literature as a whole. We call
           this metric ``credibility'' and provide some properties that a
-          credible source should have in \Cref{cred}. While this influences how
+          credible source should have in \Cref{cred}. While these influence how
           we sort sources into tiers in \Cref{source-tiers}, the format of a
           given source is a larger factor. Therefore, other researchers may
           have different ideas about what kinds of sources are more credible
-          that others or how sources should be grouped to facilitate comparing
+          than others or how they will group sources to facilitate comparing
           them. We use credibility as a heuristic, describe each source tier
           thoroughly, and justify the use of our sources, mitigating (or at
           least minimizing the impact of) this threat.
@@ -225,9 +225,9 @@ our constructs. The following are the most prominent of these threats:
 \begin{itemize}
     \item \textbf{Overloaded Terms:} The ambiguity of natural language means
           that terms are often overloaded. In \Cref{tab:ieeeCats}, we describe
-          the categories we use, but these terms may not be used in the same
-          way universally%; ``test type'', ``test technique'', ``test practice'',
-          %and ``test approach'' could all reasonably used as synonyms
+          the categories we use, but the literature may not universally use
+          these terms in the same way%; ``test type'', ``test technique'', ``test
+          %   practice'', and ``test approach'' could all reasonably used as synonyms
           . For example, \citet[p.~45\ifnotpaper, emphasis added\fi]{Kam2008}
           defines interface testing as ``an integration \emph{test type} that
           is concerned with testing \dots{} interfaces'', but since \ifnotpaper
@@ -256,7 +256,7 @@ our constructs. The following are the most prominent of these threats:
           We track \qualityCount{} software qualities\thesisissueref{21,23,27}
           %in addition to test approaches
           following our procedure in \Cref{qual-supp-procedure}, ``upgrading''
-          them to test types when they are mentioned (or implied) by a source.
+          them to test types when a source mentions (or implies) them.
           %   by removing its entry from this quality
           %   glossary and adding an associated test approach to
           %   \ourApproachGlossary{}, also outlined in \Cref{methodology}
@@ -265,11 +265,11 @@ our constructs. The following are the most prominent of these threats:
           implied by \citealp[p.~93]{IEEE2017}), efficiency testing
           \citep[p.~44]{Kam2008}, and survivability testing
           \citep[p.~40]{GhoshAndVoas1999}. While other researchers may disagree
-          with this relation between software qualities and test types, it
-          seems to be supported by the literature (as described above) and is
-          further supported by reliability and performance testing: test types
-          \citep{IEEE2022,IEEE2021c} that are based on their underlying
-          software qualities \citep[p.~18]{FentonAndPfleeger1997}.
+          with this relation between software qualities and test types, the
+          literature seems to support it as described above and further
+          demonstrated by the examples of reliability and performance testing:
+          test types \citep{IEEE2022,IEEE2021c} that are based on their
+          underlying software qualities \citep[p.~18]{FentonAndPfleeger1997}.
           % \ifnotpaper
           %     For quantifying quality-driven testing, measurements should include
           %     an entity to be measured, a specific attribute to measure, and the actual
@@ -280,7 +280,7 @@ our constructs. The following are the most prominent of these threats:
 
     \item \phantomsection{}\label{cov-test}
           \textbf{Coverage Metrics Implying Test Techniques:}
-          Test techniques are able to ``identify test coverage items \dots{} and
+          Test techniques can ``identify test coverage items \dots{} and
           derive corresponding test cases'' (\citealp[p.~11]{IEEE2022};
           \citeyear[p.~5]{IEEE2021a}; similar in \citeyear[p.~467]{IEEE2017})%
           %   in a ``systematic'' way \citeyearpar[p.~464]{IEEE2017}
@@ -293,13 +293,13 @@ our constructs. The following are the most prominent of these threats:
           %   impossible to be covered by a test case'' \citetext{p.~30}.
           %   Perhaps more interestingly, the further implication is that
           Therefore, we posit that a given coverage metric implies a test
-          technique with the intent to maximize it. For example, path testing
+          technique with the goal of maximizing it. For example, path testing
           ``aims to execute all entry-to-exit control flow paths in a
           \acs{sut}'s control flow graph'' \citep[p.~5\=/13]{SWEBOK2025},
           thus maximizing the path coverage. Again, while other
           researchers may disagree with this relation between coverage
-          metrics and test techniques, it seems to be supported by the
-          literature as described above and by
+          metrics and test techniques, the literature seems to support it
+          as described above and by
           \citet[pp.~183\==185]{DoğanEtAl2014}\thesisissueref{63},
           \citet[Fig.~1]{SharmaEtAl2021}, and \citet[pp.~2\==3]{Reid1996}%
           %   , who elaborates on this relation specifically in regards to
@@ -318,7 +318,7 @@ reasons, including the following:
           holds that ``common terminology is dangerous'' and ``to be able to
           truly understand each other, we need to ask questions and discuss in
           depth''. However, these in-depth discussions are \emph{not} mutually
-          exclusive with common terminology! Having a shared understanding for
+          exclusive with common terminology! Having a shared understanding of
           how terms are defined allows for common ground during these sorts of
           discussions with the chance to adapt them to serve the context of a
           given team or project (which we give examples of in
