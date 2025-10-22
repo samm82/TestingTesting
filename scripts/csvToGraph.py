@@ -1,6 +1,6 @@
 from collections import OrderedDict
 from copy import deepcopy
-from math import ceil
+from math import ceil, nan
 import itertools
 from pandas import read_csv
 import re
@@ -35,6 +35,7 @@ if __name__ == "__main__":
 approaches = read_csv(csvFilename)
 names = approaches["Name"].to_list()
 categories = approaches["Approach Category"].to_list()
+defs = approaches["Definition"].to_list()
 parents = approaches["Parent(s)"].to_list()
 synonyms = approaches["Synonym(s)"].to_list()
 
@@ -113,6 +114,23 @@ names = [n.strip() for n in names if isinstance(n, str)]
 categories: list[list[str]] = processCol(categories, True)
 parents = processCol(parents)
 synonyms = processCol(synonyms)
+
+# Write undefined test approaches to a file
+def processUndefTerm(s: str) -> str:
+    acrosToReplace = re.findall(r"[A-Z]+[a-z]*[A-Z]+[a-z]*", s)
+    capIndex = s.startswith("(") + 1
+    s = s[:capIndex] + s[capIndex:].lower()
+    for acro in acrosToReplace:
+        s = re.sub(fr"^{acro[0]}{acro[1:].lower()} ", f"{acro} ", s)
+        s = re.sub(fr"(\W?){acro.lower()} ", f"\\1{acro} ", s)
+    return f"\\item {s}"
+
+if "Example" not in csvFilename:
+    # Ignore qualifiers for the two "kinds" of open loop testing but omit sources
+    pureNames = [re.sub(r" \((?!Control)[^)]+ .+\)", "", name) for name in names]
+    writeFile([processUndefTerm(name) for name, termDef in zip(pureNames, defs)
+            if isinstance(termDef, float)],
+            "futureUndefTerms", True)
 
 staticApproaches = {
     'ConcreteExecution', 'SymbolicExecution', 'InductiveAssertionMethods',

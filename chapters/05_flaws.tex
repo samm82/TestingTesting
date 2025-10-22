@@ -8,20 +8,20 @@ After gathering all these data\footnote{Available in \texttt{ApproachGlossary.cs
     \texttt{QualityGlossary.csv}, and \texttt{SuppGlossary.csv} at \ifblind{
         [Repository link suppressed]}{
         \url{https://github.com/samm82/TestingTesting}}.}, we find many flaws.
-\Cref{fig:flawBars} shows where these flaws appear within each source tier (see
-\Cref{source-tiers}) which reveals a lot about software testing literature:
+\Cref{fig:flawBars} shows where these flaws appear within each source tier
+(defined in \Cref{source-tiers}) which reveals a lot about software testing
+literature:
 \begin{enumerate}
-    \item Established standards (\Cref{stds}) aren't actually standardized, since:
+    \item Established standards aren't actually standardized, since:
           \begin{enumerate}
               \item other documents disagree with them \emph{very} frequently and
               \item they are the most internally inconsistent source tier!
           \end{enumerate}
-    \item Less standardized (or ``credible''; see \Cref{cred}) documents,
-          such as terminology collections and textbooks (\Cref{metas,texts},
-          respectively) are also not followed to the extent they should be.
+    \item Less standardized documents, such as terminology collections and
+          textbooks are also not followed to the extent they should be.
     \item Documents across the board have flaws within the same document,
-          between documents with the same author(s), or even with reality%
-          \qtodo{Is this too strong of a synonym for ``ground truth''?}!
+          between documents with the same author(s), or even with assertions of
+          ground truth!
 \end{enumerate}
 
 To better understand and analyze these flaws, we group them by their
@@ -29,8 +29,8 @@ manifestations and their domains as defined in \Cref{flaw-def}.
 We present the total number of flaws by manifestation and by domain
 in \Cref{tab:flawMnfsts,tab:flawDmns}, respectively, where a given
 row corresponds to the number of flaws either within that source tier and/or
-with a ``more credible'' one (i.e., a previous row in the table; see
-\Cref{cred,source-tiers}). We also group these flaws by their explicitness
+with a more credible one (i.e., a previous row in the table). We also group
+these flaws by their explicitness
 (defined in \Cref{explicitness}) by counting (Obj)ective and (Sub)jective flaws
 separately, since additional context may rectify them.
 Since we give each flaw a manifestation \emph{and} a domain, the totals per
@@ -40,7 +40,9 @@ draw some conclusions about \emph{how} the literature is flawed:
     \item Contradictions are by \emph{far} the most common way for a flaw to
           manifest, which makes sense: if two (groups of) authors do not
           communicate or work with different resources, there is a higher
-          chance that they will disagree.
+          chance that they will disagree. These are also the most obvious flaws
+          to detect automatically (see \Cref{\ifnotpaper auto-flaw-detect,\fi
+              flawDmns}) which also contributes to this.
     \item Approach categorizations are the most subjective and one of the most
           common flaw domains, likely due to the lack of standardization
           about what categories to use\ifnotpaper\ (see \Cref{alt-cats}
@@ -89,9 +91,8 @@ testing contain many interconnected flaws, which we present in subsections as a
 \ifnotpaper operational (acceptance) testing (\Cref{oat-flaw}), \fi
 recovery testing (\Cref{recov-flaw}), scalability testing (\Cref{scal-flaw}),
 and compatibility testing (\Cref{compat-flaw}). The counts of flaws given in
-\Cref{tab:flawMnfsts,tab:flawDmns} can be thought of\qtodo{Active voice here?
-    Would this use ``we'' or ``one''?} as the sum of the flaws we
-describe by manifestation, domain, and ``subset''.  \ifnotpaper Finally, we
+\Cref{tab:flawMnfsts,tab:flawDmns} are essentially the sums of the flaws we
+describe in the following subsections. \ifnotpaper Finally, we
     infer some flaws as described in \Cref{infers}, which do not contribute to
     any counts because they are subjective; we list these in \Cref{infer-flaws}
     for completeness. \fi
@@ -122,16 +123,16 @@ With more time, we would continue to snowball on these undefined terms
 following the procedure in \Cref{undef-terms}\ifnotpaper\ (see
     \Cref{future-undef-terms} for more detailed discussion on what we
     accomplished)\fi.
-Likewise, we were unable to reach our stopping criteria outlined in
-\Cref{stop-crit}. We considered the discovery of property-based testing as an
+Likewise, we are unable to reach our stopping criteria outlined in
+\Cref{stop-crit}. We consider the discovery of property-based testing as an
 alternate stopping point for our research\thesisissueref{57,81,88,125}%
-\todo{These issue refs might be useful in our final documents.} since we were
-surprised that it was not mentioned in any sources we investigated. Even so, we
-had to stop our snowballing approach before we discovered property-based testing
+\todo{These issue refs might be useful in our final documents.} since we are
+surprised that it is not mentioned in any sources we investigated. Even so, we
+have to stop our snowballing approach before we discover property-based testing
 in the literature!\ifnotpaper\ With more time, we would uncover this along with
     other test approaches that did not arise (as described in
     \Cref{future-miss-terms}), but unfortunately, we impose our stopping point
-    artificially.\qtodo{Present tense in this paragraph?}\newpage\fi
+    artificially.\newpage\fi
 
 \subsection{Flaws by Manifestation}\label{flawMnfsts}
 

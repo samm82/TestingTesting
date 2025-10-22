@@ -174,7 +174,7 @@ as follows\thesisissueref{21}:
 % Based on how we observe test approaches being categorized in the literature, 
 % We also make the following changes to the schema from \citet[Fig.~2]{IEEE2022}:
 
-While \citet{IEEE2022}'s schema includes ``static testing'' as a test approach
+While \citepos{IEEE2022} schema includes ``static testing'' as a test approach
 category, we omit it from our scope as it seems non-orthogonal to the others
 and thus less helpful for grouping test approaches. \ifnotpaper Other
     categorization schemas (see \Cref{alt-cats}) may consider static testing
@@ -212,7 +212,7 @@ will likely be excluded during later analysis\thesisissueref{52}.
 
 % \fi
 % While we can categorize the vast majority of identified test approaches
-% based on \citet{IEEE2022}'s categories, there are some outliers. For example,
+% based on \citepos{IEEE2022} categories, there are some outliers. For example,
 % we categorize some test approaches as ``artifacts'',
 % since some terms can refer to the application of a
 % test approach \emph{as well as} the resulting document(s). Therefore,
@@ -462,19 +462,7 @@ Ideally, software testing literature would describe test approaches correctly,
 completely, consistently, and modularly, but this is not the case in reality.
 We use the term ``flaw'' to refer to any instance of the literature violating
 these ideals, \emph{not} to instances of \emph{software} doing the same%
-\footnote{When picking a word to describe these violations, we wanted to avoid
-    words that are ``overloaded with too many meanings'' like
-    ``error'' and ``fault'' \citep[p.~12\=/3; see \Cref{error-fault-failure}
-        for more detailed discussion]{SWEBOK2024}. A small literature review
-    revealed that established standards (see \Cref{stds}) use the term
-    ``flaw'' to refer to requirements \citep[p.~38]{IEEE2022}, design
-    \citetext{p.~43}, ``system security procedures \dots{} and internal
-    controls'' % under the term ``vulnerability''
-    \citep[p.~194]{IEEE2012}, but only once to refer to code itself
-    \citetext{p.~92}. \refHelper
-    \citet[p.~7\=/9]{SWEBOK2024} also uses the word ``flaw'' in a way that
-    aligns with our goal of analyzing what is wrong with software
-    engineering's testing literature.}\todo{Present tense in footnote?}.
+\ifnotpaper\ (see \Cref{flaw-def-threat} for further discussion)\fi.
 % , as it implies that something is wrong with the literature and there is an
 % opportunity to improve it
 We classify flaws by both their ``manifestations'' (\emph{how} information is
@@ -482,14 +470,12 @@ wrong; see \Cref{mnfst-def}) and their ``domains'' (\emph{what} information is
 wrong; see \Cref{dmn-def})\thesisissueref{155}. These are orthogonal
 classifications, since each flaw \emph{manifests} in a particular
 \emph{domain}, which we track by assigning each flaw one ``key'' for each
-classification. We list these keys in \Cref{tab:flawMnfstDefs,tab:flawDmnDefs},
-respectively, and use them to count and analyze the flaws we uncover
-in \Cref{flaws}% ; for
-% example, we present the number of flaws according to these two views in
-% \Cref{tab:flawMnfsts,tab:flawDmns}, respectively
-. We also introduce some terms
-to be used when discussing flaws based on how many sources contribute to them
-(\Cref{add-flaw-terms}).
+classification (listed keys in \Cref{tab:flawMnfstDefs,tab:flawDmnDefs},
+respectively)%, and use them to count and analyze the flaws we uncover
+% in \Cref{flaws}; for example, we present the number of flaws according to
+% these two views in \Cref{tab:flawMnfsts,tab:flawDmns}, respectively
+. We also introduce terms we use when discussing flaws based on how many
+sources contribute to them (\Cref{add-flaw-terms}).
 
 \subsubsection{Flaw Manifestations}\label{mnfst-def}
 
@@ -521,8 +507,9 @@ we call the flaw's ``domain''. We describe those we observe in
 are less standardized (and should therefore be approached with more rigour)
 than others. We explicitly define some of these domains in previous
 sections and thus present them in that same order. These are the domains in
-which we automatically detect flaws as described in \Cref{auto-flaw-detect}
-and present in \Cref{flawDmns}, so these are the only ones that are
+which we automatically detect and present flaws as described in \ifnotpaper
+    \Cref{auto-flaw-detect,flawDmns}, respectively\else \Cref{flawDmns}\fi,
+so these are the only ones that are
 hyperlinked. We automatically detect the following classes of flaws:
 
 \begin{itemize}
@@ -542,8 +529,7 @@ hyperlinked. We automatically detect the following classes of flaws:
           \end{enumerate}
     \item \phantomsection{}\label{selfParDef}
           Parent-child relations that violate irreflexivity, or approaches that
-          are parents of themselves.\todo{Mention detecting other cycles as
-              flaws as Future Work}
+          are parents of themselves.
     \item \phantomsection{}\label{parSynDef}
           \parSynFlaw*{}
 \end{itemize}
@@ -645,6 +631,8 @@ analysis (see \ifnotpaper \Cref{app-rel-vis,flaw-analysis}, respectively\else
     learning-assisted testing'' and include it in \ourApproachGlossary{} as
     such. We also infer that child approaches inherit their parents' categories
     (see \Cref{cats-def}).
+
+    \newpage
 \fi
 
 \subsection{Credibility}\label{cred}
@@ -662,7 +650,6 @@ source as more ``credible'' if it:
 Sources may meet only some of these criteria, so we use our judgement (along
 with the format of the sources themselves) when comparing them.
 
-\ifnotpaper\newpage\fi
 \subsection{Source Tiers}\label{source-tiers}
 For ease of discussion and analysis, we group the complete set of sources into
 ``tiers'' based on their format, method of publication, and our heuristic of
@@ -686,8 +673,7 @@ broad scope; for example, the glossary portion of \citet{IEEE2017} has 514
 pages! Using these standards allows us to record many test approaches in a
 similar context from a source that is widely used and well-respected.
 
-% Only top or bottom to comply with IEEE guidelines
-\begin{figure}[b!]
+\ifnotpaper\begin{figure}[t!]\else\begin{figure}[b!]\fi
     \centering
     \begin{tikzpicture}
         \pie[sum=auto, after number=, text=legend, thick,
@@ -743,12 +729,11 @@ software engineering theory and practice'' \citep{AboutSWEBOK}. Due to this
 combination of IEEE standards and state-of-the-practice observations, we
 designate it as a collection of terminology as opposed to an established
 standard. Collections such as this are often written by a large
-organization, such as the \acf{istqb}, but not always. \ifnotpaper \else
-    \citeauthor{Firesmith2015} \fi \citet{Firesmith2015}'s taxonomy presents
-relations between many test approaches and \ifnotpaper \else
-    \citeauthor{DoğanEtAl2014} \fi \citet{DoğanEtAl2014}'s literature
-review cites many sources from which we can ``snowball'' if desired
-(see \Cref{ident-sources}), so we include them in this tier as well.
+organization, such as the \acf{istqb}, but not always. \citepos{Firesmith2015}
+taxonomy presents relations between many test approaches and
+\citepos{DoğanEtAl2014} literature review cites many sources from which we can
+``snowball'' if desired (see \Cref{ident-sources}), so we include them in this
+tier as well.
 
 \subsubsection{\textSources{1}}\label{texts}
 % Colored \textcolor{Maroon}{maroon}
