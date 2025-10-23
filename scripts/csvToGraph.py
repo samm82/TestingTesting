@@ -984,7 +984,8 @@ def writeDotFile(lines: list[str], filename: str) -> None:
         "",
         "\\begin{document}",
         f"\\digraph{{{filename}}}{{",
-    ] + (["rankdir=BT;", ""] if "rankdir" not in "\n".join(lines) else []) + ([
+    ] + (["edge [penwidth=2];"] if "Example" not in csvFilename else []) + (
+         ["rankdir=BT;"] if "rankdir" not in "\n".join(lines) else []) + (["",
         "// Dummy node to push the legend to the top left",
         'start [style="invis"];', ""] if legend else []
     ) + lines + legend + [
