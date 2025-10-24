@@ -115,9 +115,9 @@ categories: list[list[str]] = processCol(categories, True)
 parents = processCol(parents)
 synonyms = processCol(synonyms)
 
-# Write undefined test approaches to a file
-def processUndefTerm(s: str) -> str:
-    acrosToReplace = re.findall(r"[A-Z]+[a-z]*[A-Z]+[a-z]*", s)
+# Process term for inclusion in future work appendix
+def processFutureTerm(s: str) -> str:
+    acrosToReplace: list[str] = re.findall(r"[A-Z]+[a-z]*[A-Z]+[a-z]*", s)
     capIndex = s.startswith("(") + 1
     s = s[:capIndex] + s[capIndex:].lower()
     for acro in acrosToReplace:
@@ -125,10 +125,11 @@ def processUndefTerm(s: str) -> str:
         s = re.sub(fr"(\W?){acro.lower()} ", f"\\1{acro} ", s)
     return f"\\item {s}"
 
+# Write undefined test approaches to a file
 if "Example" not in csvFilename:
     # Ignore qualifiers for the two "kinds" of open loop testing but omit sources
     pureNames = [re.sub(r" \((?!Control)[^)]+ .+\)", "", name) for name in names]
-    writeFile([processUndefTerm(name) for name, termDef in zip(pureNames, defs)
+    writeFile([processFutureTerm(name) for name, termDef in zip(pureNames, defs)
             if isinstance(termDef, float)],
             "futureUndefTerms", True)
 
@@ -930,21 +931,28 @@ def writeDotFile(lines: list[str], filename: str) -> None:
         return any(relLine.startswith(label) or f"-> {label}" in relLine
                 for relLine in relLines)
 
+    orphans, nonorphans = [], []
     if "Legend" not in filename:
         # Separate node labels from rest of file content
         lines = splitListAtEmpty(lines)
         lines = [lines[0], sum(lines[1:], start=[])]
 
         # Exclude test approaches with no relations; #253
-        orphans, nonorphans = [], []
         for label in lines[0]:
             if not label or termInRel(label, lines[1]):
                 nonorphans.append(label)
             else:
                 # Store "orphans" for future use
-                orphans.append(label)
+                orphan = label.split("<", 1)[1]
+                orphan = orphan.replace("<br/>", " ")
+                orphan = orphan.split(">", 1)[0]
+                orphans.append(processFutureTerm(orphan))
 
         lines = nonorphans + lines[1]
+
+    if filename == "approachGraph":
+        writeFile(     orphans,   "futureOrphanTerms", True)
+        writeFile([len(orphans)], "futureOrphanCount", True)
 
     legend = []
     if all(name not in filename for name in CUSTOM_LEGEND):
