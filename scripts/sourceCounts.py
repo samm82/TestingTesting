@@ -56,16 +56,16 @@ if unknownSpaces:
     print("Sources with spaces to double check: ")
     for s in unknownSpaces:
         print("\t" + s)
-    print()
+    input()
 else:
     for cat in SrcCat:
         catSources = sorted({s.replace(' ', '') for s in sources if getSrcCat(s) == cat},
                             key=lambda s: sort_key(s, cat))
-        catSourceLine = f"\\citealp{{{','.join(catSources).replace("ISTQB2024", "ISTQB")}}}"
+        catSourceLine = f"\\citep{{{','.join(catSources)}}}"
         if cat == SrcCat.META:
-            # Handle edge case of ISTQB; this might not be stable
-            catSourceLine = ("\\ifnotpaper \\citealpISTQB{}; \\citealp{" +
-                                ','.join([s for s in catSources if not s.startswith("ISTQB")]) +
-                                "}\\else " + catSourceLine + "\\fi")
+            # Handle edge cases; this might not be stable
+            catSourceLine = ("(\\citealp{SWEBOK2025,SWEBOK2024}; \\citealpISTQB{}; \\citealp{" +
+                                ','.join([s for s in catSources if s not in 
+                                          {"SWEBOK2025", "SWEBOK2024", "ISTQB2024"}]) + "})")
         writeFile([cat.longname, catSourceLine, len(catSources)],
                   f"{cat.name.lower()}Sources", True)

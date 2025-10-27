@@ -133,7 +133,10 @@ def formatLineWithSources(line: str, todo=True):
     line = line.replace("van V", "vanV")
 
     for source in getSources(line, bibtex=True):
-        line = line.replace(source[0], source[0].replace(" and ", "And"))
+        tempAuth = source[0]
+        tempAuth = tempAuth.replace(" van ", "Van")
+        tempAuth = re.sub(r" and ?", "And", tempAuth)
+        line = line.replace(source[0], tempAuth)
 
     while True:
         newLine = re.sub(fr"\\citeyear(.*){{({AUTHOR_REGEX})({YEAR_REGEX})}}; ({YEAR_REGEX}), ({INFO_REGEX})",
