@@ -286,14 +286,22 @@ LONG_ENDINGS = {"Testing", "Management", "Scanning", "Audits",
 LONG_ENDINGS_REGEX = re.compile(r' \b(' + '|'.join(LONG_ENDINGS) + r')\b')
 
 for name, category in zip(names, categories):
+    # Ignore category of Artifact but give Approach as default
+    category = ([c for c in category if not c.startswith("Artifact")] or
+                ["Approach"])
+
+    # Ensure that Approach is not given as a category alongside another
+    if len(category) > 1 and any(c.startswith("Approach") for c in category):
+        raise ValueError(f"Category of Approach was not replaced for {name}.")
+
     for cat in category:
         for key in categoryDict.keys():
             if key in cat or key == "Approach":
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key, cat=cat)
 
-    category = [c for c in category
-                if not any(t in c for t in {"Approach", "Artifact"})]
+    # Check for contradictory categories
+    category = [c for c in category if not c.startswith("Approach")]
     if len(category) > 1:
         flawCount = (getFlawCount(category, "CONTRA", "CATS")
                         if not any(inf in " ".join(category)
