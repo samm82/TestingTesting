@@ -285,6 +285,8 @@ LONG_ENDINGS = {"Testing", "Management", "Scanning", "Audits",
                "Guessing", "Correctness"}
 LONG_ENDINGS_REGEX = re.compile(r' \b(' + '|'.join(LONG_ENDINGS) + r')\b')
 
+uncategorized = []
+
 for name, category in zip(names, categories):
     # Ignore category of Artifact but give Approach as default
     category = ([c for c in category if not c.startswith("Artifact")] or
@@ -300,8 +302,14 @@ for name, category in zip(names, categories):
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key, cat=cat)
 
-    # Check for contradictory categories
     category = [c for c in category if not c.startswith("Approach")]
+
+    # Check for uncategorized approaches
+    if not category:
+        # Ignore implied "Testing" but omit sources
+        uncategorized.append(re.sub(r" \((?!Testing)[^)]+ .+\)", "", name))
+
+    # Check for contradictory categories
     if len(category) > 1:
         flawCount = (getFlawCount(category, "CONTRA", "CATS")
                         if not any(inf in " ".join(category)
@@ -326,6 +334,9 @@ for name, category in zip(names, categories):
         )
 
 if "Example" not in csvFilename:
+    writeFile([processFutureTerm(t) for t in uncategorized], "uncatTerms", True)
+    writeFile([len(uncategorized)],                          "uncatCount", True)
+
     for multiCat in multiCatDict.values():
         multiCat.output()
 
