@@ -243,28 +243,31 @@ Specific programming languages are sometimes used to define test approaches.
 If the reliance on a specific programming language is intentional, then
 this really implies an underlying test approach that may be generalized to
 other languages. These are therefore considered out-of-scope\thesisissueref{63},
-including the following examples:
+including the following non-exhaustive list of examples:
 
 \begin{itemize}
+    \item \acs{sql} injection is just defined as ``a type of code injection in the
+          \acf{sql}'' \citepISTQB{}, which does not provide any new information.
+    \item Similarly, \acs{sql} statement coverage \citep[Tab.~13]{DoğanEtAl2014}%
+          \todo{OG Alalfi et al., 2010} is just statement coverage
+          used specifically for \acs{sql} statements.
     \item ``An approach \dots{} for JavaScript testing
           (referred to as Randomized)'' \citep[p.~192]{DoğanEtAl2014} is
           really just random testing used within JavaScript.
-    \item ``SQL statement coverage'' \citep[Tab.~13]{DoğanEtAl2014}%
-          \todo{OG Alalfi et al., 2010} is really just statement coverage
-          used specifically for SQL statements.
-    \item Testing for ``faults specific to PHP'' is just a subcategory of
+    \item Testing for ``faults specific to \acs{php}'' is just a subcategory of
           fault-based testing, since ``execution failures \dots{} caused by
           missing an included file, wrong MySQL quer[ies] and uncaught
           exceptions'' \citep[Tab.~27]{DoğanEtAl2014}\todo{OG Artzi et al., 2008}
-          are not exclusive to PHP.
-    \item While ``HTML testing'' is listed or implied by
-          \citeauthor{Gerrard2000a} (\citeyear[Tab.~2]{Gerrard2000a};
-          \citeyear[Tab.~1, p.~3]{Gerrard2000b}) and
-          \citet[p.~220]{Patton2006}, it seems to be a combination of syntax
-          testing, functionality testing, hyperlink testing/link checking,
-          cross-browser compatibility testing, performance testing,
-          content checking \citep[p.~3]{Gerrard2000b}, and grey-box testing
-          \citep[pp.~218\==220]{Patton2006}.
+          are not exclusive to \acf{php}\qtodo{Since this is a recursive acronym
+              and a pretty common language, do I need to spell this out?}.
+          % \item While HTML testing is listed or implied by
+          %       \citeauthor{Gerrard2000a} (\citeyear[Tab.~2]{Gerrard2000a};
+          %       \citeyear[Tab.~1, p.~3]{Gerrard2000b}) and
+          %       \citet[p.~220]{Patton2006}, it seems to be a combination of syntax
+          %       testing, functionality testing, hyperlink testing/link checking,
+          %       cross-browser compatibility testing, performance testing,
+          %       content checking \citep[p.~3]{Gerrard2000b}, and grey-box testing
+          %       \citep[pp.~218\==220]{Patton2006}.
 \end{itemize}
 
 \section{Orthogonally Derived Approaches}\label{orth-test}
@@ -296,7 +299,7 @@ derived approaches, most of which are out of scope:
     \item Checklist-based reviews \citepISTQB{}
           % Checklist-based: Practice (IEEE, 2022, p. 34), Technique (Hamburg and Mogyorodi, 2024)
           % Reviews: Approach
-    \item Closed-loop HiL verification \citep[p.~6]{PreußeEtAl2012}
+    \item Closed-loop HiL\footnote{See \flawref{hil-acro}.} verification \citep[p.~6]{PreußeEtAl2012}
           % Closed Loop: Technique?
           % HiL: Out of Scope (hardware)
     \item Closed-loop protection system testing \citep[p.~331]{ForsythEtAl2004}
@@ -335,8 +338,8 @@ derived approaches, most of which are out of scope:
           % Infrastructure: Type (implied by Firesmith, 2015, p. 57)
           %              OR Level (implied by Gerrard, 2000a, p. 13; see \Cref{tab:ieeeCats})
           % Compatibility: Type (IEEE, 2022, pp. 3, 22; 2021, p. 37, Tab. A.1; 2013, p. 2; implied by its quality (ISO/IEC, 2023a); Firesmith, 2015, p. 53)
-    \item Invariant-based automatic testing \citep[pp.~184\==185, Tab.~21]{DoğanEtAl2014},
-          including for ``AJAX user interfaces'' \citetext{p.~191}
+    \item Invariant-based automatic testing (\citealp[pp.~184\==185, Tab.~21]{DoğanEtAl2014};
+          \citealp{MesbahAndVanDeursen2009})
           % Assertion Checking: Practice?
           % Automated: Practice (IEEE, 2022, pp. 20, 22)
           %         OR Technique (implied by p. 35)
@@ -364,11 +367,11 @@ derived approaches, most of which are out of scope:
     \item Non-functional search-based testing \citep[Tab.~1]{DoğanEtAl2014}
           % Non-functional: Approach
           % Search-based: Technique (Engström and Petersen, 2015, pp. 1-2)
-    \item Offline MBT \citepISTQB{}
+    \item Offline \acf{mbt} \citepISTQB{}
           % Offline: Practice?
           % Model-based: Practice (IEEE, 2022, p. 22; 2021, p. viii)
           %           OR Technique (Engström and Petersen, 2015, pp. 1-2; Kam, 2008, p. 4; implied by IEEE, 2022, p. 32; 2021, p. 7; 2017, p. 469)
-    \item Online MBT \citepISTQB{}
+    \item Online \acs{mbt} \citepISTQB{}
           % Online: Practice?
           % Model-based: Practice (IEEE, 2022, p. 22; 2021, p. viii)
           %           OR Technique (Engström and Petersen, 2015, pp. 1-2; Kam, 2008, p. 4; implied by IEEE, 2022, p. 32; 2021, p. 7; 2017, p. 469)

@@ -115,20 +115,26 @@ categories: list[list[str]] = processCol(categories, True)
 parents = processCol(parents)
 synonyms = processCol(synonyms)
 
-# Write undefined test approaches to a file
-def processUndefTerm(s: str) -> str:
-    acrosToReplace = re.findall(r"[A-Z]+[a-z]*[A-Z]+[a-z]*", s)
+# Process term for inclusion in future work appendix
+def processFutureTerm(s: str) -> str:
+    acrosToExpand:  list[str] = ["API", "CGI", "CLI", "DOM"]
+    acrosToReplace: list[str] = re.findall(r"[A-Z]+[a-z]*[A-Z]+[a-z]*", s)
     capIndex = s.startswith("(") + 1
     s = s[:capIndex] + s[capIndex:].lower()
     for acro in acrosToReplace:
-        s = re.sub(fr"^{acro[0]}{acro[1:].lower()} ", f"{acro} ", s)
-        s = re.sub(fr"(\W?){acro.lower()} ", f"\\1{acro} ", s)
+        if acro in acrosToExpand:
+            s = s.replace(f"{acro[0]}{acro[1:].lower()}",
+                          f"\\acf{{{acro.lower()}}}")
+        else:
+            s = re.sub(fr"^{acro[0]}{acro[1:].lower()} ", f"{acro} ", s)
+            s = re.sub(fr"(\W?){acro.lower()} ", f"\\1{acro} ", s)
     return f"\\item {s}"
 
+# Write undefined test approaches to a file
 if "Example" not in csvFilename:
     # Ignore qualifiers for the two "kinds" of open loop testing but omit sources
     pureNames = [re.sub(r" \((?!Control)[^)]+ .+\)", "", name) for name in names]
-    writeFile([processUndefTerm(name) for name, termDef in zip(pureNames, defs)
+    writeFile([processFutureTerm(name) for name, termDef in zip(pureNames, defs)
             if isinstance(termDef, float)],
             "futureUndefTerms", True)
 
@@ -284,15 +290,31 @@ LONG_ENDINGS = {"Testing", "Management", "Scanning", "Audits",
                "Guessing", "Correctness"}
 LONG_ENDINGS_REGEX = re.compile(r' \b(' + '|'.join(LONG_ENDINGS) + r')\b')
 
+uncategorized = []
+
 for name, category in zip(names, categories):
+    # Ignore category of Artifact but give Approach as default
+    category = ([c for c in category if not c.startswith("Artifact")] or
+                ["Approach"])
+
+    # Ensure that Approach is not given as a category alongside another
+    if len(category) > 1 and any(c.startswith("Approach") for c in category):
+        raise ValueError(f"Category of Approach was not replaced for {name}.")
+
     for cat in category:
         for key in categoryDict.keys():
             if key in cat or key == "Approach":
                 categoryDict[key][0].append(removeInParens(name))
                 addNode(name, key=key, cat=cat)
 
-    category = [c for c in category
-                if not any(t in c for t in {"Approach", "Artifact"})]
+    category = [c for c in category if not c.startswith("Approach")]
+
+    # Check for uncategorized approaches
+    if not category:
+        # Ignore implied "Testing" but omit sources
+        uncategorized.append(re.sub(r" \((?!Testing)[^)]+ .+\)", "", name))
+
+    # Check for contradictory categories
     if len(category) > 1:
         flawCount = (getFlawCount(category, "CONTRA", "CATS")
                         if not any(inf in " ".join(category)
@@ -317,6 +339,9 @@ for name, category in zip(names, categories):
         )
 
 if "Example" not in csvFilename:
+    writeFile([processFutureTerm(t) for t in uncategorized], "uncatTerms", True)
+    writeFile([len(uncategorized)],                          "uncatCount", True)
+
     for multiCat in multiCatDict.values():
         multiCat.output()
 
@@ -955,21 +980,28 @@ def writeDotFile(lines: list[str], filename: str) -> None:
         return any(relLine.startswith(label) or f"-> {label}" in relLine
                 for relLine in relLines)
 
+    orphans, nonorphans = [], []
     if "Legend" not in filename:
         # Separate node labels from rest of file content
         lines = splitListAtEmpty(lines)
         lines = [lines[0], sum(lines[1:], start=[])]
 
         # Exclude test approaches with no relations; #253
-        orphans, nonorphans = [], []
         for label in lines[0]:
             if not label or termInRel(label, lines[1]):
                 nonorphans.append(label)
             else:
                 # Store "orphans" for future use
-                orphans.append(label)
+                orphan = label.split("<", 1)[1]
+                orphan = orphan.replace("<br/>", " ")
+                orphan = orphan.split(">", 1)[0]
+                orphans.append(processFutureTerm(orphan))
 
         lines = nonorphans + lines[1]
+
+    if filename == "approachGraph":
+        writeFile(     orphans,   "futureOrphanTerms", True)
+        writeFile([len(orphans)], "futureOrphanCount", True)
 
     legend = []
     if all(name not in filename for name in CUSTOM_LEGEND):

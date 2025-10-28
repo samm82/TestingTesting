@@ -36,6 +36,15 @@ text width=3cm,
 draw=black,
 fill=green!30]
 
+\tikzstyle{decisionM} = [diamond,
+aspect=1.75,
+minimum width=0.25cm,
+minimum height=0.25cm,
+text centered,
+text width=2.5cm,
+draw=black,
+fill=green!30]
+
 \tikzstyle{decisionS} = [diamond,
 aspect=1.75,
 minimum width=0.25cm,
@@ -45,12 +54,11 @@ text width=2cm,
 draw=black,
 fill=green!30]
 
-\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{arrow} = [very thick,->,>=stealth]
 
 \begin{figure}
     \adjustbox{scale=0.89}{
-        \begin{tikzpicture}[node distance=2cm]
-            edge [penwidth=2];
+        \begin{tikzpicture}[node distance=2cm,line width=1.25]
 
             \node (start)   [startend, xshift=-5cm] {Start};
             \node (ident)   [io, right of=start, xshift=3.5cm] {Test Approach Identified};
@@ -59,7 +67,7 @@ fill=green!30]
             \node (newrow) [process, below of=present, yshift=-0.5cm] {Create New Row in Glossary};
             \node (newapp) [process, below of=newrow] {Record Approach Name and Category as ``Approach''};
 
-            \node (catapp)   [decisionL, below of=start,  yshift=-0.5cm] {Present Category is ``Approach''?};
+            \node (catapp)   [decisionM, below of=start,  yshift=-0.5cm] {Present Category is ``Approach''?};
             \node (catgiven) [decisionS, below of=ident,  yshift=-0.5cm] {Category Given?};
             \node (catmatch) [decisionL, below of=catapp, yshift=-2.5cm] {Given Category Matches Present Category?};
 
@@ -83,7 +91,7 @@ fill=green!30]
             \draw [arrow] (newapp.west) -- (catgiven);
 
             \draw [arrow] (catgiven) -- node[anchor=south] {yes} (catapp);
-            \draw [arrow] (catapp)   -- node[anchor=south] {\enspace yes} (catreplace);
+            \draw [arrow] (catapp)   -- node[anchor=south] {\quad yes} (catreplace);
             \draw [arrow] (catapp)   -- node[anchor=east]  {no}  (catmatch);
             \draw [arrow] (catmatch) -- node[anchor=east]  {yes} (catmatches);
             \draw [arrow] (catmatch) -- node[anchor=south] {no}  (catnomatch);
@@ -96,11 +104,11 @@ fill=green!30]
             \draw [arrow] (data) -- (datagiven);
             \draw [arrow] (datagiven) -- node[anchor=east] {yes\enspace} (datamatch);
             \draw [arrow] (datagiven) -- node[anchor=east] {no} (datanomatch);
-            \draw [arrow] (datagiven) -- node[anchor=west] {\quad somewhat} (datasomematch);
+            \draw [arrow] (datagiven) -- node[anchor=west] {\enspace somewhat} (datasomematch);
 
-            \draw [arrow] (datamatch)     -- (end);
+            \draw [arrow] (datamatch)     -- (end.west);
             \draw [arrow] (datanomatch)   -- (end);
-            \draw [arrow] (datasomematch) -- (end);
+            \draw [arrow] (datasomematch) -- (end.east);
 
         \end{tikzpicture}
     }

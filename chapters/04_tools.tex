@@ -58,6 +58,11 @@ to visualize them. \ifnotpaper%
     visualize all parent-child relations as they are guaranteed to be
     significant.
 
+    However, since each term is trivially a synonym of itself and there are many
+    non-problematic synonyms that do not imply flaws (see \Cref{syn-rels}),
+    we only visualize the synonym relations that may indicate flaws given in
+    \Cref{relevantSyns}; i.e., intransitive synonyms and synonyms between
+    independently defined approaches.
     \clearpage
     \input{build/exampleGlossary.tex}
     \ExampleParChdGraphs{}
@@ -66,11 +71,6 @@ to visualize them. \ifnotpaper%
 % For a given synonym pair to
 % be captured by our methodology, at least one term will have its own row in its
 % relevant glossary.
-However, since each term is trivially a synonym of itself and there are many
-non-problematic synonyms that do not imply flaws (see \Cref{syn-rels}),
-we only visualize the synonym relations that may indicate flaws given in
-\Cref{relevantSyns}; i.e., intransitive synonyms and synonyms between
-independently defined approaches.
 % We then decide whether to include or exclude the synonym
 % pair from our generated graphs based on the following possible cases:
 % \begin{enumerate}
@@ -105,34 +105,43 @@ independently defined approaches.
 %           relations may be incorrect or missing.
 % \end{enumerate}
 \ifnotpaper
+    \noindent\phantomsection{}\label{syn-conds}%
     We deduce these conditions from the information we parse from our glossary.
     For example, if the entries in \Cref{tab:synExampleGlossary} appear, then
     they are visualized as shown in \Cref{fig:exampleSynGraph} (note that X
     does not appear since it is not defined independently and does not violate
-    transitivity).
+    transitivity). If a test approach does not have one of these relations
+    \emph{or} a parent-child relation, we call it an ``orphan'' approach
+    (in constrast to the ``parent'' and ``child'' approaches defined in
+    \Cref{par-chd-rels}) and exclude it from any visualizations in which it
+    would otherwise appear.\qtodo{Is this OK to ``define'' ``orphan''
+        approaches here? We don't use it frequently and it requires us to
+        define our ``significant'' synonym relations first.}
 
     \input{build/synExampleGlossary.tex}
     \ExampleSynGraph{}
 
     \phantomsection{}\label{visExplicit}
-    We can also visualize the ``explicitness'' of information (defined in
-    \Cref{explicitness}). If a relation is explicit \emph{and} implicit,
-    we only display the latter if its source is from a more credible source
-    tier than the former (see \Cref{cred,source-tiers}). For example, if
+    We also visualize the ``explicitness'' of information (defined in
+    \Cref{explicitness}) by representing implicit approaches and relations
+    with dashed lines (see \Cref{fig:exampleGraph,fig:exampleSynGraph}).
+    If a relation is both explicit \emph{and} implicit, we only display the
+    latter if its source tier is more credible than the former's (see
+    \Cref{cred,source-tiers}). For example, if
     ``StdAuthor'' from \Cref{tab:synExampleGlossary} is the author of a
     standard, then we display the implicit relation from their
     document alongside the explicit one from ``Author'' as shown in
     \Cref{fig:exampleSynGraph}.
     % For example, only the explicit synonym relation between E and F
     % from \Cref{tab:exampleGlossary} appears in \Cref{fig:synExampleGraph}.
-    We represent implicit approaches and relations with dashed lines (see
-    \Cref{fig:exampleGraph,fig:exampleSynGraph}); explicit approaches
+    Explicit approaches
     \emph{always} have solid lines, even if they are also implicit. We
     can also omit implicit approaches and relations from visualizations; for
     example, \Cref{fig:expExampleGraph} is the explicit version of
     \Cref{fig:exampleGraph}. %, and \Cref{fig:expSynGraph} likewise only
     % contains explicit approaches and synonym relations
 
+    \clearpage
     We also colour each relation according to its source tier, which is
     possible because we cite all recorded relations as described in
     \Cref{citation-syntax}. Each source tier gets its own colour, which we label
