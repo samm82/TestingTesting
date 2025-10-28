@@ -117,12 +117,17 @@ synonyms = processCol(synonyms)
 
 # Process term for inclusion in future work appendix
 def processFutureTerm(s: str) -> str:
+    acrosToExpand:  list[str] = ["API", "CGI", "CLI", "DOM"]
     acrosToReplace: list[str] = re.findall(r"[A-Z]+[a-z]*[A-Z]+[a-z]*", s)
     capIndex = s.startswith("(") + 1
     s = s[:capIndex] + s[capIndex:].lower()
     for acro in acrosToReplace:
-        s = re.sub(fr"^{acro[0]}{acro[1:].lower()} ", f"{acro} ", s)
-        s = re.sub(fr"(\W?){acro.lower()} ", f"\\1{acro} ", s)
+        if acro in acrosToExpand:
+            s = s.replace(f"{acro[0]}{acro[1:].lower()}",
+                          f"\\acf{{{acro.lower()}}}")
+        else:
+            s = re.sub(fr"^{acro[0]}{acro[1:].lower()} ", f"{acro} ", s)
+            s = re.sub(fr"(\W?){acro.lower()} ", f"\\1{acro} ", s)
     return f"\\item {s}"
 
 # Write undefined test approaches to a file
