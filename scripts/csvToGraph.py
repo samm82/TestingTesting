@@ -565,9 +565,8 @@ def makeMultiSynLine(valid, syn, terms, alsoSyns):
 
     terms = list(sorted(terms, key=cmp_to_key(sortTerms), reverse=True))
     line = "\n".join([f"\\item \\textbf{{{syn}:}}",
-                      f"{getFlawCount(terms, "CONTRA", "SYNS")}\\begin{{itemize}}"] +
-                      [processTerm(term) for term in terms] +
-                      ["\t\\end{itemize}"])
+                      getFlawCount(terms, "CONTRA", "SYNS") +  "\\begin{itemize}"] +
+                      [processTerm(term) for term in terms] + ["\t\\end{itemize}"])
     if syn not in paperExamples:
         line = "\n".join(["\\ifnotpaper", line, "\\fi"])
 
@@ -582,6 +581,7 @@ for key in categoryDict.keys():
         knownTerm = lambda x: removeInParens(x) in categoryDict[key][0]
         if (knownTerm(syn) or (sum(1 for x in terms if knownTerm(x)) > 1)):
             validTerms = [term for term in terms if knownTerm(term)]
+            validTerms.sort()
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
                     alsoSyns = []
