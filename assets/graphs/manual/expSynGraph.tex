@@ -25,7 +25,6 @@ DomainTesting [label=<Domain<br/>Testing>];
 DynamicAnalysis [label=<Dynamic<br/>Analysis>];
 DynamicTesting [label=<Dynamic<br/>Testing>];
 EnduranceTesting [label=<Endurance<br/>Testing>];
-ExhaustiveTesting [label=<Exhaustive<br/>Testing>];
 FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
 FlexibilityTesting [label=<Flexibility<br/>Testing>];
 FunctionalTesting [label=<Functional<br/>Testing>];
@@ -34,7 +33,6 @@ LargeScaleIntegrationTesting [label=<Large Scale<br/>Integration<br/>Testing>];
 MigrationTesting [label=<Migration<br/>Testing>];
 OperationalTesting [label=<Operational<br/>(Acceptance)<br/>Testing>];
 OrthogonalArrayTesting [label=<Orthogonal<br/>Array<br/>Testing>];
-PathTesting [label=<Path<br/>Testing>];
 PerformanceTesting [label=<Performance<br/>Testing>];
 PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
 PortabilityTesting [label=<Portability<br/>Testing>];
@@ -63,10 +61,9 @@ AcceptanceTesting -> QualificationTesting[dir=none,color=blue];
 FaultToleranceTesting -> RobustnessTesting[dir=none,color=blue];
 OperationalTesting -> ProductionAcceptanceTesting[dir=none,color=blue];
 OrthogonalArrayTesting -> twiseTesting[dir=none,color=blue];
-Walkthroughs -> StructuredWalkthroughs[dir=none,color=blue];
+StructuredWalkthroughs -> Walkthroughs[dir=none,color=blue];
 
 DynamicAnalysis -> DynamicTesting[dir=none,color=maroon];
-ExhaustiveTesting -> PathTesting[dir=none,color=maroon];
 StaticAnalysis -> StaticTesting[dir=none,color=maroon];
 
 ConversionTesting -> MigrationTesting[dir=none];
@@ -103,13 +100,13 @@ BuildVerificationTesting -> SmokeTesting -> IntakeTesting[dir=none,color=blue];
 ConfigurationTesting -> ScenarioTesting[dir=none,style=invis];
 ReliabilityTesting -> UseCaseTesting[dir=none,style=invis];
 IntakeTesting -> AcceptanceTesting[dir=none,style=invis];
-ScalabilityTesting -> OrthogonalArrayTesting -> FaultToleranceTesting[dir=none,style=invis];
-CoexistenceTesting -> twiseTesting -> OperationalTesting[dir=none,style=invis];
-Walkthroughs -> OperationalTesting[dir=none,style=invis];
-DynamicTesting -> Walkthroughs -> ConversionTesting[dir=none,style=invis];
-PathTesting -> StructuredWalkthroughs -> LargeScaleIntegrationTesting[dir=none,style=invis];
-PerformancerelatedTesting -> RecoverabilityTesting[dir=none,style=invis];
-PerformanceTesting -> RecoverabilityTesting[dir=none,style=invis];
+ScalabilityTesting -> ConversionTesting -> FaultToleranceTesting[dir=none,style=invis];
+CoexistenceTesting -> MigrationTesting -> OperationalTesting[dir=none,style=invis];
+% Walkthroughs -> OperationalTesting[dir=none,style=invis];
+DynamicTesting -> LargeScaleIntegrationTesting -> OrthogonalArrayTesting[dir=none,style=invis];
+StaticTesting -> SystemsIntegrationTesting -> StructuredWalkthroughs[dir=none,style=invis];
+% PerformancerelatedTesting -> RecoverabilityTesting[dir=none,style=invis];
+% PerformanceTesting -> RecoverabilityTesting[dir=none,style=invis];
 
 {
 rank = same;
@@ -131,20 +128,21 @@ DecisionTesting;
 
 {
 rank = same;
-OrthogonalArrayTesting;
-twiseTesting;
+ConversionTesting;
+MigrationTesting;
 }
 
 {
 rank = same;
-Walkthroughs;
-StructuredWalkthroughs;
+LargeScaleIntegrationTesting;
+SystemsIntegrationTesting;
 }
 
 {
 rank = same;
+StaticTesting;
 PerformancerelatedTesting;
-PerformanceTesting;
+% PerformanceTesting;
 }
 
 % From https://stackoverflow.com/a/64007295/10002168
@@ -153,7 +151,7 @@ rank = same;
 edge[style=invis];
 CorrectnessTesting -> FlexibilityTesting -> EnduranceTesting;
 EnduranceTesting -> BuildVerificationTesting -> CapacityTesting -> CompatibilityTesting;
-CompatibilityTesting -> DynamicAnalysis -> ExhaustiveTesting -> StaticAnalysis;
+CompatibilityTesting -> DynamicAnalysis -> StaticAnalysis -> PerformanceTesting;
 rankdir = TB;
 }
 
@@ -161,8 +159,8 @@ rankdir = TB;
 rank = same;
 edge[style=invis];
 SpecificationbasedTesting -> BranchConditionTesting -> ConfigurationTesting;
-ConfigurationTesting -> ReliabilityTesting -> IntakeTesting -> OrthogonalArrayTesting;
-OrthogonalArrayTesting -> Walkthroughs -> PerformancerelatedTesting;
+ConfigurationTesting -> ReliabilityTesting -> IntakeTesting -> ConversionTesting;
+ConversionTesting -> LargeScaleIntegrationTesting;
 rankdir = TB;
 }
 
@@ -170,8 +168,8 @@ rankdir = TB;
 rank = same;
 edge[style=invis];
 DomainTesting -> ConditionTesting -> ScenarioTesting -> AcceptanceTesting;
-AcceptanceTesting -> FaultToleranceTesting -> OperationalTesting -> ConversionTesting;
-ConversionTesting -> LargeScaleIntegrationTesting -> RecoverabilityTesting;
+AcceptanceTesting -> FaultToleranceTesting -> OperationalTesting -> OrthogonalArrayTesting;
+OrthogonalArrayTesting -> StructuredWalkthroughs -> RecoverabilityTesting;
 rankdir = TB;
 }
 
