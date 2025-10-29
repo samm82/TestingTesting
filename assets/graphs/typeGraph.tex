@@ -101,12 +101,12 @@ VolumeTesting [label=<Volume<br/>Testing>,style="dashed"];
 
 BackupRecoveryTesting -> BackupandRecoveryTesting[dir=none,style="dashed",color="green"];
 CompatibilityTesting -> CoexistenceTesting[dir=none,style="dashed",color="green"];
-ConfigurationTesting -> PortabilityTesting[dir=none];
 FlexibilityTesting -> PortabilityTesting[dir=none,color="green"];
+ConfigurationTesting -> PortabilityTesting[dir=none];
+FunctionalTesting -> SpecificationbasedTesting[dir=none,color="green"];
 ConformanceTesting -> FunctionalTesting[dir=none,color="blue"];
 ConformanceTesting -> FunctionalTesting[dir=none,style="dashed",color="green"];
 CorrectnessTesting -> FunctionalTesting[dir=none,color="blue"];
-FunctionalTesting -> SpecificationbasedTesting[dir=none,color="green"];
 ConformanceTesting -> CorrectnessTesting[dir=none,color="blue"];
 ConformanceTesting -> ComplianceTesting[dir=none,style="dashed"];
 ConversionTesting -> MigrationTesting[dir=none];

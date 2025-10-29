@@ -1,6 +1,7 @@
 from collections import OrderedDict
 from copy import deepcopy
-from math import ceil, nan
+from functools import cmp_to_key
+from math import ceil
 import itertools
 from pandas import read_csv
 import re
@@ -549,9 +550,24 @@ def makeMultiSynLine(valid, syn, terms, alsoSyns):
         term = " (".join(term)
         return f"\t\t\\item {term}"
 
+    def sortTerms(t1: str, t2: str) -> int:
+        c1, c2 = getRelColor(t1), getRelColor(t2)
+        def sortSource(s1, s2) -> int:
+            if s1 == s2:
+                return 0
+            if s1 is None:
+                return -1
+            if s2 is None:
+                return 1
+            return -1 if s1 < s2 else 1
+        return (sortSource(c1[0], c2[0]) or sortSource(c1[1], c2[1]) or
+                sortSource(t2, t1))  # Reversed because we want alphabetical sort ascending
+
+    terms = list(sorted(terms, key=cmp_to_key(sortTerms), reverse=True))
     line = "\n".join([f"\\item \\textbf{{{syn}:}}",
                       f"{getFlawCount(terms, "CONTRA", "SYNS")}\\begin{{itemize}}"] +
-                      list(map(processTerm, terms)) + ["\t\\end{itemize}"])
+                      [processTerm(term) for term in terms] +
+                      ["\t\\end{itemize}"])
     if syn not in paperExamples:
         line = "\n".join(["\\ifnotpaper", line, "\\fi"])
 
