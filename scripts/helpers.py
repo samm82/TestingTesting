@@ -166,11 +166,12 @@ def getFlawCount(line: list[str], mnfst, dmn, todo=True):
 
     IMP_BY = "implied by"
     # TODO: this should be made more robust as more cases come up
-    for i, part in enumerate(line):
-        if any(re.search(fr"\b{imp}\b", part) for imp in IMPLICIT_KEYWORDS[1:]):
-            line[i] = re.sub(r"if .+ in ", f"{IMP_BY} ", line[i])
-            line[i] = re.sub(r"although .+? \((.+?)\)", fr"{IMP_BY} \1", line[i])
-            line[i] = re.sub(fr"inferred from.+?({AUTHOR_REGEX})", fr"{IMP_BY} \1", line[i])
+    for i in range(len(line)):
+        line[i] = line[i].split("inferred from")[0]
+        line[i] = re.sub(r"if .+\) ", f"{IMP_BY} ", line[i])
+        line[i] = re.sub(r"although .+? \((.+?)\)", fr"{IMP_BY} \1", line[i])
+        for imp in IMPLICIT_KEYWORDS[1:]:
+            line[i] = re.sub(fr"\({imp}\) ", f"{IMP_BY} ", line[i])
         for intRef in INTERNAL_REFS:
             line[i] = re.sub(fr"{{{intRef}\w+}}", "", line[i])
 
