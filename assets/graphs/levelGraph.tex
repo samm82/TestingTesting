@@ -72,12 +72,12 @@ AcceptanceTesting -> QualificationTesting[dir=none,color="blue"];
 LinkTesting [label=<Link<br/>Testing>,style="dotted"];
 ComponentIntegrationTesting -> LinkTesting[dir=none];
 IntegrationTesting -> LinkTesting[dir=none,style="dashed"];
+OperationalTesting -> ProductionAcceptanceTesting[dir=none,color="blue"];
 QualificationTesting -> OperationalTesting[dir=none,style="dashed",color="grey"];
 IntegratedSystemTesting -> SystemsIntegrationTesting[dir=none,style="dashed",color="grey"];
-OperationalTesting -> ProductionAcceptanceTesting[dir=none,color="blue"];
+SystemsIntegrationTesting -> LargeScaleIntegrationTesting[dir=none];
 ProductionVerificationTesting -> ProductionAcceptanceTesting[dir=none,style="dashed",color="grey"];
 SystemQualificationTesting -> SystemTesting[dir=none,style="dashed",color="grey"];
-SystemsIntegrationTesting -> LargeScaleIntegrationTesting[dir=none];
 
 AcceptanceTesting -> SystemTesting[style="dashed",color="maroon"];
 AcceptanceTesting -> IntegrationTesting[style="dashed"];

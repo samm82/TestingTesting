@@ -45,7 +45,7 @@ VolumeTesting [label=<Volume<br/>Testing>];
 
 SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
 
-BackupandRecoveryTesting -> BackupRecoveryTesting[dir=none,style="dashed",color="green"];
+BackupRecoveryTesting -> BackupandRecoveryTesting[dir=none,style="dashed",color="green"];
 EnduranceTesting -> SoakTesting[dir=none,color="green"];
 ReliabilityTesting -> SoakTesting[dir=none];
 PerformanceTesting -> PerformancerelatedTesting[dir=none];

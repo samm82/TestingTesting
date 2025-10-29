@@ -431,11 +431,11 @@ for name, synonym in zip(names, synonyms):
         rsyn, fsyn = removeInParens(syn), formatApproach(syn)
         if not (any(minor in syn.lower() for minor in {"spelled", "called"}) or
                 (fsyn.isupper() and "Example" not in csvFilename)):
-            nameWithSource = rname + ("?" if name.endswith("?") else "")
+            nameWithSource = rname + ("?" if name.endswith("?") or
+                                      name.split(" (")[0].endswith("?") else "")
             if "(" in syn and syn.count(" (") != rsyn.count(" ("):
-                source = syn.split(' (')
-                for i in range(source[-1].count(")"), 0, -1):
-                    nameWithSource += " (" + source[-i]
+                source = syn.split(" (")
+                nameWithSource = " (".join([nameWithSource, *source[1:]])
             try:
                 synDict[rsyn].append(nameWithSource)
             except KeyError:
@@ -457,8 +457,18 @@ for name, synonym in zip(names, synonyms):
             except KeyError:
                 synSets[f"{fsyn} -> {fname}"] = getRelColor(syn)
 
+    defSyns: set[str] = {s for s in synonym if
+                         any(n.startswith(removeInParens(s)) for n in names)}
+    if defSyns:
+        try:
+            defSyns.update({n for n in synDict[rname] if not
+                       any(s.startswith(removeInParens(n).strip("?"))
+                           for s in defSyns)})
+        except KeyError:
+            pass
+        synDict[rname] = list(defSyns)
+
 def synSetsLookup(a: str, b: str) -> tuple[SrcCat, SrcCat]:
-    # print(a, b)
     try:
         ab = synSets[f"{a} -> {b}"]
     except KeyError:
@@ -513,25 +523,21 @@ def makeMultiSynLine(valid, syn, terms, alsoSyns):
     if any("(" not in term for term in terms):
         multiSynsList = infMultiSyns
     else:
-        # print(fsyn)
-        # for term in valid:
-        #     print(term)
-        #     print(synSetsLookup(fsyn, term))
-        # input()
         multiSynsList = (impMultiSyns if not all(
             synSetsLookup(fsyn, term)[0] for term in valid)
             else expMultiSyns)
 
-    # Look up any additional information for implied approaches
-    if multiSynsList == impMultiSyns:
-        fullSyns: list[str] = sum([synonyms[i] for i, name in enumerate(names)
-                                   if name.startswith(syn)], []) 
-        for i, term in enumerate(terms):
-            for fullSyn in fullSyns:
-                termSplit = term.split(" (")
-                if (fullSyn.startswith(termSplit[0]) and
-                        fullSyn.endswith(termSplit[1])):
-                    terms[i] = fullSyn
+    # Commented out since we do this automatically now
+    # # Look up any additional information for implied approaches
+    # if multiSynsList == impMultiSyns:
+    #     fullSyns: list[str] = sum([synonyms[i] for i, name in enumerate(names)
+    #                                if name.startswith(syn)], []) 
+    #     for i, term in enumerate(terms):
+    #         for fullSyn in fullSyns:
+    #             termSplit = term.split(" (")
+    #             if (fullSyn.startswith(termSplit[0]) and
+    #                     fullSyn.endswith(termSplit[1])):
+    #                 terms[i] = fullSyn
 
     def processTerm(term):
         emph = term in alsoSyns
@@ -559,9 +565,7 @@ for key in categoryDict.keys():
         fsyn = formatApproach(syn)
         knownTerm = lambda x: removeInParens(x) in categoryDict[key][0]
         if (knownTerm(syn) or (sum(1 for x in terms if knownTerm(x)) > 1)):
-            validTerms = [term for term in terms
-                          if synSetsLookup(fsyn, formatApproach(term))
-                          and knownTerm(term)]
+            validTerms = [term for term in terms if knownTerm(term)]
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
                     alsoSyns = []
@@ -573,9 +577,11 @@ for key in categoryDict.keys():
                     if len(alsoSyns) < len(validTerms) - 1:
                         if len(alsoSyns) > 1:
                             raise NotImplementedError
-                        makeMultiSynLine(map(formatApproach, validTerms),
-                                         syn, list(filter(knownTerm, terms)),
-                                         list(sum(alsoSyns, ())))
+                        terms = set(filter(knownTerm, terms))
+                        if len(terms) > 1:
+                            makeMultiSynLine(map(formatApproach, validTerms),
+                                            syn, list(terms),
+                                            list(sum(alsoSyns, ())))
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
