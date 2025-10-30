@@ -12,7 +12,7 @@ relations already implicitly present in the literature instead of
 inventing our own; for example, test approaches can have categories
 (\Cref{cats-def}), synonyms (\Cref{syn-rels}), and parent-child relations
 (\Cref{par-chd-rels}). We also observe flaws having both manifestations
-(\Cref{mnfst-def}) and domains (\Cref{dmn-def})\thesisissueref{155} and use
+(\Cref{mnfst-def}) and domains (\Cref{dmn-def}) and use %\thesisissuetodo{155}
 these terms to refer to these implicit concepts in the literature. All of these
 classifications and relations follow logically from the literature and as such
 are technically ``results'' of our research, but we define them here for
@@ -20,7 +20,8 @@ clarity since we use them throughout this \docType{}.
 
 Since the literature is flawed, we need to be careful with what information we
 take at face value. We do this by tracking the nuance, or ``explicitness''%
-\thesisissueref{176}, of information (\Cref{explicitness}) found in sources and
+% \thesisissuetodo{176}
+, of information (\Cref{explicitness}) found in sources and
 the ``credibility'' of these sources themselves (\Cref{cred}). We then use this
 heuristic of credibility to group our identified sources into ``tiers''
 (\Cref{source-tiers}). Defining these terms helps reduce the effect of our
@@ -135,7 +136,7 @@ test approaches from different categories\ifnotpaper
 % software testing into more manageable subsets, we use these categories
 % throughout this \docType{}.
 We loosely describe these categories based on what they specify
-as follows\thesisissueref{21}:
+as follows: %\thesisissuetodo{21}
 \begin{itemize}
     \item \textbf{Level}: What code is tested
     \item \textbf{Practice}: How the test is structured and executed
@@ -180,7 +181,7 @@ and thus less helpful for grouping test approaches. \ifnotpaper Other
     categorization schemas (see \Cref{alt-cats}) may consider static testing
     orthogonal, and some may consider it out-of-scope entirely (see
     \Cref{static-test})! \fi We also introduce a ``supplemental'' category of
-``artifact''\thesisissueref{44,119,39} since some terms can refer to both the
+``artifact''\thesisissuenote{44,119,39} since some terms can refer to both the
 application of a test approach \emph{and} the resulting document(s).
 \ifnotpaper
     These two ideas are sometimes explicitly distinguished, such as
@@ -194,10 +195,10 @@ application of a test approach \emph{and} the resulting document(s).
 % requirements, drivers, and source code are all treated the same
 % with no distinction \citep[p.~3]{BarbosaEtAl2006}.
 Therefore, we do \emph{not} consider approaches categorized as an artifact
-\emph{and} another category as flaws\thesisissueref{119} in \Cref{multiCats}.
+\emph{and} another category as flaws in \Cref{multiCats}. % \thesisissuetodo{119}
 Finally, we also record the test category of ``process'' for completeness,
 although this seems to be a higher level classification and these approaches
-will likely be excluded during later analysis\thesisissueref{52}.
+will likely be excluded during later analysis\thesisissuenote{52}.
 
 \ifnotpaper
     % \afterpage{
@@ -217,7 +218,7 @@ will likely be excluded during later analysis\thesisissueref{52}.
 % since some terms can refer to the application of a
 % test approach \emph{as well as} the resulting document(s). Therefore,
 % \ifnotpaper
-%     Additionally, we identify ``test metrics''\thesisissueref{21,22} that
+%     Additionally, we identify ``test metrics''\thesisissuetodo{21,22} that
 %     describe methods for \emph{evaluating} testing as opposed to methods for
 %     \emph{performing} it and are therefore out-of-scope. Instead,
 %     we capture the related test approaches that seek to maximize these
@@ -467,7 +468,7 @@ these ideals, \emph{not} to instances of \emph{software} doing the same%
 % opportunity to improve it
 We classify flaws by both their ``manifestations'' (\emph{how} information is
 wrong; see \Cref{mnfst-def}) and their ``domains'' (\emph{what} information is
-wrong; see \Cref{dmn-def})\thesisissueref{155}. These are orthogonal
+wrong; see \Cref{dmn-def}). These are orthogonal % \thesisissuetodo{155}
 classifications, since each flaw \emph{manifests} in a particular
 \emph{domain}, which we track by assigning each flaw one ``key'' for each
 classification (listed keys in \Cref{tab:flawMnfstDefs,tab:flawDmnDefs},
@@ -484,7 +485,7 @@ literature is that a piece of information it presents is incorrect---``wrong''
 in the literal sense. However, if our standards for correctness require
 clarity, consistency, and robustness, then there are many ways for a flaw to
 manifest. This is one view we take when observing, recording, and analyzing
-flaws: \emph{how}\thesisissueref{155} information is ``wrong''. We observe the
+flaws: \emph{how} information is ``wrong''. We observe the % \thesisissuetodo{155}
 ``manifestations'' described in \Cref{tab:flawMnfstDefs} throughout the
 literature, and give each a unique key for later analysis and discussion. We
 list them in descending order of severity, although this is partially
@@ -558,15 +559,15 @@ cites another or even what information is included \emph{within} a document.
 
 \subsubsection{Additional Flaw Terminology}\label{add-flaw-terms}
 Some flaws involve information from more than one source, but referring to this
-as a ``flaw between two sources'' is awkward\thesisissueref{140}. We instead
+as a ``flaw between two sources'' is awkward. We instead % \thesisissuetodo{140}
 refer to this kind of flaw as an ``inconsistency'' between the
 sources. This clearly indicates that there is disagreement between
 the sources, but also does not imply that either one is correct---the
 inconsistency could be with some ground truth if \emph{neither} source is
-correct\thesisissueref{140,151}!
+correct! % \thesisissuetodo{140,151}
 
 \phantomsection{}\label{one-src-flaws}
-Other flaws only involve one source, but \oneSrcDistinct{}
+Other flaws only involve one source, but \oneSrcDistinct{}\thesisissuenote{137,138}.
 Self-contained flaws are those that manifest by comparing a document to an
 assertion of ground truth. These may appear once in a document or consistently
 throughout it. Sometimes, these do not require an explicit comparison to ground
@@ -601,8 +602,8 @@ explicitness of information affects how seriously we take it. We call flaws
 based on explicit information ``objective'', since they are self-evident in
 the literature. On the other hand, we call flaws based on implicit information
 ``subjective'', since some level of judgement is required to assess whether
-these flaws are \emph{actually} problematic\thesisissueref{176}. By looking for
-the indicators of uncertainty mentioned above, we can
+these flaws are \emph{actually} problematic% \thesisissuetodo{176}
+. By looking for the indicators of uncertainty mentioned above, we can
 automatically detect subjective flaws when generating graphs and performing
 analysis (see \ifnotpaper \Cref{app-rel-vis,flaw-analysis}, respectively\else
     \Cref{tools}\fi).
@@ -753,7 +754,7 @@ The remaining documents all have much smaller sets of authors and are much less
 widespread than those in higher source tiers. While most of these are journal
 articles and conference papers, we also include the following document types.
 Some of these are not peer-reviewed works but are still useful for
-observing how terms are used in practice\thesisissueref{89}:
+observing how terms are used in practice: % \thesisissuetodo{89}
 
 \begin{itemize}
     \item Report \citep{Kam2008,Gerrard2000a,Gerrard2000b}

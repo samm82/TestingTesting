@@ -707,8 +707,10 @@ parSynNotes = OrderedDict({
     ("Organization-based Testing", "Role-based Testing") :
         {"footnote": "The distinction between organization- and role-based "
             "testing in \\citep[pp.~17, 37, 39]{Firesmith2015} seems "
-            "arbitrary, but further investigation may prove it to be meaningful.",
-        "todo": "\\thesisissueref{59}"},
+            "arbitrary, but further investigation may prove it to be meaningful"
+            "\\ifblind{}{; we discussed this in \\thesisissuerefhelper{59}}.",
+        # "todo": "\\thesisissuetodo{59}"
+        },
     ("Structured Walkthroughs", "Walkthroughs") :
         {"footnote": "See \\flawref{walkthrough-syns}."},
     ("Exploratory Testing", "Unscripted Testing") :

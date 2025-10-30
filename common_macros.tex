@@ -70,7 +70,7 @@
 \def\PaigeMtgNote{\citetext{Dr.~R.~Paige, private communication, Oct.~14, 2025}}
 
 \def\oneSrcDistinct{we make a distinction between ``self-contained'' flaws and
-    ``internal'' flaws\thesisissueref{137,138}.}
+    ``internal'' flaws}
 
 \def\highLvlScope{a high-level overview of what is in scope\ifnotpaper; see
     \Cref{app-scope} for more detailed discussion on what we include and
@@ -414,4 +414,5 @@
 
 \ExplSyntaxOff
 
-\newcommand{\thesisissueref}[1]{\todo[backgroundcolor=lightgray]{See \mapthesisissueref{#1}}}
+\newcommand{\thesisissuetodo}[1]{\todo[backgroundcolor=lightgray]{See \mapthesisissueref{#1}}}
+\newcommand{\thesisissuenote}[1]{\ifnotpaper\footnote{Discussed in \mapthesisissueref{#1}.}\fi}
