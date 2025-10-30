@@ -9,10 +9,8 @@
 edge [penwidth=2];
 rankdir=BT;
 DomainTesting [label=<Domain<br/>Testing>];
-ExhaustiveTesting [label=<Exhaustive<br/>Testing>];
 FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
 FunctionalTesting [label=<Functional<br/>Testing>];
-PathTesting [label=<Path<br/>Testing>];
 PerformanceTesting [label=<Performance<br/>Testing>];
 PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
 RobustnessTesting [label=<Robustness<br/>Testing>];
@@ -30,14 +28,8 @@ FaultToleranceTesting -> RobustnessTesting[color=blue];
 FunctionalTesting -> SpecificationbasedTesting[dir=none,color=green];
 FunctionalTesting -> SpecificationbasedTesting[color=green];
 
-PathTesting -> ExhaustiveTesting[dir=none,color=maroon];
-PathTesting -> ExhaustiveTesting[color=maroon];
-
 PerformanceTesting -> PerformancerelatedTesting[dir=none,color=black];
 PerformanceTesting -> PerformancerelatedTesting[color=green];
-
-StructurebasedTesting -> StructuralTesting[dir=none,color=green];
-StructurebasedTesting -> StructuralTesting[color=maroon];
 
 UseCaseTesting -> ScenarioTesting[dir=none,color=blue];
 UseCaseTesting -> ScenarioTesting[color=green];
@@ -47,6 +39,9 @@ DomainTesting -> SpecificationbasedTesting[color=maroon];
 
 StaticAnalysis -> StaticTesting[dir=none,color=maroon];
 StaticAnalysis -> StaticTesting[color=green];
+
+StructuralTesting -> StructurebasedTesting[dir=none,color=green];
+StructuralTesting -> StructurebasedTesting[color=maroon];
 
 }
 \end{document}

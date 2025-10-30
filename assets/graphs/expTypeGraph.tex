@@ -44,10 +44,10 @@ StressTesting [label=<Stress<br/>Testing>];
 StructurebasedTesting [label=<Structure-based<br/>Testing>];
 UsabilityTesting [label=<Usability<br/>Testing>];
 
+FunctionalTesting -> SpecificationbasedTesting[dir=none,color="green"];
 SoakTesting [label=<Soak<br/>Testing>,style="dotted"];
 EnduranceTesting -> SoakTesting[dir=none,color="green"];
 ReliabilityTesting -> SoakTesting[dir=none];
-FunctionalTesting -> SpecificationbasedTesting[dir=none,color="green"];
 PerformanceTesting -> PerformancerelatedTesting[dir=none];
 
 AccessibilityTesting -> UsabilityTesting[color="green"];

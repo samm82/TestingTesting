@@ -1,6 +1,7 @@
 from collections import OrderedDict
 from copy import deepcopy
-from math import ceil, nan
+from functools import cmp_to_key
+from math import ceil
 import itertools
 from pandas import read_csv
 import re
@@ -431,11 +432,11 @@ for name, synonym in zip(names, synonyms):
         rsyn, fsyn = removeInParens(syn), formatApproach(syn)
         if not (any(minor in syn.lower() for minor in {"spelled", "called"}) or
                 (fsyn.isupper() and "Example" not in csvFilename)):
-            nameWithSource = rname + ("?" if name.endswith("?") else "")
+            nameWithSource = rname + ("?" if name.endswith("?") or
+                                      name.split(" (")[0].endswith("?") else "")
             if "(" in syn and syn.count(" (") != rsyn.count(" ("):
-                source = syn.split(' (')
-                for i in range(source[-1].count(")"), 0, -1):
-                    nameWithSource += " (" + source[-i]
+                source = syn.split(" (")
+                nameWithSource = " (".join([nameWithSource, *source[1:]])
             try:
                 synDict[rsyn].append(nameWithSource)
             except KeyError:
@@ -446,14 +447,42 @@ for name, synonym in zip(names, synonyms):
                 nameDict[nameWithSource] = [rsyn]
 
             # Track synonym relations one way and check inconsistencies
-            # EXCEPT for this specific manual case
-            if (fsyn, fname) != ("StructuralTesting", "StructurebasedTesting"):
-                try:
-                    if synSets[f"{fname} -> {fsyn}"] != getRelColor(syn):
+            try:
+                if synSets[f"{fname} -> {fsyn}"] != getRelColor(syn):
+                    if (synSets[f"{fname} -> {fsyn}"][0] == getRelColor(syn)[0] and
+                        synSets[f"{fname} -> {fsyn}"][1] is None):
+                        synSets[f"{fname} -> {fsyn}"] = getRelColor(syn)
+                    else:
                         raise ValueError(
                             f"Mismatch between explicitness of synonyms {fsyn} and {fname}")
-                except KeyError:
-                    synSets[f"{fsyn} -> {fname}"] = getRelColor(syn)
+            except KeyError:
+                synSets[f"{fsyn} -> {fname}"] = getRelColor(syn)
+
+    defSyns: set[str] = {s for s in synonym if
+                         any(n.startswith(removeInParens(s)) for n in names)}
+    if defSyns:
+        try:
+            defSyns.update({n for n in synDict[rname] if not
+                       any(s.startswith(removeInParens(n).strip("?"))
+                           for s in defSyns)})
+        except KeyError:
+            pass
+        synDict[rname] = list(defSyns)
+
+def synSetsLookup(a: str, b: str) -> tuple[SrcCat, SrcCat]:
+    try:
+        ab = synSets[f"{a} -> {b}"]
+    except KeyError:
+        try:
+            return synSets[f"{b} -> {a}"]
+        except KeyError:
+            return (None, None)
+    try:
+        ba = synSets[f"{b} -> {a}"]
+    except KeyError:
+        return ab
+
+    return(max(ab[0], ba[0]), max(ab[1], ba[1]))
 
 nameDict.update(synDict)
 
@@ -496,19 +525,20 @@ def makeMultiSynLine(valid, syn, terms, alsoSyns):
         multiSynsList = infMultiSyns
     else:
         multiSynsList = (impMultiSyns if not all(
-            synSets[f"{fsyn} -> {term}"][0] for term in valid)
+            synSetsLookup(fsyn, term)[0] for term in valid)
             else expMultiSyns)
 
-    # Look up any additional information for implied approaches
-    if multiSynsList == impMultiSyns:
-        fullSyns: list[str] = sum([synonyms[i] for i, name in enumerate(names)
-                                   if name.startswith(syn)], []) 
-        for i, term in enumerate(terms):
-            for fullSyn in fullSyns:
-                termSplit = term.split(" (")
-                if (fullSyn.startswith(termSplit[0]) and
-                        fullSyn.endswith(termSplit[1])):
-                    terms[i] = fullSyn
+    # Commented out since we do this automatically now
+    # # Look up any additional information for implied approaches
+    # if multiSynsList == impMultiSyns:
+    #     fullSyns: list[str] = sum([synonyms[i] for i, name in enumerate(names)
+    #                                if name.startswith(syn)], []) 
+    #     for i, term in enumerate(terms):
+    #         for fullSyn in fullSyns:
+    #             termSplit = term.split(" (")
+    #             if (fullSyn.startswith(termSplit[0]) and
+    #                     fullSyn.endswith(termSplit[1])):
+    #                 terms[i] = fullSyn
 
     def processTerm(term):
         emph = term in alsoSyns
@@ -520,9 +550,23 @@ def makeMultiSynLine(valid, syn, terms, alsoSyns):
         term = " (".join(term)
         return f"\t\t\\item {term}"
 
+    def sortTerms(t1: str, t2: str) -> int:
+        c1, c2 = getRelColor(t1), getRelColor(t2)
+        def sortSource(s1, s2) -> int:
+            if s1 == s2:
+                return 0
+            if s1 is None:
+                return -1
+            if s2 is None:
+                return 1
+            return -1 if s1 < s2 else 1
+        return (sortSource(c1[0], c2[0]) or sortSource(c1[1], c2[1]) or
+                sortSource(t2, t1))  # Reversed because we want alphabetical sort ascending
+
+    terms = list(sorted(terms, key=cmp_to_key(sortTerms), reverse=True))
     line = "\n".join([f"\\item \\textbf{{{syn}:}}",
-                      f"{getFlawCount(terms, "CONTRA", "SYNS")}\\begin{{itemize}}"] +
-                      list(map(processTerm, terms)) + ["\t\\end{itemize}"])
+                      getFlawCount(terms, "CONTRA", "SYNS") +  "\\begin{itemize}"] +
+                      [processTerm(term) for term in terms] + ["\t\\end{itemize}"])
     if syn not in paperExamples:
         line = "\n".join(["\\ifnotpaper", line, "\\fi"])
 
@@ -536,10 +580,8 @@ for key in categoryDict.keys():
         fsyn = formatApproach(syn)
         knownTerm = lambda x: removeInParens(x) in categoryDict[key][0]
         if (knownTerm(syn) or (sum(1 for x in terms if knownTerm(x)) > 1)):
-            validTerms = [term for term in terms
-                          if (f"{fsyn} -> {formatApproach(term)}"
-                              in synSets.keys())
-                          and knownTerm(term)]
+            validTerms = [term for term in terms if knownTerm(term)]
+            validTerms.sort()
             if validTerms:
                 if key == "Approach" and (len(validTerms) > 1):
                     alsoSyns = []
@@ -551,17 +593,22 @@ for key in categoryDict.keys():
                     if len(alsoSyns) < len(validTerms) - 1:
                         if len(alsoSyns) > 1:
                             raise NotImplementedError
-                        makeMultiSynLine(map(formatApproach, validTerms),
-                                         syn, list(filter(knownTerm, terms)),
-                                         list(sum(alsoSyns, ())))
+                        terms = set(filter(knownTerm, terms))
+                        if len(terms) > 1:
+                            makeMultiSynLine(map(formatApproach, validTerms),
+                                            syn, list(terms),
+                                            list(sum(alsoSyns, ())))
                 addToIterable(syn, categoryDict[key][0], key)
                 for term in validTerms:
                     addToIterable(term, categoryDict[key][0], key)
 
-                    fterm = formatApproach(term)
-                    for line in colorRelations(synSets[f"{fsyn} -> {fterm}"],
-                                               f"{fterm} -> {fsyn}", "dir=none"):
-                        addLineToCategory(key, line)
+                    for a, b in itertools.permutations([fsyn, formatApproach(term)]):
+                        try:
+                            for line in colorRelations(synSets[f"{a} -> {b}"],
+                                                       f"{b} -> {a}", "dir=none"):
+                                addLineToCategory(key, line)
+                        except KeyError:
+                            continue
 
     if categoryDict[key][1][-1] != "":
         categoryDict[key][1].append("")
