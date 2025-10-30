@@ -110,11 +110,22 @@ def processCol(col, sortByLen: bool=False):
         return [sorted(copySources(x), key=len) for x in col]
     return [copySources(x) for x in col]
 
-names = [n.strip() for n in names if isinstance(n, str)]
+names: list[str] = [n.strip() for n in names if isinstance(n, str)]
 # Sort entries for alphabetical order in multiCats rable
 categories: list[list[str]] = processCol(categories, True)
-parents = processCol(parents)
-synonyms = processCol(synonyms)
+parents: list[list[str]] = processCol(parents)
+synonyms: list[list[str]] = processCol(synonyms)
+
+# # Code for finding approaches with complete but short data
+# # For tab:approachGlossaryExcerpt
+# allData = [" & ".join(map(formatLineWithSources,
+#                           [n, ", ".join(c), ", ".join(p), ", ".join(s)]))
+#            for n, c, p, s in zip(names, categories, parents, synonyms)
+#            if all([n, c, p, s]) and ", ".join(c) != "Approach" and
+#            not ", ".join(c).endswith("?")]
+# allData.sort(key=len)
+# for row in allData:
+#     input(row)
 
 # Process term for inclusion in future work appendix
 def processFutureTerm(s: str) -> str:
