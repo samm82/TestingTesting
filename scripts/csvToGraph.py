@@ -506,7 +506,8 @@ multiSynNotes = {
         "\\citet[p.~55]{Firesmith2015}, although the terms are not synonyms."
     ),
     "Path Testing": (
-        "This synonym relation is likely incorrect (see \\Cref{path-exh-syns})."
+        "See \\Cref{path-exh-syns} for more detail on why this synonym "
+        "relation is incorrect."
     ),
     "Static Assertion Checking": (
         "% Flaw count (WRONG, SYNS): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
