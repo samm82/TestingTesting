@@ -61,7 +61,7 @@ the results of step~\ref{step:cmp-results} \ifnotpaper (\citealp[p.~10]{IEEE2022
     \citeyear[p.~6]{IEEE2021c}; \citealp{ISO_IEC2014}\todo{OG IEEE, 1990})\else
     \cite[p.~10]{IEEE2022}, \cite[p.~6]{IEEE2021c}, \cite{ISO_IEC2014}\fi.
 When this evaluation reveals errors, ``the faults causing them are what can and
-must be removed'' \citep[p.~5\=/3]{SWEBOK2024}.
+must be removed'' \citep[p.~5\=/3]{SWEBOK2025}.
 
 Of course, the approach chosen in step~\ref{step:decide-app} influences what
 kinds of test cases should be developed and executed in later steps, so it is
@@ -73,10 +73,10 @@ choice'' \citep[p.~10]{IEEE2022} used to ``pick the particular test case
 values'' \citeyearpar[p.~465]{IEEE2017} used in step~\ref{step:run-tests}. The only
 approach that can ``fully'' test a system (exhaustive testing) is infeasible in
 most non-trivial situations \ifnotpaper (\citeyear[p.~4]{IEEE2022};
-    \citealp[p.~5\=/5]{SWEBOK2024}; \citealp[pp.~439, 461]{PetersAndPedrycz2000};
+    \citealp[p.~5\=/5]{SWEBOK2025}; \citealp[pp.~439, 461]{PetersAndPedrycz2000};
     \citealp[p.~421]{vanVliet2000})\else
     \cite[pp.~439, 461]{PetersAndPedrycz2000}, \cite[p.~421]{vanVliet2000},
-    \cite[p.~5\=/5]{SWEBOK2024}, \cite[p.~4]{IEEE2022}\fi, so multiple
+    \cite[p.~5\=/5]{SWEBOK2025}, \cite[p.~4]{IEEE2022}\fi, so multiple
 approaches are needed \ifnotpaper \citep[p.~18]{IEEE2022} \else
     \citetext{p.~18} \fi to ``suitably cover any system'' \citetext{p.~33}.
 This is why this process should be repeated and there are so many test
@@ -102,12 +102,12 @@ to be pervasive throughout the literature, particularly ``level'' and ``type''.
 \phantomsection{}\label{nonIEEE-sources}%
 For example, six non-IEEE sources also give unit testing, integration testing,
 system testing, and acceptance testing as examples of test levels \ifnotpaper
-    (\citealp[pp.~5\=/6 to 5\=/7]{SWEBOK2024}; \citealpISTQB{};
+    (\citealp[pp.~5\=/6 to 5\=/7]{SWEBOK2025}; \citealpISTQB{};
     \citealp[pp.~807\==808]{Perry2006}; \citealp[pp.~443\==445]{PetersAndPedrycz2000};
     \citealp[p.~218]{KuļešovsEtAl2013}\todo{OG Black, 2009};
     \citealp[pp.~9, 13]{Gerrard2000a})\else
     \cite[pp.~443\==445]{PetersAndPedrycz2000},
-    \cite[pp.~5\=/6 to 5\=/7]{SWEBOK2024}, \cite{ISTQB},
+    \cite[pp.~5\=/6 to 5\=/7]{SWEBOK2025}, \cite{ISTQB},
     \cite[pp.~807\==808]{Perry2006}, \cite[pp.~9, 13]{Gerrard2000a},
     \cite[p.~218]{KuļešovsEtAl2013}\fi.\phantomsection{}\label{orth-approach}
 These categories seem to be orthogonal based on their definitions and usage.
@@ -238,11 +238,11 @@ The same approach often has many names. For example,
         calling it ``black box testing''.}}
 \ifnotpaper
     (\citealp[p.~9]{IEEE2022}; \citeyear[p.~8]{IEEE2021c};
-    \citeyear[p.~431]{IEEE2017}; \citealp[p.~5\=/10]{SWEBOK2024};
+    \citeyear[p.~431]{IEEE2017}; \citealp[p.~5\=/10]{SWEBOK2025};
     \citealpISTQB{}; \citealp[pp.~46\==47\noHyphenFn]{Firesmith2015};
-    \citealp[p.~344]{SakamotoEtAl2013}; \citealp[p.~399]{vanVliet2000})\else
+    \citealp[p.~399]{vanVliet2000}; \citealp[p.~344]{SakamotoEtAl2013})\else
     \cite[pp.~46\==47\noHyphenFn]{Firesmith2015}, \cite[p.~399]{vanVliet2000},
-    \cite[p.~5\=/10]{SWEBOK2024}, \cite[p.~431]{IEEE2017},
+    \cite[p.~5\=/10]{SWEBOK2025}, \cite[p.~431]{IEEE2017},
     \cite[p.~9]{IEEE2022}, \cite{ISTQB}, \cite[p.~8]{IEEE2021c},
     \cite[p.~344]{SakamotoEtAl2013}\fi.
 %     \item ``closed-box testing''
@@ -263,7 +263,7 @@ The same approach often has many names. For example,
 %               \cite[p.~44]{Kam2008} (implied by \cite[p.~431]{IEEE2017},
 %               \cite[p.~129]{IEEE2021c})
 %           \fi
-%     \item ``domain testing'' \citep[p.~5\=/10]{SWEBOK2024}
+%     \item ``domain testing'' \citep[p.~5\=/10]{SWEBOK2025}
 %     \item ``specification-oriented testing'' \citep[p.~440, Fig.~12.2]{PetersAndPedrycz2000}
 %     \item ``input domain-based testing'' (implied by \citealp[pp.~4\=/7 to
 %               4\=/8]{SWEBOK2014})
@@ -308,7 +308,7 @@ meaning is nevertheless the same.
 % supports the previous claim but would not necessarily indicate a synonym
 % relation on its own.
 
-% Similarly, \citet[p.~5\=/10]{SWEBOK2024} says ``\emph{specification-based
+% Similarly, \citet[p.~5\=/10]{SWEBOK2025} says ``\emph{specification-based
 %     techniques} \dots{} [are] sometimes also called domain
 % testing techniques'' in the \acs{swebok} V4, from which the synonym of
 % ``domain testing'' follows logically. However, its predecessor V3 only
@@ -328,15 +328,15 @@ meaning is nevertheless the same.
 % \footnote{
 %     Pairwise testing is given as a child of combinatorial testing, which is
 %     itself a child of specification-based testing, by \ifnotpaper
-%         \citep[Fig.~2]{IEEE2021c} and \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}%
+%         \citep[Fig.~2]{IEEE2021c} and \citep[pp.~5\=/11]{SWEBOK2025}%
 %     \else
-%         \cite[pp.~5\=/11 to 5\=/12]{SWEBOK2024} and \cite[Fig.~2]{IEEE2021c}%
+%         \cite[pp.~5\=/11]{SWEBOK2025} and \cite[Fig.~2]{IEEE2021c}%
 %     \fi, making it a ``grandchild'' of specification-based testing according to
 %     these sources.
 % } of specification-based testing \ifnotpaper
 %     (\citealp{IEEE2022}; \citeyear[Fig.~2]{IEEE2021c}; \citealpISTQB{})\else
 %     \cite{IEEE2022,ISTQB}, \cite[Fig.~2]{IEEE2021c}\fi; even V4 agrees with
-% this \citep[pp.~5\=/11 to 5\=/12]{SWEBOK2024}!
+% this \citep[pp.~5\=/10 to 5\=/12]{SWEBOK2025}!
 
 \subsubsection{Parent-Child Relations}\label{par-chd-rels}
 Many test approaches are multi-faceted and can be ``specialized'' into others;
