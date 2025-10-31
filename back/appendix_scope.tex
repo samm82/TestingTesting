@@ -17,8 +17,7 @@ research:
               (\citealp{ISO2021}; \citealp[p.~95]{ZhouEtAl2012})\else
               \cite{ISO2021}, \cite[p.~95]{ZhouEtAl2012}\fi, which deals with
           the ``security risk'' of ``information leakage via electromagnetic
-          emanation'' \citep[p.~95]{ZhouEtAl2012}, is also out of scope.
-          \ifnotpaper
+          emanation'' (p.~95), is also out of scope.
     \item All the examples of domain-specific testing given by
           \citet[p.~26]{Firesmith2015} are focused on hardware, so these
           examples are out of scope. However, this might not be representative
@@ -46,16 +45,14 @@ research:
           or photovoltaic device, ``into a reliable and marketable product''
           \citep[p.~1]{SuhirEtAl2013}. Therefore, it is currently unclear if
           this is in scope\todo{Investigate further}.
-          \fi
     \item \acf{orthat} can be used when testing software \citep{Mandl1985} (in
           scope) but can also be used when testing hardware
-          \citep[pp.~471--472]{Valcheva2013}, such as ``processors \dots{} made
+          \citep[pp.~471\==472]{Valcheva2013}, such as ``processors \dots{} made
           from pre-built and pre-tested hardware components'' \citetext{p.~471}
           (out of scope). A subset of \acs{orthat} called ``\acf{toat}'' is
           used for ``experimental design problems in manufacturing''
           \citep[p.~1573]{YuEtAl2011} or ``product and manufacturing process
           design'' \citep[p.~44]{Tsui2007} and is thus also out of scope.
-          \ifnotpaper
     \item Since control systems often have a software \emph{and} hardware
           component \citep{ISO2015,PreußeEtAl2012,ForsythEtAl2004},
           only the software component is in scope. In some cases, it is
@@ -68,7 +65,8 @@ research:
               \item A related note: ``path coverage'' or ``path testing''
                     seems to be able to refer to either paths through code
                     (as a subset of control-flow testing)
-                    \citep[p.~5-13]{SWEBOK2024} or through a model, such as
+                    (\citealp[p.~5\=/13]{SWEBOK2025}; \citealp[p.~4]{Reid1996};
+                    implied by \citealpISTQB{}) or through a model, such as
                     a finite-state machine (as a subset of model-based
                     testing) \citep[p.~184]{DoğanEtAl2014}.
           \end{itemize}
@@ -77,13 +75,12 @@ research:
           \citep[p.~322]{IEEE2017} and requirements-based testing;
           see \Cref{req-apps}) tests ``a physical characteristic that a
           system or system component must possess'' \citetext{p.~322}.
-          \fi
 \end{itemize}
 
 \section[V\&V of Other Artifacts]{\acs{vnv} of Other Artifacts}\label{other-vnv}
 While many artifacts produced by the software life cycle can be tested, only
-testing performed on the code \emph{itself} is in scope. Therefore, we exclude
-the following test approaches either in full or in part:
+testing performed on the code \emph{itself}\---the \acf{sut}\---is in scope.
+Therefore, we exclude the following test approaches either in full or in part:
 
 \begin{itemize}
     \item Design reviews and documentation reviews are out of scope, as they
@@ -112,28 +109,26 @@ the following test approaches either in full or in part:
           ``and estimat[e] the number of faults remaining''
           \citep[p.~165]{IEEE2017}, which helps verify the actual code (in scope).
     \item Fault injection testing, where ``faults are artificially
-          introduced\textsuperscript{\ref{add-fault}} into the \acs{sut}
-          [System Under Test]'', can be used to evaluate the effectiveness of a
-          test suite \citep[p.~5-18]{SWEBOK2024}, which is a part of \acs{vnv}
+          introduced\textsuperscript{\ref{add-fault}} into the \acs{sut}'', can
+          be used to evaluate the effectiveness of a
+          test suite \citep[p.~5\=/18]{SWEBOK2025}, which is a part of \acs{vnv}
           of the \acs{vnv} itself (out of scope), or ``to test
           the robustness of the system in the event of internal and
           external failures'' \citep[p.~42]{IEEE2022}, which helps verify
           the actual code (in scope).
     \item ``Mutation [t]esting was originally conceived as a
           technique to evaluate test suites in which a mutant is a slightly
-          modified version of the \acs{sut}'' \citep[p.~5-15]{SWEBOK2024},
+          modified version of the \acs{sut}'' \citep[p.~5\=/14]{SWEBOK2025},
           which is in the realm of \acs{vnv} of the \acs{vnv} itself (out of
           scope). However, it ``can also be categorized as a structure-based
           technique'' and can be used to assist fuzz and metamorphic testing
-          \citep[p.~5-15]{SWEBOK2024} (in scope).
-          \ifnotpaper
+          (p.~5\=/15) (in scope).
     \item \phantomsection{}\label{nontech-req-test}
           Nontechnical testing (inferred from nontechnical requirements
           \citep[p.~293]{IEEE2017} and requirements-based testing; see
           \Cref{req-apps}) tests ``product and service acquisition or
           development that is not a property of the product or service''
-          \citep[p.~293]{IEEE2017}.
-          \fi
+          (p.~293). %\citep[p.~293]{IEEE2017}
 \end{itemize}
 
 \section{Static Testing}\label{static-test}
@@ -319,7 +314,7 @@ derived approaches, most of which are out of scope:
           % End-to-end: Type (Hamburg and Mogyorodi, 2024)
           %          OR Technique (Firesmith, 2015, p. 47; Sharma et al., 2021, pp. 601, 603, 605-606)
           % Functionality: Type (implied by its quality (IEEE, 2017, p. 196); Firesmith, 2015, p. 53)
-    \item Formal reviews (\citealpISTQB{}; \citealp[p.~12\=/14]{SWEBOK2024})
+    \item Formal reviews (\citealpISTQB{}; \citealp[p.~12\=/14]{SWEBOK2025})
           % Formal: Technique (inferred from informal testing)
           % Reviews: Approach
     \item Grey-box integration testing \citep[p.~344]{SakamotoEtAl2013}
@@ -330,7 +325,7 @@ derived approaches, most of which are out of scope:
           % Incremental: Practice?
           % Integration: Level (IEEE, 2022, pp. 12, 20-22, 26-27; 2021, p. 6; Washizaki, 2024, p. 5-7; Hamburg and Mogyorodi, 2024; Sakamoto et al., 2013, p. 343; Peters and Pedrycz, 2000, Tab. 12.3; van Vliet, 2000, p. 438; implied by Barbosa et al., 2006, p. 3)
           %           OR Technique (implied by Sharma et al., 2021, pp. 601, 603, 605-606)
-    \item Informal reviews (\citealpISTQB{}; \citealp[p.~12\=/14]{SWEBOK2024})
+    \item Informal reviews (\citealpISTQB{}; \citealp[p.~12\=/14]{SWEBOK2025})
           % Informal: Technique (implied by Kam, 2008, p. 6)
           % Reviews: Approach
     \item Infrastructure compatibility testing \citep[p.~53]{Firesmith2015}
