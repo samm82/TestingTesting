@@ -514,7 +514,7 @@ so these are the only ones that are
 hyperlinked. We automatically detect the following classes of flaws:
 
 \begin{itemize}
-    \item \multiCatIntro*{}
+    \item \multiCatIntro*{}.
     \item \phantomsection{}\label{relevantSyns}
           Synonyms that violate transitivity (see \Cref{syn-rels}); if two
           distinct approaches share a synonym but are not synonyms themselves,
@@ -529,8 +529,7 @@ hyperlinked. We automatically detect the following classes of flaws:
               \item this synonym relation is incorrect.
           \end{enumerate}
     \item \phantomsection{}\label{selfParDef}
-          Parent-child relations that violate irreflexivity, or approaches that
-          are parents of themselves.
+          \reflexParChdFlaw{}.
     \item \phantomsection{}\label{parSynDef}
           \parSynFlaw*{}
 \end{itemize}

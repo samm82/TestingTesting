@@ -128,28 +128,34 @@ For these and other kinds of flaws, we also generate the corresponding comments
 described in \Cref{flaw-comment-syntax} and include them in the
 corresponding \LaTeX{} files to ensure that we analyze and count these flaws in
 addition to those we record manually. Since we already automatically detect
-one kind of flaw, the next logical step is then to detect more.
+one kind of flaw, the next logical step is then to detect more. We detect the
+following classes of flaws that we later discuss in \Cref{cats,pars}:
 
+\begin{itemize}
+    \item \multiCatIntro*{}.
+    \item \reflexParChdFlaw{}; a case of this with approach ``I'' would result
+          in output similar to \Cref{fig:selfExampleGraph}.
+    \item Pairs of approaches with a synonym relation \emph{and} a parent-child
+          relation as described in \Cref{parSynDef}; a case of this with
+          approaches ``J'' and ``K'' would result in output similar to
+          \Cref{fig:parSynExampleGraph}.
+\end{itemize}
+
+\vspace*{-5cm}
 \ExampleFlawGraphs{}
+\newpage
 
-\phantomsection{}\label{autoSelfPar}
-Parent-child relations that violate irreflexivity as outlined in
-\Cref{par-chd-rels} (i.e., cases where a child is given as a parent of itself)
-are also trivial to automate by looking for lines in the generated \LaTeX{}
-files that start with \texttt{I~->~I}, where \texttt{I} is the label used for a
-test approach node in these visualizations. This process results in output
-similar to \Cref{fig:selfExampleGraph}.% \Cref{selfPars}
-\phantomsection{}\label{autoParSyn} We use a similar process to detect pairs of
-approaches with a synonym relation \emph{and} a parent-child relation as
-described in \Cref{parSynDef}. To find these pairs, we build a dictionary of
-each term's synonyms to evaluate which synonym relations are notable enough
-to include in the visualization, and then check these mappings to see if one
-appears as a parent of the other. For example, if \texttt{J} and \texttt{K} are
-synonyms, a generated \LaTeX{} file with a parent line starting with
-\texttt{J~->~K} \emph{or} \texttt{K~->~J} would be visualized as shown in
-\Cref{fig:parSynExampleGraph}. We present these two
-classes of flaws when discussing parent-child relation flaws in \Cref{pars}.
-% \Cref{tab:parSyns,infParSyns}
+% are also trivial to automate by looking for lines in the generated \LaTeX{}
+% files that start with \texttt{I~->~I}, where \texttt{I} is the label used for a
+% test approach node in these visualizations. This process .% \Cref{selfPars}
+% \phantomsection{}\label{autoParSyn} We use a similar process to detect.
+% To find these pairs, we build a dictionary of
+% each term's synonyms to evaluate which synonym relations are notable enough
+% to include in the visualization, and then check these mappings to see if one
+% appears as a parent of the other. For example, if \texttt{J} and \texttt{K} are
+% synonyms, a generated \LaTeX{} file with a parent line starting with
+% \texttt{J~->~K} \emph{or} \texttt{K~->~J} would be visualized as shown in
+% We present these two. \Cref{tab:parSyns,infParSyns}
 
 While just counting the total number of flaws (found automatically \emph{or}
 manually) is trivial, tracking

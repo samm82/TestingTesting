@@ -120,8 +120,8 @@ usable and accessible.
 \subsection{Detecting More Flaws}\label{future-detect-flaws}
 In addition to the classes of flaws we \emph{do} detect automatically, we could
 detect many more if time permitted. We currently detect parent-child relations
-that violate irreflexivity (see \Cref{autoSelfPar}) which can be thought of as
-cycles with length $n=1$. Since parent-child relations should also be
+that violate irreflexivity (see \Cref{auto-flaw-detect}) which can be thought
+of as cycles with length $n=1$. Since parent-child relations should also be
 transitive (see \Cref{par-chd-rels}), cycles of \emph{any} size are flaws.
 Given the current way we generate visualizations of these relations (see
 \Cref{app-rel-vis}), detecting cycles where $n=2$ would be straightforward: if
