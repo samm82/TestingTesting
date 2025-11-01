@@ -42,15 +42,8 @@ of flaws (as opposed to just the responsible source \emph{tiers}) as we do in
           \end{enumerate}
     \item those within a single source tier.
 \end{enumerate}
-As before, we do not double count these sources of flaws, meaning that the
-maximum number of counted flaws possible within a \emph{single} source tier in
-this more detailed view is four (one for each type). This only occurs if there
-is an example of each flaw source that is \emph{not} ignored to avoid double
-counting; for example, while a single flaw within a single document would
-technically and trivially fulfill all four criteria, we would only count it
-once.
-
-\begin{figure}[bt!]
+\vspace*{-5cm}
+\begin{figure}[b!]
     \centering
     \begin{tikzpicture}
         \def\radius{4cm}
@@ -79,16 +72,23 @@ once.
         \node[above] at (-\offset, -\offset) {---};
 
         % ISO
-        \node[above] at (-1.4*\offset, 0.25) {\parbox{2cm}{\centering
+        \node[above] at (-1.3*\offset, 0.25) {\parbox{2cm}{\centering
                 \citealp{ISO2022,ISO2015}}};
         % IEC
-        \node[above] at ( 1.4*\offset, 0.25) {---};
+        \node[above] at ( 1.3*\offset, 0.25) {---};
         % IEEE
         \node[above] at (0, -\spread-1.4*\radius) {\citealp{IEEE2012}};
 
     \end{tikzpicture}
     \caption{The sets of authors of established standards.}\label{fig:ieeeSourceSets}
-\end{figure}
+\end{figure}\clearpage\noindent%
+As before, we do not double count these sources of flaws, meaning that the
+maximum number of counted flaws possible within a \emph{single} source tier in
+this more detailed view is four (one for each type). This only occurs if there
+is an example of each flaw source that is \emph{not} ignored to avoid double
+counting; for example, while a single flaw within a single document would
+technically and trivially fulfill all four criteria, we would only count it
+once.
 
 % \phantomsection{}\label{flaw-analysis-example}
 % As an example of this process, consider \flawref{level-phase-syns}, where an
