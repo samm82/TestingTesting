@@ -80,7 +80,8 @@ for sec, verb in [("Intro", "start"), ("Conc", "do this")]:
         f"\\ as applicable."]
     if sec == "Intro":
         methodOverview.append(
-            f"We also record any {OTHER_NOTES}, such as {OTHER_NOTES_EXS}.%")
+            f"We also record any {OTHER_NOTES}, such as {OTHER_NOTES_EXS}.")
+    methodOverview[-1] = methodOverview[-1] + "%"
 
     # Textual methodology overviews
     writeFile(methodOverview, f"methodOverview{sec}", helper=True)

@@ -7,8 +7,8 @@
 After gathering all these data\footnote{Available in \texttt{ApproachGlossary.csv},
     \texttt{QualityGlossary.csv}, and \texttt{SuppGlossary.csv} at \ifblind{
         [Repository link suppressed]}{
-        \url{https://github.com/samm82/TestingTesting}}.}, we find many flaws.
-\Cref{fig:flawBars} shows where these flaws appear within each source tier
+        \url{https://github.com/samm82/TestingTesting}}.}, we find \flawCount{}
+flaws. \Cref{fig:flawBars} shows where these flaws appear within each source tier
 (defined in \Cref{source-tiers}) which reveals a lot about software testing
 literature:
 \begin{enumerate}
@@ -37,16 +37,8 @@ Since we give each flaw a manifestation \emph{and} a domain, the totals per
 source and grand totals in these tables are equal. From these tables, we can
 draw some conclusions about \emph{how} the literature is flawed:
 \begin{enumerate}
-    \item Contradictions are by \emph{far} the most common way for a flaw to
-          manifest, which makes sense: if two (groups of) authors do not
-          communicate or work with different resources, there is a higher
-          chance that they will disagree. These are also the most obvious flaws
-          to detect automatically (see \Cref{\ifnotpaper auto-flaw-detect,\fi
-              flawDmns}) which also contributes to this.
-    \item Approach categorizations are the most subjective and one of the most
-          common flaw domains, likely due to the lack of standardization
-          about what categories to use\ifnotpaper\ (see \Cref{alt-cats}
-              for more detailed discussion)\fi.
+    \item \contraSummary{}
+    \item \catsSummary{}
 \end{enumerate}
 
 \ifnotpaper

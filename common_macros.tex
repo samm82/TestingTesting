@@ -146,6 +146,17 @@
     analysis of our generated visualizations\ifnotpaper\ as described in
         \Cref{auto-flaw-detect}\fi}
 
+\NewDocumentCommand\contraSummary{s}{\IfBooleanTF#1{contradictions are}
+    {Contradictions are by \emph{far}} the most common manifestation. This is
+    likely because these are the most obvious flaws to detect automatically
+    (see \Cref{\ifnotpaper auto-flaw-detect,\fi flawDmns}) and because two
+    (groups of) authors using different resources and not communicating have a
+    high chance of disagreeing.}
+\NewDocumentCommand\catsSummary{s}{\IfBooleanTF#1{a}{A}pproach categorizations
+    are the most subjective and one of the most common flaw domains, likely due
+    to the lack of standardization about what categories to use\ifnotpaper\
+        (see \Cref{alt-cats} for more detailed discussion)\fi.}
+
 % Examples of flaws
 \def\bugPattonFlaw{\citet[pp.~13\==14]{Patton2006} ``just call[s] it what it
     is and get[s] on with it'', abandoning these four terms, ``problem'',
