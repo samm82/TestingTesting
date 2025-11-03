@@ -1,3 +1,5 @@
+from re import sub
+
 from helpers import capFirst, wrapEnv, writeFile
 
 # See #209
@@ -63,14 +65,22 @@ methodology = ("""
           criteria (\\Cref{stop-crit}) is reached""")
     
 # Base methodology overview
-writeFile(wrapEnv("enumerate", [methodology]), "methodOverview", helper=True)
+writeFile(wrapEnv("enumerate", [methodology]), "methodOverviewList", helper=True)
 
 toRecord[-1] = "and " + toRecord[-1]
-methodOverviewIntro = [
-    "We start by documenting the \\approachCount{} test approaches mentioned ",
-    "by \\srcCount{} sources (described in \\Cref{source-tiers}), recording their ",
-    ", ".join([record.replace("(\\Cref", "(see \\Cref") for record in toRecord]),
-    f"\\ as applicable. We also record any {OTHER_NOTES}, such as {OTHER_NOTES_EXS}.%"]
 
-# Intro methodology overview
-writeFile(methodOverviewIntro, "methodOverviewIntro", helper=True)
+for sec, verb in [("Intro", "start"), ("Conc", "do this")]:
+    if sec == "Conc":
+        toRecord = [sub(r"\\footnote\{Defined in .+\.\}", "", line)
+                    for line in toRecord]
+    methodOverview = [
+        f"We {verb} by documenting the \\approachCount{{}} test approaches mentioned ",
+        "by \\srcCount{} sources (described in \\Cref{source-tiers}), recording their ",
+        ", ".join([record.replace("(\\Cref", "(see \\Cref") for record in toRecord]),
+        f"\\ as applicable."]
+    if sec == "Intro":
+        methodOverview.append(
+            f"We also record any {OTHER_NOTES}, such as {OTHER_NOTES_EXS}.%")
+
+    # Textual methodology overviews
+    writeFile(methodOverview, f"methodOverview{sec}", helper=True)
