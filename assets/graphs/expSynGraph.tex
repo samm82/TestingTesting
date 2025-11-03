@@ -46,7 +46,6 @@ ScenarioTesting [label=<Scenario<br/>Testing>];
 SmokeTesting [label=<Smoke<br/>Testing>];
 SpecificationbasedTesting [label=<Specification-based<br/>Testing>];
 StaticAnalysis [label=<Static<br/>Analysis>];
-StaticAssertionChecking [label=<Static<br/>Assertion<br/>Checking>];
 StaticTesting [label=<Static<br/>Testing>];
 StructuralTesting [label=<Structural<br/>Testing>];
 StructurebasedTesting [label=<Structure-based<br/>Testing>];
@@ -95,7 +94,6 @@ UseCaseTesting -> UserScenarioTesting[dir=none,color="blue"];
 SmokeTesting -> BuildVerificationTesting[dir=none,color="blue"];
 SmokeTesting -> IntakeTesting[dir=none,color="blue"];
 StaticVerification [label=<Static<br/>Verification>,style="dotted"];
-StaticAssertionChecking -> StaticVerification[dir=none];
 StaticTesting -> StaticAnalysis[dir=none,color="maroon"];
 Walkthroughs -> StructuredWalkthroughs[dir=none,color="blue"];
 

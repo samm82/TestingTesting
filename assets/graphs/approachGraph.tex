@@ -608,7 +608,7 @@ SelfTesting -> BuiltInTesting[dir=none,style="dashed",color="grey"];
 SmokeTesting -> BuildVerificationTesting[dir=none,color="blue"];
 SmokeTesting -> IntakeTesting[dir=none,color="blue"];
 StaticVerification [label=<Static<br/>Verification>,style="dotted"];
-StaticAssertionChecking -> StaticVerification[dir=none];
+StaticAssertionChecking -> StaticVerification[dir=none,style="dashed"];
 StaticTesting -> StaticVerification[dir=none,style="dashed"];
 StaticTesting -> StaticAnalysis[dir=none,color="maroon"];
 SystemQualificationTesting -> SystemTesting[dir=none,style="dashed",color="grey"];

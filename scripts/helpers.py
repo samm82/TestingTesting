@@ -171,7 +171,9 @@ def getFlawCount(line: list[str], mnfst, dmn, todo=True):
         line[i] = re.sub(r"if .+\) ", f"{IMP_BY} ", line[i])
         line[i] = re.sub(r"although .+? \((.+?)\)", fr"{IMP_BY} \1", line[i])
         for imp in IMPLICIT_KEYWORDS[1:]:
-            line[i] = re.sub(fr"\({imp}\) ", f"{IMP_BY} ", line[i])
+            line[i] = re.sub(fr"\({imp}\) ",
+                             f"{IMP_BY if IMP_BY not in line[i] else ""} ",
+                             line[i])
         for intRef in INTERNAL_REFS:
             line[i] = re.sub(fr"{{{intRef}\w+}}", "", line[i])
 

@@ -510,14 +510,8 @@ multiSynNotes = {
         "relation is incorrect."
     ),
     "Static Assertion Checking": (
-        "% Flaw count (WRONG, SYNS): {ChalinEtAl2006} | {LahiriEtAl2013} \n\t\t"
-        "\\citet[p.~343]{ChalinEtAl2006} \\multiAuthHelper{list} "
-        "\\ifnotpaper \\acf{rac} and \\acf{sv} \\else Runtime Assertion Checking "
-        "\\acf{rac} and Software Verification \\acf{sv} \\fi "
-        "as ``two complementary forms of assertion checking''; "
-        "based on how the term ``static assertion checking'' is used by "
-        "\\citet[p.~345]{LahiriEtAl2013}, it seems like this should be the "
-        "complement to \\acs{rac} instead."
+        "See \\flawref{stat-assert-check} for more detail on why this synonym "
+        "relation is incorrect."
     ),
     "Operational Testing": (
         "See \\flawref{oat-pat-syns}."
