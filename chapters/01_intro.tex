@@ -36,11 +36,10 @@ made to arrive at a consensus or majority view'' \citetext{p.~11}!
 
 Perhaps unsurprisingly, there are still concepts in software engineering without
 consensus, and many of them can be found in the subdomain of software testing.
-\refHelper \ifnotpaper \citeauthor{KanerEtAl2011} \else \cite{KanerEtAl2011}
-\fi \multiAuthHelper{give} the example of complete testing, which may require
+\refHelper \citet[p.~7]{KanerEtAl2011}
+\multiAuthHelper{give} the example of complete testing, which may require
 the tester to discover ``every bug in the product'', exhaust the time allocated
-to the testing phase, or simply implement every test previously agreed upon
-\ifnotpaper \citeyearpar[p.~7]{KanerEtAl2011}\else \citetext{p.~7}\fi.
+to the testing phase, or simply implement every test previously agreed upon.
 % They go on to say that
 Having a clear definition of ``complete testing'' would reduce the chance for
 miscommunication and, ultimately, the tester getting ``blamed for not
@@ -208,9 +207,9 @@ therefore be standardized.
 These kinds of inconsistencies can lead to miscommunications---such as that
 previously mentioned by \citet[p.~7]{KanerEtAl2011}---and are prominent in the
 literature. % This flaw is automatically tracked as a multiCat flaw
-\citeauthor{IEEE2022} categorize experience-based testing
-as both a test design technique and a test practice in the same figure
-\citeyearpar[Fig.~2]{IEEE2022}! \tourFlaw{} \loadFlaw{} \alphaFlaw{}
+\citeauthor{IEEE2022} \citeyearpar[Fig.~2]{IEEE2022} categorize
+experience-based testing as both a test design technique and a test practice in
+the same figure! \tourFlaw*{} \loadFlaw{} \alphaFlaw{}
 It is clear that there is a notable gap in the literature, one which we
 attempt to describe. While the creation of a complete taxonomy is
 unreasonable, especially considering the pace at which the field of software
