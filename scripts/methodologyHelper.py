@@ -70,7 +70,7 @@ methodOverviewIntro = [
     "We start by documenting the \\approachCount{} test approaches mentioned ",
     "by \\srcCount{} sources (described in \\Cref{source-tiers}), recording their ",
     ", ".join([record.replace("(\\Cref", "(see \\Cref") for record in toRecord]),
-    f"as applicable. We also record any {OTHER_NOTES}, such as {OTHER_NOTES_EXS}.%"]
+    f"\\ as applicable. We also record any {OTHER_NOTES}, such as {OTHER_NOTES_EXS}.%"]
 
 # Intro methodology overview
 writeFile(methodOverviewIntro, "methodOverviewIntro", helper=True)
