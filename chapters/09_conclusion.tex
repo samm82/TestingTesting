@@ -10,9 +10,17 @@ outlining the flaws we find in the literature.
 
 \input{build/methodOverviewConc} In addition to these manually recorded flaws,
 we identify classes of flaws we can detect automatically as described in
-\Cref{dmn-def}. These include \exAutoFlaws{} In total, we find \flawCount{}
-flaws in the software testing literature, of which \contraSummary*{}
-Additionally, \catsSummary*{}
+\Cref{dmn-def}. These include:
+\begin{itemize}
+    \item \multiCatCount{} test approaches with more than one category,
+    \item \multiSynCount{} terms used as synonyms to two (or more) disjoint
+          test approaches,
+    \item \selfParCount{} test approaches that are parents of themselves, and
+    \item \parSynCount{} pairs of test approaches that may either be synonyms
+          or have a parent-child relationship.
+\end{itemize}
+In total, we find \flawCount{} flaws in the software testing literature, of
+which \contraSummary*{} Additionally, \catsSummary*{}
 
 % Temporary, borrowed from paper
 Future work in this
