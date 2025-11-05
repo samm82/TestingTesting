@@ -1,32 +1,39 @@
 \section{Recommendations}\label{recs}
 
-As we have shown in \Cref{flaws}, ``testing is a mess'' \citetext{Mosser,
-    2023, priv.\ comm.}! It will take a lot of time, effort, expertise, and
-training to organize these terms (and their relations) logically. However, the
-hardest step is often the first one, so we attempt to give some examples of how
-this ``rationalization'' can occur. These changes often arise when we notice an
-issue with the current state of the terminology and think about what \emph{we}
-would do to make it better. We do not claim that these are correct, unbiased,
-or exclusive, just that they can be used as an inspiration for those wanting to
-pick up where we leave off.
+As shown in \Cref{flaws}, the software testing literature is quite flawed. Due
+to the sheer number of flaws and the size of the domain itself, it will take a
+lot of time, effort and expertise to organize these terms (and their relations)
+logically. However, the hardest step is often the first one, so we give some
+examples of how these flaws can be resolved. These changes arise when we notice
+an issue with the current state of the terminology and think about what
+\emph{we} would do to make it better. We do not claim that these are correct,
+unbiased, or exclusive, just that they can be used as an inspiration for those
+wanting to pick up where we leave off.
 
-When redefining terms, we seek to make them:
+When redefining test approaches, we seek to make them:
 \begin{enumerate}
-    \item Atomic (e.g., disaster/recovery testing seems to have two
-          disjoint definitions)
-    \item Straightforward (e.g., backup and recovery testing's definition
-          implies the idea of performance, but its name does not
-          \ifnotpaper; failover/recovery testing, failover and recovery
-          testing, and failover testing are all given separately\fi)
-    \item Consistent (e.g., backup/recovery testing and failover/recovery
-          testing explicitly exclude an aspect included in its parent
-          disaster/recovery testing)
+    \item \textbf{Atomic:} Each term should only define one thing.
+          %   (e.g., disaster/recovery testing seems to have two disjoint definitions)
+    \item \textbf{Distinct:} Each term should be meaningfully separate from
+          others and not overlap with them.
+          %   (e.g., failover/recovery testing, failover and recovery
+          %   testing, and failover testing are all given separately)
+    \item \textbf{Consistent:} Each piece of data associated with a term should
+          be cohesive and not contradict others.
+          %   (e.g., backup/recovery testing and failover/recovery
+          %   testing explicitly exclude an aspect included in its parent
+          %   disaster/recovery testing)
+    \item \textbf{Intuitive:} Each term's definition and relations should
+          follow logically from, or at least be consistent with, the term's
+          name.
+          %   (e.g., backup and recovery testing's definition
+          %   implies the idea of performance, but its name does not)
 \end{enumerate}
 Likewise, we seek to eliminate classes of flaws that can be detected
-automatically, such as test approaches that are given as synonyms to multiple
-distinct approaches (\Cref{multiSyns}) or as parents of themselves
-(\Cref{selfPars}), or pairs of approaches with both a parent-child \emph{and}
-synonym relation (\Cref{parSyns}).
+automatically, such as test approaches that are given as \ifnotpaper synonyms to
+    multiple distinct approaches (\Cref{multiSyns}) or as \fi parents of
+themselves (\Cref{selfPars})\ifnotpaper,\else\ \fi or pairs of approaches
+with both a parent-child \emph{and} synonym relation (\Cref{parSyns}).
 
 We give recommendations for the areas of \ifnotpaper operational (acceptance)
     testing (\Cref{oat-test-rec}), \fi recovery testing (\Cref{rec-test-rec}),
