@@ -62,7 +62,7 @@ Risk Analysis | "The process of finding, recognizing and describing risks" (Hamb
 Separation Logic Specification | The specification of "dynamically-allocated linked data structures" that only "concentrates on the resources relevant to its correct operation" (Berdine et al., 2006, p. 115) | Assertion (Lahiri et al., 2013, p. 345), Specification, with context (Berdine et al., 2006; likely Chalin et al., 2006) | 
 Simple Cycle | A cycle with distinct inner nodes that is not at the beginning or end of a path (van Vliet, 2000, p. 421) |  | 
 Single-hit Decision Table | A "decision table where any set of conditions will be satisfied by one, and only one, rule" (IEEE, 2017, p. 415; OG ISO, 1984) |  | 
-Software Function | The "implementation of an algorithm in the software with which the end user or the software can perform part or all of a work task" (ISO/IEC, 2014) |  | 
+Software Function | The "implementation of an algorithm in the software with which the end user or the software can perform part or all of a work task" (ISO/IEC, 2014a) |  | 
 Software Interface | "A program that makes it possible for components to interact and interoperate with each other" (Peters and Pedrycz, 2000, p. 3) |  | 
 Software Life Cycle Process (SLCP) (IEEE, 2017, p. 416) |  |  | 
 Source Test Case | A test case that passes and is "used as the basis of follow-up test cases" in metamorphic testing (Hamburg and Mogyorodi, 2024) |  | 
