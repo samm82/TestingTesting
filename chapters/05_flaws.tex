@@ -73,21 +73,22 @@ We summarize the flaws that we discover manually
 in \Cref{flawMnfsts} based on their manifestation% (defined in \Cref{mnfst-def})
 . This lets us separately summarize the flaws we automatically detect
 \ifnotpaper (see \Cref{auto-flaw-detect}) \fi based on their domain %(defined in \Cref{dmn-def})
-in \Cref{flawDmns}.
-\ifnotpaper We list \emph{all} these flaws in \Cref{flaws-full} to balance
-    completeness and brevity and denote implicit relations with the phrase
-    ``implied by'' in \Cref{tab:parSyns,tab:multiCats,tab:infMultiCats} as
-    described in \Cref{explicitness}. \fi Moreover, certain ``subsets'' of
+in \Cref{flawDmns}. \ifnotpaper We list \emph{all} these flaws in
+    \Cref{flaws-full} to balance completeness and brevity and denote implicit
+    relations with the phrase ``implied by'' in \Cref{tab:parSyns,tab:multiCats,%
+        tab:infMultiCats} as described in \Cref{explicitness}. \fi%
+\phantomsection{}\label{flawSubsets}Moreover, certain ``subsets'' of
 testing contain many interconnected flaws, which we present in subsections as a
 ``third view'' to keep related information together. These subsets include
 \ifnotpaper operational (acceptance) testing (\Cref{oat-flaw}), \fi
 recovery testing (\Cref{recov-flaw}), scalability testing (\Cref{scal-flaw}),
 and compatibility testing (\Cref{compat-flaw}). The counts of flaws given in
 \Cref{tab:flawMnfsts,tab:flawDmns} are essentially the sums of the flaws we
-describe in the following subsections. \ifnotpaper Finally, we
-    infer some flaws as described in \Cref{infers}, which do not contribute to
-    any counts because they are subjective; we list these in \Cref{infer-flaws}
-    for completeness. \fi
+describe in the following subsections\ifnotpaper. Finally, we
+infer some flaws as described in \Cref{infers}, which do not contribute to
+any counts because they are subjective; we list these in \Cref{infer-flaws}
+for completeness\else, although we omit the more trivial ``subsets'' from this
+\docType{} for brevity\fi.
 
 Note that due to time constraints, this collection of flaws is still not
 comprehensive! While we apply our heuristics for identifying relevant terms

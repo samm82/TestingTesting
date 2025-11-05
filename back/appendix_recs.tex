@@ -1,4 +1,4 @@
-\section{Recommendations}\label{recs}
+\section{Preliminary Recommendations}\label{app-recs}
 
 As shown in \Cref{flaws}, the software testing literature is quite flawed. Due
 to the sheer number of flaws and the size of the domain itself, it will take a
@@ -32,14 +32,16 @@ When redefining test approaches, we seek to make them:
 Likewise, we seek to eliminate classes of flaws that can be detected
 automatically, such as test approaches that are given as \ifnotpaper synonyms to
     multiple distinct approaches (\Cref{multiSyns}) or as \fi parents of
-themselves (\Cref{selfPars})\ifnotpaper,\else\ \fi or pairs of approaches
-with both a parent-child \emph{and} synonym relation (\Cref{parSyns}).
+themselves (\Cref{selfPars})\ifnotpaper,\fi\ or pairs of approaches
+with both a parent-child \emph{and} synonym relation (\Cref{parSyns,parSyns-full}).
 
-We give recommendations for the areas of \ifnotpaper operational (acceptance)
+We give recommendations for each ``subset'' of testing that we describe in
+\Cref{flawSubsets}---\ifnotpaper operational (acceptance)
     testing (\Cref{oat-test-rec}), \fi recovery testing (\Cref{rec-test-rec}),
-scalability testing (\Cref{scal-test-rec}), performance\-/related testing
-(\Cref{perf-test-rec}), and compatibility testing (\Cref{compat-test-rec}). We
-provide graphical representations (see \Cref{\ifnotpaper app-rel-vis\else tools\fi})
+scalability testing (\Cref{scal-test-rec}), and compatibility testing
+(\Cref{compat-test-rec})---as well as the ``superset'' of
+performance\-/related testing (\Cref{perf-test-rec}). We provide graphical
+representations (see \Cref{\ifnotpaper app-rel-vis\else tools\fi})
 of these subsets when helpful in \recFigs{}, in which arrows representing
 relations between approaches are coloured based on the source tier (see
 \Cref{source-tiers}) that defines them. We colour all proposed approaches and
