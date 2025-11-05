@@ -35,13 +35,14 @@ logically as possible.
 \ifnotpaper\newpage\fi
 \subsection{Test Approaches}\label{approach-def}
 
-Software testing is defined as the ``process of operating a system or component
-under specified conditions, observing or recording the results, and making an
-evaluation of some aspect of the system or component'' \citep{ISO_IEC2014}%
-%                     or ``the process of executing a program 
-\todo{OG IEEE, 1990}\ifnotpaper, usually ``with the intent of finding errors''
-(\citealp{Myers1976}, as cited in \citealp[p.~438]{PetersAndPedrycz2000}%
-\footnote{See \flawref{myers-citation}.})\fi.
+Software testing is an ``activity in which a system or component is executed
+under specified conditions, the results are observed or recorded, and an
+evaluation is made of some aspect of the system or component'' \ifnotpaper
+    (\citealp[p.~10]{IEEE2022}; \citeyear[p.~6]{IEEE2021c};
+    \citeyear[p.~473]{IEEE2017}), usually ``with the intent of finding errors''
+    (\citealp{Myers1976}, as cited in \citealp[p.~438]{PetersAndPedrycz2000}%
+    \footnote{See \flawref{myers-citation}.}) \else \cite[p.~473]{IEEE2017},
+    \cite[p.~10]{IEEE2022}, \cite[p.~6]{IEEE2021c}\fi.
 For each test, the main steps are to:
 \begin{enumerate}
     \item identify the goal(s) of the test,
@@ -56,11 +57,11 @@ For each test, the main steps are to:
           %   \ifnotpaper \citep[p.~443; similar in][p.~11]{Firesmith2015}
           %   \else \citetext{p.~443} (similar in \cite[p.~11]{Firesmith2015}) \fi
 \end{enumerate}
-The end goal is to evaluate ``some aspect of the system or component'' based on
-the results of step~\ref{step:cmp-results} \ifnotpaper (\citealp[p.~10]{IEEE2022};
-    \citeyear[p.~6]{IEEE2021c}; \citealp{ISO_IEC2014}\todo{OG IEEE, 1990})\else
-    \cite[p.~10]{IEEE2022}, \cite[p.~6]{IEEE2021c}, \cite{ISO_IEC2014}\fi.
-When this evaluation reveals errors, ``the faults causing them are what can and
+% The end goal is to evaluate ``some aspect of the system or component'' based on
+% the results of step~\ref{step:cmp-results} \ifnotpaper (\citealp[p.~10]{IEEE2022};
+%     \citeyear[p.~6]{IEEE2021c}; \citealp{ISO_IEC2014}\todo{OG IEEE, 1990})\else
+%     \cite[p.~10]{IEEE2022}, \cite[p.~6]{IEEE2021c}, \cite{ISO_IEC2014}\fi.
+When this process reveals errors, ``the faults causing them are what can and
 must be removed'' \citep[p.~5\=/3]{SWEBOK2025}.
 
 Of course, the approach chosen in step~\ref{step:decide-app} influences what
