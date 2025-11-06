@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{recoveryIdealProposedGraph}{
+edge [penwidth=2];
+rankdir=BT;
+AvailabilityTesting [label=<Availability<br/>Testing>];
+BackupRecoveryTesting [label=<Backup<br/>Recovery<br/>Testing>,color=orange];
+FailoverTesting [label=<Failover<br/>Testing>];
+FailureToleranceTesting [label=<Failure<br/>Tolerance<br/>Testing>];
+FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
+PerformanceTesting [label=<Performance<br/>Testing>];
+PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
+RecoverabilityTesting [label=<Recoverability<br/>Testing>];
+RecoveryPerformanceTesting [label=<Recovery<br/>Performance<br/>Testing>,color=orange];
+ReliabilityTesting [label=<Reliability<br/>Testing>];
+SurvivabilityTesting [label=<Survivability<br/>Testing>];
+TransferRecoveryTesting [label=<Transfer<br/>Recovery<br/>Testing>,color=orange];
+UsabilityTesting [label=<Usability<br/>Testing>];
+
+
+
+AvailabilityTesting -> ReliabilityTesting[color="green"];
+FailoverTesting -> FailureToleranceTesting[style="dashed",color="blue"];
+FaultToleranceTesting -> ReliabilityTesting[color="green"];
+FaultToleranceTesting -> AvailabilityTesting[color="green"];
+PerformanceTesting -> PerformancerelatedTesting[color="green"];
+RecoverabilityTesting -> ReliabilityTesting[color="green"];
+RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
+ReliabilityTesting -> PerformanceTesting;
+SurvivabilityTesting -> RecoverabilityTesting[color="green"];
+
+BackupRecoveryTesting -> RecoverabilityTesting[color=orange];
+FailoverTesting -> RecoverabilityTesting[color=orange];
+RecoverabilityTesting -> AvailabilityTesting[color=orange];
+RecoverabilityTesting -> FailureToleranceTesting[color=orange];
+RecoverabilityTesting -> FaultToleranceTesting[color=blue];
+RecoveryPerformanceTesting -> PerformancerelatedTesting[color=orange];
+RecoveryPerformanceTesting -> RecoverabilityTesting[color=orange];
+TransferRecoveryTesting -> RecoverabilityTesting[color=orange];
+}
+\end{document}

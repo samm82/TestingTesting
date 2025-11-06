@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{recoveryIdealGraph}{
+edge [penwidth=2];
+rankdir=BT;
+AvailabilityTesting [label=<Availability<br/>Testing>];
+BackupandRecoveryTesting [label=<Backup<br/>and<br/>Recovery<br/>Testing>];
+BackupRecoveryTesting [label=<Backup/Recovery<br/>Testing>];
+DisasterRecoveryTesting [label=<Disaster/Recovery<br/>Testing>];
+FailoverTesting [label=<Failover<br/>Testing>];
+FailoverRecoveryTesting [label=<Failover/Recovery<br/>Testing>];
+FailureToleranceTesting [label=<Failure<br/>Tolerance<br/>Testing>];
+FaultToleranceTesting [label=<Fault<br/>Tolerance<br/>Testing>];
+PerformanceTesting [label=<Performance<br/>Testing>];
+PerformancerelatedTesting [label=<Performance-related<br/>Testing>];
+RecoverabilityTesting [label=<Recoverability<br/>Testing>];
+RecoveryTesting [label=<Recovery<br/>Testing>];
+ReliabilityTesting [label=<Reliability<br/>Testing>];
+SurvivabilityTesting [label=<Survivability<br/>Testing>];
+UsabilityTesting [label=<Usability<br/>Testing>];
+
+
+BackupRecoveryTesting -> BackupandRecoveryTesting[dir=none,style="dashed",color="green"];
+PerformanceTesting -> PerformancerelatedTesting[dir=none];
+RecoverabilityTesting -> RecoveryTesting[dir=none];
+
+AvailabilityTesting -> ReliabilityTesting[color="green"];
+AvailabilityTesting -> DisasterRecoveryTesting;
+BackupandRecoveryTesting -> ReliabilityTesting[color="green"];
+BackupandRecoveryTesting -> PerformanceTesting[style="dashed"];
+BackupRecoveryTesting -> DisasterRecoveryTesting[color="green"];
+DisasterRecoveryTesting -> FaultToleranceTesting[color="green"];
+DisasterRecoveryTesting -> RecoverabilityTesting[color="green"];
+FailoverTesting -> FailureToleranceTesting[style="dashed",color="blue"];
+FailoverRecoveryTesting -> DisasterRecoveryTesting[color="green"];
+FaultToleranceTesting -> ReliabilityTesting[color="green"];
+FaultToleranceTesting -> AvailabilityTesting[color="green"];
+PerformanceTesting -> PerformancerelatedTesting[color="green"];
+PerformanceTesting -> PerformanceTesting;
+RecoverabilityTesting -> ReliabilityTesting[color="green"];
+RecoverabilityTesting -> UsabilityTesting[style="dashed",color="blue"];
+RecoveryTesting -> PerformancerelatedTesting[color="green"];
+RecoveryTesting -> ReliabilityTesting[color="green"];
+RecoveryTesting -> AvailabilityTesting[color="green"];
+RecoveryTesting -> FaultToleranceTesting[color="blue"];
+ReliabilityTesting -> PerformanceTesting;
+SurvivabilityTesting -> RecoverabilityTesting[color="green"];
+UsabilityTesting -> UsabilityTesting;
+}
+\end{document}

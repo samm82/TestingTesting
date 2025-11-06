@@ -1084,10 +1084,8 @@ for key, value in explicitDict.items():
 
 SYN = "syn"
 class CustomGraph:
-    PROPOSED_COLOR_TAG = "color=orange"
-
-    def __init__(self, name, terms:set, add:dict = dict(),
-                 remove:dict = dict(), synConstraint:bool = True):
+    def __init__(self, name, terms: set, add: dict = dict(),
+                 remove: dict = dict(), synConstraint: bool = True):
         self.name = name
         self.terms = terms
         self.add = add
@@ -1097,8 +1095,15 @@ class CustomGraph:
 
         # Update set of terms in case any get added
         self.terms.update(child for child in self.add.keys())
-        self.terms.update(parent for parents in self.add.values()
+        self.terms.update(parent if type(parent) == str else parent[0]
+                          for parents in self.add.values()
                           for parent in parents)
+    
+    def copy(self, suffix: str):
+        return type(self)(self.name + suffix, self.terms.copy(),
+                          deepcopy(self.add), deepcopy(self.remove),
+                          self.synConstraint)
+
 
     # This *might* not be necessary, but I'm keeping it just in case
     def _addRevSynsToRemove(self, toRemove=dict()):
@@ -1113,7 +1118,9 @@ class CustomGraph:
 
     def inherit(self, child: 'CustomGraph'):
         self.terms.update(child.terms)
-        self.add.update({chd: [par for par in pars if par in self.terms]
+        self.add.update({chd: [par for par in pars if
+                               (type(par) == str and par in self.terms) or
+                               par[0] in self.terms]
                          for chd, pars in child.add.items()
                          if chd in self.terms})
         self.remove.update(child.remove)
@@ -1183,13 +1190,18 @@ class CustomGraph:
             alreadyAdded = dict()
             for child, parents in self.add.items():
                 for parent in parents:
+                    color: Color
+                    if type(parent) == str:
+                        color = Color.ORANGE
+                    else:
+                        parent, color = parent
                     relLine = f"{formatApproach(child)} -> {formatApproach(parent)}"
                     linesAlready = [rel for rel in rels if rel.startswith(relLine)]
                     if linesAlready:
                         alreadyAdded[f"{child} -> {parent}"] = linesAlready
                         continue
                     if child in self.terms and parent in self.terms:
-                        rels.append(f"{relLine}[{self.PROPOSED_COLOR_TAG}];")
+                        rels.append(f"{relLine}[color={color.name.lower()}];")
             if alreadyAdded:
                 print("WARNING: the following lines already exist in the custom "
                       f"{self.name} graph but were attempted to be added:")
@@ -1204,7 +1216,7 @@ class CustomGraph:
             for term in self.terms:
                 termLine = f"{formatApproach(term)} [label={lineBreak(term)}"
                 if not {node for node in nodes if node.startswith(termLine)}:
-                    nodes.add(f"{termLine},{self.PROPOSED_COLOR_TAG}];")
+                    nodes.add(f"{termLine},color={Color.ORANGE.name.lower()}];")
             nodes.discard("")
 
             # Filter out nodes with no relations
@@ -1281,7 +1293,7 @@ recoveryGraph = CustomGraph(
         "Failover Testing" : ["Recoverability Testing"],
         "Recoverability Testing" : ["Availability Testing",
                                     "Failure Tolerance Testing",
-                                    "Fault Tolerance Testing"],
+                                    ("Fault Tolerance Testing", Color.BLUE)],
         "Recovery Performance Testing" : ["Performance-related Testing",
                                           "Recoverability Testing"],
         "Transfer Recovery Testing" : ["Recoverability Testing"],
@@ -1294,6 +1306,12 @@ recoveryGraph = CustomGraph(
         "Recovery Testing" : True,
     }
 )
+
+recoveryGraphIdeal = recoveryGraph.copy("Ideal")
+recoveryGraphIdeal.remove["Performance Testing"] = [
+    (SYN, "Performance-related Testing"),
+    "Performance Testing"]
+recoveryGraphIdeal.remove["Usability Testing"] = ["Usability Testing"]
 
 scalabilityGraph = CustomGraph(
     "scalability",
@@ -1333,22 +1351,19 @@ performanceGraph = CustomGraph(
                               "Performance Testing"],
         "Concurrency Testing" : ["Performance Testing"],
         "Load Testing" : ["Capacity Testing", "Performance Testing"],
-        "Performance Testing" : [(SYN, "Performance-related Testing"),
-                                 "Performance Testing"],
         "Performance Efficiency Testing" : ["Performance Testing"],
         "Reliability Testing" : ["Performance Testing"],
         "Response-Time Testing" : ["Performance Testing"],
         "Scalability Testing" : ["Elasticity Testing"],
         "Soak Testing" : True,
         "Stress Testing" : ["Performance Testing"],
-        "Usability Testing" : ["Usability Testing"],
     }
 )
 
-performanceGraph.inherit(recoveryGraph)
+performanceGraph.inherit(recoveryGraphIdeal)
 performanceGraph.inherit(scalabilityGraph)
 
 if "Example" not in csvFilename:
     for subgraph in {subsumesGraph, specBasedGraph, recoveryGraph,
-                     scalabilityGraph, performanceGraph}:
+                     recoveryGraphIdeal, scalabilityGraph, performanceGraph}:
         subgraph.buildGraph()
