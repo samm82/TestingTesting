@@ -1,7 +1,7 @@
-\section{Future Work}\label{future-work}
-
+% \section{Future Work}
+\phantomsection{}\label{future-work}
 Ideally, our work would have resulted in a complete taxonomy of software
-testing terminology based on the literature. Unfortunately, we were not able to
+testing terminology based on the literature, but we were not able to
 fully accomplish this due to time constraints. With more time, we would
 continue iterating over undefined terms (\Cref{future-undef-terms}) and
 investigate terms we \emph{expected} to find but never did
@@ -29,14 +29,12 @@ and HTML testing (see \Cref{lang-test}). We investigate the following terms
 Applying our procedure shown in \Cref{fig:recAppFlowchart} to these sources
 uncovers \the\numexpr \TotalAfter - \TotalBefore\relax\ new approaches and
 \the\numexpr \TotalAfter - \UndefAfter - \TotalBefore + \UndefBefore\relax\ new
-definitions.
-% These definitions are either for existing undefined approaches or
-% new uncovered approaches; while not every new approach is presented alongside
-% a definition, if we assume that each of these definitions is for a new approach,
-% we can deduce that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
-% (\TotalAfter - \TotalBefore)\relax\% of added test approaches are defined. This
-% indicates that this procedure leads to a 
-This higher proportion of defined terms
+definitions. These definitions are either for existing undefined approaches or
+new uncovered approaches; while not every new approach is presented alongside
+a definition, if we assume that each of these definitions is for a new approach,
+we can deduce that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
+(\TotalAfter - \TotalBefore)\relax\% of added test approaches are defined.
+This higher proportion of defined terms indicates that our procedure leads to a
 (\the\numexpr 100 - 100 * \UndefBefore / \TotalBefore\relax\% vs.~%
 \the\numexpr 100 - \undefPerc\relax\%), shown in
 \Cref{fig:undefPies}, which helps verify that our procedure constructively
@@ -46,7 +44,7 @@ give the full list of undefined test approaches in \Cref{app-undef-terms} for
 completeness.
 
 \input{assets/graphs/undefPies}
-\clearpage
+
 \subsection{Investigating Missing Test Approaches}\label{future-miss-terms}
 In addition to these undefined approaches, there are some that we do not
 uncover at all! We each have preexisting knowledge of what test approaches
@@ -111,6 +109,8 @@ appropriate category for each uncategorized approach or further investigate
 these terms to see if they are categorized by other sources. We give the
 full list of test approaches with the general category of ``Approach'' in
 \Cref{app-uncat-terms} for completeness.
+
+\newpage
 
 \subsection{Improving Relation Visualizations}\label{future-rel-vis}
 As described in \Cref{app-rel-vis}, we currently visualize the relations
