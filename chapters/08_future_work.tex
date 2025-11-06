@@ -10,7 +10,10 @@ never arose from our methodology (\Cref{future-app-data}).
 Additionally, there is much more work we could do to analyze our data on the
 software testing literature, such as improving our visualizations
 (\Cref{future-rel-vis}) and detecting (and identifying!)\ more classes of flaws
-(\Cref{future-detect-flaws}).
+(\Cref{future-detect-flaws}). ``\rqctext''~was one of our original \acfp{rq},
+but this proved to be too ambitious. While we start this process in
+\Cref{app-recs}, doing this more systematically once the previous tasks are
+finished would be the most effective way to accomplish this.
 
 \subsection{Iterating Over Undefined Approaches}\label{future-undef-terms}
 
@@ -26,14 +29,16 @@ and HTML testing (see \Cref{lang-test}). We investigate the following terms
 Applying our procedure shown in \Cref{fig:recAppFlowchart} to these sources
 uncovers \the\numexpr \TotalAfter - \TotalBefore\relax\ new approaches and
 \the\numexpr \TotalAfter - \UndefAfter - \TotalBefore + \UndefBefore\relax\ new
-definitions. These definitions are either for existing undefined approaches or
-new uncovered approaches; while not every new approach is presented alongside
-a definition, if we assume that each of these definitions is for a new approach,
-we can deduce that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
-(\TotalAfter - \TotalBefore)\relax\% of added test approaches are defined. This
-indicates that this procedure leads to a higher proportion of defined terms
+definitions.
+% These definitions are either for existing undefined approaches or
+% new uncovered approaches; while not every new approach is presented alongside
+% a definition, if we assume that each of these definitions is for a new approach,
+% we can deduce that about \the\numexpr 100 - 100 * (\UndefAfter - \UndefBefore) /
+% (\TotalAfter - \TotalBefore)\relax\% of added test approaches are defined. This
+% indicates that this procedure leads to a 
+This higher proportion of defined terms
 (\the\numexpr 100 - 100 * \UndefBefore / \TotalBefore\relax\% vs.~%
-\the\numexpr 100 - \undefPerc\relax\%), as shown in
+\the\numexpr 100 - \undefPerc\relax\%), shown in
 \Cref{fig:undefPies}, which helps verify that our procedure constructively
 uncovers \emph{and} defines new terminology. With repeated iterations, this
 ratio would approach 100\%, resulting in a (plausibly) complete taxonomy. We
