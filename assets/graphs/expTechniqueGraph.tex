@@ -100,11 +100,9 @@ VolumeTesting [label=<Volume<br/>Testing>];
 Walkthroughs [label=<Walkthroughs>];
 WeakMutationTesting [label=<Weak<br/>Mutation<br/>Testing>];
 
-BranchConditionCombinationTesting -> DecisionTesting[dir=none,color="blue"];
 ConditionTesting [label=<Condition<br/>Testing>,style="dotted"];
 BranchConditionCombinationTesting -> ConditionTesting[dir=none,color="maroon"];
 BranchConditionTesting -> ConditionTesting[dir=none,color="blue"];
-DecisionTesting -> ConditionTesting[dir=none,color="blue"];
 ExhaustiveTesting [label=<Exhaustive<br/>Testing>,style="dotted"];
 FunctionalTesting -> SpecificationbasedTesting[dir=none,color="green"];
 CorrectnessTesting [label=<Correctness<br/>Testing>,style="dotted"];

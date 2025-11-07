@@ -31,6 +31,7 @@ FollowonOperationalTesting [label=<Follow-on<br/>Operational<br/>Testing>,color=
 HumanintheLoopTesting [label=<Human-in-the-Loop<br/>Testing>,color=grey];
 InitialOperationalTesting [label=<Initial<br/>Operational<br/>Testing>,color=grey];
 InputDataTesting [label=<Input<br/>Data<br/>Testing>];
+CodeInspections [label=<(Code)<br/>Inspections>];
 InstallationTesting [label=<Installation<br/>Testing>];
 IntegratedSystemTesting [label=<Integrated<br/>System<br/>Testing>,color=grey];
 IntegrationTesting [label=<Integration<br/>Testing>];
@@ -59,6 +60,7 @@ SoftwareQualificationTesting [label=<Software<br/>Qualification<br/>Testing>,col
 SoftwareintheLoopTesting [label=<Software-in-the-Loop<br/>Testing>,color=grey];
 SoSIntegrationTesting [label=<SoS<br/>Integration<br/>Testing>,color=grey];
 SoSTesting [label=<SoS<br/>Testing>,color=grey];
+StaticTesting [label=<Static<br/>Testing>];
 SubsystemTesting [label=<Subsystem<br/>Testing>,color=grey];
 SystemIntegrationTesting [label=<System<br/>Integration<br/>Testing>];
 SystemQualificationTesting [label=<System<br/>Qualification<br/>Testing>,color=grey];
@@ -103,6 +105,7 @@ FollowonOperationalTesting -> OperationalTesting[color="blue"];
 HumanintheLoopTesting -> SystemTesting[color="blue"];
 InitialOperationalTesting -> OperationalTesting[color="blue"];
 InputDataTesting -> MLModelTesting[color="grey"];
+CodeInspections -> StaticTesting[color="green"];
 InstallationTesting -> OperationalTesting[style="dashed",color="maroon"];
 InstallationTesting -> SystemTesting[style="dashed"];
 IntegratedSystemTesting -> DataCenterTesting[color="blue"];
