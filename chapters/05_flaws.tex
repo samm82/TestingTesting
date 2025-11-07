@@ -418,14 +418,14 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
 \ifnotpaper
     \subsection{Operational (Acceptance) Testing}\label{oat-flaw}
     \paragraph{\texttt{(CONTRA, LABELS)}}
-    % Flaw count (CONTRA, LABELS): {IEEE2022} ISTQB | {SWEBOK2024} {ISO_IEC2018} {IEEE2017} {SWEBOK2014}
+    % Flaw count (CONTRA, LABELS): {IEEE2022} ISTQB | {ISO_IEC2018} {IEEE2017} {SWEBOK2025} {SWEBOK2014}
     There are two names that the literature gives to this test approach:
     \begin{itemize}
         \item \emph{\acf{operat}} (\citealp[p.~22]{IEEE2022};
               \citealpISTQB{}) and
         \item \emph{\acf{ot}} (\citealp{ISO_IEC2018};
               \citealp[p.~303]{IEEE2017}; \citealp[p.~6\=/9, in the context of
-                  software engineering operations]{SWEBOK2024};
+                  software engineering operations]{SWEBOK2025};
               \citealp[pp.~4\=/6, 4\=/9]{SWEBOK2014}).
     \end{itemize}
 
@@ -443,10 +443,8 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
 
 ``Recovery testing'' is ``testing \dots\ aimed at verifying
 software restart capabilities after a system crash or other disaster''
-\citep[p.~5\=/9]{SWEBOK2024} including ``recover[ing] the data directly affected
-and re-establish[ing] the desired state of the system'' \ifnotpaper
-    (\citealp{ISO_IEC2023a}; similar in \citealp[p.~7\=/10]{SWEBOK2024})
-\else \cite{ISO_IEC2023a} (similar in \cite[p.~7\=/10]{SWEBOK2024}) \fi
+\citep[p.~5\=/9]{SWEBOK2025} including ``recover[ing] the data directly affected
+and re-establish[ing] the desired state of the system'' \citep{ISO_IEC2023a}
 so that the system ``can perform required functions'' \citep[p.~370]{IEEE2017}.
 However, the literature also describes similar test approaches with vague or
 non-existent distinctions between them. We describe these approaches and their
@@ -464,8 +462,8 @@ flaws here\ifnotpaper\ and present the relations between them in
 \begin{itemize}
     \item \emph{Recoverability testing} evaluates ``how well a system or
           software can recover data during an interruption or failure''
-          \ifnotpaper (\citealp[p.~7\=/10]{SWEBOK2024}; \else
-              \cite[p.~7\=/10]{SWEBOK2024} (\fi similar in \citealp{ISO_IEC2023a})
+          \ifnotpaper (\citealp[p.~7\=/10]{SWEBOK2025}; \else
+              \cite[p.~7\=/10]{SWEBOK2025} (\fi similar in \citealp{ISO_IEC2023a})
           and ``re-establish the desired state of the system''
           \citeyearpar{ISO_IEC2023a}. \refHelper \citet[p.~47]{Kam2008}
           gives this as a synonym for ``recovery testing''.
@@ -517,11 +515,12 @@ flaws here\ifnotpaper\ and present the relations between them in
                     This is also \subDRT*{}
               \item \texttt{(AMBI, PARS)}
                     % Flaw count (AMBI, PARS): {IEEE2021c}
-                    % Assertion: {SWEBOK2024} ISTQB
+                    % Assertion: {SWEBOK2025} ISTQB
                     While not explicitly related to recovery, \emph{failover
                         testing} ``validates the SUT's ability to manage heavy
-                    loads or unexpected failure to continue typical operations''
-                    \citep[p.~5\=/9]{SWEBOK2024} by entering a ``backup
+                    loads or unexpected failure to continue typical operations
+                    \dots{} by allocating extra resources''
+                    \citep[p.~5\=/9]{SWEBOK2025} or entering a ``backup
                     operational mode in which [these responsibilities] \dots\
                     are assumed by a secondary system'' \citepISTQB{}. Its name
                     implies that it is a child of ``failover/recovery testing''
