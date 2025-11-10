@@ -82,6 +82,34 @@ following example:\qtodo{Is this clear enough?}
 \begin{displayquote}
     \texttt{\% Flaw count: \{X\} \{Y\} | \{Z\} implied by \{X\}}
 \end{displayquote}\phantomsection{}\label{less-cred-assert}%
+Note that we only count subjective flaws if there is not an equivalent
+objective flaw, as we do when visualizing relations (as described in
+\Cref{visExplicit}). The following comment line\utd{} from
+\flawref{c-use-def} is an example of a flaw that is both objective and
+subjective:
+\begin{displayquote}
+    \texttt{\% Flaw count (CONTRA, DEFS): \{IEEE2021c\} \{IEEE2017\} |
+        \displayNL \{vanVliet2000\} implied by \{IEEE2021c\}}
+\end{displayquote}
+This indicates that the following flaws are present:
+\begin{itemize}
+    \item an objective inconsistency between a textbook and a standard,
+    \item a subjective flaw within a single document, and
+    \item a subjective inconsistency between documents with the same set of
+          authors (\begin{NoHyper}\citeauthor{IEEE2022}\end{NoHyper}; see
+          \Cref{fig:ieeeSourceSets}).
+\end{itemize}
+This third flaw only affects our more nuanced breakdown of the sources of flaws
+in \Cref{fig:flawBars}. % The rest increment their corresponding
+% count in \Cref{fig:flawBars,tab:flawMnfsts,tab:flawDmns} by only one.
+Note that we do not double count the first flaw. We likewise do not double
+count flaws that reappear when comparing between pairs of groups; for example,
+we would only count the inconsistency between \texttt{X} and \texttt{Z}
+\emph{once} in the following flaw comment:
+\begin{displayquote}
+    \texttt{\% Flaw count: \{X\} | \{X\} \{Y\} | \{Z\}}
+\end{displayquote}
+
 Occasionally, we assert that a source from a less credible tier is more
 correct than a source from a more credible tier\thesisissuenote{184}.
 % For example, \tolTestFlaw*{} This flaw is supported by these additional
