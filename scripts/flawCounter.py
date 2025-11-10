@@ -70,7 +70,7 @@ def getSrcCat(s, rel: bool = False) -> SrcCat:
     if any(metastd in s for metastd in
         {"Washizaki", "Bourque and Fairley", "SWEBOK",
             "Hamburg and Mogyorodi", "ISTQB", "PMBOK",
-            "Firesmith", "Doğan et al", "DoğanEtAl"}):
+            "Firesmith", "Doğan et al", "DoğanEtAl", "Lyu"}):
         return SrcCat.META
     if any(textbook in s for textbook in
         {"van Vliet", "vanVliet", "Patton", "Peters and Pedrycz",
