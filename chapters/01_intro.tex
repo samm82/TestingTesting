@@ -150,13 +150,16 @@ the following four to be most prevalent:
           \ifnotpaper (\citealp[p.~96]{IEEE2010}; \citealp[p.~536]{PMBOK2013})\else
               \cite[p.~96]{IEEE2010}, \cite[p.~536]{PMBOK2013}\fi.
 \end{itemize}
-This distinction is sometimes important, but not always
-\citep[p.~4\=/3]{SWEBOK2014}\todo{OG Lyu, 1996}. The term ``defect'' is
-``overloaded with too many meanings, as engineers and others use the word to
-refer to all different types of anomalies'' \ifnotpaper
-    (\citealp[p.~12\=/3]{SWEBOK2025}; similar in \citealp[p.~124]{IEEE2017};
-    \citeyear[p.~96]{IEEE2010}\todo{OG IEEE, 2024})\else \cite[p.~12\=/3]{SWEBOK2025}
-    (similar in \cite[p.~96]{IEEE2010},\cite[p.~124]{IEEE2017})\fi. Software testers
+These distinctions are often important, but ``defect'' is often used as a
+generic term to refer to either a fault (cause) or a failure (effect)''
+\ifnotpaper (\citealp[p.~124]{IEEE2017}\todo{OG IEEE 982\-/2024};
+    \citeyear[p.~96]{IEEE2010}\todo{OG IEEE 982-2024};
+    \citealp[p.~13]{Lyu1996}) \else \cite[p.~96]{IEEE2010}, \cite[p.~124]{IEEE2017},
+    \cite[p.~13]{Lyu1996} \fi ``when the distinction between fault and failure
+is not critical'' \citetext{p.~13}. % \citealp[p.~13]{Lyu1996}.
+This makes the term ``defect'' ``overloaded with too many meanings, as
+engineers and others use the word to refer to all different types of
+anomalies'' \citep[p.~12\=/3]{SWEBOK2025}. Software testers
 may even choose to ignore these nuances completely! \refHelper \bugPattonFlaw{}
 
 \ifnotpaper
