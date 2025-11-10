@@ -37,17 +37,22 @@ sources.add("ISTQB2024")
 sources = {s for s in sources if not s.startswith(tuple(INTERNAL_REFS))}
 
 # Based on ChatGPT
-def sort_key(s: str, cat: SrcCat):
+def sort_key(s: str, cat: SrcCat) -> tuple:
     match = re.search(r'(\d+)', s)
     year = -int(match.group())
     end = s[match.end():]
     start = s[:match.start()]
     if cat == SrcCat.STD:
         # Second IEEE for sources without ISO/IEC
-        start = ["IEEE", "IEEE", "ISO_IEC", "ISO"].index(start)
+        start = ["IEEE", "ISO_IEC", "ISO", "IEEE"].index(start)
         if not start and str(-year) in ONLY_IEEE:
-            start = 1
-    return (start, year, end)
+            start = 3
+        return (start, year, end)
+    authCount = 0
+    for i, multiAuth in enumerate(["And", "EtAl"], start=1):
+        if multiAuth in s:
+            authCount = -i
+    return (year, authCount, start, end)
 
 unknownSpaces = {s for s in sources if " " in s and s not in
                 # List of sources with spaces that can be parsed by just removing them
