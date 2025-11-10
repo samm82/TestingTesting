@@ -30,6 +30,8 @@ for filename in TEX_FILES:
 
 # Omit private communication as a source; used for notes
 sources.discard("SmithAndCarette2023")
+# Omit inaccessible source mentioned for traceability flaw
+sources.discard("MusaEtAl1987")
 # Reintroduce ISTQB because of how it is formatted for citations
 sources.discard("")
 sources.add("ISTQB2024")
