@@ -187,8 +187,8 @@ labels\ifnotpaper\ as listed in \Cref{redun-full}\fi.
 The following sections present flaws that we detect automatically \ifnotpaper
     (see \Cref{auto-flaw-detect}) \fi grouped by \emph{what} information
 is flawed as presented in \Cref{dmn-def}. We also provide more detailed
-information on specific areas of these domains that may require further
-investigation. The domains we focus on here are test approach categories
+information for areas that may benefit from further
+analysis. The domains we focus on here are test approach categories
 (\Cref{cats}), synonym relations (\Cref{syns}), and parent-child relations
 (\Cref{pars})%\ifnotpaper, and definitions (\Cref{defs})\fi
 .
@@ -204,26 +204,27 @@ investigation. The domains we focus on here are test approach categories
 While the IEEE categorization of test approaches described in
 \Cref{tab:ieeeCats} is useful, it is not without its faults. One issue,
 which is not inherent to the categorization itself, is the fact that it is not
-used consistently\ifnotpaper\ (see \Cref{tab:otherCats})\fi. The most
-blatant example of this is that \ifnotpaper \else \citeauthor{IEEE2017} \fi
-\citet[p.~286]{IEEE2017} describe mutation testing as a
-methodology, even though this is not one of the categories \emph{they} created!
+used consistently\ifnotpaper\ (see \Cref{tab:otherCats})\fi.
 % Flaw count (CONTRA, CATS): {IEEE2017} | {IEEE2022}
-Additionally, the boundaries between approaches within a category may
-be unclear: ``although each technique is defined independently of all others,
-in practice [sic] some can be used in combination with other techniques''
-\citep[p.~8]{IEEE2021c}. For example, ``the test coverage items derived by
-applying equivalence partitioning can be used to identify the input parameters
-of test cases derived for scenario testing'' \citetext{p.~8}. Even the categories
-themselves are not consistently defined, and some approaches are categorized
-differently by different sources; we track these differences so we can analyze
-them more systematically. % \thesisissuetodo{21}
+The most blatant example of this is that \ifnotpaper \else \citeauthor{IEEE2017}
+\fi \citet[p.~286]{IEEE2017} describe mutation testing as a
+methodology, even though this is not one of the categories \emph{they} created!
+% % Commented out for clarity; see #257
+% Additionally, the boundaries between approaches within a category may
+% be unclear: ``although each technique is defined independently of all others,
+% in practice [sic] some can be used in combination with other techniques''
+% \citep[p.~8]{IEEE2021c}. For example, ``the test coverage items derived by
+% applying equivalence partitioning can be used to identify the input parameters
+% of test cases derived for scenario testing'' \citetext{p.~8}.
+These categories are not consistently defined so some approaches are
+categorized differently by different sources; we track these differences so we
+can analyze them more systematically. % \thesisissuetodo{21}
 
 \phantomsection{}\label{multiCats}
 \ifnotpaper
     % \clearpage
     \begin{wraptable}{r}{6cm}
-        \vspace{-0.9cm}
+        \vspace{-1.3cm}
         \input{build/multiCatTable}
         \vspace{-1cm}
     \end{wraptable}
@@ -234,8 +235,9 @@ In particular, \multiCatIntro{}. We identify \multiCatCount{} such cases
 \Cref{tab:multiCats}\ifnotpaper\ for completeness\fi.
 Most of these flaws (\multiCatMaxCount{}) involve the category of ``test
 \multiCatMax{}'', which may simply be because authors use
-this term more generally (where we would use the term
-``test approach'').\phantomsection{}\label{cats-intrans} A more
+this term more generally to mean ``test approach''.%
+% (where we would use the term ``test approach'').
+\phantomsection{}\label{cats-intrans} A more
 specific reason for this is how the line between ``test technique'' and
 ``test practice'' can blur when these categories are \emph{not}
 transitive. For example, ``some test practices, such as exploratory testing or
