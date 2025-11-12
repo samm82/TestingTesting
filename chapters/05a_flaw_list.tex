@@ -42,13 +42,39 @@
           \citetISTQB{} seem to give integration testing as a parent of component
           integration testing in the latter's definition, but as a child in
           their graph of static and dynamic testing.
-    \item % Flaw count (WRONG, LABELS): {IEEE2017} {IEEE2010} | {IEEE2021c} {SWEBOK2025} {SWEBOK2014}
-          % Flaw count (WRONG, LABELS): {SWEBOK2025} | {SWEBOK2025} {SWEBOK2014}
-          % Flaw count (CONTRA, DEFS): {IEEE2017} {IEEE2010} | {IEEE2021c} | {IEEE2017} | {SWEBOK2025} {SWEBOK2014}
-          % Flaw count (CONTRA, DEFS): {SWEBOK2025} | {SWEBOK2025} {SWEBOK2014}
-          % Assertion: {vanVliet2000}
+    \item % Flaw count (WRONG, LABELS): {IEEE2021c} | {IEEE2022} {IEEE2021c} {IEEE2013} {SWEBOK2025} {Firesmith2015} {Patton2006}
+          % Flaw count (WRONG, LABELS): {IEEE2017} | {IEEE2022} {IEEE2021c} {IEEE2013} {SWEBOK2025} {Firesmith2015} {Patton2006}
+          % Flaw count (WRONG, LABELS): {SWEBOK2014} {SWEBOK2025} | {IEEE2022} {IEEE2021c} {IEEE2013} {SWEBOK2025} {Firesmith2015} {Patton2006}
+          % Flaw count (CONTRA, DEFS): {IEEE2021c} | {IEEE2017} | {SWEBOK2025} {SWEBOK2014}
           % Label error-guess
-          \errorGuessFlaw{}
+          Since the differences between the terms ``error'',
+          ``failure'', ``fault'', and ``defect'' are significant and meaningful
+          (see \Cref{error-fault-failure}),
+          %   \ifnotpaper (\citealp[pp.~124, 165, 178\==179]{IEEE2017};
+          %       \citeyear[pp.~96, 128, 139\==140]{IEEE2010};
+          %       \citealp[pp.~5\=/3, 12\=/3]{SWEBOK2025}\footnote{
+          %           \citet[p.~12\=/3]{SWEBOK2025} references the definitions given in
+          %           \citep[pp.~124, 165, 178\==179]{IEEE2017}; while we would usually
+          %           omit the former in favour of the original source, we include it
+          %           here as an example of a flaw within a document.};
+          %       \citealp[pp.~399\==400]{vanVliet2000})\else TODO: make macro\fi,
+          ``error guessing''---a term used by multiple sources \citep{IEEE2022,%
+              IEEE2021c,IEEE2013,SWEBOK2025,Firesmith2015,Patton2006}---should
+          either be called:
+          \begin{itemize}
+              \item ``defect guessing'' if it is based on a ``checklist of potential
+                    defects'' \citep[p.~29]{IEEE2021c},
+              \item ``failure guessing'' if it is based on ``the tester's knowledge
+                    of past failures'' \citeyearpar[p.~165]{IEEE2017}, or
+              \item ``fault guessing'' if it is a ``fault-based technique''
+                    \citep[p.~4\=/9]{SWEBOK2014} that ``anticipate[s] the most
+                    plausible faults in each \acs{sut}'' \citep[p.~5\=/13]{SWEBOK2025}.
+          \end{itemize}
+          % % This is a recommendation, and should be included later, if at all
+          %   One (or multiple) of these proposed terms may be useful in tandem with
+          %   ``error guessing'', which would focus on errors as traditionally defined
+          %   and be a subapproach of error-based testing (implied by
+          %   \citealp[p.~399]{vanVliet2000}).
     \item % Flaw count (WRONG, LABELS): {IEEE2017} {IEEE2010} | {IEEE2017} {Firesmith2015} {vanVliet2000}
           % Flaw count (WRONG, SYNS): {IEEE2017} {IEEE2010} | {IEEE2017} {vanVliet2000}
           % Assertion: {vanVliet2000}
@@ -154,14 +180,14 @@
           include availability and its inherent or external influencing
           factors, such as availability''.
     \item % Flaw count (OVER, LABELS): {IEEE2010} | {IEEE2010}
-          % Flaw count (WRONG, SYNS): implied by {IEEE2010} | implied by {IEEE2010}
-          % Assertion: {SWEBOK2025} {vanVliet2000}
+          % Flaw count (WRONG, SYNS): implied by {IEEE2024} {IEEE2010} {IEEE2017} | implied by {IEEE2010}
+          % Assertion: implied by {vanVliet2000}
           \citet[p.~128]{IEEE2010} define
           ``error'' as ``a human action that produces an incorrect result'',
           but also as ``an incorrect result'' itself. Since faults are inserted
-          when a developer makes an error % \citeyear[pp.~128, 140]{IEEE2010}
-          (pp.~128, 140; \citealp[p.~12\=/3]{SWEBOK2025};
-          \citealp[pp.~399\==400]{vanVliet2000}), this means that faults are
+          when a developer makes an error (\citealp[p.~36]{IEEE2024};
+          \citealp[pp.~128, 140]{IEEE2010}; \citealp[pp.~399\==400]{vanVliet2000};
+          implied by \citealp[p.~179]{IEEE2017}), this means that faults are
           \emph{also} ``incorrect results'', incorrectly implying that
           ``error'' and ``fault'' are synonyms.
     \item % Flaw count (OVER, LABELS): {IEEE2017} {IEEE2010} {SWEBOK2025}
@@ -383,7 +409,7 @@
     \item % Flaw count (AMBI, DEFS): {IEEE2017} {IEEE2010} {SWEBOK2025} | {SWEBOK2025}
           % Assertion: {vanVliet2000}
           While ``error'' is defined as a ``human action that produces an
-          incorrect result'' (\citealp[p.~165]{IEEE2017};
+          incorrect result'' (\citealp[p.~165]{IEEE2017}\todo{OG 2009};
           \citeyear[p.~128]{IEEE2010}; \citealp[p.~12\=/3]{SWEBOK2025}%
           \footnote{\citet[p.~12\=/3]{SWEBOK2025} references the definition
               given in \citet[p.~165]{IEEE2017}; while we would usually omit
@@ -396,16 +422,17 @@
               runtime errors, and logical errors'' \citep[p.~16\=/13, cf.
                   p.~18\=/13]{SWEBOK2025} since they seem to be in different
               domains. Does that make sense? How should I document this?}
-    \item % Flaw count (CONTRA, LABELS): {IEEE2019a} {SWEBOK2025} | {SWEBOK2025}
+    \item % Flaw count (CONTRA, LABELS): {IEEE2024} {IEEE2019a} {SWEBOK2025} {Lyu1996} | {SWEBOK2025}
           % Assertion: {vanVliet2000}
           \refHelper{} \citet[p.~1\=/1]{SWEBOK2025} defines ``defect'' as ``an
           observable difference between what the software is intended to do and
           what it does'', but this seems to instead match the definition of
           ``failure'': the inability of a system ``to perform a required
           function or \dots{} within previously specified limits'' that is
-          ``externally visible'' (\citealp[p.~7]{IEEE2019a}; similar
-          in \citealp[p.~5\=/3]{SWEBOK2025}; \citealp[p.~400]{vanVliet2000}).
-    \item % Flaw count (AMBI, LABELS): {IEEE2017} {IEEE2010} {SWEBOK2025} | {SWEBOK2025}
+          ``externally visible'' (\citealp[p.~7]{IEEE2019a}; similar in
+          \citealp[pp.~15, 37]{IEEE2024}; \citealp[p.~5\=/3]{SWEBOK2025};
+          \citealp[p.~12]{Lyu1996}; \citealp[p.~400]{vanVliet2000}).
+    \item % Flaw count (AMBI, LABELS): {IEEE2024} {IEEE2010} | {SWEBOK2025}
           % Assertion: {vanVliet2000}
           Similarly, \citet[p.~4\=/11]{SWEBOK2025} says ``\emph{fault tolerance}
           is a collection of techniques that increase software reliability by
@@ -413,12 +440,13 @@
           effects if recovery is not possible''. This should either be called
           ``\emph{error} tolerance'' or be described as ``detecting
           \emph{faults} and then recovering from them'', since ``error'' and
-          ``fault'' have distinct meanings (\citealp[pp.~165, 179]{IEEE2017};
-          \citeyear[pp.~128, 140]{IEEE2010}; \citealp[p.~12\=/3]{SWEBOK2025}%
-          \footnote{\citet[p.~12\=/3]{SWEBOK2025} references the definitions
-              given in \citep[pp.~165, 179]{IEEE2017}; while we would usually
-              omit the former in favour of the original source, we include it
-              here as an example of a flaw within a document.};
+          ``fault'' have distinct meanings (\citealp[p.~36]{IEEE2024};
+          %   \citealp[pp.~165\todo{OG 2009}, 179]{IEEE2017};
+          \citealp[pp.~128, 140]{IEEE2010}; % \citealp[p.~12\=/3]{SWEBOK2025}%
+          %   \footnote{\citet[p.~12\=/3]{SWEBOK2025} references the definitions
+          %       given in \citep[pp.~165, 179]{IEEE2017}; while we would usually
+          %       omit the former in favour of the original source, we include it
+          %       here as an example of a flaw within a document.};
           \citealp[pp.~399\==400]{vanVliet2000}). The intent of this
           term-definition pair is unclear, as the strategies given---``backing
           up and retrying, using auxiliary code and voting algorithms, and

@@ -122,42 +122,42 @@ For example, a common point of discussion in the field of software is the
 distinction between terms for when software does not work correctly. We find
 the following four to be most prevalent:
 \begin{itemize}
-    \item \textbf{Error:} ``a human action that produces an incorrect result''
-          \ifnotpaper (\citealp[p.~165]{IEEE2017}; \citeyear[p.~128]{IEEE2010};
-              \citealp[p.~399]{vanVliet2000})\else \cite[p.~128]{IEEE2010},
-              \cite[p.~165]{IEEE2017}, \cite[p.~399]{vanVliet2000}\fi.
+    \item \textbf{Error:} a ``human action that produces an incorrect result''
+          \ifnotpaper (\citealp[p.~165]{IEEE2017}\todo{OG 2009}; \citeyear[p.~128]{IEEE2010};
+              \citealp[p.~399]{vanVliet2000}; similar in \citealp[p.~36]{IEEE2024})\else
+              \cite[p.~128]{IEEE2010}, \cite[p.~165]{IEEE2017},
+              \cite[p.~399]{vanVliet2000} (similar in \citealp[p.~36]{IEEE2024})\fi.
           %   ``the difference between a computed, observed, or measured value or
           %   condition and the true, specified, or theoretically correct value or
           %   condition'' (IEEE, 2010, p. 128;
           %   similar in Washizaki, 2024, pp. 17-18 to 17-19, 18-7 to 18-8)
     \item \textbf{Fault:} ``an incorrect step, process, or data definition in a
-          computer program'' \citep[p.~140]{IEEE2010} inserted when a developer
-          makes an error \ifnotpaper (pp.~128, 140; \citealp[p.~12\=/3]{SWEBOK2025};
-              \citealp[pp.~399\==400]{vanVliet2000})\else
-              \citetext{pp.~128, 140}, \cite[pp.~399\==400]{vanVliet2000},
-              \cite[p.~12\=/3]{SWEBOK2025}\fi.
+          computer program'' \ifnotpaper (\citealp[p.~140]{IEEE2010}; similar
+              in \citealp[p.~36]{IEEE2024}) \else \cite[p.~140]{IEEE2010}
+              (similar in \citealp[p.~36]{IEEE2024}) \fi inserted when a
+          developer makes an error \ifnotpaper (p.~36; \citealp[pp.~128, 140]{IEEE2010};
+              \citealp[pp.~399\==400]{vanVliet2000})\else \cite[pp.~128, 140]{IEEE2010},
+              \cite[pp.~399\==400]{vanVliet2000}, \cite[p.~36]{IEEE2024}\fi.
     \item \textbf{Failure:} the inability of a system ``to perform a required
           function or \dots{} within previously specified limits'' that is
           ``externally visible'' \ifnotpaper (\citealp[p.~7]{IEEE2019a}; similar
-              in \citealp[p.~5\=/3]{SWEBOK2025}; \citealp[p.~400]{vanVliet2000})
+              in \citealp[pp.~15, 37]{IEEE2024}; \citealp[p.~5\=/3]{SWEBOK2025};
+              \citealp[p.~12]{Lyu1996}; \citealp[p.~400]{vanVliet2000})
           \else \cite[p.~7]{IEEE2019a} (similar in \cite[p.~400]{vanVliet2000},
-              \cite[p.~5\=/3]{SWEBOK2025}) \fi and caused by a fault \ifnotpaper
-              (\citealp[p.~12\=/3]{SWEBOK2025}; \citealp[p.~400]{vanVliet2000})%
-          \else \cite[p.~400]{vanVliet2000}, \cite[p.~12\=/3]{SWEBOK2025}\fi.
+              \cite[pp.~15, 37]{IEEE2024}, \cite[p.~5\=/3]{SWEBOK2025},
+              \cite[p.~12]{Lyu1996}) \fi and caused by a fault \ifnotpaper
+              (\citealp[p.~12\=/3]{SWEBOK2025}; \citealp[p.~13]{Lyu1996};
+              \citealp[p.~400]{vanVliet2000})\else \cite[p.~400]{vanVliet2000},
+              \cite[p.~12\=/3]{SWEBOK2025}, \cite[p.~13]{Lyu1996}\fi.
     \item \textbf{Defect:} ``an imperfection or deficiency in a project
           component where that component does not meet its requirements or
           specifications and needs to be either repaired or replaced''
           \ifnotpaper (\citealp[p.~96]{IEEE2010}; \citealp[p.~536]{PMBOK2013})\else
               \cite[p.~96]{IEEE2010}, \cite[p.~536]{PMBOK2013}\fi.
 \end{itemize}
-These distinctions are often important, but ``defect'' is often used as a
-generic term to refer to either a fault (cause) or a failure (effect)''
-\ifnotpaper (\citealp[p.~124]{IEEE2017}\todo{OG IEEE 982\-/2024};
-    \citeyear[p.~96]{IEEE2010}\todo{OG IEEE 982-2024};
-    \citealp[p.~13]{Lyu1996}) \else \cite[p.~96]{IEEE2010}, \cite[p.~124]{IEEE2017},
-    \cite[p.~13]{Lyu1996} \fi ``when the distinction between fault and failure
-is not critical'' \citetext{p.~13}. % \citealp[p.~13]{Lyu1996}.
-This makes the term ``defect'' ``overloaded with too many meanings, as
+These distinctions are often important, but the term ``defect'' ``may refer to
+any or all of error, fault, or failure'' \citep[p.~36]{IEEE2024}, making the
+term ``overloaded with too many meanings, as
 engineers and others use the word to refer to all different types of
 anomalies'' \citep[p.~12\=/3]{SWEBOK2025}. Software testers
 may even choose to ignore these nuances completely! \refHelper \bugPattonFlaw{}

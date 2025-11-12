@@ -199,30 +199,6 @@
     they seem to refer to testing the acoustic tolerance of rats
     \citep{HolleyEtAl1996} or the acceleration tolerance of \accelTolTest{},
     which which are not relevant to software testing.}
-\def\errorGuessFlaw{Since the differences between the terms ``error'',
-    ``failure'', ``fault'', and ``defect'' are significant and meaningful
-    \ifnotpaper (\citealp[pp.~124, 165, 178\==179]{IEEE2017};
-        \citeyear[pp.~96, 128, 139\==140]{IEEE2010};
-        \citealp[pp.~5\=/3, 12\=/3]{SWEBOK2025}\footnote{
-            \citet[p.~12\=/3]{SWEBOK2025} references the definitions given in
-            \citep[pp.~124, 165, 178\==179]{IEEE2017}; while we would usually
-            omit the former in favour of the original source, we include it
-            here as an example of a flaw within a document.};
-        \citealp[pp.~399\==400]{vanVliet2000})\else TODO: make macro\fi,
-    error guessing should either be called:
-    \begin{itemize}
-        \item ``defect guessing'' if it is based on a ``checklist of potential
-              defects'' \citep[p.~29]{IEEE2021c},
-        \item ``failure guessing'' if it is based on ``the tester's knowledge
-              of past failures'' \citeyearpar[p.~165]{IEEE2017}, or
-        \item ``fault guessing'' if it is a ``fault-based technique''
-              \citep[p.~4\=/9]{SWEBOK2014} that ``anticipate[s] the most
-              plausible faults in each \acs{sut}'' \citep[p.~5\=/13]{SWEBOK2025}.
-    \end{itemize}
-    One (or multiple) of these proposed terms may be useful in tandem with
-    ``error guessing'', which would focus on errors as traditionally defined
-    and be a subapproach of error-based testing (implied by
-    \citealp[p.~399]{vanVliet2000}).}
 \NewDocumentCommand{\perfSecParFlaw}{s}{%
     \IfBooleanTF#1{p}{P}erformance testing and security testing are given as subtypes of
     reliability testing by \citet{ISO_IEC2023a}, but these are all listed
