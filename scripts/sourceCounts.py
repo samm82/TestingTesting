@@ -46,9 +46,9 @@ def sort_key(s: str, cat: SrcCat) -> tuple:
     start = s[:match.start()]
     if cat == SrcCat.STD:
         # Second IEEE for sources without ISO/IEC
-        start = ["IEEE", "ISO_IEC", "ISO", "IEEE"].index(start)
+        start = ["IEEE", "IEEE", "ISO_IEC", "ISO"].index(start)
         if not start and str(-year) in ONLY_IEEE:
-            start = 3
+            start = 1
         return (start, year, end)
     authCount = 0
     for i, multiAuth in enumerate(["And", "EtAl"], start=1):
