@@ -76,19 +76,16 @@ in \Cref{flawMnfsts} based on their manifestation% (defined in \Cref{mnfst-def})
 in \Cref{flawDmns}. \ifnotpaper We list \emph{all} these flaws in
     \Cref{flaws-full} to balance completeness and brevity and denote implicit
     relations with the phrase ``implied by'' in \Cref{tab:parSyns,tab:multiCats,%
-        tab:infMultiCats} as described in \Cref{explicitness}. \fi%
-\phantomsection{}\label{flawSubsets}Moreover, certain ``subsets'' of
-testing contain many interconnected flaws, which we present in subsections as a
-``third view'' to keep related information together. These subsets include
-\ifnotpaper operational (acceptance) testing (\Cref{oat-flaw}), \fi
-recovery testing (\Cref{recov-flaw}), scalability testing (\Cref{scal-flaw}),
-and compatibility testing (\Cref{compat-flaw}). The counts of flaws given in
+        tab:infMultiCats} as described in \Cref{explicitness}. \fi
+Moreover, certain ``subsets'' of testing contain many interconnected flaws
+which we present in \Cref{flawSubsets} as a ``third view'' to keep related
+information together. The counts of flaws given in
 \Cref{tab:flawMnfsts,tab:flawDmns} are essentially the sums of the flaws we
 describe in the following subsections\ifnotpaper. Finally, we
 infer some flaws as described in \Cref{infers}, which do not contribute to
 any counts because they are subjective; we list these in \Cref{infer-flaws}
-for completeness\else, although we omit the more trivial ``subsets'' from this
-\docType{} for brevity\fi.
+for completeness\else, although we omit the more trivial subsets from
+\Cref{flawSubsets} for brevity\fi.
 
 Due to time constraints, this collection of flaws is still not
 comprehensive! While we apply our heuristics for identifying relevant terms
@@ -418,8 +415,19 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
 %     \end{itemize}
 % \fi
 
+\subsection{Flaws by Subset}\label{flawSubsets}
+
+Some ``subsets'' of the software testing literature contain interconnected
+flaws. We describe them here, along with relevant data (e.g., definitions) that
+are not necessarily flawed. We use the key-pairs for each flaw (as described in
+\Cref{flaw-def}) to denote the actual flaws in these subsets; for example,
+\texttt{(CONTRA, SYNS)} denotes a contradictory synonym. We highlight the
+subsets of \ifnotpaper operational (acceptance) testing (\Cref{oat-flaw}), \fi
+recovery testing (\Cref{recov-flaw}), scalability testing (\Cref{scal-flaw}),
+and compatibility testing (\Cref{compat-flaw}).
+
 \ifnotpaper
-    \subsection{Operational (Acceptance) Testing}\label{oat-flaw}
+    \subsubsection{Operational (Acceptance) Testing}\label{oat-flaw}
     \paragraph{\texttt{(CONTRA, LABELS)}}
     % Flaw count (CONTRA, LABELS): {IEEE2022} ISTQB | {ISO_IEC2018} {IEEE2017} {SWEBOK2025} {SWEBOK2014}
     There are two names that the literature gives to this test approach:
@@ -442,7 +450,7 @@ requires ``all combinations of input values \emph{and} preconditions \dots{}
     evaluate \ifnotpaper his \else its \fi distinction.
 \fi
 
-\subsection{Recovery Testing}\label{recov-flaw}
+\subsubsection{Recovery Testing}\label{recov-flaw}
 
 ``Recovery testing'' is ``testing \dots\ aimed at verifying
 software restart capabilities after a system crash or other disaster''
@@ -543,7 +551,7 @@ flaws here\ifnotpaper\ and present the relations between them in
           % Flaw count (AMBI, SYNS): {Gerrard2000a}
 \end{itemize}
 
-\subsection{Scalability Testing}\label{scal-flaw}
+\subsubsection{Scalability Testing}\label{scal-flaw}
 
 \paragraph{\texttt{(CONTRA, SYNS)}}
 
@@ -563,8 +571,7 @@ modification of the system as part of ``scalability'' but
 of a product to handle growing or shrinking workloads or to adapt its capacity
 to handle variability'', implying that this is done by the system itself.
 
-% \subsection{Performance Testing}
-% \label{perf-test-ambiguity}
+% \subsubsection{Performance Testing}\label{perf-test-ambiguity}
 
 % Similarly, ``performance'' and ``performance efficiency'' are both given as
 % software qualities by \ifnotpaper\citeauthor{IEEE2017}\else
@@ -585,7 +592,7 @@ to handle variability'', implying that this is done by the system itself.
 % difference of ``relative to the amount of resources used'' or ``be efficient in
 % the use of resources'' between the two is meaningful.
 
-\subsection{Compatibility Testing}\label{compat-flaw}
+\subsubsection{Compatibility Testing}\label{compat-flaw}
 
 \paragraph{\texttt{(OVER, DEFS)}}
 % Flaw count (OVER, DEFS): {IEEE2022} | {IEEE2017} ISTQB {ISO_IEC2023a}
