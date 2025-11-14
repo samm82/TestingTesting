@@ -732,13 +732,18 @@
           (\citealp[p.~5\=/15]{SWEBOK2025}; similar in
           \citealp[pp.~428\==429]{vanVliet2000}) which is not a requirement of
           back-to-back testing.
-    \item % Flaw count (WRONG, DEFS): ISTQB | {Kam2008}
-          \citet[p.~46]{Kam2008}\todo{OG Beizer} says that the goal
-          of negative testing is ``showing that a component or system does not
-          work'' which is not true; if robustness is an important quality for
-          the system, then testing the system ``in a way for which it was not
-          intended to be used'' \citepISTQB{} (i.e., negative testing) is one
-          way to help test this!
+    \item % Flaw count (WRONG, DEFS): {IEEE2021c} ISTQB {Patton2006} | {Kam2008}
+          ``Negative testing'' is defined as ``testing a component or system in
+          a way for which it was not intended to be used'' (\citealpISTQB{};
+          similar in \citealp[p.~84\==87]{Patton2006}), such as for functionality
+          ``not included in the specification'' or ``inputs \dots{} that should
+          either be ignored \dots{} or cause \dots{} an error message''
+          (\citealp[p.~11]{IEEE2021c}; similar in \citealp[p.~84\==87]{Patton2006}).
+          However, \citet[p.~46]{Kam2008}\todo{OG Beizer} says that it is
+          ``aimed at showing that a component or system does not work'' which
+          misrepresents this approach: yes, it often involves ``testing with
+          invalid input values or exceptions'', but these are used to see how a
+          component or system handles them, not to prove that it cannot!
     \item % Flaw count (CONTRA, CATS): {SWEBOK2025} | {Kam2008}
           Although ad hoc testing is classified as a ``technique''
           \citep[p.~5\=/14]{SWEBOK2025}, it is one in which ``no recognized test
