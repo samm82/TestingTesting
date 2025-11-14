@@ -628,6 +628,7 @@
           white-box testing is performed'', \citet[pp.~418\==419]{vanVliet2000}
           gives correctness proofs as another example.
     \item % Flaw count (CONTRA, LABELS): {IEEE2021c} {IEEE2017} {PetersAndPedrycz2000} {Reid1996} | {vanVliet2000}
+          % Label data-use-caps
           % TODO: SUPP LABELS?
           Different capitalizations of the abbreviations of ``computation data
           use'' and ``predicate data use'' are used: the lowercase ``\acs{c-use}''
@@ -678,32 +679,12 @@
           not specify this caveat.
     \item % Flaw count (WRONG, PARS): {IEEE2021c} {IEEE2017} {vanVliet2000} | implied by {PetersAndPedrycz2000}
           \citet[Fig.~12.31]{PetersAndPedrycz2000} \ifnotpaper imply \else
-              implies \fi that decision coverage is a child of both \acs{c-use}
-          coverage \emph{and} \acs{p-use} coverage; these terms are
-          defined as follows:
-          \begin{itemize}
-              \item \acf{p-use}: a ``data use associated with the decision
-                    outcome of the predicate portion of a decision statement''
-                    (\citealp[p.~5]{IEEE2021c}; \citeyear[p.~332]{IEEE2017};
-                    similar in \citeyear[p.~27]{IEEE2021c})%; e.g., the use of a
-                    % variable in a conditional \citep[p.~424]{vanVliet2000}
-                    % like ``a while-loop or if-then-else'' \citep[p.~27]{IEEE2021c}
-                    .
-              \item \acf{c-use}: a ``use of the value of a variable in any
-                    type of statement'' (\citeyear[p.~2]{IEEE2021c};
-                    \citeyear[p.~83]{IEEE2017}), ``as an input to the
-                    computation of the definition of any variable or of an
-                    output'' (\citeyear[p.~27]{IEEE2021c}; similar in
-                    \citealp[p.~424]{vanVliet2000}), or not as a \acs{p-use}
-                    \citep[p.~424; implied by][p.~27]{IEEE2021c}%; e.g., the
-                    % use of a variable in a computation or I/O statement
-                    % \citep[p.~424]{vanVliet2000}
-                    .
-          \end{itemize}
-          Therefore, \citepos[Fig.~12.31]{PetersAndPedrycz2000} claim seems
-          incorrect, since decisions are the result of \acsp{p-use} and
+              implies \fi that decision coverage is a child of both \acf{c-use}%
+          \footnote{\label{cap-note}See \flawref{data-use-caps}.} coverage
+          \emph{and} \acf{p-use}\textsuperscript{\ref{cap-note}} coverage; this
+          seems incorrect, since decisions are the result of \acsp{p-use} and
           \emph{not} \acsp{c-use} (\citealp[pp.~5, 27]{IEEE2021c};
-          \citeyear[p.~332]{IEEE2017}; \citealp[p.~424]{vanVliet2000}) and
+          \citeyear[p.~332]{IEEE2017}; \citealp[p.~424]{vanVliet2000}), and
           only the \acs{p-use} relation is implied by \citet[Fig.~F.1]{IEEE2021c}.
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {SWEBOK2014} | {vanVliet2000}
           Acceptance testing is ``usually performed by the purchaser \dots{}
