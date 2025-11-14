@@ -78,7 +78,8 @@ def getSrcCat(s, rel: bool = False) -> SrcCat:
             "GerrardAndThompson", "Dennis et al", "DennisEtAl",
             "Perry", "Ammann and Offutt", "AmmannAndOffutt",
             "Fenton and Pfleeger", "FentonAndPfleeger",
-            "Kaner et al", "KanerEtAl"}):
+            "Kaner et al", "KanerEtAl", "Koomen et al",
+            "KoomenEtAl"}):
         return SrcCat.TEXT
     return SrcCat.INFER if rel and not any(
         src in s for src in ["(", ")", "\\cite"]) else SrcCat.PAPER
