@@ -268,12 +268,17 @@
           \citealp[p.~479]{PetersAndPedrycz2000})---testing that exercises
           ``control flow sub-paths from each variable definition to each
           \acs{c-use} of that definition (with no intervening definitions)''.
-    \item % Flaw count (CONTRA, CATS): {IEEE2016} | {IEEE2016}
+    \item % Flaw count (WRONG, CATS): {IEEE2016} | {IEEE2022} {IEEE2016}
           % Label manual-or-keyword
-          Since keyword-driven testing can be used for automated \emph{or}
-          manual testing \citep[pp.~4, 6]{IEEE2016}, the claim that ``test
-          cases can be either manual test cases or keyword test cases''
-          \citetext{p.~6} is incorrect.
+          Since keyword-driven testing can be used in automated \emph{or} manual
+          testing (\citealp[pp.~iii, vii, 6, 9, 29, 33, 35, 37]{IEEE2022};
+          \citeyear[pp.~3\==6]{IEEE2016}), the claims that ``test cases can be
+          either manual test cases or keyword test cases'' and ``a keyword test
+          case implements a manual test case'' \citetext{p.~6} are incorrect.
+          % Flaw count (WRONG, SYNS): implied by {IEEE2016} | {IEEE2022} {IEEE2016}
+          These statements could also be interpreted as implying that
+          ``keyword-driven testing'' is a synonym of ``automated testing'',
+          which is also incorrect.
     \item % Flaw count (AMBI, DEFS): {IEEE2016} {IEEE2017} {IEEE2012} {vanVliet2000}
           % TODO: SUPP DEFS?
           % Assertion: {WikiHaskell2023}
@@ -293,11 +298,6 @@
           may be considered a test technique.\footnote{For simplicity, this
               implied categorization as ``technique'' is omitted from
               \Cref{tab:multiCats}.}
-    \item % Flaw count (CONTRA, SYNS): implied by {IEEE2016} | {IEEE2022} {IEEE2016}
-          The claim that ``test cases can be either manual test cases or
-          keyword test cases'' \citep[p.~6]{IEEE2016} implies that ``keyword-driven
-          testing'' could be a synonym of ``automated testing'' instead of its
-          child, which seems more reasonable \citeyearpar[p.~4;][p.~35]{IEEE2022}.
 
           % STD | META
     \item % Flaw count (WRONG, CATS): {IEEE2022} {IEEE2021a} {IEEE2021c} {IEEE2017} | ISTQB
