@@ -338,7 +338,9 @@
           \tourFlaw{}
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {SWEBOK2025} | ISTQB
           % Label alpha-def
-          \alphaFlaw{}
+          \alphaFlaw{} These differences make it unclear how testers should
+          perform alpha testing, which could lead to miscommunication and
+          unmet expectations.
     \item % Flaw count (CONTRA, DEFS): {SWEBOK2025} | {IEEE2017}
           % Assertion: {JardEtAl1999}
           % Flaw count (OVER, DEFS): {SWEBOK2025} | ISTQB {Firesmith2015}
@@ -669,8 +671,10 @@
           every use (both \acs{p-use} and \acs{c-use}) of that definition (with no
           intervening definitions)'' (\citealp[p.~29]{IEEE2021c}; similar in
           \citeyear[p.~125]{IEEE2017}; \citealp[p.~5\=/13]{SWEBOK2025};
-          \citealp[p.~479]{PetersAndPedrycz2000}); however, paths containing
-          simple cycles may also be required \citep[p.~425]{vanVliet2000}.
+          \citealp[p.~479]{PetersAndPedrycz2000}). However,
+          \citet[p.~425]{vanVliet2000} says that paths containing simple cycles
+          may also be required, in which case exercising all ``loop-free
+          control flow sub-paths'' would be insufficient.
           % This was only a flaw when looking at IEEE2021c
           % \item % OUTDATED Flaw count (CONTRA, DEFS): {vanVliet2000} | implied by {Reid1996}
           %       \Citet[pp.~432\==433]{vanVliet2000} says that all-\acsp{p-use}
@@ -678,7 +682,7 @@
           %       infeasible paths, but \citet[pp.~3, 6\==7]{Reid1996} only specifies
           %       this caveat implicitly.
     \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {SWEBOK2025}
-          Similarly, \citet[pp.~432\==433]{vanVliet2000} says that
+          \Citet[pp.~432\==433]{vanVliet2000} says that
           all-\acsp{du-path} testing is only stronger than all-uses testing if
           there are infeasible paths, but \citet[p.~5\=/13]{SWEBOK2025} does
           not specify this caveat.
