@@ -204,12 +204,14 @@
     \IfBooleanTF#1{p}{P}erformance testing and security testing are subtypes of
     reliability testing \citep{ISO_IEC2023a} but \citet[p.~53]{Firesmith2015}
     lists all three separately.}
-\def\parSheetTestFlaw{``Par sheet testing'' from \citepISTQB{} seems to refer
-    to \ifnotpaper the specific example mentioned in
-        \flawref{specific-istqb-a,specific-istqb-b}
-    \else some specific example it does not cite \fi and does not seem more
-    widely applicable, since a ``PAR sheet'' is ``a list of all the symbols on
-    each reel of a slot machine'' \citep{Bluejay2024}.}
+\def\parSheetTestFlaw{\refHelper \citetISTQB{} \multiAuthHelper{define} ``par
+sheet testing'' as ``testing to determine that the game returns the correct
+mathematical results to the screen, to the players' accounts, and to the casino
+account''. This seems to refer to \ifnotpaper the specific example from
+    \flawref{specific-istqb-a,specific-istqb-b} \else some specific example it
+    does not cite \fi and could be a valid domain-specific test approach, but
+this definition does not even seem specific to PAR sheets---``list[s] of all
+the symbols on each reel of a slot machine'' \citep{Bluejay2024}---themselves!}
 \NewDocumentCommand{\redBoxFlaw}{s}{%
     \IfBooleanTF#1{t}{T}he incorrect claim that ``white-box
     testing'', ``grey-box testing'', and ``black-box testing'' are

@@ -102,6 +102,9 @@
 \setcitestyle{yysep={;}}
 \defcitealias{ISTQB}{Hamburg and Mogyorodi}
 \newcommand{\citetISTQB}{\citetalias{ISTQB} (\citeyear{ISTQB})}
+\newcommand{\citetISTQBemph}{\ifnotpaper%
+        \citetalias{ISTQB} (\citeyear{ISTQB}, emphasis added)\else
+        \citetISTQB{}\fi}
 \newcommand{\citepISTQB}{\citepalias[\citeyear{ISTQB}]{ISTQB}}
 \newcommand{\citealpISTQB}{\citetalias{ISTQB}, \citeyear{ISTQB}}
 

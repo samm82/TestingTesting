@@ -493,17 +493,26 @@
           environment'' that may support software integration testing
           \citep[p.~153]{SPICE2022}; is this a test approach or a tool
           that supports testing?
-    \item % Flaw count (WRONG, SCOPE): ISTQB
+    \item % Flaw count (WRONG, SCOPE): {IEEE2022} | ISTQB
           % Label specific-istqb-a
-          The definition of ``math testing'' given by \citetISTQB{} is
-          too specific to be useful, likely taken from an example instead of
-          a general definition: ``testing to determine the correctness of the
-          pay table implementation, the random number generator results, and
-          the return to player computations''.
+          Mathematical-based testing is a test practice based on ``the test
+          item's required behaviour, input space or output space'' when they
+          ``can be described in sufficient detail'' \citep[p.~36]{IEEE2022}.
+          However, \citetISTQB{} define ``math testing'' as ``testing to
+          determine the correctness of the pay table implementation, the random
+          number generator results, and the return to player computations''.
+          While these are all subsets of mathematical-based testing, this
+          definition is likely taken from a particular case study or test item,
+          making its scope too narrow for it to be widely useful.
     \item % Flaw count (WRONG, SCOPE): ISTQB
           % Label specific-istqb-b
-          A similar issue exists with multiplayer testing, where its
-          definition specifies ``the casino game world'' \citepISTQB{}.
+          \citetISTQBemph{} define ``multiplayer testing'' as ``testing to
+          determine if many players can simultaneously interact with the
+          \emph{casino} game world, \dots{} computer-controlled opponents, game
+          servers, and \dots{} each other based on the game design''. This
+          definition sheds light on the particular test item they use to define
+          ``math testing'' (see \flawref{specific-istqb-a}); omitting the word
+          ``casino'' would make this definition apply more widely.
     \item % Flaw count (REDUN, DEFS): ISTQB
           \citetISTQB{} define ``specification-based testing'' circularly as
           ``testing based on an analysis of the specification of the component
