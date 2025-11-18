@@ -636,23 +636,24 @@
           says that reviews are ``\emph{the} process[es] under which static
           white-box testing is performed'', \citet[pp.~418\==419]{vanVliet2000}
           gives correctness proofs as another example.
-    \item % Flaw count (CONTRA, LABELS): {IEEE2021c} {IEEE2017} {PetersAndPedrycz2000} {Reid1996} | {vanVliet2000}
+    \item % Flaw count (CONTRA, LABELS): {IEEE2021c} {IEEE2017} {PetersAndPedrycz2000} | {vanVliet2000}
+          % Assertion: {Reid1996}
           % Label data-use-caps
           % TODO: SUPP LABELS?
-          Different capitalizations of the abbreviations of ``computation data
-          use'' and ``predicate data use'' are used: the lowercase ``\acs{c-use}''
-          and ``\acs{p-use}'' (\citealp[pp.~3, 27\==29, 35\==36, 114\==155,
-              117\==118, 129]{IEEE2021c}; \citeyear[p.~124]{IEEE2017};
-          \citealp[p.~477, Tab.~12.6]{PetersAndPedrycz2000};
-          \citealp[Fig.~2]{Reid1996}) and the uppercase ``C-use'' and ``P-use''
-          \citep[pp.~424\==425]{vanVliet2000}.
-    \item % Flaw count (CONTRA, LABELS): {IEEE2021c} {PetersAndPedrycz2000} {Reid1996} | {vanVliet2000}
+          ``Computation data use'' and ``predicate data use'' are usually
+          abbreviated as the lowercase ``\acs{c-use}'' and ``\acs{p-use}''
+          (\citealp[pp.~3, 27\==29, 35\==36, 114\==155, 117\==118, 129]{IEEE2021c};
+          \citeyear[p.~124]{IEEE2017}; \citealp[p.~477, Tab.~12.6]{PetersAndPedrycz2000};
+          \citealp[Fig.~2]{Reid1996}), but \citet[pp.~424\==425]{vanVliet2000}
+          uses the uppercase ``C\=/use'' and ``P\=/use'' instead.
+    \item % Flaw count (CONTRA, LABELS): {IEEE2021c} {PetersAndPedrycz2000} | {vanVliet2000}
+          % Assertion: {Reid1996}
           % TODO: SUPP LABELS?
-          Similarly for ``definition-use'' (such as in ``definition-use
-          path''), both the lowercase ``du'' (\citealp[pp.~3, 27, 29, 35,
-              119\==121, 129]{IEEE2021c}; \citealp[pp.~478\==479]{
-              PetersAndPedrycz2000}; \citealp[Fig.~2]{Reid1996}) and the
-          uppercase ``DU'' \citep[p.~425]{vanVliet2000} are used.
+          ``Definition\=/use path'' is usually abbreviated as the lowercase
+          % Add \linebreak to prevent overhang of "ISO/IEC"
+          ``\acs{du-path}''\linebreak (\citealp[pp.~3, 27, 29, 35, 119\==121, 129]{IEEE2021c};
+          \citealp[pp.~478\==479]{PetersAndPedrycz2000}; \citealp[Fig.~2]{Reid1996}),
+          but \citet[p.~425]{vanVliet2000} uses the uppercase ``DU\=/path'' instead.
     \item % Flaw count (MISS, DEFS): {IEEE2021c} {IEEE2017} {PetersAndPedrycz2000} implied by {vanVliet2000} | {vanVliet2000}
           \Citet[p.~425]{vanVliet2000} defines many types of data
           flow coverage, including all-\acsp{p-use},
