@@ -137,6 +137,14 @@
           \citet[p.~4]{IEEE2021c} define ``exit point'' as the ``last executable
           statement within a test item'', then later note that it ``is most
           commonly the last executable statement within the test item''.
+    \item % Flaw count (CONTRA, SYNS): {IEEE2017} | {IEEE2017}
+          \citet{IEEE2017} define both ``error'' \emph{and} ``mistake'' as
+          ``human action[s] that produce[] an incorrect result''
+          \citetext{pp.~165, 278, respectively} but state that ``the fault
+          tolerance discipline distinguishes between a human action
+          (a mistake)\dots{} and the amount by which the result is incorrect
+          (the error)'' \citetext{p.~278}. This makes ``error'' and ``mistake''
+          simultaneously synonyms \emph{and} not synonyms!
     \item % Flaw count (CONTRA, SYNS): ISTQB | {BaresiAndPezzè2006}
           A component is an ``entity with discrete structure \dots\ within a
           system considered at a particular level of analysis''
@@ -185,27 +193,20 @@
           \emph{also} ``incorrect results'', incorrectly implying that
           ``error'' and ``fault'' are synonyms.
     \item % Flaw count (OVER, LABELS): {IEEE2017} {IEEE2010} {SWEBOK2025}
-          Additionally, ``error'' can also be defined as the
-          ``difference between a computed, observed, or measured value or
+          Besides being ``a human action that produces an incorrect
+          result'' \citep[p.~128]{IEEE2010}, ``error'' can also be defined as
+          the ``difference between a computed, observed, or measured value or
           condition and the true, specified, or theoretically correct value
-          or condition'' (\citealp[p.~165]{IEEE2017}; \citeyear[p.~128]{IEEE2010};
+          or condition'' (\citeyear[p.~165]{IEEE2017}; \citeyear[p.~128]{IEEE2010};
           similar in \citealp[pp.~17\=/18 to 17\=/19, 18\=/7 to 18\=/8]{SWEBOK2025}).
           While this is a widely used definition, particularly in mathematics,
           it makes some test approaches ambiguous.
-          % Flaw count (AMBI, DEFS): {IEEE2010} {SWEBOK2025} | {IEEE2010} ISTQB
+          % Flaw count (AMBI, DEFS): {IEEE2017} {IEEE2010} {SWEBOK2025} | {IEEE2010} ISTQB
           For example, back-to-back testing is ``testing in which two or more
           variants of a program are executed with the same inputs, the outputs
           are compared, and errors are analyzed in case of discrepancies''
           (\citealp[p.~30]{IEEE2010}; similar in \citealpISTQB{}), which seems
           to refer to this definition of ``error''.
-          % Flaw count (CONTRA, SYNS): {IEEE2017} | {IEEE2017}
-          \citeauthor{IEEE2017} \emph{also} define both ``error'' \emph{and}
-          ``mistake'' as ``human action[s] that produce[] an incorrect result''
-          \citeyearpar[pp.~165, 278, respectively]{IEEE2017} but note that
-          ``the fault tolerance discipline distinguishes between a human action
-          (a mistake)\dots{} and the amount by which the result is incorrect
-          (the error)'' (p.~278), making ``error'' and ``mistake''
-          simultaneously synonyms \emph{and} not synonyms!
     \item % Flaw count (CONTRA, DEFS): {IEEE2021c} {IEEE2017} | {vanVliet2000} implied by {IEEE2021c}
           % Label c-use-def
           % TODO: SUPP DEFS?
