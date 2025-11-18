@@ -29,12 +29,20 @@
           but system integration testing is listed as a child of both
           integration testing \citepISTQB{} and system testing
           \citep[p.~23]{Firesmith2015}.
-    \item % Flaw count (CONTRA, PARS): ISTQB
-          Similarly, the relations between component testing, integration
-          testing, and component integration testing are unclear; in particular,
-          \citetISTQB{} seem to give integration testing as a parent of component
-          integration testing in the latter's definition, but as a child in
-          their graph of static and dynamic testing.
+    \item % Flaw count (CONTRA, PARS): {IEEE2022} {IEEE2021a} {IEEE2021c} {SWEBOK2025} ISTQB | ISTQB
+          % Assertion: {vanVliet2000} {SakamotoEtAl2013}
+          \citetISTQB{} define ``component integration testing'' as ``the
+          integration testing of components''. This is consistent with the
+          definition of ``integration testing''\---testing that ``verifies the
+          interactions among \acs{sut} elements (for instance,
+          \emph{components}, modules, or subsystems)'' as well as ``external
+          interfaces'' (\citealp[p.~5\=/7]{SWEBOK2025}, emphasis added; similar
+          in \citealp[p.~13]{IEEE2022}; \citeyear[p.~6]{IEEE2021a};
+          \citeyear[p.~6]{IEEE2021c}; \citealp[p.~438]{vanVliet2000};
+          \citealp[p.~343]{SakamotoEtAl2013})\---which gives the former as a
+          child of the latter. However, \citeposISTQB{} mind map of static and
+          dynamic testing gives ``integration testing'' as a child of
+          ``component integration testing'', inverting this relationship.
     \item % Flaw count (WRONG, LABELS): {IEEE2021c} | {IEEE2022} {IEEE2021c} {IEEE2013} {SWEBOK2025} {Firesmith2015} {Patton2006}
           % Flaw count (WRONG, LABELS): {IEEE2017} | {IEEE2022} {IEEE2021c} {IEEE2013} {SWEBOK2025} {Firesmith2015} {Patton2006}
           % Flaw count (WRONG, LABELS): {SWEBOK2014} {SWEBOK2025} | {IEEE2022} {IEEE2021c} {IEEE2013} {SWEBOK2025} {Firesmith2015} {Patton2006}
