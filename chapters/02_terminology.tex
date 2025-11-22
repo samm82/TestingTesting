@@ -486,16 +486,23 @@ clarity, consistency, and robustness, then there are many ways for a flaw to
 manifest. This is one view we take when observing, recording, and analyzing
 flaws: \emph{how} information is ``wrong''. We observe the % \thesisissuetodo{155}
 ``manifestations'' described in \Cref{tab:flawMnfstDefs} throughout the
-literature, and give each a unique key for later analysis and discussion. We
-list them in descending order of severity, although this is partially
-subjective. While some may disagree with our ranking, it is clear that
-information being incorrect is worse than it being repeated. Our ordering has
-the benefit of serving as a ``flowchart'' for classifying flaws. For example,
-if a piece of information is not intrinsically incorrect, then there are five
-remaining manifestation types for the flaw. Note that some flaws involve
+literature, and give each a unique key for later analysis and discussion.
+\ifnotpaper%
+    We also use this manifestation view when referencing a specific flaw%
+    % from our full lists of flaws in \Cref{flaws-full}
+    ; for instance, \flawref{alpha-def} presents contradictory
+    definitions of ``alpha testing''.
+    % We list our manifestations in descending order of severity, although this is
+    % partially subjective. While some may disagree with our ranking, it is clear that
+    % information being incorrect is worse than it being repeated. Our ordering has
+    % the benefit of serving as a ``flowchart'' for classifying flaws. For example,
+    % if a piece of information is not intrinsically incorrect, then there are five
+    % remaining manifestation types for the flaw.
+\fi
+Note that some flaws involve
 information from multiple sources (contradictions and overlaps in particular).
-We do not categorize these flaws as ``mistakes'' if finding the ground truth
-requires analysis that has not been performed yet.
+We do not categorize these flaws as mistakes if finding the ground truth
+requires analysis that we have not yet performed.
 
 \input{assets/tables/flawMnfstDefs}
 
