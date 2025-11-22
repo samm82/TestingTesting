@@ -520,8 +520,12 @@
           % Label par-sheet-test
           \parSheetTestFlaw{}
     \item % Flaw count (WRONG, TRACE): ISTQB
-          The source that \citetISTQB{} cite for the definition of ``security
-          attack'' does not provide a definition.\imptodo{Verify!}
+          % Flaw count (WRONG, LABELS): {NIST2023} | ISTQB
+          \citetISTQB{} cite \citet{NIST2019} for their\linebreak definition of
+          ``security attack'', but this source does not provide one.\linebreak
+          Another standard by the same organization---the \acf{nist}---provides
+          a similar definition for the term ``attack'' \citep[p.~160]{NIST2023}
+          as opposed to ``security attack''.
     \item % Flaw count (WRONG, TRACE): ISTQB
           The source that \citetISTQB{} cite for the definition of ``visual
           testing'' does not provide a definition.\imptodo{Verify!}

@@ -65,7 +65,7 @@ def getSrcCat(s, rel: bool = False) -> SrcCat:
     if "(infer" in s:
         return SrcCat.INFER
     # "StdAuthor" used for example
-    if any(std in s for std in {"IEEE", "ISO", "IEC", "StdAuthor"}):
+    if any(std in s for std in {"IEEE", "ISO", "IEC", "NIST", "StdAuthor"}):
         return SrcCat.STD
     if any(metastd in s for metastd in
         {"Washizaki", "Bourque and Fairley", "SWEBOK",

@@ -46,7 +46,7 @@ def sort_key(s: str, cat: SrcCat) -> tuple:
     start = s[:match.start()]
     if cat == SrcCat.STD:
         # Second IEEE for sources without ISO/IEC
-        start = ["IEEE", "IEEE", "ISO_IEC", "ISO"].index(start)
+        start = ["IEEE", "IEEE", "ISO_IEC", "ISO", "NIST"].index(start)
         if not start and str(-year) in ONLY_IEEE:
             start = 1
         return (start, year, end)
