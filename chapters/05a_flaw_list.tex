@@ -97,10 +97,9 @@
           although the former authors explicitly \emph{exclude} static testing
           in another document \citeyearpar[p.~440]{IEEE2017}!
     \item % Flaw count (CONTRA, CATS): {IEEE2021b} | {IEEE2022}
-          When static testing \emph{is} included as part of software testing,
-          it is not categorized consistently. \citeauthor{IEEE2021b} categorize
-          it as a test level in \citeyearpar[p.~43]{IEEE2021b} but give it its
-          own test approach category in \citeyearpar[p.~10, 23, Fig.~2]{IEEE2022}.
+          \citeauthor{IEEE2021b} categorize static testing as a test level in
+          \citeyearpar[p.~43]{IEEE2021b} but give it its own test approach
+          category in \citeyearpar[p.~10, 23, Fig.~2]{IEEE2022}.
     \item % Flaw count (CONTRA, DEFS): {ISO_IEC2023a} | {IEEE2017}
           \citet{ISO_IEC2023a} and \citet[p.~196]{IEEE2017} both say that
           functional suitability is ``concerned with whether the functions meet
@@ -234,7 +233,7 @@
           to the other is not a direct mapping (p.~4). \citeauthor{IEEE2021c}
           agree, saying ``branch and decision coverage are closely related%
           \dots{}, although lower levels of coverage may not be the same''
-          \citeyearpar[p.~104]{IEEE2021c} and separating the terms in
+          \citeyearpar[p.~104]{IEEE2021c} and separating these two terms
           (Fig.~G.1, Secs.~5.3.2, 5.3.3, Annex~C.2.2\qtodo{What's the short
               form of ``annex''?}). However, (Fig.~F.1) implies that these
           terms are synonyms, contradicting this separation and making decision
@@ -260,7 +259,7 @@
           ``use[s] of the value of a variable in any type of statement''---is
           \emph{much} more vague than the definition they give in
           (\citeyear[p.~27]{IEEE2021c}; similar in \citealp[p.~425]{vanVliet2000};
-          \citealp[p.~479]{PetersAndPedrycz2000})---testing that exercises
+          \citealp[p.~479]{PetersAndPedrycz2000}): testing that exercises
           ``control flow sub-paths from each variable definition to each
           \acs{c-use} of that definition (with no intervening definitions)''.
     \item % Flaw count (WRONG, CATS): {IEEE2016} | {IEEE2022} {IEEE2016}
@@ -330,12 +329,10 @@
     \item % Flaw count (CONTRA, DEFS): {IEEE2022} | ISTQB
           % Label tour-def
           % Label tour-def-contra
-          \tourFlaw{}
+          \tourFlaw{} \appDiffs{tours}
     \item % Flaw count (CONTRA, DEFS): {IEEE2017} | {SWEBOK2025} | ISTQB
           % Label alpha-def
-          \alphaFlaw{} These differences make it unclear how testers should
-          perform alpha testing, which could lead to miscommunication and
-          unmet expectations.
+          \alphaFlaw{} \appDiffs{alpha testing}
     \item % Flaw count (CONTRA, DEFS): {SWEBOK2025} | {IEEE2017}
           % Assertion: {JardEtAl1999}
           % Flaw count (OVER, DEFS): {SWEBOK2025} | ISTQB {Firesmith2015}
@@ -608,7 +605,7 @@
           relation holds in this specific case, not all features are bugs!
     \item % Flaw count (CONTRA, DEFS): {IEEE2022} | {Patton2006}
           % Label load-def
-          \loadFlaw{}
+          \loadFlaw{} \appDiffs{load testing}
     \item % Flaw count (CONTRA, DEFS): {IEEE2021c} | {Patton2006}
           State testing requires that ``all states in the state model
           \dots\ [are] `visited'\,'' \citep[p.~19]{IEEE2021c}, but
@@ -824,7 +821,8 @@
           ``black-box integration testing''\todo{more examples?}.
     \item % Flaw count (WRONG, SYNS): {SneedAndGöschl2000}
           % Label dubious-red-box-syn
-          The previous flaw makes the claim that
-          ``red-box testing'' is a synonym for ``acceptance testing''
-          \citep[p.~18]{SneedAndGöschl2000} lose credibility.
+          \citepos[p.~18]{SneedAndGöschl2000} incorrect claims about test level
+          synonyms from \flawref{dubious-syns} make their claim that
+          ``red-box testing'' is a synonym for ``acceptance testing'' lose
+          credibility.
 \end{enumerate}

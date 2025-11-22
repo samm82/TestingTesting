@@ -163,6 +163,9 @@
         \citeyear[p.~473]{IEEE2017})\else \cite[p.~473]{IEEE2017},
         \cite[p.~10]{IEEE2022}, \cite[p.~6]{IEEE2021c}\fi}
 
+\newcommand{\appDiffs}[1]{These differences make it unclear how testers should
+    perform #1, which could lead to miscommunication and unmet expectations.}
+
 % Examples of flaws
 \def\bugPattonFlaw{\citet[pp.~13\==14]{Patton2006} ``just call[s] it what it
     is and get[s] on with it'', abandoning these four terms, ``problem'',
@@ -178,8 +181,8 @@
     group of potential users'' \citep[p.~5\=/8]{SWEBOK2025}, or ``roles outside
     the development organization'' conducted ``in the developer's test
     environment'' \citepISTQB{}.}
-\def\loadFlaw{Load testing is performed with loads ``between anticipated
-    conditions of low, typical, and peak usage'' \citep[p.~5]{IEEE2022} or
+\def\loadFlaw{Load testing may be performed with loads ``between anticipated
+    conditions of low, typical, and peak usage'' \citep[p.~5]{IEEE2022} or with
     loads that are as large as possible \citep[p.~86]{Patton2006}.}
 \NewDocumentCommand{\seeRefMissing}{s}{%
     \IfBooleanTF#1{}{\refHelper} \citet[p.~42]{Kam2008} says ``See
