@@ -1,13 +1,13 @@
-\def\repProc{step~\ref{step:repeat-process}\TblrNote{e}}
+\def\repProc{step~\ref{step:repeat-process}\TblrNote{d}}
 
 \begin{longtblr}[
     note{a} = {Calculated in \LaTeX{} from other macros for reuse.},
-    note{b} = {Calculated in \LaTeX{} from source tier lists; see \Cref{text-macros}.},
-    note{c} = {Alias for \macro[15]{totalFlawDmnBrkdwn}; see \Cref{flawCounts}.},
-    note{d} = {These macros are defined as counters to allow them to be used in
+    note{b} = {Calculated in \LaTeX{} from source tier lists.}, % ; see \Cref{text-macros}
+    % note{c} = {Alias for \macro[15]{totalFlawDmnBrkdwn}; see \Cref{flawCounts}.},
+    note{c} = {These macros are defined as counters to allow them to be used in
             calculations within \LaTeX{} (such as in \macro{undefPerc},
             \Cref{undef-terms}, and \Cref{fig:undefPies}).},
-    note{e} = {Step~\ref{step:repeat-process} of our methodology involves iterating
+    note{d} = {Step~\ref{step:repeat-process} of our methodology involves iterating
             over undefined terms and is described in more detail in \Cref{undef-terms}.},
     caption = {Macros for calculated values.},
     label = {tab:macrosCalc}
@@ -26,10 +26,10 @@
     \macro{srcCount}\TblrNote{b}    & Sources used in glossaries                             \\*
     \macro{flawCount}\TblrNote{c}   & Identified flaws                                       \\
     \hline
-    \macro{TotalBefore}\TblrNote{d} & Test approaches identified before \repProc{}           \\*
-    \macro{UndefBefore}\TblrNote{d} & Undefined test approaches identified before \repProc{} \\*
-    \macro{TotalAfter}\TblrNote{d}  & Test approaches identified after \repProc{}            \\*
-    \macro{UndefAfter}\TblrNote{d}  & Undefined test approaches identified after \repProc{}  \\
+    \macro{TotalBefore}\TblrNote{c} & Test approaches identified before \repProc{}           \\*
+    \macro{UndefBefore}\TblrNote{c} & Undefined test approaches identified before \repProc{} \\*
+    \macro{TotalAfter}\TblrNote{c}  & Test approaches identified after \repProc{}            \\*
+    \macro{UndefAfter}\TblrNote{c}  & Undefined test approaches identified after \repProc{}  \\
     \hline
     \macro{multiCatCount}           & Total number of approaches with multiple categories    \\*
     \macro{multiCatMax}             & Category with the most overlaps                        \\*

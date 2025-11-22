@@ -4,14 +4,11 @@
             use in \Cref{tab:flawMnfstDefs}.},
     note{b} = {Defined in \Cref{dmn-def}; we only include domains with their
             own section.},
-    % we also define starred versions,
-    % such as \macro{cats*} (\cats*{}), that use the singular noun.
     note{c} = {Defined in \Cref{source-tiers}.},
     note{d} = {We overwrite the primitive \TeX{} command \macro{over}
             % Source: https://tex.stackexchange.com/a/73825/192195
             since we do not otherwise use it.},
-    % note{e} = {We define a starred version, \macro{papers*} (\papers*{}), to shorten the
-    %         display name for use in tables.},
+    note{e} = {Used in \Cref{tab:flawMnfsts,tab:flawDmns} to manage line length.},
     caption = {Macros for referencing well-defined sections.},
     label = {tab:macrosSections}
     ]{
@@ -26,8 +23,8 @@
     (Values)}        & \macro{wrong}                                             & (\wrong{})  & \macro{cats}                                      & (\cats{}) & \macro{stds}                                      & (\stds{})    \\
                      & \macro{miss}                                              & (\miss{})   & \macro{syns}                                      & (\syns{}) & \macro{metas}                                     & (\metas{})   \\
                      & \macro{contra}                                            & (\contra{}) & \macro{pars}                                      & (\pars{}) & \macro{texts}                                     & (\texts{})   \\
-                     & \macro{ambi}                                              & (\ambi{})   &                                                   &           & \macro{papers}                                    & (\papers{})  \\ %\TblrNote{e}                                              \\
-                     & \macro{over}\TblrNote{d}                                  & (\over{})   &                                                   &           & \macro{papers*}                                   & (\papers*{}) \\
+                     & \macro{ambi}                                              & (\ambi{})   &                                                   &           & \macro{papers}                                    & (\papers{})  \\
+                     & \macro{over}\TblrNote{d}                                  & (\over{})   &                                                   &           & \macro{papers*}\TblrNote{e}                       & (\papers*{}) \\
                      & \macro{redun}                                             & (\redun{})  &                                                   &           &                                                                  \\
     \hline
     \textbf{Used In} & \SetCell[c=2]{c} {\Cref{tab:flawMnfstDefs,tab:flawMnfsts}

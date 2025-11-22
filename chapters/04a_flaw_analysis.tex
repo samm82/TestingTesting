@@ -239,42 +239,57 @@ necessary to follow IEEE guidelines.
 
 \input{assets/tables/macrosCalc}
 
-\phantomsection{}\label{flawCounts}
-Additionally, we count flaws based on their manifestation and domain,
-explicitness, and source tier (defined in \Cref{flaw-def,explicitness,%
-    source-tiers}, respectively).
-For each source tier, we create two files that each include both levels of
-explicitness: one for manifestations and one for domains. For example, flaws in
-standards are saved to \texttt{build/stdFlawMnfstBrkdwn.tex} by manifestation%
-% and \texttt{build/stdFlawDmnBrkdwn.tex} for domains
-. We then assign these data to macros (such as \macro{stdFlawMnfstBrkdwn}) to
-populate \Cref{tab:flawMnfsts,tab:flawDmns}. For example, we access the number
-of objective and subjective mistakes in standards by using
-\macro[1]{stdFlawMnfstBrkdwn} and \macro[2]{stdFlawMnfstBrkdwn}, respectively.
-We follow a similar process for tracking the total numbers of flaws; this
-includes \macro[13]{totalFlawMnfstBrkdwn} and \macro[15]{totalFlawDmnBrkdwn}
-which are identical and track the total number of identified flaws.
-
-\phantomsection{}\label{text-macros}
-Just as with calculated values, it is important that repeated text is updated
-consistently, which we accomplish by defining more macros. Similarly to
-calculated values, we use scripts generate macros for flaw manifestations,
-flaw domains, and source tiers as shown in
-\Cref{tab:macrosSections}. The latter are built by extracting all
-sources cited in our three glossaries, categorizing, sorting, and formatting
-them (including handling edge cases), and saving them to a file. These are then
-assigned to \macro{stdSources}, \macro{metaSources}, \macro{textSources}, and
-\macro{paperSources} and include:
+We also generate more involved macros for flaw counts and sections. We count
+flaws based on their manifestation and domain, explicitness, and source tier,
+then store these data in corresponding files that we read in and assign to
+macros. For example, \macro{srcCount} is simply an alias for
+\macro[15]{totalFlawDmnBrkdwn} (which is equivalent to
+\macro[13]{totalFlawMnfstBrkdwn}). Similarly, we use scripts to generate macros
+for flaw manifestations, flaw domains, and source tiers as shown in
+\Cref{tab:macrosSections}. Macros for the latter take an integer input as
+follows to access either:
 \begin{enumerate}
     \item the source tier's name,
-    \item the list of sources in the tier, and
+    \item the list of sources in the tier, or
     \item the number of sources in the tier.
 \end{enumerate}
-These are accessed by passing in the corresponding number in the above
-enumeration (e.g., \macro[2]{paperSources}). We use the first value for the
-subheadings in \Cref{source-tiers}, the first two for \Cref{app-src-tiers} and
-the third to build \Cref{fig:sourceSummary} and calculate \macro{srcCount}
-(see \Cref{tab:macrosCalc}).
+
+% \phantomsection{}\label{flawCounts}
+% Additionally, we count flaws based on their manifestation and domain,
+% explicitness, and source tier (defined in \Cref{flaw-def,explicitness,%
+%     source-tiers}, respectively).
+% For each source tier, we create two files that each include both levels of
+% explicitness: one for manifestations and one for domains. For example, flaws in
+% standards are saved to \texttt{build/stdFlawMnfstBrkdwn.tex} by manifestation%
+% % and \texttt{build/stdFlawDmnBrkdwn.tex} for domains
+% . We then assign these data to macros (such as \macro{stdFlawMnfstBrkdwn}) to
+% populate \Cref{tab:flawMnfsts,tab:flawDmns}. For example, we access the number
+% of objective and subjective mistakes in standards by using
+% \macro[1]{stdFlawMnfstBrkdwn} and \macro[2]{stdFlawMnfstBrkdwn}, respectively.
+% We follow a similar process for tracking the total numbers of flaws; this
+% includes \macro[13]{totalFlawMnfstBrkdwn} and \macro[15]{totalFlawDmnBrkdwn}
+% which are identical and track the total number of identified flaws.
+
+% \phantomsection{}\label{text-macros}
+% Just as with calculated values, it is important that repeated text is updated
+% consistently, which we accomplish by defining more macros. Similarly to
+% calculated values, we use scripts to generate macros for flaw manifestations,
+% flaw domains, and source tiers as shown in
+% \Cref{tab:macrosSections}. The latter are built by extracting all
+% sources cited in our three glossaries, categorizing, sorting, and formatting
+% them (including handling edge cases), and saving them to a file. These are then
+% assigned to \macro{stdSources}, \macro{metaSources}, \macro{textSources}, and
+% \macro{paperSources} and include:
+% \begin{enumerate}
+%     \item the source tier's name,
+%     \item the list of sources in the tier, and
+%     \item the number of sources in the tier.
+% \end{enumerate}
+% These are accessed by passing in the corresponding number in the above
+% enumeration (e.g., \macro[2]{paperSources}). We use the first value for the
+% subheadings in \Cref{source-tiers}, the first two for \Cref{app-src-tiers} and
+% the third to build \Cref{fig:sourceSummary} and calculate \macro{srcCount}
+% (see \Cref{tab:macrosCalc}).
 % We also define macros for well-defined sections in \Cref{tab:macrosSections}.
 
 % However, we create most of these macros for reused text manually when we first
