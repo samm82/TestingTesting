@@ -50,18 +50,9 @@
           % Label error-guess
           Since the differences between the terms ``error'',
           ``failure'', ``fault'', and ``defect'' are significant and meaningful
-          (see \Cref{error-fault-failure}),
-          %   \ifnotpaper (\citealp[pp.~124, 165, 178\==179]{IEEE2017};
-          %       \citeyear[pp.~96, 128, 139\==140]{IEEE2010};
-          %       \citealp[pp.~5\=/3, 12\=/3]{SWEBOK2025}\footnote{
-          %           \citet[p.~12\=/3]{SWEBOK2025} references the definitions given in
-          %           \citep[pp.~124, 165, 178\==179]{IEEE2017}; while we would usually
-          %           omit the former in favour of the original source, we include it
-          %           here as an example of a flaw within a document.};
-          %       \citealp[pp.~399\==400]{vanVliet2000})\else TODO: make macro\fi,
-          ``error guessing''---a term used by multiple sources \citep{IEEE2022,%
-              IEEE2021c,IEEE2013,SWEBOK2025,Firesmith2015,Patton2006}---should
-          either be called:
+          (see \Cref{error-fault-failure}), ``error guessing''---a term used by
+          multiple sources \citep{IEEE2022,IEEE2021c,IEEE2013,SWEBOK2025,%
+              Firesmith2015,Patton2006}---should either be called:
           \begin{itemize}
               \item ``defect guessing'' if it is based on a ``checklist of potential
                     defects'' \citep[p.~29]{IEEE2021c},
@@ -76,14 +67,16 @@
           %   ``error guessing'', which would focus on errors as traditionally defined
           %   and be a subapproach of error-based testing (implied by
           %   \citealp[p.~399]{vanVliet2000}).
-    \item % Flaw count (WRONG, LABELS): {IEEE2017} {IEEE2010} | {IEEE2017} {Firesmith2015} {vanVliet2000}
-          % Flaw count (WRONG, SYNS): {IEEE2017} {IEEE2010} | {IEEE2017} {vanVliet2000}
+    \item % Flaw count (WRONG, LABELS): {IEEE2024} {IEEE2010} | {IEEE2017} {Firesmith2015} {vanVliet2000}
+          % Flaw count (WRONG, SYNS): {IEEE2024} {IEEE2010} | {IEEE2017} {vanVliet2000}
+          % Flaw count (WRONG, SYNS): {vanVliet2000} | {vanVliet2000}
           % Assertion: {vanVliet2000}
-          Similarly, ``fault seeding'' is not a synonym of ``error seeding''
+          Since faults and errors are distinct (see \Cref{error-fault-failure}),
+          ``fault seeding'' is not a synonym of ``error seeding''
           as claimed by \citet[p.~165]{IEEE2017} and
           \citet[p.~427]{vanVliet2000}. The term ``error seeding'', also
           used by \citet[p.~34]{Firesmith2015},
-          should be abandoned in favour of ``fault seeding'', as it is defined
+          should be abandoned in favour of ``fault seeding'' if it is defined
           as the ``process of intentionally adding known faults to those
           already in a computer program \dots{} [to] estimat[e] the number of
           faults remaining'' \citep[p.~165]{IEEE2017} based on the ratio
@@ -438,26 +431,25 @@
           \citealp[pp.~15, 37]{IEEE2024}; \citealp[p.~5\=/3]{SWEBOK2025};
           \citealp[p.~12]{Lyu1996}; \citealp[p.~400]{vanVliet2000}).
     \item % Flaw count (AMBI, LABELS): {IEEE2024} {IEEE2010} | {SWEBOK2025}
-          % Assertion: {vanVliet2000}
-          Similarly, \citet[p.~4\=/11]{SWEBOK2025} says ``\emph{fault tolerance}
+          % Flaw count (CONTRA, LABELS): {IEEE2024} {IEEE2010} {SWEBOK2025} | implied by {SWEBOK2025}
+          % Assertion: {Lyu1996} {vanVliet2000}
+          \citet[p.~4\=/11]{SWEBOK2025} says ``\emph{fault tolerance}
           is a collection of techniques that increase software reliability by
           detecting errors and then recovering from them or containing their
-          effects if recovery is not possible''. This should either be called
-          ``\emph{error} tolerance'' or be described as ``detecting
-          \emph{faults} and then recovering from them'', since ``error'' and
-          ``fault'' have distinct meanings (\citealp[p.~36]{IEEE2024};
-          %   \citealp[pp.~165\todo{OG 2009}, 179]{IEEE2017};
-          \citealp[pp.~128, 140]{IEEE2010}; % \citealp[p.~12\=/3]{SWEBOK2025}%
-          %   \footnote{\citet[p.~12\=/3]{SWEBOK2025} references the definitions
-          %       given in \citep[pp.~165, 179]{IEEE2017}; while we would usually
-          %       omit the former in favour of the original source, we include it
-          %       here as an example of a flaw within a document.};
-          \citealp[pp.~399\==400]{vanVliet2000}). The intent of this
-          term-definition pair is unclear, as the strategies given---``backing
-          up and retrying, using auxiliary code and voting algorithms, and
-          replacing an erroneous value with a phony value that will have a
-          benign effect'' \citep[p.~4\=/11]{SWEBOK2025}---could be used for
-          errors or faults.
+          effects if recovery is not possible''. Since errors and faults are
+          distinct (see \Cref{error-fault-failure}), this should either be
+          called ``\emph{error} tolerance'' or be described as ``detecting
+          \emph{faults}''. % The intent of this term-definition pair is unclear,
+          %   as the strategies given---``backing up and retrying, using auxiliary
+          %   code and voting algorithms, and replacing an erroneous value with a
+          %   phony value that will have a benign effect''---could be used for
+          %   errors \emph{or} faults.
+          However, the notion of ``detecting errors and then \emph{recovering
+              from them} or containing their effects if recovery is not
+          possible'' seems to imply that \citet[p.~4\=/11, emphasis added]{SWEBOK2025}
+          is really talking about \emph{failures}: the visible effects of
+          faults (\citealp[pp.~15, 37]{IEEE2024}; \citealp[p.~5\=/3]{SWEBOK2025};
+          \citealp[p.~12]{Lyu1996}; \citealp[p.~400]{vanVliet2000}).
     \item % Flaw count (REDUN, LABELS): {SWEBOK2025}
           % Assertion: {Gerrard2000b}
           % Label ethical-hacking
