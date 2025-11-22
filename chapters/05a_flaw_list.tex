@@ -49,7 +49,7 @@
           % Flaw count (CONTRA, DEFS): {IEEE2021c} | {IEEE2017} | {SWEBOK2025} {SWEBOK2014}
           % Label error-guess
           Since the differences between the terms ``error'',
-          ``failure'', ``fault'', and ``defect'' are significant and meaningful
+          ``fault'', ``failure'', and\linebreak ``defect'' are significant
           (see \Cref{error-fault-failure}), ``error guessing''---a term used by
           multiple sources \citep{IEEE2022,IEEE2021c,IEEE2013,SWEBOK2025,%
               Firesmith2015,Patton2006}---should either be called:
@@ -593,13 +593,19 @@
           that multiple condition coverage (which seems to be a synonym of
           condition coverage \citetext{p.~422}) does not subsume and is not
           subsumed by path coverage.
-    \item % Flaw count (WRONG, SYNS): {IEEE2017} {IEEE2010} {vanVliet2000} | {Patton2006}
+    \item % Flaw count (WRONG, SYNS): {IEEE2024} {IEEE2010} {vanVliet2000} | {Patton2006}
+          % Flaw count (WRONG, SYNS): {Patton2006}
           % Label bug-patton
-          The differences between the terms ``error'', ``failure'',
-          ``fault'', and ``defect'' are significant and meaningful
-          (\citealp[pp.~124, 165, 178\==179]{IEEE2017};
-          \citeyear[pp.~96, 128, 139\==140]{IEEE2010};
-          \citealp[pp.~399\==400]{vanVliet2000}), but \bugPattonFlaw{}
+          The differences between the terms ``error'', ``fault'', ``failure'',
+          and ``defect'' are significant (see \Cref{error-fault-failure}), but
+          \bugPattonFlaw{} Not only does he set aside established conventions
+          because of their negative connotations, including severity and blame
+          (p.~14), he also includes ``feature'' in this list. This is likely
+          because to his definition of ``bug'', which includes the case where
+          ``the software does something that the product specification doesn't
+          mention''; this means that ``an ambitious programmer'' who implements
+          extra features is actually introducing bugs (p.~15). While this synonym
+          relation holds in this specific case, not all features are bugs!
     \item % Flaw count (CONTRA, DEFS): {IEEE2022} | {Patton2006}
           % Label load-def
           \loadFlaw{}
