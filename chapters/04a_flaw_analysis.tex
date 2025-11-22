@@ -42,7 +42,14 @@ of flaws (as opposed to just the responsible source \emph{tiers}) as we do in
           \end{enumerate}
     \item those within a single source tier.
 \end{enumerate}
-\vspace*{-5cm}
+As before, we do not double count these sources of flaws, meaning that the
+maximum number of counted flaws possible within a \emph{single} source tier in
+this more detailed view is four (one for each type). This only occurs if there
+is an example of each flaw source that is \emph{not} ignored to avoid double
+counting; for example, while a single flaw within a single document would
+technically and trivially fulfill all four criteria, we would only count it
+once.
+
 \begin{figure}[b!]
     \centering
     \begin{tikzpicture}
@@ -81,14 +88,7 @@ of flaws (as opposed to just the responsible source \emph{tiers}) as we do in
 
     \end{tikzpicture}
     \caption{The sets of authors of established standards.}\label{fig:ieeeSourceSets}
-\end{figure}\clearpage\noindent%
-As before, we do not double count these sources of flaws, meaning that the
-maximum number of counted flaws possible within a \emph{single} source tier in
-this more detailed view is four (one for each type). This only occurs if there
-is an example of each flaw source that is \emph{not} ignored to avoid double
-counting; for example, while a single flaw within a single document would
-technically and trivially fulfill all four criteria, we would only count it
-once.
+\end{figure}
 
 % \phantomsection{}\label{flaw-analysis-example}
 % As an example of this process, consider \flawref{level-phase-syns}, where an
@@ -141,10 +141,6 @@ following classes of flaws that we later discuss in \Cref{cats,pars}:
           \Cref{fig:parSynExampleGraph}.
 \end{itemize}
 
-\vspace*{-5cm}
-\ExampleFlawGraphs{}
-\newpage
-
 % are also trivial to automate by looking for lines in the generated \LaTeX{}
 % files that start with \texttt{I~->~I}, where \texttt{I} is the label used for a
 % test approach node in these visualizations. This process .% \Cref{selfPars}
@@ -156,6 +152,9 @@ following classes of flaws that we later discuss in \Cref{cats,pars}:
 % synonyms, a generated \LaTeX{} file with a parent line starting with
 % \texttt{J~->~K} \emph{or} \texttt{K~->~J} would be visualized as shown in
 % We present these two. \Cref{tab:parSyns,infParSyns}
+
+\vspace*{-0.8cm}
+\ExampleFlawGraphs{}
 
 While just counting the total number of flaws (found automatically \emph{or}
 manually) is trivial, tracking
