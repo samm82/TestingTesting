@@ -22,14 +22,13 @@ these flaws by their explicitness
 (defined in \Cref{explicitness}) by counting (Obj)ective and (Sub)jective flaws
 separately, since additional context may rectify them.
 Since we give each flaw a manifestation \emph{and} a domain, the totals per
-source and grand totals in these tables are equal. From these tables, we can
-draw some conclusions about \emph{how} the literature is flawed:
-\begin{enumerate}
-    \item \contraSummary*{}
-    \item \catsSummary{}
-\end{enumerate}
-
+source and grand totals in these tables are equal.
 \ifnotpaper
+    We also summarize how many flaws appear in each source tier in
+    \Cref{fig:flawBarsSummary} (note that these values align with the totals in
+    \Cref{tab:flawMnfsts,tab:flawDmns}) and normalize these totals to the
+    number of documents in each tier in \Cref{fig:normFlawBarsSummary}.
+
     \input{assets/graphs/flawBars}
     % \input{assets/graphs/flawPies}
 
@@ -40,21 +39,27 @@ draw some conclusions about \emph{how} the literature is flawed:
     \end{landscape}
 
     \input{assets/graphs/flawBarsSummary}
-    To give a clearer picture of the offending source tiers, we also summarize
-    how many flaws appear in each source tier in \Cref{fig:flawBarsSummary}.
-    (Note that these values align with the totals in \Cref{tab:flawMnfsts,%
-        tab:flawDmns}). Each tier contains a comparable number of flaws, although
+    As shown in \Cref{fig:flawBarsSummary}, each source tier contains a
+    comparable number of flaws, although
     this changes drastically when normalizing these totals by the number of
     documents in each source tier in \Cref{fig:normFlawBarsSummary}. Since some
     terminology collections are glossaries or taxonomies of terms, they
     contain a much larger proportion of relevant information that we critique.
     Conversely, standards and papers contain lots of content we do \emph{not}
     investigate for scope reasons and time constraints, likely causing the
-    relatively low numbers of flaws per document in these tiers.
+    relatively low numbers of flaws per document in these tiers. Textbooks lie
+    somewhere in the middle, since we investigate them to varying degrees
+    of thoroughness: the whole book, a specific chapter, and so on.
 
     \input{assets/graphs/normFlawBarsSummary}
     \clearpage
 \fi
+From these tables\ifnotpaper\ and figures\fi, we can draw some conclusions
+about \emph{how} the literature is flawed:
+\begin{enumerate}
+    \item \contraSummary*{}
+    \item \catsSummary{}
+\end{enumerate}
 
 We summarize the flaws that we discover manually
 % \ifnotpaper (see \Cref{flaw-comment-analysis}) \fi
@@ -109,7 +114,7 @@ Even so, we have to stop our snowballing approach before we discover
 property-based testing in the literature!\ifnotpaper\ With more time, we would
     uncover this along with other test approaches that did not arise (as
     described in \Cref{future-miss-terms}), but unfortunately, we impose our
-    stopping point artificially.\newpage\fi
+    stopping point artificially.\fi
 
 \subsection{Flaws by Manifestation}\label{flawMnfsts}
 
