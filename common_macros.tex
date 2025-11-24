@@ -162,14 +162,16 @@
     analysis of our generated visualizations\ifnotpaper\ as described in
         \Cref{auto-flaw-detect}\fi}
 
-\def\contraSummary{This is likely because these are the most obvious flaws to
-    detect automatically (see \Cref{\ifnotpaper auto-flaw-detect,\fi flawDmns})
+\NewDocumentCommand\contraSummary{s o}{\IfBooleanT{#1}{Contradictions are by
+        \emph{far} the most common manifestation.} This is likely because these
+    are the most obvious flaws to detect automatically \IfNoValueT{#2}{%
+        (see \Cref{\ifnotpaper auto-flaw-detect,\fi flawDmns})}%
     and because two (sets of) authors using different resources and not
     communicating have a high chance of disagreeing.}
-\NewDocumentCommand\catsSummary{s}{\IfBooleanTF#1{a}{A}pproach categorizations
+\NewDocumentCommand\catsSummary{s o}{\IfBooleanTF#1{a}{A}pproach categorizations
     are the most subjective and one of the most common flaw domains, likely due
-    to the lack of standardization about what categories to use\ifnotpaper\
-        (see \Cref{alt-cats} for more detailed discussion)\fi.}
+    to the lack of standardization about what categories to use\IfNoValueT{#2}{%
+        \ifnotpaper\ (see \Cref{alt-cats} for more detailed discussion)\fi}.}
 
 \def\testingDefRefs{\ifnotpaper
         (\citealp[p.~10]{IEEE2022}; \citeyear[p.~6]{IEEE2021c};
