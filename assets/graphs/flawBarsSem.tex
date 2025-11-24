@@ -1,14 +1,14 @@
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}
+\begin{tikzpicture}[transform canvas={scale=0.7,xshift=-7.3cm,yshift=-3.5cm}]
 \begin{axis}[
 width=\textwidth, height=9cm,
 symbolic x coords={std,meta,text,paper},
 xtick=data,
-xticklabels={{\parbox{0.16\textwidth}{\centering \stds{}}},{\parbox{0.16\textwidth}{\centering \metas{}}},{\parbox{0.16\textwidth}{\centering \texts{}}},{\parbox{0.16\textwidth}{\centering \papers{}}}},
-ylabel=Flaws, ybar,
+xticklabels={{\parbox{0.16\textwidth}{\centering \small \stds{}}},{\parbox{0.16\textwidth}{\centering \small \metas{}}},{\parbox{0.16\textwidth}{\centering \small \texts{}}},{\parbox{0.16\textwidth}{\centering \small \papers{}}}},
+ylabel=Flaws, ybar=0.07mm,
 enlargelimits=0.2, enlarge y limits=0.1,
-legend style={at={(0.5,-0.25)}, anchor=north, legend columns=1,
+legend style={at={(1.03,0.5)}, anchor=west, legend columns=1,
 inner xsep=6pt,inner ysep=4pt,
 nodes={inner sep=4pt,text depth=0.3em},},
 legend cell align=left,
@@ -23,8 +23,8 @@ every node near coord/.append style={font=\tiny},
 \addplot[fill=red!60] coordinates {(meta, 23) (text, 16) (paper, 29)};
 \addplot[fill=blue!60!cyan!60] coordinates {(text, 14) (paper, 13)};
 \addplot[fill=cyan!60!yellow!60] coordinates {(paper, 9)};
-\legend{\hspace{3.4cm} \Large \textbf{Legend},With an assertion of ground truth,Within a single document,Between documents with the same set of authors,Between a document from this category and a standard,Between a document from this category and a collection,Between a document from this category and a textbook,Between a document from this category and a paper}
+\legend{\hspace{1.2cm} \Large \textbf{Legend},With ground truth,Within a single document,Within a set of authors,With a standard,With a collection,With a textbook,With a paper}
 \end{axis}
 \end{tikzpicture}
-\caption{Identified flaws by the source tier responsible. Some bars are omitted as they correspond to comparisons we do not make; see \Cref{flaw-cred-compare}.}\label{fig:flawBars}
+
 \end{figure}

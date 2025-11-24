@@ -361,10 +361,11 @@
 \end{frame}
 
 \begin{frame}{Flaw Summary by Source Tier}
-    \begin{figure}
-        \centering
-        \input{assets/graphs/flawBarsSummarySem}\vspace*{0.4mm}
-    \end{figure}
+    \only{\begin{figure}
+            \centering
+            \input{assets/graphs/flawBarsSummarySem}\vspace*{0.4mm}
+        \end{figure}}<1>
+    \only{\input{assets/graphs/flawBarsSem}}<2>
 \end{frame}
 
 \begin{frame}{Normalized Flaw Summary}

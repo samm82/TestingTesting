@@ -496,30 +496,41 @@ def outputFlaws():
                 reversed([str(x).replace("'", "") for x in zip(
                          reversed(flawCats), reversed(vals))]))}}};"
                     for color, vals in zip(DEFAULT_COLORS, flawBars)]
-    writeFile(["\\begin{figure}[h]", "\\centering",
-               "\\begin{tikzpicture}", "\\begin{axis}[",
-                    "width=\\textwidth, height=9cm,",
-                    # "x tick label style={rotate=90},",
-                   f"symbolic x coords={{{",".join(flawCats)}}},",
-                    "xtick=data,",  # "x tick label as interval,",
-                   f"xticklabels={{{",".join(map(
-                       lambda cat: f'{{\\parbox{{0.16\\textwidth}}{{\\centering \\{cat}s{{}}}}}}',
-                       flawCats))}}},",
-                    # "xlabel=Source Tier (see \\Cref{source-tiers}),",  # Legend should be -0.35 if xlabel
-                    "ylabel=Flaws, ybar,",  # xbar=0pt, bar width=5, bar shift=3",
-                    "enlargelimits=0.2, enlarge y limits=0.1,",
-                    "legend style={at={(0.5,-0.25)}, anchor=north, legend columns=1,",
-                    "inner xsep=6pt,inner ysep=4pt,",
-                    "nodes={inner sep=4pt,text depth=0.3em},},",
-                    "legend cell align=left,",
-                    "nodes near coords,", # nodes near coords align={vertical}, point meta=y,"
-                    "every node near coord/.append style={font=\\tiny},", "]",
-               # Legend header from https://tex.stackexchange.com/a/2332/192195
-               "\\addlegendimage{empty legend}",
-               *flawBars,
-               f"\\legend{{\\hspace{{3.4cm}} \\Large \\textbf{{Legend}},{",".join([vals[1] for vals in slices])}}}",
-               "\\end{axis}", "\\end{tikzpicture}", f"\\caption{{{FLAW_CAPTION}}}",
-               "\\label{fig:flawBars}", "\\end{figure}"], "flawBars")
+    
+    for sem in {"", "Sem"}:
+        # Reduce length of labels in legend for display
+        if sem:
+            slices = [(val, name.replace("an assertion of ", "").replace(
+                "Between documents with the same", "Within a").replace(
+                    "Between a document from this category and", "With"
+                )) for val, name in slices]
+
+        writeFile(["\\begin{figure}[h]", "\\centering",
+                "\\begin{tikzpicture}" + ("[transform canvas={scale=0.7,xshift=-7.3cm,yshift=-3.5cm}]" if sem else ""),
+                    "\\begin{axis}[",
+                       f"width=\\textwidth, height=9cm,",
+                        # "x tick label style={rotate=90},",
+                       f"symbolic x coords={{{",".join(flawCats)}}},",
+                        "xtick=data,",  # "x tick label as interval,",
+                       f"xticklabels={{{",".join(map(
+                           lambda cat: f'{{\\parbox{{0.16\\textwidth}}{{\\centering{" \\small" if sem else ""} \\{cat}s{{}}}}}}',
+                           flawCats))}}},",
+                        # "xlabel=Source Tier (see \\Cref{source-tiers}),",  # Legend should be -0.35 if xlabel
+                       f"ylabel=Flaws, ybar{"=0.07mm" if sem else ""},",  # xbar=0pt, bar width=5, bar shift=3",
+                        "enlargelimits=0.2, enlarge y limits=0.1,",
+                       f"legend style={{at={{({"1.03,0.5" if sem else "0.5,-0.25"})}}, "
+                       f"anchor={"west" if sem else "north"}, legend columns=1,",
+                        "inner xsep=6pt,inner ysep=4pt,",
+                        "nodes={inner sep=4pt,text depth=0.3em},},",
+                        "legend cell align=left,",
+                        "nodes near coords,", # nodes near coords align={vertical}, point meta=y,"
+                        "every node near coord/.append style={font=\\tiny},", "]",
+                # Legend header from https://tex.stackexchange.com/a/2332/192195
+                "\\addlegendimage{empty legend}", *flawBars,
+                f"\\legend{{\\hspace{{{"1.2" if sem else "3.4"}cm}} \\Large \\textbf{{Legend}},{",".join([vals[1] for vals in slices])}}}",
+                "\\end{axis}", "\\end{tikzpicture}",
+                "" if sem else f"\\caption{{{FLAW_CAPTION}}}\\label{{fig:flawBars}}",
+                "\\end{figure}"], f"flawBars{sem}")
 
     # writeTblr("flawTable", FLAW_CAPTION,
     #               ["Flaw between a document \\\\ from a \\hyperref[sources]{source tier} \\\\ below and a(n) \\dots{}"] + [
