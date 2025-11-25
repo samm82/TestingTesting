@@ -28,7 +28,7 @@ PREFIX_REGEX = r"\(|[a-z;] "
 SPLIT_REGEX = r',(?!(?:[^()]*\([^()]*\))*[^()]*\)) '
 
 INTERNAL_REFS = {"tab:"}
-ONLY_IEEE = {"2012", "2024"}
+ONLY_IEEE = {"2009", "2012", "2024"}
 
 # Used in multiple files
 IMPLICIT_KEYWORDS = ["implied", "can be", "sometimes", "should be",
