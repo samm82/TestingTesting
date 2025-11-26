@@ -27,6 +27,26 @@
               ground truth!
     \end{enumerate}}
 
+\newcommand\iterGraphHelper[3]{\centering
+    \begin{tikzpicture}[thick, scale=#3, every label/.style={align=left, scale=#3}]
+        \pie[text=inside, sum=auto, color={blue!60, orange!60}]{
+            {\the\numexpr #1 - #2\relax}/,
+            {\the#2}/
+        }
+    \end{tikzpicture}}
+
+\newcommand\beforeIterGraph[1]{\iterGraphHelper{\TotalBefore}{\UndefBefore}{#1}}
+\newcommand\afterIterGraph [1]{\iterGraphHelper{\TotalAfter} {\UndefAfter} {#1}}
+
+\newcommand\iterLegend[1]{\centering
+    \begin{tikzpicture}[scale=#1]
+        \matrix [thick, draw=black] {
+        \node[label=right:{Legend}] {}; \\
+        \node[thick, shape=rectangle, draw=black, fill=blue!60,   label=right:{Defined}](0) {}; \\
+        \node[thick, shape=rectangle, draw=black, fill=orange!60, label=right:{Undefined}](1) {}; \\
+        };
+    \end{tikzpicture}}
+
 \def\supers{Dr.~Spencer Smith and Dr.~Jacques Carette}
 \def\supersAck{\supers{} have been great supervisors and valuable sources of
     guidance and feedback}
