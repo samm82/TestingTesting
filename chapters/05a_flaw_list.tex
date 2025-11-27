@@ -816,20 +816,33 @@
           \citepos[p.~28]{Gerrard2000b} definition of ``manual security audits''
           may be too specific, only applying to ``the products installed on a
           site'' and ``the known vulnerabilities for those products''.
-    \item % Flaw count (WRONG, SYNS): {IEEE2017} {SakamotoEtAl2013} | {SneedAndGöschl2000}
+    \item % Flaw count (WRONG, SYNS): {IEEE2017} {Hetzel1988} {SakamotoEtAl2013} | {SneedAndGöschl2000}
           % Label dubious-syns
-          \citet[p.~18]{SneedAndGöschl2000}\todo{OG Hetzel88} give
+          \citet[p.~3]{SneedAndGöschl2000} give
           ``white-box testing'', ``grey-box testing'', and ``black-box testing''
           as synonyms for ``module testing'', ``integration testing'', and
           ``system testing'', respectively, but this mapping is incorrect; for
           example, \citet[p.~444]{IEEE2017} say ``structure-based [(or white-box)]
           testing is not restricted to use at component level and can be used
           at all levels'' and \citet[pp.~345\==346]{SakamotoEtAl2013} describe
-          ``black-box integration testing''\todo{more examples?}.
+          ``black-box integration testing''. They likely take the ``implicit''
+          claims from the original source they cite \citep{Hetzel1988} too far;
+          for example, ``as a practical matter, \emph{most} system testing
+          relies on the black-box perspective'' \citetext{p.~11, emphasis added}.
+          However, this does not mean that system testing is \emph{always} the
+          same as black-box testing.
     \item % Flaw count (WRONG, SYNS): {SneedAndGöschl2000}
           % Label dubious-red-box-syn
-          \citepos[p.~18]{SneedAndGöschl2000} incorrect claims about test level
+          \citepos[p.~3]{SneedAndGöschl2000} incorrect claims about test level
           synonyms from \flawref{dubious-syns} make their claim that
           ``red-box testing'' is a synonym for ``acceptance testing'' lose
           credibility.
+    \item % Flaw count (WRONG, TRACE): {SneedAndGöschl2000}
+          \citet[p.~3]{SneedAndGöschl2000} assert that ``module testing'' can
+          also be called ``class testing'', but this claim does not appear in
+          the source they cite \citep{Hetzel1988}.
+          % Flaw count (WRONG, SYNS): implied by {Hetzel1988} {Kam2008} | implied by {SneedAndGöschl2000}
+          They might have meant to say that ``module testing'' and ``program
+          testing'' are synonyms, which is implied by this source (p.~73) and
+          supported by \citet[p.~46]{Kam2008}.
 \end{enumerate}
