@@ -340,21 +340,50 @@
     % \onslide<2>
     % \vspace{-4cm}
     \begin{columns}
-        \begin{column}{0.45\textwidth}
-            \vspace{-0.5cm}
+        \begin{column}{0.37\textwidth}
+            \vspace{-1.5cm}
             \begin{itemize}
                 \item \approachCount{} test approaches $\rightarrow$
-                \item \qualityCount{} software qualities \\ {\small (may imply test approaches)}
+                \item \qualityCount{} software qualities \\ {\scriptsize (may imply test approaches)}
                 \item \flawCount{} flaws in the software testing literature
             \end{itemize}
         \end{column}
-        \begin{column}{0.55\textwidth}
+        \begin{column}{0.63\textwidth}
             \centering
-            \begin{tikzpicture}
-                \pie[sum=100, text=legend, thick, scale=0.5,
-                every label/.style={align=left, scale=0.7}]
-                {{\the\numexpr 100 - 100 * \UndefAfter/\TotalAfter}/Defined,
-                {\the\numexpr 100 * \UndefAfter/\TotalAfter}/{Not defined}}
+            % \begin{tikzpicture}
+            %     \pie[sum=100, text=legend, thick, scale=0.5,
+            %     every label/.style={align=left, scale=0.7}]
+            %     {{\the\numexpr 100 - 100 * \UndefAfter/\TotalAfter}/Defined,
+            %     {\the\numexpr 100 * \UndefAfter/\TotalAfter}/{Not defined}}
+            % \end{tikzpicture}
+
+            % Based off code from https://pgfplots.net/stacked-bar-plot/
+            \begin{tikzpicture}[scale=0.8]
+                \begin{axis}[
+                        xbar stacked,
+                        bar width=15pt, y=40pt,
+                        nodes near coords,
+                        legend style={at={(0.5,-0.37)}, anchor=north,legend columns=-1,
+                                % From https://tex.stackexchange.com/a/18162/192195
+                                /tikz/every even column/.append style={column sep=0.5cm}},
+                        legend entries={Found, Not Found},
+                        xlabel={Number of Test Approaches},
+                        xmin=0, xmax={\the\numexpr\TotalAfter\relax},
+                        ytick=data, yticklabels={Categories,\parbox{0.27\textwidth}{\raggedleft Significant Relations},Definitions},
+                    ]
+                    % Found
+                    \addplot[xbar,fill=blue!60] plot coordinates {
+                            (\the\numexpr\TotalAfter - \UndefAfter\relax,0)
+                            (\the\numexpr\TotalAfter - \orphanCount\relax,1)
+                            (\the\numexpr\TotalAfter - \uncatCount\relax,2)
+                        };
+                    % Not Found
+                    \addplot[xbar,fill=orange!60] plot coordinates {
+                            (\the\numexpr\UndefAfter\relax,0)
+                            (\orphanCount,1)
+                            (\uncatCount,2)
+                        };
+                \end{axis}
             \end{tikzpicture}
         \end{column}
     \end{columns}
