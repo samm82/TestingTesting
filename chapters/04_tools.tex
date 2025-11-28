@@ -5,8 +5,10 @@
 \ifnotpaper
     To better understand our findings, we build tools to
     visualize relations between test approaches (\Cref{app-rel-vis}) and
-    automatically analyze their flaws (\Cref{flaw-analysis}). Doing
-    this manually would be daunting and error-prone due to the amount of
+    automatically analyze their flaws (\Cref{flaw-analysis}). (We support this
+    by using consistent syntax for recording data, which we outline in
+    \Cref{tools-guide} to balance completeness and brevity.) Doing
+    this manually would be daunting and error-prone because of the amount of
     data involved (for example, we identify \approachCount{} test approaches).
     There are also many situations where the underlying data would change, such
     as adding to it, further analyzing it, or correcting it. % These all require
@@ -28,35 +30,17 @@
     \flawDmnsTable{}
 \fi
 
-To better understand the relations between test approaches, we develop a tool
-to visualize them. \ifnotpaper%
-    % We can describe these graphs formally as ordered triplets
-    %     $G = (A, S, P)$, where:  % Format based on https://en.wikipedia.org/wiki/Graph_theory
-    %     \begin{itemize}
-    %         \item $T$ is the set of terms assigned to test approaches by the
-    %               literature,
-    %         \item $A \subseteq T$ is a subset of the \approachCount{} test
-    %               approaches we record as rows in \ourApproachGlossary{} that
-    %               function as the vertices of the graph,
-    %         \item $S \subseteq \left\{ \{x, y\} \mid x, y \in T \,\textrm{ and }\,
-    %                   (x \in A \,\textrm{ or }\, y \in A) \,\textrm{ and }\, x \neq y \right\}$
-    %               is a subset of our identified synonym relations (defined
-    %               in \Cref{syn-rels}) that function as edges, and
-    %         \item $P \subseteq \left\{(x,y) \mid (x, y) \in A^2 \right\}$ is a
-    %               subset of our identified parent-child relations (defined in
-    %               \Cref{par-chd-rels}) that also function as edges.
-    %     \end{itemize}
-    Since we use a consistent format to track synonym and parent-child
-    relations (defined in \Cref{syn-rels,par-chd-rels}, respectively)
-    between approaches in \ourApproachGlossary{}, we can parse them
-    systematically. For example, if the entries in \Cref{tab:exampleGlossary}
-    appear, then their parent-child relations are visualized as
-    shown in \Cref{fig:exampleGraph}. Overall, the parent-child relations
-    between test approaches \emph{should} result in something resembling a
-    hierarchy (or multiple discrete hierarchies), although this is not the case
-    due to flaws in the literature (see \Cref{selfParDef}). Therefore, we
-    visualize all parent-child relations as they are guaranteed to be
-    significant.
+We develop a tool to visualize the relations between test approaches so we can
+better understand them. \ifnotpaper This is possible because of our systematic
+    tracking of synonym and parent-child relations (defined in
+    \Cref{syn-rels,par-chd-rels}, respectively) in \ourApproachGlossary{}
+    (see \Cref{citation-syntax}). For example, if the entries in
+    \Cref{tab:exampleGlossary} appear, then their parent-child relations are
+    visualized as shown in \Cref{fig:exampleGraph}. Overall, the parent-child
+    relations between test approaches \emph{should} result in something
+    resembling a hierarchy (or multiple discrete hierarchies), although this is
+    not the case because of flaws in the literature (see \Cref{selfParDef}). We
+    therefore visualize all parent-child relations as significant.
 
     However, since each term is trivially a synonym of itself and there are many
     non-problematic synonyms that do not imply flaws (see \Cref{syn-rels}),
@@ -66,57 +50,20 @@ to visualize them. \ifnotpaper%
     We deduce these conditions from the information in our glossary;
     for example, if the entries in \Cref{tab:synExampleGlossary} appear, then
     we visualize them as shown in \Cref{fig:exampleSynGraph} (note that
-    approach ``X'' does not appear since it is not defined independently and
-    does not violate transitivity). If a test approach does not have one of
+    approach ``X'' does not appear since it does not have its own definition or
+    violate transitivity). If a test approach does not have one of
     these relations \emph{or} a parent-child relation, we call it an ``orphan''%
     \qtodo{Is it OK to ``define'' \emph{orphan} here? We use the term
         infrequently and it requires us to define our ``significant'' synonym
         relations first.}
-    approach (in constrast to the ``parent'' and ``child'' approaches defined in
+    approach (in contrast to the ``parent'' and ``child'' approaches defined in
     \Cref{par-chd-rels}) and exclude it from any visualizations in which it
     would otherwise appear.
     \clearpage
     \input{build/exampleGlossary.tex}
     \ExampleParChdGraphs{}
     \clearpage
-\fi%
-% For a given synonym pair to
-% be captured by our methodology, at least one term will have its own row in its
-% relevant glossary.
-% We then decide whether to include or exclude the synonym
-% pair from our generated graphs based on the following possible cases:
-% \begin{enumerate}
-%     % \item[1. (Excluded)] \phantomsection{}\label{syn-case-one}
-%     %       \hfill \ifnotpaper
-%     %           $\left\{ \{x, y\} \in S \mid x \in A \,\textrm{ xor }\, y \in A \right\}$
-%     %       \fi \break
-%     %       \textbf{Only one synonym has its own row.}
-%     %       This is a ``typical'' synonym relation (see \Cref{syn-rels}) where
-%     %       the terms are interchangeable. We \emph{could} include the synonym
-%     %       as an alternate name inside the node of its partner, but we do not
-%     %       want to clutter our graphs unnecessarily.
-%     \item%[2. (Included)] \phantomsection{}\label{syn-case-two}
-%           %   \hfill \ifnotpaper
-%           %       $\left\{ \{x, y\} \in S \mid x, y \in A \right\}$
-%           %   \fi \break
-%           \textbf{Synonyms between approaches defined independently.}\hfill\break
-%           If two separate approaches have their own definitions, nuances,
-%           etc.~but are also labelled as synonyms, this may indicate that the
-%           two terms are interchangeable and could be merged \emph{or} that
-%           either their definitions or this synonym relation is incorrect.
-%           % TODO: pretty hacky
-%           % into one row, which would result in \hyperref[syn-case-one]{Case 1} above.
-%     \item%[3. (Included)] \phantomsection{}\label{syn-case-three}
-%           %   \hfill \ifnotpaper
-%           %       $\left\{ \{x, z\}, \{y, z\} \in S \mid x, y \in A \,\textrm{ and }\,
-%           %           z \notin A \right\}$
-%           %   \fi \break
-%           \textbf{Synonyms that violate transitivity.}\hfill\break
-%           If two distinct approaches share a synonym, that implies that they
-%           are synonyms themselves. If they are \emph{not}, one or more
-%           relations may be incorrect or missing.
-% \end{enumerate}
-\ifnotpaper
+
     \input{build/synExampleGlossary.tex}
     \ExampleSynGraph{}
 
