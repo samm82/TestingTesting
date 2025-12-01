@@ -224,6 +224,8 @@
 \def\loadFlaw{Load testing may be performed with loads ``between anticipated
     conditions of low, typical, and peak usage'' \citep[p.~5]{IEEE2022} or with
     loads that are as large as possible \citep[p.~86]{Patton2006}.}
+\newcommand\staticLevelBlurb[1]{\ifnotpaper\else inconsistently \fi categorize
+    static testing as a test level in \citeyearpar[p.~43\ifnotpaper #1\fi]{IEEE2021b}}
 \NewDocumentCommand{\seeRefMissing}{s}{%
     \IfBooleanTF#1{}{\refHelper} \citet[p.~42]{Kam2008} says ``See
     \emph{boundary value analysis},'' for the glossary entry of ``boundary

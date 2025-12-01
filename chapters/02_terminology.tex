@@ -176,17 +176,18 @@ as follows: %\thesisissuetodo{21}
 % We also make the following changes to the schema from \citet[Fig.~2]{IEEE2022}:
 
 While \citepos{IEEE2022} schema includes ``static testing'' as a test approach
-category, we omit it from our scope as it seems non-orthogonal to the others
-and thus less helpful for grouping test approaches. \ifnotpaper Other
-    categorization schemas (see \Cref{alt-cats}) may consider static testing
-    orthogonal, and some may consider it out-of-scope entirely (see
-    \Cref{static-test})! \fi We also introduce a ``supplemental'' category of
-``artifact''\thesisissuenote{44,119,39} since some terms can refer to both the
-application of a test approach \emph{and} the resulting document(s).
+category, we omit it as a category since it seems non-orthogonal to the others
+and thus less helpful for grouping test approaches. These authors even
+\staticLevelBlurb{; see \flawref{static-level-flaw}}! \ifnotpaper Other
+    schemas (see \Cref{alt-cats}) consider static testing to be an orthogonal
+    category or out of scope entirely (see \Cref{static-test}). \fi We also
+introduce a ``supplemental'' category of
+``artifact''\thesisissuenote{44,119,39} since some terms can refer both to the
+application of a test approach \emph{and} to the resulting document(s).
 \ifnotpaper
-    These two ideas are sometimes explicitly distinguished, such as
+    Some sources explicitly distinguish between the two, such as between
     ``conformity evaluation'' and ``conformity evaluation report''
-    \citep[p.~93]{IEEE2017}, but often are not.
+    \citeyearpar[p.~93]{IEEE2017}, but most do not.
     % Additionally, \citet[p.~3]{SouzaEtAl2017} give ``test procedures'', which
     % may be considered equivalent to ``test approaches''
     % (see \Cref{tab:otherCats}), as examples of testing artifacts.
@@ -197,8 +198,9 @@ application of a test approach \emph{and} the resulting document(s).
 Therefore, we do \emph{not} consider approaches categorized as an artifact
 \emph{and} another category as flaws in \Cref{multiCats}. % \thesisissuetodo{119}
 Finally, we also record the test category of ``process'' for completeness,
-although this seems to be a higher level classification and these approaches
-will likely be excluded during later analysis\thesisissuenote{52}.
+although this seems to be a higher-level classification% and these approaches
+% will likely be excluded during later analysis
+\thesisissuenote{52}.
 
 \ifnotpaper
     % \afterpage{
