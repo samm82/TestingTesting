@@ -352,8 +352,8 @@ qualities (``subquality''\ifnotpaper; see \Cref{qual-supp-procedure}\fi).
 \defRel{parent-child}{P}{directed relations between approach pairs} This
 relation should be irreflexive, asymmetric, and transitive, making it a strict
 partial order. A consequence of this is that there should be no directed
-cycles, although since a given child approach $c$ may have more than one
-parent approach $p$, undirected cycles may exist\qtodo{Is this precise enough?}.
+cycles, although undirected cycles may exist (for example, if a child and its
+parent share the same parent).
 
 Parent-child relations often manifest when a ``well-understood'' test approach
 $p$ is decomposed into smaller, independently performable approaches
