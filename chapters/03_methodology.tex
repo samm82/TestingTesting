@@ -18,10 +18,10 @@ our work. Our methodology is as follows:
 As there is no single authoritative source on software testing terminology,
 we need to look at many sources to observe how this terminology is used in
 practice. % Since we are particularly interested in software engineering,
-We start from the vocabulary document for systems and software engineering%
-\qtodo{Better name for this?} \citep{IEEE2017} and three versions of the
-\acf{swebok} (\citealp{SWEBOK2014}; \citealp{SWEBOK2024};
-\citeyear{SWEBOK2025}; see \Cref{swebok-update}).
+We start from the vocabulary document for systems and software engineering
+\citep{IEEE2017} and three versions of the \acf{swebok} \ifnotpaper
+    (\citealp{SWEBOK2014,SWEBOK2024,SWEBOK2025}; see \Cref{swebok-update})\else
+    \cite{SWEBOK2014,SWEBOK2024,SWEBOK2025} (see \Cref{swebok-update})\fi.
 % ---the newest one \citep{SWEBOK2014} and one submitted for public review \citep{SWEBOK2024}
 To gather further sources, we then use a version of ``snowball sampling'',
 which ``is commonly used to locate hidden populations \dots{} [via] referrals
@@ -121,14 +121,14 @@ detailed analysis of these data.
 
 For example, when we first encounter ``A/B Testing'' in
 \citet[p.~1]{IEEE2022} as shown in \Cref{fig:IEEE-A-B-Testing}, we apply
-our procedure as follows:\qtodo{Should glossary headers be capitalized?}
+our procedure as follows:
 \ifnotpaper\begin{figure}[h!]\else\begin{figure}[b!]\fi
     \includegraphics[width=\linewidth]{assets/images/a-b testing.png}
     \caption{\citepos[p.~1]{IEEE2022} glossary entry for
         ``A/B testing''.}\label{fig:IEEE-A-B-Testing}
 \end{figure}
 \begin{enumerate}
-    \item Create a new row with the name ``A/B testing'' and the category
+    \item Create a new row with the name ``A/B Testing'' and the category
           ``Approach''.
     \item Record the synonym ``Split-Run Testing''.
     \item Record the parent ``Statistical Testing''.

@@ -17,12 +17,15 @@ def footnoteHelper(label):
 #     "parents (\\Cref{par-chd-rels})",
 #     "flaws\\phantomsection{}\\label{manual-flaws} (\\Cref{flaw-def}) (in a separate document)"]
 
+OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
+                             "other sources"])
+
 toRecord: list[str] = [
     "names", f"categories{footnoteHelper("cats-def")}",
     "definitions", f"synonyms{footnoteHelper("syn-rels")}",
     f"parents{footnoteHelper("par-chd-rels")}",
     f"flaws{footnoteHelper("flaw-def")}\\phantomsection{{}}\\label{{manual-flaws}}"
-    " \\ifnotpaper (\\Cref{record-flaws})\\fi"]
+    " \\ifnotpaper (\\Cref{record-flaws})\\fi", f"notes ({OTHER_NOTES_EXS}, etc.)"]
 
 # relatedTerms: list[str] = [
 #     "imply related test approaches (\\Cref{derived-tests})",
@@ -36,10 +39,6 @@ toRecord: list[str] = [
 #     f"\t\t  {line}" for line in wrapEnv(
 #         "enumerate", [f"\t\\item {capFirst(i)}" for i in relatedTerms])
 #         ])
-
-OTHER_NOTES = "other relevant notes"
-OTHER_NOTES_EXS = ", ".join(["prerequisites", "uncertainties",
-                             "other sources"])
 
 methodology = ("""
     \\item \\phantomsection{}\\label{step:ident-sources}
@@ -55,10 +54,8 @@ methodology = ("""
           step~\\ref{step:ident-terms}; test approach data are comprised of:
           \n""" + "\n".join([
         f"\t\t  {line}" for line in wrapEnv(
-            "enumerate", [f"\t\\item {capFirst(i)}"
-                          for i in toRecord + [OTHER_NOTES +
-                                               f" ({OTHER_NOTES_EXS}, etc.)"]])
-        ]) + """
+            "enumerate", [f"\t\\item {capFirst(i)}" for i in toRecord])])
+         + """
     \\item \\phantomsection{}\\label{step:repeat-process}
           Repeat steps~\\ref{step:ident-sources} to \\ref{step:record-info} for 
           any missing or unclear terms (\\Cref{undef-terms}) until the stopping
@@ -67,7 +64,9 @@ methodology = ("""
 # Base methodology overview
 writeFile(wrapEnv("enumerate", [methodology]), "methodOverviewList", helper=True)
 
+toRecord = toRecord[:-1]
 toRecord[-1] = "and " + toRecord[-1]
+OTHER_NOTES_EXS = ", and ".join(OTHER_NOTES_EXS.rsplit(", ", 1))
 
 for sec, verb in [("Intro", "start"), ("Conc", "do this")]:
     if sec == "Conc":
@@ -80,7 +79,7 @@ for sec, verb in [("Intro", "start"), ("Conc", "do this")]:
         f"\\ as applicable."]
     if sec == "Intro":
         methodOverview.append(
-            f"We also record any {OTHER_NOTES}, such as {OTHER_NOTES_EXS}.")
+            f"We also record any other relevant notes, such as {OTHER_NOTES_EXS}.")
     methodOverview[-1] = methodOverview[-1] + "%"
 
     # Textual methodology overviews
