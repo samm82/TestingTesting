@@ -7,7 +7,7 @@
 After gathering all these data\footnote{Available in \texttt{ApproachGlossary.csv},
     \texttt{QualityGlossary.csv}, and \texttt{SuppGlossary.csv} at \ifblind{
         [Repository link suppressed]}{
-        \url{https://github.com/samm82/TestingTesting}}.}, we find \flawCount{}
+        \url{https://github.com/samm82/TestingTesting}}.}, we found \flawCount{}
 flaws. \Cref{fig:flawBars} shows where these flaws appear within each source tier
 (defined in \Cref{source-tiers}) which reveals the following about software
 testing literature: \srcTierObservs{}
@@ -68,7 +68,7 @@ in \Cref{flawMnfsts} based on their manifestation% (defined in \Cref{mnfst-def})
 . This lets us separately summarize the flaws we automatically detect
 \ifnotpaper (see \Cref{auto-flaw-detect}) \fi based on their domain %(defined in \Cref{dmn-def})
 in \Cref{flawDmns}. \ifnotpaper We list \emph{all} these flaws in
-    \Cref{flaws-full} to balance completeness and brevity and denote implicit
+    \Cref{flaws-full} to balance completeness and brevity, indicating implicit
     relations with the phrase ``implied by'' in \Cref{tab:parSyns,tab:multiCats,%
         tab:infMultiCats} as described in \Cref{explicitness}. \fi
 Moreover, certain ``subsets'' of testing contain many interconnected flaws
@@ -84,7 +84,7 @@ for completeness\else, although we omit the more trivial subsets from
 Due to time constraints, this collection of flaws is still not
 comprehensive! While we apply our heuristics for identifying relevant terms
 (see \Cref{ident-terms}) to the entirety of most investigated sources,
-especially established standards (see \Cref{stds}), we are only able to
+especially established standards (see \Cref{stds}), we were only able to
 investigate some sources in part. These mainly comprise of sources chosen for a
 specific area of interest or based on a test approach that was later determined
 to be out-of-scope. These include the following sources\ifnotpaper\ as described
@@ -93,28 +93,28 @@ to be out-of-scope. These include the following sources\ifnotpaper\ as described
 \phantomsection{}\label{swebok-update}
 Since our research began, the draft version of the \acs{swebok} v4.0
 \citep{SWEBOK2024} has been updated and published \citeyearpar{SWEBOK2025};
-we revisit this version to see which flaws in the draft were resolved (we find
+we revisited this version to see which flaws in the draft were resolved (and found
 two notable cases of this) following our heuristics based on these subsets, but
-lack the time to investigate this new version in full. Finally, some heuristics
+lacked the time to investigate this new version in full. Finally, some heuristics
 only arose as research progressed, particularly those for deriving test
 approaches (see \Cref{implied-approaches}); % (see \Cref{derived-tests})
 while reiterating over investigated sources would be ideal, this is infeasible
 due to time constraints.
 
-From this partial implementation of our methodology, we identify
+From this partial implementation of our methodology, we identified
 \approachCount{} test approaches, \undefPerc\% of which are undefined.
 With more time, we would continue to snowball on these undefined terms
 following the procedure in \Cref{undef-terms}\ifnotpaper\ (see
     \Cref{future-undef-terms} for more detailed discussion on what we
     accomplished)\fi.
-Likewise, we are unable to reach our stopping criteria outlined in
-\Cref{stop-crit}. We consider the discovery of property-based testing as an
+Likewise, we were unable to reach our stopping criteria outlined in
+\Cref{stop-crit}. We considered the discovery of property-based testing as an
 alternate stopping point for our research\thesisissuenote{57,81,88,125}
 since we are surprised that it is not mentioned in any sources we investigated.
-Even so, we have to stop our snowballing approach before we discover
+Even so, we had to stop our snowballing approach before we discovered
 property-based testing in the literature!\ifnotpaper\ With more time, we would
     uncover this along with other test approaches that did not arise (as
-    described in \Cref{future-miss-terms}), but unfortunately, we impose our
+    described in \Cref{future-miss-terms}), but unfortunately, we imposed our
     stopping point artificially.\fi
 
 \subsection{Flaws by Manifestation}\label{flawMnfsts}
@@ -143,13 +143,13 @@ mistakes\fi.
 \redBoxFlaw{}
 
 \subsubsection{Omissions}\label{miss}
-We find four cases where a definition is omitted, one where a category is
+We found four cases where a definition is omitted, one where a category is
 omitted, and one where a term (along with its relations) is omitted\ifnotpaper;
 we list these in \Cref{miss-full}\fi.
 
 \subsubsection{Contradictions}\label{contra}
 There are many cases where multiple sources of information (sometimes within
-the same document!) disagree. We find this happen with six categories, six
+the same document!) disagree. We found this happen with six categories, six
 synonym relations, seven parent-child relations, 17 definitions, and three
 labels. \ifnotpaper These can be found in \Cref{contra-full}.\fi
 
@@ -163,13 +163,13 @@ We identify the kinds of ambiguous information given in \Cref{tab:brkdwnAmbi}%
 
 \subsubsection{Overlaps}\label{over}
 While information given in the literature should be atomic, this is not
-always the case. We find three definitions that overlap, two terms with
+always the case. We found three definitions that overlap, two terms with
 multiple definitions, and three terms that share acronyms. \ifnotpaper We list
     these in \Cref{over-full}; note that we track two of the terms with
     multiple definitions as the same flaw since they are related. \fi
 
 \subsubsection{Redundancies}\label{redun}
-We find redundancies in two parent-child relations, two definitions, and two
+We found redundancies in two parent-child relations, two definitions, and two
 labels\ifnotpaper\ as listed in \Cref{redun-full}\fi.
 
 \subsection{Flaws by Domain}\label{flawDmns}
@@ -219,7 +219,7 @@ can analyze them more systematically. % \thesisissuetodo{21}
         \vspace{-1cm}
     \end{wraptable}
 \fi
-In particular, \multiCatIntro{}. We identify \multiCatCount{} such cases
+In particular, \multiCatIntro{}. We identified \multiCatCount{} such cases
 \ifnotpaper that we summarize in \Cref{tab:multiCatTable} \fi and list
 \ifnotpaper \else the most prominent \fi along with their sources in
 \Cref{tab:multiCats}\ifnotpaper\ for completeness\fi.
@@ -303,7 +303,7 @@ irreflexivity of this relation as defined in \Cref{par-chd-rels}.
 % Since these are by nature self-contained within a given source, we count these
 % \emph{once} as objective flaws within
 % their sources in \Cref{tab:flawMnfsts,tab:flawDmns}.
-\ifnotpaper We identify
+\ifnotpaper We identified
     the following \selfParCount{} examples through automatic analysis of our
     generated graphs (see \Cref{auto-flaw-detect}):
     \input{build/selfPars} Interestingly, \citet{Gerrard2000a,Gerrard2000b}
