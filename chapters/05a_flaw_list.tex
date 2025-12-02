@@ -234,10 +234,9 @@
           agree, saying ``branch and decision coverage are closely related%
           \dots{}, although lower levels of coverage may not be the same''
           \citeyearpar[p.~104]{IEEE2021c} and separating these two terms
-          (Fig.~G.1, Secs.~5.3.2, 5.3.3, Annex~C.2.2\qtodo{What's the short
-              form of ``annex''?}). However, (Fig.~F.1) implies that these
-          terms are synonyms, contradicting this separation and making decision
-          testing's relations ambiguous.
+          (Fig.~G.1, Secs.~5.3.2, 5.3.3, Annex~C.2.2). However, (Fig.~F.1)
+          implies that these terms are synonyms, contradicting this separation
+          and making decision testing's relations ambiguous.
     \item % Flaw count (WRONG, LABELS): {IEEE2021c}
           A typo in \citet[Fig.~2]{IEEE2021c} means that ``specification-based
           techniques'' is listed twice, when the latter should be
@@ -413,10 +412,10 @@
           \citealp[p.~399]{vanVliet2000}), \citeauthor{SWEBOK2025} does not use
           this consistently, sometimes implying that errors can be instrinsic
           to software itself \citeyearpar[pp.~4\=/9, 6\=/5, 7\=/3, 12\=/4,
-              12\=/9, 12\=/13]{SWEBOK2025}.\qtodo{I ignore ``syntax errors,
-              runtime errors, and logical errors'' \citep[p.~16\=/13, cf.
-                  p.~18\=/13]{SWEBOK2025} since they seem to be in different
-              domains. Does that make sense? How should I document this?}
+              12\=/9, 12\=/13]{SWEBOK2025}.%\qtodo{I ignore ``syntax errors,
+          %   runtime errors, and logical errors'' \citep[p.~16\=/13, cf.
+          %       p.~18\=/13]{SWEBOK2025} since they seem to be in different
+          %   domains. Does that make sense? How should I document this?}
     \item % Flaw count (CONTRA, LABELS): {IEEE2024} {IEEE2019a} {SWEBOK2025} {Lyu1996} | {SWEBOK2025}
           % Assertion: {vanVliet2000}
           \refHelper{} \citet[p.~1\=/1]{SWEBOK2025} defines ``defect'' as ``an
@@ -572,9 +571,9 @@
           assurance work will fall under the conformance work category in the
           cost of quality framework'', but (Fig.~8\=/2) suggests that
           ``conformance work'' is a part of quality assurance. This
-          introduces ambiguity at best and creates a cyclic parent-child
-          relation (which violates our definition in \Cref{par-chd-rels}%
-          \qtodo{Should I be more specific?}) at worst.
+          introduces ambiguity at best and creates a directed cyclic
+          parent-child relation (which violates our definition in
+          \Cref{par-chd-rels}) at worst.
     \item % Flaw count (MISS, LABELS): {PMBOK2013}
           The \citet[p.~476]{PMBOK2013} uses the acronym ``QA'' which is
           implied to refer to ``quality assurance'' as ``QC'' refers to
