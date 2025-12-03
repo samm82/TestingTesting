@@ -269,7 +269,7 @@
           either manual test cases or keyword test cases'' and ``a keyword test
           case implements a manual test case'' \citetext{p.~6} are incorrect.
           % Flaw count (WRONG, SYNS): implied by {IEEE2016} | {IEEE2022} {IEEE2016}
-          These statements could also be interpreted as implying that
+          The former statement could also be interpreted as implying that
           ``keyword-driven testing'' is a synonym of ``automated testing'',
           which is also incorrect.
     \item % Flaw count (AMBI, DEFS): {IEEE2016} {IEEE2017} {IEEE2012} {vanVliet2000}
@@ -665,11 +665,10 @@
           \citealp[pp.~478\==479]{PetersAndPedrycz2000}; \citealp[Fig.~2]{Reid1996}),
           but \citet[p.~425]{vanVliet2000} uses the uppercase ``DU\=/path'' instead.
     \item % Flaw count (MISS, DEFS): {IEEE2021c} {IEEE2017} {PetersAndPedrycz2000} implied by {vanVliet2000} | {vanVliet2000}
-          \Citet[p.~425]{vanVliet2000} defines many types of data
-          flow coverage, including all-\acsp{p-use},
-          all-\acsp{p-use}/some-\acsp{c-use}, and
-          all-\acsp{c-use}/some-\acsp{p-use}, but
-          excludes all-\acsp{c-use}, which is implied by these definitions and
+          \Citet[pp.~425, 432\==433]{vanVliet2000} defines many kinds of data
+          flow coverage and describes their relations, including all-\acsp{p-use},
+          all-\acsp{p-use}/some-\acsp{c-use}, and all-\acsp{c-use}/some-\acsp{p-use},
+          but excludes all-\acsp{c-use}, which is implied by these definitions and
           defined elsewhere (\citealp[p.~27]{IEEE2021c};
           \citeyear[p.~83]{IEEE2017}; \citealp[p.~479]{PetersAndPedrycz2000}).
     \item % Flaw count (CONTRA, DEFS): {vanVliet2000} | {IEEE2021c} {IEEE2017} {PetersAndPedrycz2000}
@@ -811,7 +810,7 @@
           have been allocated a slot against
           the four test priorities'' \citetext{p.~13}; usability testing and/or
           performance testing would have been good candidates.
-    \item % Flaw count (WRONG, DEFS): {Gerrard2000b}
+    \item % Flaw count (WRONG, SCOPE): {Gerrard2000b}
           \citepos[p.~28]{Gerrard2000b} definition of ``manual security audits''
           may be too specific, only applying to ``the products installed on a
           site'' and ``the known vulnerabilities for those products''.
