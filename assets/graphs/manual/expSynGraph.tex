@@ -47,6 +47,8 @@ SmokeTesting [label=<Smoke<br/>Testing>];
 SpecificationbasedTesting [label=<Specification-based<br/>Testing>];
 StaticAnalysis [label=<Static<br/>Analysis>];
 StaticTesting [label=<Static<br/>Testing>];
+StructuralTesting [label=<Structural<br/>Testing>];
+StructurebasedTesting [label=<Structure-based<br/>Testing>];
 StructuredWalkthroughs [label=<Structured<br/>Walkthroughs>];
 SystemsIntegrationTesting [label=<Systems<br/>Integration<br/>Testing>];
 twiseTesting [label=<t-wise<br/>Testing>];
@@ -55,6 +57,7 @@ Walkthroughs [label=<Walkthroughs>];
 
 CapacityTesting -> ScalabilityTesting[dir=none,color=green];
 CompatibilityTesting -> CoexistenceTesting[dir=none,color=green];
+StructuralTesting -> StructurebasedTesting[dir=none,color=green];
 
 AcceptanceTesting -> QualificationTesting[dir=none,color=blue];
 FaultToleranceTesting -> RobustnessTesting[dir=none,color=blue];
@@ -98,12 +101,13 @@ CorrectnessTesting -> CapacityTesting[dir=none,style=invis];
 ScalabilityTesting -> UserScenarioTesting[dir=none,style=invis];
 DomainTesting -> UseCaseTesting[dir=none,style=invis];
 ConfigurationTesting -> CompatibilityTesting[dir=none,style=invis];
-ReliabilityTesting -> AcceptanceTesting[dir=none,style=invis];
-IntakeTesting -> FaultToleranceTesting[dir=none,style=invis];
-BranchConditionCombinationTesting -> OperationalTesting[dir=none,style=invis];
-DynamicTesting -> ConversionTesting -> OrthogonalArrayTesting[dir=none,style=invis];
-StaticTesting -> MigrationTesting -> StructuredWalkthroughs[dir=none,style=invis];
-SystemsIntegrationTesting -> PerformancerelatedTesting -> RecoverabilityTesting[dir=none,style=invis];
+ReliabilityTesting -> StructuralTesting[dir=none,style=invis];
+IntakeTesting -> AcceptanceTesting[dir=none,style=invis];
+BranchConditionCombinationTesting -> FaultToleranceTesting[dir=none,style=invis];
+DynamicTesting -> ConversionTesting -> OperationalTesting[dir=none,style=invis];
+StaticTesting -> MigrationTesting -> OrthogonalArrayTesting[dir=none,style=invis];
+SystemsIntegrationTesting -> PerformancerelatedTesting -> StructuredWalkthroughs[dir=none,style=invis];
+PerformanceTesting -> RecoverabilityTesting[dir=none,style=invis];
 
 {
 rank = same;
@@ -142,7 +146,7 @@ rankdir = TB;
 {
 rank = same;
 edge[style=invis];
-ScalabilityTesting -> SpecificationbasedTesting ->  ConfigurationTesting;
+ScalabilityTesting -> SpecificationbasedTesting -> ConfigurationTesting;
 ConfigurationTesting -> ReliabilityTesting -> IntakeTesting;
 IntakeTesting -> BranchConditionCombinationTesting;
 % ConversionTesting -> LargeScaleIntegrationTesting;
@@ -152,9 +156,9 @@ rankdir = TB;
 {
 rank = same;
 edge[style=invis];
-UserScenarioTesting -> DomainTesting -> CompatibilityTesting -> AcceptanceTesting;
-AcceptanceTesting -> FaultToleranceTesting -> OperationalTesting -> OrthogonalArrayTesting;
-OrthogonalArrayTesting -> StructuredWalkthroughs -> RecoverabilityTesting;
+UserScenarioTesting -> DomainTesting -> CompatibilityTesting -> StructuralTesting;
+StructuralTesting -> AcceptanceTesting -> FaultToleranceTesting -> OperationalTesting;
+OperationalTesting -> OrthogonalArrayTesting -> StructuredWalkthroughs -> RecoverabilityTesting;
 rankdir = TB;
 }
 
