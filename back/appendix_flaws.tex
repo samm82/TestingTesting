@@ -38,7 +38,7 @@ corresponding list when referring to it as described in \Cref{mnfst-def}.
     % This may change based on content length
     \section{Full Lists of Flaws by Domain}\label{flawDmn-full}
 
-    The following sections provide all of the data that we automatically detect
+    The following sections provide all of the data that we automatically detected
     (as described in \Cref{auto-flaw-detect}) and summarize in \Cref{flawDmns}.
 
     \subsection{Multiple Categorizations}\label{multiCats-full}
@@ -52,11 +52,11 @@ corresponding list when referring to it as described in \Cref{mnfst-def}.
 \subsection{Intransitive Synonyms}\label{multiSyns}
 As described in \Cref{relevantSyns}, intransitive synonyms are examples of
 flaws since they violate our definition of the synonym relation in
-\Cref{syn-rels}. We identify \multiSynCount{}
-such cases through automatic analysis of generated visualizations\ifnotpaper,
-listed below (test approaches in \emph{italics} are synonyms with each other,
-but not with other terms not in italics\todo{Better way to handle/display
-    this?})\else. The following three are the most prominent examples\fi:
+\Cref{syn-rels}. We identified \ifnotpaper the following \fi \multiSynCount{}
+such cases through automatic analysis of generated visualizations\ifnotpaper\
+    (test approaches in \emph{italics} are synonyms with each other, but not
+    with other unitalicized terms)\else. The following three are the most
+    prominent examples\fi:
 
 \begin{enumerate}
     \input{\ifnotpaper build\else assets/misc\fi/multiSyns}
@@ -69,7 +69,7 @@ As described in \Cref{parSyns}, \parSynIntro*{}.
 \end{landscape}
 
 \section{Inferred Flaws}\label{infer-flaws}
-Throughout our research, we infer many potential flaws as described in
+Throughout our research, we inferred many potential flaws as described in
 \Cref{infers}. Some of these have a conflicting source while others do not.
 Since these are more subjective and are based on our own judgement, we
 exclude them from any counts of the numbers of flaws but give them here for
@@ -77,7 +77,7 @@ completeness.
 
 \subsection{Inferred Multiple Categorizations}\label{infMultiCats}
 As mentioned in \Cref{multiCats}, \multiCatIntro{}. This includes those with
-categories that we infer based on our assumption that child approaches
+categories that we inferred based on our assumption that child approaches
 inherit their parents' categories (as described in \Cref{infers}). We list
 these approaches and their given and inferred categories (along with their
 relevant parent in parentheses) in \Cref{tab:infMultiCats}.
@@ -88,7 +88,7 @@ relevant parent in parentheses) in \Cref{tab:infMultiCats}.
 
 \subsection{Inferred Intransitive Synonyms}\label{infMultiSyns}
 In addition to the \multiSynCount{} cases of intransitive synonyms we list in
-\Cref{multiSyns}, we infer some synonym relations based on the terms'
+\Cref{multiSyns}, we inferred some synonym relations based on the terms'
 definitions that create the following inferred flaws (some pairs of synonyms
 have sources; those that do not are ones we infer):
 
@@ -106,7 +106,7 @@ one of these conflicting relations is \emph{not} explicitly supported by the
 literature but may, nonetheless, be correct. The relations in the first two
 lists are explicitly given in the literature but may be incorrect, while
 those in the third list are unsubtantiated by the literature and require
-more thought before a recommendation can be made.
+more thought before we can consider it a flaw or make a recommendation.
 
 \input{build/infParSyns}
 
