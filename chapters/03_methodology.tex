@@ -285,26 +285,22 @@ to upgrade the quality to a test type in \ourApproachGlossary{}.
 \fi\label{imp-info}
 
 As described in \Cref{explicitness}, the use of natural language introduces
-significant nuance that we need to document. Keywords such as \impKeywords{}
-indicate that information from the literature is \emph{not} explicit. These
-keywords often appear directly within the literature, but even when they do
-not, we use them to track explicitness in \ourApproachGlossary{} to
-provide a more complete summary of the state of software testing literature
-without getting distracted by less relevant details. We find the following
+significant nuance that we need to document. We find the following
 non-mutually exclusive cases of implicit information from the literature:
 
 \begin{enumerate}
-    \item \textbf{The information follows logically} from the source and
-          information from others, but is not explicitly stated.
+    \item \textbf{The information follows logically}
+          % from the source and information from others,
+          but is not explicitly stated.
     \item \textbf{The information is not universal} but still applies in
           certain cases. \ifnotpaper
     \item \textbf{The information is conditional}, requiring certain
           prerequisites to be satisfied (a more specific case of information
           not being universal). \fi
-    \item \textbf{The information is dubious}; while it is present in the
-          literature, there is reason to doubt its accuracy.
+    \item \textbf{The information is dubious}
+          %; while it is present in the literature, there is
+          with reason to doubt its accuracy.
 \end{enumerate}
-
 % %% Maybe convert to \paragraph ?
 % \begin{description}
 %     \item[1. The information follows logically.]
@@ -361,20 +357,20 @@ non-mutually exclusive cases of implicit information from the literature:
 %           %   synonym relation is treated as implicit instead of as an objective
 %           %   flaw.
 % \end{description}
-
-When we encounter information that meets one of these criteria, we use an
-appropriate keyword to capture this nuance in \ourApproachGlossary{}\ifnotpaper\
-    (see \Cref{tab:impCaseKeywords})\fi. This also helps us identify implicit
-information when performing later analysis. Despite ``implicit'' only
-describing the first of these cases, we use it (as well as ``implied by'' when
+These cases are often, but not always, indicated in the literature by (at
+least) one of the following keywords: \impKeywords{}. Even when they are
+not, we use them in \ourApproachGlossary{} \ifnotpaper
+(see \Cref{tab:impCaseKeywords}) \fi to more completely summarize the
+software testing literature without getting distracted by less
+relevant details. This also helps us identify implicit
+information during later analysis. While ``implicit'' only
+describes the first of these cases, we use it (as well as ``implied by'' when
 describing sources of information) as a shorthand for all ``not explicit''
 information throughout this \docType{} for clarity.
 
 \ifnotpaper
-    Regarding the last entry in \Cref{tab:impCaseKeywords}, if a test approach in
-    \ourApproachGlossary{} has a name ending in ``~(Testing)'' (space
-    included), then the word ``Testing'' might not be part of its name
-    \emph{or} it might not be a test approach at all! For example, the term
+    Some test approaches may or may not include the word ``testing'' in their
+    names or may not be test approaches at all! For example, the term
     ``legacy system integration'' is used in \ifnotpaper
         \citeauthor{Gerrard2000a} (\citeyear[pp.~12\==13, Tab.~2]{Gerrard2000a};
         \citeyear[Tab.~1]{Gerrard2000b})\else
@@ -383,8 +379,8 @@ information throughout this \docType{} for clarity.
     ``legacy system integration testing'' is used in
     \citeyearpar[pp.~30\==31]{Gerrard2000b}. In other cases where a
     term is \emph{not} explicitly labelled as ``testing'', we add the
-    suffix ``~(Testing)'' (when it makes sense to do so) and consider
-    the test approach to be implied.
+    suffix ``~(Testing)'' (space included; see \Cref{tab:impCaseKeywords})
+    when it makes sense to do so and consider the test approach to be implied.
 
     \input{assets/tables/impCaseKeywords}
 
@@ -403,15 +399,15 @@ information throughout this \docType{} for clarity.
     It is important to note that when a flaw can be viewed in multiple ways,
     we record multiple pairs of manifestations and domains. For example,%
     \seeRefMissing*{} This is trivially an example of a missing definition,
-    but is also an example of incorrect traceability information. Therefore,
-    we record both of these views\thesisissuenote{157}, although
+    but is also an example of incorrect traceability information.
+    We record both of these views\thesisissuenote{157} but
     % include one comment line for \texttt{(WRONG, TRACE)} and one for \texttt{(MISS, DEFS)}
     % The comment that appears first determines where this flaw is displayed,
     % although all pairs are counted as their own flaws; 
-    we display this flaw as an example of incorrect traceability information as
-    \flawref{see-ref-missing} since we determine this to be more meaningful.
+    display this flaw more meaningfully as an example of incorrect traceability
+    information (\flawref{see-ref-missing}).
     % as described in \Cref{flaw-comment-analysis}
-    \newpage
+    % \newpage
 \fi
 
 \subsection{Undefined Terms}\label{undef-terms}
