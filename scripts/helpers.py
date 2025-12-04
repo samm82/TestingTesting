@@ -17,7 +17,8 @@ def capFirst(s: str) -> str:
 
 # RegEx patterns
 AUTHOR_CHARS = r"a-zA-Zğļöšß.\/_"
-AUTHOR_REGEX = fr"(?<!OG )(?!OG )\b(?:van|[A-Z])[{AUTHOR_CHARS} ]+"
+AUTHOR_REGEX_NO_OG = fr"\b(?:van|[A-Z])[{AUTHOR_CHARS} ]+"
+AUTHOR_REGEX = fr"(?<!OG )(?!OG ){AUTHOR_REGEX_NO_OG}"
 YEAR_REGEX = r"\d{4}[a-z]?"
 BEGIN_INFO_REGEX = r"(?!al)[a-zA-Z]+\."  # To avoid matching "et al."
 NUM_REGEX = r"[A-Zmdclxvi\d\.]+"
@@ -113,10 +114,11 @@ def formatLineWithSources(line: str, todo=True):
     line = re.sub(fr"({BEGIN_INFO_REGEX}) ({NUM_INFO_REGEX})",
                   r"\1~\2", line)
 
-    if todo:
-        # Explicitly *want* to capture "OG"
-        line = re.sub(fr"; (OG {AUTHOR_REGEX[15:]}(?:, {YEAR_REGEX}(?:, {INFO_REGEX})?)?)\)",
-                    r"\\todo{\1})", line)
+    # Explicitly *want* to capture "OG", except when todos won't work (i.e., in tables)
+    # Disable their removal when investigating original sources (#225)
+    if "OG" in line:
+        line = re.sub(fr"; (OG {AUTHOR_REGEX_NO_OG}(?:, {YEAR_REGEX}(?:, {INFO_REGEX})?)?)",
+                    r"\\todo{\1}" if todo else "", line)
 
     line = re.sub(fr"({AUTHOR_REGEX}), ({YEAR_REGEX}), ({INFO_REGEX}); ({YEAR_REGEX}), ({INFO_REGEX})",
                   r"\\citealp[\3]{\1\2}; \\citeyear[\5]{\1\4}", line)
