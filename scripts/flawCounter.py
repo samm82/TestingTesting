@@ -527,7 +527,7 @@ def outputFlaws():
                         "every node near coord/.append style={font=\\tiny},", "]",
                 # Legend header from https://tex.stackexchange.com/a/2332/192195
                 "\\addlegendimage{empty legend}", *flawBars,
-                f"\\legend{{\\hspace{{{"1.2" if sem else "3.4"}cm}} \\Large \\textbf{{Legend}},{",".join([vals[1] for vals in slices])}}}",
+                f"\\legend{{\\hspace{{{"1" if sem else "3.4"}cm}} \\Large \\textbf{{Legend}},{",".join([vals[1] for vals in slices])}}}",
                 "\\end{axis}", "\\end{tikzpicture}",
                 "" if sem else f"\\caption{{{FLAW_CAPTION}}}\\label{{fig:flawBars}}",
                 "\\end{figure}"], f"flawBars{sem}")
