@@ -14,19 +14,6 @@
     % (see \Cref{scal-test-rec})
     which we verify by looking at this original source.}
 
-\def\srcTierObservs{\begin{enumerate}
-        \item Established standards are not actually standardized, since:
-              \begin{enumerate}
-                  \item other documents frequently disagree with them and
-                  \item they are the most internally inconsistent source tier!
-              \end{enumerate}
-        \item Less standardized documents, such as terminology collections and
-              textbooks, are also not followed to the extent they should be.
-        \item Documents across the board have flaws within the same document,
-              between documents with the same author(s), or even with assertions of
-              ground truth!
-    \end{enumerate}}
-
 \newcommand\iterGraphHelper[3]{\centering
     \begin{tikzpicture}[thick, scale=#3, every label/.style={align=left, scale=#3}]
         \pie[text=inside, sum=auto, color={blue!60, orange!60}]{
@@ -181,16 +168,16 @@
     analysis of our generated visualizations\ifnotpaper\ as described in
         \Cref{auto-flaw-detect}\fi}
 
-\NewDocumentCommand\contraSummary{o}{Contradictions are by
+\def\contraSummary{Contradictions are by
     \emph{far} the most common manifestation. This is likely because these
-    are the most obvious flaws to detect automatically\IfNoValueT{#1}{
-        (see \Cref{\ifnotpaper auto-flaw-detect,\fi flawDmns})}
+    are the most obvious flaws to detect automatically (see
+    \Cref{\ifnotpaper auto-flaw-detect,\fi flawDmns})
     and because two (sets of) authors using different resources and not
     communicating have a high chance of disagreeing.}
-\NewDocumentCommand\catsSummary{s o}{\IfBooleanTF#1{a}{A}pproach categorizations
+\NewDocumentCommand\catsSummary{s}{\IfBooleanTF#1{a}{A}pproach categorizations
     are the most subjective and one of the most common flaw domains, likely due
-    to the lack of standardization about what categories to use\IfNoValueT{#2}{%
-        \ifnotpaper\ (see \Cref{alt-cats} for more detailed discussion)\fi}.}
+    to the lack of standardization about what categories to use\ifnotpaper\
+        (see \Cref{alt-cats} for more detailed discussion)\fi.}
 \def\semFlaws{In general, semantic flaws are more common than syntactic ones.
     The number of category flaws is comparable to the numbers of flaws
     with the relations and definitions of test approaches.}
