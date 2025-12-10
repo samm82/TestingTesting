@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[pdf]{graphviz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
+\begin{document}
+\digraph{expSynSpecGraph}{
+rankdir=LR;
+edge [penwidth=2];
+
+ConformanceTesting [label=<Conformance<br/>Testing>];
+CorrectnessTesting [label=<Correctness<br/>Testing>];
+DomainTesting [label=<Domain<br/>Testing>];
+FunctionalTesting [label=<Functional<br/>Testing>];
+SpecificationbasedTesting [label=<Specification-based<br/>Testing>];
+
+CorrectnessTesting -> ConformanceTesting[dir=none,color=blue];
+CorrectnessTesting -> FunctionalTesting[dir=none,color=blue];
+ConformanceTesting -> FunctionalTesting[dir=none,color=blue];
+FunctionalTesting -> SpecificationbasedTesting[dir=none,color=green];
+SpecificationbasedTesting -> DomainTesting[dir=none,color=blue];
+
+{
+rank = same;
+ConformanceTesting;
+CorrectnessTesting;
+}
+
+}
+\end{document}

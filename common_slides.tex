@@ -461,44 +461,48 @@
 
 \begin{frame}{Automated Flaws}
     \framesubtitle{Intransitive Synonyms}
-    Some prominent examples: \vspace{0.25cm}
-    \begin{enumerate}
-        \item \textbf{Functional Testing:} \hfill \textbf{Source(s)}
-              \begin{itemize}
-                  \item Specification-based Testing {\hfill \tiny \citep[p.~196; \dots{}]{IEEE2017}}
-                        %   ; \citealp[pp.~44\==45, 48]{Kam2008}; \citealp[p.~399]{vanVliet2000};
-                        % implied by \citealp[p.~129]{IEEE2021c}; \citeyear[p.~431]{IEEE2017})
-                  \item \emph{Conformance Testing} {\hfill \tiny \citep[p.~5\=/7]{SWEBOK2025}}
-                  \item \emph{Correctness Testing} {\hfill \tiny \citep[p.~5\=/7]{SWEBOK2025}}
-              \end{itemize}\pause
-              \vspace{0.25cm}
-        \item \textbf{Portability Testing:}
-              \begin{itemize}
-                  \item Flexibility Testing {\hfill \tiny \citep{ISO_IEC2023a}}
-                  \item Configuration Testing {\hfill \tiny \citep[p.~43]{Kam2008}}
-              \end{itemize}
-              \vspace{0.25cm}
-        \item \textbf{Soak Testing:}
-              \begin{itemize}
-                  \item Endurance Testing {\hfill \tiny \citep[p.~39]{IEEE2021c}}
-                  \item Reliability Testing {\hfill \tiny (\citealp[Tab.~2]{Gerrard2000a};
-                                \citeyear[Tab.~1, p.~26]{Gerrard2000b})}
-                        % Endurance testing is given as a child of reliability testing by
-                        % \citet[p.~55]{Firesmith2015}, although the terms are not synonyms.
-              \end{itemize}
-              %   \item \textbf{Link Testing:}
-              %   \begin{itemize}
-              %       \item Branch Testing {\hfill \tiny (implied by \citealp[p.~24]{IEEE2021c};
-              %             \citealp[p.~4]{Reid1996})}
-              %       \item Component Integration Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
-              %       \item Integration Testing {\hfill \tiny (implied by \citealp[p.~13]{Gerrard2000a})}
-              %   \end{itemize}
-              % \item \textbf{Invalid Testing:}
-              %       \begin{itemize}
-              %           \item Error Tolerance Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
-              %           \item Negative Testing {\hfill \tiny \citepISTQB{}}
-              %       \end{itemize} \pause
-    \end{enumerate}
+    % Some prominent examples: \vspace{0.25cm}
+    \textbf{Functional testing:} % \hfill \textbf{Source(s)}
+    \begin{itemize}
+        \item \small Specification-based testing {\tiny (\citealp[p.~196]{IEEE2017}; \citealp[p.~399]{vanVliet2000}; \dots{})}
+              % ; \citealp[pp.~44\==45, 48]{Kam2008})}
+        \item Conformance testing \emph{and} correctness testing {\tiny \citep[p.~5\=/7]{SWEBOK2025}}
+              % \item \emph{Correctness testing} {\tiny \citep[p.~5\=/7]{SWEBOK2025}}
+    \end{itemize}
+    \vspace{0.4cm}
+    \textbf{Specification-based testing:} % \hfill \textbf{Source(s)}
+    \begin{itemize}
+        \item \small Functional testing {\tiny (\citealp[p.~196]{IEEE2017}; \citealp[p.~399]{vanVliet2000}; \citealp[pp.~44\==45, 48]{Kam2008})}
+        \item Domain testing {\tiny \citep[p.~5\=/10]{SWEBOK2025}}
+    \end{itemize}%\pause
+    \vspace{-0.2cm}
+    \includegraphics[width=\textwidth]{assets/graphs/manual/expSynSpecGraph.pdf}
+    % \item \textbf{Portability Testing:}
+    %       \begin{itemize}
+    %           \item Flexibility Testing {\hfill \tiny \citep{ISO_IEC2023a}}
+    %           \item Configuration Testing {\hfill \tiny \citep[p.~43]{Kam2008}}
+    %       \end{itemize}
+    %       \vspace{0.25cm}
+    % \item \textbf{Soak Testing:}
+    %       \begin{itemize}
+    %           \item Endurance Testing {\hfill \tiny \citep[p.~39]{IEEE2021c}}
+    %           \item Reliability Testing {\hfill \tiny (\citealp[Tab.~2]{Gerrard2000a};
+    %                         \citeyear[Tab.~1, p.~26]{Gerrard2000b})}
+    %                 % Endurance testing is given as a child of reliability testing by
+    %                 % \citet[p.~55]{Firesmith2015}, although the terms are not synonyms.
+    %       \end{itemize}
+    %   \item \textbf{Link Testing:}
+    %   \begin{itemize}
+    %       \item Branch Testing {\hfill \tiny (implied by \citealp[p.~24]{IEEE2021c};
+    %             \citealp[p.~4]{Reid1996})}
+    %       \item Component Integration Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
+    %       \item Integration Testing {\hfill \tiny (implied by \citealp[p.~13]{Gerrard2000a})}
+    %   \end{itemize}
+    % \item \textbf{Invalid Testing:}
+    %       \begin{itemize}
+    %           \item Error Tolerance Testing {\hfill \tiny \citep[p.~45]{Kam2008}}
+    %           \item Negative Testing {\hfill \tiny \citepISTQB{}}
+    %       \end{itemize} \pause
 \end{frame}
 
 \begin{frame}{Automated Flaws}
@@ -506,20 +510,20 @@
     We also found some test approaches that are given as parents of themselves:
     \vspace{0.25cm}
     \begin{enumerate}
-        \item Performance Testing {\tiny (\citealp[Tab.~2]{Gerrard2000a}; \citeyear[Tab.~1]{Gerrard2000b})}
-        \item System Testing {\tiny \citep[p.~23]{Firesmith2015}}
-        \item Usability Testing {\tiny (\citealp[Tab.~2]{Gerrard2000a}; \citeyear[Tab.~1]{Gerrard2000b})}
+        \item Performance testing {\tiny (\citealp[Tab.~2]{Gerrard2000a}; \citeyear[Tab.~1]{Gerrard2000b})}
+        \item System testing {\tiny \citep[p.~23]{Firesmith2015}}
+        \item Usability testing {\tiny (\citealp[Tab.~2]{Gerrard2000a}; \citeyear[Tab.~1]{Gerrard2000b})}
     \end{enumerate}
 \end{frame}
 
-\begin{frame}{Automated Flaws}
-    \framesubtitle{Synonym and Parent-Child Overlaps}
-    \begin{figure}[h!]
-        \centering
-        \includegraphics[width=\linewidth]{assets/graphs/manual/expParSynLegend.pdf}
-        \includegraphics[width=\linewidth]{assets/graphs/manual/expParSynGraph.pdf}
-    \end{figure}
-\end{frame}
+% \begin{frame}{Automated Flaws}
+%     \framesubtitle{Synonym and Parent-Child Overlaps}
+%     \begin{figure}[h!]
+%         \centering
+%         \includegraphics[width=\linewidth]{assets/graphs/manual/expParSynLegend.pdf}
+%         \includegraphics[width=\linewidth]{assets/graphs/manual/expParSynGraph.pdf}
+%     \end{figure}
+% \end{frame}
 
 \begin{frame}{Automated Flaws}
     \framesubtitle{Synonym and Parent-Child Overlaps}
@@ -531,7 +535,7 @@
             \begin{itemize}
                 \item Functional testing is a:
                       \begin{itemize}
-                          \item Synonym {\tiny (\citealp[p.~196]{IEEE2017}; \\\hspace{0.5cm} \citealp[p.~399]{vanVliet2000}; \citealp[pp.~44\==45, 48]{Kam2008}; \dots{})}
+                          \item Synonym {\tiny (\citealp[p.~196]{IEEE2017}; \\\hspace{0.75cm} \citealp[p.~399]{vanVliet2000}; \citealp[pp.~44\==45, 48]{Kam2008})}
                           \item Child {\tiny (\citealp[p.~38]{IEEE2021c}; \citealp[p.~42]{Kam2008})}
                       \end{itemize}
                 \item Domain testing is a:
