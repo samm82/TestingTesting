@@ -176,84 +176,86 @@
     \end{enumerate}
 \end{frame}
 
-\begin{frame}[t]{Methodology}
-    \framesubtitle{Categories}
-    \vspace{-0.925cm}
-    \centering
-    \only<1>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels1.pdf}}
-    \only<2>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels2.pdf}}
-    \only<3>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels3.pdf}}
-    \only<4>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels4.pdf}}
-    \only<5>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels5.pdf}}
-
-    \begin{minipage}{0.98\textwidth}
-        % For weird spacing issue
-        \only<1-3>{\vspace{-0.8cm}}
-        \only<4>{\vspace{-0.475cm}}
-        \only<5>{\vspace{0.02cm}}
-        \only<1>{\textbf{Approach:} a ``high-level test implementation choice''
-            \citep[p.~10]{IEEE2022} used to ``pick the particular test case
-            values'' \citeyearpar[p.~465]{IEEE2017}}
-        \only<2>{\textbf{Level:} a stage of testing with ``particular
-            objectives and \dots{} risks'', each performed in sequence
-            (\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021a};
-            \citeyear[p.~6]{IEEE2021c})}
-        \only<3>{\textbf{Practice:} a ``conceptual framework that can be applied
-            to \dots{} [a] test process to facilitate testing''
-            (\citealp[p.~14]{IEEE2022}; \citeyear[p.~471]{IEEE2017})}
-        \only<4>{\textbf{Technique:} a
-            % ``defined'' and ``systematic'' \citep[p.~464]{IEEE2017}
-            ``procedure used to create or select a test
-            model, identify test coverage items, and derive corresponding test cases''
-            (\citeyear[p.~11]{IEEE2022}; \citeyear[p.~5]{IEEE2021a};
-            similar in \citeyear[p.~467]{IEEE2017})}
-        \only<5>{\textbf{Type:} ``testing that is focused on specific quality
-            characteristics'' (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021c};
-            \citeyear[p.~473]{IEEE2017})}
-    \end{minipage}
-\end{frame}
-
-\begin{frame}[t]{Methodology}
-    \framesubtitle{Visualization Notation}
-    \vspace{-0.925cm}
-    \centering
-    \only<1>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels5.pdf}}
-    \only<2>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels6.pdf}}
-    \only<3>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels7.pdf}}
-
-    \begin{minipage}{0.98\textwidth}
+\ifnotdefense
+    \begin{frame}[t]{Methodology}
+        \framesubtitle{Categories}
+        \vspace{-0.925cm}
         \centering
-        % For spacing issues
-        \only<1>{\vspace{1.6cm}}
-        \only<2>{\vspace{-2.2cm}}
-        \only<3>{\vspace{-1.2cm}}
-        \only<1>{Arrows point from a \emph{child} node to a \emph{parent} node.}
-        \only<2>{Lines without arrowheads connect \emph{synonyms}.}
-        \only<3>{Dashed lines indicate a relationship is \emph{implicit}.}
-    \end{minipage}
-\end{frame}
+        \only<1>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels1.pdf}}
+        \only<2>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels2.pdf}}
+        \only<3>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels3.pdf}}
+        \only<4>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels4.pdf}}
+        \only<5>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels5.pdf}}
 
-% \begin{frame}[t]{Methodology}
-%     \framesubtitle{Visualization Notation}
-%     \begin{columns}[T]
-%         \begin{column}{.5\textwidth}
-%             \vspace{-0.5cm}
-%             \centering
-%             \includegraphics[width=\linewidth]{assets/graphs/manual/catRels8.pdf}
-%         \end{column}
-%         \begin{column}{.5\textwidth}
-%             \vspace{0.75cm}
-%             Dashed outlines indicate a term is \emph{implicit}.\\
-%             \vspace{1.3cm}
-%             Dotted outlines indicate a term is a \emph{synonym} to more than one term.
-%         \end{column}
-%     \end{columns}
-% \end{frame}
+        \begin{minipage}{0.98\textwidth}
+            % For weird spacing issue
+            \only<1-3>{\vspace{-0.8cm}}
+            \only<4>{\vspace{-0.475cm}}
+            \only<5>{\vspace{0.02cm}}
+            \only<1>{\textbf{Approach:} a ``high-level test implementation choice''
+                \citep[p.~10]{IEEE2022} used to ``pick the particular test case
+                values'' \citeyearpar[p.~465]{IEEE2017}}
+            \only<2>{\textbf{Level:} a stage of testing with ``particular
+                objectives and \dots{} risks'', each performed in sequence
+                (\citealp[p.~12]{IEEE2022}; \citeyear[p.~6]{IEEE2021a};
+                \citeyear[p.~6]{IEEE2021c})}
+            \only<3>{\textbf{Practice:} a ``conceptual framework that can be applied
+                to \dots{} [a] test process to facilitate testing''
+                (\citealp[p.~14]{IEEE2022}; \citeyear[p.~471]{IEEE2017})}
+            \only<4>{\textbf{Technique:} a
+                % ``defined'' and ``systematic'' \citep[p.~464]{IEEE2017}
+                ``procedure used to create or select a test
+                model, identify test coverage items, and derive corresponding test cases''
+                (\citeyear[p.~11]{IEEE2022}; \citeyear[p.~5]{IEEE2021a};
+                similar in \citeyear[p.~467]{IEEE2017})}
+            \only<5>{\textbf{Type:} ``testing that is focused on specific quality
+                characteristics'' (\citealp[p.~15]{IEEE2022}; \citeyear[p.~7]{IEEE2021c};
+                \citeyear[p.~473]{IEEE2017})}
+        \end{minipage}
+    \end{frame}
 
-\begin{frame}{Visualization of Test Approaches}
-    \pause \large \centering \texttt{! Dimension too large.}
-    % \includegraphics[width=0.75\textwidth]{assets/graphs/approachGraph.pdf}
-\end{frame}
+    \begin{frame}[t]{Methodology}
+        \framesubtitle{Visualization Notation}
+        \vspace{-0.925cm}
+        \centering
+        \only<1>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels5.pdf}}
+        \only<2>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels6.pdf}}
+        \only<3>{\includegraphics[width=\linewidth]{assets/graphs/manual/catRels7.pdf}}
+
+        \begin{minipage}{0.98\textwidth}
+            \centering
+            % For spacing issues
+            \only<1>{\vspace{1.6cm}}
+            \only<2>{\vspace{-2.2cm}}
+            \only<3>{\vspace{-1.2cm}}
+            \only<1>{Arrows point from a \emph{child} node to a \emph{parent} node.}
+            \only<2>{Lines without arrowheads connect \emph{synonyms}.}
+            \only<3>{Dashed lines indicate a relationship is \emph{implicit}.}
+        \end{minipage}
+    \end{frame}
+
+    % \begin{frame}[t]{Methodology}
+    %     \framesubtitle{Visualization Notation}
+    %     \begin{columns}[T]
+    %         \begin{column}{.5\textwidth}
+    %             \vspace{-0.5cm}
+    %             \centering
+    %             \includegraphics[width=\linewidth]{assets/graphs/manual/catRels8.pdf}
+    %         \end{column}
+    %         \begin{column}{.5\textwidth}
+    %             \vspace{0.75cm}
+    %             Dashed outlines indicate a term is \emph{implicit}.\\
+    %             \vspace{1.3cm}
+    %             Dotted outlines indicate a term is a \emph{synonym} to more than one term.
+    %         \end{column}
+    %     \end{columns}
+    % \end{frame}
+
+    \begin{frame}{Visualization of Test Approaches}
+        \pause \large \centering \texttt{! Dimension too large.}
+        % \includegraphics[width=0.75\textwidth]{assets/graphs/approachGraph.pdf}
+    \end{frame}
+\fi
 
 % \begin{frame}{Visualization of Test Levels}
 %     \includegraphics[width=\textwidth]{assets/graphs/levelGraph.pdf}

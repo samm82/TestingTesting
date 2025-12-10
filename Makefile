@@ -105,7 +105,7 @@ compile_doc: # '-output-directory=build' is a special name and is referenced fro
 	cp build/$(DOC_NAME).pdf $(DOC_NAME).pdf
 	-rm lualatex*.fls || true
 
-paper thesis seminar meeting poster: $(LATEX_SCRIPTS) # standard build of documents
+paper thesis seminar defense meeting poster: $(LATEX_SCRIPTS) # standard build of documents
 # Attempted to convert the following find and replace working in VS Code:
 # ([^p])p.[\s~]+(\d+)([-,])(\d+) -> $1pp.~$2$3$4
 # To a Makefile rule unsuccessfully (grep not finding tildes):
@@ -117,7 +117,7 @@ paper_blind: paper # double-blind build of ICSE paper for review submission
 
 build: csv_diff paper graphs thesis
 docs: paper thesis presentations
-presentations: seminar # meeting poster
+presentations: seminar defense # meeting poster
 
 debug: DOC_NAME=thesis
 debug: TEX_FLAGS=

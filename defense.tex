@@ -78,7 +78,6 @@
 \input{common_macros}
 \input{assets}
 \notpapertrue
-\notdefensetrue
 
 \newenvironment{paperTable}{
     \begingroup
@@ -97,7 +96,7 @@
 \newcounter{methodCounter}
 
 \title[Testing Terminology]{\thesisTitle{}}
-\subtitle{\thesisTargetDegreeNameShort{} Seminar}
+\subtitle{\thesisTargetDegreeNameShort{} Defense}
 \author[\thesisAuthorName{}]{\thesisAuthorName{}, \thesisAuthorCredentials{}}
 
 % Committee
@@ -148,9 +147,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-\subsection{The Need for Standardized Terminology}
-
-\begin{frame}{The Need for Standardized Terminology}
+\begin{frame}{Introduction}
+    \framesubtitle{The Need for Standardized Terminology}
     \begin{columns}[T]
         \begin{column}{.6\textwidth}
             \begin{itemize}
@@ -202,144 +200,8 @@
     \end{columns}
 \end{frame}
 
-\subsection{The Lack of Standardized Terminology}
-
-% \begin{frame}[c]{The Lack of Standardized Terminology}
-%     \framesubtitle{``The Problem''}
-%     \begin{figure}
-%         \centering
-%         \only{\includegraphics[height=0.65\textheight]{assets/images/test approach choices}
-%             \caption{\tiny \citep[Fig.~2]{IEEE2022}}}<1>
-%         \only{\includegraphics[height=0.65\textheight]{assets/images/test approach exp based}
-%             \caption{\tiny Adapted from \citep[Fig.~2]{IEEE2022}}}<2>
-%     \end{figure}
-% \end{frame}
-
-\begin{frame}[c]{The Lack of Standardized Terminology}
-    \framesubtitle{``The Problem''}  % (cont.)
-    \begin{figure}
-        \begin{center}
-            \only{\includegraphics[height=0.65\textheight]{assets/images/system testing}
-                \caption{\tiny \citep[p.~23]{Firesmith2015}}}<1>
-            \only{\includegraphics[height=0.65\textheight]{assets/images/system testing hil}
-                \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}}<2>
-            \only{\includegraphics[height=0.65\textheight]{assets/images/system testing sos}
-                \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}}<3>
-            \only{\includegraphics[height=0.65\textheight]{assets/images/system testing self}
-                \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}}<4>
-            \only{\includegraphics[height=0.65\textheight]{assets/images/system testing int}
-                \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}}<5>
-            \only{\includegraphics[height=0.65\textheight]{assets/images/system testing int 2}
-                \begin{columns}
-                    \centering
-                    \begin{column}{0.4\textwidth}
-                        \caption{\tiny Adapted from \citepISTQB{}}
-                    \end{column}
-                    \begin{column}{0.4\textwidth}
-                        \caption{\tiny Adapted from \citep[p.~23]{Firesmith2015}}
-                    \end{column}
-                \end{columns}
-            }<6>
-        \end{center}
-    \end{figure}
-\end{frame}
-
-\newcommand{\stick}[3][black]{
-    \node at (#2, 1) {\textcolor{#1}{\Strichmaxerl[3]}};
-    \node[above] at (#2, 1.5) {#3};
-}
-\newcommand{\tester}[1]{\stick[red]{#1}{Tester}}
-\newcommand{\boss}[1]{\stick{#1}{Boss}}
-\newcommand{\dev}[1]{\stick{#1}{Dev}}
-\newcommand{\user}[1]{\stick{#1}{User}}
-
-\begin{frame}{The Lack of Standardized Terminology}
-    \framesubtitle{``The Problem'' (cont.)}
-
-    \vspace{-0.5cm}
-
-    \centering
-    \begin{tikzpicture}[scale=1.5]
-
-        % Draw the rectangle
-        \draw[ultra thick] (0, 0) rectangle (4, 2.5);
-
-        \dev{0.5}
-        \boss{3.5}
-        \user{5.75}
-        \user{6.5}
-
-        \onslide<1>{
-            \tester{2.75}
-            \node[draw, ellipse callout, align=center, anchor=south,
-                inner xsep=-0.75em, fill=white, text width=4.5cm, font=\small,
-                callout absolute pointer={(3.5, 2)}] at (3, 2.5)
-            {Tester, let's conduct alpha testing on our product!};
-            % The ``first stage of testing before a product is
-            % considered ready for commercial or operational use''
-            % \citep[p.~17]{IEEE2017}.
-        }
-
-        \onslide<2>{
-            \tester{2}
-            \node[draw, ellipse callout, align=center, anchor=south,
-                inner xsep=-3em, fill=white, text width=7.5cm, font=\small,
-                callout absolute pointer={(2, 2)}] at (1.75, 2.25)
-            % \node[draw, cloud, cloud puffs=10, cloud puff arc=120, aspect=1.5, align=center,
-            %     anchor=south, fill=white, text width=3cm, font=\footnotesize] at (3.5, 2.25)
-            {Alpha testing is done by ``users within \\ the organization developing
-                the software''.\\ \tiny \citep[p.~17]{IEEE2017}};
-        }
-
-        \onslide<3-4>{\tester{1.25}}
-
-        \onslide<3>{
-            \node[draw, ellipse callout, align=center, anchor=south,
-                inner xsep=-1em, fill=white, text width=4cm, font=\small,
-                callout absolute pointer={(1.25, 2)}] at (1.5, 2.5)
-            {Dev, can you do some alpha testing?};
-        }
-
-        \onslide<4>{
-            \node[draw, ellipse callout, align=center, anchor=south,
-                inner xsep=-2em, fill=white, text width=5cm, font=\small,
-                callout absolute pointer={(0.75, 2)}] at (1.75, 2.25)
-            {No?! Alpha testing is done by ``a small, selected group of
-                potential users''!\\ \tiny \citep[p.~5\=/8]{SWEBOK2025}};
-        }
-
-        \onslide<5>{
-            \tester{5}
-            \node[draw, ellipse callout, align=center, anchor=south,
-                inner xsep=-1.75em, fill=white, text width=4cm, font=\small,
-                callout absolute pointer={(5.25, 2)}] at (5.75, 2.25)
-            {Alpha testing time!};
-        }
-
-        \onslide<6-7>{\tester{2.75}}
-
-        \onslide<6>{
-            \node[draw, ellipse callout, align=center, anchor=south,
-                inner xsep=-2em, fill=white, text width=3cm, font=\small,
-                callout absolute pointer={(2.75, 2)}] at (3, 2.25)
-            {All done!};
-        }
-
-        \onslide<7>{
-            \node[draw, ellipse callout, align=center, anchor=south,
-                inner xsep=-1.75em, fill=white, text width=6cm, font=\small,
-                callout absolute pointer={(3.5, 2)}] at (3, 2.25)
-            {How? Alpha testing is performed \\
-                % by `roles outside the development organization' and done
-                ``in the developer's test \mbox{environment}'', but you didn't bring
-                anyone in.\\ \tiny \citepISTQB{}};
-        }
-
-    \end{tikzpicture}
-\end{frame}
-
-\begin{frame}{Barriers to Effective Communication}
-    \framesubtitle{``The Problem'' (cont.)}
+\begin{frame}{Introduction}
+    \framesubtitle{Barriers to Effective Communication}
     \vspace{-1cm}
     \begin{columns}[T]
         \begin{column}{.5\textwidth}
@@ -405,8 +267,8 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Taxonomies to the Rescue?}
-    \framesubtitle{``The Problem'' (cont.)}
+\begin{frame}{Introduction}
+    \framesubtitle{Taxonomies to the Rescue?}
     \begin{itemize}
         \item Existing software testing taxonomies: \hfill Focus on: \hspace{0.25cm}
               \begin{itemize}
@@ -484,18 +346,17 @@
 
 \section{Conclusion}
 
-\begin{frame}{Conclusion}
-    \begin{itemize}
-        \item<1-> The software testing literature is flawed, so
-              don't assume everyone is on the same page
-        \item<2> Even if they are, there can still be issues!
-    \end{itemize}
-    \only<1>{\vspace*{2.1cm}%
-        \input{assets/graphs/flawBarsSem}}
-    \onslide<2>{\begin{figure}
-            \includegraphics[width=0.8\textwidth]{assets/images/system testing}
-            \caption{\tiny \citep[p.~23]{Firesmith2015}}
-        \end{figure}}
+\begin{frame}[t]{Conclusion}
+    The software testing literature is flawed, so
+    don't assume everyone is on the same page!
+    % \only<1>{
+    \vspace*{2.3cm}%
+    \input{assets/graphs/flawBarsSem}
+    % }
+    % \onslide<2>{\begin{figure}
+    %         \includegraphics[width=0.8\textwidth]{assets/images/system testing}
+    %         \caption{\tiny \citep[p.~23]{Firesmith2015}}
+    %     \end{figure}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
