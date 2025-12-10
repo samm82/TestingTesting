@@ -112,8 +112,7 @@
 
 \AtBeginSection[]
 {
-  \begin{frame}
-    \frametitle{Table of Contents}
+  \begin{frame}{Table of Contents}
     \tableofcontents[currentsection]
   \end{frame}
 }
@@ -139,8 +138,7 @@
 %% TABLE OF CONTENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-    \frametitle{Table of Contents}
+\begin{frame}{Table of Contents}
     \tableofcontents
 \end{frame}
 
@@ -151,8 +149,7 @@
 
 \subsection{The Need for Standardized Terminology}
 
-\begin{frame}
-    \frametitle{The Need for Standardized Terminology}
+\begin{frame}{The Need for Standardized Terminology}
     \begin{columns}[T]
         \begin{column}{.6\textwidth}
             \begin{itemize}
@@ -255,8 +252,7 @@
 \newcommand{\dev}[1]{\stick{#1}{Dev}}
 \newcommand{\user}[1]{\stick{#1}{User}}
 
-\begin{frame}
-    \frametitle{The Lack of Standardized Terminology}
+\begin{frame}{The Lack of Standardized Terminology}
     \framesubtitle{``The Problem'' (cont.)}
 
     \vspace{-0.5cm}
@@ -341,8 +337,7 @@
     \end{tikzpicture}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Barriers to Effective Communication}
+\begin{frame}{Barriers to Effective Communication}
     \framesubtitle{``The Problem'' (cont.)}
     \vspace{-1cm}
     \begin{columns}[T]
@@ -451,10 +446,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% CONCLUSION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Future Work}
+\section{Next Steps}
 
-\begin{frame}
-    \frametitle{Future Work}
+\begin{frame}{Next Steps}
+    \framesubtitle{Threats to Validity}
+    \begin{enumerate}
+        \item Performed by a single researcher over a period of time
+        \item Terms we defined: categories, flaws, \dots{}
+        \item Derived approaches: test types from qualities, test techniques
+              from coverage metrics, \dots{}
+        \item Limits and enforcement of standards
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Next Steps}
+    \framesubtitle{Future Work}
     \begin{columns}
         \begin{column}{0.35\textwidth}
             \begin{figure}
@@ -488,8 +494,8 @@
     \vfill
 \end{frame}
 
-\begin{frame}
-    \frametitle{Future Work}
+\begin{frame}{Next Steps}
+    \framesubtitle{Future Work}
     \rqc{}
     \begin{itemize}
         \item It will be more effective to do this more systematically once the
@@ -501,8 +507,7 @@
 
 \section{Conclusion}
 
-\begin{frame}
-    \frametitle{Conclusion}
+\begin{frame}{Conclusion}
     \begin{itemize}
         \item<1-> The software testing literature is flawed, so
               don't assume everyone is on the same page
@@ -520,8 +525,7 @@
 %% ACKNOWLEDGEMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-    \frametitle{Acknowledgment}
+\begin{frame}{Acknowledgment}
 
     \begin{itemize}
         \item \supersAck{}
@@ -540,8 +544,7 @@
 % From https://tex.stackexchange.com/a/457255/192195
 \setbeamertemplate{page number in head/foot}{}
 
-\begin{frame}[allowframebreaks,noframenumbering]
-    \frametitle{References}
+\begin{frame}[allowframebreaks,noframenumbering]{References}
 
     \bibliography{references,seminar_refs}
 \end{frame}
