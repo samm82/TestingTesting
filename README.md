@@ -1,6 +1,51 @@
 # Putting Software Testing Terminology to the Test
+_Last Updated: Dec. 13, 2025_
 
 Samuel Crawford's M.A.Sc. thesis on software testing terminology.
+
+## Lay Abstract
+
+It is important to test software to ensure that it achieves its goals and works
+as intended. However, the documents that describe how to perform testing have
+many flaws, making this process more difficult and less consistent. By looking
+through the literature, we found 567 different approaches to testing. We record
+how these approaches are defined and the relations between them. After
+collecting and analyzing all these data, we found 344 flaws, such as missing
+definitions or relations that contradict each other. This shows that despite the
+amount of information available about software testing, there are significant
+improvements to be made that would make testing software less confusing and
+more consistent.
+
+## General Repo Organization
+
+### Compiled Documents
+
+- `thesis.pdf`: the most up-to-date version of my thesis.
+- `paper.pdf`: a paper version of my thesis pending submission to a conference.
+- `seminar.pdf`, `defense.pdf`, `meeting.pdf`, and `poster.pdf`: slidesets for
+  degree-required presentations.
+
+These documents have corresponding `*.tex` files which import:
+- metadata from `manifest.tex`,
+- bib references from `*.bib`,
+- external assets (such as images, figures, tables, and generated visualizations
+  of approach relations) from `assets.tex`,
+- chapter information from `front.tex`, `chapters.tex`, and `back.tex`, all
+  respectively for the front, main, and back matters,
+- helpful macros from `*macros.tex`, and
+- the McMaster University colour swatch from `mcmaster_colours.tex`.
+
+### Collected Data
+
+- `ApproachGlossary.csv`: the list of identified test approaches, along with
+  relevant information.
+- `QualityGlossary.csv`: the list of identified software qualities (which may
+  imply related test types), along with relevant information.
+- `SuppGlossary.csv`: the list of terminology that is either shared by multiple
+  approaches or too complicated to explain inline in another glossary.
+- `scripts`: contains, among other things, many helper Python scripts for
+  analyzing collected data; `scripts/csvToGraph.py` is the most prominent and
+  calls all other relevant scripts.
 
 ## Build
 
@@ -40,31 +85,6 @@ Please view `manifest.tex` for information about configuring the build.
 build of this _thesis_ interactively, please run `make debug` instead of
 `make thesis`. This will allow you to debug any visual artifacts found in
 the PDF, or the lack thereof.
-
-## Source Code Organization
-
-Personally, I tend to prefer "just text" in my TeX files, importing cluttering
-code (such as that in tables, figures, etc.) from external files. This helps me
-quickly find and edit my assets. However, you should not restrict yourself to my
-preferences. Please feel free to use my general schema, or not. In particular,
-I've divided up my chapters into a separate file for each, my front matter into
-separate files, and each of my "assets" into a separate folder and file as
-required.
-
-`thesis.tex` is the main TeX file, importing all other things. In particular, it
-imports:
-- metadata from `manifest.tex`,
-- bib references from `references.bib`,
-- external assets (such as images, figures, tables) from `assets.tex`,
-- chapter information from `front.tex`, `chapters.tex`, and `back.tex`, all
-  respectively for the front, main, and back matters,
-- helpful macros you might build for yourself, or that I found particularly,
-  useful when building my thesis, from `macros.tex`, and
-- the McMaster University colour swatch from `mcmaster_colours.tex`.
-
-You should be mindful of all of these above listed files. Each one will have its
-own discussion of its usage in its respective header, but you are free to ignore
-the general schema I've built, or to modify it to your liking.
 
 ## Credits and Acknowledgements
 
