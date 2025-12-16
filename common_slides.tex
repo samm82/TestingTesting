@@ -81,21 +81,23 @@
                 };
             }
 
-            \onslide<2>{
-                \node[anchor=west, align=center] at (-2.2, 3) {
-                    Textbooks used at McMaster were our ad hoc starting points\\
-                    \tiny \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
-                };
-                \draw[->, very thick] (-1.8, 2.9) -- (-1.55, 0.8);
-            }
+            \ifnotdefense
+                \onslide<2>{
+                    \node[anchor=west, align=center] at (-2.2, 3) {
+                        Textbooks used at McMaster were our ad hoc starting points\\
+                        \tiny \citep{Patton2006, PetersAndPedrycz2000, vanVliet2000}
+                    };
+                    \draw[->, very thick] (-1.8, 2.9) -- (-1.55, 0.8);
+                }
 
-            % \onslide<3>{
-            %     \node[anchor=west, align=left] at (2.4, -2) {
-            %         Includes websites \citetext{\citealp{LambdaTest2024}; \\
-            %             \quad\quad\citealp{Pandey2023}} and a booklet\\
-            %         \quad\quad\citep{SPICE2022}};
-            %     \draw[->, very thick] (2.25, -1.5) -- (1.25, -1.1);
-            % }
+                % \onslide<3>{
+                %     \node[anchor=west, align=left] at (2.4, -2) {
+                %         Includes websites \citetext{\citealp{LambdaTest2024}; \\
+                %             \quad\quad\citealp{Pandey2023}} and a booklet\\
+                %         \quad\quad\citep{SPICE2022}};
+                %     \draw[->, very thick] (2.25, -1.5) -- (1.25, -1.1);
+                % }
+            \fi
 
         \end{tikzpicture}
     \end{figure}
@@ -250,12 +252,14 @@
     %         \end{column}
     %     \end{columns}
     % \end{frame}
-
-    \begin{frame}{Visualization of Test Approaches}
-        \pause \large \centering \texttt{! Dimension too large.}
-        % \includegraphics[width=0.75\textwidth]{assets/graphs/approachGraph.pdf}
-    \end{frame}
 \fi
+
+\begin{frame}{Visualization of Test Approaches}
+    \ifnotdefense \pause \fi
+    \centering \large \texttt{! Dimension too large.}
+    \ifnotdefense \else \\\quad\\ \normalsize (\qty{8}{\metre} by \qty{2.5}{\metre}) \fi
+    % \includegraphics[width=0.75\textwidth]{assets/graphs/approachGraph.pdf}
+\end{frame}
 
 % \begin{frame}{Visualization of Test Levels}
 %     \includegraphics[width=\textwidth]{assets/graphs/levelGraph.pdf}
@@ -403,12 +407,14 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}{Normalized Flaw Summary}
-    \begin{figure}
-        \centering
-        \input{assets/graphs/normFlawBarsSummarySem}
-    \end{figure}
-\end{frame}
+\ifnotdefense
+    \begin{frame}{Normalized Flaw Summary}
+        \begin{figure}
+            \centering
+            \input{assets/graphs/normFlawBarsSummarySem}
+        \end{figure}
+    \end{frame}
+\fi
 
 \begin{frame}{More Detailed Flaw Summary by Source Tier}
     \input{assets/graphs/flawBarsSem}
