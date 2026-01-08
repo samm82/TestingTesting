@@ -92,7 +92,7 @@ This thesis was based on Jason Balaci's [McMaster thesis template](https://githu
 which provided many provided many helper LaTeX functions; slides were also
 _heavily_ based on a previous presentation of his. Christopher William
 Schankula also helped me with LaTeX and multiple friends discussed software
-testing with me, providing many of the approaches in Section 3.5. A special
+testing with me, providing many of the approaches in Section 7.2. A special
 "thank you" to Dr. Stuart Reid for providing me with a paper he wrote that I
 could not find online, for his work with ISO, and for founding the International
 Software Testing Qualifications Board (ISTQB)! My family has also supported me
@@ -104,7 +104,7 @@ ChatGPT was used to help generate supplementary Python code for constructing
 visualizations and generating LaTeX code, including regex. ChatGPT and
 GitHub Copilot were both used for assistance with LaTeX formatting. ChatGPT
 and ProWritingAid were both used for proofreading. ChatGPT also provided
-pointers to the potential existence of some of the approaches in Section 3.5.
+pointers to the potential existence of some of the approaches in Section 7.2.
 
 ### Thesis Template Credits
 
