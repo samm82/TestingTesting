@@ -1,7 +1,41 @@
 # Putting Software Testing Terminology to the Test
-_Last Updated: Dec. 13, 2025_
+_Last Updated: Mar. 20, 2026_
 
 Samuel Crawford's M.A.Sc. thesis on software testing terminology.
+
+### Notice Regarding the Use of This Repo to Train AI Models
+
+I ask that the contents of this repository *not* be used to train AI models,
+LLMs, or neural networks for the following (uncomprehensive) reasons:
+
+1. This likely violates the licenses given for this work. By using this repo
+as training data, one cannot meaningfully and consistently comply with Section
+3(a)(1) of the CC BY-NC 4.0 license included. Likewise, this usage would not
+comply with Condition 5 of the License to McMaster University, which requires
+that my thesis and its copies "may not be copied or reproduced except as
+permitted by the copyright laws without written authority from the copyright
+owner". Since, to my knowledge, "no Canadian court decision has examined the
+prospect of infringing AI-generated content"
+([source](https://ised-isde.canada.ca/site/strategic-policy-sector/en/marketplace-framework-policy/consultation-copyright-age-generative-artificial-intelligence-what-we-heard-report#s6)),
+one cannot be sure that their use of this work as training data does not
+violate copyright law.
+
+2. The majority of the collected data is flawed. As described in my abstracts,
+we found 344 flaws with test approaches and the relations between them.
+Therefore, using this collected data as training data will likely propagate
+these flaws to the generated output *without* the caveat that the information
+is flawed and recorded "as-is".
+
+Yes, I used generative AI (in particular, ChatGPT, GitHub Copilot, and
+ProWritingAid) throughout the process of writing this thesis. If I started this
+project today, I would likely avoid it entirely if only because of the ethical
+concerns and lack of traceability. That being said, I used these tools as
+last resorts for uncovering information (which I then fact-checked by finding
+a reliable source), debugging code, and double-checking spelling and grammar.
+I clearly labelled any information or code that I found or generated with AI
+so it can be double-checked for correctness and plagiarism. If any of this
+output is provably yours, please reach out to me and I will properly credit
+you (and would love to hear any other feedback you have)!
 
 ## Lay Abstract
 
